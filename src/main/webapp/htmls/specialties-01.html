@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->	
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="../css/web/common.css">
+	<link rel="stylesheet" href="../css/web/style.css">
+	<!-- script -->
+	<script src="../js/jquery-1.11.1.js"></script>
+	<script src="../js/jquery-ui.js"></script>
+	<script src="../js/html_common.js"></script>
+	<script src="../js/html_style.js"></script>
+	
+	<!-- script add -->
+	<script src="../js/cycle.js"></script>
+	<script src="../js/slider.js"></script>
+    <script>
+    $(document).ready(function() {
+    	//event slider
+    	if($('#specialty_slider ul li').length > 1) {                	//2개 이상시 실행
+	        $('#specialty_slider ul').after('<div id="specialty_nav" class="slider-nav">').cycle({
+	            pager:'#specialty_nav',
+	            prev: '#specialty_prev',
+	            next: '#specialty_next',
+	            timeout: 5000
+	        });
+	        $('#specialty_btn').show();                         		//paging show
+    	}
+    	
+    	//hot item
+    	
+    	if($('#hot_item > ul > li').length > 1) {                		//2개 이상시 실행
+    		$("#hot_item").jCarouselLite({
+                visible: 2,
+                auto: 5000,
+                btnNext: "#specialtyHot_next",
+                btnPrev: "#specialtyHot_prev",
+                vertical: true
+            });
+    		$('#hot_btn').show();                         				//button show
+    	}
+    	
+    });
+    </script>
+</head>
+<body>
+    <header id="header">
+
+        <div id="topBanner">
+            <div class="Fasten">
+                <a class="img-btn" onclick="show_popup('.comm-fullPopup2');"><img src="../images/web/comm/top_banner.jpg" alt="상단배너"></a>
+                <a class="close"><img id="tbClose" src="../images/web/comm/close.png" alt="닫기"></a>
+
+                <div class="comm-fullPopup2">
+                    <a class="option-close" onclick="close_popup('.comm-fullPopup2');"><img src="../images/web/comm/view_close.png" alt="닫기"></a>
+                    <img src="../images/web/comm/top_banner_view.png" alt="배너 상세">
+                </div>
+            </div>
+        </div>
+
+        <div class="Fasten">
+            <div class="topSearch">
+                <h1 class="logo"><a href=""><img src="../images/web/comm/logo.gif" alt="탐나오"></a></h1>
+                <!-- 검색 -->
+                <p class="searchBox"><input id="search" type="text"><button id="searBT"></button></p>
+                <!-- 서브메뉴 -->
+                <nav id="topMenu">
+                    <a href="">★즐겨찾기</a>
+                    <a href="">로그인</a>
+                    <a href="">회원가입</a>
+                    <a href="">마이페이지</a>
+                    <a href="">고객센터</a>
+                </nav>
+            </div>
+        </div>
+        <!-- main menu -->
+        <nav id="mainMenu">
+            <div class="Fasten">
+                <div class="menuBT"><a id="menuBT"><img src="../images/web/comm/menu.gif" alt="메뉴"></a></div>
+                <div class="subMenu">11<br>11<br>11<br>11<br></div>
+                <ul class="mainMenu">
+                    <li><a href="air-main.html">항공</a></li>
+                    <li><a href="hotel-list.html">숙박</a></li>
+                    <li><a href="rent-list.html">렌터카</a></li>
+                    <li><a href="">관광지할인쿠폰</a></li>
+                    <li><a href="">레져/음식/뷰티</a></li>
+                    <li><a href="">카텔</a></li>
+                    <li><a href="">골프패키지</a></li>
+                    <li><a href="">버스/택시관광</a></li>
+                    <li><a href="">제주특산품</a></li>
+                    <li><a href="">특가이벤트</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- //main menu -->
+    </header>
+
+	<main id="main">
+        <div class="mapLocation"> <!--index page에서는 삭제-->
+            <div class="Fasten">
+                <span>홈</span> <span class="gt">&gt;</span>                
+                <span>제주특산품</span>
+            </div>
+        </div>
+        <!-- quick banner -->
+        <div class="Fasten">
+            <aside id="leftAside">
+                <ul>
+                    <li><a href="http://www.hijeju.or.kr/discount/apply.htm" target="_blank"><img src="../images/web/leftBanner/01.png" alt="제주하이쿠폰"></a></li>
+                    <li><a href="http://www.jejugoldenbus.com/main/" target="_blank"><img src="../images/web/leftBanner/02.png" alt="제주황금시티투어"></a></li>
+                </ul>
+            </aside>
+
+            <aside id="rightAside">
+                <div class="fixed-wrap">
+                    <div class="ctWrap">
+
+                        <!-- 지역별 상품보기 -->
+                        <div class="product map">
+                            <h6 class="title">지역별 상품보기</h6>
+                            <div class="ct-box">
+                                <a href=""><img src="../images/web/comm/map_service.jpg" alt="지역별상품보기"></a>
+                            </div>
+                        </div>
+
+                        <!-- 상품 리스트 -->
+                        <div class="product">
+                            <h6 class="title">오늘본상품 <img src="../images/web/comm/arrow.gif" alt="arrow"></h6>
+                            <div class="today-list">
+                                <div id="todayList">
+                                    <ul class="list">
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider05.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider02.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider03.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <!--오늘본 상품없을 시 출력-->
+                                        <!--<p class="side-noContent">오늘 본 상품이 없습니다.</p>-->
+                                    </ul>
+                                </div>
+                                <ul class="itemNav">
+                                    <li>
+                                        <span id="itemPrev"><a href=""><img src="../images/web/comm/list_prev.gif" alt="이전"></a></span>
+                                        <!-- <span id="number">1/1</span> -->
+                                        <span id="itemNext"><a href=""><img src="../images/web/comm/list_next.gif" alt="다음"></a></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="shoppingCart">
+                            <h6>장바구니</h6>
+                            <p>
+                                <img src="../images/web/comm/cart2.gif" alt="장바구니">
+                                <span>9</span>
+                            </p>
+                        </div>
+                        <ul class="menuList">
+                            <li><a href=""><img src="../images/web/comm/menulist2.gif" alt="자주묻는질문">자주묻는질문</a></li>
+                            <li><a href=""><img src="../images/web/comm/menulist3.gif" alt="여행경비산출">여행경비산출</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <!-- //quick banner -->
+        <div class="subContainer">
+            <div class="subHead"></div>
+            <div class="subContents">
+                <!-- new contents -->
+                <div class="sightseeing">
+                    <div class="bgWrap">
+                        <div class="Fasten">
+                        
+                            <!-- 제주특산기념품 -->
+                            <div id="specialty" class="specialty-wrap">
+                            	<div class="menu">
+                            		<div class="title-wrap">
+                            			<img src="../images/web/specialty/title_bg.png" alt="">
+                            			<h2 class="title">특산/기념품</h2>
+                            		</div>
+                            		
+                            		<nav>
+                            			<ul>
+                            				<li><a href="#">전체</a></li>
+                            				<li><a href="#">농산품</a>
+                            					<ul class="depth2">
+                            						<li><a href="">2Depth Menu1</a></li>
+                            					</ul>
+                            				</li>
+                            				<li><a href="#">수산품</a>
+                            					<ul class="depth2">
+                            						<li><a href="">2Depth Menu1</a></li>
+                            					</ul>
+                            				</li>
+                            				<li><a href="#">축산품</a>
+                            					<ul class="depth2">
+                            						<li><a href="">2Depth Menu1</a></li>
+                            					</ul>
+                            				</li>
+                            				<li><a href="#">가공품</a>
+                            					<ul class="depth2">
+                            						<li><a href="">전통식품</a></li>
+                            						<li><a href="">쨈/꿀/조미료</a></li>
+                            						<li><a href="">초콜릿/스낵/간식</a></li>
+                            						<li><a href="">커피/차/음료</a></li>
+                            						<li><a href="">임산물/건어물</a></li>
+                            						<li><a href="">건강식품</a></li>
+                            						<li><a href="">기타</a></li>
+                            					</ul>
+                            				</li>
+                            				<li><a href="#">뷰티</a>
+                            					<ul class="depth2">
+                            						<li><a href="">스킨케어</a></li>
+                            						<li><a href="">클렌징/마스크</a></li>
+                            						<li><a href="">바디/헤어케어</a></li>
+                            						<li><a href="">향수/향초/비누</a></li>
+                            						<li><a href="">남성화장품</a></li>
+                            						<li><a href="">메이크업</a></li>
+                            					</ul>
+                            				</li>
+                            				<li><a href="#">공예/공산품</a>
+                            					<ul class="depth2">
+                            						<li><a href="">2Depth Menu1</a></li>
+                            					</ul>
+                            				</li>
+                            				<li><a href="#">기타</a>
+                            					<ul class="depth2">
+                            						<li><a href="">2Depth Menu1</a></li>
+                            					</ul>
+                            				</li>
+                            			</ul>
+                            		</nav>
+                            	</div> <!--//menu-->
+                            	
+                            	<div id="specialty_slider" class="ct-slider">
+                            		<ul>
+                            			<li> <!-- 이벤트 상품 없을 시 -->
+		                                    <a href="">
+		                                        <p class="photo"><img class="img" src="../images/web/specialty/not.jpg" alt="event"></p>
+		                                    </a>
+		                                </li>
+		                                <li>
+		                                    <a href="">
+		                                        <p class="photo"><img class="img" src="http://www.tamnao.com/data/prmt/list/PM00000105.jpg" alt="event"></p>
+		                                    </a>
+		                                </li>
+		                                <li>
+		                                    <a href="">
+		                                        <p class="photo"><img class="img" src="http://www.tamnao.com/data/prmt/list/PM00000103.jpg" alt="event"></p>
+		                                    </a>
+		                                </li>
+		                                <li>
+		                                    <a href="">
+		                                        <p class="photo"><img class="img" src="http://www.tamnao.com/data/prmt/list/PM00000083.jpg" alt="event"></p>
+		                                    </a>
+		                                </li>
+		                            </ul>
+		                            <div id="specialty_btn" class="slider-btn">
+		                                <button id="specialty_prev" class="prev" type="button"><img src="../images/web/specialty/prev.png" alt="이전"></button>
+		                                <button id="specialty_next" class="next" type="button"><img src="../images/web/specialty/next.png" alt="다음"></button>
+		                            </div>
+                            	</div> <!--//ct-slider-->
+                            	
+                            	<div class="hot-item">
+                            		<h3 class="comm-title11"><strong>HOT</strong> ITEM</h3>
+                            		<div class="itemWrap">
+                            			<div id="hot_item">
+	                            			<ul>
+									            <li class="item">
+									                <a href="">
+									                    <div class="photo">
+									                        <img class="img" src="http://www.tamnao.com/data/sv/SV00000056_3.jpg" alt="">
+									                    </div>
+									                    <article class="textWrap">
+									                        <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+									                        <p class="subTitle">9월객실 업그레이드 이벤트</p>
+									                        <div class="info">
+									                            <div class="saleWrap">
+									                                <p class="sale"><span class="t_price">탐나오가</span></p>
+									                                <p class="won"><span class="won1">200,000</span><span class="won2">99,900</span></p>
+									                            </div>
+									                        </div>
+									                    </article>
+									                </a>
+									            </li>
+									            <li class="item">
+									                <a href="">
+									                    <div class="photo">
+									                        <img class="img" src="http://www.tamnao.com/data/sv/SV00000084_1.jpg" alt="">                        
+									                    </div>
+									                    <article class="textWrap">
+									                        <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+									                        <p class="subTitle">9월객실 업그레이드 이벤트</p>
+									                        <div class="info">
+									                            <div class="saleWrap">
+									                                <p class="sale">19%</p>
+									                                <p class="won"><span class="won1">200,000</span><span class="won2">99,900</span></p>
+									                            </div>
+									                        </div>
+									                    </article>
+									                </a>
+									            </li>
+									            <li class="item">
+									                <a href="">
+									                    <div class="photo">
+									                        <img class="img" src="../images/web/package/01.jpg" alt="">                        
+									                    </div>
+									                    <article class="textWrap">
+									                        <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+									                        <p class="subTitle">9월객실 업그레이드 이벤트</p>
+									                        <div class="info">
+									                            <div class="saleWrap">
+									                                <p class="sale">19%</p>
+									                                <p class="won"><span class="won1">200,000</span><span class="won2">9,900</span></p>
+									                            </div>
+									                        </div>
+									                    </article>
+									                </a>
+									            </li>
+								            </ul>
+							            </div>
+							            
+							            <div id="hot_btn" class="slider-btn">
+							            	<a id="specialtyHot_prev" href="#"><img src="../images/web/comm/list_prev.gif" alt="이전"></a> 
+							            	<a id="specialtyHot_next" href="#"><img src="../images/web/comm/list_next.gif" alt="다음"></a> 
+							            </div>
+							        </div> <!-- //itemWrap -->  
+                           		</div> <!--//quick-item-->
+                            </div> <!--//specialty-->
+                            <!-- //제주특산기념품 -->
+                            
+                        </div> <!--//Fasten-->
+                    </div> <!--//bgWrap-->                    
+                    <div class="Fasten">
+                        <!-- 검색 결과 -->
+                        <div class="product_result">
+                            <div id="tabs" class="mainTabMenu1">
+                                <ul class="array" id="orderUl">
+                                    <li class="select">
+                                        <a href="#" onclick="fn_ChangeOrder('SALE', this); return false;">판매순</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onclick="fn_ChangeOrder('PRICE', this); return false;">가격순</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onclick="fn_ChangeOrder('NEW',this); return false;">최신상품순</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onclick="fn_ChangeOrder('GPA', this); return false;">추천순</a>
+                                    </li>
+                                </ul>
+                                <!-- 상품 리스트 -->
+                                <div id="tabs-1" class="tabPanel">
+                                    <div class="itemWrap">
+                                        <div class="item">
+                                            <a href="">
+                                                <div class="photo">
+                                                    <!--알림-->
+                                                    <span class="nt ntTopL">
+                                                    	<img src="../images/web/icon/speciality.png" alt="우수관광기념품">
+                                                    	<img src="../images/web/icon/event.gif" alt="이벤트">
+                                                   	</span>
+                                                    <span class="nt ntTopR"><img class="sale-coupon" src="../images/web/icon/sale.png" alt="할인쿠폰"></span>
+                                                    <!--photo-->
+                                                    <img class="img" src="../images/web/package/01.jpg" alt="">
+
+                                                    <!-- 상품정보 -->
+                                                    <div class="bottom-info">                                                        
+                                                        <span class="date">2016-01-16 ~ 2016-01-30</span>
+                                                    </div>
+                                                </div>
+                                                <article class="textWrap">
+                                                    <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                    <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                    <ul class="info">
+                                                        <li class="saleWrap">
+                                                            <!--<p class="sale">45%</p>
+                                                            <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>-->
+                                                        </li>
+                                                        <li class="comment">
+                                                            <!--<p class="like">
+                                                                <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                                <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                            </p>-->
+                                                        </li>
+                                                    </ul>
+                                                </article>
+                                            </a>
+                                        </div> <!-- //item -->
+                                        <div class="item">
+                                            <a href="">
+                                                <div class="photo">
+                                                    <!--알림-->
+                                                    <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                    <!--photo-->
+                                                    <img class="img" src="../images/web/package/01.jpg" alt="">
+
+                                                    <!-- 상품정보 -->
+                                                    <div class="bottom-info">
+                                                        <span class="info">바로사용</span>
+                                                        <span class="date">구매 후 90일</span>
+                                                    </div>
+                                                </div>
+                                                <article class="textWrap">
+                                                    <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                    <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                    <ul class="info">
+                                                        <li class="saleWrap">
+                                                            <p class="sale">45%</p>
+                                                            <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                        </li>
+                                                        <li class="comment">
+                                                            <p class="like">
+                                                                <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                                <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                            </p>
+                                                        </li>
+                                                    </ul>
+
+                                                    <!-- 옵션추가 (상품구분 - 옵션명 기준) -->
+                                                    <p class="product"><span>상품구분) </span> <span>옵션명 기준</span></p>
+                                                </article>
+                                            </a>
+                                        </div> <!-- //item -->
+                                        <div class="item">
+                                            <a href="">
+                                                <div class="photo">
+                                                    <!--알림-->
+                                                    <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                    <!--photo-->
+                                                    <img class="img" src="../images/web/package/01.jpg" alt="">
+
+                                                    <!-- 상품정보 -->
+                                                    <div class="bottom-info">
+                                                        <span class="info">2시간 후 사용</span>
+                                                        <span class="date">2016-01-16 ~ 2016-01-30</span>
+                                                    </div>
+                                                </div>
+                                                <article class="textWrap">
+                                                    <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                    <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                    <ul class="info">
+                                                        <li class="saleWrap">
+                                                            <p class="sale">45%</p>
+                                                            <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                        </li>
+                                                        <li class="comment">
+                                                            <p class="like">
+                                                                <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                                <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                            </p>
+                                                        </li>
+                                                    </ul>
+
+                                                    <!-- 옵션추가 (상품구분 - 옵션명 기준) -->
+                                                    <p class="product"><span>상품구분) </span> <span>옵션명 기준</span></p>
+                                                </article>
+                                            </a>
+                                        </div> <!-- //item -->
+                                    </div> <!-- //itemWrap -->                                    
+                                </div> <!-- //tabs-1 -->                                
+                                <div class="pageNumber">
+                                    <p class="list_pageing">
+                                        <span class="btn">
+                                            <a href="#"><img src="../images/web/icon/page1.gif" alt="처음페이지"></a>
+                                            <a href="#"><img src="../images/web/icon/page2.gif" alt="이전페이지"></a>
+                                        </span>
+                                        <a href="#">1</a>
+                                        <a href="#">2</a>
+                                        <a href="#">3</a>
+                                        <a href="#">4</a>
+                                        <strong>5</strong>
+                                        <a href="#">6</a>
+                                        <a href="#">7</a>
+                                        <a href="#">8</a>
+                                        <a href="#">9</a>
+                                        <a href="#">10</a>
+                                        <span class="btn">
+                                            <a href="#"><img src="../images/web/icon/page3.gif" alt="다음페이지"></a>
+                                            <a href="#"><img src="../images/web/icon/page4.gif" alt="마지막페이지"></a>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div> <!-- //mainTabMenu1 -->
+                        </div> <!-- //product_result -->
+                    </div> <!--//Fasten-->
+                </div> <!-- //sightseeing -->
+                <!-- //new contents -->
+            </div> <!-- //subContents -->
+        </div> <!-- //subContainer -->
+	</main>
+	
+    <footer id="footer">
+        <div class="Fasten">
+            <div class="top-wrap">
+                <a class="go-top" onclick="go_top();"><img src="../images/web/comm/top.gif" alt="맨위로"></a>
+            </div>
+        </div>
+
+        <div class="footMenu">
+            <div class="Fasten">
+                <span><a href="">회사소개</a></span>
+                <span><a href="">사업제휴</a></span>
+                <span><a href=""><strong>개인정보취급방침</strong></a></span>
+                <span><a href="">국내여행표준약관</a></span>
+                <span><a href="">전자상거래표준약관</a></span>
+                <span><a href="">이메일무단수집거부</a></span>
+                <!-- link site -->
+                <div class="footLink">
+                    <select id="site_family">
+                        <option value="" selected>패밀리사이트</option>
+                        <option value="">list1</option>
+                    </select>
+                    <select id="site_regard">
+                        <option value="" selected>관련사이트</option>
+                        <option value="">list1</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="Fasten">
+            <div class="copy">
+                제주특별자치도관광협회 | 대표 : 김영진 | 사업자 등록번호 : 616-82-04092 | 법인 등록번호 : 220121-0000107 | 통신판매업번호: 제2013-제주연동 0024호<br>
+                63122 제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층 | Tel)064-742-8861 | Fax) 064-742-8865<br>                
+                고객센터 : 1522-3454 I 개인정보관리책임자 : 김기현<br>                
+                Copyright 2016. 제주특별자치도관광협회 All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

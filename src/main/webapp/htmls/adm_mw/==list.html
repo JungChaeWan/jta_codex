@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>	
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="홍원기">
+
+	<title>Site Map</title>
+
+	<!-- css -->
+	<link rel="stylesheet" href="../../css/adm_mw/comm_default.css">
+	<style>
+		body {background: #f2f2f2;}
+		
+		/*.container {width: 1280px; margin: 0 auto;}*/
+		.container {width: 100%;}
+		
+		header .top {background: #222; padding: 0 20px;}
+		header .top .container {display: table;}
+		header .top .logo, header .top .right {display: table-cell; vertical-align: middle;}
+		header .top .logo {font-size: 16px;}
+		header .top .logo a {font-family: "Noto Sans KR", sans-serif; color: #fff; display: inline-block; padding: 12px 0;}
+		header .top .logo a:hover {color: #58c0f0;}
+		header .top .right {text-align: right; font-size: 12px; color: #fff;}
+		header .top .right strong {color: #58c0f0; font-size: 13px;}
+		header .top .right span {display: inline-block; color: #fff;}
+		header .top .right span.line {color: #999; margin: 0 10px;}
+		header .top .right a {display: inline-block; color: #fff;}
+		header .top .right a:hover {color: #58c0f0;}
+		header .main-menu {background: #fff; border-bottom: 1px solid #e1e3e4; box-shadow: 2px 0px 4px #ccc;}
+		header .main-menu .container {text-align: center;}
+		header .main-menu .title {color: #222; font-size: 24px; padding: 18px 0;}
+		
+		main {margin: 20px;}
+		main .list-wrap .list {display: inline-block; vertical-align: top; background: #fff; border: 1px solid #e1e3e4; padding: 20px 15px; min-width: 200px; margin-bottom: 10px;}
+		main .list h3 {font-size: 18px; font-family: "Noto Sans KR", sans-serif; color: #222; margin-bottom: 10px;}
+		main .list ul {margin: 10px; padding: 10px;}
+		main .list ul li {list-style: circle;}
+		main .list ul li a {font-size: 14px; color: #3f3f3f; padding: 4px 0; display: block;}
+		main .list ul li a:hover {color: #58c0f0; font-weight: bold;}
+	</style>
+
+	<!-- script -->
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script>
+		$(document).ready(function(){
+			console.log("삭제");
+			var page_count = $('ul li').length;
+			$('#count').text(page_count);
+		})
+	</script>
+</head>
+<body>
+	<header>
+		<!--logo-->
+		<section class="top">
+			<div class="container">
+				<h1 class="logo"><a href="==list.html">관리자페이지</a></h1>
+				<nav class="right">
+					<span>작업페이지 : <strong id="count"></strong>page</span>
+					<span class="line">|</span>
+					<a href="common.html">» Style Guide</a>
+				</nav>
+			</div>
+		</section>
+		
+		<!--main menu-->
+		<nav class="main-menu">
+			<div class="container"><h2 class="title">Page Guide</h2></div>
+		</nav>
+	</header>
+	
+	<main>
+		<section class="list-wrap">
+			<div class="list">
+				<h3>INFORMATION</h3>
+				<ul>
+					<!--<li><a href="common.html" target="_blank">UI Style Guide</a></li>-->
+					<li><a href="=frame.html" target="_blank">공통 프레임</a></li>
+				</ul>
+			</div>
+			
+			<div class="list">
+				<h3>LOGIN</h3>
+				<ul>
+					<li><a href="login.html" target="_blank">로그인</a></li>
+				</ul>
+			</div>
+			
+			<!--<div class="list">
+				<h3>MAIN SAMPLE</h3>
+				<ul>
+					<li><a href="main.html" target="_blank">참조1 - default (자동 콘텐츠 정렬)</a></li>
+				</ul>
+			</div>-->
+			
+			<div class="list">
+				<h3>숙박</h3>
+				<ul>
+					<li><a href="ad-01.html" target="_blank">예약관리</a></li>
+					<li><a href="ad-02.html" target="_blank">예약관리 - 상세</a></li>
+				</ul>
+			</div>
+			
+			<div class="list">
+				<h3>렌터카</h3>
+				<ul>
+					<li><a href="rc-01.html" target="_blank">예약관리</a></li>
+					<li><a href="rc-02.html" target="_blank">예약관리 - 상세</a></li>
+				</ul>
+			</div>
+			
+			<div class="list">
+				<h3>소셜</h3>
+				<ul>
+					<li><a href="sp-01.html" target="_blank">예약관리</a></li>
+					<li><a href="sp-02.html" target="_blank">예약관리 - 상세</a></li>
+				</ul>
+			</div>
+			
+			<div class="list">
+				<h3>패키지</h3>
+				<ul>
+					<li><a href="pack-01.html" target="_blank">예약관리</a></li>
+					<li><a href="pack-02.html" target="_blank">예약관리 - 상세</a></li>
+				</ul>
+			</div>
+		</section>
+	</main>
+	
+	<footer></footer>
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+	
+	<title>탐나오</title>
+	
+	<link rel="stylesheet" href="../../css/mw/common2.css">
+	<link rel="stylesheet" href="../../css/mw/style.css">
+	
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/jquery.cookie.js"></script>
+	<script src="../../js/mw_common.js"></script>
+	<script src="../../js/mw_style.js"></script>
+</head>
+<body>
+<div id="wrap">
+
+<header id="header">
+	<div class="head-wrap">
+		<h1 class="title">이용후기</h1>
+		<div class="l-area">
+			<a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+		</div>
+		<div class="r-area">
+			<button type="button" id="frame_sideOpen" class="side-btn" title="사이드메뉴 열기"></button>
+		</div>
+	</div>
+	
+	<aside id="side_menu" class="side-menu">
+		<button type="button" id="frame_sideClose" class="close"><img src="../../images/mw/common/side/close-white.png" alt="닫기"></button>
+		
+		<nav class="top-menu">
+			<a href=""><img src="../../images/mw/common/side/home.png" alt="홈"></a>
+			<a href="javascript:void(0)" id="top_searchOpen">
+				<img src="../../images/mw/common/side/search-white.png" alt="검색">
+			</a>
+			<a href="" class="like">20</a>
+			<a href="" class="cart">5</a>
+		</nav>
+		
+		<div class="menu-area">
+			<ul>
+				<li><a href="air-search.html">항공</a></li>
+			    <li><a href="hotel-list.html">숙박</a></li>
+			    <li><a href="rent-list.html">렌터카</a></li>
+			    <li><a href="social-list.html">관광/레저</a></li>
+			    <li><a href="social-list.html">맛집</a></li>
+			    <li><a href="social-list.html">여행사 상품</a></li>
+			    <li><a href="from-jeju-main.html">from 제주 <img class="icon" src="../../images/mw/common/side/from-jeju.png" alt=""></a>
+			    	<ul class="depth2">
+			    		<li><a href="">농ㆍ수ㆍ축산물</a></li>
+						<li><a href="">가공식품</a></li>
+						<li><a href="">화장품/미용</a></li>
+						<li><a href="">제주기념품</a></li>
+			    	</ul>
+			    </li>
+			    <li><a href="main4-4.html">기획전</a></li>
+			    <li><a href="main4-5.html">이벤트</a></li>
+			</ul>
+			<ul>
+				<li><a href="">MY PAGE</a></li>
+			    <li><a href="">HELP</a></li>
+			    <li><a href="">LOGOUT</a></li>
+			    <li><a href="">SETTING</a></li>
+			</ul>
+		</div>
+	</aside>
+	
+	<div id="top_search" class="search-area">
+		<button type="button" id="top_searchClose" class="close"><img src="../../images/mw/common/side/close-gray.png" alt="닫기"></button>
+		
+		<div class="form-area">
+			<div class="form">
+				<form>
+					<input type="text" placeholder="검색어 입력" class="search">
+					<button type="submit" class="search-btn" title="검색"></button>
+				</form>
+			</div>
+			<div class="keyword">
+				<h2 class="title">HOT KEYWORD</h2>
+				<ul>
+					<li><a href="">수영장 숙소</a></li>
+				    <li><a href="">제주도 맛집</a></li>
+				    <li><a href="">패들보드</a></li>
+				    <li><a href="">제주 선물</a></li>
+				    <li><a href="">연인과 함께 즐기기</a></li>
+				    <li><a href="">흑돼지</a></li>
+				    <li><a href="">감귤</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+
+<main id="main">
+	<!--//change contents-->
+	<!-- ↓↓↓ 기존코드 동일 ↓↓↓ -->
+	<section id="subContent">
+		<!-- 삭제처리
+		<div class="menu-bar">
+		    <p class="btn-prev"><img src="../../images/mw/common/btn_prev.png" width="20" alt="이전페이지"></p>
+		    <h1>나의 예약/구매 내역</h1>
+		</div> -->
+	    <div class="sub-content">
+		    <div class="board">
+		        <form name="frm" id="frm" method="post" onsubmit="return false;">
+		            <input type="hidden" id="pageIndex" name="pageIndex" value="1">
+		            <div class="search">
+		                <input type="text" class="focus-value" id="sSubject" name="sSubject" value="">
+		                <a href="javascript:fn_Search('1')" class="btns btn-search">검색</a> <a href="javascript:fn_Ins()" class="btns btn-write">글쓰기</a> </div>
+		            <p class="txt">총 <strong>40</strong>개의 게시물이 있습니다. </p>
+		            <ul class="list">
+		                <li> 
+		                    <!-- <a href=""> --> 
+		                    <strong>[대국아일린호텔-디럭스]&nbsp; 테스트</strong><br>
+		                    <em>adm***** &nbsp;&nbsp; 2017-07-05 11:26:44</em> 
+		                    <!-- </a> -->
+		
+		                    <div class="re-comment">
+		                        <dl class="default-accordion2 reviews-ad">
+		                            <dt>
+		                                <ul class="tbOption">
+		                                    <li class="memoWrap">
+		                                        <p class="user-info"> <span class="heart"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_off.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_off.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_off.gif" alt="좋아요"> </span> </p>
+		                                        <p class="editBT"> <a href="/mw/coustomer/viewUdateUseepil.do?useEpilNum=41" class="btn btn-reply">수정</a> </p>
+		                                        <p></p>
+		                                        <p class="user-memo"> 테스트 내용입니다. <span class="comment-count">(2)</span> </p>
+		                                    </li>
+		                                </ul>
+		                            </dt>
+		                            <dd>
+		                                <ul class="re_comment">
+		                                    <li class="ic2"><img src="../../images/web/icon/re2.png" alt="re"></li>
+		                                    <li class="re"> 답변을 달고 있어요 </li>
+		                                </ul>
+		                                <ul class="re_comment">
+		                                    <li class="ic2"><img src="../../images/web/icon/re2.png" alt="re"></li>
+		                                    <li class="re"> 두번째 답글 </li>
+		                                </ul>
+		                            </dd>
+		                        </dl>
+		                    </div>
+		                </li>
+		                <li> 
+		                    <!-- <a href=""> --> 
+		                    <strong>[문섬체험다이빙]&nbsp; 에스3</strong><br>
+		                    <em>bbo***** &nbsp;&nbsp; 2016-12-26 14:34:22</em> 
+		                    <!-- </a> -->
+		
+		                    <div class="re-comment">
+		                        <dl class="default-accordion2 reviews-ad">
+		                            <dt>
+		                                <ul class="tbOption">
+		                                    <li class="memoWrap">
+		                                        <div class="photo-area"> <!-- 사진 없을 시 div 삭제 -->
+		                                            <div class="photo-wrap">
+		                                                <p class="photo" onclick="review_photo('40');"><img src="/data/useepil/40/thumb/40_20161227104606_0.jpg" alt="review"></p>
+		                                            </div>
+		                                        </div>
+		                                        <p class="user-info"> <span class="heart"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> </span> </p>
+		                                        <p class="user-memo"> ㅌㅔ 스트 <span class="comment-count">(0)</span> </p>
+		                                    </li>
+		                                </ul>
+		                            </dt>
+		                        </dl>
+		                    </div>
+		                </li>
+		                <li> 
+		                    <!-- <a href=""> --> 
+		                    <strong>[문섬체험다이빙]&nbsp; ㄱse3test</strong><br>
+		                    <em>bbo***** &nbsp;&nbsp; 2016-12-26 14:32:40</em> 
+		                    <!-- </a> -->
+		
+		                    <div class="re-comment">
+		                        <dl class="default-accordion2 reviews-ad">
+		                            <dt>
+		                                <ul class="tbOption">
+		                                    <li class="memoWrap">
+		                                        <div class="photo-area"> <!-- 사진 없을 시 div 삭제 -->
+		                                            <div class="photo-wrap">
+		                                                <p class="photo" onclick="review_photo('39');"><img src="/data/useepil/39/thumb/39_20161227044021_1.jpg" alt="review"></p>
+		                                            </div>
+		                                        </div>
+		                                        <p class="user-info"> <span class="heart"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> </span> </p>
+		                                        <p class="user-memo"> test <span class="comment-count">(0)</span> </p>
+		                                    </li>
+		                                </ul>
+		                            </dt>
+		                        </dl>
+		                    </div>
+		                </li>
+		                <li> 
+		                    <!-- <a href=""> --> 
+		                    <strong>[문섬체험다이빙]&nbsp; 테스트 s3</strong><br>
+		                    <em>bbo***** &nbsp;&nbsp; 2016-12-26 14:29:57</em> 
+		                    <!-- </a> -->
+		
+		                    <div class="re-comment">
+		                        <dl class="default-accordion2 reviews-ad">
+		                            <dt>
+		                                <ul class="tbOption">
+		                                    <li class="memoWrap">
+		                                        <div class="photo-area"> <!-- 사진 없을 시 div 삭제 -->
+		                                            <div class="photo-wrap">
+		                                                <p class="photo" onclick="review_photo('38');"><img src="/data/useepil/38/thumb/38_20161227044149_1.jpg" alt="review"></p>
+		                                            </div>
+		                                        </div>
+		                                        <p class="user-info"> <span class="heart"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> </span> </p>
+		                                        <p class="user-memo"> 테스트 <span class="comment-count">(0)</span> </p>
+		                                    </li>
+		                                </ul>
+		                            </dt>
+		                        </dl>
+		                    </div>
+		                </li>
+		                <li> 
+		                    <!-- <a href=""> --> 
+		                    <strong>[문섬체험다이빙]&nbsp; 테스트2</strong><br>
+		                    <em>bbo***** &nbsp;&nbsp; 2016-12-26 14:24:55</em> 
+		                    <!-- </a> -->
+		
+		                    <div class="re-comment">
+		                        <dl class="default-accordion2 reviews-ad">
+		                            <dt>
+		                                <ul class="tbOption">
+		                                    <li class="memoWrap">
+		                                        <div class="photo-area"> <!-- 사진 없을 시 div 삭제 -->
+		                                            <div class="photo-wrap">
+		                                                <p class="photo" onclick="review_photo('37');"><img src="/data/useepil/37/thumb/37_20161226022455_0.png" alt="review"></p>
+		                                            </div>
+		                                        </div>
+		                                        <p class="user-info"> <span class="heart"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> </span> </p>
+		                                        <p class="user-memo"> 테스트2 <span class="comment-count">(0)</span> </p>
+		                                    </li>
+		                                </ul>
+		                            </dt>
+		                        </dl>
+		                    </div>
+		                </li>
+		                <li> 
+		                    <!-- <a href=""> --> 
+		                    <strong>[문섬체험다이빙]&nbsp; 테스트1</strong><br>
+		                    <em>bbo***** &nbsp;&nbsp; 2016-12-26 14:06:32</em> 
+		                    <!-- </a> -->
+		
+		                    <div class="re-comment">
+		                        <dl class="default-accordion2 reviews-ad">
+		                            <dt>
+		                                <ul class="tbOption">
+		                                    <li class="memoWrap">
+		                                        <div class="photo-area"> <!-- 사진 없을 시 div 삭제 -->
+		                                            <div class="photo-wrap">
+		                                                <p class="photo" onclick="review_photo('36');"><img src="/data/useepil/36/thumb/36_20161226020632_0.jpg" alt="review"></p>
+		                                            </div>
+		                                        </div>
+		                                        <p class="user-info"> <span class="heart"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> </span> </p>
+		                                        <p class="user-memo"> 테스트1 <span class="comment-count">(0)</span> </p>
+		                                    </li>
+		                                </ul>
+		                            </dt>
+		                        </dl>
+		                    </div>
+		                </li>
+		                <li> 
+		                    <!-- <a href=""> --> 
+		                    <strong>[문섬체험다이빙]&nbsp; 테스트</strong><br>
+		                    <em>bbo***** &nbsp;&nbsp; 2016-12-26 14:03:25</em> 
+		                    <!-- </a> -->
+		
+		                    <div class="re-comment">
+		                        <dl class="default-accordion2 reviews-ad">
+		                            <dt>
+		                                <ul class="tbOption">
+		                                    <li class="memoWrap">
+		                                        <div class="photo-area"> <!-- 사진 없을 시 div 삭제 -->
+		                                            <div class="photo-wrap">
+		                                                <p class="photo" onclick="review_photo('35');"><img src="/data/useepil/35/thumb/35_20161226020325_0.png" alt="review"></p>
+		                                            </div>
+		                                        </div>
+		                                        <p class="user-info"> <span class="heart"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> </span> </p>
+		                                        <p class="user-memo"> 테스트 <span class="comment-count">(0)</span> </p>
+		                                    </li>
+		                                </ul>
+		                            </dt>
+		                        </dl>
+		                    </div>
+		                </li>
+		                <li> 
+		                    <!-- <a href=""> --> 
+		                    <strong>[수산품]&nbsp; 테스트 후기</strong><br>
+		                    <em>adm***** &nbsp;&nbsp; 2016-11-08 16:46:25</em> 
+		                    <!-- </a> -->
+		
+		                    <div class="re-comment">
+		                        <dl class="default-accordion2 reviews-ad">
+		                            <dt>
+		                                <ul class="tbOption">
+		                                    <li class="memoWrap">
+		                                        <p class="user-info"> <span class="heart"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_off.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_off.gif" alt="좋아요"> </span> </p>
+		                                        <p class="editBT"> <a href="/mw/coustomer/viewUdateUseepil.do?useEpilNum=34" class="btn btn-reply">수정</a> </p>
+		                                        <p></p>
+		                                        <p class="user-memo"> 테스트 입니다. <span class="comment-count">(0)</span> </p>
+		                                    </li>
+		                                </ul>
+		                            </dt>
+		                        </dl>
+		                    </div>
+		                </li>
+		                <li> 
+		                    <!-- <a href=""> --> 
+		                    <strong>[]&nbsp; 테스트 게시</strong><br>
+		                    <em>adm***** &nbsp;&nbsp; 2016-11-08 16:31:44</em> 
+		                    <!-- </a> -->
+		
+		                    <div class="re-comment">
+		                        <dl class="default-accordion2 reviews-ad">
+		                            <dt>
+		                                <ul class="tbOption">
+		                                    <li class="memoWrap">
+		                                        <p class="user-info"> <span class="heart"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_off.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_off.gif" alt="좋아요"> </span> </p>
+		                                        <p class="editBT"> <a href="/mw/coustomer/viewUdateUseepil.do?useEpilNum=33" class="btn btn-reply">수정</a> </p>
+		                                        <p></p>
+		                                        <p class="user-memo"> 테스트 후기 <span class="comment-count">(0)</span> </p>
+		                                    </li>
+		                                </ul>
+		                            </dt>
+		                        </dl>
+		                    </div>
+		                </li>
+		                <li> 
+		                    <!-- <a href=""> --> 
+		                    <strong>[]&nbsp; 테스트</strong><br>
+		                    <em>adm***** &nbsp;&nbsp; 2016-11-08 16:30:16</em> 
+		                    <!-- </a> -->
+		
+		                    <div class="re-comment">
+		                        <dl class="default-accordion2 reviews-ad">
+		                            <dt>
+		                                <ul class="tbOption">
+		                                    <li class="memoWrap">
+		                                        <div class="photo-area"> <!-- 사진 없을 시 div 삭제 -->
+		                                            <div class="photo-wrap">
+		                                                <p class="photo" onclick="review_photo('32');"><img src="/data/useepil/32/thumb/32_20161108042715_0.jpg" alt="review"></p>
+		                                            </div>
+		                                        </div>
+		                                        <p class="user-info"> <span class="heart"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_off.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_off.gif" alt="좋아요"> </span> </p>
+		                                        <p class="editBT"> <a href="/mw/coustomer/viewUdateUseepil.do?useEpilNum=32" class="btn btn-reply">수정</a> </p>
+		                                        <p></p>
+		                                        <p class="user-memo"> 테스트 후기 <span class="comment-count">(0)</span> </p>
+		                                    </li>
+		                                </ul>
+		                            </dt>
+		                        </dl>
+		                    </div>
+		                </li>
+		                <li> 
+		                    <!-- <a href=""> --> 
+		                    <strong>[㈜케이렌터카-레이]&nbsp; 한글 테스트</strong><br>
+		                    <em>adm***** &nbsp;&nbsp; 2016-09-22 16:32:47</em> 
+		                    <!-- </a> -->
+		
+		                    <div class="re-comment">
+		                        <dl class="default-accordion2 reviews-ad">
+		                            <dt>
+		                                <ul class="tbOption">
+		                                    <li class="memoWrap">
+		                                        <p class="user-info"> <span class="heart"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_off.gif" alt="좋아요"> </span> </p>
+		                                        <p class="editBT"> <a href="/mw/coustomer/viewUdateUseepil.do?useEpilNum=31" class="btn btn-reply">수정</a> </p>
+		                                        <p></p>
+		                                        <p class="user-memo"> 한글테스트 <span class="comment-count">(1)</span> </p>
+		                                    </li>
+		                                </ul>
+		                            </dt>
+		                            <dd>
+		                                <ul class="re_comment">
+		                                    <li class="ic2"><img src="../../images/web/icon/re2.png" alt="re"></li>
+		                                    <li class="re"> 답글 수정 테스트 </li>
+		                                </ul>
+		                            </dd>
+		                        </dl>
+		                    </div>
+		                </li>
+		                <li> 
+		                    <!-- <a href=""> --> 
+		                    <strong>[씨엘펜션-12평]&nbsp; 개발 서버</strong><br>
+		                    <em>adm***** &nbsp;&nbsp; 2016-08-30 08:48:29</em> 
+		                    <!-- </a> -->
+		
+		                    <div class="re-comment">
+		                        <dl class="default-accordion2 reviews-ad">
+		                            <dt>
+		                                <ul class="tbOption">
+		                                    <li class="memoWrap">
+		                                        <div class="photo-area"> <!-- 사진 없을 시 div 삭제 -->
+		                                            <div class="photo-wrap">
+		                                                <p class="photo" onclick="review_photo('30');"><img src="/data/useepil/30/thumb/30_20160830084829_0.jpg" alt="review"></p>
+		                                            </div>
+		                                        </div>
+		                                        <p class="user-info"> <span class="heart"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_on.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_off.gif" alt="좋아요"> <img src="../../images/web/icon/heart3_off.gif" alt="좋아요"> </span> </p>
+		                                        <p class="editBT"> <a href="/mw/coustomer/viewUdateUseepil.do?useEpilNum=30" class="btn btn-reply">수정</a> </p>
+		                                        <p></p>
+		                                        <p class="user-memo"> 이미지 댓글 테스트 <span class="comment-count">(0)</span> </p>
+		                                    </li>
+		                                </ul>
+		                            </dt>
+		                        </dl>
+		                    </div>
+		                </li>
+		            </ul>
+		            <div class="pageNumber">
+		                <p class="list_pageing"> <strong>1</strong><span><a href="#" onclick="fn_Search(2); return false;">2</a></span><span><a href="#" onclick="fn_Search(3); return false;">3</a></span><span><a href="#" onclick="fn_Search(4); return false;">4</a></span> </p>
+		            </div>
+		        </form>
+		    </div>
+		</div>
+	</section>
+	<!--//change contents-->
+</main>
+
+<footer id="footer">
+	
+</footer>
+
+</div> <!-- //wrap -->
+</body>
+</html>

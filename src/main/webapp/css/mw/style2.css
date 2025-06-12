@@ -1,0 +1,209 @@
+@charset "utf-8";
+
+/* 구매하기_tab_base */
+.purchase-area {
+	height: 62px;
+	border-top: 1px solid #ddd;
+}
+.purchase-area .basic {
+	display: flex;
+	align-items: center;
+}
+.purchase-area .basic > div {
+	width: 35%;
+	line-height: 17px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+.purchase-popup .gobuy {margin-right: 2.4%;}
+.purchase-popup .gobuy, .purchase-popup .addcart,
+.purchase-popup .afterbuy {
+	width: 46.6%;
+	height: 52px;
+    margin-left: 2.2%;
+	font-size: 0.9rem;
+	line-height: 52px;
+}
+.purchase-area .icon-area {
+	display: flex;
+	gap: 12px;
+	width: auto;
+}
+.purchase-area .icon-area a {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 7px;
+	justify-content: center;
+}
+.purchase-area .icon-area img {
+	width: 20px;
+	height: auto;
+}
+.purchase-area .icon-area span {
+	font-size: 0.75rem;
+	font-family: "Roboto";
+	font-weight: bold;
+}
+.basic .gobuy {
+	position: relative;
+	top: 0;
+	width: 100%;
+	height: 52px;
+	margin-right: 10px;
+	font-size: 0.9rem;
+	line-height: 52px;
+}
+
+
+/* 구매하기_tab_open */
+#purchase_popup {
+	clear: both;
+	z-index: 99;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: none;
+	width: 100%;
+	margin-bottom: 30px;
+	border-radius: 15px 15px 0 0;
+	background: #fff;
+	font-family: "Roboto";
+}
+.purchase-area .close {top: -8px;}
+.purchase-area .close img {height: 38px;}
+.purchase-popup .scroll-area {
+	overflow-y: scroll;
+	padding-bottom: 40px;
+}
+.purchase-option {
+	overflow-y: scroll;
+	padding: 40px 16px 20px;
+	border: none;
+	border-radius: 15px 15px 0 0;
+	font-family: "Roboto";
+}
+dl.comm-select {margin-bottom: 10px;}
+dl.comm-select dt {
+	overflow: hidden;
+	height: 56px;
+	border-radius: 8px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	line-height: 55px;
+}
+dl.comm-select dd {
+	position: relative;
+	bottom: 6px;
+	padding: 0 12px;
+	border-radius:  0 0 8px 8px;
+	background-color: #f8f8f8;
+}
+.select-list-option li {
+	padding: 17px 0;
+	border-top: 1px solid #ddd;
+	line-height: normal;
+}
+.select-list-option li .product {
+	font-size: .8rem;
+	line-height: 20px;
+}
+/* 구매하기_num_ctrl */
+.comm-qtyWrap ul li ol {
+	border-radius: 8px;
+	background-color: #f8f8f8;
+}
+.comm-qtyWrap ul li ol li.list1 {
+	padding: 15px 20px;
+	color: #333;
+	border-radius: 8px 8px 0 0;
+	background-color: #f8f8f8;
+	font-size: 0.85rem;
+	letter-spacing: -0.5px;
+}
+.comm-qtyWrap ul li ol li.list2 {
+	position: relative;
+	left: 20px;
+}
+.comm-qtyWrap ul li ol li.list2 input {
+    height: 24px !important;
+	border: none;
+	background-color: transparent;
+    line-height: 24px;
+}
+.comm-qtyWrap ul li ol li.list2 input:focus {
+    border: 0;
+    outline: none;
+}
+.comm-qtyWrap ul li ol li.list2 button {
+    position: absolute;
+    top: 11px;
+}
+.comm-qtyWrap ul li ol li.list2 button.addition {
+	padding-bottom: 1px;
+	color: #e8202e;
+	border: 2px solid #e8202e;
+	border-radius: 50%;
+	font-size: 1.5rem;
+	line-height: 13px;
+}
+.comm-qtyWrap ul li ol li.list2 button.subtract {
+	border: 1px solid #ccc;
+	border-radius: 50%;
+	color: #ccc;
+	font-size: 1.7rem;
+}
+.comm-qtyWrap ul li ol li.list3 {padding: 10px 10px 20px;}
+.comm-qtyWrap ul li ol li.list3 .price {
+	margin-right: 8px;
+	font-size: 0.95rem;
+}
+.select-list-option li .price {
+	font-size: .95rem;
+	vertical-align: middle;
+}
+.comm-qtyWrap ul li ol li.list3 .del {
+	position: relative;
+	top: 9px;
+}
+.parcel .width100 {
+	height: 55px;
+	line-height: 55px;
+	border-radius: 8px;
+	font-family: "Roboto";
+}
+.total-area .text {line-height: 20px;}
+
+
+/* 구매하기_tab_calendar */
+dl.comm-select dd.comm-calendar {background-color: #fff;}
+.view-select .comm-calendar table.cal {background-color: transparent;}
+.comm-select .comm-calendar strong.cal {
+	height: 40px;
+	color: #000;
+	background-color: #fff;
+	font-size: 0.95rem;
+	line-height: 40px;
+}
+table.cal td em {
+	position: relative;
+	bottom: 2px;
+}
+
+
+/* 항공_결제페이지 */
+.side-padding .division-typeA .caption-typeC {text-align: center;}
+
+
+/* 렌터카_결제페이지 */
+.purchase-popup .middle-area {
+    position: absolute;
+    bottom: 62px;
+}
+.purchase-popup.rent .close {
+	position: absolute;
+	top: 7px;
+}
+.purchase-popup.rent .close img {height: 22px;}

@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <!-- Ehcache 팩토리 설정 -->
+    <bean id="ehcacheManagerFactory"
+          class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:/egovframework/spring/encache.xml" />
+        <property name="shared" value="true"/>
+    </bean>
+
+    <!-- Spring CacheManager와 연동 -->
+    <bean id="cacheManager"
+          class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="ehcacheManagerFactory"/>
+    </bean>
+
+    <!-- @Cacheable 등 사용 가능하게 -->
+    <cache:annotation-driven cache-manager="cacheManager"/>
+</beans>

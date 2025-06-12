@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>모객 관리자시스템</title>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<meta http-equiv="imagetoolbar" content="false" />
+<link rel="stylesheet" type="text/css" href="../../css/common/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/oss/layout.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common/page_style.css" />
+<link rel="stylesheet" type="text/css" href="/css/common/jquery-ui.css" />
+
+<script type="text/javascript" src="/js/jquery-1.11.1.js" ></script>
+<script type="text/javascript" src="/js/jquery-ui.js"></script>
+<script>
+$(document).ready(function() {
+	$("#sStartDt").datepicker({
+		dateFormat : "yy-mm-dd"
+	});
+	$("#sEndDt").datepicker({
+		dateFormat : "yy-mm-dd"
+	});
+});
+</script>
+</head>
+<body>
+<div id="wrapper"> 
+    
+    <!--Header 영역-->
+    <div id="header_wrapper">
+        <h1><img src="../../images/oss/common/logo.gif" alt="모객 관리자 시스템" /></h1>
+        <ul class="lnb_menu">
+			<li class="home"><a href="/" target="_blank">탐나오바로가기</a></li>&gt;
+			<!-- <li class="home"><a href="/">홈으로</a></li> -->
+			<li><a href="/web/viewLogin.do?rtnUrl=/web/mypage/viewChangePw.do" target="_blank">비밀번호변경</a></li>
+			<li class="log"><a href="/oss/ossLogout.do">로그아웃</a></li>
+		</ul>
+        <!--상단메뉴-->
+        <h2 class="lay_none">상단메뉴</h2>
+        <ul class="gnb_menu">
+			<li class="menu01 on"><a href="/oss/home.do">홈</a>
+				<!-- <ul class="gnb_depth" id="menu01" style="display:none">
+				</ul> -->
+			</li>
+			<li class="menu02"><a href="/oss/siteManage.do">환경설정</a>
+				<ul class="gnb_depth" id="menu02" style="display: none;">
+					<li><a href="/oss/siteManage.do">운영설정</a></li>
+					<li><a href="/oss/codeList.do">코드관리</a></li>
+					<li><a href="/oss/cmssList.do">수수료관리</a></li>
+					<li><a href="/oss/bbsList.do">게시판관리</a></li>
+                    <li><a href="/oss/bbsGrpList.do">게시판그룹관리</a></li>
+				</ul>
+			</li>
+			<li class="menu03"><a href="/oss/userList.do">고객관리</a>
+				<ul class="gnb_depth" id="menu03" style="display: none;">
+					<li><a href="/oss/userList.do">사용자관리</a></li>
+                    <li><a href="/oss/dropUserList.do">탈퇴사용자관리</a></li>
+				</ul>
+			</li>
+			<li class="menu11"><a href="/oss/corpList.do">업체/제휴관리</a>
+                <ul class="gnb_depth" id="menu11" style="display: none;">
+                	<li><a href="/oss/corpList.do">입점업체관리</a></li>
+                	<li><a href="/oss/corpPnsReqList.do">입점신청관리</a></li>
+                	<li><a href="/oss/nbbs/bbsList.do?bbsNum=MASNOTI">업체공지사항</a></li>
+                	<li><a href="/oss/nbbs/bbsList.do?bbsNum=MASQA">업체 Q&amp;A 게시판</a></li>                 
+                </ul>
+            </li>
+            <li class="menu05"><a href="/oss/prdtList.do">상품관리</a>
+                <ul class="gnb_depth" id="menu05" style="display: none;">
+                    <li><a href="/oss/prdtList.do">상품관리</a></li>
+                    <li><a href="/oss/socialProductList.do">소셜상품관리</a></li>
+                    <li><a href="/oss/couponList.do">탐나오쿠폰</a></li>
+                    <li><a href="/oss/promotionList.do">프로모션승인관리</a></li>                    
+                </ul>
+            </li>
+            <li class="menu06"><a href="/oss/otoinqList.do">커뮤니티</a>
+                <ul class="gnb_depth" id="menu06" style="display: none;">
+                	<li><a href="/oss/otoinqList.do">1:1문의</a></li>
+                    <li><a href="/oss/useepilList.do">상품평관리</a></li>                    
+                    <li><a href="/oss/nbbs/bbsList.do?bbsNum=NOTICE">공지사항</a></li>
+                </ul>
+            </li>            
+            <li class="menu07"><a href="/oss/rsvList.do">예약관리</a>
+            	<ul class="gnb_depth" id="menu07" style="display: none;">
+					<li><a href="/oss/rsvList.do">예약관리</a></li>
+					<li><a href="/oss/rsvAtPrdtList.do">상품별예약관리</a></li>
+					<li><a href="/oss/refundRsvList.do">환불요청예약관리</a></li>
+				</ul>
+            </li>
+            <li class="menu10"><a href="/oss/eventList.do">마케팅</a>
+            	<ul class="gnb_depth" id="menu10" style="display: none;">
+            		<li><a href="/oss/eventList.do">프로모션</a></li>
+					<li><a href="/oss/smsForm.do">문자 전송</a></li>
+					<li><a href="/oss/emailForm.do">E-Mail 전송</a></li>
+					<li><a href="/oss/pushForm.do">Push 전송</a></li>
+				</ul>
+            </li>
+            <li class="menu09"><a href="/oss/adjList.do">정산</a>
+            	<ul class="gnb_depth" id="menu09" style="display: none;">
+					<li><a href="/oss/adjList.do">정산관리</a></li>
+				</ul>
+            </li>
+            <li class="menu08"><a href="/oss/anls06.do">통계</a>
+            	<ul class="gnb_depth" id="menu08" style="display: none;">
+					<li><a href="/oss/anls06.do">매출통계</a></li>
+					<li><a href="/oss/anls05.do">고객통계</a></li>
+					<li><a href="/oss/anls03.do">일별현황</a></li>
+				</ul>
+            </li>
+            <li class="menu04"><a href="/oss/nbbs/bbsList.do?bbsNum=FNREQ">지원</a>
+            	<ul class="gnb_depth" id="menu04" style="display: none;">
+					<li><a href="/oss/nbbs/bbsList.do?bbsNum=FNREQ">기능개선요청</a></li>
+				</ul>
+            </li>
+            <li class="menu-bi"><a href="#">BI시스템</a>
+                <ul class="gnb_depth" id="menu11" style="display:none">
+                    <li><a href="#">고객이용 통계</a></li>
+                    <li><a href="#">입점업체 통계</a></li>
+                    <li><a href="#">판매 통계</a></li>
+                    <li><a href="#">광고수익률 통계</a></li>
+                    <li><a href="#">정산 통계</a></li>
+                </ul>
+            </li>
+		</ul>
+        <!--//상단메뉴--> 
+    </div>
+    <!--//Header 영역--> 
+    <!--Contents 영역-->
+    <div id="contents_wrapper">
+        <div id="side_area"> 
+            <!--사이드메뉴-->
+            <div class="side_menu">
+                <h3>BI시스템</h3>
+                <ul>
+                    <li><a href="#">고객이용 통계</a></li>
+                    <li class="on"><a href="#">입점업체 통계</a></li>
+                    <li><a href="#">판매 통계</a></li>
+                    <li><a href="#">광고수익률 통계</a></li>
+                    <li><a href="#">정산 통계</a></li>
+                </ul>
+            </div>
+            <!--//사이드메뉴--> 
+            <!--접속정보-->
+            <div class="side_log"> 
+                <!--닫혀있을 때-->
+                <div class="close_lay lay_none"> <strong>접속정보</strong><span class="btn"><a href="#"><img src="../../images/oss/btn/open_btn01.gif" alt="열기" /></a></span> </div>
+                <!--//닫혀있을 때--> 
+                <!--열려있을 때-->
+                <div class="open_lay">
+                    <dl>
+                        <dt>Email :</dt>
+                        <dd>admin@admin.com</dd>
+                        <dt>성명 :</dt>
+                        <dd>관리자</dd>
+                        <dt>아이피 :</dt>
+                        <dd>0:0:0:0:0:0:0:1</dd>
+                    </dl>
+                    <!-- <p class="btn"><a href="#"><img src="images/btn/close_btn01.gif" alt="닫기" /></a></p> -->
+                </div>
+                <!--//열려있을 때--> 
+            </div>
+            <!--//접속정보--> 
+            <!--사이트바로가기-->
+            <ul class="side_go_link">
+                <li>
+                    <select name="g_link_url" class="full" onchange="MM_openNewWindow(this.value);">
+                        <option value="">== 사이트 바로가기 ==</option>
+                        <option value="">바로가기 사이트 추가</option>
+                    </select>
+                </li>
+            </ul>
+            <!--//사이트바로가기--> 
+        </div>
+        <div id="contents_area">
+            <div id="contents">
+                
+                <!-- change contents -->
+                <!-- 3Depth menu -->
+                <div id="menu_depth3">
+					<ul>
+						<li><a class="menu_depth3" href="">객실정보</a></li>
+						<li><a class="menu_depth3" href="">요금관리</a></li>
+						<li><a class="menu_depth3" href="">객실이미지</a></li>
+						<li><a class="menu_depth3" href="">객실이미지</a></li>
+						<li class="on"><a class="menu_depth3" href="">연박 요금관리</a></li>
+					</ul>
+				</div>
+				
+				<!-- 연박요금관리 -->
+				<div class="split-50 ad-price">
+					<div class="l-area">
+						<div class="top-title">
+							<h4 class="title08">기간관리</h4>
+							<div class="side-box">
+								<label>
+									<input type="checkbox" />
+									<span>연박 적용여부</span>
+								</label>
+							</div>
+						</div>
+						<table class="table01 center">
+					        <colgroup>
+					            <col width="8%">
+					            <col width="24%">
+					            <col width="24%">
+					            <col width="20%">
+					            <col>
+					        </colgroup>
+					        <thead>
+					            <tr>
+					                <th>No</th>
+					                <th>시작일</th>
+					                <th>종료일</th>
+					                <th>설명</th>
+					                <th>관리</th>
+					            </tr>
+					        </thead>
+					        <tbody>
+					            <tr>
+					                <td>1</td>
+					                <td>2017-06-01</td>
+					                <td>2017-06-15</td>
+					                <td>준 성수기</td>
+					                <td>
+					                	<a href="" class="btn blue sm">수정</a>
+					                	<a href="" class="btn red sm">요금</a>
+					                </td>
+					            </tr>
+					            <tr>
+					                <td>2</td>
+					                <td>2017-07-25</td>
+					                <td>2017-08-15</td>
+					                <td>극 성수기</td>
+					                <td>
+					                	<a href="" class="btn blue sm">수정</a>
+					                	<a href="" class="btn red sm">요금</a>
+					                </td>
+					            </tr>
+					            <tr>
+					                <td>3</td>
+					                <td><input type="text" class="width100" /></td>
+					                <td><input type="text" class="width100" /></td>
+					                <td><input type="text" class="width100" /></td>
+					                <td>
+					                	<a href="" class="btn blue sm">추가</a>
+					                	<a href="" class="btn red sm">초기화</a>
+					                </td>
+					            </tr>
+					        </tbody>
+					    </table>
+					</div> <!-- //l-area -->
+					
+					<div class="r-area">
+						<div id="price_area">
+							<div class="top-title">
+								<h4 class="title08">요금관리</h4>
+							</div>
+							<table class="table01 center">
+						        <colgroup>
+						            <col width="25%">
+						            <col width="45%">
+						            <col>
+						        </colgroup>
+						        <tbody>
+						            <tr>
+						                <td>1박</td>
+						                <td class="left">
+						                	<label>
+												<input type="radio" name="test1" checked="checked" />
+												<span>요금할인</span>
+											</label>
+											<label>
+												<input type="radio" name="test1" />
+												<span>비율할인</span>
+											</label>
+						                </td>
+						                <td class="right">
+						                	<div class="int-label">
+						                		<input type="text">
+						                		<span>원</span>
+						                	</div>
+						                </td>
+						            </tr>
+						            <tr>
+						                <td>2박</td>
+						                <td class="left">
+						                	<label>
+												<input type="radio" name="test2" />
+												<span>요금할인</span>
+											</label>
+											<label>
+												<input type="radio" name="test2" checked="checked" />
+												<span>비율할인</span>
+											</label>
+						                </td>
+						                <td class="right">
+						                	<div class="int-label">
+						                		<input type="text" />
+						                		<span>%</span>
+						                	</div>
+						                </td>
+						            </tr>
+						        </tbody>
+						    </table>
+						    <div class="btn-wrap1">
+						    	<a href="" class="btn blue">등록</a>
+						    	<a href="" class="btn red">초기화</a>
+						    </div>
+						    
+						    <ul class="list-style1">
+						        <li>최대 박수 설정은 5박까지 설정</li>
+								<li>요금 바로 할인과 비율에 따른 할인으로 구분</li>
+								<li>숙박 이용 전체요금에서 할인을 적용</li>
+						    </ul>
+					    </div>
+					</div> <!-- //r-area -->
+				</div> <!-- //split-50 -->
+				<!-- //연박요금관리 -->
+                <!-- //change contents -->
+                
+            </div>
+        </div>
+    </div>
+    <!--//Contents 영역-->
+    
+</div>
+</body>
+</html>

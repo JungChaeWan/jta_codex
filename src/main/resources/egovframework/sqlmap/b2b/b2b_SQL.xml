@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="b2b">
+
+<resultMap id="B2B_CORPCONF_R_00" class="mas.b2b.vo.B2B_CORPCONFVO">
+<result property="corpId" 			column="CORP_ID" />
+<result property="confRequestDttm" 	column="CONF_REQUEST_DTTM" />
+<result property="rstrDttm" 		column="RSTR_DTTM" />
+<result property="confDttm" 		column="CONF_DTTM" />
+<result property="rstrContents" 	column="RSTR_CONTENTS" />
+<result property="statusCd" 		column="STATUS_CD" />
+<result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+<result property="frstRegId" 		column="FRST_REG_ID" />
+<result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+<result property="lastModId" 		column="LAST_MOD_ID" />
+</resultMap>
+
+<resultMap id="B2B_CORPCONF_R_02" class="mas.b2b.vo.B2B_CORPCONFVO">
+<result property="corpId" 			column="CORP_ID" />
+<result property="corpNm" 			column="CORP_NM" />
+<result property="corpCd" 			column="CORP_CD" />
+<result property="corpCdNm" 		column="CORP_CD_NM" />
+<result property="statusCd" 		column="STATUS_CD" />
+<result property="ceoNm" 			column="CEO_NM" />
+<result property="rsvTelNum"		column="RSV_TEL_NUM" />
+<result property="asctMemYn"		column="ASCT_MEM_YN" />
+<result property="confRequestDttm"	column="CONF_REQUEST_DTTM" />
+<result property="rstrDttm" 		column="RSTR_DTTM" />
+<result property="confDttm" 		column="CONF_DTTM" />
+<result property="rstrContents" 	column="RSTR_CONTENTS" />
+<result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+<result property="frstRegId" 		column="FRST_REG_ID" />
+<result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+<result property="lastModId" 		column="LAST_MOD_ID" />
+<result property="b2bUseYn" 		column="B2B_USE_YN" />
+</resultMap>
+
+<select id="B2B_CORPCONF_S_00">
+SELECT CORP_ID              /*업체 아이디*/
+     , CONF_REQUEST_DTTM    /*승인 요청 일시*/
+     , RSTR_DTTM            /*반려 일시*/
+     , CONF_DTTM            /*승인 일시*/
+     , RSTR_CONTENTS        /*반려 내용*/
+     , STATUS_CD            /*상태 코드*/
+     , FRST_REG_DTTM        /*최초 등록 일시*/
+     , FRST_REG_ID          /*최초 등록 아이디*/
+     , LAST_MOD_DTTM        /*최종 수정 일시*/
+     , LAST_MOD_ID          /*최종 수정 아이디*/
+  FROM TB_B2B_CORPCONF
+</select>
+
+<select id="B2B_CORPCONF_S_01" resultMap="B2B_CORPCONF_R_02">
+SELECT T_CORP.CORP_ID
+     , T_CORP.CORP_NM
+     , T_CORP.CORP_CD
+     , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = T_CORP.CORP_CD) AS CORP_CD_NM
+     , T_CONF.STATUS_CD
+     , T_CORP.CEO_NM
+     , T_CORP.RSV_TEL_NUM
+     , T_CORP.ASCT_MEM_YN
+     , T_CONF.CONF_REQUEST_DTTM
+     , T_CONF.RSTR_DTTM
+     , T_CONF.CONF_DTTM
+     , T_CONF.RSTR_CONTENTS
+     , T_CONF.FRST_REG_DTTM
+     , T_CONF.FRST_REG_ID
+     , T_CONF.LAST_MOD_DTTM
+     , T_CONF.LAST_MOD_ID
+     , T_CORP.B2B_USE_YN
+  FROM TB_CORP T_CORP
+ INNER JOIN TB_B2B_CORPCONF T_CONF
+    ON T_CONF.CORP_ID = T_CORP.CORP_ID
+ WHERE T_CONF.CORP_ID = #sCorpId#
+</select>
+
+<select id="B2B_CORPCONF_S_02" resultMap="B2B_CORPCONF_R_02">
+SELECT CORP_ID
+     , CORP_NM
+     , CORP_CD
+     , CORP_CD_NM
+     , STATUS_CD
+     , CEO_NM
+     , RSV_TEL_NUM
+     , ASCT_MEM_YN
+     , CONF_REQUEST_DTTM
+     , RSTR_DTTM
+     , CONF_DTTM
+     , RSTR_CONTENTS
+     , FRST_REG_DTTM
+     , FRST_REG_ID
+     , LAST_MOD_DTTM
+     , LAST_MOD_ID
+     , B2B_USE_YN
+  FROM (SELECT ROWNUM AS RN
+             , T_CORP.CORP_ID
+             , T_CORP.CORP_NM
+             , T_CORP.CORP_CD
+             , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = T_CORP.CORP_CD) AS CORP_CD_NM
+             , T_CONF.STATUS_CD
+             , T_CORP.CEO_NM
+             , T_CORP.RSV_TEL_NUM
+             , T_CORP.ASCT_MEM_YN
+             , T_CONF.CONF_REQUEST_DTTM
+             , T_CONF.RSTR_DTTM
+             , T_CONF.CONF_DTTM
+             , T_CONF.RSTR_CONTENTS
+             , T_CONF.FRST_REG_DTTM
+             , T_CONF.FRST_REG_ID
+             , T_CONF.LAST_MOD_DTTM
+             , T_CONF.LAST_MOD_ID
+             , T_CORP.B2B_USE_YN
+          FROM TB_CORP T_CORP
+         INNER JOIN TB_B2B_CORPCONF T_CONF
+            ON T_CONF.CORP_ID = T_CORP.CORP_ID
+         WHERE 1=1
+         <isNotEmpty property="sCorpNm">
+            <isNotNull property="sCorpNm">
+           AND T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+            </isNotNull>
+         </isNotEmpty>
+         <isNotEmpty property="sCorpId">
+            <isNotNull property="sCorpId">
+           AND T_CORP.CORP_ID #sCorpId#
+            </isNotNull>
+         </isNotEmpty>
+         <isNotEmpty property="sStatusCd">
+            <isNotNull property="sStatusCd">
+           AND T_CONF.STATUS_CD = #sStatusCd#
+            </isNotNull>
+         </isNotEmpty>
+         <isNotEmpty property="sFromDt">
+            <isNotNull property="sFromDt">
+            <![CDATA[
+           AND TO_DATE(CONF_REQUEST_DTTM) >= TO_DATE(#sFromDt#, 'YYYY-MM-DD')
+            ]]>
+            </isNotNull>
+         </isNotEmpty>
+        <isNotEmpty property="sToDt">
+            <isNotNull property="sToDt">
+            <![CDATA[
+           AND TO_DATE(CONF_REQUEST_DTTM) <= TO_DATE(#sToDt#, 'YYYY-MM-DD')
+            ]]>
+            </isNotNull>
+         </isNotEmpty>
+       )
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#) 
+</select>
+
+<select id="B2B_CORPCONF_S_03" resultClass="int">
+SELECT COUNT(T_CORP.CORP_ID) AS CNT
+  FROM TB_CORP T_CORP
+ INNER JOIN TB_B2B_CORPCONF T_CONF
+    ON T_CONF.CORP_ID = T_CORP.CORP_ID
+ WHERE 1=1
+ <isNotEmpty property="sCorpNm">
+    <isNotNull property="sCorpNm">
+   AND T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+    </isNotNull>
+ </isNotEmpty>
+ <isNotEmpty property="sCorpId">
+    <isNotNull property="sCorpId">
+   AND T_CORP.CORP_ID #sCorpId#
+    </isNotNull>
+ </isNotEmpty>
+ <isNotEmpty property="sStatusCd">
+    <isNotNull property="sStatusCd">
+   AND T_CONF.STATUS_CD = #sStatusCd#
+    </isNotNull>
+ </isNotEmpty>
+ <isNotEmpty property="sFromDt">
+     <isNotNull property="sFromDt">
+     <![CDATA[
+    AND TO_DATE(CONF_REQUEST_DTTM) >= TO_DATE(#sFromDt#, 'YYYY-MM-DD')
+     ]]>
+     </isNotNull>
+  </isNotEmpty>
+ <isNotEmpty property="sToDt">
+     <isNotNull property="sToDt">
+     <![CDATA[
+    AND TO_DATE(CONF_REQUEST_DTTM) <= TO_DATE(#sToDt#, 'YYYY-MM-DD')
+     ]]>
+     </isNotNull>
+  </isNotEmpty>
+</select>
+
+<insert id="B2B_CORPCONF_I_00">
+INSERT INTO TB_B2B_CORPCONF
+     ( CORP_ID              /*업체 아이디*/
+     , CONF_REQUEST_DTTM    /*승인 요청 일시*/
+     , STATUS_CD            /*상태 코드*/
+     <isEqual property="statusCd" compareValue="TS03">
+     , CONF_DTTM
+     </isEqual>
+     , FRST_REG_DTTM        /*최초 등록 일시*/
+     , FRST_REG_ID          /*최초 등록 아이디*/
+     , LAST_MOD_DTTM        /*최종 수정 일시*/
+     , LAST_MOD_ID          /*최종 수정 아이디*/
+     )
+VALUES
+     ( #corpId#
+     , SYSDATE
+     , #statusCd#
+     <isEqual property="statusCd" compareValue="TS03">
+     , SYSDATE
+     </isEqual>
+     , SYSDATE
+     , #frstRegId#
+     , SYSDATE
+     , #frstRegId#
+     )
+</insert>
+
+<!-- 반려 처리 -->
+<update id="B2B_CORPCONF_U_01">
+UPDATE TB_B2B_CORPCONF
+   SET STATUS_CD     = #statusCd#
+     , RSTR_DTTM     = SYSDATE
+     , RSTR_CONTENTS = #rstrContents#
+     , LAST_MOD_DTTM = SYSDATE
+     , LAST_MOD_ID   = #lastModId#
+ WHERE CORP_ID       = #corpId#
+</update>
+
+<!-- 승인 요청 처리 -->
+<update id="B2B_CORPCONF_U_02">
+UPDATE TB_B2B_CORPCONF
+   SET STATUS_CD         = #statusCd#
+     , CONF_REQUEST_DTTM = SYSDATE
+     , LAST_MOD_DTTM     = SYSDATE
+     , LAST_MOD_ID       = #lastModId#
+ WHERE CORP_ID           = #corpId#
+</update>
+
+<!-- 승인 처리 -->
+<update id="B2B_CORPCONF_U_03">
+UPDATE TB_B2B_CORPCONF
+   SET STATUS_CD         = #statusCd#
+     , CONF_DTTM         = SYSDATE
+     , LAST_MOD_DTTM     = SYSDATE
+     , LAST_MOD_ID       = #lastModId#
+ WHERE CORP_ID           = #corpId#
+</update>
+
+</sqlMap>

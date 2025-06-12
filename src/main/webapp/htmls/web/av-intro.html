@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<meta name="naver-site-verification" content="624918e3ed1f014efd4c2c86813b34a0e0aa2365"/>
+	<meta name="google-site-verification" content="wDsvLTLKE4X0TkTh_Z_hphDNIv1YtWa68bE0UEQ-Tfg" />
+
+	<script type="text/javascript" src="/js/jquery-1.11.1.js" ></script>
+	<script type="text/javascript" src="/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/js/slideshow_dot.js"></script>
+	<script type="text/javascript" src="/js/slider.js"></script>
+	<script type="text/javascript" src="/js/common.js"></script>
+	<script type="text/javascript" src="/js/photoAlbum.js"></script>
+	<script type="text/javascript" src="/js/cookie.js"></script>
+	<script type="text/javascript" src="/js/cycle.js"></script>
+	<script type="text/javascript" src="/js/swiper.js"></script>
+
+
+	<script type="text/javascript" src="/js/html_style.js"></script>
+	<script type="text/javascript" src="/js/IE9_fix.js"></script>
+
+	<title>Document</title>
+
+	<!-- css -->
+	<link rel="stylesheet" href="../../css/common/jquery-ui.css">
+	<link rel="stylesheet" href="../../css/web/common2.css">
+	<link rel="stylesheet" href="../../css/web/style.css">
+	<link rel="stylesheet" href="../../css/web/ad.css">
+	<link rel="stylesheet" href="../../css/web/av.css">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<script type="text/javascript">
+
+		/** 레인지 피커 */
+		function rangePicker(){
+			$('.date-container').daterangepicker({
+				<!-- singleDatePicker: true -->
+			}, function (start, end) {
+				/** 항공 날짜설정*/
+				$("input[name=start_date]").val(start.format('YYYY-MM-DD'));
+				$("input[name=end_date]").val(end.format('YYYY-MM-DD'));
+			});
+		}
+
+		var getContextPath = "${pageContext.request.contextPath}";
+
+		$(document).ready(function(){
+			$("#start_region_str").text($("input[name='start_region']:checked").next('label').text() + "(" + $("input[name='start_region']:checked").val() + ")" );
+			$("#end_region_str").text($("input[name='end_region']:checked").next('label').text() + "(" + $("input[name='end_region']:checked").val() + ")");
+			//datepicker
+			$("input[name=start_date]").datepicker({
+				showOn: "both",
+				dateFormat: "yy-mm-dd",
+				minDate: "${SVR_TODAY}",
+				buttonImage: "/images/web/icon/calendar_icon01.gif",
+				buttonImageOnly: true,
+				showOtherMonths: true, 										//빈칸 이전달, 다음달 출력
+				numberOfMonths: [ 1, 2 ],									//여러개월 달력 표시
+				stepMonths: 2,												//좌우 선택시 이동할 개월 수
+				onSelect: function(dateText, inst) {
+					$("input[name=end_date]").datepicker('option', 'minDate', $("input[name=start_date]").val() );
+				}
+			});
+
+			$(' .check-area li').on('click', function() {
+				$('.lb-ch').removeClass("active")
+				$(this).addClass("active");
+			});
+
+			$("input[name=end_date]").datepicker({
+				showOn: "both",
+				dateFormat: "yy-mm-dd",
+				minDate: "${SVR_TODAY}",
+				buttonImage: "/images/web/icon/calendar_icon01.gif",
+				buttonImageOnly: true,
+				showOtherMonths: true, 										//빈칸 이전달, 다음달 출력
+				numberOfMonths: [ 1, 2 ],									//여러개월 달력 표시
+				stepMonths: 2												//좌우 선택시 이동할 개월 수
+			});
+
+			//Top Slider Item
+			if($('#product_slideItem .swiper-slide').length > 3) {			//4개 이상시 실행
+				var swiper = new Swiper('#product_slideItem', {
+					slidesPerView: 3,
+					paginationClickable: true,
+					spaceBetween: 15,
+					nextButton: '#slideItem_next',
+					prevButton: '#slideItem_prev'
+				});
+			}
+			else {
+				$('#slideItem_arrow').hide();
+			}
+
+			// 출발지 선택
+			$('input[name=start_region]').change(function() {
+				$("#start_region_str").text($("label[for=" + $(this).attr('id') + "]").text() + "(" + $(this).val() + ")");
+				optionClose($("#air_departure"));
+			});
+
+			// 도착지 선택
+			$('input[name=end_region]').change(function() {
+				$("#end_region_str").text($("label[for=" + $(this).attr('id') + "]").text() + "(" + $(this).val() + ")");
+				optionClose($("#air_arrival"));
+			});
+		});
+	</script>
+</head>
+<body>
+
+<!-- re_header -->
+<div id="_header">
+	<!-- top banner zone-->
+	<div id="top_banner" class="top-banner swiper-container">
+		<ul class="swiper-wrapper">
+			<li class="swiper-slide" style="background-color: rgb(246, 12, 64)">
+				<a href="${result.url}" target="_blank">
+					<div class="bar-tw">
+						<p class="bar-t"><em class="bar-em">회원가입</em>만 해도 혜택이 팡팡!</p>
+					</div>
+					<img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+				</a>
+			</li>
+			<li class="swiper-slide" style="background-color: rgb(246, 12, 64)">
+				<a href="${result.url}" target="_blank">
+					<div class="bar-tw">
+						<p class="bar-t">착한수수료 동참을 지지하는 <em class="bar-em">댓글이벤트</em> 참여하세요!</p>
+					</div>
+					<img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+				</a>
+			</li>
+		</ul>
+		<div class="container">
+			<a href="javascript:void(0)" id="top_close" class="close"><img src="/images/web/comm/btn_close.png" alt="닫기"></a>
+		</div>
+	</div><!--// top banner zone-->
+
+	<div class="re_header">
+		<div class="inner">
+			<div class="header-top">
+				<div class="box__usermenu">
+					<ul class="list__usermenu">
+						<li><b>이은민</b>님 환영합니다.</li>
+						<li class="list-item">
+							<a class="link__usermenu" href="javascript:fn_login();">로그인</a>
+						</li>
+						<li class="list-item">
+							<a class="link__usermenu" href="/web/signUp00.do">회원가입</a>
+						</li>
+						<!-- 로그인 -->
+						<!--
+                        <li class="list-item">
+                            <a class="link__usermenu" href="javascript:fn_logout();">로그아웃</a>
+                        </li>-->
+						<!-- //로그인 -->
+						<li class="list-item">
+							<a class="link__usermenu" href="/web/coustmer/viewCorpPns.do">입점신청</a>
+						</li>
+						<li class="list-item">
+							<a class="link__usermenu" href="/web/bbs/bbsList.do?bbsNum=NOTICE">고객센터</a>
+						</li>
+					</ul>
+				</div>
+				<h1>
+					<a href="/" title="tamnao - 제주여행종합쇼핑몰">
+						<img src="/images/web/r_main/nao_logo2.png" alt="탐나오">
+					</a>
+				</h1>
+				<div class="srh_area">
+					<form id="submitFrm" name="submitFrm">
+						<fieldset>
+							<legend class="for-a11y"> 검색</legend>
+							<div class="top_search" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+								<input name="keyword" title="검색어 입력" class="form_input" value="[기획전] 제주 봄꽃 여행" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+								<button type="submit" title="검색" class="srh_btn" onclick="fn_searBtClick();">
+									<img src="/images/web/r_main/srh_btn.png" alt="검색">
+								</button>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="util_menu">
+					<ui>
+						<li id="unpaidInfo" class="nopay">
+							<a href="javascript:fn_DtlRsv('${unpaidRsvNum}');" class="blinking text-red">
+								<span class="ico count">&nbsp;</span>미결제상품
+								<span class="cnt">0</span>
+							</a>
+						</li>
+						<li class="coupon more">
+							<a href="/web/mypage/pocketList.do">
+								<span class="ico"></span>쿠폰
+								<span class="cnt">0</span>
+							</a>
+						</li>
+						<li class="cart more">
+							<a href="/web/cart.do">
+								<span class="ico">&nbsp;</span>장바구니
+								<span class="cnt">0</span>
+							</a>
+						</li>
+						<li class="mypage more">
+							<a href="/web/mypage/rsvList.do">
+								<span class="ico">&nbsp;</span>마이탐나오
+							</a>
+						</li>
+					</ui>
+				</div>
+			</div>
+		</div>
+
+		<!-- global-navigation -->
+		<div class="gnb2">
+			<div class="inner">
+				<div class="box__service-all">
+					<ul class="menu">
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/av/mainList.do">항공</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/sp/vesselList.do">선박</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/stay/jeju.do">숙소</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/rentcar/car-list.do">렌터카</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C200">관광지/레저 할인쿠폰</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/sv/mainList.do">제주특산/기념품</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C270">제주마을체험</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C300">맛집</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/sp/packageList.do">여행사 상품</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/evnt/prmtPlanList.do">기획전</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/evnt/promotionList.do">이벤트</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //re_header -->
+<main id="main">
+
+	<!-- mapLocation -->
+	<div class="mapLocation">
+		<div class="inner">
+			<span>홈</span> <span class="gt">&gt;</span>
+			<span>항공</span>
+		</div>
+	</div>
+	<!-- //mapLocation -->
+	<div class="subContainer" id="avMain">
+		<div class="subHead"></div>
+		<div class="subContents">
+			<!-- Change Contents -->
+			<!-- 검색바 -->
+			<section class="search-typeA">
+				<h2 class="sec-caption">항공 검색</h2>
+				<div class="inner">
+					<h3>검색</h3>
+					<!-- 코드중복(include) -->
+					<div id="tabs-1" class="form-area">
+						<form name="air_search_form" action="<c:url value='/web/av/productList.do' />" method="post" onsubmit="return check_air_seach_form();">
+							<ul class="check-area">
+								<li class="lb-ch active">
+									<input type="checkbox" id="air_typeRT" value="RT" class="textY" name="datepick" checked="checked" onclick="airtype_click(this.value);">
+									<label for="air_typeRT" class="label_av">왕복</label>
+								</li>
+								<li class="lb-ch">
+									<input type="checkbox" id="air_typeOW" value="OW" class="textN" name="datepick" onclick="airtype_click(this.value);">
+									<label for="air_typeOW" class="label_av">편도</label>
+								</li>
+							</ul>
+							<div class="search-area air">
+								<div class="area zone">
+									<dl>
+										<dt>
+											<div class="rt-icon">
+												<span class="IconSide">출발지</span>
+											</div>
+										</dt>
+										<dd>
+											<div class="value-text"><a href="javascript:void(0)" onclick="optionPopup('#air_departure', this)" id="start_region_str">김포(GMP)</a></div>
+											<div id="air_departure" class="popup-typeA air-zone">
+												<ul class="select-menu col4">
+													<li>
+														<div class="lb-box">
+															<input id="air_test0" name="start_region" type="radio" value="GMP" checked="checked">
+															<label for="air_test0">김포</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test1" name="start_region" type="radio" value="CJU">
+															<label for="air_test1">제주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test2" name="start_region" type="radio" value="PUS">
+															<label for="air_test2">부산</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test3" name="start_region" type="radio" value="TAE">
+															<label for="air_test3">대구</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test4" name="start_region" type="radio" value="KWJ">
+															<label for="air_test4">광주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test5" name="start_region" type="radio" value="CJJ">
+															<label for="air_test5">청주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test6" name="start_region" type="radio" value="MWX">
+															<label for="air_test6">무안</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test7" name="start_region" type="radio" value="RSU">
+															<label for="air_test7">여수</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test8" name="start_region" type="radio" value="USN">
+															<label for="air_test8">울산</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test9" name="start_region" type="radio" value="HIN">
+															<label for="air_test9">진주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test10" name="start_region" type="radio" value="KUV">
+															<label for="air_test10">군산</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test11" name="start_region" type="radio" value="KPO">
+															<label for="air_test11">포항</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test12" name="start_region" type="radio" value="WJU">
+															<label for="air_test12">원주</label>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</dd>
+									</dl>
+									<a href="javascript:void(0)" class="change"><img src="/images/web/air/change.png" alt="변경"></a>
+									<dl>
+										<dt>
+											<div class="rt-icon">
+												<span class="IconSide">도착지</span>
+											</div>
+										</dt>
+										<dd>
+											<div class="value-text"><a href="javascript:void(0)" onclick="optionPopup('#air_arrival', this)" id="end_region_str">제주(CJU)</a></div>
+											<div id="air_arrival" class="popup-typeA air-zone">
+												<ul class="select-menu col4">
+													<li>
+														<div class="lb-box">
+															<input id="air_test13" name="end_region" type="radio" value="GMP">
+															<label for="air_test13">김포</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test14" name="end_region" type="radio" value="CJU" checked="checked">
+															<label for="air_test14">제주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test15" name="end_region" type="radio" value="PUS">
+															<label for="air_test15">부산</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test16" name="end_region" type="radio" value="TAE">
+															<label for="air_test16">대구</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test17" name="end_region" type="radio" value="KWJ">
+															<label for="air_test17">광주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test18" name="end_region" type="radio" value="CJJ">
+															<label for="air_test18">청주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test19" name="end_region" type="radio" value="MWX">
+															<label for="air_test19">무안</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test20" name="end_region" type="radio" value="RSU">
+															<label for="air_test20">여수</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test21" name="end_region" type="radio" value="USN">
+															<label for="air_test21">울산</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test22" name="end_region" type="radio" value="HIN">
+															<label for="air_test22">진주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test23" name="end_region" type="radio" value="KUV">
+															<label for="air_test23">군산</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test24" name="end_region" type="radio" value="KPO">
+															<label for="air_test24">포항</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test25" name="end_region" type="radio" value="WJU">
+															<label for="air_test25">원주</label>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</dd>
+									</dl>
+								</div>
+								<div class="area date">
+									<dl>
+										<dt>
+											<div class="date-icon">
+												<span class="IconSide">가는날</span>
+											</div>
+										</dt>
+										<dd>
+											<div class="value-text">
+												<div class="date-container">
+													<span class="date-wrap">
+														<input class="datepicker" type="text" name="start_date" value="2020-07-28" placeholder="가는날 선택" onclick="optionClose('.popup-typeA')">
+													</span>
+												</div>
+											</div>
+										</dd>
+									</dl>
+									<span class="guide"></span>
+									<dl>
+										<dt>
+											<div class="date-icon">
+												<span class="IconSide">오는날</span>
+											</div>
+										</dt>
+										<dd>
+											<div class="value-text">
+												<div class="date-container">
+													<span class="date-wrap">
+														<input class="datepicker" type="text" name="end_date" value="2020-07-28" placeholder="오는날 선택" onclick="optionClose('.popup-typeA')">
+													</span>
+												</div>
+											</div>
+										</dd>
+									</dl>
+								</div>
+								<div class="area count select">
+									<dl>
+										<dt>
+											<div class="cn-icon">
+												<span class="IconSide">좌석 등급 및 인원 선택</span>
+											</div>
+										</dt>
+										<dd>
+											<div class="value-text">
+												<a href="javascript:void(0)" onclick="optionPopup('#air_count', this)" id="seat_person_str">전체 · 성인 1</a>
+											</div>
+											<div id="air_count" class="popup-typeA air-count">
+												<div class="detail-area">
+													<strong class="sub-title">좌석 등급</strong>
+													<select class="full" name="seat_type" id="seat_type" title="등급 선택" onchange="modify_seat_person();">
+														<option value="N@S@B" selected>전체</option>
+														<option value="N">일반석</option>
+														<option value="S">할인석</option>
+														<option value="B">비즈니스석</option>
+													</select>
+												</div>
+												<div class="detail-area counting-area">
+													<div class="counting">
+														<div class="l-area">
+															<strong class="sub-title">성인</strong>
+															<span class="memo">만 13세 이상</span>
+														</div>
+														<div class="r-area">
+															<input type="hidden" name="adult_cnt" value="1" />
+															<button type="button" class="counting-btn" onclick="chg_person('-', 'adult')"><img src="/images/web/main/form/subtraction.png" alt="빼기"></button>
+															<span class="counting-text" id="adult_num">1</span>
+															<button type="button" class="counting-btn" onclick="chg_person('+', 'adult')"><img src="/images/web/main/form/addition.png" alt="더하기"></button>
+														</div>
+													</div>
+													<div class="counting">
+														<div class="l-area">
+															<strong class="sub-title">소아</strong>
+															<span class="memo">만 2세 ~ 13세 미만</span>
+														</div>
+														<div class="r-area">
+															<input type="hidden" name="child_cnt" value="0" />
+															<button type="button" class="counting-btn" onclick="chg_person('-', 'child')"><img src="/images/web/main/form/subtraction.png" alt="빼기"></button>
+															<span class="counting-text" id="child_num">0</span>
+															<button type="button" class="counting-btn" onclick="chg_person('+', 'child')"><img src="/images/web/main/form/addition.png" alt="더하기"></button>
+														</div>
+													</div>
+													<div class="counting">
+														<div class="l-area">
+															<strong class="sub-title">유아</strong>
+															<span class="memo">만 2세(24개월) 미만</span>
+														</div>
+														<div class="r-area">
+															<input type="hidden" name="baby_cnt" value="0" />
+															<button type="button" class="counting-btn" onclick="chg_person('-', 'baby')"><img src="/images/web/main/form/subtraction.png" alt="빼기"></button>
+															<span class="counting-text" id="baby_num">0</span>
+															<button type="button" class="counting-btn" onclick="chg_person('+', 'baby')"><img src="/images/web/main/form/addition.png" alt="더하기"></button>
+														</div>
+													</div>z
+												</div>
+												<div class="detail-area info-area">
+													<ul class="list-disc sm">
+														<li>나이는 가는날/오는날 기준으로 적용됩니다.</li>
+														<li>유아 선택 시 성인은 꼭 포함되어야 합니다.</li>
+														<li>유아는 보호자 1인당 1명만 예약이 가능합니다.</li>
+														<li>항공사별로 기준 나이는 상이할 수 있습니다.</li>
+													</ul>
+												</div>
+											</div>
+										</dd>
+									</dl>
+								</div>
+								<div class="area search">
+									<!-- form 사용시 submit 변경 -->
+									<button type="submit" class="btn red">
+										<div class="MagGlass">
+											<span class="TicSec">항공권 검색</span>
+										</div>
+									</button>
+								</div>
+							</div> <!-- //search-area -->
+						</form>
+					</div> <!-- //form-area -->
+					<!-- //코드중복(include) -->
+				</div>
+			</section> <!-- //search-typeA -->
+
+			<!-- 항공 Slide -->
+			<section class="product-slide-area">
+				<div class="inner">
+					<div class="air-col3-item">
+						<ul>
+							<li>
+								<div class="icon">
+									<img src="/images/web/air/info-01.png" alt="">
+								</div>
+								<dl class="virtic">
+									<dt>믿을 수 있는 탐나오</dt>
+									<dd>제주특별자치도가 지원하고<br>제주특별자치도관광협회가 운영합니다.</dd>
+								</dl>
+							</li>
+							<li>
+								<div class="icon">
+									<img src="/images/web/air/info-02.png" alt="">
+								</div>
+								<dl class="virtic">
+									<dt>여러 항공사를 한 번에 비교</dt>
+									<dd>대한항공, 아시아나, 에어부산, 제주항공 등<br>7개 항공사를 한 번에 빠르게 비교하세요.</dd>
+								</dl>
+							</li>
+							<li>
+								<div class="icon">
+									<img src="/images/web/air/info-03.png" alt="">
+								</div>
+								<dl class="virtic">
+									<dt>제주도 상품 한곳에</dt>
+									<dd>숙박, 렌터카, 관광지, 음식, 기념품, 신선제품 등<br>제주의 모든 것을 한 곳에서 편리하게 구입하세요.</dd>
+								</dl>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section><!-- //항공 Slide -->
+
+			<!-- customerCenter -->
+			<section class="customerCenter">
+				<div class="inner">
+					<dl>
+						<dt>
+							<img class="jlair-icon" src="/images/web/air/jlair.png" alt="제이엘항공">
+							<span class="tit">항공 고객센터</span>
+						</dt>
+						<dd>
+									<span class="jl-texNum">
+										<img src="/images/web/air/texNum-icon.png" alt="모바일아이콘" class="texNum-icon">
+										<p class="texNum">1544-3100</p>
+									</span>
+							<span class="texTim">
+										<p>운영시간 : 09:00 ~ 18:00</p>
+										<p>점심시간 : 12:00 ~ 13:00</p>
+									</span>
+							<span class="explan">점심시간에는 상담이 제공되지 않습니다.(주말 및 공휴일 휴무)</span>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<img class="jeju-icon" src="/images/web/air/jeju.com.png" alt="제주닷컴항공">
+							<span class="tit">항공 고객센터</span>
+						</dt>
+						<dd>
+									<span class="jl-texNum">
+										<img src="/images/web/air/texNum-icon.png" alt="모바일아이콘" class="texNum-icon">
+										<p class="texNum">064-805-0070</p>
+									</span>
+							<span class="texTim">
+										<p>운영시간 : 09:00 ~ 18:00</p>
+										<p>점심시간 : 12:00 ~ 13:00</p>
+									</span>
+							<span class="explan">점심시간에는 상담이 제공되지 않습니다.(주말 및 공휴일 휴무)</span>
+						</dd>
+					</dl>
+
+					<!-- FAQ -->
+					<dl>
+						<dt>
+							<span class="faqTit">항공예약 자주하는 <br>문의 <p>FAQ</p></span>
+							<span>
+								<a class="shortCuts" href="">바로가기 &nbsp; ></a>
+							</span>
+						</dt>
+						<dd>
+							<ul class="faqTit">
+								<li id="popup_open" class="faqList n1">
+									<a id="faq_Select" class="content" href="javascript:void(0)" onclick="layer_popup('#faq_info_1');"><span class="faqTxt">일정변경<br>인원변경</span></a>
+								</li>
+								<li class="faqList n2">
+									<a class="content" href="javascript:void(0)" onclick="layer_popup('#faq_info_2');"><span class="faqTxt">항공사별 <br> 취소수수료</span></a>
+								</li>
+								<li class="faqList n3">
+									<a class="content"href="javascript:void(0)" onclick="layer_popup('#faq_info_3');"><span class="faqTxt">기상악화로 <br> 인한 취소</span></a>
+								</li>
+							</ul>
+
+							<!-- content // fag_info_1 -->
+							<div id="faq_info_1" class="comm-layer-popup">
+								<div class="content-wrap">
+									<div class="content">
+										<div class="detail-header">
+											<div class="header-text">
+												<span class="qtxt">Q . </span>
+												일정변경과 인원변경은 어떻게 하나요?
+												<button class="btnCl">
+													<a href="#" class="close"><img src="../../images/web/air/btn-layerClose.png" alt=""></a>
+												</button>
+											</div>
+										</div>
+										<div class="faqSee btxt1">
+											<div>
+												<span class="aSize">A . </span>
+												일정변경을 원하실 경우 취소 후 재구매를 해야 합니다.
+											</div>
+											<p class="smtxt"> (항공좌석이 마감될 수 있으므로 잔여석이 있는지 미리 확인하셔야 합니다.)<br>
+											인원이 추가되었을 경우에는 항공권 예약 페이지에서 추가로 예약 바랍니다.<br>
+											인원이 줄어들었을 경우에는 취소 후 재구매를 하셔야 합니다.</p>
+										</div>
+									</div>
+								</div>
+							</div><!-- content // -->
+
+							<!-- content // fag_info_2 -->
+							<div id="faq_info_2" class="comm-layer-popup">
+								<div class="content-wrap">
+									<div class="content">
+										<div class="detail-header">
+											<div class="header-text">
+												<span class="qtxt">Q . </span>
+												항공사별 취소 수수료는 어떻게 되나요?
+												<button class="btnCl">
+													<a  href="#" class="close"><img src="../../images/web/air/btn-layerClose.png" alt=""></a>
+												</button>
+											</div>
+										</div>
+										<div class="faqSee btxt2">
+											<div class="toptxt"><span class="aSize">A . </span> 취소수수료는 항공사마다 규정이 다릅니다</div>
+											<div>
+												<h3 class="headtxt">대한항공</h3>
+												<ul class="bodytxt">
+													<li>· 구매 익일 ~ 출발 1시간 전 : 일반석 편도 3,000원 / 할인석 편도 5,000원 / 이벤트석 편도 7,000원 <br> (성인/소아동일)</li>
+													<li>· 출발 1시간 전 ~ 출발시간 이후 : 일반석 편도 11,000원 / 할인석 편도 13,000원 / 이벤트석 편도 <br> 15,000원(성인/소아동일)</li>
+												</ul>
+											</div>
+											<div>
+												<h3 class="headtxt">아시아나항공</h3>
+												<ul class="bodytxt">
+													<li>· 일반석 (구매 익일 ~ 출발 1시간 전) : 편도 2,000원 (성인 / 소아동일)</li>
+													<li>· 할인석 (구매 익일 ~ 출발 1시간 전) : 편도 5,000원 (성인 / 소아동일)<li>
+													<li>· 이벤트석 (구매 익일 ~ 출발 1시간 전) : 편도 8,000원 (성인 / 소아동일)</li>
+													<li>· 출발 1시간 전 ~ 출발시간 이후 : 편도 8,000원 (성인 / 소아동일)</li>
+												</ul>
+											</div>
+											<div>
+												<h3 class = "headtxt">티웨이항공</h3>
+												<ul class="bodytxt">
+													<li>* 일반운임, 스마트운임</li>
+													<li>· 구매 익일 ~ 출발 61일 전까지 : 편도 1,000원 (성인 / 소아동일)</li>
+													<li>· 60일 전 ~ 31일 전 : 편도 3,000원 (성인 / 소아동일)</li>
+													<li>· 30일 전 ~ 8일 전 : 편도 4,000원 (성인 / 소아동일)</li>
+													<li>· 7일 전 ~ 2일 전 : 편도 6,000원 (성인 / 소아동일)</li>
+													<li>· 1일 전 ~ 당일 출발 전 : 편도 12,000원 (성인 / 소아동일)</li>
+													<li>· 당일 출발 이후 (NO-SHOW) : 편도 15,000원 (성인 / 소아동일)</li>
+													<li>* 이벤트운임</li>
+													<li>· 구매 익일 ~ 당일 출발 전 : 변경-편도 15,000원 / 취소-운임의 100% 징수</li>
+													<li>· 당일 출발 이후 (NO-SHOW) : 운임의 100% 징수</li>
+												</ul>
+											</div>
+											<div>
+												<h3 class = "headtxt">진에어</h3>
+												<ul class="bodytxt">
+													<li>· 구매 익일 ~ 출발 31일 전 : 일반석 편도 1,000원 / 할인석 편도 2,000원 / 특별석 편도 3,000원 <br> (성인 / 소아동일)</li>
+													<li>· 30일 전 ~ 15일 전 : 일반석 편도 2,000원 / 할인석 편도 3,000원 / 특별석 편도 4,000원 <br> (성인 / 소아동일)</li>
+													<li>· 14일 전 ~ 7일 전 : 일반석 편도 3,000원 / 할인석 편도 4,000원 / 특별석 편도 6,000원 <br> (성인 / 소아동일)</li>
+													<li>· 6일 전 ~ 2일 전 : 일반석 편도 4,000원 / 할인석 편도 5,000원 / 특별석 편도 7,000원 <br> (성인 / 소아동일)</li>
+													<li>· 1일 전 ~ 출발 시간 : 일반석 편도 8,000원 / 할인석 편도 10,000원 / 특별석 편도 12,000원</li>
+													<li>· 출발시간 이후 (NO-SHOW) : 일반석, 할인석, 특별석 편도 14,000원 (성인/소아동일)</li>
+												</ul>
+											</div>
+											<div>
+												<h3 class = "headtxt">제주항공</h3>
+												<ul class="bodytxt">
+													<li>· 구매 익일 ~ 출발 61일 전 : 편도 1,000원 (성인 / 소아동일)</li>
+													<li>· 60일 전 ~ 31일 전 : 편도 2,000원 (성인 / 소아동일)</li>
+													<li>· 30일 전 ~ 15일 전 : 편도 3,000원 (성인 / 소아동일)</li>
+													<li>· 14일 전 ~ 2일 전 : 편도 5,000원 (성인 / 소아동일)</li>
+													<li>· 1일 전 : 편도 10,000원 (성인 / 소아동일)</li>
+													<li>· 출발 시간 전 : 편도 12,000원 (성인 / 소아동일)</li>
+													<li>· 출발 시간 이후(NO-SHOW) : 편도 15,000원 (성인 / 소아동일)</li>
+												</ul>
+											</div>
+											<div>
+												<h3 class = "headtxt">에어부산</h3>
+												<ul class="bodytxt">
+													<li>· 구매 익일 ~ 출발 15일 전 : 편도 3,000원 (성인 / 소아동일)</li>
+													<li>· 14일 전 ~ 3일 전 : 편도 5,000원 (성인 / 소아동일)</li>
+													<li>· 2일 전 ~ 1일 전 : 편도 10,000원 (성인 / 소아동일)</li>
+													<li>· 출발 당일 ~ 출발 20분 전 : 편도 12,000원 (성인 / 소아동일)</li>
+													<li>· 출발 20분 전 이후 : 편도 15,000원 (성인 / 소아동일)</li>
+												</ul>
+												</ul>
+											</div>
+											<div>
+												<h3 class = "headtxt">이스타항공</h3>
+												<ul class="bodytxt">
+													<li>* 정상운임, 할인운임</li>
+													<li>· 구매 익일 ~ 출발 61일 전 : 편도 1,000원 (성인 / 소아동일)</li>
+													<li>· 60일 전 ~ 31일 전 : 편도 2,000원 (성인 / 소아동일)</li>
+													<li>· 30일 전 ~ 15일 전 : 편도 3,000원 (성인 / 소아동일)</li>
+													<li>· 14일 전 ~ 2일 전 (~48시간 이전) : 편도 5,000원 (성인 / 소아동일)</li>
+													<li>· 1일 전 (48시간 미만~24시간 이전) : 편도 10,000원 (성인 / 소아동일)</li>
+													<li>· 출발 24시간 미만 ~ 출발시간 : 편도 12,000원 (성인 / 소아동일)</li>
+													<li>· 출발시간 이후 (NO-SHOW) : 편도 15,000원 (성인 / 소아동일)</li>
+													<li>· 출발시간 이후 (NO-SHOW) : 편도 15,000원 (성인 / 소아동일)</li>
+													<li>* 특가운임</li>
+													<li>· 구매 후 환불불가 (공항시설사용료, 유류할증료만 환불) (성인/소아동일)</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div><!-- content // -->
+
+							<!-- content // fag_info_3 -->
+							<div id="faq_info_3" class="comm-layer-popup">
+								<div class="content-wrap">
+									<div class="content">
+										<div class="detail-header">
+											<div class="header-text">
+												<span class="qtxt">Q . </span>
+												기상악화로 인한 취소는 어떻게 처리 되나요?
+												<button class="btnCl">
+													<a href="#" class="close"><img src="../../images/web/air/btn-layerClose.png" alt=""></a>
+												</button>
+											</div>
+										</div>
+										<div class="faqSee btxt3">
+											<div>
+												<span class="aSize">A . </span>
+												천재지변, 기상악화 등에 의한 예약취소의 경우 취소 수수료가 부과되지 않습니다.
+											</div>
+											<p class="smtxt"> 단, 항공 결항 통보 없이 고객이 임의로 취소할 경우 수수료가 부과되며, 결항 통보 전까지는 공항에서 대기를 하셔야 합니다
+											 결항 통보는 반드시 출발 전 해당 항공사로 확인 바라며, 결항 통보 전 이동 교통수단에 대한 교통비는 개별 부담입니다.
+											 왕복 항공권일 때 이용하는 항공사가 다를 경우 결항되지 않은 편에 대해서 취소시 취소 수수료가 부과됩니다.</p>
+										</div>
+									</div>
+								</div>
+							</div><!-- content // -->
+							<span class="faqEtc">*주말, 공휴일 및 업무시간외에는 해당항공사로 문의</span>
+						</dd>
+					</dl><!-- //FAQ -->
+				</div>
+			</section><!-- //customerCenter -->
+
+			<!-- Product list -->
+			<section class="u-goods-sec">
+				<div class="Fasten">
+					<div>
+						<h2 class="title-type3">나만의 완벽한 여행을 계획하세요</h2>
+						<ul class="tab-theme">
+							<li>
+								<a class="tag on" >
+									#공항근처숙소
+								</a>
+							</li>
+							<li>
+								<a class="tag">
+									#아이와함께
+								</a>
+							</li>
+							<li>
+								<a class="tag">
+									#저렴이숙소
+								</a>
+							</li>
+							<li>
+								<a class="tag">
+									#제주왕먹엉갑서
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="category-area package">
+						<div class="item-area">
+							<div class="item__List">
+								<ul>
+									<li class="list-item">
+										<a href="#" class="link__item">
+											<div class="box__image">
+												<img src="../../data/sp/thumb/SP00000127_1.jpg" alt="product">
+											</div>
+											<div class="box__information">
+												<div class="bxTitle">스위트호텔제주</div>
+												<div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+												<div class="bxPrice">
+													<span class="text__price">59,836</span>
+													<span class="text__unit">원</span>
+												</div>
+												<div class="bxLabel">
+													<span class="main_label">이벤트</span>
+													<span class="main_label">할인쿠폰</span>
+													<span class="main_label">우수관광기념품</span>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="list-item">
+										<a href="#" class="link__item">
+											<div class="box__image">
+												<img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+											</div>
+											<div class="box__information">
+												<div class="bxTitle">스위트호텔제주</div>
+												<div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+												<div class="bxPrice">
+													<span class="text__price">59,836</span>
+													<span class="text__unit">원</span>
+												</div>
+												<div class="bxLabel">
+													<span class="main_label">이벤트</span>
+													<span class="main_label">할인쿠폰</span>
+													<span class="main_label">우수관광기념품</span>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="list-item">
+										<a href="#" class="link__item">
+											<div class="box__image">
+												<img src="../../data/sp/thumb/SP00000071_2.jpg" alt="product">
+											</div>
+											<div class="box__information">
+												<div class="bxTitle">스위트호텔제주</div>
+												<div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+												<div class="bxPrice">
+													<span class="text__price">59,836</span>
+													<span class="text__unit">원</span>
+												</div>
+												<div class="bxLabel">
+													<span class="main_label">이벤트</span>
+													<span class="main_label">할인쿠폰</span>
+													<span class="main_label">우수관광기념품</span>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="list-item">
+										<a href="#" class="link__item">
+											<div class="box__image">
+												<img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+											</div>
+											<div class="box__information">
+												<div class="bxTitle">스위트호텔제주</div>
+												<div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+												<div class="bxPrice">
+													<span class="text__price">59,836</span>
+													<span class="text__unit">원</span>
+												</div>
+												<div class="bxLabel">
+													<span class="main_label">이벤트</span>
+													<span class="main_label">할인쿠폰</span>
+													<span class="main_label">우수관광기념품</span>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="list-item">
+										<a href="#" class="link__item">
+											<div class="box__image">
+												<img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+											</div>
+											<div class="box__information">
+												<div class="bxTitle">스위트호텔제주</div>
+												<div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+												<div class="bxPrice">
+													<span class="text__price">59,836</span>
+													<span class="text__unit">원</span>
+												</div>
+												<div class="bxLabel">
+													<span class="main_label">이벤트</span>
+													<span class="main_label">할인쿠폰</span>
+													<span class="main_label">우수관광기념품</span>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="list-item">
+										<a href="#" class="link__item">
+											<div class="box__image">
+												<img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+											</div>
+											<div class="box__information">
+												<div class="bxTitle">스위트호텔제주</div>
+												<div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+												<div class="bxPrice">
+													<span class="text__price">59,836</span>
+													<span class="text__unit">원</span>
+												</div>
+												<div class="bxLabel">
+													<span class="main_label">이벤트</span>
+													<span class="main_label">할인쿠폰</span>
+													<span class="main_label">우수관광기념품</span>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="list-item">
+										<a href="#" class="link__item">
+											<div class="box__image">
+												<img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+											</div>
+											<div class="box__information">
+												<div class="bxTitle">스위트호텔제주</div>
+												<div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+												<div class="bxPrice">
+													<span class="text__price">59,836</span>
+													<span class="text__unit">원</span>
+												</div>
+												<div class="bxLabel">
+													<span class="main_label">이벤트</span>
+													<span class="main_label">할인쿠폰</span>
+													<span class="main_label">우수관광기념품</span>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="list-item">
+										<a href="#" class="link__item">
+											<div class="box__image">
+												<img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+											</div>
+											<div class="box__information">
+												<div class="bxTitle">스위트호텔제주</div>
+												<div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+												<div class="bxPrice">
+													<span class="text__price">59,836</span>
+													<span class="text__unit">원</span>
+												</div>
+												<div class="bxLabel">
+													<span class="main_label">이벤트</span>
+													<span class="main_label">할인쿠폰</span>
+													<span class="main_label">우수관광기념품</span>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="list-item">
+										<a href="#" class="link__item">
+											<div class="box__image">
+												<img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+											</div>
+											<div class="box__information">
+												<div class="bxTitle">스위트호텔제주</div>
+												<div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+												<div class="bxPrice">
+													<span class="text__price"  >59,836</span>
+													<span class="text__unit">원</span>
+												</div>
+												<div class="bxLabel">
+													<span class="main_label">이벤트</span>
+													<span class="main_label">할인쿠폰</span>
+													<span class="main_label">우수관광기념품</span>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="list-item">
+										<a href="#" class="link__item">
+											<div class="box__image">
+												<img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+											</div>
+											<div class="box__information">
+												<div class="bxTitle">스위트호텔제주</div>
+												<div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+												<div class="bxPrice">
+													<span class="text__price">59,836</span>
+													<span class="text__unit">원</span>
+												</div>
+												<div class="bxLabel">
+													<span class="main_label">이벤트</span>
+													<span class="main_label">할인쿠폰</span>
+													<span class="main_label">우수관광기념품</span>
+												</div>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section><!-- Product list -->
+			<!-- //Change Contents -->
+		</div> <!-- //subContents -->
+	</div> <!-- //subContainer -->
+</main>
+
+<div id="_footer" data-container="footer" class="footer_wrap">
+	<div class="service_support">
+		<div class="inner">
+			<div class="top-wrap">
+				<a class="main-cs" href="../../web/coustmer/qaList.do"><img src="../../images/web/main/main_cs.png" alt="맨위로"></a>
+				<a class="go-top" onclick="go_top();"><img src="../../images/web/comm/top.gif" alt="맨위로"></a>
+			</div>
+			<ul>
+				<li>
+					<a href="/web/etc/introduction.do" target="_blank" title="새창 열림">
+						<span>회사소개</span>
+					</a>
+				</li>
+				<li>
+					<a href="/web/etc/buyToS.do" target="_blank" title="새창 열림">
+						<span>이용약관</span>
+					</a>
+				</li>
+				<li>
+					<a href="/web/coustmer/viewCorpPns.do" target="_blank" title="새창 열림">
+						<span>입점/제휴안내</span>
+					</a>
+				</li>
+				<li>
+					<a href="/web/etc/personalData.do" target="_blank" title="새창 열림">
+						<strong>개인정보취급방침</strong>
+					</a>
+				</li>
+				<li>
+					<a href="/web/coustmer/qaList.do" target="_blank" title="새창 열림">
+						<span>고객센터</span>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=6168204092" target="_blank" title="새창 열림">
+						<span>사업자정보확인</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="corp_wrap">
+		<div class="inner">
+			<div class="corp_wrap_row">
+				<div class="corp_info">
+					<dl>
+						<dt>제주특별자치도관광협회</dt>
+						<dd class="corp_info_cs">
+							<p>
+								<em>1522-3454</em>
+								<span>월~금 09:00 - 18:00</span>
+								<span>점심시간 12:00 - 13:00</span>
+							</p>
+						</dd>
+						<dd class="corp_info_tx">
+							<p>
+								<span>대표이사:부동석</span>
+								<span>63309 제주특별자치도 제주시 첨단로 213-65 제주종합비즈니스센터 3층</span>
+								<span>법인 등록번호:220121-0000107</span>
+								<span>사업자 등록번호:616-82-04092</span>
+							</p>
+							<p>
+								<span>통신판매업번호:제2018-제주아라0049호</span>
+								<span>개인정보관리책임자:김철휘</span>
+								<span>E-mail : tamnao@tamnao.com</span>
+								<span>Fax : 064-749-7445</span>
+							</p>
+						</dd>
+						<dd class="corp_info_copy">
+							<p>탐나오는 통신판매중개자로서 거래당사자가 아니므로 개별 판매자가 등록한 상품거래정보 및 거래에 대해서 책임을 지지 않습니다.</p>
+							<p>Copyright 2018. 제주특별자치도관광협회 All Rights Reserved.</p>
+						</dd>
+					</dl>
+				</div>
+				<div class="corp_rgt" >
+					<div class="f_sns">
+						<a href="https://blog.naver.com/jta0119" class="bl" target="_blank">
+							<span class="blind">블로그</span>
+						</a>
+						<a href="https://post.naver.com/jta0119" class="nv" target="_blank">
+							<span class="blind">네이버</span>
+						</a>
+						<a href="https://www.facebook.com/JEJUTAMNAOTRAVEL/" class="fb" target="_blank">
+							<span class="blind">페이스북</span>
+						</a>
+						<a href="https://www.instagram.com/tamnao_jeju/" class="ig" target="_blank">
+							<span class="blind">인스타그램</span>
+						</a>
+						<a href="https://www.youtube.com/channel/UC5Hk3MfM3RFDz5_Xm9BDJZQ" class="ub" target="_blank">
+							<span class="blind">유튜브</span>
+						</a>
+					</div>
+					<div class="f_down">
+						<a href="https://apps.apple.com/kr/app/%ED%83%90%EB%82%98%EC%98%A4-%EC%A0%9C%EC%A3%BC%EC%97%AC%ED%96%89%EC%8A%A4%ED%86%A0%EC%96%B4/id1489404866" target="_blank">
+							<img src="/images/web/r_main/apple.png" alt="애플 앱다운로드">
+							<span>ISO</span>
+						</a>
+						<a href="https://play.google.com/store/apps/details?id=kr.or.hijeju.tamnao" target="_blank">
+							<img src="/images/web/r_main/google.png" alt="구글 앱다운로드">
+							<span>Android</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="mark-zone">
+				<div class="award">
+					<ul>
+						<li><img src="/images/web/mark/gcs.png" alt="gcs"></li>
+						<li><img src="/images/web/mark/maket.png" alt="market"></li>
+						<li><img src="/images/web/mark/int.png" alt="int"></li>
+						<li><img src="/images/web/mark/web.png" alt="web"></li>
+						<li><img src="/images/web/mark/nba.png" alt="nba"></li>
+						<li><img src="/images/web/mark/ieco.png" alt="ieco"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

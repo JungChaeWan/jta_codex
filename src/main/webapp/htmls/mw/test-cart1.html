@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+	<title>탐나오</title>
+
+	<link rel="stylesheet" href="../../css/mw/common2.css">
+	<link rel="stylesheet" href="../../css/mw/style.css?ver=20171012">
+
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/jquery.cookie.js"></script>
+	<script src="../../js/mw_common.js"></script>
+	<script src="../../js/mw_style.js"></script>
+</head>
+<body>
+<div id="wrap">
+
+<header id="header">
+	<div class="head-wrap">
+		<div class="title">장바구니</div>
+		<div class="l-area">
+			<a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+		</div>
+		<!-- <div class="r-area">
+			<button type="button" id="frame_sideOpen" class="side-btn" title="사이드메뉴 열기"></button>
+		</div> -->
+	</div>
+
+	<!-- <aside id="side_menu" class="side-menu">
+		<button type="button" id="frame_sideClose" class="close"><img src="../../images/mw/common/side/close-white.png" alt="닫기"></button>
+
+		<nav class="top-menu">
+			<a href=""><img src="../../images/mw/common/side/home.png" alt="홈"></a>
+			<a href="javascript:void(0)" id="top_searchOpen">
+				<img src="../../images/mw/common/side/search-white.png" alt="검색">
+			</a>
+			<a href="" class="like">20</a>
+			<a href="" class="cart">5</a>
+		</nav>
+
+		<div class="menu-area">
+			<ul>
+				<li><a href="air-search.html">항공</a></li>
+			    <li><a href="hotel-list.html">숙박</a></li>
+			    <li><a href="rent-list.html">렌터카</a></li>
+			    <li><a href="social-list.html">관광/레저</a></li>
+			    <li><a href="social-list.html">맛집</a></li>
+			    <li><a href="social-list.html">여행사 상품</a></li>
+			    <li><a href="from-jeju-main.html">from 제주 <img class="icon" src="../../images/mw/common/side/from-jeju.png" alt=""></a>
+			    	<ul class="depth2">
+			    		<li><a href="">농ㆍ수ㆍ축산물</a></li>
+						<li><a href="">가공식품</a></li>
+						<li><a href="">화장품/미용</a></li>
+						<li><a href="">제주기념품</a></li>
+			    	</ul>
+			    </li>
+			    <li><a href="main4-4.html">기획전</a></li>
+			    <li><a href="main4-5.html">이벤트</a></li>
+			</ul>
+			<ul>
+				<li><a href="">MY PAGE</a></li>
+			    <li><a href="">HELP</a></li>
+			    <li><a href="">LOGOUT</a></li>
+			    <li><a href="">SETTING</a></li>
+			</ul>
+		</div>
+	</aside>
+
+	<div id="top_search" class="search-area">
+		<button type="button" id="top_searchClose" class="close"><img src="../../images/mw/common/side/close-gray.png" alt="닫기"></button>
+
+		<div class="form-area">
+			<div class="form">
+				<form>
+					<input type="text" placeholder="검색어 입력" class="search">
+					<button type="submit" class="search-btn" title="검색"></button>
+				</form>
+			</div>
+			<div class="keyword">
+				<h2 class="title">HOT KEYWORD</h2>
+				<ul>
+					<li><a href="">수영장 숙소</a></li>
+				    <li><a href="">제주도 맛집</a></li>
+				    <li><a href="">패들보드</a></li>
+				    <li><a href="">제주 선물</a></li>
+				    <li><a href="">연인과 함께 즐기기</a></li>
+				    <li><a href="">흑돼지</a></li>
+				    <li><a href="">감귤</a></li>
+				</ul>
+			</div>
+		</div>
+	</div> -->
+</header>
+
+<main id="main">
+	<!--//change contents-->
+	<!-- ↓↓↓ 기존코드 동일 ↓↓↓ -->
+	<div class="subcontent-cart-wrap">
+		<section id="subContent">
+			<!-- 삭제처리
+			<div class="menu-bar">
+				<p class="btn-prev"><img src="../../images/mw/common/btn_prev.png" width="20" alt="이전페이지"></p>
+				<h1>나의 예약/구매 내역</h1>
+			</div> -->
+			<div class="sub-content-wrap">
+				<div class="sub-content">
+
+					<div class="cart">
+
+						<div class="cart-section">
+		<!--		            <h3 class="title">관광 상품</h3>-->
+						<p class="check-all">
+							<input type="checkbox" id="all_check" checked="checked">
+							<label for="all_check">전체선택</label>
+						</p>
+
+						<div id="cartGoodsList">
+							<dl class="check-goods">
+								<dd>
+									<p class="check2">
+										<input type="checkbox" id="check3" checked="checked">
+										<label for="check3"></label>
+									</p>
+												<img class="close" src="../../images/mw/cart/close.gif"  alt="삭제">
+												<div class="cart-img">
+													<img href="javascript:fn_DelCart('2')" src="../../images/mw/cart/img.gif" alt="">
+												</div>
+												<div class="check-title-wrap">
+													<p class="check-title">제주시티투어(1회·1일 이용권)</p>
+													<p class="check-title2">중문/서귀포</p>
+													<p class="check-title3">18,000원</p>
+												</div>
+
+					<!--		                        2017-10-12 부터 1박-->
+					<!--		                        | 성인 1명, 소아 0명 유아 0명<br>-->
+												<a class="option"  href="javascript:fn_ShowLayer('2', 'sp')" class="option1">옵션 변경 </a>
+
+												<input type="hidden" name="cartTotalAmt" value="40000">
+					<!--		                        <p class="item-price">40,000원</p>-->
+								</dd>
+							</dl>
+						</div>
+
+						<div id="cartGoodsList">
+							<dl class="check-goods">
+								<dd>
+									<p class="check2">
+										<input type="checkbox" id="check3" checked="checked">
+										<label for="check3"></label>
+									</p>
+
+												<img class="close" src="../../images/mw/cart/close.gif"  alt="삭제">
+												<div class="cart-img">
+													<img href="javascript:fn_DelCart('2')" src="../../images/mw/cart/img.gif" alt="">
+												</div>
+												<div class="check-title-wrap">
+													<p class="check-title">제주시티투어(1회·1일 이용권)</p>
+													<p class="check-title2">중문/서귀포</p>
+													<p class="check-title3">18,000원</p>
+												</div>
+
+					<!--		                        2017-10-12 부터 1박-->
+					<!--		                        | 성인 1명, 소아 0명 유아 0명<br>-->
+												<a class="option"  href="javascript:fn_ShowLayer('2', 'sp')" class="option1">옵션 변경 </a>
+
+												<input type="hidden" name="cartTotalAmt" value="40000">
+					<!--		                        <p class="item-price">40,000원</p>-->
+								</dd>
+							</dl>
+						</div>
+
+
+		<!--		            <p> <a href="javascript:fn_ChkDelCart();" class="btn btn2">장바구니 비우기</a> <a href="javascript:history.back();" class="btn btn2">쇼핑계속하기</a> <a href="javascript:fn_Reservation();" class="btn btn1">예약하기</a> </p>-->
+						</div>
+
+						<!-- 제주특산품 -->
+
+						<div class="cart-section" id="sv_cartList">
+		<!--		            <h3 class="title">제주 특산품</h3>-->
+
+
+
+
+							</div>
+							<div class="price-wrap">
+		<!--		                <dl class="price">-->
+		<!--		                    <dt>총 상품가격</dt>-->
+		<!--		                    <dd><strong id="sv_totalPrdtAmt">25,100</strong>원</dd>-->
+		<!--		                </dl>-->
+		<!--		                <dl class="price">-->
+		<!--		                    <dt>총 배송비</dt>-->
+		<!--		                    <dd><strong id="sv_totalDlvAmt">3,000</strong>원</dd>-->
+		<!--		                </dl>-->
+								<dl class="price total">
+									<dt class="sv_totalmoney">결제예상금액</dt>
+									<dd><span id="sv_totalJumunAmt">58,000</span><span class="sv_totalJumunAmt2"> 원</span></dd>
+								</dl>
+							</div>
+							<span> <a href="javascript:fn_SvReservation();" class="btn-btn2">구매하기</a>
+								<a href="javascript:fn_SvReservation();" class="btn-btn1">쇼핑 계속하기</a></span>
+
+
+
+						<!-- //제주특산품 -->
+
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</main>
+
+<footer id="footer">
+
+</footer>
+
+</div> <!-- //wrap -->
+</body>
+</html>

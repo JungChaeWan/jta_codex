@@ -1,0 +1,693 @@
+#air-sub #main {background-color: #f5f5f5;}
+
+/* 예약 네비게이션 */
+.mw-search-area {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 0 25px;
+    border-radius: 0 0 40px 40px;
+    background: url("../../images/mw/air/av_top_back.png") no-repeat center left;
+    background-size: cover;
+    font-family: "Roboto";
+    font-weight: normal;
+    letter-spacing: -1px;
+}
+.mw-search-area .check-area {
+    position: relative;
+    width: 230px;
+    height: 40px;
+    margin: 25px auto 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    border-radius: 80px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 5px 5px 6px -7px #000
+}
+.mw-search-area .check-area button.active {
+    width: 55%;
+    color: #fff;
+    border-radius: 80px;
+    background: #023b7a;
+    font-size: 0.9rem;
+}
+.mw-search-area .check-area button {
+    display: inline-block;
+    width: 50%;
+    height: 40px;
+    line-height: 40px;
+    color: #023b7a;
+    border: none;
+    background: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    vertical-align: middle;
+}
+.mw-search-area .search-area.air {margin: 0 25px 0;}
+
+
+/* 출발지/도착지 */
+.mw-search-area .search-area .area {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    height: auto;
+    margin-top: 25px;
+}
+.mw-search-area .search-area.air .area.zone > dl {flex-basis: 300px;}
+.mw-search-area .air .zone .value-text a p, .mw-search-area p {
+    color: #fff;
+    font-weight: normal;
+    font-size: 1.2rem;
+    text-align: left;
+}
+.mw-search-area .air .zone .value-text a span {
+    width: 85px;
+    color: #fff;
+    font-size: 2.5rem;
+}
+.mw-search-area .search-area .area .path_line {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #fff;
+}
+.mw-search-area .air .zone .value-text #end_region_str p {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    text-align: right;
+}
+.mw-search-area .search-area .area a.change .airplane {
+    position: absolute;
+    width: 24px;
+    padding: 11px;
+}
+.mw-search-area .search-area .area a.change .path_change {
+    width: 45px;
+    animation: rotate 8s linear infinite; /* 애니메이션 설정 */
+}
+
+
+/* 가는날/오는날 */
+.mw-search-area .search-area.air .area > dl {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    background-color: transparent;
+    text-align: center;
+    vertical-align: middle;
+}
+.mw-search-area .search-area .area dt {
+    height: 20px;
+    color: #fff;
+    font-size: 0.9rem;
+    text-align: left;
+}
+.mw-search-area .search-area.air .area.date input {
+     height: 60px;
+     line-height: 61px;
+     border-radius: 80px;
+     background-color: rgba(255, 255, 255, 0.8);
+     color: #023b7a;
+     font-size: 1.0rem;
+     letter-spacing: -1px;
+}
+
+
+/* 좌석 등급 및 인원 선택 */
+.mw-search-area .search-area.air .area.select {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 100%;
+    height: 60px;
+    margin-top: 50px;
+    border-radius: 80px;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+.mw-search-area .value-group .value-text2 {font-size: 1rem;}
+.mw-search-area .search-area.air .area.select .value-group a {
+    width: 100%;
+    height: 60px;
+    margin-left: 30px;
+    line-height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    color: #0275d0;
+    font-weight: bold;
+    border-radius: 80px;
+}
+.mw-search-area .search-area.air .area.select .value-group a:before {
+    position: relative;
+    top: 19px;
+    display: inline-flex;
+    width: 29px;
+    height: 25px;
+    background: url("../../images/mw/air/people.png") no-repeat;
+    background-size: 21px;
+    content: "";
+}
+
+
+/* 항공권 검색 */
+.mw-search-area .comm-btn.blue {
+    width: 100%;
+    height: 58px;
+    line-height: 58px;
+    margin: 20px 0 0;
+    border-color: #023b7a;
+    border-radius: 12px;
+    background-color: #023b7a;
+    font-family: "Roboto";
+    font-size: 1rem;
+    font-weight: bold;
+}
+.mw-search-area .comm-btn.blue:before {
+    position: relative;
+    top: 9px;
+    display: inline-flex;
+    width: 29px;
+    height: 25px;
+    background: url("../../images/mw/air/reading_glasses.png") no-repeat;
+    background-size: 21px;
+    content: "";
+}
+
+
+/* 발권수수료 안내 */
+.info-panels-new {
+    margin: 25px 20px 0;
+    border-radius: 100px;
+}
+.info-panels-new .snap {
+    border-radius: 30px;
+    background-color: #fff;
+    box-shadow: 5px 5px 11px -13px #000;
+}
+.info-panels-new .snap .variant-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: auto;
+    height: 100px;
+    padding: 20px;
+}
+.info-panels-new .snap .variant-card .content {line-height: 0.8;}
+.variant-card .content h3 {
+    margin-bottom: 9px;
+    font-size: 0.95rem;
+    letter-spacing: -0.5px;
+}
+.variant-card .content h4 {
+    color: #5d5d5d;
+    font-size: 0.7rem;
+    font-weight: normal;
+    line-height: 19px;
+}
+.variant-card .content h5 em {color: #023b7a;}
+.variant-card .image-container {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+}
+.image-container .visual_txt:before {
+    position: absolute;
+    right: 70px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #023b7a;;
+    content: "";
+}
+.image-container .price {
+    display: block;
+    color: #023b7a;
+    font-size: 3rem;
+}
+.image-container .price em {font-size: 0.9rem;}
+
+
+/* 고객센터 */
+.customerCenter {
+    height: 100%;
+    border-radius: 25px 20px 20px;
+    margin: 20px;
+    font-weight: normal;
+}
+.customerCenter .customer_wrap:first-child {
+    margin: 10px 0 15px;
+}
+.customerCenter .customer_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: auto;
+    height: 100px;
+    margin: 15px 0;
+    padding: 20px;
+    color: #fff;
+    border-radius: 30px;
+    background-color: #106DF9;
+    box-shadow: 5px 5px 6px -7px #000;
+    font-family: "Roboto";
+    font-size: 0.8rem;
+}
+.customerCenter .customer_wrap.sunmin {
+    background-color: #DE1724;
+}
+.customer_wrap .customer_left {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.customer_wrap .customer_left .operating {
+    display: flex;
+    justify-content: center;
+    width: 110px;
+    padding: 3px 7px;
+    color: #106DF9;
+    border-radius: 80px;
+    background-color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+}
+.customer_wrap.sunmin .customer_left .operating {
+    color: #DE1724;
+}
+.customer_wrap .customer_left .tit {
+    font-family: "Notosans";
+    font-size: 1.23rem;
+    font-weight: normal;
+    letter-spacing: -1px;
+}
+.customer_left .explan {
+    font-size: 0.7rem;
+    font-weight: normal;
+    line-height: 19px;
+}
+.customer_wrap .customer_right {margin-right: 8px;}
+.customer_wrap .customer_right img {
+    position: relative;
+    left: 0;
+    width: 50px;
+}
+.customer_wrap .customer_right p {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+
+/* 항공예약 자주하는 문의 FAQ */
+.faqCenter {
+    height: 330px;
+    margin: 30px 0 0;
+    padding: 30px 20px 0;
+    background-color: #fff;
+    font-family: "Roboto";
+}
+.faqCenter .faq_tit {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.faqCenter .faq_tit > p {
+    position: absolute;
+    right: 20px;
+}
+.faqCenter .faq_tit .faqTit {
+    line-height: 33px;
+    font-family: "Notosans";
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.faqCenter .faq_tit .shortCuts {
+    color: #0275d0;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+.faqCenter .faqEtc {
+    margin-top: 15px;
+    font-size: 0.8rem;
+}
+.faqCenter dl dd ul.faqTit {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px 0;
+    margin-top: 20px;
+}
+.faqCenter dl dd ul.faqTit .faqList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 142px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 0;
+    padding: 10px 7px;
+    border: 3px solid #106DF9;
+    border-radius: 40px;
+    box-shadow: 5px 5px 11px -13px #000;
+}
+.faqCenter dl dd ul.faqTit li {
+    margin: 0 auto;
+    background-color: #fff;
+}
+.faqCenter dl dd ul.faqTit .faqList.n2 ,
+.faqCenter dl dd ul.faqTit .faqList.n3 {
+    color: #fff;
+    background-color: #106DF9;
+}
+.faqCenter dl dd ul.faqTit .faqList.n3,
+.faqCenter dl dd ul.faqTit .faqList.n4{
+    position: relative;
+    left: 10px;
+}
+.faqCenter dl dd ul.faqTit .faqList img {
+    width: 25px;
+    height: 25px;
+}
+.faqCenter dl dd ul.faqTit .faqList.n2 img {
+    width: 30px;
+    height: 30px;
+}
+.faqCenter dl dd ul.faqTit .faqList.n4 img {
+    width: 24px;
+    height: 24px;
+}
+.faqCenter dl dd ul.faqTit a.content {font-size: 0.9rem;}
+.faqCenter dl dd ul.faqTit li .faqTxt {
+    margin-left: 5px;
+    color: #106DF9;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.faqCenter dl dd ul.faqTit .faqList.n2 span,
+.faqCenter dl dd ul.faqTit .faqList.n3 span {color: #fff;}
+
+
+/* 항공 seo 디스크립션 영역추가 */
+.air-plane-overview-section {
+    width: 100%;
+    background-color: #f8f9fa;
+}
+.air-plane-overview-section .av-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: auto;
+    font-family: "Roboto";
+    font-size: 0;
+}
+.air-plane-overview-section .info-logo {
+    display: flex;
+    justify-content: center;
+    padding: 30px 30px 20px;
+    margin-top: 10px;
+}
+.air-plane-overview-section .info-logo img {
+    display: block;
+    width: 245px;
+}
+.air-plane-overview-section .info-article {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 25px 35px;
+}
+.air-plane-overview-section .info-article p {
+    padding: 5px 0;
+    color: #2e2c2c;
+    font-size: 0.8rem;
+    line-height: 22px;
+    letter-spacing: -0.8px;
+}
+.air-plane-overview-section .info-article p:last-of-type {padding-top: 12px;}
+.air-plane-overview-section .info-article p span {font-weight: bold;}
+.air-plane-overview-section .info-article .shape-circle .circle {
+    display: inline-flex;
+    flex-direction: row;
+    width: 3px;
+    height: 3px;
+    color: #2e2c2c;
+    border-radius: 50%;
+    background-color: #000;
+}
+
+
+/* 출발지/도착지 - 레이어팝업 */
+#air_departure, #air_count {z-index: 100;}
+.popup-typeA {
+    overflow-y: scroll;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 37px;
+    border-radius: 20px 20px 0 0;
+    background: #fff;
+}
+.popup-typeA .air-wrapper {
+    margin-top: 20px;
+    padding: 20px;
+}
+.air-wrapper .condition_title {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 90%;
+    height: 85px;
+    line-height: 35px;
+    margin-top: 37px;
+    padding-top: 30px;
+    color: #000;
+    background-color: #fff;
+    font-family: "Notosans";
+    font-size: 1.3rem;
+    text-align: left;
+    letter-spacing: -.5px;
+}
+.air-wrapper .close-btn {
+    z-index: 2;
+    position: relative;
+    top: 6px;
+    margin: 0 10px 0 0;
+    padding: 10px;
+    background: url("../../images/mw/rent/close-btn.png") no-repeat 0px;
+    background-size: 20px;
+}
+.popup-typeA.air-zone .content-area {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    top: 65px;
+    padding: 0;
+    font-family: "Roboto";
+}
+.popup-typeA.air-zone .list-group:first-child {padding-bottom: 0;}
+.popup-typeA.air-zone .list-group {border-top: none;}
+.popup-typeA.air-zone .list-group .sub-title {
+    padding: 30px 0 15px;
+    color: #000;
+    border-bottom: 1px solid #000;
+    font-size: 1.2rem;
+    font-family: "Notosans";
+    font-weight: normal;
+}
+.mw-search-area .search-area .area ul {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 11px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0;
+}
+.lb-box input[type="radio"] + label, .lb-box input[type="checkbox"] + label {
+    height: 40px;
+    line-height: 40px;
+}
+.lb-box input[type="radio"]:checked + label {
+    border-color: #0275d0;
+    background-color: #0275d0;
+    line-height: 37px;
+}
+#dimmed {
+    display: none;
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .8;
+    overflow: auto;
+}
+
+
+/* 좌석등급/인원 - 레이어팝업 */
+.popup-typeA.air-count .content-area {
+    position: absolute;
+    top: 115px;
+}
+.popup-typeA.air-count .sub-title {
+    color: #000;
+    font-size: 1.07rem;
+    font-weight: bold;
+}
+.popup-typeA.air-count .content-area .detail-area:first-of-type {padding: 0 25px 10px;}
+.popup-typeA.air-count .content-area .detail-area {
+    padding: 0 25px 0;
+    margin: 0;
+}
+.popup-typeA.air-count .detail-area select.full {
+    height: 55px;
+    padding: 0 56px 0 20px;
+    color: #000;
+    border: 2px solid #0275d0;
+    border-radius: 12px;
+    font-family: "Roboto";
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+/* custom-select */
+.air-count .options {
+    z-index: 1;
+    display: none;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    margin-top: -1px;
+    box-sizing: border-box;
+    border: 2px solid #0275d0;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+.air-count .custom-select {
+    position: relative;
+    width: 100%;
+    font-size: 0.8rem;
+}
+.air-count .option {
+    padding: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.air-count .option:hover {background-color: #f1f1f1;}
+.air-count .custom-select .selected {
+    padding: 15px;
+    border: 2px solid #0275d0;
+    border-radius: 12px;
+    background-color: #fff;
+    cursor: pointer;
+    user-select: none; /* 텍스트 선택 방지 */
+    background: url("../../images/mw/icon/basic/select_arrow.png") no-repeat right 20px center;
+    background-size: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.air-count .show {display: block;}
+.popup-typeA .detail-area select.full:focus {outline: 0;}
+
+
+.popup-typeA .counting-area .sub-title {font-size: 1.3rem;}
+.popup-typeA .counting-area .counting .l-area {
+    display: flex;
+    align-items: baseline;
+    padding: 15px 0;
+}
+.popup-typeA .counting-area .counting .memo {
+    margin-left: 10px;
+    font-size: .8rem;
+    font-weight: normal;
+}
+.popup-typeA .counting-area .counting-text {
+    margin: 0 18px;
+    color: #000;
+    font-size: 1.6rem;
+    font-weight: normal;
+}
+.popup-typeA.air-count .info-area {border-top: none;}
+.mw-search-area .search-area .air-count ul {
+    display: flex;
+    gap: 5px;
+    margin-top: 0;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+}
+#air_count .btn-wrap.type-full {margin: 10px 20px 40px;}
+
+
+/* result-적용/다음 */
+/*
+#air_departure .fix-cta,
+#air_count .fix-cta {
+    width: 100%;
+    height: 70px;
+    background-color: #fff;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+#air_departure .fix-cta .decide,
+#air_count .fix-cta .decide {
+    width: 58px;
+    height: 58px;
+    flex: 0 0 124px;
+    background-color: #222;
+}
+#air_departure .fix-cta .result-btn,
+#air_count .fix-cta .result-btn {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    height: 58px;
+    margin: 0 10px;
+    color: #fff;
+    border-radius: 12px;
+    background-color: #37a0ed;
+    font-size: 1.0rem;
+    font-family: "Roboto L";
+    font-weight: bold;
+    text-align: center;
+    line-height: 58px;
+}
+#air_departure .fix-cta .apply,
+#air_count .fix-cta .apply {
+    margin-left: 0;
+}
+
+*/
+
+
+/* 애니메이션 설정 */
+@keyframes rotate {
+    from {
+        transform: rotate(360deg); /* 시작 상태 */
+    }
+    to {
+        transform: rotate(0deg); /* 끝 상태 */
+    }
+}

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->	
+    <link rel="stylesheet" href="../css/common/jquery-ui.css">
+	<link rel="stylesheet" href="../css/web/common2.css">
+	<link rel="stylesheet" href="../css/web/style.css">
+    <!-- script -->
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
+    <script src="../js/swiper.js"></script>
+    <script src="../js/html_common.js"></script>
+    <script src="../js/html_style.js"></script>
+    
+    <!-- add -->
+    <script>
+		$(document).ready(function() {
+    		//Top Slider Item
+    		if($('#product_slideItem .swiper-slide').length > 3) {			//4개 이상시 실행
+    			var swiper = new Swiper('#product_slideItem', {
+    				slidesPerView: 3,
+    		        paginationClickable: true,
+    		        spaceBetween: 15,
+    		        nextButton: '#slideItem_next',
+	    	        prevButton: '#slideItem_prev'
+    		    });
+    		}
+    		else {
+    			$('#slideItem_arrow').hide();
+    		}
+    	});
+    </script>    
+</head>
+<body>
+	<header id="header">
+		<!--New top banner zone-->
+        <div id="top_banner" class="top-banner swiper-container">
+	        <ul class="swiper-wrapper">
+	            <li class="swiper-slide" style="background-color: #c6c0dc">
+	            	<a href="#"><img src="http://www.tamnao.com/data/banner/2017-08/ban_20170802030831_0.jpg" alt="상단배너1"></a>
+	            </li>
+	            <li class="swiper-slide" style="background-color: #fff3be">
+	            	<a href="#"><img src="../images/web/comm/top_banner.jpg" alt="상단배너2"></a>
+	            </li>
+	        </ul>
+	        <div class="container">
+	        	<a href="javascript:void(0)" id="top_close" class="close">
+	        		<img src="../images/web/comm/close.png" alt="닫기">
+	        	</a>
+	        </div>
+	    </div>
+        <!--//New top banner zone-->
+        
+        <div class="top-menu">
+        	<div class="Fasten">
+        		<nav>
+        			<ul>
+        				<li>
+        					<a href="">로그인</a>
+        				</li>
+        				<li>
+        					<a href="">회원가입</a>
+        				</li>
+        				<li>
+        					<a href="">
+        						<img src="../images/web/comm/top/like.png" alt="" class="icon">
+        						찜하기<span class="count">(5)</span>
+        					</a>
+        				</li>
+        				<li>
+        					<a href="">
+        						<img src="../images/web/comm/top/cart.png" alt="" class="icon">
+        						장바구니<span class="count">(5)</span>
+        					</a>
+        				</li>
+        				<li>
+        					<a href="">마이페이지</a>
+        				</li>
+        			</ul>
+        		</nav>
+        	</div>
+        </div>
+
+		<div class="Fasten">
+			<div class="topSearch new2017">
+			    <h1 class="logo"><a href=""><img src="../images/web/comm/logo.gif" alt="탐나오"></a></h1>
+			    <!-- 검색 -->
+			    <div class="searchBox">
+			    	<input id="search" type="text">
+			    	<button id="searBT" title="검색"></button>
+			    	<div class="keyword">
+				        <a href="">#핫 패들보드</a>
+				        <a href="">#저렴한숙박</a>
+				        <a href="">#최고의사랑 그 빅볼</a>
+				        <a href="">#나홀로여행</a>
+				    </div>
+			    </div>
+			    
+			    <!-- 배너광고 -->
+			    <div class="right-banner">
+			    	<ul>
+			    		<li>
+			    			<a href="">
+			    				<img src="../images/web/banner/top/jeju-coupon.jpg" alt="제주관광지 쿠폰">
+			    			</a>
+			    		</li>
+			    	</ul>
+			    </div>
+			</div>
+        </div>
+        
+        <!-- main menu -->
+        <nav id="mainMenu">
+            <div class="Fasten">
+                <div class="menuBT"><a id="menuBT"><img src="../images/web/comm/menu.gif" alt="메뉴"></a></div>
+                <div class="subMenu">11<br>11<br>11<br>11<br></div>
+                <ul class="mainMenu">
+                    <li><a class="select" href="air-main.html">항공</a></li>
+                    <li><a href="hotel-list.html">숙박</a></li>
+                    <li><a href="rent-list.html">렌터카</a></li>
+                    <li><a href="social-list.html">관광/레저</a></li>
+                    <li><a href="food-list.html">맛집</a></li>
+                    <li><a href="travel-list.html">여행사 상품</a></li>
+                    <li><a href="from-jeju-main.html">from 제주</a></li>
+                    <li><a href="special-product.html">기획전</a></li>
+                    <!-- <li class="img"><a href=""><img src="../images/web/comm/specialty.gif" alt="제주특산기념품"></a></li> -->
+                    <li><a href="event-list.html">이벤트</a></li>                    
+                </ul>
+            </div>
+        </nav>
+        <!-- //main menu -->
+	</header>
+
+	<main id="main">
+        <div class="mapLocation">
+		    <div class="Fasten">
+		        <span>홈</span> <span class="gt">&gt;</span>
+		        <span>관광/레저</span>
+		    </div>
+		</div>
+		
+		<div class="subContainer">
+		    <div class="subHead"></div>
+		    <div class="subContents">
+		
+		        <!-- Change Contents -->
+		        <!-- 관광/레저 Slide -->
+		        <section class="product-slide-area">
+		        	<div class="Fasten">
+		        		<h2 class="title-type2">관광/레저</h2>
+		        		<p class="title-type2-memo">심심한 여행은 가라! 다양한 관광/레저 상품으로 나만의 여행 만들어보세요.</p>
+		        		
+		        		<div class="product-slide-item">
+			        		<div id="product_slideItem" class="swiper-container">
+							    <ul class="swiper-wrapper">
+							        <li class="swiper-slide">
+                                        <a href="social-detail.html">
+							        		<div class="photo">
+											    <img class="product" src="../images/web/other/product_02.jpg" alt="product">
+											</div>
+											<div class="text">
+												<div class="title">서귀포잠수함 탑승권</div>
+												<div class="price">999,000원</div>
+											</div>
+							        	</a>
+							        </li>
+							        <li class="swiper-slide">
+							        	<a href="">
+							        		<div class="photo">
+											    <img class="product" src="../images/web/other/product_02.jpg" alt="product">
+											</div>
+											<div class="text">
+												<div class="title">패들보드&스노쿨링-(국제리더스클럽)</div>
+												<div class="price">60,000원</div>
+											</div>
+							        	</a>
+							        </li>
+							        <li class="swiper-slide">
+							        	<a href="">
+							        		<div class="photo">
+											    <img class="product" src="../images/web/other/product_03.jpg" alt="product">
+											</div>
+											<div class="text">
+												<div class="title">제주러브랜드 입장권 (야간개장, 어린이휴게실 포함)</div>
+												<div class="price">60,000원</div>
+											</div>
+							        	</a>
+							        </li>
+							        <li class="swiper-slide">
+							        	<a href="">
+							        		<div class="photo">
+											    <img class="product" src="../images/web/other/product_07.jpg" alt="product">
+											</div>
+											<div class="text">
+												<div class="title">동부권 <span class="guide">|</span> 에트왈제주</div>
+												<div class="price">60,000원</div>
+											</div>
+							        	</a>
+							        </li>
+							    </ul>
+							</div>
+							<div id="slideItem_arrow" class="arrow-box">
+					        	<div id="slideItem_next" class="swiper-button-next"></div>
+		        				<div id="slideItem_prev" class="swiper-button-prev"></div>
+		        			</div>
+	        			</div>
+		        	</div>
+		        </section>
+		        
+		        <!-- 투데이 키워드 -->
+		        <section class="today-keyword">
+		        	<div class="Fasten">
+					    <h2 class="title-type3">지금 이시간! 투데이 키워드</h2>
+					    <ul>
+					        <li style="background-image: url('../images/mw/other/keyword-01.jpg')">
+					            <a href="">#핫한 패들보드</a>
+					        </li>
+					        <li style="background-image: url('../images/mw/other/keyword-02.jpg')">
+					            <a href="">#비타민 충전</a>
+					        </li>
+					        <li style="background-image: url('../images/mw/other/keyword-03.jpg')">
+					            <a href="">#야경 좋은 숙소</a>
+					        </li>
+					        <li style="background-image: url('../images/mw/other/keyword-04.jpg')">
+					            <a href="">#이색 제주</a>
+					        </li>
+					    </ul>
+				    </div>
+				</section>
+		        
+		        <!-- 상품 목록 -->
+		        <section class="product-item-area">
+		        	<h2 class="sec-caption">관광/레저 목록</h2>
+	        		<div class="Fasten">
+	        			<div id="tabs" class="mainTabMenu1">
+		        			<ul id="menuTab" class="menuList">
+						        <li class="all">
+						        	<a class="select" href="#" onclick="fn_ChangeTab('',this); return false;">전체</a>
+						        </li>
+						        <li><a href="#" onclick="fn_ChangeTab('C210',this); return false;">전시/박물관</a></li>
+						        <li><a href="#" onclick="fn_ChangeTab('C220',this); return false;">테마공원</a></li>
+						        <li><a href="#" onclick="fn_ChangeTab('C250',this); return false;">스포츠/레저</a></li>
+						        <li><a href="#" onclick="fn_ChangeTab('C260',this); return false;">해양관광</a></li>
+						        <li><a href="#" onclick="fn_ChangeTab('C230',this); return false;">공연/쇼</a></li>
+						        <li><a href="#" onclick="">제주마을체험</a></li>
+						        <li><a href="#" onclick="">맛사지</a></li>
+						        <li><a href="#" onclick="fn_ChangeTab('C240',this); return false;">기타</a></li>
+						    </ul>
+					    </div>
+	        			<div class="align-area">
+	        				<div class="select-area right">
+	        					<select title="지역 선택">
+	        						<option value="" selected>지역 전체</option>
+									<option value="">제주시</option>
+									<option value="">동부</option>
+									<option value="">서부</option>
+									<option value="">중문/서귀포</option>
+								</select>
+								<select title="추천순 선택">
+	        						<option value="" selected>탐나오 추천순</option>
+									<option value=""></option>
+								</select>
+	        				</div>
+	        			</div>
+	        			<div class="item-area">
+	        				<ul class="col4">
+	        					<li>
+						            <div class="photo">
+                                        <a href="social-detail.html">
+						                	<img class="product" src="../images/web/other/product_02.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info social">
+						            	<div class="text-area">
+						            		<div class="memo">내용이 길어지는 경우 내용이 길어지는 경우 내용이 길어지는 경우</div>
+						            		<div class="title">제목이 길어지는 경우 제목이 길어지는 경우</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">3시간 후 사용</div>
+						            		<div class="money">
+						            			<span class="cost"><del>999,000원</del></span>
+						            			<span class="price">999,000원</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_on.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_02.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info social">
+						            	<div class="text-area">
+						            		<div class="memo">전 메뉴 구매시 냉면 서비스 쿠폰</div>
+						            		<div class="title">중문흑돼지</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">바로사용</div>
+						            		<div class="money">
+						            			<span class="cost"><del>15,000원</del></span>
+						            			<span class="price">10,000원</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_off.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_02.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info social">
+						            	<div class="text-area">
+						            		<div class="memo">전국적으로 선풍적인 인기를 패들보드 이제 제주 바다위에서 즐길수 있습니다</div>
+						            		<div class="title">패들보드&스노쿨링-(국제리더스클럽)</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">1시간 후 사용</div>
+						            		<div class="money">
+						            			<span class="cost"><del>30,000원</del></span>
+						            			<span class="price">27,000원</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_off.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+							        <a href="">
+							            <img class="event" src="../images/web/main/md_pick_leisure.jpg" alt="탐나오 MD가 직접가서 보고 느끼고, 추천하는 md pick">
+							        </a>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_02.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info social">
+						            	<div class="text-area">
+						            		<div class="memo">내용이 길어지는 경우 내용이 길어지는 경우 내용이 길어지는 경우</div>
+						            		<div class="title">제목이 길어지는 경우 제목이 길어지는 경우</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">3시간 후 사용</div>
+						            		<div class="money">
+						            			<span class="cost"><del>999,000원</del></span>
+						            			<span class="price">999,000원</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_on.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+							        <a href="">
+							            <img class="event" src="../images/web/main/md_pick_leisure.jpg" alt="탐나오 MD가 직접가서 보고 느끼고, 추천하는 md pick">
+							        </a>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_02.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info social">
+						            	<div class="text-area">
+						            		<div class="memo">내용이 길어지는 경우 내용이 길어지는 경우 내용이 길어지는 경우</div>
+						            		<div class="title">제목이 길어지는 경우 제목이 길어지는 경우</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">3시간 후 사용</div>
+						            		<div class="money">
+						            			<span class="cost"><del>999,000원</del></span>
+						            			<span class="price">999,000원</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_on.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_02.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info social">
+						            	<div class="text-area">
+						            		<div class="memo">내용이 길어지는 경우 내용이 길어지는 경우 내용이 길어지는 경우</div>
+						            		<div class="title">제목이 길어지는 경우 제목이 길어지는 경우</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">3시간 후 사용</div>
+						            		<div class="money">
+						            			<span class="cost"><del>999,000원</del></span>
+						            			<span class="price">999,000원</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_on.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_01.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info">
+						            	<div class="text-area">
+						            		<div class="memo">유럽풍 목조건축형 펜션</div>
+						            		<div class="title">동부권 <span class="guide">|</span> 에트왈제주</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">탐나오가</div>
+						            		<div class="money">
+						            			<span class="price">999,000원~</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_off.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_01.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info">
+						            	<div class="text-area">
+						            		<div class="memo">유럽풍 목조건축형 펜션</div>
+						            		<div class="title">동부권 <span class="guide">|</span> 에트왈제주</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">탐나오가</div>
+						            		<div class="money">
+						            			<span class="price">999,000원~</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_off.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_01.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info">
+						            	<div class="text-area">
+						            		<div class="memo">유럽풍 목조건축형 펜션</div>
+						            		<div class="title">동부권 <span class="guide">|</span> 에트왈제주</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">탐나오가</div>
+						            		<div class="money">
+						            			<span class="price">999,000원~</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_off.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_01.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info">
+						            	<div class="text-area">
+						            		<div class="memo">유럽풍 목조건축형 펜션</div>
+						            		<div class="title">동부권 <span class="guide">|</span> 에트왈제주</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">탐나오가</div>
+						            		<div class="money">
+						            			<span class="price">999,000원~</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_off.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_01.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info">
+						            	<div class="text-area">
+						            		<div class="memo">유럽풍 목조건축형 펜션</div>
+						            		<div class="title">동부권 <span class="guide">|</span> 에트왈제주</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">탐나오가</div>
+						            		<div class="money">
+						            			<span class="price">999,000원~</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_off.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_01.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info">
+						            	<div class="text-area">
+						            		<div class="memo">유럽풍 목조건축형 펜션</div>
+						            		<div class="title">동부권 <span class="guide">|</span> 에트왈제주</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">탐나오가</div>
+						            		<div class="money">
+						            			<span class="price">999,000원~</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_off.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_01.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info">
+						            	<div class="text-area">
+						            		<div class="memo">유럽풍 목조건축형 펜션</div>
+						            		<div class="title">동부권 <span class="guide">|</span> 에트왈제주</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">탐나오가</div>
+						            		<div class="money">
+						            			<span class="price">999,000원~</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_off.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_01.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info">
+						            	<div class="text-area">
+						            		<div class="memo">유럽풍 목조건축형 펜션</div>
+						            		<div class="title">동부권 <span class="guide">|</span> 에트왈제주</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">탐나오가</div>
+						            		<div class="money">
+						            			<span class="price">999,000원~</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_off.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_01.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info">
+						            	<div class="text-area">
+						            		<div class="memo">유럽풍 목조건축형 펜션</div>
+						            		<div class="title">동부권 <span class="guide">|</span> 에트왈제주</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">탐나오가</div>
+						            		<div class="money">
+						            			<span class="price">999,000원~</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_off.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_01.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info">
+						            	<div class="text-area">
+						            		<div class="memo">유럽풍 목조건축형 펜션</div>
+						            		<div class="title">동부권 <span class="guide">|</span> 에트왈제주</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">탐나오가</div>
+						            		<div class="money">
+						            			<span class="price">999,000원~</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_off.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_01.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info">
+						            	<div class="text-area">
+						            		<div class="memo">유럽풍 목조건축형 펜션</div>
+						            		<div class="title">동부권 <span class="guide">|</span> 에트왈제주</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">탐나오가</div>
+						            		<div class="money">
+						            			<span class="price">999,000원~</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_off.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+							    <li>
+						            <div class="photo">
+						            	<a href="">
+						                	<img class="product" src="../images/web/other/product_01.jpg" alt="product">
+						                </a>
+						            </div>
+						            <div class="info">
+						            	<div class="text-area">
+						            		<div class="memo">유럽풍 목조건축형 펜션</div>
+						            		<div class="title">동부권 <span class="guide">|</span> 에트왈제주</div>
+						            	</div>
+						            	<div class="price-area">
+						            		<div class="title">탐나오가</div>
+						            		<div class="money">
+						            			<span class="price">999,000원~</span>
+						            			<span class="like">
+						            				<button type="button"><img src="../images/web/icon/product_like_off.png" alt="찜하기"></button>
+						            			</span>
+						            		</div>
+						            	</div>
+						            </div>
+							    </li>
+	        				</ul>
+	        			</div> <!-- //item-area -->
+	        			
+	        			<div class="paging-wrap">
+						    <a href="" class="mobile">더보기 15/20</a>
+						</div>
+	        		</div>
+	        	</section>
+		        <!-- //Change Contents -->
+		
+		    </div> <!-- //subContents -->
+		</div> <!-- //subContainer -->
+	</main>
+
+	<footer id="footer">
+        <div class="Fasten">
+            <div class="top-wrap">
+                <a class="go-top" onclick="go_top();"><img src="../images/web/comm/top.gif" alt="맨위로"></a>
+            </div>
+        </div>	    
+	    
+	    <div class="foot-menu">
+	    	<div class="Fasten">
+	    		<nav>
+	    			<a href="">회사소개</a>
+	    			<a href="">입점/제휴안내</a>
+	    			<a href=""><strong>개인정보취급방침</strong></a>
+	    			<a href="">이용약관</a>
+	    			<a href="">고객센터</a>
+	    		</nav>
+	    		
+	    		<div class="sns-area">
+	    			<h4 class="title">공식 SNS</h4>
+	    			<ul>
+	    				<li>
+	    					<a href=""><img src="../images/web/comm/sns/instagram2.png" alt="인스타그램"></a>
+	    				</li>
+	    				<li>
+	    					<a href=""><img src="../images/web/comm/sns/facebook2.png" alt="페이스북"></a>
+	    				</li>
+	    				<li>
+	    					<a href=""><img src="../images/web/comm/sns/naver-blog2.png" alt="네이버 블로그"></a>
+	    				</li>
+	    				<li>
+	    					<a href=""><img src="../images/web/comm/sns/kakao-story2.png" alt="카카오스토리"></a>
+	    				</li>
+	    			</ul>
+	    		</div>
+	    	</div>
+	    </div>
+	    
+	    <div class="copyright">
+		    <div class="Fasten">
+	            <div class="copy">
+	            	<div class="group">
+		                <p>상호명 : 제주특별자치도관광협회 &nbsp;&nbsp;&nbsp;&nbsp;대표이사 : 김영진 &nbsp;&nbsp;&nbsp;&nbsp;법인 등록번호 : 220121-0000107</p>      
+						<p>사업자 등록번호 : 616-82-04092 &nbsp;&nbsp;&nbsp;&nbsp;통신판매업번호: 제2013-제주연동 0024호</p>
+						<p>사업장 주소지 : 63122 제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층
+							<a href="http://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=6168204092" target="_blank" class="company-confirm" >사업자 정보확인</a>
+						</p>
+					</div>
+					<div class="group">
+						<p>개인정보관리책임자 : 김승원 &nbsp;&nbsp;&nbsp;&nbsp;E-mail : tamnao@tamnao.com &nbsp;&nbsp;&nbsp;&nbsp;팩스 : 064-742-8865</p>      
+						<p>고객센터 : 1522-3454 &nbsp;&nbsp;&nbsp;&nbsp;평일 09:00/18:00  점심시간 12:00/13:00 &nbsp;&nbsp;&nbsp;&nbsp;토요일, 일요일, 공휴일 휴무</p>
+						<p>Copyright 2016. 제주특별자치도관광협회 All Rights Reserved.</p>
+					</div>
+	            </div>
+	            <div class="mark-zone">
+			        <img src="../images/web/mark/ieco.jpg" alt="ieco">
+			        <img src="../images/web/mark/gcs.jpg" alt="gcs">
+			    </div>
+		    </div>
+	    </div>
+	</footer>
+</body>
+</html>

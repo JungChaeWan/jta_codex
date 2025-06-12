@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->	
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="../css/web/common.css">
+	<link rel="stylesheet" href="../css/web/style.css">
+	<!-- script -->
+	<script src="../js/jquery-1.11.1.js"></script>
+	<script src="../js/jquery-ui.js"></script>
+	<script src="../js/html_common.js"></script>
+	<script src="../js/html_style.js"></script>
+</head>
+<body>
+    <header id="header">
+
+        <div id="topBanner">
+            <div class="Fasten">
+                <a class="img-btn" onclick="show_popup('.comm-fullPopup2');"><img src="../images/web/comm/top_banner.jpg" alt="상단배너"></a>
+                <a class="close"><img id="tbClose" src="../images/web/comm/close.png" alt="닫기"></a>
+
+                <div class="comm-fullPopup2">
+                    <a class="option-close" onclick="close_popup('.comm-fullPopup2');"><img src="../images/web/comm/view_close.png" alt="닫기"></a>
+                    <img src="../images/web/comm/top_banner_view.png" alt="배너 상세">
+                </div>
+            </div>
+        </div>
+
+        <div class="Fasten">
+            <div class="topSearch">
+                <h1 class="logo"><a href=""><img src="../images/web/comm/logo.gif" alt="탐나오"></a></h1>
+                <!-- 검색 -->
+                <p class="searchBox"><input id="search" type="text"><button id="searBT"></button></p>
+                <!-- 서브메뉴 -->
+                <nav id="topMenu">
+                    <a href="">★즐겨찾기</a>
+                    <a href="">로그인</a>
+                    <a href="">회원가입</a>
+                    <a href="">마이페이지</a>
+                    <a href="">고객센터</a>
+                </nav>
+            </div>
+        </div>
+        <!-- main menu -->
+        <nav id="mainMenu">
+            <div class="Fasten">
+                <div class="menuBT"><a id="menuBT"><img src="../images/web/comm/menu.gif" alt="메뉴"></a></div>
+                <div class="subMenu">11<br>11<br>11<br>11<br></div>
+                <ul class="mainMenu">
+                    <li><a class="select" href="air-main.html">항공</a></li>
+                    <li><a href="hotel-list.html">숙박</a></li>
+                    <li><a href="rent-list.html">렌터카</a></li>
+                    <li><a href="">골프</a></li>
+                    <li><a href="">패키지할인상품</a></li>
+                    <li><a href="">관광지입장권</a></li>
+                    <li><a href="">레져/음식/뷰티</a></li>
+                    <li><a href="event-list.html">이벤트</a></li>
+                    <li><a href="">여행경비산출</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- //main menu -->
+    </header>
+
+	<main id="main">
+        <div class="mapLocation"> <!--index page에서는 삭제-->
+            <div class="Fasten">
+                <span>홈</span> <span class="gt">&gt;</span>
+                <span>실시간 예약</span> <span class="gt">&gt;</span>
+                <span>실시간 숙박</span> <span class="gt">&gt;</span>
+                <span>숙박상세</span>
+            </div>
+        </div>
+        <!-- quick banner -->
+        <div class="Fasten">
+            <aside id="leftAside">
+                <ul>
+                    <li><a href="http://www.hijeju.or.kr/discount/apply.htm" target="_blank"><img src="../images/web/leftBanner/01.png" alt="제주하이쿠폰"></a></li>
+                    <li><a href="http://www.jejugoldenbus.com/main/" target="_blank"><img src="../images/web/leftBanner/02.png" alt="제주황금시티투어"></a></li>
+                </ul>
+            </aside>
+        </div>
+        <!-- //quick banner -->
+        <div class="subContainer">
+            <div class="subHead"></div>
+            <div class="subContents">
+                <!-- new contents -->
+                <div class="sightseeing">
+                    <div class="bgWrap">
+                        <div class="Fasten">
+                            <!--상품 슬라이드-->
+                            <div class="product_slide">
+                                <div class="default">
+                                    <a href="#" class="prev"><img src="../images/web/icon/slider_prev.png" alt="이전"></a>
+                                    <div class="carousel">
+                                        <ul>
+                                            <li>
+                                                <a href="">
+                                                    <div class="imgBox">
+                                                        <p class="ranking">1</p>
+                                                        <span class="nt ntTopR"><img class="sale-coupon" src="../images/web/icon/sale.png" alt="할인쿠폰"></span>
+                                                        <img class="photo" src="../images/web/sightseeing/slider1.jpg" alt="코코몽랜드">
+                                                    </div>
+                                                    <div class="infoText">
+                                                        <p class="name">점보빌리지(코끼리쇼) 점보빌리지(코끼리쇼)</p>
+                                                        <p class="price"><strong>9,999,000</strong>원</p>
+
+                                                        <!-- 할인율 -->
+                                                        <p class="sale">45%</p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <div class="imgBox">
+                                                        <p class="ranking">2</p>
+                                                        <span class="nt ntTopR"><img class="sale-coupon" src="../images/web/icon/sale.png" alt="할인쿠폰"></span>
+                                                        <img class="photo" src="../images/web/sightseeing/slider2.jpg" alt="헬로키티아일랜드">
+                                                    </div>
+                                                    <div class="infoText">
+                                                        <p class="name">점보빌리지(코끼리쇼) 점보빌리지(코끼리쇼)</p>
+                                                        <p class="price"><strong>19,999,000</strong>원</p>
+
+                                                        <!-- 할인율 -->
+                                                        <p class="sale">45%</p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <div class="imgBox">
+                                                        <p class="ranking">3</p>
+                                                        <img class="photo" src="../images/web/sightseeing/slider1.jpg" alt="코코몽랜드">
+                                                    </div>
+                                                    <div class="infoText">
+                                                        <p class="name">점보빌리지(코끼리쇼) 점보빌리지(코끼리쇼)</p>
+                                                        <p class="price"><strong>29,999,000</strong>원</p>
+
+                                                        <!-- 할인율 -->
+                                                        <p class="sale">45%</p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <div class="imgBox">
+                                                        <p class="ranking">4</p>
+                                                        <img class="photo" src="../images/web/sightseeing/slider2.jpg" alt="헬로키티아일랜드">
+                                                    </div>
+                                                    <div class="infoText">
+                                                        <p class="name">점보빌리지(코끼리쇼) 점보빌리지(코끼리쇼)</p>
+                                                        <p class="price"><strong>109,999,000</strong>원</p>
+
+                                                        <!-- 할인율 -->
+                                                        <p class="sale">45%</p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <div class="imgBox">
+                                                        <p class="ranking">5</p>
+                                                        <img class="photo" src="../images/web/sightseeing/slider1.jpg" alt="코코몽랜드">
+                                                    </div>
+                                                    <div class="infoText">
+                                                        <p class="name">점보빌리지(코끼리쇼) 점보빌리지(코끼리쇼)</p>
+                                                        <p class="price"><strong>29,999,000</strong>원</p>
+
+                                                        <!-- 할인율 -->
+                                                        <p class="sale">45%</p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <a href="#" class="next"><img src="../images/web/icon/slider_next.png" alt="다음"></a>
+                                    <div class="clear"></div>
+                                </div>
+                                <script src="../js/slider.js"></script>
+                            </div> <!--//product_list-->
+                        </div> <!--//Fasten-->
+                    </div> <!--//bgWrap-->                    
+                    <div class="Fasten">
+                        <!-- 검색 결과 -->
+                        <div class="product_result">
+                            <div id="tabs" class="mainTabMenu1">
+                                <ul class="menuList">
+                                    <li class="all"><a class="select" href=""><img src="../images/web/icon/all.gif" alt="전체">전체</a></li>
+                                    <li><a href="">전시/박물관/민속촌 <span>(25)</span></a></li>
+                                    <li><a href="">테마공원 <span>(25)</span></a></li>
+                                    <li><a href="">공연/쇼/상영관 <span>(25)</span></a></li>
+                                    <li><a href="">현장 결제 입장권 <span>(25)</span></a></li>
+                                    <!-- <li class="menuInfo"><a href=""><img class="icon" src="../images/web/icon/menuinfo.gif" alt="이용안내">이용안내</a></li> -->
+                                </ul>
+                                <ul class="array">
+                                    <li class="select">
+                                        <a href="">판매순
+                                            <span id="array1_down"><img src="../images/web/icon/arrow2.gif" alt="내림"></span><span id="array1_up"><img src="../images/web/icon/arrow3.gif" alt="올림"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">가격순
+                                            <span id="array2_down"><img src="../images/web/icon/arrow2.gif" alt="내림"></span><span id="array2_up"><img src="../images/web/icon/arrow3.gif" alt="올림"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">최신상품순
+                                            <span id="array3_down"><img src="../images/web/icon/arrow2.gif" alt="내림"></span><span id="array3_up"><img src="../images/web/icon/arrow3.gif" alt="올림"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">추천순
+                                            <span id="array4_down"><img src="../images/web/icon/arrow2.gif" alt="내림"></span><span id="array4_up"><img src="../images/web/icon/arrow3.gif" alt="올림"></span>
+                                        </a>
+                                    </li>
+                                    <li class="distance">
+                                        <a>거리순</a>
+                                        <article class="map-wrap">
+                                            <h4 class="title">거리순 위치 지정하기 <a class="map-close"><img src="../images/web/icon/close6.gif" alt="닫기"></a></h4>
+                                            <div class="map-box">
+                                                <ul class="location">
+                                                    <li class="list1"><a href=""><img src="../images/web/icon/location2.png" alt="point"><span>한림</span></a></li>
+                                                    <li class="list2"><a href=""><img src="../images/web/icon/location2.png" alt="point"><span>애월</span></a></li>
+                                                    <li class="list3"><a href=""><img src="../images/web/icon/location2.png" alt="point"><span>제주시</span></a></li>
+                                                    <li class="list4"><a href=""><img src="../images/web/icon/location2.png" alt="point"><span>조천</span></a></li>
+                                                    <li class="list5"><a href=""><img src="../images/web/icon/location2.png" alt="point"><span>성산</span></a></li>
+                                                    <li class="list6"><a href=""><img src="../images/web/icon/location2.png" alt="point"><span>표선</span></a></li>
+                                                    <li class="list7"><a href=""><img src="../images/web/icon/location2.png" alt="point"><span>서귀포시</span></a></li>
+                                                    <li class="list8"><a href=""><img src="../images/web/icon/location2.png" alt="point"><span>대정</span></a></li>
+                                                </ul>
+                                                <p class="button">
+                                                    <a href=""><img src="../images/web/button/map1.gif" alt="위치지정하기"></a>
+                                                    <a href=""><img src="../images/web/button/map2.gif" alt="초기화"></a>
+                                                </p>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li class="selList">
+                                        <!-- <select id="proInfo">
+                                            <option value="">모든상품보기</option>
+                                            <option value="">할인쿠폰보기</option>
+                                        </select> -->
+
+                                        <span class="sail-check">
+                                            <input id="sail_coupon" type="checkbox"> <label for="sail_coupon">할인쿠폰보기</label>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <!-- 상품 리스트 -->
+                                <div id="tabs-1" class="tabPanel">
+                                    <div class="itemWrap">
+                                        <div class="item">
+                                            <a href="">
+                                                <div class="photo">
+                                                    <!--알림-->
+                                                    <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                    <span class="nt ntTopR"><img class="sale-coupon" src="../images/web/icon/sale.png" alt="할인쿠폰"></span>
+                                                    <!--photo-->
+                                                    <img class="img" src="../images/web/package/01.jpg" alt="">
+
+                                                    <!-- 상품정보 -->
+                                                    <div class="bottom-info">                                                        
+                                                        <span class="date">2016-01-16 ~ 2016-01-30</span>
+                                                    </div>
+                                                </div>
+                                                <article class="textWrap">
+                                                    <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                    <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                    <ul class="info">
+                                                        <li class="saleWrap">
+                                                            <!--<p class="sale">45%</p>
+                                                            <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>-->
+                                                        </li>
+                                                        <li class="comment">
+                                                            <!--<p class="like">
+                                                                <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                                <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                            </p>-->
+                                                        </li>
+                                                    </ul>
+                                                </article>
+                                            </a>
+                                        </div> <!-- //item -->
+                                        <div class="item">
+                                            <a href="">
+                                                <div class="photo">
+                                                    <!--알림-->
+                                                    <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                    <!--photo-->
+                                                    <img class="img" src="../images/web/package/01.jpg" alt="">
+
+                                                    <!-- 상품정보 -->
+                                                    <div class="bottom-info">
+                                                        <span class="info">바로사용</span>
+                                                        <span class="date">구매 후 90일</span>
+                                                    </div>
+                                                </div>
+                                                <article class="textWrap">
+                                                    <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                    <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                    <ul class="info">
+                                                        <li class="saleWrap">
+                                                            <p class="sale">45%</p>
+                                                            <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                        </li>
+                                                        <li class="comment">
+                                                            <p class="like">
+                                                                <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                                <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                            </p>
+                                                        </li>
+                                                    </ul>
+
+                                                    <!-- 옵션추가 (상품구분 - 옵션명 기준) -->
+                                                    <p class="product"><span>상품구분) </span> <span>옵션명 기준</span></p>
+                                                </article>
+                                            </a>
+                                        </div> <!-- //item -->
+                                        <div class="item">
+                                            <a href="">
+                                                <div class="photo">
+                                                    <!--알림-->
+                                                    <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                    <!--photo-->
+                                                    <img class="img" src="../images/web/package/01.jpg" alt="">
+
+                                                    <!-- 상품정보 -->
+                                                    <div class="bottom-info">
+                                                        <span class="info">2시간 후 사용</span>
+                                                        <span class="date">2016-01-16 ~ 2016-01-30</span>
+                                                    </div>
+                                                </div>
+                                                <article class="textWrap">
+                                                    <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                    <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                    <ul class="info">
+                                                        <li class="saleWrap">
+                                                            <p class="sale">45%</p>
+                                                            <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                        </li>
+                                                        <li class="comment">
+                                                            <p class="like">
+                                                                <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                                <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                            </p>
+                                                        </li>
+                                                    </ul>
+
+                                                    <!-- 옵션추가 (상품구분 - 옵션명 기준) -->
+                                                    <p class="product"><span>상품구분) </span> <span>옵션명 기준</span></p>
+                                                </article>
+                                            </a>
+                                        </div> <!-- //item -->
+                                    </div> <!-- //itemWrap -->                                    
+                                </div> <!-- //tabs-1 -->                                
+                                <div class="pageNumber">
+                                    <p class="list_pageing">
+                                        <span class="btn">
+                                            <a href="#"><img src="../images/web/icon/page1.gif" alt="처음페이지"></a>
+                                            <a href="#"><img src="../images/web/icon/page2.gif" alt="이전페이지"></a>
+                                        </span>
+                                        <a href="#">1</a>
+                                        <a href="#">2</a>
+                                        <a href="#">3</a>
+                                        <a href="#">4</a>
+                                        <strong>5</strong>
+                                        <a href="#">6</a>
+                                        <a href="#">7</a>
+                                        <a href="#">8</a>
+                                        <a href="#">9</a>
+                                        <a href="#">10</a>
+                                        <span class="btn">
+                                            <a href="#"><img src="../images/web/icon/page3.gif" alt="다음페이지"></a>
+                                            <a href="#"><img src="../images/web/icon/page4.gif" alt="마지막페이지"></a>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div> <!-- //mainTabMenu1 -->
+                        </div> <!-- //product_result -->
+                    </div> <!--//Fasten-->
+                </div> <!-- //sightseeing -->
+                <!-- //new contents -->
+            </div> <!-- //subContents -->
+        </div> <!-- //subContainer -->
+	</main>
+	
+	<aside id="rightAside">
+        <div class="ctWrap">
+            <!-- 상품 리스트 -->
+            <div class="product">
+                <h6 class="title">오늘본상품 <img src="../images/web/comm/arrow.gif" alt="arrow"></h6>
+                <div class="today-list">
+                    <div id="todayList">
+                        <ul class="list">
+                            <li><a href=""><img class="photo" src="../images/web/main/slider05.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                            <li><a href=""><img class="photo" src="../images/web/main/slider02.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                            <li><a href=""><img class="photo" src="../images/web/main/slider03.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                            <!--오늘본 상품없을 시 출력-->
+                            <!--<p class="side-noContent">오늘 본 상품이 없습니다.</p>-->
+                        </ul>
+                    </div>
+                    <ul class="itemNav">
+                        <li>
+                            <span id="itemPrev"><a href=""><img src="../images/web/comm/list_prev.gif" alt="이전"></a></span>
+                            <!-- <span id="number">1/1</span> -->
+                            <span id="itemNext"><a href=""><img src="../images/web/comm/list_next.gif" alt="다음"></a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="shoppingCart">
+                <h6>장바구니</h6>
+                <p>
+                    <img src="../images/web/comm/cart2.gif" alt="장바구니">
+                    <span>9</span>
+                </p>
+            </div>
+            <ul class="menuList">
+                <li><a href=""><img src="../images/web/comm/menulist1.gif" alt="맞춤견적">맞춤견적</a></li>
+                <li><a href=""><img src="../images/web/comm/menulist2.gif" alt="자주묻는질문">자주묻는질문</a></li>
+            </ul>
+            <div id="floatingBT"><img src="../images/web/comm/side.gif" alt="side button"></div>
+        </div>        
+    </aside>
+
+	<footer id="footer">
+	    <div class="footMenu">
+	        <div class="Fasten">
+	            <span><a href="">회사소개</a></span>
+	            <span><a href="">사업제휴</a></span>
+	            <span><a href=""><strong>개인정보취급방침</strong></a></span>
+	            <span><a href="">국내여행표준약관</a></span>
+	            <span><a href="">전자상거래표준약관</a></span>
+	            <span><a href="">이메일무단수집거부</a></span>
+	            <!-- link site -->
+	            <div class="footLink">
+	                <select id="site_family">
+	                    <option value="" selected>패밀리사이트</option>
+	                    <option value="">list1</option>
+	                </select>
+	                <select id="site_regard">
+	                    <option value="" selected>관련사이트</option>
+	                    <option value="">list1</option>
+	                </select>
+	            </div>
+		    </div>
+	    </div>
+	    <div class="Fasten">
+            <div class="copy">
+                690-785 제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층 Tel)064-742-8861 관리자 직통(8774) Fax) 064-742-8865<br>
+                사업자 등록번호 : 616-82-04092 법인 등록번호 : 220121-0000107 통신판매업번호: 제2013-제주연동 0024호<br>
+                고객센터 1577-1233 I 개인정보관리 책임자 최종훈<br>
+                부득이한 사정에 의해 여행일저이 변경되는 경우 여행자의 사전동의를 받습니다.<br>
+                Copyright 2015. 제주특별자치도관광협회 All Rights Reserved.
+            </div>
+	    </div>
+	    <!-- banner zone -->
+	    <div class="footBanner">
+            <div class="Fasten">
+                <ul>
+                    <li><a href=""><img src="../images/web/footBanner/01.jpg" alt="제주관광협회"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/02.jpg" alt="하이제주"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/03.jpg" alt="제주관광공사"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/04.jpg" alt="공정거래위원회"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/05.jpg" alt="한국소비자원"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/06.jpg" alt="한국여행업협회"></a></li>
+                </ul>
+            </div>
+	    </div>
+	</footer>
+</body>
+</html>

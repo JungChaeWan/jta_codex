@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>탐나오</title>
+</head>
+
+<body>
+	<table style="width: 740px; margin: 0 auto; text-decoration: none; border-collapse: collapse; font-family: 'NanumBarunGothic', 'Dotum', 'Helvetica', 'sans-serif';">
+		<!-- thead -->
+		#parse("mailTemplate/header2.vm")
+
+		<tbody>
+			<tr>
+				<td style="margin: 0; padding: 0;">
+					<!-- 나의예약 -->
+					<div style="position: relative; width: 740px;">
+						<img src="${domain}/images/web/mail2/temp/typeA/top-title.png" alt="여행 출발 7일전" style="display: block;">
+						
+						<div>
+							<img src="${domain}/images/web/mail2/temp/typeA/my-title-1.png" alt="나의예약" style="display: block; margin: 30px 0 15px 0;">
+
+							<table style="width: 100%; margin-top: 10px; border-collapse: collapse;">
+								#foreach($rsv in $rsvList)
+									<tr>
+										<td style="width: 105px;">
+											<img src="${domain}${rsv.imgPath}" alt="$rsv.prdtNm" height="150" width="150">
+										</td>
+										<td style="padding-left: 28px; vertical-align: middle;">
+											<div style="color: #202020;">
+												<span style="font-size: 17px; font-weight: bold;">$rsv.prdtNm</span>
+												<span style="font-size: 13px; color: #808080; "> | $rsv.corpNm</span>
+												<ul style="margin: 0; font-size: 14px; line-height: 23px; padding: 15px 0 0 0; font-weight: 400;">
+													<li>예약정보 : $rsv.prdtInf</li>
+													<li>연락처 : $rsv.rsvTelnum</li>
+													<li>주소 : $rsv.roadNmAddr</li>
+												</ul>
+											</div>
+										</td>
+									</tr>
+								#end
+							</table>
+						</div>
+						<div style="padding: 40px 0 60px 0; text-align: center;">
+							<a href="${domain}/web/mypage/rsvList.do" target="_blank"><img src="${domain}/images/web/mail/reservation-1.png" alt="예약확인바로가기"></a>
+						</div>
+					</div>
+					<!-- 관광지/레저 추천상품 -->
+					<div style="margin-bottom: 40px;">
+						<h5 style="font-size: 25px; margin: 40px 0 15px 0; text-align: left;">관광지/레저 추천상품</h5>
+						<table style="width: 100%; table-layout: fixed;">
+							#foreach($ctgrRcmd in $ctgrRcmdList)
+								#if($ctgrRcmd.prdtDiv == "C200")
+									#if($foreach.count > 6)
+										#break
+									#end
+
+									#if($foreach.count % 3 == 1)
+										<tr>
+									#end
+									
+									#if($foreach.count % 3 == 0)
+										#set($tdWidth = 31)
+									#else
+										#set($tdWidth = 34)
+									#end
+									
+									<td style="width: $tdWidth%;">
+										<a href="${domain}/web/sp/detailPrdt.do?prdtNum=${ctgrRcmd.prdtNum}&prdtDiv=${ctgrRcmd.etcExp}" target="_blank">
+											<img src="${domain}${ctgrRcmd.imgPath}" alt="$ctgrRcmd.prdtNm" style="display: block; width:230px; height: 230px;">
+										</a>
+										<div style="width: 230px;">
+											<h5 style="font-size: 16px; margin: 15px 0 8px 0; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">$ctgrRcmd.prdtNm</h5>
+											<p style="font-size: 14px; margin: 3px 0 0; color: #939393; line-height: 1.2; height: 2.4em; text-overflow: ellipsis; white-space: normal; overflow: hidden;">$ctgrRcmd.prdtExp</p>
+											<div style="text-align: right; margin-top: 7px;">
+												<p style="margin: 0; font-size: 16px; font-weight: bold; color: #e94c3f; padding-right:8px;">$numberTool.format("integer", $ctgrRcmd.saleAmt)원</p>
+											</div>
+										</div>
+									</td>
+
+									#if($foreach.count % 3 == 0)
+										</tr>
+									#end
+								#end
+							#end
+
+							#if($ctgrRcmdList.size() % 3 > 0)
+								</tr>
+							#end
+						</table>
+					</div>
+					<!-- 맛집/뷰티 추천상품 -->
+					<div style="margin-bottom: 60px;">
+						<h5 style="font-size: 25px; margin: 40px 0 15px 0; text-align: left;">맛집/뷰티 추천상품</h5>
+						<table style="width: 100%; table-layout: fixed;">
+							#foreach($ctgrRcmd in $ctgrRcmdList)
+								#if($ctgrRcmd.prdtDiv == "C300")
+									#if($foreach.count > 6)
+										#break
+									#end
+
+									#if($foreach.count % 3 == 1)
+										<tr>
+									#end
+
+									#if($foreach.count % 3 == 0)
+										#set($tdWidth = 31)
+									#else
+										#set($tdWidth = 34)
+									#end
+
+									<td style="width: $tdWidth%;">
+										<a href="${domain}/web/sp/detailPrdt.do?prdtNum=${ctgrRcmd.prdtNum}&prdtDiv=${ctgrRcmd.etcExp}" target="_blank">
+											<img src="${domain}${ctgrRcmd.imgPath}" alt="$ctgrRcmd.prdtNm" style="display: block; width:230px; height: 230px;">
+										</a>
+										<div style="width: 230px;">
+											<h5 style="font-size: 16px; margin: 5px 0; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">$ctgrRcmd.prdtNm</h5>
+											<p style="font-size: 14px; margin: 0; color: #939393; line-height: 1.2; height: 2.4em; text-overflow: ellipsis; white-space: normal; overflow: hidden;">$ctgrRcmd.prdtExp</p>
+											<div style="text-align: right; margin: 5px 0;">
+												<p style="margin: 0; font-size: 16px; font-weight: bold; color: #e94c3f; padding-right:8px;">$numberTool.format("integer", $ctgrRcmd.saleAmt)원</p>
+											</div>
+										</div>
+									</td>
+
+									#if($foreach.count % 3 == 0)
+										</tr>
+									#end
+								#end
+							#end
+
+							#if($ctgrRcmdList.size() % 3 > 0)
+								</tr>
+							#end
+						</table>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+
+		<!-- tfoot -->
+		#parse("mailTemplate/footer.vm")
+	</table>
+</body>
+</html>

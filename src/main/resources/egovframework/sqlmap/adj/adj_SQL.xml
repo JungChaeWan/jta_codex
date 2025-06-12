@@ -1,0 +1,1843 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="adj">
+
+<resultMap id="ADJ_R_00" class="oss.adj.vo.ADJVO">
+    <result property="adjDt" 		column="ADJ_DT" />
+    <result property="corpId" 		column="CORP_ID" />
+    <result property="adjStatusCd" 	column="ADJ_STATUS_CD" />
+    <result property="saleAmt" 		column="SALE_AMT" />
+    <result property="disAmt" 		column="DIS_AMT" />
+    <result property="cmssAmt" 		column="CMSS_AMT" />
+    <result property="saleCmss" 	column="SALE_CMSS" />
+    <result property="adjAmt" 		column="ADJ_AMT" />
+    <result property="lastAdjAmt" 	column="LAST_ADJ_AMT" />
+    <result property="adjItdDt" 	column="ADJ_ITD_DT" />
+    <result property="adjCmplDt" 	column="ADJ_CMPL_DT" />
+    <result property="frstRegDttm" 	column="FRST_REG_DTTM" />
+    <result property="lastModDttm" 	column="LAST_MOD_DTTM" />
+</resultMap>
+
+<resultMap id="ADJ_R_02" class="oss.adj.vo.ADJVO">
+    <result property="adjItdDt" 	        column="ADJ_ITD_DT" />
+    <result property="saleAmt" 		        column="SALE_AMT" />
+    <result property="cmssAmt" 		        column="CMSS_AMT" />
+    <result property="disAmt" 		        column="DIS_AMT" />
+    <result property="supportDisAmt"        column="SUPPORT_DIS_AMT" />
+    <result property="unsupportedDisAmt"    column="UNSUPPORTED_DIS_AMT" />
+    <result property="supportedPointAmt"    column="SUPPORTED_POINT_AMT" />
+    <result property="unsupportedPointAmt"  column="UNSUPPORTED_POINT_AMT" />
+    <result property="saleCmss" 	        column="SALE_CMSS" />
+    <result property="adjAmt" 		        column="ADJ_AMT" />
+    <result property="lastAdjAmt" 	        column="LAST_ADJ_AMT" />
+</resultMap>
+
+<resultMap id="ADJ_R_03" class="oss.adj.vo.ADJVO">
+    <result property="adjDt" 		        column="ADJ_DT" />
+    <result property="corpId" 		        column="CORP_ID" />
+    <result property="corpNm" 		        column="CORP_NM" />
+    <result property="adjStatusCd" 	        column="ADJ_STATUS_CD" />
+    <result property="saleAmt" 		        column="SALE_AMT" />
+    <result property="cmssAmt" 		        column="CMSS_AMT" />
+    <result property="disAmt" 		        column="DIS_AMT" />
+    <result property="supportDisAmt"        column="SUPPORT_DIS_AMT" />
+    <result property="unsupportedDisAmt"    column="UNSUPPORTED_DIS_AMT" />
+    <result property="supportedPointAmt"    column="SUPPORTED_POINT_AMT" />
+    <result property="unsupportedPointAmt"  column="UNSUPPORTED_POINT_AMT" />
+    <result property="saleCmss" 	        column="SALE_CMSS" />
+    <result property="adjAmt" 		        column="ADJ_AMT" />
+    <result property="lastAdjAmt" 	        column="LAST_ADJ_AMT" />
+    <result property="adjItdDt" 	        column="ADJ_ITD_DT" />
+    <result property="adjCmplDt" 	        column="ADJ_CMPL_DT" />
+    <result property="frstRegDttm" 	        column="FRST_REG_DTTM" />
+    <result property="lastModDttm" 	        column="LAST_MOD_DTTM" />
+    <result property="bankNm" 		        column="BANK_NM" />
+    <result property="accNum" 		        column="ACC_NUM" />
+    <result property="depositor" 	        column="DEPOSITOR" />
+    <result property="modCnt" 		        column="MOD_CNT" />
+    <result property="adjAplPct" 		    column="ADJ_APL_PCT" />
+    <result property="prdtDiv" 		        column="PRDT_DIV" />
+    <result property="corpDisAmt" 	        column="CORP_DIS_AMT" />
+</resultMap>
+
+<resultMap id="ADJ_R_04" class="oss.adj.vo.ADJVO">
+    <result property="adjDt" 		        column="ADJ_DT" />
+    <result property="corpId" 		        column="CORP_ID" />
+    <result property="corpNm" 		        column="CORP_NM" />
+    <result property="saleAmt" 		        column="SALE_AMT" />
+    <result property="cmssAmt" 		        column="CMSS_AMT" />
+    <result property="disAmt" 		        column="DIS_AMT" />
+    <result property="supportDisAmt"        column="SUPPORT_DIS_AMT" />
+    <result property="unsupportedDisAmt"    column="UNSUPPORTED_DIS_AMT" />
+    <result property="saleCmss" 	        column="SALE_CMSS" />
+    <result property="bankNm" 		        column="BANK_NM" />
+    <result property="accNum" 		        column="ACC_NUM" />
+    <result property="depositor" 	        column="DEPOSITOR" />
+    <result property="prdtDiv" 		        column="PRDT_DIV" />
+    <result property="disJsYsAmt" 		    column="DIS_JS_YS_AMT" />
+    <result property="disCmssAmt" 		    column="DIS_CMSS_AMT" />
+    <result property="pointCmssAmt"		    column="POINT_CMSS_AMT" />
+    <result property="pointJsYsAmt" 		column="POINT_JS_YS_AMT" />
+    <result property="supportedPointAmt" 	column="SUPPORTED_POINT_AMT" />
+    <result property="unsupportedPointAmt" 	column="UNSUPPORTED_POINT_AMT" />
+    <result property="corpDisAmt" 	column="CORP_DIS_AMT" />
+</resultMap>
+
+<resultMap id="ADJ_R_05" class="oss.adj.vo.ADJVO">
+    <result property="adjDt" 		        column="ADJ_DT" />
+    <result property="adjItdDt" 	        column="ADJ_ITD_DT" />
+    <result property="saleAmt" 		        column="SALE_AMT" />
+    <result property="cmssAmt" 		        column="CMSS_AMT" />
+    <result property="disAmt" 		        column="DIS_AMT" />
+    <result property="supportDisAmt"        column="SUPPORT_DIS_AMT" />
+    <result property="unsupportedDisAmt"    column="UNSUPPORTED_DIS_AMT" />
+    <result property="supportedPointAmt"    column="SUPPORTED_POINT_AMT" />
+    <result property="unsupportedPointAmt"  column="UNSUPPORTED_POINT_AMT" />
+    <result property="saleCmss" 	        column="SALE_CMSS" />
+    <result property="adjAmt" 		        column="ADJ_AMT" />
+    <result property="lastAdjAmt" 	        column="LAST_ADJ_AMT" />
+</resultMap>
+
+<resultMap id="ADJ_R_06" class="oss.adj.vo.ADJVO">
+    <result property="adjDt" 		column="ADJ_DT" />
+    <result property="corpId" 		column="CORP_ID" />
+    <result property="adjStatusCd" 	column="ADJ_STATUS_CD" />
+    <result property="saleAmt" 		column="SALE_AMT" />
+    <result property="disAmt" 		column="DIS_AMT" />
+    <result property="cmssAmt" 		column="CMSS_AMT" />
+    <result property="saleCmss" 	column="SALE_CMSS" />
+    <result property="adjAmt" 		column="ADJ_AMT" />
+    <result property="lastAdjAmt" 	column="LAST_ADJ_AMT" />
+    <result property="adjItdDt" 	column="ADJ_ITD_DT" />
+    <result property="adjCmplDt" 	column="ADJ_CMPL_DT" />
+    <result property="frstRegDttm" 	column="FRST_REG_DTTM" />
+    <result property="lastModDttm" 	column="LAST_MOD_DTTM" />
+    <result property="adjAplPct" 	column="ADJ_APL_PCT" />
+    <result property="supportDisAmt" 	column="SUPPORT_DIS_AMT" />
+    <result property="supportedPointAmt" 	column="SUPPORTED_POINT_AMT" />
+    <result property="corpDisAmt" 	column="CORP_DIS_AMT" />
+</resultMap>
+
+<resultMap id="ADJ_R_08" class="oss.adj.vo.ADJVO">
+    <result property="adjItdDt" 	        column="ADJ_ITD_DT" />
+    <result property="corpId" 		        column="CORP_ID" />
+    <result property="corpNm" 		        column="CORP_NM" />
+    <result property="saleAmt" 		        column="SALE_AMT" />
+    <result property="cmssAmt" 		        column="CMSS_AMT" />
+    <result property="disAmt" 		        column="DIS_AMT" />
+    <result property="supportDisAmt"        column="SUPPORT_DIS_AMT" />
+    <result property="unsupportedDisAmt"    column="UNSUPPORTED_DIS_AMT" />
+    <result property="saleCmss" 	        column="SALE_CMSS" />
+    <result property="adjAmt" 		        column="ADJ_AMT" />
+    <result property="adjAplPct" 		    column="ADJ_APL_PCT" />
+    <result property="bankNm" 		        column="BANK_NM" />
+    <result property="accNum" 		        column="ACC_NUM" />
+    <result property="depositor" 	        column="DEPOSITOR" />
+    <result property="coRegNum" 	        column="CO_REG_NUM" />
+    <result property="ceoNm" 	            column="CEO_NM" />
+    <result property="prdtDiv" 	            column="PRDT_DIV" />
+    <result property="supportedPointAmt" 	column="SUPPORTED_POINT_AMT" />
+    <result property="unsupportedPointAmt" column="UNSUPPORTED_POINT_AMT" />
+    <result property="corpDisAmt" column="CORP_DIS_AMT" />
+    <!--<result property="bigo" 	            column="BIGO" />-->
+    <!--<result property="pgCmss"    		    column="PG_CMSS" />-->
+</resultMap>
+
+<resultMap id="ADJ_R_09" class="oss.adj.vo.ADJTAMNACARDVO">
+    <result property="approvalCode" 	        column="APPROVAL_CODE" />
+    <result property="tradeDttm" 		        column="TRADE_DTTM" />
+    <result property="rsvStatusCd" 		        column="RSV_STATUS_CD" />
+    <result property="paySn" 		            column="PAY_SN" />
+    <result property="rsvNum" 		            column="RSV_NUM" />
+    <result property="dtlRsvNum" 		        column="DTL_RSV_NUM" />
+    <result property="rsvNm"                    column="RSV_NM" />
+    <result property="totalNmlAmt"              column="TOTAL_NML_AMT" />
+    <result property="totalSaleAmt" 	        column="TOTAL_SALE_AMT" />
+    <result property="supportDisAmt" 		    column="SUPPORT_DIS_AMT" />
+    <result property="unsupportedDisAmt" 		column="UNSUPPORTED_DIS_AMT" />
+    <result property="cmssAmt" 		            column="CMSS_AMT" />
+    <result property="tcCmss" 		            column="TC_CMSS" />
+    <result property="corpId" 	                column="CORP_ID" />
+    <result property="corpNm" 	                column="CORP_NM" />
+    <result property="prdtNum" 	                column="PRDT_NUM" />
+    <result property="prdtNm" 	                column="PRDT_NM" />
+    <result property="prdtInf" 	                column="PRDT_INF" />
+    <result property="prdtDiv" 	                column="PRDT_DIV" />
+    <result property="appDiv" 	                column="APP_DIV" />
+    <result property="adjAplPct" 	            column="ADJ_APL_PCT" />
+    <result property="adjItdDt" 	            column="ADJ_ITD_DT" />
+    <result property="adjStatus" 	            column="ADJ_STATUS" />
+    <result property="paidAmount" 	            column="PAID_AMOUNT" />
+    <result property="discountAmount" 	        column="DISCOUNT_AMOUNT" />
+    <result property="suspiciousRsv" 	        column="SUSPICIOUS_RSV" />
+</resultMap>
+
+<resultMap id="ADJDTLINF_R_00" class="oss.adj.vo.ADJDTLINFVO">
+    <result property="adjDtlNum" 	column="ADJ_DTL_NUM" />
+    <result property="dtlRsvNum" 	column="DTL_RSV_NUM" />
+    <result property="rsvStatusCd" 	column="RSV_STATUS_CD" />
+    <result property="adjDt" 		column="ADJ_DT" />
+    <result property="corpId" 		column="CORP_ID" />
+    <result property="prdtNum" 		column="PRDT_NUM" />
+    <result property="prdtNm" 		column="PRDT_NM" />
+    <result property="prdtInf" 		column="PRDT_INF" />
+    <result property="saleAmt" 		column="SALE_AMT" />
+    <result property="disAmt" 		column="DIS_AMT" />
+    <result property="cmssAmt" 		column="CMSS_AMT" />
+    <result property="saleCmss" 	column="SALE_CMSS" />
+    <result property="modYn" 		column="MOD_YN" />
+    <result property="modRsn" 		column="MOD_RSN" />
+    <result property="adjAplPct"	column="ADJ_APL_PCT" />
+</resultMap>
+
+<resultMap id="ADJDTLINF_R_02" class="oss.adj.vo.ADJDTLINFVO">
+    <result property="adjDtlNum" 	        column="ADJ_DTL_NUM" />
+    <result property="dtlRsvNum" 	        column="DTL_RSV_NUM" />
+    <result property="rsvStatusCd" 	        column="RSV_STATUS_CD" />
+    <result property="adjDt" 		        column="ADJ_DT" />
+    <result property="corpId" 		        column="CORP_ID" />
+    <result property="corpNm" 		        column="CORP_NM" />
+    <result property="prdtNum" 		        column="PRDT_NUM" />
+    <result property="prdtNm" 		        column="PRDT_NM" />
+    <result property="prdtInf" 		        column="PRDT_INF" />
+    <result property="saleAmt" 		        column="SALE_AMT" />
+    <result property="disAmt" 		        column="DIS_AMT" />
+    <result property="supportDisAmt"        column="SUPPORT_DIS_AMT" />
+    <result property="unsupportedDisAmt"    column="UNSUPPORTED_DIS_AMT" />
+    <result property="cmssAmt" 		        column="CMSS_AMT" />
+    <result property="saleCmss" 	        column="SALE_CMSS" />
+    <result property="payDiv" 		        column="PAY_DIV" />
+    <result property="rsvNm" 		        column="RSV_NM" />
+    <result property="rsvNum" 		        column="RSV_NUM" />
+    <result property="lpointUseFlag"        column="LPOINT_USE_FLAG" />
+    <result property="lpointSaveFlag"       column="LPOINT_SAVE_FLAG" />
+    <result property="lpointUseCancelFlag"	column="LPOINT_USE_CANCEL_FLAG" />
+    <result property="lpointUsePoint"       column="LPOINT_USE_POINT" />
+    <result property="modYn" 		        column="MOD_YN" />
+    <result property="modRsn" 		        column="MOD_RSN" />
+    <result property="adjAplPct"	        column="ADJ_APL_PCT" />
+    <result property="adjStatusCd"	        column="ADJ_STATUS_CD" />
+    <result property="partnerNm"            column="PARTNER_NM" />
+    <result property="cpNm"	                column="CP_NM" />
+    <result property="prdtDiv"              column="PRDT_DIV" />
+    <result property="realAmt"              column="REAL_AMT" />
+    <result property="pgCmssAmt"            column="PG_CMSS_AMT" />
+    <result property="pgDepositAmt"         column="PG_DEPOSIT_AMT" />
+    <result property="masJsYsAmt"           column="MAS_JS_YS_AMT" />
+    <result property="realProfit"           column="REAL_PROFIT" />
+    <result property="appDiv"               column="APP_DIV" />
+    <result property="disJsYsAmt"           column="DIS_JS_YS_AMT" />
+    <result property="disCmssAmt"           column="DIS_CMSS_AMT" />
+    <result property="supportedPointAmt"    column="SUPPORTED_POINT_AMT" />
+    <result property="unsupportedPointAmt"  column="UNSUPPORTED_POINT_AMT" />
+    <result property="pointCmssAmt"         column="POINT_CMSS_AMT" />
+    <result property="pointJsYsAmt"         column="POINT_JS_YS_AMT" />
+    <result property="rsvEmail"             column="RSV_EMAIL" />
+    <result property="corpDisAmt"             column="CORP_DIS_AMT" />
+</resultMap>
+
+<select id="ADJ_S_00" resultMap="ADJ_R_00">
+SELECT ADJ_DT           /*정산 일자*/
+     , CORP_ID          /*업체 아이디*/
+     , ADJ_STATUS_CD    /*정산 상태 코드*/
+     , SALE_AMT         /*판매 금액*/
+     , DIS_AMT          /*할인 금액*/
+     , CMSS_AMT         /*수수료 금액*/
+     , SALE_CMSS        /*판매 수수료*/
+     , ADJ_AMT          /*정산 금액*/
+     , LAST_ADJ_AMT     /*최종 정산 금액*/
+     , ADJ_ITD_DT       /*정산 예정 일자*/
+     , ADJ_CMPL_DT      /*정산 완료 일자*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+  FROM TB_ADJ
+ WHERE ADJ_DT = #sAdjDt#
+</select>
+
+<select id="ADJ_S_01" resultClass="java.lang.String">
+SELECT TO_CHAR(NEXT_DAY(SYSDATE - 7 , 5), 'YYYYMMDD')
+  FROM DUAL
+</select>
+
+<select id="ADJ_S_02" resultMap="ADJ_R_02">
+SELECT SUBSTR(ADJ_ITD_DT, 0, 6) AS ADJ_ITD_DT   /*정산 예정 일자*/
+    , SUM(SALE_AMT) AS SALE_AMT    /*판매 금액*/
+    , SUM(CMSS_AMT) AS CMSS_AMT    /*수수료 금액*/
+    , SUM(DIS_AMT) AS DIS_AMT     /*할인 금액*/
+    , SUM(SUPPORT_DIS_AMT) AS SUPPORT_DIS_AMT     /*지원 할인 금액*/
+    , SUM(UNSUPPORTED_DIS_AMT) AS UNSUPPORTED_DIS_AMT /*미지원 할인 금액*/
+    , SUM(SUPPORTED_POINT_AMT) AS SUPPORTED_POINT_AMT     /*지원 포인트 금액*/
+    , SUM(UNSUPPORTED_POINT_AMT) AS UNSUPPORTED_POINT_AMT /*미지원 포인트 금액*/
+    , SUM(SALE_CMSS) AS SALE_CMSS   /*판매 수수료*/
+    , SUM(ADJ_AMT) AS ADJ_AMT     /*정산 금액*/
+    , SUM(LAST_ADJ_AMT) AS LAST_ADJ_AMT /*최종 정산 금액*/
+FROM TB_ADJ
+WHERE ADJ_ITD_DT LIKE #sFromYear# || LPAD(#sFromMonth#, 2, '0') || '%'
+GROUP BY SUBSTR(ADJ_ITD_DT, 0, 6)
+</select>
+
+<select id="ADJ_S_03" resultMap="ADJ_R_03">
+SELECT T_ADJ.ADJ_DT           /*정산 일자*/
+    , T_ADJ.CORP_ID          /*업체 아이디*/
+    , T_CORP.CORP_NM         /*업체명*/
+    , T_ADJ.ADJ_STATUS_CD    /*정산 상태 코드*/
+    , T_ADJ.SALE_AMT         /*판매 금액*/
+    , T_ADJ.CMSS_AMT         /*수수료 금액*/
+    , T_ADJ.DIS_AMT          /*할인 금액*/
+    , T_ADJ.SUPPORT_DIS_AMT  /*지원 할인 금액*/
+    , T_ADJ.UNSUPPORTED_DIS_AMT /*미지원 할인 금액*/
+    , T_ADJ.SUPPORTED_POINT_AMT  /*지원 포인트 금액*/
+    , T_ADJ.UNSUPPORTED_POINT_AMT /*미지원 포인트 금액*/
+    , T_ADJ.SALE_CMSS        /*판매 수수료*/
+    , T_ADJ.ADJ_AMT          /*정산 금액*/
+    , T_ADJ.LAST_ADJ_AMT     /*최종 정산 금액*/
+    /*, T_ADJ.PG_CMSS*/
+    , T_ADJ.ADJ_ITD_DT       /*정산 예정 일자*/
+    , T_ADJ.ADJ_CMPL_DT      /*정산 완료 일자*/
+    , T_ADJ.FRST_REG_DTTM    /*최초 등록 일시*/
+    , T_ADJ.LAST_MOD_DTTM    /*최종 수정 일시*/
+    , T_CORP.BANK_NM		  /*은행명*/
+    , T_CORP.ACC_NUM		  /*계좌번호*/
+    , T_CORP.DEPOSITOR		  /*예금주*/
+    , (SELECT ADJ_APL_PCT FROM TB_CMSS WHERE CMSS_NUM = T_CORP.CMSS_NUM) AS ADJ_APL_PCT /*수수료율*/
+    , (SELECT COUNT(ADJ_DTL_NUM) FROM TB_ADJDTLINF WHERE ADJ_DT = T_ADJ.ADJ_DT AND CORP_ID = T_ADJ.CORP_ID AND MOD_YN = 'Y') AS MOD_CNT
+    , (SELECT CD_NM FROM TB_CD WHERE T_CORP.CORP_CD = CD_NUM) PRDT_DIV
+    , T_ADJ.CORP_DIS_AMT
+FROM TB_ADJ T_ADJ
+    INNER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID = T_ADJ.CORP_ID
+WHERE T_ADJ.ADJ_DT = #sAdjDt#
+
+<isEmpty property="sOrder">
+ORDER BY ADJ_STATUS_CD ASC, ADJ_AMT DESC, T_ADJ.SALE_AMT DESC
+</isEmpty>
+
+</select>
+
+<select id="ADJ_S_04" resultMap="ADJ_R_00">
+SELECT TO_DATE(ADJ_DT, 'YYYY-MM-DD') AS ADJ_DT          /*정산 일자*/
+     , CORP_ID          /*업체 아이디*/
+     , ADJ_STATUS_CD    /*정산 상태 코드*/
+     , SALE_AMT         /*판매 금액*/
+     , DIS_AMT          /*할인 금액*/
+     , CMSS_AMT         /*수수료 금액*/
+     , SALE_CMSS        /*판매 수수료*/
+     , ADJ_AMT          /*정산 금액*/
+     , LAST_ADJ_AMT     /*최종 정산 금액*/
+     , TO_DATE(ADJ_ITD_DT, 'YYYY-MM-DD') AS ADJ_ITD_DT       /*정산 예정 일자*/
+     , TO_DATE(ADJ_CMPL_DT, 'YYYY-MM-DD') AS ADJ_CMPL_DT      /*정산 완료 일자*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+  FROM TB_ADJ
+ WHERE CORP_ID = #sCorpId#
+   AND SUBSTR(ADJ_ITD_DT,0,6) = #sFromYear#||LPAD(#sFromMonth#, 2, '0')
+ ORDER BY ADJ_DT DESC
+</select>
+
+<select id="ADJ_S_05" resultMap="ADJ_R_05">
+SELECT TO_DATE(ADJ_DT, 'YYYY-MM-DD') AS ADJ_DT           /*정산 일자*/
+    , TO_DATE(ADJ_ITD_DT, 'YYYY-MM-DD') AS ADJ_ITD_DT   /*정산 예정 일자*/
+    , SUM(SALE_AMT) AS SALE_AMT    /*판매 금액*/
+    , SUM(CMSS_AMT) AS CMSS_AMT    /*수수료 금액*/
+    , SUM(DIS_AMT) AS DIS_AMT     /*할인 금액*/
+    , SUM(SUPPORT_DIS_AMT) AS SUPPORT_DIS_AMT     /*지원 할인 금액*/
+    , SUM(UNSUPPORTED_DIS_AMT) AS UNSUPPORTED_DIS_AMT /*미지원 할인 금액*/
+    , SUM(SUPPORTED_POINT_AMT) AS SUPPORTED_POINT_AMT     /*지원 포인트 금액*/
+    , SUM(UNSUPPORTED_POINT_AMT) AS UNSUPPORTED_POINT_AMT /*미지원 포인트 금액*/
+    , SUM(SALE_CMSS) AS SALE_CMSS   /*판매 수수료*/
+    , SUM(ADJ_AMT) AS ADJ_AMT     /*정산 금액*/
+    , SUM(LAST_ADJ_AMT) AS LAST_ADJ_AMT /*최종 정산 금액*/
+FROM TB_ADJ
+WHERE ADJ_ITD_DT BETWEEN REPLACE(#sStartDt#, '-', '') AND REPLACE(#sEndDt#, '-', '')
+GROUP BY ADJ_DT
+    , ADJ_ITD_DT
+ORDER BY ADJ_DT DESC
+</select>
+
+<select id="ADJ_S_06" resultMap="ADJ_R_06">
+SELECT TO_DATE(ADJ_DT, 'YYYY-MM-DD') AS ADJ_DT          /*정산 일자*/
+     , CORP_ID          /*업체 아이디*/
+     , ADJ_STATUS_CD    /*정산 상태 코드*/
+     , SALE_AMT         /*판매 금액*/
+     , DIS_AMT          /*할인 금액*/
+     , CMSS_AMT         /*수수료 금액*/
+     , SALE_CMSS        /*판매 수수료*/
+     , ADJ_AMT          /*정산 금액*/
+     , LAST_ADJ_AMT     /*최종 정산 금액*/
+     , TO_DATE(ADJ_ITD_DT, 'YYYY-MM-DD') AS ADJ_ITD_DT       /*정산 예정 일자*/
+     , TO_DATE(ADJ_CMPL_DT, 'YYYY-MM-DD') AS ADJ_CMPL_DT      /*정산 완료 일자*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , (SELECT ADJ_APL_PCT FROM TB_CMSS WHERE CMSS_NUM = (SELECT CMSS_NUM FROM TB_CORP WHERE CORP_ID = A.CORP_ID)) AS ADJ_APL_PCT
+     , SUPPORT_DIS_AMT
+     , SUPPORTED_POINT_AMT
+     , CORP_DIS_AMT
+  FROM TB_ADJ A
+ WHERE CORP_ID = #sCorpId#
+   AND ADJ_ITD_DT BETWEEN REPLACE(#sStartDt#, '-', '') AND REPLACE(#sEndDt#, '-', '')
+ ORDER BY ADJ_DT DESC
+</select>
+
+<select id="ADJ_S_07" resultClass="int">
+SELECT NVL(SUM(ADJ_AMT), 0) AS AMT FROM TB_ADJ where CORP_ID=#sCorpId# and ADJ_STATUS_CD='AJ80'
+</select>
+
+<select id="ADJ_S_08" resultMap="ADJ_R_08">
+SELECT ADJ.ADJ_ITD_DT
+    , ADJ.CORP_ID
+    , CORP.CORP_NM
+    , ADJ.SALE_AMT
+    , ADJ.CMSS_AMT
+    , ADJ.DIS_AMT
+    , ADJ.SUPPORT_DIS_AMT
+    , ADJ.UNSUPPORTED_DIS_AMT
+    , ADJ.SUPPORTED_POINT_AMT
+    , ADJ.UNSUPPORTED_POINT_AMT
+    , ADJ.SALE_CMSS
+    , ADJ.ADJ_AMT
+    , ADJ.LAST_ADJ_AMT
+    , (SELECT ADJ_APL_PCT FROM TB_CMSS WHERE CMSS_NUM = CORP.CMSS_NUM) AS ADJ_APL_PCT
+    , CORP.BANK_NM
+    , CORP.ACC_NUM
+    , CORP.DEPOSITOR
+    , CORP.CO_REG_NUM
+    , CORP.CEO_NM
+    , (SELECT CD_NM FROM TB_CD WHERE CORP.CORP_CD = CD_NUM) PRDT_DIV
+    , ADJ.CORP_DIS_AMT
+FROM (SELECT SUBSTR (ADJ_ITD_DT, 0, 6) AS ADJ_ITD_DT
+            , CORP_ID
+            , SUM (SALE_AMT) AS SALE_AMT
+            , SUM (CMSS_AMT) AS CMSS_AMT
+            , SUM (DIS_AMT) AS DIS_AMT
+            , SUM (SUPPORT_DIS_AMT) AS SUPPORT_DIS_AMT
+            , SUM (UNSUPPORTED_DIS_AMT) AS UNSUPPORTED_DIS_AMT
+            , SUM (SUPPORTED_POINT_AMT) AS SUPPORTED_POINT_AMT
+            , SUM (UNSUPPORTED_POINT_AMT) AS UNSUPPORTED_POINT_AMT
+            , SUM (SALE_CMSS) AS SALE_CMSS
+            , SUM (ADJ_AMT) AS ADJ_AMT
+            , SUM (LAST_ADJ_AMT) AS LAST_ADJ_AMT
+            , SUM (CORP_DIS_AMT) AS CORP_DIS_AMT
+        FROM TB_ADJ
+        WHERE ADJ_ITD_DT LIKE #sFromYear# || LPAD(#sFromMonth#, 2, '0') || '%'
+        GROUP BY SUBSTR(ADJ_ITD_DT, 0, 6), CORP_ID
+) ADJ
+INNER JOIN TB_CORP CORP ON CORP.CORP_ID = ADJ.CORP_ID
+ORDER BY ADJ_AMT DESC
+</select>
+
+<insert id="ADJ_I_01">
+INSERT INTO TB_ADJ
+    ( ADJ_DT
+    , CORP_ID
+    , ADJ_STATUS_CD
+    , SALE_AMT
+    , CMSS_AMT
+    , DIS_AMT
+    , SUPPORT_DIS_AMT
+    , UNSUPPORTED_DIS_AMT
+    , SUPPORTED_POINT_AMT
+    , UNSUPPORTED_POINT_AMT
+    , SALE_CMSS
+    , ADJ_AMT
+    , LAST_ADJ_AMT
+    /*, PG_CMSS*/
+    , ADJ_ITD_DT
+    , ADJ_CMPL_DT
+    , FRST_REG_DTTM
+    , LAST_MOD_DTTM
+    , BIGO
+    , CORP_DIS_AMT
+    )
+SELECT #sAdjDt#
+    , A.CORP_ID
+    , 'AJ10'
+    , NVL(B.SALE_AMT, 0)
+    , NVL(B.CMSS_AMT, 0)
+    , NVL(B.DIS_AMT, 0)
+    , NVL(B.SUPPORT_DIS_AMT, 0)
+    , NVL(B.UNSUPPORTED_DIS_AMT, 0)
+    , NVL(B.SUPPORTED_POINT_AMT, 0)
+    , NVL(B.UNSUPPORTED_POINT_AMT, 0)
+    , NVL(B.SALE_CMSS, 0)
+    , NVL(B.ADJ_AMT, 0)
+    , 0
+    /*, NVL(B.PG_CMSS, 0)*/
+    , (SELECT TO_CHAR(NEXT_DAY(TO_DATE(#sAdjDt#) + 7, 6),'YYYYMMDD') FROM DUAL)
+    , ''
+    , SYSDATE
+    , SYSDATE
+    , BIGO
+    , NVL(B.CORP_DIS_AMT, 0)
+FROM TB_CORP A
+    LEFT OUTER JOIN (SELECT
+    				CORP_ID
+    				, SUM(SALE_AMT)  AS SALE_AMT
+    				, SUM(CMSS_AMT)  AS CMSS_AMT
+                    , SUM(DIS_AMT)   AS DIS_AMT
+                    , SUM(SUPPORT_DIS_AMT)   AS SUPPORT_DIS_AMT
+                    , SUM(UNSUPPORTED_DIS_AMT)   AS UNSUPPORTED_DIS_AMT
+                    , SUM(SUPPORTED_POINT_AMT)   AS SUPPORTED_POINT_AMT
+                    , SUM(UNSUPPORTED_POINT_AMT)   AS UNSUPPORTED_POINT_AMT
+                    , SUM(SALE_CMSS) AS SALE_CMSS
+                    , SUM(SALE_AMT + CMSS_AMT - SALE_CMSS - SUPPORT_DIS_AMT - SUPPORTED_POINT_AMT) AS ADJ_AMT
+                    , WM_CONCAT(BIGO) AS BIGO
+                    , SUM(CORP_DIS_AMT) AS CORP_DIS_AMT
+    			FROM (
+    					SELECT CORP_ID
+                            , SUM(SALE_AMT)  AS SALE_AMT
+                            , SUM(CMSS_AMT)  AS CMSS_AMT
+                            , SUM(DIS_AMT)   AS DIS_AMT
+                            , SUM(SUPPORT_DIS_AMT)   AS SUPPORT_DIS_AMT
+                            , SUM(UNSUPPORTED_DIS_AMT)   AS UNSUPPORTED_DIS_AMT
+    					    , SUM(SUPPORTED_POINT_AMT)   AS SUPPORTED_POINT_AMT
+                    		, SUM(UNSUPPORTED_POINT_AMT)   AS UNSUPPORTED_POINT_AMT
+                            , SUM(SALE_CMSS) AS SALE_CMSS
+                            , SUM(SALE_AMT + CMSS_AMT - SALE_CMSS - SUPPORT_DIS_AMT - SUPPORTED_POINT_AMT) AS ADJ_AMT
+                            , (
+                            CASE
+                            	WHEN SUM(SUPPORT_DIS_AMT) > 0 THEN CP_NM || '(' ||CP_ID || ')[' || SUM(SUPPORT_DIS_AMT) || '원]'
+                            	ELSE null
+                            END) AS BIGO
+    					    , SUM(CORP_DIS_AMT) AS CORP_DIS_AMT
+                        FROM TB_ADJDTLINF AS A
+                        LEFT JOIN(
+    	                    SELECT
+    	                    		USE_RSV_NUM,
+    		                    	A.CP_NM,
+    		                    	B.CP_ID
+    	                	FROM
+    	                		TB_CP AS A
+    	            		JOIN TB_USER_CP AS B
+    	            		ON A.CP_ID = B.CP_ID AND USE_YN = 'Y'
+                        ) AS B
+                        ON A.DTL_RSV_NUM = B.USE_RSV_NUM
+                        WHERE ADJ_DT = #sAdjDt#
+                        GROUP BY CORP_ID, CP_ID,  CP_NM
+                    )
+                    GROUP BY CORP_ID) B ON B.CORP_ID = A.CORP_ID
+</insert>
+
+<update id="ADJ_U_01">
+UPDATE TB_ADJ
+   SET ADJ_STATUS_CD = 'AJ80'
+     , ADJ_CMPL_DT = TO_CHAR(SYSDATE, 'YYYYMMDD')
+ WHERE ADJ_DT = #sAdjDt#
+<dynamic prepend="AND CORP_ID IN ">
+ 	<iterate open="(" close=")" conjunction="," property="corpList">
+ 		#corpList[]#
+ 	</iterate>
+</dynamic>
+</update>
+
+<update id="ADJ_U_02">
+UPDATE TB_ADJ AS T_ADJ SET SALE_CMSS=(
+    SELECT SUM(SALE_CMSS) FROM TB_ADJDTLINF
+        WHERE ADJ_DT=T_ADJ.ADJ_DT
+            AND CORP_ID=T_ADJ.CORP_ID
+  )
+	, ADJ_AMT = (
+		SELECT SUM(SALE_AMT) + SUM(CMSS_AMT) - SUM(SALE_CMSS)
+          FROM TB_ADJDTLINF
+         WHERE ADJ_DT=T_ADJ.ADJ_DT
+           AND CORP_ID=T_ADJ.CORP_ID
+     )
+  WHERE ADJ_DT = #adjDt#
+    and CORP_ID = #corpId#
+</update>
+
+<select id="ADJDTLINF_S_00" resultMap="ADJDTLINF_R_00">
+SELECT ADJ_DTL_NUM      /*정산 상세 번호*/
+     , DTL_RSV_NUM      /*상세 예약 번호*/
+     , RSV_STATUS_CD    /*예약 상태 코드*/
+     , ADJ_DT           /*정산 일자*/
+     , CORP_ID          /*업체 아이디*/
+     , PRDT_NUM         /*상품 번호*/
+     , PRDT_NM          /*상품 명*/
+     , PRDT_INF         /*상품 정보*/
+     , SALE_AMT         /*판매 금액*/
+     , CMSS_AMT         /*수수료 금액*/
+     , SALE_CMSS        /*판매 수수료*/
+     , DIS_AMT			/*할인 금액*/
+     , MOD_YN			/*수정 여부*/
+     , MOD_RSN			/*수정 사유*/
+     , ADJ_APL_PCT		/*정산 적용 비율*/
+  FROM TB_ADJDTLINF
+ WHERE ADJ_DTL_NUM = #adjDtlNum#
+</select>
+
+<select id="ADJDTLINF_S_01" resultMap="ADJDTLINF_R_00">
+SELECT ADJ_DTL_NUM      /*정산 상세 번호*/
+     , DTL_RSV_NUM      /*상세 예약 번호*/
+     , RSV_STATUS_CD    /*예약 상태 코드*/
+     , ADJ_DT           /*정산 일자*/
+     , CORP_ID          /*업체 아이디*/
+     , PRDT_NUM         /*상품 번호*/
+     , PRDT_NM          /*상품 명*/
+     , PRDT_INF         /*상품 정보*/
+     , SALE_AMT         /*판매 금액*/
+     , DIS_AMT          /*할인 금액*/
+     , CMSS_AMT         /*수수료 금액*/
+     , SALE_CMSS        /*판매 수수료*/
+     , MOD_YN			/*수정 여부*/
+     , MOD_RSN			/*수정 사유*/
+  FROM TB_ADJDTLINF
+ WHERE ADJ_DT = #sAdjDt#
+   AND CORP_ID = #sCorpId#
+ ORDER BY DTL_RSV_NUM DESC
+</select>
+
+<!-- 정산 상세 리스트 조회 -->
+<select id="ADJDTLINF_S_02" resultMap="ADJDTLINF_R_02">
+SELECT ADJ_DTL_NUM      /*정산 상세 번호*/
+    , DTL_RSV_NUM      /*상세 예약 번호*/
+    , RSV_STATUS_CD    /*예약 상태 코드*/
+    , ADJ_DT           /*정산 일자*/
+    , CORP_ID          /*업체 아이디*/
+    , PRDT_DIV
+    , PRDT_NUM         /*상품 번호*/
+    , PRDT_NM          /*상품 명*/
+    , PRDT_INF         /*상품 정보*/
+    , SALE_AMT         /*판매 금액*/
+    , DIS_AMT          /*할인 금액*/
+    , SUPPORT_DIS_AMT  /*할인 금액*/
+    , UNSUPPORTED_DIS_AMT /*할인 금액*/
+    , SUPPORTED_POINT_AMT  /*포인트 금액*/
+    , UNSUPPORTED_POINT_AMT  /*미지원포인트 금액*/
+    , CMSS_AMT         /*수수료 금액*/
+    , SALE_CMSS        /*판매 수수료*/
+    , MOD_YN           /*수정 여부*/
+    , MOD_RSN          /*수정 사유*/
+    , PAY_DIV
+    , RSV_NM
+    , RSV_NUM
+    , LPOINT_USE_FLAG/*L.Point 사용 여부*/
+    , LPOINT_SAVE_FLAG/*L.NPoint 적립 여부*/
+    , LPOINT_USE_CANCEL_FLAG /*L.Point사용 취소여부*/
+    , LPOINT_USE_POINT /*L.Point 사용 금액*/
+    , CORP_NM
+    , ADJ_APL_PCT
+    , ADJ_STATUS_CD
+    , PARTNER_NM /*포인트명*/
+    , CP_NM
+	, REAL_AMT /* 실제금액 */
+    , PG_CMSS_AMT /* PG사 수수료 */
+    , CASE WHEN CMSS_AMT > 0 THEN CMSS_AMT-PG_CMSS_AMT+LPOINT_USE_POINT
+          ELSE REAL_AMT-PG_CMSS_AMT+LPOINT_USE_POINT
+      END AS PG_DEPOSIT_AMT /*PG사 협회 입금금액 : 결제금액 - PG사 수수료 + LPOINT금액 (취소수수료가 있을 경우 취소수수료에서 차감) */
+    , CASE
+		 WHEN SUPPORT_DIS_AMT - CORP_DIS_AMT > 0 AND SUPPORTED_POINT_AMT = 0
+         THEN MAS_DIS_AMT - SALE_CMSS
+	     	 WHEN SUPPORT_DIS_AMT - CORP_DIS_AMT > 0 AND SUPPORTED_POINT_AMT > 0
+	     	 THEN TRUNC((SUPPORT_DIS_AMT- CORP_DIS_AMT) * ADJ_APL_PCT / 100,-1)
+	     	 ELSE 0
+	     END
+	     AS DIS_CMSS_AMT /* 지원금액 수수료 */
+    , CASE
+		 WHEN SUPPORT_DIS_AMT = 0 AND SUPPORTED_POINT_AMT > 0
+         THEN MAS_DIS_AMT - SALE_CMSS
+	     	 WHEN SUPPORT_DIS_AMT > 0 AND SUPPORTED_POINT_AMT > 0
+	     	 THEN MAS_DIS_AMT - TRUNC((SUPPORT_DIS_AMT- CORP_DIS_AMT) * ADJ_APL_PCT / 100,-1) - SALE_CMSS
+	     	 ELSE 0
+	     END
+	     AS POINT_CMSS_AMT /* 포인트금액 수수료 */
+    , CASE
+		 WHEN SUPPORT_DIS_AMT - CORP_DIS_AMT > 0 AND SUPPORTED_POINT_AMT = 0
+         THEN SUPPORT_DIS_AMT - CORP_DIS_AMT - (MAS_DIS_AMT - SALE_CMSS)
+	     	 WHEN SUPPORT_DIS_AMT - CORP_DIS_AMT > 0 AND SUPPORTED_POINT_AMT > 0
+	     	 THEN SUPPORT_DIS_AMT - CORP_DIS_AMT - (TRUNC((SUPPORT_DIS_AMT- CORP_DIS_AMT) * ADJ_APL_PCT / 100,-1))
+	     	 ELSE 0
+	     END
+	     AS DIS_JS_YS_AMT /* 지원금액 정산금액 */
+    , CASE
+		 WHEN SUPPORT_DIS_AMT = 0 AND SUPPORTED_POINT_AMT > 0
+         THEN SUPPORTED_POINT_AMT - (MAS_DIS_AMT - SALE_CMSS)
+	     	 WHEN SUPPORT_DIS_AMT > 0 AND SUPPORTED_POINT_AMT > 0
+	     	 THEN SUPPORTED_POINT_AMT - (MAS_DIS_AMT - TRUNC((SUPPORT_DIS_AMT- CORP_DIS_AMT) * ADJ_APL_PCT / 100,-1) - SALE_CMSS)
+	     	 ELSE 0
+	     END AS POINT_JS_YS_AMT /* 포인트 정산금액 */
+    , MAS_JS_YS_AMT /* 업체정산 대상금액 */
+	, SALE_CMSS-PG_CMSS_AMT-UNSUPPORTED_DIS_AMT-UNSUPPORTED_POINT_AMT AS REAL_PROFIT /* 협회 실수익 : 판매수수료 - PG사 수수료 - 미지원할인금액 */
+    , APP_DIV
+    , RSV_EMAIL
+    , CORP_DIS_AMT
+FROM(
+	SELECT T_ADJ.ADJ_DTL_NUM      /*정산 상세 번호*/
+	    , T_ADJ.DTL_RSV_NUM      /*상세 예약 번호*/
+	    , T_ADJ.RSV_STATUS_CD    /*예약 상태 코드*/
+	    , T_ADJ.ADJ_DT           /*정산 일자*/
+	    , T_ADJ.CORP_ID          /*업체 아이디*/
+	    , (SELECT CD_NM FROM TB_CD WHERE (SELECT CORP_CD FROM TB_CORP WHERE CORP_ID = T_ADJ.CORP_ID) = CD_NUM) PRDT_DIV
+	    , T_ADJ.PRDT_NUM         /*상품 번호*/
+	    , T_ADJ.PRDT_NM          /*상품 명*/
+	    , T_ADJ.PRDT_INF         /*상품 정보*/
+	    , T_ADJ.SALE_AMT         /*판매 금액*/
+	    , T_ADJ.DIS_AMT          /*할인 금액*/
+	    , T_ADJ.SUPPORT_DIS_AMT  /*할인 금액*/
+	    , T_ADJ.UNSUPPORTED_DIS_AMT /*할인 금액*/
+	    , T_ADJ.SUPPORTED_POINT_AMT /*지원포인트금액*/
+	    , T_ADJ.UNSUPPORTED_POINT_AMT /*지원포인트금액*/
+	    , T_ADJ.CMSS_AMT         /*수수료 금액*/
+	    , T_ADJ.SALE_CMSS        /*판매 수수료*/
+	    , T_ADJ.MOD_YN           /*수정 여부*/
+	    , T_ADJ.MOD_RSN          /*수정 사유*/
+	    , T_RSV2.PAY_DIV
+	    , T_RSV2.RSV_NM
+	    , T_RSV2.RSV_NUM
+        , LPOINT_USE_FLAG /*L.Point사용 취소여부*/
+        , T_RSV2.LPOINT_SAVE_FLAG/*L.NPoint 적립 여부*/
+        , CASE
+        WHEN (SELECT CANCEL_YN FROM TB_LPOINT_USE_INF WHERE LP_DTL_RSV_NUM = T_ADJ.DTL_RSV_NUM) = 'Y' THEN 'O'
+        ELSE 'X'
+        END AS LPOINT_USE_CANCEL_FLAG /*L.Point사용 취소여부*/
+        , LPOINT_USE_POINT
+	    , T_CORP.CORP_NM
+	    , T_ADJ.ADJ_APL_PCT
+	    , T_ADJ0.ADJ_STATUS_CD
+	    , (SELECT PARTNER_NM FROM TB_POINT_CP WHERE PARTNER_CODE = (SELECT PARTNER_CODE FROM TB_POINT WHERE DTL_RSV_NUM = T_ADJ.DTL_RSV_NUM AND ROWNUM = 1))
+          AS PARTNER_NM /*포인트명*/
+	    , TUC.CP_NM
+	    , (T_ADJ.SALE_AMT-T_ADJ.SUPPORT_DIS_AMT-T_ADJ.UNSUPPORTED_DIS_AMT-T_ADJ.SUPPORTED_POINT_AMT-T_ADJ.UNSUPPORTED_POINT_AMT-LPOINT_USE_POINT) AS REAL_AMT /* 실제금액 */
+        ,CASE
+            WHEN T_ADJ.CMSS_AMT > 0 THEN
+                CASE WHEN DECODE(T_RSV2.PG_CMSS_DIV, 'CM00', TRUNC(T_ADJ.CMSS_AMT*T_RSV2.PG_CMSS_PER/100) ,'CM01', TRUNC(T_RSV2.PG_CMSS_AMT)) >= MIN_CMSS
+                THEN DECODE(T_RSV2.PG_CMSS_DIV, 'CM00', TRUNC(T_ADJ.CMSS_AMT*T_RSV2.PG_CMSS_PER/100) ,'CM01', TRUNC(T_RSV2.PG_CMSS_AMT))
+                ELSE MIN_CMSS
+                END
+            WHEN T_ADJ.SALE_AMT > 0 THEN
+                CASE
+                WHEN DECODE(T_RSV2.PG_CMSS_DIV, 'CM00',
+                           TRUNC((T_ADJ.SALE_AMT-T_ADJ.SUPPORT_DIS_AMT-T_ADJ.UNSUPPORTED_DIS_AMT-T_ADJ.SUPPORTED_POINT_AMT-T_ADJ.UNSUPPORTED_POINT_AMT-LPOINT_USE_POINT)*T_RSV2.PG_CMSS_PER/100) ,
+                           'CM01',
+                           TRUNC(T_RSV2.PG_CMSS_AMT)) >= MIN_CMSS
+                THEN DECODE(T_RSV2.PG_CMSS_DIV, 'CM00',
+                           TRUNC((T_ADJ.SALE_AMT-T_ADJ.SUPPORT_DIS_AMT-T_ADJ.UNSUPPORTED_DIS_AMT-T_ADJ.SUPPORTED_POINT_AMT-T_ADJ.UNSUPPORTED_POINT_AMT-LPOINT_USE_POINT)*T_RSV2.PG_CMSS_PER/100) ,
+                           'CM01',
+                           TRUNC(T_RSV2.PG_CMSS_AMT))
+                ELSE MIN_CMSS
+                END
+            ELSE 0
+        END  PG_CMSS_AMT /*PG사 수수료*/
+        ,CASE
+            WHEN T_ADJ.CMSS_AMT > 0 THEN T_ADJ.CMSS_AMT-T_ADJ.SUPPORT_DIS_AMT-T_ADJ.SUPPORTED_POINT_AMT-T_ADJ.SALE_CMSS
+            ELSE T_ADJ.SALE_AMT-T_ADJ.SUPPORT_DIS_AMT-T_ADJ.SUPPORTED_POINT_AMT-T_ADJ.SALE_CMSS
+        END AS MAS_JS_YS_AMT /* 업체정산 대상금액 */
+	    , CASE
+	       WHEN T_ADJ.CMSS_AMT > 0
+	       THEN TRUNC(T_ADJ.CMSS_AMT * ADJ_APL_PCT / 100,-1)
+	       ELSE
+		      CASE
+	          WHEN T_CORP.CORP_CD = 'AD' AND T_ADJ.RSV_STATUS_CD = 'RS30'
+	          THEN
+		         (SELECT SUM(TRUNC(TOT_AMT * TO_NUMBER(ADJ_APL_PCT) / 100,-1)) - TRUNC(T_ADJ.CORP_DIS_AMT * TO_NUMBER(ADJ_APL_PCT)  / 100,-1)
+		         FROM    TB_AD_RSV_DAYPRICE
+		         WHERE   AD_RSV_NUM = T_ADJ.DTL_RSV_NUM
+		         )
+	          ELSE TRUNC((T_ADJ.SALE_AMT-T_ADJ.CORP_DIS_AMT) * ADJ_APL_PCT / 100,-1)
+	          END
+	       END AS MAS_DIS_AMT /* 탐나오 수수료 총액 */
+        , APP_DIV
+	    , RSV_EMAIL
+	    , T_ADJ.CORP_DIS_AMT
+	FROM TB_ADJDTLINF T_ADJ
+	    INNER JOIN TB_ADJ T_ADJ0 ON T_ADJ0.ADJ_DT = T_ADJ.ADJ_DT
+	        AND T_ADJ0.CORP_ID = T_ADJ.CORP_ID
+	    INNER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID = T_ADJ.CORP_ID
+	    INNER JOIN (SELECT T_RSV.RSV_NUM
+	                    , T_DTLRSV.DTL_RSV_NUM
+	                    , T_RSV.PAY_DIV
+	                    , T_RSV.RSV_NM
+                        , CASE
+                        WHEN (SELECT CANCEL_YN FROM TB_LPOINT_USE_INF WHERE LP_DTL_RSV_NUM = T_DTLRSV.DTL_RSV_NUM) = 'N' THEN 'O'
+                        ELSE 'X'
+                        END AS LPOINT_USE_FLAG /*L.Point사용 취소여부*/
+                        , DECODE(T_RSV.LPOINT_SAVE_POINT, 0, 'X', 'O') AS LPOINT_SAVE_FLAG
+                        , CASE
+                        WHEN (SELECT CANCEL_YN FROM TB_LPOINT_USE_INF WHERE LP_DTL_RSV_NUM = T_DTLRSV.DTL_RSV_NUM) = 'N' THEN T_RSV.LPOINT_USE_POINT
+                        ELSE 0
+                        END AS LPOINT_USE_POINT /*L.Point 사용 금액*/
+	                    , TO_CHAR(REG_DTTM, 'YYYYMMDD') AS REG_DTTM
+	                    , T_PG.PG_CMSS_DIV
+	                    , T_PG.PG_CMSS_PER
+	                    , DECODE(T_PG.MIN_CMSS, NULL, T_PG.PG_CMSS_AMT,T_PG.MIN_CMSS) AS PG_CMSS_AMT
+                        , DECODE(T_PG.MIN_CMSS,NULL,0,T_PG.MIN_CMSS) AS MIN_CMSS
+                        , APP_DIV
+	                    , RSV_EMAIL
+	            FROM TB_RSV T_RSV
+					LEFT JOIN TB_CMSS_PG T_PG ON T_RSV.PAY_DIV=T_PG.PG_DIV
+                        AND TO_CHAR(T_RSV.REG_DTTM,'YYYYMMDD') BETWEEN T_PG.APL_START_DT AND T_PG.APL_END_DT
+	                INNER JOIN (SELECT RSV_NUM
+	                                , AD_RSV_NUM AS DTL_RSV_NUM
+	                                , RSV_STATUS_CD
+	                        FROM TB_AD_RSV
+	                        WHERE ADJ_DT = #sAdjDt#
+	                            <isNotEmpty property="sCorpId">
+	                                AND CORP_ID = #sCorpId#
+	                            </isNotEmpty>
+	
+	                        UNION
+	
+	                        SELECT RSV_NUM
+	                            , RC_RSV_NUM AS DTL_RSV_NUM
+	                            , RSV_STATUS_CD
+	                        FROM TB_RC_RSV
+	                        WHERE ADJ_DT = #sAdjDt#
+	                            <isNotEmpty property="sCorpId">
+	                                AND CORP_ID = #sCorpId#
+	                            </isNotEmpty>
+	
+	                        UNION
+	
+	                        SELECT RSV_NUM
+	                            , SP_RSV_NUM AS DTL_RSV_NUM
+	                            , RSV_STATUS_CD
+	                        FROM TB_SP_RSV
+	                        WHERE ADJ_DT = #sAdjDt#
+	                            <isNotEmpty property="sCorpId">
+	                                AND CORP_ID = #sCorpId#
+	                            </isNotEmpty>
+	
+	                        UNION
+	
+	                        SELECT RSV_NUM
+	                            , SV_RSV_NUM AS DTL_RSV_NUM
+	                            , RSV_STATUS_CD
+	                        FROM TB_SV_RSV
+	                        WHERE ADJ_DT  = #sAdjDt#
+	                            <isNotEmpty property="sCorpId">
+	                                AND CORP_ID = #sCorpId#
+	                            </isNotEmpty>
+	                ) T_DTLRSV ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+	            WHERE T_RSV.RSV_STATUS_CD != 'RS99'
+	    ) T_RSV2 ON T_RSV2.DTL_RSV_NUM = T_ADJ.DTL_RSV_NUM
+    LEFT JOIN TB_USER_CP TUC ON TUC.USE_RSV_NUM = T_ADJ.DTL_RSV_NUM
+	LEFT JOIN (SELECT PARTNER_CODE,DTL_RSV_NUM FROM TB_POINT GROUP BY DTL_RSV_NUM, PARTNER_CODE) TP ON TP.DTL_RSV_NUM = T_ADJ.DTL_RSV_NUM
+	WHERE T_ADJ.ADJ_DT = #sAdjDt#
+    <isNotEmpty property="sCorpId">
+        AND T_ADJ.CORP_ID = #sCorpId#
+    </isNotEmpty>
+    <isNotEmpty property="arrCpId">
+        <iterate prepend="AND TUC.CP_ID IN " property="arrCpId" open="(" close=")" conjunction=",">
+            #arrCpId[]#
+        </iterate>
+    </isNotEmpty>
+    <isNotEmpty property="arrPartnerCode">
+        <iterate prepend="AND TP.PARTNER_CODE IN " property="arrPartnerCode" open="(" close=")" conjunction=",">
+            #arrPartnerCode[]#
+        </iterate>
+    </isNotEmpty>
+)
+</select>
+
+<!-- 정산건 추출 쿼리 시티투어 제외 -->
+<insert id="ADJDTLINF_I_01">
+INSERT INTO TB_ADJDTLINF
+    ( ADJ_DTL_NUM
+    , DTL_RSV_NUM
+    , RSV_STATUS_CD
+    , ADJ_DT
+    , CORP_ID
+    , PRDT_NUM
+    , PRDT_NM
+    , PRDT_INF
+    , SALE_AMT
+    , CMSS_AMT
+    , DIS_AMT
+    , SALE_CMSS
+    , ADJ_APL_PCT
+    , SUPPORT_DIS_AMT
+    , UNSUPPORTED_DIS_AMT
+    , SUPPORTED_POINT_AMT
+    , UNSUPPORTED_POINT_AMT
+    , CORP_DIS_AMT
+    /*, PG_CMSS*/
+    )
+SELECT 'ADJ' || LPAD(SEQ_ADJ_SN.NEXTVAL, 17, '0')
+    , DTL_RSV_NUM
+    , RSV_STATUS_CD
+    , #sAdjDt#
+    , CORP_ID
+    , PRDT_NUM
+    , PRDT_NM
+    , PRDT_INF
+    , CASE
+        WHEN RSV_STATUS_CD = 'RS20' AND SUPPORT_DIS_AMT != 0 AND CMSS_AMT <![CDATA[ < ]]> SUPPORT_DIS_AMT THEN SUPPORT_DIS_AMT
+        ELSE NML_AMT
+    END AS NML_AMT
+    , CMSS_AMT
+    , DIS_AMT
+    /*
+    선박금액 예외처리
+    원가 32,400원
+    판매가 29,300원
+    여객운임액 = 29,300원 – 1,500원 = 27,800원
+    운항관리비용 = 27,800원 × 2.9% = 806.2원
+    탐나오 판매 수수료 = 3.9%
+    탐나오 수익 = (27,800원 – 806.2) × 3.9% = 1,052.76원
+    */
+    , (CASE
+        /* 숙소 판매가 탐나오수수료 처리*/
+        WHEN CATEGORY = 'AD' AND RSV_STATUS_CD = 'RS30' AND NML_AMT != SUPPORTED_POINT_AMT
+            THEN TRUNC((SELECT SUM(TRUNC(TOT_AMT * TO_NUMBER(ADJ_APL_PCT) / 100,-1)) FROM TB_AD_RSV_DAYPRICE WHERE AD_RSV_NUM = DTL_RSV_NUM) - (SUPPORT_DIS_AMT * TO_NUMBER(ADJ_APL_PCT) / 100) - (SUPPORTED_POINT_AMT * TO_NUMBER(ADJ_APL_PCT) / 100),-1)
+        WHEN CATEGORY = 'AD' AND RSV_STATUS_CD = 'RS30' AND NML_AMT = SUPPORTED_POINT_AMT
+            THEN 0
+        /* 나머지 수수료 처리*/
+        ELSE TRUNC((DECODE(RSV_STATUS_CD, 'RS20', CMSS_AMT, NML_AMT) - SUPPORT_DIS_AMT - SUPPORTED_POINT_AMT) * (TO_NUMBER(ADJ_APL_PCT) / 100), -1)
+        END)  AS SALE_CMSS
+    , ADJ_APL_PCT
+    , SUPPORT_DIS_AMT
+    , UNSUPPORTED_DIS_AMT
+    , SUPPORTED_POINT_AMT
+    , UNSUPPORTED_POINT_AMT
+    , NVL(CORP_DIS_AMT,0) AS CORP_DIS_AMT
+    /*, PG_CMSS*/
+FROM (SELECT DISTINCT
+        CATEGORY
+        , T_RSV.DTL_RSV_NUM
+        , RSV_STATUS_CD
+        , CORP_ID
+        , T_RSV.PRDT_NUM
+        , PRDT_NM
+        , PRDT_INF
+        , DECODE(RSV_STATUS_CD, 'RS20', 0, NML_AMT) AS NML_AMT
+        , CMSS_AMT
+        , DIS_AMT
+        , ADJ_APL_PCT
+        , DECODE(T_CP.OUTSIDE_SUPPORT_DIV, 'Y', DIS_AMT, 0) AS SUPPORT_DIS_AMT
+        , DECODE(T_CP.OUTSIDE_SUPPORT_DIV, 'N', DIS_AMT, 0) AS UNSUPPORTED_DIS_AMT
+        , DECODE(T_EP.OUTSIDE_SUPPORT_DIV, 'Y', T_EP.USE_POINT, 0) AS SUPPORTED_POINT_AMT
+        , DECODE(T_EP.OUTSIDE_SUPPORT_DIV, 'N', T_EP.USE_POINT, 0) AS UNSUPPORTED_POINT_AMT
+        , CORP_DIS_AMT
+        /*, PG_CMSS*/
+    FROM (SELECT
+            'AD' AS CATEGORY
+            , AD_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , NML_AMT
+            , CMSS_AMT
+            , DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , TRUNC(A.NML_AMT * (SELECT ADJ_APL_PCT FROM (SELECT ADJ_APL_PCT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '승인' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) / 100, -1) AS PG_CMSS
+            ]]>*/
+        FROM TB_AD_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD IN ('RS30', 'RS31')
+            <![CDATA[
+            AND USE_DT < #sAdjDt#
+            ]]>
+
+        UNION
+
+        SELECT
+            'RC' AS CATEGORY
+            , RC_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , NML_AMT
+            , CMSS_AMT
+            , DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , TRUNC(A.NML_AMT * (SELECT ADJ_APL_PCT FROM (SELECT ADJ_APL_PCT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '승인' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) / 100, -1) AS PG_CMSS
+            ]]>*/
+        FROM TB_RC_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD IN ('RS30', 'RS31')
+            <![CDATA[
+            AND RENT_START_DT < #sAdjDt#
+            ]]>
+
+        UNION
+
+        SELECT
+            'SP' AS CATEGORY
+            , SP_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , NML_AMT
+            , CMSS_AMT
+            , DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , TRUNC(A.NML_AMT * (SELECT ADJ_APL_PCT FROM (SELECT ADJ_APL_PCT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '승인' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) / 100, -1) AS PG_CMSS
+            ]]>*/
+        FROM TB_SP_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD IN ('RS30', 'RS31')
+            <![CDATA[
+            AND TO_CHAR(USE_DTTM, 'YYYYMMDD') < #sAdjDt#
+            ]]>
+
+        UNION
+
+        SELECT
+            'SV' AS CATEGORY
+            , SV_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , NML_AMT
+            , CMSS_AMT
+            , DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , TRUNC(A.NML_AMT * (SELECT ADJ_APL_PCT FROM (SELECT ADJ_APL_PCT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '승인' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) / 100, -1) AS PG_CMSS
+            ]]>*/
+        FROM TB_SV_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD = 'RS30'
+
+        UNION
+
+        SELECT
+            'AD' AS CATEGORY
+            , AD_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , 0
+            , CMSS_AMT
+            , (DIS_AMT - DIS_CANCEL_AMT) AS DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , (SELECT ADJ_APL_AMT FROM (SELECT ADJ_APL_AMT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '취소' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) AS PG_CMSS
+            ]]>*/
+        FROM TB_AD_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD = 'RS20'
+
+        UNION
+
+        SELECT
+            'RC' AS CATEGORY
+            , RC_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , 0
+            , CMSS_AMT
+            , (DIS_AMT - DIS_CANCEL_AMT) AS DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , (SELECT ADJ_APL_AMT FROM (SELECT ADJ_APL_AMT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '취소' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) AS PG_CMSS
+            ]]>*/
+        FROM TB_RC_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD = 'RS20'
+
+        UNION
+
+        SELECT
+            'SP' AS CATEGORY
+            , SP_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , 0
+            , CMSS_AMT
+            , (DIS_AMT - DIS_CANCEL_AMT) AS DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , (SELECT ADJ_APL_AMT FROM (SELECT ADJ_APL_AMT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '취소' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) AS PG_CMSS
+            ]]>*/
+        FROM TB_SP_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD = 'RS20'
+
+        UNION
+
+        SELECT
+            'SV' AS CATEGORY
+            , SV_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , 0
+            , CMSS_AMT
+            , (DIS_AMT - DIS_CANCEL_AMT) AS DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , (SELECT ADJ_APL_AMT FROM (SELECT ADJ_APL_AMT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '취소' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) AS PG_CMSS
+            ]]>*/
+        FROM TB_SV_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD = 'RS20'
+
+        UNION
+
+        SELECT
+            'SP' AS CATEGORY
+            , SP_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , 0
+            , CMSS_AMT
+            , (DIS_AMT - DIS_CANCEL_AMT) AS DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , (SELECT ADJ_APL_AMT FROM (SELECT ADJ_APL_AMT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '취소' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) AS PG_CMSS
+            ]]>*/
+        FROM TB_SP_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+        AND A.RSV_STATUS_CD = 'RS32'
+    ) T_RSV
+        LEFT OUTER JOIN (SELECT T_C.CORP_DIS_AMT,T_C.OUTSIDE_SUPPORT_DIV, T_UC.USE_RSV_NUM
+                        FROM TB_CP T_C
+                            INNER JOIN TB_USER_CP T_UC ON T_UC.CP_ID = T_C.CP_ID) T_CP
+            ON T_CP.USE_RSV_NUM = T_RSV.DTL_RSV_NUM
+        LEFT OUTER JOIN (
+            SELECT
+                PARTNER_CODE,DTL_RSV_NUM, SUM(USE_POINT) AS USE_POINT, OUTSIDE_SUPPORT_DIV
+            FROM(
+                SELECT
+                    (CASE  TYPES
+                        WHEN 'USE' THEN A.POINT
+                        WHEN 'CANCEL' THEN (A.POINT)*-1
+                        ELSE 0
+                    END) AS USE_POINT,
+                    A.PARTNER_CODE,
+                    A.DTL_RSV_NUM,
+                    B.OUTSIDE_SUPPORT_DIV
+                FROM TB_POINT AS A
+                JOIN TB_POINT_CP AS B
+                ON A.PARTNER_CODE = B.PARTNER_CODE
+                WHERE 1=1
+                AND A.RSV_NUM IS NOT NULL
+                AND A.DTL_RSV_NUM IS NOT NULL
+            )
+            GROUP BY PARTNER_CODE, DTL_RSV_NUM, OUTSIDE_SUPPORT_DIV) T_EP
+            ON T_EP.DTL_RSV_NUM = T_RSV.DTL_RSV_NUM
+) WHERE CORP_ID NOT IN ('C160000713','CADO240018','CSVS210011')
+</insert>
+
+<!-- 시티투어 정산 매월 첫번째 주 목요일-->
+<insert id="ADJDTLINF_I_02">
+INSERT INTO TB_ADJDTLINF
+    ( ADJ_DTL_NUM
+    , DTL_RSV_NUM
+    , RSV_STATUS_CD
+    , ADJ_DT
+    , CORP_ID
+    , PRDT_NUM
+    , PRDT_NM
+    , PRDT_INF
+    , SALE_AMT
+    , CMSS_AMT
+    , DIS_AMT
+    , SALE_CMSS
+    , ADJ_APL_PCT
+    , SUPPORT_DIS_AMT
+    , UNSUPPORTED_DIS_AMT
+    , SUPPORTED_POINT_AMT
+    , UNSUPPORTED_POINT_AMT
+    , CORP_DIS_AMT
+    /*, PG_CMSS*/
+    )
+SELECT 'ADJ' || LPAD(SEQ_ADJ_SN.NEXTVAL, 17, '0')
+    , DTL_RSV_NUM
+    , RSV_STATUS_CD
+    , #sAdjDt#
+    , CORP_ID
+    , PRDT_NUM
+    , PRDT_NM
+    , PRDT_INF
+    , CASE
+        WHEN RSV_STATUS_CD = 'RS20' AND SUPPORT_DIS_AMT != 0 AND CMSS_AMT <![CDATA[ < ]]> SUPPORT_DIS_AMT THEN SUPPORT_DIS_AMT
+        ELSE NML_AMT
+    END AS NML_AMT
+    , CMSS_AMT
+    , DIS_AMT
+    /*
+    선박금액 예외처리
+    원가 32,400원
+    판매가 29,300원
+    여객운임액 = 29,300원 – 1,500원 = 27,800원
+    운항관리비용 = 27,800원 × 2.9% = 806.2원
+    탐나오 판매 수수료 = 3.9%
+    탐나오 수익 = (27,800원 – 806.2) × 3.9% = 1,052.76원
+    */
+    , (CASE
+        /* 숙소 판매가 탐나오수수료 처리*/
+        WHEN CATEGORY = 'AD' AND RSV_STATUS_CD = 'RS30' AND NML_AMT != SUPPORTED_POINT_AMT
+            THEN TRUNC((SELECT SUM(TRUNC(TOT_AMT * TO_NUMBER(ADJ_APL_PCT) / 100,-1)) FROM TB_AD_RSV_DAYPRICE WHERE AD_RSV_NUM = DTL_RSV_NUM) - (SUPPORT_DIS_AMT * TO_NUMBER(ADJ_APL_PCT) / 100) - (SUPPORTED_POINT_AMT * TO_NUMBER(ADJ_APL_PCT) / 100),-1)
+        WHEN CATEGORY = 'AD' AND RSV_STATUS_CD = 'RS30' AND NML_AMT = SUPPORTED_POINT_AMT
+            THEN 0
+        /* 나머지 수수료 처리*/
+        ELSE TRUNC((DECODE(RSV_STATUS_CD, 'RS20', CMSS_AMT, NML_AMT) - SUPPORT_DIS_AMT - SUPPORTED_POINT_AMT) * (TO_NUMBER(ADJ_APL_PCT) / 100), -1)
+        END)  AS SALE_CMSS
+    , ADJ_APL_PCT
+    , SUPPORT_DIS_AMT
+    , UNSUPPORTED_DIS_AMT
+    , SUPPORTED_POINT_AMT
+    , UNSUPPORTED_POINT_AMT
+    , NVL(CORP_DIS_AMT,0) AS CORP_DIS_AMT
+    /*, PG_CMSS*/
+FROM (SELECT DISTINCT
+        CATEGORY
+        , T_RSV.DTL_RSV_NUM
+        , RSV_STATUS_CD
+        , CORP_ID
+        , T_RSV.PRDT_NUM
+        , PRDT_NM
+        , PRDT_INF
+        , DECODE(RSV_STATUS_CD, 'RS20', 0, NML_AMT) AS NML_AMT
+        , CMSS_AMT
+        , DIS_AMT
+        , ADJ_APL_PCT
+        , DECODE(T_CP.OUTSIDE_SUPPORT_DIV, 'Y', DIS_AMT, 0) AS SUPPORT_DIS_AMT
+        , DECODE(T_CP.OUTSIDE_SUPPORT_DIV, 'N', DIS_AMT, 0) AS UNSUPPORTED_DIS_AMT
+        , DECODE(T_EP.OUTSIDE_SUPPORT_DIV, 'Y', T_EP.USE_POINT, 0) AS SUPPORTED_POINT_AMT
+        , DECODE(T_EP.OUTSIDE_SUPPORT_DIV, 'N', T_EP.USE_POINT, 0) AS UNSUPPORTED_POINT_AMT
+        , CORP_DIS_AMT
+        /*, PG_CMSS*/
+    FROM (SELECT
+            'AD' AS CATEGORY
+            , AD_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , NML_AMT
+            , CMSS_AMT
+            , DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , TRUNC(A.NML_AMT * (SELECT ADJ_APL_PCT FROM (SELECT ADJ_APL_PCT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '승인' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) / 100, -1) AS PG_CMSS
+            ]]>*/
+        FROM TB_AD_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD IN ('RS30', 'RS31')
+            <![CDATA[
+            AND USE_DT < #sAdjDt#
+            ]]>
+
+        UNION
+
+        SELECT
+            'RC' AS CATEGORY
+            , RC_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , NML_AMT
+            , CMSS_AMT
+            , DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , TRUNC(A.NML_AMT * (SELECT ADJ_APL_PCT FROM (SELECT ADJ_APL_PCT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '승인' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) / 100, -1) AS PG_CMSS
+            ]]>*/
+        FROM TB_RC_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD IN ('RS30', 'RS31')
+            <![CDATA[
+            AND RENT_START_DT < #sAdjDt#
+            ]]>
+
+        UNION
+
+        SELECT
+            'SP' AS CATEGORY
+            , SP_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , NML_AMT
+            , CMSS_AMT
+            , DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , TRUNC(A.NML_AMT * (SELECT ADJ_APL_PCT FROM (SELECT ADJ_APL_PCT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '승인' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) / 100, -1) AS PG_CMSS
+            ]]>*/
+        FROM TB_SP_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD IN ('RS30', 'RS31')
+            <![CDATA[
+            AND TO_CHAR(USE_DTTM,'YYYYMM') = TO_CHAR(ADD_MONTHS(SYSDATE,-1), 'YYYYMM')
+            ]]>
+
+        UNION
+
+        SELECT
+            'SV' AS CATEGORY
+            , SV_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , NML_AMT
+            , CMSS_AMT
+            , DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , TRUNC(A.NML_AMT * (SELECT ADJ_APL_PCT FROM (SELECT ADJ_APL_PCT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '승인' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) / 100, -1) AS PG_CMSS
+            ]]>*/
+        FROM TB_SV_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD = 'RS30'
+
+        UNION
+
+        SELECT
+            'AD' AS CATEGORY
+            , AD_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , 0
+            , CMSS_AMT
+            , (DIS_AMT - DIS_CANCEL_AMT) AS DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , (SELECT ADJ_APL_AMT FROM (SELECT ADJ_APL_AMT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '취소' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) AS PG_CMSS
+            ]]>*/
+        FROM TB_AD_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD = 'RS20'
+
+        UNION
+
+        SELECT
+            'RC' AS CATEGORY
+            , RC_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , 0
+            , CMSS_AMT
+            , (DIS_AMT - DIS_CANCEL_AMT) AS DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , (SELECT ADJ_APL_AMT FROM (SELECT ADJ_APL_AMT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '취소' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) AS PG_CMSS
+            ]]>*/
+        FROM TB_RC_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD = 'RS20'
+
+        UNION
+
+        SELECT
+            'SP' AS CATEGORY
+            , SP_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , 0
+            , CMSS_AMT
+            , (DIS_AMT - DIS_CANCEL_AMT) AS DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , (SELECT ADJ_APL_AMT FROM (SELECT ADJ_APL_AMT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '취소' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) AS PG_CMSS
+            ]]>*/
+        FROM TB_SP_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD = 'RS20'
+            AND TO_CHAR(CANCEL_CMPL_DTTM,'YYYYMM') = TO_CHAR(ADD_MONTHS(SYSDATE,-1), 'YYYYMM')
+        UNION
+
+        SELECT
+            'SV' AS CATEGORY
+            , SV_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , 0
+            , CMSS_AMT
+            , (DIS_AMT - DIS_CANCEL_AMT) AS DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , (SELECT ADJ_APL_AMT FROM (SELECT ADJ_APL_AMT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '취소' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) AS PG_CMSS
+            ]]>*/
+        FROM TB_SV_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+            AND A.RSV_STATUS_CD = 'RS20'
+
+        UNION
+
+        SELECT
+            'SP' AS CATEGORY
+            , SP_RSV_NUM AS DTL_RSV_NUM
+            , A.RSV_STATUS_CD
+            , CORP_ID
+            , PRDT_NUM
+            , PRDT_NM
+            , PRDT_INF
+            , 0
+            , CMSS_AMT
+            , (DIS_AMT - DIS_CANCEL_AMT) AS DIS_AMT
+            , ADJ_APL_PCT
+            /*<![CDATA[
+            , (SELECT ADJ_APL_AMT FROM (SELECT ADJ_APL_AMT FROM TB_CMSS WHERE CMSS_DIV = 'P' AND CMSS_NM = '취소' AND ADJ_APL_DT <= TO_CHAR(B.MOD_DTTM, 'YYYYMMDD') ORDER BY ADJ_APL_DT DESC) WHERE ROWNUM = 1) AS PG_CMSS
+            ]]>*/
+        FROM TB_SP_RSV A
+            INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        WHERE ADJ_YN = 'N'
+        AND A.RSV_STATUS_CD = 'RS32'
+    ) T_RSV
+        LEFT OUTER JOIN (SELECT T_C.CORP_DIS_AMT,T_C.OUTSIDE_SUPPORT_DIV, T_UC.USE_RSV_NUM
+                        FROM TB_CP T_C
+                            INNER JOIN TB_USER_CP T_UC ON T_UC.CP_ID = T_C.CP_ID) T_CP
+            ON T_CP.USE_RSV_NUM = T_RSV.DTL_RSV_NUM
+        LEFT OUTER JOIN (
+            SELECT
+                PARTNER_CODE,DTL_RSV_NUM, SUM(USE_POINT) AS USE_POINT, OUTSIDE_SUPPORT_DIV
+            FROM(
+                SELECT
+                    (CASE  TYPES
+                        WHEN 'USE' THEN A.POINT
+                        WHEN 'CANCEL' THEN (A.POINT)*-1
+                        ELSE 0
+                    END) AS USE_POINT,
+                    A.PARTNER_CODE,
+                    A.DTL_RSV_NUM,
+                    B.OUTSIDE_SUPPORT_DIV
+                FROM TB_POINT AS A
+                JOIN TB_POINT_CP AS B
+                ON A.PARTNER_CODE = B.PARTNER_CODE
+                WHERE 1=1
+                AND A.RSV_NUM IS NOT NULL
+                AND A.DTL_RSV_NUM IS NOT NULL
+            )
+            GROUP BY PARTNER_CODE, DTL_RSV_NUM, OUTSIDE_SUPPORT_DIV) T_EP
+            ON T_EP.DTL_RSV_NUM = T_RSV.DTL_RSV_NUM
+) WHERE CORP_ID IN ('C160000713','CADO240018','CSVS210011')
+</insert>
+
+<update id="ADJDTLINF_U_00">
+UPDATE TB_ADJDTLINF
+   SET MOD_YN      = #modYn#
+   	 , SALE_CMSS   = #saleCmss#	
+   	 , ADJ_APL_PCT = #adjAplPct#
+     , MOD_RSN     = #modRsn#
+ WHERE ADJ_DTL_NUM = #adjDtlNum#
+</update>
+
+<!-- 쿠폰 정산(업체별) 엑셀다운로드 -->
+<select id="ADJ_S_09" resultMap="ADJ_R_04">
+    SELECT
+        MIN(ADJ_DT) AS ADJ_DT,
+        CORP_ID,
+        MIN(CORP_NM) AS CORP_NM,
+        SUM(SALE_AMT) AS SALE_AMT,
+        SUM(DIS_AMT) AS DIS_AMT,
+        SUM(SUPPORT_DIS_AMT) AS SUPPORT_DIS_AMT,
+        SUM(UNSUPPORTED_DIS_AMT) AS UNSUPPORTED_DIS_AMT,
+        SUM(CMSS_AMT) AS CMSS_AMT,
+        SUM(SALE_CMSS) AS SALE_CMSS,
+        SUM(DIS_CMSS_AMT) AS DIS_CMSS_AMT,
+        SUM(DIS_JS_YS_AMT) AS DIS_JS_YS_AMT,
+        SUM(POINT_CMSS_AMT) AS POINT_CMSS_AMT,
+        SUM(POINT_JS_YS_AMT) AS POINT_JS_YS_AMT,
+        MIN(BANK_NM) AS BANK_NM,
+        MIN(ACC_NUM) AS ACC_NUM,
+        MIN(DEPOSITOR) AS DEPOSITOR,
+        MIN(PRDT_DIV) AS PRDT_DIV,
+        MIN(ADJ_ITD_DT) AS ADJ_ITD_DT,
+        SUM(SUPPORTED_POINT_AMT) AS SUPPORTED_POINT_AMT,
+        SUM(UNSUPPORTED_POINT_AMT) AS UNSUPPORTED_POINT_AMT,
+        SUM(CORP_DIS_AMT) AS CORP_DIS_AMT
+    FROM (
+        SELECT
+            ADJ_DT,
+            CORP_ID,
+            CORP_NM,
+            SALE_AMT,
+            DIS_AMT,
+            SUPPORT_DIS_AMT,
+            UNSUPPORTED_DIS_AMT,
+            SUPPORTED_POINT_AMT,
+            UNSUPPORTED_POINT_AMT,
+            CMSS_AMT,
+            SALE_CMSS,
+            CASE
+                 WHEN SUPPORT_DIS_AMT  - CORP_DIS_AMT > 0 AND SUPPORTED_POINT_AMT = 0
+                 THEN MAS_DIS_AMT - SALE_CMSS
+                     WHEN SUPPORT_DIS_AMT  - CORP_DIS_AMT > 0 AND SUPPORTED_POINT_AMT > 0
+                     THEN TRUNC((SUPPORT_DIS_AMT- CORP_DIS_AMT) * ADJ_APL_PCT / 100,-1)
+                     ELSE 0
+                 END
+                 AS DIS_CMSS_AMT, /* 지원금액 수수료 */
+          CASE
+                 WHEN SUPPORT_DIS_AMT = 0 AND SUPPORTED_POINT_AMT > 0
+                 THEN MAS_DIS_AMT - SALE_CMSS
+                     WHEN SUPPORT_DIS_AMT > 0 AND SUPPORTED_POINT_AMT > 0
+                     THEN MAS_DIS_AMT - TRUNC((SUPPORT_DIS_AMT- CORP_DIS_AMT) * ADJ_APL_PCT / 100,-1) - SALE_CMSS
+                     ELSE 0
+                 END
+                 AS POINT_CMSS_AMT, /* 포인트금액 수수료 */
+          CASE
+                 WHEN SUPPORT_DIS_AMT  - CORP_DIS_AMT > 0 AND SUPPORTED_POINT_AMT = 0
+                 THEN SUPPORT_DIS_AMT  - CORP_DIS_AMT - (MAS_DIS_AMT - SALE_CMSS)
+                     WHEN SUPPORT_DIS_AMT  - CORP_DIS_AMT > 0 AND SUPPORTED_POINT_AMT > 0
+                     THEN SUPPORT_DIS_AMT  - CORP_DIS_AMT - (TRUNC((SUPPORT_DIS_AMT- CORP_DIS_AMT) * ADJ_APL_PCT / 100,-1))
+                     ELSE 0
+                 END
+                 AS DIS_JS_YS_AMT, /* 지원금액 정산금액 */
+            CASE
+                 WHEN SUPPORT_DIS_AMT = 0 AND SUPPORTED_POINT_AMT > 0
+                 THEN SUPPORTED_POINT_AMT - (MAS_DIS_AMT - SALE_CMSS)
+                     WHEN SUPPORT_DIS_AMT > 0 AND SUPPORTED_POINT_AMT > 0
+                     THEN SUPPORTED_POINT_AMT - (MAS_DIS_AMT - TRUNC((SUPPORT_DIS_AMT- CORP_DIS_AMT) * ADJ_APL_PCT / 100,-1) - SALE_CMSS)
+                     ELSE 0
+                 END AS POINT_JS_YS_AMT, /* 포인트 정산금액 */
+            BANK_NM,
+            ACC_NUM,
+            DEPOSITOR,
+            (SELECT CD_NM
+                         /*상품구분*/
+                 FROM    TB_CD
+                 WHERE   CORP_CD = CD_NUM
+          ) AS PRDT_DIV,
+          ADJ_ITD_DT,
+          CORP_DIS_AMT
+         FROM(
+                SELECT
+                    <isEmpty property="sFromYear">
+                    T_ADJD.ADJ_DT,
+                    </isEmpty>
+                    <isNotEmpty property="sFromYear">
+                    T_ADJD.ADJ_DT,
+                    </isNotEmpty>
+                    T_ADJD.CORP_ID,
+                    T_CORP.CORP_NM,
+                    T_ADJD.SALE_AMT,
+                    T_ADJD.DIS_AMT,
+                    T_ADJD.SUPPORT_DIS_AMT,
+                    T_ADJD.UNSUPPORTED_DIS_AMT,
+                    T_ADJD.SUPPORTED_POINT_AMT,
+                    T_ADJD.UNSUPPORTED_POINT_AMT,
+                    T_ADJD.CMSS_AMT,
+                T_ADJD.SALE_CMSS, /* 탐나오 주정산 수수료*/
+                    CASE
+                        WHEN T_ADJD.CMSS_AMT > 0
+                        THEN TRUNC(T_ADJD.CMSS_AMT * ADJ_APL_PCT / 100,-1)
+                        ELSE
+                        CASE
+                        WHEN T_CORP.CORP_CD = 'AD' AND T_ADJD.RSV_STATUS_CD = 'RS30'
+                        THEN
+                        (SELECT SUM(TRUNC(TOT_AMT * TO_NUMBER(ADJ_APL_PCT) / 100,-1)) - TRUNC(T_ADJD.CORP_DIS_AMT * TO_NUMBER(ADJ_APL_PCT)  / 100,-1)
+                        FROM    TB_AD_RSV_DAYPRICE
+                        WHERE   AD_RSV_NUM = T_ADJD.DTL_RSV_NUM
+                        )
+                        ELSE TRUNC((T_ADJD.SALE_AMT-T_ADJD.CORP_DIS_AMT) * ADJ_APL_PCT / 100,-1)
+                        END
+                   END AS MAS_DIS_AMT, /* 탐나오 수수료 총액 */
+                   T_ADJD.ADJ_APL_PCT,
+                   T_CORP.BANK_NM,
+                   T_CORP.ACC_NUM,
+                   T_CORP.DEPOSITOR,
+                   T_CORP.CORP_CD,
+                   T_ADJD.CORP_DIS_AMT,
+                   ADJ_ITD_DT
+                FROM     TB_ADJDTLINF T_ADJD
+                INNER JOIN TB_ADJ T_ADJ
+                ON       T_ADJ.ADJ_DT  = T_ADJD.ADJ_DT
+                AND      T_ADJ.CORP_ID = T_ADJD.CORP_ID
+                INNER JOIN TB_CORP T_CORP
+                ON       T_CORP.CORP_ID = T_ADJD.CORP_ID
+                LEFT JOIN TB_USER_CP TUC
+                ON       TUC.USE_RSV_NUM = T_ADJD.DTL_RSV_NUM
+                LEFT JOIN (SELECT PARTNER_CODE,DTL_RSV_NUM FROM TB_POINT GROUP BY DTL_RSV_NUM, PARTNER_CODE)  TP
+                ON TP.DTL_RSV_NUM = T_ADJD.DTL_RSV_NUM
+                WHERE
+                <!--주별정산-->
+          <isEmpty property="sFromYear">
+           T_ADJD.ADJ_DT = #sAdjDt#
+          </isEmpty>
+          <!--월별정산-->
+          <isNotEmpty property="sFromYear">
+           SUBSTR(ADJ_ITD_DT, 0, 6) = #sFromYear# || LPAD(#sFromMonth#, 2, '0')
+          </isNotEmpty>
+          <isNotEmpty property="arrCpId">
+          <iterate prepend="AND TUC.CP_ID IN " property="arrCpId" open="(" close=")" conjunction=",">
+              #arrCpId[]#
+          </iterate>
+          </isNotEmpty>
+          <isNotEmpty property="arrPartnerCode">
+          <iterate prepend="AND TP.PARTNER_CODE IN " property="arrPartnerCode" open="(" close=")" conjunction=",">
+              #arrPartnerCode[]#
+          </iterate>
+          </isNotEmpty>
+        )
+    ) GROUP BY
+    <!--주별정산-->
+    <isEmpty property="sFromYear">
+       ADJ_DT, CORP_ID
+    </isEmpty>
+    <!--월별정산-->
+    <isNotEmpty property="sFromYear">
+        SUBSTR(ADJ_ITD_DT, 0, 6), CORP_ID
+    </isNotEmpty>
+</select>
+<insert id="ADJ_I_02">
+INSERT INTO TB_TAMNACARDADJ (APPROVAL_CODE, TRADE_DTTM, RSV_STATUS_CD, PAY_SN, RSV_NUM, DTL_RSV_NUM, RSV_NM, TOTAL_NML_AMT, TOTAL_SALE_AMT, SUPPORT_DIS_AMT, UNSUPPORTED_DIS_AMT, CMSS_AMT, TC_CMSS, CORP_ID, PRDT_NUM, PRDT_NM, PRDT_INF, PRDT_DIV, APP_DIV, ADJ_APL_PCT, PAID_AMOUNT, DISCOUNT_AMOUNT)
+SELECT
+    T_RSV.APPROVAL_CODE
+    , T_RSV.TRADE_DTTM
+    , T_RSV.RSV_STATUS_CD                       /*탐나오 거래상태*/
+    , T_RSV.PAY_SN                              /*탐나는전 거래상태*/
+    , T_RSV.RSV_NUM                             /*주문번호*/
+    , T_RSV.DTL_RSV_NUM                         /*주문상세번호*/
+    , T_RSV.RSV_NM                              /*구매자명*/
+    , CASE WHEN T_RSV.PAY_SN = 1 THEN -T_RSV.TOTAL_NML_AMT ELSE  T_RSV.TOTAL_NML_AMT END AS TOTAL_NML_AMT    /*총상품금액*/
+    , CASE WHEN T_RSV.PAY_SN = 1 THEN -T_RSV.TOTAL_SALE_AMT ELSE T_RSV.TOTAL_SALE_AMT END AS TOTAL_SALE_AMT  /*결제금액*/
+    , CASE WHEN T_RSV.PAY_SN = 1 THEN -NVL(DECODE(T_CP.OUTSIDE_SUPPORT_DIV, 'Y', DIS_AMT, NVL2(T_EP.DTL_RSV_NUM, USE_POINT, 0)) ,0)
+           ELSE NVL(DECODE(T_CP.OUTSIDE_SUPPORT_DIV, 'Y', DIS_AMT, NVL2(T_EP.DTL_RSV_NUM, USE_POINT, 0)) ,0) END AS SUPPORT_DIS_AMT /*지원할인금액*/
+    , CASE WHEN  T_RSV.PAY_SN = 1 THEN -NVL(DECODE(T_CP.OUTSIDE_SUPPORT_DIV, 'Y', 0, NVL2(T_EP.DTL_RSV_NUM, 0, DIS_AMT)),0)
+           ELSE NVL(DECODE(T_CP.OUTSIDE_SUPPORT_DIV, 'Y', 0, NVL2(T_EP.DTL_RSV_NUM, 0, DIS_AMT)),0) END AS UNSUPPORTED_DIS_AMT /*미지원할인금액*/
+    , T_RSV.CMSS_AMT                            /*탐나오 수수료 금액*/
+    , CASE WHEN T_RSV.PAY_SN = 1 THEN -T_RSV.TOTAL_SALE_AMT ELSE T_RSV.TOTAL_SALE_AMT END * CASE WHEN TCP.PG_CMSS_PER IS NOT NULL THEN TO_NUMBER(TCP.PG_CMSS_PER) ELSE TCP.PG_CMSS_AMT END * 0.01 AS TC_CMSS  /*탐나는전 수수료*/
+    , T_RSV.CORP_ID                             /*업체아이디*/
+    , T_RSV.PRDT_NUM                            /*상품아이디*/
+    , T_RSV.PRDT_NM                             /*상품명*/
+    , T_RSV.PRDT_INF                            /*상품정보*/
+    , T_RSV.PRDT_DIV                            /*상품구분*/
+    , T_RSV.APP_DIV                             /*앱구분*/
+    , T_RSV.ADJ_APL_PCT                         /*정산 적용 비율*/
+    , (SELECT SUM(PAID_AMOUNT) FROM TB_TAMNACARDINF WHERE RSV_NUM = T_RSV.RSV_NUM GROUP BY RSV_NUM) AS  PAID_AMOUNT /*탐나는전 결제된 금액*/
+    , (SELECT SUM(DISCOUNT_AMOUNT) FROM TB_TAMNACARDINF WHERE RSV_NUM = T_RSV.RSV_NUM GROUP BY RSV_NUM) AS  DISCOUNT_AMOUNT /*탐나는전 자체 할인금액 금액*/
+    FROM (
+        SELECT
+            C.REG_DTTM AS TRADE_DTTM
+            , A.RSV_STATUS_CD
+            , B.RSV_NUM
+            , AD_RSV_NUM AS DTL_RSV_NUM
+            , B.RSV_NM
+            , B.TOTAL_SALE_AMT
+            , A.CMSS_AMT
+            , B.TOTAL_NML_AMT
+            , A.CORP_ID
+            , A.PRDT_NUM
+            , A.PRDT_NM
+            , A.PRDT_INF
+            , 'AD' AS PRDT_DIV
+            , B.APP_DIV
+            , NVL(A.DIS_AMT,0)  AS DIS_AMT
+            , A.ADJ_APL_PCT
+            , B.PAY_DIV
+            , C.APPROVAL_CODE
+            , C.TR_AMOUNT
+            , C.PAY_SN
+            , C.DISCOUNT_AMOUNT
+        FROM TB_AD_RSV A
+        INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        INNER JOIN TB_TAMNACARDINF C ON A.RSV_NUM = C.RSV_NUM
+        WHERE TO_CHAR(C.REG_DTTM,'YYYYMMDD') = TO_CHAR(SYSDATE-1,'YYYYMMDD')
+        UNION
+        SELECT
+            C.REG_DTTM AS TRADE_DTTM
+            , A.RSV_STATUS_CD
+            , B.RSV_NUM
+            , RC_RSV_NUM AS DTL_RSV_NUM
+            , B.RSV_NM
+            , B.TOTAL_SALE_AMT
+            , A.CMSS_AMT
+            , B.TOTAL_NML_AMT
+            , A.CORP_ID
+            , A.PRDT_NUM
+            , A.PRDT_NM
+            , A.PRDT_INF
+            , 'RC' AS PRDT_DIV
+            , B.APP_DIV
+            , NVL(A.DIS_AMT,0)  AS DIS_AMT
+            , A.ADJ_APL_PCT
+            , B.PAY_DIV
+            , C.APPROVAL_CODE
+            , C.TR_AMOUNT
+            , C.PAY_SN
+            , C.DISCOUNT_AMOUNT
+        FROM TB_RC_RSV A
+        INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        INNER JOIN TB_TAMNACARDINF C ON A.RSV_NUM = C.RSV_NUM
+        WHERE TO_CHAR(C.REG_DTTM,'YYYYMMDD') = TO_CHAR(SYSDATE-1,'YYYYMMDD')
+        UNION
+        SELECT
+            C.REG_DTTM AS TRADE_DTTM
+             , A.RSV_STATUS_CD
+             , B.RSV_NUM
+             , SP_RSV_NUM AS DTL_RSV_NUM
+             , B.RSV_NM
+             , B.TOTAL_SALE_AMT
+             , A.CMSS_AMT
+             , B.TOTAL_NML_AMT
+             , A.CORP_ID
+             , A.PRDT_NUM
+             , A.PRDT_NM
+             , A.PRDT_INF
+             , (SELECT 'SP(' || CD_NM || ')' FROM TB_CD WHERE CD_NUM = TSP.CTGR) AS PRDT_DIV
+             , B.APP_DIV
+             , NVL(A.DIS_AMT,0)  AS DIS_AMT
+             , A.ADJ_APL_PCT
+             , B.PAY_DIV
+             , C.APPROVAL_CODE
+             , C.TR_AMOUNT
+             , C.PAY_SN
+             , C.DISCOUNT_AMOUNT
+        FROM TB_SP_RSV A
+        INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        INNER JOIN TB_TAMNACARDINF C ON A.RSV_NUM = C.RSV_NUM
+        INNER JOIN TB_SP_PRDTINF TSP on A.PRDT_NUM = TSP.PRDT_NUM
+        WHERE TO_CHAR(C.REG_DTTM,'YYYYMMDD') = TO_CHAR(SYSDATE-1,'YYYYMMDD')
+        UNION
+        SELECT
+            C.REG_DTTM AS TRADE_DTTM
+            , A.RSV_STATUS_CD
+            , B.RSV_NUM
+            , SV_RSV_NUM AS DTL_RSV_NUM
+            , B.RSV_NM
+            , B.TOTAL_SALE_AMT
+            , A.CMSS_AMT
+            , B.TOTAL_NML_AMT
+            , A.CORP_ID
+            , A.PRDT_NUM
+            , A.PRDT_NM
+            , A.PRDT_INF
+            , 'SV' AS PRDT_DIV
+            , B.APP_DIV
+            , NVL(A.DIS_AMT,0)  AS DIS_AMT
+            , A.ADJ_APL_PCT
+            , B.PAY_DIV
+            , C.APPROVAL_CODE
+            , C.TR_AMOUNT
+            , C.PAY_SN
+            , C.DISCOUNT_AMOUNT
+        FROM TB_SV_RSV A
+        INNER JOIN TB_RSV B ON B.RSV_NUM = A.RSV_NUM
+        INNER JOIN TB_TAMNACARDINF C ON A.RSV_NUM = C.RSV_NUM
+        WHERE TO_CHAR(C.REG_DTTM,'YYYYMMDD') = TO_CHAR(SYSDATE-1,'YYYYMMDD')
+    ) T_RSV
+    /*지원할인금액 , 미지원 할인금액*/
+    LEFT OUTER JOIN (
+        SELECT T_C.OUTSIDE_SUPPORT_DIV, T_UC.USE_RSV_NUM
+        FROM TB_CP T_C
+        INNER JOIN TB_USER_CP T_UC ON T_UC.CP_ID = T_C.CP_ID
+    ) T_CP
+    ON T_CP.USE_RSV_NUM = T_RSV.DTL_RSV_NUM
+    LEFT OUTER JOIN (
+        SELECT DTL_RSV_NUM, SUM(USE_POINT) - SUM(CANCEL_POINT) AS USE_POINT
+        FROM TB_EVNTPOINT
+        WHERE DEL_YN = 'N' AND POINT_STATUS NOT IN ('0000')
+        GROUP BY DTL_RSV_NUM
+    ) T_EP
+    ON T_EP.DTL_RSV_NUM = T_RSV.DTL_RSV_NUM
+    /*수수료 계산에 필요*/
+    INNER JOIN TB_CMSS_PG TCP
+    ON T_RSV.PAY_DIV =  TCP.PG_DIV AND APL_END_DT >= TO_CHAR(SYSDATE, 'YYYYMMDD')
+</insert>
+<select id="ADJ_S_10" resultMap="ADJ_R_09">
+    SELECT
+         SR.APPROVAL_CODE
+        , SR.TRADE_DTTM
+        , SR.RSV_STATUS_CD
+        , SR.PAY_SN
+        , SR.RSV_NUM
+        , SR.DTL_RSV_NUM
+        , SR.RSV_NM
+        , SR.TOTAL_NML_AMT
+        , SR.TOTAL_SALE_AMT
+        , SR.SUPPORT_DIS_AMT
+        , SR.UNSUPPORTED_DIS_AMT
+        , SR.CMSS_AMT
+        , NVL(SR.TC_CMSS, 0) AS TC_CMSS
+        , SR.CORP_ID
+        , SR.PRDT_NUM
+        , SR.PRDT_NM
+        , SR.PRDT_INF
+        , SR.PRDT_DIV
+        , SR.APP_DIV
+        , SR.ADJ_APL_PCT
+        , T_ADJ.ADJ_ITD_DT
+        , CASE WHEN T_ADJ.ADJ_CMPL_DT IS NULL THEN 'N' ELSE 'Y' END ADJ_STATUS
+        , TC.CORP_NM
+        , NVL(SR.PAID_AMOUNT, 0) AS PAID_AMOUNT
+        , NVL(SR.DISCOUNT_AMOUNT, 0) AS DISCOUNT_AMOUNT
+        , CASE WHEN CMSS_AMT <![CDATA[ > ]]> 0  AND SR.CMSS_AMT <![CDATA[ < ]]>  NVL(SR.DISCOUNT_AMOUNT, 0) THEN 'Y' ELSE 'N' END AS SUSPICIOUS_RSV
+    FROM TB_TAMNACARDADJ SR
+    LEFT JOIN (
+      SELECT TAD.DTL_RSV_NUM, TA.ADJ_ITD_DT, TA.ADJ_CMPL_DT, TAD.ADJ_DT
+      FROM TB_ADJDTLINF TAD
+      INNER JOIN TB_ADJ TA ON TAD.ADJ_DT = TA.ADJ_DT AND TAD.CORP_ID = TA.CORP_ID
+    ) T_ADJ
+    ON SR.DTL_RSV_NUM = T_ADJ.DTL_RSV_NUM
+    LEFT JOIN TB_CORP TC ON SR.CORP_ID =TC.CORP_ID
+    WHERE TO_CHAR(TRADE_DTTM,'YYYYMMDD')  BETWEEN #sStartDt# AND #sEndDt#
+    ORDER BY TRADE_DTTM
+</select>
+
+<!-- 정산포인트리스트 -->
+<select id="ADJ_S_11" resultClass="common.LowerHashMap">
+    SELECT
+        C.PARTNER_CODE,
+        C.CP_NM
+    FROM
+	    TB_ADJDTLINF AS A
+    JOIN TB_POINT AS B
+    ON A.DTL_RSV_NUM = B.DTL_RSV_NUM
+    JOIN TB_POINT_CP AS C
+    ON B.PARTNER_CODE = C.PARTNER_CODE
+    JOIN TB_ADJ AS D
+    ON A.ADJ_DT = D.ADJ_DT AND A.CORP_ID = D.CORP_ID
+    WHERE 1=1
+    <isEmpty property="sFromMonth">
+    AND A.ADJ_DT = #sAdjDt#
+    </isEmpty>
+    <isNotEmpty property="sFromMonth">
+    AND ADJ_ITD_DT LIKE #sFromYear# || LPAD(#sFromMonth#, 2, '0') || '%'
+    </isNotEmpty>
+    AND OUTSIDE_SUPPORT_DIV = 'Y'
+    GROUP BY C.PARTNER_CODE, C.CP_NM
+</select>
+</sqlMap>

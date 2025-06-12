@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="prdtInq">
+<resultMap id="PRDTINQ_R_00" class="web.product.vo.PRDTINQVO">
+<result property="inqDt" 			column="INQ_DT" />
+<result property="linkNum" 			column="LINK_NUM" />
+<result property="inqDiv" 			column="INQ_DIV" />
+<result property="inqNum" 			column="INQ_NUM" />
+<result property="snsPublicNum"		column="SNS_PUBLIC_NUM" />
+</resultMap>
+
+<select id="prdtInq_S_00" resultMap="PRDTINQ_R_00">
+SELECT INQ_DT, LINK_NUM, INQ_DIV, NVL(INQ_NUM, 0) AS INQ_NUM, NVL(SNS_PUBLIC_NUM, 0) AS SNS_PUBLIC_NUM FROM TB_PRDT_INQ
+	WHERE INQ_DT=TO_CHAR(SYSDATE, 'YYYYMMDD') AND LINK_NUM=#linkNum# AND INQ_DIV=#inqDiv#
+</select>
+
+<insert id="prdtInq_I_00">
+INSERT INTO TB_PRDT_INQ (INQ_DT, 
+	LINK_NUM, 
+	INQ_DIV,
+	<isEqual property="inqNum" compareValue="1">
+	INQ_NUM
+	</isEqual>
+	<isEqual property="snsPublicNum" compareValue="1">
+	SNS_PUBLIC_NUM
+	</isEqual>
+	
+)
+ VALUES (TO_CHAR(SYSDATE, 'YYYYMMDD'), 
+ 	#linkNum#, 
+ 	#inqDiv#,
+ 	<isEqual property="inqNum" compareValue="1">
+ 	#inqNum#
+ 	</isEqual>
+ 	<isEqual property="snsPublicNum" compareValue="1">
+ 	#snsPublicNum#
+ 	</isEqual>
+ )
+</insert>
+
+<update id="prdtInq_U_00">
+UPDATE TB_PRDT_INQ SET
+<isNotEqual property="inqNum" compareValue="0"> 
+INQ_NUM=#inqNum#
+</isNotEqual>
+<isNotEqual property="snsPublicNum" compareValue="0">
+SNS_PUBLIC_NUM=#snsPublicNum#
+</isNotEqual>
+ WHERE INQ_DT=TO_CHAR(SYSDATE, 'YYYYMMDD') 
+	AND LINK_NUM=#linkNum# 
+	AND INQ_DIV=#inqDiv#
+</update>
+
+</sqlMap>

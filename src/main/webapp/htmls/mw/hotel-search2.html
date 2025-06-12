@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+	
+	<title>탐나오</title>
+	
+	<link rel="stylesheet" href="../../css/mw/common2.css">
+	<link rel="stylesheet" href="../../css/mw/style.css">
+	<link rel="stylesheet" href="../../css/mw/daterangepicker.css">
+	
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/jquery.cookie.js"></script>
+	<script src="../../js/mw_common.js"></script>
+	<script src="../../js/mw_style.js"></script>
+	<script src="../../js/moment.min.js"></script>
+	<script src="../../js/daterangepicker.js"></script>
+	<!-- add script -->
+	<script>
+		$(document).ready(function() {
+			<!-- 2019.02.26 김재성 (데이터피커 초기화) -->
+			$('.dateRangePickMw').daterangepicker({
+				<!-- 2019.02.26 김재성 (싱글차트일 경우 아래라인 주석해제 ) -->
+				<!-- singleDatePicker: true -->
+			}, function(start, end) {
+				<!-- 2019.02.26 김재성 (INPUT 태그 ID 에 startDt,endDt를 부여하면 값 부여 ) -->
+				$("#startDt").val(start.format('YYYY-MM-DD'));
+				<!-- 2019.02.26 김재성 (싱글차트일 경우 아래라인 주석 / INPUT 태그 startDt 하나의 id만 부여 ) -->
+				$("#endDt").val(end.format('YYYY-MM-DD'));
+
+			});
+		});
+
+	</script>
+</head>
+<body>
+<div id="wrap">
+
+<header id="header">
+	<div class="head-wrap">
+		<h1 class="title">숙박</h1>
+		<div class="l-area">
+			<a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+		</div>
+		<div class="r-area-side">
+			<button type="button" id="frame_sideOpen" class="side-btn" title="사이드메뉴 열기"></button>
+		</div>
+	</div>
+	
+	<aside id="side_menu" class="side-menu">
+		<button type="button" id="frame_sideClose" class="close"><img src="../../images/mw/common/side/close-white.png" alt="닫기"></button>
+		
+		<nav class="top-menu">
+			<a href=""><img src="../../images/mw/common/side/home.png" alt="홈"></a>
+			<a href="javascript:void(0)" id="top_searchOpen">
+				<img src="../../images/mw/common/side/search-white.png" alt="검색">
+			</a>
+			<a href="" class="like">20</a>
+			<a href="" class="cart">5</a>
+		</nav>
+		
+		<div class="menu-area">
+			<ul>
+				<li><a href="air-search.html">항공</a></li>
+			    <li><a href="hotel-list.html">숙박</a></li>
+			    <li><a href="rent-list.html">렌터카</a></li>
+			    <li><a href="social-list.html">관광/레저</a></li>
+			    <li><a href="social-list.html">맛집</a></li>
+			    <li><a href="social-list.html">여행사 상품</a></li>
+			    <li><a href="from-jeju-main.html">from 제주</a></li>
+			    <li><a href="main4-4.html">기획전</a></li>
+			    <li><a href="main4-5.html">이벤트</a></li>
+			</ul>
+			<ul>
+				<li><a href="">MY PAGE</a></li>
+			    <li><a href="">HELP</a></li>
+			    <li><a href="">LOGOUT</a></li>
+			    <li><a href="">SETTING</a></li>
+			</ul>
+		</div>
+	</aside>
+	
+	<div id="top_search" class="search-area">
+		<button type="button" id="top_searchClose" class="close"><img src="../../images/mw/common/side/close-gray.png" alt="닫기"></button>
+		
+		<div class="form-area">
+			<div class="form">
+				<form>
+					<input type="text" placeholder="검색어 입력" class="search">
+					<button type="submit" class="search-btn" title="검색"></button>
+				</form>
+			</div>
+			<div class="keyword">
+				<h2 class="title">HOT KEYWORD</h2>
+				<ul>
+					<li><a href="">수영장 숙소</a></li>
+				    <li><a href="">제주도 맛집</a></li>
+				    <li><a href="">패들보드</a></li>
+				    <li><a href="">제주 선물</a></li>
+				    <li><a href="">연인과 함께 즐기기</a></li>
+				    <li><a href="">흑돼지</a></li>
+				    <li><a href="">감귤</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+
+<main id="main">
+	<!--//change contents-->
+	<div class="mw-search-area">
+		<div class="search-area hotel">
+		    <div class="area date">
+		        <dl>
+		            <dt>입실일</dt>
+		            <dd>
+		                <div class="value-text">
+		                    <div class="date-container">
+									<div class="dateRangePickMw">
+		                            	<input placeholder="입실일 선택" onfocus="this.blur()" id="startDt" value="2019.01.01">
+									</div>
+		                    </div>
+		                </div>
+		            </dd>
+		        </dl>
+		        <dl>
+		            <dt>퇴실일</dt>
+		            <dd>
+		                <div class="value-text">
+		                    <div class="date-container">
+								<div class="dateRangePickMw">
+									<input placeholder="퇴실일 선택" onfocus="this.blur()" id="endDt" value="2019.01.02">
+								</div>
+		                    </div>
+		                </div>
+		            </dd>
+		        </dl>
+		    </div>
+		    <div class="area zone count select">
+		        <dl class="single">
+		            <dt class="hide">투숙객, 객실</dt>
+		            <dd>
+		                <div class="value-text"><a href="javascript:void(0)" onclick="optionPopup('#hotel_count', this)">1 성인, 2 소아</a></div>
+		                <div id="hotel_count" class="popup-typeA hotel-count">
+		                    <div class="title-area">
+		                        <h3 class="title">인원 선택 및 객실 수</h3>
+		                        <button type="button" class="close"><img src="../../images/mw/icon/close/dark-gray.png" alt="닫기"></button>
+		                    </div>
+		                    <div class="content-area">
+		                        <div class="detail-area">
+		                            <strong class="sub-title">객실수</strong>
+		                            <select class="full" title="객실수 선택">
+		                                <option value="">객실 1개</option>
+		                                <option value="">객실 2개</option>
+		                                <option value="">객실 3개</option>
+		                                <option value="">객실 4개</option>
+		                                <option value="">객실 5개</option>
+		                            </select>
+		                        </div>
+		                        <div class="detail-area counting-area">
+		                            <div class="counting">
+		                                <div class="l-area">
+		                                    <strong class="sub-title">성인</strong>
+		                                    <span class="memo">만 13세 이상</span>
+		                                </div>
+		                                <div class="r-area">
+		                                    <button type="button" class="counting-btn"><img src="../../images/mw/main/form/subtraction.png" alt="빼기"></button>
+		                                    <span class="counting-text">1</span>
+		                                    <button type="button" class="counting-btn"><img src="../../images/mw/main/form/addition.png" alt="더하기"></button>
+		                                </div>
+		                            </div>
+		                            <div class="counting">
+		                                <div class="l-area">
+		                                    <strong class="sub-title">소아</strong>
+		                                    <span class="memo">만 2세 ~ 13세 미만</span>
+		                                </div>
+		                                <div class="r-area">
+		                                    <button type="button" class="counting-btn"><img src="../../images/mw/main/form/subtraction.png" alt="빼기"></button>
+		                                    <span class="counting-text">0</span>
+		                                    <button type="button" class="counting-btn"><img src="../../images/mw/main/form/addition.png" alt="더하기"></button>
+		                                </div>
+		                            </div>
+		                            <div class="counting">
+		                                <div class="l-area">
+		                                    <strong class="sub-title">유아</strong>
+		                                    <span class="memo">만 2세(24개월) 미만</span>
+		                                </div>
+		                                <div class="r-area">
+		                                    <button type="button" class="counting-btn"><img src="../../images/mw/main/form/subtraction.png" alt="빼기"></button>
+		                                    <span class="counting-text">0</span>
+		                                    <button type="button" class="counting-btn"><img src="../../images/mw/main/form/addition.png" alt="더하기"></button>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </dd>
+		        </dl>
+		    </div>
+		    <div class="btn-wrap type-big">
+		    	<!-- form 사용시 type submit 변경 / onclick 삭제 -->
+				<button type="button" class="comm-btn red big" onclick="location.href='hotel-list.html'">검색</button>
+				<button type="button" class="comm-btn black big" onclick="location.href='hotel-list.html'">숙소 전체 구경하기</button>
+			</div>
+			<div class="search-info-text">
+				<div class="big">
+					날짜가 미정이라면
+					제주도의 <a href="">250여곳 숙소</a>를 서핑해 보세요.
+				</div>
+				<p class="memo">*원하는 날짜에 따라 금액이 달라질 수 있습니다.</p>
+			</div>
+			<!--<div class="btn-wrap type-text">-->
+				<!--<a href="hotel-list.html" class="text-btn">숙소 전체 구경하기</a>-->
+			<!--</div>-->
+		</div> <!--//search-area-->
+	</div> <!-- //mw-search-area -->
+	<!--//change contents-->
+</main>
+
+<footer id="footer">
+	
+</footer>
+
+</div> <!-- //wrap -->
+</body>
+</html>

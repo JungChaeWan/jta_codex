@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+	
+	<title>탐나오</title>
+	
+	<link rel="stylesheet" href="../../css/mw/common2.css">
+	<link rel="stylesheet" href="../../css/mw/style.css?ver=171013">
+	
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/jquery.cookie.js"></script>
+	<script src="../../js/mw_common.js"></script>
+	<script src="../../js/mw_style.js"></script>
+</head>
+<body>
+<div id="wrap">
+
+<header id="header">
+	<div class="head-wrap">
+		<h1 class="title">결제하기</h1>
+		<div class="l-area">
+			<a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+		</div>
+		<div class="r-area">
+			<button type="button" id="frame_sideOpen" class="side-btn" title="사이드메뉴 열기"></button>
+		</div>
+	</div>
+	
+	<aside id="side_menu" class="side-menu">
+		<button type="button" id="frame_sideClose" class="close"><img src="../../images/mw/common/side/close-white.png" alt="닫기"></button>
+		
+		<nav class="top-menu">
+			<a href=""><img src="../../images/mw/common/side/home.png" alt="홈"></a>
+			<a href="javascript:void(0)" id="top_searchOpen">
+				<img src="../../images/mw/common/side/search-white.png" alt="검색">
+			</a>
+			<a href="" class="like">20</a>
+			<a href="" class="cart">5</a>
+		</nav>
+		
+		<div class="menu-area">
+			<ul>
+				<li><a href="air-search.html">항공</a></li>
+			    <li><a href="hotel-list.html">숙박</a></li>
+			    <li><a href="rent-list.html">렌터카</a></li>
+			    <li><a href="social-list.html">관광/레저</a></li>
+			    <li><a href="social-list.html">맛집</a></li>
+			    <li><a href="social-list.html">여행사 상품</a></li>
+			    <li><a href="from-jeju-main.html">from 제주 <img class="icon" src="../../images/mw/common/side/from-jeju.png" alt=""></a>
+			    	<ul class="depth2">
+			    		<li><a href="">농ㆍ수ㆍ축산물</a></li>
+						<li><a href="">가공식품</a></li>
+						<li><a href="">화장품/미용</a></li>
+						<li><a href="">제주기념품</a></li>
+			    	</ul>
+			    </li>
+			    <li><a href="main4-4.html">기획전</a></li>
+			    <li><a href="main4-5.html">이벤트</a></li>
+			</ul>
+			<ul>
+				<li><a href="">MY PAGE</a></li>
+			    <li><a href="">HELP</a></li>
+			    <li><a href="">LOGOUT</a></li>
+			    <li><a href="">SETTING</a></li>
+			</ul>
+		</div>
+	</aside>
+	
+	<div id="top_search" class="search-area">
+		<button type="button" id="top_searchClose" class="close"><img src="../../images/mw/common/side/close-gray.png" alt="닫기"></button>
+		
+		<div class="form-area">
+			<div class="form">
+				<form>
+					<input type="text" placeholder="검색어 입력" class="search">
+					<button type="submit" class="search-btn" title="검색"></button>
+				</form>
+			</div>
+			<div class="keyword">
+				<h2 class="title">HOT KEYWORD</h2>
+				<ul>
+					<li><a href="">수영장 숙소</a></li>
+				    <li><a href="">제주도 맛집</a></li>
+				    <li><a href="">패들보드</a></li>
+				    <li><a href="">제주 선물</a></li>
+				    <li><a href="">연인과 함께 즐기기</a></li>
+				    <li><a href="">흑돼지</a></li>
+				    <li><a href="">감귤</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+
+<main id="main">
+	<!--//change contents-->
+	<!-- ↓↓↓ 기존코드 동일 ↓↓↓ -->
+	<section id="subContent">
+		<!-- 삭제처리
+		<div class="menu-bar">
+		    <p class="btn-prev"><img src="../../images/mw/common/btn_prev.png" width="20" alt="이전페이지"></p>
+		    <h1>나의 예약/구매 내역</h1>
+		</div> -->
+	    <div class="sub-content">
+		    <div class="reserve">
+		        <form name="rsvFrm" id="rsvFrm" method="post">
+		            <input type="hidden" name="rsvNum" id="rsvNum" value="RV171013000001">
+		            <input type="hidden" name="CST_PLATFORM" id="CST_PLATFORM" value="test">
+		            <!-- 테스트, 서비스 구분 -->
+		            <input type="hidden" name="CST_MID" id="CST_MID" value="tamnao">
+		            <!-- 상점아이디 -->
+		            <input type="hidden" name="CST_MID_HP" id="CST_MID_HP" value="tamnao1">
+		            <!-- 상점아이디 -->
+		            <input type="hidden" name="CST_MID_CO" id="CST_MID_CO" value="tamnao">
+		            <!-- 상점아이디 -->
+		            <input type="hidden" name="CST_WINDOW_TYPE" id="CST_WINDOW_TYPE" value="submit">
+		            <input type="hidden" name="LGD_MID" id="LGD_MID" value="ttamnao">
+		            <!-- 상점아이디 -->
+		            <input type="hidden" name="LGD_MID_HP" id="LGD_MID_HP" value="ttamnao1">
+		            <!-- 상점아이디 -->
+		            <input type="hidden" name="LGD_MID_CO" id="LGD_MID_CO" value="ttamnao">
+		            <!-- 상점아이디 -->
+		            <input type="hidden" name="LGD_RETURNURL" id="LGD_RETURNURL" value="http://localhost/mw/order04.do?rsvNum=RV171013000001">
+		            <!-- 응답수신페이지 -->
+		            <input type="hidden" name="LGD_RETURNURL_HP" id="LGD_RETURNURL_HP" value="http://localhost/mw/order04_HP.do?rsvNum=RV171013000001">
+		            <!-- 응답수신페이지 -->
+		            <input type="hidden" name="LGD_RETURNURL_CO" id="LGD_RETURNURL_CO" value="http://localhost/mw/order04.do?rsvNum=RV171013000001">
+		            <!-- 응답수신페이지 -->
+		
+		            <input type="hidden" name="LGD_OID" id="LGD_OID" value="RV171013000001">
+		            <!-- 주문번호 -->
+		            <input type="hidden" name="LGD_BUYER" id="LGD_BUYER" value="관리자">
+		            <!-- 구매자 -->
+		            <input type="hidden" name="LGD_PRODUCTINFO" id="LGD_PRODUCTINFO" value="탐나오 관광상품">
+		            <!-- 상품정보 -->
+		            <input type="hidden" name="LGD_AMOUNT" id="LGD_AMOUNT" value="40000">
+		            <!-- 결제금액 -->
+		            <input type="hidden" name="LGD_BUYEREMAIL" id="LGD_BUYEREMAIL" value="admin@admin.com">
+		            <!-- 구매자 이메일 -->
+		            <input type="hidden" name="LGD_CUSTOM_SKIN" id="LGD_CUSTOM_SKIN" value="red">
+		            <!-- 결제창 SKIN -->
+		            <input type="hidden" name="LGD_CUSTOM_PROCESSTYPE" id="LGD_CUSTOM_PROCESSTYPE" value="TWOTR">
+		            <!-- 트랜잭션 처리방식 -->
+		            <input type="hidden" name="LGD_TIMESTAMP" id="LGD_TIMESTAMP" value="20171013140430885">
+		            <!-- 타임스탬프 -->
+		            <input type="hidden" name="LGD_HASHDATA" id="LGD_HASHDATA" value="8ea09bf6ea8f0c48808f70aefe43a228">
+		            <!-- MD5 해쉬암호값 -->
+		            <input type="hidden" name="LGD_HASHDATA_HP" id="LGD_HASHDATA_HP" value="97d5f5dcb4a68c77369e159cd6b9df0e">
+		            <!-- MD5 해쉬암호값-휴대폰 -->
+		            <input type="hidden" name="LGD_HASHDATA_CO" id="LGD_HASHDATA_CO" value="8ea09bf6ea8f0c48808f70aefe43a228">
+		            <!-- MD5 해쉬암호값-다른 결제수단 -->
+		            <input type="hidden" name="LGD_MTRANSFERAUTOAPPYN" id="LGD_MTRANSFERAUTOAPPYN" value="A">
+		            <!-- 계좌이체 결제처리방식(동기/비동기) -->
+		
+		            <input type="hidden" name="LGD_VERSION" id="LGD_VERSION" value="JSP_SmartXPay_1.0">
+		            <!-- 버전정보 (삭제하지 마세요) -->
+		            <input type="hidden" name="LGD_WINDOW_VER" id="LGD_WINDOW_VER" value="2.5">
+		            <!-- 버전정보 (삭제하지 마세요) -->
+		            <input type="hidden" name="LGD_CUSTOM_USABLEPAY" id="LGD_CUSTOM_USABLEPAY" value="">
+		            <!-- 디폴트 결제수단 -->
+		            <input type="hidden" name="LGD_CUSTOM_SWITCHINGTYPE" id="LGD_CUSTOM_SWITCHINGTYPE" value="IFRAME">
+		            <!-- 신용카드 카드사 인증 페이지 연동 방식 -->
+		            <input type="hidden" name="LGD_ENCODING" id="LGD_ENCODING" value="UTF-8">
+		            <input type="hidden" name="LGD_ENCODING_NOTEURL" id="LGD_ENCODING_NOTEURL" value="UTF-8">
+		            <input type="hidden" name="LGD_ENCODING_RETURNURL" id="LGD_ENCODING_RETURNURL" value="UTF-8">
+		            <input type="hidden" name="LGD_PAYKEY" id="LGD_PAYKEY" value="">
+		            <input type="hidden" name="LGD_KVPMISPAUTOAPPYN" id="LGD_KVPMISPAUTOAPPYN" value="A">
+		            <input type="hidden" name="LGD_KVPMISPWAPURL" id="LGD_KVPMISPWAPURL" value="tamnao://">
+		            <input type="hidden" name="LGD_KVPMISPCANCELURL" id="LGD_KVPMISPCANCELURL" value="tamnao://">
+		            <input type="hidden" name="PayMethod" id="PayMethod" value="KAKAOPAY">
+		            <input type="hidden" name="GoodsName" value="탐나오 관광상품">
+		            <input type="hidden" name="Amt" value="40000">
+		            <input type="hidden" name="GoodsCnt" value="1">
+		            <input type="hidden" name="MID" value="KCTNO0001m">
+		            <!-- 가맹점ID -->
+		            <input type="hidden" name="AuthFlg" value="10">
+		            <input type="hidden" name="EdiDate" value="20171013140430">
+		            <input type="hidden" name="EncryptData" value="ZjZjMzEwMjFmMjhjOGQ4MWNmNmNlOWU5NGM1MTcyZTAyNGUwNmNmYWFiZmI4YTY3ZmI4MjU5NDcxNTA2OTFjYQ==">
+		            <input type="hidden" name="BuyerEmail" value="admin@admin.com">
+		            <!-- 구매자 이메일 -->
+		            <input type="hidden" name="BuyerName" value="관리자">
+		            <!-- 구매자 명 --> 
+		            <!-- <input name="offerPeriodFlag" type="hidden" value="N" /> --> <!-- 상품제공기간 플래그 --> 
+		            <!-- <input name="offerPeriod" type="hidden" value="" /> --> <!-- 상품제공기간 -->
+		            <input type="hidden" name="certifiedFlag" value="CN">
+		            <!-- 인증구분 -->
+		            <input type="hidden" name="currency" value="KRW">
+		            <!-- 거래통화 -->
+		            <input type="hidden" name="merchantEncKey" value="3f78794b77d3f0bf">
+		            <!-- 가맹점 암호화키 -->
+		            <input type="hidden" name="merchantHashKey" value="53c248bf82f0ed0e">
+		            <!-- 가맹점 해쉬키 -->
+		            <input type="hidden" name="requestDealApproveUrl" value="https://kmpay.lgcns.com:8443/merchant/requestDealApprove.dev">
+		            <!-- TXN_ID 요청URL -->
+		            <input type="hidden" name="prType" value="MPM">
+		            <!-- 결제요청타입 -->
+		            <input type="hidden" name="channelType" value="2">
+		            <!-- 채널타입 -->
+		            <input type="hidden" name="merchantTxnNum" value="105334460701793">
+		            <!-- 가맹점 거래 번호 -->
+		
+		            <input type="hidden" id="resultCode" value="00">
+		            <input type="hidden" id="resultMsg" value="정상처리되었습니다.">
+		            <input type="hidden" id="txnId" value="T171013167642627">
+		            <input type="hidden" id="prDt" value="20171013140438">
+		            <input type="hidden" name="SPU" value="">
+		            <input type="hidden" name="SPU_SIGN_TOKEN" value="">
+		            <input type="hidden" name="MPAY_PUB" value="">
+		            <input type="hidden" name="NON_REP_TOKEN" value="">
+		        </form>
+		        <dl class="goods-info">
+		            <dt><strong>숙박</strong> </dt>
+		            <dd> [씨엘펜션]12평<br>
+		                2017-10-24부터 1박|성인 2명, 소인 0명, 유아 0명 </dd>
+		        </dl>
+		        <dl class="goods-price">
+		            <dt>상품금액</dt>
+		            <dd>40,000원<br>
+		                <em>(-0)</em></dd>
+		            <dt>최종금액</dt>
+		            <dd> 40,000원 </dd>
+		        </dl>
+		        <h2>결제정보 선택</h2>
+		        <p class="payment bt-none">
+		            <input id="payWay1" type="radio" name="payWay" value="SC0010" checked="">
+		            <label for="payWay1">신용카드</label>
+		            <input id="payWay2" type="radio" name="payWay" value="SC0060">
+		            <label for="payWay2">휴대폰</label>
+		            <input id="payWay3" type="radio" name="payWay" value="SC0030">
+		            <label for="payWay3">실시간계좌이체</label>
+		            <input id="payWay4" type="radio" name="payWay" value="KAKAO">
+		            <label for="payWay4"><img src="../../images/web/cart/kakaopay.png" alt="카카오페이"></label>
+		            <br>
+		        </p>
+		        <h2>결제하기</h2>
+		        <dl class="total bt-none">
+		            <dt>총 상품금액</dt>
+		            <dd> <strong>40,000원</strong><br>
+		                <p>쿠폰할인 (-) <span>0</span>원</p>
+		                <p>L.POINT 할인	(-) <span>0</span>P</p>
+		                <p>L.POINT 적립 예정 <span>0</span>P</p>
+		            </dd>
+		        </dl>
+		        <dl class="total bt-none">
+		            <dt>최종결제금액</dt>
+		            <dd> <strong class="red">40,000원</strong><br>
+		            </dd>
+		        </dl>
+		        <article class="info-wrap info-wrap2">
+		            <ul>
+		                <li>항공, 숙박, 렌터카, 골프 상품은 실시간 상품으로 결제와 동시에 예약이 확정됩니다.</li>
+		                <li>패키지할인상품은 판매여행사의 예약확인 통화를 하신 후 예약이 확정됨을 양해바랍니다.</li>
+		                <li>관광지 / 레저 / 음식,뷰티 이용권은 유효기간과 사용법을 숙지바랍니다.</li>
+		                <li>모든 상품의 취소환불규정을 숙지바랍니다.</li>
+		            </ul>
+		        </article>
+		        <p class="pament-agree bt-none"> 구매내역 등을 최종 확인하였으며, 구매에 동의하시겠습니까?<br>
+		            <label for="agree5">
+		                <input type="checkbox" id="agree5">
+		                동의합니다. (전자금융거래법 제 8조 제 2항)</label>
+		        </p>
+		        <p> <a href="javascript:fn_Buy();" class="btn btn1">결제하기</a> </p>
+		    </div>
+		</div>
+	</section>
+	<!--//change contents-->
+</main>
+
+<footer id="footer">
+	
+</footer>
+
+</div> <!-- //wrap -->
+</body>
+</html>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC 
+    "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN" 
+    "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+<form-validation>
+
+    <formset>
+        <form name="CORPVO">
+        	<field property="corpNm" depends="required, maxlength">
+        		<arg0 key="업체명" />
+        		<arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+				<!-- <arg2 />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9a-zA-Z$]</var-value>
+				</var> -->
+			</field>
+			<field property="corpCd" depends="required">
+				<arg0 key="업체코드" />
+			</field>
+			<field property="coRegNum" depends="required, maxlength">
+				<arg0 key="사업자등록번호" />
+                <arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+            </field>
+            <field property="corpType" depends="required">
+				<arg0 key="업체유형" />
+			</field>
+			<field property="ceoNm" depends="maxlength">
+                <arg0 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+            </field>
+			<field property="ceoTelNum" depends="maxlength">
+                <arg0 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+            </field>
+			<field property="rsvTelNum" depends="required, maxlength">
+				<arg0 key="예약전화번호" />
+                <arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+            </field>
+            <field property="corpEmail" depends="email, maxlength">
+                <arg0 key="업체이메일" resource="false" />
+                <arg1 key="50" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+            </field>
+            <field property="roadNmAddr" depends="maxlength">
+            	<arg0 key="업체 주소" />
+                <arg1 key="100" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+            </field>
+            <field property="dtlAddr" depends="maxlength">
+            	<arg0 key="업체 상세주소" />
+                <arg1 key="100" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+            </field>
+        </form>
+        
+        <form name="MASCORPVO">
+			<field property="rsvTelNum" depends="required, maxlength">
+				<arg0 key="예약전화번호" />
+                <arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+            </field>
+            <field property="corpEmail" depends="email, maxlength">
+                <arg0 key="업체이메일" resource="false" />
+                <arg1 key="50" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+            </field>
+        </form>
+        
+        <form name="CORPSPADINFOVO">
+        	<field property="shopNm" depends="required, maxlength">
+				<arg0 key="상호명" />
+                <arg1 key="33" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>33</var-value>
+				</var>
+            </field>
+            <field property="adtmSimpleExp" depends="required, maxlength">
+				<arg0 key="간략설명" />
+                <arg1 key="60" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>60</var-value>
+				</var>
+            </field>
+            <field property="adtmUrl" depends="maxlength">
+				<arg0 key="홈페이지" />
+                <arg1 key="100" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+            </field>
+        	<field property="rsvTelNum" depends="required, maxlength">
+				<arg0 key="문의번호" />
+                <arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+            </field>
+        </form>
+        
+         <form name="CORP_PNSREQVO">
+        	 <field property="corpNm" depends="required, maxlength">
+				<arg0 key="업체명" />
+                <arg1 key="33" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>33</var-value>
+				</var>
+            </field>
+            <field property="coRegNum" depends="required, maxlength">
+				<arg0 key="사업자등록번호" />
+                <arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+            </field>
+            <field property="corpType" depends="required">
+				<arg0 key="회사유형" />
+            </field>
+        	<field property="rsvTelNum" depends="required, maxlength">
+				<arg0 key="전화번호" />
+                <arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+            </field>
+            <field property="faxNum" depends="maxlength">
+				<arg0 key="팩스번호" />
+                <arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+            </field>
+            <field property="hmpgAddr" depends="maxlength">
+				<arg0 key="업체 홈페이지" />
+                <arg1 key="100" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+            </field>
+            <field property="addr" depends="required">
+				<arg0 key="업체 주소" />
+            </field>
+            <field property="dtlAddr" depends="required, maxlength">
+				<arg0 key="업체 상세 주소" />
+                <arg1 key="66" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>66</var-value>
+				</var>
+            </field>
+            <field property="ceoNm" depends="required, maxlength">
+				<arg0 key="대표자 성명" />
+                <arg1 key="13" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>13</var-value>
+				</var>
+            </field>
+            <field property="bsncon" depends="required, maxlength">
+				<arg0 key="업태" />
+                <arg1 key="33" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>33</var-value>
+				</var>
+            </field>
+            <field property="bsntyp" depends="required, maxlength">
+				<arg0 key="업종" />
+                <arg1 key="33" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>33</var-value>
+				</var>
+            </field>
+            <field property="salePrdtList" depends="required, maxlength">
+				<arg0 key="판매예정상품" />
+                <arg1 key="66" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>66</var-value>
+				</var>
+            </field>
+            <field property="depositor" depends="required, maxlength">
+				<arg0 key="예금주명" />
+                <arg1 key="33" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>33</var-value>
+				</var>
+            </field>
+            <field property="bankNm" depends="required, maxlength">
+				<arg0 key="계좌은행" />
+                <arg1 key="33" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>33</var-value>
+				</var>
+            </field>
+            <field property="accNum" depends="required, maxlength">
+				<arg0 key="계좌번호" />
+                <arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+            </field>
+            <field property="admNm" depends="required, maxlength">
+				<arg0 key="담당자 성명" />
+                <arg1 key="13" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>13</var-value>
+				</var>
+            </field>
+            <field property="admEmail" depends="required, email, maxlength">
+				<arg0 key="담당자 email" />
+                <arg1 key="50" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+            </field>
+            <field property="admMobile" depends="required, maxlength">
+				<arg0 key="담당자 휴대전화" />
+                <arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+            </field>
+            <field property="admTelnum" depends="required, maxlength">
+				<arg0 key="담당자 직통전화" />
+                <arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+            </field>
+            <field property="admDep" depends="required, maxlength">
+				<arg0 key="소속부서" />
+                <arg1 key="33" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>33</var-value>
+				</var>
+            </field>
+            <field property="admOfcpos" depends="required, maxlength">
+				<arg0 key="직위" />
+                <arg1 key="33" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>33</var-value>
+				</var>
+            </field>
+        </form>
+        
+    </formset>
+
+</form-validation>

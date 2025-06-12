@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="kwa">
+
+<resultMap id="KWA_R_00" class="oss.marketing.vo.KWAVO">
+	<result property="kwaNum" 		column="KWA_NUM"/>
+	<result property="kwaNm" 		column="KWA_NM"/>
+	<result property="startDttm" 	column="START_DTTM"/>
+	<result property="endDttm" 		column="END_DTTM"/>
+	<result property="regDttm" 		column="REG_DTTM"/>
+	<result property="pcUrl" 		column="PC_URL"/>
+	<result property="mobileUrl" 	column="MOBILE_URL"/>
+	<result property="location" 	column="LOCATION"/>
+</resultMap>
+
+<resultMap id="KWA_WEB_R_00" class="oss.marketing.vo.KWAVO">
+	<result property="kwaNum" 		column="KWA_NUM"/>
+	<result property="kwaNm" 		column="KWA_NM"/>
+	<result property="startDttm" 	column="START_DTTM"/>
+	<result property="endDttm" 		column="END_DTTM"/>
+	<result property="regDttm" 		column="REG_DTTM"/>
+	<result property="pcUrl" 		column="PC_URL"/>
+	<result property="mobileUrl" 	column="MOBILE_URL"/>
+	<result property="location" 	column="LOCATION"/>
+	<result property="prdtCnt" 		column="PRDT_CNT"/>
+</resultMap>
+
+<resultMap id="KWA_WEB_R_01" class="oss.marketing.vo.KWAVO">
+	<result property="kwaNum" 		column="KWA_NUM"/>
+	<result property="kwaNm" 		column="KWA_NM"/>
+	<result property="startDttm" 	column="START_DTTM"/>
+	<result property="endDttm" 		column="END_DTTM"/>
+	<result property="regDttm" 		column="REG_DTTM"/>
+	<result property="pcUrl" 		column="PC_URL"/>
+	<result property="mobileUrl" 	column="MOBILE_URL"/>
+	<result property="location" 	column="LOCATION"/>
+	<result property="prdtCnt" 		column="PRDT_CNT"/>
+	<result property="savePath" 	column="SAVE_PATH"/>
+	<result property="saveFileNm" 	column="SAVE_FILE_NM"/>
+	<result property="corpCd" 		column="CORP_CD"/>
+</resultMap>
+
+<resultMap id="KWA_WEB_R_04" class="oss.marketing.vo.KWAVO">
+	<result property="kwaNum" 		column="KWA_NUM"/>
+	<result property="kwaNm" 		column="KWA_NM"/>
+	<result property="startDttm" 	column="START_DTTM"/>
+	<result property="endDttm" 		column="END_DTTM"/>
+	<result property="location" 	column="LOCATION"/>
+	<result property="locationNm" 	column="LOCATION_NM"/>
+</resultMap>
+
+<resultMap id="KWA_PRDT_R_00" class="oss.marketing.vo.KWAPRDTVO">
+	<result property="kwaNum" 	column="KWA_NUM"/>
+	<result property="prdtNum" 	column="PRDT_NUM"/>
+	<result property="printSn" 	column="PRINT_SN"/>
+	<result property="corpCd" 	column="CORP_CD"/>
+	<result property="ctgr" 	column="CTGR"/>
+	<result property="prdtNm" 	column="PRDT_NM"/>
+	<result property="corpNm" 	column="CORP_NM"/>
+</resultMap>
+
+<sql id="KWA_S_00_FILD">
+	KWA_NUM
+	, KWA_NM
+	, START_DTTM
+	, END_DTTM
+	, REG_DTTM
+	, PC_URL
+	, MOBILE_URL
+	, LOCATION
+</sql>
+
+<sql id="KWA_S_01_FILD">
+	T_KWA.KWA_NUM
+	, KWA_NM
+	, START_DTTM
+	, END_DTTM
+	, REG_DTTM
+	, PC_URL
+	, MOBILE_URL
+	, LOCATION
+	, SAVE_PATH
+	, SAVE_FILE_NM
+</sql>
+
+<sql id="KWA_S_00_WHERE">
+	<isNotEmpty property="kwaNum">
+		AND KWA_NUM = #kwaNum#
+ 	</isNotEmpty>
+</sql>
+
+<sql id="KWA_S_01_WHERE">
+ 	<isNotEmpty property="skwaNum">
+		AND KWA_NUM = #skwaNum#
+ 	</isNotEmpty>
+ 	<isNotEmpty property="skwaNm">
+		AND KWA_NM LIKE '%' || #skwaNm# || '%'
+	</isNotEmpty>
+	<isNotEmpty property="slocation">
+		AND LOCATION = #slocation#
+	</isNotEmpty>
+</sql>
+
+
+<select id="KWA_S_00" resultMap="KWA_R_00">
+SELECT <include refid="KWA_S_00_FILD" />
+FROM TB_KWA
+WHERE 1 = 1
+ 	<include refid="KWA_S_00_WHERE" />
+ORDER BY KWA_NM DESC
+</select>
+
+
+<select id="KWA_S_01" resultMap="KWA_WEB_R_00">
+SELECT <include refid="KWA_S_00_FILD" />
+	, PRDT_CNT
+FROM (
+	SELECT <include refid="KWA_S_00_FILD" />
+		, PRDT_CNT
+		, ROWNUM AS RN
+	FROM (
+		SELECT <include refid="KWA_S_00_FILD" />
+			, (SELECT /*+ INDEX(TB_KWA_PRDT IDX_KWA_PRDT_01) */ COUNT(*) FROM TB_KWA_PRDT WHERE KWA_NUM = TB_KWA.KWA_NUM) PRDT_CNT
+		FROM TB_KWA
+		WHERE 1 = 1
+		 	<include refid="KWA_S_01_WHERE" />
+		ORDER BY REG_DTTM DESC
+	) T_KWA
+)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="KWA_S_02" resultClass="int">
+SELECT COUNT(*)
+FROM TB_KWA
+WHERE 1 = 1
+ 	<include refid="KWA_S_01_WHERE" />
+</select>
+
+
+<select id="KWA_S_03" resultClass="String">
+SELECT TO_CHAR(NVL(MAX(TO_NUMBER(KWA_NUM)), 0) + 1)
+FROM TB_KWA
+</select>
+
+<select id="KWA_S_04" resultMap="KWA_WEB_R_04">
+SELECT KWA_NUM
+	, KWA_NM
+	, START_DTTM
+	, END_DTTM
+    , LOCATION
+    , LOCATION_NM
+FROM (
+	SELECT T_KWA.KWA_NUM
+		, KWA_NM
+		, START_DTTM
+		, END_DTTM
+	    , LOCATION
+	    , LOCATION_NM
+		, ROWNUM AS RN
+	FROM (
+		SELECT KWA_NUM
+		 	, KWA_NM
+		 	, START_DTTM
+		 	, END_DTTM
+	     	, LOCATION
+	     	, (SELECT CD_NM FROM TB_CD WHERE CD_NUM = T_KWA.LOCATION) LOCATION_NM
+			, ROWNUM AS RN
+		FROM TB_KWA T_KWA
+		WHERE 1 = 1
+		 	<isNotEmpty property="slocation">
+		   		AND LOCATION = #slocation#
+			</isNotEmpty>
+			<isNotEmpty property="skwaNm">
+		   		AND KWA_NM LIKE '%' || #skwaNm# || '%'
+			</isNotEmpty>
+			AND END_DTTM >= TO_CHAR(SYSDATE, 'YYYYMMDD') 
+		ORDER BY REG_DTTM DESC
+	) T_KWA
+)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="KWA_S_05" resultClass="int">
+SELECT COUNT(*)
+FROM TB_KWA
+WHERE 1 = 1
+ 	<isNotEmpty property="slocation">
+   		AND LOCATION = #slocation#
+	</isNotEmpty>
+	<isNotEmpty property="skwaNm">
+   		AND KWA_NM LIKE '%' || #skwaNm# || '%'
+	</isNotEmpty>
+	AND END_DTTM >= TO_CHAR(SYSDATE, 'YYYYMMDD') 
+</select>
+
+<insert id="KWA_I_00">
+INSERT INTO TB_KWA (
+	KWA_NUM
+	, KWA_NM
+	, START_DTTM
+	, END_DTTM
+	, REG_DTTM
+	, PC_URL
+    , MOBILE_URL
+    , LOCATION
+)
+VALUES (
+	#kwaNum#
+	, #kwaNm#
+	, #startDttm#
+	, #endDttm#
+	, SYSDATE
+	, #pcUrl#
+    , #mobileUrl#
+    , #location#
+)
+</insert>
+
+<update id="KWA_U_00">
+UPDATE TB_KWA
+SET KWA_NM = #kwaNm#
+	, START_DTTM = #startDttm#
+	, END_DTTM = #endDttm#
+	, PC_URL = #pcUrl#
+    , MOBILE_URL = #mobileUrl#
+    , LOCATION = #location#
+WHERE KWA_NUM = #kwaNum#
+</update>
+
+<delete id="KWA_D_00">
+DELETE TB_KWA
+WHERE KWA_NUM = #kwaNum#
+</delete>
+
+
+<select id="KWA_WEB_S_00" resultMap="KWA_WEB_R_00">
+SELECT *
+FROM (
+	SELECT <include refid="KWA_S_00_FILD" />
+		, (SELECT /*+ INDEX(TB_KWA_PRDT IDX_KWA_PRDT_01) */ COUNT(*) FROM TB_KWA_PRDT WHERE KWA_NUM = TB_KWA.KWA_NUM) PRDT_CNT
+	FROM TB_KWA
+	WHERE 1 = 1
+		AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN START_DTTM AND END_DTTM
+		<isNotEmpty property="slocation">
+			<isEmpty property="sNotInYn">
+				AND LOCATION = #slocation#
+			</isEmpty>
+			<isNotEmpty property="sNotInYn">
+				<isEqual property="sNotInYn" compareValue="Y">
+					AND LOCATION NOT IN (#slocation#)
+				</isEqual>
+				<isEqual property="sNotInYn" compareValue="N">
+					AND LOCATION = #slocation#
+				</isEqual>
+			</isNotEmpty>
+		</isNotEmpty>
+	ORDER BY DBMS_RANDOM.VALUE
+)
+<![CDATA[
+WHERE ROWNUM <= #cnt#
+]]>
+</select>
+
+<select id="KWA_WEB_S_01" resultMap="KWA_WEB_R_01">
+SELECT *
+FROM (
+	SELECT T_KWA.KWA_NUM
+		, KWA_NM
+		, START_DTTM
+		, END_DTTM
+		, REG_DTTM
+		, PC_URL
+		, MOBILE_URL
+		, LOCATION
+		, CASE T_PRDT.CORP_CD
+			WHEN 'RC' THEN ''
+			ELSE SAVE_PATH
+		END AS SAVE_PATH
+		, CASE T_PRDT.CORP_CD
+			WHEN 'RC' THEN (
+				SELECT CAR_IMG
+				FROM TB_RC_CARDIV T_DIV
+					INNER JOIN TB_RC_PRDTINF T_RC
+					ON T_RC.RC_CARDIV_NUM = T_DIV.RC_CARDIV_NUM
+				WHERE PRDT_NUM = T_PRDT.PRDT_NUM
+					AND USE_YN = 'Y'
+			)
+			ELSE SAVE_FILE_NM
+		END AS SAVE_FILE_NM
+		, (SELECT /*+ INDEX(TB_KWA_PRDT IDX_KWA_PRDT_01) */ COUNT(*) FROM TB_KWA_PRDT WHERE KWA_NUM = T_KWA.KWA_NUM) PRDT_CNT
+		, CORP_CD
+	FROM TB_KWA T_KWA
+		LEFT JOIN TB_KWA_PRDT T_PRDT
+		ON T_PRDT.KWA_NUM = T_KWA.KWA_NUM
+			<isNotEmpty property="sCorpCd">
+				AND CORP_CD = #sCorpCd#
+			</isNotEmpty>
+			AND PRINT_SN = 1
+		LEFT OUTER JOIN TB_CM_IMG T_IMG
+		ON T_IMG.LINK_NUM = (
+			CASE T_PRDT.CORP_CD
+				WHEN 'AD' THEN (SELECT CORP_ID FROM TB_AD_PRDTINF WHERE PRDT_NUM = T_PRDT.PRDT_NUM)
+				ELSE T_PRDT.PRDT_NUM
+			END)
+			AND T_IMG.IMG_SN = 1
+	WHERE 1 = 1
+		AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN START_DTTM AND END_DTTM
+		<isNotEmpty property="sCorpCd">
+		AND CORP_CD = #sCorpCd#
+		</isNotEmpty>
+		<isNotEmpty property="slocation">
+			<isEmpty property="sNotInYn">
+				AND LOCATION = #slocation#
+			</isEmpty>
+			<isNotEmpty property="sNotInYn">
+				<isEqual property="sNotInYn" compareValue="Y">
+					AND LOCATION NOT IN (#slocation#)
+				</isEqual>
+				<isEqual property="sNotInYn" compareValue="N">
+					AND LOCATION = #slocation#
+				</isEqual>
+			</isNotEmpty>
+		</isNotEmpty>
+	ORDER BY DBMS_RANDOM.VALUE
+)
+<![CDATA[
+WHERE ROWNUM <= #cnt#
+]]>
+</select>
+
+<sql id="KWA_PRDT_S_00_FILD">
+	   KWA_NUM
+	 , PRDT_NUM
+	 , PRINT_SN
+	 , CORP_CD
+	 , CTGR
+</sql>
+
+<sql id="KWA_PRDT_S_00_WHERE">
+	<isNotEmpty property="kwaNum">
+		AND KWA_NUM = #kwaNum#
+ 	</isNotEmpty>
+ 	<isNotEmpty property="corpCd">
+		AND CORP_CD = #corpCd#
+		<isEqual property="corpCd" compareValue="SP">
+			<isNotEmpty property="ctgr">
+				AND CTGR = #ctgr#
+			</isNotEmpty>
+		</isEqual>
+	</isNotEmpty>
+</sql>
+
+<select id="KWA_PRDT_S_00" resultMap="KWA_PRDT_R_00">
+SELECT KWA_NUM
+	, T_KP.PRDT_NUM
+	, PRINT_SN
+	, CORP_CD
+	, CTGR
+	, PRDT_NM
+	, (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = T_PRDT.CORP_ID) AS CORP_NM
+FROM TB_KWA_PRDT T_KP
+	INNER JOIN (
+		SELECT PRDT_NUM
+			, PRDT_NM
+            , CORP_ID
+		FROM TB_AD_PRDTINF
+
+        UNION
+
+		SELECT PRDT_NUM
+			, PRDT_NM || ' / ' || (SELECT CD_NM FROM TB_CD WHERE CD_NUM = T_PRDT.USE_FUEL_DIV) || ' / ' ||
+				CASE
+                	WHEN ISR_DIV = 'ID00' THEN '자차자율'
+                   	WHEN ISR_DIV = 'ID10' THEN
+                     	CASE
+                       		WHEN ISR_TYPE_DIV = 'GENL' THEN '자차포함(일반자차)'
+                       		WHEN ISR_TYPE_DIV = 'LUXY' THEN '자차포함(고급자차)'
+                       		ELSE '자차포함'
+                     	END
+                	WHEN ISR_DIV ='ID20' THEN '자차필수'
+                END AS PRDT_NM
+            , CORP_ID
+		FROM TB_RC_PRDTINF T_PRDT
+
+        UNION
+
+		SELECT PRDT_NUM
+			, PRDT_NM || '('|| TO_DATE(SALE_START_DT, 'yyyy-MM-dd') || '~' || TO_DATE(SALE_END_DT, 'yyyy-MM-dd') || ')' PRDT_NM
+            , CORP_ID
+		FROM TB_SP_PRDTINF
+
+		UNION
+
+		SELECT PRDT_NUM
+			, PRDT_NM || '('|| TO_DATE(SALE_START_DT, 'yyyy-MM-dd') || '~' || TO_DATE(SALE_END_DT, 'yyyy-MM-dd') || ')' PRDT_NM
+            , CORP_ID
+		FROM TB_SV_PRDTINF
+	) T_PRDT
+    ON T_KP.PRDT_NUM = T_PRDT.PRDT_NUM
+WHERE 1 = 1
+	<include refid="KWA_PRDT_S_00_WHERE" />
+ORDER BY PRINT_SN
+</select>
+
+
+<insert id="KWA_PRDT_I_01">
+INSERT INTO TB_KWA_PRDT (
+	KWA_NUM
+	, PRDT_NUM
+	, PRINT_SN
+	, CORP_CD
+	, CTGR)
+VALUES (
+    #kwaNum#
+	, #prdtNum#
+	, (SELECT NVL(MAX(PRINT_SN) + 1, 1)
+		FROM TB_KWA_PRDT
+		WHERE KWA_NUM = #kwaNum#
+			AND CORP_CD = #corpCd#
+			<isEqual property="corpCd" compareValue="SP">
+				AND CTGR = #ctgr#
+			</isEqual>
+	)
+    , #corpCd#
+    , #ctgr#
+)
+</insert>
+
+
+<!-- 프로모션 상품 순번변경 (증가) -->
+<update id="KWA_PRDT_U_00">
+UPDATE TB_KWA_PRDT
+SET PRINT_SN = PRINT_SN + 1
+WHERE 1 = 1
+ 	AND KWA_NUM = #kwaNum#
+ 	AND CORP_CD = #corpCd#
+ 	<isEqual property="corpCd" compareValue="SP">
+ 		AND CTGR = #ctgr# 
+	</isEqual>
+  	<isNotEqual property="oldSn" compareValue="0">
+   		<![CDATA[
+  	 	AND PRINT_SN < #oldSn#
+  	 	]]>
+  	</isNotEqual>
+	<![CDATA[
+  	AND PRINT_SN >= #newSn#
+	]]>
+</update>
+
+<!-- 프로모션 상품 순번변경 (감소) -->
+<update id="KWA_PRDT_U_01">
+UPDATE TB_KWA_PRDT
+SET PRINT_SN = PRINT_SN - 1
+WHERE 1 = 1
+ 	AND KWA_NUM = #kwaNum#
+ 	AND CORP_CD = #corpCd#
+ 	<isEqual property="corpCd" compareValue="SP">
+ 		AND CTGR = #ctgr#
+	</isEqual>
+ 	<isNotEqual property="newSn" compareValue="0">
+ 		<![CDATA[
+ 	 	AND PRINT_SN <= #newSn#
+ 	 	]]>
+ 	</isNotEqual>
+ 	<![CDATA[
+	AND PRINT_SN > #oldSn#
+	]]>
+</update>
+
+<!-- 프로모션 상품 순번변경된 객체 -->
+<update id="KWA_PRDT_U_02">
+UPDATE TB_KWA_PRDT
+SET PRINT_SN = #newSn#
+WHERE 1 = 1
+   	AND KWA_NUM = #kwaNum#
+   	AND CORP_CD = #corpCd#
+   	<isEqual property="corpCd" compareValue="SP">
+		AND CTGR = #ctgr#
+	</isEqual>
+   	AND PRDT_NUM = #prdtNum#
+</update>
+
+
+<delete id="KWA_PRDT_D_00">
+DELETE TB_KWA_PRDT
+WHERE KWA_NUM = #kwaNum#
+</delete>
+
+</sqlMap>

@@ -1,0 +1,1034 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="api">
+
+<resultMap id="API_R_01" class="api.vo.SPPRDTSVO">
+	<result property="prdtNum" column="PRDT_NUM" />
+	<result property="prdtNm" column="PRDT_NM" />
+	<result property="prdtInf" column="PRDT_INF" />
+	<result property="img" column="IMG" />
+	<result property="saleStartDt" column="SALE_START_DT" />
+	<result property="saleEndDt" column="SALE_END_DT" />
+</resultMap>
+
+<resultMap id="API_R_02" class="api.vo.RCSVO">
+	<result property="hijejuMappingNum" column="HIJEJU_MAPPING_NUM" />
+	<result property="rcId" column="CORP_ID" />
+	<result property="rcName" column="CORP_NM" />
+</resultMap>
+
+<resultMap id="API_R_03" class="apiCn.vo.ILSDTLVO">
+<result property="code" 	column="CODE" />
+<result property="name" 	column="NAME" />
+<result property="gubun" 	column="GUBUN" />
+<result property="gear" 	column="GEAR" />
+<result property="maker" 	column="MAKER" />
+<result property="fuel" 	column="FUEL" />
+<result property="baegi" 	column="BAEGI" />
+<result property="jeongwon" column="JEONGWON" />
+</resultMap>
+
+<resultMap id="APICN_R_00" class="apiCn.vo.APICNVO">
+<result property="apiId" 		column="API_ID" />
+<result property="corpId" 		column="CORP_ID" />
+<result property="authkey" 		column="AUTHKEY" />
+<result property="linkYn" 		column="LINK_YN" />
+<result property="frstRegDttm" 	column="FRST_REG_DTTM" />
+<result property="frstRegId" 	column="FRST_REG_ID" />
+</resultMap>
+
+<resultMap id="APICN_R_01" class="apiCn.vo.APICNVO">
+<result property="apiId" 		column="API_ID" />
+<result property="corpId" 		column="CORP_ID" />
+<result property="corpNm" 		column="CORP_Nm" />
+<result property="authkey" 		column="AUTHKEY" />
+<result property="linkYn" 		column="LINK_YN" />
+<result property="frstRegDttm" 	column="FRST_REG_DTTM" />
+<result property="frstRegId" 	column="FRST_REG_ID" />
+</resultMap>
+
+<resultMap id="APIDTL_R_00" class="apiCn.vo.APIDTLVO">
+<result property="apiId" 		column="API_ID" />
+<result property="linkDiv" 		column="LINK_DIV" />
+<result property="statusCd" 	column="STATUS_CD" />
+<result property="svcUrl" 		column="SVC_URL" />
+<result property="svcExp" 		column="SVC_EXP" />
+<result property="etcParamNm1" 	column="ETC_PARAM_NM1" />
+<result property="etcParamExp1" column="ETC_PARAM_EXP1" />
+<result property="etcParam1" 	column="ETC_PARAM1" />
+<result property="etcParamNm2" 	column="ETC_PARAM_NM2" />
+<result property="etcParamExp2" column="ETC_PARAM_EXP2" />
+<result property="etcParam2" 	column="ETC_PARAM2" />
+<result property="etcParamNm3" 	column="ETC_PARAM_NM3" />
+<result property="etcParamExp3" column="ETC_PARAM_EXP3" />
+<result property="etcParam3" 	column="ETC_PARAM3" />
+<result property="etcParamNm4" 	column="ETC_PARAM_NM4" />
+<result property="etcParamExp4" column="ETC_PARAM_EXP4" />
+<result property="etcParam4" 	column="ETC_PARAM4" />
+<result property="etcParamNm5" 	column="ETC_PARAM_NM5" />
+<result property="etcParamExp5" column="ETC_PARAM_EXP5" />
+<result property="etcParam5" 	column="ETC_PARAM5" />
+<result property="frstRegDttm" 	column="FRST_REG_DTTM" />
+<result property="frstRegId" 	column="FRST_REG_ID" />
+<result property="lastModDttm" 	column="LAST_MOD_DTTM" />
+<result property="lastModId" 	column="LAST_MOD_ID" />
+</resultMap>
+
+<resultMap id="APIPOS_R_00" class="api.vo.POSVO">
+	<result property="rsvNum" column="RSV_NUM" />
+	<result property="cpDivNm" column="CP_DIV_NM" />
+	<result property="userNm" column="USER_NM" />
+	<result property="telNum" column="TEL_NUM" />
+	<result property="agentCorpNm" column="AGENT_CORP_NM" />
+	<result property="saleCorpId" column="SALE_CORP_ID" />
+	<result property="agentCorpId" column="AGENT_CORP_ID" />
+	<result property="cpDiv" column="CP_DIV" />
+	<result property="frstRegDttm" column="FRST_REG_DTTM" />
+</resultMap>
+
+<resultMap id="APIPOS_R_01" class="api.vo.POSVO">
+	<result property="rsvNum" column="RSV_NUM" />
+	<result property="spRsvNum" column="SP_RSV_NUM" />
+	<result property="agentCorpNm" column="AGENT_CORP_NM" />	
+	<result property="cpDivNm" column="CP_DIV_NM" />	
+	<result property="userNm" column="USER_NM" />
+	<result property="telNum" column="TEL_NUM" />
+	<result property="cpDiv" column="CP_DIV" />	
+	<result property="optNm" column="OPT_NM" />
+	<result property="buyNum" column="BUY_NUM" />
+	<result property="saleAmt" column="SALE_AMT" />
+</resultMap>
+
+<resultMap id="APIPOS_R_02" class="api.vo.POSVO">	
+	<result property="spRsvNum" column="SP_RSV_NUM" />
+	<result property="prdtNum" column="PRDT_NUM" />
+	<result property="ctrtPrdtNum" column="CTRT_PRDT_NUM" />
+	<result property="ctrtPrdtNm" column="CTRT_PRDT_NM" />	
+	<result property="agentCorpId" column="AGENT_CORP_ID" />
+	<result property="useGrd" column="USE_GRD" />
+	<result property="optNm" column="OPT_NM" />
+	<result property="buyNum" column="BUY_NUM" />
+	<result property="saleAmt" column="SALE_AMT" />
+</resultMap>
+
+<resultMap id="APIPOS_R_03" class="api.vo.POSVO">
+	<result property="rsvNum" column="RSV_NUM" />
+	<result property="prdtNum" column="PRDT_NUM" />
+	<result property="ctrtPrdtNm" column="CTRT_PRDT_NM" />
+	<result property="optNm" column="OPT_NM" />
+	<result property="useNum" column="USE_NUM" />
+	<result property="saleStateNm" column="SALE_STATE_NM" />
+	<result property="agentCorpNm" column="AGENT_CORP_NM" />
+	<result property="saleAmt" column="SALE_AMT" />		
+	<result property="userNm" column="USER_NM" />
+	<result property="telNum" column="TEL_NUM" />
+	<result property="useDttm" column="USE_DTTM" />
+</resultMap>
+
+<resultMap id="APIPOS_R_04" class="api.vo.POSVO">
+	<result property="useNum" column="USE_NUM" />
+	<result property="saleAmt" column="SALE_AMT" />
+</resultMap>
+
+<resultMap id="APIR_R_00" class="api.vo.APIReservationVO">
+	<result property="corpCd" column="CORP_CD" />
+</resultMap>
+
+<resultMap id="APIR_R_01" class="api.vo.APIReservationVO">
+	<result property="corpCd"       column="CORP_CD" />
+	<result property="corpId"       column="CORP_ID" />
+    <result property="apiDiv"       column="API_DIV" />
+    <result property="dtlRsvNum"    column="DTL_RSV_NUM" />
+    <result property="apiRsvNum"    column="API_RSV_NUM" />
+    <result property="rsvNm"        column="RSV_NM" />
+    <result property="rsvTelnum"    column="RSV_TELNUM" />
+    <result property="buyNum"       column="BUY_NUM" />
+    <result property="useNum"       column="USE_NUM" />
+    <result property="admMobile"       column="ADM_MOBILE" />
+    <result property="admMobile2"       column="ADM_MOBILE2" />
+    <result property="admMobile3"       column="ADM_MOBILE3" />
+</resultMap>
+
+<resultMap id="APIR_R_03" class="api.vo.APIReservationVO">
+	<result property="dtlRsvNum" column="DTL_RSV_NUM" />
+    <result property="apiDiv" column="API_DIV" />
+</resultMap>
+
+<select id="APIR_S_00"  resultMap="APIR_R_00">
+    SELECT 'AD' AS CORP_CD FROM TB_AD_RSV WHERE RSV_NUM = #rsvNum# GROUP BY RSV_NUM
+    UNION ALL
+    SELECT 'RC' AS CORP_CD FROM TB_RC_RSV WHERE RSV_NUM = #rsvNum# GROUP BY RSV_NUM
+    UNION ALL
+    SELECT 'SP' AS CORP_CD FROM TB_SP_RSV WHERE RSV_NUM = #rsvNum# GROUP BY RSV_NUM
+    UNION ALL
+    SELECT 'SV' AS CORP_CD FROM TB_SV_RSV WHERE RSV_NUM = #rsvNum# GROUP BY RSV_NUM
+</select>
+
+<select id="APIR_S_01"  resultMap="APIR_R_01">
+    SELECT
+	    A.CORP_CD,
+        A.CORP_ID,
+        A.API_DIV,
+        B.DTL_RSV_NUM,
+        B.API_RSV_NUM,
+        C.RSV_NM,
+        C.RSV_TELNUM,
+        B.BUY_NUM,
+        B.USE_NUM,
+        A.ADM_MOBILE,
+        A.ADM_MOBILE2,
+        A.ADM_MOBILE3
+    FROM
+    (
+        SELECT
+        CORP_ID,
+        CORP_CD,
+        ADM_MOBILE,
+        ADM_MOBILE2,
+        ADM_MOBILE3,
+        (CASE
+            WHEN CORP_CD = 'AD' THEN AD_APILINK_NM
+            WHEN CORP_CD = 'RC' THEN API_RENT_DIV
+            WHEN CORP_CD = 'SP' THEN LS_LINK_YN
+            ELSE 'N'
+            END
+        )AS API_DIV
+        FROM TB_CORP
+    ) AS A
+    JOIN(
+        SELECT CORP_ID, AD_RSV_NUM AS DTL_RSV_NUM, '' AS API_RSV_NUM, RSV_NUM, 0 AS BUY_NUM, 0 AS USE_NUM FROM TB_AD_RSV WHERE RSV_NUM = #rsvNum#
+        UNION ALL
+        SELECT CORP_ID, RC_RSV_NUM AS DTL_RSV_NUM, LINK_MAPPING_RSVNUM AS API_RSV_NUM, RSV_NUM, 0 AS BUY_NUM, 0 AS USE_NUM FROM TB_RC_RSV WHERE RSV_NUM = #rsvNum#
+        UNION ALL
+        SELECT CORP_ID, SP_RSV_NUM AS DTL_RSV_NUM, '' AS API_RSV_NUM, RSV_NUM, BUY_NUM, USE_NUM FROM TB_SP_RSV WHERE RSV_NUM = #rsvNum#
+        UNION ALL
+        SELECT CORP_ID, SV_RSV_NUM AS DTL_RSV_NUM, '' AS API_RSV_NUM, RSV_NUM, 0 AS BUY_NUM, 0 AS USE_NUM FROM TB_SV_RSV WHERE RSV_NUM = #rsvNum#
+    )AS B
+    ON  A.CORP_ID = B.CORP_ID
+    JOIN TB_RSV AS C
+    ON B.RSV_NUM = C.RSV_NUM
+    ORDER BY CORP_CD
+</select>
+
+<select id="APIR_S_02"  resultClass="int">
+    SELECT
+        COUNT(*)
+    FROM
+        TB_APIRC_RSV
+    WHERE 1=1
+    AND RC_RSV_NUM = #dtlRsvNum#
+    AND SEQ_NUM = 0
+    AND RSV_RESULT = 0
+</select>
+
+<select id="APIR_S_03"  resultMap="APIR_R_03">
+    SELECT
+        A.RC_RSV_NUM AS DTL_RSV_NUM,
+        B.API_RENT_DIV AS API_DIV
+    FROM
+        TB_RC_RSV AS A
+    JOIN
+        TB_CORP AS B
+    ON A.CORP_ID = B.CORP_ID
+    WHERE 1=1
+    AND A.RSV_NUM = #rsvNum#
+</select>
+
+<select id="API_S_00"  resultClass="string">
+SELECT PRDT_NUM
+   FROM ( SELECT ROWNUM RN,
+                 PRDT_NUM
+            FROM ( SELECT PRDT_NUM
+                     FROM ( SELECT T_P.PRDT_NUM,
+                                   T_P.CONF_DTTM,
+                                   RANK( ) OVER (PARTITION BY T_P.PRDT_NUM
+                             ORDER BY T_P.SALE_AMT ASC,
+                                   T_P.SP_DIV_SN ASC,
+                                   T_P.SP_OPT_SN ASC ) AS RK
+                              FROM ( SELECT T_PRDT.PRDT_NUM
+                                          , T_PRDT.CONF_DTTM
+                                          , T_OPT.SALE_AMT
+                                          , T_OPT.SP_DIV_SN
+                                          , T_OPT.SP_OPT_SN
+                                       FROM TB_SP_PRDTINF T_PRDT 
+                                      INNER JOIN TB_SP_OPTINF T_OPT 
+                                         ON T_OPT.PRDT_NUM = T_PRDT.PRDT_NUM 
+                                      INNER JOIN TB_CORP T_CORP 
+                                         ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+                                        AND T_CORP.TRADE_STATUS_CD != 'TS04'
+                                      WHERE 1=1
+                                        AND T_PRDT.CORP_ID = #sCorpId#
+                                        AND T_PRDT.TRADE_STATUS = 'TS03'
+                                        AND T_OPT.DDL_YN = 'N'
+                                        AND T_PRDT.SALE_END_DT >= TO_DATE(SYSDATE, 'YYYY/MM/DD')
+                                     UNION ALL
+                                     SELECT T_PRDT.PRDT_NUM
+                                          , T_PRDT.CONF_DTTM
+                                          , 0 AS SALE_AMT
+                                          , 0 AS SP_DIV_SN
+                                          , 0 AS SP_OPT_SN
+                                       FROM TB_SP_PRDTINF T_PRDT
+                                      INNER JOIN TB_CORP T_CORP 
+                                         ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+                                        AND T_CORP.TRADE_STATUS_CD != 'TS04'
+                                      WHERE 1=1
+                                        AND T_PRDT.CORP_ID = #sCorpId#
+                                        AND T_PRDT.TRADE_STATUS = 'TS03' 
+                                        AND T_PRDT.PRDT_DIV = 'FREE'
+                                        AND T_PRDT.SALE_END_DT >= TO_DATE(SYSDATE, 'YYYY/MM/DD')
+                                   ) T_P ) S 
+                    LEFT OUTER JOIN TB_GPA_ANLS GPA 
+                    	ON S.PRDT_NUM= GPA.LINK_NUM
+                    WHERE RK = 1
+                    ORDER BY GPA.GPA_AVG DESC,
+                          S.CONF_DTTM DESC ) )
+  WHERE RN = 1
+</select>
+
+<select id="API_S_01" resultMap="API_R_01">
+ SELECT PRDT_NUM,
+        PRDT_NM,
+        PRDT_INF,
+        SAVE_PATH || SAVE_FILE_NM AS IMG,
+        SALE_START_DT,
+        SALE_END_DT
+   FROM ( SELECT PRDT_NUM,
+                 PRDT_NM,
+                 PRDT_INF,
+                 SALE_START_DT,
+                 SALE_END_DT
+            FROM ( SELECT T_PRDT.PRDT_NUM,
+                          T_PRDT.PRDT_NM,
+                          T_PRDT.PRDT_INF,
+                          T_PRDT.SALE_START_DT,
+                          T_PRDT.SALE_END_DT,
+                          RANK( ) OVER (PARTITION BY T_PRDT.PRDT_NUM
+                    ORDER BY T_OPT.SALE_AMT ASC,
+                          T_OPT.SP_DIV_SN ASC,
+                          T_OPT.SP_OPT_SN ASC ) AS RK
+                     FROM TB_SP_PRDTINF T_PRDT 
+                     INNER JOIN TB_SP_OPTINF T_OPT 
+                     	ON T_OPT.PRDT_NUM = T_PRDT.PRDT_NUM 
+                     INNER JOIN TB_CORP T_CORP 
+                     	ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+                      AND T_CORP.TRADE_STATUS_CD != 'TS04'
+                    WHERE 1=1
+                      AND T_PRDT.TRADE_STATUS = 'TS03'
+                      AND T_OPT.DDL_YN = 'N'
+                      AND T_PRDT.PRDT_DIV != 'FREE'
+                      AND T_PRDT.SALE_END_DT >= TO_DATE(SYSDATE, 'YYYY/MM/DD')
+                      AND ((APL_DT IS NOT NULL AND APL_DT<![CDATA[ >= ]]>TO_DATE(SYSDATE, 'YYYY/MM/DD')) OR APL_DT IS NULL)
+                      <isNotEmpty property="ctgr">
+                      AND SUBSTR(T_PRDT.CTGR, 0, 2) = SUBSTR(#ctgr# , 0, 2)
+                      </isNotEmpty>
+                       ) S
+           WHERE RK = 1) R1 
+           	LEFT OUTER JOIN TB_CM_IMG R2 
+           		ON R1.PRDT_NUM = R2.LINK_NUM
+   				AND R2.IMG_SN =1
+</select>
+
+<select id="API_S_02" resultMap="API_R_02">
+SELECT CORP_ID
+	 	 , CORP_NM
+	 	 , HIJEJU_MAPPING_NUM
+  FROM TB_CORP
+ WHERE CORP_CD = #corpCd#
+    AND TRADE_STATUS_CD = #tradeStatusCd#
+    AND HIJEJU_MAPPING_NUM IS NOT NULL
+</select>
+
+<select id="API_S_03" resultMap="API_R_03">
+SELECT T_PRDT.PRDT_NUM AS CODE
+     , T_PRDT.PRDT_NM  AS NAME
+     , ' ' AS GUBUN
+     , DECODE(T_PRDT.TRANS_DIV, 'TR02', 'A', 'M') AS GEAR
+     , (CASE T_PRDT.MAKER_DIV WHEN 'MD01' THEN '01' /*현대*/
+                              WHEN 'MD02' THEN '02' /*기아*/
+                              WHEN 'MD11' THEN '05' /*GM대우*/
+                              WHEN 'MD12' THEN '04' /*쌍용*/
+                              WHEN 'MD18' THEN '03' /*르노삼성*/
+                              ELSE '99'
+         END
+       ) AS MAKER
+     , (CASE T_PRDT.USE_FUEL_DIV WHEN 'CF01' THEN 'G'   /*휘발유*/
+                                 WHEN 'CF02' THEN 'D'   /*경유*/
+                                 WHEN 'CF03' THEN 'L'   /*LPG*/
+                                 WHEN 'CF04' THEN 'E'   /*전기*/
+                                 ELSE ' '
+         END
+       ) AS FUEL
+     , ' ' AS BAEGI
+     , T_PRDT.MAXI_NUM AS JEONGWON
+  FROM TB_RC_PRDTINF T_PRDT
+ INNER JOIN TB_CORP T_CORP
+    ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+   AND T_CORP.TRADE_STATUS_CD = 'TS03'
+ INNER JOIN TB_API T_API
+    ON T_API.CORP_ID = T_CORP.CORP_ID
+ WHERE T_PRDT.CORP_ID = #corpId#
+   AND T_API.AUTHKEY = #authkey#
+</select>
+
+<select id="API_S_04"  resultClass="string">
+SELECT PRDT_NUM
+   FROM ( SELECT ROWNUM RN,
+                 PRDT_NUM
+            FROM ( SELECT PRDT_NUM
+                     FROM ( SELECT T_P.PRDT_NUM,
+                                   T_P.CONF_DTTM,
+                                   RANK( ) OVER (PARTITION BY T_P.PRDT_NUM
+                             ORDER BY T_P.SALE_AMT ASC,
+                                   T_P.SV_DIV_SN ASC,
+                                   T_P.SV_OPT_SN ASC ) AS RK
+                              FROM ( SELECT T_PRDT.PRDT_NUM
+                                          , T_PRDT.CONF_DTTM
+                                          , T_OPT.SALE_AMT
+                                          , T_OPT.SV_DIV_SN
+                                          , T_OPT.SV_OPT_SN
+                                       FROM TB_SV_PRDTINF T_PRDT 
+                                      INNER JOIN TB_SV_OPTINF T_OPT 
+                                         ON T_OPT.PRDT_NUM = T_PRDT.PRDT_NUM 
+                                      INNER JOIN TB_CORP T_CORP 
+                                         ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+                                        AND T_CORP.TRADE_STATUS_CD != 'TS04'
+                                      WHERE 1=1
+                                        AND T_PRDT.CORP_ID = #sCorpId#
+                                        AND T_PRDT.TRADE_STATUS = 'TS03'
+                                        AND T_OPT.DDL_YN = 'N'
+                                        AND T_PRDT.SALE_END_DT >= TO_DATE(SYSDATE, 'YYYY/MM/DD')
+                                     UNION ALL
+                                     SELECT T_PRDT.PRDT_NUM
+                                          , T_PRDT.CONF_DTTM
+                                          , 0 AS SALE_AMT
+                                          , 0 AS SV_DIV_SN
+                                          , 0 AS SV_OPT_SN
+                                       FROM TB_SV_PRDTINF T_PRDT
+                                      INNER JOIN TB_CORP T_CORP 
+                                         ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+                                        AND T_CORP.TRADE_STATUS_CD != 'TS04'
+                                      WHERE 1=1
+                                        AND T_PRDT.CORP_ID = #sCorpId#
+                                        AND T_PRDT.TRADE_STATUS = 'TS03' 
+                                        AND T_PRDT.SALE_END_DT >= TO_DATE(SYSDATE, 'YYYY/MM/DD')
+                                   ) T_P ) S 
+                    LEFT OUTER JOIN TB_GPA_ANLS GPA 
+                    	ON S.PRDT_NUM= GPA.LINK_NUM
+                    WHERE RK = 1
+                    ORDER BY GPA.GPA_AVG DESC,
+                          S.CONF_DTTM DESC ) )
+  WHERE RN = 1
+</select>
+
+<select id="APICN_S_00">
+SELECT API_ID           /*API 아이디*/
+     , CORP_ID          /*업체 아이디*/
+     , AUTHKEY          /*인증키*/
+     , LINK_YN          /*연계 여부*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+  FROM TB_API
+</select>
+
+<select id="APICN_S_01" resultMap="APICN_R_01">
+SELECT API_ID           /*API 아이디*/
+     , CORP_ID          /*업체 아이디*/
+     , AUTHKEY          /*인증키*/
+     , LINK_YN          /*연계 여부*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+     , CORP_NM          /*업체명*/
+  FROM (SELECT ROWNUM AS RN
+		     , T_API.API_ID           /*API 아이디*/
+		     , T_API.CORP_ID          /*업체 아이디*/
+		     , T_API.AUTHKEY          /*인증키*/
+		     , T_API.LINK_YN          /*연계 여부*/
+		     , T_API.FRST_REG_DTTM    /*최초 등록 일시*/
+		     , T_API.FRST_REG_ID      /*최초 등록 아이디*/
+		     , T_CORP.CORP_NM         /*업체명*/
+		  FROM TB_API       T_API
+		 INNER JOIN TB_CORP T_CORP
+		    ON T_CORP.CORP_ID = T_API.CORP_ID
+		 WHERE 1=1
+		<isNotEmpty property="sCorpNm">
+		    <isNotNull property="sCorpNm">
+		   AND T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+		    </isNotNull>
+		</isNotEmpty>
+		<isNotEmpty property="sCorpId">
+		    <isNotNull property="sCorpId">
+		   AND T_CORP.CORP_ID = #sCorpId#
+		    </isNotNull>
+		</isNotEmpty>
+       )  
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="APICN_S_02" resultClass="int">
+SELECT COUNT(API_ID) AS CNT
+  FROM TB_API       T_API
+ INNER JOIN TB_CORP T_CORP
+    ON T_CORP.CORP_ID = T_API.CORP_ID
+ WHERE 1=1
+<isNotEmpty property="sCorpNm">
+    <isNotNull property="sCorpNm">
+   AND T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+    </isNotNull>
+</isNotEmpty>
+<isNotEmpty property="sCorpId">
+    <isNotNull property="sCorpId">
+   AND T_CORP.CORP_ID = #sCorpId#
+    </isNotNull>
+</isNotEmpty>
+</select>
+
+<select id="APICN_S_03" resultMap="APICN_R_01">
+SELECT T_API.API_ID           /*API 아이디*/
+     , T_API.CORP_ID          /*업체 아이디*/
+     , T_API.AUTHKEY          /*인증키*/
+     , T_API.LINK_YN          /*연계 여부*/
+     , T_API.FRST_REG_DTTM    /*최초 등록 일시*/
+     , T_API.FRST_REG_ID      /*최초 등록 아이디*/
+     , T_CORP.CORP_NM         /*업체명*/
+  FROM TB_API       T_API
+ INNER JOIN TB_CORP T_CORP
+    ON T_CORP.CORP_ID = T_API.CORP_ID
+ WHERE T_API.API_ID = #apiId#
+</select>
+
+<select id="APICN_S_04" resultMap="APICN_R_01">
+SELECT T_API.API_ID           /*API 아이디*/
+     , T_API.CORP_ID          /*업체 아이디*/
+     , T_API.AUTHKEY          /*인증키*/
+     , T_API.LINK_YN          /*연계 여부*/
+     , T_API.FRST_REG_DTTM    /*최초 등록 일시*/
+     , T_API.FRST_REG_ID      /*최초 등록 아이디*/
+     , T_CORP.CORP_NM         /*업체명*/
+  FROM TB_API       T_API
+ INNER JOIN TB_CORP T_CORP
+    ON T_CORP.CORP_ID = T_API.CORP_ID
+ WHERE T_CORP.CORP_ID = #corpId#
+</select>
+
+<insert id="APICN_I_01">
+<selectKey keyProperty="apiId" resultClass="String">
+SELECT 'API'||LPAD(TO_CHAR(NVL(TO_NUMBER(MAX(SUBSTR(API_ID, 4))), 0) + 1), 7, '0') AS API_ID
+  FROM TB_API
+</selectKey>
+INSERT INTO TB_API
+     ( API_ID
+     , CORP_ID
+     , AUTHKEY
+     , LINK_YN
+     , FRST_REG_DTTM
+     , FRST_REG_ID
+     , LAST_MOD_DTTM
+     , LAST_MOD_ID
+     )
+VALUES
+     ( NVL(#apiId#, 'API0000001')
+     , #corpId#
+     , #authkey#
+     , 'N'
+     , SYSDATE
+     , #frstRegId#
+     , SYSDATE
+     , #frstRegId#
+     )
+</insert>
+
+<update id="APICN_U_01">
+UPDATE TB_API
+   SET AUTHKEY = #authkey#
+     , LINK_YN = #linkYn#
+     , LAST_MOD_DTTM = SYSDATE
+     , LAST_MOD_ID = #lastModId#
+ WHERE API_ID  = #apiId#
+</update>
+
+<select id="APIDTL_S_00" resultMap="APIDTL_R_00">
+SELECT API_ID           /*API 아이디*/
+     , LINK_DIV         /*연계 구분*/
+     , STATUS_CD        /*상태 코드*/
+     , SVC_URL          /*서비스 URL*/
+     , SVC_EXP          /*서비스 설명*/
+     , ETC_PARAM_NM1    /*기타 변수 명칭1*/
+     , ETC_PARAM_EXP1   /*기타 변수 설명1*/
+     , ETC_PARAM1       /*기타 변수1*/
+     , ETC_PARAM_NM2    /*기타 변수 명칭2*/
+     , ETC_PARAM_EXP2   /*기타 변수 설명2*/
+     , ETC_PARAM2       /*기타 변수2*/
+     , ETC_PARAM_NM3    /*기타 변수 명칭3*/
+     , ETC_PARAM_EXP3   /*기타 변수 설명3*/
+     , ETC_PARAM3       /*기타 변수3*/
+     , ETC_PARAM_NM4    /*기타 변수 명칭4*/
+     , ETC_PARAM_EXP4   /*기타 변수 설명4*/
+     , ETC_PARAM4       /*기타 변수4*/
+     , ETC_PARAM_NM5    /*기타 변수 명칭5*/
+     , ETC_PARAM_EXP5   /*기타 변수 설명5*/
+     , ETC_PARAM5       /*기타 변수5*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+  FROM TB_APIDTL
+ WHERE API_ID   = #apiId#
+   AND LINK_DIV = #linkDiv#
+</select>
+
+<select id="APIDTL_S_01" resultMap="APIDTL_R_00">
+SELECT API_ID           /*API 아이디*/
+     , LINK_DIV         /*연계 구분*/
+     , STATUS_CD        /*상태 코드*/
+     , SVC_URL          /*서비스 URL*/
+     , SVC_EXP          /*서비스 설명*/
+     , ETC_PARAM_NM1    /*기타 변수 명칭1*/
+     , ETC_PARAM_EXP1   /*기타 변수 설명1*/
+     , ETC_PARAM1       /*기타 변수1*/
+     , ETC_PARAM_NM2    /*기타 변수 명칭2*/
+     , ETC_PARAM_EXP2   /*기타 변수 설명2*/
+     , ETC_PARAM2       /*기타 변수2*/
+     , ETC_PARAM_NM3    /*기타 변수 명칭3*/
+     , ETC_PARAM_EXP3   /*기타 변수 설명3*/
+     , ETC_PARAM3       /*기타 변수3*/
+     , ETC_PARAM_NM4    /*기타 변수 명칭4*/
+     , ETC_PARAM_EXP4   /*기타 변수 설명4*/
+     , ETC_PARAM4       /*기타 변수4*/
+     , ETC_PARAM_NM5    /*기타 변수 명칭5*/
+     , ETC_PARAM_EXP5   /*기타 변수 설명5*/
+     , ETC_PARAM5       /*기타 변수5*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+  FROM TB_APIDTL
+ WHERE API_ID = #apiId#
+</select>
+
+<select id="APIPOS_S_00" resultMap="APIPOS_R_00">
+SELECT DISTINCT T_RSV.RSV_NUM		/* 예약번호 */
+        , '선결제' AS CP_DIV_NM		/* 예약구분 */
+        , RSV_NM AS USER_NM			/* 예약자명 */
+        , RSV_TELNUM AS TEL_NUM		/* 예약자 연락처 */
+        , '탐나오' AS AGENT_CORP_NM	/* 에이전트명 */
+        , 'tamnao' AS SALE_CORP_ID	/* 판매업체 ID */
+        , 'TAMNAO' AS AGENT_CORP_ID	/* 에이전트 ID */
+        , 'PRE' AS CP_DIV			/* 예약구분 ID */        
+        , REG_DTTM AS FRST_REG_DTTM	/* 예약 등록 일시 */
+      FROM TB_RSV T_RSV
+        LEFT OUTER JOIN TB_SP_RSV T_DFT
+          ON T_DFT.RSV_NUM=T_RSV.RSV_NUM
+    WHERE PRDT_DIV='COUP'
+        AND T_DFT.RSV_STATUS_CD IN ('RS02', 'RS12', 'RS30')
+        AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN T_DFT.EXPR_START_DT AND T_DFT.EXPR_END_DT
+        <isNotEmpty property="sCorpId">
+		    <isNotNull property="sCorpId">
+		AND CORP_ID = #sCorpId#
+		    </isNotNull>
+		</isNotEmpty>
+        <isNotEmpty property="sRsvTelnum">
+		    <isNotNull property="sRsvTelnum">
+        AND LPAD(SUBSTR(T_RSV.RSV_TELNUM, -4, 4), 4, '0') = #sRsvTelnum#
+        	</isNotNull>
+        </isNotEmpty>
+        <isNotEmpty property="sRsvNum">
+		    <isNotNull property="sRsvNum">
+        AND T_RSV.RSV_NUM = #sRsvNum#
+        	</isNotNull>
+        </isNotEmpty>
+      ORDER BY REG_DTTM DESC
+</select>
+
+<select id="APIPOS_S_01" resultMap="APIPOS_R_01">
+SELECT RSV_NUM                
+        , SP_RSV_NUM
+        , AGENT_CORP_NM
+        , CP_DIV_NM
+        , USER_NM
+        , TEL_NUM
+        , CP_DIV
+        , OPT_NM
+        , BUY_NUM    
+        , SALE_AMT
+    FROM (
+        SELECT ROWNUM AS RN
+                , T_RSV.RSV_NUM                
+                , SP_RSV_NUM
+                , '탐나오' AS AGENT_CORP_NM
+                , '선결제' AS CP_DIV_NM
+                , RSV_NM AS USER_NM
+                , RSV_TELNUM AS TEL_NUM
+                , 'PRE' AS CP_DIV
+                , OPT_NM
+                , BUY_NUM 
+                , SALE_AMT       
+              FROM TB_RSV T_RSV
+                LEFT OUTER JOIN TB_SP_RSV T_DFT
+                  ON T_DFT.RSV_NUM=T_RSV.RSV_NUM
+            WHERE PRDT_DIV='COUP'
+                AND T_DFT.RSV_STATUS_CD = 'RS02'
+                AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN T_DFT.EXPR_START_DT AND T_DFT.EXPR_END_DT
+                <isNotEmpty property="rsvNum">
+		    		<isNotNull property="rsvNum">
+                AND T_RSV.RSV_NUM = #rsvNum#
+                	</isNotNull>
+               	</isNotEmpty>
+     )     
+     WHERE RN BETWEEN 1 AND 1
+</select>
+
+<select id="APIPOS_S_02" resultMap="APIPOS_R_02">
+SELECT SP_RSV_NUM
+        , PRDT_NUM					/* 상품 번호 */
+        , '' AS CTRT_PRDT_NUM
+        , PRDT_NM AS CTRT_PRDT_NM	/* 상품명 */
+        , 'TAMNAO' AS AGENT_CORP_ID	/* 에이전트 ID */
+        , 'A' AS USE_GRD			/* 이용 등급 */
+        , OPT_NM					/* 옵션 명 */
+        , BUY_NUM					/* 구입개수 */
+        , SALE_AMT					/* 판매 금액 */
+      FROM TB_RSV T_RSV
+        LEFT OUTER JOIN TB_SP_RSV T_DFT
+          ON T_DFT.RSV_NUM=T_RSV.RSV_NUM        
+    WHERE T_DFT.PRDT_DIV='COUP'
+        AND T_DFT.RSV_STATUS_CD = 'RS02'
+        <isNotEmpty property="rsvNum">
+		    <isNotNull property="rsvNum">
+        AND T_DFT.RSV_NUM=#rsvNum#
+        	</isNotNull>
+        </isNotEmpty>
+</select>
+
+<select id="APIPOS_S_03" resultMap="APIPOS_R_03">
+SELECT T_RSV.RSV_NUM
+        , PRDT_NUM
+        , PRDT_NM AS CTRT_PRDT_NM
+        , OPT_NM
+        , USE_NUM
+        , '사용' AS SALE_STATE_NM
+        , '탐나오' AS AGENT_CORP_NM        
+        , (SALE_AMT - NVL(REFUND_AMT, 0)) AS SALE_AMT
+        , RSV_NM AS USER_NM
+        , RSV_TELNUM AS TEL_NUM
+        , USE_DTTM        
+    FROM TB_RSV T_RSV
+        LEFT OUTER JOIN TB_SP_RSV T_SP
+            ON T_SP.RSV_NUM=T_RSV.RSV_NUM
+    WHERE TO_CHAR(USE_DTTM, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
+    	AND T_SP.RSV_STATUS_CD IN ('RS12', 'RS30')
+    	<isNotEmpty property="agentCorpId">
+		    <isNotNull property="agentCorpId">
+		AND CORP_ID = #agentCorpId#
+		    </isNotNull>
+		</isNotEmpty>
+        <isNotEmpty property="userNm">
+		    <isNotNull property="userNm">
+        AND RSV_NM LIKE '%' || #userNm# || '%'
+        	</isNotNull>
+        </isNotEmpty>
+        <isNotEmpty property="telNum">
+		    <isNotNull property="telNum">
+        AND RSV_TELNUM LIKE '%' || #telNum# || '%'
+        	</isNotNull>
+        </isNotEmpty>
+      ORDER BY USE_DTTM DESC
+</select>
+
+<select id="APIPOS_S_04" resultMap="APIPOS_R_04">
+SELECT NVL(SUM(USE_NUM), 0) AS USE_NUM
+        , NVL(SUM(SALE_AMT - NVL(REFUND_AMT, 0)), 0) AS SALE_AMT
+    FROM TB_RSV T_RSV
+        LEFT OUTER JOIN TB_SP_RSV T_SP
+            ON T_SP.RSV_NUM=T_RSV.RSV_NUM
+    WHERE CORP_ID = #agentCorpId#
+        AND TO_CHAR(USE_DTTM, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
+</select>
+
+<update id="APIPOS_U_00">
+UPDATE TB_SP_RSV
+		  SET USE_DTTM = SYSDATE
+		 	 , MOD_DTTM      = SYSDATE
+		 	 , RSV_STATUS_CD = #rsvStatusCd#
+		 <isNotEmpty property="useNum">
+		    <isNotNull property="useNum">
+		     , USE_NUM = #useNum#
+		    </isNotNull>
+		 </isNotEmpty>
+		 <isNotEmpty property="refundAmt">
+		    <isNotNull property="refundAmt">
+		 	 , REFUND_AMT = #refundAmt#
+		    </isNotNull>
+		 </isNotEmpty>
+	 WHERE SP_RSV_NUM = #spRsvNum#
+	    AND CORP_ID = #corpId#
+</update>
+        
+<insert id="APIDTL_I_00">
+INSERT INTO TB_APIDTL
+     ( API_ID           /*API 아이디*/
+     , LINK_DIV         /*연계 구분*/
+     , STATUS_CD        /*상태 코드*/
+     , SVC_URL          /*서비스 URL*/
+     , SVC_EXP          /*서비스 설명*/
+     , ETC_PARAM_NM1    /*기타 변수 명칭1*/
+     , ETC_PARAM_EXP1   /*기타 변수 설명1*/
+     , ETC_PARAM1       /*기타 변수1*/
+     , ETC_PARAM_NM2    /*기타 변수 명칭2*/
+     , ETC_PARAM_EXP2   /*기타 변수 설명2*/
+     , ETC_PARAM2       /*기타 변수2*/
+     , ETC_PARAM_NM3    /*기타 변수 명칭3*/
+     , ETC_PARAM_EXP3   /*기타 변수 설명3*/
+     , ETC_PARAM3       /*기타 변수3*/
+     , ETC_PARAM_NM4    /*기타 변수 명칭4*/
+     , ETC_PARAM_EXP4   /*기타 변수 설명4*/
+     , ETC_PARAM4       /*기타 변수4*/
+     , ETC_PARAM_NM5    /*기타 변수 명칭5*/
+     , ETC_PARAM_EXP5   /*기타 변수 설명5*/
+     , ETC_PARAM5       /*기타 변수5*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+     )
+VALUES
+     ( #apiId#
+     , #linkDiv#
+     , #statusCd#
+     , #svcUrl#
+     , #svcExp#
+     , #etcParamNm1#
+     , #etcParamExp1#
+     , #etcParam1#
+     , #etcParamNm2#
+     , #etcParamExp2#
+     , #etcParam2#
+     , #etcParamNm3#
+     , #etcParamExp3#
+     , #etcParam3#
+     , #etcParamNm4#
+     , #etcParamExp4#
+     , #etcParam4#
+     , #etcParamNm5#
+     , #etcParamExp5#
+     , #etcParam5#
+     , SYSDATE
+     , #frstRegId#
+     , SYSDATE
+     , #frstRegId#
+     )
+</insert>
+
+<update id="APIDTL_U_00">
+UPDATE TB_APIDTL
+   SET STATUS_CD        = #statusCd#
+     , SVC_URL          = #svcUrl#
+     , SVC_EXP          = #svcExp#
+     , ETC_PARAM_NM1    = #etcParamNm1#
+     , ETC_PARAM_EXP1   = #etcParamExp1#
+     , ETC_PARAM1       = #etcParam1#
+     , ETC_PARAM_NM2    = #etcParamNm2#
+     , ETC_PARAM_EXP2   = #etcParamExp2#
+     , ETC_PARAM2       = #etcParam2#
+     , ETC_PARAM_NM3    = #etcParamNm3#
+     , ETC_PARAM_EXP3   = #etcParamExp3#
+     , ETC_PARAM3       = #etcParam3#
+     , ETC_PARAM_NM4    = #etcParamNm4#
+     , ETC_PARAM_EXP4   = #etcParamExp4#
+     , ETC_PARAM4       = #etcParam4#
+     , ETC_PARAM_NM5    = #etcParamNm5#
+     , ETC_PARAM_EXP5   = #etcParamExp5#
+     , ETC_PARAM5       = #etcParam5#
+     , LAST_MOD_DTTM    = SYSDATE
+     , LAST_MOD_ID      = #lastModId#
+ WHERE API_ID           = #apiId#
+   AND LINK_DIV         = #linkDiv#
+</update>
+
+<select id="API_HDC_S00" resultClass="common.LowerHashMap">
+SELECT
+	MIN_DTTM || '~' || MAX_DTTM AS WEEK,
+	AMOUNT,
+	RSV_CNT
+FROM(
+	SELECT
+		TO_CHAR(MIN(B.REG_DTTM),'YYYY-MM-DD') AS MIN_DTTM,
+		TO_CHAR(MAX(B.REG_DTTM),'YYYY-MM-DD') AS MAX_DTTM,
+		COUNT(*) AS AMOUNT,
+		COUNT(D.RSV_NUM) AS RSV_CNT
+	FROM TB_RC_RSV AS A
+	JOIN TB_RSV AS B
+	ON A.RSV_NUM = B.RSV_NUM
+	JOIN TB_RC_PRDTINF AS C
+	ON A.PRDT_NUM = C.PRDT_NUM
+	LEFT JOIN TB_HC_ONECARD AS D
+	ON D.PRDT_RSV_NUM = A.RC_RSV_NUM
+	WHERE 1=1
+	AND B.RSV_STATUS_CD = 'RS02'
+  AND C.USE_FUEL_DIV = 'CF04'
+  AND B.REG_DTTM >= TO_DATE('20231113','YYYYMMDD')
+  GROUP BY TO_CHAR(B.REG_DTTM,'IYYY-MM-IW')
+  ORDER BY TO_CHAR(B.REG_DTTM,'IYYY-MM-IW')
+)
+</select>
+
+<!-- APIKEY 확인 -->
+<select id="API_MALL_S00" resultClass="String">
+SELECT
+	NVL(MAX(A.CORP_ID),0)
+FROM
+    TB_CORP AS A
+JOIN
+	TB_CORPADM  AS B
+ON A.CORP_ID = B.CORP_ID
+JOIN
+	TB_USER  AS C
+ON B.USER_ID = C.USER_ID
+WHERE 1=1
+AND C.PWD = #apiKey#
+</select>
+
+<!-- APIKEY 인증 -->
+<select id="API_MALL_S01" resultClass="String">
+SELECT
+	NVL(MAX(C.PWD),0)
+FROM
+    TB_CORP AS A
+JOIN
+	TB_CORPADM  AS B
+ON A.CORP_ID = B.CORP_ID
+JOIN
+	TB_USER  AS C
+ON B.USER_ID = C.USER_ID
+WHERE 1=1
+AND A.CORP_ID = #corpId#
+AND A.CORP_NM = #corpNm#
+</select>
+
+<!-- 주문목록 날짜 -->
+<select id="API_MALL_S02" resultClass="common.LowerHashMap">
+SELECT
+	A.SV_RSV_NUM,
+	TO_CHAR(B.REG_DTTM,'YYYYMMDDHH24MISS') AS REG_DTTM,
+	A.RSV_STATUS_CD,
+	B.USE_NM,
+	B.USE_TELNUM,
+	A.PRDT_NUM,
+	A.SV_DIV_SN,
+	A.SV_OPT_SN,
+	A.PRDT_NM,
+	A.DIV_NM,
+	A.OPT_NM,
+	A.BUY_NUM,
+	A.NML_AMT,
+	A.ADD_OPT_NM,
+	A.ADD_OPT_AMT,
+	A.CMSS_AMT,
+	B.POST_NUM,
+	B.ROAD_NM_ADDR,
+	B.DTL_ADDR,
+	B.DLV_REQUEST_INF
+FROM
+	TB_SV_RSV AS A
+JOIN
+	TB_RSV AS B
+ON A.RSV_NUM = B.RSV_NUM
+WHERE
+A.CORP_ID = #corpId#
+AND B.REG_DTTM BETWEEN TO_DATE(#startDate#||'000000','YYYYMMDDHH24MISS') AND TO_DATE(#endDate#||'235959','YYYYMMDDHH24MISS');
+</select>
+
+<!-- 주문상세 -->
+<select id="API_MALL_S03" resultClass="common.LowerHashMap">
+SELECT
+	A.SV_RSV_NUM,
+	TO_CHAR(B.REG_DTTM,'YYYYMMDDHH24MISS') AS REG_DTTM,
+	A.RSV_STATUS_CD,
+	B.USE_NM,
+	B.USE_TELNUM,
+	A.PRDT_NUM,
+	A.SV_DIV_SN,
+	A.SV_OPT_SN,
+	A.PRDT_NM,
+	A.DIV_NM,
+	A.OPT_NM,
+	A.BUY_NUM,
+	A.NML_AMT,
+	A.ADD_OPT_NM,
+	A.ADD_OPT_AMT,
+	A.CMSS_AMT,
+	B.POST_NUM,
+	B.ROAD_NM_ADDR,
+	B.DTL_ADDR,
+	B.DLV_REQUEST_INF
+FROM
+	TB_SV_RSV AS A
+JOIN
+	TB_RSV AS B
+ON A.RSV_NUM = B.RSV_NUM
+WHERE
+A.CORP_ID = #corpId#
+AND A.SV_RSV_NUM = #svRsvNum#
+</select>
+
+<update id="API_MALL_U00" >
+UPDATE TB_SV_PRDTINF SET
+    PRDT_NM = #prdtNm#,
+    TRADE_STATUS = #tradeStatus#,
+    CTGR = #ctgr#,
+    SUB_CTGR = #subCtgr#,
+    SALE_START_DT = #saleStartDt#,
+    SALE_END_DT = #saleEndDt#,
+    PRDT_INF = #prdtInf#,
+    DLV_GUIDE = #dlvGuide#,
+    CANCEL_GUIDE = #cancelGuide#,
+    TKBK_GUIDE = #tkbkGuide#,
+    HDL_PRCT = #hdlPrct#,
+    API_IMG_THUMB = #apiImgThumb#,
+    API_IMG_DETAIL = #apiImgDetail#,
+    LAST_MOD_DTTM = SYSDATE
+WHERE
+CORP_ID = #corpId#
+AND PRDT_NUM = #prdtNum#
+</update>
+
+<update id="API_MALL_U01" >
+UPDATE TB_SV_DIVINF SET
+    PRDT_DIV_NM = #svDivNm#
+WHERE PRDT_NUM = #prdtNum#
+AND SV_DIV_SN = #svOptSn#
+</update>
+
+<update id="API_MALL_U02" >
+UPDATE TB_SV_OPTINF SET
+	OPT_NM = #optNm#,
+	NML_AMT = #nmlAmt#,
+	SALE_AMT = #saleAmt#,
+	OPT_PRDT_NUM = #optPrdtNum#,
+	DLV_AMT_DIV = #dlvAmtDiv#,
+	DLV_AMT = #dlvAmt#,
+	IN_DLV_AMT = #inDlvAmt#
+WHERE PRDT_NUM = #prdtNum#
+AND SV_DIV_SN = #svDivSn#
+AND SV_OPT_SN = #svOptSn#
+</update>
+
+<select id="API_PRMT_S00" resultClass="common.LowerHashMap">
+SELECT T_FILE.PRMT_NUM AS PRMT_NUM
+		     , T_USER.USER_ID AS USER_ID
+		     , T_USER.USER_NM AS USER_NM
+		     , T_USER.TEL_NUM AS TEL_NUM
+		     , T_USER.POST_NUM || ROAD_NM_ADDR || DTL_ADDR AS ADDR
+             , T_USER.EMAIL AS EMAIL
+			 , T_FILE.SAVE_PATH AS SAVE_PATH
+			 , T_FILE.REAL_FILE_NM AS REAL_FILE_NM
+			 , T_FILE.SAVE_FILE_NM AS SAVE_FILE_NM
+			 , T_FILE.CONF_YN AS CONF_YN
+			 , T_FILE.REG_DTTM AS REG_DTTM
+FROM TB_PRMT_IMG_FILE T_FILE
+INNER JOIN TB_USER T_USER ON T_FILE.USER_ID = T_USER.USER_ID
+WHERE PRMT_NUM = #prmtNum#
+ORDER BY T_FILE.REG_DTTM DESC
+</select>
+
+</sqlMap>

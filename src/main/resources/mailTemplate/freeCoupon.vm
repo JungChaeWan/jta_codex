@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>탐나오</title>
+</head>
+
+<body>
+	<table style="width: 740px; margin: 0 auto; text-decoration: none; border-collapse: collapse; font-family: 'NanumBarunGothic', 'Dotum', 'Helvetica', 'sans-serif';">
+		<!-- thead -->
+		#parse("mailTemplate/header.vm")
+
+		<tbody>
+			<tr>
+				<td style="width: 740px; padding-top: 30px; text-align: center;">
+					<img src="${domain}/images/web/mail/top-icon3.png" alt="할인쿠폰">
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;">
+					<p style="font-size: 26px; color: #333435; margin: 0; padding-top: 30px; letter-spacing: -0.3px;">
+						할인쿠폰이 발급됐습니다.
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center; color: #fff; ">
+					<table style="width: 700px; margin: 30px auto; background-color: #e8514f;">
+						<tr>
+							<td style="width: 178px;">
+								<img src="${domain}/images/web/mail/coupon-left.png" width="178" height="220" alt="할인쿠폰">
+							</td>
+							<td style=" padding: 0 25px;">
+								<h3 style="border: 1px solid #fff; padding: 5px 0; margin: 0 30px; border-radius: 40px; font-size: 16px; line-height: 20px;">$prdt.prdtNm</h3>
+								<p style="margin: 10px 0;"><strong style="font-size: 40px;">$prdt.disInf</strong>
+
+								#set($startDt = "${prdt.exprStartDt.substring(0, 4)}.${prdt.exprStartDt.substring(4, 6)}.${prdt.exprStartDt.substring(6, 8)}")
+								#set($endDt = "${prdt.exprEndDt.substring(0, 4)}.${prdt.exprEndDt.substring(4, 6)}.${prdt.exprEndDt.substring(6, 8)}")
+
+								<p style="font-size: 13px; margin: 12px 0 0 0; border-top: 1px solid #fff; border-bottom: 1px solid #fff; padding: 8px 0;">
+									유효기간 : ${startDt} ~ ${endDt}
+								</p>
+							</td>
+							<td style="width: 104px; line-height:10px;">
+								<img src="${domain}/images/web/mail/coupon-right.png" width="178" height="220" alt="할인쿠폰">
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td style="padding: 40px 0 70px 0; text-align: center;">
+					<a href="${domain}" target="_blank"><img src="${domain}/images/web/mail/home-1.png" alt="홈페이지 바로가기"></a>
+				</td>
+			</tr>
+		</tbody>
+
+		<!-- tfoot -->
+		#parse("mailTemplate/footer.vm")
+	</table>
+</body>
+</html>

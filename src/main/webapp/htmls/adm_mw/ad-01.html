@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="author" content="넥스트이지">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<title>관리자페이지</title>
+	
+	<!-- css -->	
+	<link rel="stylesheet" href="../../css/comm/jquery-ui.css">
+	<link rel="stylesheet" href="../../css/adm_mw/comm_default.css">
+	<link rel="stylesheet" href="../../css/adm_mw/comm_style.css">
+	<link rel="stylesheet" href="../../css/adm_mw/frame.css">
+	<link rel="stylesheet" href="../../css/adm_mw/style.css">
+	
+	<!-- script -->
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/adm_mw/html_comm.js"></script>
+	<script src="../../js/adm_mw/html_style.js"></script>
+	
+	<!-- script add -->
+	<script>
+		$(document).ready(function() {
+			
+			//datepicker 임시용
+			$( ".datepicker" ).datepicker({
+				showOn: "both",
+				buttonImage: "../../images/comm/jquery/calendar.gif",
+				buttonImageOnly: true
+			});
+			
+		});
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<header id="header">
+			<h1 class="logo"><a href="#"><img src="../../images/adm_mw/comm/logo.png" alt="logo"></a></h1>
+			
+			<!--left menu-->
+			<div class="left-menu">
+				<a id="left_btn" href="#"><img src="../../images/adm_mw/comm/menu_left.png" alt="메인메뉴"></a>
+				
+				<div id="left_menu" class="menu">
+					<a id="left_close" class="close" href="#"><img src="../../images/adm_mw/comm/close.png" alt="닫기"></a>
+					
+					<div id="main_menu" class="nav-wrap">
+						<nav>
+							<a href="#">Main Menu1</a>
+							<ul>
+								<li><a href="">Sub Menu1</a></li>
+								<li><a href="">Sub Menu2</a></li>
+								<li><a href="">Sub Menu3</a></li>
+							</ul>
+						</nav>
+						<nav>
+							<a href="#">Main Menu2</a>
+							<ul>
+								<li><a href="">Sub Menu1</a></li>
+								<li><a href="">Sub Menu2</a></li>
+								<li><a href="">Sub Menu3</a></li>
+							</ul>
+						</nav>
+						<nav>
+							<a href="#">Main Menu3</a>
+							<ul>
+								<li><a href="">Sub Menu1</a></li>
+								<li><a href="">Sub Menu2</a></li>
+								<li><a href="">Sub Menu3</a></li>
+							</ul>
+						</nav>
+					</div> <!--//nav-wrap-->
+				</div> <!--//menu-->
+			</div>
+			
+			<!--right menu-->
+			<div class="right-menu">
+				<a id="right_btn" href="#"><img src="../../images/adm_mw/comm/menu_right.png" alt="서브메뉴"></a>
+				
+				<div id="right_menu" class="menu">
+					<nav>
+						<a href=""><img src="../../images/adm_mw/comm/top_3.png" alt="site"><span>사이트 바로가기</span></a>
+						<a href=""><img src="../../images/adm_mw/comm/top_2.png" alt="pw"><span>비밀번호 변경</span></a>
+						<a href=""><img src="../../images/adm_mw/comm/top_1.png" alt="logout"><span>로그아웃</span></a>
+					</nav>
+				</div> <!--//menu-->
+			</div>
+		</header>
+
+		<main id="main">
+			<section class="contents-wrap">
+			    
+                <!--change content-->
+				<div class="search-form">
+					<form>
+						<dl>
+							<dt>예약일자</dt>
+							<dd>
+								<div class="date-container">
+									<span class="date-wrap"><input class="datepicker" type="text"></span>
+									<span class="date-guide">~</span>
+									<span class="date-wrap"><input class="datepicker" type="text"></span>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>예약상태</dt>
+							<dd>
+								<select title="예약상태 선택" class="width100">
+									<option selected>전체</option>
+									<option value="RS02">예약</option>
+									<option value="RS10">취소요청</option>
+									<option value="RS11">환불요청</option>
+									<option value="RS20">취소완료</option>
+									<option value="RS30">사용완료</option>
+								</select>
+							</dd>
+						</dl>
+						<dl>
+							<dt>상품명</dt>
+							<dd>
+								<select title="상품명 선택" class="width100">
+									<option selected>전체</option>
+									<option value="AD00000050">16평</option>
+									<option value="AD00000051">20평</option>
+									<option value="AD00000052">25평</option>
+									<option value="AD00000053">27평</option>
+									<option value="AD00000054">17평 스위트</option>
+								</select>
+							</dd>
+						</dl>
+						<dl>
+							<dt>이용일자</dt>
+							<dd>
+								<div class="date-container">
+									<span class="date-wrap width100"><input class="datepicker" type="text"></span>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>예약자</dt>
+							<dd>
+								<input type="text" class="width100" placeholder="이름">
+							</dd>
+						</dl>
+						<dl>
+							<dt>전화번호</dt>
+							<dd>
+								<input type="tel" class="width100" placeholder="전화번호">
+							</dd>
+						</dl>
+						
+						<div class="btn-wrap">
+							<button type="button" class="btn blue">검색</button>
+						</div>
+					</form>
+				</div>
+				<p class="cap-memo">※ 고객이 유선상으로 예약 취소 의사를 밝혔을 경우, 시스템 상 ‘취소처리’진행이 꼭 필요합니다.</p>
+			
+				<h3 class="title2">검색결과 <small>[총 <strong class="text-blue">16</strong>건]</small></h3>
+                <ul class="rese-list">
+				    <li>
+                        <table class="table-row">
+                            <colgroup>
+                                <col style="width: 32%">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th rowspan="4">
+                                        <div class="rese-number">
+                                            <p class="number"><strong>RV160701000001</strong></p>
+                                            <p class="msg">(사용완료)</p>
+                                            <p class="icon"><img src="../../images/adm_mw/icon/temp/blue_check.png" alt="예약확인"></p>
+											<div class="btn-wrap">
+												<p><a href="ad-02.html" class="btn white">상세보기</a></p>
+											</div>
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <dl class="rese-detail">
+                                            <dt>상품정보</dt>
+                                            <dd>
+                                                <p>상품명</p>
+												<p>상품정보</p>
+                                            </dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl class="rese-detail">
+                                            <dt>예약자</dt>
+                                            <dd>
+                                                <p>홍길동 / 010-1234-5678</p>
+                                            </dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl class="rese-detail">
+                                            <dt>사용자</dt>
+                                            <dd>
+                                                <p>홍길동 / 010-1234-5678</p>
+                                            </dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl class="rese-detail">
+                                            <dt>판매금액</dt>
+                                            <dd>
+                                                <p>52,910 원</p>
+                                            </dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+				    </li>
+                    <li>
+                        <table class="table-row">
+                            <colgroup>
+                                <col style="width: 32%">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th rowspan="4">
+                                        <div class="rese-number">
+                                            <p class="number"><strong>RV160701000001</strong></p>
+                                            <p class="msg text-red">(고객취소요청)</p>
+											<div class="btn-wrap">
+												<p><a href="ad-02.html" class="btn white">상세보기</a></p>
+											</div>
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <dl class="rese-detail">
+                                            <dt>상품정보</dt>
+                                            <dd>
+												<p>온돌</p>
+												<p>2016-07-01부터 1박 성인 2명, 소인 0명, 유아 0명</p>
+                                            </dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl class="rese-detail">
+                                            <dt>예약자</dt>
+                                            <dd>
+                                                <p>홍길동 / 010-1234-5678</p>
+                                            </dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl class="rese-detail">
+                                            <dt>사용자</dt>
+                                            <dd>
+                                                <p>홍길동 / 010-1234-5678</p>
+                                            </dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl class="rese-detail">
+                                            <dt>판매금액</dt>
+                                            <dd>
+                                                <p>52,910 원</p>
+                                            </dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="table-row">
+                            <colgroup>
+                                <col style="width: 32%">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th rowspan="4">
+                                        <div class="rese-number">
+                                            <p class="number"><strong>RV160701000001</strong></p>
+                                            <p class="msg">(취소)</p>
+											<div class="btn-wrap">
+												<p><a href="ad-02.html" class="btn white">상세보기</a></p>
+											</div>
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <dl class="rese-detail">
+                                            <dt>상품정보</dt>
+                                            <dd>
+												<p>16평</p>
+												<p>2016-07-01부터 1박 성인 2명, 소인 0명, 유아 0명</p>
+                                            </dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl class="rese-detail">
+                                            <dt>예약자</dt>
+                                            <dd>
+                                                <p>홍길동 / 010-1234-5678</p>
+                                            </dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl class="rese-detail">
+                                            <dt>사용자</dt>
+                                            <dd>
+                                                <p>홍길동 / 010-1234-5678</p>
+                                            </dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl class="rese-detail">
+                                            <dt>판매금액</dt>
+                                            <dd>
+                                                <p>52,910 원</p>
+                                            </dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+				</ul>
+				
+				<div class="paging-wrap">
+					<ul>
+						<li class="first"><a href=""><img src="../../images/adm_mw/paging/first.png" alt="맨처음"></a></li>
+						<li class="prev"><a href=""><img src="../../images/adm_mw/paging/prev.png" alt="이전"></a></li>
+						<li><a href="">1</a></li>
+						<li><a href="">2</a></li>
+						<li class="active">3</li>
+						<li><a href="">4</a></li>
+						<li><a href="">5</a></li>						
+						<li class="next"><a href=""><img src="../../images/adm_mw/paging/next.png" alt="다음"></a></li>
+						<li class="last"><a href=""><img src="../../images/adm_mw/paging/last.png" alt="마지막"></a></li>
+					</ul>
+				</div>
+                <!--//change content-->
+				
+			</section> <!--//contents-wrap-->
+		</main>
+
+		<footer id="footer">
+			
+		</footer>
+	</div>
+</body>
+</html>

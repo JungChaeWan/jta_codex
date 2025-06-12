@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="visitjeju">
+
+<resultMap id="VISITJEJU_R_00" class="oss.visitjeju.vo.VISITJEJUVO">
+    <result property="corpId" 			column="CORP_ID" />
+    <result property="corpNm" 			column="CORP_NM" />
+    <result property="corpCd" 			column="CORP_CD" />
+    <result property="corpModCd"		column="CORP_MOD_CD" />
+    <result property="corpCdNm" 		column="CORP_CD_NM" />
+    <result property="corpSubCd" 		column="CORP_SUB_CD" />
+    <result property="tradeStatusCd" 	column="TRADE_STATUS_CD" />
+    <result property="coRegNum" 		column="CO_REG_NUM" />
+    <result property="ceoNm" 			column="CEO_NM" />
+    <result property="ceoTelNum" 		column="CEO_TEL_NUM" />
+    <result property="rsvTelNum" 		column="RSV_TEL_NUM" />
+    <result property="corpEmail" 		column="CORP_EMAIL" />
+    <result property="lon" 				column="LON" />
+    <result property="lat" 				column="LAT" />
+    <result property="roadNmAddr" 		column="ROAD_NM_ADDR" />
+    <result property="dtlAddr" 			column="DTL_ADDR" />
+    <result property="hmpgAddr" 		column="HMPG_ADDR" />
+    <result property="corpLinkYn" 		column="CORP_LINK_YN" />
+    <result property="confDt" 			column="CONF_DT" />
+    <result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+    <result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+    <result property="hijejuMappingNum" column="HIJEJU_MAPPING_NUM" />
+    <result property="asctMemYn" 		column="ASCT_MEM_YN" />
+    <result property="cmssNum" 			column="CMSS_NUM" />
+    <result property="posUseYn"			column="POS_USE_YN" />
+    <result property="corpAliasNm"		column="CORP_ALIAS_NM" />
+    <result property="visitMappingYn"	column="VISIT_MAPPING_YN" />
+    <result property="tamnacardMngYn"	column="TAMNACARD_MNG_YN" />
+    <result property="contentsid"		column="CONTENTSID" />
+    <result property="contentsnm"		column="CONTENTSNM" />
+    <result property="apiCorpYcnt" 		column="API_CORP_YCNT" />
+	<result property="apiCorpNcnt" 		column="API_CORP_NCNT" />
+</resultMap>
+
+<resultMap id="VISITJEJU_R_01" class="oss.visitjeju.vo.VISITJEJUVO">
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="corpCd" 			column="CORP_CD" />
+	<result property="corpNm" 			column="CORP_NM" />
+	<result property="tradeStatus" 		column="TRADE_STATUS" />
+	<result property="tradeStatusNm" 	column="TRADE_STATUS_NM" />
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="prdtNm" 			column="PRDT_NM" />
+	<result property="tamnacardPrdtYn" 	column="TAMNACARD_PRDT_YN" />
+	<result property="contentsid" 		column="CONTENTSID" />
+	<result property="contentsnm" 		column="CONTENTSNM" />
+</resultMap>
+
+
+<select id="VISITJEJU_S_00" resultMap="VISITJEJU_R_00">
+	SELECT CORP_ID /*업체 아이디*/
+    , CORP_NM /*업체 명*/
+    , CORP_CD /*업체 코드*/
+    , CORP_MOD_CD /*업체 수정 코드*/
+    , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = CORP_MOD_CD) AS CORP_CD_NM
+    , CORP_SUB_CD /*업체 서브 코드*/
+    , TRADE_STATUS_CD /*거래 상태 코드*/
+    , CO_REG_NUM /*사업자등록 번호*/
+    , CEO_NM /*대표자 명*/
+    , CEO_TEL_NUM /*대표자 전화 번호*/
+    , RSV_TEL_NUM /*예약 전화 번호*/
+    , CORP_EMAIL /*업체 이메일*/
+    , LON /*경도*/
+    , LAT /*위도*/
+    , ROAD_NM_ADDR /*도로명 주소*/
+    , DTL_ADDR /*상세 주소*/
+    , HMPG_ADDR /*홈페이지 주소*/
+    , CORP_LINK_YN /*업체 연계 여부*/
+    , CONF_DT /*승인 일자*/
+    , FRST_REG_DTTM /*최초 등록 일시*/
+    , LAST_MOD_DTTM /*최종 수정 일시*/
+    , HIJEJU_MAPPING_NUM
+    , ASCT_MEM_YN /*협회 회원 여부 */
+    , CMSS_NUM /*수수료 번호*/
+    , POS_USE_YN /*POS 사용 여부*/
+    , CORP_ALIAS_NM /*업체별칭*/
+    , VISIT_MAPPING_YN /* VISIT 제주연계 여부 */
+    , TAMNACARD_MNG_YN /* 탐나는전가맹점여부*/
+    , CONTENTSID
+    , CONTENTSNM
+    , API_CORP_YCNT
+    , API_CORP_NCNT
+FROM (SELECT ROWNUM AS RN
+        , CORP_ID /*업체 아이디*/
+        , CASE
+            WHEN CORP_NM != AD_NM
+            THEN CORP_NM || ' / ' || AD_NM
+            ELSE CORP_NM
+        END AS CORP_NM /*업체 명*/
+        , CORP_CD /*업체 코드*/
+        , CORP_MOD_CD /*업체 수정 코드*/
+        , CORP_SUB_CD /*업체 서브 코드*/
+        , TRADE_STATUS_CD /*거래 상태 코드*/
+        , CO_REG_NUM /*사업자등록 번호*/
+        , CEO_NM /*대표자 명*/
+        , CEO_TEL_NUM /*대표자 전화 번호*/
+        , RSV_TEL_NUM /*예약 전화 번호*/
+        , CORP_EMAIL /*업체 이메일*/
+        , LON /*경도*/
+        , LAT /*위도*/
+        , ROAD_NM_ADDR /*도로명 주소*/
+        , DTL_ADDR /*상세 주소*/
+        , HMPG_ADDR /*홈페이지 주소*/
+        , CORP_LINK_YN /*업체 연계 여부*/
+        , CONF_DT /*승인 일자*/
+        , FRST_REG_DTTM /*최초 등록 일시*/
+        , LAST_MOD_DTTM /*최종 수정 일시*/
+        , HIJEJU_MAPPING_NUM
+        , ASCT_MEM_YN /*협회 회원 여부 */
+        , CMSS_NUM /*수수료 번호*/
+        , POS_USE_YN /*POS 사용 여부*/
+        , CORP_ALIAS_NM /*업체별칭*/
+        , VISIT_MAPPING_YN /* VISIT 제주연계 여부 */
+        , TAMNACARD_MNG_YN /* 탐나는전가맹점여부*/
+        , CONTENTSID
+        , CONTENTSNM
+        , API_CORP_YCNT
+        , API_CORP_NCNT
+    FROM (SELECT T_CORP.CORP_ID /*업체 아이디*/
+            , T_CORP.CORP_NM /*업체 명*/
+            , T_CORP.CORP_CD /*업체 코드*/
+            , T_CORP.CORP_MOD_CD /*업체 수정 코드*/
+            , T_CORP.CORP_SUB_CD /*업체 서브 코드*/
+            , T_CORP.TRADE_STATUS_CD /*거래 상태 코드*/
+            , T_CORP.CO_REG_NUM /*사업자등록 번호*/
+            , T_CORP.CEO_NM /*대표자 명*/
+            , T_CORP.CEO_TEL_NUM /*대표자 전화 번호*/
+            , T_CORP.RSV_TEL_NUM /*예약 전화 번호*/
+            , T_CORP.CORP_EMAIL /*업체 이메일*/
+            , T_CORP.LON /*경도*/
+            , T_CORP.LAT /*위도*/
+            , T_CORP.ROAD_NM_ADDR /*도로명 주소*/
+            , T_CORP.DTL_ADDR /*상세 주소*/
+            , T_CORP.HMPG_ADDR /*홈페이지 주소*/
+            , CASE T_CORP.AD_APILINK_NM WHEN 'TLL' THEN 'TL린칸' END ||
+                CASE T_CORP.API_RENT_DIV WHEN 'R' THEN '리본' WHEN 'I' THEN '인스' WHEN 'G' THEN '그림' END AS CORP_LINK_YN/*연동업체*/
+            , T_CORP.CONF_DT /*승인 일자*/
+            , T_CORP.FRST_REG_DTTM /*최초 등록 일시*/
+            , T_CORP.LAST_MOD_DTTM /*최종 수정 일시*/
+            , T_CORP.HIJEJU_MAPPING_NUM
+            , T_CORP.ASCT_MEM_YN /*협회 회원 여부 */
+            , T_CORP.CMSS_NUM /*수수료 번호*/
+            , T_CORP.POS_USE_YN /*POS 사용 여부*/
+            , CASE
+                WHEN T_CORP.CORP_CD = 'AD'
+                THEN (SELECT AD_NM FROM TB_AD_DFTINF WHERE CORP_ID = T_CORP.CORP_ID)
+                ELSE ''
+            END AS AD_NM
+            , (SELECT CORP_ALIAS_NM FROM TB_PRMT_CORP WHERE CORP_ID = T_CORP.CORP_ID) AS CORP_ALIAS_NM
+            , (CASE WHEN T_CORP.VISIT_MAPPING_ID IS NOT NULL THEN 'Y' ELSE 'N' END) VISIT_MAPPING_YN
+            , T_CORP.TAMNACARD_MNG_YN
+            , (SELECT T_VISIT.CONTENTSID FROM TB_VISITJEJU T_VISIT WHERE T_CORP.CORP_ID = T_VISIT.CORP_ID AND T_VISIT.API_CORP_YN = 'Y' AND PRDT_NUM IS NULL) AS CONTENTSID
+            , (SELECT T_VISIT.CONTENTSNM FROM TB_VISITJEJU T_VISIT WHERE T_CORP.CORP_ID = T_VISIT.CORP_ID AND T_VISIT.API_CORP_YN = 'Y' AND PRDT_NUM IS NULL) AS CONTENTSNM
+            , T_VISIT.API_CORP_YCNT
+            , T_VISIT.API_CORP_NCNT
+        FROM TB_CORP AS T_CORP
+        LEFT JOIN (
+        			SELECT CORP_ID
+            	 		 , SUM(API_CORP_Y) AS API_CORP_YCNT
+            			 , SUM(API_CORP_N) AS API_CORP_NCNT
+					FROM(
+						SELECT CORP_ID
+            		         , CASE WHEN API_CORP_YN = 'Y' THEN 1 ELSE 0 END AS API_CORP_Y
+            				 , CASE WHEN API_CORP_YN = 'N' THEN 1 ELSE 0 END AS API_CORP_N
+						  FROM TB_VISITJEJU
+						) 
+				GROUP BY CORP_ID) AS T_VISIT ON T_CORP.CORP_ID = T_VISIT.CORP_ID
+        WHERE 1=1
+            <isNotEmpty property="sCorpNm">
+                AND (T_CORP.CORP_NM LIKE '%' || #sCorpNm# || '%'
+                    OR T_CORP.CORP_ID IN (SELECT CORP_ID FROM TB_AD_DFTINF WHERE AD_NM LIKE '%' || #sCorpNm# || '%'))
+            </isNotEmpty>
+            <isNotEmpty property="sCorpId">
+                AND T_CORP.CORP_ID LIKE '%' || #sCorpId# || '%'
+            </isNotEmpty>
+            <isNotEmpty property="sCorpCd">
+                AND T_CORP.CORP_MOD_CD = #sCorpCd#
+            </isNotEmpty>
+            <isNotEmpty property="sCorpCd2">
+                AND T_CORP.CORP_CD = #sCorpCd2#
+            </isNotEmpty>            
+            <isNotEmpty property="sCorpSubCd">
+                AND T_CORP.CORP_SUB_CD = #sCorpSubCd#
+            </isNotEmpty>
+            <isNotEmpty property="sAsctMemYn">
+                AND T_CORP.ASCT_MEM_YN = #sAsctMemYn#
+            </isNotEmpty>
+            <isNotEmpty property="sTradeStatusCd">
+                AND T_CORP.TRADE_STATUS_CD = #sTradeStatusCd#
+            </isNotEmpty>
+            <isNotEmpty property="sSuperbCorpYn">
+                AND T_CORP.SUPERB_CORP_YN = #sSuperbCorpYn#
+            </isNotEmpty>
+            <isNotEmpty property="sSpCtgr">
+                AND T_CORP.CORP_ID IN (SELECT CORP_ID FROM TB_SP_PRDTINF WHERE TRADE_STATUS = 'TS03' AND CTGR = #sSpCtgr#)
+            </isNotEmpty>
+            <isNotEmpty property="sApiCorpYn">
+                <isEqual property="sApiCorpYn" compareValue="Y">
+                    AND (T_VISIT.API_CORP_YCNT > 0 AND T_VISIT.API_CORP_NCNT = 0)
+                </isEqual>
+                <isEqual property="sApiCorpYn" compareValue="N">
+                    AND (T_VISIT.API_CORP_YCNT = 0 AND T_VISIT.API_CORP_NCNT > 0)
+                </isEqual>
+                <isEqual property="sApiCorpYn" compareValue="D">
+                    AND (T_VISIT.API_CORP_YCNT > 0 AND T_VISIT.API_CORP_NCNT > 0)
+                </isEqual>
+            </isNotEmpty>
+            <isNotEmpty property="sFileNum">
+                <isEqual property="sFileYn" compareValue="N">
+                    AND T_CORP.CORP_ID NOT IN
+                </isEqual>
+                <isEqual property="sFileYn" compareValue="Y">
+                    AND T_CORP.CORP_ID IN
+                </isEqual>
+                <iterate property="sFileNum" open="(" close=")" conjunction="INTERSECT">
+                    SELECT REQUEST_NUM FROM TB_CORP_PNS_REQUEST_FILE WHERE FILE_NUM = #sFileNum[]#
+                </iterate>
+            </isNotEmpty>
+            <isNotEmpty property="sVisitMappingYn">
+                <isEqual property="sVisitMappingYn" compareValue="N">
+                    AND T_CORP.VISIT_MAPPING_ID IS NULL
+                </isEqual>
+                <isEqual property="sVisitMappingYn" compareValue="Y">
+                    AND T_CORP.VISIT_MAPPING_ID IS NOT NULL
+                </isEqual>
+            </isNotEmpty>
+            <isNotEmpty property="sTamnacardMngYn">
+                    AND T_CORP.TAMNACARD_MNG_YN = #sTamnacardMngYn#
+            </isNotEmpty>
+            <isNotEmpty property="sCorpLinkApi">
+                AND (T_CORP.AD_APILINK_NM = #sCorpLinkApi# OR T_CORP.API_RENT_DIV =  #sCorpLinkApi#)
+            </isNotEmpty>
+        ORDER BY FRST_REG_DTTM DESC
+    )
+)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="VISITJEJU_S_01" resultClass="int">
+	SELECT COUNT(T_CORP.CORP_ID) AS CNT
+FROM TB_CORP T_CORP
+LEFT JOIN (
+        			SELECT CORP_ID
+            	 		 , SUM(API_CORP_Y) AS API_CORP_YCNT
+            			 , SUM(API_CORP_N) AS API_CORP_NCNT
+					FROM(
+						SELECT CORP_ID
+            		         , CASE WHEN API_CORP_YN = 'Y' THEN 1 ELSE 0 END AS API_CORP_Y
+            				 , CASE WHEN API_CORP_YN = 'N' THEN 1 ELSE 0 END AS API_CORP_N
+						  FROM TB_VISITJEJU
+						) 
+				GROUP BY CORP_ID) AS T_VISIT ON T_CORP.CORP_ID = T_VISIT.CORP_ID
+WHERE 1=1
+    <isNotEmpty property="sCorpNm">
+        AND T_CORP.CORP_NM LIKE '%' || #sCorpNm# || '%'
+    </isNotEmpty>
+    <isNotEmpty property="sCorpId">
+        AND T_CORP.CORP_ID LIKE '%' || #sCorpId# || '%'
+    </isNotEmpty>
+    <isNotEmpty property="sCoRegNum">
+        AND REPLACE(T_CORP.CO_REG_NUM, '-', '') = #sCoRegNum#
+    </isNotEmpty>
+    <isNotEmpty property="sCorpCd">
+        AND T_CORP.CORP_MOD_CD = #sCorpCd#
+    </isNotEmpty>
+    <isNotEmpty property="sCorpSubCd">
+        AND T_CORP.CORP_SUB_CD = #sCorpSubCd#
+    </isNotEmpty>
+    <isNotEmpty property="sTradeStatusCd">
+        AND T_CORP.TRADE_STATUS_CD = #sTradeStatusCd#
+    </isNotEmpty>
+    <isNotEmpty property="sAsctMemYn">
+        AND T_CORP.ASCT_MEM_YN = #sAsctMemYn#
+    </isNotEmpty>
+    <isNotEmpty property="sSuperbCorpYn">
+        AND T_CORP.SUPERB_CORP_YN = #sSuperbCorpYn#
+    </isNotEmpty>
+    <isNotEmpty property="sSpCtgr">
+        AND T_CORP.CORP_ID IN (SELECT CORP_ID FROM TB_SP_PRDTINF WHERE CTGR = #sSpCtgr# AND TRADE_STATUS='TS03')
+    </isNotEmpty>
+    <isNotEmpty property="sApiCorpYn">
+		<isEqual property="sApiCorpYn" compareValue="Y">
+            AND (T_VISIT.API_CORP_YCNT > 0 AND T_VISIT.API_CORP_NCNT = 0)
+        </isEqual>
+        <isEqual property="sApiCorpYn" compareValue="N">
+            AND (T_VISIT.API_CORP_YCNT = 0 AND T_VISIT.API_CORP_NCNT > 0)
+        </isEqual>
+        <isEqual property="sApiCorpYn" compareValue="D">
+            AND (T_VISIT.API_CORP_YCNT > 0 AND T_VISIT.API_CORP_NCNT > 0)
+        </isEqual>
+    </isNotEmpty>
+    <isNotEmpty property="sFileNum">
+        <isEqual property="sFileYn" compareValue="N">
+            AND T_CORP.CORP_ID NOT IN
+        </isEqual>
+        <isEqual property="sFileYn" compareValue="Y">
+            AND T_CORP.CORP_ID IN
+        </isEqual>
+        <iterate property="sFileNum" open="(" close=")" conjunction="INTERSECT">
+            SELECT REQUEST_NUM FROM TB_CORP_PNS_REQUEST_FILE WHERE FILE_NUM = #sFileNum[]#
+        </iterate>
+    </isNotEmpty>
+    <isNotEmpty property="sVisitMappingYn">
+        <isEqual property="sVisitMappingYn" compareValue="N">
+            AND T_CORP.VISIT_MAPPING_ID IS NULL
+        </isEqual>
+        <isEqual property="sVisitMappingYn" compareValue="Y">
+            AND T_CORP.VISIT_MAPPING_ID IS NOT NULL
+        </isEqual>
+    </isNotEmpty>
+    <isNotEmpty property="sTamnacardMngYn">
+            AND T_CORP.TAMNACARD_MNG_YN = #sTamnacardMngYn#
+    </isNotEmpty>
+    <isNotEmpty property="sCorpLinkApi">
+        AND (T_CORP.AD_APILINK_NM = #sCorpLinkApi# OR T_CORP.API_RENT_DIV =  #sCorpLinkApi#)
+    </isNotEmpty>
+</select>
+
+<select id="VISITJEJU_S_02" resultMap="VISITJEJU_R_01">
+	SELECT * FROM (
+		SELECT
+			ROWNUM AS RN,
+			CORP_ID,
+			CORP_CD,
+			CORP_NM,
+			TRADE_STATUS,
+			TRADE_STATUS_NM,
+			PRDT_NUM,
+			PRDT_NM,
+			TAMNACARD_PRDT_YN,
+			CONTENTSID,
+            CONTENTSNM
+		FROM(
+			SELECT
+				ROWNUM AS RN,
+				B.CORP_ID,
+				A.CORP_CD,
+				A.CORP_NM,
+				B.TRADE_STATUS,
+				C. CD_NM AS TRADE_STATUS_NM,
+				B.PRDT_NUM,
+				B.PRDT_NM,
+				B.TAMNACARD_PRDT_YN,
+				D.CONTENTSID,
+                D.CONTENTSNM
+			FROM
+				TB_CORP AS A
+			JOIN(
+				SELECT
+					CORP_ID,
+					PRDT_NUM,
+					TRADE_STATUS,
+					PRDT_NM,
+					TAMNACARD_PRDT_YN
+				FROM TB_AD_PRDTINF
+				UNION ALL
+				SELECT
+					CORP_ID,
+					PRDT_NUM,
+					TRADE_STATUS,
+					PRDT_NM,
+					TAMNACARD_PRDT_YN
+				FROM TB_RC_PRDTINF
+				UNION ALL
+				SELECT
+					CORP_ID,
+					PRDT_NUM,
+					TRADE_STATUS,
+					PRDT_NM,
+					TAMNACARD_PRDT_YN
+				FROM TB_SP_PRDTINF
+				UNION ALL
+				SELECT
+					CORP_ID,
+					PRDT_NUM,
+					TRADE_STATUS,
+					PRDT_NM,
+					TAMNACARD_PRDT_YN
+				FROM TB_SV_PRDTINF
+			) AS B ON A.CORP_ID = B.CORP_ID
+			JOIN TB_CD AS C ON B.TRADE_STATUS = C.CD_NUM
+			LEFT JOIN TB_VISITJEJU AS D ON B.CORP_ID = D.CORP_ID AND B.PRDT_NUM = D.PRDT_NUM
+			WHERE A.CORP_ID = #sCorpId#
+			<isNotEmpty property="sPrdtNm">
+			AND B.PRDT_NM LIKE '%'|| #sPrdtNm#||'%'
+			</isNotEmpty>
+			ORDER BY (CASE TRADE_STATUS WHEN 'TS01' THEN 1 WHEN 'TS02' THEN 2 WHEN 'TS03' THEN 3 WHEN 'TS04' THEN 5 WHEN 'TS05' THEN 8 WHEN 'TS06' THEN 4 WHEN 'TS07' THEN 6 WHEN 'TS08' THEN 7 ELSE 8 END )
+			, D.FRST_REG_DTTM DESC
+		)
+	)
+	WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="VISITJEJU_S_03" resultClass="int">
+	SELECT
+		COUNT(*)
+	FROM
+		TB_CORP AS A
+	JOIN(
+		SELECT
+			CORP_ID,
+			PRDT_NUM,
+			TRADE_STATUS,
+			PRDT_NM,
+			TAMNACARD_PRDT_YN
+		FROM TB_AD_PRDTINF
+		UNION ALL
+		SELECT
+			CORP_ID,
+			PRDT_NUM,
+			TRADE_STATUS,
+			PRDT_NM,
+			TAMNACARD_PRDT_YN
+		FROM TB_RC_PRDTINF
+		UNION ALL
+		SELECT
+			CORP_ID,
+			PRDT_NUM,
+			TRADE_STATUS,
+			PRDT_NM,
+			TAMNACARD_PRDT_YN
+		FROM TB_SP_PRDTINF
+		UNION ALL
+		SELECT
+			CORP_ID,
+			PRDT_NUM,
+			TRADE_STATUS,
+			PRDT_NM,
+			TAMNACARD_PRDT_YN
+		FROM TB_SV_PRDTINF
+	) AS B ON A.CORP_ID = B.CORP_ID
+	JOIN TB_CD AS C ON B.TRADE_STATUS = C.CD_NUM
+	LEFT JOIN TB_VISITJEJU AS D ON B.CORP_ID = D.CORP_ID AND B.PRDT_NUM = D.PRDT_NUM
+	WHERE A.CORP_ID = #sCorpId#
+	<isNotEmpty property="sPrdtNm">
+	AND B.PRDT_NM LIKE '%'|| #sPrdtNm#||'%'
+	</isNotEmpty>
+</select>
+
+<select id="VISITJEJU_S_04" resultClass="common.LowerHashMap">
+SELECT
+	CONTENTSID,
+	URL,
+	NML_AMT,
+	SALE_AMT,
+	PRDT_NM,
+	OPT_NM,
+	PRDT_INF AS PRDT_DESC,
+	IMG_URL,
+	PRDT_GB,
+	EVENT_YN,
+	TAMNACARD_YN,
+	DAYPRICE_YN,
+	CONSECSTAY_YN
+FROM(
+	SELECT
+		*
+	FROM (
+	SELECT
+			E.CONTENTSID,
+			'https://www.tamnao.com/web/sp/detailPrdt.do?prdtNum=' || A.PRDT_NUM || <![CDATA['&partner=visitjeju']]>  AS URL,
+			A.NML_AMT,
+			A.SALE_AMT,
+			B.PRDT_NM,
+			A.OPT_NM,
+			B.PRDT_INF AS PRDT_INF,
+			(CASE WHEN F.SAVE_PATH IS NOT NULL THEN
+			'https://www.tamnao.com'||F.SAVE_PATH || 'thumb/' || F.SAVE_FILE_NM
+			ELSE
+			B.API_IMG_THUMB
+			END)
+			AS IMG_URL,
+			'SP' AS PRDT_GB,
+			NVL(D.PRMT_YN,'N') AS EVENT_YN,
+			(CASE WHEN C.TAMNACARD_MNG_YN = 'C' THEN 'Y' WHEN C.TAMNACARD_MNG_YN = 'C' AND	B.TAMNACARD_PRDT_YN = 'Y' THEN 'Y' ELSE 'N' END) AS TAMNACARD_YN,
+			'N' AS DAYPRICE_YN,
+			'N' AS CONSECSTAY_YN,
+			ROW_NUMBER() OVER (PARTITION BY B.PRDT_NUM ORDER BY OPT_NM,SALE_AMT) AS RK
+		FROM TB_SP_OPTINF AS A
+		JOIN TB_SP_PRDTINF AS B
+		ON A.PRDT_NUM = B.PRDT_NUM
+		JOIN TB_CORP AS C
+		ON B.CORP_ID = C.CORP_ID
+		LEFT JOIN (
+		SELECT PRDT_NUM, 'Y' AS PRMT_YN FROM TB_PRMT_PRDT WHERE PRMT_NUM IN (
+		SELECT PRMT_NUM FROM TB_PRMT WHERE SYSDATE BETWEEN TO_DATE(START_DT,'YYYYMMDD') AND TO_DATE(END_DT,'YYYYMMDD')+1 AND STATUS_CD = 'TS03' AND PRMT_DIV = 'EVNT'
+		)
+		) AS D
+		ON B.PRDT_NUM = D.PRDT_NUM
+		JOIN TB_VISITJEJU E
+		ON E.CORP_ID = C.CORP_ID AND API_CORP_YN = 'N' AND B.PRDT_NUM =  E.PRDT_NUM
+		LEFT JOIN TB_CM_IMG F
+		ON F.LINK_NUM = B.PRDT_NUM AND IMG_SN = 1
+		WHERE 1=1
+		AND B.TRADE_STATUS = 'TS03'
+		AND C.TRADE_STATUS_CD = 'TS03'
+		AND A.PRINT_YN = 'Y'
+		AND A.DDL_YN = 'N'
+		AND B.SALE_START_DT <![CDATA[<=]]> TO_CHAR(SYSDATE,'YYYYMMDD')
+		AND B.SALE_END_DT >= TO_CHAR(SYSDATE,'YYYYMMDD')
+	) WHERE RK =1
+	UNION ALL
+	SELECT
+		*
+	FROM (
+	SELECT
+			E.CONTENTSID,
+			'https://www.tamnao.com/web/sp/detailPrdt.do?prdtNum=' || A.PRDT_NUM || <![CDATA['&partner=visitjeju']]> AS URL,
+			A.NML_AMT,
+			A.SALE_AMT,
+			B.PRDT_NM,
+			B.PRDT_INF AS PRDT_INF,
+			A.OPT_NM,
+			(CASE WHEN F.SAVE_PATH IS NOT NULL THEN
+			'https://www.tamnao.com'||F.SAVE_PATH || 'thumb/' || F.SAVE_FILE_NM
+			ELSE
+			B.API_IMG_THUMB
+			END)
+			AS IMG_URL,
+			'SP' AS PRDT_GB,
+			NVL(D.PRMT_YN,'N') AS EVENT_YN,
+			(CASE WHEN C.TAMNACARD_MNG_YN = 'C' THEN 'Y' WHEN C.TAMNACARD_MNG_YN = 'C' AND	B.TAMNACARD_PRDT_YN = 'Y' THEN 'Y' ELSE 'N' END) AS TAMNACARD_YN,
+			'N' AS DAYPRICE_YN,
+			'N' AS CONSECSTAY_YN,
+			ROW_NUMBER() OVER (PARTITION BY B.CORP_ID ORDER BY OPT_NM,SALE_AMT) AS RK
+		FROM TB_SP_OPTINF AS A
+		JOIN TB_SP_PRDTINF AS B
+		ON A.PRDT_NUM = B.PRDT_NUM
+		JOIN TB_CORP AS C
+		ON B.CORP_ID = C.CORP_ID
+		LEFT JOIN (
+		SELECT PRDT_NUM, 'Y' AS PRMT_YN FROM TB_PRMT_PRDT WHERE PRMT_NUM IN (
+		SELECT PRMT_NUM FROM TB_PRMT WHERE SYSDATE BETWEEN TO_DATE(START_DT,'YYYYMMDD') AND TO_DATE(END_DT,'YYYYMMDD')+1 AND STATUS_CD = 'TS03' AND PRMT_DIV = 'EVNT'
+		)
+		) AS D
+		ON B.PRDT_NUM = D.PRDT_NUM
+		JOIN TB_VISITJEJU E
+		ON E.CORP_ID = C.CORP_ID AND E.API_CORP_YN = 'Y'
+		LEFT JOIN TB_CM_IMG F
+		ON F.LINK_NUM = B.PRDT_NUM AND IMG_SN = 1
+		WHERE 1=1
+		AND B.TRADE_STATUS = 'TS03'
+		AND C.TRADE_STATUS_CD = 'TS03'
+		AND A.PRINT_YN = 'Y'
+		AND A.DDL_YN = 'N'
+		AND B.SALE_START_DT <![CDATA[<=]]> TO_CHAR(SYSDATE,'YYYYMMDD')
+		AND B.SALE_END_DT >= TO_CHAR(SYSDATE,'YYYYMMDD')
+	) WHERE RK =1
+	UNION ALL
+	SELECT * FROM(
+	SELECT
+		E.CONTENTSID,
+		'https://www.tamnao.com/web/ad/detailPrdt.do?sPrdtNum=' || A.PRDT_NUM || <![CDATA['&partner=visitjeju']]> AS URL,
+		A.NML_AMT,
+		A.SALE_AMT,
+		F.AD_NM AS PRDT_NM,
+		B.PRDT_NM AS OPT_NM,
+		F.AD_SIMPLE_EXP AS PRDT_INF,
+		'https://www.tamnao.com'||G.SAVE_PATH || 'thumb/' || G.SAVE_FILE_NM AS IMG_URL,
+		'AD' AS PRDT_GB,
+		NVL(D.PRMT_YN,'N') AS EVENT_YN,
+		(CASE WHEN C.TAMNACARD_MNG_YN = 'C' THEN 'Y' WHEN C.TAMNACARD_MNG_YN = 'C' AND	B.TAMNACARD_PRDT_YN = 'Y' THEN 'Y' ELSE 'N' END) AS TAMNACARD_YN,
+		NVL(DAYPRICE_YN,'N'),
+		(CASE WHEN (SELECT COUNT(*) FROM TB_AD_CTN_INF WHERE PRDT_NUM = B.PRDT_NUM AND TO_CHAR(SYSDATE,'YYYYMMDD') BETWEEN START_DT AND END_DT  ) > 0
+		THEN 'Y'
+		ELSE 'N'
+		END) AS CONSECSTAY_YN,
+		ROW_NUMBER() OVER (PARTITION BY C.CORP_ID ORDER BY SALE_AMT) AS RK
+	FROM
+		TB_AD_AMTINF AS A
+	JOIN TB_AD_PRDTINF AS B
+	ON A.PRDT_NUM = B.PRDT_NUM
+	JOIN TB_CORP AS C
+	ON B.CORP_ID = C.CORP_ID
+	LEFT JOIN (
+	SELECT PRDT_NUM, 'Y' AS PRMT_YN FROM TB_PRMT_PRDT WHERE PRMT_NUM IN (
+	SELECT PRMT_NUM FROM TB_PRMT WHERE SYSDATE BETWEEN TO_DATE(START_DT,'YYYYMMDD') AND TO_DATE(END_DT,'YYYYMMDD')+1 AND STATUS_CD = 'TS03' AND PRMT_DIV = 'EVNT'
+	)
+	) AS D
+	ON B.PRDT_NUM = D.PRDT_NUM
+	JOIN TB_VISITJEJU E
+	ON E.CORP_ID = C.CORP_ID AND API_CORP_YN = 'Y'
+	JOIN TB_AD_DFTINF F
+	ON C.CORP_ID = F.CORP_ID
+	LEFT JOIN TB_CM_IMG G
+	ON G.LINK_NUM = C.CORP_ID AND IMG_SN = 1
+	WHERE 1=1
+	AND A.APL_DT BETWEEN TO_CHAR(SYSDATE,'YYYYMMDD') AND TO_CHAR(SYSDATE+7,'YYYYMMDD')
+    AND B.TRADE_STATUS = 'TS03'
+	) WHERE RK = 1
+) ORDER BY PRDT_GB,CONTENTSID
+</select>
+
+<select id="VISITJEJU_S_05" resultClass="common.LowerHashMap">
+SELECT
+SUM((CASE WHEN API_CORP_YN = 'Y' AND CORP_CD ='AD' THEN 1 ELSE 0 END)) AS AD_CNT,
+SUM((CASE WHEN API_CORP_YN = 'Y' AND CORP_CD ='SP' THEN 1 ELSE 0 END))+
+SUM((CASE WHEN API_CORP_YN = 'N' AND CORP_CD ='SP' THEN 1 ELSE 0 END)) AS SP_CNT
+FROM TB_VISITJEJU
+</select>
+
+
+<insert id="VISITJEJU_I_00">
+	INSERT INTO TB_VISITJEJU
+		( CONTENTSID
+		, CONTENTSNM
+		, API_CORP_YN
+		, CORP_CD
+		, CORP_ID
+		, PRDT_NUM
+		, FRST_REG_DTTM
+		, LAST_MOD_DTTM
+		)
+		VALUES
+		( #contentsid#
+		, #contentsnm#
+		, #apiCorpYn#
+		, #corpCd#
+		, #corpId#
+		, #prdtNum#
+		, SYSDATE
+		, SYSDATE
+		)
+</insert>
+
+<delete id="VISITJEJU_D_00">
+	DELETE FROM TB_VISITJEJU WHERE CONTENTSID = #contentsid#
+</delete>
+
+<delete id="VISITJEJU_D_01">
+	DELETE FROM TB_VISITJEJU WHERE CORP_ID = #corpId# AND API_CORP_YN = 'Y' AND PRDT_NUM IS NULL 
+</delete>
+
+<delete id="VISITJEJU_D_02">
+	DELETE FROM TB_VISITJEJU WHERE CORP_ID = #corpId# AND PRDT_NUM = #prdtNum# AND API_CORP_YN = 'N' AND PRDT_NUM IS NOT NULL
+</delete>
+
+</sqlMap>

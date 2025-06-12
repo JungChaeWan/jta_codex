@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="crtn">
+
+<resultMap id="CRTN_R_00" class="oss.site.vo.SVCRTNVO">
+    <result property="crtnNum" 			column="CRTN_NUM" />
+    <result property="crtnNm" 			column="CRTN_NM" />
+    <result property="simpleExp"		column="SIMPLE_EXP" />
+    <result property="printYn" 			column="PRINT_YN" />
+    <result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+    <result property="frstRegId" 		column="FRST_REG_ID" />
+    <result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+    <result property="lastModId" 		column="LAST_MOD_ID" />
+    <result property="prdtCnt"	 		column="PRDT_CNT" />
+</resultMap>
+
+<resultMap id="CRTN_R_01" class="oss.site.vo.SVCRTNVO">
+    <result property="crtnNum" 			column="CRTN_NUM" />
+    <result property="crtnNm" 			column="CRTN_NM" />
+    <result property="simpleExp"		column="SIMPLE_EXP" />
+    <result property="sort" 			column="SORT" />
+    <result property="listImgPath" 		column="LIST_IMG_PATH" />
+    <result property="printYn" 			column="PRINT_YN" />
+    <result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+    <result property="frstRegId" 		column="FRST_REG_ID" />
+    <result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+    <result property="lastModId" 		column="LAST_MOD_ID" />
+    <result property="maxSort"	 		column="MAX_SORT" />
+</resultMap>
+
+<resultMap id="CRTN_R_04" class="oss.site.vo.SVCRTNVO">
+    <result property="crtnNum" 			column="CRTN_NUM" />
+    <result property="crtnNm" 			column="CRTN_NM" />
+    <result property="simpleExp"		column="SIMPLE_EXP" />
+    <result property="listImgPath"		column="LIST_IMG_PATH" />
+    <result property="prdtCnt"	 		column="PRDT_CNT" />
+</resultMap>
+
+<resultMap id="CRTN_PRDT_R_00" class="oss.site.vo.SVCRTNPRDTVO">
+    <result property="crtnNum" 			column="CRTN_NUM" />
+    <result property="prdtNum" 			column="PRDT_NUM" />
+    <result property="prdtNm" 			column="PRDT_NM" />
+    <result property="printSn" 			column="PRINT_SN" />
+    <result property="corpId" 			column="CORP_ID" />
+    <result property="corpNm" 			column="CORP_NM" />
+</resultMap>
+
+<resultMap id="CRTN_PRDT_R_02" class="oss.site.vo.SVCRTNPRDTVO">
+    <result property="crtnNum" 			column="CRTN_NUM" />
+    <result property="prdtNum" 			column="PRDT_NUM" />
+    <result property="prdtNm" 			column="PRDT_NM" />
+    <result property="corpId" 			column="CORP_ID" />
+    <result property="savePath" 		column="SAVE_PATH" />
+    <result property="saveFileNm" 		column="SAVE_FILE_NM" />
+    <result property="saleAmt" 			column="SALE_AMT" />
+    <result property="tamnacardYn" 		column="TAMNACARD_YN" />
+</resultMap>
+
+
+<select id="CRTN_S_00" resultMap="CRTN_R_00">
+SELECT CRTN_NUM
+    , CRTN_NM
+    , SIMPLE_EXP
+    , PRINT_YN
+    , FRST_REG_DTTM
+    , FRST_REG_ID
+    , LAST_MOD_DTTM
+    , LAST_MOD_ID
+    , PRDT_CNT
+FROM (SELECT ROWNUM AS RN
+        , CRTN_NUM
+        , CRTN_NM
+        , SIMPLE_EXP
+        , PRINT_YN
+        , FRST_REG_DTTM
+        , FRST_REG_ID
+        , LAST_MOD_DTTM
+        , LAST_MOD_ID
+        , PRDT_CNT
+    FROM (SELECT CRTN_NUM
+            , CRTN_NM
+            , SIMPLE_EXP
+            , PRINT_YN
+            , FRST_REG_DTTM
+            , FRST_REG_ID
+            , LAST_MOD_DTTM
+            , LAST_MOD_ID
+            , (SELECT COUNT(*) FROM TB_SV_CRTN_PRDT WHERE CRTN_NUM = T_CRTN.CRTN_NUM) AS PRDT_CNT
+        FROM TB_SV_CRTN T_CRTN
+        ORDER BY CRTN_NUM DESC
+    )
+)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="CRTN_S_01" resultClass="int">
+SELECT COUNT(CRTN_NUM)
+			  FROM TB_SV_CRTN
+			 WHERE 1=1
+</select>
+
+<select id="CRTN_S_02" resultClass="String">
+SELECT 'CR'||LPAD(NVL(MAX(SUBSTR(CRTN_NUM,3)),0) + 1, 8,'0')
+  FROM TB_SV_CRTN
+</select>
+
+<select id="CRTN_S_03" resultMap="CRTN_R_01">
+SELECT CRTN_NUM
+     , CRTN_NM
+     , SIMPLE_EXP
+     , SORT
+     , LIST_IMG_PATH
+     , PRINT_YN
+     , FRST_REG_DTTM
+     , FRST_REG_ID
+     , LAST_MOD_DTTM
+     , LAST_MOD_ID
+     , (SELECT MAX(SORT) FROM TB_SV_CRTN) AS MAX_SORT
+ FROM TB_SV_CRTN
+WHERE 1=1
+    AND CRTN_NUM = #crtnNum#
+</select>
+
+<select id="CRTN_S_04" resultMap="CRTN_R_04">
+SELECT CRTN_NUM
+     , CRTN_NM
+     , SIMPLE_EXP     
+     , LIST_IMG_PATH    
+<!--      <![CDATA[ 
+     , CASE WHEN SORT < 7 THEN SORT
+     ]]>
+            ELSE CEIL(DBMS_RANDOM.VALUE(7, 1000))
+       END SORT -->
+     , SORT
+     , (SELECT COUNT(T_PRDT.PRDT_NUM) FROM TB_SV_CRTN_PRDT T_PRDT
+     	  INNER JOIN TB_SV_PRDTINF T_SV ON T_SV.PRDT_NUM=T_PRDT.PRDT_NUM
+           	 AND TRADE_STATUS='TS03' 
+           	 AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN SALE_START_DT AND SALE_END_DT
+           WHERE T_PRDT.CRTN_NUM=T_CRTN.CRTN_NUM
+        ) AS PRDT_CNT      
+  FROM TB_SV_CRTN T_CRTN
+WHERE 1=1
+    AND PRINT_YN='Y'
+ORDER BY SORT
+</select>
+
+<insert id="CRTN_I_00">
+INSERT INTO TB_SV_CRTN
+     ( CRTN_NUM
+     , CRTN_NM
+     , SIMPLE_EXP
+     , LIST_IMG_PATH
+     , SORT
+     , PRINT_YN
+     , FRST_REG_DTTM
+     , FRST_REG_ID
+     , LAST_MOD_DTTM
+     , LAST_MOD_ID
+     )
+VALUES
+     ( 
+      #crtnNum#
+     , #crtnNm#
+     , #simpleExp#
+     , #listImgPath#
+     , (SELECT NVL(MAX(SORT)+1, 1) FROM TB_SV_CRTN)
+     , #printYn#
+     , SYSDATE
+     , #frstRegId#
+     , SYSDATE
+     , #frstRegId#
+     )
+</insert>
+
+<update id="CRTN_U_00">
+UPDATE TB_SV_CRTN
+   SET LAST_MOD_DTTM 	= SYSDATE
+     , LAST_MOD_ID 		= #lastModId#
+     , CRTN_NM 			= #crtnNm#
+     , SORT		 		= #sort#
+     , PRINT_YN 		= #printYn#
+ WHERE CRTN_NUM = #crtnNum#
+</update>
+
+<!-- 큐레이션 순번변경 (증가) -->
+<update id="CRTN_U_01">
+UPDATE TB_SV_CRTN
+   SET SORT = SORT + 1
+ WHERE 1 = 1
+ 	AND CRTN_NUM      != #crtnNum#
+  <isNotEqual property="oldSort" compareValue="0">
+   <![CDATA[
+   AND SORT <  #oldSort#
+   ]]>
+  </isNotEqual>
+   <![CDATA[
+   AND SORT >= #sort#
+   ]]>
+</update>
+
+<!-- 큐레이션 순번변경 (감소) -->
+<update id="CRTN_U_02">
+UPDATE TB_SV_CRTN
+   SET SORT = SORT - 1
+ WHERE 1  =  1
+ 	AND CRTN_NUM      != #crtnNum#
+ <isNotEqual property="sort" compareValue="0">
+ <![CDATA[
+   AND SORT <= #sort#
+ ]]>
+ </isNotEqual>
+ <![CDATA[
+   AND SORT >  #oldSort#
+ ]]>
+</update>
+
+<delete id="CRTN_D_00">
+DELETE
+  FROM TB_SV_CRTN
+ WHERE CRTN_NUM = #crtnNum#
+</delete>
+
+<select id="CRTN_PRDT_S_00" resultMap="CRTN_PRDT_R_00">
+SELECT T_CRTN.CRTN_NUM
+		 , T_CRTN.PRDT_NUM
+		 , T_PRDT.PRDT_NM
+		 , PRINT_SN
+  FROM TB_SV_CRTN_PRDT T_CRTN
+  	INNER JOIN (
+		  SELECT PRDT_NUM
+		  		, PRDT_NM || '('|| TO_DATE(SALE_START_DT, 'yyyy-MM-dd') || '~' || TO_DATE(SALE_END_DT, 'yyyy-MM-dd') || ')' PRDT_NM
+		    FROM TB_SV_PRDTINF
+	) T_PRDT
+	ON T_CRTN.PRDT_NUM = T_PRDT.PRDT_NUM
+	AND T_CRTN.CRTN_NUM = #crtnNum#
+</select>
+
+<select id="CRTN_PRDT_S_01" resultMap="CRTN_PRDT_R_00">
+SELECT T_CRTN.CRTN_NUM
+		 , T_CRTN.PRDT_NUM
+		 , T_PRDT.PRDT_NM
+         , CORP_ID
+         , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID=T_PRDT.CORP_ID ) AS CORP_NM
+         , PRINT_SN
+  FROM TB_SV_CRTN_PRDT T_CRTN
+  	INNER JOIN (
+		  SELECT PRDT_NUM
+		  		, PRDT_NM || '('|| TO_DATE(SALE_START_DT, 'yyyy-MM-dd') || '~' || TO_DATE(SALE_END_DT, 'yyyy-MM-dd') || ')' PRDT_NM
+                , CORP_ID
+		    FROM TB_SV_PRDTINF
+	) T_PRDT
+	ON T_CRTN.PRDT_NUM = T_PRDT.PRDT_NUM
+	AND T_CRTN.CRTN_NUM = #crtnNum#
+	  ORDER BY PRINT_SN
+</select>
+
+<select id="CRTN_PRDT_S_02" resultMap="CRTN_PRDT_R_02">
+SELECT CRTN_NUM
+    , PRDT_NUM
+    , PRDT_NM
+    , CORP_ID
+    , SAVE_PATH
+    , SAVE_FILE_NM
+    , SALE_AMT
+    , NML_AMT
+    , TAMNACARD_YN
+    FROM (
+        SELECT CRTN_NUM
+            , PRDT_NUM
+            , PRDT_NM
+            , S.CORP_ID
+            , SAVE_PATH
+            , SAVE_FILE_NM
+            , SALE_AMT
+            , NML_AMT
+            , ROW_NUMBER() OVER(PARTITION BY CRTN_NUM ORDER BY PRINT_SN, SALE_AMT) AS RN
+            , CASE WHEN T_CORP.TAMNACARD_MNG_YN = 'C' OR (T_CORP.TAMNACARD_MNG_YN = 'P' AND S.TAMNACARD_PRDT_YN = 'Y') THEN 'Y' ELSE 'N' END AS TAMNACARD_YN
+            FROM (
+                SELECT CRTN_NUM
+                        , T_CRTN.PRDT_NUM
+                        , PRDT_NM
+                        , CORP_ID
+                        , SAVE_PATH
+                        , SAVE_FILE_NM
+                        , T_OPT.SALE_AMT
+                        , T_OPT.NML_AMT
+                        , T_CRTN.PRINT_SN
+                        , ROW_NUMBER() OVER (PARTITION BY CRTN_NUM,T_CRTN.PRDT_NUM
+                            ORDER BY T_OPT.SALE_AMT) AS RK
+                        , TAMNACARD_PRDT_YN
+                    FROM (
+                        SELECT CRTN_NUM
+                            , PRDT_NUM 
+                            , PRINT_SN
+                              FROM TB_SV_CRTN_PRDT
+                       ) T_CRTN
+                    INNER JOIN TB_SV_PRDTINF T_SV ON T_SV.PRDT_NUM=T_CRTN.PRDT_NUM
+                    	 AND TRADE_STATUS='TS03' 
+                    	 AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN SALE_START_DT AND SALE_END_DT
+                    INNER JOIN TB_SV_DIVINF T_DIV ON T_DIV.PRDT_NUM = T_SV.PRDT_NUM
+                    INNER JOIN TB_SV_OPTINF T_OPT ON T_OPT.PRDT_NUM = T_SV.PRDT_NUM
+                         AND T_OPT.SV_DIV_SN = T_DIV.SV_DIV_SN
+                         AND T_OPT.DDL_YN = 'N'
+                         AND T_OPT.PRINT_YN = 'Y'
+                    LEFT OUTER JOIN TB_CM_IMG T_IMG ON T_IMG.LINK_NUM = T_SV.PRDT_NUM
+                         AND T_IMG.IMG_SN = 1
+            ) S
+            LEFT JOIN TB_CORP T_CORP ON S.CORP_ID = T_CORP.CORP_ID
+            WHERE RK=1    
+            ORDER BY CRTN_NUM
+    )
+<!-- 	<![CDATA[
+    WHERE RN < 4
+    ]]> -->
+</select>
+
+<insert id="CRTN_PRDT_I_00">
+INSERT INTO TB_SV_CRTN_PRDT ( CRTN_NUM, PRDT_NUM, PRINT_SN)
+VALUES (
+	   #crtnNum#
+     , #prdtNumOne#
+     , (SELECT NVL(MAX(PRINT_SN) + 1, 1) FROM TB_SV_CRTN_PRDT
+     	  WHERE CRTN_NUM=#crtnNum#)
+       )
+</insert>
+
+<!-- 큐레이션 상품 순번변경 (증가) -->
+<update id="CRTN_PRDT_U_00">
+UPDATE TB_SV_CRTN_PRDT
+   SET PRINT_SN = PRINT_SN + 1
+ WHERE 1 = 1
+ 	AND CRTN_NUM      = #crtnNum#
+  <isNotEqual property="oldSn" compareValue="0">
+   <![CDATA[
+   AND PRINT_SN <  #oldSn#
+   ]]>
+  </isNotEqual>
+   <![CDATA[
+   AND PRINT_SN >= #newSn#
+   ]]>
+</update>
+
+<!-- 큐레이션 상품 순번변경 (감소) -->
+<update id="CRTN_PRDT_U_01">
+UPDATE TB_SV_CRTN_PRDT
+   SET PRINT_SN = PRINT_SN - 1
+ WHERE 1  =  1
+ 	AND CRTN_NUM      = #crtnNum#
+ <isNotEqual property="newSn" compareValue="0">
+ <![CDATA[
+   AND PRINT_SN <= #newSn#
+ ]]>
+ </isNotEqual>
+ <![CDATA[
+   AND PRINT_SN >  #oldSn#
+ ]]>
+</update>
+
+<!-- 큐레이션 상품 순번변경된 객체 -->
+<update id="CRTN_PRDT_U_02">
+UPDATE TB_SV_CRTN_PRDT
+   SET PRINT_SN      = #newSn#
+ WHERE 1 = 1
+   AND CRTN_NUM      = #crtnNum#
+   AND PRDT_NUM      = #prdtNum#
+</update>
+
+<delete id="CRTN_PRDT_D_00">
+DELETE
+  FROM TB_SV_CRTN_PRDT
+ WHERE CRTN_NUM = #crtnNum#
+</delete>
+
+</sqlMap>

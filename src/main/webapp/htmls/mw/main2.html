@@ -1,0 +1,931 @@
+<?php header("Content-Type:text/html;charset=utf-8"); ?>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>제주마켓</title>
+	<link href="../../css/mw/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../css/mw/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../css/mw/common.css" rel="stylesheet">
+	<link href="../../css/mw/main3.css" rel="stylesheet">
+</head>
+<body>
+<div id="wrap">
+
+<!-- 헤더 s -->
+<header>
+	<h1><a href="/mw/main.do"><img src="../../images/mw/main/hd_logo.png" alt="탐나오"></a></h1>
+	<p class="gnb-view"><img src="../../images/mw/main/hd_menu.png" alt="메뉴보기"></p>
+	<p class="search-view"><img src="../../images/mw/main/hd_search.png" alt="검색"></p>
+	<p class="cart-view">
+		<a href="">
+			<img src="../../images/mw/main/hd_cart.png" alt="장바구니">
+			<span class="count" id="headCartCnt">0</span>
+		</a>
+	</p>
+
+	<div class="search">
+		<fieldset>
+			<div class="form-value">
+				<label for="q">검색어 입력</label>
+				<input type="text" id="q">
+			</div>
+			<input type="submit" value="검색">
+			<a href="#" class="btn-close"><img src="../../images/mw/sub_common/delete.png" alt="닫기"></a>
+		</fieldset>
+	</div>
+</header>
+<!-- 헤더 e -->
+
+<!-- 콘텐츠 s -->
+
+<main id="mainContent">
+	<!-- 메인배경 s -->
+	<div class="main-cover"><img src="../../images/mw/main/mainBG.jpg" alt="쉼,제주"></div>
+	
+	
+	<!-- 메인메뉴 s -->
+	<!-- <nav class="mainCT-menu">
+		<a href="">항공</a>
+		<a href="">숙박</a>
+		<a href="">렌터카</a>
+		<a href="">관광지할인쿠폰</a>
+		<a href="">레저/음식/뷰티</a>
+		<a href="">카텔</a>
+		<a href="">골프패키지</a>
+		<a href="">버스/택시관광</a>
+		<a href="">특가이벤트</a>
+	</nav> -->
+	
+	<div class="sm-list">
+		<div id="subMenuContainer">
+			<ul class="list-inline">
+				<li><a href="/mw/av/productList.do">항공</a></li>
+				<li><a href="/mw/ad/adSearch.do">숙박</a></li>
+				<li><a href="/mw/rc/rcSearch.do">렌트카</a></li>				
+				<li><a href="/mw/sp/spList.do?sCtgr=C200">관광지/레저</a></li>
+				<li><a href="/mw/sp/spList.do?sCtgr=C300">음식/뷰티</a></li>
+				<li><a href="/mw/sp/spPackageSearch.do?sCtgrTab=C130&amp;sCtgr=C130">카텔</a></li>
+				<li><a href="/mw/sp/spPackageSearch.do?sCtgrTab=C170&amp;sCtgr=C170">골프패키지</a></li>
+				<li><a href="/mw/sp/spPackageSearch.do?sCtgrTab=C160&amp;sCtgr=C160">버스/택시관광</a></li>
+				<li><a href="">테마여행</a></li>
+				<li><a href="">제주특산/기념품</a></li>
+				<li><a href="/mw/evnt/promotionList.do">특가이벤트</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<h2 class="sr-only">메인콘텐츠</h2>
+	<div class="main-container">
+		<!-- 알림글 -->
+		<div class="item-box article-list">
+			<!-- 이벤트 -->
+			<div class="event-list">
+				<div id="event_list">
+					<ul>
+						<li><a href="">2016.6.3~7.31 푸조 렌터카 특가 이벤트 내용이 길어지면 테스트</a></li>
+						<li><a href="">이벤트2</a></li>
+						<li><a href="">이벤트3</a></li>
+						<li><a href="">이벤트4</a></li>
+						<li><a href="">이벤트5</a></li>
+					</ul>
+				</div>
+				<div class="fixed">
+					<p class="icon"><img src="../../images/mw/main/alim1.jpg" alt="이벤트"></p>
+					<button id="event_sliderBTN" type="button"><img src="../../images/mw/main/alim_btn.jpg" alt="button"></button>
+				</div>
+			</div>
+			
+			<!-- 당일특가 -->
+			<div class="sale-list">
+				<div id="sale_list">
+					<ul>
+						<li><a href="">[소랑호젠] 물영아리 55,000원 내용이 길어지면 테스트</a></li>
+						<li><a href="">당일특가2</a></li>
+						<li><a href="">당일특가3</a></li>
+						<li><a href="">당일특가4</a></li>
+						<li><a href="">당일특가5</a></li>
+					</ul>
+				</div>
+				<div class="fixed">
+					<p class="icon"><img src="../../images/mw/main/alim2.jpg" alt="당일특가"></p>
+					<button id="sale_sliderBTN" type="button"><img src="../../images/mw/main/alim_btn.jpg" alt="button"></button>
+				</div>
+			</div>
+		</div>
+		
+		
+		<!-- 광고 배너 -->
+		<div class="adve-banner">
+			<a href="https://tworld.tdatajeju.co.kr:472/order/Charge1.do" target="_blank">
+				<img src="../../images/mw/main/event_banner.jpg" alt="제주도 데이터 무제한">
+			</a>
+		</div>
+		
+	
+		<!-- 추천숙소 -->
+		<section class="item-box group1">
+			<h3 class="title"><strong>특가</strong> 탐나오 추천 숙소! <a class="side-btn" href="#">더보기</a></h3>
+				<ul class="product-list">
+					<li>
+						<a href="#">
+							<p class="photo"><img src="http://www.tamnao.com/data/ad/thumb/C001511087_15.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">[다인리조트] 19평 디럭스</h5>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>99</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p class="photo"><img src="../../images/mw/main/sample1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">[힐링펜션] 18평 내용이 길어질경우 테스트</h5>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>50</span><small>%</small></p>
+									<p class="won"><span>99,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p class="photo"><img src="../../images/mw/main/sample1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">[힐링펜션] 18평</h5>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>33</span><small>%</small></p>
+									<p class="won"><span>9,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p class="photo"><img src="../../images/mw/main/sample1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">[힐링펜션] 18평</h5>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>9</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+		</section>
+		
+		<!-- 할인렌터카 -->
+		<section class="item-box group1">
+			<h3 class="title"><strong>특가</strong> 탐나오 할인렌터카! <a class="side-btn" href="#">더보기</a></h3>
+				<ul class="product-list">
+					<li>
+						<a href="#">
+							<p class="photo"><img src="http://www.tamnao.com/data/rc/thumb/RC00000471_1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">아반떼 AD</h5>
+									<p class="subTitle">(주)제주다움렌터카</p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p class="photo"><img src="../../images/mw/main/sample2.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">레이 내용이 길어질경우 테스트</h5>
+									<p class="subTitle">㈜케이렌터카</p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p class="photo"><img src="../../images/mw/main/sample2.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">레이</h5>
+									<p class="subTitle">㈜케이렌터카</p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p class="photo"><img src="../../images/mw/main/sample2.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">레이</h5>
+									<p class="subTitle">㈜케이렌터카</p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+		</section>
+		
+		<!-- quick item -->
+		<!-- <div class="item-box quick-guides">
+			<a href="#"><img src="../../images/mw/main/golf_banner.jpg" alt="골프패키지"></a>
+			<a href="#"><img src="../../images/mw/main/bus_banner.jpg" alt="버스/택시관광"></a>
+		</div> -->
+		
+		<!-- 관광지/음식/뷰티 -->
+		<section class="group2 single">
+			<h3 class="title">오늘 여기 가볼까? <a class="side-btn" href="#">더보기</a></h3>
+			<nav class="nav-menu">
+				<a class="active" href="#">관광지/레저</a>
+				<a href="#">음식/뷰티</a>
+			</nav>
+			<div class="tab-panel">
+				<ul class="product-list">
+					<li>
+						<a href="#">
+							<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000041_1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">[중문] 퍼시픽랜드 3종 세트</h5>
+									<p class="subTitle">일본 원숭이쇼, 바다사자쇼, 돌고래소와 함께 즐기는 공연</p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000061_1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">마술같은 미술 퍼포먼스 페인터즈 히어로</h5>
+									<p class="subTitle">명품공연 페인터즈 : 히어로 제주</p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000061_1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">마술같은 미술</h5>
+									<p class="subTitle">명품공연 페인터즈</p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000061_1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">마술같은 미술</h5>
+									<p class="subTitle">명품공연 페인터즈</p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+							
+				<!-- <div class="not-content">					
+					<p>상품없을시 > 해당 상품이 없습니다.</p>
+				</div> -->
+			</div>
+		</section>
+		
+		<!-- 할인패키지 -->
+		<!-- <section class="group2 package">
+			<h3 class="title"><strong>실속여행!</strong> 탐나오 할인패키지 <a class="side-btn" href="#">더보기</a></h3>
+			<nav class="nav-menu">
+				<a class="active" href="#">에어카텔</a>
+				<a href="#">카텔</a>
+				<a href="#">에어카</a>
+			</nav>
+			<div class="tab-panel">
+				<ul class="product-list">
+					<li>
+						<a href="#">
+							<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000352_1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">[3박4일] 아시아나항공+라마다호텔+중형렌터카</h5>
+									<p class="subTitle">대한항공 특가항공으로 저렴한</p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000363_1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">[2박3일] 대한항공+아만토브펜션+YF소나타</h5>
+									<p class="subTitle"></p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000363_1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">[2박3일] 대한항공+아만토브펜션+YF소나타</h5>
+									<p class="subTitle"></p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000363_1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">[2박3일] 대한항공+아만토브펜션+YF소나타</h5>
+									<p class="subTitle"></p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</section> -->
+		
+		<!-- 고객만족도 우수상품 -->
+		<section class="group4">
+			<h3 class="title"><strong>고객</strong>만족도 우수상품</h3>			
+			<div class="pd-wrap">
+				<nav class="nav-menu">
+					<a class="active" href="#">숙박</a>
+					<a href="#">렌터카</a>
+					<a href="#">관광지/레저</a>
+					<a href="#">음식/뷰티</a>
+					<a href="#">패키지</a>
+					<a href="#">제주특산품</a>
+				</nav>
+				<div id="customer-swiper" class="tab-panel goods-slide">
+					<ul class="product-list">
+						<li>
+							<a href="#">
+								<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000352_1.jpg" alt=""></p>
+								<div class="text-wrap">
+									<div class="title-wrap">
+										<h5 class="title"><span>[다인리조트]</span> 19평 디럭스</h5>									
+									</div>
+									<div class="price-wrap">
+										<p class="sale"><span>42</span><small>%</small></p>
+										<p class="won"><span>999,999</span><small>원</small></p>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000352_1.jpg" alt=""></p>
+								<div class="text-wrap">
+									<div class="title-wrap">
+										<h5 class="title"><span>[test2]</span> 60평 디럭스</h5>									
+									</div>
+									<div class="price-wrap">
+										<p class="sale"><span>42</span><small>%</small></p>
+										<p class="won"><span>999,999</span><small>원</small></p>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000352_1.jpg" alt=""></p>
+								<div class="text-wrap">
+									<div class="title-wrap">
+										<h5 class="title"><span>[test3]</span> 19평 디럭스</h5>									
+									</div>
+									<div class="price-wrap">
+										<p class="sale"><span>42</span><small>%</small></p>
+										<p class="won"><span>999,999</span><small>원</small></p>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000352_1.jpg" alt=""></p>
+								<div class="text-wrap">
+									<div class="title-wrap">
+										<h5 class="title"><span>[test4]</span> 60평 디럭스</h5>									
+									</div>
+									<div class="price-wrap">
+										<p class="sale"><span>42</span><small>%</small></p>
+										<p class="won"><span>999,999</span><small>원</small></p>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000352_1.jpg" alt=""></p>
+								<div class="text-wrap">
+									<div class="title-wrap">
+										<h5 class="title"><span>[test5]</span> 19평 디럭스</h5>									
+									</div>
+									<div class="price-wrap">
+										<p class="sale"><span>42</span><small>%</small></p>
+										<p class="won"><span>999,999</span><small>원</small></p>
+									</div>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		
+		<!-- 패키지 추천상품 -->
+		<section class="group4">
+			<h3 class="title"><strong>패키지</strong>추천상품</h3>
+			<div class="pd-wrap">
+				<nav class="nav-menu">
+					<a class="active" href="#">골프패키지</a>
+					<a href="#">버스/택시관광</a>
+					<a href="#">카텔</a>
+					<a href="#">에어카텔</a>
+					<a href="#">에어카</a>
+					<a href="#">테마여행</a>
+				</nav>
+				<div id="pack-swiper" class="tab-panel goods-slide">
+					<ul class="product-list">
+						<li>
+							<a href="#">
+								<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000352_1.jpg" alt=""></p>
+								<div class="text-wrap">
+									<div class="title-wrap">
+										<h5 class="title"><span>[다인리조트]</span> 19평 디럭스</h5>									
+									</div>
+									<div class="price-wrap">
+										<p class="sale"><span>42</span><small>%</small></p>
+										<p class="won"><span>999,999</span><small>원</small></p>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000352_1.jpg" alt=""></p>
+								<div class="text-wrap">
+									<div class="title-wrap">
+										<h5 class="title"><span>[test2]</span> 60평 디럭스</h5>									
+									</div>
+									<div class="price-wrap">
+										<p class="sale"><span>42</span><small>%</small></p>
+										<p class="won"><span>999,999</span><small>원</small></p>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000352_1.jpg" alt=""></p>
+								<div class="text-wrap">
+									<div class="title-wrap">
+										<h5 class="title"><span>[test3]</span> 19평 디럭스</h5>									
+									</div>
+									<div class="price-wrap">
+										<p class="sale"><span>42</span><small>%</small></p>
+										<p class="won"><span>999,999</span><small>원</small></p>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000352_1.jpg" alt=""></p>
+								<div class="text-wrap">
+									<div class="title-wrap">
+										<h5 class="title"><span>[test4]</span> 60평 디럭스</h5>									
+									</div>
+									<div class="price-wrap">
+										<p class="sale"><span>42</span><small>%</small></p>
+										<p class="won"><span>999,999</span><small>원</small></p>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000352_1.jpg" alt=""></p>
+								<div class="text-wrap">
+									<div class="title-wrap">
+										<h5 class="title"><span>[test5]</span> 19평 디럭스</h5>									
+									</div>
+									<div class="price-wrap">
+										<p class="sale"><span>42</span><small>%</small></p>
+										<p class="won"><span>999,999</span><small>원</small></p>
+									</div>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		
+		<!-- 특산기념품 -->
+		<section class="group3">
+			<h3 class="title">특산 / 기념품 <a class="side-btn" href="#">더보기</a></h3>
+			<nav class="nav-menu">
+				<a class="active" href="#">전체</a>
+				<a href="#">농산품</a>
+				<a href="#">수산품</a>
+				<a href="#">축산품</a>
+				<a href="#">가공품</a>
+				<a href="#">향장품</a>
+				<a href="#">공예/공산품</a>
+				<a href="#">기타</a>
+			</nav>
+			<div class="tab-panel">
+				<ul class="product-list">
+					<li>
+						<a href="#">
+							<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000352_1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">[3박4일] 아시아나항공+라마다호텔+중형렌터카</h5>
+									<p class="subTitle">대한항공 특가항공으로 저렴한</p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000363_1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">[2박3일] 대한항공+아만토브펜션+YF소나타</h5>
+									<p class="subTitle"></p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000363_1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">[2박3일] 대한항공+아만토브펜션+YF소나타</h5>
+									<p class="subTitle"></p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p class="photo"><img src="http://www.tamnao.com/data/sp/thumb/SP00000363_1.jpg" alt=""></p>
+							<div class="text-wrap">
+								<div class="title-wrap">
+									<h5 class="title">[2박3일] 대한항공+아만토브펜션+YF소나타</h5>
+									<p class="subTitle"></p>
+								</div>
+								<div class="price-wrap">
+									<p class="sale"><span>42</span><small>%</small></p>
+									<p class="won"><span>999,999</span><small>원</small></p>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</section>
+		
+		<!-- 고객센터 -->
+		<section class="item-box service-center">
+			<h3 class="title">탐나오 고객센터</h3>
+			<p class="call"><img src="../../images/mw/main/call.png" alt="call">1522-3454</p>
+			<p class="time"><span>주중(월~금) <strong>09:00~18:00</strong></span> <span>점심시간 <strong>12:00~13:00</strong></span></p>
+			<p class="info">(토요일, 일요일 및 공휴일 휴무)</p>
+		</section>
+		
+		<!-- 광고 -->
+		<div class="advertising"><img src="../../images/mw/main/pr.jpg" alt="탐나오 앱 다운받기"></div>
+	</div>
+</main>
+<!-- 콘텐츠 e -->
+
+<!-- 푸터 s -->
+<footer>
+    <nav class="foot-btn">
+    	<a href="">로그인</a>
+    	<a href="">APP 설치</a>
+    </nav>
+    
+    <ul class="list-unstyled">
+		<li><a href="/mw/etc/personalData.do"><strong>개인정보취급방침</strong></a></li>
+		<li><a href="/mw/etc/buyToS.do">탐나오 구매약관</a></li>
+		<li><a href="/mw/etc/saleToS.do">탐나오 판매약관</a></li>
+		<li><a href="/mw/etc/elBlank.do">전자금융거래 이용약관</a></li>
+		<li><a href="/mw/etc/emailToS.do">이메일 무단수집거부</a></li>
+	</ul>
+    <!-- new <nav class="foot-menu">
+    	<a href="/mw/etc/buyToS.do">구매약관</a>
+    	<a href="/mw/etc/personalData.do"><strong>개인정보취급방침</strong></a>
+    	<a href="/mw/etc/saleToS.do">판매약관</a>
+    	<a href="/mw/etc/elBlank.do">이용약관</a>
+    	<a href="/mw/etc/emailToS.do">이메일 무단수집거부</a>
+    </nav> -->
+    
+    <address>
+		제주특별자치도관광협회 | 대표 : 김영진 | 사업자 등록번호 : 616-82-04092 | 법인 등록번호 : 220121-0000107 | 통신판매업번호: 제2013-제주연동 0024호<br>
+		63122 제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층 | Tel)1522-3454 | Fax) 064-742-8865 | E-mail) tamnao@tamnao.com<br>
+		고객센터 : 1522-3454 I 개인정보관리책임자 : 김기현		
+	</address>
+	<p>© 2016. 제주특별자치도관광협회. All Rights Reserved.</p>
+   <!-- new <address>
+    	<p class="emphasis">제주특별자치도관광협회 대표 : 김영진</p>
+		<p>제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층 ☎1522-3454</p> 
+		<p>사업자 등록번호 : 616-82-04092 | 법인 등록번호 : 220121-0000107</p> 
+		<p>통신판매업번호: 제2013-제주연동 0024호</p>
+		<p>고객센터 : 1522-3454 I 개인정보관리책임자 : 김기현</p>
+		<p class="copy">© 2016. 제주특별자치도관광협회. ALL RIGHTS RESERVED.</p>
+    </address> -->
+    
+    <div id="bottom_menu" class="bottom-menu">
+	    <nav>
+	    	<a href="/mw/main.do">홈</a>
+	    	<a href="javascript:void(0)" class="gnb-view">카테고리</a>
+			<a href="/mw/mypage/rsvList.do">마이쇼핑</a>
+	    </nav>
+    </div>
+
+    <div id="go_top" class="go-top"><a href="javascript:void(0)"><img src="../../images/mw/main/topBTN.png" alt="상단으로가기"></a></div>
+</footer>
+<!-- 푸터 e -->
+
+
+
+
+<!-- 메뉴 s -->
+<nav id="gnbnavi" class="hide">
+<div id="sideMenu" class="side-menu">
+<div>
+	<p class="menu-top">
+		<!-- 로그인 전 -->
+		<a class="sign-up" href="#">회원가입</a>
+		<a href="login.html">로그인</a>
+		
+		<!-- 로그인 후 -->
+		<!-- <span class="user-info">마이페이지로 대체</span> -->
+		
+		<!-- <a class="sign-up" href="#">마이페이지</a>
+		<a href="#">로그아웃</a> -->
+	</p>
+	<ul class="menu-top">
+		<li><a href=""><img src="../../images/mw/common/icon_01.png" alt=""> 구매/예약내역</a></li>
+		<li><a href="sub_map.html"><img src="../../images/mw/common/icon_02.png" alt=""> 내 주변 업소</a></li>
+	</ul>
+	<div class="main-menu">
+		<h2 class="sr-only">전체메뉴</h2>
+		<ul>
+			<li><a href="#"><img src="../../images/mw/common/icon_03.png" alt=""> 실시간예약</a>
+				<ul>
+					<li><a href="sub_air1.html">항공</a></li>
+					<li><a href="sub_hotel1.html">숙박</a></li>
+					<li><a href="sub_rent1.html">렌트카</a></li>
+					<!-- <li><a href="sub_golf1.html">골프</a></li> -->
+				</ul>
+			</li>
+			<li><a href="#"><img src="../../images/mw/common/icon_04.png" alt=""> 당일특가</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_06.png" alt=""> 관광지/레저</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_07.png" alt=""> 음식/뷰티</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_12.png" alt=""> 카텔</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_13.png" alt=""> 골프패키지</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_14.png" alt=""> 버스/택시관광</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_15.png" alt=""> 테마여행</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_jeju.png" alt=""> 제주특산품</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_09.png" alt=""> 특가이벤트</a></li>
+			<li class="sub-menu"><a href="sub_mypage1.html"><img src="../../images/mw/common/icon_10.png" alt=""> 마이페이지</a>
+				<ul class="sub-menu">
+					<li><a href="sub_mypage1.html">나의예약/구매내역</a></li>
+					<li>
+						<a href="sub_mypage2.html">나의 혜택정보</a>
+						<ul class="depth3">
+							<li><a href="">- 탐나오쿠폰 내역보기</a></li>
+							<li><a href="">- 할인쿠폰 보관함</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="sub_mypage4.html">나의 게시글 모음</a>
+						<ul class="depth3">
+							<li><a href="">- 1:1 문의내역</a></li>
+							<li><a href="">- 이용후기 내역</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="sub_mypage4.html">나의 정보</a>
+						<ul class="depth3">
+							<li><a href="">- 개인정보수정</a></li>
+							<li><a href="">- 비밀번호변경</a></li>
+							<li><a href="">- 회원탈퇴</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li class="sub-menu"><a href="sub_center1.html"><img src="../../images/mw/common/icon_11.png" alt=""> 고객센터</a>
+				<ul class="sub-menu">
+					<li><a href="sub_center1.html">자주묻는질문</a></li>
+					<li><a href="sub_center2.html">이용후기</a></li>
+					<li><a href="sub_center3.html">환불/취소규정</a></li>
+					<li><a href="sub_center4.html">입점/제휴안내</a></li>
+					<li><a href="sub_center4.html">공지사항</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="app-util">
+		<dl>
+			<dt>정보 알림 받기</dt>
+			<dd><a href=""><img src="../../images/mw/common/on.png" alt="ON"></a></dd>
+			<dt>자동로그인</dt>
+			<dd><a href=""><img src="../../images/mw/common/off.png" alt="OFF"></a></dd>
+		</dl>
+		<p>Ver 1.0.0</p>
+	</div>
+</div>
+</div>
+</nav>
+
+<p id="btnHideGnb" class="hide"><img src="../../images/mw/common/close.png" alt="메뉴닫기"></p>
+<!-- 메뉴 e -->
+
+<div id="cover"></div>
+</div>
+
+<script src="../../js/jquery-1.11.1.js"></script>
+<script src="../../js/jquery.bxslider.min.js"></script>
+<script src="../../js/mw_iscroll.js"></script>
+<script src="../../js/mw_layout.js"></script>
+<!-- <script src="../../js/mw_main.js"></script> -->
+<script src="../../js/slider.js"></script> <!-- script add 2016-06-16 -->
+<!-- <script src="../../js/swiper.js"></script> --> <!-- script add 2016-10-17 -->
+<script src="../../js/mw_slider.js"></script>
+<script>
+	//알림글 (이벤트)	
+	$("#event_list").jCarouselLite({
+		btnNext: "#event_sliderBTN",
+		btnPrev: "",
+		vertical: true,
+		visible: 1,
+		circular: true,
+		auto: 5000,
+	});
+	//알림글 (당일특가)	
+	$("#sale_list").jCarouselLite({
+		btnNext: "#sale_sliderBTN",
+		btnPrev: "",
+		vertical: true,
+		visible: 1,
+		circular: true
+	});
+	
+	/* --------------------------------- footer scroll event --------------------------------- */
+	var didScroll,
+		 lastScrollTop = 0,
+		 delta = 5, 													//동작시작위치
+		 navbarHeight = $('#bottom_menu').outerHeight();	//동작요소
+	
+	$(window).scroll(function(event){
+	    didScroll = true;												//스크롤 이벤트 부하에 따른 setInterval 사용
+	});
+	
+	setInterval(function() {
+	    if (didScroll) {
+	        hasScrolled();												//스크롤 이벤트 실행
+	        topBTN_event();											//상단가기 이벤트 실행
+	        didScroll = false;
+	    }
+	}, 250);	
+	
+	function hasScrolled() {										//동작구현
+		var st = $(this).scrollTop();									//현재 스크롤위치 저장
+		
+		if(Math.abs(lastScrollTop - st) <= delta) return;		//delta 값보다 더 스크롤 되었는지 확인
+		
+		if (st > lastScrollTop && st > navbarHeight) {
+	        // Scroll Down
+	        $('#bottom_menu').addClass('foot-hide');
+	    } else {
+	        // Scroll Up
+	        if(st + $(window).height() < $(document).height()) {
+	            $('#bottom_menu').removeClass('foot-hide');
+	        }
+	    }
+		
+		lastScrollTop = st;
+	}
+	
+	// 상단으로 가기
+	function topBTN_event() {
+		var topScroll = $(this).scrollTop();
+		
+		if(topScroll > 500) {
+			$('#go_top').fadeIn('500');
+		}
+		else {
+			$('#go_top').fadeOut('100');
+		}
+	}
+	
+	$('#go_top').on('click', function(){
+		$( 'html, body' ).animate( { scrollTop : 0 }, 400 );
+		return false;
+	});
+	/* --------------------------------- //footer scroll event --------------------------------- */
+	
+	
+	//고객만족도 우수상품
+	/* var swiper = new Swiper('#customer-swiper', {
+        pagination: '#customer-navi',
+        autoplay: '5000'
+    }); */
+	
+	
+	//패키지 추천상품
+	/* var swiper = new Swiper('#pack-swiper', {
+        pagination: '#pack-navi',
+        autoplay: '5000'
+    }); */
+</script>
+</body>
+</html>

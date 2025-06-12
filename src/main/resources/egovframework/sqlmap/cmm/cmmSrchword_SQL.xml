@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="cmmSrchWord">
+
+<resultMap id="CM_SRCHWORD_R_00" class="oss.cmm.vo.CM_SRCHWORDVO">
+    <result property="linkNum" 		column="LINK_NUM" />
+    <result property="srchWordSn" 	column="SRCH_WORD_SN" />
+    <result property="frstRegDttm" 	column="FRST_REG_DTTM" />
+    <result property="frstRegId" 	column="FRST_REG_ID" />
+    <result property="lastModDttm" 	column="LAST_MOD_DTTM" />
+    <result property="lastModId" 	column="LAST_MOD_ID" />
+    <result property="srchWord" 	column="SRCH_WORD" />
+</resultMap>
+
+<resultMap id="ISEARCH_WORDS_R_00" class="oss.cmm.vo.ISEARCHVO">
+    <result property="srchDttm" column="SRCH_DTTM" />
+    <result property="ip"       column="IP" />
+    <result property="srchWord" column="SRCH_WORD" />
+</resultMap>
+
+<select id="CM_SRCHWORD_S_00">
+SELECT LINK_NUM         /*연계 번호*/
+    , SRCH_WORD_SN     /*검색어 순번*/
+    , FRST_REG_DTTM    /*최초 등록 일시*/
+    , FRST_REG_ID      /*최초 등록 아이디*/
+    , LAST_MOD_DTTM    /*최종 수정 일시*/
+    , LAST_MOD_ID      /*최종 수정 아이디*/
+    , SRCH_WORD        /*검색어*/
+FROM TB_CM_SRCHWORD
+</select>
+
+<select id="CM_SRCHWORD_S_01" resultClass="java.lang.String">
+SELECT SRCH_WORD
+FROM TB_CM_SRCHWORD
+WHERE LINK_NUM = #linkNum#
+    AND SRCH_WORD_SN = #srchWordSn#
+</select>
+
+
+<select id="CM_SRCHWORD_S_02" resultMap="CM_SRCHWORD_R_00">
+SELECT LINK_NUM         /*연계 번호*/
+    , SRCH_WORD_SN     /*검색어 순번*/
+    , FRST_REG_DTTM    /*최초 등록 일시*/
+    , FRST_REG_ID      /*최초 등록 아이디*/
+    , LAST_MOD_DTTM    /*최종 수정 일시*/
+    , LAST_MOD_ID      /*최종 수정 아이디*/
+    , SRCH_WORD        /*검색어*/
+FROM TB_CM_SRCHWORD
+WHERE LINK_NUM = #linkNum#
+ORDER BY SRCH_WORD_SN
+</select>
+
+<update id="CM_SRCHWORD_M_00">
+MERGE INTO TB_CM_SRCHWORD T_SRCHWORD
+USING (SELECT #linkNum# AS LINK_NUM
+        , #srchWordSn# AS SRCH_WORD_SN
+    FROM DUAL) T_SRCHWORD2
+ON (T_SRCHWORD2.LINK_NUM = T_SRCHWORD.LINK_NUM
+    AND T_SRCHWORD2.SRCH_WORD_SN = T_SRCHWORD.SRCH_WORD_SN)
+WHEN MATCHED THEN
+    UPDATE SET SRCH_WORD = #srchWord#
+        , LAST_MOD_DTTM = SYSDATE
+        , LAST_MOD_ID = #lastModId#
+WHEN NOT MATCHED THEN
+    INSERT (LINK_NUM
+        , SRCH_WORD_SN
+        , FRST_REG_DTTM
+        , FRST_REG_ID
+        , LAST_MOD_DTTM
+        , LAST_MOD_ID
+        , SRCH_WORD)
+    VALUES (#linkNum#
+        , #srchWordSn#
+        , SYSDATE
+        , #frstRegId#
+        , SYSDATE
+        , #frstRegId#
+        , #srchWord#)
+</update>
+
+<delete id="CM_SRCHWORD_D_00">
+DELETE TB_CM_SRCHWORD
+WHERE LINK_NUM = #linkNum#
+    AND SRCH_WORD_SN = #srchWordSn#
+</delete>
+
+<update id="CM_SRCHWORDANLS_M_00">
+MERGE INTO TB_CM_SRCHWORDANLS ANLS
+USING (SELECT #searchWord# AS SRCH_WORD
+        , TO_CHAR(SYSDATE, 'YYYYMMDD') AS SRCH_DT
+    FROM DUAL) ANLS2
+ON (ANLS2.SRCH_WORD = ANLS.SRCH_WORD
+    AND ANLS2.SRCH_DT = ANLS.SRCH_DT)
+WHEN MATCHED THEN
+    UPDATE SET INQ_NUM = INQ_NUM + 1
+WHEN NOT MATCHED THEN
+    INSERT (SRCH_WORD
+        , SRCH_DT
+        , INQ_NUM)
+    VALUES (#searchWord#
+        , TO_CHAR(SYSDATE, 'YYYYMMDD')
+        , 1)
+</update>
+
+<select id="ISEARCH_WORDS_S_00" resultMap="ISEARCH_WORDS_R_00">
+SELECT SRCH_WORD, IP, SRCH_DTTM
+FROM (SELECT SRCH_WORD
+        , IP
+        , MAX(SRCH_DTTM) AS SRCH_DTTM
+    FROM TB_ISEARCH_WORDS
+    WHERE IP = #ip#
+        AND DEL_YN = 'N'
+    GROUP BY SRCH_WORD, IP
+    ORDER BY SRCH_DTTM DESC)
+<![CDATA[
+WHERE ROWNUM < 5
+]]>
+</select>
+
+<insert id="ISEARCH_WORDS_I_00">
+INSERT INTO TB_ISEARCH_WORDS
+    (SRCH_DTTM
+    , IP
+    , SRCH_WORD)
+VALUES (SYSDATE
+    , #ip#
+    , #srchWord#)
+</insert>
+
+<insert id="ISEARCH_WORDS_D_00">
+UPDATE TB_ISEARCH_WORDS
+SET DEL_YN = 'Y'
+WHERE 1 = 1
+    AND IP = #ip#
+    <isNotEmpty property="srchWord">
+        AND SRCH_WORD = #srchWord#
+    </isNotEmpty>
+</insert>
+
+</sqlMap>

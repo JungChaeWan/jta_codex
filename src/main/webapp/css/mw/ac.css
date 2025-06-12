@@ -1,0 +1,888 @@
+/* header */
+#header .m-ac.head-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+    transition: top 0.2s ease-in-out;
+}
+#header .m-ac .title-wrap {transition: margin-top 1s cubic-bezier(0.86, 0, 0.07, 1);}
+#header .head-wrap .l-area a.home {background: none;}
+#header .head-wrap .l-area a.home img {
+    width: 22px;
+    margin: 14px 0 11px 18px;
+}
+
+/* 특산·기념품 인트로 */
+/* key-visual */
+/*.ac-panels-new {margin-top: 50px;}*/
+.ac-panels-new .main-list {padding: 15px 15px 5px 15px;}
+.ac-panels-new .swiper-container {border-radius: 15px;}
+.ac-panels-new .main-top-slider ul li img {
+    display: block;
+    width: 100%;
+}
+
+
+/* 카테고리 메뉴 */
+.category-menu .row_view {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 80px;
+    margin: 15px 5px;
+}
+.category-menu .row_view a {
+    color: #222;
+    font-size: 0.81rem;
+    text-align: center;
+    line-height: 1.0rem;
+}
+.category-menu img {
+    width: 25px;
+    height: 25px;
+    margin: 5px 0 9px 0;
+}
+
+
+/* agriculture_info */
+.framing--introd {
+    display: block;
+    padding: 0 10px;
+    margin: 10px;
+}
+.framing--introd h2 {
+    margin-bottom: 25px;
+    color: #171717;
+    font-size: 1.2rem;
+    font-family: "Notosans B";
+    letter-spacing: -0.8px;
+    text-align: center;
+}
+.framing--introd h2::before {
+    display: inline-block;
+    width: 1px;
+    height: 1px;
+    margin: 19px 5px;
+    border: 3px solid #fcc800;
+    border-radius: 50%;
+    content: "";
+}
+.framing--introd h2 > span:before {
+    z-index: -1;
+    position: absolute;
+    width: 89px;
+    height: 8px;
+    margin-top: 41px;
+    background-color: #fcc800;
+    content: "";
+}
+.framing--introd .category-menu {
+    height: 111px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.framing--introd .certification {height: 95px;}
+.framing--introd .variant-card {
+    align-items: center;
+    font-family: "Roboto";
+}
+.variant-card .content {
+    width: 280px;
+    padding: 5px 0 25px 0;
+    margin: 0 auto;
+    line-height: 1.2;
+}
+.variant-card .content::after {
+    display: inline-block;
+    width: 32px;
+    height: 7px;
+    margin-left: 15px;
+    background: url("../../images/web/agriculture/arrow.png") no-repeat;
+    content: "";
+}
+.variant-card .image-container {float: left;}
+.variant-card .content img {
+    float: left;
+    margin: 2px 20px 0 0;
+}
+.variant-card .content h3 {font-size: 1.2rem;}
+#infoSlider {
+    position: relative;
+    right: 0;
+    bottom: 25px;
+    width: 55px;
+    height: 23px;
+    padding: 0;
+    margin: 0 auto;
+    border-radius: 80px;
+    background: #68be83;
+    text-align: center;
+    line-height: 23px;
+}
+
+
+/* layer-popup */
+.full-layer-popup {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 0;
+    border: none;
+    background: #fff;
+}
+.full-layer-popup .head {
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 65px;
+    padding: 0;
+    border: none;
+    background: #fff;
+}
+.full-layer-popup .head .title {
+    display: block;
+    padding: 5px 0 3px;
+    color: #323232;
+    border-bottom: 1px solid #f2f2f2;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: "Roboto";
+    text-align: center;
+    line-height: 53px;
+}
+.full-layer-popup .detail-header {
+    z-index: 2;
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    padding: 34px 0;
+    text-align: center;
+}
+.full-layer-popup .detail-header > img {
+    width: 100%;
+    margin-bottom: 45px;
+}
+.full-layer-popup .head .close {
+    position: absolute;
+    top: 7px;
+    right: 0;
+    left: auto;
+    opacity: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: none;
+    background: transparent;
+}
+.full-layer-popup .btn-site {
+    z-index: 99;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    background: #fff;
+    text-align: center;
+}
+.full-layer-popup .btn-site .btn-detail {
+    display: inline-block;
+    width: 90%;
+    height: 50px;
+    margin-top: 0;
+    color: #fff;
+    border-radius: 12px;
+    background-color: #000;
+    font-size: 0.95rem;
+    font-family: "Roboto";
+    line-height: 50px;
+}
+.notScroll {
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    touch-action: none;
+}
+.not_scroll {
+    overflow: hidden;
+    height: 100%;
+    min-height: 100%;
+    touch-action: none;
+}
+
+/* promotion/best */
+.mw-list-area {margin-top: 20px;}
+.sv-List .according {padding: 9px 0 0 15px;}
+.sv-List .according .sv-list .con-header {display: inline;}
+.sv-List .according .sv-list .con-header .con-title span {font-family: "Notosans";}
+.sv-list .main-photo {
+    overflow: hidden;
+    position: relative;
+    display: block;
+    width: 46vw;
+    height: 46vw;
+    margin-top: 16px;
+    border-radius: 8px;
+    background: #f2f2f2;
+    line-height: 45vw;
+}
+.sv-list .main-photo img {
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+
+/* line-banner */
+.beyondfarm {
+    padding: 50px 0 10px 0;
+    font-family: "Roboto";
+    line-height: 1.6;
+}
+.beyondfarm .middle_banner {
+    display: block;
+    width: 100%;
+}
+.beyondfarm .content__banner-inner .txt {
+    position: relative;
+    bottom: 30px;
+    width: 75%;
+    padding: 30px 30px 0 30px;
+    margin: 0 auto;
+    color: #202020;
+    background-color: #fff;
+    font-size: .8rem;
+    text-align: center;
+}
+.beyondfarm .content__banner-inner .line {
+    width: 0;
+    height: 20px;
+    margin: 0 auto;
+    margin-bottom: 12px;
+    border-left: 1px solid #000;
+}
+.beyondfarm .content__banner-inner .txt > p {
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+
+/* -- popularity trip -- */
+.theme-push .con-header{height: 51px;}
+.theme-push .theme-con-title {
+    padding-left: 15px;
+    color: #171717;
+    font-size: 18px;
+    letter-spacing: -0.8px;
+}
+.popularity--trip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 6px;
+}
+.popularity--trip li {margin: 0 8px;}
+.popularity--trip li img {
+    width: 100%;
+    border-radius: 8px;
+    vertical-align: middle;
+}
+.popularity--trip li .article {display: flex;}
+.popularity--trip li .txt_box {
+    flex-basis: 400px;
+    margin-top: 15px;
+}
+.popularity--trip li .txt_box h3 {
+    color: #202020;
+    font-size: 1.1rem;
+}
+.popularity--trip li .txt_box p {
+    padding-top: 5px;
+    color: #757575;
+    font-size: 0.75rem;
+    font-family: "Roboto";
+}
+.popularity--trip li .discount-rate {
+    position: relative;
+    top: 23px;
+    flex-basis: 176px;
+    color: #c62022;
+    font-size: 0.85rem;
+    font-weight: bold;
+    font-family: "Roboto";
+    line-height: 1.4;
+    text-align: right;
+}
+
+
+/* theme product */
+.theme-product_wrap {margin-top: 25px;}
+.theme-product_wrap .theme-con-title,
+.theme-product_wrap .con-sub-title {
+    padding-left: 15px;
+}
+.theme-product_wrap .theme-con-title {
+    color: #171717;
+    font-size: 18px;
+    letter-spacing: -0.8px;
+}
+.theme-product_wrap .theme-con-title em {
+    color: #007A33;
+}
+.theme-product_wrap .con-sub-title {
+    color: #757575;
+    font-size: 1.3rem;
+    letter-spacing: -0.5px
+}
+
+
+/* theme_scroll-menu */
+nav.theme_scroll-menu {
+    height: 40px;
+    margin-bottom: 20px;
+}
+nav.theme_scroll-menu .category-menu {
+    height: 33px;
+    border-bottom: 1px solid #ddd;
+    overflow: auto;
+}
+nav.theme_scroll-menu .category-menu ul {
+    display: table;
+    padding-left: 5px;
+    white-space: nowrap;
+}
+nav.theme_scroll-menu .category-menu ul li.prd-tab {
+    display: inline-block;
+    padding: 0 5px;
+}
+nav.theme_scroll-menu .category-menu ul li.prd-tab a {
+    display: inline-table;
+    padding: 0 10px;
+    margin: 5px 0 0 5px;
+    border-radius: 5px;
+    color: #6B6B6B;
+    background-color: #ededed;
+    font-size: 0.8rem;
+    font-family: "Roboto";
+    line-height: 33px;
+}
+nav.theme_scroll-menu .category-menu ul.list-tag li a.active {
+    color: #fff;
+    background-color: #007A33;
+}
+
+
+/* keyword_thumb ornament */
+.ornament li {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1.7rem;
+}
+.ornament li:after {
+    display: block;
+    clear: both;
+    content: "";
+}
+.ornament li a {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin: 0 10px;
+    border-radius: 8px;
+    box-shadow: 0.34rem 0.34rem 0.68rem rgb(0 0 0 / 8%);
+    background: #fff;
+    text-align: left;
+}
+.ornament li a .social-photo {
+    overflow: hidden;
+    float: left;
+    position: relative;
+    flex-shrink: 0;
+    width: 29vw;
+    height: 29vw;
+    padding-top: 0;
+    margin-right: 1.5rem;
+    background: #fff;
+}
+.ornament li a .social-photo > img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.ornament li a .social-photo:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.02);
+    content: "";
+}
+.ornament li a .text {
+    position: relative;
+    width: 100%;
+    text-align: left;
+    letter-spacing: -0.5px;
+}
+.ornament li a .text .prd_name {
+    overflow: hidden;
+    width: 150px;
+    color: #8e8e8e;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ornament li a .text .price {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.ornament li a .text .price strong {font-family: "Notosans B";}
+.ornament li a .text .price > del {
+    position: relative;
+    top: 1px;
+    margin: 5px 0 0 2px;
+    color: #757575;
+    font-size: 1rem;
+    font-family: "Roboto";
+    letter-spacing: -1.3px;
+    font-family: "Roboto";
+    font-weight: normal;
+}
+.ornament li a .text .title {
+    overflow: hidden;
+    width: 160px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    temap-view-areaxt-overflow: ellipsis;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.ornament li a .social-photo .bxLabel {
+    position: absolute;
+    bottom: 5px;
+    left: 7px;
+}
+.ornament li a .social-photo .bxLabel .main_label {
+    z-index: 20;
+    float: left;
+    position: relative;
+    left: 0;
+    display: block;
+    width: auto;
+    height: 16px;
+    line-height: 16px;
+    margin: 1px 1px 0 0;
+    border-radius: 3px;
+    font-size: 1rem;
+    letter-spacing: -1.5px;
+}
+
+
+/* label */
+.sv-list .main-photo .bxLabel {
+    position: absolute;
+    bottom: 6px;
+    left: 7px;
+}
+.sv-list .main-photo .main_label {
+    position: relative;
+    left: 0;
+    z-index: 20;
+    display: block;
+    width: auto;
+    height: 16px;
+    padding: 0 3px;
+    border-radius: 3px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 16px;
+}
+.sv-list .bxLabel .main_label {
+    float: left;
+    position: relative;
+    margin: 1px 0 1px 1px;
+    border-radius: 3px;
+    font-size: .88rem;
+    letter-spacing: -.9px;
+}
+.main_label.pink {
+    border: 1px solid #f4093e;
+    color: #f43142;
+    background-color: #fff;
+}
+.main_label.eventblue {
+    border: 1px solid rgba(100, 35, 255);
+    color: #6423ff;
+    background-color: #fff;
+}
+.main_label.back-purple {
+    border: 1px solid #6423ff;
+    background-color: #6423ff;
+    color: #fff;
+}
+.main_label.back-red {
+    border: 1px solid #f4093e;
+    background-color: #f4093e;
+    color: #fff;
+}
+.main_label.yellow {
+    border: 1px solid #ffcc00;
+    color: #000;
+    background-color: #ffcc00;
+}
+
+
+/* 탐나는전 check */
+.sv-List .pay-check {float: right;}
+.sv-List .pay-check input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+.sv-List .pay-check input[type="checkbox"] + label {
+    margin: 15px 0 0 0;
+    padding-left: 30px;
+    line-height: 41px;
+}
+.sv-List .pay-check input[type="checkbox"] + label {
+    display: inline-block;
+    position: relative;
+    padding-left: 34px;
+    width: 85px;
+    height: 30px;
+    border-radius: 40px 0 0 40px;
+    background-color: #f7d633;
+    cursor: pointer;
+}
+.sv-List .pay-check input[type="checkbox"]:checked + label:before {
+    width: 18px;
+    height: 18px;
+    top: 5px;
+    left: 9px;
+    line-height: 18px;
+}
+.sv-List .pay-check input[type="checkbox"]:checked + label:before {
+    content: "\2714";
+    color: #000;
+    font-size: 1.7rem;
+}
+.pay-check input[type="checkbox"] + label:before {
+    top: -2px;
+    width: 21px;
+    height: 21px;
+    line-height: 18px;
+}
+.sv-List .pay-check input[type="checkbox"] + label:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 9px;
+    width: 18px;
+    height: 18px;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 3px;
+    background-color: #fff;
+    line-height: 15px;
+    text-align: center;
+}
+
+
+/* 탐나는전 (mw-list-area) */
+.mw-list-area .pay-check {float: right;}
+.mw-list-area .pay-check input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+.mw-list-area .pay-check input[type="checkbox"] + label {
+    margin: 21px 0 0 0;
+    padding-left: 30px;
+    line-height: 41px;
+    z-index: 1;
+}
+.mw-list-area .pay-check input[type="checkbox"] + label {
+    display: inline-block;
+    position: relative;
+    padding-left: 34px;
+    width: 85px;
+    height: 30px;
+    border-radius: 40px 0 0 40px;
+    background-color: #f7d633;
+    cursor: pointer;
+}
+.mw-list-area .pay-check input[type="checkbox"]:checked + label:before {
+    width: 18px;
+    height: 18px;
+    top: 5px;
+    left: 9px;
+    line-height: 18px;
+}
+.mw-list-area .pay-check input[type="checkbox"]:checked + label:before {
+    content: "\2714";
+    color: #000;
+    font-size: 1.7rem;
+}
+.mw-list-area .pay-check input[type="checkbox"] + label:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 9px;
+    width: 18px;
+    height: 18px;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 3px;
+    background-color: #fff;
+    line-height: 15px;
+    text-align: center;
+}
+.mw-list-area .pay-check img {position: relative; top: 0; width: 81px;}
+
+
+
+/* --------------------------------------------------------- responsive media query ---------------------------------------------------------- */
+/* Phone Mini (iPhone 4, 5, 5s, SE) / Font Size */
+@media screen and (min-width: 320px) and (max-width: 360px) {
+
+    #main {margin-top: 100px;}
+
+    /* promotion/best */
+    .sv-list .main-photo {width: 45vw; height: 45vw; line-height: 45vw;}
+    .sv-list .j-info {width: 150px; height: 17px; line-height: 15px; font-size: 1.43rem;}
+    .sv-list .j-title {width: 150px; height: 18px; font-size: 1.67rem; letter-spacing: -.6px;}
+    .sv-list .main-price {font-size: 1.8rem; margin-top: 5px;}
+    .sv-List .pay-check input[type="checkbox"] + label {margin: 14px 0 0 0;}
+    .mw-list-area .pay-check input[type="checkbox"] + label {margin: 22px 0 0 0;}
+
+}
+/* iPhone 6, 7 / Font Size */
+@media screen and (min-width: 360px) and (max-width: 415px){
+
+    #main {margin-top: 104px;}
+
+    /* label */
+    .sv-list .bxLabel .main_label {right: 1px; padding: 0 4px; margin: 2px 1px 0 0; font-size: .6rem;}
+    .sv-List .pay-check input[type="checkbox"] + label {width: 94px; height: 35px; padding-left: 45px; margin: 14px 0 0 0; line-height: 42px;}
+    .sv-List .pay-check input[type="checkbox"] + label:before {width: 21px; height:21px; top: 6px; left: 15px;}
+    .sv-List .pay-check input[type="checkbox"]:checked + label:before {top: 6px; left: 15px; width: 21px; height: 21px; line-height: 18px; font-size: 1.2rem;}
+    .mw-list-area .pay-check input[type="checkbox"] + label {top: 2px; width: 94px; height: 35px; padding-left: 45px; margin: 22px 0 0 0; line-height: 42px;}
+    .mw-list-area .pay-check input[type="checm-sv head-wrapkbox"] + label:before {width: 21px; height:21px; top: 6px; left: 15px;}
+    .mw-list-area .pay-check input[type="checkbox"]:checked + label:before {top: 6px; left: 15px; width: 21px; height: 21px; line-height: 18px; font-size: 1.2rem;}
+    .mw-list-area .social-list-area.add-according {top: 15px;}
+
+    /* 카테고리 메뉴 */
+    nav.sv_scroll-menu .category-menu ul li {height: 100px;}
+    nav.sv_scroll-menu .category-menu ul li a {font-size: .95rem; line-height: 18px;}
+    .category-menu img {width: 30px; height: 30px; margin: 5px 0;}
+
+    /* agriculuture-info */
+    .snap {padding:0 21px;}
+    .image-container {flex: 0 0 56px;}
+    .image-container img {width: 38px;}
+    .variant-card .content h3 {font-size: 0.9rem;}
+    .variant-card .content span {font-size: 0.7rem; letter-spacing: -0.5px;}
+
+    /* promotion/best */
+    .sv-List {margin-top: 40px;}
+    .sv-list .j-info {width: 170px; height: 18px; font-size: 0.9rem;}
+    .sv-list .j-title {width: 175px; height: 23px; font-size: .94rem;}
+    .sv-list .main-price {margin-top: 5px; font-size: .89rem;}
+
+    /* theme-product */
+    .theme-product_wrap {margin-top: 50px;}
+    .theme-product_wrap .theme-con-title {font-size: 21px;}
+    .con-header .con-sub-title {margin-top: 3px; font-size: 0.95rem;}
+    nav.theme_scroll-menu {margin: 7px 0;}
+    nav.theme_scroll-menu {height: 40px;}
+    nav.theme_scroll-menu .category-menu {height: 50px;}
+
+    /* keyword_thumb ornament */
+    .ornament  {margin-top: 41px;}
+    .ornament li {margin-bottom: 1.5rem}
+    .ornament li a .social-photo {width: 32vw; height: 32vw; margin-right: 1rem;}
+    .ornament li a .text .price {font-size: 1rem;}
+    .ornament li a .text .title {width: 207px; font-size: 0.9rem;}
+    .ornament li a .text .prd_name {width: 207px; font-size: 0.8rem;}
+    .ornament li a .text .price > del {font-size: .8rem; letter-spacing: -1.2px; margin-right: 5px;}
+    .ornament li a .social-photo .bxLabel .main_label {font-size: .6rem;}
+    .bxLabel .main_label {margin: 0 2px;}
+
+    /* index-item__wrap */
+    .goods-list-thumb .main-price {font-size: 1.0rem; line-height: 41px;}
+    .production-item-image {height: 161px;}
+    .production-item-content {margin: 17px 0 5px 0; font-size: 0.8rem; font-weight: normal;}
+    .item-header {width: 173px; margin-top: 5px; font-size: 1.25rem; line-height: 26px;}
+    .item_article {width: 170px; margin-top: 7px; font-size: 0.95rem; line-height: 19px;}
+    .view-more {font-size: 0.95rem; margin-top: 18px;}
+    .view-more:after {top: 2px; height: 23px; margin-left: 47px; background-size: 19px;}
+    .goods-list-thumb .j-title {font-size: 0.95rem;}
+
+    /* ac-list */
+    .mw-list-area .pay-check input[type="checkbox"] + label:before {width: 21px; height: 21px; top: 6px; left: 15px;}
+
+}
+
+
+
+/* iPhone 6 Plus / Font Size */
+@media screen and (min-width: 415px) {
+
+    #main {margin-top: 110px;}
+
+    /* label */
+    .sv-list .bxLabel .main_label {font-size: .7rem;}
+    .sv-List .pay-check img {position: relative; top: 2px; left: 20px;}
+    .sv-List .pay-check input[type="checkbox"] + label {width: 116px; height: 40px; margin: 11px 0 0 0; line-height: 42px;}
+    .sv-List .pay-check input[type="checkbox"] + label:before {width: 25px; height: 25px; top: 6px; left: 18px;}
+    .sv-List .pay-check input[type="checkbox"]:checked + label:before {top: 6px; left: 18px; width: 25px; height: 25px; font-size: 1.3rem; line-height: 22px;}
+
+    .mw-list-area .bxLabel .main_label {font-size: .7rem;}
+    .mw-list-area .pay-check img {top: 3px; left: 17px; width: 91px;}
+    .mw-list-area .pay-check input[type="checkbox"] + label {top: 8px; width: 116px; height: 40px; margin: 16px 0 0 0; line-height: 42px;}
+    .mw-list-area .pay-check input[type="checkbox"] + label:before {width: 25px; height: 25px; top: 6px; left: 18px;}
+    .mw-list-area .pay-check input[type="checkbox"]:checked + label:before {top: 6px; left: 18px; width: 25px; height: 25px; font-size: 1.3rem; line-height: 22px;}
+    .mw-list-area .social-list-area.add-according {top: 13px;}
+
+    /* 카테고리 메뉴 */
+    nav.sv_scroll-menu .category-menu ul li {height: 100px;}
+    nav.sv_scroll-menu .category-menu ul li a {font-size: .95rem; line-height: 18px;}
+
+    /* agriculuture-info */
+    .snap {padding:0 21px;}
+    .snap .variant-card {line-height: 1.5;}
+    .image-container {flex: 0 0 56px;}
+    .image-container img {width: 38px;}
+    .variant-card .content h3 {font-size: 0.95rem;}
+    .variant-card .content span {font-size: 0.75rem; letter-spacing: -0.5px;}
+
+    /* promotion/best */
+    .sv-List {margin-top: 40px;}
+    .sv-list .main-photo {width: 47vw; height: 47vw; line-height: 47vw;}
+    .sv-list .con-title {font-size: 1.33rem;padding: 0 5px 0 0;}
+    .sv-list .j-info {width: 194px; height: 18px; line-height: 18px; font-size: .88rem; margin-top: 11px;}
+    .sv-list .j-title {width: auto; height: 28px; font-size: 1.13rem;}
+    .sv-list .main-price {font-size: 1.1rem; margin-top: 2px;}
+
+    /* line-banner */
+    .line-banner {margin: 30px 10px -16px 10px;}
+
+    /* theme-product */
+    .theme-product_wrap {margin-top: 50px;}
+    .theme-product_wrap .theme-con-title {font-size: 21px;}
+    .con-header .con-sub-title {margin-top: 3px; font-size: 0.95rem;}
+
+    /* theme-scroll-menu */
+    nav.theme_scroll-menu .category-menu {height: 60px;}
+
+    /* keyword_thumb ornament */
+    .ornament  {margin-top: 41px;}
+    .ornament li {margin-bottom: 1.5rem}
+    .ornament li a {border-radius: 0.5rem;}
+    .ornament li a .social-photo {width: 32vw; height: 32vw;}
+    .ornament li a .text .price {font-size: 1.1rem;}
+    .ornament li a .text .title {width: 220px; font-size: 1.0rem;}
+    .ornament li a .text .prd_name {width: 220px; font-size: 0.8rem;}
+    .ornament li a .social-photo .bxLabel .main_label {font-size: .7rem;}
+    .bxLabel .main_label {margin: 0 2px;}
+
+    /* index-item__wrap */
+    .goods-list-thumb .main-price {font-size: 1.0rem; line-height: 41px;}
+    .production-item-image {height: 161px;}
+    .production-item-content {margin: 21px 0 5px 0; font-size: 0.8rem; font-weight: normal;}
+    .item-header {width: 177px; margin-top: 5px; font-size: 1.25rem; line-height: 26px;}
+    .item_article {width: 170px; margin-top: 13px; font-size: 0.95rem; line-height: 19px;}
+    .view-more {font-size: 0.95rem; margin-top: 18px;}
+    .view-more:after {top: 2px; height: 23px; margin-left: 47px; background-size: 19px;}
+    .goods-list-thumb .j-title {font-size: 0.95rem;}
+}
+
+@media screen and (min-width: 720px){
+    #main {margin-top: 110px;}
+    .sv-list .main-photo {width: 31vw; height: 31vw; line-height: 31vw;}
+
+    /* line-banner */
+    .line-banner {margin: 60px 10px 0 10px;}
+
+    /* label */
+    .sv-list .bxLabel .main_label {padding: 0 4px; margin: 2px; font-size: 0.83rem; text-align: center;}
+
+    /* 카테고리메뉴 */
+    .category-menu img {width: 46px; height: 46px;}
+    nav.sv_scroll-menu .category-menu ul li {height: 109px; padding: 0 26px;}
+
+    /* agriculuture-info */
+    .snap {padding:0 21px;}
+    .snap .variant-card {line-height: 1.5;}
+    .image-container {flex: 0 0 56px;}
+    .image-container img {width: 38px;}
+    .variant-card .content h3 {font-size: 0.95rem;}
+    .variant-card .content span {font-size: 0.75rem; letter-spacing: -0.5px;}
+
+    /* popularity trip */
+    .theme-push .theme-con-title {font-size: 21px;}
+
+    /* theme-product */
+    .keyword_thumb {margin-top: 63px;}
+    .theme-product_wrap .theme-con-title {font-size: 21px;}
+    .con-header .con-sub-title {margin-top: 2px; font-size: 1rem;}
+    nav.theme_scroll-menu {margin: 13px 0;}
+
+    /* keyword_thumb ornament */
+    .ornament li a .text .prd_name {width: 400px; font-size: 1rem;}
+    .ornament li a .text .title {width: 400px; font-size: 1.2rem; margin-bottom: 6px;}
+    .ornament li a .text .price {font-size: 1.3rem;}
+    .ornament li a .text .price > del {margin: 5px 0 0 4px; font-size: 1.1rem;}
+    .ornament li a .social-photo {width: 32vw; height: 32vw;}
+
+    /* pagination-brand-tab */
+    .swiper-pagination-brand {margin: 0 0 0 -6px; padding: 12px 15px 4px;}
+    .swiper-pagination-brand span {padding: 0 12px; margin: 8px 0 0 8px; font-size: 1rem; line-height: 49px;}
+
+    /* index-item__wrap */
+    .goods-list-thumb .main-price {font-size: 1.3rem;}
+    .index-item__goods {margin-left: 15px;}
+    .production-item-image {height: 288px;}
+    .production-item-content {margin: 20px 0 5px 0; font-size: 1rem;}
+    .item-header {width: 317px; margin-top: 8px; font-size: 1.5rem; line-height: 31px;}
+    .item_article {width: 317px; margin-top:16px; font-size: 1.1rem; line-height: 23px;}
+    .view-more {margin-top: 41px; font-size: 1.1rem;}
+    .view-more:after {margin-left: 57px; background-size: 22px;}
+
+}
+@media screen and (min-width: 1024px){
+    /* line-banner */
+    .line-banner {margin: 70px 10px 10px 10px;}
+
+    /* index-item__wrap */
+    .main-hit-brand ul.prd_list .goods-list-thumb .thumb {height: 238px;}
+    .production-item-image {height: 371px;}
+
+    /* keyword_thumb ornament */
+    .main-hit-brand ul.prd_list .goods-list-thumb {height: 336px;}
+
+}

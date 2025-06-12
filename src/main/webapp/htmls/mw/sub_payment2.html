@@ -1,0 +1,234 @@
+<?php header("Content-Type:text/html;charset=utf-8"); ?>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>제주마켓</title>
+	<link href="../../css/mw/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../css/mw/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../css/mw/common.css" rel="stylesheet">
+	<link href="../../css/mw/sub.css" rel="stylesheet">
+	<link href="../../css/mw/sub_cart.css" rel="stylesheet">
+	
+	<script src="/js/jquery-1.11.1.js"></script>
+	<script src="/js/mw_style.js"></script>
+</head>
+<body>
+<div id="wrap">
+
+<!-- 헤더 s -->
+<header>
+	<h1><a href="main.html"><img src="../../images/mw/common/logo.png" width="106" alt="제주마켓"></a></h1>
+	<p class="gnb-view"><img src="../../images/mw/common/icon_menu.png" width="25" alt="메뉴보기"></p>
+	<p class="search-view"><img src="../../images/mw/common/icon_search.png" width="22" alt="검색"></p>
+	<p class="cart-view"><a href="sub_cart.html"><img src="../../images/mw/common/icon_cart.png" width="30" alt="장바구니"></a></p>
+
+	<div class="search">
+		<fieldset>
+			<div class="form-value">
+				<label for="q">검색어 입력</label>
+				<input type="text" id="q">
+			</div>
+			<input type="submit" value="검색">
+			<a href="#" class="btn-close"><img src="../../images/mw/sub_common/delete.png" width="10" alt="닫기"></a>
+		</fieldset>
+	</div>
+</header>
+<!-- 헤더 e -->
+
+<!-- 메뉴 s -->
+<nav id="gnbnavi" class="hide">
+	<p class="menu-top">
+		로그인 해주세요 <a href="login.html">로그인</a>
+	</p>
+	<ul class="menu-top">
+		<li><a href=""><img src="../../images/mw/common/icon_01.png" width="19" alt=""> 구매/예약내역</a></li>
+		<li><a href=""><img src="../../images/mw/common/icon_02.png" width="19" alt=""> 내 주변 업소</a></li>
+	</ul>
+	<div class="sub-menu">
+		<h2 class="sr-only">전체메뉴</h2>
+		<ul>
+			<li><a href="#"><img src="../../images/mw/common/icon_03.png" width="19" alt=""> 실시간예약</a>
+				<ul>
+					<li><a href="sub_air1.html">항공</a></li>
+					<li><a href="sub_hotel1.html">숙박</a></li>
+					<li><a href="sub_rent1.html">렌트카</a></li>
+					<li><a href="sub_golf1.html">골프</a></li>
+				</ul>
+			</li>
+			<li><a href="#"><img src="../../images/mw/common/icon_04.png" width="19" alt=""> 당일특가</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_05.png" width="19" alt=""> 패키지 할인상품</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_06.png" width="19" alt=""> 관광지 입장권</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_07.png" width="19" alt=""> 음식/레저/뷰티</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_08.png" width="19" alt=""> 여행경비산출</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_09.png" width="19" alt=""> 이벤트</a></li>
+			<li><a href="sub_mypage1.html"><img src="../../images/mw/common/icon_10.png" width="19" alt=""> 마이페이지</a></li>
+			<li><a href="sub_center1.html"><img src="../../images/mw/common/icon_11.png" width="19" alt=""> 고객센터</a></li>
+		</ul>
+	</div>
+	<div class="app-util">
+		<dl>
+			<dt>정보 알림 받기</dt>
+			<dd><a href=""><img src="../../images/mw/common/on.png" width="42" alt="ON"></a></dd>
+			<dt>자동로그인</dt>
+			<dd><a href=""><img src="../../images/mw/common/off.png" width="42" alt="OFF"></a></dd>
+		</dl>
+		<p>Ver 1.0.0</p>
+	</div>
+</nav>
+
+<p id="btnHideGnb" class="hide"><img src="../../images/mw/common/close.png" width="10" alt="메뉴닫기"></p>
+<!-- 메뉴 e -->
+
+<!-- 콘텐츠 s -->
+<h2 class="sr-only">서브콘텐츠</h2>
+<section id="subContent">
+
+	<div class="menu-bar">
+		<p class="btn-prev"><img src="../../images/mw/common/btn_prev.png" width="20" alt="이전페이지"></p>
+		<h1>결제하기</h1>
+	</div>
+	<div class="sub-content">
+		<div class="reserve">
+			<dl class="goods-info">
+				<dt><strong>[숙박]</strong> 블루베이 13평</dt>
+				<dd>
+					실시간 예약] 블루베이 13평<br>
+					- 2015-09-16일부터 2박 | 성인 2명, 소아 1명 100,000<br>
+					<a href="#" class="btn-coupon">적용가능쿠폰</a> <em>쿠폰명 99,999,999원</em>
+				</dd>
+			</dl>
+			<dl class="goods-price">
+				<dt>상품금액</dt>
+				<dd>200,000원<br><em>(-3,000)</em></dd>
+				<dt>최종금액</dt>
+				<dd>99,999,000원</dd>
+			</dl>
+			<dl class="goods-info bt-none">
+				<dt><strong>[숙박]</strong> 블루베이 13평</dt>
+				<dd>
+					실시간 예약] 블루베이 13평<br>
+					- 2015-09-16일부터 2박 | 성인 2명, 소아 1명 100,000<br>
+					<a href="#" class="btn-coupon">적용가능쿠폰</a> <em>쿠폰명 99,999,999원</em>
+				</dd>
+			</dl>
+			<dl class="goods-price">
+				<dt>상품금액</dt>
+				<dd>200,000원<br><em>(-3,000)</em></dd>
+				<dt>최종금액</dt>
+				<dd>99,999,000원</dd>
+			</dl>
+
+
+			<h2>결제정보 선택</h2>
+			<p class="payment bt-none">
+				<label for="credit"><input type="radio" id="credit"> 신용카드</label>
+				<label for="cellphone"><input type="radio" id="cellphone"> 휴대폰</label>
+				<label for="cash"><input type="radio" id="cash"> 실시간 계좌이체</label>
+				<label for="kakao"><input type="radio" id="kakao"> 카카오페이</label><br>
+			</p>
+
+			<h2>결제하기</h2>
+			<dl class="total bt-none">
+				<dt>총 상품금액</dt>
+				<dd>
+					<strong>0,000,000원</strong><br>
+					<!-- <em>(-)77,100원, 쿠폰할인</em> -->
+					
+					<p>쿠폰할인 (-) <span>0</span>원</p>
+					<p>L.POINT 할인	(-) <span>5,000</span>P</p>
+					<p>L.POINT 적립 예정 <span>180</span>P</p>
+				</dd>
+			</dl>
+			<dl class="total bt-none">
+				<dt>최종결제금액</dt>
+				<dd>
+					<strong class="red">0,000,000원</strong><br>
+				</dd>
+			</dl>
+			<p class="pament-agree bt-none">
+				주문하실 상품, 가격, 배송정보, 할인내역등을 최종 확인하였으며 구매에 동의하시겠습니까?<br>
+				<label for="agree1"><input type="checkbox" id="agree1">동의합니다. (전자금융거래법 제 8조 제 2항)</label>
+			</p>
+
+			<p>
+				<a href="sub_payment-success.html" class="btn btn1">결제하기</a>
+			</p>
+		</div>
+	</div>
+</section>
+<!-- 쿠폰1 s -->
+<div class="pop-coupon">
+	<p class="btn-close"><a href="#"><img src="../../images/mw/sub_common/close2.png" width="23" alt="닫기"></a></p>
+	
+	<div id="tabs" class="nav-tabs1 sm">
+        <div class="menu-wrap">
+            <ul class="nav-menu">
+                <li><a href="#tabs-1">Menu list1</a></li>
+                <li><a href="#tabs-2">Menu list2</a></li>
+            </ul>
+        </div>
+
+        <div id="tabs-1" class="tabPanel">
+            <div class="pd-wrap">
+            	<table>
+					<tr>
+						<th>쿠폰명</th>
+						<th>금액</th>
+					</tr>
+					<tr>
+						<td><input name="coupon1" type="checkbox" id="coupon1" checked>
+						설연휴 특별 할인</td>
+						<td>99,999,999</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="coupon1" id="coupon1">
+						설연휴 특별 할인</td>
+						<td>99,999,999</td>
+					</tr>
+				</table>
+				<p class="btn-center"><a href="#" class="btn btn1">선택완료</a></p>
+            </div>
+        </div> <!-- //tabs-1 -->
+        <div id="tabs-2" class="tabPanel">
+            <div class="pd-wrap">2</div>
+        </div> <!-- //tabs-2 -->
+        
+         <script> /* 임시추가 */
+	        tabPanel2({
+	            container: "#tabs",		//해당 ID
+	            firstItem: "#tabs-1",	//show item
+	            active: 0				//해당 menu add class
+	        });
+	    </script>        
+    </div> <!-- //nav-tabs1 -->
+
+</div>
+<!-- 쿠폰1 e -->
+<!-- 콘텐츠 e -->
+
+<!-- 푸터 s -->
+<footer>
+    <ul class="list-unstyled">
+		<li><a href="">이용약관</a></li>
+		<li><a href="">개인정보처리방침</a></li>
+		<li><a href="">여행약관</a></li>
+	</ul>
+	<address>
+		상호명:제주특별자치도관광협회&nbsp; 대표:김영진&nbsp; 사업자등록번호:616-82-04092<br>
+		주소:제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층<br>
+		통신판매업번호: 제2013-제주연동 0024호<br>
+		고객센터:1577-1233 | 개인정보관리책임자:최종훈
+	</address>
+    <p>COPYRIGHT &copy; 제주특별자치도관광협회. ALL RIGHTS RESERVED</p>
+</footer>
+<!-- 푸터 e -->
+</div>
+<div id="cover"></div>
+<!-- <script src="../../js/jquery-1.11.1.js"></script>
+<script src="../../js/mw_layout.js"></script> -->
+</body>
+</html>

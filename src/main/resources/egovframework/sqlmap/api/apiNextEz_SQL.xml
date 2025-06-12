@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="apiNextez">
+
+<!-- 수집 프로시저 -->
+<insert id="API_NEXTEZ_I_00" parameterClass="api.vo.ApiNextezPrcAdd">
+	<![CDATA[
+		{call PRC_ADD_ZDATA(#vType#,#vCtgr#,#vPrdtNum#,#vConectDeviceNm#,#vVal1#)}
+	]]>
+</insert>
+
+<!-- 숙박 view -->
+<select id="API_NEXTEZ_AD_S_00" resultClass="common.LowerHashMap">
+	SELECT B.AD_NM AS STAYNG_NM,
+	       (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.AD_AREA ) AS STAYNG_AREA_NM,
+	       C.ROAD_NM_ADDR || ' ' || C.DTL_ADDR AS STAYNG_ADRES,
+	       C.LAT AS STAYNG_LA_XCRD,
+	       C.LON AS STAYNG_LO_YCRD,
+	       (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.AD_DIV ) AS STAYNG_TY_NM,
+	       '1' AS STAYNG_RUM_CO,
+	       '' AS STAYNG_THEMA_NM,
+	       '' AS USER_AGRDE_CODE,
+	       '' AS USER_SEXDSTN_CODE,
+	       '' AS USER_BRTC_CODE,
+	       A.CONECT_DEVICE_NM ,
+	       TO_CHAR(A.INQIRE_DT, 'YYYYMMDDHH24MISS') AS INQIRE_DT
+	  FROM TB_ZDATA_VIEW_LIST AS A 
+	  JOIN TB_AD_DFTINF AS B 
+	    ON A.PRDT_NUM = B.CORP_ID 
+	  JOIN TB_CORP AS C 
+	    ON A.PRDT_NUM = C.CORP_ID
+	<![CDATA[
+	 WHERE INQIRE_DT >= TO_DATE(#srcDt#, 'YYYYMMDD')
+	   AND INQIRE_DT < TO_DATE(#srcDt#, 'YYYYMMDD')+1
+	]]>
+</select>
+
+<!-- 숙박 like -->
+<select id="API_NEXTEZ_AD_S_01" resultClass="common.LowerHashMap">
+	SELECT B.AD_NM AS STAYNG_NM,
+	       (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.AD_AREA ) AS STAYNG_AREA_NM,
+	       C.ROAD_NM_ADDR || ' ' || C.DTL_ADDR AS STAYNG_ADRES,
+	       C.LAT AS STAYNG_LA_XCRD,
+	       C.LON AS STAYNG_LO_YCRD,
+	       (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.AD_DIV ) AS STAYNG_TY_NM,
+	       '1' AS STAYNG_RUM_CO,
+	       '' AS STAYNG_THEMA_NM,
+	       '' AS USER_AGRDE_CODE,
+	       '' AS USER_SEXDSTN_CODE,
+	       '' AS USER_BRTC_CODE,
+	       A.CONECT_DEVICE_NM ,
+	       TO_CHAR(A.REGIST_DT, 'YYYYMMDDHH24MISS') AS REGIST_DT
+	  FROM TB_ZDATA_LIKE_LIST AS A 
+	  JOIN TB_AD_DFTINF AS B 
+	    ON A.PRDT_NUM = B.CORP_ID 
+	  JOIN TB_CORP AS C 
+	    ON A.PRDT_NUM = C.CORP_ID
+	<![CDATA[
+	 WHERE REGIST_DT >= TO_DATE(#srcDt#, 'YYYYMMDD')
+	   AND REGIST_DT < TO_DATE(#srcDt#, 'YYYYMMDD')+1
+	]]>
+</select>
+
+<!-- 숙박 SHARE -->
+<select id="API_NEXTEZ_AD_S_02" resultClass="common.LowerHashMap">
+	SELECT B.AD_NM AS STAYNG_NM,
+	       (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.AD_AREA ) AS STAYNG_AREA_NM,
+	       C.ROAD_NM_ADDR || ' ' || C.DTL_ADDR AS STAYNG_ADRES,
+	       C.LAT AS STAYNG_LA_XCRD,
+	       C.LON AS STAYNG_LO_YCRD,
+	       (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.AD_DIV ) AS STAYNG_TY_NM,
+	       '1' AS STAYNG_RUM_CO,
+	       '' AS STAYNG_THEMA_NM,
+	       '' AS USER_AGRDE_CODE,
+	       '' AS USER_SEXDSTN_CODE,
+	       '' AS USER_BRTC_CODE,
+	       A.CONECT_DEVICE_NM ,
+	       TO_CHAR(A.REGIST_DT, 'YYYYMMDDHH24MISS') AS REGIST_DT,
+	       A.CHNNL_CNRS_NM
+	  FROM TB_ZDATA_SHARE_LIST AS A 
+	  JOIN TB_AD_DFTINF AS B 
+	    ON A.PRDT_NUM = B.CORP_ID 
+	  JOIN TB_CORP AS C 
+	    ON A.PRDT_NUM = C.CORP_ID
+	<![CDATA[
+	 WHERE REGIST_DT >= TO_DATE(#srcDt#, 'YYYYMMDD')
+	   AND REGIST_DT < TO_DATE(#srcDt#, 'YYYYMMDD')+1
+	]]>
+</select>
+
+<!-- 숙박 point -->
+<select id="API_NEXTEZ_AD_S_03" resultClass="common.LowerHashMap">
+	SELECT B.AD_NM AS STAYNG_NM,
+	       (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.AD_AREA ) AS STAYNG_AREA_NM,
+	       C.ROAD_NM_ADDR || ' ' || C.DTL_ADDR AS STAYNG_ADRES,
+	       C.LAT AS STAYNG_LA_XCRD,
+	       C.LON AS STAYNG_LO_YCRD,
+	       (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.AD_DIV ) AS STAYNG_TY_NM,
+	       '1' AS STAYNG_RUM_CO,
+	       '' AS STAYNG_THEMA_NM,
+	       '' AS USER_AGRDE_CODE,
+	       '' AS USER_SEXDSTN_CODE,
+	       '' AS USER_BRTC_CODE,
+	       A.CONECT_DEVICE_NM ,
+	       TO_CHAR(A.REGIST_DT, 'YYYYMMDDHH24MISS') AS REGIST_DT,
+	       A.EVL_SCORE_VALUE
+	  FROM TB_ZDATA_POINT_LIST AS A 
+	  JOIN TB_AD_DFTINF AS B 
+	    ON A.PRDT_NUM = B.CORP_ID 
+	  JOIN TB_CORP AS C 
+	    ON A.PRDT_NUM = C.CORP_ID
+	<![CDATA[
+	 WHERE REGIST_DT >= TO_DATE(#srcDt#, 'YYYYMMDD')
+	   AND REGIST_DT < TO_DATE(#srcDt#, 'YYYYMMDD')+1
+	]]>
+</select>
+
+<!-- 숙박 order -->
+<select id="API_NEXTEZ_AD_S_04" resultClass="common.LowerHashMap">
+	SELECT E.AD_NM   
+	        AS STAYNG_NM                /*숙박명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = E.AD_AREA
+	       ) AS STAYNG_AREA_NM          /*숙박지역명*/
+	     , C.ROAD_NM_ADDR || C.DTL_ADDR 
+	        AS STAYNG_ADRES             /*숙박주소*/
+	     , TRUNC(C.LAT, 7)
+	        AS STAYNG_LA_XCRD           /*숙박위도x좌표*/
+	     , TRUNC(C.LON, 7)
+	        AS STAYNG_LO_YCRD           /*숙박경도y좌표*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = E.AD_DIV
+	       )
+	        AS STAYNG_TY_NM             /*숙박유형명*/
+	     , 1 
+	        AS STAYNG_RUM_CO            /*숙박객실갯수(1 고정)*/
+	     , '' 
+	        AS STAYNG_THEMA_NM          /*숙박테마명*/
+	     , '' 
+	        AS USER_AGRDE_CODE          /*이용자연령대코드-제공X*/
+	     , '' 
+	        AS USER_SEXDSTN_CODE        /*이용자성별코드-제공X*/
+	     , '' 
+	        AS USER_BRTC_CODE           /*이용자광역시도코드-제공X*/
+	     , DECODE(A.APP_DIV, 'PC', 'PC', 'MOBILE')
+	        AS CONECT_DEVICE_NM         /*접속장치명*/
+	     , TO_CHAR(A.REG_DTTM, 'YYYYMMDDHH24MISS')
+	        AS RESVE_DT                 /*예약일시*/
+	     , B.PRDT_NM 
+	        AS RUM_NM                   /*객실명*/
+	     , D.STD_MEM 
+	        AS STDR_NMPR_CO             /*기준인원갯수*/
+	     , D.MAXI_MEM 
+	        AS MXMM_NMPR_CO             /*최대인원갯수*/
+	     , B.ADULT_NUM 
+	        AS ADULT_NMPR_CO            /*성인인원갯수*/
+	     , B.JUNIOR_NUM 
+	        AS CHILD_NMPR_CO            /*소아인원갯수*/
+	     , B.CHILD_NUM 
+	        AS INFNT_NMPR_CO            /*유아인원갯수*/
+	     , B.USE_DT 
+	        AS USE_BEGIN_DATE           /*이용시작일자*/
+	     , TO_CHAR(TO_DATE(B.USE_DT, 'YYYYMMDD') + USE_NIGHT, 'YYYYMMDD') 
+	        AS USE_END_DATE             /*이용종료일자*/
+	     , B.USE_NIGHT 
+	        AS USE_DAYCNT_CO            /*이용일수갯수*/
+	     , (CASE A.PAY_DIV WHEN 'L100' THEN '카드'
+	                         WHEN 'L200' THEN '핸드폰'
+	                         WHEN 'L300' THEN '계좌이체'
+	                         WHEN 'L400' THEN '카카오페이'
+	                         WHEN 'L500' THEN '무료'
+	                         WHEN 'L600' THEN 'L.POINT'
+	                         WHEN 'L700' THEN '무통장'
+	                         ELSE ''
+	         END
+	       ) AS SETLE_MN_NM             /*결제수단명*/
+	     , B.NML_AMT 
+	        AS TOT_AMOUNT               /*총금액*/
+	  FROM TB_RSV               A     	/*T_예약*/
+	 INNER JOIN TB_AD_RSV       B    	/*T_숙박예약*/
+	    ON B.RSV_NUM      = A.RSV_NUM
+	 INNER JOIN TB_CORP         C     	/*T_업체*/
+	    ON C.CORP_ID       = B.CORP_ID
+	 INNER JOIN TB_AD_PRDTINF   D    	/*T_숙박상품정보*/
+	    ON D.PRDT_NUM     = B.PRDT_NUM
+	 INNER JOIN TB_AD_DFTINF    E    	/*T_숙박기본정보*/
+	    ON E.CORP_ID      = D.CORP_ID
+	 WHERE A.RSV_STATUS_CD = 'RS02'
+	 <![CDATA[
+	   AND A.REG_DTTM >= TO_DATE(NVL(#srcDt#, TO_CHAR(SYSDATE, 'YYYYMMDD')), 'YYYYMMDD') 
+	   AND A.REG_DTTM <  TO_DATE(NVL(#srcDt#, TO_CHAR(SYSDATE, 'YYYYMMDD')), 'YYYYMMDD') + 1
+	 ]]>
+</select>
+
+<!-- 숙박 cancel -->
+<select id="API_NEXTEZ_AD_S_05" resultClass="common.LowerHashMap">
+	SELECT E.AD_NM   
+	        AS STAYNG_NM                /*숙박명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = E.AD_AREA
+	       ) AS STAYNG_AREA_NM          /*숙박지역명*/
+	     , C.ROAD_NM_ADDR || C.DTL_ADDR 
+	        AS STAYNG_ADRES             /*숙박주소*/
+	     , TRUNC(C.LAT, 7)
+	        AS STAYNG_LA_XCRD           /*숙박위도x좌표*/
+	     , TRUNC(C.LON, 7)
+	        AS STAYNG_LO_YCRD           /*숙박경도y좌표*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = E.AD_DIV
+	       )
+	        AS STAYNG_TY_NM             /*숙박유형명*/
+	     , 1 
+	        AS STAYNG_RUM_CO            /*숙박객실갯수(1 고정)*/
+	     , '' 
+	        AS STAYNG_THEMA_NM          /*숙박테마명*/
+	     , '' 
+	        AS USER_AGRDE_CODE          /*이용자연령대코드-제공X*/
+	     , '' 
+	        AS USER_SEXDSTN_CODE        /*이용자성별코드-제공X*/
+	     , '' 
+	        AS USER_BRTC_CODE           /*이용자광역시도코드-제공X*/
+	     , DECODE(A.APP_DIV, 'PC', 'PC', 'MOBILE')
+	        AS CONECT_DEVICE_NM         /*접속장치명*/
+	     , TO_CHAR(A.REG_DTTM, 'YYYYMMDDHH24MISS')
+	        AS RESVE_DT                 /*예약일시*/
+	     , TO_CHAR(B.CANCEL_CMPL_DTTM, 'YYYYMMDDHH24MISS')
+        	AS CANCL_DT                 /*취소일시*/
+	     , B.PRDT_NM 
+	        AS RUM_NM                   /*객실명*/
+	     , D.STD_MEM 
+	        AS STDR_NMPR_CO             /*기준인원갯수*/
+	     , D.MAXI_MEM 
+	        AS MXMM_NMPR_CO             /*최대인원갯수*/
+	     , B.ADULT_NUM 
+	        AS ADULT_NMPR_CO            /*성인인원갯수*/
+	     , B.JUNIOR_NUM 
+	        AS CHILD_NMPR_CO            /*소아인원갯수*/
+	     , B.CHILD_NUM 
+	        AS INFNT_NMPR_CO            /*유아인원갯수*/
+	     , B.USE_DT 
+	        AS USE_BEGIN_DATE           /*이용시작일자*/
+	     , TO_CHAR(TO_DATE(B.USE_DT, 'YYYYMMDD') + USE_NIGHT, 'YYYYMMDD') 
+	        AS USE_END_DATE             /*이용종료일자*/
+	     , B.USE_NIGHT 
+	        AS USE_DAYCNT_CO            /*이용일수갯수*/
+	     , (CASE A.PAY_DIV WHEN 'L100' THEN '카드'
+	                         WHEN 'L200' THEN '핸드폰'
+	                         WHEN 'L300' THEN '계좌이체'
+	                         WHEN 'L400' THEN '카카오페이'
+	                         WHEN 'L500' THEN '무료'
+	                         WHEN 'L600' THEN 'L.POINT'
+	                         WHEN 'L700' THEN '무통장'
+	                         ELSE ''
+	         END
+	       ) AS SETLE_MN_NM             /*결제수단명*/
+	     , B.NML_AMT 
+	        AS TOT_AMOUNT               /*총금액*/
+	  FROM TB_RSV               A     	/*T_예약*/
+	 INNER JOIN TB_AD_RSV       B    	/*T_숙박예약*/
+	    ON B.RSV_NUM      = A.RSV_NUM
+	 INNER JOIN TB_CORP         C     	/*T_업체*/
+	    ON C.CORP_ID       = B.CORP_ID
+	 INNER JOIN TB_AD_PRDTINF   D    	/*T_숙박상품정보*/
+	    ON D.PRDT_NUM     = B.PRDT_NUM
+	 INNER JOIN TB_AD_DFTINF    E    	/*T_숙박기본정보*/
+	    ON E.CORP_ID      = D.CORP_ID
+	 WHERE A.RSV_STATUS_CD = 'RS02'
+	   AND B.RSV_STATUS_CD = 'RS20'
+	 <![CDATA[
+	   AND B.CANCEL_CMPL_DTTM >= TO_DATE(NVL(#srcDt#, TO_CHAR(SYSDATE, 'YYYYMMDD')), 'YYYYMMDD') 
+	   AND B.CANCEL_CMPL_DTTM <  TO_DATE(NVL(#srcDt#, TO_CHAR(SYSDATE, 'YYYYMMDD')), 'YYYYMMDD') + 1
+	 ]]>
+</select>
+
+<!-- 렌터카 view -->
+<select id="API_NEXTEZ_RC_S_00" resultClass="common.LowerHashMap">
+	SELECT B.PRDT_NM
+	        AS VHCLE_NM                 /*차량명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.CAR_DIV
+	       ) AS VHCLE_TY_NM             /*차량유형명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.USE_FUEL_DIV
+	       ) AS VHCLE_FUEL_NM             /*차량연료명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.TRANS_DIV
+	       ) AS VHCLE_GEBX_NM           /*차량변속기명*/
+	     , B.MAXI_NUM
+	        AS VHCLE_NMPR_CO            /*차량인원갯수*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.MAKER_DIV
+	       ) AS VHCLE_MAKR_NM           /*차량제조사명*/
+	     , '' 
+	        AS USER_AGRDE_CODE          /*이용자연령대코드-제공X*/
+	     , '' 
+	        AS USER_SEXDSTN_CODE        /*이용자성별코드-제공X*/
+	     , '' 
+	        AS USER_BRTC_CODE           /*이용자광역시도코드-제공X*/
+	     , A.CONECT_DEVICE_NM
+	     , TO_CHAR(A.INQIRE_DT, 'YYYYMMDDHH24MISS') AS INQIRE_DT
+	  FROM TB_ZDATA_VIEW_LIST A
+	  JOIN TB_RC_PRDTINF B
+	    ON B.PRDT_NUM = A.PRDT_NUM
+	  <![CDATA[
+	 WHERE INQIRE_DT >= TO_DATE(#srcDt#, 'YYYYMMDD')
+	   AND INQIRE_DT < TO_DATE(#srcDt#, 'YYYYMMDD')+1
+	]]>
+</select>
+
+<!-- 렌터카 like -->
+<select id="API_NEXTEZ_RC_S_01" resultClass="common.LowerHashMap">
+	SELECT B.PRDT_NM
+	        AS VHCLE_NM                 /*차량명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.CAR_DIV
+	       ) AS VHCLE_TY_NM             /*차량유형명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.USE_FUEL_DIV
+	       ) AS VHCLE_FUEL_NM             /*차량연료명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.TRANS_DIV
+	       ) AS VHCLE_GEBX_NM           /*차량변속기명*/
+	     , B.MAXI_NUM
+	        AS VHCLE_NMPR_CO            /*차량인원갯수*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.MAKER_DIV
+	       ) AS VHCLE_MAKR_NM           /*차량제조사명*/
+	     , '' 
+	        AS USER_AGRDE_CODE          /*이용자연령대코드-제공X*/
+	     , '' 
+	        AS USER_SEXDSTN_CODE        /*이용자성별코드-제공X*/
+	     , '' 
+	        AS USER_BRTC_CODE           /*이용자광역시도코드-제공X*/
+	     , A.CONECT_DEVICE_NM
+	     , TO_CHAR(A.REGIST_DT, 'YYYYMMDDHH24MISS') AS REGIST_DT
+	  FROM TB_ZDATA_LIKE_LIST A
+	  JOIN TB_RC_PRDTINF B
+	    ON B.PRDT_NUM = A.PRDT_NUM
+	  <![CDATA[
+	 WHERE REGIST_DT >= TO_DATE(#srcDt#, 'YYYYMMDD')
+	   AND REGIST_DT < TO_DATE(#srcDt#, 'YYYYMMDD')+1
+	]]>
+</select>
+
+<!-- 렌터카 share -->
+<select id="API_NEXTEZ_RC_S_02" resultClass="common.LowerHashMap">
+	SELECT B.PRDT_NM
+	        AS VHCLE_NM                 /*차량명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.CAR_DIV
+	       ) AS VHCLE_TY_NM             /*차량유형명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.USE_FUEL_DIV
+	       ) AS VHCLE_FUEL_NM             /*차량연료명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.TRANS_DIV
+	       ) AS VHCLE_GEBX_NM           /*차량변속기명*/
+	     , B.MAXI_NUM
+	        AS VHCLE_NMPR_CO            /*차량인원갯수*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.MAKER_DIV
+	       ) AS VHCLE_MAKR_NM           /*차량제조사명*/
+	     , '' 
+	        AS USER_AGRDE_CODE          /*이용자연령대코드-제공X*/
+	     , '' 
+	        AS USER_SEXDSTN_CODE        /*이용자성별코드-제공X*/
+	     , '' 
+	        AS USER_BRTC_CODE           /*이용자광역시도코드-제공X*/
+	     , A.CONECT_DEVICE_NM
+	     , TO_CHAR(A.REGIST_DT, 'YYYYMMDDHH24MISS') AS REGIST_DT
+	     , A.CHNNL_CNRS_NM
+	  FROM TB_ZDATA_SHARE_LIST A
+	  JOIN TB_RC_PRDTINF B
+	    ON B.PRDT_NUM = A.PRDT_NUM
+	  <![CDATA[
+	 WHERE REGIST_DT >= TO_DATE(#srcDt#, 'YYYYMMDD')
+	   AND REGIST_DT < TO_DATE(#srcDt#, 'YYYYMMDD')+1
+	]]>
+</select>
+
+<!-- 렌터카 point -->
+<select id="API_NEXTEZ_RC_S_03" resultClass="common.LowerHashMap">
+	SELECT B.PRDT_NM
+	        AS VHCLE_NM                 /*차량명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.CAR_DIV
+	       ) AS VHCLE_TY_NM             /*차량유형명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.USE_FUEL_DIV
+	       ) AS VHCLE_FUEL_NM             /*차량연료명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.TRANS_DIV
+	       ) AS VHCLE_GEBX_NM           /*차량변속기명*/
+	     , B.MAXI_NUM
+	        AS VHCLE_NMPR_CO            /*차량인원갯수*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.MAKER_DIV
+	       ) AS VHCLE_MAKR_NM           /*차량제조사명*/
+	     , '' 
+	        AS USER_AGRDE_CODE          /*이용자연령대코드-제공X*/
+	     , '' 
+	        AS USER_SEXDSTN_CODE        /*이용자성별코드-제공X*/
+	     , '' 
+	        AS USER_BRTC_CODE           /*이용자광역시도코드-제공X*/
+	     , A.CONECT_DEVICE_NM
+	     , TO_CHAR(A.REGIST_DT, 'YYYYMMDDHH24MISS') AS REGIST_DT
+	     , A.EVL_SCORE_VALUE
+	  FROM TB_ZDATA_POINT_LIST A
+	  JOIN TB_RC_PRDTINF B
+	    ON B.PRDT_NUM = A.PRDT_NUM
+	  <![CDATA[
+	 WHERE REGIST_DT >= TO_DATE(#srcDt#, 'YYYYMMDD')
+	   AND REGIST_DT < TO_DATE(#srcDt#, 'YYYYMMDD')+1
+	]]>
+</select>
+
+<!-- 렌터카 order -->
+<select id="API_NEXTEZ_RC_S_04" resultClass="common.LowerHashMap">
+	SELECT B.PRDT_NM
+	        AS VHCLE_NM                 /*차량명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = C.CAR_DIV
+	       ) AS VHCLE_TY_NM             /*차량유형명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = C.USE_FUEL_DIV
+	       ) AS VHCLE_FUEL_NM             /*차량연료명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = C.TRANS_DIV
+	       ) AS VHCLE_GEBX_NM           /*차량변속기명*/
+	     , C.MAXI_NUM
+	        AS VHCLE_NMPR_CO            /*차량인원갯수*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = C.MAKER_DIV
+	       ) AS VHCLE_MAKR_NM           /*차량제조사명*/
+	     , '' 
+	        AS USER_AGRDE_CODE          /*이용자연령대코드-제공X*/
+	     , '' 
+	        AS USER_SEXDSTN_CODE        /*이용자성별코드-제공X*/
+	     , '' 
+	        AS USER_BRTC_CODE           /*이용자광역시도코드-제공X*/
+	     , DECODE(A.APP_DIV, 'PC', 'PC', 'MOBILE')
+	        AS CONECT_DEVICE_NM         /*접속장치명*/
+	     , TO_CHAR(A.REG_DTTM, 'YYYYMMDDHH24MISS')
+	        AS RESVE_DT                 /*예약일시*/
+	     , TO_CHAR(TO_DATE(B.RENT_START_DT || B.RENT_START_TM, 'YYYYMMDDHH24MI'), 'YYYYMMDDHH24MISS')
+	        AS USE_BEGIN_DT             /*이용시작일시*/
+	     , TO_CHAR(TO_DATE(B.RENT_END_DT || B.RENT_END_TM, 'YYYYMMDDHH24MI'), 'YYYYMMDDHH24MISS')
+	        AS USE_END_DT               /*이용종료일시*/
+	     , ROUND((TO_DATE(B.RENT_END_DT || B.RENT_END_TM, 'YYYYMMDDHH24MI') - 
+	              TO_DATE(B.RENT_START_DT || B.RENT_START_TM, 'YYYYMMDDHH24MI')) * 24)
+	        AS USE_TIME_CO              /*이용시간갯수*/
+	     , 1 AS RESVE_VHCLE_CO          /*예약차량갯수(1개 고정)*/
+	     , (CASE A.PAY_DIV WHEN 'L100' THEN '카드'
+	                       WHEN 'L200' THEN '핸드폰'
+	                       WHEN 'L300' THEN '계좌이체'
+	                       WHEN 'L400' THEN '카카오페이'
+	                       WHEN 'L500' THEN '무료'
+	                       WHEN 'L600' THEN 'L.POINT'
+	                       WHEN 'L700' THEN '무통장'
+	                       ELSE ''
+	         END
+	       ) AS SETLE_MN_NM             /*결제수단명*/
+	     , B.NML_AMT 
+	        AS TOT_AMOUNT               /*총금액*/
+	  FROM TB_RSV A
+	 INNER JOIN TB_RC_RSV B
+	    ON B.RSV_NUM = A.RSV_NUM
+	 INNER JOIN TB_RC_PRDTINF C
+	    ON C.PRDT_NUM = B.PRDT_NUM
+	 WHERE A.RSV_STATUS_CD = 'RS02'
+	 <![CDATA[
+	   AND A.REG_DTTM >= TO_DATE(NVL(#srcDt#, TO_CHAR(SYSDATE, 'YYYYMMDD')), 'YYYYMMDD') 
+	   AND A.REG_DTTM <  TO_DATE(NVL(#srcDt#, TO_CHAR(SYSDATE, 'YYYYMMDD')), 'YYYYMMDD') + 1
+	 ]]>
+</select>
+
+<!-- 렌터카 cancel -->
+<select id="API_NEXTEZ_RC_S_05" resultClass="common.LowerHashMap">
+	SELECT B.PRDT_NM
+	        AS VHCLE_NM                 /*차량명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = C.CAR_DIV
+	       ) AS VHCLE_TY_NM             /*차량유형명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = C.USE_FUEL_DIV
+	       ) AS VHCLE_FUEL_NM             /*차량연료명*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = C.TRANS_DIV
+	       ) AS VHCLE_GEBX_NM           /*차량변속기명*/
+	     , C.MAXI_NUM
+	        AS VHCLE_NMPR_CO            /*차량인원갯수*/
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = C.MAKER_DIV
+	       ) AS VHCLE_MAKR_NM           /*차량제조사명*/
+	     , '' 
+	        AS USER_AGRDE_CODE          /*이용자연령대코드-제공X*/
+	     , '' 
+	        AS USER_SEXDSTN_CODE        /*이용자성별코드-제공X*/
+	     , '' 
+	        AS USER_BRTC_CODE           /*이용자광역시도코드-제공X*/
+	     , DECODE(A.APP_DIV, 'PC', 'PC', 'MOBILE')
+	        AS CONECT_DEVICE_NM         /*접속장치명*/
+	     , TO_CHAR(A.REG_DTTM, 'YYYYMMDDHH24MISS')
+	        AS RESVE_DT                 /*예약일시*/
+	     , TO_CHAR(B.CANCEL_CMPL_DTTM, 'YYYYMMDDHH24MISS')
+	        AS CANCL_DT                 /*취소일시*/
+	     , TO_CHAR(TO_DATE(B.RENT_START_DT || B.RENT_START_TM, 'YYYYMMDDHH24MI'), 'YYYYMMDDHH24MISS')
+	        AS USE_BEGIN_DT             /*이용시작일시*/
+	     , TO_CHAR(TO_DATE(B.RENT_END_DT || B.RENT_END_TM, 'YYYYMMDDHH24MI'), 'YYYYMMDDHH24MISS')
+	        AS USE_END_DT               /*이용종료일시*/
+	     , ROUND((TO_DATE(B.RENT_END_DT || B.RENT_END_TM, 'YYYYMMDDHH24MI') - 
+	              TO_DATE(B.RENT_START_DT || B.RENT_START_TM, 'YYYYMMDDHH24MI')) * 24)
+	        AS USE_TIME_CO              /*이용시간갯수*/
+	     , 1 AS RESVE_VHCLE_CO          /*예약차량갯수(1개 고정)*/
+	     , (CASE A.PAY_DIV WHEN 'L100' THEN '카드'
+	                       WHEN 'L200' THEN '핸드폰'
+	                       WHEN 'L300' THEN '계좌이체'
+	                       WHEN 'L400' THEN '카카오페이'
+	                       WHEN 'L500' THEN '무료'
+	                       WHEN 'L600' THEN 'L.POINT'
+	                       WHEN 'L700' THEN '무통장'
+	                       ELSE ''
+	         END
+	       ) AS SETLE_MN_NM             /*결제수단명*/
+	     , B.NML_AMT 
+	        AS TOT_AMOUNT               /*총금액*/
+	  FROM TB_RSV A
+	 INNER JOIN TB_RC_RSV B
+	    ON B.RSV_NUM = A.RSV_NUM
+	 INNER JOIN TB_RC_PRDTINF C
+	    ON C.PRDT_NUM = B.PRDT_NUM
+	 WHERE A.RSV_STATUS_CD = 'RS02'
+	   AND B.RSV_STATUS_CD = 'RS20'
+	 <![CDATA[
+	   AND B.CANCEL_CMPL_DTTM >= TO_DATE(NVL(#srcDt#, TO_CHAR(SYSDATE, 'YYYYMMDD')), 'YYYYMMDD') 
+	   AND B.CANCEL_CMPL_DTTM <  TO_DATE(NVL(#srcDt#, TO_CHAR(SYSDATE, 'YYYYMMDD')), 'YYYYMMDD') + 1
+	 ]]>
+</select>
+
+<!-- 관광지 view -->
+<select id="API_NEXTEZ_SP_S_00" resultClass="common.LowerHashMap">
+	SELECT B.PRDT_NM AS TRRSRT_NM
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = TRIM(B.AREA) ) AS TRRSRT_AREA_NM
+	     , B.ROAD_NM_ADDR || ' ' || B.DTL_ADDR AS TRRSRT_ADRES
+	     , B.LAT AS TRRSRT_LA_XCRD
+	     , B.LON AS TRRSRT_LO_YCRD
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.CTGR ) AS TRRSRT_TY_NM
+	     , (SELECT SALE_AMT
+	          FROM TB_SP_OPTINF
+	         WHERE PRDT_NUM = B.PRDT_NUM
+	           AND PRINT_YN = 'Y'
+	           AND ROWNUM   = 1
+	       ) AS TRRSRT_AMOUNT
+	     , '' 
+	        AS USER_AGRDE_CODE          /*이용자연령대코드-제공X*/
+	     , '' 
+	        AS USER_SEXDSTN_CODE        /*이용자성별코드-제공X*/
+	     , '' 
+	        AS USER_BRTC_CODE           /*이용자광역시도코드-제공X*/
+	     , A.CONECT_DEVICE_NM           /*접속장치명*/
+	     , TO_CHAR(A.INQIRE_DT, 'YYYYMMDDHH24MISS') AS INQIRE_DT
+	  FROM TB_ZDATA_VIEW_LIST A
+	  JOIN TB_SP_PRDTINF B
+	    ON B.PRDT_NUM = A.PRDT_NUM
+	 <![CDATA[
+	 WHERE INQIRE_DT >= TO_DATE(#srcDt#, 'YYYYMMDD')
+	   AND INQIRE_DT < TO_DATE(#srcDt#, 'YYYYMMDD')+1
+	]]>
+</select>
+
+<!-- 관광지 like -->
+<select id="API_NEXTEZ_SP_S_01" resultClass="common.LowerHashMap">
+	SELECT B.PRDT_NM AS TRRSRT_NM
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = TRIM(B.AREA) ) AS TRRSRT_AREA_NM
+	     , B.ROAD_NM_ADDR || ' ' || B.DTL_ADDR AS TRRSRT_ADRES
+	     , B.LAT AS TRRSRT_LA_XCRD
+	     , B.LON AS TRRSRT_LO_YCRD
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.CTGR ) AS TRRSRT_TY_NM
+	     , (SELECT SALE_AMT
+	          FROM TB_SP_OPTINF
+	         WHERE PRDT_NUM = B.PRDT_NUM
+	           AND PRINT_YN = 'Y'
+	           AND ROWNUM   = 1
+	       ) AS TRRSRT_AMOUNT
+	     , '' 
+	        AS USER_AGRDE_CODE          /*이용자연령대코드-제공X*/
+	     , '' 
+	        AS USER_SEXDSTN_CODE        /*이용자성별코드-제공X*/
+	     , '' 
+	        AS USER_BRTC_CODE           /*이용자광역시도코드-제공X*/
+	     , A.CONECT_DEVICE_NM           /*접속장치명*/
+	     , TO_CHAR(A.REGIST_DT, 'YYYYMMDDHH24MISS') AS REGIST_DT
+	  FROM TB_ZDATA_LIKE_LIST A
+	  JOIN TB_SP_PRDTINF B
+	    ON B.PRDT_NUM = A.PRDT_NUM
+	 <![CDATA[
+	 WHERE REGIST_DT >= TO_DATE(#srcDt#, 'YYYYMMDD')
+	   AND REGIST_DT < TO_DATE(#srcDt#, 'YYYYMMDD')+1
+	]]>
+</select>
+
+<!-- 관광지 share -->
+<select id="API_NEXTEZ_SP_S_02" resultClass="common.LowerHashMap">
+	SELECT B.PRDT_NM AS TRRSRT_NM
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = TRIM(B.AREA) ) AS TRRSRT_AREA_NM
+	     , B.ROAD_NM_ADDR || ' ' || B.DTL_ADDR AS TRRSRT_ADRES
+	     , B.LAT AS TRRSRT_LA_XCRD
+	     , B.LON AS TRRSRT_LO_YCRD
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.CTGR ) AS TRRSRT_TY_NM
+	     , (SELECT SALE_AMT
+	          FROM TB_SP_OPTINF
+	         WHERE PRDT_NUM = B.PRDT_NUM
+	           AND PRINT_YN = 'Y'
+	           AND ROWNUM   = 1
+	       ) AS TRRSRT_AMOUNT
+	     , '' 
+	        AS USER_AGRDE_CODE          /*이용자연령대코드-제공X*/
+	     , '' 
+	        AS USER_SEXDSTN_CODE        /*이용자성별코드-제공X*/
+	     , '' 
+	        AS USER_BRTC_CODE           /*이용자광역시도코드-제공X*/
+	     , A.CONECT_DEVICE_NM           /*접속장치명*/
+	     , TO_CHAR(A.REGIST_DT, 'YYYYMMDDHH24MISS') AS REGIST_DT
+	     , A.CHNNL_CNRS_NM
+	  FROM TB_ZDATA_SHARE_LIST A
+	  JOIN TB_SP_PRDTINF B
+	    ON B.PRDT_NUM = A.PRDT_NUM
+	 <![CDATA[
+	 WHERE REGIST_DT >= TO_DATE(#srcDt#, 'YYYYMMDD')
+	   AND REGIST_DT < TO_DATE(#srcDt#, 'YYYYMMDD')+1
+	]]>
+</select>
+
+<!-- 관광지 point -->
+<select id="API_NEXTEZ_SP_S_03" resultClass="common.LowerHashMap">
+	SELECT B.PRDT_NM AS TRRSRT_NM
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = TRIM(B.AREA) ) AS TRRSRT_AREA_NM
+	     , B.ROAD_NM_ADDR || ' ' || B.DTL_ADDR AS TRRSRT_ADRES
+	     , B.LAT AS TRRSRT_LA_XCRD
+	     , B.LON AS TRRSRT_LO_YCRD
+	     , (SELECT CD_NM
+	          FROM TB_CD
+	         WHERE CD_NUM = B.CTGR ) AS TRRSRT_TY_NM
+	     , (SELECT SALE_AMT
+	          FROM TB_SP_OPTINF
+	         WHERE PRDT_NUM = B.PRDT_NUM
+	           AND PRINT_YN = 'Y'
+	           AND ROWNUM   = 1
+	       ) AS TRRSRT_AMOUNT
+	     , '' 
+	        AS USER_AGRDE_CODE          /*이용자연령대코드-제공X*/
+	     , '' 
+	        AS USER_SEXDSTN_CODE        /*이용자성별코드-제공X*/
+	     , '' 
+	        AS USER_BRTC_CODE           /*이용자광역시도코드-제공X*/
+	     , A.CONECT_DEVICE_NM           /*접속장치명*/
+	     , TO_CHAR(A.REGIST_DT, 'YYYYMMDDHH24MISS') AS REGIST_DT
+	     , A.EVL_SCORE_VALUE
+	  FROM TB_ZDATA_POINT_LIST A
+	  JOIN TB_SP_PRDTINF B
+	    ON B.PRDT_NUM = A.PRDT_NUM
+	<![CDATA[
+	 WHERE REGIST_DT >= TO_DATE(#srcDt#, 'YYYYMMDD')
+	   AND REGIST_DT < TO_DATE(#srcDt#, 'YYYYMMDD')+1
+	]]>
+</select>
+
+</sqlMap>

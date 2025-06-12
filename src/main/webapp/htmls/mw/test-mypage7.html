@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+	
+	<title>탐나오</title>
+	
+	<link rel="stylesheet" href="../../css/mw/common2.css">
+	<link rel="stylesheet" href="../../css/mw/style.css">
+	
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/jquery.cookie.js"></script>
+	<script src="../../js/mw_common.js"></script>
+	<script src="../../js/mw_style.js"></script>
+</head>
+<body>
+<div id="wrap">
+
+<header id="header">
+	<div class="head-wrap">
+		<h1 class="title">이용후기 내역보기</h1>
+		<div class="l-area">
+			<a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+		</div>
+		<div class="r-area">
+			<button type="button" id="frame_sideOpen" class="side-btn" title="사이드메뉴 열기"></button>
+		</div>
+	</div>
+	
+	<aside id="side_menu" class="side-menu">
+		<button type="button" id="frame_sideClose" class="close"><img src="../../images/mw/common/side/close-white.png" alt="닫기"></button>
+		
+		<nav class="top-menu">
+			<a href=""><img src="../../images/mw/common/side/home.png" alt="홈"></a>
+			<a href="javascript:void(0)" id="top_searchOpen">
+				<img src="../../images/mw/common/side/search-white.png" alt="검색">
+			</a>
+			<a href="" class="like">20</a>
+			<a href="" class="cart">5</a>
+		</nav>
+		
+		<div class="menu-area">
+			<ul>
+				<li><a href="air-search.html">항공</a></li>
+			    <li><a href="hotel-list.html">숙박</a></li>
+			    <li><a href="rent-list.html">렌터카</a></li>
+			    <li><a href="social-list.html">관광/레저</a></li>
+			    <li><a href="social-list.html">맛집</a></li>
+			    <li><a href="social-list.html">여행사 상품</a></li>
+			    <li><a href="from-jeju-main.html">from 제주 <img class="icon" src="../../images/mw/common/side/from-jeju.png" alt=""></a>
+			    	<ul class="depth2">
+			    		<li><a href="">농ㆍ수ㆍ축산물</a></li>
+						<li><a href="">가공식품</a></li>
+						<li><a href="">화장품/미용</a></li>
+						<li><a href="">제주기념품</a></li>
+			    	</ul>
+			    </li>
+			    <li><a href="main4-4.html">기획전</a></li>
+			    <li><a href="main4-5.html">이벤트</a></li>
+			</ul>
+			<ul>
+				<li><a href="">MY PAGE</a></li>
+			    <li><a href="">HELP</a></li>
+			    <li><a href="">LOGOUT</a></li>
+			    <li><a href="">SETTING</a></li>
+			</ul>
+		</div>
+	</aside>
+	
+	<div id="top_search" class="search-area">
+		<button type="button" id="top_searchClose" class="close"><img src="../../images/mw/common/side/close-gray.png" alt="닫기"></button>
+		
+		<div class="form-area">
+			<div class="form">
+				<form>
+					<input type="text" placeholder="검색어 입력" class="search">
+					<button type="submit" class="search-btn" title="검색"></button>
+				</form>
+			</div>
+			<div class="keyword">
+				<h2 class="title">HOT KEYWORD</h2>
+				<ul>
+					<li><a href="">수영장 숙소</a></li>
+				    <li><a href="">제주도 맛집</a></li>
+				    <li><a href="">패들보드</a></li>
+				    <li><a href="">제주 선물</a></li>
+				    <li><a href="">연인과 함께 즐기기</a></li>
+				    <li><a href="">흑돼지</a></li>
+				    <li><a href="">감귤</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+
+<main id="main">
+	<!--//change contents-->
+	<!-- ↓↓↓ 기존코드 동일 ↓↓↓ -->
+	<section id="subContent">
+		<!-- 삭제처리
+		<div class="menu-bar">
+		    <p class="btn-prev"><img src="../../images/mw/common/btn_prev.png" width="20" alt="이전페이지"></p>
+		    <h1>나의 예약/구매 내역</h1>
+		</div> -->
+	    <div class="sub-content">
+		    <div class="review-list">
+		        <dl>
+		            <dt> <strong>[대국아일린호텔] 테스트</strong> <span class="like"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <em>2/5</em> </span> <em>2017-07-05 11:26:44</em> <a href="/mw/coustomer/viewUdateUseepil.do?useEpilNum=41" class="btn btn-reply">수정</a> </dt>
+		            <dd> 테스트 내용입니다.
+		                <dl>
+		                    <!-- <dt><a href="#" class="btn btn-reply">답글보기 <img src="../../images/mw/sub_common/re_arrow.png" width="7" alt=""></a></dt> -->
+		
+		                    <ul class="re_comment">
+		                        <li class="ic2"><img src="../../images/web/icon/re2.png" alt="re"></li>
+		                        <li class="re"> 답변을 달고 있어요 </li>
+		                    </ul>
+		                    <ul class="re_comment">
+		                        <li class="ic2"><img src="../../images/web/icon/re2.png" alt="re"></li>
+		                        <li class="re"> 두번째 답글 </li>
+		                    </ul>
+		                </dl>
+		            </dd>
+		        </dl>
+		        <dl>
+		            <dt> <strong>[] 테스트 후기</strong> <span class="like"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <em>3/5</em> </span> <em>2016-11-08 16:46:25</em> <a href="/mw/coustomer/viewUdateUseepil.do?useEpilNum=34" class="btn btn-reply">수정</a> </dt>
+		            <dd> 테스트 입니다.
+		                <dl>
+		                    <!-- <dt><a href="#" class="btn btn-reply">답글보기 <img src="../../images/mw/sub_common/re_arrow.png" width="7" alt=""></a></dt> -->
+		
+		                </dl>
+		            </dd>
+		        </dl>
+		        <dl>
+		            <dt> <strong>[] 테스트 게시</strong> <span class="like"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <em>3/5</em> </span> <em>2016-11-08 16:31:44</em> <a href="/mw/coustomer/viewUdateUseepil.do?useEpilNum=33" class="btn btn-reply">수정</a> </dt>
+		            <dd> 테스트 후기
+		                <dl>
+		                    <!-- <dt><a href="#" class="btn btn-reply">답글보기 <img src="../../images/mw/sub_common/re_arrow.png" width="7" alt=""></a></dt> -->
+		
+		                </dl>
+		            </dd>
+		        </dl>
+		        <dl>
+		            <dt> <strong>[] 테스트</strong> <span class="like"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <em>3/5</em> </span> <em>2016-11-08 16:30:16</em> <a href="/mw/coustomer/viewUdateUseepil.do?useEpilNum=32" class="btn btn-reply">수정</a> </dt>
+		            <dd> 테스트 후기
+		                <dl>
+		                    <!-- <dt><a href="#" class="btn btn-reply">답글보기 <img src="../../images/mw/sub_common/re_arrow.png" width="7" alt=""></a></dt> -->
+		
+		                </dl>
+		            </dd>
+		        </dl>
+		        <dl>
+		            <dt> <strong>[㈜케이렌터카-레이] 한글 테스트</strong> <span class="like"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <em>4/5</em> </span> <em>2016-09-22 16:32:47</em> <a href="/mw/coustomer/viewUdateUseepil.do?useEpilNum=31" class="btn btn-reply">수정</a> </dt>
+		            <dd> 한글테스트
+		                <dl>
+		                    <!-- <dt><a href="#" class="btn btn-reply">답글보기 <img src="../../images/mw/sub_common/re_arrow.png" width="7" alt=""></a></dt> -->
+		
+		                </dl>
+		            </dd>
+		        </dl>
+		        <dl>
+		            <dt> <strong>[씨엘펜션] 개발 서버</strong> <span class="like"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <em>3/5</em> </span> <em>2016-08-30 08:48:29</em> <a href="/mw/coustomer/viewUdateUseepil.do?useEpilNum=30" class="btn btn-reply">수정</a> </dt>
+		            <dd> 이미지 댓글 테스트
+		                <dl>
+		                    <!-- <dt><a href="#" class="btn btn-reply">답글보기 <img src="../../images/mw/sub_common/re_arrow.png" width="7" alt=""></a></dt> -->
+		
+		                </dl>
+		            </dd>
+		        </dl>
+		        <dl>
+		            <dt> <strong>[씨엘펜션] 모바일 이미지 이용후기</strong> <span class="like"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <em>4/5</em> </span> <em>2016-08-24 17:45:03</em> <a href="/mw/coustomer/viewUdateUseepil.do?useEpilNum=29" class="btn btn-reply">수정</a> </dt>
+		            <dd> 모바일 이미지 이용후기 등록
+		                <dl>
+		                    <!-- <dt><a href="#" class="btn btn-reply">답글보기 <img src="../../images/mw/sub_common/re_arrow.png" width="7" alt=""></a></dt> -->
+		
+		                </dl>
+		            </dd>
+		        </dl>
+		        <dl>
+		            <dt> <strong>[씨엘펜션] 테스트 후기</strong> <span class="like"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <em>3/5</em> </span> <em>2016-08-23 15:14:48</em> <a href="/mw/coustomer/viewUdateUseepil.do?useEpilNum=28" class="btn btn-reply">수정</a> </dt>
+		            <dd> 이미지 첨부 테스트 후기
+		                <dl>
+		                    <!-- <dt><a href="#" class="btn btn-reply">답글보기 <img src="../../images/mw/sub_common/re_arrow.png" width="7" alt=""></a></dt> -->
+		
+		                </dl>
+		            </dd>
+		        </dl>
+		        <dl>
+		            <dt> <strong>[씨엘펜션] 이용후기 등록</strong> <span class="like"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <img src="../../images/mw/sub_common/h_icon2.png" width="10" alt="좋아요"> <em>3/5</em> </span> <em>2016-08-23 14:20:49</em> <a href="/mw/coustomer/viewUdateUseepil.do?useEpilNum=27" class="btn btn-reply">수정</a> </dt>
+		            <dd> 이미지 등록 테스트
+		                <dl>
+		                    <!-- <dt><a href="#" class="btn btn-reply">답글보기 <img src="../../images/mw/sub_common/re_arrow.png" width="7" alt=""></a></dt> -->
+		
+		                </dl>
+		            </dd>
+		        </dl>
+		        <form name="frm" id="frm" method="post" onsubmit="return false;">
+		            <input type="hidden" id="pageIndex" name="pageIndex" value="1">
+		            <div class="pageNumber">
+		                <p class="list_pageing"> <strong>1</strong> </p>
+		            </div>
+		        </form>
+		        <p> <a href="/mw/coustomer/viewInsertUseepil.do" class="btn btn-submit">이용후기 작성</a> </p>
+		    </div>
+		</div>
+	</section>
+	<!--//change contents-->
+</main>
+
+<footer id="footer">
+	
+</footer>
+
+</div> <!-- //wrap -->
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="nextez">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>레이어팝업 예제</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="../css/common/jquery-ui.css">
+    <link rel="stylesheet" href="../css/web/common.css">
+	<link rel="stylesheet" href="../css/web/style.css">
+	
+	<!-- script -->
+	<script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/jquery-ui.js"></script>    
+    <script src="../js/jquery.cookie.js"></script>
+    <script src="../js/html_common.js"></script>
+    <script src="../js/html_style.js"></script>
+    <script>
+        $(document).ready(function() {
+            $( ".datepicker" ).datepicker({
+                showOn: "both",
+                buttonImage: "../images/web/icon/calendar_icon01.gif",
+                buttonImageOnly: true,
+                showOtherMonths: true, 										//빈칸 이전달, 다음달 출력
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="wrap">
+    
+    <div class="popup-wrap">
+    	<div class="blog-write">
+    		<p class="caption-typeA">홍보 또는 비방 목적의 게시글인 경우, 별도 고지 없이 삭제될 수 있습니다.</p>
+    		<table class="table-row">
+			    <caption>블로그 글쓰기</caption>
+			    <colgroup>
+			        <col style="width: 20%">
+			        <col>
+			    </colgroup>
+			    <tbody>
+			        <tr>
+			            <th>URL</th>
+			            <td class="input-btn-area">
+			            	<input type="text" class="int">
+			            	<button type="button" class="comm-btn">확인</button>
+			            </td>
+			        </tr>
+			        <tr>
+			            <th>블로그 제목</th>
+			            <td>
+			            	<input type="text" class="full">
+			            </td>
+			        </tr>
+			        <tr>
+			            <th>제목</th>
+			            <td>
+			            	<input type="text" class="full">
+			            </td>
+			        </tr>
+			        <tr>
+			            <th>내용</th>
+			            <td>
+			            	<textarea rows="10" class="full"></textarea>
+			            </td>
+			        </tr>
+			        <tr>
+			            <th>이미지</th>
+			            <td>
+			            	<input type="file" accept="image/*" class="full">
+			            </td>
+			        </tr>
+			        <tr>
+			            <th>날짜</th>
+			            <td>
+			            	<div class="date-container">
+							    <span class="date-wrap">
+							        <input class="datepicker" type="text" placeholder="날짜 선택">
+							    </span>
+							</div>
+			            </td>
+			        </tr>
+			    </tbody>
+			</table>
+			<div class="btn-wrap">
+			    <button type="button" class="comm-btn red">등록</button>
+			    <button type="button" class="comm-btn" onclick="window.close();">취소</button>
+			</div>
+    	</div> <!-- //blog-write -->
+    </div> <!-- //popup-wrap -->
+    
+</div> <!--//wrap-->
+</body>
+</html>

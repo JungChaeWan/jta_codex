@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="홍원기">
+
+	<title>UI Style Guide</title>
+
+	<!-- css -->
+	<link rel="stylesheet" href="../../css/mw/common2.css">
+	<link rel="stylesheet" href="../../css/comm/code_style.css"> <!--소스코드테마-->
+	
+	<!-- Style Guide 독립사용 -->
+	<style>
+		* {font-family:'Nanum Gothic','돋움', 'Dotum', sans-serif;}
+		body {background: #f2f2f2;}		
+		
+		.container {width: 1280px; margin: 0 auto;}
+		/* .container {width: 100%;} */
+
+		/* header */
+		header .top {background: #222; padding: 0 20px;}
+		header .top .container {display: table;}
+		header .top .logo, header .top .right {display: table-cell; vertical-align: middle;}
+		header .top .logo {font-size: 16px;}
+		header .top .logo a {font-family: "Noto Sans KR", sans-serif; color: #fff; display: inline-block; padding: 12px 0;}
+		header .top .logo a:hover {color: #58c0f0;}
+		header .top .right {text-align: right; font-size: 12px; color: #fff;}
+		header .top .right a {color: #fff; font-size: 13px;}
+		header .top .right a:hover {color: #58c0f0;}
+		header .main-menu {background: #fff; border-bottom: 1px solid #e1e3e4; box-shadow: 2px 0px 4px #ccc;}
+		header .main-menu .container {text-align: center;}
+		header .main-menu .title {color: #222; font-size: 24px; padding: 18px 0;}
+		
+		/* main */
+		main {margin: 20px;}
+		main .container {display: table; border-spacing: 0; border-collapse: collapse;}
+		main .left-menu, main .contents {display: table-cell; vertical-align: top; background: #fff; border: 1px solid #e1e3e4;}
+		main .left-menu {width: 250px; overflow-y: auto;}
+		main .left-menu .title {font-size: 24px; font-family: "Noto Sans KR", sans-serif; color: #222; border-bottom: 1px solid #e1e3e4; padding-bottom: 10px; margin-bottom: 10px; white-space: nowrap;}
+		main .left-menu .list-wrap > li > a {display: block; padding: 8px 0; font-size: 14px; color: #222;}
+		main .left-menu .list-wrap > li.active > a {color: #58c0f0; font-weight: 700;}
+		main .left-menu .list-wrap li a:hover {color: #58c0f0;}
+		main .left-menu .list-wrap li a.active {color: #58c0f0; font-weight: 700;}
+		main .left-menu ul.depth2 {padding-left: 14px; margin: -2px 0 8px;}
+		main .left-menu ul.depth2 li.active a {color: #58c0f0; font-weight: 700;}
+		main .left-menu ul.depth2 li a {display: block; font-size: 13px; color: #5f5f60; padding: 3px 0;}
+		main .inside {padding: 30px 30px 80px;}
+		
+		main .contents section > .title {font-size: 24px; font-family: "Noto Sans KR", sans-serif; color: #222; border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 10px;}
+		main .contents .sub-title {font-size: 16px; color: #5f5f60; margin-bottom: 10px;}
+		main .contents .preview {font-size: 14px; border: 1px solid #e1e3e4; padding: 15px;}
+		main .contents .ex {font-size: 13px; /*background: #f2f2f2; border: 1px solid #e1e3e4; border-top: none; padding: 15px;*/}
+		main .contents .ex pre {margin: 0; padding: 0 0 0 15px;}
+		main .contents .ex pre code {margin: 0; padding: 0;}
+		main .contents .inside > section {margin-top: 50px;}
+		main .contents .inside > section:first-child {margin-top: 0px;}
+		
+		/* Icon Preview */
+		.icon-preview {background: #f2f2f2; padding: 10px 20px;}
+		.icon-preview img {display: inline-block; vertical-align: middle; margin: 2px 4px;}
+		
+		/* 상단으로 가기 */
+		.go-top {position: fixed; bottom: 30px; right: 60px; z-index: 99; display: none;}
+		.go-top a {display: block; font-size: 13px; font-weight: 700; color: #333; width: 20px; height: 20px; padding: 10px; background: #f2f2f2; border: 1px solid #e1e3e4; border-radius: 5px;}
+	</style>
+
+	<!-- script -->
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/mw_style.js"></script>
+	<script src="http://kissl3oyhong.cafe24.com/js/run_prettify.js"></script> <!--소스코드출력-->
+	
+	<!--script add-->
+	<script>
+		$(document).ready(function() {
+
+			//datepicker 임시용
+			$( ".datepicker" ).datepicker({
+				showOn: "both",
+				buttonImage: "/images/comm/jquery/calendar.gif",
+				buttonImageOnly: true
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<header>
+		<!--logo-->
+		<section class="top">
+			<div class="container">
+				<h1 class="logo"><a href="#">스타일 가이드 - Mobile</a></h1>
+				<nav class="right">
+					<a href="==list.html">» Page Guide</a>
+				</nav>
+			</div>
+		</section>
+
+		<!--menu-->
+		<nav class="main-menu">
+			<div class="container"><h2 class="title">UI Style Guide</h2></div>
+		</nav>
+	</header>
+
+	<main>
+		<div class="container">
+			<!--left menu-->
+			<aside id="left_menu" class="left-menu">
+				<div class="inside">
+					<h3 class="title">Quick List</h3>
+					<ul class="list-wrap" id="scroll_spy">
+						<li>
+							<a href="#typography">타이포그래피</a>
+							<ul class="depth2">
+								<li><a href="#typography_title">제목</a></li>
+								<li><a href="#typography_type">문단</a></li>
+								<li><a href="#typography_caption">캡션</a></li>
+								<li><a href="#typography_align">정렬</a></li>
+								<li><a href="#typography_group">그룹</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#color">컬러</a>
+							<ul class="depth2">
+								<li><a href="#color_font">폰트</a></li>
+							</ul>
+						</li>
+                        <li>
+                            <a href="#list_style">리스트 스타일</a>
+                            <ul class="depth2">
+                                <li><a href="#list_option">Example</a></li>
+                            </ul>
+                        </li>
+						<li>
+							<a href="#button">Button</a>
+							<ul class="depth2">
+								<li><a href="#button_option">Example</a></li>
+								<li><a href="#button_size">버튼 크기</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#table">Table</a>
+							<ul class="depth2">
+								<li><a href="#table_option">Example</a></li>
+							</ul>
+						</li>
+                        <li>
+                            <a href="#paging">페이징</a>
+                            <ul class="depth2">
+                                <li><a href="#paging_option">Example</a></li>
+                            </ul>
+                        </li>
+						<li>
+							<a href="#form_control">폼</a>
+							<ul class="depth2">
+								<li><a href="#form_option">Example</a></li>
+								<li><a href="#form_size">폼 크기</a></li>
+								<li><a href="#form_label">label</a></li>
+								
+							</ul>
+						</li>
+						<li>
+							<a href="#label">라벨</a>
+							<ul class="depth2">
+								<li><a href="#label_option">Example</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#popup">팝업</a>
+							<ul class="depth2">
+								<li><a href="#popup_layer">레이어 팝업</a></li>
+								<li><a href="#popup_show">Show / Hide</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#navi">네비게이션</a>
+							<ul class="depth2">
+								<li><a href="#navi_tab">탭패널</a></li>
+								<li><a href="#navi_menu">탭메뉴</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#no_item">No Item</a>
+							<ul class="depth2">
+								<li><a href="#no_content">Not Content</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#accordion">Accordion</a>
+							<ul class="depth2">
+								<li><a href="#accordion_option">Example</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#icon">Icon</a>
+							<ul class="depth2">
+								<li><a href="#icon_option">Example</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#photo">Photo</a>
+							<ul class="depth2">
+                                <li><a href="#photo_option">Effect</a></li>
+                                <li><a href="#photo_group">그룹</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</aside>
+
+			<!--contents-->
+			<div id="contents" class="contents">
+				<div class="inside">
+					<section id="typography">
+						<h3 class="title">타이포그래피</h3>
+						<article>
+							<h4 id="typography_title" class="sub-title">제목</h4>
+							<div class="preview">
+								
+								<h3 class="title-type6">씨유렌터카</h3>
+								<h3 class="title-type4">위치 정보</h3>
+                               	<h4 class="title-type1">지금 이시간! 투데이 키워드</h4>
+                               	
+                               	<h3 class="title-type7">검색 결과</h3>
+                               	<h5 class="title-type2">추천 렌터카</h5>
+                               	<h5 class="title-type3">사용조건</h5>
+                               	<h6 class="title-type5">환경부 전기차 충전소 홈페이지</h6>
+                               	
+                               	<br>
+                               	
+                               	<div class="title-side-area">
+									<div class="l-area">
+										<h3 class="title-type2">주변 관광/레저</h3>
+									</div>
+									<div class="r-area icon">
+										<a href="">
+											<img src="../../images/mw/icon/option-map.png" alt="지도보기">
+										</a>
+									</div>
+								</div>
+                                
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<!-- h 태그 Depth에 따라 변경 사용 / div, dt 사용가능 -->
+<h3 class="title-type1">Title</h3> <!-- type1 ~ 7 -->
+
+<!-- Side Area -->
+<div class="title-side-area">
+    <div class="l-area"></div>
+    <div class="r-area"></div>
+</div>
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="typography_type" class="sub-title">문단</h4>
+							<div class="preview">
+                                <div class="type-body1">
+									본 상품은 렌터카, 자가운전자, 도보여행객 등 개별여행객만 사용이 가능합니다. <br>
+									(일반 정기투어, 단체관광, 택시관광 등 기사를 동반한 여행인 경우 사용하실 수 없습니다.)<br>
+									타 할인(국가유공자, 장애인, 경로, 다른 할인 쿠폰 등)과 중복할인 불가합니다.
+								</div>
+								
+								<br><br>
+								
+								<div class="type-body2">
+									<div><span class="text-red">추가요금</span>(1일 1인 추가요금)</div>
+									<div>성인 : 15,000원, 소아 : 10,000원, 유아 : 0원</div>
+								</div>
+								
+								<br>
+								
+								<div class="inline-typeA">
+									<dl>
+										<dt>이용 인원수</dt>
+										<dd>기준 2인 / 최대 3인</dd>
+									</dl>
+									<dl>
+										<dt>조식</dt>
+										<dd>불포함</dd>
+									</dl>
+								</div>
+								
+								<br>
+								
+								<dl class="type-A">
+							        <dt>자차자율 상품</dt>
+							        <dd>본 상품은 <strong class="text-red">인수 현장에서 자차보험여부</strong>를
+							        	<strong class="text-red">자율적</strong class="text-red">으로 <strong>선택</strong>하여 이용하는 상품
+							        </dd>
+							    </dl>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<!-- div 변경가능 -->
+<div class="type-body1">
+    내용 입력..
+</div>
+
+<div class="type-body2">
+    내용 입력..
+</div>
+
+<!-- Inline 속성 -->
+<div class="inline-typeA"> <!-- OR --> <div class="inline-typeA side-padding">
+    <dl>
+        <dt>제목</dt>
+        <dd>내용</dd>
+    </dl>
+    <dl>
+        <dt>제목</dt>
+        <dd>내용</dd>
+    </dl>
+</div>
+									</xmp></pre>
+							</div>
+						</article>
+                        <article class="margin-top20">
+                            <h4 id="typography_caption" class="sub-title">캡션</h4>
+                            <div class="preview">
+                                <h2 class="sec-caption">Section 제목 입력</h2>
+                                <div class="caption-typeA">주소 : 제주특별자치도 서귀포시...</div>
+                                <div class="caption-typeB">* 1인 기준 요금입니다.</div>
+                                <div class="caption-typeC">* 유류할증료/제세공과금 포함</div>
+                            </div>
+                            <div class="ex">
+                                <pre class="prettyprint linenums:1">
+									<xmp>
+<!-- Section Hide Title -->
+<h2 class="sec-caption">Section 제목 입력</h2>
+
+<!-- Caption Type (div, p 모두사용가능) -->
+<div class="caption-typeA">내용 입력..</div>
+<div class="caption-typeB">내용 입력..</div>
+<div class="caption-typeC">내용 입력..</div>
+									</xmp></pre>
+                            </div>
+                        </article>
+						<article class="margin-top20">
+							<h4 id="typography_align" class="sub-title">정렬</h4>
+							<div class="preview">
+								<div class="text-left">텍스트 좌측 정렬</div>
+								<div class="text-center">텍스트 중앙 정렬</div>
+								<div class="text-right">텍스트 우측 정렬</div>
+								<div class="text-justify">텍스트 양쪽 정렬</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<!--class add-->
+<div class="text-left">텍스트 좌측 정렬</div>
+<div class="text-center">텍스트 중앙 정렬</div>
+<div class="text-right">텍스트 우측 정렬</div>
+<div class="text-justify">텍스트 양쪽 정렬</div>
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="typography_group" class="sub-title">그룹</h4>
+							<div class="preview" style="background-color: #f2f2f2;">
+								<div class="text-groupA">
+									<dl class="inline">
+										<dt class="title-type3">입실 시간</dt>
+										<dd class="type-body1">오후3시이후 ~ 저녁10시까지</dd>
+									</dl>
+									<dl>
+										<dt class="title-type3">취소/환불</dt>
+										<dd class="type-body1">
+											예약 전 일 16:00 까지 100% 까지 환불 가능<br>
+											전 일 16:00시 부터 당일 환불 절대불가.<br>
+											유효기간 내 사용<br>
+										</dd>
+									</dl>
+								</div>
+								
+								<br>
+								
+								<div class="division-typeA">
+									내용 입력...
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<div class="text-groupA">
+    <dl class="inline">
+        <dt class="title-type3">제목</dt>
+        <dd class="type-body1">
+            내용...
+        </dd>
+    </dl>
+    <dl>
+        <dt class="title-type3">제목</dt>
+        <dd class="type-body1">
+            내용...
+        </dd>
+    </dl>
+</div>
+
+<!-- Content Box -->
+<div class="division-typeA">
+	내용 입력...
+</div>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="color">
+						<h3 class="title">컬러</h3>
+						<article>
+							<h4 id="color_font" class="sub-title">폰트</h4>
+							<div class="preview">
+								<span class="text-black">text-black &nbsp;</span>
+								<span class="text-gray">text-gray &nbsp;</span>
+								<span class="text-red">text-red &nbsp;</span>
+								<span class="text-pink">text-pink &nbsp;</span>
+								<span class="text-blue">text-blue &nbsp;</span>
+								<span class="text-green">text-green &nbsp;</span>
+								<span class="text-yellow">text-yellow &nbsp;</span>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<!--class add-->									
+<span class="text-black">text-black</span>
+<span class="text-gray">text-gray</span>
+<span class="text-red">text-red</span>
+<span class="text-pink">text-pink</span>
+<span class="text-blue">text-blue</span>
+<span class="text-green">text-green</span>
+<span class="text-yellow">text-yellow</span>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+                    <section id="list_style">
+                        <h3 class="title">List Style</h3>
+                        <article>
+                            <h4 id="list_option" class="sub-title">Example</h4>
+                            <div class="preview">
+                                <ul class="list-disc">
+                                    <li class="danger">리스트 스타일 리스트 스타일 리스트 스타일</li>
+                                    <li>리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일</li>
+                                    <li>리스트 스타일 리스트 스타일
+                                    	<ul>
+                                    		<li>리스트 스타일 리스트 스타일</li>
+                                    	</ul>
+                                    </li>
+                                </ul>
+                                
+                                <div class="info-list-group">
+									<h2 class="title">예약시 주의사항</h2>
+									<ul class="list-disc">
+								        <li class="text-red">실시간항공은 예약과 동시에 즉시 카드결제 하여야 합니다. (당일 미결제시 항공 취소될 수있습니다.)</li>
+										<li class="text-red">항공사로부터 확정된 결항/지연된 항공권은 사이트상 임의로 취소시 수수료 면제가 불가합니다.</li>
+										<li>항공 스케줄은 정부인가 조건이며, 정부인가 조건에 따라 예고없이 변경될 수있습니다.</li>
+										<li>실시간 항공은 9명까지 예약이 가능하며 10명이상의 경우 인원을 나눠서 예약 바랍니다.</li>
+								    </ul>
+								</div>
+								
+								<br><br>
+                                
+                                <ul class="list-disc type-A">
+							        <li>오전  8시 ~ 오후 8시 외 차량 대여/반납은 일부 업체만 가능하며, 추가요금이 발생하거나 완전자차 보험가입이 필요할 수 있습니다.</li>
+							    </ul>
+							    
+							    <br><br>
+							    
+							    <div style="background: #333333; padding: 20px;">
+								    <ul class="list-disc type-B">
+									    <li>
+									    	<strong class="title">대여기간</strong>
+									    	<div>2017년 9월 10일 10시 ~ 2017년 9월 15일 17시</div>
+									    </li>
+									    <li>
+									    	<strong class="title">총 대여시간</strong>
+									    	<div>34시간</div>
+									    </li>
+									    <li>
+									    	<strong class="title">자차보험</strong>
+									    	<div>
+									    		<p>자차필수 상품</p>
+												<p>(<span class="text-yellow">인수현장</span>에서 <span class="text-yellow">자차보험</span>를 <span class="text-yellow">꼭 결제</span>해야 하는 상품)</p>
+											</div>
+									    </li>
+									    <li>
+									    	<strong class="title">취소/환불</strong>
+									    	<div>24시간 이전 취소 시 전액환불 / 당일환불 불가</div>
+									    </li>
+									</ul>
+								</div>
+                            </div>
+                            <div class="ex">
+                                <pre class="prettyprint linenums:1">
+									<xmp>
+<ul class="list-disc">
+    <li class="danger">Text</li>
+    <li>Text</li>
+    <li>Text
+        <ul>
+            <li>Text</li>
+        </ul>
+    </li>
+</ul>
+
+<ul class="list-disc type-A">
+    <li>Text</li>
+</ul>
+
+<ul class="list-disc type-B">
+    <li>
+    	<strong>Title</strong>
+    	<div>내용입력..</div>
+    </li>
+</ul>
+									</xmp></pre>
+                            </div>
+                        </article>
+                    </section>
+					
+					<section id="button">
+						<h3 class="title">Button</h3>
+						<article>
+							<h4 id="button_option" class="sub-title">버튼 옵션</h4>
+							<div class="preview">
+								<div class="btn-wrap">
+									<button type="button" class="comm-btn">DEFAULT</button>
+                                    <button type="button" class="comm-btn white">WHITE</button>
+									<button type="button" class="comm-btn gray">GRAY</button>
+									<button type="button" class="comm-btn black">BLACK</button>
+                                    <button type="button" class="comm-btn blue">BLUE</button>
+									<button type="button" class="comm-btn red">RED</button>
+								</div>
+								
+								<div class="btn-wrap type-text">
+									<a href="" class="text-btn">숙소 전체 구경하기</a>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<!-- Default -->
+<div class="btn-wrap">
+    <!-- a 태그 class 동일사용 / form 전송시 type → submit 변경 -->
+    <button type="button" class="comm-btn">Cancel</button>
+    <button type="button" class="comm-btn red">Confirm</button>
+    <button type="button" class="comm-btn white">Reserve</button>
+    <a href="" class="comm-btn">a 태그</a>
+</div>
+
+<!-- Text형 버튼 -->
+<div class="btn-wrap type-text">
+    <a href="" class="text-btn">숙소 전체 구경하기</a>
+</div>
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="button_size" class="sub-title">버튼 크기</h4>
+							<div class="preview">
+								<div>
+                                    <button type="button" class="comm-btn sm">Small</button>
+								</div>
+								<div>
+                                    <button type="button" class="comm-btn">Default</button>
+								</div>
+								<div>
+                                    <button type="button" class="comm-btn big">Big</button>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<button type="button" class="comm-btn sm">Small</button> <!--sm 클래스 추가-->
+<button type="button" class="comm-btn">Default</button> <!--기본형-->
+<button type="button" class="comm-btn big">Big</button> <!--big 클래스 추가-->
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="button_area" class="sub-title">버튼 Area</h4>
+							<div class="preview">
+								<div class="btn-wrap type-full">
+									<button type="button" class="comm-btn red">검색</button>
+								</div>
+							
+								<div class="btn-wrap type-big">
+									<button type="button" class="comm-btn red big">검색</button>
+								</div>
+								
+								<div class="btn-wrap type-big">
+							    	<div class="float col2">
+								    	<!-- form 사용시 type submit 변경 -->
+								    	<a href="" class="comm-btn black big">지도검색</a>
+									    <button type="button" class="comm-btn red big">검색</button>
+								    </div>
+								</div>
+								
+								<div class="btn-wrap cell col46">
+								    <a href="" class="comm-btn gray big">다시선택</a>
+								    <a href="" class="comm-btn red big">바로구매</a>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<!-- width 100% 버튼(팝업) Area -->
+<div class="btn-wrap type-full">
+    <button type="button" class="comm-btn red">검색</button>
+</div>
+
+<!-- 큰 버튼(검색페이지) Area -->
+<div class="btn-wrap type-big">
+    <button type="button" class="comm-btn red big">검색</button>
+</div>
+
+<!-- Cell 버튼 Area -->
+<div class="btn-wrap cell col46">
+    <a href="" class="comm-btn gray big">다시선택</a>
+    <a href="" class="comm-btn red big">바로구매</a>
+</div>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="table">
+						<h3 class="title">Table</h3>
+						<article>
+							<h4 id="table_option" class="sub-title">테이블 옵션</h4>
+							<div class="preview">
+								<table class="table-col center">
+									<caption>캡션 제목</caption>
+									<colgroup>
+										<col style="width: 14%">
+										<col>
+										<col>
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+                                            <th class="backslash">
+                                                <div class="top">Right</div>
+                                                Left
+                                            </th>
+											<th>제목2</th>
+											<th>제목3</th>
+											<th>제목4</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>내용2</td>
+											<td>내용3</td>
+											<td>내용4</td>
+										</tr>
+										<tr>
+											<td><input type="radio" name="test"></td>
+											<td>내용2</td>
+											<td>내용3</td>
+											<td>내용4</td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<td colspan="4">합계 : <strong class="text-red">00</strong></td>
+										</tr>
+									</tfoot>
+								</table>
+								
+								<br>
+								
+								<table class="table-row">
+									<caption>캡션 제목</caption>
+									<colgroup>
+										<col style="width: 14%">
+										<col>
+									</colgroup>
+									<tbody>
+                                        <tr>
+                                            <th>제목</th>
+                                            <td>내용 입력</td>
+                                        </tr>
+                                        <tr>
+                                            <th>제목</th>
+                                            <td>내용 입력</td>
+                                        </tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+    <!--테이블 여백-->
+    <div class="table-margin">
+        테이블 삽입
+    </div>
+    
+    <!--col table-->
+    <table class="table-col center"> <!-- td 한방에 센터 정렬시 "center" 클래스 추가 -->
+        <caption>캡션 제목</caption>
+        <colgroup>
+            <col style="width: 15%">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">제목1</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>내용</td> <!--Default-->
+                <td class="left">내용</td> <!--텍스트 좌측 정렬시-->
+                <td class="center">내용</td> <!--텍스트 중앙 정렬시-->
+                <td class="right">내용</td> <!--텍스트 우측 정렬시-->
+            </tr>
+        </tbody>
+        <tfoot> <!--html5에 따른 순서 변경-->
+            <tr>
+                <td>합계 : <strong class="text-red">00</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+    
+    <!--row table-->
+    <table class="table-row"> <!-- not-border 추가시 border-top 삭제 -->
+        <caption>캡션 제목</caption>
+        <colgroup>
+            <col style="width: 14%">
+            <col>
+        </colgroup>
+        <tbody>
+            <tr>
+                <th scope="row">제목</th>
+                <td>내용</td>
+            </tr>
+        </tbody>
+    </table>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+                    <section id="paging">
+                        <h3 class="title">페이징</h3>
+                        <article>
+                            <h4 id="paging_option" class="sub-title">Example</h4>
+                            <div class="preview">
+                                <div class="paging-wrap">
+								    <a href="" class="mobile">더보기 15/20</a>
+								</div>
+                            </div>
+                            <div class="ex">
+                                <pre class="prettyprint linenums:1">
+									<xmp>
+<div class="paging-wrap">
+    <a href="" class="mobile">더보기 15/20</a>
+</div>
+									</xmp></pre>
+                            </div>
+                        </article>
+                    </section>
+					
+					<section id="form_control">
+						<h3 class="title">폼</h3>
+						<article>
+							<h4 id="form_option" class="sub-title">Example</h4>
+							<div class="preview">
+								<input type="tel" placeholder="010">
+								<input type="text" placeholder="제목을 입력하세요">
+								<input type="password" placeholder="비밀번호를 입력하세요">
+								<select title="옵션선택">
+									<option value="">옵션1</option>
+									<option value="">옵션2</option>
+								</select>
+								<button type="button" class="comm-btn form">검색</button>
+								<div class="margin-top10">
+									<textarea cols="30" rows="5" placeholder="내용입력"></textarea>
+								</div>
+								
+								<br><br>
+								
+								<div class="date-container">
+									<span class="date-wrap"><input class="datepicker" type="text"></span>
+									<span class="date-guide">~</span>
+									<span class="date-wrap"><input class="datepicker" type="text"></span>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<input type="tel" placeholder="010">
+	<input type="text" placeholder="제목을 입력하세요">
+	<input type="password" placeholder="비밀번호를 입력하세요">
+	<select title="옵션선택">
+		<option value="">옵션1</option>
+		<option value="">옵션2</option>
+	</select>
+	<textarea cols="30" rows="5" placeholder="내용입력"></textarea>
+	
+	<!--datepicker-->
+	<div class="date-container">
+		<span class="date-wrap"><input class="datepicker" type="text"></span>
+		<span class="date-guide">~</span>
+		<span class="date-wrap"><input class="datepicker" type="text"></span>
+	</div>								
+	<script>
+		//datepicker 임시용
+		$( ".datepicker" ).datepicker({
+			showOn: "both",
+			buttonImage: "../../images/comm/jquery/calendar.gif",
+			buttonImageOnly: true
+		});
+	</script>
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="form_size" class="sub-title">폼 크기</h4>
+							<div class="preview">
+								<input class="width100" type="text" placeholder="class width100">
+								<select class="width100">
+									<option value="">내용1</option>
+									<option value="">내용2</option>
+								</select>
+								<input size="35" type="text" placeholder="size 수치 조절">
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<input class="width100" type="text" placeholder="">
+	<select class="width100" title="">
+		<option value="">내용1</option>
+		<option value="">내용2</option>
+	</select>
+	<input size="50" type="text" placeholder="">
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="form_label" class="sub-title">label</h4>
+							<div class="preview">
+								<div class="label-typeA">
+								    <label>
+								        <input type="radio" name="sex">
+								        <span>남성</span>
+								    </label>
+								    <label>
+								        <input type="radio" name="sex">
+								        <span>여성</span>
+								    </label>
+								    <label>
+								        <input type="checkbox">
+								        <span>남성</span>
+								    </label>
+								    <label>
+								        <input type="checkbox">
+								        <span>여성</span>
+								    </label>
+								</div>
+								
+								<div class="label-typeB">
+									<span>
+  										<input id="male" type="radio" name="gender">
+  										<label for="male">남성</label>
+  									</span>
+  									<span>
+  										<input id="female" type="radio" name="gender">
+  										<label for="female">여성</label>
+  									</span>
+  									<span>
+  										<input id="male2" type="checkbox">
+  										<label for="male2">남성</label>
+  									</span>
+  									<span>
+  										<input id="female2" type="checkbox">
+  										<label for="female2">여성</label>
+  									</span>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<!--Default Type-->
+<div class="label-typeA">
+    <label>
+        <input type="radio" name="" value="">
+        <span>남성</span>
+    </label>
+    <label>
+        <input type="radio" name="" value="">
+        <span>여성</span>
+    </label>
+    <label>
+        <input type="checkbox" value="">
+        <span>남성</span>
+    </label>
+    <label>
+        <input type="checkbox" value="">
+        <span>여성</span>
+    </label>
+</div>
+
+<!--TypeB-->
+<div class="label-typeB">
+    <span>
+        <input id="" type="radio" name="" value="">
+        <label for="">남성</label>
+    </span>
+    <span>
+        <input id="" type="radio" name="" value="">
+        <label for="">여성</label>
+    </span>
+    <span>
+        <input id="" type="checkbox" name="" value="">
+        <label for="">남성</label>
+    </span>
+    <span>
+        <input id="" type="checkbox" name="" value="">
+        <label for="">여성</label>
+    </span>
+</div>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="label">
+						<h3 class="title">라벨</h3>
+						<article>
+							<h4 id="label_option" class="sub-title">Example</h4>
+							<div class="preview">
+								<div class="label-groupA">
+									<span class="comm-label">Default</span>
+								    <span class="comm-label green">당일특가</span>
+								    <span class="comm-label red">핫딜</span>
+								    <span class="comm-label blue">이벤트</span>
+								    <span class="comm-label purple">연박할인</span>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<!-- Default -->
+<span class="comm-label">Default</span>
+
+<!-- Group Type A -->
+<div class="label-groupA">
+    <span class="comm-label green">당일특가</span>
+    <span class="comm-label red">핫딜</span>
+    <span class="comm-label blue">이벤트</span>
+    <span class="comm-label purple">연박할인</span>
+</div>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="popup">
+						<h3 class="title">팝업</h3>
+						<article>
+							<h4 id="popup_layer" class="sub-title">레이어 팝업</h4>
+							<div class="preview">
+								<div>
+									<button type="button" class="comm-btn" onclick="layer_popup('#targetID');">Default</button>
+									<button type="button" class="comm-btn" onclick="layer_popup('#targetID2');">small</button>
+									<button type="button" class="comm-btn" onclick="layer_popup('#targetID3');">big</button>
+									<button type="button" class="comm-btn" onclick="layer_popup('#targetID4');">scroll</button>
+									<button type="button" class="comm-btn" onclick="layer_popup('#point_saving');">Example</button>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<button type="button" class="btn" onclick="layer_popup('#targetID');">타겟 ID 지정</button>
+	
+	<!--팝업콘텐츠 (타겟 ID동일)-->
+	<div id="targetID" class="comm-layer-popup">
+		<div class="content-wrap"> <!--클래스 추가 → sm : 작은팝업, big : 큰팝업-->
+			<div class="content">
+				<div class="head">
+					<h3 class="title">타이틀 제목</h3>
+					<button type="button" class="close"><img src="../../images/mw/icon/close/dark-gray.png" alt="닫기"></button>
+				</div>
+				
+				<div class="main">
+					<div class="scroll" style="height: 150px"> <!--scroll 시에만 class 사용 (높이지정가능) / 불필요시 클래스 및 div삭제-->
+						내용입력... 안에서는 div 맘껏 사용가능
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> <!--//layer-popup-->
+
+									</xmp></pre>
+							</div>
+						</article>
+						
+						<article class="margin-top20">
+							<h4 id="popup_show" class="sub-title">Show / Hide</h4>
+							<div class="preview">
+								
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<button type="button" onclick="itemSingleShow('#targetID');">Show</button>
+<button type="button" onclick="itemSingleHide('#targetID');">Hide</button>
+									</xmp></pre>
+							</div>
+						</article>
+
+						<!--popup content-->
+						<div id="targetID" class="comm-layer-popup">
+							<div class="content-wrap">
+								<div class="content">
+									<div class="head">
+										<h3 class="title">타이틀 제목</h3>
+										<button type="button" class="close"><img src="../../images/web/btn/close.png" alt="닫기"></button>
+									</div>
+
+									<div class="main">
+										내용입력... 안에서는 div 맘껏 사용가능<br>
+										내용입력... 안에서는 div 맘껏 사용가능
+									</div>
+									
+									<!-- <div class="foot">
+										<button type="button" class="close btn">닫기</button>
+									</div> -->
+								</div>
+							</div>
+						</div> <!--//layer-popup-->
+						
+						<div id="targetID2" class="comm-layer-popup">
+							<div class="content-wrap sm">
+								<div class="content">
+									<div class="head">
+										<h3 class="title">타이틀 제목 입력</h3>
+										<button type="button" class="close"><img src="../../images/web/btn/close.png" alt="닫기"></button>
+									</div>
+
+									<div class="main">
+										내용입력... 안에서는 div 맘껏 사용가능<br>
+										내용입력... 안에서는 div 맘껏 사용가능
+									</div>
+									
+									<!-- <div class="foot">
+										<button type="button" class="close btn">닫기</button>
+									</div> -->
+								</div>
+							</div>
+						</div> <!--//layer-popup-->
+						
+						<div id="targetID3" class="comm-layer-popup">
+							<div class="content-wrap big">
+								<div class="content">
+									<div class="head">
+										<h3 class="title">타이틀 제목 입력</h3>
+										<button type="button" class="close"><img src="../../images/web/btn/close.png" alt="닫기"></button>
+									</div>
+
+									<div class="main">
+										내용입력... 안에서는 div 맘껏 사용가능<br>
+										내용입력... 안에서는 div 맘껏 사용가능
+									</div>
+
+									<!-- <div class="foot">
+										<button type="button" class="close btn">닫기</button>
+									</div> -->
+								</div>
+							</div>
+						</div> <!--//layer-popup-->
+						
+						<div id="targetID4" class="comm-layer-popup">
+							<div class="content-wrap">
+								<div class="content">
+									<div class="head">
+										<h3 class="title">타이틀 제목 입력</h3>
+										<button type="button" class="close"><img src="../../images/web/btn/close.png" alt="닫기"></button>
+									</div>
+
+									<div class="main">
+										<div class="scroll" style="height: 150px">
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+										</div>
+									</div>
+									
+									<!-- <div class="foot">
+										<button type="button" class="close btn">닫기</button>
+									</div> -->
+								</div>
+							</div>
+						</div> <!--//layer-popup-->
+						
+						<div id="point_saving" class="comm-layer-popup point-saving">
+					        <div class="content-wrap">
+					            <div class="content">
+					                <div class="head">
+					                    <h3 class="title">L.POINT 적립</h3>
+					                    <button type="button" class="close"><img src="../../images/web/btn/close.png" alt="닫기"></button>
+					                </div>
+					
+					                <div class="main">
+					                    <table class="table-row">
+					                        <caption>포인트 조회 항목</caption>
+					                        <colgroup>
+					                            <col style="width: 25%">
+					                            <col>
+					                        </colgroup>
+					                        <tbody>
+					                            <tr>
+					                                <th>카드번호</th>
+					                                <td>
+					                                    <div class="input-col4-btn">
+					                                        <input type="text">
+					                                        <input type="text">
+					                                        <input type="password">
+					                                        <input type="password">
+					                                        <button type="button" class="btn btn4">확인</button>
+					                                    </div>
+					                                </td>
+					                            </tr>
+					                        </tbody>
+					                    </table>
+					
+					                    <div class="popup-area-list">
+					                        <ul class="list-disc">
+					                            <li>적립 시점<br>
+					                                - 관광상품 : 숙박, 렌터카, 쿠폰 등 이용 완료 후 10일 뒤 적립
+					                            </li>
+					                            <li>카드번호가 잘못 입력된 경우 적립이 불가능 하오니 정확히 입력해주세요.</li>
+					                            <li>L.POINT 적립은 신청한 건에 한해 적립이 가능하며 추후 적립은 불가 합니다.</li>
+					                            <li>이벤트코드, 할인쿠폰 등 각종 할인 수단을 제외한 실제 결제금액의 0.5%가 적립됩니다.</li>
+					                            <li>L.POINT 적립은 PC와 모바일앱에서만 가능합니다.</li>
+					                        </ul>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					    </div>
+					</section>
+					
+					<section id="navi">
+						<h3 class="title">네비게이션</h3>
+						<article>
+							<h4 id="navi_tab" class="sub-title">탭패널</h4>
+							<div class="preview">
+								<div id="tabs" class="nav-tabs1">
+									<div class="menu-wrap">
+										<ul class="nav-menu">
+											<li><a href="#tabs-1">Menu list1</a></li>
+											<li><a href="#tabs-2">Menu list2 <span>(<strong>0</strong>)</span></a></li>
+											<li><a href="#tabs-3">Menu list3 <span>(<strong>99</strong>)</span></a></li>
+										</ul>
+									</div>
+
+									<div id="tabs-1" class="tabPanel">
+										<div class="pd-wrap">1</div>
+									</div> <!-- //tabs-1 -->
+
+									<div id="tabs-2" class="tabPanel">
+										<div class="pd-wrap">2</div>
+									</div> <!-- //tabs-2 -->
+
+									<div id="tabs-3" class="tabPanel">
+										<div class="pd-wrap">3</div>
+									</div> <!-- //tabs-3 -->
+
+									<script>
+										//tabPanel({container: "#tabs"});
+										tabPanel2({
+											container: "#tabs",
+											firstItem: "#tabs-3",
+											active: 2
+										});
+									</script>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<div id="tabs" class="nav-tabs1">
+		<div class="menu-wrap">
+			<ul class="nav-menu">
+				<li><a href="#tabs-1">Menu list1</a></li>
+				<li><a href="#tabs-2">Menu list2 <span>(<strong>0</strong>)</span></a></li>
+				<li><a href="#tabs-3">Menu list3 <span>(<strong>99</strong>)</span></a></li>
+			</ul>
+		</div>
+		
+		<div id="tabs-1" class="tabPanel">
+			<div class="pd-wrap">1</div>
+		</div> <!-- //tabs-1 -->
+		<div id="tabs-2" class="tabPanel">
+			<div class="pd-wrap">2</div>
+		</div> <!-- //tabs-2 -->
+		<div id="tabs-3" class="tabPanel">
+			<div class="pd-wrap">3</div>
+		</div> <!-- //tabs-3 -->
+		
+		<script>
+			tabPanel2({
+				container: "#tabs",		//해당 ID
+				firstItem: "#tabs-3",	//show item
+				active: 2				//해당 menu add class
+			});
+		</script>
+	</div>
+									</xmp></pre>
+							</div>
+						</article>
+						
+						<article class="margin-top20">
+							<h4 id="navi_menu" class="sub-title">탭메뉴</h4>
+							<div class="preview">
+								<div class="nav-tabs2">
+								    <div class="menu-wrap">
+								        <ul id="scroll_tabs"  class="nav-menu">
+								            <li class="active"><a href="#tabs-11">상품설명</a></li>
+								            <li><a href="#tabs-12">사용조건</a></li>
+								            <li><a href="#tabs-13">취소/환불</a></li>
+								            <li><a href="#tabs-14">이용후기</a></li>
+								            <li><a href="#tabs-15">1:1문의</a></li>
+								        </ul>
+								    </div>
+								
+								    <div id="tabs-11" class="tabPanel">
+								    	<div class="text-groupA">Content1</div>
+								    </div>
+								    <div id="tabs-12" class="tabPanel">
+								    	<div class="text-groupA">Content2</div>
+								    </div>
+								    <div id="tabs-13" class="tabPanel">
+								    	<div class="text-groupA">
+										    <dl>
+										        <dt class="title-type3">취소/환불</dt>
+										        <dd class="type-body1">
+										            예약 전 일 16:00 까지 100% 까지 환불 가능<br>
+										            전 일 16:00시 부터 당일 환불 절대불가.<br>
+										            유효기간 내 사용<br>
+										        </dd>
+										    </dl>
+										</div>
+								    </div>
+								    <div id="tabs-14" class="tabPanel">
+								    	<div class="text-groupA">Content4</div>
+								    </div>
+								    <div id="tabs-15" class="tabPanel">
+								    	<div class="text-groupA">Content5</div>
+								    </div>
+								</div>
+								<script>
+									targetTabMenu('#scroll_tabs');
+								</script>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<div class="nav-tabs2">
+    <div class="menu-wrap">
+        <ul id="target_id"  class="nav-menu">
+            <li class="active"><a href="#tabs-1">상품설명</a></li>
+            <li><a href="#tabs-2">사용조건</a></li>
+            <li><a href="#tabs-3">취소/환불</a></li>
+            <li><a href="#tabs-4">이용후기</a></li>
+            <li><a href="#tabs-5">1:1문의</a></li>
+        </ul>
+    </div>
+
+    <div id="tabs-1" class="tabPanel"></div> <!-- //tabs-1 -->
+    <div id="tabs-2" class="tabPanel"></div> <!-- //tabs-2 -->
+    <div id="tabs-3" class="tabPanel"></div> <!-- //tabs-3 -->
+    <div id="tabs-4" class="tabPanel"></div> <!-- //tabs-4 -->
+    <div id="tabs-5" class="tabPanel"></div> <!-- //tabs-5 -->
+</div>
+<script>
+	targetTabMenu('#target_id');
+</script>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="no_item">
+						<h3 class="title">No Item</h3>
+						<article>
+							<h4 id="no_content" class="sub-title">Not Content</h4>
+							<div class="preview">
+								<div class="not-content">
+									<p class="icon"><img src="../../images/mw/other/no_item.png" alt="warning"></p>
+									<p class="text">찜한 상품이 없습니다.</p>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<div class="not-content">
+	<p class="icon"><img src="../../images/mw/other/no_item.png" alt="warning"></p>
+	<p class="text">Text</p>
+</div>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="icon">
+						<h3 class="title">Icon</h3>
+						<article>
+							<h4 id="icon_option" class="sub-title">Example</h4>
+							<div class="preview">
+								<div class="icon-preview">
+									<img src="../../images/mw/icon/close/dark-gray.png" alt="닫기">
+									<img src="../../images/mw/icon/close/white.png" alt="닫기">
+									<img src="../../images/mw/icon/product_like_off.png" alt="찜하기">
+									<img src="../../images/mw/icon/product_like_on.png" alt="찜하기">
+									<img src="../../images/mw/icon/product_like2_off.png" alt="찜하기">
+									<img src="../../images/mw/icon/product_like2_on.png" alt="찜하기">
+									<img src="../../images/mw/icon/sns.png" alt="sns">
+									<img src="../../images/mw/icon/form/change.png" alt="변경">
+								</div>
+								<div class="icon-preview">
+									<img src="../../images/mw/main/form/subtraction.png" alt="빼기">
+									<img src="../../images/mw/main/form/addition.png" alt="더하기">
+									<img src="../../images/mw/icon/subtraction2.png" alt="빼기">
+									<img src="../../images/mw/icon/addition2.png" alt="더하기">
+									<img src="../../images/mw/icon/del/option.png" alt="삭제">
+									<img src="../../images/mw/icon/search/gray.png" alt="검색">
+									<img src="../../images/mw/icon/option-filter.png" alt="옵션변경">
+									<img src="../../images/mw/icon/option-map.png" alt="지도보기">
+								</div>
+								<div class="icon-preview">
+									<img src="../../images/mw/icon/star_off.png" alt="좋아요">
+									<img src="../../images/mw/icon/star_on.png" alt="좋아요">
+									<img src="../../images/mw/icon/user.png" alt="">
+									<img src="../../images/mw/icon/arrow/air.png" alt="">
+									<img src="../../images/mw/icon/question.png" alt="질문">
+									<img class="speciality" src="../../images/mw/icon/speciality-detail.jpg" alt="우수관광사업체">
+								</div>
+								<div class="icon-preview">
+									<img src="../../images/mw/icon/sns/kakaotalk.png" alt="카카오톡">
+									<img src="../../images/mw/icon/sns/facebook.png" alt="페이스북">
+									<img src="../../images/mw/icon/sns/kakaostory.png" alt="카카오스토리">
+									<img src="../../images/mw/icon/sns/band.png" alt="네이버밴드">
+									<img src="../../images/mw/icon/sns/line.png" alt="라인">
+									<img src="../../images/mw/icon/sns/url.png" alt="URL복사">
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<!-- 아이콘 크기는 스타일 추가 후 사용 -->
+<!-- 이미지 경로는 요소검사 후 사용 -->
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="photo">
+						<h3 class="title">Photo</h3>
+                        <article>
+							<h4 id="photo_option" class="sub-title">Effect</h4>
+							<div class="preview">
+								<img src="../../images/web/other/product_02.jpg" alt="">
+								<img class="del" src="../../images/web/other/product_02.jpg" alt="">
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<!--del 클래스 추가-->
+<img class="del" src="" alt="">
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="photo_group" class="sub-title">그룹</h4>
+							<div class="preview">
+								<div class="image-groupA" style="width: 300px">
+								    <img src="../../images/mw/other/product-detail.jpg" alt="상품상세">
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+<div class="image-groupA">
+    <img src="" alt="">
+</div>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+				</div>
+			</div> <!--//contents-->
+		</div> <!--//container-->
+	</main>
+
+	<footer>
+		<div class="go-top"><a id="go_top" href="">Top</a></div>
+	</footer>
+	
+	<script>
+		//스크롤 감지
+		var didScroll;
+		
+		//스크롤스파이
+		var lastId,
+			topMenu = $("#scroll_spy"),
+			//topMenuHeight = topMenu.outerHeight()+15,
+			topMenuHeight = 32,
+			// All list items
+			menuItems = topMenu.find("a"),
+			// Anchors corresponding to menu items
+			scrollItems = menuItems.map(function(){
+				var item = $($(this).attr("href"));
+				if (item.length) { return item; }
+			});
+		
+		menuItems.click(function(e){
+			var href = $(this).attr("href"),
+				offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
+			$('html, body').stop().animate({
+				scrollTop: offsetTop
+			}, 300);
+			e.preventDefault();
+		});
+		
+		//Left menu
+		function scroll_leftMenu() {
+			var scrollHeight = $(window).scrollTop();
+			
+			if(scrollHeight > 190){
+				$("#left_menu").css({
+					'position': 'fixed',
+					'top': '0px',
+					'bottom': '0px',
+					'left': '20px'
+				});
+				$('#contents').css({
+					'padding-left': '250px'
+				});
+			}
+			else {
+				$("#left_menu").css({
+					'position': 'static',
+					'top': 'auto',
+					'bottom': 'auto',
+					'left': 'auto'
+				});
+				$('#contents').css({
+					'padding-left': '0'
+				});
+			}
+		}
+		
+		//Top button
+		function scroll_topButton() {
+			var scrollHeight = $(window).scrollTop();
+			
+			if(scrollHeight > 500) {
+				$('.go-top').fadeIn('500');
+			}
+			else {
+				$('.go-top').fadeOut('100');
+			}
+		}
+		
+		//스크롤 스파이
+		function scroll_spy() {
+			// Get container scroll position
+			var fromTop = $(this).scrollTop()+topMenuHeight;
+
+			// Get id of current scroll item
+			var cur = scrollItems.map(function(){
+				if ($(this).offset().top < fromTop)
+					return this;
+			});
+			// Get the id of the current element
+			cur = cur[cur.length-1];
+			var id = cur && cur.length ? cur[0].id : "";
+
+			if (lastId !== id) {
+				lastId = id;
+				// Set/remove active class
+				menuItems
+					.parent().removeClass("active")
+					.end().filter("[href='#"+id+"']").parent().addClass("active");
+			}
+		}
+		
+		//스크롤이 맨아래 위치했을때
+		function scroll_endBottom() {
+			if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+				alert('맨아래 페이지 입니다.');
+			}
+		}
+		
+		//특정 div 하단에 위치했을때
+		$(".layer-popup .scroll").scroll( function() {
+			var elem = $(".layer-popup .scroll");
+
+			if ( elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight()) {
+				//alert("End of Yellow");
+			}
+		});
+		
+		//Top Button Click
+		$('#go_top').on('click', function(){
+			$( 'html, body' ).animate( { scrollTop : 0 }, 400 );
+			return false;
+		});
+		
+		
+		$(window).scroll(function() {
+			didScroll = true; 			//스크롤 이벤트 부하에 따른 setInterval 사용
+		});
+		
+		setInterval(function() {
+			if(didScroll) {
+				scroll_leftMenu();		//left menu
+				scroll_topButton();		//top button
+				scroll_spy();			//scroll spy
+				scroll_endBottom();		//end botton
+				
+				didScroll = false;
+			}
+		}, 250);
+	</script>
+</body>
+</html>

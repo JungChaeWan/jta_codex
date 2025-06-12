@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->	
+	<link rel="stylesheet" href="../css/web/jquery-ui.css">
+	<link rel="stylesheet" href="../css/web/common.css">
+	<link rel="stylesheet" href="../css/web/style.css">
+    <!-- script -->
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/jquery-ui.js"></script>    
+    <script src="../js/html_common.js"></script>
+    <script src="../js/html_style.js"></script>
+</head>
+<body>
+    <header id="header">
+
+        <div id="topBanner">
+            <div class="Fasten">
+                <a class="img-btn" onclick="show_popup('.comm-fullPopup2');"><img src="../images/web/comm/top_banner.jpg" alt="상단배너"></a>
+                <a class="close"><img id="tbClose" src="../images/web/comm/close.png" alt="닫기"></a>
+
+                <div class="comm-fullPopup2">
+                    <a class="option-close" onclick="close_popup('.comm-fullPopup2');"><img src="../images/web/comm/view_close.png" alt="닫기"></a>
+                    <img src="../images/web/comm/top_banner_view.png" alt="배너 상세">
+                </div>
+            </div>
+        </div>
+
+        <div class="Fasten">
+            <div class="topSearch">
+                <h1 class="logo"><a href=""><img src="../images/web/comm/logo.gif" alt="탐나오"></a></h1>
+                <!-- 검색 -->
+                <p class="searchBox"><input id="search" type="text"><button id="searBT"></button></p>
+                <!-- 서브메뉴 -->
+                <nav id="topMenu">
+                    <a href="">★즐겨찾기</a>
+                    <a href="">로그인</a>
+                    <a href="">회원가입</a>
+                    <a href="">마이페이지</a>
+                    <a href="">고객센터</a>
+                </nav>
+            </div>
+        </div>
+        <!-- main menu -->
+        <nav id="mainMenu">
+            <div class="Fasten">
+                <div class="menuBT"><a id="menuBT"><img src="../images/web/comm/menu.gif" alt="메뉴"></a></div>
+                <div class="subMenu">11<br>11<br>11<br>11<br></div>
+                <ul class="mainMenu">
+                    <li><a href="air-main.html">항공</a></li>
+                    <li><a href="hotel-list.html">숙박</a></li>
+                    <li><a href="rent-list.html">렌터카</a></li>
+                    <li><a href="">관광지할인쿠폰</a></li>
+                    <li><a href="">레져/음식/뷰티</a></li>
+                    <li><a href="">카텔</a></li>
+                    <li><a href="">골프패키지</a></li>
+                    <li><a href="">버스/택시관광</a></li>
+                    <li><a href="">제주특산품</a></li>
+                    <li><a href="">특가이벤트</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- //main menu -->
+    </header>
+
+	<main id="main">
+	    <div class="mapLocation"> <!--index page에서는 삭제-->
+            <div class="Fasten">
+                <span>홈</span> <span class="gt">&gt;</span>
+                <span>장바구니</span>
+            </div>
+        </div>
+        <!-- quick banner -->
+        <div class="Fasten">
+            <aside id="leftAside">
+                <ul>
+                    <li><a href="http://www.hijeju.or.kr/discount/apply.htm" target="_blank"><img src="../images/web/leftBanner/01.png" alt="제주하이쿠폰"></a></li>
+                    <li><a href="http://www.jejugoldenbus.com/main/" target="_blank"><img src="../images/web/leftBanner/02.png" alt="제주황금시티투어"></a></li>
+                </ul>
+            </aside>
+
+            <aside id="rightAside">
+                <div class="fixed-wrap">
+                    <div class="ctWrap">
+
+                        <!-- 지역별 상품보기 -->
+                        <div class="product map">
+                            <h6 class="title">지역별 상품보기</h6>
+                            <div class="ct-box">
+                                <a href=""><img src="../images/web/comm/map_service.jpg" alt="지역별상품보기"></a>
+                            </div>
+                        </div>
+
+                        <!-- 상품 리스트 -->
+                        <div class="product">
+                            <h6 class="title">오늘본상품 <img src="../images/web/comm/arrow.gif" alt="arrow"></h6>
+                            <div class="today-list">
+                                <div id="todayList">
+                                    <ul class="list">
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider05.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider02.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider03.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <!--오늘본 상품없을 시 출력-->
+                                        <!--<p class="side-noContent">오늘 본 상품이 없습니다.</p>-->
+                                    </ul>
+                                </div>
+                                <ul class="itemNav">
+                                    <li>
+                                        <span id="itemPrev"><a href=""><img src="../images/web/comm/list_prev.gif" alt="이전"></a></span>
+                                        <!-- <span id="number">1/1</span> -->
+                                        <span id="itemNext"><a href=""><img src="../images/web/comm/list_next.gif" alt="다음"></a></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="shoppingCart">
+                            <h6>장바구니</h6>
+                            <p>
+                                <img src="../images/web/comm/cart2.gif" alt="장바구니">
+                                <span>9</span>
+                            </p>
+                        </div>
+                        <ul class="menuList">
+                            <li><a href=""><img src="../images/web/comm/menulist2.gif" alt="자주묻는질문">자주묻는질문</a></li>
+                            <li><a href=""><img src="../images/web/comm/menulist3.gif" alt="여행경비산출">여행경비산출</a></li>
+                        </ul>
+                        
+                        <!-- 여행경비산출 -->
+                        <!-- <div class="product tItem">
+                            <h6 class="title">여행경비산출</h6>
+                            <div class="ct-box">
+                                <a href=""><img src="../images/web/comm/map_service.jpg" alt="지역별상품보기"></a>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <!-- //quick banner -->
+        <div class="subContainer">
+            <div class="subHead"></div>
+            <div class="subContents">
+                <!-- new contents -->
+                <script>
+                    $(document).ready(function(){                        
+                        //숙박 옵션 열기
+                        $('#optionBT1').click(function(){
+                            show_popup($('.room-option'));
+                        });
+                        //골프 옵션 열기
+                        $('#optionBT2').click(function(){
+                            show_popup($('.golf-option'));
+                        });
+                        //렌터카 옵션 열기
+                        $('#optionBT3').click(function(){
+                            show_popup($('.rent-option'));
+                        });
+                        //패키지 옵션 열기
+                        $('#optionBT4').click(function(){
+                            show_popup($('.pack-option'));
+                        });
+                      //패키지 옵션 열기
+                        $('#optionBT5').click(function(){
+                            show_popup($('.pack-option'));
+                        });
+                        //옵션 닫기
+                        $('.option-close').click(function(){
+                            close_popup($('.option-box'));
+                        });
+                    });
+                </script>
+                <div class="cart">
+                    <div class="bgWrap2">
+                        <div class="Fasten">
+                            <div class="comm_pay">
+                                <div class="pay-title">
+                                    <h2>장바구니</h2>                                    
+                                    <!-- <p>
+                                        <span><img src="../images/web/icon/pay1.jpg" height="70" alt="상품선택"></span>
+                                    </p> -->
+                                    <!-- <ul class="cart-list">
+                                        <li class="select"><span class="step">STEP1</span>결제완료</li>
+                                        <li><span class="step">STEP2</span>결제완료</li>
+                                        <li><span class="step">STEP3</span>결제완료</li>
+                                        <li><span class="step">STEP4</span>결제완료</li>
+                                    </ul> -->
+                                </div>
+                                <ul class="commList1">
+	                                <li>해당 상품의 옵션변경 및 추가는 해당 상품 상세페이지에서 가능하십니다.</li>
+	                                <li>장바구니 상품을 삭제하려면 우측 선택버튼을 클릭하신 후에 장바구니 비우기를 눌러주세요.</li>
+	                                <li>장바구니에 저장된 상품은 사이트를 닫으면 소멸됩니다.</li>
+	                            </ul>
+                                <table class="commCol product-info">
+                                    <thead>
+                                        <tr>
+                                            <th class="title1"><input id="all_check" type="checkbox"></th>
+                                            <th class="title2">구분</th>
+                                            <th class="title3">상품정보</th>
+                                            <th class="title4">금액</th>
+                                            <th class="title5">비고</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="5">총 주문금액 : <strong>99,999,999</strong> 원</td>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td><input id="chk4" class="ch" type="checkbox"></td>
+                                            <td>제주 특산품</td>
+                                            <td class="left">
+                                                <h5 class="product"><span class="cProduct">한라봉 초콜릿 선물 SET</span></h5>
+                                                <p class="infoText">선택 : 옵션04 천혜향B(30EA)｜수량 : 2, 옵션06 감귤A (10EA)｜수량 : 1</p>
+                                            </td>
+                                            <td>99,123,456</td>
+                                            <td class="option">
+                                                <a id="optionBT5" class="optionBT">옵션변경</a>
+                                            </td>
+                                        </tr>
+                                        <!--장바구니 비었을때-->
+                                        <!-- <tr>
+                                            <td colspan="5" class="no-content">
+                                                <img src="../images/web/cart/not.gif" alt="">
+                                                <p>장바구니가 비었습니다.</p>
+                                            </td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                                <!--옵션변경-->
+                                <div class="option-wrap" style="display: block;">
+                                    <!--패키지 옵션변경-->
+                                    <div class="pack-option option-box" style="display: none;">
+                                        <h4 class="title">옵션변경하기 <a class="option-close"><img src="../images/web/cart/close.gif" alt="닫기"></a></h4>
+                                        <div class="info-head">
+                                            <div class="info-title">
+                                                <p class="photoBox"><img src="../images/web/cart/main.jpg" alt=""></p>
+                                                <p class="text">
+                                                    <span>[실시간 예약] 제주OK렌터카</span>
+                                                    <span>뉴에쿠스 3.8</span>
+                                                    <span>2015-09-16 09:00시부터 54시간 (자차보험 가입)  100,000원</span>
+                                                </p>
+                                            </div>                                            
+                                            <!--달력-->
+                                            <article class="opCal">
+                                                <h4 class="opCal-title">날짜선택 <span>(2015. 12. 31)</span></h4>
+                                                <div class="packCalendar">
+                                                    <div class="calendar">
+                                                        <div class="calHead">
+                                                            <div class="cal-top">
+                                                                <a href="" class="calPrev"><img src="../images/web/icon/arrow4.gif" alt="이전달" /></a>
+                                                                <span class="calY1">2015. </span><span class="select calM1">09</span>
+                                                                <a href="" class="calNext"><img src="../images/web/icon/arrow5.gif" alt="다음달" /></a>
+                                                            </div>
+                                                            <div class="cal-info">
+                                                                <p class="info1"><span class="colorBG"></span> <span>선택 날짜</span></p>
+                                                                <p class="info2"><span class="colorBG"></span> <span>판매종료/매진</span></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="calBody">
+                                                            <table>
+                                                                <thead>
+                                                                    <tr class="cal_title_tr">
+                                                                        <th scope="col" class="sun">일</th>
+                                                                        <th scope="col">월</th>
+                                                                        <th scope="col">화</th>
+                                                                        <th scope="col">수</th>
+                                                                        <th scope="col">목</th>
+                                                                        <th scope="col">금</th>
+                                                                        <th scope="col" class="sat">토</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="sun">25</td>
+                                                                        <td>26</td>
+                                                                        <td>27</td>
+                                                                        <td>28</td>
+                                                                        <td>29</td>
+                                                                        <td>30</td>
+                                                                        <td class="sat"><a href="">1</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="sun"><a href="">2</a></td>
+                                                                        <td><a href="">3</a></td>
+                                                                        <td><a href="">4</a></td>
+                                                                        <td><a class="select" href="">5</a></td>
+                                                                        <td><a class="end" href="">6</a></td>
+                                                                        <td><a href="">7</a></td>
+                                                                        <td class="sat"><a href="">8</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="sun"><a href="">9</a></td>
+                                                                        <td><a href="">10</a></td>
+                                                                        <td><a href="">11</a></td>
+                                                                        <td><a href="">12</a></td>
+                                                                        <td><a href="">13</a></td>
+                                                                        <td><a href="">14</a></td>
+                                                                        <td class="sat"><a href="">15</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="sun"><a href="">16</a></td>
+                                                                        <td><a href="">17</a></td>
+                                                                        <td><a href="">18</a></td>
+                                                                        <td><a href="">19</a></td>
+                                                                        <td><a href="">20</a></td>
+                                                                        <td><a href="">21</a></td>
+                                                                        <td class="sat"><a href="">22</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="sun"><a href="">23</a></td>
+                                                                        <td><a href="">24</a></td>
+                                                                        <td><a href="">25</a></td>
+                                                                        <td><a href="">26</a></td>
+                                                                        <td><a href="">27</a></td>
+                                                                        <td><a href="">28</a></td>
+                                                                        <td class="sat"><a href="">29</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="sun"><a href="">30</a></td>
+                                                                        <td>1</td>
+                                                                        <td>2</td>
+                                                                        <td>3</td>
+                                                                        <td>4</td>
+                                                                        <td>5</td>
+                                                                        <td class="sat">6</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div> <!-- //calendar -->
+                                                </div>
+                                                <script>
+                                                    $('.opCal-title').click(function(){
+                                                        if($('.packCalendar').css('display')=='none'){
+                                                            $('.packCalendar').css('display', 'block');
+                                                        }
+                                                        else {
+                                                            $('.packCalendar').css('display', 'none');
+                                                        }
+                                                    });
+                                                </script>
+                                            </article>
+                                            <!--옵션선택-->
+                                            <div class="comm-select comm-select2">
+                                                <a class="select-button">옵션을 선택하세요.</a>
+                                                <ul class="select-list-option">
+                                                    <li>
+                                                        <a>
+                                                            <p class="product"><span>[선택1]</span> <span>상품명 출력 상품명 출력 상품명 출력</span> <span class="count">| 잔여 : 144개</span></p>
+                                                            <p class="price">99,999,999</p>
+                                                        </a>
+                                                    </li>                                                        
+                                                </ul>
+                                            </div>
+                                            <script>
+                                                $('.comm-select .select-button').click(function(){
+                                                    if($(this).next('.select-list-option').css('display')=='none'){
+                                                        $('.comm-select .select-list-option').css('display', 'none');
+                                                        $(this).next().css('display', 'block');
+                                                    }
+                                                    else {
+                                                        $('.comm-select .select-list-option').css('display', 'none');
+                                                    }
+                                                });
+                                            </script>
+                                        </div> <!--//info-head-->
+                                        <div class="info-text">
+                                            <div class="list-cell">
+                                                <!--선택항목추가-->
+                                                <div class="qtyWrap">
+                                                    <ul>
+                                                        <li>
+                                                            <ol>
+                                                                <li class="list1">상품명 길면 2줄 처리함</li>
+                                                                <li class="list2">
+                                                                    <input type="text" value="1" readonly>
+                                                                    <button class="addition">+</button>
+                                                                    <button class="subtract">-</button>
+                                                                </li>
+                                                                <li class="list3"><span class="price">99,999,999</span></li>
+                                                            </ol>
+                                                        </li>
+                                                        <!-- <li>
+                                                            <ol>
+                                                                <li class="list1">상품명 길면 2줄 처리함</li>
+                                                                <li class="list2">
+                                                                    <input type="text" value="1" readonly>
+                                                                    <button class="addition">+</button>
+                                                                    <button class="subtract">-</button>
+                                                                </li>
+                                                                <li class="list3"><span class="price">99,999,999</span></li>
+                                                            </ol>
+                                                        </li> -->
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="price-wrap">
+                                                <p class="info4"><span class="plus">총합계</span> <strong>99,999,000</strong><span>원</span></p>
+                                            </div>
+                                            <!-- <p class="bt"><input type="image" src="../images/web/cart/change.gif" alt="변경완료"></p> -->
+                                            <p class="comm-button2"><a class="color4" href="">변경완료</a></p>
+                                        </div>
+                                    </div> <!--//option-box(패키지)-->
+                                    
+                                    <!--특산품 옵션변경 (패키지 동일폼)-->
+                                    
+                                </div> <!-- //option-wrap -->
+                                
+                                <!--button-->
+                                <div class="comm-button2">                                    
+                                    <a href="">장바구니 비우기</a>
+                                    <a href="">쇼핑계속하기</a>
+                                    <a href="" class="select"><img src="../images/web/icon/check.png" alt="">구매하기</a>
+                                </div>
+                            </div> <!--//comm_pay-->
+                        </div> <!--//Fasten-->
+                    </div> <!--//bgWrap2-->
+                </div> <!-- //cart -->
+                <!-- //new contents -->
+            </div> <!-- //subContents -->
+        </div> <!-- //subContainer -->
+	</main>
+	
+	<footer id="footer">
+        <div class="Fasten">
+            <div class="top-wrap">
+                <a class="go-top" onclick="go_top();"><img src="../images/web/comm/top.gif" alt="맨위로"></a>
+            </div>
+        </div>
+
+        <div class="footMenu">
+            <div class="Fasten">
+                <span><a href="">회사소개</a></span>
+                <span><a href="">사업제휴</a></span>
+                <span><a href=""><strong>개인정보취급방침</strong></a></span>
+                <span><a href="">국내여행표준약관</a></span>
+                <span><a href="">전자상거래표준약관</a></span>
+                <span><a href="">이메일무단수집거부</a></span>
+                <!-- link site -->
+                <div class="footLink">
+                    <select id="site_family">
+                        <option value="" selected>패밀리사이트</option>
+                        <option value="">list1</option>
+                    </select>
+                    <select id="site_regard">
+                        <option value="" selected>관련사이트</option>
+                        <option value="">list1</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="Fasten">
+            <div class="copy">
+                제주특별자치도관광협회 | 대표 : 김영진 | 사업자 등록번호 : 616-82-04092 | 법인 등록번호 : 220121-0000107 | 통신판매업번호: 제2013-제주연동 0024호<br>
+                63122 제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층 | Tel)064-742-8861 | Fax) 064-742-8865<br>                
+                고객센터 : 1522-3454 I 개인정보관리책임자 : 김기현<br>                
+                Copyright 2016. 제주특별자치도관광협회 All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="cmss">
+
+<resultMap id="CMSS_R_00" class="oss.corp.vo.CMSSVO">
+<result property="cmssNum" 		column="CMSS_NUM" />
+<result property="cmssNm" 		column="CMSS_NM" />
+<result property="adjAplPct" 	column="ADJ_APL_PCT" />
+<result property="regDttm" 		column="REG_DTTM" />
+<result property="regId" 		column="REG_ID" />
+<result property="modDttm" 		column="MOD_DTTM" />
+<result property="modId" 		column="MOD_ID" />
+<result property="cmssDiv" 		column="CMSS_DIV" />
+</resultMap>
+
+<resultMap id="CMSSCONFHIST_R_00" class="oss.corp.vo.CMSSCONFHISTVO">
+<result property="corpId" 		column="CORP_ID" />
+<result property="confSn" 		column="CONF_SN" />
+<result property="cmssNum" 		column="CMSS_NUM" />
+<result property="cmssNm" 		column="CMSS_NM" />
+<result property="adjAplPct" 	column="ADJ_APL_PCT" />
+<result property="regDttm" 		column="REG_DTTM" />
+<result property="regId" 		column="REG_ID" />
+<result property="confDiv" 		column="CONF_DIV" />
+</resultMap>
+
+<resultMap id="CMSS_PG_R_00" class="oss.corp.vo.CMSSPGVO">
+<result property="pgDiv" 		column="PG_DIV" />
+<result property="pgDivSeq" 		column="PG_DIV_SEQ" />
+<result property="aplStartDt" 	column="APL_START_DT" />
+<result property="aplEndDt" 		column="APL_END_DT" />
+<result property="pgCmssDiv" 		column="PG_CMSS_DIV" />
+<result property="pgCmssPer" 		column="PG_CMSS_PER" />
+<result property="pgCmssAmt" 		column="PG_CMSS_AMT" />
+<result property="minCmss" 		column="MIN_CMSS" />
+<result property="cancelCmss" 		column="CANCEL_CMSS" />
+<result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+<result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+</resultMap>
+
+<select id="CMSS_S_00" resultMap="CMSS_R_00">
+SELECT CMSS_NUM     /*수수료 번호*/
+     , CMSS_NM      /*수수료 명칭*/
+     , ADJ_APL_PCT  /*정산 적용 비율*/
+     , REG_DTTM     /*등록 일시*/
+     , REG_ID       /*등록 아이디*/
+     , MOD_DTTM     /*수정 일시*/
+     , MOD_ID       /*수정 아이디*/
+     , CMSS_DIV		/*수수료 구분*/
+  FROM TB_CMSS
+ WHERE CMSS_NUM = #cmssNum#
+</select>
+
+<select id="CMSS_S_01" resultMap="CMSS_R_00">
+SELECT CMSS_NUM     /*수수료 번호*/
+     , CMSS_NM      /*수수료 명칭*/
+     , ADJ_APL_PCT  /*정산 적용 비율*/
+     , REG_DTTM     /*등록 일시*/
+     , REG_ID       /*등록 아이디*/
+     , MOD_DTTM     /*수정 일시*/
+     , MOD_ID       /*수정 아이디*/
+     , CMSS_DIV		/*수수료 구분*/
+  FROM (SELECT CMSS_NUM     /*수수료 번호*/
+             , CMSS_NM      /*수수료 명칭*/
+             , ADJ_APL_PCT  /*정산 적용 비율*/
+             , REG_DTTM     /*등록 일시*/
+             , REG_ID       /*등록 아이디*/
+             , MOD_DTTM     /*수정 일시*/
+             , MOD_ID       /*수정 아이디*/
+             , CMSS_DIV		/*수수료 구분*/
+          FROM TB_CMSS
+         WHERE 1=1
+         <isNotEmpty property="sCmssDiv">
+			<isNotNull property="sCmssDiv">
+		   AND CMSS_DIV = #sCmssDiv#
+		    </isNotNull>
+		</isNotEmpty>
+       )
+ WHERE ROWNUM BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#) 
+</select>
+
+<select id="CMSS_S_02" resultClass="int">
+SELECT COUNT(*)
+  FROM TB_CMSS
+  WHERE 1=1
+<isNotEmpty property="sCmssDiv">
+	<isNotNull property="sCmssDiv">
+   AND CMSS_DIV = #sCmssDiv#
+    </isNotNull>
+</isNotEmpty>
+</select>
+
+<!-- B2C 수수료 전체 조회 -->
+<select id="CMSS_S_03" resultMap="CMSS_R_00">
+SELECT CMSS_NUM     /*수수료 번호*/
+     , CMSS_NM      /*수수료 명칭*/
+     , ADJ_APL_PCT  /*정산 적용 비율*/
+     , REG_DTTM     /*등록 일시*/
+     , REG_ID       /*등록 아이디*/
+     , MOD_DTTM     /*수정 일시*/
+     , MOD_ID       /*수정 아이디*/
+     , CMSS_DIV		/*수수료 구분*/
+  FROM TB_CMSS
+ WHERE CMSS_DIV = 'C'
+</select>
+
+<select id="CMSS_S_04" resultClass="int">
+SELECT COUNT(*) AS CNT
+  FROM TB_CORP
+ WHERE CMSS_NUM = #cmssNum#
+</select>
+
+<!-- B2B 수수료 전체 조회 -->
+<select id="CMSS_S_05" resultMap="CMSS_R_00">
+SELECT CMSS_NUM     /*수수료 번호*/
+     , CMSS_NM      /*수수료 명칭*/
+     , ADJ_APL_PCT  /*정산 적용 비율*/
+     , REG_DTTM     /*등록 일시*/
+     , REG_ID       /*등록 아이디*/
+     , MOD_DTTM     /*수정 일시*/
+     , MOD_ID       /*수정 아이디*/
+     , CMSS_DIV		/*수수료 구분*/
+  FROM TB_CMSS
+ WHERE CMSS_DIV = 'B'
+</select>
+
+<insert id="CMSS_I_00">
+<selectKey keyProperty="cmssNum" resultClass="String">
+SELECT 'CMSS'||LPAD(NVL(MAX(SUBSTR(CMSS_NUM,5)),0) + 1, 6,'0') AS CMSS_NUM
+  FROM TB_CMSS
+</selectKey>
+INSERT INTO TB_CMSS
+     ( CMSS_NUM     /*수수료 번호*/
+     , CMSS_NM      /*수수료 명칭*/
+     , CMSS_DIV     /*수수료 구분*/
+     , ADJ_APL_PCT  /*정산 적용 비율*/
+     , REG_DTTM     /*등록 일시*/
+     , REG_ID       /*등록 아이디*/
+     , MOD_DTTM     /*수정 일시*/
+     , MOD_ID       /*수정 아이디*/
+     )
+VALUES 
+     ( #cmssNum#
+     , #cmssNm#
+     , #cmssDiv#
+     , #adjAplPct#
+     , SYSDATE
+     , #regId#
+     , SYSDATE
+     , #modId#
+     )
+</insert>
+
+<update id="CMSS_U_00">
+UPDATE TB_CMSS
+   SET CMSS_NM      = #cmssNm#
+     , ADJ_APL_PCT  = #adjAplPct#
+     , MOD_DTTM     = SYSDATE
+     , MOD_ID       = #modId#
+ WHERE CMSS_NUM     = #cmssNum#
+</update>
+
+<delete id="CMSS_D_00">
+DELETE TB_CMSS
+ WHERE CMSS_NUM     = #cmssNum#
+</delete>
+
+<select id="CMSSCONFHIST_S_00">
+SELECT CORP_ID      /*업체 아이디*/
+     , CONF_SN      /*승인 순번*/
+     , CMSS_NUM     /*수수료 번호*/
+     , CMSS_NM      /*수수료 명칭*/
+     , ADJ_APL_PCT  /*정산 적용 비율*/
+     , REG_DTTM     /*등록 일시*/
+     , REG_ID       /*등록 아이디*/
+     , CONF_DIV     /*승인 구분*/
+  FROM TB_CMSSCONFHIST
+</select>
+
+<insert id="CMSSCONFHIST_I_01">
+INSERT INTO TB_CMSSCONFHIST
+     ( CORP_ID      /*업체 아이디*/
+     , CONF_SN      /*승인 순번*/
+     , CMSS_NUM     /*수수료 번호*/
+     , CMSS_NM      /*수수료 명칭*/
+     , ADJ_APL_PCT  /*정산 적용 비율*/
+     , REG_DTTM     /*등록 일시*/
+     , REG_ID       /*등록 아이디*/
+     , CONF_DIV     /*승인 구분*/
+     )
+SELECT #corpId#
+     , NVL(MAX(CONF_SN), 0) + 1
+     , #cmssNum#
+     , #cmssNm#
+     , #adjAplPct#
+     , SYSDATE
+     , #regId#
+     , #confDiv#
+  FROM TB_CMSSCONFHIST
+ WHERE CORP_ID = #corpId#
+</insert>
+
+<insert id="CMSSCONFHIST_I_02">
+INSERT INTO TB_CMSSCONFHIST
+     ( CORP_ID      /*업체 아이디*/
+     , CONF_SN      /*승인 순번*/
+     , CMSS_NUM     /*수수료 번호*/
+     , CMSS_NM      /*수수료 명칭*/
+     , ADJ_APL_PCT  /*정산 적용 비율*/
+     , REG_DTTM     /*등록 일시*/
+     , REG_ID       /*등록 아이디*/
+     , CONF_DIV     /*승인 구분*/
+     )
+SELECT CORP_ID
+     , (SELECT NVL(MAX(CONF_SN), 0) + 1 FROM TB_CMSSCONFHIST WHERE CORP_ID = T_CORP.CORP_ID)
+     , #cmssNum#
+     , #cmssNm#
+     , #adjAplPct#
+     , SYSDATE
+     , #regId#
+     , #confDiv#
+  FROM TB_CORP T_CORP
+ WHERE CMSS_NUM = #cmssNum#
+</insert>
+
+<select id="CMSS_PG_S_00" resultMap="CMSS_PG_R_00">
+SELECT PG_DIV  /*결제 구분*/
+ 	   , PG_DIV_SEQ  /*결제 구분 순번*/
+        , TO_CHAR(TO_DATE(APL_START_DT), 'YYYY-MM-DD') AS APL_START_DT /*적용 시작 일자*/
+        , TO_CHAR(TO_DATE(APL_END_DT), 'YYYY-MM-DD') AS APL_END_DT /*적용 종료 일자*/
+		, PG_CMSS_DIV  /*수수료 구분*/
+        , PG_CMSS_PER   /*수수료율*/
+        , PG_CMSS_AMT  /*수수료금액*/
+        , MIN_CMSS /*최소 수수료*/
+        , CANCEL_CMSS  /*취소 수수료*/
+        , FRST_REG_DTTM  /*최초 등록 일시*/
+        , LAST_MOD_DTTM  /*최종 수정 일시*/
+  FROM TB_CMSS_PG
+ WHERE PG_DIV = #pgDiv#
+ AND PG_DIV_SEQ = #pgDivSeq#
+</select>
+
+<!-- PG사 수수료 조회 -->
+<select id="CMSS_PG_S_01" resultMap="CMSS_PG_R_00">
+SELECT
+	*
+FROM(
+	SELECT
+		ROWNUM AS RN
+		, PG_DIV  /*결제 구분*/
+		, PG_DIV_SEQ  /*결제 구분 순번*/
+		, APL_START_DT  /*적용 시작 일자*/
+		, APL_END_DT  /*적용 종료 일자*/
+		, PG_CMSS_DIV  /*수수료 구분*/
+		, NVL(PG_CMSS_PER, 0) AS PG_CMSS_PER   /*수수료율*/
+		, NVL(PG_CMSS_AMT, 0) AS  PG_CMSS_AMT  /*수수료금액*/
+		, MIN_CMSS  /*최소 수수료*/
+		, CANCEL_CMSS  /*취소 수수료*/
+		, FRST_REG_DTTM  /*최초 등록 일시*/
+		, LAST_MOD_DTTM  /*최종 수정 일시*/
+	FROM(
+	SELECT
+		PG_DIV
+		, PG_DIV_SEQ
+		, APL_START_DT
+		, APL_END_DT
+		, PG_CMSS_DIV
+		, PG_CMSS_PER
+		, PG_CMSS_AMT
+		, MIN_CMSS
+		, CANCEL_CMSS
+		, FRST_REG_DTTM
+		, LAST_MOD_DTTM
+		FROM TB_CMSS_PG
+		WHERE 1=1
+		<isNotEmpty property="sPgDiv">
+		<isNotNull property="sPgDiv">
+		AND PG_DIV = #sPgDiv#
+		</isNotNull>
+		</isNotEmpty>
+		<isNotEmpty property="sPgCmssDiv">
+		<isNotNull property="sPgCmssDiv">
+		AND PG_CMSS_DIV = #sPgCmssDiv#
+		</isNotNull>
+		</isNotEmpty>
+	)
+	ORDER  BY PG_DIV, PG_DIV_SEQ, APL_START_DT
+)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+
+</select>
+
+<select id="CMSS_PG_S_02" resultClass="int">
+SELECT COUNT(*)
+  FROM TB_CMSS_PG
+  WHERE 1=1
+<isNotEmpty property="sPgDiv">
+	<isNotNull property="sPgDiv">
+   	AND PG_DIV = #sPgDiv#
+    </isNotNull>
+</isNotEmpty>
+<isNotEmpty property="sPgCmssDiv">
+	<isNotNull property="sPgCmssDiv">
+   	AND PG_CMSS_DIV = #sPgCmssDiv#
+	</isNotNull>
+</isNotEmpty>	
+</select>
+
+
+<insert id="CMSS_PG_I_00">
+INSERT INTO TB_CMSS_PG
+     ( PG_DIV     /*결제 구분*/
+     , PG_DIV_SEQ      /*결제 구분 순번*/
+     , APL_START_DT     /*적용 시작 일자*/
+     , APL_END_DT  /*적용 종료 일자*/
+     , PG_CMSS_DIV	/*수수료 구분*/
+     , PG_CMSS_PER     /*수수료율*/
+     , PG_CMSS_AMT     /*수수료금액*/
+     , MIN_CMSS	/* 최소 수수료 */
+     , CANCEL_CMSS /* 취소 수수료 */
+     , FRST_REG_DTTM       /*최초 등록 일시*/
+     , LAST_MOD_DTTM     /*최종 수정 일시*/
+     )
+VALUES 
+     ( #pgDiv#
+     , (SELECT NVL(MAX(PG_DIV_SEQ),0)+1 FROM TB_CMSS_PG WHERE PG_DIV = #pgDiv#)
+     , #aplStartDt#
+     , #aplEndDt#
+     , #pgCmssDiv#
+     , #pgCmssPer#
+     , #pgCmssAmt#
+     , #minCmss#
+     , #cancelCmss#
+     , SYSDATE
+     , SYSDATE
+     )
+</insert>
+
+<delete id="CMSS_PG_D_00">
+DELETE TB_CMSS_PG
+ WHERE PG_DIV     = #pgDiv#
+ AND PG_DIV_SEQ  = #pgDivSeq#
+</delete>
+
+<update id="CMSS_PG_U_00">
+UPDATE TB_CMSS_PG
+   SET APL_START_DT  = #aplStartDt#
+     , APL_END_DT     = #aplEndDt#
+     , PG_CMSS_PER       = #pgCmssPer#
+     , PG_CMSS_AMT       = #pgCmssAmt#
+     , MIN_CMSS       = #minCmss#
+     , LAST_MOD_DTTM = SYSDATE
+ WHERE PG_DIV     = #pgDiv#
+ AND PG_DIV_SEQ  = #pgDivSeq#
+</update>
+
+<select id="CMSS_PG_S_03" resultClass="int">
+SELECT COUNT(*)
+  FROM TB_CMSS_PG
+	WHERE 1=1
+	<isNotEmpty property="pgDiv">
+		<isNotNull property="pgDiv">
+   		AND PG_DIV = #pgDiv#
+ 	   </isNotNull>
+	</isNotEmpty>
+	<isNotEmpty property="pgDivSeq">
+		<isNotNull property="pgDivSeq">
+   		AND PG_DIV_SEQ != #pgDivSeq#
+    	</isNotNull>
+	</isNotEmpty>		
+	<isNotEmpty property="aplStartDt">
+		<isNotNull property="aplStartDt">
+   		AND  (#aplStartDt# BETWEEN APL_START_DT AND APL_END_DT OR  #aplEndDt# BETWEEN APL_START_DT AND APL_END_DT)
+    	</isNotNull>
+	</isNotEmpty>
+</select>
+</sqlMap>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="APILOG">
+
+<resultMap id="APILOG_R_00" class="apiCn.vo.APILOGVO">
+<result property="apiId" 		column="API_ID"/>
+<result property="requestDt" 	column="REQUEST_DT"/>
+<result property="apiSn" 		column="API_SN"/>
+<result property="requestDiv" 	column="REQUEST_DIV"/>
+<result property="requestUrl" 	column="REQUEST_URL"/>
+<result property="rstCd" 		column="RST_CD"/>
+<result property="rstInf" 		column="RST_INF"/>
+<result property="requestDttm" 	column="REQUEST_DTTM"/>
+</resultMap>
+
+<select id="APILOG_S_00">
+SELECT API_ID       /*API 아이디*/
+     , REQUEST_DT   /*요청 일자*/
+     , API_SN       /*API 순번*/
+     , REQUEST_DIV  /*요청 구분*/
+     , REQUEST_URL  /*요청 URL*/
+     , RST_CD       /*결과 코드*/
+     , RST_INF      /*결과 정보*/
+     , REQUEST_DTTM /*요청 일시*/
+  FROM TB_APILOG
+</select>
+
+<insert id="APILOG_I_00">
+INSERT INTO TB_APILOG
+     ( API_ID       /*API 아이디*/
+     , REQUEST_DT   /*요청 일자*/
+     , API_SN       /*API 순번*/
+     , REQUEST_DIV  /*요청 구분*/
+     , REQUEST_URL  /*요청 URL*/
+     , RST_CD       /*결과 코드*/
+     , RST_INF      /*결과 정보*/
+     , REQUEST_DTTM /*요청 일시*/
+     )
+VALUES 
+     ( #apiId#
+     , TO_CHAR(SYSDATE, 'YYYYMMDD')
+     , #apiSn#
+     , #requestDiv#
+     , #requestUrl#
+     , #rstCd#
+     , #rstInf#
+     , SYSDATE
+     )
+</insert>
+
+<insert id="APILOG_I_01">
+INSERT INTO TB_APILOG
+     ( API_ID       /*API 아이디*/
+     , REQUEST_DT   /*요청 일자*/
+     , API_SN       /*API 순번*/
+     , REQUEST_DIV  /*요청 구분*/
+     , REQUEST_URL  /*요청 URL*/
+     , RST_CD       /*결과 코드*/
+     , RST_INF      /*결과 정보*/
+     , REQUEST_DTTM /*요청 일시*/
+     )
+SELECT #apiId#
+     , TO_CHAR(SYSDATE, 'YYYYMMDD')
+     , NVL(MAX(API_SN), 0) + 1
+     , #requestDiv#
+     , #requestUrl#
+     , #rstCd#
+     , #rstInf#
+     , SYSDATE
+  FROM TB_APILOG
+ WHERE API_ID = #apiId#
+   AND REQUEST_DT = TO_CHAR(SYSDATE, 'YYYYMMDD')
+</insert>
+
+
+<insert id="APIRC_LOG_I_00">
+    <selectKey keyProperty="dataId" resultClass="String">
+    SELECT TO_CHAR(SYSDATE, 'YYYYMMDD') || '1' || LPAD(NVL(MAX(SUBSTRING (DATA_ID,10,17)),0),8,'0') + 1 AS DATA_ID
+        FROM  TB_APIRC_RSV
+    </selectKey>
+    INSERT INTO TB_APIRC_RSV(
+        DATA_ID,
+        RSV_NUM,
+        RC_RSV_NUM,
+        SEQ_NUM,
+        REQUEST_MSG,
+        RESULT_MSG,
+        RSV_RESULT,
+        FAULT_REASON,
+        API_RENT_DIV
+    )VALUES(
+        #dataId#,
+        #rsvNum#,
+        #rcRsvNum#,
+        #seqNum#,
+        #requestMsg#,
+        #resultMsg#,
+        #rsvResult#,
+        #faultReason#,
+        #apiRentDiv#
+    )
+</insert>
+
+<select id="DAEHONGEVENT_S_00" resultClass="integer">
+    SELECT
+        NVL(MAX(TICKET_CNT),0) AS TICKET_CNT
+    FROM (
+        SELECT RSV_TELNUM, SUM(TICKET_CNT) AS TICKET_CNT FROM TB_RSV AS A
+    JOIN(
+        SELECT
+            RSV_NUM, COUNT(*) AS TICKET_CNT
+        FROM TB_SP_RSV WHERE PRDT_NUM = 'SP00002180' AND RSV_STATUS_CD = 'RS02' GROUP BY RSV_NUM
+        ) AS B
+    ON A.RSV_NUM = B.RSV_NUM
+    GROUP BY RSV_TELNUM
+    ) WHERE RSV_TELNUM = #telNum#
+</select>
+
+</sqlMap>

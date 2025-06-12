@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->	
+	<link rel="stylesheet" href="../css/web/jquery-ui.css">
+	<link rel="stylesheet" href="../css/web/common.css">
+	<link rel="stylesheet" href="../css/web/style.css">
+    <!-- script -->
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/jquery-ui.js"></script>    
+    <script src="../js/jquery.cookie.js"></script>
+    <script src="../js/swiper.js"></script> <!-- 공통추가 -->
+    <script src="../js/html_common.js"></script>
+    <script src="../js/html_style.js"></script>
+</head>
+<body>
+    <header id="header">        
+        <div id="top_banner" class="top-banner swiper-container">
+	        <ul class="swiper-wrapper">
+	            <li class="swiper-slide" style="background-color: #c6c0dc">
+	            	<a href="#"><img src="http://www.tamnao.com/data/banner/2017-08/ban_20170802030831_0.jpg" alt="상단배너1"></a>
+	            </li>
+	            <li class="swiper-slide" style="background-color: #fff3be">
+	            	<a href="#"><img src="../images/web/comm/top_banner.jpg" alt="상단배너2"></a>
+	            </li>
+	        </ul>
+	        <div class="container">
+	        	<a href="javascript:void(0)" id="top_close" class="close">
+	        		<img src="../images/web/comm/close.png" alt="닫기">
+	        	</a>
+	        </div>
+	    </div>
+        <!--//New top banner zone-->
+
+        <div class="Fasten">
+            <div class="topSearch">
+                <h1 class="logo"><a href=""><img src="../images/web/comm/logo.gif" alt="탐나오"></a></h1>
+                <!-- 검색 -->
+                <p class="searchBox"><input id="search" type="text"><button id="searBT"></button></p>
+                <!-- 서브메뉴 -->
+                <nav id="topMenu">
+                    <a href="">★즐겨찾기</a>
+                    <a href="">로그인</a>
+                    <a href="">회원가입</a>
+                    <a href="">마이페이지</a>
+                    <a href="">고객센터</a>
+                </nav>
+            </div>
+        </div>
+        <!-- main menu -->
+        <nav id="mainMenu">
+            <div class="Fasten">
+                <div class="menuBT"><a id="menuBT"><img src="../images/web/comm/menu.gif" alt="메뉴"></a></div>
+                <div class="subMenu">11<br>11<br>11<br>11<br></div>
+                <ul class="mainMenu">
+                    <li><a href="air-main.html">항공</a></li>
+                    <li><a href="hotel-list.html">숙박</a></li>
+                    <li><a href="rent-list.html">렌터카</a></li>
+                    <li><a href="">관광지할인쿠폰</a></li>
+                    <li><a href="">레져/음식/뷰티</a></li>
+                    <li><a href="">카텔</a></li>
+                    <li><a href="">골프패키지</a></li>
+                    <li><a href="">버스/택시관광</a></li>
+                    <li><a href="">제주특산품</a></li>
+                    <li><a href="">특가이벤트</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- //main menu -->
+    </header>
+
+	<main id="main">
+	    <div class="mapLocation"> <!--index page에서는 삭제-->
+            <div class="Fasten">
+                <span>홈</span> <span class="gt">&gt;</span>
+                <span>실시간 예약</span> <span class="gt">&gt;</span>
+                <span>실시간 숙박</span> <span class="gt">&gt;</span>
+                <span>숙박상세</span>
+            </div>
+        </div>
+        <!-- quick banner -->
+        <div class="Fasten">
+            <aside id="leftAside">
+                <ul>
+                    <li><a href="http://www.hijeju.or.kr/discount/apply.htm" target="_blank"><img src="../images/web/leftBanner/01.png" alt="제주하이쿠폰"></a></li>
+                    <li><a href="http://www.jejugoldenbus.com/main/" target="_blank"><img src="../images/web/leftBanner/02.png" alt="제주황금시티투어"></a></li>
+                </ul>
+            </aside>
+
+            <aside id="rightAside">
+                <div class="fixed-wrap">
+                    <div class="ctWrap">
+
+                        <!-- 지역별 상품보기 -->
+                        <div class="product map">
+                            <h6 class="title">지역별 상품보기</h6>
+                            <div class="ct-box">
+                                <a href=""><img src="../images/web/comm/map_service.jpg" alt="지역별상품보기"></a>
+                            </div>
+                        </div>
+
+                        <!-- 상품 리스트 -->
+                        <div class="product">
+                            <h6 class="title">오늘본상품 <img src="../images/web/comm/arrow.gif" alt="arrow"></h6>
+                            <div class="today-list">
+                                <div id="todayList">
+                                    <ul class="list">
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider05.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider02.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider03.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <!--오늘본 상품없을 시 출력-->
+                                        <!--<p class="side-noContent">오늘 본 상품이 없습니다.</p>-->
+                                    </ul>
+                                </div>
+                                <ul class="itemNav">
+                                    <li>
+                                        <span id="itemPrev"><a href=""><img src="../images/web/comm/list_prev.gif" alt="이전"></a></span>
+                                        <!-- <span id="number">1/1</span> -->
+                                        <span id="itemNext"><a href=""><img src="../images/web/comm/list_next.gif" alt="다음"></a></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="shoppingCart">
+                            <h6>장바구니</h6>
+                            <p>
+                                <img src="../images/web/comm/cart2.gif" alt="장바구니">
+                                <span>9</span>
+                            </p>
+                        </div>
+                        <ul class="menuList">
+                            <li><a href=""><img src="../images/web/comm/menulist2.gif" alt="자주묻는질문">자주묻는질문</a></li>
+                            <li><a href=""><img src="../images/web/comm/menulist3.gif" alt="여행경비산출">여행경비산출</a></li>
+                        </ul>
+                        
+                        <!-- 여행경비산출 -->
+                        <!-- <div class="product tItem">
+                            <h6 class="title">여행경비산출</h6>
+                            <div class="ct-box">
+                                <a href=""><img src="../images/web/comm/map_service.jpg" alt="지역별상품보기"></a>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <!-- //quick banner -->
+        <div class="subContainer">
+            <div class="subHead"></div>
+            <div class="subContents">
+                <!-- new contents -->                
+                <div class="pay-end">
+                    <div class="bgWrap2">
+                        <div class="Fasten">
+                            <div class="comm_pay">
+                                <div class="pay-title">
+                                    <h2>장바구니</h2>
+                                    <p>
+                                        <span><img src="../images/web/icon/pay3.jpg" height="70" alt="상품선택"></span>
+                                    </p>
+                                </div>
+                                <div class="title-box">
+                                    <h2>“감사합니다. 주문이 완료되었습니다”</h2>
+                                    <p>고경희님의 주문이 정상적으로 완료되었습니다. 주문번호 [1213583]</p>
+                                </div>
+                                <ul class="commList1">
+                                    <li>주문상세내역은 사이트상단의 <strong>마이페이지 &gt; 나의 예약/구매 내역</strong>에서 확인하실 수 있습니다</li>
+                                    <li>주문과 관련된 문의사항이 있으신경우 <strong>고객센터</strong>를 통해 문의해 주시기 바랍니다.</li>
+                                </ul>
+                                <article class="ct-wrap comm-payEndInfo">
+                                    <h5 class="title">결제내역</h5>
+                                    <div class="total-wrap">
+                                        <ul>
+                                            <li>
+                                                <dl>
+                                                    <dt>
+                                                        <span class="text">주문금액</span>
+                                                        <span class="price"><strong>29,900</strong> 원</span>
+                                                        <span class="icon"><img src="../images/web/cart/subtract.png" alt="빼기"></span>
+                                                    </dt>
+                                                    <dd>
+                                                        <p><span class="text">ㆍ 상품금액</span>
+                                                        <span class="price"><strong>29,900</strong> 원</span></p>
+                                                    </dd>
+                                                </dl>
+                                            </li>
+                                            <li>
+                                                <dl>
+                                                    <dt>
+                                                        <span class="text">할인금액</span>
+                                                        <span class="price"><strong>29,900</strong> 원</span>
+                                                        <span class="icon"><img src="../images/web/cart/sum.png" alt="합계"></span>
+                                                    </dt>
+                                                    <dd>
+                                                        <p>
+                                                        	<span class="text">ㆍ 할인쿠폰</span>
+                                                        	<span class="price"><strong>29,900</strong> 원</span>
+                                                        </p>
+                                                        <p>
+                                                        	<span class="text">ㆍ L.POINT 할인</span>
+                                                        	<span class="price"><strong>180</strong> P</span>
+                                                        </p>
+                                                    </dd>
+                                                </dl>
+                                            </li>
+                                            <li>
+                                                <dl class="total">
+                                                    <dt>
+                                                        <span class="text">결제금액</span>
+                                                        <span class="price"><strong>29,900</strong> 원</span>
+                                                    </dt>
+                                                    <dd>
+                                                        <p><span class="text">ㆍ 신용카드</span>
+                                                        <span class="price"><strong>29,900</strong> 원</span></p>
+                                                    </dd>
+                                                </dl>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                                <article class="ct-wrap">
+                                    <h5 class="title">주문하신 상품</h5>
+                                    <table class="commCol product-info">
+                                        <thead>
+                                            <tr>
+                                                <th class="title1">구분</th>
+                                                <th class="title2">상품정보</th>
+                                                <th class="title3">금액</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>숙박</td>
+                                                <td class="left">
+                                                    <h5 class="product">[실기간예약] <span class="cProduct">블루베이 13평</span> <span class="nt">예약불가</span></h5>
+                                                    <p class="infoText">2015-09-16일부터 2박 | 성인 2명, 소아 1명 | 150,000원</p>
+                                                </td>
+                                                <td>99,123,456</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </article>
+                                <!--button-->
+                                <div class="comm-button2">
+                                    <a href="" class="color1">홈으로</a>
+                                </div>
+                            </div> <!--//comm_pay-->
+                        </div> <!--//Fasten-->
+                    </div> <!--//bgWrap2-->
+                </div> <!-- //pay-end -->
+                <!-- //new contents -->
+            </div> <!-- //subContents -->
+        </div> <!-- //subContainer -->
+	</main>
+
+	<footer id="footer">
+        <div class="Fasten">
+            <div class="top-wrap">
+                <a class="go-top" onclick="go_top();"><img src="../images/web/comm/top.gif" alt="맨위로"></a>
+            </div>
+        </div>
+
+        <div class="footMenu">
+            <div class="Fasten">
+                <span><a href="">회사소개</a></span>
+                <span><a href="">사업제휴</a></span>
+                <span><a href=""><strong>개인정보취급방침</strong></a></span>
+                <span><a href="">국내여행표준약관</a></span>
+                <span><a href="">전자상거래표준약관</a></span>
+                <span><a href="">이메일무단수집거부</a></span>
+                <!-- link site -->
+                <div class="footLink">
+                    <select id="site_family">
+                        <option value="" selected>패밀리사이트</option>
+                        <option value="">list1</option>
+                    </select>
+                    <select id="site_regard">
+                        <option value="" selected>관련사이트</option>
+                        <option value="">list1</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="Fasten">
+            <div class="copy">
+                제주특별자치도관광협회 | 대표 : 김영진 | 사업자 등록번호 : 616-82-04092 | 법인 등록번호 : 220121-0000107 | 통신판매업번호: 제2013-제주연동 0024호<br>
+                63122 제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층 | Tel)064-742-8861 | Fax) 064-742-8865<br>                
+                고객센터 : 1522-3454 I 개인정보관리책임자 : 김기현<br>                
+                Copyright 2016. 제주특별자치도관광협회 All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

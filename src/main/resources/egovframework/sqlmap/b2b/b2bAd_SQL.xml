@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="b2bAd">
+
+<resultMap id="B2B_AD_AMTGRP_R_00" class="mas.b2b.vo.B2B_AD_AMTGRPVO">
+<result property="amtGrpNum" 	column="AMT_GRP_NUM" />
+<result property="corpId" 		column="CORP_ID" />
+<result property="amtNm" 		column="AMT_NM" />
+<result property="regDttm" 		column="REG_DTTM" />
+<result property="regId" 		column="REG_ID" />
+<result property="modDttm" 		column="MOD_DTTM" />
+<result property="modId" 		column="MOD_ID" />
+</resultMap>
+
+<resultMap id="B2B_AD_AMTGRP_R_01" class="mas.b2b.vo.B2B_AD_AMTGRPVO">
+<result property="ctrtNum" 		column="CTRT_NUM" />
+<result property="amtGrpNum" 	column="AMT_GRP_NUM" />
+<result property="corpNm" 		column="CORP_NM" />
+<result property="amtNm" 		column="AMT_NM" />
+<result property="modDttm" 		column="MOD_DTTM" />
+<result property="ceoNm" 		column="CEO_NM" />
+<result property="admNm" 		column="ADM_NM" />
+<result property="rsvTelNum"	column="RSV_TEL_NUM" />
+</resultMap>
+
+<resultMap id="B2B_AD_CORPAMT_R_01" class="mas.b2b.vo.B2B_AD_AMTGRPVO">
+<result property="ctrtNum" 		column="CTRT_NUM" />
+<result property="amtGrpNum" 	column="AMT_GRP_NUM" />
+<result property="regDttm" 		column="REG_DTTM" />
+<result property="regId" 		column="REG_ID" />
+<result property="corpId"		column="CORP_ID" />
+</resultMap>
+
+<resultMap id="B2B_AD_AMT_R_00" class="mas.b2b.vo.B2B_AD_AMTVO">
+<result property="amtGrpNum" 	column="AMT_GRP_NUM" />
+<result property="prdtNum" 		column="PRDT_NUM" />
+<result property="aplDt" 		column="APL_DT" />
+<result property="corpId" 		column="CORP_ID" />
+<result property="saleAmt" 		column="SALE_AMT" />
+</resultMap>
+
+<resultMap id="B2B_AD_PRDT_R_00" class="mas.b2b.vo.B2B_AD_PRDTVO">
+<result property="corpId" 		column="CORP_ID" />
+<result property="prdtNum" 		column="PRDT_NUM" />
+<result property="prdtNm" 		column="PRDT_NM" />
+<result property="adNm" 		column="AD_NM" />
+<result property="stdMem" 		column="STD_MEM" />
+<result property="maxiMem" 		column="MAXI_MEM" />
+<result property="breakfastYn" 	column="BREAKFAST_YN" />
+<result property="adDiv" 		column="AD_DIV" />
+<result property="adDivNm" 		column="AD_DIV_NM" />
+<result property="adArea" 		column="AD_AREA" />
+<result property="adAreaNm" 	column="AD_AREA_NM" />
+<result property="saleAmt" 		column="SALE_AMT" />
+<result property="adultAddAmt" 	column="ADULT_ADD_AMT" />
+<result property="juniorAddAmt" column="JUNIOR_ADD_AMT" />
+<result property="childAddAmt" 	column="CHILD_ADD_AMT" />
+<result property="totalSaleAmt" column="TOTAL_SALE_AMT" />
+</resultMap>
+
+<select id="B2B_AD_AMTGRP_S_00" resultMap="B2B_AD_AMTGRP_R_00">
+SELECT AMT_GRP_NUM  /*요금 그룹 번호*/
+     , CORP_ID      /*업체 아이디*/
+     , AMT_NM       /*요금 명칭*/
+     , REG_DTTM     /*등록 일시*/
+     , REG_ID       /*등록 아이디*/
+     , MOD_DTTM     /*수정 일시*/
+     , MOD_ID       /*수정 아이디*/
+  FROM TB_B2B_AD_AMTGRP
+ WHERE AMT_GRP_NUM = #amtGrpNum#
+</select>
+
+<!-- 업체 그룹 리스트 -->
+<select id="B2B_AD_AMTGRP_S_01" resultMap="B2B_AD_AMTGRP_R_01">
+SELECT CTRT_NUM
+     , CORP_NM
+     , CEO_NM
+     , ADM_NM
+     , RSV_TEL_NUM
+     , MOD_DTTM
+     , AMT_GRP_NUM
+     , AMT_NM
+  FROM (SELECT ROWNUM AS RN
+             , T_CTRT.CTRT_NUM
+             , T_CORP.CORP_NM
+             , T_CORP.CEO_NM
+             , T_CORP.ADM_NM
+             , T_CORP.RSV_TEL_NUM
+             , T_CORPAMT.MOD_DTTM
+             , T_CORPAMT.AMT_GRP_NUM
+             , T_CORPAMT.AMT_NM
+          FROM TB_B2B_CTRT T_CTRT
+         INNER JOIN TB_CORP T_CORP
+            ON T_CORP.CORP_ID = T_CTRT.SALE_AGC_CORP_ID
+          LEFT OUTER JOIN (SELECT T_CORPAMT.CTRT_NUM
+                                , T_CORPAMT.AMT_GRP_NUM
+                                , T_GRP.AMT_NM
+                                , T_GRP.MOD_DTTM
+                             FROM TB_B2B_AD_CORPAMT T_CORPAMT
+                            INNER JOIN TB_B2B_AD_AMTGRP T_GRP
+                               ON T_GRP.AMT_GRP_NUM = T_CORPAMT.AMT_GRP_NUM
+                          ) T_CORPAMT
+            ON T_CORPAMT.CTRT_NUM = T_CTRT.CTRT_NUM
+         WHERE T_CTRT.SALE_CORP_ID = #sCorpId#
+           AND T_CTRT.STATUS_CD = 'CT03'
+         <isNotEmpty property="sCorpNm">
+         	<isNotNull property="sCorpNm">
+           AND T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+         	</isNotNull>
+         </isNotEmpty>
+         <isNotEmpty property="sAmtGrpNum">
+         	<isNotNull property="sAmtGrpNum">
+           AND T_CORPAMT.AMT_GRP_NUM = #sAmtGrpNum#
+         	</isNotNull>
+         </isNotEmpty>
+       )
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="B2B_AD_AMTGRP_S_02" resultClass="int">
+SELECT COUNT(T_CTRT.CTRT_NUM) AS CNT
+  FROM TB_B2B_CTRT T_CTRT
+ INNER JOIN TB_CORP T_CORP
+    ON T_CORP.CORP_ID = T_CTRT.SALE_AGC_CORP_ID
+  LEFT OUTER JOIN (SELECT T_CORPAMT.CTRT_NUM
+                        , T_CORPAMT.AMT_GRP_NUM
+                        , T_GRP.AMT_NM
+                        , T_GRP.MOD_DTTM
+                     FROM TB_B2B_AD_CORPAMT T_CORPAMT
+                    INNER JOIN TB_B2B_AD_AMTGRP T_GRP
+                       ON T_GRP.AMT_GRP_NUM = T_CORPAMT.AMT_GRP_NUM
+                  ) T_CORPAMT
+    ON T_CORPAMT.CTRT_NUM = T_CTRT.CTRT_NUM
+ WHERE T_CTRT.SALE_CORP_ID = #sCorpId#
+   AND T_CTRT.STATUS_CD = 'CT03'
+<isNotEmpty property="sCorpNm">
+	<isNotNull property="sCorpNm">
+   AND T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+	</isNotNull>
+</isNotEmpty>
+<isNotEmpty property="sAmtGrpNum">
+	<isNotNull property="sAmtGrpNum">
+   AND T_CORPAMT.AMT_GRP_NUM = #sAmtGrpNum#
+	</isNotNull>
+</isNotEmpty>
+</select>
+
+<select id="B2B_AD_AMTGRP_S_03" resultMap="B2B_AD_AMTGRP_R_00">
+SELECT AMT_GRP_NUM  /*요금 그룹 번호*/
+     , CORP_ID      /*업체 아이디*/
+     , AMT_NM       /*요금 명칭*/
+     , REG_DTTM     /*등록 일시*/
+     , REG_ID       /*등록 아이디*/
+     , MOD_DTTM     /*수정 일시*/
+     , MOD_ID       /*수정 아이디*/
+  FROM TB_B2B_AD_AMTGRP
+ WHERE CORP_ID = #sCorpId#
+</select>
+
+<insert id="B2B_AD_AMTGRP_I_01">
+<selectKey keyProperty="amtGrpNum" resultClass="String">
+SELECT 'ADG'||LPAD(NVL(MAX(SUBSTR(AMT_GRP_NUM,4)),0) + 1, 7,'0') AS AMT_GRP_NUM
+  FROM TB_B2B_AD_AMTGRP
+</selectKey>
+INSERT INTO TB_B2B_AD_AMTGRP
+     ( AMT_GRP_NUM  /*요금 그룹 번호*/
+     , CORP_ID		/*업체 아이디*/
+     , AMT_NM       /*요금 명칭*/
+     , REG_DTTM     /*등록 일시*/
+     , REG_ID       /*등록 아이디*/
+     , MOD_DTTM     /*수정 일시*/
+     , MOD_ID       /*수정 아이디*/
+     )
+VALUES 
+     ( #amtGrpNum#
+     , #corpId#
+     , #amtNm#
+     , SYSDATE
+     , #regId#
+     , SYSDATE
+     , #regId#
+     )
+</insert>
+
+<update id="B2B_AD_AMTGRP_U_01">
+UPDATE TB_B2B_AD_AMTGRP
+   SET AMT_NM = #amtNm#
+     , MOD_DTTM = SYSDATE
+     , MOD_ID   = #modId#
+ WHERE AMT_GRP_NUM = #amtGrpNum#
+</update>
+
+<delete id="B2B_AD_AMTGRP_D_00">
+DELETE FROM TB_B2B_AD_AMTGRP
+ WHERE AMT_GRP_NUM = #amtGrpNum#
+</delete>
+
+<select id="B2B_AD_CORPAMT_S_01" resultMap="B2B_AD_CORPAMT_R_01">
+SELECT CTRT_NUM
+     , AMT_GRP_NUM
+     , REG_DTTM
+     , REG_ID
+     , CORP_ID
+  FROM TB_B2B_AD_CORPAMT
+ WHERE AMT_GRP_NUM = #amtGrpNum#
+</select>
+
+<update id="B2B_AD_CORPAMT_M_00">
+  MERGE INTO TB_B2B_AD_CORPAMT T_CORPAMT
+  USING (SELECT #ctrtNum# AS CTRT_NUM, #corpId# AS CORP_ID
+           FROM DUAL
+        ) D
+     ON (D.CTRT_NUM = T_CORPAMT.CTRT_NUM AND D.CORP_ID = T_CORPAMT.CORP_ID)
+   WHEN MATCHED THEN
+ UPDATE 
+    SET AMT_GRP_NUM = #amtGrpNum#
+      , REG_DTTM    = SYSDATE
+      , REG_ID      = #regId#
+   WHEN NOT MATCHED THEN
+ INSERT 
+      ( CTRT_NUM
+      , AMT_GRP_NUM
+      , REG_DTTM
+      , REG_ID
+      , CORP_ID
+      )
+ VALUES
+      ( #ctrtNum#
+      , #amtGrpNum#
+      , SYSDATE
+      , #regId#
+      , #corpId#
+      )
+</update>
+
+<delete id="B2B_AD_CORPAMT_D_00">
+DELETE TB_B2B_AD_CORPAMT
+ WHERE CTRT_NUM = #ctrtNum#
+</delete>
+
+<select id="B2B_AD_AMT_S_00">
+SELECT AMT_GRP_NUM  /*요금 그룹 번호*/
+     , PRDT_NUM     /*상품 번호*/
+     , APL_DT       /*적용 일자*/
+     , CORP_ID      /*업체 아이디*/
+     , SALE_AMT     /*판매 금액*/
+  FROM TB_B2B_AD_AMT
+</select>
+
+<select id="B2B_AD_AMT_S_01" resultMap="B2B_AD_AMT_R_00">
+SELECT AMT_GRP_NUM  /*요금 그룹 번호*/
+     , PRDT_NUM     /*상품 번호*/
+     , APL_DT       /*적용 일자*/
+     , CORP_ID      /*업체 아이디*/
+     , SALE_AMT     /*판매 금액*/
+  FROM TB_B2B_AD_AMT
+ WHERE AMT_GRP_NUM = #sAmtGrpNum#
+   AND CORP_ID     = #sCorpId#
+   AND PRDT_NUM    = #sPrdtNum#
+   AND APL_DT LIKE #sAplDt#||'%'
+ ORDER BY APL_DT ASC
+</select>
+
+<insert id="B2B_AD_AMT_I_01">
+INSERT INTO TB_B2B_AD_AMT
+     ( AMT_GRP_NUM
+     , PRDT_NUM
+     , APL_DT
+     , CORP_ID
+     , SALE_AMT 
+     )
+SELECT #amtGrpNum#
+     , #prdtNum#
+     , DT
+     , #corpId#
+     , #saleAmt#
+  FROM (SELECT TO_CHAR(TO_DATE(#startDt#, 'YYYYMMDD')+LEVEL-1, 'YYYYMMDD') AS DT
+          FROM DUAL
+       <![CDATA[
+       CONNECT BY LEVEL <= (TO_DATE(#endDt#, 'YYYYMMDD')-TO_DATE(#startDt#, 'YYYYMMDD')+1)
+       ]]>
+       )
+ WHERE DT NOT IN (SELECT APL_DT
+                    FROM TB_B2B_AD_AMT
+                   WHERE AMT_GRP_NUM = #amtGrpNum#
+                     AND APL_DT BETWEEN #startDt# AND #endDt#
+                 )
+<dynamic prepend="AND TO_CHAR(TO_DATE(DT, 'YYYYMMDD'), 'D') IN ">
+ 	<iterate open="(" close=")" conjunction="," property="wdayList">
+ 		#wdayList[]#
+ 	</iterate>      
+</dynamic>
+</insert>
+
+<!-- 일괄 수정 -->
+<update id="B2B_AD_AMT_U_01">
+UPDATE TB_B2B_AD_AMT
+   SET SALE_AMT    = #saleAmt#
+ WHERE AMT_GRP_NUM = #amtGrpNum#
+   AND PRDT_NUM    = #prdtNum#
+   AND APL_DT BETWEEN #startDt# AND #endDt#
+<dynamic prepend="AND TO_CHAR(TO_DATE(APL_DT, 'YYYYMMDD'), 'D') IN ">
+    <iterate open="(" close=")" conjunction="," property="wdayList">
+        #wdayList[]#
+    </iterate>
+</dynamic>
+</update>
+
+
+<update id="B2B_AD_AMT_M_01">
+  MERGE INTO TB_B2B_AD_AMT T_AMT
+  USING (SELECT #amtGrpNum# AS AMT_GRP_NUM
+              , #prdtNum#   AS PRDT_NUM
+              , #aplDt#     AS APL_DT
+           FROM DUAL
+         ) D
+     ON (T_AMT.AMT_GRP_NUM = D.AMT_GRP_NUM AND T_AMT.PRDT_NUM = D.PRDT_NUM AND T_AMT.APL_DT = D.APL_DT)
+   WHEN MATCHED THEN
+ UPDATE
+    SET SALE_AMT = #saleAmt#
+   WHEN NOT MATCHED THEN
+ INSERT
+      ( AMT_GRP_NUM
+      , PRDT_NUM
+      , APL_DT
+      , CORP_ID
+      , SALE_AMT
+      )
+ VALUES
+      ( #amtGrpNum#
+      , #prdtNum#
+      , #aplDt#
+      , #corpId#
+      , #saleAmt#
+      ) 
+</update>
+
+<select id="B2B_AD_PRDT_S_00" resultMap="B2B_AD_PRDT_R_00">
+SELECT CORP_ID
+     , PRDT_NUM
+     , PRDT_NM
+     , AD_NM
+     , STD_MEM
+     , MAXI_MEM
+     , BREAKFAST_YN
+     , AD_DIV
+     , AD_DIV_NM
+     , AD_AREA
+     , AD_AREA_NM
+     , SALE_AMT
+     , ADULT_ADD_AMT
+     , JUNIOR_ADD_AMT
+     , CHILD_ADD_AMT
+     , TOTAL_SALE_AMT
+  FROM (SELECT ROWNUM AS RN
+             , CORP_ID
+             , PRDT_NUM
+             , PRDT_NM
+             , AD_NM
+             , STD_MEM
+             , MAXI_MEM
+             , BREAKFAST_YN
+             , AD_DIV
+             , AD_DIV_NM
+             , AD_AREA
+             , AD_AREA_NM
+             , SALE_AMT
+             , ADULT_ADD_AMT
+             , JUNIOR_ADD_AMT
+             , CHILD_ADD_AMT
+             , TOTAL_SALE_AMT
+          FROM (SELECT CORP_ID
+                     , PRDT_NUM
+                     , PRDT_NM
+                     , AD_NM
+                     , STD_MEM
+                     , MAXI_MEM
+                     , BREAKFAST_YN
+                     , AD_DIV
+                     , AD_DIV_NM
+                     , AD_AREA
+                     , AD_AREA_NM
+                     , SALE_AMT
+                     , ADULT_ADD_AMT
+                     , JUNIOR_ADD_AMT
+                     , CHILD_ADD_AMT
+                     , TOTAL_SALE_AMT
+                  FROM (SELECT CORP_ID
+                             , PRDT_NUM
+                             , PRDT_NM
+                             , AD_NM
+                             , STD_MEM
+                             , MAXI_MEM
+                             , BREAKFAST_YN
+                             , AD_DIV
+                             , AD_DIV_NM
+                             , AD_AREA
+                             , AD_AREA_NM
+                             , SUM(SALE_AMT) AS SALE_AMT
+                             , SUM(ADULT_OVER_MEM * ADULT_ADD_AMT) AS ADULT_ADD_AMT
+                             , SUM(JUNIOR_OVER_MEM * JUNIOR_ADD_AMT) AS JUNIOR_ADD_AMT
+                             , SUM(CHILD_OVER_MEM * CHILD_ADD_AMT) AS CHILD_ADD_AMT
+                             , (SUM(SALE_AMT) + SUM(ADULT_OVER_MEM * ADULT_ADD_AMT) + SUM(JUNIOR_OVER_MEM * JUNIOR_ADD_AMT) + SUM(CHILD_OVER_MEM * CHILD_ADD_AMT)) AS TOTAL_SALE_AMT
+                          FROM (SELECT T_CORP.CORP_ID
+                                     , T_PRDT.PRDT_NUM
+                                     , T_PRDT.PRDT_NM
+                                     , T_DFT.AD_NM
+                                     , T_PRDT.STD_MEM
+                                     , (CASE WHEN T_PRDT.MEM_EXCD_ABLE_YN = 'Y'
+                                             THEN T_PRDT.MAXI_MEM
+                                             ELSE T_PRDT.STD_MEM
+                                         END
+                                       ) AS MAXI_MEM
+                                     , T_AMT.SALE_AMT
+                                     <![CDATA[
+                                     , (CASE WHEN TO_NUMBER(#sAdultMem#) - T_PRDT.STD_MEM < 0 THEN 0
+                                             ELSE TO_NUMBER(#sAdultMem#) - T_PRDT.STD_MEM
+                                         END) AS ADULT_OVER_MEM
+                                     , (CASE WHEN TO_NUMBER(#sAdultMem#) - T_PRDT.STD_MEM < 0 
+                                             THEN (CASE WHEN TO_NUMBER(#sAdultMem#) + TO_NUMBER(#sJuniorMem#) - T_PRDT.STD_MEM < 0 THEN 0
+                                                        ELSE TO_NUMBER(#sAdultMem#) + TO_NUMBER(#sJuniorMem#) - T_PRDT.STD_MEM
+                                                    END
+                                                  )
+                                             ELSE 1
+                                         END
+                                       ) AS JUNIOR_OVER_MEM
+                                     , (CASE WHEN TO_NUMBER(#sAdultMem#) + TO_NUMBER(#sJuniorMem#) > T_PRDT.STD_MEM THEN TO_NUMBER(#sChildMem#)
+                                             ELSE 0
+                                         END
+                                       ) AS CHILD_OVER_MEM
+                                     ]]>
+                                     , (CASE WHEN T_PRDT.ADDAMT_YN = 'N'
+                                             THEN 0
+                                             ELSE NVL(T_ADD.ADULT_ADD_AMT, 0)
+                                         END
+                                       ) AS ADULT_ADD_AMT
+                                     , (CASE WHEN T_PRDT.ADDAMT_YN = 'N'
+                                             THEN 0
+                                             ELSE NVL(T_ADD.JUNIOR_ADD_AMT, 0)
+                                         END
+                                       ) AS JUNIOR_ADD_AMT
+                                     , (CASE WHEN T_PRDT.ADDAMT_YN = 'N'
+                                             THEN 0
+                                             ELSE NVL(T_ADD.CHILD_ADD_AMT, 0)
+                                         END
+                                       ) AS CHILD_ADD_AMT                     
+                                     , T_PRDT.BREAKFAST_YN
+                                     , T_DFT.AD_DIV
+                                     , (SELECT CD_NM
+                                          FROM TB_CD
+                                         WHERE CD_NUM = T_DFT.AD_DIV) AS AD_DIV_NM
+                                     , T_DFT.AD_AREA
+                                     , (SELECT CD_NM
+                                          FROM TB_CD
+                                         WHERE CD_NUM = T_DFT.AD_AREA) AS AD_AREA_NM
+                                  FROM TB_AD_PRDTINF T_PRDT
+                                 INNER JOIN TB_AD_DFTINF T_DFT
+                                    ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+                                 INNER JOIN TB_CORP T_CORP
+                                    ON T_CORP.CORP_ID         = T_DFT.CORP_ID
+                                   AND T_CORP.TRADE_STATUS_CD = 'TS03'
+                                 INNER JOIN TB_B2B_CTRT T_CTRT
+                                    ON T_CTRT.SALE_AGC_CORP_ID = #sSaleAgcCorpId#
+                                   AND T_CTRT.SALE_CORP_ID     = T_PRDT.CORP_ID
+                                   AND T_CTRT.STATUS_CD        = 'CT03'
+                                 INNER JOIN TB_B2B_AD_CORPAMT T_CORPAMT
+                                    ON T_CORPAMT.CTRT_NUM = T_CTRT.CTRT_NUM
+                                 INNER JOIN TB_B2B_AD_AMTGRP T_AMTGRP
+                                    ON T_AMTGRP.AMT_GRP_NUM = T_CORPAMT.AMT_GRP_NUM
+                                 INNER JOIN (SELECT TO_CHAR(TO_DATE(#sStartDt#, 'YYYY-MM-DD') + LEVEL - 1, 'YYYYMMDD') AS RSV_DT
+                                               FROM DUAL
+                                            <![CDATA[
+                                            CONNECT BY LEVEL <= TO_DATE(#sEndDt#, 'YYYY-MM-DD') - TO_DATE(#sStartDt#, 'YYYY-MM-DD') + 1
+                                            ]]>
+                                            ) T_RSVDT
+                                    ON 1=1
+                                 INNER JOIN TB_B2B_AD_AMT T_AMT
+                                    ON T_AMT.CORP_ID     = T_PRDT.CORP_ID
+                                   AND T_AMT.AMT_GRP_NUM = T_AMTGRP.AMT_GRP_NUM
+                                   AND T_AMT.PRDT_NUM    = T_PRDT.PRDT_NUM
+                                   AND T_AMT.APL_DT      = T_RSVDT.RSV_DT
+                                 INNER JOIN TB_AD_CNTINF T_CNT
+                                    ON T_CNT.PRDT_NUM = T_PRDT.PRDT_NUM
+                                   AND T_CNT.APL_DT   = T_RSVDT.RSV_DT
+                                   AND T_CNT.DDL_YN   = 'N'
+                                   <![CDATA[
+                                   AND (T_CNT.TOTAL_ROOM_NUM - T_CNT.USE_ROOM_NUM) > 0
+                                   ]]>
+                                  /*추가요금*/
+                                  LEFT OUTER JOIN (SELECT RSV_DT
+                                                        , CORP_ID
+                                                        , ADULT_ADD_AMT
+                                                        , JUNIOR_ADD_AMT
+                                                        , CHILD_ADD_AMT
+                                                     FROM (SELECT RSV_DT
+                                                                , CORP_ID
+                                                                , ADULT_ADD_AMT
+                                                                , JUNIOR_ADD_AMT
+                                                                , CHILD_ADD_AMT
+                                                                , RANK() OVER(PARTITION BY T_ADD.CORP_ID, T_DT.RSV_DT ORDER BY (T_DT.RSV_DT - T_ADD.APL_START_DT)) AS RK
+                                                             FROM (SELECT TO_CHAR(TO_DATE(#sStartDt#, 'YYYY-MM-DD') + LEVEL - 1, 'YYYYMMDD') AS RSV_DT
+                                                                     FROM DUAL
+                                                                  <![CDATA[
+                                                                  CONNECT BY LEVEL <= TO_DATE(#sEndDt#, 'YYYY-MM-DD') - TO_DATE(#sStartDt#, 'YYYY-MM-DD') + 1
+                                                                  ) T_DT
+                                                             LEFT OUTER JOIN TB_AD_ADDAMT T_ADD
+                                                               ON T_ADD.APL_START_DT <= T_DT.RSV_DT
+                                                               ]]>
+                                                          )
+                                                    WHERE RK = 1
+                                                  ) T_ADD
+                                    ON T_ADD.CORP_ID = T_DFT.CORP_ID
+                                   AND T_ADD.RSV_DT  = T_RSVDT.RSV_DT
+                                 WHERE T_PRDT.PRINT_YN     = 'Y'
+                                   AND T_PRDT.TRADE_STATUS = 'TS03'
+                                 <isNotEmpty property="sPrdtNum">
+	 								<isNotNull property="sPrdtNum">
+	 							   AND T_PRDT.PRDT_NUM = #sPrdtNum#
+	 								</isNotNull>
+	 							 </isNotEmpty>
+                                   /*최대 투숙 가능 인원 체크*/
+                                   AND (CASE WHEN T_PRDT.MEM_EXCD_ABLE_YN = 'Y' 
+                                             THEN MAXI_MEM
+                                             ELSE STD_MEM
+                                         <![CDATA[    
+                                         END) >= TO_NUMBER(#sAdultMem#) + TO_NUMBER(#sJuniorMem#) + TO_NUMBER(#sChildMem#)
+                                         ]]>
+                                   /*소인 가능여부 체크*/
+                                   AND 1 = (CASE WHEN T_DFT.JUNIOR_ABLE_YN = 'Y'
+                                                 THEN 1
+                                                 ELSE (CASE WHEN TO_NUMBER(#sJuniorMem#) = 0
+                                                            THEN 1
+                                                            ELSE 0
+                                                        END
+                                                      )
+                                             END
+                                           )
+                                   /*유아 가능 여부 체크*/
+                                   AND 1 = (CASE WHEN T_DFT.CHILD_ABLE_YN = 'Y'
+                                                 THEN 1
+                                                 ELSE (CASE WHEN TO_NUMBER(#sChildMem#) = 0
+                                                            THEN 1
+                                                            ELSE 0
+                                                        END
+                                                      )
+                                             END
+                                           )
+                                 <isNotEmpty property="sCorpNm">
+	 								<isNotNull property="sCorpNm">
+	 								AND T_DFT.AD_NM LIKE '%'||#sCorpNm#||'%'
+	 								</isNotNull>
+	 							 </isNotEmpty>
+                                 <isNotEmpty property="sAdDiv">
+	 								<isNotNull property="sAdDiv">
+	 								AND T_DFT.AD_DIV = #sAdDiv#
+	 								</isNotNull>
+	 							 </isNotEmpty>
+                                 <isNotEmpty property="sAdArea">
+	 								<isNotNull property="sAdArea">
+	 								AND T_DFT.AD_AREA = #sAdArea#
+	 								</isNotNull>
+	 							 </isNotEmpty>
+	 							 <isNotEmpty property="sIconCd">
+	                         		<isNotNull property="sIconCd">
+	                            		<iterate property="sIconCd">
+                           			AND T_PRDT.CORP_ID IN (SELECT LINK_NUM
+			                                                 FROM TB_CM_ICONINF
+			                                                WHERE LINK_NUM = T_PRDT.CORP_ID
+			                                                  AND ICON_CD = #sIconCd[]#) 
+										</iterate>
+	                            	</isNotNull>
+	                         	 </isNotEmpty>
+                               )
+                         GROUP BY CORP_ID
+                                , PRDT_NUM
+                                , PRDT_NM
+                                , AD_NM
+                                , STD_MEM
+                                , MAXI_MEM
+                                , BREAKFAST_YN
+                                , AD_DIV
+                                , AD_DIV_NM
+                                , AD_AREA
+                                , AD_AREA_NM
+                        HAVING COUNT(PRDT_NUM) = TO_DATE(#sEndDt#, 'YYYY-MM-DD') - TO_DATE(#sStartDt#, 'YYYY-MM-DD') + 1
+                       )
+                 ORDER BY TOTAL_SALE_AMT ASC
+             )
+     )
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="B2B_AD_PRDT_S_01" resultClass="int">
+SELECT COUNT(PRDT_NUM) AS CNT
+  FROM (SELECT CORP_ID
+             , PRDT_NUM
+             , PRDT_NM
+             , AD_NM
+             , STD_MEM
+             , MAXI_MEM
+             , BREAKFAST_YN
+             , AD_DIV
+             , AD_DIV_NM
+             , AD_AREA
+             , AD_AREA_NM
+             , SUM(SALE_AMT) AS SALE_AMT
+             , SUM(ADULT_OVER_MEM * ADULT_ADD_AMT) AS ADULT_ADD_AMT
+             , SUM(JUNIOR_OVER_MEM * JUNIOR_ADD_AMT) AS JUNIOR_ADD_AMT
+             , SUM(CHILD_OVER_MEM * CHILD_ADD_AMT) AS CHILD_ADD_AMT
+             , (SUM(SALE_AMT) + SUM(ADULT_OVER_MEM * ADULT_ADD_AMT) + SUM(JUNIOR_OVER_MEM * JUNIOR_ADD_AMT) + SUM(CHILD_OVER_MEM * CHILD_ADD_AMT)) AS TOTAL_SALE_AMT
+          FROM (SELECT T_CORP.CORP_ID
+                     , T_PRDT.PRDT_NUM
+                     , T_PRDT.PRDT_NM
+                     , T_DFT.AD_NM
+                     , T_PRDT.STD_MEM
+                     , (CASE WHEN T_PRDT.MEM_EXCD_ABLE_YN = 'Y'
+                             THEN T_PRDT.MAXI_MEM
+                             ELSE T_PRDT.STD_MEM
+                         END
+                       ) AS MAXI_MEM
+                     , T_AMT.SALE_AMT
+                     <![CDATA[
+                     , (CASE WHEN TO_NUMBER(#sAdultMem#) - T_PRDT.STD_MEM < 0 THEN 0
+                             ELSE TO_NUMBER(#sAdultMem#) - T_PRDT.STD_MEM
+                         END) AS ADULT_OVER_MEM
+                     , (CASE WHEN TO_NUMBER(#sAdultMem#) - T_PRDT.STD_MEM < 0 
+                             THEN (CASE WHEN TO_NUMBER(#sAdultMem#) + TO_NUMBER(#sJuniorMem#) - T_PRDT.STD_MEM < 0 THEN 0
+                                        ELSE TO_NUMBER(#sAdultMem#) + TO_NUMBER(#sJuniorMem#) - T_PRDT.STD_MEM
+                                    END
+                                  )
+                             ELSE 1
+                         END
+                       ) AS JUNIOR_OVER_MEM
+                     , (CASE WHEN TO_NUMBER(#sAdultMem#) + TO_NUMBER(#sJuniorMem#) > T_PRDT.STD_MEM THEN TO_NUMBER(#sChildMem#)
+                             ELSE 0
+                         END
+                       ) AS CHILD_OVER_MEM
+                     ]]>
+                     , (CASE WHEN T_PRDT.ADDAMT_YN = 'N'
+                             THEN 0
+                             ELSE NVL(T_ADD.ADULT_ADD_AMT, 0)
+                         END
+                       ) AS ADULT_ADD_AMT
+                     , (CASE WHEN T_PRDT.ADDAMT_YN = 'N'
+                             THEN 0
+                             ELSE NVL(T_ADD.JUNIOR_ADD_AMT, 0)
+                         END
+                       ) AS JUNIOR_ADD_AMT
+                     , (CASE WHEN T_PRDT.ADDAMT_YN = 'N'
+                             THEN 0
+                             ELSE NVL(T_ADD.CHILD_ADD_AMT, 0)
+                         END
+                       ) AS CHILD_ADD_AMT                     
+                     , T_PRDT.BREAKFAST_YN
+                     , T_DFT.AD_DIV
+                     , (SELECT CD_NM
+                          FROM TB_CD
+                         WHERE CD_NUM = T_DFT.AD_DIV) AS AD_DIV_NM
+                     , T_DFT.AD_AREA
+                     , (SELECT CD_NM
+                          FROM TB_CD
+                         WHERE CD_NUM = T_DFT.AD_AREA) AS AD_AREA_NM
+                  FROM TB_AD_PRDTINF T_PRDT
+                 INNER JOIN TB_AD_DFTINF T_DFT
+                    ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+                 INNER JOIN TB_CORP T_CORP
+                    ON T_CORP.CORP_ID         = T_DFT.CORP_ID
+                   AND T_CORP.TRADE_STATUS_CD = 'TS03'
+                 INNER JOIN TB_B2B_CTRT T_CTRT
+                    ON T_CTRT.SALE_AGC_CORP_ID = #sSaleAgcCorpId#
+                   AND T_CTRT.SALE_CORP_ID     = T_PRDT.CORP_ID
+                   AND T_CTRT.STATUS_CD        = 'CT03'
+                 INNER JOIN TB_B2B_AD_CORPAMT T_CORPAMT
+                    ON T_CORPAMT.CTRT_NUM = T_CTRT.CTRT_NUM
+                 INNER JOIN TB_B2B_AD_AMTGRP T_AMTGRP
+                    ON T_AMTGRP.AMT_GRP_NUM = T_CORPAMT.AMT_GRP_NUM
+                 INNER JOIN (SELECT TO_CHAR(TO_DATE(#sStartDt#, 'YYYY-MM-DD') + LEVEL - 1, 'YYYYMMDD') AS RSV_DT
+                               FROM DUAL
+                            <![CDATA[
+                            CONNECT BY LEVEL <= TO_DATE(#sEndDt#, 'YYYY-MM-DD') - TO_DATE(#sStartDt#, 'YYYY-MM-DD') + 1
+                            ]]>
+                            ) T_RSVDT
+                    ON 1=1
+                 INNER JOIN TB_B2B_AD_AMT T_AMT
+                    ON T_AMT.CORP_ID     = T_PRDT.CORP_ID
+                   AND T_AMT.AMT_GRP_NUM = T_AMTGRP.AMT_GRP_NUM
+                   AND T_AMT.PRDT_NUM    = T_PRDT.PRDT_NUM
+                   AND T_AMT.APL_DT      = T_RSVDT.RSV_DT
+                 INNER JOIN TB_AD_CNTINF T_CNT
+                    ON T_CNT.PRDT_NUM = T_PRDT.PRDT_NUM
+                   AND T_CNT.APL_DT   = T_RSVDT.RSV_DT
+                   AND T_CNT.DDL_YN   = 'N'
+                   <![CDATA[
+                   AND (T_CNT.TOTAL_ROOM_NUM - T_CNT.USE_ROOM_NUM) > 0
+                   ]]>
+                  /*추가요금*/
+                  LEFT OUTER JOIN (SELECT RSV_DT
+                                        , CORP_ID
+                                        , ADULT_ADD_AMT
+                                        , JUNIOR_ADD_AMT
+                                        , CHILD_ADD_AMT
+                                     FROM (SELECT RSV_DT
+                                                , CORP_ID
+                                                , ADULT_ADD_AMT
+                                                , JUNIOR_ADD_AMT
+                                                , CHILD_ADD_AMT
+                                                , RANK() OVER(PARTITION BY T_ADD.CORP_ID, T_DT.RSV_DT ORDER BY (T_DT.RSV_DT - T_ADD.APL_START_DT)) AS RK
+                                             FROM (SELECT TO_CHAR(TO_DATE(#sStartDt#, 'YYYY-MM-DD') + LEVEL - 1, 'YYYYMMDD') AS RSV_DT
+                                                     FROM DUAL
+                                                  <![CDATA[
+                                                  CONNECT BY LEVEL <= TO_DATE(#sEndDt#, 'YYYY-MM-DD') - TO_DATE(#sStartDt#, 'YYYY-MM-DD') + 1
+                                                  ) T_DT
+                                             LEFT OUTER JOIN TB_AD_ADDAMT T_ADD
+                                               ON T_ADD.APL_START_DT <= T_DT.RSV_DT
+                                               ]]>
+                                          )
+                                    WHERE RK = 1
+                                  ) T_ADD
+                    ON T_ADD.CORP_ID = T_DFT.CORP_ID
+                   AND T_ADD.RSV_DT  = T_RSVDT.RSV_DT
+                 WHERE T_PRDT.PRINT_YN     = 'Y'
+                   AND T_PRDT.TRADE_STATUS = 'TS03'
+                   <isNotEmpty property="sPrdtNum">
+					<isNotNull property="sPrdtNum">
+				   AND T_PRDT.PRDT_NUM = #sPrdtNum#
+					</isNotNull>
+				 </isNotEmpty>
+                   /*최대 투숙 가능 인원 체크*/
+                   AND (CASE WHEN T_PRDT.MEM_EXCD_ABLE_YN = 'Y' 
+                             THEN MAXI_MEM
+                             ELSE STD_MEM
+                         <![CDATA[    
+                         END) >= TO_NUMBER(#sAdultMem#) + TO_NUMBER(#sJuniorMem#) + TO_NUMBER(#sChildMem#)
+                         ]]>
+                         /*소인 가능여부 체크*/
+                         AND 1 = (CASE WHEN T_DFT.JUNIOR_ABLE_YN = 'Y'
+                                       THEN 1
+                                       ELSE (CASE WHEN TO_NUMBER(#sJuniorMem#) = 0
+                                                  THEN 1
+                                                  ELSE 0
+                                              END
+                                            )
+                                   END
+                                 )
+                         /*유아 가능 여부 체크*/
+                         AND 1 = (CASE WHEN T_DFT.CHILD_ABLE_YN = 'Y'
+                                       THEN 1
+                                       ELSE (CASE WHEN TO_NUMBER(#sChildMem#) = 0
+                                                  THEN 1
+                                                  ELSE 0
+                                              END
+                                            )
+                                   END
+                                 )
+                       <isNotEmpty property="sCorpNm">
+							<isNotNull property="sCorpNm">
+						 AND T_DFT.AD_NM LIKE '%'||#sCorpNm#||'%'
+							</isNotNull>
+					   </isNotEmpty>
+                       <isNotEmpty property="sAdDiv">
+							<isNotNull property="sAdDiv">
+						 AND T_DFT.AD_DIV = #sAdDiv#
+							</isNotNull>
+					   </isNotEmpty>
+                       <isNotEmpty property="sAdArea">
+							<isNotNull property="sAdArea">
+						 AND T_DFT.AD_AREA = #sAdArea#
+							</isNotNull>
+					   </isNotEmpty>
+					   <isNotEmpty property="sIconCd">
+                			<isNotNull property="sIconCd">
+                   				<iterate property="sIconCd">
+                 		 AND T_PRDT.CORP_ID IN (SELECT LINK_NUM
+		                                          FROM TB_CM_ICONINF
+		                                         WHERE LINK_NUM = T_PRDT.CORP_ID
+		                                           AND ICON_CD = #sIconCd[]#) 
+								</iterate>
+                   			</isNotNull>
+                	  </isNotEmpty>
+                     )
+               GROUP BY CORP_ID
+                      , PRDT_NUM
+                      , PRDT_NM
+                      , AD_NM
+                      , STD_MEM
+                      , MAXI_MEM
+                      , BREAKFAST_YN
+                      , AD_DIV
+                      , AD_DIV_NM
+                      , AD_AREA
+                      , AD_AREA_NM
+               HAVING COUNT(PRDT_NUM) = TO_DATE(#sEndDt#, 'YYYY-MM-DD') - TO_DATE(#sStartDt#, 'YYYY-MM-DD') + 1
+             )
+</select>
+
+
+</sqlMap>

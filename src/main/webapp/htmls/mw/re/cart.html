@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>탐나오</title>
+
+    <link rel="stylesheet" href="../../../css/mw/common.css">
+    <link rel="stylesheet" href="../../../css/mw/sub_cart.css">
+    <link rel="stylesheet" href="../../../css/mw/style.css">
+    <link rel="stylesheet" href="../../../css/mw/daterangepicker.css">
+
+    <script src="../../../js/jquery-1.11.1.js"></script>
+    <script src="../../../js/jquery-ui-1.11.4.js"></script>
+    <script src="../../../js/jquery.cookie.js"></script>
+    <script src="../../../js/mw_common.js"></script>
+    <script src="../../../js/mw_style.js"></script>
+    <script src="../../../js/moment.min.js"></script>
+    <script src="../../../js/daterangepicker.js"></script>
+    <!-- add script -->
+    <script src="../../../js/swiper.js"></script>
+    <script>
+    </script>
+</head>
+<body>
+<div id="wrap">
+
+    <!-- 헤더 s -->
+    <header id="header">
+
+        <!-- 0216 visitjeju_header -->
+        <div class="visit_header">
+            <div class="inner">
+                <div></div>
+                <h1>
+                    <a href="https://www.visitjeju.net/kr" target="_blank" title="visit jeju - 제주도 공식 관광정보 포털">
+                        <img src="/images/mw/main/m_visit_logo.png" alt="비짓제주">
+                    </a>
+                </h1>
+                <div class="srh_area">
+                    <form>
+                        <fieldset>
+                            <legend class="for-a11y">검색</legend>
+                            <div class="top_search">
+                                <input type="text" value="제주도 공식관광정보 검색">
+                                <button>
+                                    <img src="/images/mw/icon/search/m_srh_btn.png" alt="검색">
+                                </button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div><!-- // 0216 visitjeju_header -->
+
+        <aside id="side_menu" class="side-menu">
+            <div class="side-all">
+                <div class="sitemap-header">
+                    <!--<button type="button" id="frame_sideClose" class="close"><img src="../../images/mw/common/side/close-white.png" alt="닫기"></button>-->
+                    <!-- 로그인 x -->
+                    <div class="sitemap-intro">
+                        <button type="button" id="frame_sideClose" class="close"><img src="../../../images/mw/common/side/close-white.png" alt="닫기"></button>
+                        <div class="sitemap-login">
+                            <h1 class="sitemap-intro-logo"><a href="/mw/main.do"><img src="../../../images/mw/sitemap/white-logo.png" alt="탐나오"></a></h1>
+                            <button type="button" class="s-login-btn" >로그인</button>
+                        </div>
+                    </div>
+                    <!-- //로그인 x -->
+
+                    <!-- 로그인 o -->
+                    <!--<ul class="sitemap-intro-login">-->
+                    <!--<li><b>홍길동</b>님 환영합니다.</li>-->
+                    <!--<li class="r-btn">-->
+                    <!--<a class="home" href=""><img src="../../images/mw/sitemap/home.png" alt="홈"></a>-->
+                    <!--<a class="mypage" href=""><img src="../../images/mw/sitemap/mypage.png" alt="마이페이지"></a>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                    <!-- //로그인 o -->
+                </div>
+                <nav class="sitemap-quick-menu">
+                    <ul>
+                        <li class="quick-re"><a href="">나의 예약/구매 내역</a></li>
+                        <li class="quick-like"><a href="">찜한 상품</a></li>
+                    </ul>
+
+                    <!-- <a href="javascript:void(0)" id="top_searchOpen">
+                        <img src="../../images/mw/common/side/search-white.png" alt="검색">
+                    </a>
+                    <a href="" class="like">20</a>
+                    <a href="" class="cart">5</a> -->
+
+                </nav>
+                <div class="sitemap-main-menu">
+                    <ul>
+                        <li class="sitemap-rentcar"><a href="rent-list.html">렌터카</a></li>
+                        <li class="sitemap-hotel"><a href="hotel-list.html">숙박</a></li>
+                        <li class="sitemap-air"><a href="air-search.html">항공</a></li>
+                        <li class="sitemap-ship"><a href="">선박</a></li>
+                    </ul>
+                </div>
+                <div class="sitemap-menu">
+
+                    <div class="leisure">
+                        <a class="leisure title" href="social-list.html">
+                            <img src="../../../images/mw/sitemap/leisure.png" alt="나의 혜택정보">관광/레저</a>
+                        <ul class="depth4">
+                            <li><a href="">전시/박물관</a></li>
+                            <li><a href="">테마공원</a></li>
+                            <li><a href="">스포츠/레저</a></li>
+                            <li><a href="">해양관광</a></li>
+                            <li><a href="">공연/쇼</a></li>
+                            <li><a href="">뷰티/테라피</a></li>
+                        </ul>
+                    </div>
+                    <a class="jeju title" href="social-list.html">
+                        <img src="../../../images/mw/sitemap/jeju.png" alt="나의 혜택정보">제주마을체험</a>
+                    <a class="food title" href="social-list.html">
+                        <img src="../../../images/mw/sitemap/food.png" alt="나의 혜택정보">맛집</a>
+                    <div class="agency">
+                        <a class="agency title" href="social-list.html">
+                            <img src="../../../images/mw/sitemap/agency.png" alt="나의 혜택정보">여행사상품</a>
+                        <ul class="depth4">
+                            <li><a href="">전체보기</a></li>
+                            <li><a href="">버스/택시관광</a></li>
+                            <li><a href="">렌터카</a></li>
+                            <li><a href="">테마여행</a></li>
+                        </ul>
+                    </div>
+                    <div class="from-jeju">
+                        <a class="from-jeju title" href="from-jeju-main.html">
+                            <img src="../../../images/mw/sitemap/fromjeju.png" alt="나의 혜택정보">from 제주</a>
+                        <ul class="depth4">
+                            <li class="red-text"><a href="">HOT한상품</a></li>
+                            <li><a href="">농/수/축산물</a></li>
+                            <li><a href="">가공식품</a></li>
+                            <li><a href="">화장품/미용</a></li>
+                            <li><a href="">제주기념품</a></li>
+                            <li><a href="">제주유나이티드</a></li>
+                        </ul>
+                    </div>
+                    <a class="event2 title" href="main4-4.html">
+                        <img src="../../../images/mw/sitemap/s-event2.png" alt="나의 혜택정보">기획전</a>
+                    <a class="event title" href="main4-5.html">
+                        <img src="../../../images/mw/sitemap/s-event.png" alt="나의 혜택정보">이벤트</a>
+                    <div class="tamnao">
+                        <a class="tamnao title" href="from-jeju-main.html">
+                            <img src="../../../images/mw/sitemap/nao.png" alt="나의 혜택정보">TAMNAO</a>
+                        <ul class="depth4">
+                            <li><a href="">공지사항</a></li>
+                            <li><a href="">회사소개</a></li>
+                            <li><a href="">자주하는 문의</a></li>
+                            <li><a href="">마이페이지</a></li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </aside>
+
+        <div id="top_search" class="search-area">
+            <button type="button" id="top_searchClose" class="close"><img src="../../../images/mw/common/side/close-gray.png" alt="닫기"></button>
+
+            <div class="form-area">
+                <form class="form-area">
+                    <input type="text" placeholder="검색어를 입력해주세요." class="category-search">
+                    <button type="submit" class="icon-search" title="검색"></button>
+                </form>
+
+                <div class="all-search">
+                    <div class="condition">
+                        <div class="recent-search">최근검색조건</div>
+                        <ul>
+                            <li class="product">
+                                <img src="../../../images/mw/icon/tag_close.gif" alt=""><a href="">김녕미로공원</a></li>
+                            <li class="product"><img src="../../../images/mw/icon/tag_close.gif" alt=""><a href="">우도해저투어</a></li>
+                            <li class="product"><img src="../../../images/mw/icon/tag_close.gif" alt=""><a href="">아라고나이트</a></li>
+                            <li class="product"><img src="../../../images/mw/icon/tag_close.gif" alt=""><a href="">번개과학체험관</a></li>
+                        </ul>
+                        <div class="product-sub"><a href="">모두삭제</a></div>
+                    </div>
+                    <div class="keyword">
+                        <div class="hot-keyword">HOT KEYWORD</div>
+                        <ul class="all-text">
+                            <li><a href="">#야간관광</a></li>
+                            <li><a href="">#퍼시픽</a></li>
+                            <li><a href="">#김녕미로공원</a></li>
+                            <li><a href="">#제주씨월드</a></li>
+                            <li><a href="">#우도해저투어</a></li>
+                            <li><a href="">#렉시제주</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- 헤더 e -->
+
+    <!-- 콘텐츠 s -->
+    <h2 class="sr-only">서브콘텐츠</h2>
+    <section id="subContent">
+        <div class="sub-content">
+           <div class="cart">
+               <!-- 장바구니 코멘트
+               <div class="txt-box info-wrap info-wrap2">
+                   <ul>
+                       <li>상품의 옵션변경 및 추가는 해당 상품 상세페이지에서 가능합니다.</li>
+                       <li>장바구니 상품을 삭제하려면 상품을 선택하신 후에 [선택상품 비우기]를 눌러주세요.</li>
+                       <li>장바구니에 저장된 상품은 비로그인 상태에서 사이트를 닫으면 삭제됩니다.</li>
+                   </ul>
+               </div>
+                -->
+
+               <!-- 장바구니 비었을때
+                 <div class="cart-section" id="emptyCart">
+                     <section class="cart-none">
+                      <div class="">
+                          <img src="/images/mw/cart/not.gif" alt="빈 장바구니">
+                          <p>장바구니가 비었습니다.</p>
+                      </div>
+                     </section>
+                 </div>
+              -->
+                <div class="cart-section" id="cartList">
+                    <h3 class="title">관광 상품</h3>
+                    <div class="goods_control">
+                        <div class="goods_control_check">
+                            <span class="check-all">
+                                <input type="checkbox" id="all_check" class="blind" checked="checked">
+                                <label for="all_check">
+                                    <span class="blind">모든상품전체선택</span>
+                                </label>
+                            </span>
+                            <label for="all_check" class="all_check_tx">전체선택</label>
+                        </div>
+                        <a href="javascript:fn_ChkDelCart();" class="clear-btn">
+                            <img src="../../../images/mw/cart/del.png">
+                            <span>선택상품 비우기</span>
+                        </a>
+                    </div>
+                    <div id="cartGoodsList">
+                        <div class="check-goods">
+                            <div class="unit_thmb">
+                                    <span class="unit_chk">
+                                        <input type="hidden" name="cartSn" value="">
+                                        <input type="checkbox" class="blind checking" id="chk_order1" name="chk" value="" checked="checked">
+                                        <label for="chk_order1">
+                                            <span class="blind">상품선택</span>
+                                        </label>
+                                    </span>
+                                    <span class="unit_img">
+                                            <img src="../../../data/ad/thumb/CADO180015_11.jpg" alt="브릭캠퍼스" onerror="this.src='/images/web/other/no-image.jpg'">
+                                    </span>
+                            </div>
+                            <div class="unit_cont">
+                                <p class="unit_title">
+                                    <a href="">
+                                        <span><strong>[브릭캠퍼스]</strong> 브릭캠퍼스 입장권</span>
+                                    </a>
+                                </p>
+                                <span class="unit_option">탐나오가 브릭캠퍼스 입장권 | 입장권 (탐나오 10% 할인가)</span>
+                                <span class="unit_cnt">수량 : 1</span>
+                                <div class="unit_prdpay">
+                                    <input type="hidden" name="cartTotalAmt" value="13500">
+                                    <div class="unit_l">
+                                        <em class="item-newprice">13,500</em>
+                                        <span class="won">원</span>
+                                    </div>
+                                    <div class="unit_r">
+                                        <div class="unit_btnarea">
+                                            <a href="javascript:fn_ShowLayer('1', 'sp')" class="option1 unitbtn"><span>옵션 변경</span></a>
+                                            <a href="javascript:fn_DelCart('1', 'SP')" class="unitbtn"><span>삭제</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="check-goods">
+                            <div class="unit_thmb">
+                                    <span class="unit_chk">
+                                        <input type="hidden" name="cartSn" value="">
+                                        <input type="checkbox" class="blind checking" id="chk_order3" name="chk" value="" checked="checked">
+                                        <label for="chk_order3">
+                                            <span class="blind">상품선택</span>
+                                        </label>
+                                    </span>
+                                <span class="unit_img">
+                                            <img src="../../../data/ad/thumb/CADO180015_11.jpg" alt="브릭캠퍼스" onerror="this.src='/images/web/other/no-image.jpg'">
+                                    </span>
+                            </div>
+                            <div class="unit_cont">
+                                <p class="unit_title">
+                                    <a href="">
+                                        <span><strong>[브릭캠퍼스]</strong> 브릭캠퍼스 입장권</span>
+                                    </a>
+                                </p>
+                                <span class="unit_option">탐나오가 브릭캠퍼스 입장권 | 입장권 (탐나오 10% 할인가)</span>
+                                <span class="unit_cnt">수량 : 1</span>
+                                <div class="unit_prdpay">
+                                    <input type="hidden" name="cartTotalAmt" value="13500">
+                                    <div class="unit_l">
+                                        <em class="item-newprice">13,500</em>
+                                        <span class="won">원</span>
+                                    </div>
+                                    <div class="unit_r">
+                                        <div class="unit_btnarea">
+                                            <a href="javascript:fn_ShowLayer('1', 'sp')" class="option1 unitbtn"><span>옵션 변경</span></a>
+                                            <a href="javascript:fn_DelCart('1', 'SP')" class="unitbtn"><span>삭제</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price">총 결제 예상 금액
+                        <span><strong id="totalJumunAmt">15,900</strong>원</span>
+                        <span class="price-comment">※구매페이지에서 <b>적용가능한 쿠폰</b>을 확인할 수 있습니다.</span>
+                    </div>
+                    <div class="purchaseButton">
+                        <a href="javascript:fn_Reservation();" class="btn btn1">예약하기</a>
+                    </div>
+                </div>
+
+                <!-- 제주특산품 -->
+               <div class="cart-section" id="sv_cartList">
+                   <h3 class="title">제주 특산/기념품</h3>
+                   <div class="goods_control">
+                       <div class="goods_control_check">
+                            <span class="check-all">
+                                <input type="checkbox" id="sv_all_check" class="blind" checked="checked">
+                                <label for="all_check">
+                                    <span class="blind">모든상품전체선택</span>
+                                </label>
+                            </span>
+                           <label for="sv_all_check" class="all_check_tx">전체선택</label>
+                       </div>
+                       <a href="javascript:fn_ChkDelCart();" class="clear-btn">
+                           <img src="../../../images/mw/cart/del.png">
+                           <span>선택상품 비우기</span>
+                       </a>
+                   </div>
+                   <div id="sv_cartGoodsList">
+                       <div class="check-goods">
+                           <div class="unit_thmb">
+                               <span class="unit_chk">
+                                    <input type="hidden" name="cartSn" value="">
+                                    <input type="checkbox" class="blind checking" name="sv_chk" id="chk4" value="" checked="checked">
+                                    <label for="chk_order1">
+                                        <span class="blind">상품선택</span>
+                                    </label>
+                               </span>
+                               <span class="unit_img">
+                                  <img src="../../../data/sv/thumb/SV00001470_6.jpg" alt="초당옥수수" onerror="this.src='/images/web/other/no-image.jpg'">
+                               </span>
+                           </div>
+                           <div class="unit_cont">
+                               <p class="unit_title">
+                                   <a href="">
+                                       <span><strong>[귤이오]</strong> 제주초당옥수수[당일수확]</span>
+                                   </a>
+                               </p>
+                               <span class="unit_option"> [당일수확] 초당옥수수 15개입</span>
+                               <span class="unit_cnt">수량 : 1</span>
+                               <div class="unit_deliveryPrice">
+                                   <span>배송비 : </span>
+                                   <span class="deliveryPrice">무료배송</span>
+                               </div>
+                               <div class="unit_prdpay">
+                                   <input type="hidden" name="cartTotalAmt" value="10,500">
+                                   <div class="unit_l">
+                                       <em class="item-newprice">10,500</em>
+                                       <span class="won">원</span>
+                                   </div>
+                                   <div class="unit_r">
+                                       <div class="unit_btnarea">
+                                           <a href="javascript:fn_ShowLayer('1', 'sv')" class="option4 unitbtn"><span>옵션 변경</span></a>
+                                           <a href="javascript:fn_DelCart('1', 'SV')" class="unitbtn"><span>삭제</span></a>
+                                           <input type="hidden" name="sv_dlvAmt" value="${sv_dlvAmt}">
+                                           <input type="hidden" name="sv_cartTotalAmt" value="${cart.totalAmt}">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="check-goods">
+                           <div class="unit_thmb">
+                               <span class="unit_chk">
+                                    <input type="hidden" name="cartSn" value="">
+                                    <input type="checkbox" class="blind checking" name="sv_chk" id="chk5" value="" checked="checked">
+                                    <label for="chk_order1">
+                                        <span class="blind">상품선택</span>
+                                    </label>
+                               </span>
+                               <span class="unit_img">
+                                  <img src="../../../data/sv/thumb/SV00001328_1.jpg" alt="브릭캠퍼스" onerror="this.src='/images/web/other/no-image.jpg'">
+                               </span>
+                           </div>
+                           <div class="unit_cont">
+                               <p class="unit_title">
+                                   <a href="">
+                                       <span><strong>[마이빈스]</strong> 제주 더치 커피 마이빈스 콜드브루커피세트</span>
+                                   </a>
+                               </p>
+                               <span class="unit_option"> 원두원산지 | 비자림</span>
+                               <span class="unit_cnt">수량 : 1</span>
+                               <div class="unit_deliveryPrice">
+                                   <span>배송비 : </span>
+                                   <span class="deliveryPrice"><strong>3,000원</strong></span>
+                                   <span class="deliveryPrice_cmt">(70,000원 이상 구매시 무료)</span>
+                               </div>
+                               <div class="unit_prdpay">
+                                   <input type="hidden" name="cartTotalAmt" value="10,500">
+                                   <div class="unit_l">
+                                       <em class="item-newprice">10,500</em>
+                                       <span class="won">원</span>
+                                   </div>
+                                   <div class="unit_r">
+                                       <div class="unit_btnarea">
+                                           <a href="javascript:fn_ShowLayer('1', 'sv')" class="option4 unitbtn"><span>옵션 변경</span></a>
+                                           <a href="javascript:fn_DelCart('1', 'SV')" class="unitbtn"><span>삭제</span></a>
+                                           <input type="hidden" name="sv_dlvAmt" value="${sv_dlvAmt}">
+                                           <input type="hidden" name="sv_cartTotalAmt" value="${cart.totalAmt}">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="price">
+                       <div class="price-container">
+                           <div class="price-container-wrap">
+                               총 상품가격
+                               <span><strong id="sv_totalPrdtAmt">10,000</strong>원</span>
+                           </div>
+                           <div class="price-container-wrap">
+                               총 배송비
+                               <span><strong id="sv_totalDlvAmt">+4,000</strong>원</span>
+                           </div>
+                       </div>
+                       총 제 예상 금액
+                       <span><strong id="sv_totalJumunAmt">14,000</strong>원</span>
+                       <span class="price-comment">※구매페이지에서 <b>적용가능한 쿠폰</b>을 확인할 수 있습니다.</span>
+                   </div>
+                   <div class="purchaseButton">
+                       <a href="javascript:fn_SvReservation();" class="btn btn1">구매하기</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </section>
+    <div class="option-wrap"></div>
+    <!-- 콘텐츠 e -->
+</div>
+</body>
+</html>

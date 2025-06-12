@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->	
+    <link rel="stylesheet" href="../css/web/jquery-ui.css">
+	<link rel="stylesheet" href="../css/web/common.css">
+	<link rel="stylesheet" href="../css/web/style.css">
+    <!-- script -->
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/jquery-ui.js"></script>    
+    <script src="../js/html_common.js"></script>
+    <script src="../js/html_style.js"></script>
+    <!-- add script -->
+    <script>
+        $(document).ready(function(){
+            //스크롤 애니메이션 배너
+            //scrollTop('#sliding_area', 400);
+        });
+    </script>
+</head>
+<body>
+    <!-- <div id="topBanner">
+        <div class="Fasten">
+            <img src="../images/web/comm/top_banner.jpg" alt="광고배너">
+            <a><img id="tbClose" src="../images/web/comm/close.jpg" alt="닫기"></a>
+        </div>
+    </div> -->
+    
+	<header id="header">
+        <div class="Fasten">
+            <div class="topSearch">
+                <h1 class="logo"><a href=""><img src="../images/web/comm/logo.gif" alt="탐나오"></a></h1>
+                <!-- 검색 -->
+                <p class="searchBox"><input id="search" type="text"><button id="searBT"></button></p>
+                <!-- 서브메뉴 -->
+                <nav id="topMenu">
+                    <a href="">★즐겨찾기</a>
+                    <a href="">로그인</a>
+                    <a href="">회원가입</a>
+                    <a href="">마이페이지</a>
+                    <a href="">고객센터</a>
+                </nav>
+            </div>
+        </div>
+        <!-- main menu -->
+        <nav id="mainMenu">
+            <div class="Fasten">
+                <div class="menuBT"><a id="menuBT"><img src="../images/web/comm/menu.gif" alt="메뉴"></a></div>
+                <div class="subMenu">11<br>11<br>11<br>11<br></div>
+                <ul class="mainMenu">
+                    <li><a class="select" href="air-main.html">항공</a></li>
+                    <li><a href="hotel-list.html">숙박</a></li>
+                    <li><a href="rent-list.html">렌터카</a></li>
+                    <li><a href="">골프</a></li>
+                    <li><a href="">패키지할인상품</a></li>
+                    <li><a href="">관광지입장권</a></li>
+                    <li><a href="">레져/음식/뷰티</a></li>
+                    <li><a href="event-list.html">이벤트</a></li>
+                    <li><a href="">여행경비산출</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- //main menu -->
+    </header>
+
+	<main id="main">
+	    <div class="mapLocation"> <!--index page에서는 삭제-->
+            <div class="Fasten">
+                <span>홈</span> <span class="gt">&gt;</span>
+                <span>실시간 예약</span> <span class="gt">&gt;</span>
+                <span>실시간 숙박</span> <span class="gt">&gt;</span>
+                <span>숙박상세</span>
+            </div>
+        </div>
+        <!-- quick banner -->
+        <div class="Fasten">
+            <aside id="leftAside">
+                <ul>
+                    <li><a href=""><img src="../images/web/leftBanner/01.jpg" alt=""></a></li>
+                    <li><a href=""><img src="../images/web/leftBanner/02.jpg" alt=""></a></li>
+                    <li><a href=""><img src="../images/web/leftBanner/03.jpg" alt=""></a></li>
+                </ul>
+            </aside>
+        </div>
+        <!-- //quick banner -->
+        <div class="subContainer">
+            <div class="subHead"></div>
+            <div class="subContents">
+                <!-- new contents -->
+                <div class="travelExpenses-wrap">
+                    <div class="travel-head">
+                        <div class="title-info">
+                            <div class="Fasten">
+                                <article class="text-wrap">
+                                    <h2 class="title">여행경비산출</h2>
+                                    <p class="sub-text">내가 원하는 제주여행을 예상비용은 간편하게 산출할 수 있습니다.</p>
+                                </article>
+                            </div>
+                        </div>
+                        <div class="travel-search">
+                            <div class="Fasten">
+                                <table class="search-form">
+                                    <tr>
+                                        <th class="title-wrap">관광지입장권 &gt;</th>
+                                        <td class="int-wrap">
+                                            <span class="list-button packList-button">
+                                                <a class="select" href="">전체상품 <span class="count">(999)</span></a>
+                                                <a href="">전시/박물관/민속촌 <span class="count">(13)</span></a>
+                                                <a href="">테마공원 <span class="count">(13)</span></a>
+                                                <a href="">공연/쇼/상영관 <span class="count">(13)</span></a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div> <!-- //travel-head -->
+                    <div class="Fasten">                        
+                        <div class="travel-contents">
+                            <div class="l-area">
+                                <h5 class="listTitle1">전체상품</h5>
+                                <!-- item -->
+                                <div class="itemWrap">
+                                    <div class="item">
+                                        <a class="select" onclick="show_popup('.option-wrap');">
+                                            <p class="photo">
+                                                <!--알림-->
+                                                <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                <!--photo-->
+                                                <img class="img" src="../images/web/package/01.jpg" alt="">
+                                            </p>
+                                            <article class="textWrap">
+                                                <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                <ul class="info">
+                                                    <li class="saleWrap">
+                                                        <p class="sale">45%</p>
+                                                        <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                    </li>
+                                                    <li class="comment">
+                                                        <p class="like">
+                                                            <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                            <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </article>
+                                        </a>
+                                    </div> <!-- //item -->
+                                    <div class="item">
+                                        <a onclick="show_popup('.option-wrap');">
+                                            <p class="photo">
+                                                <!--알림-->
+                                                <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                <!--photo-->
+                                                <img class="img" src="../images/web/package/01.jpg" alt="">
+                                            </p>
+                                            <article class="textWrap">
+                                                <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                <ul class="info">
+                                                    <li class="saleWrap">
+                                                        <p class="sale">45%</p>
+                                                        <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                    </li>
+                                                    <li class="comment">
+                                                        <p class="like">
+                                                            <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                            <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </article>
+                                        </a>
+                                    </div> <!-- //item -->
+                                    <div class="item">
+                                        <a onclick="show_popup('.option-wrap');">
+                                            <p class="photo">
+                                                <!--알림-->
+                                                <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                <!--photo-->
+                                                <img class="img" src="../images/web/package/01.jpg" alt="">
+                                            </p>
+                                            <article class="textWrap">
+                                                <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                <ul class="info">
+                                                    <li class="saleWrap">
+                                                        <p class="sale">45%</p>
+                                                        <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                    </li>
+                                                    <li class="comment">
+                                                        <p class="like">
+                                                            <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                            <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </article>
+                                        </a>
+                                    </div> <!-- //item -->
+                                    <div class="item">
+                                        <a onclick="show_popup('.option-wrap');">
+                                            <p class="photo">
+                                                <!--알림-->
+                                                <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                <!--photo-->
+                                                <img class="img" src="../images/web/package/01.jpg" alt="">
+                                            </p>
+                                            <article class="textWrap">
+                                                <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                <ul class="info">
+                                                    <li class="saleWrap">
+                                                        <p class="sale">45%</p>
+                                                        <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                    </li>
+                                                    <li class="comment">
+                                                        <p class="like">
+                                                            <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                            <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </article>
+                                        </a>
+                                    </div> <!-- //item -->
+                                    <div class="item">
+                                        <a onclick="show_popup('.option-wrap');">
+                                            <p class="photo">
+                                                <!--알림-->
+                                                <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                <!--photo-->
+                                                <img class="img" src="../images/web/package/01.jpg" alt="">
+                                            </p>
+                                            <article class="textWrap">
+                                                <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                <ul class="info">
+                                                    <li class="saleWrap">
+                                                        <p class="sale">45%</p>
+                                                        <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                    </li>
+                                                    <li class="comment">
+                                                        <p class="like">
+                                                            <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                            <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </article>
+                                        </a>
+                                    </div> <!-- //item -->
+                                    <div class="item">
+                                        <a onclick="show_popup('.option-wrap');">
+                                            <p class="photo">
+                                                <!--알림-->
+                                                <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                <!--photo-->
+                                                <img class="img" src="../images/web/package/01.jpg" alt="">
+                                            </p>
+                                            <article class="textWrap">
+                                                <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                <ul class="info">
+                                                    <li class="saleWrap">
+                                                        <p class="sale">45%</p>
+                                                        <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                    </li>
+                                                    <li class="comment">
+                                                        <p class="like">
+                                                            <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                            <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </article>
+                                        </a>
+                                    </div> <!-- //item -->
+                                    <div class="item">
+                                        <a onclick="show_popup('.option-wrap');">
+                                            <p class="photo">
+                                                <!--알림-->
+                                                <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                <!--photo-->
+                                                <img class="img" src="../images/web/package/01.jpg" alt="">
+                                            </p>
+                                            <article class="textWrap">
+                                                <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                <ul class="info">
+                                                    <li class="saleWrap">
+                                                        <p class="sale">45%</p>
+                                                        <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                    </li>
+                                                    <li class="comment">
+                                                        <p class="like">
+                                                            <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                            <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </article>
+                                        </a>
+                                    </div> <!-- //item -->
+                                    <div class="item">
+                                        <a onclick="show_popup('.option-wrap');">
+                                            <p class="photo">
+                                                <!--알림-->
+                                                <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                <!--photo-->
+                                                <img class="img" src="../images/web/package/01.jpg" alt="">
+                                            </p>
+                                            <article class="textWrap">
+                                                <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                <ul class="info">
+                                                    <li class="saleWrap">
+                                                        <p class="sale">45%</p>
+                                                        <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                    </li>
+                                                    <li class="comment">
+                                                        <p class="like">
+                                                            <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                            <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </article>
+                                        </a>
+                                    </div> <!-- //item -->
+                                    <div class="item">
+                                        <a onclick="show_popup('.option-wrap');">
+                                            <p class="photo">
+                                                <!--알림-->
+                                                <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                <!--photo-->
+                                                <img class="img" src="../images/web/package/01.jpg" alt="">
+                                            </p>
+                                            <article class="textWrap">
+                                                <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                <ul class="info">
+                                                    <li class="saleWrap">
+                                                        <p class="sale">45%</p>
+                                                        <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                    </li>
+                                                    <li class="comment">
+                                                        <p class="like">
+                                                            <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                            <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </article>
+                                        </a>
+                                    </div> <!-- //item -->
+                                    <div class="item">
+                                        <a onclick="show_popup('.option-wrap');">
+                                            <p class="photo">
+                                                <!--알림-->
+                                                <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                <!--photo-->
+                                                <img class="img" src="../images/web/package/01.jpg" alt="">
+                                            </p>
+                                            <article class="textWrap">
+                                                <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                <ul class="info">
+                                                    <li class="saleWrap">
+                                                        <p class="sale">45%</p>
+                                                        <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                    </li>
+                                                    <li class="comment">
+                                                        <p class="like">
+                                                            <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                            <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </article>
+                                        </a>
+                                    </div> <!-- //item -->
+                                    <div class="item">
+                                        <a onclick="show_popup('.option-wrap');">
+                                            <p class="photo">
+                                                <!--알림-->
+                                                <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                <!--photo-->
+                                                <img class="img" src="../images/web/package/01.jpg" alt="">
+                                            </p>
+                                            <article class="textWrap">
+                                                <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                <ul class="info">
+                                                    <li class="saleWrap">
+                                                        <p class="sale">45%</p>
+                                                        <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                    </li>
+                                                    <li class="comment">
+                                                        <p class="like">
+                                                            <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                            <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </article>
+                                        </a>
+                                    </div> <!-- //item -->
+                                    <div class="item">
+                                        <a onclick="show_popup('.option-wrap');">
+                                            <p class="photo">
+                                                <!--알림-->
+                                                <span class="nt ntTopL"><img src="../images/web/icon/event.gif" alt="이벤트"></span>
+                                                <!--photo-->
+                                                <img class="img" src="../images/web/package/01.jpg" alt="">
+                                            </p>
+                                            <article class="textWrap">
+                                                <h5 class="title"><span>[제주시권]</span> 아이브리조트, 자연속힐링</h5>
+                                                <p class="subTitle">9월객실 업그레이드 이벤트</p>
+                                                <ul class="info">
+                                                    <li class="saleWrap">
+                                                        <p class="sale">45%</p>
+                                                        <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                    </li>
+                                                    <li class="comment">
+                                                        <p class="like">
+                                                            <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+                                                            <span class="ind_grade"><strong>4.8</strong>/5</span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </article>
+                                        </a>
+                                    </div> <!-- //item -->
+                                    
+                                    <!-- paging -->
+                                    <div class="pageNumber">
+                                        <p class="list_pageing">
+                                            <span class="btn">
+                                                <a href="#"><img src="../images/web/icon/page1.gif" alt="처음페이지" /></a>
+                                                <a href="#"><img src="../images/web/icon/page2.gif" alt="이전페이지" /></a>
+                                            </span>
+                                            <a href="#">1</a>
+                                            <a href="#">2</a>
+                                            <a href="#">3</a>
+                                            <a href="#">4</a>
+                                            <strong>5</strong>
+                                            <a href="#">6</a>
+                                            <a href="#">7</a>
+                                            <a href="#">8</a>
+                                            <a href="#">9</a>
+                                            <a href="#">10</a>
+                                            <span class="btn">
+                                                <a href="#"><img src="../images/web/icon/page3.gif" alt="다음페이지" /></a>
+                                                <a href="#"><img src="../images/web/icon/page4.gif" alt="마지막페이지" /></a>
+                                            </span>
+                                        </p>
+                                    </div> <!--//pageNumber-->
+                                    
+                                </div> <!-- //itemWrap -->
+                                <!--item 없을 시 출력-->
+                                <!-- <div class="item-noContent">
+                                    <p><img src="../images/web/icon/warning2.gif" alt="경고"></p>
+                                    <p class="text">죄송합니다.<br><span class="comm-color1">해당상품</span>에 대한 검색결과가 없습니다.</p>
+                                </div> -->                                
+                                
+                            </div> <!-- //l-area -->
+                            <div id="sliding_area" class="r-area">
+                                <ul class="travel-list">
+                                    <li>
+                                        <a class="title" href="">항공 <span class="price">99,999,999원</span></a>                                        
+                                    </li>
+                                    <li>
+                                        <a class="title" href="">숙박 <span class="price">99,999,999원</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="title" href="">렌터카 <span class="price">99,999,999원</span></a>                                        
+                                    </li>
+                                    <li>
+                                        <a class="title" href="">골프 <span class="price">99,999,999원</span></a>                                        
+                                    </li>
+                                    <li class="select">
+                                        <a class="title" href="">관광지입장권 <span class="price">99,999,999원</span></a>
+                                        <div class="sub-list">
+                                            <ul>
+                                                <li>
+                                                    <h5 class="product"><span class="cProduct">절물길 감귤체험</span></h5>
+                                                    <p class="infoText">중문관광단지 차량 5분</p>
+                                                    <p class="money">
+                                                        <span class="left">수량 : <span>1</span></span>
+                                                        <span class="right"><span>99,999,999</span>원</span>
+                                                    </p>
+                                                    <a class="close"><img src="../images/web/icon/close7.png" alt="삭제"></a>
+                                                </li>
+                                                <li>
+                                                    <h5 class="product"><span class="cProduct">절물길 감귤체험</span></h5>
+                                                    <p class="infoText">중문관광단지 차량 5분</p>
+                                                    <p class="money">
+                                                        <span class="left">수량 : <span>1</span></span>
+                                                        <span class="right"><span>99,999,999</span>원</span>
+                                                    </p>
+                                                    <a class="close"><img src="../images/web/icon/close7.png" alt="삭제"></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="title" href="">레져/음식/뷰티 <span class="price">99,999,999원</span></a>
+                                    </li>
+                                </ul>
+                                <div class="travel-pay">
+                                    <h3 class="wrap-title">총 여행경비</h3>
+                                    <!--<ul class="pay-list">
+                                        <li>
+                                            <p class="pay-title">총상품가</p>
+                                            <p class="pay-price"><span>99,999,999</span>원</p>
+                                        </li>
+                                        <li>
+                                            <p class="pay-title">할인캐쉬 <a href="" class="bt">캐쉬함</a></p>
+                                            <p class="pay-price"><span>99,999,999</span>원</p>
+                                        </li>
+                                    </ul>-->
+                                    <div class="pay-info">
+                                        <p class="pay-total"><span class="price">319,440</span><span class="won">원</span></p>
+                                    </div>
+                                    <p class="pay-button"><a href=""><img src="../images/web/icon/check2.png" alt="check"> 예약하기</a></p>
+                                </div> <!-- //travel-pay -->
+                            </div> <!-- //r-area -->
+                        </div>                        
+                    </div>
+                    <div class="option-wrap">
+                        <!-- 관광지 옵션변경 -->
+                        <div class="pack-option option-box">
+                            <div class="info-head">
+                                <h4 class="title">
+                                    title
+                                    <a class="option-close" onclick="close_popup('.option-wrap');"><img src="../images/web/cart/close.gif" alt="닫기"></a>
+                                </h4>
+                                <!-- <h5 class="sub-title"><img src="../images/web/travel/sb.gif" alt="말풍선"> 상품선택</h5> -->
+                                <!--상품선택-->
+                                <div class="comm-select">
+                                    <a class="select-button">상품을 선택하세요.</a>
+                                    <ul class="select-list-option">
+                                        <li>
+                                            <a>
+                                                <p class="product"><span>[선택1]</span> <span>상품명 출력 상품명 출력 상품명 출력</span></p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--달력-->
+                                <article class="opCal">
+                                    <h4 class="opCal-title">날짜선택 <span>(2015. 12. 31)</span></h4>
+                                    <div class="packCalendar">
+                                        <div class="calendar">
+                                            <div class="calHead">
+                                                <div class="cal-top">
+                                                    <a href="" class="calPrev"><img src="../images/web/icon/arrow4.gif" alt="이전달" /></a>
+                                                    <span class="calY1">2015. </span><span class="select calM1">09</span>
+                                                    <a href="" class="calNext"><img src="../images/web/icon/arrow5.gif" alt="다음달" /></a>
+                                                </div>
+                                                <div class="cal-info">
+                                                    <p class="info1"><span class="colorBG"></span> <span>선택 날짜</span></p>
+                                                    <p class="info2"><span class="colorBG"></span> <span>판매종료/매진</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="calBody">
+                                                <table>
+                                                    <thead>
+                                                        <tr class="cal_title_tr">
+                                                            <th scope="col" class="sun">일</th>
+                                                            <th scope="col">월</th>
+                                                            <th scope="col">화</th>
+                                                            <th scope="col">수</th>
+                                                            <th scope="col">목</th>
+                                                            <th scope="col">금</th>
+                                                            <th scope="col" class="sat">토</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="sun">25</td>
+                                                            <td>26</td>
+                                                            <td>27</td>
+                                                            <td>28</td>
+                                                            <td>29</td>
+                                                            <td>30</td>
+                                                            <td class="sat"><a href="">1</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="sun"><a href="">2</a></td>
+                                                            <td><a href="">3</a></td>
+                                                            <td><a href="">4</a></td>
+                                                            <td><a class="select" href="">5</a></td>
+                                                            <td><a class="end" href="">6</a></td>
+                                                            <td><a href="">7</a></td>
+                                                            <td class="sat"><a href="">8</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="sun"><a href="">9</a></td>
+                                                            <td><a href="">10</a></td>
+                                                            <td><a href="">11</a></td>
+                                                            <td><a href="">12</a></td>
+                                                            <td><a href="">13</a></td>
+                                                            <td><a href="">14</a></td>
+                                                            <td class="sat"><a href="">15</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="sun"><a href="">16</a></td>
+                                                            <td><a href="">17</a></td>
+                                                            <td><a href="">18</a></td>
+                                                            <td><a href="">19</a></td>
+                                                            <td><a href="">20</a></td>
+                                                            <td><a href="">21</a></td>
+                                                            <td class="sat"><a href="">22</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="sun"><a href="">23</a></td>
+                                                            <td><a href="">24</a></td>
+                                                            <td><a href="">25</a></td>
+                                                            <td><a href="">26</a></td>
+                                                            <td><a href="">27</a></td>
+                                                            <td><a href="">28</a></td>
+                                                            <td class="sat"><a href="">29</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="sun"><a href="">30</a></td>
+                                                            <td>1</td>
+                                                            <td>2</td>
+                                                            <td>3</td>
+                                                            <td>4</td>
+                                                            <td>5</td>
+                                                            <td class="sat">6</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div> <!-- //calendar -->
+                                    </div>
+                                    <script>
+                                        $('.opCal-title').click(function(){
+                                            if($('.packCalendar').css('display')=='none'){
+                                                $('.packCalendar').css('display', 'block');
+                                            }
+                                            else {
+                                                $('.packCalendar').css('display', 'none');
+                                            }
+                                        });
+                                    </script>
+                                </article>
+                                <!--옵션선택-->
+                                <div class="comm-select comm-select2">
+                                    <a class="select-button">옵션을 선택하세요.</a>
+                                    <ul class="select-list-option">
+                                        <li>
+                                            <a>
+                                                <p class="product"><span>[선택1]</span> <span>상품명 출력 상품명 출력 상품명 출력</span> <span class="count">| 잔여 : 144개</span></p>
+                                                <p class="price">99,999,999</p>
+                                            </a>
+                                        </li>                                                        
+                                    </ul>
+                                </div>
+                                <script>
+                                    $('.comm-select .select-button').click(function(){
+                                        if($(this).next('.select-list-option').css('display')=='none'){
+                                            $('.comm-select .select-list-option').css('display', 'none');
+                                            $(this).next().css('display', 'block');
+                                        }
+                                        else {
+                                            $('.comm-select .select-list-option').css('display', 'none');
+                                        }
+                                    });
+                                </script>
+                            </div> <!--//info-head-->
+                            <div class="info-text">
+                                <div class="list-cell">
+                                    <!--선택항목추가-->
+                                    <div class="qtyWrap">
+                                        <ul>
+                                            <li>
+                                                <ol>
+                                                    <li class="list1">상품명 길면 2줄 처리함</li>
+                                                    <li class="list2">
+                                                        <input type="text" value="1" readonly>
+                                                        <button class="addition">+</button>
+                                                        <button class="subtract">-</button>
+                                                    </li>
+                                                    <li class="list3"><span class="price">99,999,999</span></li>
+                                                    <li class="list4"><a href=""><img src="../images/web/icon/close5.gif" alt="삭제"></a></li>
+                                                </ol>
+                                            </li>
+                                            <!-- <li>
+                                                <ol>
+                                                    <li class="list1">상품명 길면 2줄 처리함</li>
+                                                    <li class="list2">
+                                                        <input type="text" value="1" readonly>
+                                                        <button class="addition">+</button>
+                                                        <button class="subtract">-</button>
+                                                    </li>
+                                                    <li class="list3"><span class="price">99,999,999</span></li>
+                                                    <li class="list4"><a href=""><img src="../images/web/icon/close5.gif" alt="삭제"></a></li>
+                                                </ol>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                    <div class="price-wrap">
+                                        <p class="info4"><span class="plus">총합계</span> <strong>319,440</strong><span>원</span></p>
+                                    </div>
+                                    <p class="comm-button2">
+                                        <a class="color0" href="">선택완료</a>
+                                    </p>
+                                </div>
+                            </div> <!-- //info-text -->
+                        </div> <!--//option-box(관광지)-->
+                    </div> <!-- //option-wrap -->                    
+                </div> <!-- //travel-expenses-wrap -->
+                <!-- //new contents -->
+            </div> <!-- //subContents -->
+        </div> <!-- //subContainer -->
+	</main>
+	
+	<aside id="rightAside">
+        <div class="ctWrap">
+            <div class="login">
+                <!-- <h2>LOGIN</h2>
+                <p>반갑습니다.<br>로그인해주세요.</p>
+                <button id="sideLogin">로그인</button> -->
+                <!-- 로그인시-->
+                <p class="pdWrap">반갑습니다.<br>홍길동님</p>
+                <a href="">예약정보확인</a>
+            </div>
+            <!-- 상품 리스트 -->
+            <div class="product">
+                <ul class="list">
+                    <li><a href=""><img class="photo" src="../images/web/comm/product1.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                    <li><a href=""><img class="photo" src="../images/web/comm/product1.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                    <!--오늘본 상품없을 시 출력-->
+                    <!--<p class="side-noContent">오늘 본 상품이 없습니다.</p>-->
+                </ul>
+                <ul class="itemNav">
+                    <li>
+                        <span id="itemPrev"><a href=""><img src="../images/web/comm/itemPrev.gif" alt="이전"></a></span>
+                        <span id="number">1/1</span>
+                        <span id="itemNext"><a href=""><img src="../images/web/comm/itemNext.gif" alt="다음"></a></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="shoppingCart">
+                <h6>장바구니</h6>
+                <p>
+                    <img src="../images/web/comm/cart2.gif" alt="장바구니">
+                    <span>9</span>
+                </p>
+            </div>
+            <ul class="menuList">
+                <li><a href=""><img src="../images/web/comm/menulist1.gif" alt="맞춤견적">맞춤견적</a></li>
+                <li><a href=""><img src="../images/web/comm/menulist2.gif" alt="자주묻는질문">자주묻는질문</a></li>
+            </ul>
+	        <div id="floatingBT"><img src="../images/web/comm/side.gif" alt="side button"></div>
+        </div>        
+	</aside>
+
+	<footer id="footer">
+	    <div class="footMenu">
+	        <div class="Fasten">
+	            <span><a href="">회사소개</a></span>
+	            <span><a href="">사업제휴</a></span>
+	            <span><a href=""><strong>개인정보취급방침</strong></a></span>
+	            <span><a href="">국내여행표준약관</a></span>
+	            <span><a href="">전자상거래표준약관</a></span>
+	            <span><a href="">이메일무단수집거부</a></span>
+	            <!-- link site -->
+	            <div class="footLink">
+	                <select id="site_family">
+	                    <option value="" selected>패밀리사이트</option>
+	                    <option value="">list1</option>
+	                </select>
+	                <select id="site_regard">
+	                    <option value="" selected>관련사이트</option>
+	                    <option value="">list1</option>
+	                </select>
+	            </div>
+		    </div>
+	    </div>
+	    <div class="Fasten">
+            <div class="copy">
+                690-785 제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층 Tel)064-742-8861 관리자 직통(8774) Fax) 064-742-8865<br>
+                사업자 등록번호 : 616-82-04092 법인 등록번호 : 220121-0000107 통신판매업번호: 제2013-제주연동 0024호<br>
+                고객센터 1577-1233 I 개인정보관리 책임자 최종훈<br>
+                부득이한 사정에 의해 여행일저이 변경되는 경우 여행자의 사전동의를 받습니다.<br>
+                Copyright 2015. 제주특별자치도관광협회 All Rights Reserved.
+            </div>
+	    </div>
+	    <!-- banner zone -->
+	    <div class="footBanner">
+            <div class="Fasten">
+                <ul>
+                    <li><a href=""><img src="../images/web/footBanner/01.jpg" alt="제주관광협회"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/02.jpg" alt="하이제주"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/03.jpg" alt="제주관광공사"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/04.jpg" alt="공정거래위원회"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/05.jpg" alt="한국소비자원"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/06.jpg" alt="한국여행업협회"></a></li>
+                </ul>
+            </div>
+	    </div>
+	</footer>
+</body>
+</html>

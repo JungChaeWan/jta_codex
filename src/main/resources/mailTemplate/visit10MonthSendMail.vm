@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>탐나오</title>
+</head>
+
+<body>
+	<table style="width: 740px; margin: 0 auto; text-decoration: none; border-collapse: collapse; font-family: 'NanumBarunGothic', 'Dotum', 'Helvetica', 'sans-serif';">
+		<!-- thead -->
+		#parse("mailTemplate/header2.vm")
+	
+		<tbody>
+			<tr>
+				<td style="margin: 0; padding: 0; ">
+					<table style="width: 100%; table-layout: fixed; border-collapse: collapse;">
+						<colgroup>
+							<col width="170">
+							<col width="400">
+							<col width="170">
+						</colgroup>
+						<tr>
+							<td colspan="3" style="padding: 0; margin: 0;">
+								<img src="${domain}/images/web/mail2/temp/typeE/event-top.png" alt="" style="display: block;">
+							</td>
+						</tr>
+						<tr>
+							<td style="padding: 0; margin: 0; display: block; position:relative; bottom: 5px;">
+								<img src="${domain}/images/web/mail2/temp/typeE/event-left.png" alt="" style="display: block;">
+							</td>
+							<td style="padding: 0; margin: 0; position:relative; bottom: 5px;">
+								<table style="width: 100%; table-layout: fixed; border-collapse: collapse;">
+									<colgroup>
+										<col width="80">
+										<col>
+									</colgroup>
+									<tr>
+										<th height="44" style="font-size: 15px; line-height: 13px; color: #100f0f; background-color: #f5f4f4;">
+											아이디
+										</th>
+										<td style="padding-left: 15px; font-size: 15px; color: #352e04; background-color: #fff; font-weight: bold;">
+											$email
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td style="padding: 0; margin: 0; display: flex; position:relative; bottom: 5px;">
+								<img src="${domain}/images/web/mail2/temp/typeE/event-right.png" alt="">
+							</td>
+						</tr>
+						<tr>
+							<td style="background-image: url(${domain}/images/web/mail2/temp/typeE/event-bottom-bg.png); width: 740px; height: 234px; display: table; position:relative; bottom: 5px;">
+								<div style="text-align: left; color: #fff; margin: 50px 140px; font-size: 17px;" >
+									#if($cp.disDiv == "CP01")
+										#set($disAmt = $numberTool.format("integer", $cp.disAmt))
+										#set($disAmt = "${disAmt}원")
+									#elseif($cp.disDiv == "CP02")
+										#set($disAmt = "${cp.disPct}%")
+									#else
+										#set($disAmt = "무료")
+									#end
+
+									<p style="margin: 10px 0;">
+										<img src="${domain}/images/web/mail2/temp/typeE/event-icon1.png" alt="" style="padding-right: 10px; vertical-align: middle;">
+										할인 : ${disAmt} 쿠폰
+									</p>
+
+									#set($cpPrdt = "")
+									#set($prdtCtgrs = $cp.prdtCtgrList.split(","))
+
+									#foreach($prdtCtgr in $prdtCtgrs)
+										#if($prdtCtgr == "AV")
+											#set($cpPrdt = "${cpPrdt}항공")
+										#elseif($prdtCtgr == "AD")
+											#set($cpPrdt = "${cpPrdt}숙박")
+										#elseif($prdtCtgr == "RC")
+											#set($cpPrdt = "${cpPrdt}렌터카")
+										#elseif($prdtCtgr == "SP")
+											#set($cpPrdt = "${cpPrdt}관광지/레저,제주마을체험,맛집,여행사상품")
+										#elseif($prdtCtgr == "SV")
+											#set($cpPrdt = "${cpPrdt}특산/기념품")
+										#end
+
+										#if($foreach.count < $prdtCtgrs.size())
+											#set($cpPrdt = "${cpPrdt} | ")
+										#end
+									#end
+
+									<p style="margin: 10px 0;">
+										<img src="${domain}/images/web/mail2/temp/typeE/event-icon2.png" alt="" style="padding-right: 10px; vertical-align: middle;">
+										대상 : ${cpPrdt}
+									</p>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div style="text-align: center; margin: 30px 0 60px 0;">
+						<a href="${domain}/web/mypage/couponList.do" target="_blank">
+							<img src="${domain}/images/web/mail2/temp/typeE/login-coupon.png" alt="로그인하고 할인쿠폰 받기">
+						</a>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+
+		<!-- tfoot -->
+		#parse("mailTemplate/footer.vm")
+	</table>
+</body>
+</html>

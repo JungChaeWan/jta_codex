@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC 
+    "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN" 
+    "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+<form-validation>
+
+    <formset>
+        <form name="USERVO">
+			<field property="email" depends="required, maxlength">
+				<arg0 key="이메일" />
+				<arg1 key="50" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+        	<field property="userNm" depends="required, maxlength">
+        		<arg0 key="이름" />
+        		<arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+				<!-- <arg2 />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9a-zA-Z$]</var-value>
+				</var> -->
+			</field>
+			<field property="pwd" depends="required, password1">
+				<arg0 key="비밀번호" />
+				<arg1 key="비밀번호" />
+			</field>
+			<field property="telNum" depends="required, maxlength">
+				<arg0 key="휴대폰번호" />
+        		<arg1 key="20" resource="false" />
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>20</var-value>
+        		</var>
+			</field>
+			<!--<field property="bth" depends="required, maxlength">
+                <arg0 key="생년월일" />
+                <arg1 key="8" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>8</var-value>
+				</var>
+            </field>-->
+			<!--<field property="postNum" depends="maxlength">
+                <arg0 key="5" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>5</var-value>
+				</var>
+            </field>
+            <field property="roadNmAddr" depends="maxlength">
+                <arg0 key="100" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+            </field>
+            <field property="dtlAddr" depends="maxlength">
+                <arg0 key="100" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+            </field>-->
+        </form>
+        <form name="UPDATEUSERVO">
+        	<field property="userNm" depends="required, maxlength">
+        		<arg0 key="이름" />
+        		<arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+				<!-- <arg2 />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9a-zA-Z$]</var-value>
+				</var> -->
+			</field>
+			<field property="email" depends="required, maxlength">
+				<arg0 key="이메일" />
+				<arg1 key="50" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="telNum" depends="required, maxlength">
+				<arg0 key="휴대폰번호" />
+        		<arg1 key="20" resource="false" />
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>20</var-value>
+        		</var>
+			</field>
+			<field property="postNum" depends="maxlength">
+                <arg0 key="5" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>5</var-value>
+				</var>
+            </field>
+            <field property="roadNmAddr" depends="maxlength">
+                <arg0 key="100" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+            </field>
+            <field property="dtlAddr" depends="maxlength">
+                <arg0 key="100" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+            </field>
+        </form>
+    </formset>
+
+</form-validation>

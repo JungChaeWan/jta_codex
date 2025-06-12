@@ -1,0 +1,334 @@
+@charset "utf-8";
+
+/* 마이페이지 */
+.center-tab {display:table; width:100%; table-layout:fixed; margin:0 0 10px 0; border-top:1px solid #CCC; border-left:1px solid #CCC;}
+.center-tab a {display:table-cell; height:30px; border-bottom:1px solid #CCC; border-right:1px solid #CCC; text-align:center; vertical-align:middle; color:#000;}
+.center-tab a.active {background:#5D5D5D; color:#FFF;}
+
+.center-con {padding:10px; background:#FFF; border:1px solid #CCC;}
+.center-con dl {padding-bottom:10px;}
+.center-con dl dt {color:#000;}
+
+
+/* 자주묻는 질문 */
+.board .search {float:left; width:100%; padding-bottom:5px; line-height:25px; display: flex; justify-content: space-between;}
+/*수정*/.board .search select {float:left; width:20%; margin-right:1%;}
+/*수정*/.board .search input[type="text"] {float:left; width:63%; margin-right:1%;}
+.board .search a.btns {display:inline-block; height:25px; line-height:25px; font-weight:bold; text-align:center; border-radius:2px;}
+.board .search a.btn-search {float:left; width:15%; background:#000; color:#FFF; border:1px solid #000;}
+.board .search a.btn-write {float:right; width:17%; background:#FFF; color:#000; border:1px solid #CCC;}
+.board .txt {clear:both; padding:2px 0 5px 0;}
+.board .txt strong {color:#000;}
+.board .category {float:left; width:100%; table-layout:fixed; margin:0 0 10px 0; border-top:1px solid #CCC; border-left:1px solid #CCC;}
+/* .board .category li {float:left; display:table; width:25%;} */
+.board .category li {float:left; display:table; width:33.3%;}
+.board .category li a {display:table-cell; height:35px; padding:0 5px; border-bottom:1px solid #CCC; border-right:1px solid #CCC; text-align:center; vertical-align:middle; color:#000;}
+.board .category li a.active {background:#000; color:#FFF;}
+.board ul.list {float:left; width:99%; margin-bottom:5px; background:#FFF; border-bottom:1px solid #CCC;}
+.board ul.list li {border-top:1px solid #CCC;}
+.board ul.list > li {/* background: #f2f2f2; */}
+.board ul.list li a {display:block; padding:7px 10px;}
+.board ul.list li a strong {font-size:14px; color:#000;}
+.board ul.list li > strong {font-size:14px; line-height: 20px; color:#000; display: inline-block; padding: 10px;}
+.board ul.list li > em {display: inline-block; padding: 0 10px 10px;}
+
+.board ul.list li .re-comment {background: #fff;}
+
+.board .txt-box {padding:7px 10px; background:#FFF; border:1px solid #CCC;}
+.board .txt-box dt {font-size:12px; padding-bottom:10px; color:#000;}
+#subContent .board table.write {line-height:20px;}
+#subContent .board table.write th {text-align:left; border: none; font-weight: bold; text-align: center;}
+#subContent .board table.write td.cate select {
+	float:left; width:65%; height:35px; line-height:32px; background-size:17px; border:1px solid #ccc; font-size:1rem; color:#353535;}
+#subContent .board table.write td.cate {background-color:#fff; border:1px solid #ccc; padding: 10px;}
+#subContent .board table.write td.cate #writer {width:60%; color:#000;}
+#subContent .board table.write td.attachments {background-color:#fff; border:1px solid #ccc;}
+
+#subContent .board table.write td {border:1px solid #ccc; background-color:#fff; padding: 15px 10px;}
+
+#subContent .board table.write tr {background-color:#fff; border: 1px solid #ccc;}
+
+/*수정*/td.cate a img {width: 20px;}
+#subContent .board table.write td.full input {
+	width:100%;
+	color:#000;
+	border:none;
+	border-radius: 4px;
+	font-size: 0.8rem;
+	padding: 10px;
+	border: 1px solid #fff;
+	box-sizing: border-box;
+}
+#subContent .board table.write td.full input:focus {outline: none; border-color: #000;}
+#subContent .board table.write td.full {
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+	padding: 0;
+	border-collapse: collapse;
+	padding: 10px 5px;
+}
+.sub-content .board .file-comment {
+	padding: 10px;
+	margin-bottom: 10px;
+	color: #616161;
+	font-size: 0.85rem;
+}
+#subContent .board table.write textarea {margin:0; border:none; height: auto; font-size:.85rem; padding: 0; border: 1px solid #fff;}
+#subContent .board table.write textarea:focus {outline: none; border-color: #000; box-sizing: border-box;}
+
+.board .view {/*float:left; width:100%;*/ margin-bottom:5px; background:#FFF;}
+.board .view .tit {padding:7px 10px; border-bottom:1px solid #CCC;}
+.board .view .tit strong {font-size:14px; color:#000;}
+.board .view .text {padding:7px 10px;}
+
+
+.question-list {clear: both; width:100%;}
+.question-list .title {
+	font-size: 13px; font-weight: 700; margin: 15px 0 5px; padding-left: 5px;
+	clear: both; border: none;
+}
+
+.question-list dl {clear: both; width:100%;}
+.question-list dl dt {clear: both; overflow: hidden; padding:7px; background:#FFF; border-top:1px solid #CCC;}
+.question-list dl dt em {display:block; width:15px; height:15px; line-height:15px; background:#5D5D5D; border-radius:8px; color:#FFF; font-size:12px; font-weight:bold; text-align:center;}
+.question-list dl dt span:first-child {float:left; width:7%;}
+.question-list dl dt span:last-child {float:right; width:93%;}
+.question-list dl dd {clear: both; overflow: hidden; padding:7px; background:#F3F3F3; border-top:1px solid #CCC;}
+.question-list dl dd em {display:block; width:15px; height:15px; line-height:15px; background:#c62022; border-radius:8px; color:#FFF; font-size:12px; font-weight:bold; text-align:center;}
+.question-list dl dd span:first-child {float:left; width:7%;}
+.question-list dl dd span:last-child {float:right; width:93%;}
+
+
+.review-list {clear: both; width:100%;}
+.review-list > dl {clear: both; width:100%; padding:15px; background:#FFF; margin-bottom:3px; border:1px solid #CCC;}
+.review-list > dl > dt {/*float:left;*/ width:100%;}
+.review-list > dl > dt strong {float:left; width:70%; color:#000;}
+.review-list > dl > dt span {float:right; width:30%; text-align:right; font-weight:normal;}
+.review-list > dl > dt em {clear:both; font-weight:normal;}
+.review-list > dl > dd {color:#444;}
+.review-list > dl > dd .btn-reply {}
+.review-list > dl > dd dl dt {padding:7px 0;}
+.review-list > dl > dd dl dd em {font-weight:normal; color:#000;}
+
+
+/* 채널(상담톡) */
+.operation_guide {
+	position: relative;
+	display: flex;
+	width: 100%;
+	padding: 0;
+	margin: 0 auto;
+	align-items: center;
+	justify-content: space-between;
+}
+.operation_guide .cont{
+	display: inline-block;
+	width: 50%;
+	border: 1px solid #ddd;
+	border-radius: 24px;
+}
+.operation_guide .operation_guide_phone {margin-right: 10px;}
+.operation_guide .service-icon {
+	padding: 9px 0 0 0;
+	margin: 0 auto;
+	text-align: center;
+}
+.operation_guide_phone img, .operation_guide_chat img {
+	width: 25px;
+	height: 25px;
+}
+.operation_guide .service-txt {
+	padding: 5px 0 10px 0;
+	margin: 0 auto;
+	font-size: 1.4rem;
+	font-weight: bold;
+	line-height: 14px;
+	text-align: center;
+}
+.operation_guide .service-txt span {
+	font-size: 0.5rem;
+	font-weight: bold;
+	font-family: "Roboto";
+	letter-spacing: -0.05rem;
+}
+.info_list {
+	display: inline-table;
+	float: right;
+	padding-top: 6px;
+	color: #000;
+	font-size: 0.75rem;
+	font-family: "Roboto";
+	font-weight: bold;
+	line-height: 18px;
+	letter-spacing: -0.05rem;
+}
+.info_list .closed {
+	padding-left: 5px;
+	color: #e8202e;
+	font-size: 0.75rem;
+}
+
+
+/* --------------------------------------------------------- add ------------------------------------------------------------------ */
+/* 이용후기 */
+.re-comment .default-accordion2 {font-size: 13px;}
+.re-comment .default-accordion2 dt {padding: 10px;}
+.re-comment .default-accordion2 dd {background: #f6f6f6; /*padding: 4px 20px;*/}
+
+.re-comment .reviews-ad .memo {background: none !important; padding-left: 0 !important;}
+.re-comment .reviews-ad .user-title {margin-bottom: 10px; font-size: 13px;}
+.re-comment .reviews-ad .user-info {margin-bottom: 12px;}
+.re-comment .reviews-ad .user-info span {color: #9ea09d; font-size: 12px;}
+.re-comment .reviews-ad .user-info span.heart {margin-right: 10px;}
+.re-comment .reviews-ad .user-info span.heart img {height: 16px;}
+.re-comment .reviews-ad .user-memo {font-size: 13px; line-height: 20px;}
+.re-comment .reviews-ad .comment-count {color: #fd444c; font-size: 12px;}
+.re-comment .reviews-ad ul.re_comment {border-top: 1px solid #ded9d9; padding: 8px 0; background: #fff;}
+/* .re-comment .reviews-ad ul.re_comment:first-child {border-top: none;} */
+.re-comment .reviews-ad ul.re_comment > li {display: table-cell; vertical-align: middle;}
+.re-comment .reviews-ad ul.re_comment > .ic2 {padding-left: 10px; position: relative; top: -4px;}
+.re-comment .reviews-ad ul.re_comment .ic2 img {width: 10px;}
+.re-comment .reviews-ad ul.re_comment > .re {font-size: 13px; line-height: 18px; padding-left: 10px; text-align: left;}
+.re-comment li {border-top: none !important;}
+
+.re-comment .editBT {text-align: right;}
+
+
+/* 공지사항 상세 */
+.board .view .text img {width: 100%; margin-bottom: 8px;}
+.board .file {padding: 7px 10px; line-height: 20px;}
+
+
+/* 입점/제휴안내 */
+.service-center table .title {line-height: 30px; font-size: 14px;}
+.service-center label {margin-right: 8px; padding: 5px 0;}
+
+
+
+/* 입점신청서 */
+.warning-text {text-align: right; color: #FE434C; font-size: 11px;}
+.necessary {color: #FE434C;}
+
+#subContent table.application {margin-bottom: 5px;}
+#subContent table.application th {padding: 4px 5px;}
+#subContent table.application td {padding: 4px 5px;}
+#subContent table.application td.email .email1 {width: 45%; width: calc(50% - 9px); margin-bottom: 4px;}
+#subContent table.application td.email .email2 {width: 45%; width: calc(50% - 9px); margin-bottom: 4px;}
+#subContent table.application td.email .email3 {width: 59%; width: calc(100% - 74px);}
+#subContent table.application .rule-wrap {height: 210px; overflow-y: auto;}
+#subContent table.application .rule-wrap .comm-rule dt {font-size: 13px;}
+
+#subContent .side-wrap {padding: 0; position: relative; margin-top: 40px;}
+#subContent .side-wrap input[type="text"] {width: 66%; width: calc(100% - 65px);}
+#subContent .side-wrap .side-btn {position: absolute; right: 0; top: 0; z-index: 9; min-width: auto; width: 60px;}
+
+#subContent table.application .addr-wrap {position: relative;}
+#subContent table.application .addr-wrap .addr1 {width: 100%; margin-bottom: 4px;}
+#subContent table.application .addr-wrap .addr2 {width: 66%; width: calc(100% - 65px);}
+#subContent table.application .addr-wrap .side-btn {position: absolute; right: 0; bottom: 0; z-index: 9; min-width: auto; width: 60px;}
+
+
+
+/* 입점신청서 완료 */
+.application-end {background: #fff; border: 1px solid #ccc; padding: 20px 20px;}
+.application-end .main-t {font-size: 16px; font-weight: 700; text-align: center; margin: 10px 0 15px;}
+.application-end .sub-t {font-size: 12px;}
+.application-end .img-box {text-align: center;}
+.application-end .img-box img {width: 50px;}
+
+
+
+
+/* 이미지 파일 추가 */
+td.attachments p.file {margin: 6px 0; padding: 0; line-height: normal;}
+td.attachments p.file input {
+	width: 100%;
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: 0 0 5px;
+	font-family: "Roboto";
+}
+td.attachments p.label {font-size: 12px; margin: 7px; color: #5f5f60; text-align: left;}
+
+
+
+
+/* MD’s Pick > 고객센터 목록 (2016-10-25) */
+.board ul.list li a {display: table; width: 100%;}
+.board ul.list li a .l-area,
+.board ul.list li a .r-area {display: table-cell; vertical-align: middle;}
+
+.board ul.list li a .l-area {width: 70px;}
+.board ul.list li a .l-area .photo img {width: 100%;}
+
+.board ul.list li a .r-area {padding: 2px 0 0 10px;}
+.board ul.list li a .r-area em {display: block;}
+
+
+/* MD’s Pick > 고객센터 상세 (2016-10-25) */
+.board .md-view {background: transparent; border: none;}
+
+.board .md-view .view-content {font-size: 13px; line-height: 20px;}
+.board .md-view .view-content img {width: 100%;}
+
+.board .md-view .md-map {margin-bottom: 15px;}
+.board .md-view .md-map .map {width: 100%; height: 300px; background: #f2f2f2;}
+.board .md-view .md-map .map img {width: 100%; height: 300px;}
+
+.board .md-view .product-btn {text-align: center;}
+.board .md-view .product-btn a {
+	display: block; width: 100%; line-height: 26px; background: #fff; border: 1px solid #d1d1d1; border-radius: 2px;
+	font-size: 13px; font-weight: bold; color: #444444;
+}
+.board .md-view .product-btn a span {display: inline-block; margin-left: 20px; color: #9b9a9b}
+
+
+#subContent .md-view .view-img {position:relative; min-height: 190px;}
+#subContent .md-view .view-img .tag {position:absolute; top:0; left:0; width:65px; height:52px; padding-top:10px; background:url(../../images/mw/sub_common/label_1.png) no-repeat; background-size:65px 52px; font-size:12px; text-align:center; color:#FFF;}
+#subContent .md-view .view-img ul img {width:100%;}
+#subContent .md-view .view-img .like {position:absolute; bottom:10px; right:10px;}
+#subContent .md-view .view-img .like em {display:inline-block; width:21px; height:13px; padding-left:5px; line-height:13px; background:url(../../images/mw/sub_common/h_e.png) no-repeat; background-size:21px 13px; font-size:10px; color:#000;}
+#subContent .md-view .view-img .sns {position:absolute; bottom:10px; left:10px;}
+#subContent .md-view .view-img .sns img {width: 29px;}
+#subContent .md-view .view-img .btn-prev {position:absolute; top:50%; left:10px; margin-top:-12px;}
+#subContent .md-view .view-img .btn-next {position:absolute; top:50%; right:10px; margin-top:-12px;}
+
+#subContent .md-view .view-info {position:relative; clear:both; padding:10px 0 5px 0; }
+#subContent .md-view .view-info > p {margin: 0; line-height: 18px;}
+#subContent .md-view .view-info strong {font-size:16px; color:#000; display: inline-block; margin-bottom: 4px;}
+#subContent .md-view .view-info em {display:inline-block; padding:0; color:#444;}
+#subContent .md-view .view-info .txt {color:#000; padding-bottom:10px;}
+#subContent .md-view .view-info .tit {float:left;}
+#subContent .md-view .view-info .price {float:right;}
+#subContent .md-view .view-info .price strong {color:#FE434C;}
+#subContent .md-view .view-info .ex {clear:both;}
+#subContent .md-view .view-info .sell {padding-bottom:10px; color:#444;}
+#subContent .md-view .view-info .sell strong {color:#0D6CD6; font-size:12px; font-weight:normal;}
+#subContent .md-view .view-info .sell em {color:#000; padding:0;}
+
+
+/* iPhone 6 Plus / Font Size */
+@media screen and (min-width: 360px) and (max-width: 415px) {
+	.operation_guide {margin-top: 20px;}
+	.operation_guide .service-icon {padding: 18px 0 0 0;}
+	.operation_guide_phone img, .operation_guide_chat img {width: 30px; height: 30px;}
+	.operation_guide .service-txt {padding: 5px 0 16px 0; font-size: 1.1rem; line-height: 20px;}
+	.operation_guide .service-txt span {font-size: 0.8rem}
+	.info_list {padding: 8px; font-size: 0.8rem;}
+}
+
+/* iPhone 6 Plus / Font Size */
+@media screen and (min-width: 415.1px) {
+	.operation_guide {margin-top: 20px;}
+	.operation_guide .service-icon {padding: 18px 0 0 0;}
+	.operation_guide_phone img, .operation_guide_chat img {width: 30px; height: 30px;}
+	.operation_guide .service-txt {padding: 5px 0 16px 0; font-size: 1.1rem; line-height: 20px;}
+	.operation_guide .service-txt span {font-size: 0.8rem}
+	.info_list {padding: 8px; font-size: 0.8rem;}
+}
+
+
+
+
+
+

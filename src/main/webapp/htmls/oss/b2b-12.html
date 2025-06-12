@@ -1,0 +1,360 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>모객 관리자시스템</title>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<meta http-equiv="imagetoolbar" content="false" />
+<link rel="stylesheet" type="text/css" href="/css/common/common.css" />
+<link rel="stylesheet" type="text/css" href="/css/oss/layout.css" />
+<link rel="stylesheet" type="text/css" href="/css/common/page_style.css" />
+<link rel="stylesheet" type="text/css" href="/css/common/jquery-ui.css" />
+
+<script type="text/javascript" src="/js/jquery-1.11.1.js" ></script>
+<script type="text/javascript" src="/js/jquery-ui.js"></script>
+<script>
+$(document).ready(function() {
+	$("#sStartDt").datepicker({
+		dateFormat : "yy-mm-dd"
+	});
+	$("#sEndDt").datepicker({
+		dateFormat : "yy-mm-dd"
+	});
+});
+</script>
+</head>
+<body>
+<div id="wrapper"> 
+    
+    <!--Header 영역-->
+    <div id="header_wrapper">
+        <h1><img src="../../images/oss/common/logo.gif" alt="모객 관리자 시스템" /></h1>
+        <ul class="lnb_menu">
+			<li class="home"><a href="/" target="_blank">탐나오바로가기</a></li>&gt;
+			<!-- <li class="home"><a href="/">홈으로</a></li> -->
+			<li><a href="/web/viewLogin.do?rtnUrl=/web/mypage/viewChangePw.do" target="_blank">비밀번호변경</a></li>
+			<li class="log"><a href="/oss/ossLogout.do">로그아웃</a></li>
+		</ul>
+        <!--상단메뉴-->
+        <h2 class="lay_none">상단메뉴</h2>
+        <ul class="gnb_menu">
+			<li class="menu01 on"><a href="/oss/home.do">홈</a>
+				<!-- <ul class="gnb_depth" id="menu01" style="display:none">
+				</ul> -->
+			</li>
+			<li class="menu02"><a href="/oss/siteManage.do">환경설정</a>
+				<ul class="gnb_depth" id="menu02" style="display: none;">
+					<li><a href="/oss/siteManage.do">운영설정</a></li>
+					<li><a href="/oss/codeList.do">코드관리</a></li>
+					<li><a href="/oss/cmssList.do">수수료관리</a></li>
+					<li><a href="/oss/bbsList.do">게시판관리</a></li>
+                    <li><a href="/oss/bbsGrpList.do">게시판그룹관리</a></li>
+				</ul>
+			</li>
+			<li class="menu03"><a href="/oss/userList.do">고객관리</a>
+				<ul class="gnb_depth" id="menu03" style="display: none;">
+					<li><a href="/oss/userList.do">사용자관리</a></li>
+                    <li><a href="/oss/dropUserList.do">탈퇴사용자관리</a></li>
+				</ul>
+			</li>
+			<li class="menu11"><a href="/oss/corpList.do">업체/제휴관리</a>
+                <ul class="gnb_depth" id="menu11" style="display: none;">
+                	<li><a href="/oss/corpList.do">입점업체관리</a></li>
+                	<li><a href="/oss/corpPnsReqList.do">입점신청관리</a></li>
+                	<li><a href="/oss/nbbs/bbsList.do?bbsNum=MASNOTI">업체공지사항</a></li>
+                	<li><a href="/oss/nbbs/bbsList.do?bbsNum=MASQA">업체 Q&amp;A 게시판</a></li>                 
+                </ul>
+            </li>
+            <li class="menu05"><a href="/oss/prdtList.do">상품관리</a>
+                <ul class="gnb_depth" id="menu05" style="display: none;">
+                    <li><a href="/oss/prdtList.do">상품관리</a></li>
+                    <li><a href="/oss/socialProductList.do">소셜상품관리</a></li>
+                    <li><a href="/oss/couponList.do">탐나오쿠폰</a></li>
+                    <li><a href="/oss/promotionList.do">프로모션승인관리</a></li>                    
+                </ul>
+            </li>
+            <li class="menu06"><a href="/oss/otoinqList.do">커뮤니티</a>
+                <ul class="gnb_depth" id="menu06" style="display: none;">
+                	<li><a href="/oss/otoinqList.do">1:1문의</a></li>
+                    <li><a href="/oss/useepilList.do">상품평관리</a></li>                    
+                    <li><a href="/oss/nbbs/bbsList.do?bbsNum=NOTICE">공지사항</a></li>
+                </ul>
+            </li>            
+            <li class="menu07"><a href="/oss/rsvList.do">예약관리</a>
+            	<ul class="gnb_depth" id="menu07" style="display: none;">
+					<li><a href="/oss/rsvList.do">예약관리</a></li>
+					<li><a href="/oss/rsvAtPrdtList.do">상품별예약관리</a></li>
+					<li><a href="/oss/refundRsvList.do">환불요청예약관리</a></li>
+				</ul>
+            </li>
+            <li class="menu10"><a href="/oss/eventList.do">마케팅</a>
+            	<ul class="gnb_depth" id="menu10" style="display: none;">
+            		<li><a href="/oss/eventList.do">프로모션</a></li>
+					<li><a href="/oss/smsForm.do">문자 전송</a></li>
+					<li><a href="/oss/emailForm.do">E-Mail 전송</a></li>
+					<li><a href="/oss/pushForm.do">Push 전송</a></li>
+				</ul>
+            </li>
+            <li class="menu09"><a href="/oss/adjList.do">정산</a>
+            	<ul class="gnb_depth" id="menu09" style="display: none;">
+					<li><a href="/oss/adjList.do">정산관리</a></li>
+				</ul>
+            </li>
+            <li class="menu08"><a href="/oss/anls06.do">통계</a>
+            	<ul class="gnb_depth" id="menu08" style="display: none;">
+					<li><a href="/oss/anls06.do">매출통계</a></li>
+					<li><a href="/oss/anls05.do">고객통계</a></li>
+					<li><a href="/oss/anls03.do">일별현황</a></li>
+				</ul>
+            </li>
+            <li class="menu04"><a href="/oss/nbbs/bbsList.do?bbsNum=FNREQ">지원</a>
+            	<ul class="gnb_depth" id="menu04" style="display: none;">
+					<li><a href="/oss/nbbs/bbsList.do?bbsNum=FNREQ">기능개선요청</a></li>
+				</ul>
+            </li>
+            <li class="menu-bi"><a href="#">BI시스템</a>
+                <ul class="gnb_depth" id="menu11" style="display:none">
+                    <li><a href="#">고객이용 통계</a></li>
+                    <li><a href="#">입점업체 통계</a></li>
+                    <li><a href="#">판매 통계</a></li>
+                    <li><a href="#">광고수익률 통계</a></li>
+                    <li><a href="#">정산 통계</a></li>
+                </ul>
+            </li>
+		</ul>
+        <!--//상단메뉴--> 
+    </div>
+    <!--//Header 영역--> 
+    <!--Contents 영역-->
+    <div id="contents_wrapper">
+        <div id="contents_area">
+            <div id="contents">
+                
+                <!-- change contents -->
+                <div class="search_box">
+			        <div class="search_form">
+			            <div class="tb_form">
+			                <table width="100%" border="0">
+			                    <colgroup>
+			                        <col style="widht: 100px" />
+			                        <col />
+			                        <col style="widht: 100px" />
+			                        <col />
+			                    </colgroup>
+			                    <tbody>
+			                    	<tr>
+			                            <th scope="row">업체명</th>
+			                            <td>
+			                                <input type="text" placeholder="업체명을 입력해주세요." style="width: 245px" />
+			                            </td>
+			                            <th scope="row">예약일</th>
+			                            <td class="date-wrap">
+			                            	<input type="text" id="sStartDt" class="input_text4 center" name="sStartDt" title="검색시작일" />
+			                            	<select name="vFromTm" id="vFromTm">
+										        <option value="0800">08:00</option>
+										        <option value="0900">09:00</option>
+										        <option value="1000">10:00</option>
+										        <option value="1100">11:00</option>
+										        <option value="1200" selected="selected">12:00</option>
+										        <option value="1300">13:00</option>
+										        <option value="1400">14:00</option>
+										        <option value="1500">15:00</option>
+										        <option value="1600">16:00</option>
+										        <option value="1700">17:00</option>
+										        <option value="1800">18:00</option>
+										        <option value="1900">19:00</option>
+										        <option value="2000">20:00</option>
+										    </select>
+			                            	~ 
+	               							<input type="text" id="sEndDt" class="input_text4 center" name="sEndDt"  title="검색종료일" />
+	               							<select name="vToTm" id="vToTm">
+											    <option value="0800">08:00</option>
+											    <option value="0900">09:00</option>
+											    <option value="1000">10:00</option>
+											    <option value="1100">11:00</option>
+											    <option value="1200" selected="selected">12:00</option>
+											    <option value="1300">13:00</option>
+											    <option value="1400">14:00</option>
+											    <option value="1500">15:00</option>
+											    <option value="1600">16:00</option>
+											    <option value="1700">17:00</option>
+											    <option value="1800">18:00</option>
+											    <option value="1900">19:00</option>
+											    <option value="2000">20:00</option>
+											</select>
+			                            </td>
+			                        </tr>
+			                        <tr>
+			                        	<th scope="row">차량선택</th>
+			                            <td>
+			                                <select name="sCarCd" id="sCarCd" multiple="multiple">
+			                                	<option value="">현재개발된거 불러오면됨</option>
+			                                </select>
+			                            </td>
+			                            <th scope="row">실시간예약 가능여부</th>
+			                            <td>
+			                                <select>
+			                                	<option value="">전체</option>
+			                                </select>
+			                            </td>
+			                        </tr>
+			                        <tr>
+			                            <th scope="row">차량유형</th>
+			                            <td colspan="3">
+			                                <label class="lb"><input type="radio" name="rcType" /> <span>전체</span></label>
+			                                <label class="lb"><input type="radio" name="rcType" /> <span>중소형</span></label>
+			                                <label class="lb"><input type="radio" name="rcType" /> <span>고급</span></label>
+			                                <label class="lb"><input type="radio" name="rcType" /> <span>SUV/승합</span></label>
+			                                <label class="lb"><input type="radio" name="rcType" /> <span>수입/오픈/스포츠</span></label>
+			                            </td>
+			                        </tr>
+			                        <tr>
+			                            <th scope="row">주요정보</th>
+			                            <td colspan="3">
+			                                <label class="lb"><input type="checkbox" /> <span>전체</span></label>
+			                                <label class="lb"><input type="checkbox" /> <span>금연차량</span></label>
+			                                <label class="lb"><input type="checkbox" /> <span>네비게이션</span></label>
+			                                <label class="lb"><input type="checkbox" /> <span>후방카메라</span></label>
+			                                <label class="lb"><input type="checkbox" /> <span>후방센서</span></label>
+			                                <label class="lb"><input type="checkbox" /> <span>자차필수</span></label>
+			                                <label class="lb"><input type="checkbox" /> <span>블랙박스</span></label>
+			                            </td>
+			                        </tr>
+			                    </tbody>
+			                </table>
+			            </div>
+			            <span class="btn"><input type="image" src="/images/oss/btn/search_btn01.gif" alt="검색" onclick="javascript:fn_Search('1')" /></span>
+			        </div>
+			    </div>
+			    
+			    <!-- 검색결과 -->
+			    <div class="val-title">
+			    	<span>2016.03.25 12:00</span> ~ <span>2016.04.24 15:00</span>
+			    	(<strong><span>27</span>시간</strong>)의 검색 결과
+		    	</div>
+			    
+			    <h4 class="title08">아반떼</h4>
+			    <div class="list">
+				    <table class="table01 center">
+				        <colgroup>
+				            <col />
+				            <col width="10%" />
+				            <col width="8%" />
+				            <col width="8%" />
+				            <col width="8%" />
+				            <col width="8%" />
+				            <col width="8%" />
+				            <col width="8%" />
+				            <col width="8%" />
+				            <col width="8%" />
+				            <col width="10%" />
+				        </colgroup>
+				        <thead>
+				            <tr>
+				            	<th>업체명</th>
+				                <th>상품명</th>
+				                <th>연료</th>
+				                <th>가격</th>
+				                <th>금연</th>
+				                <th>네비</th>
+				                <th>후방카메라</th>
+				                <th>후방센서</th>
+				                <th>자차필수</th>
+				                <th>블랙박스</th>
+				                <th>예약</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				            <tr>
+				                <td>금강렌트카</td>
+				                <td>아반떼 AD</td>
+				                <td>휘발유</td>
+				                <td>15,900원</td>
+				                <td>O</td>
+				                <td>X</td>
+				                <td>X</td>
+				                <td>O</td>
+				                <td>X</td>
+				                <td>X</td>
+				                <td><a class="btn sm blue">예약</a></td>
+				            </tr>
+				            <tr>
+				                <td>금강렌트카</td>
+				                <td>아반떼 AD</td>
+				                <td>휘발유</td>
+				                <td>15,900원</td>
+				                <td>O</td>
+				                <td>X</td>
+				                <td>X</td>
+				                <td>O</td>
+				                <td>X</td>
+				                <td>X</td>
+				                <td><a class="btn sm blue">예약</a></td>
+				            </tr>
+				        </tbody>
+				    </table>
+				    <div class="btn-wrap3">
+				    	<a href="#" class="btn sm white">더보기</a>
+				    </div>
+			    </div>
+			    
+			    <h4 class="title08">K3</h4>
+			    <div class="list">
+				    <table class="table01 center">
+				        <colgroup>
+				            <col />
+				            <col width="10%" />
+				            <col width="8%" />
+				            <col width="8%" />
+				            <col width="8%" />
+				            <col width="8%" />
+				            <col width="8%" />
+				            <col width="8%" />
+				            <col width="8%" />
+				            <col width="8%" />
+				            <col width="10%" />
+				        </colgroup>
+				        <thead>
+				            <tr>
+				            	<th>업체명</th>
+				                <th>상품명</th>
+				                <th>연료</th>
+				                <th>가격</th>
+				                <th>금연</th>
+				                <th>네비</th>
+				                <th>후방카메라</th>
+				                <th>후방센서</th>
+				                <th>자차필수</th>
+				                <th>블랙박스</th>
+				                <th>예약</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				            <tr>
+				                <td>금강렌트카</td>
+				                <td>아반떼 AD</td>
+				                <td>휘발유</td>
+				                <td>15,900원</td>
+				                <td>O</td>
+				                <td>X</td>
+				                <td>X</td>
+				                <td>O</td>
+				                <td>X</td>
+				                <td>X</td>
+				                <td><a class="btn sm blue">예약</a></td>
+				            </tr>
+				        </tbody>
+				    </table>
+				    <div class="btn-wrap3">
+				    	<a href="#" class="btn sm white">더보기</a>
+				    </div>
+			    </div>
+                <!-- //change contents -->
+                
+            </div>
+        </div>
+    </div>
+    <!--//Contents 영역-->
+    
+</div>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>탐나오</title>
+</head>
+
+<body>
+    <table style="width: 740px; margin: 0 auto; text-decoration: none; border-collapse: collapse; font-family: 'NanumBarunGothic', 'Dotum', 'Helvetica', 'sans-serif';">
+        <!-- thead -->
+        #parse("mailTemplate/header.vm")
+
+        <tbody>
+            <tr>
+                <td style="width: 740px; padding-top: 30px; text-align: center;">
+                    <img src="${domain}/images/web/mail/top-icon6-1.png" alt="예약완료">
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">
+                    <p style="font-size: 26px; color: #333435; margin: 0; padding-top: 30px; letter-spacing: -0.3px;">
+                        탐나오 상품 예약이 완료됐습니다.
+                    </p>
+                    <p style="font-size: 16px; color: #939393; margin: 0; padding-top: 16px; line-height: 22px; letter-spacing: 0; border-bottom: 1px dashed #c2c2c2; padding-bottom: 35px;">
+                        고객님의 예약 내역을 안내해드립니다.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5 style="font-size: 14px; margin: 20px 0 10px;">예약 정보</h5>
+                    <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
+                        <colgroup>
+                            <col width="20%" />
+                            <col width="80%" />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th style="background: #f4f4f4; padding: 10px 5px; border: 1px solid #dcdcdc;">예약번호</th>
+                                <td style="padding: 15px; color:#e94c3f; border: 1px solid #dcdcdc; font-weight: bold; letter-spacing: -0.3px;">$rsvInfo.rsvNum</td>
+                            </tr>
+                            <tr>
+                                <th style="background: #f4f4f4; padding: 10px 5px; border: 1px solid #dcdcdc;">예약일시</th>
+                                <td style="padding: 15px; border: 1px solid #dcdcdc;">$rsvInfo.regDttm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5 style="font-size: 14px; margin: 20px 0 10px;">상품 정보</h5>
+                    <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
+                        <colgroup>
+                            <col style="width: 20%;">
+                            <col>
+                            <col style="width: 15%;">
+                        </colgroup>
+                        <thead>
+                            <tr style="background: #f4f4f4;">
+                                <th style="border: 1px solid #dcdcdc; padding: 10px 5px;">구분</th>
+                                <th style="border: 1px solid #dcdcdc;">내용</th>
+                                <th style="border: 1px solid #dcdcdc;">금액</th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align: center;">
+                            #foreach($order in $orderList)
+                                <tr>
+                                    <td style="border: 1px solid #dcdcdc;">$order.prdtCdNm</td>
+                                    <td style="text-align: left; padding: 20px 15px; border: 1px solid #dcdcdc;">
+                                        <ul style="margin: 0; padding: 0; list-style: none;">
+                                            <li>
+                                                <h5 style="font-size:12px; margin: 0;">[${order.corpNm}] <span style="color: #FE434C;">${order.prdtNm}</span></h5>
+                                                <p style="margin: 5px 0 0 0;">$order.prdtInf</p>
+
+                                                #if($order.prdtCd == "RC")
+                                                    #set($isrDiv = $rcPrdtInfMap.get($order.prdtNum).isrDiv)
+
+                                                    <p style="color: #FE434C; margin-bottom: 0; line-height: 16px;">
+                                                        #if($isrDiv == "ID20")
+                                                            본 상품은 인수 현장에서 자차보험료 추가 결제 필수 상품입니다.
+                                                        #elseif($isrDiv == "ID10")
+                                                            본 상품은 자차보험료 포함 상품입니다. 자차보험 관련 문의는 판매처로 확인바랍니다.
+                                                        #else
+                                                            렌트카 상품은 자차 보험이 제외된 예약비용이며, 인수 현장에서 선택 및 결제 가능합니다.
+                                                        #end
+                                                    </p>
+                                                #end
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td style=" border: 1px solid #dcdcdc;"><strong>$numberTool.format("integer", $order.nmlAmt)</strong></td>
+                                </tr>
+                            #end
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="width: 100%; font-size: 12px; margin-top: 20px; border-collapse: collapse;">
+                        <colgroup>
+                            <col width="20%" />
+                            <col width="30%" />
+                            <col width="20%" />
+                            <col width="30%" />
+                        </colgroup>
+                        <thead>
+                            <tr style="text-align: left; font-size: 14px;">
+                                <th colspan="2" style="padding-bottom: 10px;">예약자 정보</th>
+                                <th colspan="2" style="padding-bottom: 5px;">사용자 정보</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th style="background: #f4f4f4; border: 1px solid #dcdcdc;">이름</th>
+                                <td style="padding: 15px; border: 1px solid #dcdcdc;">$rsvInfo.rsvNm</td>
+                                <th style="background: #f4f4f4; border: 1px solid #dcdcdc;">이름</th>
+                                <td style="padding: 15px; border: 1px solid #dcdcdc;">$rsvInfo.useNm</td>
+                            </tr>
+                            <tr>
+                                <th style="background: #f4f4f4; border: 1px solid #dcdcdc;">전화번호</th>
+                                <td style="padding: 15px; border: 1px solid #dcdcdc;">$rsvInfo.rsvTelnum</td>
+                                <th style="background: #f4f4f4; border: 1px solid #dcdcdc;">전화번호</th>
+                                <td style="padding: 15px; border: 1px solid #dcdcdc;">$rsvInfo.useTelnum</td>
+                            </tr>
+                            <tr>
+                                <th style="background: #f4f4f4; border: 1px solid #dcdcdc;">이메일</th>
+                                <td style="padding: 15px; border: 1px solid #dcdcdc;">$rsvInfo.rsvEmail</td>
+                                <th style="background: #f4f4f4; border: 1px solid #dcdcdc;">이메일</th>
+                                <td style="padding: 15px; border: 1px solid #dcdcdc;">$rsvInfo.useEmail</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5 style="font-size: 14px; margin: 20px 0 10px;">결제정보</h5>
+                    <table style="width: 100%; font-size: 12px; text-align: center; border-collapse: collapse;">
+                        <colgroup>
+                            <col style="width: 25%">
+                            <col style="width: 25%">
+                            <col style="width: 25%">
+                            <col style="width: 25%">
+                        </colgroup>
+                        <thead>
+                            <tr style="text-align: center; background: #f4f4f4;">
+                                <th style="padding: 15px; border: 1px solid #dcdcdc;">총 상품 금액</th>
+                                <th style="border: 1px solid #dcdcdc;">쿠폰 할인</th>
+                                <th style="border: 1px solid #dcdcdc;">결제 금액</th>
+                                <th style="border: 1px solid #dcdcdc;">결제 방법</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border: 1px solid #dcdcdc; padding: 15px 10px;">
+                                    <strong>$rsvInfo.totalNmlAmt</strong>원
+                                </td>
+                                <td style=" border: 1px solid #dcdcdc;">
+                                    <strong>$numberTool.format("integer", $rsvInfo.totalDisAmt)</strong>원
+                                </td>
+                                <td style="border: 1px solid #dcdcdc;">
+                                    <strong style="font-size: 14px; color: #fe434c;">$numberTool.format("integer", $rsvInfo.totalSaleAmt)</strong>원
+                                </td>
+                                <td style="border: 1px solid #dcdcdc;">
+                                    #if($rsvInfo.payDiv == "L100")
+                                        카드결제
+                                    #elseif($rsvInfo.payDiv == "L200")
+                                        휴대폰결제
+                                    #elseif($rsvInfo.payDiv == "L300")
+                                        계좌이체
+                                    #elseif($rsvInfo.payDiv == "L400")
+                                        카카오페이
+                                    #elseif($rsvInfo.payDiv == "L500")
+                                        무료쿠폰
+                                    #elseif($rsvInfo.payDiv == "L600")
+                                        L.Point 결제
+                                    #elseif($rsvInfo.payDiv == "L700")
+                                        무통장입금
+                                    #end
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 40px 0; text-align: center;">
+                    <a href="${domain}/web/mypage/rsvList.do" target="_blank"><img src="${domain}/images/web/mail/reservation-1.png" alt="예약확인 바로가기"></a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img style=" width: 740px;" src="${domain}/data/prmt/adv/pc1.jpg" alt="면세점 할인쿠폰">
+                </td>
+            </tr>
+        </tbody>
+
+        <!-- tfoot -->
+        #parse("mailTemplate/footer.vm")
+    </table>
+</body>
+</html>

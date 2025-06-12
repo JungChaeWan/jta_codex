@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="cmmIconinf">
+
+<resultMap id="CM_ICONINF_R_00" class="oss.cmm.vo.CM_ICONINFVO">
+<result property="iconCd" column="ICON_CD" />
+<result property="iconCdNm" column="ICON_CD_NM" />
+<result property="checkYn" column="CHECK_YN" />
+</resultMap>
+
+<insert id="CM_ICONINF_I_00">
+INSERT INTO TB_CM_ICONINF
+	 ( LINK_NUM
+	 , ICON_CD
+	 , FRST_REG_DTTM
+	 , FRST_REG_ID
+	 , LAST_MOD_DTTM
+	 , LAST_MOD_ID
+	 )
+SELECT #linkNum#
+	 , CD_NUM
+	 , SYSDATE
+	 , #frstRegId#
+	 , SYSDATE
+	 , #frstRegId#
+  FROM TB_CD
+ WHERE 1=1
+   AND CD_NUM IN
+   <iterate open="(" close=")" conjunction="," property="iconCds">
+		#iconCds[]#
+	</iterate>
+</insert>
+
+<select id="CM_ICONINF_S_00" resultMap="CM_ICONINF_R_00" >
+SELECT T_CD.CD_NUM AS ICON_CD
+	 , T_CD.CD_NM AS ICON_CD_NM
+	 , CASE WHEN T_ICON.ICON_CD is not null THEN 'Y'
+	   ELSE 'N'
+	   END AS CHECK_YN
+  FROM TB_CD T_CD
+  LEFT OUTER JOIN TB_CM_ICONINF T_ICON
+    ON T_ICON.ICON_CD = T_CD.CD_NUM
+   AND T_ICON.LINK_NUM = #linkNum#
+ WHERE T_CD.HRK_CD_NUM = #hrkCdNum#
+   AND T_CD.USE_YN = 'Y'
+ORDER BY T_CD.VIEW_SN ASC
+</select>
+
+<select id="CM_ICONINF_S_01" resultClass="int" >
+SELECT COUNT(*) AS CNT 
+	FROM TB_CM_ICONINF 
+	WHERE LINK_NUM=#linkNum# AND ICON_CD='RA05'
+</select>
+
+<delete id="CM_ICONINF_D_00">
+DELETE 
+  FROM TB_CM_ICONINF
+ WHERE LINK_NUM = #linkNum#
+</delete>
+</sqlMap>

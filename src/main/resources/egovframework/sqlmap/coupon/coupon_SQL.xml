@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="coupon">
+
+<resultMap id="CP_R_00" class="oss.coupon.vo.CPVO">
+    <result property="cpId"                 column="CP_ID" />
+    <result property="statusCd"             column="STATUS_CD" />
+    <result property="cpNm"                 column="CP_NM" />
+    <result property="aplStartDt"           column="APL_START_DT" />
+    <result property="aplEndDt"             column="APL_END_DT" />
+    <result property="disAmt"               column="DIS_AMT" />
+    <result property="prdtCtgrList"         column="PRDT_CTGR_LIST" />
+    <result property="useNum"               column="USE_NUM" />
+    <result property="regDttm"              column="REG_DTTM" />
+    <result property="disDiv"               column="DIS_DIV" />
+    <result property="disPct"               column="DIS_PCT" />
+    <result property="buyMiniAmt"           column="BUY_MINI_AMT" />
+    <result property="aplprdtDiv"           column="APLPRDT_DIV" />
+    <result property="outsideSupportDiv"    column="OUTSIDE_SUPPORT_DIV" />
+    <result property="tgtDiv"               column="TGT_DIV" />
+    <result property="cpDiv"                column="CP_DIV" />
+    <result property="limitType"            column="LIMIT_TYPE" />
+    <result property="limitCnt"             column="LIMIT_CNT" />
+    <result property="limitAmt"             column="LIMIT_AMT" />
+    <result property="buyCtgrList"          column="BUY_CTGR_LIST" />
+</resultMap>
+
+<resultMap id="CP_R_02" class="oss.coupon.vo.CPVO">
+    <result property="cpId"                 column="CP_ID" />
+    <result property="statusCd"             column="STATUS_CD" />
+    <result property="cpNm"                 column="CP_NM" />
+    <result property="aplStartDt"           column="APL_START_DT" />
+    <result property="aplEndDt"             column="APL_END_DT" />
+    <result property="disAmt"               column="DIS_AMT" />
+    <result property="buyMiniAmt"           column="BUY_MINI_AMT" />
+    <result property="imgPath"              column="IMG_PATH" />
+    <result property="prdtCtgrList"         column="PRDT_CTGR_LIST" />
+    <result property="simpleExp"            column="SIMPLE_EXP" />
+    <result property="regDttm"              column="REG_DTTM" />
+    <result property="regId"                column="REG_ID" />
+    <result property="modDttm"              column="MOD_DTTM" />
+    <result property="modId"                column="MOD_ID" />
+    <result property="disDiv"               column="DIS_DIV" />
+    <result property="disPct"               column="DIS_PCT" />
+    <result property="aplprdtDiv"           column="APLPRDT_DIV" />
+    <result property="outsideSupportDiv"    column="OUTSIDE_SUPPORT_DIV" />
+    <result property="tgtDiv"               column="TGT_DIV" />
+    <result property="cpCode"               column="CP_CODE" />
+    <result property="cpDiv"                column="CP_DIV" />
+    <result property="limitType"            column="LIMIT_TYPE" />
+    <result property="limitCnt"             column="LIMIT_CNT" />
+    <result property="issueCnt"             column="ISSUE_CNT" />
+    <result property="useCnt"               column="USE_CNT" />
+    <result property="limitAmt"             column="LIMIT_AMT" />
+    <result property="buyCtgrList"          column="BUY_CTGR_LIST" />
+    <result property="corpDisAmt"           column="CORP_DIS_AMT" />
+    <result property="rCpId"                column="R_CP_ID" />
+</resultMap>
+
+<resultMap id="CP_R_03" class="oss.coupon.vo.CPVO">
+    <result property="cpId"         column="CP_ID" />
+    <result property="cpNm"         column="CP_NM" />
+    <result property="disDiv"       column="DIS_DIV" />
+    <result property="disAmt"       column="DIS_AMT" />
+    <result property="disPct"       column="DIS_PCT" />
+    <result property="buyMiniAmt"   column="BUY_MINI_AMT" />
+    <result property="tgtDiv"       column="TGT_DIV" />
+    <result property="cpCode"       column="CP_CODE" />
+</resultMap>
+
+<resultMap id="CP_R_04" class="oss.coupon.vo.CPVO">
+    <result property="cpId"         column="CP_ID" />
+    <result property="cpNm"         column="CP_NM" />
+    <result property="aplStartDt"   column="APL_START_DT" />
+    <result property="aplEndDt"     column="APL_END_DT" />
+    <result property="disAmt"       column="DIS_AMT" />
+    <result property="disPct"       column="DIS_PCT" />
+    <result property="disDiv"       column="DIS_DIV" />
+    <result property="buyMiniAmt"   column="BUY_MINI_AMT" />
+    <result property="aplprdtDiv"   column="APLPRDT_DIV" />
+    <result property="cpDiv"        column="CP_DIV" />
+    <result property="limitAmt"     column="LIMIT_AMT" />
+    <result property="buyCtgrList"  column="BUY_CTGR_LIST" />
+    <result property="rCpId"        column="R_CP_ID" />
+    <result property="prdtCtgrList"        column="PRDT_CTGR_LIST" />
+</resultMap>
+
+<resultMap id="CP_PRDT_R_00" class="oss.coupon.vo.CPPRDTVO">
+    <result property="cpId" 		column="CP_ID" />
+    <result property="prdtNum" 		column="PRDT_NUM" />
+    <result property="prdtNm" 		column="PRDT_NM" />
+    <result property="optDivSn" 	column="OPT_DIV_SN" />
+    <result property="optSn" 		column="OPT_SN" />
+    <result property="prdtUseNum" 	column="PRDT_USE_NUM" />
+    <result property="corpId" 		column="CORP_ID" />
+    <result property="corpNm" 		column="CORP_NM" />
+</resultMap>
+
+<resultMap id="CP_PRDT_R_01" class="oss.coupon.vo.CPPRDTVO">
+    <result property="cpId" 		column="CP_ID" />
+    <result property="prdtNum" 		column="PRDT_NUM" />
+    <result property="prdtNm" 		column="PRDT_NM" />
+    <result property="optDivSn" 	column="OPT_DIV_SN" />
+    <result property="optSn" 	    column="OPT_SN" />
+    <result property="divNm" 	    column="DIV_NM" />
+    <result property="optNm" 		column="OPT_NM" />
+    <result property="prdtUseNum" 	column="PRDT_USE_NUM" />
+    <result property="corpId" 		column="CORP_ID" />
+    <result property="corpNm" 		column="CORP_NM" />
+</resultMap>
+
+<resultMap id="CP_CORP_R_01" class="oss.coupon.vo.CPPRDTVO">
+    <result property="cpId" 		column="CP_ID" />
+    <result property="corpId" 		column="CORP_ID" />
+    <result property="corpNm" 		column="CORP_NM" />
+    <result property="corpCd" 		column="CORP_CD" />
+</resultMap>
+
+<select id="CP_S_00" resultMap="CP_R_00">
+SELECT CP_ID
+    , CP_DIV
+    , STATUS_CD
+    , CP_NM
+    , APL_START_DT
+    , APL_END_DT
+    , DIS_AMT
+    , PRDT_CTGR_LIST
+    , USE_NUM
+    , REG_DTTM
+    , DIS_DIV
+    , DIS_PCT
+    , BUY_MINI_AMT
+    , APLPRDT_DIV
+    , OUTSIDE_SUPPORT_DIV
+    , TGT_DIV
+    , LIMIT_TYPE
+    , LIMIT_CNT
+    , LIMIT_AMT
+    , BUY_CTGR_LIST
+FROM (SELECT ROWNUM AS RN
+        , CP.*
+    FROM (
+        SELECT CP_ID
+            , CP_DIV
+            , STATUS_CD
+            , CP_NM
+            , APL_START_DT
+            , APL_END_DT
+            , DIS_AMT
+            , PRDT_CTGR_LIST
+            , USE_NUM
+            , REG_DTTM
+            , DIS_DIV
+            , DIS_PCT
+            , BUY_MINI_AMT
+            , APLPRDT_DIV
+            , OUTSIDE_SUPPORT_DIV
+            , TGT_DIV
+            , LIMIT_TYPE
+            , NVL(LIMIT_CNT, 0) AS LIMIT_CNT
+            , LIMIT_AMT
+            , BUY_CTGR_LIST
+        FROM TB_CP
+        WHERE 1=1
+            <isNotEmpty property="cpDiv">
+                AND CP_DIV = #cpDiv#
+            </isNotEmpty>
+            <isNull property="corpId">
+                AND CORP_ID IS NULL
+            </isNull>
+            <isNotNull property="corpId">
+                AND CORP_ID = #corpId#
+            </isNotNull>
+        ORDER BY CP_ID DESC
+    ) CP
+)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="CP_S_01" resultClass="int">
+SELECT COUNT(CP_ID)
+FROM TB_CP
+WHERE 1=1
+    <isNull property="corpId">
+  	    AND CORP_ID IS NULL
+  	</isNull>
+  	<isNotNull property="corpId">
+  	    AND CORP_ID = #corpId#
+  	</isNotNull>
+    <isNotEmpty property="cpDiv">
+        AND CP_DIV = #cpDiv#
+    </isNotEmpty>
+</select>
+
+<select id="CP_S_02" resultMap="CP_R_02">
+SELECT CP_ID
+    , STATUS_CD
+    , CP_NM
+    , APL_START_DT
+    , APL_END_DT
+    , DIS_AMT
+    , DIS_DIV
+    , DIS_PCT
+    , APLPRDT_DIV
+    , OUTSIDE_SUPPORT_DIV
+    , BUY_MINI_AMT
+    , IMG_PATH
+    , PRDT_CTGR_LIST
+    , SIMPLE_EXP
+    , USE_NUM AS ISSUE_CNT
+    , REG_DTTM
+    , REG_ID
+    , MOD_DTTM
+    , MOD_ID
+    , TGT_DIV
+    , CP_CODE
+    , CP_DIV
+    , LIMIT_TYPE
+    , NVL(LIMIT_CNT, 0) AS LIMIT_CNT
+    , (SELECT COUNT(CP_NUM) FROM TB_USER_CP WHERE CP_ID = #cpId# AND USE_YN = 'Y') AS USE_CNT
+    , LIMIT_AMT
+    , BUY_CTGR_LIST
+    , CORP_DIS_AMT
+    , R_CP_ID
+  FROM TB_CP T
+ WHERE CP_ID = #cpId#
+</select>
+
+<select id="CP_S_03" resultMap="CP_R_03">
+SELECT T_PRDT.CP_ID
+    , CP_NM
+    , DIS_DIV
+    , DIS_PCT
+    , DIS_AMT
+    , BUY_MINI_AMT
+    , T_CP.TGT_DIV
+    , T_CP.CP_CODE
+FROM TB_CP_PRDT T_PRDT
+    INNER JOIN TB_CP T_CP
+        ON T_CP.CP_ID = T_PRDT.CP_ID
+        AND T_CP.STATUS_CD = 'ST02'
+        AND T_CP.TGT_DIV = 'ALL'
+WHERE 1=1
+    <isNotEmpty property="corpId">
+        AND PRDT_NUM IN (SELECT PRDT_NUM FROM TB_AD_PRDTINF WHERE CORP_ID = #corpId#)
+    </isNotEmpty>
+    <isNotEmpty property="sPrdtNum">
+        AND PRDT_NUM = #sPrdtNum#
+    </isNotEmpty>
+    <isNotEmpty property="sFromDt">
+        <![CDATA[
+        AND APL_START_DT <= #sFromDt#
+        AND APL_END_DT >= #sToDt#
+        ]]>
+    </isNotEmpty>
+    <isEmpty property="sFromDt">
+        AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN APL_START_DT AND APL_END_DT
+    </isEmpty>
+</select>
+
+<select id="CP_S_04" resultMap="CP_R_04">
+SELECT CP_ID
+  , CP_NM
+  , APL_START_DT
+  , APL_END_DT
+  , DIS_AMT
+  , DIS_PCT
+  , DIS_DIV
+  , BUY_MINI_AMT
+  , APLPRDT_DIV
+  , CP_DIV
+  , LIMIT_AMT
+  , PRDT_CTGR_LIST
+  , BUY_CTGR_LIST
+  , R_CP_ID
+FROM TB_CP
+WHERE CP_DIV = #cpDiv#
+    AND STATUS_CD = 'ST02'
+    AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN APL_START_DT AND APL_END_DT
+ORDER BY DIS_AMT, DIS_PCT
+</select>
+
+<!-- 프로모션 쿠폰수 -->
+<select id="CP_S_05" parameterClass="java.util.ArrayList" resultClass="int">
+    SELECT
+		COUNT(*) AS ABLE_CNT
+	FROM TB_USER_CP AS A
+	WHERE 1=1
+	<iterate prepend="AND A.CP_ID IN " open="(" close=")" conjunction=",">
+    #[]#
+    </iterate>
+</select>
+
+<!-- 이벤트2021 -->
+<select id="CP_S_06" parameterClass="String" resultClass="int">
+    SELECT
+        COUNT(*)
+    FROM
+        TB_EVNT2021
+    WHERE 1=1
+    <isNotEqual compareValue="ALL">
+    AND USER_ID = #userId#
+    </isNotEqual>
+</select>
+
+<!-- 이벤트2021 -->
+<insert id="CP_I_02">
+    INSERT INTO TB_EVNT2021(
+        USER_ID,
+        REG_DTTM
+    )VALUES(
+        #userId#,
+        sysdate
+    )
+</insert>
+
+<insert id="CP_I_00" >
+<selectKey keyProperty="cpId" resultClass="String">
+    SELECT 'CP'||LPAD(NVL(MAX(SUBSTR(CP_ID,3)),0) + 1, 8,'0') AS CP_ID
+    FROM TB_CP
+</selectKey>
+INSERT INTO TB_CP 
+    ( CP_ID
+    , STATUS_CD
+    , CP_NM
+    , APL_START_DT
+    , APL_END_DT
+    , DIS_AMT
+    , BUY_MINI_AMT
+    , IMG_PATH
+    , SIMPLE_EXP
+    , PRDT_CTGR_LIST
+    , USE_NUM
+    , REG_ID
+    , REG_IP
+    , REG_DTTM
+    , MOD_ID
+    , MOD_IP
+    , MOD_DTTM
+    , DIS_DIV
+    , DIS_PCT
+    , APLPRDT_DIV
+    , OUTSIDE_SUPPORT_DIV
+    , TGT_DIV
+    , CP_CODE
+    , CP_DIV
+    , LIMIT_TYPE
+    , LIMIT_CNT
+    , LIMIT_AMT
+    , BUY_CTGR_LIST
+    , CORP_DIS_AMT
+    , R_CP_ID
+    )
+VALUES
+    ( #cpId#
+    , #statusCd#
+    , #cpNm#
+    , #aplStartDt#
+    , #aplEndDt#
+    , #disAmt#
+    , #buyMiniAmt#
+    , #imgPath#
+    , #simpleExp#
+    , #prdtCtgrList#
+    , #useNum#
+    , #regId#
+    , #regIp#
+    , SYSDATE
+    , #modId#
+    , #modIp#
+    , SYSDATE
+    , #disDiv#
+    , #disPct#
+    , #aplprdtDiv#
+    , #outsideSupportDiv#
+    , #tgtDiv#
+    , #cpCode#
+    , #cpDiv#
+    , #limitType#
+    , #limitCnt#
+    , #limitAmt#
+    , #buyCtgrList#
+    , #corpDisAmt#
+    , #rCpId#
+    )
+</insert>
+
+<update id="CP_U_00">
+UPDATE TB_CP 
+SET MOD_ID = #modId#
+    , MOD_IP = #modIp#
+    , MOD_DTTM = SYSDATE
+    <isNotEmpty property="cpNm">
+        , CP_NM= #cpNm#
+    </isNotEmpty>
+    <isNotEmpty property="imgPath">
+        , IMG_PATH = #imgPath#
+    </isNotEmpty>
+    <isNotEmpty property="statusCd">
+        , STATUS_CD = #statusCd#
+    </isNotEmpty>
+    <isNotEmpty property="aplStartDt">
+        , APL_START_DT = #aplStartDt#
+    </isNotEmpty>
+    <isNotEmpty property="aplEndDt">
+        , APL_END_DT = #aplEndDt#
+    </isNotEmpty>
+    <isNotEmpty property="simpleExp">
+        , SIMPLE_EXP = #simpleExp#
+    </isNotEmpty>
+    <isNotEmpty property="prdtCtgrList">
+        , PRDT_CTGR_LIST = #prdtCtgrList#
+    </isNotEmpty>
+    <isNotEqual property="useNum" compareValue="0">
+        , USE_NUM = #useNum#
+    </isNotEqual>
+    <isNotEqual property="disAmt" compareValue="0">
+        , DIS_AMT = #disAmt#
+    </isNotEqual>
+    <isNotEqual property="buyMiniAmt" compareValue="0">
+        , BUY_MINI_AMT = #buyMiniAmt#
+    </isNotEqual>
+    <isNotEmpty property="disDiv">
+        , DIS_DIV = #disDiv#
+    </isNotEmpty>
+    <isNotEmpty property="disPct">
+        , DIS_PCT = #disPct#
+    </isNotEmpty>
+    <isNotEmpty property="aplprdtDiv">
+        , APLPRDT_DIV = #aplprdtDiv#
+    </isNotEmpty>
+    <isNotEmpty property="outsideSupportDiv">
+        , OUTSIDE_SUPPORT_DIV = #outsideSupportDiv#
+    </isNotEmpty>
+    <isNotEmpty property="tgtDiv">
+        , TGT_DIV = #tgtDiv#
+    </isNotEmpty>
+    <isNotEmpty property="cpCode">
+        , CP_CODE = #cpCode#
+    </isNotEmpty>
+    <isNotEmpty property="cpDiv">
+        , CP_DIV = #cpDiv#
+    </isNotEmpty>
+    <isNotEmpty property="limitType">
+        , LIMIT_TYPE = #limitType#
+    </isNotEmpty>
+    <isNotEmpty property="limitCnt">
+        , LIMIT_CNT = #limitCnt#
+    </isNotEmpty>
+    <isNotEqual property="limitAmt" compareValue="0">
+        , LIMIT_AMT = #limitAmt#
+    </isNotEqual>
+    <isNotEmpty property="buyCtgrList">
+        , BUY_CTGR_LIST = #buyCtgrList#
+    </isNotEmpty>
+    <isNotEmpty property="corpDisAmt">
+        , CORP_DIS_AMT = #corpDisAmt#
+    </isNotEmpty>
+    <isNotEmpty property="rCpId">
+        , R_CP_ID = #rCpId#
+    </isNotEmpty>
+WHERE CP_ID = #cpId#
+</update>
+
+<update id="CP_U_01">
+UPDATE TB_CP
+SET USE_NUM = USE_NUM + 1
+WHERE CP_ID = #cpId#
+</update>
+
+<delete id="CP_D_00">
+DELETE FROM TB_CP
+   WHERE CP_ID = #cpId#
+</delete>
+
+<select id="CP_PRDT_S_00" resultMap="CP_PRDT_R_00">
+SELECT CP_PRD.CP_ID
+    , AD.PRDT_NUM
+    , AD.PRDT_NM
+    , AD.CORP_ID
+    , (SELECT AD_NM FROM TB_AD_DFTINF WHERE CORP_ID = AD.CORP_ID) AS CORP_NM
+    , CP_PRD.OPT_DIV_SN
+    , CP_PRD.OPT_SN
+    , CP_PRD.PRDT_USE_NUM
+FROM TB_CP_PRDT CP_PRD
+    INNER JOIN TB_AD_PRDTINF AD ON AD.PRDT_NUM = CP_PRD.PRDT_NUM
+WHERE CP_PRD.CP_ID = #cpId#
+
+UNION
+
+SELECT CP_PRD.CP_ID
+    , RC.PRDT_NUM
+    , RC.PRDT_NM
+    , RC.CORP_ID
+    , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = RC.CORP_ID) AS CORP_NM
+    , CP_PRD.OPT_DIV_SN
+    , CP_PRD.OPT_SN
+    , CP_PRD.PRDT_USE_NUM
+FROM TB_CP_PRDT CP_PRD
+    INNER JOIN TB_RC_PRDTINF RC ON RC.PRDT_NUM = CP_PRD.PRDT_NUM
+WHERE CP_PRD.CP_ID = #cpId#
+
+UNION
+
+SELECT CP_PRD.CP_ID
+    , SP.PRDT_NUM
+    , SP.PRDT_NM
+    , SP.CORP_ID
+    , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = SP.CORP_ID) AS CORP_NM
+    , CP_PRD.OPT_DIV_SN
+    , CP_PRD.OPT_SN
+    , CP_PRD.PRDT_USE_NUM
+FROM TB_CP_PRDT CP_PRD
+    INNER JOIN TB_SP_PRDTINF SP ON SP.PRDT_NUM = CP_PRD.PRDT_NUM
+WHERE CP_PRD.CP_ID = #cpId#
+
+UNION
+
+SELECT CP_PRD.CP_ID
+    , SV.PRDT_NUM
+    , SV.PRDT_NM
+    , SV.CORP_ID
+    , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = SV.CORP_ID) AS CORP_NM
+    , CP_PRD.OPT_DIV_SN
+    , CP_PRD.OPT_SN
+    , CP_PRD.PRDT_USE_NUM
+FROM TB_CP_PRDT CP_PRD
+    INNER JOIN TB_SV_PRDTINF SV ON SV.PRDT_NUM = CP_PRD.PRDT_NUM
+WHERE CP_PRD.CP_ID = #cpId#
+</select>
+
+<select id="CP_PRDT_S_01" resultMap="CP_PRDT_R_01">
+SELECT CP_PRD.CP_ID
+    , AD.PRDT_NUM
+    , AD.PRDT_NM
+    , AD.CORP_ID
+    , (SELECT AD_NM FROM TB_AD_DFTINF WHERE CORP_ID = AD.CORP_ID) AS CORP_NM
+    , CP_PRD.OPT_DIV_SN
+    , '' AS DIV_NM
+    , CP_PRD.OPT_SN
+    , '' AS OPT_NM
+    , CP_PRD.PRDT_USE_NUM
+FROM TB_CP_PRDT CP_PRD
+    INNER JOIN TB_AD_PRDTINF AD ON AD.PRDT_NUM = CP_PRD.PRDT_NUM
+WHERE CP_PRD.CP_ID = #cpId#
+
+UNION
+
+SELECT CP_PRD.CP_ID
+    , RC.PRDT_NUM
+    , RC.PRDT_NM
+    , RC.CORP_ID
+    , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = RC.CORP_ID) AS CORP_NM
+    , CP_PRD.OPT_DIV_SN
+    , '' AS DIV_NM
+    , CP_PRD.OPT_SN
+    , '' AS OPT_NM
+    , CP_PRD.PRDT_USE_NUM
+FROM TB_CP_PRDT CP_PRD
+    INNER JOIN TB_RC_PRDTINF RC ON RC.PRDT_NUM = CP_PRD.PRDT_NUM
+WHERE CP_PRD.CP_ID = #cpId#
+
+UNION
+
+SELECT CP_PRD.CP_ID
+    , SP.PRDT_NUM
+    , SP.PRDT_NM
+    , SP.CORP_ID
+    , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = SP.CORP_ID) AS CORP_NM
+    , CP_PRD.OPT_DIV_SN
+    , (SELECT PRDT_DIV_NM FROM TB_SP_DIVINF WHERE PRDT_NUM = SP.PRDT_NUM AND SP_DIV_SN = CP_PRD.OPT_DIV_SN) AS DIV_NM
+    , CP_PRD.OPT_SN
+    , (SELECT OPT_NM FROM TB_SP_OPTINF WHERE PRDT_NUM = SP.PRDT_NUM AND SP_DIV_SN = CP_PRD.OPT_DIV_SN AND SP_OPT_SN = CP_PRD.OPT_SN) AS OPT_NM
+    , CP_PRD.PRDT_USE_NUM
+FROM TB_CP_PRDT CP_PRD
+    INNER JOIN TB_SP_PRDTINF SP ON SP.PRDT_NUM = CP_PRD.PRDT_NUM
+WHERE CP_PRD.CP_ID = #cpId#
+
+UNION
+
+SELECT CP_PRD.CP_ID
+    , SV.PRDT_NUM
+    , SV.PRDT_NM
+    , SV.CORP_ID
+    , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = SV.CORP_ID) AS CORP_NM
+    , CP_PRD.OPT_DIV_SN
+    , (SELECT PRDT_DIV_NM FROM TB_SV_DIVINF WHERE PRDT_NUM = SV.PRDT_NUM AND SV_DIV_SN = CP_PRD.OPT_DIV_SN) AS DIV_NM
+    , CP_PRD.OPT_SN
+    , (SELECT OPT_NM FROM TB_SV_OPTINF WHERE PRDT_NUM = SV.PRDT_NUM AND SV_DIV_SN = CP_PRD.OPT_DIV_SN AND SV_OPT_SN = CP_PRD.OPT_SN) AS OPT_NM
+    , CP_PRD.PRDT_USE_NUM
+FROM TB_CP_PRDT CP_PRD
+    INNER JOIN TB_SV_PRDTINF SV ON SV.PRDT_NUM = CP_PRD.PRDT_NUM
+WHERE CP_PRD.CP_ID = #cpId#
+</select>
+
+<insert id="CP_PRDT_I_00">
+INSERT INTO TB_CP_PRDT ( CP_ID, PRDT_NUM, PRDT_USE_NUM, OPT_SN, OPT_DIV_SN)
+VALUES (
+	   #cpId#
+     , #prdtNum#
+     , #prdtUseNum#
+     , #optSn#
+     , #optDivSn#
+       )
+</insert>
+
+<delete id="CP_PRDT_D_00">
+DELETE FROM TB_CP_PRDT
+		WHERE CP_ID=#cpId#
+</delete>
+
+<select id="CP_S_07" parameterClass="String" resultClass="int">
+    SELECT NVL(SUM(T_RSV.DIS_AMT), 0) AS DIS_AMT
+	  FROM 
+		(
+			SELECT SP_RSV_NUM AS USE_RSV_NUM, DIS_AMT FROM TB_SP_RSV WHERE RSV_STATUS_CD IN ('RS02', 'RS30', 'RS31') AND DIS_AMT > 0
+			UNION
+			SELECT SV_RSV_NUM AS USE_RSV_NUM, DIS_AMT FROM TB_SV_RSV WHERE RSV_STATUS_CD IN ('RS02', 'RS03', 'RS33', 'RS30') AND DIS_AMT > 0
+			UNION
+			SELECT RC_RSV_NUM AS USE_RSV_NUM, DIS_AMT FROM TB_RC_RSV WHERE RSV_STATUS_CD IN ('RS02', 'RS30') AND DIS_AMT > 0
+			UNION
+			SELECT AD_RSV_NUM AS USE_RSV_NUM, DIS_AMT FROM TB_AD_RSV WHERE RSV_STATUS_CD IN ('RS02', 'RS30') AND DIS_AMT > 0
+		) T_RSV INNER JOIN 
+		(
+			SELECT USE_RSV_NUM FROM TB_USER_CP WHERE CP_ID = #cpId# AND DIS_DIV = 'CP02' AND USE_YN = 'Y'  
+		) T_CP ON T_RSV.USE_RSV_NUM = T_CP.USE_RSV_NUM
+</select>
+
+<select id="CP_CORP_S_01" resultMap="CP_CORP_R_01">
+SELECT
+    CP_CORP.CP_ID,
+    AD.CORP_ID,
+    AD.CORP_NM,
+    AD.CORP_CD
+FROM TB_CP_CORP CP_CORP
+    INNER JOIN TB_CORP AD ON AD.CORP_ID = CP_CORP.CORP_ID
+WHERE CP_CORP.CP_ID = #cpId#
+
+</select>
+
+<insert id="CP_CORP_I_00">
+    INSERT INTO TB_CP_CORP ( CP_ID, CORP_ID)
+    VALUES (
+        #cpId#
+        , #corpId#
+        )
+</insert>
+
+<delete id="CP_CORP_D_00">
+    DELETE FROM TB_CP_CORP
+    WHERE CP_ID=#cpId#
+</delete>
+</sqlMap>

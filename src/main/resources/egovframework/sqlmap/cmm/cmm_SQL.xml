@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="cmm">
+
+<resultMap id="CD_R_00" class="oss.cmm.vo.CDVO">
+<result property="cdNum" 	    column="CD_NUM" />
+<result property="hrkCdNum"     column="HRK_CD_NUM" />
+<result property="cdNm" 	    column="CD_NM" />
+<result property="useYn" 	    column="USE_YN" />
+<result property="viewSn" 	    column="VIEW_SN" />
+<result property="cdNmLike" 	column="CD_NM_LIKE" />
+</resultMap>
+
+<select id="CD_S_00" resultMap="CD_R_00">
+SELECT CD_NUM       /*코드 번호*/
+     , HRK_CD_NUM   /*상위 코드 번호*/
+     , CD_NM        /*코드 명*/
+     , USE_YN       /*사용 여부*/
+     , VIEW_SN      /*노출 순번*/
+     , CD_NM_LIKE   /*코드명 유의어*/
+  FROM TB_CD
+ WHERE CD_NUM = #cdNum#
+</select>
+
+<!-- 코드 리스트 조회 -->
+<select id="CD_S_01" resultMap="CD_R_00">
+SELECT CD_NUM       /*코드 번호*/
+     , HRK_CD_NUM   /*상위 코드 번호*/
+     , CD_NM        /*코드 명*/
+     , USE_YN       /*사용 여부*/
+     , VIEW_SN      /*노출 순번*/
+     , CD_NM_LIKE   /*코드명 유의어*/
+  FROM (SELECT ROWNUM AS RN
+             , CD_NUM       /*코드 번호*/
+             , HRK_CD_NUM   /*상위 코드 번호*/
+             , CD_NM        /*코드 명*/
+             , USE_YN       /*사용 여부*/
+             , VIEW_SN      /*노출 순번*/
+             , CD_NM_LIKE   /*코드명 유의어*/
+          FROM TB_CD
+         WHERE 1=1
+    <isNotEmpty property="sUseYn">
+        AND USE_YN = #sUseYn#
+    </isNotEmpty>
+     <isNotEmpty property="sCdNum">
+	   	   AND CD_NUM = #sCdNum#
+	 </isNotEmpty>
+	 <isNotEmpty property="sHrkCdNum">
+	   	   AND HRK_CD_NUM = #sHrkCdNum#
+	 </isNotEmpty>
+	 <isNotEmpty property="sHrkCdNm">
+	   	   AND HRK_CD_NUM IN (SELECT CD_NUM
+	   	                        FROM TB_CD
+	   	                       WHERE CD_NM LIKE '%'||#sHrkCdNm#||'%'
+	   	                     )
+	 </isNotEmpty>
+     <isNotEmpty property="sCdNm">
+	   	   AND (CD_NM LIKE '%'||#sCdNm#||'%' OR CD_NM_LIKE  LIKE '%'||#sCdNm#||'%')
+	 </isNotEmpty>
+	     ORDER BY HRK_CD_NUM ASC
+	            , VIEW_SN    ASC
+       )
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#) 
+</select>
+
+<select id="CD_S_02" resultClass="int">
+SELECT COUNT(CD_NUM)
+  FROM TB_CD
+ WHERE 1=1
+<isNotEmpty property="sUseYn">
+    AND USE_YN = #sUseYn#
+</isNotEmpty>
+<isNotEmpty property="sCdNum">
+   AND CD_NUM = #sCdNum#
+</isNotEmpty>
+<isNotEmpty property="sHrkCdNum">
+   AND HRK_CD_NUM = #sHrkCdNum#
+</isNotEmpty>
+<isNotEmpty property="sHrkCdNm">
+   	   AND HRK_CD_NUM IN (SELECT CD_NUM
+   	                        FROM TB_CD
+   	                       WHERE CD_NM LIKE '%'||#sHrkCdNm#||'%'
+   	                     )
+ </isNotEmpty>
+ <isNotEmpty property="sCdNm">
+     AND (CD_NM LIKE '%'||#sCdNm#||'%' OR CD_NM_LIKE  LIKE '%'||#sCdNm#||'%')
+ </isNotEmpty>
+</select>
+
+<!-- 최상위 코드 조회 -->
+<select id="CD_S_03" resultMap="CD_R_00">
+<![CDATA[ 
+ SELECT CD_NUM       /*코드 번호*/
+      , HRK_CD_NUM   /*상위 코드 번호*/
+      , USE_YN       /*사용 여부*/
+      , VIEW_SN      /*노출 순번*/
+      , SUBSTR(SYS_CONNECT_BY_PATH(CD_NM, '>'), 2) AS CD_NM
+      , CD_NM_LIKE   /*코드명 유의어*/
+   FROM TB_CD
+CONNECT BY PRIOR CD_NUM = HRK_CD_NUM
+    AND LEVEL < 3
+  START WITH HRK_CD_NUM IS NULL
+    AND USE_YN = 'Y'
+]]>
+</select>
+
+<!-- 노출 순번 최대값 구하기 -->
+<select id="CD_S_04" resultClass="int">
+SELECT MAX(VIEW_SN)
+  FROM TB_CD
+ WHERE HRK_CD_NUM = #hrkCdNum#
+</select>
+
+<!-- 상위코드에 따른 하위코드 조회 -->
+<select id="CD_S_05" resultMap="CD_R_00">
+SELECT CD_NUM       /*코드 번호*/
+     , HRK_CD_NUM   /*상위 코드 번호*/
+     , CD_NM        /*코드 명*/
+     , USE_YN       /*사용 여부*/
+     , VIEW_SN      /*노출 순번*/
+     , CD_NM_LIKE   /*코드명 유의어*/
+  FROM TB_CD
+ WHERE USE_YN = 'Y'
+   AND HRK_CD_NUM = #sHrkCdNum#
+ ORDER BY VIEW_SN ASC
+</select>
+
+
+<insert id="CD_I_00">
+INSERT INTO TB_CD
+     ( CD_NUM       /*코드 번호*/
+     , HRK_CD_NUM   /*상위 코드 번호*/
+     , CD_NM        /*코드 명*/
+     , USE_YN       /*사용 여부*/
+     , VIEW_SN      /*노출 순번*/
+     , CD_NM_LIKE   /*코드명 유의어*/
+     )
+VALUES
+     ( #cdNum#
+     , #hrkCdNum#
+     , #cdNm#
+     , 'Y'
+     <isNotEmpty property="hrkCdNum">
+     , (SELECT NVL(MAX(VIEW_SN), 0) + 1
+          FROM TB_CD
+         WHERE HRK_CD_NUM = #hrkCdNum#
+       )	
+     </isNotEmpty>
+     <isEmpty property="hrkCdNum">
+     , NULL	
+     </isEmpty>
+     , #cdNmLike#
+     )
+</insert>
+
+<update id="CD_U_00">
+UPDATE TB_CD
+   SET CD_NM      = #cdNm#
+     , USE_YN     = #useYn#
+     <isNotEmpty property="viewSn">
+     , VIEW_SN    = #viewSn#
+     </isNotEmpty>
+     ,CD_NM_LIKE  = #cdNmLike#
+ WHERE CD_NUM     = #cdNum#
+</update>
+
+<update id="CD_U_01">
+UPDATE TB_CD
+   SET VIEW_SN = VIEW_SN + 1
+ WHERE HRK_CD_NUM = #hrkCdNum#
+   <isNotEqual property="oldSn" compareValue="0">
+   <![CDATA[
+   AND VIEW_SN <  #oldSn#
+   ]]>
+  </isNotEqual>
+   <![CDATA[
+   AND VIEW_SN >= #newSn#
+   ]]>
+</update>
+
+<update id="CD_U_02">
+UPDATE TB_CD
+   SET VIEW_SN = VIEW_SN - 1
+ WHERE HRK_CD_NUM = #hrkCdNum#
+ <isNotEmpty property="newSn">
+   <isNotEqual property="newSn" compareValue="0">
+ <![CDATA[
+   AND VIEW_SN <= #newSn#
+ ]]>
+ </isNotEqual>
+ </isNotEmpty>
+ <![CDATA[
+   AND VIEW_SN >  #oldSn#
+ ]]>
+</update>
+
+<delete id="CD_D_00">
+DELETE TB_CD
+ WHERE CD_NUM = #cdNum#
+</delete>
+</sqlMap>

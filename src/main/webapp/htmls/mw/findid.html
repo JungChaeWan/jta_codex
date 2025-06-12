@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+	<title>탐나오</title>
+
+	<link rel="stylesheet" type="text/css" href="../../css/mw/common.css">
+	<link rel="stylesheet" type="text/css" href="../../css/mw/sub.css">
+	<link rel="stylesheet" type="text/css" href="../../css/mw/sub_member.css">
+
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/jquery.cookie.js"></script>
+	<script src="../../js/mw_common.js"></script>
+	<script src="../../js/mw_style.js"></script>
+
+	<script type="text/javascript">
+
+	function fn_ChangeTab(tab){
+		if(tab == 1){
+			$("#sub2").hide();
+			$("#sub1").show();
+		}else{
+			$("#sub1").hide();
+			$("#sub2").show();
+		}
+
+	};
+	</script>
+</head>
+<body class="login-body">
+<div id="wrap">
+
+<header id="header">
+	<div class="head-wrap">
+		<div class="title">아이디/비밀번호 찾기</div>
+		<div class="l-area">
+			<a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+		</div>
+
+	</div>
+</header>
+
+<main id="main">
+
+	<!--//change contents-->
+	<section id="subContent">
+
+		<div class="menu-bar">
+			<p class="btn-prev"><img src="<c:url value='/images/mw/common/btn_prev.png'/>" width="20" alt="이전페이지"></p>
+			<h1>아이디/비밀번호 찾기</h1>
+		</div>
+		<form name="frm">
+			<input type="hidden" name="sUserNm" id="sUserNm">
+			<input type="hidden" name="sTelNum" id="sTelNum">
+			<input type="hidden" name="sEmail" id="sEmail">
+		</form>
+		<div class="sub-content2" id="sub1" style="display:block;">
+			<div class="join">
+				<div class="sub-tabs">
+					<a class="active-on">아이디 찾기</a>
+					<a href="javascript:fn_ChangeTab(2);" class="active-off">비밀번호 찾기</a>
+				</div>
+				<p class="find-txt">가입 당시 입력한 휴대폰 번호를 통해 아이디를 찾을 수 있습니다.</p>
+				<table>
+					<colgroup>
+						<col width="23%">
+						<col width="*">
+					</colgroup>
+					<tr>
+<!--						<th><label for="sUserNm1"></label></th>-->
+						<td class="full">
+							<input type="text" id="sUserNm1"  maxlength="20" placeholder="이름">
+						</td>
+					</tr>
+					<tr>
+<!--						<th><label for="hp1"></label></th>-->
+						<td class="tel">
+							<input type="text" name="telNum" id="telNum" maxlength="11" placeholder="휴대폰 번호 -없이 입력">
+
+							<a href="javascript:fn_SendSms1();">인증</a>
+						</td>
+					</tr>
+					<tr>
+<!--						<th><label for="certNumber1"></label></th>-->
+						<td class="full">
+							<input type="text" id="certNumber1" placeholder="인증번호 입력">
+							<em>인증번호는 발송 후 30분내에서만 유효합니다.</em>
+						</td>
+					</tr>
+				</table>
+
+			</div>
+			<p class="btn-list">
+				<a href="#" class="btn btn1" onclick="javascript:fn_Cert1();">확인</a>
+			</p>
+
+		</div>
+		<div class="sub-content" id="sub2" style="display:none;">
+			<div class="join">
+				<div class="sub-tabs">
+					<a href="javascript:fn_ChangeTab(1);" class="active-off">아이디 찾기</a>
+					<a class="active-on">비밀번호 찾기</a>
+				</div>
+				<p></p>
+				<p class="find-txt">가입 당시 입력한 휴대폰 번호로 인증번호를 발송합니다.</p>
+				<table>
+					<colgroup>
+						<col width="23%">
+						<col width="*">
+					</colgroup>
+					<tr>
+	<!--						<th><label for="sUserNm1"></label></th>-->
+						<td class="full">
+							<input type="text" id="sUserNm2"  maxlength="20" placeholder="이름">
+						</td>
+					</tr>
+					<tr>
+	<!--						<th><label for="sUserNm1"></label></th>-->
+						<td class="full">
+							<input type="text" id="id-search"  maxlength="20" placeholder="이메일">
+						</td>
+					</tr>
+					<tr>
+	<!--						<th><label for="hp1"></label></th>-->
+						<td class="tel">
+							<input type="text" name="telNum2" id="telNum2" maxlength="11" placeholder="휴대폰 번호 -없이 입력">
+
+							<a href="javascript:fn_SendSms1();">인증</a>
+						</td>
+					</tr>
+					<tr>
+	<!--						<th><label for="certNumber1"></label></th>-->
+						<td class="full">
+							<input type="text" id="certNumber2" placeholder="인증번호 입력">
+							<em>인증번호는 발송 후 30분내에서만 유효합니다.</em>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<p class="btn-list">
+				<a href="#" class="btn btn1" onclick="javascript:fn_Cert1();">확인</a>
+			</p>
+
+		</div>
+	</section>
+	<!--//change contents-->
+</main>
+
+
+</div> <!-- //wrap -->
+</body>
+</html>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="apiTl">
+
+    <resultMap id="APITL_R_00" class="api.vo.APITLRoomTypeVO">
+        <result property="scAgtRoomCode"    column="PRDT_NUM" />
+        <result property="agtRoomIndicationName"    column="PRDT_NM" />
+        <result property="salesState"    column="TRADE_STATUS" />
+    </resultMap>
+
+    <resultMap id="APITL_R_01" class="api.vo.APITLPlanVO">
+        <result property="scAgtPlanCode"    column="PLAN_CODE" />
+        <result property="scAgtRoomCode"    column="PRDT_NUM" />
+        <result property="planIndicationName" column="PLAN_NM" />
+        <result property="salesState"    column="SALE_STATE" />
+        <result property="roomRateOrPersonalRate"    column="RATE_TYPE" />
+    </resultMap>
+
+    <resultMap id="APITL_R_02" class="api.vo.APITLPlanPriceVO">
+        <result property="priceCode"    column="PRICE_CODE" />
+        <result property="priceName"    column="PRICE_NM" />
+    </resultMap>
+
+    <resultMap id="APITL_R_03" class="api.vo.APITLStockResVO">
+        <result property="stockDate"    column="APL_DT" />
+        <result property="agtRoomQuantity"    column="TOTAL_ROOM_NUM" />
+        <result property="saleQuantity"    column="USE_ROOM_NUM" />
+        <result property="agtStockQuantity"    column="STOCK_QTY" />
+        <result property="saleStopState"    column="DDL_YN" />
+        <result property="closingState"    column="CLOSE_STATE" />
+    </resultMap>
+
+    <resultMap id="APITL_R_04" class="api.vo.APITLTariffResVO">
+        <result property="tariffDate"    column="APL_DT" />
+        <result property="saleStopState"    column="SALE_STOP" />
+        <result property="PriceCode1"    column="PRICE_CODE1" />
+        <result property="closingState"    column="CLOSE_STATE" />
+    </resultMap>
+
+    <!-- 1-1 AgtRoomTypeDownload (Room Type LIST) -->
+    <select id="APITL_S_00" resultMap="APITL_R_00">
+        SELECT PRDT_NUM, PRDT_NM
+        , '0' AS TRADE_STATUS <!--일시중지중(판매중지 중 등)이어도 관리화면에서 요금을 갱신할 수 있는 경우, 「판매중」으로 Response 됨-->
+        FROM TB_AD_PRDTINF
+        WHERE CORP_ID = #LoginId# AND CORP_ID = #LoginPwd#
+        AND PRINT_YN ='Y' <!--사전에 TL린칸과 결정해 놓은 갱신대상 객실이 판매중으로 Response됨 / 불가 대상에게는 Response 되지 않음-->
+    </select>
+
+    <!-- 1-2 PlanDownload (Plan LIST) -->
+    <select id="APITL_S_03" resultMap="APITL_R_01">
+        SELECT
+        'P001' AS PLAN_CODE <!--기본코드 셋팅-->
+        , 'TamnaoBasicPlan' AS PLAN_NM <!--기본명칭 셋팅-->
+        , PRDT_NUM
+        , '0' AS SALE_STATE <!--일시중지중(판매중지 중 등)이어도 관리화면에서 요금을 갱신할 수 있는 경우, 「판매중」으로 Response 됨-->
+        , '1' AS RATE_TYPE  <!-- 0: 인원요금 타입 ; 1:객실 요금 타입-->
+        FROM TB_AD_PRDTINF
+        WHERE CORP_ID = #LoginId# AND CORP_ID = #LoginPwd#
+        AND PRINT_YN ='Y' <!--사전에 TL린칸과 결정해 놓은 갱신대상 객실이 판매중으로 Response됨 / 불가 대상에게는 Response 되지 않음-->
+    </select>
+
+    <!-- 1-2 PlanDownload (Plan Price LIST) -->
+    <select id="APITL_S_04" resultMap="APITL_R_02">
+        SELECT
+        '1' AS PRICE_CODE  <!-- 1만 존재 (RoomType : Plan = 1:1관계)-->
+        ,STD_MEM || '명 1실' AS PRICE_NM
+        FROM TB_AD_PRDTINF
+        WHERE PRDT_NUM = #prdtNum#
+    </select>
+
+    <!-- 1-3 StockDataDownload (잔여 객실 check) -->
+    <select id="APITL_S_02" resultMap="APITL_R_03">
+        SELECT APL_DT, TOTAL_ROOM_NUM, USE_ROOM_NUM
+        , TOTAL_ROOM_NUM - USE_ROOM_NUM AS STOCK_QTY
+        , CASE  WHEN  DDL_YN ='N' THEN 0 <!--DDL_YN 0: 판매중 , 1:판매중지-->
+            ELSE 1 END AS DDL_YN
+        , 0 AS CLOSE_STATE <!-- "0" 고정 (탐나오는 판매날짜로 컨트롤 하는게 아니므로 0을 반환) -->
+        FROM TB_AD_CNTINF
+        WHERE PRDT_NUM = #scAgtRoomCode#
+        AND APL_DT BETWEEN TO_DATE(#appointedDate#, 'YYYYMMDD') AND TO_DATE(#appointedDate#, 'YYYYMMDD') + (#acquireDayNums# - 1)
+    </select>
+
+    <!-- 1-4 TariffDataDownload (요금 check - 판매가)-->
+    <select id="APITL_S_05" resultMap="APITL_R_04">
+        SELECT
+        APL_DT
+        , CASE WHEN NVL(SALE_AMT,0) > 0  THEN 0 ELSE 1  END AS SALE_STOP       <!--판매가가 0이면 [1:판매중지]-->
+        , SALE_AMT AS PRICE_CODE1
+        , 0 AS CLOSE_STATE <!-- "0" 고정 (탐나오는 판매날짜로 컨트롤 하는게 아니므로 0을 반환) -->
+        FROM TB_AD_AMTINF
+        WHERE PRDT_NUM = #scAgtRoomCode#
+        AND APL_DT BETWEEN TO_DATE(#appointedDate#, 'YYYYMMDD') AND TO_DATE(#appointedDate#, 'YYYYMMDD') + (#acquireDayNums# - 1)
+    </select>
+
+    <!-- 1-4 TariffDataDownload (요금 check - 입금가)-->
+    <select id="APITL_S_06" resultMap="APITL_R_04">
+        SELECT
+        APL_DT
+        , CASE WHEN NVL(SALE_AMT,0) > 0  THEN 0 ELSE 1  END AS SALE_STOP       <!--판매가가 0이면 [1:판매중지]-->
+        , DEPOSIT_AMT AS PRICE_CODE1
+        , 0 AS CLOSE_STATE <!-- "0" 고정 (탐나오는 판매날짜로 컨트롤 하는게 아니므로 0을 반환) -->
+        FROM TB_AD_AMTINF
+        WHERE PRDT_NUM = #scAgtRoomCode#
+        AND APL_DT BETWEEN TO_DATE(#appointedDate#, 'YYYYMMDD') AND TO_DATE(#appointedDate#, 'YYYYMMDD') + (#acquireDayNums# - 1)
+    </select>
+
+    <!--1-5 AgtRoomStatusUpdateArray (잔여 객실 update) -->
+    <update id="APITL_M_00">
+        MERGE INTO TB_AD_CNTINF
+        USING DUAL
+        ON (PRDT_NUM = #scAgtRoomCode# AND APL_DT = #appointedDate#)
+        WHEN MATCHED THEN
+        UPDATE
+        SET TOTAL_ROOM_NUM = #agtStockQuantity# + USE_ROOM_NUM
+        <isEqual property="stopStartDivision" compareValue="0">
+            , DDL_YN= 'N' <!--판매-->
+        </isEqual>
+        <isEqual property="stopStartDivision" compareValue="1">
+            , DDL_YN= 'Y' <!--판매 중지-->
+        </isEqual>
+        WHEN NOT MATCHED THEN
+        INSERT (PRDT_NUM, APL_DT, TOTAL_ROOM_NUM, USE_ROOM_NUM, DDL_YN)
+        VALUES ( #scAgtRoomCode#,  #appointedDate#,  #agtStockQuantity#, '0'
+        <isEqual property="stopStartDivision" compareValue="0">
+            , 'N' <!--판매-->
+        </isEqual>
+        <isEqual property="stopStartDivision" compareValue="1">
+            , 'Y' <!--판매 중지-->
+        </isEqual>);
+    </update>
+
+    <!--1-6 PlanStatusUpdateArray (객실 요금 update) 판매가 -->
+    <update id="APITL_M_01">
+        MERGE INTO TB_AD_AMTINF
+        USING DUAL
+        ON  (PRDT_NUM = #scAgtRoomCode# AND APL_DT = #appointedDate#)
+        WHEN MATCHED THEN
+        UPDATE
+        SET SALE_AMT = #PriceCode1#
+        , DEPOSIT_AMT = SALE_TO_DEPOSIT(#PriceCode1#, #corpId#)
+        WHEN NOT MATCHED THEN
+        INSERT (PRDT_NUM, APL_DT, NML_AMT, SALE_AMT, DEPOSIT_AMT)
+        VALUES ( #scAgtRoomCode#,  #appointedDate#,  #PriceCode1#, #PriceCode1#,  SALE_TO_DEPOSIT(#PriceCode1#, #corpId#));
+    </update>
+
+    <!--1-6 PlanStatusUpdateArray (객실 요금 update) 입금가-->
+    <update id="APITL_M_02">
+        MERGE INTO TB_AD_AMTINF
+        USING DUAL
+        ON  (PRDT_NUM = #scAgtRoomCode# AND APL_DT = #appointedDate#)
+        WHEN MATCHED THEN
+        UPDATE
+        SET SALE_AMT = DEPOSIT_TO_SALE(#PriceCode1#, #corpId#)
+        , DEPOSIT_AMT = #PriceCode1#
+        WHEN NOT MATCHED THEN
+        INSERT (PRDT_NUM, APL_DT, NML_AMT, SALE_AMT, DEPOSIT_AMT)
+        VALUES ( #scAgtRoomCode#,  #appointedDate#, DEPOSIT_TO_SALE(#PriceCode1#, #corpId#), DEPOSIT_TO_SALE(#PriceCode1#, #corpId#), #PriceCode1# );
+    </update>
+
+    <!--1-7 LoginConfirm (숙소가 있는지 확인) -->
+    <select id="APITL_S_01" resultClass="int">
+        SELECT COUNT(1)
+        FROM
+        TB_AD_DFTINF
+        WHERE  CORP_ID = #LoginId# AND CORP_ID = #LoginPwd#
+    </select>
+
+    <!--RoomCode 존재여부-->
+    <select id="APITL_S_11" resultClass="int">
+        SELECT COUNT(1)
+        FROM TB_AD_PRDTINF
+        WHERE CORP_ID = #corpId# AND PRDT_NUM = #roomCode#
+    </select>
+
+    <insert id="APITL_I_01">
+        INSERT INTO TB_APITL_BTOB
+        (SEQ, API_NM, CORP_ID, REQ_XML, RETURN_XML, SUCCESS, FAULT_REASON )
+        VALUES
+        ( SEQ_TLBTOB_SN.NEXTVAL
+        , #apiNm#
+        , #corpId#
+        , #reqXml#
+        , #returnXml#
+        , #success#
+        , #faultReason#
+        )
+    </insert>
+
+    <!--TLL 금액연동기준 get-->
+    <select id="APITL_S_12" resultClass="String">
+        SELECT NVL(TLL_PRICE_LINK, 'SELL') AS TLL_PRICE_LINK
+        FROM TB_AD_DFTINF
+        WHERE CORP_ID = #corpId#
+    </select>
+
+</sqlMap>

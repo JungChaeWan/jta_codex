@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="mail">
+
+
+<insert id="MAIL_I_00">
+
+INSERT INTO EVENT_DBEVENT
+	( TITLE
+	, CONTENT
+	, SENDER
+	, SENDER_ALIAS
+	, EMAIL
+	, CONTENT_TYPE
+	, EVENT_ID
+	, USER_INFO
+	, EMAIL_INSERT_TYPE
+	, WASSENDED
+	, EMAIL_DATA_TYPE 
+	, USERID
+	) 
+VALUES( 
+	  #title#
+	, #content#  
+	, #sender# 
+	, #senderAlias# 
+	, #email# 
+	, #contentType# 
+	, #eventId# 
+	, #userInfo#
+	, #emailInsertType# 
+	, #wasSended#
+	, #emailDataType#
+	, #userId#
+	)
+</insert>
+</sqlMap>

@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="bestprdt">
+
+<resultMap id="BESTPRDT_R_00" class="oss.marketing.vo.BESTPRDTVO">
+<result property="bestprdtNum" column="BESTPRDT_NUM"/>
+<result property="corpCd" column="CORP_CD"/>
+<result property="corpSubCd" column="CORP_SUB_CD"/>
+<result property="prdtNum" column="PRDT_NUM"/>
+<result property="prmtContents" column="PRMT_CONTENTS"/>
+<result property="printSn" column="PRINT_SN"/>
+<result property="printYn" column="PRINT_YN"/>
+<result property="regDttm" column="REG_DTTM"/>
+<result property="prdtNm" column="PRDT_NM"/>
+<result property="corpNm" column="CORP_NM"/>
+</resultMap>
+
+<resultMap id="WEB_BESTPRDT_R_00" class="oss.marketing.vo.BESTPRDTVO">
+<result property="prdtNum" column="PRDT_NUM"/>
+<result property="corpId" column="CORP_ID"/>
+<result property="prdtNm" column="PRDT_NM"/>
+<result property="imgPath" column="IMG_PATH"/>
+<result property="etcExp" column="ETC_Exp"/>
+<result property="nmlAmt" column="NML_AMT"/>
+<result property="saleAmt" column="SALE_AMT"/>
+</resultMap>
+
+<sql id="BESTPRDT_S_00_FILD">
+	   BESTPRDT_NUM
+	 , CORP_CD
+	 , CORP_SUB_CD
+	 , PRDT_NUM
+	 , PRMT_CONTENTS
+	 , PRINT_SN
+	 , PRINT_YN
+	 , REG_DTTM
+	 , PRDT_NM
+	 , CORP_NM
+</sql>
+
+<sql id="BESTPRDT_S_00_WHERE">
+	<isNotEmpty property="bestprdtNum">
+		<isNotNull property="bestprdtNum">
+			AND BESTPRDT_NUM = #bestprdtNum#
+		</isNotNull>
+ 	</isNotEmpty>
+</sql>
+
+<sql id="BESTPRDT_S_00_ORG">
+SELECT  BESTPRDT_NUM
+	 , CORP_CD
+	 , CORP_SUB_CD
+	 , T_BP.PRDT_NUM
+	 , PRMT_CONTENTS
+	 , PRINT_SN
+	 , PRINT_YN
+	 , REG_DTTM
+     , PRDT_NM
+     , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID=T_PRDT.CORP_ID ) AS CORP_NM
+  FROM TB_BESTPRDT T_BP
+  INNER JOIN (
+		SELECT PRDT_NUM
+		     , PRDT_NM
+             , CORP_ID
+		  FROM TB_AD_PRDTINF
+        UNION
+		SELECT PRDT_NUM
+		     , PRDT_NM
+             , CORP_ID
+		  FROM TB_RC_PRDTINF
+        UNION
+		SELECT PRDT_NUM
+		     , PRDT_NM
+             , CORP_ID
+		  FROM TB_GL_PRDTINF
+        UNION
+		  SELECT PRDT_NUM
+		  		, PRDT_NM || '('|| TO_DATE(SALE_START_DT, 'yyyy-MM-dd') || '~' || TO_DATE(SALE_END_DT, 'yyyy-MM-dd') || ')' PRDT_NM
+                , CORP_ID
+		    FROM TB_SP_PRDTINF
+		UNION
+		  SELECT PRDT_NUM
+		  		, PRDT_NM || '('|| TO_DATE(SALE_START_DT, 'yyyy-MM-dd') || '~' || TO_DATE(SALE_END_DT, 'yyyy-MM-dd') || ')' PRDT_NM
+                , CORP_ID
+		    FROM TB_SV_PRDTINF
+	) T_PRDT
+    ON T_BP.PRDT_NUM = T_PRDT.PRDT_NUM
+</sql>
+
+
+<sql id="BESTPRDT_S_01_WHERE">
+	<isNotEmpty property="sBestprdtNum">
+		<isNotNull property="sBestprdtNum">
+			AND BESTPRDT_NUM = #sBestprdtNum#
+		</isNotNull>
+ 	</isNotEmpty>
+
+ 	<isNotEmpty property="sCorpCd">
+		<isNotNull property="sCorpCd">
+			AND CORP_CD = #sCorpCd#
+		</isNotNull>
+ 	</isNotEmpty>
+
+	<isEqual property="sCorpCd" compareValue="SP">
+	 	<isNotEmpty property="sCorpSubCd">
+			<isNotNull property="sCorpSubCd">
+				AND SUBSTR(CORP_SUB_CD, 0, 2) = SUBSTR(#sCorpSubCd#, 0, 2)
+			</isNotNull>
+	 	</isNotEmpty>
+	 </isEqual>
+
+ 	<!--
+ 	<isNotEmpty property="sBESTPRDTNm">
+	 	<isNotNull property="sBESTPRDTNm">
+	   		AND BESTPRDT_NM LIKE '%'||#sBESTPRDTNm#||'%'
+	    </isNotNull>
+	</isNotEmpty>
+	 -->
+</sql>
+
+
+<select id="BESTPRDT_S_00" resultMap="BESTPRDT_R_00">
+SELECT <include refid="BESTPRDT_S_00_FILD" />
+FROM ( <include refid="BESTPRDT_S_00_ORG" /> )
+ WHERE 1=1
+ 	<include refid="BESTPRDT_S_00_WHERE" />
+ ORDER BY PRINT_SN
+</select>
+
+
+
+<select id="BESTPRDT_S_01" resultMap="BESTPRDT_R_00">
+SELECT <include refid="BESTPRDT_S_00_FILD" />
+FROM (
+	SELECT <include refid="BESTPRDT_S_00_FILD" />
+		, ROWNUM AS RN
+	FROM (
+		SELECT <include refid="BESTPRDT_S_00_FILD" />
+		FROM ( <include refid="BESTPRDT_S_00_ORG" /> )
+		 WHERE 1=1
+		 	<include refid="BESTPRDT_S_01_WHERE" />
+		 ORDER BY PRINT_SN
+	)
+
+)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="BESTPRDT_S_02" resultClass="int">
+SELECT COUNT(*)
+FROM TB_BESTPRDT
+ WHERE 1=1
+ 	<include refid="BESTPRDT_S_01_WHERE" />
+</select>
+
+<select id="BESTPRDT_S_03" resultClass="int">
+SELECT NVL(MAX(PRINT_SN), 0) AS CNT
+  FROM TB_BESTPRDT
+WHERE CORP_CD = #sCorpCd#
+	<isEqual property="sCorpCd" compareValue="SP">
+  		AND CORP_SUB_CD = #sCorpSubCd#
+  	</isEqual>
+</select>
+
+
+<insert id="BESTPRDT_I_00">
+INSERT INTO TB_BESTPRDT
+	(  BESTPRDT_NUM
+	 , CORP_CD
+	 , CORP_SUB_CD
+	 , PRDT_NUM
+	 , PRMT_CONTENTS
+	 , PRINT_SN
+	 , PRINT_YN
+	 , REG_DTTM
+	)
+VALUES
+	( (SELECT TO_CHAR(NVL(MAX(TO_NUMBER(BESTPRDT_NUM)),0) + 1) FROM TB_BESTPRDT)
+	 , #corpCd#
+	 , #corpSubCd#
+	 , #prdtNum#
+	 , #prmtContents#
+	 , (SELECT NVL(MAX(PRINT_SN), 0) + 1 FROM TB_BESTPRDT WHERE CORP_CD = #corpCd#
+	 	<isEqual property="corpCd" compareValue="SP"> AND CORP_SUB_CD = #corpSubCd# </isEqual>
+	 	)
+	 , 'Y'
+	 , SYSDATE
+	 )
+</insert>
+
+
+<update id="BESTPRDT_U_00">
+UPDATE TB_BESTPRDT
+   SET CORP_CD = #corpCd#
+	 , CORP_SUB_CD = #corpSubCd#
+	 , PRDT_NUM = #prdtNum#
+	 , PRMT_CONTENTS = #prmtContents#
+	 <isNotEmpty property="printSn">
+     	<isNotNull property="printSn">
+	  		, PRINT_SN = #printSn#
+	  	</isNotNull>
+	 </isNotEmpty>
+     , PRINT_YN = #printYn#
+WHERE BESTPRDT_NUM = #bestprdtNum#
+</update>
+
+<!-- 순번 변경 관련 -->
+
+<update id="BESTPRDT_U_01">
+UPDATE TB_BESTPRDT
+   SET PRINT_SN = PRINT_SN + 1
+ WHERE CORP_CD = #corpCd#
+ 	<isEqual property="corpCd" compareValue="SP">
+   		AND CORP_SUB_CD = #corpSubCd#
+   	</isEqual>
+ <isNotEqual property="oldSn" compareValue="0">
+	<![CDATA[ AND PRINT_SN <  #oldSn# ]]>
+ </isNotEqual>
+ <![CDATA[  AND PRINT_SN >= #newSn#  ]]>
+</update>
+
+<update id="BESTPRDT_U_02">
+UPDATE TB_BESTPRDT
+   SET PRINT_SN = PRINT_SN - 1
+ WHERE CORP_CD = #corpCd#
+ 	<isEqual property="corpCd" compareValue="SP">
+   		AND CORP_SUB_CD = #corpSubCd#
+   	</isEqual>
+ <isNotNull property="newSn">
+   <isNotEqual property="newSn" compareValue="0">
+ 		<![CDATA[  AND PRINT_SN <= #newSn# ]]>
+ 	</isNotEqual>
+ </isNotNull>
+ <![CDATA[ AND PRINT_SN >  #oldSn# ]]>
+</update>
+
+
+
+<delete id="BESTPRDT_D_00">
+DELETE TB_BESTPRDT
+ WHERE BESTPRDT_NUM = #bestprdtNum#
+</delete>
+
+
+<!--
+<select id="BESTPRDT_WEB_S_00" resultMap="BESTPRDT_R_00">
+SELECT *
+FROM (
+	SELECT <include refid="BESTPRDT_S_00_FILD" />
+	  FROM TB_BESTPRDT
+	 WHERE 1=1
+	   AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN START_DTTM AND END_DTTM
+	 ORDER BY DBMS_RANDOM.VALUE
+)
+WHERE <![CDATA[ ROWNUM <= #cnt# ]]>
+</select>
+ -->
+
+<select id="WEB_BESTPRDT_S_00" resultMap="WEB_BESTPRDT_R_00">
+SELECT T_BEST.PRDT_NUM
+        , CORP_ID
+        , PRDT_NM
+        , IMG_PATH
+        , ETC_EXP 
+        , NML_AMT
+        , SALE_AMT
+    FROM TB_BESTPRDT T_BEST
+    INNER JOIN (
+        SELECT T_PRD.PRDT_NUM
+            , CORP_NM AS PRDT_NM
+            , T_CORP.CORP_ID
+            , PRDT_EXP
+            , SAVE_PATH || 'thumb/' || SAVE_FILE_NM AS IMG_PATH
+            , (SELECT CD_NM FROM TB_CD WHERE CD_NUM=T_DFT.AD_AREA) AS ETC_EXP 
+            , NVL(T_AMT.NML_AMT, 0) AS NML_AMT
+            , NVL((CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN DAYPRICE_AMT ELSE SALE_AMT END), 0) AS SALE_AMT
+            , ROW_NUMBER() OVER(PARTITION BY T_PRD.PRDT_NUM ORDER BY (CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN DAYPRICE_AMT ELSE SALE_AMT END)) AS RK
+              FROM TB_AD_PRDTINF T_PRD
+                INNER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID=T_PRD.CORP_ID
+                INNER JOIN TB_AD_DFTINF T_DFT ON T_DFT.CORP_ID=T_PRD.CORP_ID
+                INNER JOIN TB_AD_AMTINF T_AMT ON T_AMT.PRDT_NUM = T_PRD.PRDT_NUM
+                   AND T_AMT.APL_DT = TO_CHAR(SYSDATE, 'YYYYMMDD')
+                LEFT OUTER JOIN TB_CM_IMG T_IMG ON T_IMG.LINK_NUM = T_CORP.CORP_ID
+                   AND T_IMG.IMG_SN   = 1                
+       UNION ALL
+         SELECT T_PRD.PRDT_NUM
+            , PRDT_NM
+         	, '' AS CORP_ID
+            , SUB_EXP AS PRDT_EXP
+            , CASE WHEN API_IMG_THUMB IS NOT NULL THEN API_IMG_THUMB
+			   ELSE SAVE_PATH || 'thumb/' || SAVE_FILE_NM END AS IMG_PATH
+            , '' AS ETC_EXP 
+            , NVL(T_OPT.NML_AMT, 0) AS NML_AMT
+            , NVL(T_OPT.SALE_AMT, 0) AS SALE_AMT
+            , ROW_NUMBER() OVER(PARTITION BY T_PRD.PRDT_NUM ORDER BY T_OPT.SALE_AMT) AS RK
+              FROM TB_SP_PRDTINF T_PRD            
+                LEFT OUTER JOIN TB_CM_IMG T_IMG ON T_IMG.LINK_NUM = T_PRD.PRDT_NUM
+                   AND T_IMG.IMG_SN   = 1
+                LEFT OUTER JOIN TB_SP_OPTINF T_OPT ON T_OPT.PRDT_NUM = T_PRD.PRDT_NUM
+				   AND T_OPT.SP_OPT_SN = 1
+			  WHERE TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN SALE_START_DT AND SALE_END_DT AND TRADE_STATUS = 'TS03'
+       UNION ALL
+         SELECT T_PRD.PRDT_NUM
+         	, PRDT_NM
+         	, '' AS CORP_ID
+            , PRDT_INF AS PRDT_EXP
+            , SAVE_PATH || 'thumb/' || SAVE_FILE_NM AS IMG_PATH
+            , '' AS ETC_EXP            
+            , NVL(T_OPT.NML_AMT, 0) AS NML_AMT
+            , NVL(T_OPT.SALE_AMT, 0) AS SALE_AMT
+            , ROW_NUMBER() OVER(PARTITION BY T_PRD.PRDT_NUM ORDER BY T_OPT.SALE_AMT) AS RK
+              FROM TB_SV_PRDTINF T_PRD                
+	            INNER JOIN TB_SV_OPTINF T_OPT ON T_OPT.PRDT_NUM = T_PRD.PRDT_NUM
+	               AND T_OPT.SV_DIV_SN = 1
+                   AND T_OPT.SV_OPT_SN = 1
+                LEFT OUTER JOIN TB_CM_IMG T_IMG ON T_IMG.LINK_NUM = T_PRD.PRDT_NUM
+                   AND T_IMG.IMG_SN   = 1
+                WHERE TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN SALE_START_DT AND SALE_END_DT AND TRADE_STATUS = 'TS03'
+    ) T_PRDT ON T_PRDT.PRDT_NUM=T_BEST.PRDT_NUM
+        WHERE PRINT_YN='Y'
+          AND RK=1
+    ORDER BY DBMS_RANDOM.VALUE
+</select>
+
+</sqlMap>

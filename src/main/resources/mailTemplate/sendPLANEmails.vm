@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>탐나오</title>
+</head>
+
+<body>
+	<table style="width: 740px; margin: 0 auto; text-decoration: none; border-collapse: collapse; font-family: 'NanumBarunGothic', 'Dotum', 'Helvetica', 'sans-serif';">
+		<!-- thead -->
+		#parse("mailTemplate/header2.vm")
+
+		<tbody>
+			<tr>
+				<td style="margin: 0; padding: 0;" >
+					<img src="${domain}${prmtInfo.mobileDtlImg}" alt="$prmtInfo.prmtNm" width="740px" style="display: block;">
+
+					<div style="margin: 30px 0 40px 0;">
+						<table style="width: 100%; table-layout: fixed;">
+
+							#foreach($prmtPrdt in $prmtPrdtList)
+								#set($corpCd = $prmtPrdt.corpCd)
+								#set($prdt = $prmtPrdt.data)
+								#set($prdtDiv = "")
+								#set($param = "prdtNum")
+								#set($addParam = "")
+								#set($border = "")
+
+								#if($corpCd == "AD")
+									#*#set($prdtNm = "[${prdt.adAreaNm}]${prdt.adNm}-${prdt.roomNm}")*#
+									#set($prdtNm = "${prdt.adNm}-${prdt.roomNm}")
+									#set($imgPath = "${prdt.savePath}thumb/${prdt.saveFileNm}")
+									#set($prdtInf = $prdt.adSimpleExp)
+									#set($param = "sPrdtNum")
+								#elseif($corpCd == "RC")
+									#set($prdtNm = $prdt.prdtNm)
+									#set($imgPath = $prdt.saveFileNm)
+									#set($prdtInf = $prdt.corpNm)
+									#set($border = "border: 1px solid #939393;")
+								#elseif($corpCd == "SP")
+									#set($prdtDiv = $prdt.prdtDiv)
+									#set($prdtNm = $prdt.prdtNm)
+									#set($imgPath = "${prdt.savePath}thumb/${prdt.saveFileNm}")
+									#set($prdtInf = $prdt.prdtInf)
+
+									#if($prdtDiv == "FREE")
+										#set($addParam = "&prdtDiv=FREE")
+									#end
+								#elseif($corpCd == "SV")
+									#set($prdtNm = $prdt.prdtNm)
+									#set($imgPath = "${prdt.savePath}thumb/${prdt.saveFileNm}")
+									#set($prdtInf = $prdt.prdtInf)
+								#end
+
+								#if($foreach.count % 3 == 1)
+									<tr>
+								#end
+
+								#if($foreach.count % 3 == 0)
+									#set($tdWidth = 31)
+								#else
+									#set($tdWidth = 34)
+								#end
+
+								<td style="width: ${tdWidth}%;">
+									<a href="${domain}/web/${corpCd.toLowerCase()}/detailPrdt.do?${param}=${prdt.prdtNum}${addParam}&searchYn=N&sSearchYn=N" target="_blank">
+										<img src="${domain}${imgPath}" alt="$prdtNm" style="display: block; width:230px; height: 230px; ${border}">
+									</a>
+									<div style="width: 230px;">
+										<h5 style="font-size: 16px; margin: 5px 0; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">$prdtNm</h5>
+										<p style="font-size: 14px; margin: 0; color: #939393; line-height: 1.2; height: 2.4em; text-overflow: ellipsis; white-space: normal; overflow: hidden;">$prdtInf</p>
+										<div style="text-align: right; margin: 5px 0;">
+											<p style="margin: 0; font-size: 16px; font-weight: bold; color: #e94c3f; padding-right:8px;">$numberTool.format("integer", $prdt.saleAmt)원</p>
+										</div>
+									</div>
+								</td>
+
+								#if($foreach.count % 3 == 0)
+									</tr>
+								#end
+							#end
+
+							#if($prmtPrdtList.size() % 3 > 0)
+								</tr>
+							#end
+						</table>
+					</div>
+
+					<div style="margin: 40px 0 60px 0; text-align: center;">
+						<a href="${domain}/web/evnt/detailPromotion.do?type=plan&prmtNum=${prmtInfo.prmtNum}&prmtDiv=PLAN&finishYn=N" target="_blank">
+							<img src="${domain}/images/web/mail2/temp/btn/tamnao-detail.png" alt="자세히보기" border="0" style="display: block; margin: 0 auto;">
+						</a>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+
+		<!-- tfoot -->
+		#parse("mailTemplate/footer.vm")
+	</table>
+</body>
+</html>

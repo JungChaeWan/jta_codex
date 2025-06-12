@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- css -->
+    <link rel="stylesheet" href="../../css/common/jquery-ui.css">
+    <link rel="stylesheet" href="../../css/web/common2.css">
+    <link rel="stylesheet" href="../../css/web/style.css">
+    <link rel="stylesheet" href="../../css/web/ad.css">
+    <link rel="stylesheet" href="../../css/web/lightbox.min.css">
+    <link rel="stylesheet" href="../../css/web/swiper.min.css">
+    <link rel="stylesheet" href="../../css/web/frame.css">
+    <!-- script -->
+    <script src="../../js/jquery-1.11.1.js"></script>
+    <script src="../../js/jquery-ui.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+    <script src="../../js/html_common.js"></script>
+    <script src="../../js/html_style.js"></script>
+    <script src="../../js/swiper.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+
+    <!-- add -->
+    <script src="../../js/slider.js"></script>
+    <script type="text/javascript">
+        $(window).load(function() {
+            $(window).scroll(function(event) {
+                if($(".ad-detail-info").offset().top < $(window).scrollTop() && ($(document).height() - $(".ad-recommend").offset().top) - ($(".ad-recommend").offset().top - $(window).scrollTop()) < 200  ){
+                    $(".ad-filter-area").css("position","fixed");
+                    $(".ad-filter-area").css("top","10px");
+                }else if(($(document).height() - $(".ad-recommend").offset().top) - ($(".ad-recommend").offset().top - $(window).scrollTop()) > 0){
+                    $(".ad-filter-area").css("position","absolute");
+                    $(".ad-filter-area").css("top",$(".ad-detail-area").height()+"px")
+                }else{
+
+                    $(".ad-filter-area").css("position","absolute");
+                    $(".ad-filter-area").css("top","10px");
+                }
+            });
+            // The slider being synced must be initialized first
+            $('#carousel').flexslider({
+                animation: "slide",
+                controlNav: false,
+                animationLoop: false,
+                slideshow: false,
+                itemWidth: 210,
+                itemMargin: 5,
+                asNavFor: '#slider'
+            });
+
+            $('#slider').flexslider({
+                animation: "slide",
+                controlNav: false,
+                animationLoop: false,
+                slideshow: false,
+                sync: "#carousel"
+            });
+        });
+
+        $(document).ready(function(){
+            $('#room-area a').mouseover(function(e){
+                e.preventDefault();
+                $('#room-area a').removeClass('active');
+                $(this).addClass('active');
+                img_url = $(this).attr('href');
+                $('.window img').attr('src',img_url);
+            });
+        });
+        function moreOpen80034957584(){
+            document.getElementById('btnhead80034957584').style.display='none';
+            document.getElementById('btntail80034957584').style.display='';
+            document.getElementById('moretail80034957584').innerHTML=document.getElementById('moretail80034957584').innerHTML;
+            document.getElementById('moretail80034957584').style.display='';
+        }
+        function moreClose80034957584(){
+            document.getElementById('btnhead80034957584').style.display='';
+            document.getElementById('btntail80034957584').style.display='none';
+            document.getElementById('moretail80034957584').style.display='none';
+        }
+        var swiper1 = new Swiper('.swiper1', {
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination1',
+                clickable: true,
+            },
+        });
+        var swiper2 = new Swiper('.swiper2', {
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination2',
+                clickable: true,
+            },
+        });
+        var swiper3 = new Swiper('.swiper3', {
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination3',
+                clickable: true,
+            },
+        });
+
+        $(document).ready(function() {
+            $( ".datepicker" ).datepicker({
+                showOn: "both",
+                buttonImage: "../images/web/icon/calendar_icon01.gif",
+                buttonImageOnly: true,
+                showOtherMonths: true, 										//빈칸 이전달, 다음달 출력
+                numberOfMonths: [ 1, 2 ],									//여러개월 달력 표시
+                stepMonths: 2 												//좌우 선택시 이동할 개월 수
+            });
+
+            //Top Slider Item
+            if($('#product_slideItem .swiper-slide').length > 3) {			//4개 이상시 실행
+                var swiper = new Swiper('#product_slideItem', {
+                    slidesPerView: 4,
+                    paginationClickable: true,
+                    spaceBetween: 15,
+                    nextButton: '#slideItem_next',
+                    prevButton: '#slideItem_prev'
+                });
+            }
+            else {
+                $('#slideItem_arrow').hide();
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- top banner zone-->
+    <div id="top_banner" class="top-banner swiper-container">
+        <ul class="swiper-wrapper">
+            <li class="swiper-slide" style="background-color: rgb(246, 12, 64)">
+                <a href="${result.url}" target="_blank">
+                    <div class="bar-tw">
+                        <p class="bar-t"><em class="bar-em">회원가입</em>만 해도 혜택이 팡팡!</p>
+                    </div>
+                    <img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+                </a>
+            </li>
+            <li class="swiper-slide" style="background-color: rgb(246, 12, 64)">
+                <a href="${result.url}" target="_blank">
+                    <div class="bar-tw">
+                        <p class="bar-t">착한수수료 동참을 지지하는 <em class="bar-em">댓글이벤트</em> 참여하세요!</p>
+                    </div>
+                    <img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+                </a>
+            </li>
+        </ul>
+        <div class="container">
+            <a href="javascript:void(0)" id="top_close" class="close"><img src="/images/web/comm/btn_close.png" alt="닫기"></a>
+        </div>
+    </div>
+    <!--// top banner zone-->
+
+    <!-- re_header -->
+    <div id="_header">
+        <div class="re_header">
+            <div class="inner">
+                <div class="header-top">
+                    <div class="box__usermenu">
+                        <ul class="list__usermenu">
+                            <li><b>이은민</b>님 환영합니다.</li>
+                            <li class="list-item">
+                                <a class="link__usermenu" href="javascript:fn_login();">로그인</a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link__usermenu" href="/web/signUp00.do">회원가입</a>
+                            </li>
+                            <!-- 로그인 -->
+                            <!--
+                            <li class="list-item">
+                                <a class="link__usermenu" href="javascript:fn_logout();">로그아웃</a>
+                            </li>-->
+                            <!-- //로그인 -->
+                            <li class="list-item">
+                                <a class="link__usermenu" href="/web/coustmer/viewCorpPns.do">입점신청</a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link__usermenu" href="/web/bbs/bbsList.do?bbsNum=NOTICE">고객센터</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <h1>
+                        <a href="/" title="tamnao - 제주여행종합쇼핑몰">
+                            <img src="/images/web/r_main/nao_logo2.png" alt="탐나오">
+                        </a>
+                    </h1>
+                    <div class="srh_area">
+                        <form id="submitFrm" name="submitFrm">
+                            <fieldset>
+                                <legend class="for-a11y"> 검색</legend>
+                                <div class="top_search" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+                                    <input name="keyword" title="검색어 입력" class="form_input" value="[기획전] 제주 봄꽃 여행" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+                                    <button type="submit" title="검색" class="srh_btn" onclick="fn_searBtClick();">
+                                        <img src="/images/web/r_main/srh_btn.png" alt="검색">
+                                    </button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="util_menu">
+                        <ui>
+                            <li id="unpaidInfo" class="nopay">
+                                <a href="javascript:fn_DtlRsv('${unpaidRsvNum}');" class="blinking text-red">
+                                    <span class="ico count">&nbsp;</span>미결제상품
+                                    <span class="cnt">0</span>
+                                </a>
+                            </li>
+                            <li class="coupon more">
+                                <a href="/web/mypage/pocketList.do">
+                                    <span class="ico"></span>쿠폰
+                                    <span class="cnt">0</span>
+                                </a>
+                            </li>
+                            <li class="cart more">
+                                <a href="/web/cart.do">
+                                    <span class="ico">&nbsp;</span>장바구니
+                                    <span class="cnt">0</span>
+                                </a>
+                            </li>
+                            <li class="mypage more">
+                                <a href="/web/mypage/rsvList.do">
+                                    <span class="ico">&nbsp;</span>마이탐나오
+                                </a>
+                            </li>
+                        </ui>ㅁ
+                    </div>
+                </div>
+            </div>
+
+            <!-- global-navigation -->
+            <div class="gnb2">
+                <div class="inner">
+                    <div class="box__service-all">
+                        <ul class="menu">
+                            <li class="list-item">
+                                <a class="link__service" href="https://www.tamnao.com/web/av/mainList.do">항공</a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link__service" href="https://www.tamnao.com/web/sp/vesselList.do">선박</a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link__service" href="https://www.tamnao.com/web/stay/jeju.do">숙소</a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link__service" href="https://www.tamnao.com/web/rentcar/car-list.do">렌터카</a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C200">관광지/레저 할인쿠폰</a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link__service" href="https://www.tamnao.com/web/sv/mainList.do">제주특산/기념품</a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C270">제주마을체험</a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C300">맛집</a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link__service" href="https://www.tamnao.com/web/sp/packageList.do">여행사 상품</a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link__service" href="https://www.tamnao.com/web/evnt/prmtPlanList.do">기획전</a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link__service" href="https://www.tamnao.com/web/evnt/promotionList.do">이벤트</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //re_header -->
+
+    <div id="main">
+        <div class="mapLocation">
+            <div class="Fasten">
+                <span>홈</span> <span class="gt">&gt;</span>
+                <span>실시간 숙박</span>
+            </div>
+        </div>
+        <div class="share">
+            <div class="btnShare">
+                <div class="share_btn">
+                    <a href="javascript:void(0)" onclick="layer_popup('#share_popup');">공유하기</a>
+                </div>
+            </div>
+            <div id="share_popup" class="share-popup comm-layer-popup">
+                <div class="content-wrap">
+                    <div class="content">
+                        <button type="button" class="close"><img src="../../images/mw/icon/close/dark-gray.png" alt="닫기"></button>
+                        <div class="installment-head">
+                            <h3 class="title">가족 및 친구들과 공유하세요.</h3>
+                        </div>
+                        <div class="packCon">
+                            <div class="sns-area">
+                                <a href="javascript:shareFacebook('${strURL}')"><img src="../../images/web/icon/sns/facebook.png" alt="페이스북"></a>
+                                <a href="javascript:shareStory('${strURL}')"><img src="../../images/web/icon/sns/kakaostory.png" alt="카카오스토리"></a>
+                                <a href="javascript:shareBand('${strURL}')"><img src="../../images/web/icon/sns/band.png" alt="밴드"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="subContents" class="sub_wrap">
+            <div class="subHead"></div>
+            <div class="subContents">
+                <!-- Change Contents -->
+                <div class="lodge2 new-detail cart"> <!-- add Class (new-detail) -->
+                    <div class="bgWrap2">
+                        <div class="Fasten">
+                            <!-- 숙박정보 -->
+                            <div class="ad-detail">
+                                <!--메인 이미지-->
+                                <div class="ad-detail-head">
+                                    <div class="MosaicReloaded">
+                                        <div class="hotel-mosaic moMain">
+                                            <a href="#">
+                                                <img src="/data/ad/thumb/C160000320_9.jpg" alt="숙박1" class="SquareImage">
+                                            </a>
+                                        </div>
+                                        <div class="hotel-mosaic moSub">
+                                            <a href="#">
+                                                <img src="/data/ad/thumb/C160000320_9.jpg" alt="숙박2" class="SquareImage">
+                                            </a>
+                                        </div>
+                                        <div class="hotel-mosaic moSmall">
+                                            <a href="#">
+                                                <img src="/data/ad/thumb/C160000320_9.jpg" alt="숙박3" class="SquareImage">
+                                            </a>
+                                        </div>
+                                        <div class="hotel-mosaic moSmall2">
+                                            <a href="#">
+                                                <img src="/data/ad/thumb/C160000320_9.jpg" alt="숙박4" class="SquareImage">
+                                                <div class="picOverlay">
+                                                    <div class="picOverlay_con">
+                                                        <div class="picMore">
+                                                            <a href="javascript:void(0)" onclick="layer_popup('#picAll_area');" class="picMore_tx">사진 보기</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div id="picAll_area" class="comm-layer-popup">
+                                            <div class="content-wrap">
+                                                <div class="content">
+                                                    <div class="head">
+                                                        <h3 class="title"></h3>
+                                                        <button type="button" class="close"><img src="../../images/web/btn/close.png" alt="닫기"></button>
+                                                    </div>
+
+                                                    <div class="main">
+                                                        <div class="img-box">
+                                                            <img src="" alt="신라호텔">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> <!--//comm-layer-popup-->
+                                    </div>
+                                </div>
+                                <div>
+                                    <!--숙소 상세정보-->
+                                    <div class="ad-detail-area">
+                                        <div class="ad-detail-info">
+                                            <div class="ad-info-area">
+                                                <div class="ad-memo">중문관광단지의 중심!</div>
+                                                <div class="ad-title">제주신라호텔</div>
+                                                <div class="score-area">
+                                                     <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:17px; width:17px; fill:currentColor">
+                                                        <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                                    </svg>
+                                                    <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:17px; width:17px; fill:currentColor">
+                                                        <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                                    </svg>
+                                                    <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:17px; width:17px; fill:currentColor">
+                                                        <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                                    </svg>
+                                                    <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:17px; width:17px; fill:currentColor">
+                                                        <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                                    </svg>
+                                                    <a href="#adReview" class="review_num">(5)</a>
+                                                </div>
+                                                <div class="ad-address">제주특별자치도 서귀포시 중문관광로72번길 75 제주신라호텔</div>
+                                            </div>
+                                            <!-- 0303 라벨수정 -->
+                                            <div class="bxLabel">
+                                                <span class="main_label pink">당일특가</span>
+                                                <span class="main_label eventblue">이벤트</span>
+                                                <span class="main_label back-red">연박할인</span>
+                                                <span class="main_label yellow">탐나는전</span>
+                                            </div><!-- //0303 라벨수정 -->
+                                            <div>
+                                                <div class="adDetail">
+                                                    <div class="">
+                                                        <ul class="FavFeatures__List">
+                                                            <li><img src="../../images/web/ad/AA01.png" alt="수영장"><p>수영장</p></li>
+                                                            <li><img src="../../images/web/ad/AA02.png" alt="바베큐"><p>바베큐</p></li>
+                                                            <li><img src="../../images/web/ad/AA03.png" alt="애완동물"><p>애완동물</p></li>
+                                                            <li><img src="../../images/web/ad/AA04.png" alt="매점"><p>매점</p></li>
+                                                            <li><img src="../../images/web/ad/AA05.png" alt="스파/사우나"><p>스파/사우나</p></li>
+                                                            <li><img src="../../images/web/ad/AA06.png" alt="조식"><p>조식</p></li>
+                                                            <li><img src="../../images/web/ad/AA07.png" alt="금연"><p>금연</p></li>
+                                                            <li><img src="../../images/web/ad/AA08.png" alt="주차장"><p>주차장</p></li>
+                                                            <li><img src="../../images/web/ad/AA09.png" alt="전기차충전소"><p>전기차충전</p></li>
+                                                            <li><img src="../../images/web/ad/AA10.png" alt="와이파이"><p>와이파이</p></li>
+                                                        </ul>
+                                                    </div>
+                                                    <p class="_adDetail">
+                                                        세계가 찾는 명소, 유네스코 자연유산 성산일출봉에서 느끼는 제주의 여유.
+
+                                                        코업시티호텔 성산입니다. 제주 방문객이 다시 찾고싶은 관광지에 매년 등재되는 성산일출봉과
+                                                        제주안의 또 다른 섬 우도에 인접해 있는 코업시티호텔 성산은 전 객실 전망을 갖추고 부티크 디자인을
+                                                        채용 해 모든 객실에서 제주의 여운을 느끼 실 수 있습니다.
+
+                                                        코업시티호텔 성산입니다. 제주 방문객이 다시 찾고싶은 관광지에 매년 등재되는 성산일출봉과
+                                                        제주안의 또 다른 섬 우도에 인접해 있는 코업시티호텔 성산은 전 객실 전망을 갖추고 부티크 디자인을
+                                                        채용 해 모든 객실에서 제주의 여운을 느끼 실 수 있습니다.
+                                                    </p>
+                                                    <div class="grayspace"></div>
+                                                    <div class="show-more">
+                                                        <span class="show-more">더 보기</span>
+                                                    </div>
+                                                    <div class="ad-event">
+                                                        <div class="evnt_label">
+                                                            <span>
+                                                                <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:14px; width:14px; fill:currentColor">
+                                                                  <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                                                </svg>
+                                                            </span>
+                                                            Event & Issue
+                                                        </div>
+                                                        <div class="evnt_tx">
+                                                            <div class="evnt_title">추가 할인 혜택 및 할인쿠폰 제공</div>
+                                                            <div class="evnt_date">2020.10.18 - 2020.10.20</div>
+                                                            <div class="evnt_memo">
+                                                                쿠아플라넷, 그랑블루요트, 워터월드, 카멜리아힐, 세리월드카트, 쇠소깍투명보트, 유람선, 잠수함, 더마파크, 제주라프,
+                                                                점보빌리지쇼, 승마체험, 미로공원, 플레이케이팝, 브릭캠퍼스, 넥슨컴퓨터박물관, 그랑블루요트, 제주워터월드, 짚라인 할인쿠폰 제공
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--필터-->
+                                        <div class="filter_right">
+                                            <div class="ad-filter-area ad-filter-Backdrop">
+
+                                                <div class="filter_check">
+                                                    <div class="f_con">
+                                                        <div class="date_wrap">
+                                                            <div class="date_checkin">
+                                                                <label>체크인</label>
+                                                                <div class="value-text">
+                                                                    <div class="date-container">
+                                                                <span class="date-pick">
+                                                                    <input type="hidden" name="vNights" id="vNights" value="${searchVO.sNights}">
+                                                                    <input class="datepicker" type="text" id="sFromDtView" name="sFromDtView" placeholder="입실일 선택" onclick="optionClose('.popup-typeA')">
+                                                                </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="date_checkout">
+                                                                <label>체크아웃</label>
+                                                                <div class="value-text">
+                                                                    <div class="date-container">
+                                                                <span class="date-pick">
+                                                                    <input class="datepicker" type="text" id="sToDtView" name="sToDtView" placeholder="퇴실일 선택" onclick="optionClose('.popup-typeA')">
+                                                                </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="custom_wrap">
+                                                            <label>인원</label>
+                                                            <div class="value-text"><a href="javascript:void(0)" onclick="optionPopup('#hotel_count', this)">1객실, 2 성인</a></div>
+                                                            <div id="hotel_count" class="popup-typeA hotel-count">
+                                                                <div class="detail-area">
+                                                                    <strong class="sub-title">객실수</strong>
+                                                                    <select class="full" title="객실수 선택">
+                                                                        <option value="">객실 1개</option>
+                                                                        <option value="">객실 2개</option>
+                                                                        <option value="">객실 3개</option>
+                                                                        <option value="">객실 4개</option>
+                                                                        <option value="">객실 5개</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="detail-area counting-area">
+                                                                    <div class="counting">
+                                                                        <div class="l-area">
+                                                                            <strong class="sub-title">성인</strong>
+                                                                            <span class="memo">만 13세 이상</span>
+                                                                        </div>
+                                                                        <div class="r-area">
+                                                                            <button type="button" class="counting-btn"><img src="../../images/web/main/form/subtraction.png" alt="빼기"></button>
+                                                                            <span class="counting-text">1</span>
+                                                                            <button type="button" class="counting-btn"><img src="../../images/web/main/form/addition.png" alt="더하기"></button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="counting">
+                                                                        <div class="l-area">
+                                                                            <strong class="sub-title">소아</strong>
+                                                                            <span class="memo">만 2세 ~ 13세 미만</span>
+                                                                        </div>
+                                                                        <div class="r-area">
+                                                                            <button type="button" class="counting-btn"><img src="../../images/web/main/form/subtraction.png" alt="빼기"></button>
+                                                                            <span class="counting-text">0</span>
+                                                                            <button type="button" class="counting-btn"><img src="../../images/web/main/form/addition.png" alt="더하기"></button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="counting">
+                                                                        <div class="l-area">
+                                                                            <strong class="sub-title">유아</strong>
+                                                                            <span class="memo">만 2세(24개월) 미만</span>
+                                                                        </div>
+                                                                        <div class="r-area">
+                                                                            <button type="button" class="counting-btn"><img src="../../images/web/main/form/subtraction.png" alt="빼기"></button>
+                                                                            <span class="counting-text">0</span>
+                                                                            <button type="button" class="counting-btn"><img src="../../images/web/main/form/addition.png" alt="더하기"></button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="search_btn">
+                                                            <a href="">재검색</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="total-area">
+                                                    <div class="money"><strong>999,000</strong>원</div>
+                                                    <div class="text">
+                                                        1박 15,000원 + 소아 추가금액 10,000원
+                                                        <span class="text-red"> 연박할인 5,000원</span>
+                                                    </div>
+                                                </div>
+                                                <div class="purchasing-info">
+                                                    <!--팝업콘텐츠 (타겟 ID동일)-->
+                                                    <div id="installment_info" class="comm-layer-popup">
+                                                        <div class="content-wrap">
+                                                            <div class="content">
+                                                                <div class="head">
+                                                                    <h3 class="title">무이자 할부 안내</h3>
+                                                                    <button type="button" class="close"><img src="../images/web/btn/close.png" alt="닫기"></button>
+                                                                </div>
+                                                                <div class="main">
+                                                                    <div class="img-box">
+                                                                        <img src="../images/web/other/installment-info.jpg" alt="카드사할부안내">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!--//comm-layer-popup-->
+                                                    <div class="purchase-btn-group">
+                                                        <button type="button" class="comm-btn gray width40">장바구니</button>
+                                                        <button type="button" class="comm-btn red width60">바로구매</button>
+                                                    </div>
+                                                </div> <!-- //purchasing-info -->
+                                            </div>
+                                        </div>
+                                        <div class="ad-detail-con">
+                                            <section class="room_info">
+                                                <h2 class="sec-caption">방 정보</h2>
+                                                <div class="room">
+                                                    <a href="javascript:void(0)" onclick="layer_popup('#room-area');" class="pic_view" data-caption="Caption 1" data-id="id-1">
+                                                        <span class="thumLabel">기부객실</span>
+                                                        <img src="/data/ad/thumb/AD00000930_1.jpg" data-group="group">
+                                                    </a>
+                                                    <div class="room_info_memo">
+                                                        <div>
+                                                            <input type="checkbox" id="room_0" name="room_0" class="rf_chk" value="2">
+                                                            <label for="room_0" class="label_chk"></label>
+                                                        </div>
+                                                        <div class="title"><span class="ad_option">선택1</span> 한라 15평형</div>
+                                                        <div class="memo">방 + 욕식개별(주방공동사용)</div>
+                                                        <div class="other-group">
+                                                            <div class="inline-typeA">
+                                                                <p>기준 2인 / 최대 3인</p>
+                                                            </div>
+                                                        </div>
+                                                        <!-- 0303 라벨수정 -->
+                                                        <div class="bxLabel">
+                                                            <span class="main_label pink">당일특가</span>
+                                                            <span class="main_label eventblue">이벤트</span>
+                                                            <span class="main_label back-red">연박할인</span>
+                                                            <span class="main_label yellow">탐나는전</span>
+                                                        </div><!-- //0303 라벨수정 -->
+
+                                                        <!--1230 예약일 확인(datepicker) btn 생성-->
+                                                        <div class="reservation_confirm">
+                                                            <a href="" class="order_btn">
+                                                                <span class="date_icon">D</span>
+                                                                <span class="date_txt">예약일 확인</span>
+                                                            </a>
+                                                        </div><!-- //1229 예약일 확인(datepicker) btn 생성-->
+                                                        <div class="price">
+                                                            <div class="sale-position">
+                                                                <span class="label-triangle">연박 5,000원 할인</span>
+                                                                <del>999,000원</del>
+                                                            </div>
+                                                            <span class="sale">900,000원</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="gallery" id="room-area">
+
+                                                    <ul>
+                                                        <li><a href="/data/ad/thumb/AD00001858_4.jpg" class="active" data-lightbox="room" data-title="한라산방"><img src="/data/ad/thumb/AD00001858_4.jpg"></a></li>
+                                                        <li><a href="/data/ad/thumb/AD00001858_5.jpg" data-lightbox="room"><img src="/data/ad/thumb/AD00001858_5.jpg"></a></li>
+                                                        <li><a href="/data/ad/thumb/AD00001858_6.jpg" data-lightbox="room"><img src="/data/ad/thumb/AD00001858_6.jpg"></a></li>
+                                                        <li><a href="/data/ad/thumb/AD00001858_7.jpg" data-lightbox="room"><img src="/data/ad/thumb/AD00001858_7.jpg"></a></li>
+                                                        <li><a href="/data/ad/thumb/AD00001858_8.jpg" data-lightbox="room"><img src="/data/ad/thumb/AD00001858_8.jpg"></a></li>
+                                                    </ul>
+                                                    <div class="window"><img src="/data/ad/thumb/AD00001858_4.jpg" alt="" /></div>
+                                                </div>
+                                                <div class="room">
+                                                    <a href="large-2.jpg" class="pic_view" data-caption="Caption 2" data-id="id-2">
+                                                        <img src="/data/ad/thumb/AD00000930_2.jpg" data-group="group">
+                                                    </a>
+                                                    <div class="room_info_memo">
+                                                        <div>
+                                                            <input type="checkbox" id="room_1" name="room_0" class="rf_chk" value="2">
+                                                            <label for="room_1" class="label_chk"></label>
+                                                        </div>
+                                                        <div class="title"><span class="ad_option">선택2</span> 한라 15평형</div>
+                                                        <div class="memo">방 + 욕식개별(주방공동사용)</div>
+                                                        <div class="other-group">
+                                                            <div class="inline-typeA">
+                                                                <p>기준 2인 / 최대 3인</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="bxLabel">
+                                                            <span class="main_label pink">당일특가</span>
+                                                            <span class="main_label eventblue">이벤트</span>
+                                                            <span class="main_label back-red">연박할인</span>
+                                                            <span class="main_label yellow">탐나는전</span>
+                                                        </div>
+                                                        <div class="price">
+                                                            <div class="sale-position">
+                                                                <span class="label-triangle">연박 5,000원 할인</span>
+                                                                <del>999,000원</del>
+                                                            </div>
+                                                            <span class="sale">900,000원</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="room">
+                                                    <a href="large-3.jpg" class="pic_view" data-caption="Caption 3" data-id="id-3">
+                                                        <img src="/data/ad/thumb/AD00000930_4.jpg" data-group="group">
+                                                    </a>
+                                                    <div class="room_info_memo">
+                                                        <div>
+                                                            <input type="checkbox" id="room_2" name="room_0" class="rf_chk" value="2">
+                                                            <label for="room_2" class="label_chk"></label>
+                                                        </div>
+                                                        <div class="title"><span class="ad_option">선택3</span> 한라 15평형</div>
+                                                        <div class="memo">방 + 욕식개별(주방공동사용)</div>
+                                                        <div class="other-group">
+                                                            <div class="inline-typeA">
+                                                                <p>기준 2인 / 최대 3인</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="bxLabel">
+                                                            <span class="main_label pink">당일특가</span>
+                                                            <span class="main_label eventblue">이벤트</span>
+                                                            <span class="main_label back-red">연박할인</span>
+                                                            <span class="main_label yellow">탐나는전</span>
+                                                        </div>
+                                                        <div class="price">
+                                                            <div class="sale-position">
+                                                                <span class="label-triangle">연박 5,000원 할인</span>
+                                                                <del>999,000원</del>
+                                                            </div>
+                                                            <span class="sale">900,000원</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- 1201 예약마감 frame -->
+                                                <div class="room">
+                                                    <a href="large-3.jpg" class="pic_view" data-caption="Caption 3" data-id="id-3">
+                                                        <img src="/data/ad/thumb/AD00000930_4.jpg" data-group="group">
+                                                    </a>
+                                                    <div class="room_info_memo">
+                                                        <div>
+                                                            <input type="checkbox" id="room_3" name="room_0" class="rf_chk" value="2">
+                                                            <label for="room_3" class="label_chk"></label>
+                                                        </div>
+                                                        <div class="title"><span class="ad_option">선택3</span> 한라 15평형</div>
+                                                        <div class="memo">방 + 욕식개별(주방공동사용)</div>
+                                                        <div class="other-group">
+                                                            <div class="inline-typeA">
+                                                                <p>기준 2인 / 최대 3인</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="bxLabel">
+                                                            <span class="main_label pink">당일특가</span>
+                                                            <span class="main_label eventblue">이벤트</span>
+                                                            <span class="main_label back-red">연박할인</span>
+                                                            <span class="main_label yellow">탐나는전</span>
+                                                        </div>
+                                                        <div class="price">
+                                                            <div class="sale-position">
+                                                            </div>
+                                                            <span class="sale text__deadline">예약마감</span>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- //1131 예약마감 frame -->
+                                            </section>
+
+                                            <section class="ad_info">
+                                                <!--상품설명-->
+                                                <div class="ad-info-title">한눈에 보기</div>
+                                                <div class="sub-section">
+                                                    <div class="sub-section-left">
+                                                        <div class="line_seperator"></div>
+                                                        <h2 class="sub-section-header"> Tip </h2>
+                                                    </div>
+                                                    <div class="sub-section-right">
+                                                        <div class="line_seperator"></div>
+                                                        <div class="collapsed">
+                                                            <div>
+                                                                <p class="ad-tip">
+                                                                    제주신라호텔!
+                                                                    탐나오에서 예약시 특별한 가격&특별한 혜택이 주어집니다.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="sub-section">
+                                                    <div class="sub-section-left">
+                                                        <div class="line_seperator"></div>
+                                                        <h2 class="sub-section-header"> 편의시설 </h2>
+                                                    </div>
+                                                    <div class="sub-section-right">
+                                                        <div class="line_seperator"></div>
+                                                        <div class="collapsed">
+                                                            <ul class="FavFeatures__List">
+                                                                <li><img src="../../images/web/ad/AA01.png" alt="수영장"><p>수영장</p></li>
+                                                                <li><img src="../../images/web/ad/AA02.png" alt="바베큐"><p>바베큐</p></li>
+                                                                <li><img src="../../images/web/ad/AA03.png" alt="애완동물"><p>애완동물</p></li>
+                                                                <li><img src="../../images/web/ad/AA04.png" alt="매점"><p>매점</p></li>
+                                                                <li><img src="../../images/web/ad/AA05.png" alt="스파/사우나"><p>스파/사우나</p></li>
+                                                                <li><img src="../../images/web/ad/AA06.png" alt="조식"><p>조식</p></li>
+                                                                <li><img src="../../images/web/ad/AA07.png" alt="금연"><p>금연</p></li>
+                                                                <li><img src="../../images/web/ad/AA08.png" alt="주차장"><p>주차장</p></li>
+                                                                <li><img src="../../images/web/ad/AA09.png" alt="전기차충전소"><p>전기차충전</p></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="sub-section">
+                                                    <div class="sub-section-left">
+                                                        <div class="line_seperator"></div>
+                                                        <h2 class="sub-section-header">객실 비품 안내</h2>
+                                                    </div>
+                                                    <div class="sub-section-right">
+                                                        <div class="line_seperator"></div>
+                                                        <div class="collapsed">
+                                                            <p class="">
+                                                                TV, 전화기, 메모지, 펜, 휴지, 에어컨, 냉장고, 생수, 전기주전자, 물컵, 옷장, 옷걸이,
+                                                                객실용 슬리퍼, 헤어드라이어, 페이스타월, 바디타월, 샴푸, 바디워시, 비누, 미니바(유료)
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="sub-section">
+                                                    <div class="sub-section-left">
+                                                        <div class="line_seperator"></div>
+                                                        <h2 class="sub-section-header">이용안내</h2>
+                                                    </div>
+                                                    <div class="sub-section-right">
+                                                        <div class="line_seperator"></div>
+                                                        <div class="collapsed">
+                                                            <p class="">
+                                                                ◎ 인원추가요금 : 1인 24,200원(37개월부터 적용)<br>
+                                                                ◎ 조식추가요금 :<br>
+                                                                성인 1인 38,720원(현장 결제시 45,000원)<br>
+                                                                소인 1인 27,830원(현장 결제시 29,000원)<br>
+                                                                ◎ 엑스트라베드 : 1인 48,400원<br>
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <div id='btnhead80034957584' class="show-more">
+                                                                <a href='javascript:moreOpen80034957584();'>더 보기</a>
+                                                            </div>
+                                                            <div class="showAll">
+                                                                <p id='moretail80034957584' style='display:none;'>
+                                                                    * 위치정보
+                                                                    - 스위트 호텔→ 제주 국제 공항
+                                                                    운행 시간 첫차: 06:20분, 막차: 21:50분
+                                                                    운행 간격 매 15분(마지막 버스는 서울 출발 마지막 비행기 도착 후 출발)
+                                                                    소요 시간 약 50분
+                                                                    공항 리무진 버스
+                                                                </p>
+                                                            </div>
+                                                            <div id='btntail80034957584' style='display:none;' class="show-more">
+                                                                <a href='javascript:moreClose80034957584();'> 접기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="sub-section">
+                                                    <div class="sub-section-left">
+                                                        <div class="line_seperator"></div>
+                                                        <h2 class="sub-section-header">체크인</h2>
+                                                    </div>
+                                                    <div class="sub-section-right">
+                                                        <div class="line_seperator"></div>
+                                                        <div class="">
+                                                            <div class="collapsed">
+                                                                <p>
+                                                                    15:00
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="sub-section">
+                                                    <div class="sub-section-left">
+                                                        <div class="line_seperator"></div>
+                                                        <h2 class="sub-section-header">체크아웃</h2>
+                                                    </div>
+                                                    <div class="sub-section-right">
+                                                        <div class="line_seperator"></div>
+                                                        <div class="">
+                                                            <div class="collapsed">
+                                                                <p>
+                                                                    11:00
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="sub-section">
+                                                    <div class="sub-section-left">
+                                                        <div class="line_seperator"></div>
+                                                        <h2 class="sub-section-header">취소/환불</h2>
+                                                    </div>
+                                                    <div class="sub-section-right">
+                                                        <div class="line_seperator"></div>
+                                                        <div class="collapsed">
+                                                            <p>
+                                                                7일전 취소시 : 1박 금액 10% 수수료 부과 <br>
+                                                                6일전 취소시 : 1박 금액 20% 수수료 부과 <br>
+                                                                5~4일전 취소시 : 1박 금액 40% 수수료 부과 <br>
+                                                                3~2일전 취소시 : 1박 금액 70% 수수료 부과 <br>
+                                                                1일전~당일 취소시 : 1박 금액 100% 수수료 <br>
+
+                                                                *예약취소는 탐나오 사이트 마이페이지-해당상품 "취소요청" 으로 진행해주셔야 합니다.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                            <!--위치/주변 관광지-->
+                                            <section class="side_info">
+                                                <div class="ad-info-title">위치/주변 관광지</div>
+                                                <div class="type-bodyA">
+                                                    <div class="typeA">
+                                                        <div>
+                                                            <div class="map-area rent">
+                                                                <div class="sighMap map-area" id="sighMap"></div>
+                                                                <div class="sighMap-list">
+                                                                    <ul id="signMap-ul">
+                                                                        <li>
+                                                                            <div class="icWrap">1</div>
+                                                                            <div class="info">
+                                                                                <h5><a href="">중문관광단지</a></h5>
+                                                                                <p>064-759-1336 제주 서귀포시 중문동 064-759-1336 제주 서귀포시 중문동</p>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="icWrap">2</div>
+                                                                            <div class="info">
+                                                                                <h5><a href="">중문관광단지</a></h5>
+                                                                                <p>064-759-1336 제주 서귀포시 중문동</p>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="icWrap">3</div>
+                                                                            <div class="info">
+                                                                                <h5><a href="">중문관광단지</a></h5>
+                                                                                <p>064-759-1336 제주 서귀포시 중문동</p>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="icWrap">4</div>
+                                                                            <div class="info">
+                                                                                <h5><a href="">중문관광단지</a></h5>
+                                                                                <p>064-759-1336 제주 서귀포시 중문동</p>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="icWrap">5</div>
+                                                                            <div class="info">
+                                                                                <h5><a href="">중문관광단지</a></h5>
+                                                                                <p>064-759-1336 제주 서귀포시 중문동</p>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="icWrap">6</div>
+                                                                            <div class="info">
+                                                                                <h5><a href="">중문관광단지</a></h5>
+                                                                                <p>064-759-1336 제주 서귀포시 중문동</p>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="icWrap">7</div>
+                                                                            <div class="info">
+                                                                                <h5><a href="">중문관광단지</a></h5>
+                                                                                <p>064-759-1336 제주 서귀포시 중문동</p>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="icWrap">8</div>
+                                                                            <div class="info">
+                                                                                <h5><a href="">중문관광단지</a></h5>
+                                                                                <p>064-759-1336 제주 서귀포시 중문동</p>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="icWrap">9</div>
+                                                                            <div class="info">
+                                                                                <h5><a href="">중문관광단지</a></h5>
+                                                                                <p>064-759-1336 제주 서귀포시 중문동</p>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="map-text-info">
+                                                                <p>주소 : 제주특별자치도 서귀포시 ~~~~</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                            <!--이용후기-->
+                                            <section class="ad_review" id="adReview">
+                                                <div class="ad-info-title">이용후기</div>
+                                                <div>
+                                                    <div class="review-List">
+                                                        <div class="Review-comment">
+                                                            <div class="review_user">
+                                                                <div class="review_left">
+                                                                    <div class="user_f">
+                                                                        <img class="ico-emoji" src="/images/comm/icons/ico-emoji-5.png">
+                                                                    </div>
+                                                                    <div class="user_info">
+                                                                        <div>
+                                                                            <div class="user_id">mih*****</div>
+                                                                            <div class="score-area">
+
+                                                                                <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                                                    <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                                                                </svg>
+                                                                                <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                                                    <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                                                                </svg>
+                                                                                <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                                                    <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                                                                </svg>
+                                                                                <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                                                    <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                                                                </svg>
+
+                                                                            </div>
+                                                                            <div class="date">2020-05-22 13:42:20</div>
+                                                                        </div>
+                                                                        <div></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="review_right">
+                                                                    <div class="reviewCom">
+                                                                        <div class="_title">"탐나오 처음 이용했는데요~~대만족입니다"</div>
+                                                                        <div class="_comment">
+                                                                            다른 사이트 보다 저렴하구요~ <br>
+                                                                            일단 선물도 따로 주시더라구요~~<br>
+                                                                            너무 좋아요<br>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="_re_comment">
+                                                                        <div class="re"> 좋은느낌으로 이용해주셔서 감사드립니다 <br>
+                                                                            항상 고객편에서 불편함이없도록 최선을다하는 블루힐이되겠읍니다
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="Review-comment">
+                                                            <div class="review_user">
+                                                                <div class="review_left">
+                                                                    <div class="user_f">
+                                                                        <img class="ico-emoji" src="/images/comm/icons/ico-emoji-5.png">
+                                                                    </div>
+                                                                    <div class="user_info">
+                                                                        <div>
+                                                                            <div class="user_id">mih*****</div>
+                                                                            <div class="score-area">
+                                                                        <span class="">
+                                                                      <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                                            <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                                                        </svg></span>
+                                                                                <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                                                    <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                                                                </svg></span>
+                                                                                <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                                                    <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                                                                </svg></span>
+                                                                                <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                                                    <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                                                                </svg></span>
+                                                                            </div>
+                                                                            <div class="date">2020-01-12</div>
+                                                                        </div>
+                                                                        <div></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="review_right">
+                                                                    <div class="reviewCom">
+                                                                        <div class="_title">"탐나오 처음 이용했는데요~~대만족입니다"</div>
+                                                                        <div class="_comment">
+                                                                            다른 사이트 보다 저렴하구요~ <br>
+                                                                            일단 선물도 따로 주시더라구요~~<br>
+                                                                            너무 좋아요<br>
+                                                                        </div>
+                                                                        <div class="show-more">
+                                                                            <span class="show-more">더 보기</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="_re_comment">
+                                                                        <div class="re"> 좋은느낌으로 이용해주셔서 감사드립니다 <br>
+                                                                            항상 고객편에서 불편함이없도록 최선을다하는 블루힐이되겠읍니다
+                                                                            &nbsp;&nbsp; </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="review-all"> 이용후기 100건 모두 보기 > </div>
+                                            </section>
+
+                                            <!--1:1문의-->
+                                            <section class="ad_qna">
+                                                <div class="ad-info-title">1:1문의</div>
+                                                <div class="prod-inquiry-list__emphasis">
+                                                    <ul>
+                                                        <li>- 1:1 문의는 로그인 후 서비스를 이용하실 수 있습니다.</li>
+                                                        <li>- 구매한 상품의 취소/환불은 마이페이지를 이용해 주세요.</li>
+                                                        <li>- 상품과 관계없는 광고, 욕설, 비방 등의 글은 사전 예고 없이 삭제처리 됩니다.</li>
+                                                    </ul>
+                                                </div>
+                                                <div>
+                                                    <div class="prod-inquiry-item">
+                                                        <em class="prod-inquiry-item__label">질문</em>
+                                                        <div class="prod-inquiry-item__wrap">
+                                                            <strong class="prod-inquiry-item__author">y-j***** </strong>
+                                                            <div class="prod-inquiry-item__title">제목입니다.</div>
+                                                            <div class="prod-inquiry-item__content">아직 이용 전이구요, 오늘 우연히 다시 가격 확인을 했는데 같은 날짜, 같은 조건의 숙박료가 제가 구매한 것보다 2만원 이상 차이가 납니다.
+                                                                적은 금액이 아닌데 차액 환불 안되나요?</div>
+                                                            <div class="prod-inquiry-item__time">2017-04-05 19:21:27</div>
+                                                        </div>
+                                                        <div class="prod-inquiry-item__reply">
+                                                            <div class="ic">
+                                                                <img src="/images/web/icon/re2.png" alt="re">
+                                                            </div>
+                                                            <em class="prod-inquiry-item__reply__label">답변</em>
+                                                            <div class="prod-inquiry-item__reply__wrap">
+                                                                <strong class="prod-inquiry-item__reply__author">제주신라호텔</strong>
+                                                                <div class="prod-inquiry-item__reply__content">안녕하세요~ 전화응대해드렸습니다. 고객님 마음에 못다한 상품이 발송된 점 진심으로 사과드립니다.</div>
+                                                                <div class="prod-inquiry-item__reply__time">2020/01/06 11:43:08</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="prod-inquiry-item">
+                                                        <em class="prod-inquiry-item__label">질문</em>
+                                                        <div class="prod-inquiry-item__wrap">
+                                                            <strong class="prod-inquiry-item__author">y-j***** </strong>
+                                                            <div class="prod-inquiry-item__title">제목입니다.</div>
+                                                            <div class="prod-inquiry-item__content">아직 이용 전이구요, 오늘 우연히 다시 가격 확인을 했는데 같은 날짜, 같은 조건의 숙박료가 제가 구매한 것보다 2만원 이상 차이가 납니다.
+                                                                적은 금액이 아닌데 차액 환불 안되나요?</div>
+                                                            <div class="prod-inquiry-item__time">2017-04-05 19:21:27</div>
+                                                        </div>
+                                                        <div class="prod-inquiry-item__reply">
+                                                            <div class="ic">
+                                                                <img src="/images/web/icon/re2.png" alt="re">
+                                                            </div>
+                                                            <em class="prod-inquiry-item__reply__label">답변</em>
+                                                            <div class="prod-inquiry-item__reply__wrap">
+                                                                <strong class="prod-inquiry-item__reply__author">제주신라호텔</strong>
+                                                                <div class="prod-inquiry-item__reply__content">안녕하세요~ 전화응대해드렸습니다. 고객님 마음에 못다한 상품이 발송된 점 진심으로 사과드립니다.</div>
+                                                                <div class="prod-inquiry-item__reply__time">2020/01/06 11:43:08</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="prod-inquiry-item">
+                                                        <em class="prod-inquiry-item__label">질문</em>
+                                                        <div class="prod-inquiry-item__wrap">
+                                                            <strong class="prod-inquiry-item__author">y-j***** </strong>
+                                                            <div class="prod-inquiry-item__title">제목입니다.</div>
+                                                            <div class="prod-inquiry-item__content">아직 이용 전이구요, 오늘 우연히 다시 가격 확인을 했는데 같은 날짜, 같은 조건의 숙박료가 제가 구매한 것보다 2만원 이상 차이가 납니다.
+                                                                적은 금액이 아닌데 차액 환불 안되나요?</div>
+                                                            <div class="prod-inquiry-item__time">2017-04-05 19:21:27</div>
+                                                        </div>
+                                                        <div class="prod-inquiry-item__reply">
+                                                            <div class="ic">
+                                                                <img src="/images/web/icon/re2.png" alt="re">
+                                                            </div>
+                                                            <em class="prod-inquiry-item__reply__label">답변</em>
+                                                            <div class="prod-inquiry-item__reply__wrap">
+                                                                <strong class="prod-inquiry-item__reply__author">제주신라호텔</strong>
+                                                                <div class="prod-inquiry-item__reply__content">안녕하세요~ 전화응대해드렸습니다. 고객님 마음에 못다한 상품이 발송된 점 진심으로 사과드립니다.</div>
+                                                                <div class="prod-inquiry-item__reply__time">2020/01/06 11:43:08</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="pageNum">
+                                                    <button class="pageNum_prev"></button>
+                                                    <button class="pageNum_num active">1</button>
+                                                    <button class="pageNum_num">2</button>
+                                                    <button class="pageNum_num">3</button>
+                                                    <button class="pageNum_num">4</button>
+                                                    <button class="pageNum_num">5</button>
+                                                    <button class="pageNum_next"></button>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>
+                                    <!--주변 추천 숙소-->
+                                    <div class="ad-recommend">
+                                        <div id="ad-Recommend">
+                                            <div class="ad-info-title">다른 추천 숙소</div>
+                                            <div class="product-slide-item">
+                                                <div id="product_slideItem" class="swiper-container">
+                                                    <ul class="swiper-wrapper">
+                                                        <li class="swiper-slide">
+                                                            <a href="#">
+                                                                <div class="recommendPhoto">
+                                                                    <img src="/data/ad/thumb/CADO180017_2.jpg" alt="product">
+                                                                </div>
+                                                                <div class="recommendText">
+                                                                    <div class="rcSub">중문관광단지의 중심!</div>
+                                                                    <div class="rcTitle">스위트호텔제주</div>
+                                                                    <div class="rcPrice">101,200<span class="won">원</span></div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="swiper-slide">
+                                                            <a href="#">
+                                                                <div class="recommendPhoto">
+                                                                    <img src="/data/ad/thumb/CADO180017_2.jpg" alt="product">
+                                                                </div>
+                                                                <div class="recommendText">
+                                                                    <div class="rcSub">중문관광단지의 중심!</div>
+                                                                    <div class="rcTitle">스위트호텔제주</div>
+                                                                    <div class="rcPrice">101,200<span class="won">원</span></div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="swiper-slide">
+                                                            <a href="#">
+                                                                <div class="recommendPhoto">
+                                                                    <img src="/data/ad/thumb/CADO180017_2.jpg" alt="product">
+                                                                </div>
+                                                                <div class="recommendText">
+                                                                    <div class="rcSub">중문관광단지의 중심!</div>
+                                                                    <div class="rcTitle">스위트호텔제주</div>
+                                                                    <div class="rcPrice">101,200<span class="won">원</span></div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="swiper-slide">
+                                                            <a href="#">
+                                                                <div class="recommendPhoto">
+                                                                    <img src="/data/ad/thumb/CADO180017_2.jpg" alt="product">
+                                                                </div>
+                                                                <div class="recommendText">
+                                                                    <div class="rcSub">중문관광단지의 중심!</div>
+                                                                    <div class="rcTitle">스위트호텔제주</div>
+                                                                    <div class="rcPrice">101,200<span class="won">원</span></div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="swiper-slide">
+                                                            <a href="#">
+                                                                <div class="recommendPhoto">
+                                                                    <img src="/data/ad/thumb/CADO180017_2.jpg" alt="product">
+                                                                </div>
+                                                                <div class="recommendText">
+                                                                    <div class="rcSub">중문관광단지의 중심!</div>
+                                                                    <div class="rcTitle">스위트호텔제주</div>
+                                                                    <div class="rcPrice">101,200<span class="won">원</span></div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div id="slideItem_arrow" class="arrow-box">
+                                                    <div id="slideItem_next" class="swiper-button-next"></div>
+                                                    <div id="slideItem_prev" class="swiper-button-prev"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div> <!-- //ad-detail -->
+                        </div> <!--//Fasten-->
+                    </div> <!--//bgWrap-->
+
+                    <!--1230 예약일 확인(datepicker) content 생성-->
+                    <!-- 상품 리스트 -->
+                    <div class="room-option option-box prd_name" style="display: none;">
+                        <h4 class="title">한라15평형 <a class="option-close"><img src="../../images/web/cart/close.png" alt="닫기"></a></h4>
+                        <div class="info-head">
+                            <!--달력-->
+                            <!--lodgeCalendar-->
+                            <div class="lodgeCalendar">
+                                <!-- calendar -->
+                                <div class="calendar"  id="adDtlCanendar">
+                                    <form name="adDtlCalendar" id="adDtlCalendar" method="get" onSubmit="return false;">
+                                        <input type="hidden" id="corpId" name="corpId" value='<c:out value="${calendarVO.corpId}" />' />
+                                        <input type="hidden" id="prdtNum" name="prdtNum" value='<c:out value="${calendarVO.prdtNum}" />' />
+                                        <input type="hidden" id="prdtNm" name="prdtNm" value='<c:out value="${adPrdtInf.prdtNm}" />' />
+                                        <input type="hidden" id="sFromDt" name="sFromDt" value='<c:out value="${calendarVO.sFromDt}" />' />
+                                        <input type="hidden" id="iYear" name="iYear" value='<c:out value="${calendarVO.iYear}" />' />
+                                        <input type="hidden" id="iMonth" name="iMonth" value='<c:out value="${calendarVO.iMonth}" />' />
+                                        <input type="hidden" id="iNight" name="iNight" value='<c:out value="${calendarVO.iNight}" />' />
+                                        <input type="hidden" id="iMonthLastDay" name="iMonthLastDay" value='<c:out value="${calendarVO.iMonthLastDay}" />' />
+                                        <input type="hidden" id="sPrevNext" name="sPrevNext" value='' />
+                                        <input type="hidden" id="scriptVal" name="scriptVal" value='' />
+                                        <div class="calendar">
+                                            <div class="calHead">
+                                                <a href="javascript:updateADCalendarPrevNext('prev');" class="calPrev">
+                                                    <img src="/images/web/icon/arrow4.gif" alt="이전달">
+                                                </a>
+                                                <span class="calY1">2021</span>
+                                                <span class="select calM1">.4</span>
+                                                <a href="javascript:updateADCalendarPrevNext('prev');" class="calNext">
+                                                    <img src="/images/web/icon/arrow5.gif" alt="이전달">
+                                                </a>
+                                            </div>
+                                            <div class="calBody">
+                                                <table>
+                                                    <thead>
+                                                    <tr class="cal_title_tr">
+                                                        <th scope="col" class="sun">일</th>
+                                                        <th scope="col">월</th>
+                                                        <th scope="col">화</th>
+                                                        <th scope="col">수</th>
+                                                        <th scope="col">목</th>
+                                                        <th scope="col">금</th>
+                                                        <th scope="col" class="sat">토</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <c:if test="${!(empty calendarVO.iWeek)}">
+                                                            <c:forEach var="i" begin="1" end="${calendarVO.iWeek-1}">
+                                                                <td>
+                                                                    <p class="date">&nbsp;</p>
+                                                                </td>
+                                                            </c:forEach>
+                                                        </c:if>
+                                                        <c:forEach var="data" items="${calList}" varStatus="status" >
+                                                            <c:if test="${data.sHolidayYN == 'Y'}">
+                                                                <td class="sun">
+                                                            </c:if>
+                                                            <c:if test="${data.sHolidayYN == 'N'}">
+                                                                <c:if test="${data.iWeek == 1}">
+                                                                    <td class="sun">
+                                                                </c:if>
+                                                                <c:if test="${data.iWeek == 7}">
+                                                                    <td class="sat">
+                                                                </c:if>
+                                                                <c:if test="${!(data.iWeek == 1 || data.iWeek == 7)}">
+                                                                    <td>
+                                                                </c:if>
+                                                                <td>
+                                                                <td>
+                                                            </c:if>
+                                                            <p class="date">7</p>
+                                                            <p class="icon">
+                                                                <c:if test="${data.status=='E'}">
+                                                                    <img src="/images/web/cart/calInfo1.png" alt="예약">
+                                                                </c:if>
+                                                                <c:if test="${data.status=='D'}">
+                                                                    <img src="/images/web/cart/calInfo3.png" alt="미정" style="display: none">
+                                                                </c:if>
+                                                                <c:if test="${data.status=='M'}">
+                                                                    <img src="/images/web/cart/calInfo2.png" alt="마감" style="display: none">
+                                                                </c:if>
+                                                            </p>
+                                                            <p class="price">306,870</p>
+                                                            <c:if test="${data.iWeek == 7 && data.iDay!=calendarVO.iMonthLastDay}">
+                                                    </tr>
+                                                    <tr>
+                                                        </c:if>
+                                                        <c:set var="lastWeek" value="${data.iWeek}"/>
+
+                                                        </c:forEach>
+
+                                                        <c:forEach var="i" begin="${lastWeek+1}" end="7">
+                                                            <td><p class="date">&nbsp;</p></td>
+                                                        </c:forEach>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <ul class="calendar-info">
+                                            <li><img src="/images/web/cart/calInfo1.png" alt="예약"> 현재 예약 가능한 객실</li>
+                                            <li><img src="/images/web/cart/calInfo2.png" alt="마감"> 예약불가</li>
+                                            <li><img src="/images/web/cart/calInfo3.png" alt="미정"> 객실 미확정</li>
+                                        </ul>
+                                    </form>
+                                </div> <!--//calendar-->
+                            </div> <!--//lodgeCalendar-->
+                            <!--//달력-->
+                        </div> <!--//info-head-->
+                        <div class="info-text">
+                            <form name="glDtlInput" id="adDtlInput" method="get" onSubmit="return false;">
+                                <input type="hidden" id="EndVal" name="EndVal" value='' />
+
+                                <div class="list-cell list-cell2">
+                                    <ul class="bt_option">
+                                        <li class="dateWrap">
+                                            <div class="area1">투숙일자</div>
+                                            <div class="area2 line-break1">
+                                                <input id="adCalDate" class="cal" type="text" readonly value="${fn:substring(searchVO.sFromDt,0,4)}-${fn:substring(searchVO.sFromDt,4,6)}-${fn:substring(searchVO.sFromDt,6,8)}">
+                                                <select id="adCalNight" onchange="selectADCalendarNight(this);">
+                                                    <option value="1" <c:if test="${searchVO.sNights=='1' }">selected="selected"</c:if> >1박2일</option>
+                                                    <option value="2" <c:if test="${searchVO.sNights=='2' }">selected="selected"</c:if> >2박3일</option>
+                                                    <option value="3" <c:if test="${searchVO.sNights=='4' }">selected="selected"</c:if> >3박4일</option>
+                                                    <option value="4" <c:if test="${searchVO.sNights=='4' }">selected="selected"</c:if> >4박5일</option>
+                                                    <option value="5" <c:if test="${searchVO.sNights=='5' }">selected="selected"</c:if> >5박6일</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                        <li class="persWrap">
+                                            <div class="area1">인원</div>
+                                            <div class="area2 line-break2">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <select id="adCalMen1" onchange="updateADCalendar_end();">
+                                                                <c:forEach var="i" begin="0" end="${prdtVO.maxiMem}">
+                                                                    <option value="${i}">성인${i}인</option>
+                                                                </c:forEach>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <c:if test="${webdtl.juniorAbleYn != 'Y'}">
+                                                                <select id="adCalMen2" onchange="updateADCalendar_end();" style="display: none;">
+                                                                    <option value="0">소아0인</option>
+                                                                </select>
+                                                            </c:if>
+                                                            <c:if test="${webdtl.juniorAbleYn == 'Y'}">
+                                                                <select id="adCalMen2" onchange="updateADCalendar_end();">
+                                                                    <c:forEach var="i" begin="0" end="${prdtVO.maxiMem}">
+                                                                        <option value="${i}">소아${i}인</option>
+                                                                    </c:forEach>
+                                                                </select>
+                                                            </c:if>
+                                                        </td>
+                                                        <td>
+                                                            <c:if test="${webdtl.childAbleYn != 'Y'}">
+                                                                <select id="adCalMen3" onchange="updateADCalendar_end();" style="display: none;">
+                                                                    <option value="0">유아0인</option>
+                                                                </select>
+                                                            </c:if>
+                                                            <c:if test="${webdtl.childAbleYn == 'Y'}">
+                                                                <select id="adCalMen3" onchange="updateADCalendar_end();">
+                                                                    <c:forEach var="i" begin="0" end="${prdtVO.maxiMem}">
+                                                                        <option value="${i}">유아${i}인</option>
+                                                                    </c:forEach>
+                                                                </select>
+                                                            </c:if>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>${webdtl.adultAgeStd}</td>
+                                                        <td>${webdtl.juniorAgeStd}</td>
+                                                        <td>${webdtl.childAgeStd}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="priceInfo">
+                                    <p class="title">＊ 추가요금(1일 1인 추가요금)</p>
+                                    <p class="text">
+                                    <ul>
+                                        <li>- 성인 : ${adAddAmt.adultAddAmt}원</li>
+                                        <li>- 소아 : ${adAddAmt.juniorAddAmt}원</li>
+                                        <li>- 유아 : ${adAddAmt.childAddAmt}원</li>
+                                    </ul>
+                                    </p>
+                                </div>
+                                <div class="price-wrap control">
+                                    <p class="info4"><span class="plus">총합계</span> <strong id="adNowPrice">1,000 </strong><span> 원</span></p>
+                                </div>
+                                <div class="comm-offMs">
+                                    <p class="bt cart-cta">
+                                        <button type="button" onclick="">
+                                            <span>장바구니</span>
+                                        </button>
+                                    </p>
+                                    <p class="bt" id="adBtnPrdt1">
+                                        <button>
+                                            <span onclick="changeOptionCartAD(${cart.cartSn})">바로예약</span>
+                                        </button>
+                                    </p>
+                                    <p class="not-ms" id="adBtnPrdt2" style="display: none;">
+                                        <button>
+                                            <img src="<c:url value='/images/web/cart/exclamation.png'/>" alt="경고">  <span id="adBtnErrInfo" >투숙 날짜중에 마감/미정이 있습니다</span>
+                                        </button>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div> <!--//option-box(숙박)--><!--1230 예약일 확인(datepicker) content 생성-->
+                </div> <!-- //new-detail -->
+            </div> <!-- //subContents -->
+        </div> <!-- //subContainer -->
+    </div>
+
+    <div id="_footer" data-container="footer" class="footer_wrap">
+        <div class="service_support">
+            <div class="inner">
+                <ul>
+                    <li>
+                        <a href="/web/etc/introduction.do" target="_blank" title="새창 열림">
+                            <span>회사소개</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/etc/buyToS.do" target="_blank" title="새창 열림">
+                            <span>이용약관</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/coustmer/viewCorpPns.do" target="_blank" title="새창 열림">
+                            <span>입점/제휴안내</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/etc/personalData.do" target="_blank" title="새창 열림">
+                            <strong>개인정보취급방침</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/coustmer/qaList.do" target="_blank" title="새창 열림">
+                            <span>고객센터</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=6168204092" target="_blank" title="새창 열림">
+                            <span>사업자정보확인</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="corp_wrap">
+            <div class="inner">
+                <div class="corp_wrap_row">
+                    <div class="corp_info">
+                        <dl>
+                            <dt>제주특별자치도관광협회</dt>
+                            <dd class="corp_info_cs">
+                                <p>
+                                    <em>1522-3454</em>
+                                    <span>월~금 09:00 - 18:00</span>
+                                    <span>점심시간 12:00 - 13:00</span>
+                                </p>
+                            </dd>
+                            <dd class="corp_info_tx">
+                                <p>
+                                    <span>대표이사:부동석</span>
+                                    <span>63309 제주특별자치도 제주시 첨단로 213-65 제주종합비즈니스센터 3층</span>
+                                    <span>법인 등록번호:220121-0000107</span>
+                                    <span>사업자 등록번호:616-82-04092</span>
+                                </p>
+                                <p>
+                                    <span>통신판매업번호:제2018-제주아라0049호</span>
+                                    <span>개인정보관리책임자:김철휘</span>
+                                    <span>E-mail : tamnao@tamnao.com</span>
+                                    <span>Fax : 064-749-7445</span>
+                                </p>
+                            </dd>
+                            <dd class="corp_info_copy">
+                                <p>탐나오는 통신판매중개자로서 거래당사자가 아니므로 개별 판매자가 등록한 상품거래정보 및 거래에 대해서 책임을 지지 않습니다.</p>
+                                <p>Copyright 2018. 제주특별자치도관광협회 All Rights Reserved.</p>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="corp_rgt" >
+                        <div class="f_sns">
+                            <a href="https://blog.naver.com/jta0119" class="bl" target="_blank">
+                                <span class="blind">블로그</span>
+                            </a>
+                            <a href="https://post.naver.com/jta0119" class="nv" target="_blank">
+                                <span class="blind">네이버</span>
+                            </a>
+                            <a href="https://www.facebook.com/JEJUTAMNAOTRAVEL/" class="fb" target="_blank">
+                                <span class="blind">페이스북</span>
+                            </a>
+                            <a href="https://www.instagram.com/tamnao_jeju/" class="ig" target="_blank">
+                                <span class="blind">인스타그램</span>
+                            </a>
+                            <a href="https://www.youtube.com/channel/UC5Hk3MfM3RFDz5_Xm9BDJZQ" class="ub" target="_blank">
+                                <span class="blind">유튜브</span>
+                            </a>
+                        </div>
+                        <div class="f_down">
+                            <a href="https://apps.apple.com/kr/app/%ED%83%90%EB%82%98%EC%98%A4-%EC%A0%9C%EC%A3%BC%EC%97%AC%ED%96%89%EC%8A%A4%ED%86%A0%EC%96%B4/id1489404866" target="_blank">
+                                <img src="/images/web/r_main/apple.png" alt="애플 앱다운로드">
+                                <span>ISO</span>
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=kr.or.hijeju.tamnao" target="_blank">
+                                <img src="/images/web/r_main/google.png" alt="구글 앱다운로드">
+                                <span>Android</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mark-zone">
+                    <div class="award">
+                        <ul>
+                            <li><img src="/images/web/mark/gcs.png" alt="gcs"></li>
+                            <li><img src="/images/web/mark/maket.png" alt="market"></li>
+                            <li><img src="/images/web/mark/int.png" alt="int"></li>
+                            <li><img src="/images/web/mark/web.png" alt="web"></li>
+                            <li><img src="/images/web/mark/nba.png" alt="nba"></li>
+                            <li><img src="/images/web/mark/ieco.png" alt="ieco"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

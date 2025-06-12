@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->
+	<link rel="stylesheet" href="../css/web/common.css">
+	<link rel="stylesheet" href="../css/web/air.css">
+	<!-- script -->
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/air.js"></script>
+</head>
+<body>
+	<header>
+		<h1 class="top-title"><img src="../images/web/air2/jl.jpg" alt="JLAIR">제이엘항공</h1>
+	</header>
+
+    <div class="container-wrap">
+    	<div class="location"><img src="../images/web/air2/process2.jpg" alt="예약하기"></div>
+
+    	<!-- 선택하신 항공편 -->
+    	<article class="comm-area1">
+    		<h2 class="comm-title1">선택하신 항공편</h2>
+    		<table class="comm-col flight">
+    			<thead>
+    				<tr>
+    					<th class="title1">출발→도착지</th>
+    					<th class="title2">항공사/편명</th>
+    					<th class="title3">탑승일자</th>
+    					<th class="title4">출/도착시간</th>
+    					<th class="title5">좌석수</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+    				<tr>
+    					<td class="left"><img src="../images/web/air2/go.jpg" alt="가는편"> 김포 -> 제주</td>
+    					<td>아시아나 OZ8901편</td>
+    					<td>2015-11-17(화)</td>
+    					<td>06:20 출발 - 07:25 도착</td>
+    					<td>일반석 1석</td>
+    				</tr>
+    				<tr>
+    					<td class="left"><img src="../images/web/air2/come.jpg" alt="오는편"> 김포 -> 제주</td>
+    					<td>아시아나 OZ8901편</td>
+    					<td>2015-11-17(화)</td>
+    					<td>06:20 출발 - 07:25 도착</td>
+    					<td>일반석 1석</td>
+    				</tr>
+    			</tbody>
+    		</table>
+    	</article>
+
+    	<!-- 예약자 정보 -->
+    	<article class="comm-area1">
+    		<h2 class="comm-title1">예약자 정보</h2>
+    		<table class="comm-row">
+    			<tr>
+    				<th>이름</th>
+    				<td><input class="basic" type="text"></td>
+    				<th>성별</th>
+    				<td>
+    					<input id="male" type="radio" name="sex"><label for="male">남성</label>
+    					<input id="female" type="radio" name="sex"><label for="female">여성</label>
+    				</td>
+    			</tr>
+    			<tr>
+    				<th>내/외국인</th>
+    				<td>
+    					<input id="korean" type="radio" name="person"><label for="korean">내국인</label>
+    					<input id="foreigner" type="radio" name="person"><label for="foreigner">외국인</label>
+    				</td>
+    				<th>전화번호</th>
+    				<td class="call">
+    					<input type="text"> -
+    					<input type="text"> -
+    					<input type="text">
+    				</td>
+    			</tr>
+    			<tr>
+    				<th>생년월일</th>
+    				<td><input class="basic" type="text"> <span class="info">입력형식) 2015-11-13</span></td>
+    				<th>휴대폰번호</th>
+    				<td class="call">
+    					<input type="text"> -
+    					<input type="text"> -
+    					<input type="text">
+    				</td>
+    			</tr>
+    			<tr>
+    				<th>E-mail</th>
+    				<td colspan="3">
+    					<input class="basic" type="text"> @ <input class="basic" type="text">
+    				</td>
+    			</tr>
+    		</table>
+    	</article>
+
+    	<!-- 탑승객 정보입력 -->
+    	<article class="comm-area1">
+    		<h2 class="comm-title1">탑승객 정보입력</h2>
+    		<table class="comm-col passengers">
+    			<thead>
+    				<tr>
+    					<th class="title1">No</th>
+    					<th class="title2">탑승자 성명(성/이름)</th>
+    					<th class="title3">성별</th>
+    					<th class="title4">생년월일</th>
+    					<th class="title5">구간별 운임 할인대상 선택</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+    				<tr>
+    					<td>성인1</td>
+    					<td>
+    						<input class="f-name" type="text" placeholder="성(홍)">
+    						<input class="l-name" type="text" placeholder="이름(길동)">
+    					</td>
+    					<td>
+    						<input id="male2" type="radio" name="sex2"><label for="male2">남성</label>
+    						<input id="female2" type="radio" name="sex2"><label for="female2">여성</label>
+    					</td>
+    					<td>
+    						<input class="birth" type="text" placeholder="YYYY-MM-DD">
+    					</td>
+    					<td class="left">
+    						<ul class="sale-list">
+    							<li>
+    								<img src="../images/web/air2/go.jpg" alt="가는편">
+    								<span class="air-company">아시아나</span>
+    								<select class="sale-option">
+    									<option value="">111</option>
+    								</select>
+								</li>
+								<!-- 오는편 -->
+								<li class="air-come">
+    								<img src="../images/web/air2/come.jpg" alt="오는편">
+    								<span class="air-company">아시아나</span>
+    								<select class="sale-option">
+    									<option value="">111</option>
+    								</select>
+								</li>
+    						</ul>
+    					</td>
+    				</tr>
+    			</tbody>
+    		</table>
+    		<div class="comm-innerText">
+    			<h3 class="comm-title3">예약자 정보</h3>
+    			<p class="comm-memo">
+    				ㆍ<span class="point">예매 후 탑승자 이름 및 정보 변경은 불가 하오니 실제 탑승할 분의 정보</span>를 입력하여 주십시오. (탑승자 이름 입력 : 성(Last Name) / 이름(First and Middle Name)<br>
+					ㆍ<span class="point">특가운임은 운임할인대상에 적용되지 않으므로</span>, 예약시 유의하여 주시기 바랍니다. <span class="point">(공항이용료 할인가능)</span><br>
+					ㆍ운임할인대상 1-3급 장애인 동반보호자 1인 및 국가유공상이자의 동반보호자 1인 등 <span class="point">할인대상의 동반보호자 선택시, 할인적용 당사자와 동반하지 않을경우 차액 지불 후 탑승하실 수 <br>&nbsp;&nbsp;&nbsp;있습니다.</span><br>
+					ㆍ탑승자의 이름을 여권 및 신분증 내용과 동일하게 입력하여 주십시오. (탑승자명이 상이할 경우 탑승이 거절됩니다. 필히 탑승자 성함 기입요망)<br>
+					ㆍ소아,유아와 여행하시는 경우 성인과 함께 예약 바라며, 공항 탑승수속 시 생년월일을 확인할 수 있는 서류를 반드시 지참하여 주시기 바랍니다. (예: 의료보험증, 주민등록등본, 여권 등)<br>
+					ㆍ여행 개시 후에는 소급하여 할인을 적용 받을 수 없으므로 할인 대상 고객님께서는 공항 탑승 수속 시 해당 신분증을 반드시 소지하여 주시기 바랍니다.<br>
+					ㆍ여행사에서 좌석지정은 불가하며 규정 및 가능여부는 항공사별로 상이합니다. 미리 좌석지정을 원하시는 경우 예약하신 각 항공사로 문의바랍니다.
+    			</p>
+    		</div>
+    	</article>
+
+    	<!-- 탑승자별 운임 -->
+    	<article class="comm-area1">
+    		<h2 class="comm-title1">탑승자별 운임</h2>
+    		<table class="comm-col fare">
+    			<thead>
+    				<tr>
+    					<th class="title1">No</th>
+    					<th class="title2">탑승자 성명(성/이름)</th>
+    					<th class="title3">여정</th>
+    					<th class="title4">항공운임</th>
+    					<th class="title5">유류할증료</th>
+    					<th class="title6">공항이용료</th>
+    					<th class="title7">결제금액</th>
+    				</tr>
+    			</thead>
+    			<tfoot>
+    				<tr>
+    					<td colspan="7">총 결제금액 <img class="sum" src="../images/web/air2/sum.png" alt="="> <strong class="price">99,999,999</strong>원</td>
+    				</tr>
+    			</tfoot>
+    			<tbody>
+    				<tr>
+    					<td>성인1</td>
+    					<td>홍 / 길동</td>
+    					<td>
+    						<p><img src="../images/web/air2/go.jpg" alt="가는편"></p>
+    						<!-- 오는편 추가 -->
+    						<p class="add-come"><img src="../images/web/air2/come.jpg" alt="오는편"></p>
+    					</td>
+    					<td>
+    						<p>63,900원</p>
+    						<!-- 오는편 추가 -->
+    						<p class="add-come">63,900원</p>
+    					</td>
+    					<td>
+    						<p>63,900원</p>
+    						<!-- 오는편 추가 -->
+    						<p class="add-come">63,900원</p>
+    					</td>
+    					<td>
+    						<p>63,900원</p>
+    						<!-- 오는편 추가 -->
+    						<p class="add-come">63,900원</p>
+    					</td>
+    					<td>
+    						<p>63,900원</p>
+    						<!-- 오는편 추가 -->
+    						<p class="add-come">63,900원</p>
+    					</td>
+    				</tr>
+    			</tbody>
+    		</table>
+    		<p class="comm-memo2">
+				ㆍ위 탑승자별 금액은 예상요금으로, 예약완료 후 정확한 요금을 확인하실 수 있습니다.<br>
+				ㆍ운임 할인대상 선택 시 정상운임 기준으로 할인되며, 예약완료 후에 할인된 총 운임을 보여주고 있으니 참고하여 주시기 바랍니다.
+			</p>
+    	</article>
+
+    	<!-- 이용약관동의 -->
+    	<article class="comm-area1">
+    		<h2 class="comm-title1">이용약관동의</h2>
+    		<div id="tabs1" class="comm-tabMenu">
+                <ul class="menuList">
+                    <li><a class="select" href="#tabs-1">일반규정</a></li>
+                    <li><a href="#tabs-2">요금규정</a></li>
+                    <li><a href="#tabs-3">취소환불규정</a></li>                    
+                </ul>
+                
+                <!--일반규정-->
+                <div id="tabs-1" class="tabPanel">
+                	<div class="agree-info">
+                		<dl>
+                			<dt>1.항공권 수령방법</dt>
+                			<dd>
+                				1) 국내선 항공권은 모두 e-ticket이므로, 종이항공권 없이 공항의 해당 항공사 카운터에서<br>항공예약번호와 신분증 (탑승자 모두 신분증 지참) 확인 후 간편하게 티켓을 발급 받으실 수 있습니다.<br>
+						        2) 예매 당시 신분할인(소아, 제주도민, 장애인등)을 받으신 경우에는 반드시 할인증빙서류를 소지하여 탑승수속 시에 제시하여 주시기 바랍니다.<br>
+						        3) 탑승수속 마감시간은 해당 항공편 출발 20분 전으로 규정되어 있으나, 여유 있게 출발 40분전(단체의경우 출발 1시간 전)까지 탑승수속을 마쳐 주시기 바랍니다.<br>
+						        4) 항공편 일정은 정부인가 조건이며, 항공사의 부득이한 사유로 사전 예고 없이 변경될 수 있사오니 이점 양해하여 주시기 바랍니다.<br>
+						        5) 예약하신 항공권은 타인에게 양도 할 수 없습니다.
+                			</dd>
+                            <dt>2. 항공권 수령시 무엇을 지참해야하나요?</dt>
+                            <dd>
+                                성인 : 신분증(주민등록증, 운전면허증, 여권 중 택1)<br>
+                                외국인 : 여권,여권사본,외국인 등록증 중 택1<br>
+                                유아,소인 : 등본, 의료보험증,여권 중 택1<br>
+                                학생 : 할인폐지, 학생증,주민등록증,여권중 택1<br>
+                                경로우대 : 신분증(주민등록증,운전면허증,여권 중 택1)<br>
+                                제주도민 : 신분증(주민등록증,운전면허증, 현주소 제주도 명시)<br>
+                                군인 : 휴가증<br>
+                                장애인 : 시/군/구청장 발행 복지카드<br>
+                                재외제주도민 : 재외제주도민증 또는 가족관계증명서<br>
+                                * 각 항공사별 할인대상 조건은 상이하므로, 예약시 확인바랍니다.
+                            </dd>
+                            <dt>3. 예약내역확인</dt>
+                            <dd>
+                                1) 모두투어 예약확인/결제 페이지에서 예약/결제 내역을 확인하실 수 있습니다.<br>
+                                2) 각 항공사 홈페이지에서 예약내역 확인 불가능하나, 항공사 상담원과 유선상으로 확인 가능합니다.<br>
+                                3) 대한항공 혹은 아시아나 회원일 경우 항공사 홈페이지에서 스카이패스 번호 입력 후 예약내역 확인 및 좌석지정이 가능합니다.
+                            </dd>
+                            <dt>4. 탑승자 정보</dt>
+                            <dd>
+                                1) 예약자와 탑승자의 정보가 다른경우, 탑승자의 연락 가능한 전화번호와 이메일을 기입해 주시기 바랍니다.<br>
+                                2) 탑승자명이 잘못 입력된 경우 탑승이 거절되니 반드시 정확한 실 탑승자명을 기입하시기 바랍니다.<br>
+                                3) 탑승자 성명을 성/이름 구분하여 한글로 정확하게 기재하여 주시기 바랍니다.<br>
+                                4) 단, 한국 국적자가 아닌경우, 여권안에 정확한 영문명을 기재하여 주세요.
+                            </dd>
+                		</dl>
+			        </div>                    
+                </div> <!-- //tabs-1 -->
+
+                <!--요금규정-->
+                <div id="tabs-2" class="tabPanel">
+                    <div class="agree-info">
+                        <dl>
+                            <dt>1. TAX 및 유류할증료</dt>
+                            <dd>
+                                1) TAX 및 유류할증료는 환율변동 및 항공사 사정에 의해 공지 없이 변경 될 수 있음을 알려드립니다.(1개월 단위로 변경됨)<br>
+                                2) 예약일과 발권일이 다를 경우 발권일 유류할증료 기준으로 적용됩니다.
+                            </dd>
+                            <dt>2. 결제방법</dt>
+                            <dd>
+                                1) 좌석이 확정된 경우, 예약 직후 실시간으로 신용카드 또는 체크카드 결제가 가능합니다.<br>
+                                2) 항공사별 무이자할부 여부는 예약하신 항공사 혹은 각 카드사로 개별문의 하시기 바랍니다.
+                            </dd>
+                            <dt>3. 결제시한 및 결제 주의사항</dt>
+                            <dd>
+                                1) 항공 예약이 완료되면 예약완료 및 마이페이지 > 예약확인 /결제 페이지에서 결제시한 확인이 가능합니다.<br>
+                                2) 조회하신 항공 운임은 예약일 기준이므로 추후 결제 시 요금이 변경 될 수 있습니다.<br>
+                                3) 결제시한이 초과될 경우, 예약한 항공권 자동예약취소 처리됩니다.
+                            </dd>
+                        </dl>
+                    </div> 
+                </div> <!-- //tabs-2 -->
+
+                <!--취소환불규정-->
+                <div id="tabs-3" class="tabPanel">
+                    <div class="agree-info">
+                        <dl>
+                            <dt>1. 확정후 예약변경</dt>
+                            <dd>
+                                1) 항공권 예약변경은 불가능하며, 예약한 항공권을 취소 후 항공권을 재 구매하셔야 합니다.<br>
+                                2) 예약취소시, 취소시점에 따라 환불수수료가 발생할 수 있습니다.<br>
+                                3) 예약취소는 예약확인/결제 페이지에서 예약취소처리가 가능하며, 혹은 상담을 통하여 취소처리가 가능합니다.
+                            </dd>
+                            <dt>2. 결제취소 및 환불수수료</dt>
+                            <dd>
+                                ㄱ. 대한항공<br>
+                                1) 구매 익일~ 탑승수속 마감시점(항공편 출발 20분 전)까지 편도 1,000원 수수료부과 (성인/소아동일)<br>
+                                2) 탑승수속 마감시점(항공편 출발 20분전)까지 예약취소없이 탑승하지 않을경우 편도 9,000원 수수료부과 (성인/소아동일)<br>
+                                ㄴ. 아시아나항공<br>
+                                1) 구매 익일~ 탑승수속 마감시점(항공편 출발 20분 전)까지 편도 2,000원 수수료부과 (성인/소아동일)<br>
+                                2) 탑승수속 마감시점(항공편 출발 20분전)까지 예약취소없이 탑승하지 않을경우 편도 8,000원 수수료부과 (성인/소아동일)<br>
+                                ㄷ. 티웨이항공<br>
+                                1) 예매당일 취소수수료 무료<br>
+                                * 2015년 3월 28일까지 구매시 적용 수수료<br>
+                                - 출발 3일 전 ~ 출발 전：5,000원(성인/소아동일)<br>
+                                - 출발 이후 ： 10,000원(성인/소아동일)<br>
+                                * 2015년 3월 29일부터 구매시 적용 수수료<br>
+                                - 출발 7일 전 ~ 출발 2일 전： 2,000원 (성인/소아동일)<br>
+                                - 출발 1일 전 ~ 당일 출발 전： 5,000원 (성인/소아동일)<br>
+                                - 출발 이후： 10,000원 (성인/소아동일)<br>
+                                ㄹ. 진에어<br>
+                                1) 출발 15일 전 취소수수료 무료<br>
+                                2) 출발 14일 전~ 출발2일 전 편도당 2,000원 수수료부과 (성인/소아동일)<br>
+                                3) 출발1일 전~ 출발시간 편도당 5,000원 수수료부과 (성인/소아동일)<br>
+                                4) 출발 예정시간 이후 편도당 10,000원 수수료부과 (성인/소아동일)<br>
+                                ㅁ. 제주항공<br>
+                                1) 구매일 익일~ 출발 1일 전 편도당 2,000원 수수료부과(성인/소아동일)<br>
+                                2) 출발당일~ 출발시간이후 편도당 10,000원 수수료부과(성인/소아동일)<br>
+                                ㅂ. 에어부산<br>
+                                1) 구매 다음날~ 출발 1일 전 : 2,000원<br>
+                                2) 출발당일~출발 20분전 : 3,000원<br>
+                                3) 출발 20분전 이후!: 8,000원<br>
+                            </dd>
+                            <dt>3. 취소방법</dt>
+                            <dd>
+                                1) 출발 전 취소 : 모두투어 웹사이트 예약확인/결제 페이지에서 항공권 취소처리가 가능합니다.<br>
+                                2) 출발 후 취소 : 근무시간(평일 9시~18시)내 유선상으로만 처리 가능하며, 근무시간 외에는 각 항공사를 통해서만 취소가 가능합니다.<br>
+                                3) 대한항공은 유선상으로 취소 가능합니다.<br>
+                                4) 항공사 업무시간 및 연락처<br>
+                                -대한항공(05:00~20:00) 1588-2001<br>
+                                -아시아나항공(05:00~22:00) 1588-8000<br>
+                                -티웨이항공(07:00~21:00) 1688-8686<br>
+                                -진에어(06:00~20:00) 1600-6200<br>
+                                -제주항공(07:00~21:00) 1599-1500<br>
+                                -에어부산(06:00~22:00) 1666-3060<br>
+                            </dd>
+                            <dt>04. 환불소요기간</dt>
+                            <dd>
+                                1) 취소후 카드사에 환불 확인까지 2주정도 소요되며 고객님의 카드 결제일에 따라 신용카드 대금이 청구 될 수 있습니다.
+                                2) 만약, 대금이 청구될 경우 다음달에 마이너스 청구로 처리됩니다.
+                            </dd>
+                        </dl>
+                    </div>
+                </div> <!-- //tabs-3 -->
+
+                <!-- 약관동의 -->
+                <div class="agree-check">
+                    <span><input id="agree1" type="checkbox"> <label for="agree1">일반규정 동의</label></span>
+                    <span><input id="agree2" type="checkbox"> <label for="agree2">요금규정 동의</label></span>
+                    <span><input id="agree3" type="checkbox"> <label for="agree3">취소/환불규정 동의</label></span>
+                    <span class="all"><input id="agree_all" type="checkbox"> <label for="agree_all">전체동의</label></span>
+                </div>
+                
+                <script>tabPanel({container:"#tabs1"});</script>
+            </div> <!--//tabs-->    		
+    	</article>
+
+        <!-- 개인정보취급방침동의 -->
+        <article class="comm-area1">
+            <h2 class="comm-title1">개인정보취급방침동의</h2>
+            <div id="tabs2" class="comm-tabMenu">
+                <ul class="menuList">
+                    <li><a class="select" href="#tabs-11">개인정보 수집항목 및 이용목적, 보유기간</a></li>
+                    <li><a href="#tabs-12">고유식별정보 수집</a></li>
+                    <li><a href="#tabs-13">개인정보 제3자 제공</a></li>
+                </ul>
+                
+                <!--개인정보 수집항목 및 이용목적, 보유기간-->
+                <div id="tabs-11" class="tabPanel">
+                    <div class="agree-info">
+                        <dl>
+                            <dt>1. 수집하는 개인정보의 항목 및 수집,이용목적</dt>
+                            <dd>
+                                가. 성명(영문포함), 전화번호, 휴대전화번호, 주소, 이메일, 생년월일, 성별, 결제기록, 여권정보, 비자정보 등을 수집<br>
+                                나. 콘텐츠 제공, 구매 및 요금결제, 물품 등을 배송(발송), 금융거래 본인인증 및 금융서비스 등의 서비스 제공에 관한 계약 이행 및 요금정산<br>
+                                다. 인구통계학적 분석자료 및 신규서비스, 신상품, 제휴 비지니스, 이벤트 등의 마케팅 및 광고성 정보전달에 활용<br>
+                                라. 불만처리 등의 민원처리 및 고지사항 전달 등을 위한 고객관리
+                            </dd>
+                            <dt>2. 귀사의 개인정보 이용기간 및 보유기간 관계법령의 규정에 의하여 정한 기간 동안 보존할 필요가 있는 경우를 제외하고는<br>개인정보 수집 및 이용목적이 달성된 후 파기합니다.</dt>
+                            <dd>
+                                가. 계약 또는 청약철회 등에 관한 기록: 5년<br>
+                                나. 대금결제 및 재화 등의 공급에 관한 기록: 5년<br>
+                                다. 소비자의 불만 또는 분쟁처리에 관한 기록: 3년
+                            </dd>
+                        </dl>
+                    </div>                    
+                </div> <!-- //tabs-1 -->
+
+                <!--고유식별정보 수집, 이용동의-->
+                <div id="tabs-12" class="tabPanel">
+                    <div class="agree-info">
+                        <dl>
+                            <dt>회사는 회원에 대하여 보다 더 질 높은 서비스 제공 등을 위해 아래와 같이 귀하의 개인정보를 제공하고 있습니다.</dt>                            
+                            <dd>
+                                가. 수집 및 이용하는 고유식별 정보 : 여권번호<br>
+                                나. 이용목적<br>
+                                (1) 보험회사에 여행자 보험을 가입하기 위해 제공<br>
+                                (2) 은행 및 카드사에 결재납부, 제휴서비스 등을 위해 제공<br>
+                                다. 고유식별정보의 이용 보유기간 : 수집이용 목적 또는 제공받은 목적이 달성시까지
+                            </dd>
+                        </dl>
+                    </div> 
+                </div> <!-- //tabs-2 -->
+
+                <!--수집하는 개인정보의 제3자 제공-->
+                <div id="tabs-13" class="tabPanel">
+                    <div class="agree-info">
+                        <dl>
+                            <dt>여행서비스 이용을 위해 아래와 같이 본인의 개인정보를 제 3자에 제공하는데 동의 합니다.</dt>
+                            <dd>
+                                가. 항공사, 해운업체, 랜드업체, 숙박업체, 철도업체, 렌터카업체 등에 성명(영문포함), 여권정보, 비자정보, 연락처, 생년월일, 성별 등을 제공<br>
+                                (여행지역 및 사안에 따라 업체에 정보 차등제공)<br>
+                                나. 보험회사에 여행자 보험을 가입하기 위해 성명(영문포함), 생년월일, 성별, 여권번호, 연락처 제공<br>
+                                다. 배송업체에 물품배송, 고지서 발송 등을 위해 성명, 주소,연락처 제공<br>
+                                라. 은행 및 카드사에 결재납부, 제휴서비스 등을 위해 성명(영문포함), 생년월일, 성별, 연락처 제공<br>
+                                마. 제휴 사에 여행상담, 이용, 확인, 처리를 위해 성명, 성별, 생일, 연락처 및 여행서비스 이용정보 제공
+                            </dd>                            
+                        </dl>
+                    </div>
+                </div> <!-- //tabs-3 -->
+
+                <!-- 약관동의 -->
+                <div class="agree-check">
+                    <span><input id="agree11" type="checkbox"> <label for="agree11">개인정보 수집항목 및 이용목적 동의</label></span>
+                    <span><input id="agree12" type="checkbox"> <label for="agree12">고유식별정보 수집 이용 동의</label></span>
+                    <span><input id="agree13" type="checkbox"> <label for="agree13">개인정보 제3자 제공 동의</label></span>
+                    <span class="all"><input id="agree_all2" type="checkbox"> <label for="agree_all2">전체동의</label></span>
+                </div>
+                
+                <script>tabPanel({container:"#tabs2", firstItem:"#tabs-11"});</script>
+            </div> <!--//tabs-->            
+        </article>
+
+    	<div class="comm-button">
+    		<!-- <input class="select" type="submit" value="예약하기"> -->
+    		<a href="" class="select">예약하기</a>
+    		<a href="">취소하기</a>    		
+    	</div>
+
+    </div> <!-- //wrap -->
+</body>
+</html>

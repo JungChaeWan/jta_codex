@@ -1,0 +1,125 @@
+@charset "utf-8";
+
+
+/* 스켈레톤 이미지 */
+.skeleton_loading {
+    position: absolute;
+    width: 100%;
+    height: 72%;
+    background: #fff;
+    border: none;
+    z-index: 1;
+}
+.skeleton_img {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* 스켈레톤 텍스트 */
+.skeleton_text {
+    margin-bottom: 0.5rem;
+    height: 1rem;
+    background-color: #fff;
+    border: none;
+    padding: 0;
+    border: none;
+}
+.skeleton_text:nth-child(1) {
+    width: 50%;
+    height: 1.5rem;
+    padding: 0;
+}
+.skeleton_text:nth-child(2) {
+    width: 20%;
+    height: 0.8rem;
+    padding: 0;
+}
+.skeleton_text:nth-child(3) {
+    width: 50%;
+    height: 0.8rem;
+    padding: 0;
+}
+.skeleton_text:last-child {
+    width: 100%;
+    padding: 0;
+}
+.skeleton_loading * {
+    background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 40%, #e5e5e5 48%);
+    border-radius: 1rem;
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: load 1s infinite;
+}
+
+
+@keyframes load {
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+/* Main_skeleton */
+.value-text .skeleton_loading {
+    position: absolute;
+    top: 12px;
+}
+.value-text .skeleton_loading .skeleton_text:nth-child(2) {
+    position: relative;
+    width: 100px;
+}
+.form-area .search-area .time-picker .value-text .skeleton_loading {
+    position: absolute;
+    top: -7px;
+    left: 35px;
+    width: 156px;
+}
+.MagGlass .skeleton_loading {
+    width: 163px;
+    height: 80px;
+    position: absolute;
+    bottom: -31px;
+}
+.MagGlass .skeleton_loading .skeleton_text {
+    position: relative;
+    left: 1px;
+}
+.MagGlass .skeleton_loading .skeleton_img {
+    position: absolute;
+    right: 30px;
+}
+.insurance_btn .skeleton_loading {
+    position: absolute;
+    left: -4px;
+    width: 110%;
+}
+.txt-rent-period .skeleton_loading .skeleton_text {
+    position: relative;
+    bottom: 29px;
+    left: -5px;
+    width: 100%;
+}
+.quick-area .search-area .area.select dd .skeleton_loading {
+    right: 50px;
+}
+.border--cover .area .value-text .skeleton_text {
+    width: 160px;
+}
+
+
+/* ad_skeleton */
+.stay_best .skeleton_loading {
+    width: 205px;
+    height: 52%;
+}
+
+/* sp_skeleton */
+.socialBest .skeleton_loading {
+    width: 100%;
+    height: 75%;
+}
+.socialBest .skeleton_loading .skeleton_img {height: 260px;}
+.socialBest .skeleton_loading .skeleton_text {
+    margin: 0 auto;
+    margin-bottom: 5px;
+}

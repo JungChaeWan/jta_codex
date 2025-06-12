@@ -1,0 +1,1 @@
+<jsp:forward page="/mw/mas/intro.do"/>

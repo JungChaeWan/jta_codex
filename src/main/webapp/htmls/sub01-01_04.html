@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->
+	<link rel="stylesheet" href="../css/web/common.css">
+	<link rel="stylesheet" href="../css/web/air.css">
+	<!-- script -->
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/air.js"></script>
+</head>
+<body>
+	<header>
+		<h1 class="top-title"><img src="../images/web/air2/jl.jpg" alt="JLAIR">제이엘항공</h1>
+	</header>
+
+    <div class="container-wrap">
+    	<div class="location"><img src="../images/web/air2/process3.jpg" alt="예약하기"></div>
+
+        <div class="area-title">
+            <h2>“감사합니다. 예약이 완료되었습니다”</h2>
+            <p>상세내역은 고객님의 메일로 발송되며 예약내역을 프린트해주시면 추후 예약확인 및 상담시 편리합니다.</p>
+        </div>
+
+    	<!-- 예약자 정보 -->
+    	<article class="comm-area1">
+    		<h2 class="comm-title1">예약자 정보</h2>
+    		<table class="comm-row">
+    			<tr>
+    				<th>이름</th>
+    				<td>고경희</td>
+    				<th>예약번호</th>
+    				<td>21027348</td>
+    			</tr>
+    			<tr>
+    				<th>생년월일</th>
+    				<td>********</td>
+    				<th>전화번호</th>
+    				<td>010 - 2604 - ****</td>
+    			</tr>
+    			<tr>
+    				<th>E-mail</th>
+    				<td>dol*****@nate.com</td>
+    				<th>휴대폰번호</th>
+    				<td>010 - 2604 - ****</td>
+    			</tr>
+    		</table>
+    	</article>
+
+    	<!-- 결제안내 -->
+    	<article class="comm-area1">
+    		<h2 class="comm-title1">결제안내 <span class="point">＊결제 시한내 결제하지 않을경우 자동취소됩니다.</span></h2>    		
+    		<div class="comm-innerText">    			
+    			<p class="comm-memo">
+    				ㆍ각 여정별 결제를 진행하여 주시기 바랍니다.<br>
+                    ㆍ항공결제는 신용카드/체크카드만 결제가 가능합니다.<br>
+                    ㆍ항공사별 무이자 할부 확인은 예약하신 항공사 홈페이지 혹은 전화문의하여 주시기바랍니다..<br>
+                    ㆍ반드시 결제시한 내에 결제가 완료되야 하며, 결제시한 초과시에는 자동 예약취소 처리 됩니다.
+    			</p>
+    		</div>
+    	</article>
+
+    	<!-- 항공예약/탑승자정보 (가는여정)  -->
+    	<article class="comm-area1">
+    		<h2 class="comm-title1">항공예약/탑승자정보 <span class="sub-text">(가는여정)</span></h2>
+            <table class="comm-row">
+                <tr>
+                    <th>여정</th>
+                    <td>가는여정:  김포 → 제주</td>
+                </tr>
+                <tr>
+                    <th>항공예약번호</th>
+                    <td>
+                        <img src="../images/web/air2/line1.gif" alt="대한항공"> W635HA
+                        <!-- <img src="../images/web/air2/line2.gif" alt="아시아나"> W635HA
+                        <img src="../images/web/air2/line3.gif" alt="진에어"> W635HA
+                        <img src="../images/web/air2/line4.gif" alt="부산에어"> W635HA
+                        <img src="../images/web/air2/line5.gif" alt="이스타"> W635HA
+                        <img src="../images/web/air2/line6.gif" alt="티웨이"> W635HA
+                        <img src="../images/web/air2/line7.gif" alt="제주항공"> W635HA -->
+                    </td>
+                </tr>
+                <tr>
+                    <th>항공정보</th>
+                    <td>[김포 → 제주] 티웨이항공 TW751편 | 2015-11-17(화) | 출발06:20 ~ 도착07:25</td>
+                </tr>
+                <tr>
+                    <th>좌석/탑승인원</th>
+                    <td>일반석1 [성인1명 | 소아0명 | 유아0명]</td>
+                </tr>
+                <tr>
+                    <th>결제 예정금액</th>
+                    <td>30,100원</td>
+                </tr>
+                <tr>
+                    <th>결제시한</th>
+                    <td class="time">
+                        <!-- <p class="strong">2015년 11월 13월(금) 16:44 분까지 결제 하지 않으시면 예약이 자동 취소됩니다.</p> -->
+                        <p class="strong">예약이 취소되었습니다.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>결제상태</th>
+                    <td>예약확정 (미결제)</td>
+                </tr>
+            </table>
+            <!-- 탑승자 정보보기 -->
+            <div class="total-wrap">
+                <dl id="accordion1" class="accordion">
+                    <dt>탑승자 정보보기</dt>
+                    <dd>
+                        <table class="comm-col">
+                            <thead>
+                                <tr>
+                                    <th>이름</th>
+                                    <th>구분</th>
+                                    <th>항공권번호</th>
+                                    <th>운임</th>
+                                    <th>항공이용료</th>
+                                    <th>유류할증료</th>
+                                    <th>최종지불금액</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="7">총 결제금액 <img class="sum" src="../images/web/air2/sum.png" alt="="> <strong class="price">99,999,999</strong>원</td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>고경희</td>
+                                    <td>성인1</td>
+                                    <td>-</td>
+                                    <td>63,900원</td>
+                                    <td>2,200원</td>
+                                    <td>4,000원</td>
+                                    <td>70,100원</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dd>
+                </dl>
+                <script>air_accordion('#accordion1');</script>
+                <div class="comm-button2">
+                    <!-- <input class="select" type="submit" value="항공권결제"> -->
+                    <a class="select" onclick="show_popup('.comm-popup');">항공권결제</a>
+                    <a onclick="show_popup('.comm-popup2');">예약취소</a>
+                </div>
+            </div>
+    	</article>
+
+        <!-- 항공예약/탑승자정보 (오는여정)  -->
+        <article class="comm-area1">
+            <h2 class="comm-title1">항공예약/탑승자정보 <span class="sub-text">(오는여정)</span></h2>
+            <table class="comm-row">
+                <tr>
+                    <th>여정</th>
+                    <td>오는여정:  제주 → 김포</td>
+                </tr>
+                <tr>
+                    <th>항공예약번호</th>
+                    <td>
+                        <!-- <img src="../images/web/air2/line1.gif" alt="대한항공"> W635HA
+                        <img src="../images/web/air2/line2.gif" alt="아시아나"> W635HA
+                        <img src="../images/web/air2/line3.gif" alt="진에어"> W635HA
+                        <img src="../images/web/air2/line4.gif" alt="부산에어"> W635HA
+                        <img src="../images/web/air2/line5.gif" alt="이스타"> W635HA
+                        <img src="../images/web/air2/line6.gif" alt="티웨이"> W635HA -->
+                        <img src="../images/web/air2/line7.gif" alt="제주항공"> W635HA
+                    </td>
+                </tr>
+                <tr>
+                    <th>항공정보</th>
+                    <td>[김포 → 제주] 티웨이항공 TW751편 | 2015-11-17(화) | 출발06:20 ~ 도착07:25</td>
+                </tr>
+                <tr>
+                    <th>좌석/탑승인원</th>
+                    <td>일반석1 [성인1명 | 소아0명 | 유아0명]</td>
+                </tr>
+                <tr>
+                    <th>결제 예정금액</th>
+                    <td>30,100원</td>
+                </tr>
+                <tr>
+                    <th>결제시한</th>
+                    <td class="time">
+                        <p class="strong">2015년 11월 13월(금) 16:44 분까지 결제 하지 않으시면 예약이 자동 취소됩니다.</p>
+                        <!-- <p class="strong">예약이 취소되었습니다.</p> -->
+                    </td>
+                </tr>
+                <tr>
+                    <th>결제상태</th>
+                    <td>예약확정 (미결제)</td>
+                </tr>
+            </table>
+            <!-- 탑승자 정보보기 -->
+            <div class="total-wrap">
+                <dl id="accordion2" class="accordion">
+                    <dt>탑승자 정보보기</dt>
+                    <dd>
+                        <table class="comm-col">
+                            <thead>
+                                <tr>
+                                    <th>이름</th>
+                                    <th>구분</th>
+                                    <th>항공권번호</th>
+                                    <th>운임</th>
+                                    <th>항공이용료</th>
+                                    <th>유류할증료</th>
+                                    <th>최종지불금액</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="7">총 결제금액 <img class="sum" src="../images/web/air2/sum.png" alt="="> <strong class="price">99,999,999</strong>원</td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>고경희</td>
+                                    <td>성인1</td>
+                                    <td>-</td>
+                                    <td>63,900원</td>
+                                    <td>2,200원</td>
+                                    <td>4,000원</td>
+                                    <td>70,100원</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dd>
+                </dl>
+                <script>air_accordion('#accordion2');</script>
+                <div class="comm-button2">
+                    <!-- <input class="select" type="submit" value="항공권결제"> -->
+                    <a class="select" onclick="show_popup('.comm-popup');">항공권결제</a>
+                    <a onclick="show_popup('.comm-popup2');">예약취소</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 이용안내 -->
+        <article class="comm-area1">
+            <h2 class="comm-title2">이용안내</h2>
+            <div class="comm-innerText">            
+                <p class="comm-memo">
+                    ㆍ자세한 예약내역은 [마이페이지>예약확인/결제]에서 확인하시기 바랍니다.<br>
+                    ㆍ왕복 예약시 편도별 각각 결제를 진행하여 주시기 바랍니다.<br>
+                    ㆍ항공권 결제시한이 초과될 시 자동 예약취소 되오니, 결제시한 안에 결제하여 주시기 바랍니다.<br>
+                    ㆍ항공권 예약취소는 [마이페이지 > 예약확인/결제] 에서 취소처리가 가능합니다. (단, 대한항공 결제취소는 상담을 통해서만 취소가능)<br>
+                    ㆍ예매 후 환불을 원하시는 경우에는 결제하신 카드로 자동 환불 됩니다.<br>
+                    ㆍ모두투어 발권 및 상담 업무시간 평일 09:00~18:00 / Tel 02)2049-3407~8 / 02)2049-3474~5 (토요일,공휴일 발권/상담불가)<br>
+                    ㆍ평일 업무시간(09:00~18:00) 외에 주말, 공휴일에는 예약하신 항공사로 바로 문의하여 주시기 바랍니다.<br>
+                    ㆍ항공사 예약번호를 확인 후 항공사에 문의하시면 빠르게 확인하실 수 있습니다.
+                </p>
+            </div>
+        </article>
+
+    	<div class="comm-button">    		
+    		<a href=""><img class="icon" src="../images/web/air2/print.png" alt="프린트"> 프린트하기</a>
+    	</div>
+
+    </div> <!-- //wrap -->
+
+    <!-- layer popup (결제) -->
+    <div class="comm-popup">
+        <a class="close" onclick="close_popup('.comm-popup');"><img src="../images/web/air2/close.gif" alt="닫기"></a>
+        
+        <!-- 결제정보입력 -->
+        <div class="popup-content" style="display: block;">
+            <h2 class="comm-title4">항공권결제</h2>
+            <table class="comm-row">
+                <tr>
+                    <th>결제수단</th>
+                    <td>신용카드</td>
+                </tr>
+                <tr>
+                    <th>결제금액</th>
+                    <td>102,500원</td>
+                </tr>
+            </table>
+
+            <table class="comm-row diff">
+                <tr>
+                    <th>카드종류</th>
+                    <td colspan="3">
+                        <select class="card">
+                            <option selected>카드종류를 선택하여 주십시오.</option>
+                            <option value="">삼성카드</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>카드번호</th>
+                    <td colspan="3" class="card-number">
+                        <input type="text"> - <input type="text"> -
+                        <input type="text"> - <input type="text">
+                        <label class="info">카드번호 순서대로 입력</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th>유효기간</th>
+                    <td class="validity">
+                        <select>
+                            <option value="">01</option>
+                        </select>
+                        <span>월</span>
+                        <select>
+                            <option value="">2015</option>
+                        </select>
+                        <span>년</span>
+                    </td>
+                    <th>할부기간</th>
+                    <td>
+                        <select>
+                            <option value="" selected>일시불</option>
+                            <option value="">2개월</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>카드소유주</th>
+                    <td colspan="3" class="card-number">
+                        <input type="text" placeholder="성(홍)">
+                        <input type="text" placeholder="이름(길동)">
+                        <label class="info">이름 또는 사업자명 입력</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th>카드구분</th>
+                    <td colspan="3">
+                        <input id="card1" type="radio" name="card"> <label for="card1">개인/법인(기명)</label>
+                        <input id="card2" type="radio" name="card"> <label for="card2">법인(무기명)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th>비밀번호</th>
+                    <td colspan="3">
+                        <input type="text" class="mini"> XX <label class="info">비밀번호 앞 2자리만 입력</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th>인증번호</th>
+                    <td colspan="3" class="certification">
+                        <input type="text"> <label class="info">생년월일 6자리(YYMMDD)</label>
+                    </td>
+                </tr>
+            </table>
+            <div class="comm-innerText2">
+                <p class="comm-memo">
+                    ㆍ<span class="point">항공권 결제는 선택하신 항공사 결제시스템에 접속하여, 결제를 처리하고 있습니다.</span><br>
+                    ㆍ무이자 할부 확인은 선택하신 항공사 홈페이지에서 확인이 가능합니다<br>
+                    ㆍ예매시 신분할인을 받으신 경우(소아,제주도민, 장애인 등)에는 반드시 할인증빙을 추가로 제시하여 주시기 바랍니다.<br><br>
+
+                    ㆍ예매 후 환불을 원하시는 경우에는 결제하신 카드로 자동 환불 됩니다.<br>
+                    ㆍ환불시 선택하신 운임에 따라 수수료가 부과되오니 운임규정 및 조건을 확인하시기 바랍니다.<br>
+                    ㆍ<span class="point">데이터는 암호화되어 SSL(Secure Sockets Layer)을 통해 안전하게 전송됩니다.</span>
+                </p>
+            </div>
+
+            <div class="comm-area1">
+                <h2 class="comm-title1">법인카드 사용안내</h2>
+                <p class="comm-tInfo1">법인카드는 비밀번호를 입력하지 않아도 됩니다만, 삼성카드의 경우는 비밀번호를 입력해야 합니다.</p>
+                <table class="comm-col card-info">
+                    <thead>
+                        <tr>
+                            <th class="title1">종류</th>
+                            <th class="title2">인증번호</th>
+                            <th class="title3">대상카드</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">
+                                기명(지정)법인카드<br>
+                                (직원 개인명으로 발급된 법인카드)
+                            </td>
+                            <td>생년월일 / 사업자등록번호</td>
+                            <td>외환,현대,삼성</td>
+                        </tr>
+                        <tr>
+                            <td>사업자등록번호</td>
+                            <td>신한(구LG), 기타</td>
+                        </tr>
+                    </tbody>
+                </table>                
+            </div>
+
+            <div class="comm-button">
+                <!-- <input class="select" type="submit" value="결제하기"> -->
+                <a href="" class="select">결제하기</a>
+                <a onclick="close_popup('.comm-popup');">취소하기</a>
+            </div>
+        </div> <!-- //popup-content -->
+
+        <!-- 결제로딩 -->
+        <div class="popup-content">
+            <div class="info-wrap">
+                <p class="load"><img src="../images/web/air2/loading.gif" alt="로딩중"></p>
+                <h2 class="info-title">항공사 시스템에 접속하여 결제를 진행하고 있습니다.</h2>
+                <p class="info-noti">데이터는 암호화되어 SSL로 전송됩니다.<br>잠시만 기다려 주세요.</p>
+            </div>
+        </div>
+
+        <!-- 결제완료 -->
+        <div class="popup-content">
+            <div class="info-wrap">
+                <p><img src="../images/web/air2/info_icon1.jpg" alt=""></p>
+                <h2 class="info-title">항공권 결제 성공하였습니다.</h2>
+                <p class="info-price">결제금액 <strong>88,200</strong><span>원</span></p>
+                <p class="info-noti">※ 예약확인/결제 > 결제상세내역에서 결제된 항공권 내역을 확인하실 수 있습니다.</p>
+
+                <div class="comm-button">
+                    <!-- <input class="select" type="submit" value="확인"> -->
+                    <a class="select" onclick="close_popup('.comm-popup');">확인</a>
+                </div>
+            </div>
+        </div> <!-- //popup-content -->
+
+        <!-- 결제실패 -->
+        <div class="popup-content">
+            <div class="info-wrap">
+                <p><img src="../images/web/air2/info_icon2.jpg" alt=""></p>
+                <h2 class="info-title">항공권 결제 실패하였습니다. <strong>재시도 하여주시기 바랍니다.</strong></h2>
+                <p class="info-noti">카드번호가 잘못되었습니다. 카드번호를 확인하세요.</p>
+
+                <div class="comm-button">
+                    <!-- <input class="select" type="submit" value="확인"> -->
+                    <a class="select" onclick="close_popup('.comm-popup');">확인</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- layer popup (취소) -->
+    <div class="comm-popup2">
+        <a class="close" onclick="close_popup('.comm-popup2');"><img src="../images/web/air2/close.gif" alt="닫기"></a>
+
+        <!-- 예약취소 -->
+        <div class="popup-content" style="display: block;">
+            <h2 class="comm-title4">항공권 결제 취소</h2>
+            <div class="comm-innerText">
+                <p class="comm-memo">
+                    ㆍ선택하신 여정의 예약내역만 예약/결제 취소처리 됩니다. 취소 후 날짜 및 동일구간 예약이 다시 안될 수 있습니다.<br>
+                    ㆍ예약/결제취소시 항공사 취소수수료 기준에 따라 환불 수수료가 부과될 수 있으니,반드시 [항공사별 취소수수료]<br>
+                    &nbsp;&nbsp;&nbsp;운임을 확인해주세요.<br>
+                    ㆍ신용카드 취소요청 후 카드 환불된 내역은 최대 2주정도 소요되며 고객님의 카드 결제일에 따라 <br>
+                    &nbsp;&nbsp;&nbsp;신용카드 대금이 청구될 수 있습니다.(만약 대금이 청구될 경우 다음달 대금에 차감되어 청구됩니다)<br>
+                    ㆍ항공권 결제는 예약하신 항공사에서 결제가 진행이 되어,모두투어에서는 취소 후 환불날짜와 환불수수료 확인이<br>
+                    &nbsp;&nbsp;&nbsp;불가능 하오니예약하신 항공사나 카드사로 문의하시기 바랍니다.
+                </p>
+            </div>
+            <p class="comm-agree"><input id="agree1" type="checkbox"> <label for="agree1">상단의 운임규정 및 약관을 확인하였으며, 이에 동의합니다.</label></p>
+
+            <div class="comm-button">
+                <!-- <input class="select" type="submit" value="확인"> -->
+                <a class="select">예</a>
+                <a onclick="close_popup('.comm-popup2');">아니오</a>
+            </div>
+        </div>
+
+        <!-- 예약취소 로딩 -->
+        <div class="popup-content">
+            <div class="info-wrap">
+                <p class="load"><img src="../images/web/air2/loading.gif" alt="로딩중"></p>
+                <h2 class="info-title">항공사 시스템에 접속하여 취소요청하고 있습니다.</h2>
+                <p class="info-noti">잠시만 기다려 주세요.</p>
+            </div>
+        </div>
+
+        <!-- 예약취소 완료 -->
+        <div class="popup-content">
+            <div class="pdWrap">
+                <h2 class="info-title">취소처리가 완료되었습니다.</h2>
+                <div class="comm-button">
+                    <a class="select" onclick="close_popup('.comm-popup2');">확인</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

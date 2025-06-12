@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="pay">
+
+<resultMap id="LGPAYINF_R_00" class="web.order.vo.LGPAYINFVO">
+<result property="LGD_OID" 				column="LGD_OID" />
+<result property="paySn" 				column="PAY_SN" />
+<result property="LGD_RESPCODE" 		column="LGD_RESPCODE" />
+<result property="LGD_RESPMSG" 			column="LGD_RESPMSG" />
+<result property="LGD_AMOUNT" 			column="LGD_AMOUNT" />
+<result property="LGD_TID" 				column="LGD_TID" />
+<result property="LGD_PAYTYPE" 			column="LGD_PAYTYPE" />
+<result property="LGD_PAYDATE" 			column="LGD_PAYDATE" />
+<result property="LGD_FINANCECODE" 		column="LGD_FINANCECODE" />
+<result property="LGD_FINANCENAME" 		column="LGD_FINANCENAME" />
+<result property="LGD_ESCROWYN" 		column="LGD_ESCROWYN" />
+<result property="LGD_BUYER" 			column="LGD_BUYER" />
+<result property="LGD_BUYERID" 			column="LGD_BUYERID" />
+<result property="LGD_BUYERPHONE" 		column="LGD_BUYERPHONE" />
+<result property="LGD_BUYEREMAIL" 		column="LGD_BUYEREMAIL" />
+<result property="LGD_PRODUCTINFO" 		column="LGD_PRODUCTINFO" />
+<result property="LGD_CARDNUM" 			column="LGD_CARDNUM" />
+<result property="LGD_CARDINSTALLMONTH" column="LGD_CARDINSTALLMONTH" />
+<result property="LGD_CARDNOINTYN" 		column="LGD_CARDNOINTYN" />
+<result property="LGD_FINANCEAUTHNUM" 	column="LGD_FINANCEAUTHNUM" />
+<result property="LGD_CASHRECEIPTNUM" 	column="LGD_CASHRECEIPTNUM" />
+<result property="LGD_CASHRECEIPTSELFYN" column="LGD_CASHRECEIPTSELFYN" />
+<result property="LGD_CASHRECEIPTKIND" 	column="LGD_CASHRECEIPTKIND" />
+<result property="regDttm" 				column="REG_DTTM" />
+<result property="LGD_CASFLAGY" 		column="LGD_CASFLAGY" />
+<result property="LGD_ACCOUNTNUM" 		column="LGD_ACCOUNTNUM" />
+<result property="LGD_PAYER" 		    column="LGD_PAYER" />
+</resultMap>
+
+<resultMap id="PAY_R_00" class="web.order.vo.PAYVO">
+<result property="rsvNum" 		column="RSV_NUM" />
+<result property="paySn" 		column="PAY_SN" />
+<result property="dtlRsvNum" 	column="DTL_RSV_NUM" />
+<result property="payDiv" 		column="PAY_DIV" />
+<result property="payRstCd" 	column="PAY_RST_CD" />
+<result property="payRstInf" 	column="PAY_RST_INF" />
+<result property="payAmt" 		column="PAY_AMT" />
+<result property="LGD_TID" 		column="LGD_TID" />
+<result property="payDttm" 		column="PAY_DTTM" />
+</resultMap>
+
+<resultMap id="LPOINTUSEINF_R_00" class="web.order.vo.LPOINTUSEINFVO">
+<result property="rsvNum" 		column="RSV_NUM" />
+<result property="cardNum" 		column="CARD_NUM" />
+<result property="tradeDttm" 	column="TRADE_DTTM" />
+<result property="payAmt" 		column="PAY_AMT" />
+<result property="usePoint" 	column="USE_POINT" />
+<result property="tradeConfnum"	column="TRADE_CONFNUM" />
+<result property="requestNum"	column="REQUEST_NUM" />
+<result property="respCd" 		column="RESP_CD" />
+<result property="rsvCancelYn"	column="RSV_CANCEL_YN" />
+<result property="cancelYn"		column="CANCEL_YN" />
+<result property="useRst"		column="USE_RST" />
+</resultMap>
+
+<resultMap id="LPOINTSAVEINF_R_00" class="web.order.vo.LPOINTSAVEINFVO">
+<result property="prdtRsvNum" 	column="PRDT_RSV_NUM" />
+<result property="payAmt" 		column="PAY_AMT" />
+<result property="cardNum" 		column="CARD_NUM" />
+<result property="tradeDttm" 	column="TRADE_DTTM" />
+</resultMap>
+
+<resultMap id="TAMNACARD_R_00" class="web.order.vo.TAMNACARD_VO">
+    <result property="rsvNum" 	        column="RSV_NUM" />
+    <result property="approvalCode" 	column="APPROVAL_CODE" />
+    <result property="discountAmount" 	column="DISCOUNT_AMOUNT" />
+    <result property="paidAmount" 	    column="PAID_AMOUNT" />
+    <result property="status" 	        column="STATUS" />
+    <result property="trAmount" 	    column="TR_AMOUNT" />
+    <result property="trDateTime" 	    column="TR_DATE_TIME" />
+    <result property="nrNumber"     	column="NR_NUMBER" />
+    <result property="reason" 	        column="REASON" />
+    <result property="message" 	        column="MESSAGE" />
+</resultMap>
+
+<select id="LGPAYINF_S_00" resultMap="LGPAYINF_R_00">
+SELECT LGD_OID                  /*예약 번호*/
+     , PAY_SN                   /*결제 순번*/
+     , LGD_RESPCODE             /*응답코드*/
+     , LGD_RESPMSG              /*응답메세지*/
+     , LGD_AMOUNT               /*결제금액*/
+     , LGD_TID                  /*LG유플러스 거래번호*/
+     , LGD_PAYTYPE              /*결제수단코드*/
+     , LGD_PAYDATE              /*결제일시*/
+     , LGD_FINANCECODE          /*결제기관코드*/
+     , LGD_FINANCENAME          /*결제기관명*/
+     , LGD_ESCROWYN             /*에스크로 적용여부*/
+     , LGD_BUYER                /*구매자명*/
+     , LGD_BUYERID              /*구매자 아이디*/
+     , LGD_BUYERPHONE           /*고객휴대폰번호*/
+     , LGD_BUYEREMAIL           /*구매자이메일*/
+     , LGD_PRODUCTINFO          /*구매내역*/
+     , LGD_CARDNUM              /*신용카드번호*/
+     , LGD_CARDINSTALLMONTH     /*신용카드할부개월*/
+     , LGD_CARDNOINTYN          /*신용카드무이자여부*/
+     , LGD_FINANCEAUTHNUM       /*결제기관승인번호*/
+     , LGD_CASHRECEIPTNUM       /*현금영수증 승인번호*/
+     , LGD_CASHRECEIPTSELFYN    /*현금영수증자진발급제유무*/
+     , LGD_CASHRECEIPTKIND      /*현금영수증종류*/
+     , REG_DTTM                 /*등록 일시*/
+	 , LGD_CASFLAGY             /*무통장입금 플래그*/
+	 , LGD_ACCOUNTNUM           /*무통장입금 계좌번호*/
+	 , LGD_PAYER                /*무통장입금 입금자명*/
+  FROM TB_LGPAYINF
+  WHERE 1=1
+  <isNotEmpty property="LGD_OID">
+     <isNotNull property="LGD_OID">
+		AND LGD_OID = #LGD_OID#
+		AND LGD_RESPCODE = '0000'
+     </isNotNull>
+  </isNotEmpty>
+</select>
+
+<select id="LGPAYINF_S_01" resultMap="LGPAYINF_R_00">
+SELECT LGD_OID                  /*예약 번호*/
+     , PAY_SN                   /*결제 순번*/
+     , LGD_RESPCODE             /*응답코드*/
+     , LGD_RESPMSG              /*응답메세지*/
+     , LGD_AMOUNT               /*결제금액*/
+     , LGD_TID                  /*LG유플러스 거래번호*/
+     , LGD_PAYTYPE              /*결제수단코드*/
+     , LGD_PAYDATE              /*결제일시*/
+     , LGD_FINANCECODE          /*결제기관코드*/
+     , LGD_FINANCENAME          /*결제기관명*/
+     , LGD_ESCROWYN             /*에스크로 적용여부*/
+     , LGD_BUYER                /*구매자명*/
+     , LGD_BUYERID              /*구매자 아이디*/
+     , LGD_BUYERPHONE           /*고객휴대폰번호*/
+     , LGD_BUYEREMAIL           /*구매자이메일*/
+     , LGD_PRODUCTINFO          /*구매내역*/
+     , LGD_CARDNUM              /*신용카드번호*/
+     , LGD_CARDINSTALLMONTH     /*신용카드할부개월*/
+     , LGD_CARDNOINTYN          /*신용카드무이자여부*/
+     , LGD_FINANCEAUTHNUM       /*결제기관승인번호*/
+     , LGD_CASHRECEIPTNUM       /*현금영수증 승인번호*/
+     , LGD_CASHRECEIPTSELFYN    /*현금영수증자진발급제유무*/
+     , LGD_CASHRECEIPTKIND      /*현금영수증종류*/
+     , REG_DTTM                 /*등록 일시*/
+     , LGD_CASFLAGY             /*무통장입금 플래그*/
+     , LGD_ACCOUNTNUM           /*무통장입금 계좌번호*/
+     , LGD_PAYER                /*무통장입금 입금자명*/
+  FROM TB_LGPAYINF
+  WHERE 1=1
+  <isNotEmpty property="rsvNum">
+     <isNotNull property="rsvNum">
+        AND LGD_OID = #rsvNum#
+     </isNotNull>
+  </isNotEmpty>
+  <isNotEmpty property="LGD_RESPCODE">
+     <isNotNull property="LGD_RESPCODE">
+        AND LGD_RESPCODE IN ('0000','8888')
+     </isNotNull>
+  </isNotEmpty>
+</select>
+
+<insert id="LGPAYINF_I_00">
+INSERT INTO TB_LGPAYINF
+     ( LGD_OID                  /*예약 번호*/
+     , PAY_SN                   /*결제 순번*/
+     , LGD_RESPCODE             /*응답코드*/
+     , LGD_RESPMSG              /*응답메세지*/
+     , LGD_AMOUNT               /*결제금액*/
+     , LGD_TID                  /*LG유플러스 거래번호*/
+     , LGD_PAYTYPE              /*결제수단코드*/
+     , LGD_PAYDATE              /*결제일시*/
+     , LGD_FINANCECODE          /*결제기관코드*/
+     , LGD_FINANCENAME          /*결제기관명*/
+     , LGD_ESCROWYN             /*에스크로 적용여부*/
+     , LGD_BUYER                /*구매자명*/
+     , LGD_BUYERID              /*구매자 아이디*/
+     , LGD_BUYERPHONE           /*고객휴대폰번호*/
+     , LGD_BUYEREMAIL           /*구매자이메일*/
+     , LGD_PRODUCTINFO          /*구매내역*/
+     , LGD_CARDNUM              /*신용카드번호*/
+     , LGD_CARDINSTALLMONTH     /*신용카드할부개월*/
+     , LGD_CARDNOINTYN          /*신용카드무이자여부*/
+     , LGD_FINANCEAUTHNUM       /*결제기관승인번호*/
+     , LGD_CASHRECEIPTNUM       /*현금영수증 승인번호*/
+     , LGD_CASHRECEIPTSELFYN    /*현금영수증자진발급제유무*/
+     , LGD_CASHRECEIPTKIND      /*현금영수증종류*/
+     , REG_DTTM                 /*등록 일시*/
+	 , LGD_CASFLAGY             /*무통장입금 플래그*/
+	 , LGD_ACCOUNTNUM           /*무통장입금 계좌번호*/
+	 , LGD_PAYER                /*무통장입금 입금자명*/
+     )
+SELECT #LGD_OID#
+     , NVL(MAX(PAY_SN),0) + 1
+     , #LGD_RESPCODE#
+     , #LGD_RESPMSG#
+     , #LGD_AMOUNT#
+     , #LGD_TID#
+     , #LGD_PAYTYPE#
+     , #LGD_PAYDATE#
+     , #LGD_FINANCECODE#
+     , #LGD_FINANCENAME#
+     , #LGD_ESCROWYN#
+     , #LGD_BUYER#
+     , #LGD_BUYERID#
+     , #LGD_BUYERPHONE#
+     , #LGD_BUYEREMAIL#
+     , #LGD_PRODUCTINFO#
+     , #LGD_CARDNUM#
+     , #LGD_CARDINSTALLMONTH#
+     , #LGD_CARDNOINTYN#
+     , #LGD_FINANCEAUTHNUM#
+     , #LGD_CASHRECEIPTNUM#
+     , #LGD_CASHRECEIPTSELFYN#
+     , #LGD_CASHRECEIPTKIND#
+     , SYSDATE
+	 , #LGD_CASFLAGY#
+	 , #LGD_ACCOUNTNUM#
+	 , #LGD_PAYER#
+  FROM TB_LGPAYINF
+ WHERE LGD_OID = #LGD_OID#
+</insert>
+
+<!--무통장입금 업데이트-->
+<update id="LGPAYINF_U_00">
+	UPDATE
+		TB_LGPAYINF
+	SET
+		LGD_RESPCODE = #LGD_RESPCODE#,
+		LGD_RESPMSG = #LGD_RESPMSG#,
+		LGD_CASFLAGY = #LGD_CASFLAGY#,
+		LGD_TID = #LGD_TID#,
+		LGD_CASHRECEIPTNUM = #LGD_CASHRECEIPTNUM#,
+		LGD_CASHRECEIPTSELFYN = #LGD_CASHRECEIPTSELFYN#,
+		LGD_CASHRECEIPTKIND = #LGD_CASHRECEIPTKIND#
+	WHERE 1=1
+	AND	LGD_OID = #LGD_OID#
+	AND	LGD_RESPCODE = '8888'
+
+</update>
+
+<select id="PAY_S_00">
+SELECT RSV_NUM      /*예약 번호*/
+     , PAY_SN       /*결제 순번*/
+     , DTL_RSV_NUM  /*상세 예약 번호*/
+     , PAY_DIV      /*결제 구분*/
+     , PAY_RST_CD   /*결제 결과 코드*/
+     , PAY_RST_INF  /*결제 결과 정보*/
+     , PAY_AMT      /*결제 금액*/
+     , LGD_TID      /*거래 번호*/
+     , PAY_DTTM     /*결제 일시*/
+  FROM TB_PAY
+</select>
+
+<select id="PAY_S_01" resultMap="PAY_R_00">
+SELECT RSV_NUM      /*예약 번호*/
+     , PAY_SN       /*결제 순번*/
+     , DTL_RSV_NUM  /*상세 예약 번호*/
+     , PAY_DIV      /*결제 구분*/
+     , PAY_RST_CD   /*결제 결과 코드*/
+     , PAY_RST_INF  /*결제 결과 정보*/
+     , PAY_AMT      /*결제 금액*/
+     , LGD_TID      /*거래 번호*/
+     , PAY_DTTM     /*결제 일시*/
+  FROM TB_PAY
+ WHERE RSV_NUM    = #rsvNum#
+   AND PAY_DIV    = #payDiv#
+   AND PAY_RST_CD = #payRstCd#
+</select>
+
+<insert id="PAY_I_00">
+INSERT INTO TB_PAY
+     ( RSV_NUM      /*예약 번호*/
+     , PAY_SN       /*결제 순번*/
+     , DTL_RSV_NUM  /*상세 예약 번호*/
+     , PAY_DIV      /*결제 구분*/
+     , PAY_RST_CD   /*결제 결과 코드*/
+     , PAY_RST_INF  /*결제 결과 정보*/
+     , PAY_AMT      /*결제 금액*/
+     , LGD_TID      /*거래 번호*/
+     , PAY_DTTM     /*결제 일시*/
+     )
+SELECT #rsvNum#
+     , NVL(MAX(PAY_SN), 0) + 1
+     , #dtlRsvNum#
+     , #payDiv#
+     , #payRstCd#
+     , #payRstInf#
+     , #payAmt#
+     , #LGD_TID#
+     , SYSDATE
+  FROM TB_PAY
+ WHERE RSV_NUM = #rsvNum#
+</insert>
+
+<insert id="PAY_U_00">
+UPDATE
+	TB_PAY
+SET
+	PAY_RST_INF = #payRstInf#,
+    PAY_RST_CD = #payRstCd#
+WHERE
+	RSV_NUM = #rsvNum#
+</insert>
+
+<select id="KAKAOPAYINF_S_00">
+SELECT RSV_NUM              /*예약 번호*/
+     , PAY_SN               /*결제 순번*/
+     , RESULT_CODE          /*결제결과코드*/
+     , RESULT_MSG           /*결제결과메시지*/
+     , TID                  /*거래번호*/
+     , MOID                 /*가맹점 주문번호*/
+     , MID                  /*가맹점 ID*/
+     , PAY_METHOD           /*결제 수단 코드*/
+     , AMT                  /*결제상품금액*/
+     , DISCOUNT_AMT         /*프로모션 할인금액*/
+     , AUTH_DATE            /*승인 날짜*/
+     , AUTH_CODE            /*승인 코드*/
+     , CARD_CODE            /*발급사 카드코드*/
+     , ACQU_CARD_CODE       /*매입사 카드코드*/
+     , CARD_NAME            /*카드명*/
+     , CARD_QUOTA           /*할부개월수*/
+     , CARD_INTEREST        /*무이자여부*/
+     , CARD_CL              /*체크카드여부*/
+     , CARD_BIN             /*카드BIN번호*/
+     , CARD_POINT           /*카드사포인트사용여부*/
+     , CC_PART_CL           /*부분취소 가능여부*/
+     , PROMOTION_CC_PART_CL /*프로모션 부분취소가능여부*/
+     , REG_DTTM             /*등록 일시*/
+  FROM TB_KAKAOPAYINF
+</select>
+<insert id="KAKAOPAYINF_I_00">
+INSERT INTO TB_KAKAOPAYINF
+     ( RSV_NUM              /*예약 번호*/
+     , PAY_SN               /*결제 순번*/
+     , RESULT_CODE          /*결제결과코드*/
+     , RESULT_MSG           /*결제결과메시지*/
+     , TID                  /*거래번호*/
+     , MOID                 /*가맹점 주문번호*/
+     , MID                  /*가맹점 ID*/
+     , PAY_METHOD           /*결제 수단 코드*/
+     , AMT                  /*결제상품금액*/
+     , DISCOUNT_AMT         /*프로모션 할인금액*/
+     , AUTH_DATE            /*승인 날짜*/
+     , AUTH_CODE            /*승인 코드*/
+     , CARD_CODE            /*발급사 카드코드*/
+     , ACQU_CARD_CODE       /*매입사 카드코드*/
+     , CARD_NAME            /*카드명*/
+     , CARD_QUOTA           /*할부개월수*/
+     , CARD_INTEREST        /*무이자여부*/
+     , CARD_CL              /*체크카드여부*/
+     , CARD_BIN             /*카드BIN번호*/
+     , CARD_POINT           /*카드사포인트사용여부*/
+     , CC_PART_CL           /*부분취소 가능여부*/
+     , PROMOTION_CC_PART_CL /*프로모션 부분취소가능여부*/
+     , REG_DTTM             /*등록 일시*/
+     )
+SELECT #rsvNum#
+     , NVL(MAX(PAY_SN),0) + 1
+     , #resultCode#
+     , #resultMsg#
+     , #tid#
+     , #moid#
+     , #mid#
+     , #payMethod#
+     , #amt#
+     , #discountAmt#
+     , #authDate#
+     , #authCode#
+     , #cardCode#
+     , #acquCardCode#
+     , #cardName#
+     , #cardQuota#
+     , #cardInterest#
+     , #cardCl#
+     , #cardBin#
+     , #cardPoint#
+     , #ccPartCl#
+     , #promotionCcPartCl#
+     , SYSDATE
+  FROM TB_KAKAOPAYINF
+ WHERE RSV_NUM = #rsvNum#
+</insert>
+
+<select id="LPOINTUSEINF_S_00" resultMap="LPOINTUSEINF_R_00">
+SELECT
+    RSV_NUM			/** 예약 번호 */
+	, CARD_NUM		/** 카드 번호 */
+	, TRADE_DTTM	/** 거래 일시 */
+	, PAY_AMT		/** 결제 금액 */
+	, USE_POINT		/** 사용 포인트 */
+	, TRADE_CONFNUM	/** 거래 승인번호 */
+	, REQUEST_NUM	/** 요청 번호 */
+	, RESP_CD		/** 응답 코드 */
+	, RSV_CANCEL_YN	/** 예약 취소 여부 */
+	, CANCEL_YN		/** 취소 여부 */
+	, USE_RST		/** 사용 결과 */
+  FROM TB_LPOINT_USE_INF
+  WHERE RSV_NUM=#rsvNum#
+  AND RESP_CD = 00
+  <isNotEmpty property="maxSaleDtlRsvNum">
+      <isNotNull property="maxSaleDtlRsvNum">
+     AND LP_DTL_RSV_NUM = #maxSaleDtlRsvNum#
+      </isNotNull>
+  </isNotEmpty>
+    <isNotEmpty property="rsvCancelYn">
+      <isNotNull property="rsvCancelYn">
+     AND RSV_CANCEL_YN = #rsvCancelYn#
+      </isNotNull>
+  </isNotEmpty>
+  <isNotEmpty property="cancelYn">
+      <isNotNull property="cancelYn">
+     AND CANCEL_YN = #cancelYn#
+      </isNotNull>
+  </isNotEmpty>
+</select>
+
+<insert id="LPOINTUSEINF_I_00">
+INSERT INTO TB_LPOINT_USE_INF
+    (RSV_NUM		/** 예약 번호 */
+	, CARD_NUM		/** 카드 번호 */
+	, TRADE_DTTM	/** 거래 일시 */
+	, PAY_AMT		/** 결제 금액 */
+	, USE_POINT		/** 사용 포인트 */
+	, TRADE_CONFNUM	/** 거래 승인번호 */
+	, REQUEST_NUM	/** 요청 번호 */
+	, RESP_CD		/** 응답 코드 */
+	, USE_RST		/** 사용 결과 */
+    , LP_DTL_RSV_NUM
+    )
+VALUES
+	(#rsvNum#
+	, #cardNum#
+	, TO_DATE(#tradeDttm#, 'YYYYMMDDHH24MISS')
+	, #payAmt#
+	, #usePoint#
+	, #tradeConfnum#
+	, #requestNum#
+	, #respCd#
+	, #useRst#
+    , #maxSaleDtlRsvNum#
+	)
+</insert>
+
+<update id="LPOINTUSEINF_U_00">
+UPDATE TB_LPOINT_USE_INF SET
+	TRADE_DTTM=TO_DATE(#tradeDttm#, 'YYYYMMDDHH24MISS')		/** 거래 일시 */
+	, TRADE_CONFNUM=#tradeConfnum#	/** 거래 승인번호 */
+	, REQUEST_NUM=#requestNum#		/** 요청 번호 */
+	, RESP_CD=#respCd#				/** 응답 코드 */
+	, USE_RST=#useRst#				/** 사용 결과 */
+	, RSV_CANCEL_YN=#rsvCancelYn#	/** 예약 취소 여부 */
+	, CANCEL_YN=#cancelYn#			/** 취소 여부 */
+WHERE RSV_NUM=#rsvNum#
+</update>
+
+<select id="LPOINTSAVEINF_S_00" resultMap="LPOINTSAVEINF_R_00">
+<!-- SELECT PRDT_RSV_NUM	/** 상품 예약 번호 */
+	, PAY_AMT		/** 결제 금액 */
+	, CARD_NUM		/** 카드 번호 */
+	, TRADE_DTTM	/** 거래 일시 */
+	FROM TB_LPOINT_SAVE_INF T_SAVE
+	WHERE SAVE_YN='N'
+	  AND RSV_CANCEL_YN='N' -->
+	  <![CDATA[ 
+SELECT PRDT_RSV_NUM	/** 상품 예약 번호 */
+	, PAY_AMT		/** 결제 금액 */
+	, CARD_NUM		/** 카드 번호 */
+	, TRADE_DTTM	/** 거래 일시 */
+	FROM TB_LPOINT_SAVE_INF T_SAVE
+    INNER JOIN (
+        SELECT AD_RSV_NUM AS RSV_NUM
+        FROM TB_AD_RSV
+        WHERE RSV_STATUS_CD='RS30'
+          AND TO_CHAR(TO_DATE(USE_DT, 'YYYYMMDD') + (USE_NIGHT -1 +10), 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
+      UNION ALL
+        SELECT RC_RSV_NUM AS RSV_NUM
+        FROM TB_RC_RSV
+        WHERE RSV_STATUS_CD='RS30'
+          AND TO_CHAR(TO_DATE(RENT_END_DT, 'YYYYMMDD') + 10, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
+      UNION ALL
+        SELECT GL_RSV_NUM AS RSV_NUM
+        FROM TB_GL_RSV
+        WHERE RSV_STATUS_CD='RS30'
+          AND TO_CHAR(TO_DATE(USE_DT, 'YYYYMMDD') + 10, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
+      UNION ALL
+        SELECT SP_RSV_NUM AS RSV_NUM
+        FROM TB_SP_RSV
+        WHERE RSV_STATUS_CD='RS30'
+          AND TO_CHAR(USE_DTTM + 10, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
+      UNION ALL
+        SELECT SV_RSV_NUM AS RSV_NUM
+        FROM TB_SV_RSV
+        WHERE RSV_STATUS_CD='RS30'
+          AND BUY_FIX_YN='Y'
+          AND TO_CHAR(BUY_FIX_DTTM + 10, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
+    ) T_RSV ON T_RSV.RSV_NUM=T_SAVE.PRDT_RSV_NUM
+	WHERE SAVE_YN='N'
+	  AND RSV_CANCEL_YN='N'
+ UNION
+SELECT PRDT_RSV_NUM	/** 상품 예약 번호 */
+	, PAY_AMT		/** 결제 금액 */
+	, CARD_NUM		/** 카드 번호 */
+	, TRADE_DTTM	/** 거래 일시 */
+	FROM TB_LPOINT_SAVE_INF T_SAVE
+    INNER JOIN (
+        SELECT AD_RSV_NUM AS RSV_NUM
+        FROM TB_AD_RSV
+        WHERE RSV_STATUS_CD='RS30'
+          AND TO_CHAR(TO_DATE(USE_DT, 'YYYYMMDD') + (USE_NIGHT -1 +10), 'YYYYMMDD') >= '20220901'
+          AND TO_CHAR(TO_DATE(USE_DT, 'YYYYMMDD') + (USE_NIGHT -1 +10), 'YYYYMMDD') <= '20221205'
+      UNION ALL
+        SELECT RC_RSV_NUM AS RSV_NUM
+        FROM TB_RC_RSV
+        WHERE RSV_STATUS_CD='RS30'
+          AND TO_CHAR(TO_DATE(RENT_END_DT, 'YYYYMMDD') + 10, 'YYYYMMDD') >= '20220901'
+          AND TO_CHAR(TO_DATE(RENT_END_DT, 'YYYYMMDD') + 10, 'YYYYMMDD') <= '20221205'
+      UNION ALL
+        SELECT GL_RSV_NUM AS RSV_NUM
+        FROM TB_GL_RSV
+        WHERE RSV_STATUS_CD='RS30'
+          AND TO_CHAR(TO_DATE(USE_DT, 'YYYYMMDD') + 10, 'YYYYMMDD') >= '20220901'
+          AND TO_CHAR(TO_DATE(USE_DT, 'YYYYMMDD') + 10, 'YYYYMMDD') <= '20221205'
+      UNION ALL
+        SELECT SP_RSV_NUM AS RSV_NUM
+        FROM TB_SP_RSV
+        WHERE RSV_STATUS_CD='RS30'
+          AND TO_CHAR(USE_DTTM + 10, 'YYYYMMDD') >= '20220901'
+          AND TO_CHAR(USE_DTTM + 10, 'YYYYMMDD') <= '20221205'
+      UNION ALL
+        SELECT SV_RSV_NUM AS RSV_NUM
+        FROM TB_SV_RSV
+        WHERE RSV_STATUS_CD='RS30'
+          AND BUY_FIX_YN='Y'
+          AND  TO_CHAR(BUY_FIX_DTTM + 10, 'YYYYMMDD') >= '20220901'
+          AND  TO_CHAR(BUY_FIX_DTTM + 10, 'YYYYMMDD') <= '20221205'
+    ) T_RSV ON T_RSV.RSV_NUM=T_SAVE.PRDT_RSV_NUM
+	WHERE SAVE_YN='N'
+	  AND RSV_CANCEL_YN='N' 
+	  AND RESP_CD IS NULL	  
+	  ]]>
+</select>
+
+<insert id="LPOINTSAVEINF_I_00">
+INSERT INTO TB_LPOINT_SAVE_INF
+    (PRDT_RSV_NUM	/** 상품 예약 번호 */
+	, PAY_AMT		/** 결제 금액 */
+	, CARD_NUM		/** 카드 번호 */
+	, TRADE_DTTM	/** 거래 일시 */
+    )
+VALUES
+	(#prdtRsvNum#
+	, #payAmt#
+	, #cardNum#
+	, SYSDATE
+	)
+</insert>
+
+<update id="LPOINTSAVEINF_U_00">
+UPDATE TB_LPOINT_SAVE_INF SET
+	RSV_CANCEL_YN='Y'	/** 예약 취소 여부 */
+WHERE 1=1
+  /** 상품 예약 번호 */
+  <dynamic prepend="AND PRDT_RSV_NUM IN ">
+ 	<iterate open="(" close=")" conjunction="," property="cancelRsvNumList">
+ 		#cancelRsvNumList[]#
+ 	</iterate>
+  </dynamic>
+</update>
+
+<update id="LPOINTSAVEINF_U_01">
+UPDATE TB_LPOINT_SAVE_INF SET
+	 CONF_NUM=#confNum#			/** 승인 번호 */
+	<isNotEmpty property="confDttm">
+      <isNotNull property="confDttm">
+	, CONF_DTTM=TO_DATE(#confDttm#, 'YYYYMMDDHH24MISS')		/** 승인 일시 */
+	  </isNotNull>
+	</isNotEmpty>
+	, RESP_CD=#respCd#			/** 응답 코드 */
+	, SAVE_POINT=#savePoint#	/** 적립 포인트 */
+	, EVNT_POINT=#evntPoint#	/** 이벤트 포인트 */
+	, SAVE_YN=#saveYn#			/** 적립 여부 */
+	, SAVE_RST=#saveRst#		/** 적립 결과 */
+WHERE
+	PRDT_RSV_NUM=#prdtRsvNum#	/** 상품 예약 번호 */
+	AND CARD_NUM=#cardNum#		/** 카드 번호 */
+</update>
+
+<!-- 탐나는전 -->
+<insert id="TAMNACARD_I_00">
+INSERT INTO TB_TAMNACARDINF
+(
+    RSV_NUM,
+    APPROVAL_CODE,
+    DISCOUNT_AMOUNT,
+    PAID_AMOUNT,
+    STATUS,
+    TR_AMOUNT,
+    REMAIN_AMOUNT,
+    TR_DATE_TIME,
+    NR_NUMBER,
+    REASON,
+    MESSAGE,
+    PAY_SN,
+    MASK_CARD_NO,
+    CARD_BALANCE,
+    PG_NM
+)VALUES(
+    #rsvNum#,
+    #approvalCode#,
+    #discountAmount#,
+    #paidAmount#,
+    #status#,
+    #trAmount#,
+    #remainAmount#,
+    #trDateTime#,
+    #nrNumber#,
+    #reason#,
+    #message#,
+    #paySn#,
+    #maskCardNo#,
+    #cardBalance#,
+    #pgNm#
+)
+
+</insert>
+
+<select id="TAMNACARD_S_00" resultMap="TAMNACARD_R_00">
+SELECT
+    RSV_NUM,
+    APPROVAL_CODE,
+    DISCOUNT_AMOUNT,
+    PAID_AMOUNT,
+    STATUS,
+    TR_AMOUNT,
+    TR_DATE_TIME,
+    NR_NUMBER,
+    REASON,
+    MESSAGE
+FROM
+    TB_TAMNACARDINF
+WHERE 1=1
+<isNotEmpty property="rsvNum">
+AND RSV_NUM = #rsvNum#
+</isNotEmpty>
+<isNotEmpty property="status">
+AND STATUS = #status#
+</isNotEmpty>
+
+</select>
+
+<select id="TAMNACARD_S_01" resultClass="String">
+    SELECT
+        TAMNACARD_MNG_YN
+    FROM
+        TB_CORP
+    WHERE
+        CORP_ID = #corpId#
+</select>
+
+<select id="TAMNACARD_S_02" resultClass="String">
+        SELECT
+            TAMNACARD_PRDT_YN
+        FROM
+            TB_AD_PRDTINF
+        WHERE PRDT_NUM = #prdtNum#
+    UNION ALL
+        SELECT
+            TAMNACARD_PRDT_YN
+        FROM
+            TB_RC_PRDTINF
+        WHERE PRDT_NUM = #prdtNum#
+    UNION ALL
+        SELECT
+            TAMNACARD_PRDT_YN
+        FROM
+            TB_SP_PRDTINF
+        WHERE PRDT_NUM = #prdtNum#
+    UNION ALL
+        SELECT
+            TAMNACARD_PRDT_YN
+        FROM
+            TB_SV_PRDTINF
+        WHERE PRDT_NUM = #prdtNum#
+</select>
+</sqlMap>

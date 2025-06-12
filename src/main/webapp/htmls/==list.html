@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>	
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="강현석">
+
+	<title>Page-Guide</title>
+
+	<!-- css -->
+	<link rel="stylesheet" href="../css/web/comm_default.css">
+	<style>
+        body {background: #fff; font-family: "Nanum Gothic", "돋움", "Dotum", "맑은고딕", sans-serif; font-weight: 400;}
+		
+		.container {width: 100%;}
+		.container h1.logo {color: #fff; font-weight: bold; font-size: 0.8rem}
+		.container h2.title span {font-size: 1.1rem; color: #6d6d6d}
+
+		header .top {background: #222; padding: 0 20px; margin: 0 auto; zoom: 1; position: relative}
+		header .top .container {display: table;}
+		header .top .logo, header .top .right {display: table-cell; vertical-align: middle;}
+		header .top .logo {font-size: 0.96rem;}
+		header .top .logo a {font-family: "Noto Sans KR", sans-serif; color: #fff; display: inline-block; padding: 12px 0;}
+		header .top .logo a:hover {color: #58c0f0;}
+		header .top h1.logo a > span {font-size: 0.8rem; font-weight: normal;}
+		header .top .right {text-align: right; font-size: 12px; color: #fff;}
+		header .top .right strong {color: #58c0f0; font-size: 13px;}
+		header .top .right span {display: inline-block; color: #fff;}
+		header .top .right span.line {color: #999; margin: 0 10px;}
+		header .top .right a {display: inline-block; color: #fff;}
+		header .top .right a:hover {color: #58c0f0;}
+		header .main-menu {background: #fff; padding: 30px 0 10px 0;}
+		header .main-menu .container {text-align: center;}
+		header .main-menu .title {color: #222; font-size: 24px; padding: 18px 0; letter-spacing: -0.8px;}
+
+		main {display: block; margin: 0 auto; width: 1200px;}
+		main h2 {font-size: 0.95rem; padding: 10px 15px; background-color: #222; color: #fff; border-radius: 4px;}
+		main h2.manager-page {background-color: #505050;}
+		main h2.color---red {background-color: #f60c41;}
+		main .list-wrap .list {display: inline-block; vertical-align: top; background: #fbfbfb; border: 1px solid #e1e3e4; padding: 20px 15px; min-width: 252px; margin: 15px 5px; border-radius: 4px;}
+		main .list h3 {font-size: 18px; font-family: "Noto Sans KR", sans-serif; color: #222; margin-bottom: 10px;}
+		main ul.depth1 {margin: 10px; padding: 10px 10px 0px 10px;}
+		main ul.depth1 > li {list-style: circle;}
+		main ul.depth1 > li a,
+		main ul.depth1 > li strong {font-size: 14px; color: #3f3f3f; padding: 6px 0; display: block; text-decoration: none; font-weight: normal;}
+		main ul.depth1 > li a.line---height {line-height: 23px;}
+		main ul.depth1 > li a:hover {color: #f60c41;}
+		main ul.depth2 {margin-bottom: 5px;}
+		main ul.depth2 li a {font-size: 13px; color: #5f5f60; padding: 3px 0;}
+		main ul.depth2 li a::before {content: "-"; display: inline-block; margin-right: 5px;}
+
+        main a.text-black {color: #161213 !important;}
+        main a.text-gray {color: #8b8b8b !important;}
+        main a.text-red {color: #eb3b3e !important;}
+        main a.text-pink {color: #e5555e !important;}
+        main a.text-blue {color: #0069a3 !important;}
+        main a.text-green {color: #019a2e !important;}
+        main a.text-yellow {color: #fbbb01 !important;}
+        main del,
+        main u {display: inline-block; vertical-align: middle; text-decoration: none;}
+
+		footer h3 {margin-bottom: 10px; font-size: 18px; font-family: "Noto Sans KR", sans-serif;}
+		footer .warning-info {background: #fff; padding: 30px; font-size: 14px; color: #333; border: 1px solid #e1e3e4; margin-top: 20px;}
+		footer .warning-info h4 {margin-top: 20px;}
+		footer .warning-info h4::before {content: "["}
+		footer .warning-info h4::after {content: "]"}
+		footer .warning-info p {margin: 5px 0; font-size: 13px; line-height: 18px;}
+		footer .warning-info p::before {content: "-"; display: inline-block; margin-right: 5px;}
+	</style>
+
+	<!-- script -->
+	<script src="../js/jquery-1.11.1.js"></script>
+	<script>
+		console.log("삭제2");
+		$(document).ready(function(){
+			var page_count = $('li a').length;
+			$('#count').text(page_count);
+		})
+	</script>
+</head>
+<body>
+	<header>
+		<!--logo-->
+		<section class="top">
+			<div class="container">
+                <h1 class="logo">
+					탐나오 <a href="https://www.tamnao.com/"><span> www.tamnao.com</span></a>
+				</h1>
+				<nav class="right">
+					<span>작업페이지 : <strong id="count"></strong> page</span>
+					<span class="line">|</span>
+					<a href="=common.html">» Style Guide</a>
+				</nav>
+			</div>
+		</section>
+		
+		<!--main menu-->
+		<nav class="main-menu">
+			<div class="container"><h2 class="title">Page-Guide <span>(Site-Map)</span></h2></div>
+		</nav>
+	</header>
+	
+	<main>
+		<section class="list-wrap">
+			<div class="listWrap">
+				<div class="list">
+					<h2 class="color---red">- INFORMATION</h2>
+					<ul class="depth1">
+						<li><a href="=common.html" target="_blank" class="text-blue">UI Style Guide</a></li>
+						<li><a href="error.html" target="_blank">에러페이지</a></li>
+						<li><a href="server.html" target="_blank">서버점검</a></li>
+						
+						<!-- <li><a href="search.html" target="_blank">통합검색</a></li> -->
+						<!-- <li><a href="search2.html" target="_blank">통합검색(콘텐츠없을시)</a></li> -->
+						<!-- <li><a href="keyword-result.html" target="_blank">키워드 광고 결과화면</a></li> -->
+					</ul>
+				</div>
+<!--				<div class="list">-->
+<!--					<h2>Frame</h2>-->
+<!--					<ul class="depth1">-->
+<!--						&lt;!&ndash; <li><a href="frame.html" target="_blank">프레임</a></li> &ndash;&gt;-->
+<!--						<li><del><a href="frame-main.html" target="_blank" class="text-red">메인 프레임</a></del></li>-->
+<!--						<li><del><a href="frame-sub.html" target="_blank" class="text-red">서브 프레임</a></del></li>-->
+<!--					</ul>-->
+<!--				</div>-->
+				<div class="list">
+					<h2>Main</h2>
+					<ul class="depth1">
+						<li><del><a href="web/main.html" target="_blank">메인</a></del></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>항공</h2>
+					<ul class="depth1">
+						<!-- <li><a href="sub01-01_01.html" target="_blank">항공 메인</a></li> -->
+						<!-- <li>01_01. 항공 여정선택(별도페이지)</li>
+						<li>01_02. 항공 예약하기(별도페이지)</li>
+						<li>01_03. 항공 예약완료(별도페이지)</li>
+						<li>01_04. 예약확인 로그인(별도페이지)</li>
+						<li>01_05. 예약확인 목록(별도페이지)</li>
+						<li>01_06. 예약확인 상세(별도페이지)</li> -->
+						<li><u><a href="web/av-intro.html" target="_blank">인트로</a></u></li>
+						<li><del><a href="web/av-detail.html" target="_blank">상세페이지</a></del></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>선박</h2>
+					<ul class="depth1">
+						<li><del><a href="web/vessel-list.html" target="_blank">리스트</a></del></li>
+					</ul>
+				</div>
+		        <div class="list">
+		            <h2>숙소</h2>
+		            <ul class="depth1">
+		                <!-- <li><a href="sub02-01_01.html" target="_blank">숙박 메인</a></li> -->
+		                <!-- <li><a href="sub02-01_02.html" target="_blank">숙박 상세</a></li> -->
+		                <li><del><a href="web/ad-list.html" target="_blank">리스트</a></del></li>
+		                <li><del><a href="web/ad-detail.html" target="_blank">상세페이지</a></del></li>
+		            </ul>
+		        </div>
+				<div class="list">
+					<h2>렌터카</h2>
+					<ul class="depth1">
+						<li><u><a href="web/rc-list.html" target="_blank">리스트</a></u></li>
+						<li><del><a href="web/rc-detail.html" target="_blank">상세페이지</a></del></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>관광지/레저</h2>
+					<ul class="depth1">
+						<li><u><a href="web/social-list.html" target="_blank">리스트</a></u></li>
+						<li><u><a href="social-detail.html" target="_blank">상세페이지</a></u></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>특산/기념품</h2>
+					<ul class="depth1">
+						<li><del><a href="web/sv-main.html" target="_blank">리스트</a></del></li>
+						<li><del><a href="from-jeju-detail.html" target="_blank">상세페이지</a></del></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>체험</h2>
+					<ul class="depth1">
+						<li><del><a href="web/social-list2.html" target="_blank">리스트</a></del></li>
+						<li><u><a href="social-detail.html" target="_blank">상세페이지</a></u></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>맛집</h2>
+					<ul class="depth1">
+						<li><del><a href="web/social-list2.html" target="_blank">리스트</a></del></li>
+						<li><u><a href="social-detail.html" target="_blank">상세페이지</a></u></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>여행사 상품</h2>
+					<ul class="depth1">
+						<li><u><a href="web/travel-list.html" target="_blank">리스트</a></u></li>
+						<li><u><a href="social-detail.html" target="_blank">상세페이지</a></u></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>기획전</h2>
+					<ul class="depth1">
+						<li><del><a href="event-list.html" target="_blank">상품기획전(리스트)</a></del></li>
+						<li><del><a href="special-mdspick.html" target="_blank">Md's Pick(리스트)</a></del></li>
+						<li><del><a href="event-detail.html" target="_blank" >상세페이지</a></del></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>이벤트</h2>
+					<ul class="depth1">
+						<li><del><a href="event-list.html" target="_blank">이벤트(리스트)</a></del></li>
+						<li><del><a href="event-detail.html" target="_blank" >상세페이지</a></del></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>마이탐나오</h2>
+					<ul class="depth1">
+						<li><a href="web/mypage.html" target="_blank">나의 예약/구매 내역</a></li>
+						<li><a href="web/detailRsv.html" target="_blank">나의 예약/구매 내역(상세)</a></li>
+						<li><a href="web/couponList.html" target="_blank">탐나오쿠폰 내역</a></li>
+						<li><a href="web/freeCouponList.html" target="_blank">할인쿠폰 보관함</a></li>
+						<li><a href="web/otoinqList.html" target="_blank">1:1 문의내역</a></li>
+						<li><a href="web/useepilList.html " target="_blank">이용후기 내역</a></li>
+						<li><a href="web/viewUpdateUser.html" target="_blank">개인정보수정</a></li>
+						<li><a href="web/refundAccNum.html " target="_blank">환불계좌관리</a></li>
+						<li><a href="web/changePw.html " target="_blank">비밀번호 변경</a></li>
+						<li><a href="web/viewDropUser.html " target="_blank">회원탈퇴</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>장바구니/예약하기</h2>
+					<ul class="depth1">
+						<li><a href="sub13-01_01.html" target="_blank">장바구니</a></li>
+						<li><a href="sub02-01_03.html" target="_blank">예약하기</a></li>
+						<li><a href="mw/sub_payment.html" target="_blank">예약하기(Mobile)</a></li>
+						<li><a href="sub02-01_04.html" target="_blank">결제하기</a></li>
+						<li><a href="mw/sub_payment2.html" target="_blank">결제하기(Mobile)</a></li>
+						<li><a href="sub13-01_02.html" target="_blank">주문완료</a></li>
+						<li><a href="mw/sub_payment-success.html" target="_blank">주문완료(Mobile)</a></li>
+						<li><a href="sub13-01_03.html" target="_blank">결제실패 mx</a></li>
+						<li><a href="sub13-01_04.html" target="_blank">예약실패 mx</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>고객센터</h2>
+					<ul class="depth1">
+						<li><a href="web/qaList.html" target="_blank">자주하는 문의(FAQ)</a></li>
+						<li><a href="web/coustmer-useepilList" target="_blank">이용후기(list)</a></li>
+						<li><a href="web/updateUseepil.html" target="_blank">이용후기(글쓰기)</a></li>
+						<li><a href="web/corpPns.html" target="_blank">입점/제휴(안내)</a></li>
+						<li><a href="web/insertCorpPns.html" target="_blank">입점/제휴(신청)</a></li>
+						<li><a href="web/completeCorpPns.html" target="_blank">입점/제휴안내(완료)</a></li>
+						<li><a href="web/noticeList.html" target="_blank">공지사항(리스트)</a></li>
+						<li><a href="web/noticeDtl.html " target="_blank">공지사항(상세페이지)</a></li>
+						<li><a href="web/noticeReg.html" target="_blank">공지사항(글쓰기)</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>회사소개</h2>
+					<ul class="depth1">
+						<li><a href="web/introduction.html" target="_blank">회사소개</a></li>
+						<li><a href="web/socialContribution.html" target="_blank">사회공헌</a></li>
+						<li><a href="web/sccList.html" target="_blank">홍보영상(리스트)</a></li>
+						<li><a href="web/detailScc.html" target="_blank">홍보영상(상세페이지)</a></li>
+					</ul>
+				</div>
+<!--				<div class="list">-->
+<!--					<h2>패키지할인상품</h2>-->
+<!--					<ul class="depth1">-->
+<!--						<li><a href="sub05-01_01.html" target="_blank">패키지 메인</a></li>-->
+<!--						<li><a href="sub05-01_02.html" target="_blank">패키지 상세</a></li>-->
+<!--					</ul>-->
+<!--				</div>-->
+<!--				<div class="list">-->
+<!--					<h2>레져/음식/뷰티</h2>-->
+<!--					<ul class="depth1">-->
+<!--						<li><a href="sub07-01_01.html" target="_blank">레져/음식/뷰티 메인</a></li>-->
+<!--						<li><a href="sub07-01_02.html" target="_blank">레져/음식/뷰티 상세</a></li>-->
+<!--					</ul>-->
+<!--				</div>-->
+<!--				<div class="list">-->
+<!--					<h2>여행경비산출</h2>-->
+<!--					<ul class="depth1">-->
+<!--						<li><a href="sub09-01.html" target="_blank">항공 mx</a></li>-->
+<!--						<li><a href="sub09-02.html" target="_blank">숙박 mx</a></li>-->
+<!--						<li><a href="sub09-03.html" target="_blank">렌터카 mx</a></li>-->
+<!--						<li><a href="sub09-04.html" target="_blank">골프 mx</a></li>-->
+<!--						<li><a href="sub09-05.html" target="_blank">관광지입장권 mx</a></li>-->
+<!--						<li><a href="sub09-06.html" target="_blank">레져/음식/뷰티 mx</a></li>-->
+<!--					</ul>-->
+<!--				</div>-->
+				<div class="list">
+					<h2>회원정보</h2>
+					<ul class="depth1">
+						<li><a href="sub10-01_01.html" target="_blank">회원가입 - 본인인증</a></li>
+						<li><a href="sub10-01_02.html" target="_blank">회원가입 - 약관동의</a></li>
+						<li><a href="sub10-01_03.html" target="_blank">회원가입 - 회원정보입력</a></li>
+						<li><a href="sub10-01_04.html" target="_blank">회원가입 - 완료</a></li>
+						<li><a href="web/login.html" target="_blank">회원정보 - 로그인(회원)</a></li>
+						<li><a href="web/login(2).html" target="_blank">회원정보 - 로그인(비회원)</a></li>
+						<li><a href="sub10-02_02.html" target="_blank">회원정보 - 아이디/비밀번호 찾기</a></li>
+						<li><a href="sub10-02_03.html" target="_blank">회원정보 - 아이디 찾기완료</a></li>
+						<li><a href="sub10-02_04.html" target="_blank">회원정보 - 비밀번호 변경</a></li>
+						<li><a href="diapause-01.html" target="_blank">휴면고객 - 본인인증</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>약관</h2>
+					<ul class="depth1">
+						<li><a href="sub15-01.html" target="_blank">개인정보취급방침</a></li>
+						<li><a href="sub15-02.html" target="_blank">탐나오 구매약관</a></li>
+						<li><a href="sub15-03.html" target="_blank">탐나오 판매약관</a></li>
+						<li><a href="sub15-04.html" target="_blank">전자금융거래 이용약관</a></li>
+						<li><a href="sub15-05.html" target="_blank">이메일 무단수집거부</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>메일발송(사용자)</h2>
+					<ul class="depth1">
+						<li><a href="mail/regUser.html" target="_blank">회원가입</a></li>
+						<li><a href="mail/restUserPrevSendMail.html" target="_blank">휴면전환예정</a></li>
+						<li><a href="mail/restUserTargetSendMail.html" target="_blank">휴면전환</a></li>
+						<li><a href="mail/visit10MonthSendMail.html" target="_blank">방문10개월쿠폰</a></li>
+						<li><a href="mail/tourPrev7SendMail.html" target="_blank">여행7일전</a></li>
+						<li><a href="mail/ancrCouponSendMail.html" target="_blank">자동취소쿠폰_실시간상품</a></li>
+						<li><a href="mail/ancvCouponSendMail.html" target="_blank">자동취소쿠폰_특산기념품</a></li>
+						<li><a href="mail/orderComplete.html" target="_blank">예약완료_실시간상품</a></li>
+						<li><a href="mail/orderComplete2.html" target="_blank">구매완료_특산기념품</a></li>
+						<li><a href="mail/cancelReq.html" target="_blank">예약취소요청_실시간상품</a></li>
+						<li><a href="mail/cancelReq2.html" target="_blank">구매취소요청_특산기념품</a></li>
+						<li><a href="mail/cancelRsv.html" target="_blank">취소처리완료</a></li>
+						<li><a href="mail/refundComPlete.html" target="_blank">환불처리완료</a></li>
+						<li><a href="mail/useComplete.html" target="_blank">사용완료</a></li>
+						<li><a href="mail/deliveryComplete.html" target="_blank">상품발송완료</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>메일발송(사용자/업체)</h2>
+					<ul class="depth1">
+						<li><a href="mail/allUserSendMail.html" target="_blank">탐나오쿠폰_전체</a></li>
+						<li><a href="mail/vipUserSendMail.html" target="_blank">탐나오쿠폰_VIP</a></li>
+						<li><a href="mail/bestUserSendMail.html" target="_blank">탐나오쿠폰_우수</a></li>
+						<li><a href="mail/sendEmails.html" target="_blank">마케팅</a></li>
+						<li><a href="mail/sendEVNTEmails.html" target="_blank">마케팅_이벤트</a></li>
+						<li><a href="mail/sendPLANEmails.html" target="_blank">마케팅_기획전</a></li>
+						<li><a href="mail/freeCoupon.html" target="_blank">할인쿠폰_소셜상품</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>메일발송(업체)</h2>
+					<ul class="depth1">
+						<li><a href="mail/corpAppro.html" target="_blank">입점승인</a></li>
+						<li><a href="mail/orderCompleteCorp.html" target="_blank">예약완료_실시간상품</a></li>
+						<li><a href="mail/orderCompleteCorp2.html" target="_blank">구매완료_제주특산품</a></li>
+						<li><a href="mail/cancelReqCorp.html" target="_blank">예약취소처리요청_실시간상품</a></li>
+						<li><a href="mail/cancelReqCorp2.html" target="_blank">구매취소처리요청_특산기념품</a></li>
+						<li><a href="mail/otoinqCorp.html" target="_blank">1:1문의</a></li>
+					</ul>
+				</div>
+<!--				<div class="list">-->
+<!--					<h2>MAP 서비스</h2>-->
+<!--					<ul class="depth1">-->
+<!--						<li><a href="map-01.html" target="_blank">MAP 서비스</a></li>-->
+<!--					</ul>-->
+<!--				</div>-->
+				<div class="list">
+					<h2>제주특산품</h2>
+					<ul class="depth1">
+<!--						<li><a href="specialties-01.html" target="_blank">특산품 메인</a></li>-->
+<!--						<li><a href="mw/sub_specialties1.html" target="_blank">특산품 메인(mobile)</a></li>-->
+						<li><a href="mw/sub_ticket2.html" target="_blank">특산품 상세(mobile)</a></li>
+						<li><a href="specialties-03.html" target="_blank">특산품 결제 확인</a></li>
+						<li><a href="mw/sub_specialties3.html" target="_blank">특산품 결제 확인(mobile)</a></li>
+						<li><a href="mw/sub_mypage1.html" target="_blank">나의 예약/구매 내역(mobile)</a></li>
+						<li><a href="mw/sub_specialties4_2.html" target="_blank">나의 예약/구매 내역 상세(mobile)</a></li>
+						<li><a href="sub13-01_01.html" target="_blank">장바구니</a></li>
+						<li><a href="mw/sub_specialties5.html" target="_blank">장바구니(mobile)</a></li>
+<!--						<li><a href="sub08-01_03.html" target="_blank">특산품 이벤트 상세</a></li>-->
+					</ul>
+				</div>
+				<div class="list">
+					<h2 class="manager-page">BI시스템</h2>
+					<ul class="depth1">
+						<li><a href="oss/bi-system_01.html" target="_blank">고객이용 통계</a></li>
+						<li><a href="oss/bi-system_02-01.html" target="_blank">입점업체 통계 - 전체</a></li>
+						<li><a href="oss/bi-system_02-02.html" target="_blank">입점업체 통계 - 숙소</a></li>
+						<li><a href="oss/bi-system_02-03.html" target="_blank">입점업체 통계 - 렌터카</a></li>
+						<li><a href="oss/bi-system_02-04.html" target="_blank">입점업체 통계 - 관광지</a></li>
+						<li><a href="oss/bi-system_02-05.html" target="_blank">입점업체 통계 - 패키지</a></li>
+						<li><a href="oss/bi-system_03-01.html" target="_blank">판매 통계 - 월간매출통계</a></li>
+						<li><a href="oss/bi-system_03-01_02.html" target="_blank">판매 통계 - 월간매출통계 → 상세</a></li>
+						<li><a href="oss/bi-system_03-01_03.html" target="_blank" class="line---height">판매 통계 - 월간매출통계 → 상세<br> → 취소통계 상세</a></li>
+						<li><a href="oss/bi-system_03-02.html" target="_blank">판매 통계 - 전체 상품</a></li>
+						<li><a href="oss/bi-system_03-03.html" target="_blank">판매 통계 - 항공</a></li>
+						<li><a href="oss/bi-system_03-04.html" target="_blank">판매 통계 - 숙소</a></li>
+						<li><a href="oss/bi-system_03-04(2).html" target="_blank">판매 통계 - 숙소(검색결과)</a></li>
+						<li><a href="oss/bi-system_03-05.html" target="_blank">판매 통계 - 렌터카</a></li>
+						<li><a href="oss/bi-system_03-06.html" target="_blank">판매 통계 - 관광지</a></li>
+						<li><a href="oss/bi-system_03-07.html" target="_blank">판매 통계 - 패키지</a></li>
+						<li><a href="oss/bi-system_04-01.html" target="_blank">광고수익률 통계 - 월별</a></li>
+						<li><a href="oss/bi-system_04-02.html" target="_blank">광고수익률 통계 - 일별</a></li>
+						<li><a href="oss/bi-system_05-01.html" target="_blank">정산 통계</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2 class="manager-page">B2B시스템</h2>
+					<ul class="depth1">
+						<li><a href="oss/b2b-01.html" target="_blank">B2B시스템 이란?</a></li>
+						<li><a href="oss/b2b-02.html" target="_blank">이용약관</a></li>
+						<li><a href="oss/b2b-03.html" target="_blank">판매대행 계약요청</a></li>
+						<li><a href="oss/b2b-04.html" target="_blank">B2B그룹관리</a></li>
+						<!-- <li><a href="oss/b2b-05.html" target="_blank">B2B그룹 요금관리(숙박)</a></li> -->
+						<li><a href="oss/b2b-11_02.html" target="_blank">B2B 상품구매하기(숙박-상세)</a></li>
+						<li><a href="oss/b2b-12.html" target="_blank">B2B 상품구매하기(렌터카)</a></li>
+						<li><a href="oss/b2b-13.html" target="_blank">B2B 상품구매하기(예약)</a></li>
+						<li><a href="oss/b2b-14.html" target="_blank">B2B 상품구매하기(결제)</a></li>
+						<li><a href="oss/b2b-15.html" target="_blank">B2B 상품구매하기(결제완료)</a></li>
+						<li><a href="oss/b2b-16.html" target="_blank">B2B 상품구매하기(결제실패)</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2 class="manager-page">관리자(기타)</h2>
+					<ul class="depth1">
+						<li><a href="oss/ad-price.html" target="_blank">연박 요금관리</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2 class="manager-page">QR코드</h2>
+					<ul class="depth1">
+						<li><a href="mw/qr-code.html" target="_blank">QR 코드</a></li>
+					</ul>
+				</div>
+<!--				<div class="list">-->
+<!--					<h2>MD’s Pick!</h2>-->
+<!--					<ul class="depth1">-->
+<!--						<li><a href="md-list.html" target="_blank">숙소 - 상품목록</a></li>-->
+<!--						<li><a href="mw/md-list.html" target="_blank">숙소 - 상품목록(mobile)</a></li>-->
+<!--						<li><a href="md-list2.html" target="_blank">관광지 - 상품목록</a></li>-->
+<!--						<li><a href="mw/md-list2.html" target="_blank">관광지 - 상품목록(mobile)</a></li>-->
+<!--					</ul>-->
+<!--				</div>-->
+<!--				<div class="list">-->
+<!--					<h2>제주로옵서예</h2>-->
+<!--					<ul class="depth1">-->
+<!--						<li><a href="mw/jeju-event.html" target="_blank">행사개요 (mobile)</a></li>-->
+<!--					</ul>-->
+<!--				</div>-->
+<!--				<div class="list">-->
+<!--					<h2>단독 페이지</h2>-->
+<!--					<ul class="depth1">-->
+<!--						<li><a href="grand-sale.html" target="_blank">그랜드 세일</a></li>-->
+<!--					</ul>-->
+<!--				</div>-->
+			</div> <!-- //listWrap -->
+		</section>
+	</main>
+	
+	<footer>
+		<div class="warning-info">
+			<h3>Memo</h3>
+            <p>Site-map Management : Desgin Team</p>
+			<p>리스트 페이지 : new contents wrap ></p>
+			<p>상세 페이지 : new contents wrap > detail 공통 사용(개별css사용불가)</p>
+		</div>
+	</footer>
+</body>
+</html>

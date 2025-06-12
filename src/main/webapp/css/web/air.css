@@ -1,0 +1,200 @@
+@charset "utf-8";
+@import url("webFont.css"); /* 웹폰트 로드 */
+
+
+
+/* --------------------------------------------------------- style common  ------------------------------------------------------------------ */
+input[type="text"], input[type="password"], select {padding-left: 5px; padding-right: 5px;}
+
+/* top title */
+header {border-top: 3px solid #4b96fa; padding: 30px 0 10px;}
+header .top-title {width: 980px; margin: 0 auto; font-size: 28px;}
+header .top-title img {margin-right: 15px;}
+
+/* contents wrap */
+.container-wrap {width: 980px; margin: 0 auto; padding-bottom: 100px;}
+.comm-area1 {margin-top: 30px;}
+.comm-innerText {background: #f4f4f4; border: 1px solid #bfbfbf; padding: 20px;}
+.comm-innerText .point {color: #df1414;}
+.comm-innerText2 {border: 1px solid #bfbfbf; padding: 20px;}
+.comm-innerText2 .point {color: #df1414;}
+.comm-memo {font-size: 12px; line-height: 20px;}
+.comm-memo2 {font-size: 12px; line-height: 20px; margin-top: 15px;}
+.comm-tInfo1 {font-size: 13px; margin-bottom: 10px;}
+.comm-agree {margin-top: 10px;}
+
+/* title list style */
+.comm-title1 {font-size: 16px; background: url("../../images/web/air2/list1.jpg") no-repeat left center; padding-left: 10px; margin-bottom: 10px;}
+.comm-title1 .sub-text {color: #ef2222; font-size: 14px;}
+.comm-title1 .point {color: #ef2222; font-size: 12px;}
+.comm-title2 {font-size: 16px; background: url("../../images/web/air2/list2.png") no-repeat left center; padding-left: 20px; margin-bottom: 10px;}
+.comm-title3 {font-size: 14px; background: url("../../images/web/air2/list2.png") no-repeat left center; padding-left: 20px; margin-bottom: 10px;}
+.comm-title4 {font-size: 18px; background: url("../../images/web/air2/list3.jpg") no-repeat left center; padding-left: 20px; margin-bottom: 10px;}
+
+/* ul list style */
+.comm-list1 {font-size: 13px; line-height: 24px;}
+.comm-list1 li {background: url("../../images/web/air2/list4.gif") no-repeat left center; padding-left: 10px;}
+
+/* table (col) */
+.comm-col {font-size: 13px; width: 100%; border-top: 1px solid #9c9c9c; border-bottom: 1px solid #bfbfbf; border-spacing:0px; border-collapse:collapse;}
+.comm-col .left {text-align: left; padding-left: 10px; padding-right: 10px;}
+.comm-col thead th {background: #f6f6f6; color: #231e1e; border-bottom: 1px solid #9c9c9c; border-left: 1px solid #e1e1e1; padding: 15px 0; text-align: center;}
+.comm-col thead th:first-child {border-left: none;}
+.comm-col tbody td {color: #231e1e; padding: 15px 0; text-align: center; border: 1px solid #e1e1e1;}
+.comm-col tbody td:first-child {border-left: none;}
+.comm-col tbody td:last-child {border-right: none;}
+.comm-col tfoot td {background: #f6f6f6; padding: 30px 50px; text-align: right; font-size: 18px; font-weight: 700; color: #171212;}
+.comm-col tfoot td .sum {display: inline-block; margin: 0 10px;}
+.comm-col tfoot td .price {color: #f2382c; font-size: 24px;}
+/* table (row) */
+.comm-row {font-size: 13px; width: 100%; border-top: 1px solid #9c9c9c; border-bottom: 1px solid #bfbfbf; border-spacing:0px; border-collapse:collapse;}
+.comm-row th {width: 140px; background: #f6f6f6; color: #231e1e; padding: 15px 0; text-align: center; border-bottom: 1px solid #e8e7e7;}
+.comm-row td {padding: 12px 15px; /*width: 35%;*/ border-bottom: 1px solid #e8e7e7;}
+.comm-row .call input {width: 86px;}
+/* table (row) - layer popup */
+/*.comm-popup .comm-row {border-top: 1px solid #e8e7e7; border-bottom: 1px solid #e8e7e7;}*/
+.comm-popup .comm-row th {width: 120px; padding: 10px 0;}
+.comm-row td {padding: 10px 15px;}
+table.diff {margin-top: 10px;}
+
+/* table type */
+table input.basic {width: 190px;}
+table input.mini {width: 60px;}
+table label {margin-right: 8px;}
+table label.info {color: #999999; margin-left: 8px;}
+table span.info {font-size: 11px;}
+table .strong {font-size: 14px; color: #ca040d;}
+
+/* button */
+.comm-button {text-align: center; margin: 30px 0;}
+.comm-button > * {display: inline-block; background: #9fa1a2; color: #fff; min-width: 180px; line-height: 45px; font-weight: 700; vertical-align: middle; font-size: 15px;}
+.comm-button a:hover {color: #fff; text-decoration: underline;}
+.comm-button .select {background: #0287de;}
+.comm-button img.icon {margin-right: 5px;}
+/* button2 */
+.comm-button2 {text-align: right; border: 1px solid #e8e7e7; border-top: none; padding: 15px;}
+.comm-button2 > * {display: inline-block; background: #9fa1a2; color: #fff; min-width: 160px; line-height: 40px; font-weight: 700; vertical-align: middle; font-size: 13px; text-align: center;}
+.comm-button2 a:hover {color: #fff; text-decoration: underline;}
+.comm-button2 .select {background: #0287de;}
+
+
+/* tab panel */
+.comm-tabMenu ul.menuList {overflow: hidden;}
+.comm-tabMenu ul.menuList li {float: left; background: #f5f5f5; text-align: center; width: 33%; width: calc(33.3% - 2px); border: 1px solid #cccccc;}
+.comm-tabMenu ul.menuList li:first-child {width: 33%; width: calc(33.4% - 2px);}
+.comm-tabMenu ul.menuList li a {color: #262020; font-size: 14px; line-height: 38px; display: block; font-weight: 700;}
+.comm-tabMenu ul.menuList li a.select {background: #6d6d6d; color: #fff;}
+.comm-tabMenu .tabPanel {border: 1px solid #e8e7e7; border-top: none;}
+.comm-tabMenu .tabPanel .agree-info {padding: 20px; height: 300px; overflow-y: auto; line-height: 20px;}
+.comm-tabMenu .tabPanel .agree-info dt {font-weight: 700; margin-top: 20px; font-size: 13px;}
+.comm-tabMenu .tabPanel .agree-info dt:first-child {margin-top: 0;}
+.comm-tabMenu .tabPanel .agree-info dd {font-size: 12px;}
+.comm-tabMenu .agree-check {border: 1px solid #e8e7e7; border-top: none; padding: 15px; position: relative;}
+.comm-tabMenu .agree-check span {display: inline-block; margin-left: 10px;}
+.comm-tabMenu .agree-check span:first-child {margin-left: 0;}
+.comm-tabMenu .agree-check span.all {position: absolute; right: 15px;}
+
+/* layer popup1 */
+.comm-popup {
+	position: fixed; top: 0; bottom: 0; left: 0; right: 0; margin: auto; background: #fff; border: 3px solid #229fd9; z-index: 100;
+    width: 660px; height: 430px; max-width: 100%; max-height: 100%; overflow-y: auto; display: none;
+    padding: 35px 20px; padding-bottom: 50px;
+}
+.comm-popup .popup-content {display: none;}
+.comm-popup .close {position: absolute; right: 20px; top: 34px;}
+/* layer popup2 */
+.comm-popup2 {
+	position: fixed; top: 0; bottom: 0; left: 0; right: 0; margin: auto; background: #fff; border: 3px solid #229fd9; z-index: 100;
+    width: 660px; height: 320px; max-width: 100%; max-height: 100%; overflow-y: auto; display: none;
+    padding: 35px 20px; padding-bottom: 50px;
+}
+.comm-popup2 .popup-content {display: none;}
+.comm-popup2 .close {position: absolute; right: 20px; top: 34px;}
+/* --------------------------------------------------------- //style common  ------------------------------------------------------------------ */
+
+
+/* 선택하신 항공편 */
+table.flight th.title1 {width: 20%;}
+table.flight th.title2 {width: 20%;}
+table.flight th.title3 {width: 20%;}
+table.flight th.title4 {}
+table.flight th.title5 {width: 15%;}
+
+/* 탑승객 정보입력 */
+table.passengers th.title1 {width: 8%;}
+table.passengers th.title2 {width: 14%;}
+table.passengers th.title3 {width: 12%;}
+table.passengers th.title4 {width: 13%;}
+table.passengers th.title5 {}
+table.passengers input.f-name {width: 40px;}
+table.passengers input.l-name {width: 70px;}
+table.passengers input.birth {width: 100px;}
+table.passengers .air-company {display: inline-block; margin: 0 5px; width: 90px;}
+table.passengers ul.sale-list li.air-come {border-top: 1px solid #e8e7e7; padding-top: 8px; margin-top: 8px;}
+table.passengers .sale-option {width: 350px;}
+
+/* 탑승자별 운임 */
+table.fare th.title1 {width: 8%;}
+table.fare th.title2 {width: 14%;}
+table.fare th.title3 {width: 10%;}
+table.fare .add-come {border-top: 1px solid #e8e7e7; margin-top: 12px; padding-top: 12px;}
+
+/* 예약완료 */
+.container-wrap .area-title {border: 1px solid #d8d5d5; margin-top: 25px; text-align: center; padding: 30px 0;}
+.container-wrap .area-title h2 {font-size: 30px;}
+.container-wrap .area-title p {font-size: 14px; margin-top: 15px;}
+
+/* 예약완료 > 탑승자 정보보기 */
+.total-wrap .accordion dt {background: #45a1fc; color: #fff; font-size: 18px; text-align: center; padding: 20px 0; cursor: pointer;}
+.total-wrap .accordion dt::after {content: url(../../images/web/air2/ar_bottom.png); margin-left: 10px;}
+.total-wrap .accordion dt.open::after {content: url(../../images/web/air2/ar_top.png); margin-left: 10px;}
+.accordion dd {display: none;}
+
+/* 항공권 결제 */
+.comm-popup select.card {width: 200px;}
+.comm-popup .card-number input {width: 70px;}
+.comm-popup td.certification input {width: 84px;}
+table.card-info th.title1 {width: 40%;}
+table.card-info tbody td {text-align: left !important; padding-left: 10px; font-size: 12px;}
+
+/* 결제완료 */
+.comm-popup .info-wrap {text-align: center; padding: 70px 0 20px;}
+.comm-popup .info-wrap .comm-button {margin-top: 50px;}
+.comm-popup .info-title {font-size: 18px; color: #1b75db; margin-top: 30px;}
+.comm-popup .info-price {font-size: 18px; border: 1px solid #c5c5c5; padding: 10px 0; width: 380px; margin: 0 auto; margin-top: 15px;}
+.comm-popup .info-price strong {font-family: 'Noto Sans KR', sans-serif; color: #ff2d68; font-size: 20px;}
+.comm-popup .info-price span {font-family: 'Noto Sans KR', sans-serif; font-size: 16px; font-weight: 700;}
+.comm-popup .info-noti {font-size: 13px; margin-top: 15px; line-height: 18px;}
+/* 예약취소 */
+.comm-popup2 .info-wrap {text-align: center; padding: 50px 0;}
+.comm-popup2 .info-title {font-size: 18px; margin-top: 30px; text-align: center;}
+.comm-popup2 .pdWrap {padding: 70px 0;}
+.comm-popup2 .info-title {font-size: 18px; color: #1b75db; margin-top: 30px;}
+.comm-popup2 .info-noti {font-size: 13px; margin-top: 15px; line-height: 18px;}
+.comm-popup2 .comm-button {margin-bottom: 0;}
+.comm-popup2 .info-wrap .comm-button {margin: 50px 0; margin-bottom: 0;}
+
+
+/* 가는항공편/오는항공편 */
+.air-result {border: 1px solid #d9d8d8; overflow: hidden;}
+.air-result > div {float: left; width: 50%;}
+.air-result .lArea {border-right: 1px solid #d9d8d8; width: 49.8%; width: calc(50% - 1px);}
+.air-result .lArea h5.date {background: #91b2e4;}
+.air-result .rArea h5.date {background: #ada4cc;}
+.air-result h5.date {color: #fff;}
+.air-result h5.date img {margin-right: 5px;}
+.air-result h5.date span {color: #f1fa01; margin-left: 15px;}
+.air-result .comm-list1 {padding: 30px;}
+table.go-come thead .title1 {width: 25%;}
+table.go-come thead .title2 {width: 25%;}
+table.go-come thead .title3 {width: 25%;}
+
+/* 총액/예약하기 */
+.air-total {border: 2px solid #4b96fa; padding: 30px;}
+.air-total .info {font-size: 12px;}
+.air-total .total {text-align: right; font-size: 16px; font-weight: 700;}
+.air-total .total * {font-weight: 700;}
+.air-total .total .price {color: #f2382c; font-size: 20px;}
+.air-total .total img.sum {position: relative; top: -1px; display: inline-block; margin: 0 5px;}
+.air-total .bt {display: inline-block; background: #0287de; color: #fff; min-width: 110px; line-height: 40px; text-align: center; margin-left: 10px;}
+.air-total .bt:hover {text-decoration: underline;}

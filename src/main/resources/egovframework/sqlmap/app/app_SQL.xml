@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="app">
+
+<resultMap id="DEVICEINF_R_00" class="mw.app.vo.DEVICEINFVO">
+<result property="deviceNum" 	column="DEVICE_NUM" />
+<result property="regId" 		column="REG_ID" />
+<result property="telNum" 		column="TEL_NUM" />
+<result property="deviceDiv" 	column="DEVICE_DIV" />
+<result property="deviceVer" 	column="DEVICE_VER" />
+<result property="pushYn" 		column="PUSH_YN" />
+<result property="frstRegDttm" 	column="FRST_REG_DTTM" />
+<result property="lastModDttm" 	column="LAST_MOD_DTTM" />
+</resultMap>
+
+<select id="DEVICEINF_S_00" resultMap="DEVICEINF_R_00">
+SELECT DEVICE_NUM       /*디바이스 번호*/
+     , REG_ID           /*등록 아이디*/
+     , TEL_NUM          /*전화 번호*/
+     , DEVICE_DIV       /*디바이스 구분*/
+     , DEVICE_VER       /*디바이스 버전*/
+     , PUSH_YN          /*푸시 여부*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+  FROM TB_DEVICEINF
+</select>
+
+<select id="DEVICEINF_S_01" resultMap="DEVICEINF_R_00">
+SELECT DEVICE_NUM       /*디바이스 번호*/
+     , REG_ID           /*등록 아이디*/
+     , TEL_NUM          /*전화 번호*/
+     , DEVICE_DIV       /*디바이스 구분*/
+     , DEVICE_VER       /*디바이스 버전*/
+     , PUSH_YN          /*푸시 여부*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+  FROM TB_DEVICEINF
+ WHERE REG_ID = #regId#
+</select>
+
+
+<insert id="DEVICEINF_I_00">
+INSERT INTO TB_DEVICEINF
+     ( DEVICE_NUM       /*디바이스 번호*/
+     , REG_ID           /*등록 아이디*/
+     , TEL_NUM          /*전화 번호*/
+     , DEVICE_DIV       /*디바이스 구분*/
+     , DEVICE_VER       /*디바이스 버전*/
+     , PUSH_YN          /*푸시 여부*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     )
+VALUES 
+     ( #deviceNum#
+     , #regId#
+     , #telNum#
+     , #deviceDiv#
+     , #deviceVer#
+     , #pushYn#
+     , SYSDATE
+     , SYSDATE
+     )
+</insert>
+
+<update id="DEVICEINF_M_00">
+MERGE INTO TB_DEVICEINF DEVICE1
+ USING (SELECT #regId# AS REG_ID
+          FROM DUAL) DEVICE2
+    ON (DEVICE2.REG_ID = DEVICE1.REG_ID)
+  WHEN MATCHED THEN
+UPDATE SET
+       TEL_NUM    = #telNum#
+     , DEVICE_DIV = #deviceDiv#
+     , DEVICE_VER = #deviceVer#
+     , LAST_MOD_DTTM = SYSDATE
+  WHEN NOT MATCHED THEN
+INSERT 
+     ( DEVICE_NUM       /*디바이스 번호*/
+     , REG_ID           /*등록 아이디*/
+     , TEL_NUM          /*전화 번호*/
+     , DEVICE_DIV       /*디바이스 구분*/
+     , DEVICE_VER       /*디바이스 버전*/
+     , PUSH_YN          /*푸시 여부*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     )
+VALUES
+     ( 'DV'||LPAD(SEQ_DEVICE_SN.NEXTVAL, 8, '0')
+     , #regId#
+     , #telNum#
+     , #deviceDiv#
+     , #deviceVer#
+     , #pushYn#
+     , SYSDATE
+     , SYSDATE
+     )
+</update>
+
+<update id="DEVICEINF_U_01">
+UPDATE TB_DEVICEINF 
+   SET PUSH_YN = #pushYn#
+     , LAST_MOD_DTTM = SYSDATE
+ WHERE DEVICE_NUM = #deviceNum#
+</update>
+</sqlMap>

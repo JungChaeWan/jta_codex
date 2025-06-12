@@ -1,0 +1,139 @@
+@charset "utf-8";
+
+/* --------------------------------------------------------- notice  ------------------------------------------------------------------ */
+/* 콘텐츠 없을 시 */
+.board-list .BDnone {float: none; text-align: center; border: none; font-size: 14px;}
+
+
+
+/* board > list */
+.board-list .search select {width: 90px; padding-left: 8px}
+.board-list .search select,
+.board-list .search input.search-int {font-size: 0.750em; height: 32px; vertical-align: top;}
+.board-list .search input.search-int {width: 140px; padding: 6px 8px;}
+.board-list .search input.search-btn {width: 31px; height: 28px; position:absolute; right: 1px; top: 2px;}
+.board-list .search .search-box {position:relative; display:inline-block;}
+.board-list .list {background: #fff; border: 1px solid #e1e3e4; border-top: 1px solid #158acd; margin-top:5px;}
+.board-list .list ul li {border-bottom: 1px solid #f2f2f2;}
+.board-list .list ul li a {display: block; padding:15px;}
+.board-list .list ul li .title {font-size:14px; font-weight: bold; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.board-list .list ul li .title a {color:#2f2f2f; font-weight:700; vertical-align:top;}
+.board-list .list ul li .title img {height:16px; margin-right:5px; vertical-align:top;}
+.board-list .list ul li .info {display: table; width: 100%; margin-top: 8px;}
+.board-list .list ul li .info > p {display: table-cell; vertical-align: top; font-size: 12px; color: #5f5f60;}
+.board-list .list ul li .info p.date {text-align: left;}
+.board-list .list ul li .info p.count {text-align: right;}
+.board-list .list ul li .info p.count span {display: inline-block; vertical-align: top; color: #5f5f60; margin-left: 10px;}
+.board-list .list ul li .info p.count span:first-child {margin-left: 0;}
+.board-list .list ul li .info p.count span em {display: inline-block; vertical-align: middle; font-style: normal;}
+.board-list .list ul li .info p.count span img {display: inline-block; vertical-align: middle; height: 9px; margin-right: 4px;}
+.board-list .numberBT {text-align:center; margin-top:20px;}
+.board-list .numberBT span {width:27px; height:26px; line-height:25px; border:1px solid #e1e3e4; display:inline-block; font-size:12px; text-align:center; vertical-align:top;}
+.board-list .numberBT span a {display:block;}
+.board-list .numberBT span.select {background:#363b47; color:#fff;}
+.board-list .numberBT span.bt {line-height:0;}
+.board-list .numberBT span.first,
+.board-list .numberBT span.last {display:none;}
+.board-list .numberBT span img {width:26px;}
+
+
+
+/* board > detail */
+.board-detail .view-wrap {background: #fff; border: 1px solid #e1e3e4; border-top: 1px solid #158acd;}
+.board-detail .view-wrap .title-wrap {border-bottom: 1px solid #f2f2f2;}
+.board-detail .view-wrap .title-wrap h3 {color: #2f2f2f; font-size: 16px; font-weight:700;}
+.board-detail .view-wrap .title-wrap p {font-size:0.750em; margin-top:5px;}
+.board-detail .view-wrap .title-wrap p span {margin-left:10px;}
+.board-detail .view-wrap .title-wrap p span:first-child {margin-left:0;}
+.board-detail .view-wrap .memo {border-bottom: 1px solid #f2f2f2; font-size: 14px; line-height: 24px;}
+.board-detail .view-wrap .memo img {max-width:100%; margin:5px 0;}
+.board-detail .view-wrap .memo img:first-child {margin-top:0;}
+.board-detail .view-wrap .title-wrap,
+.board-detail .view-wrap .memo {padding:15px;}
+.board-detail .view-wrap .file {font-size:0.750em;}
+.board-detail .view-wrap .file .title {font-weight:700; color:#2f2f2f; width:65px;}
+.board-detail .view-wrap .file .title,
+.board-detail .view-wrap .file .fileName {display:table-cell; vertical-align:middle;}
+.board-detail .view-wrap .file ul li {border-bottom:1px solid #f2f2f2; padding:15px;}
+.board-detail .view-wrap .file ul li:last-child {border-bottom:none;}
+.board-detail .navi-wrap .navi {margin-top: 5px; background: #fff; border: 1px solid #e1e3e4;}
+.board-detail .navi-wrap .navi:first-child {margin-top: 10px; background: #fff; border: 1px solid #e1e3e4;}
+.board-detail .navi-wrap .navi a {display: block; padding: 10px;}
+.board-detail .navi-wrap .navi a p {display: table; width: 100%; table-layout: fixed;}
+.board-detail .navi-wrap .navi a p span {display: table-cell; vertical-align: middle;}
+.board-detail .navi-wrap .navi a p span.icon {width: 24px; text-align: center;}
+.board-detail .navi-wrap .navi a p span.icon img {width: 12px; height: 7px; position: relative; top: -2px;}
+.board-detail .navi-wrap .navi a p span.text {font-size: 12px; font-weight: 700; color: #2f2f2f; width: 50px;}
+.board-detail .navi-wrap .navi a p span.title {font-size: 12px; color: #5f5f60; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+
+.board-detail .comment-wrap {margin-top: 20px; background: #fff; border: 1px solid #e1e3e4; padding: 10px;}
+.board-detail .comment-wrap ul li {border-top: 1px solid #e1e3e4; padding: 10px 0;}
+.board-detail .comment-wrap ul li:first-child {border-top: none; padding-top: 0;}
+.board-detail .comment-wrap ul li:last-child {padding-bottom: 0;}
+.board-detail .comment-wrap ul li .l-area, .board-detail .comment-wrap ul li .r-area {display: table-cell;}
+.board-detail .comment-wrap ul li .l-area {width: 16px;}
+.board-detail .comment-wrap ul li .re img {width: 8px; position: relative; top: -2px;}
+.board-detail .comment-wrap ul li .nickname {position:relative;}
+.board-detail .comment-wrap ul li .nickname .name {font-size: 13px; color: #2c2d33;}
+.board-detail .comment-wrap ul li .nickname .date {font-size:12px; color:#999999; margin-left:5px;}
+.board-detail .comment-wrap ul li .memo {font-size: 12px; margin-top: 6px; line-height: 20px;}
+
+
+
+/* write (글쓰기-insert) */
+.board-list .write * {font-size:12px;}
+.board-list .write .wrSP {margin-top:10px;}
+.board-list .write .wrSP:first-child {margin-top:0;}
+.board-list .write .wrSP ul.file li {border-bottom:1px solid #e1e3e4; padding:10px 0;}
+.board-list .write .wri {width:100%; padding:4px 6px;}
+.board-list .write .titBT {display:inline-block; background:#363b47; color:#fff; padding:3px 6px; border:none; margin-left:8px;}
+.board-list .write .fileMemo {margin-top:5px; display:block;}
+
+/* write2 (table) */
+.board-list .tbWrite {border-top:2px solid #333333;}
+.board-list .tbWrite ul {display:table; width:100%; border-bottom:1px solid #e1e3e4;}
+.board-list .tbWrite ul li {display:table-cell; vertical-align:middle; padding:12px 0; font-size:0.750em;}
+.board-list .tbWrite ul li.title {background:#f2f2f2; color:#1b1b1b; font-weight:700; width:25%; min-width:90px; text-align:center;}
+.board-list .tbWrite ul li.text {padding:10px 10px;}
+.board-list .tbWrite input,
+.board-list .tbWrite textarea {
+  padding:4px 6px;
+}
+.board-list .tbWrite ul li.text .mail {width:25%;}
+.board-list .tbWrite ul li.text select.mail {width:35%;}
+
+/* delete */
+.board-list .delete .delText {text-align:center; padding:30px 0; font-size:0.875em; border-top:2px solid #333; border-bottom:1px solid #e1e3e4; font-weight:700;}
+
+/* reply form */
+.board-list .reply .replyWrite label {font-size:12px;}
+.board-list .reply .replyWrite input#name {margin-left:5px; padding:4px 6px; font-size:12px;}
+.board-list .reply .replyWrite > textarea {width:100%; margin-top:10px; font-size:12px;}
+
+/* pass form */
+.board-list .pass .passList {border-top:2px solid #333333;}
+.board-list .pass .passList li {border-bottom:1px solid #e1e3e4; display:table; width:100%;}
+.board-list .pass .passList li .title,
+.board-list .pass .passList li .memo {display:table-cell; padding:10px 0;}
+.board-list .pass .passList li .title {width:85px; background:#f2f2f2; text-align:center; font-weight:700; font-size:12px;}
+.board-list .pass .passList li .memo {font-size:12px; padding:0 10px;}
+.board-list .pass .passList li .memo input {padding:4px; width:100%; max-width:220px;}
+
+/* 게시글 없을때 */
+.board-list .commNone {text-align:center; font-size:0.875em; padding:80px 10px; border-top:1px solid #e1e3e4; border-bottom:1px solid #e1e3e4;}
+/* --------------------------------------------------------- //notice  ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- gallery (photo)  ------------------------------------------------------------------ */
+/* list */
+.board-list .galleryListWrap {margin-top:15px;}
+.board-list .galleryListWrap ul.galleryList {overflow:hidden;}
+.board-list .galleryListWrap ul.galleryList li {float:left; border:1px solid #e1e3e4; padding:8px; text-align:center; margin-bottom:10px; margin-right:8px; width:118px;}
+.board-list .galleryListWrap ul.galleryList li .photoBox {height:80px; overflow:hidden; background-color:#f2f2f2; border:1px solid #e1e3e4; position:relative;}
+.board-list .galleryListWrap ul.galleryList li .photoBox:hover {border:1px solid #be1e2d;}
+.board-list .galleryListWrap ul.galleryList li .photoBox a {display:block;}
+.board-list .galleryListWrap ul.galleryList li .photoBox img {position:absolute; top:0; bottom:0; left:0; right:0; max-width:100%; max-height:100%; margin:auto;}
+.board-list .galleryListWrap ul.galleryList li .title {font-size:12px; margin-top:15px; margin-bottom:5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-align:left;}
+.board-list .galleryListWrap ul.galleryList li .Info span {display:block; text-align:left; font-size:11px; color:#999999; line-height:18px;}
+/* --------------------------------------------------------- //gallery (photo)  ------------------------------------------------------------------ */

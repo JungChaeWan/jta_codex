@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script src="../../js/air_step1.js"></script>
+
+	<!-- css -->
+	<link rel="stylesheet" href="../../css/common/jquery-ui.css?version=1.2">
+	<link rel="stylesheet" href="../../css/web/common.css?version=1">
+	<link rel="stylesheet" href="../../css/web/style.css?version=1">
+	<link rel="stylesheet" href="../../css/web/sub.css">
+	<link rel="stylesheet" href="../../css/common/multiple-select.css">
+	<link rel="canonical" href="https://www.tamnao.com">
+	<link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.tamnao.com/mw">
+
+	<!-- script -->
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui.js"></script>
+	<script src="../../js/jquery.cookie.js"></script>
+	<script src="../../js/swiper.js"></script>
+	<script src="../../js/html_common.js"></script>
+	<script src="../../js/html_style.js"></script>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script type="text/javascript"></script>
+</head>
+<body>
+<!-- re_header -->
+<div id="_header">
+
+	<!-- top banner zone-->
+	<div id="top_banner" class="top-banner swiper-container">
+		<ul class="swiper-wrapper">
+			<li class="swiper-slide">
+				<a href="${result.url}" target="_blank">
+					<div class="bar-tw">
+						<p class="bar-t"><em class="bar-em">회원가입</em>만 해도 혜택이 팡팡!</p>
+					</div>
+					<img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+				</a>
+			</li>
+			<li class="swiper-slide">
+				<a href="${result.url}" target="_blank">
+					<div class="bar-tw">
+						<p class="bar-t">착한수수료 동참을 지지하는 <em class="bar-em">댓글이벤트</em> 참여하세요!</p>
+					</div>
+					<img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+				</a>
+			</li>
+		</ul>
+		<div class="container">
+		</div>
+	</div> <!--// top banner zone-->
+
+	<!-- re_header -->
+	<div class="re_header">
+		<div class="inner">
+			<div class="header-top">
+				<div class="box__usermenu">
+					<ul class="list__usermenu">
+						<li><b>이은민</b>님 환영합니다.</li>
+						<li class="list-item">
+							<a class="link__usermenu" href="javascript:fn_login();">로그인</a>
+						</li>
+						<li class="list-item">
+							<a class="link__usermenu" href="/web/signUp00.do">회원가입</a>
+						</li>
+						<!-- 로그인 -->
+						<!--
+                        <li class="list-item">
+                            <a class="link__usermenu" href="javascript:fn_logout();">로그아웃</a>
+                        </li>-->
+						<!-- //로그인 -->
+						<li class="list-item">
+							<a class="link__usermenu" href="/web/coustmer/viewCorpPns.do">입점신청</a>
+						</li>
+						<li class="list-item">
+							<a class="link__usermenu" href="/web/bbs/bbsList.do?bbsNum=NOTICE">고객센터</a>
+						</li>
+					</ul>
+				</div>
+				<h1>
+					<a href="/" title="tamnao - 제주여행종합쇼핑몰">
+						<img src="/images/web/r_main/nao_logo2.png" alt="탐나오">
+					</a>
+				</h1>
+				<div class="srh_area">
+					<form id="submitFrm" name="submitFrm">
+						<fieldset>
+							<legend class="for-a11y"> 검색</legend>
+							<div class="top_search" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+								<input name="keyword" title="검색어 입력" class="form_input" value="[기획전] 제주 봄꽃 여행" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+								<button type="submit" title="검색" class="srh_btn" onclick="fn_searBtClick();">
+									<img src="/images/web/r_main/srh_btn.png" alt="검색">
+								</button>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="util_menu">
+					<ui>
+						<li id="unpaidInfo" class="nopay">
+							<a href="javascript:fn_DtlRsv('${unpaidRsvNum}');" class="blinking text-red">
+								<span class="ico count">&nbsp;</span>미결제상품
+								<span class="cnt">0</span>
+							</a>
+						</li>
+						<li class="coupon more">
+							<a href="/web/mypage/pocketList.do">
+								<span class="ico"></span>쿠폰
+								<span class="cnt">0</span>
+							</a>
+						</li>
+						<li class="cart more" >
+							<a href="/web/cart.do">
+								<span class="ico">&nbsp;</span>장바구니
+								<span class="cnt">0</span>
+							</a>
+						</li>
+						<li class="mypage more">
+							<a href="/web/mypage/rsvList.do">
+								<span class="ico">&nbsp;</span>마이탐나오
+							</a>
+						</li>
+					</ui>
+				</div>
+			</div>
+		</div>
+
+		<!-- global-navigation -->
+		<div class="gnb2">
+			<div class="inner">
+				<div class="box__service-all">
+					<ul class="menu">
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/av/mainList.do">항공</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/sp/vesselList.do">선박</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/stay/jeju.do">숙소</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/rentcar/car-list.do">렌터카</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C200">관광지/레저 할인쿠폰</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/sv/mainList.do">제주특산/기념품</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C270">제주마을체험</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C300">맛집</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/sp/packageList.do">여행사 상품</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/evnt/prmtPlanList.do">기획전</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/evnt/promotionList.do">이벤트</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div> <!-- //global-navigation -->
+	</div>
+</div> <!-- //re_header -->
+
+<!-- 회사소개 / 홍보영상(리스트) -->
+<main id="main">
+	<div class="mapLocation">
+		<div class="inner">
+			<span>홈</span>
+			<span class="gt">&gt;</span>
+			<span>회사소개</span>
+			<span class="gt">&gt;</span>
+			<span>홍보영상</span>
+		</div>
+	</div>
+	<div class="subContainer">
+		<div class="subHead"></div>
+		<div class="subContents">
+
+			<!-- new contents -->
+			<div class="service-center sideON">
+				<div class="bgWrap2">
+					<div class="inner">
+						<div class="tbWrap">
+
+							<!-- aside nav -->
+							<aside id="sub-leftMenu" class="smON">
+								<h4 class="title">
+									<a href="" class="title-text">회사소개</a>
+								</h4>
+								<div class="pdWrap">
+									<section>
+										<h3>회사소개</h3>
+									</section>
+									<section>
+										<h3>사회공헌</h3>
+									</section>
+									<section>
+										<h3 class="select">홍보영상</h3>
+									</section>
+								</div>
+							</aside><!-- aside nav -->
+							<div class="rContents smON">
+								<h3 class="mainTitle">홍보영상</h3>
+
+								<!-- commBoard-wrap -->
+								<div class="commBoard-wrap">
+
+									<!-- board-list -->
+									<div class="board-list">
+										<form name="frm" id="frm">
+											<input type="hidden" name="noticeNum" id="noticeNum" />
+											<input type="hidden" id="pageIndex" name="pageIndex" value="${searchVO.pageIndex}"/>
+											<input type="hidden" name="totalCnt" value="${paginationInfo.totalRecordCount}" />
+											<input type="hidden" name="totalPageCnt" value="${paginationInfo.totalPageCount}" />
+											<input type="hidden" name="pageUnit" value="9" />
+											<input type="hidden" name="pageSize" value="9" />
+
+											<!-- bdSearch -->
+											<div class="bdSearch">
+												<p class="cmTitle cmInfo">총 <span>${totalCnt}</span>개의 게시물이 있습니다.</p>
+												<div class="searchForm">
+													<input class="int" type="text" name="sSubject" id="sSubject" value="${searchVO.sSubject}" >
+													<input class="button" src="../../images/web/board/search.png" alt="검색" type="image" onclick="javascript:fn_Search('1')">
+												</div>
+											</div> <!-- //bdSearch -->
+										</form>
+
+										<!-- bdList -->
+										<div class="bdList">
+											<c:if test="${fn:length(resultList) == 0}">
+												<div class="board-not">
+													<img src="<c:url value='/images/web/board/not.png'/>" alt="">
+													<p>등록 된 홍보영상 게시물이 없습니다.</p>
+												</div> <!--//board-not-->
+											</c:if>
+											<ul class="video-list">
+												<c:forEach items="${resultList}" var="result" varStatus="status">
+													<li>
+														<a href="javascript:fn_DtlScc('${result.noticeNum}');">
+															<p class="photo"><img src="https://i.ytimg.com/vi/${result.youtubeId}/hqdefault.jpg?custom=true&amp;w=196&amp;h=110&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=Bpb6hHtTQ5raB-zO7uitKuEEkdI" alt=""></p>
+															<div class="text-wrap">
+																<p class="title">${result.subject}</p>
+																<p class="memo">${result.simpleExp}</p>
+															</div>
+														</a>
+													</li>
+													<li>
+														<a href="javascript:fn_DtlScc('${result.noticeNum}');">
+															<p class="photo"><img src="https://i.ytimg.com/vi/${result.youtubeId}/hqdefault.jpg?custom=true&amp;w=196&amp;h=110&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=Bpb6hHtTQ5raB-zO7uitKuEEkdI" alt=""></p>
+															<div class="text-wrap">
+																<p class="title">${result.subject}</p>
+																<p class="memo">${result.simpleExp}</p>
+															</div>
+														</a>
+													</li>
+													<li>
+														<a href="javascript:fn_DtlScc('${result.noticeNum}');">
+															<p class="photo"><img src="https://i.ytimg.com/vi/${result.youtubeId}/hqdefault.jpg?custom=true&amp;w=196&amp;h=110&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=Bpb6hHtTQ5raB-zO7uitKuEEkdI" alt=""></p>
+															<div class="text-wrap">
+																<p class="title">${result.subject}</p>
+																<p class="memo">${result.simpleExp}</p>
+															</div>
+														</a>
+													</li>
+													<li>
+														<a href="javascript:fn_DtlScc('${result.noticeNum}');">
+															<p class="photo"><img src="https://i.ytimg.com/vi/${result.youtubeId}/hqdefault.jpg?custom=true&amp;w=196&amp;h=110&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=Bpb6hHtTQ5raB-zO7uitKuEEkdI" alt=""></p>
+															<div class="text-wrap">
+																<p class="title">${result.subject}</p>
+																<p class="memo">${result.simpleExp}</p>
+															</div>
+														</a>
+													</li>
+													<li>
+														<a href="javascript:fn_DtlScc('${result.noticeNum}');">
+															<p class="photo"><img src="https://i.ytimg.com/vi/${result.youtubeId}/hqdefault.jpg?custom=true&amp;w=196&amp;h=110&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=Bpb6hHtTQ5raB-zO7uitKuEEkdI" alt=""></p>
+															<div class="text-wrap">
+																<p class="title">${result.subject}</p>
+																<p class="memo">${result.simpleExp}</p>
+															</div>
+														</a>
+													</li>
+												</c:forEach>
+											</ul>
+										</div> <!-- //bdList -->
+									</div> <!-- //board-list -->
+
+									<!--paginationp-->
+									<div class="pageNumber">
+										<p class="list_pageing">
+											<span class="btn">
+												<a href="#" onclick="fn_Search(1); return false;">
+													<img src="/images/web/icon/page2.png" alt="처음페이지">
+												</a>
+											</span>
+											<span class="page_prev">
+												<a href="#" onclick="fn_Search(1); return false;">
+													<img src="/images/web/icon/page1.png" alt="이전페이지">
+												</a>
+											</span>
+											<span><a href="">1</a></span>
+											<span><a href="">2</a></span>
+											<span><a href="">3</a></span>
+											<span><a href="">4</a></span>
+											<strong>5</strong>
+											<span><a href="">6</a></span>
+											<span><a href="">7</a></span>
+											<span><a href="">8</a></span>
+											<span><a href="">9</a></span>
+											<span><a href="">10</a></span>
+											<span class="btn">
+												<a href="#" onclick="fn_Search(11); return false;">
+													<img src="/images/web/icon/page3.png" alt="다음페이지">
+												</a>
+											</span>
+											<a href="#" onclick="fn_Search(11); return false;">
+												<img src="/images/web/icon/page4.png" alt="마지막페이지">
+											</a>
+											</span>
+										</p>
+									</div> <!--//paginationp-->
+								</div> <!--//commBoard-wrap-->
+							</div> <!--//rContents-->
+						</div> <!-- //bgWrap -->
+					</div> <!-- //inner -->
+				</div> <!-- //bgWrap2 -->
+			</div><!-- //new contents -->
+		</div> <!-- //subContainer -->
+</main>
+
+<!--main foot banner (사이트링크)-->
+<div class="main-footBanner">
+	<div class="inner">
+		<div id="foot_organBanner" class="swiper-container">
+			<ul class="swiper-wrapper">
+				<li class="swiper-slide">
+					<a href="http://www.jeju.go.kr/" target="_blank" title="새창">
+						<img src="../../images/web/main/organ-jejudo.jpg" alt="제주특별자치도">
+					</a>
+				</li>
+				<li class="swiper-slide">
+					<a href="http://www.visitjeju.or.kr/" target="_blank" title="새창">
+						<img src="../../images/web/main/organ-jta.jpg" alt="제주관광협회">
+					</a>
+				</li>
+				<li class="swiper-slide">
+					<a href="http://www.visitjeju.net/" target="_blank" title="새창">
+						<img src="../../images/web/main/organ-visit.jpg" alt="VISIT JEJU">
+					</a>
+				</li>
+				<li class="swiper-slide">
+					<a href="http://www.jejusi.go.kr/" target="_blank" title="새창">
+						<img src="../../images/web/main/organ-jejusi.jpg" alt="제주시">
+					</a>
+				</li>
+				<li class="swiper-slide">
+					<a href="http://www.seogwipo.go.kr/" target="_blank" title="새창">
+						<img src="../../images/web/main/organ-seogwipo.jpg" alt="서귀포시">
+					</a>
+				</li>
+				<li class="swiper-slide">
+					<a href="http://www.changwonmall.kr/" target="_blank" title="새창">
+						<img src="../../images/web/main/organ-changwon.jpg" alt="창원몰">
+					</a>
+				</li>
+				<li class="swiper-slide">
+					<a href="http://www.changwonmall.kr/" target="_blank" title="새창">
+						<img src="../../images/web/main/organ-changwon.jpg" alt="창원몰">
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div> <!--main foot banner (사이트링크)-->
+
+<div id="_footer" data-container="footer" class="footer_wrap">
+	<div class="service_support">
+		<div class="inner">
+			<ul>
+				<li>
+					<a href="/web/etc/introduction.do" target="_blank" title="새창 열림">
+						<span>회사소개</span>
+					</a>
+				</li>
+				<li>
+					<a href="/web/etc/buyToS.do" target="_blank" title="새창 열림">
+						<span>이용약관</span>
+					</a>
+				</li>
+				<li>
+					<a href="/web/coustmer/viewCorpPns.do" target="_blank" title="새창 열림">
+						<span>입점/제휴안내</span>
+					</a>
+				</li>
+				<li>
+					<a href="/web/etc/personalData.do" target="_blank" title="새창 열림">
+						<strong>개인정보취급방침</strong>
+					</a>
+				</li>
+				<li>
+					<a href="/web/coustmer/qaList.do" target="_blank" title="새창 열림">
+						<span>고객센터</span>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=6168204092" target="_blank" title="새창 열림">
+						<span>사업자정보확인</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="corp_wrap">
+		<div class="inner">
+			<div class="corp_wrap_row">
+				<div class="corp_info">
+					<dl>
+						<dt>제주특별자치도관광협회</dt>
+						<dd class="corp_info_cs">
+							<p>
+								<em>1522-3454</em>
+								<span>월~금 09:00 - 18:00</span>
+								<span>점심시간 12:00 - 13:00</span>
+							</p>
+						</dd>
+						<dd class="corp_info_tx">
+							<p>
+								<span>대표이사:부동석</span>
+								<span>63309 제주특별자치도 제주시 첨단로 213-65 제주종합비즈니스센터 3층</span>
+								<span>법인 등록번호:220121-0000107</span>
+								<span>사업자 등록번호:616-82-04092</span>
+							</p>
+							<p>
+								<span>통신판매업번호:제2018-제주아라0049호</span>
+								<span>개인정보관리책임자:김철휘</span>
+								<span>E-mail : tamnao@tamnao.com</span>
+								<span>Fax : 064-749-7445</span>
+							</p>
+						</dd>
+						<dd class="corp_info_copy">
+							<p>탐나오는 통신판매중개자로서 거래당사자가 아니므로 개별 판매자가 등록한 상품거래정보 및 거래에 대해서 책임을 지지 않습니다.</p>
+							<p>Copyright 2018. 제주특별자치도관광협회 All Rights Reserved.</p>
+						</dd>
+					</dl>
+				</div>
+				<div class="corp_rgt" >
+					<div class="f_sns">
+						<a href="https://blog.naver.com/jta0119" class="bl" target="_blank">
+							<span class="blind">블로그</span>
+						</a>
+						<a href="https://post.naver.com/jta0119" class="nv" target="_blank">
+							<span class="blind">네이버</span>
+						</a>
+						<a href="https://www.facebook.com/JEJUTAMNAOTRAVEL/" class="fb" target="_blank">
+							<span class="blind">페이스북</span>
+						</a>
+						<a href="https://www.instagram.com/tamnao_jeju/" class="ig" target="_blank">
+							<span class="blind">인스타그램</span>
+						</a>
+						<a href="https://www.youtube.com/channel/UC5Hk3MfM3RFDz5_Xm9BDJZQ" class="ub" target="_blank">
+							<span class="blind">유튜브</span>
+						</a>
+					</div>
+					<div class="f_down">
+						<a href="https://apps.apple.com/kr/app/%ED%83%90%EB%82%98%EC%98%A4-%EC%A0%9C%EC%A3%BC%EC%97%AC%ED%96%89%EC%8A%A4%ED%86%A0%EC%96%B4/id1489404866" target="_blank">
+							<img src="/images/web/r_main/apple.png" alt="애플 앱다운로드">
+							<span>ISO</span>
+						</a>
+						<a href="https://play.google.com/store/apps/details?id=kr.or.hijeju.tamnao" target="_blank">
+							<img src="/images/web/r_main/google.png" alt="구글 앱다운로드">
+							<span>Android</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="mark-zone">
+				<div class="award">
+					<ul>
+						<li><img src="/images/web/mark/gcs.png" alt="gcs"></li>
+						<li><img src="/images/web/mark/maket.png" alt="market"></li>
+						<li><img src="/images/web/mark/int.png" alt="int"></li>
+						<li><img src="/images/web/mark/web.png" alt="web"></li>
+						<li><img src="/images/web/mark/nba.png" alt="nba"></li>
+						<li><img src="/images/web/mark/ieco.png" alt="ieco"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

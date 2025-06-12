@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="bbs">
+
+<resultMap id="BBS_R_00" class="oss.bbs.vo.BBSVO">
+	<result property="bbsNum"		column="BBS_NUM" />
+	<result property="bbsNm"		column="BBS_NM" />
+	<result property="bbsDiv" 		column="BBS_DIV" />
+	<result property="admId"		column="ADM_ID" />
+	<result property="ansYn" 		column="ANS_YN" />
+	<result property="ansDelYn"		column="ANS_DEL_YN" />
+	<result property="cmtYn"		column="CMT_YN" />
+	<result property="cmtDelYn"		column="CMT_DEL_YN" />
+	<result property="edtYn"		column="EDT_YN" />
+	<result property="atcFileNum"	column="ATC_FILE_NUM" />
+	<result property="atcFileExt"	column="ATC_FILE_EXT" />
+	<result property="bbsDelYn"		column="BBS_DEL_YN" />
+	<result property="anmUseYn"		column="ANM_USE_YN" />
+	<result property="annmYn"		column="ANNM_YN" />
+	<result property="gpaUseYn"		column="GPA_USE_YN" />
+	<result property="noticeRnum"	column="NOTICE_RNUM" />
+	<result property="listAuth"		column="LIST_AUTH" />
+	<result property="dtlAuth"		column="DTL_AUTH" />
+	<result property="regAuth"		column="REG_AUTH" />
+	<result property="modAuth"		column="MOD_AUTH" />
+	<result property="delAuth"		column="DEL_AUTH" />
+	<result property="ansAuth"		column="ANS_AUTH" />
+	<result property="cmtAuth"		column="CMT_AUTH" />
+	<result property="lastModDttm"	column="LAST_MOD_DTTM" />
+	<result property="lastModId"	column="LAST_MOD_ID" />
+	<result property="frstRegDttm"	column="FRST_REG_DTTM" />
+	<result property="frstRegId"	column="FRST_REG_ID" />
+</resultMap>
+
+
+<resultMap id="BBSGRPINF_R_00" class="oss.bbs.vo.BBSGRPINFVO">
+	<result property="bbsGrpNum" 	column="BBS_GRP_NUM"/>
+	<result property="bbsGrpNm" 	column="BBS_GRP_NM"/>
+</resultMap>
+
+<resultMap id="BBSGRP_R_00" class="oss.bbs.vo.BBSGRPVO">
+	<result property="bbsNum"		column="BBS_NUM" />
+	<result property="bbsNm"		column="BBS_NM" />
+	<result property="bbsGrpNum" 	column="BBS_GRP_NUM"/>
+</resultMap>
+
+
+
+<!-- 게시판 select - 상세보기 -->
+<select id="BBS_S_00" resultMap="BBS_R_00">
+SELECT BBS_NUM, 		/*게시판 번호*/      	
+       BBS_NM,			/*게시판 이름*/      	
+       BBS_DIV,			/*게시판 구분*/      
+       ADM_ID,			/*관리자ID*/         
+       ANS_YN,			/*답변여부*/         
+       ANS_DEL_YN,		/*답변 삭제 여부*/   
+       CMT_YN,			/*댓글 여부*/	     
+       CMT_DEL_YN,		/*댓글 삭제 여부*/   
+       EDT_YN,			/*에디터 여부*/      
+       ATC_FILE_NUM,	/*첨부 파일 수*/     
+       ATC_FILE_EXT,	/*첨부파일 확장자*/  
+       BBS_DEL_YN,		/*게시판 삭제 여부*/ 
+       ANM_USE_YN,		/*공지글 사용 여부*/ 
+       ANNM_YN,			/*익명글 사용 여부*/ 
+       GPA_USE_YN,		/*평점 사용 여부*/   
+       NOTICE_RNUM,		/*게시물 행수*/	     
+       LIST_AUTH,		/*목록 권한*/        
+       DTL_AUTH,		/*상세 권한*/        
+       REG_AUTH,		/*등록 권한*/        
+       MOD_AUTH,		/*수정 권한*/        
+       DEL_AUTH,		/*삭제 권한*/        
+       ANS_AUTH,		/*답변 권한*/        
+       CMT_AUTH,		/*댓글 권한*/        
+       LAST_MOD_DTTM,	/*최종 수정 일시*/   
+       LAST_MOD_ID,		/*최종 수정 아이디*/ 
+       FRST_REG_DTTM,	/*최초 등록 일시*/   
+       FRST_REG_ID		/*최초 수정 아이디*/ 
+ FROM TB_BBS
+ WHERE 1=1
+ 	<isNotEmpty property="sBbsNum">
+	   AND BBS_NUM = #sBbsNum#
+	</isNotEmpty>
+</select>
+
+<select id="BBS_S_01" resultMap="BBS_R_00">
+SELECT BBS_NUM, 		/*게시판 번호*/      	
+       BBS_NM,			/*게시판 이름*/      	
+       BBS_DIV,			/*게시판 구분*/      
+       ADM_ID,			/*관리자ID*/         
+       ANS_YN,			/*답변여부*/         
+       ANS_DEL_YN,		/*답변 삭제 여부*/   
+       CMT_YN,			/*댓글 여부*/	     
+       CMT_DEL_YN,		/*댓글 삭제 여부*/   
+       EDT_YN,			/*에디터 여부*/      
+       ATC_FILE_NUM,	/*첨부 파일 수*/     
+       ATC_FILE_EXT,	/*첨부파일 확장자*/  
+       BBS_DEL_YN,		/*게시판 삭제 여부*/ 
+       ANM_USE_YN,		/*공지글 사용 여부*/ 
+       ANNM_YN,			/*익명글 사용 여부*/ 
+       GPA_USE_YN,		/*평점 사용 여부*/   
+       NOTICE_RNUM,		/*게시물 행수*/	     
+       LIST_AUTH,		/*목록 권한*/        
+       DTL_AUTH,		/*상세 권한*/        
+       REG_AUTH,		/*등록 권한*/        
+       MOD_AUTH,		/*수정 권한*/        
+       DEL_AUTH,		/*삭제 권한*/        
+       ANS_AUTH,		/*답변 권한*/        
+       CMT_AUTH,		/*댓글 권한*/        
+       LAST_MOD_DTTM,	/*최종 수정 일시*/   
+       LAST_MOD_ID,		/*최종 수정 아이디*/ 
+       FRST_REG_DTTM,	/*최초 등록 일시*/   
+       FRST_REG_ID		/*최초 수정 아이디*/ 
+ FROM (SELECT ROWNUM AS RN,
+ 			BBS_NUM, 		/*게시판 번호*/      	
+			BBS_NM,			/*게시판 이름*/      	
+			BBS_DIV,			/*게시판 구분*/      
+			ADM_ID,			/*관리자ID*/         
+			ANS_YN,			/*답변여부*/         
+			ANS_DEL_YN,		/*답변 삭제 여부*/   
+			CMT_YN,			/*댓글 여부*/	     
+			CMT_DEL_YN,		/*댓글 삭제 여부*/   
+			EDT_YN,			/*에디터 여부*/      
+			ATC_FILE_NUM,	/*첨부 파일 수*/     
+			ATC_FILE_EXT,	/*첨부파일 확장자*/  
+			BBS_DEL_YN,		/*게시판 삭제 여부*/ 
+			ANM_USE_YN,		/*공지글 사용 여부*/ 
+			ANNM_YN,		/*익명글 사용 여부*/ 
+			GPA_USE_YN,		/*평점 사용 여부*/   
+			NOTICE_RNUM,	/*게시물 행수*/	     
+			LIST_AUTH,		/*목록 권한*/        
+			DTL_AUTH,		/*상세 권한*/        
+			REG_AUTH,		/*등록 권한*/        
+			MOD_AUTH,		/*수정 권한*/        
+			DEL_AUTH,		/*삭제 권한*/        
+			ANS_AUTH,		/*답변 권한*/        
+			CMT_AUTH,		/*댓글 권한*/        
+			LAST_MOD_DTTM,	/*최종 수정 일시*/   
+			LAST_MOD_ID,	/*최종 수정 아이디*/ 
+			FRST_REG_DTTM,	/*최초 등록 일시*/   
+			FRST_REG_ID		/*최초 수정 아이디*/
+		 FROM (SELECT BBS_NUM, 		/*게시판 번호*/      	
+						BBS_NM,			/*게시판 이름*/      	
+						BBS_DIV,			/*게시판 구분*/      
+						ADM_ID,			/*관리자ID*/         
+						ANS_YN,			/*답변여부*/         
+						ANS_DEL_YN,		/*답변 삭제 여부*/   
+						CMT_YN,			/*댓글 여부*/	     
+						CMT_DEL_YN,		/*댓글 삭제 여부*/   
+						EDT_YN,			/*에디터 여부*/      
+						ATC_FILE_NUM,	/*첨부 파일 수*/     
+						ATC_FILE_EXT,	/*첨부파일 확장자*/  
+						BBS_DEL_YN,		/*게시판 삭제 여부*/ 
+						ANM_USE_YN,		/*공지글 사용 여부*/ 
+						ANNM_YN,		/*익명글 사용 여부*/ 
+						GPA_USE_YN,		/*평점 사용 여부*/   
+						NOTICE_RNUM,	/*게시물 행수*/	     
+						LIST_AUTH,		/*목록 권한*/        
+						DTL_AUTH,		/*상세 권한*/        
+						REG_AUTH,		/*등록 권한*/        
+						MOD_AUTH,		/*수정 권한*/        
+						DEL_AUTH,		/*삭제 권한*/        
+						ANS_AUTH,		/*답변 권한*/        
+						CMT_AUTH,		/*댓글 권한*/        
+						LAST_MOD_DTTM,	/*최종 수정 일시*/   
+						LAST_MOD_ID,	/*최종 수정 아이디*/ 
+						FRST_REG_DTTM,	/*최초 등록 일시*/   
+						FRST_REG_ID		/*최초 수정 아이디*/
+					 FROM TB_BBS
+			         WHERE 1=1
+			         <isNotEmpty property="sKey">
+						<isEqual property="sKeyOpt" compareValue="1">
+							AND BBS_NUM LIKE '%'||#sKey#||'%'
+						</isEqual>
+						<isEqual property="sKeyOpt" compareValue="2">
+							AND BBS_NM LIKE '%'||#sKey#||'%'
+						</isEqual>
+					 </isNotEmpty>
+			 		 ORDER BY BBS_NUM ASC
+				)
+)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+
+<select id="BBS_S_02" resultClass="int">
+SELECT COUNT(BBS_NUM)
+ FROM TB_BBS
+WHERE 1=1
+	<isNotEmpty property="sKey">
+		<isEqual property="sKeyOpt" compareValue="1">
+			AND BBS_NUM LIKE '%'||#sKey#||'%'
+		</isEqual>
+		<isEqual property="sKeyOpt" compareValue="2">
+			AND BBS_NM LIKE '%'||#sKey#||'%'
+		</isEqual>
+	 </isNotEmpty>
+</select>
+
+<insert id="BBS_I_00">
+INSERT INTO TB_BBS
+     ( 	BBS_NUM, 		/*게시판 번호*/      	
+		BBS_NM,			/*게시판 이름*/      	
+		BBS_DIV,		/*게시판 구분*/      
+		ADM_ID,			/*관리자ID*/         
+		ANS_YN,			/*답변여부*/         
+		ANS_DEL_YN,		/*답변 삭제 여부*/   
+		CMT_YN,			/*댓글 여부*/	     
+		CMT_DEL_YN,		/*댓글 삭제 여부*/   
+		EDT_YN,			/*에디터 여부*/      
+		ATC_FILE_NUM,	/*첨부 파일 수*/     
+		ATC_FILE_EXT,	/*첨부파일 확장자*/  
+		BBS_DEL_YN,		/*게시판 삭제 여부*/ 
+		ANM_USE_YN,		/*공지글 사용 여부*/ 
+		ANNM_YN,		/*익명글 사용 여부*/ 
+		GPA_USE_YN,		/*평점 사용 여부*/   
+		NOTICE_RNUM,	/*게시물 행수*/	     
+		LIST_AUTH,		/*목록 권한*/        
+		DTL_AUTH,		/*상세 권한*/        
+		REG_AUTH,		/*등록 권한*/        
+		MOD_AUTH,		/*수정 권한*/        
+		DEL_AUTH,		/*삭제 권한*/        
+		ANS_AUTH,		/*답변 권한*/        
+		CMT_AUTH,		/*댓글 권한*/        
+		LAST_MOD_DTTM,	/*최종 수정 일시*/   
+		LAST_MOD_ID,	/*최종 수정 아이디*/ 
+		FRST_REG_DTTM,	/*최초 등록 일시*/   
+		FRST_REG_ID		/*최초 수정 아이디*/
+     )
+VALUES
+     ( #bbsNum#,
+		#bbsNm#,
+		#bbsDiv#,
+		#admId#,
+		#ansYn#,
+		#ansDelYn#,
+		#cmtYn#,
+		#cmtDelYn#,
+		#edtYn#,
+		#atcFileNum#,
+		#atcFileExt#,
+		'N',
+		#anmUseYn#,
+		#annmYn#,
+		#gpaUseYn#,
+		#noticeRnum#,
+		#listAuth#,
+		#dtlAuth#,
+		#regAuth#,
+		#modAuth#,
+		#delAuth#,
+		#ansAuth#,
+		#cmtAuth#,
+		sysdate,
+		#frstRegId#,
+		sysdate,
+		#frstRegId#	
+     )
+</insert>
+
+<update id="BBS_U_00">
+UPDATE TB_BBS
+   SET    BBS_NM 		= #bbsNm#		
+		, BBS_DIV 		= #bbsDiv# 	
+		, ADM_ID 		= #admId#		
+		, ANS_YN 		= #ansYn# 	
+		, ANS_DEL_YN 	= #ansDelYn#	
+		, CMT_YN 		= #cmtYn#		
+		, CMT_DEL_YN 	= #cmtDelYn#	
+		, EDT_YN 		= #edtYn#		
+		, ATC_FILE_NUM 	= #atcFileNum#	
+		, ATC_FILE_EXT 	= #atcFileExt#	
+		, BBS_DEL_YN 	= #bbsDelYn#	
+		, ANM_USE_YN 	= #anmUseYn#	
+		, ANNM_YN 		= #annmYn#	
+		, GPA_USE_YN 	= #gpaUseYn#	
+		, NOTICE_RNUM 	= #noticeRnum#	
+		, LIST_AUTH 	= #listAuth#	
+		, DTL_AUTH 		= #dtlAuth#	
+		, REG_AUTH 		= #regAuth#	
+		, MOD_AUTH 		= #modAuth#	
+		, DEL_AUTH 		= #delAuth#	
+		, ANS_AUTH 		= #ansAuth#	
+		, CMT_AUTH 		= #cmtAuth#	
+		, LAST_MOD_DTTM = sysdate	
+		, LAST_MOD_ID 	= #lastModId#	
+ WHERE BBS_NUM     = #bbsNum#
+</update>
+
+<delete id="BBS_D_00">
+DELETE TB_BBS
+ WHERE BBS_NUM     = #bbsNum#
+</delete>
+
+
+<!-- 게시판그룹정보 select - 상세보기 -->
+<select id="BBSGRPINF_S_00" resultMap="BBSGRPINF_R_00">
+SELECT BBS_GRP_NUM	/*게시판 그룹 번호*/
+	, BBS_GRP_NM 	/*게사판 그룹명*/
+FROM TB_BBSGRPINF /*TABLE_게시판 그룹 정보*/
+WHERE 1=1
+	<isNotEmpty property="sBbsGrpNum">
+   		AND BBS_GRP_NUM = #sBbsGrpNum#
+	</isNotEmpty>
+</select>
+
+
+<select id="BBSGRPINF_S_01" resultMap="BBSGRPINF_R_00">
+SELECT BBS_GRP_NUM	/*게시판 그룹 번호*/
+	 , BBS_GRP_NM 	/*게사판 그룹명*/
+  FROM (SELECT ROWNUM AS RN
+             , BBS_GRP_NUM	/*게시판 그룹 번호*/
+			 , BBS_GRP_NM 	/*게사판 그룹명*/
+          FROM (SELECT BBS_GRP_NUM	/*게시판 그룹 번호*/
+					 , BBS_GRP_NM 	/*게사판 그룹명*/
+		          FROM TB_BBSGRPINF
+		         WHERE 1=1
+			     	<isNotEmpty property="sBbsGrpNm">
+				   		AND BBS_GRP_NM LIKE '%'||#sBbsGrpNm#||'%'
+				 	</isNotEmpty>
+			     ORDER BY BBS_GRP_NUM ASC
+		     )
+       )
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#) 
+</select>
+
+<select id="BBSGRPINF_S_02" resultClass="int">
+SELECT COUNT(BBS_GRP_NUM)
+  FROM TB_BBSGRPINF
+ WHERE 1=1
+	<isNotEmpty property="sBbsGrpNm">
+	   AND BBS_GRP_NM LIKE '%'||#sBbsGrpNm#||'%'
+	</isNotEmpty>
+</select>
+
+<insert id="BBSGRPINF_I_00">
+INSERT INTO TB_BBSGRPINF
+     ( BBS_GRP_NUM	/*게시판 그룹 번호*/
+	 , BBS_GRP_NM 	/*게사판 그룹명*/
+     )
+VALUES
+     (
+     	(SELECT TO_CHAR(NVL(MAX(TO_NUMBER(BBS_GRP_NUM)),0)+1)
+  			FROM TB_BBSGRPINF
+       	), 
+     	#bbsGrpNm#
+     )
+</insert>
+
+<update id="BBSGRPINF_U_00">
+UPDATE TB_BBSGRPINF
+   SET  BBS_GRP_NM		= #bbsGrpNm#  
+WHERE BBS_GRP_NUM 		= #bbsGrpNum#   
+</update>
+
+<delete id="BBSGRPINF_D_00">
+DELETE FROM TB_BBSGRPINF 
+ WHERE BBS_GRP_NUM = #bbsGrpNum#
+</delete>
+
+
+
+<!-- 게시판 그룹 목록 읽기(게시판 제목도) -->
+<select id="BBSGRP_S_00" resultMap="BBSGRP_R_00">
+SELECT BBS.BBS_NUM,
+       BBS.BBS_NM ,
+       GP.BBS_GRP_NUM
+FROM TB_BBSGRP GP
+	INNER JOIN TB_BBS BBS
+  	ON BBS.BBS_NUM = GP.BBS_NUM
+WHERE 1=1
+   	<isNotEmpty property="sBbsGrpNum">
+		AND BBS_GRP_NUM= #sBbsGrpNum#
+	</isNotEmpty>
+</select>
+
+<!-- 게시판 그룹 목록 카운트 - 있는지 확인하기 위해 사용 -->
+<select id="BBSGRP_S_01" resultClass="int">
+SELECT COUNT(BBS_NUM) AS CNT
+FROM TB_BBSGRP
+WHERE BBS_NUM = #bbsNum#
+	AND BBS_GRP_NUM = #bbsGrpNum# 
+</select>
+
+
+<insert id="BBSGRP_I_00">
+INSERT INTO TB_BBSGRP
+     ( BBS_NUM			/*게시판 번호*/
+	 , BBS_GRP_NUM		/*그룹 번호*/
+     ) 
+VALUES 
+     ( #bbsNum#     
+	 , #bbsGrpNum#      
+	 )
+</insert>
+
+<!-- 게시판 그룹 단건 삭제 -->
+<delete id="BBSGRP_D_00">
+DELETE FROM TB_BBSGRP 
+ WHERE 	BBS_NUM = #bbsNum#
+ 		AND BBS_GRP_NUM = #bbsGrpNum#
+</delete>
+
+<!-- 게시판 그룹 -그룹 정보에 있느거 전부 삭제 -->
+<delete id="BBSGRP_D_01">
+DELETE FROM TB_BBSGRP 
+ WHERE 	BBS_GRP_NUM = #bbsGrpNum#
+</delete>
+
+</sqlMap>

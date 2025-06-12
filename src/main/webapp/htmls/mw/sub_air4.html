@@ -1,0 +1,280 @@
+<?php header("Content-Type:text/html;charset=utf-8"); ?>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>제주마켓</title>
+	<link href="../../css/mw/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../css/mw/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../css/mw/common.css" rel="stylesheet">
+	<link href="../../css/mw/sub.css" rel="stylesheet">
+	<link href="../../css/mw/sub_air.css" rel="stylesheet">
+</head>
+<body>
+<div id="wrap">
+
+<!-- 헤더 s -->
+<header>
+	<h1><a href="main.html"><img src="../../images/mw/common/logo.png" width="106" alt="제주마켓"></a></h1>
+	<p class="gnb-view"><img src="../../images/mw/common/icon_menu.png" width="25" alt="메뉴보기"></p>
+	<p class="search-view"><img src="../../images/mw/common/icon_search.png" width="22" alt="검색"></p>
+	<p class="cart-view"><a href="sub_cart.html"><img src="../../images/mw/common/icon_cart.png" width="30" alt="장바구니"></a></p>
+
+	<div class="search">
+		<fieldset>
+			<div class="form-value">
+				<label for="q">검색어 입력</label>
+				<input type="text" id="q">
+			</div>
+			<input type="submit" value="검색">
+			<a href="#" class="btn-close"><img src="../../images/mw/sub_common/delete.png" width="10" alt="닫기"></a>
+		</fieldset>
+	</div>
+</header>
+<!-- 헤더 e -->
+
+<!-- 메뉴 s -->
+<nav id="gnbnavi" class="hide">
+	<p class="menu-top">
+		로그인 해주세요 <a href="login.html">로그인</a>
+	</p>
+	<ul class="menu-top">
+		<li><a href=""><img src="../../images/mw/common/icon_01.png" width="19" alt=""> 구매/예약내역</a></li>
+		<li><a href=""><img src="../../images/mw/common/icon_02.png" width="19" alt=""> 내 주변 업소</a></li>
+	</ul>
+	<div class="sub-menu">
+		<h2 class="sr-only">전체메뉴</h2>
+		<ul>
+			<li><a href="#"><img src="../../images/mw/common/icon_03.png" width="19" alt=""> 실시간예약</a>
+				<ul>
+					<li><a href="sub_air1.html">항공</a></li>
+					<li><a href="sub_hotel1.html">숙박</a></li>
+					<li><a href="sub_rent1.html">렌트카</a></li>
+					<li><a href="sub_golf1.html">골프</a></li>
+				</ul>
+			</li>
+			<li><a href="#"><img src="../../images/mw/common/icon_04.png" width="19" alt=""> 당일특가</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_05.png" width="19" alt=""> 패키지 할인상품</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_06.png" width="19" alt=""> 관광지 입장권</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_07.png" width="19" alt=""> 음식/레저/뷰티</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_08.png" width="19" alt=""> 여행경비산출</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_09.png" width="19" alt=""> 이벤트</a></li>
+			<li><a href="sub_mypage1.html"><img src="../../images/mw/common/icon_10.png" width="19" alt=""> 마이페이지</a></li>
+			<li><a href="sub_center1.html"><img src="../../images/mw/common/icon_11.png" width="19" alt=""> 고객센터</a></li>
+		</ul>
+	</div>
+	<div class="app-util">
+		<dl>
+			<dt>정보 알림 받기</dt>
+			<dd><a href=""><img src="../../images/mw/common/on.png" width="42" alt="ON"></a></dd>
+			<dt>자동로그인</dt>
+			<dd><a href=""><img src="../../images/mw/common/off.png" width="42" alt="OFF"></a></dd>
+		</dl>
+		<p>Ver 1.0.0</p>
+	</div>
+</nav>
+
+<p id="btnHideGnb" class="hide"><img src="../../images/mw/common/close.png" width="10" alt="메뉴닫기"></p>
+<!-- 메뉴 e -->
+
+<!-- 콘텐츠 s -->
+<h2 class="sr-only">서브콘텐츠</h2>
+<section id="subContent">
+
+	<div class="menu-bar">
+		<p class="btn-prev"><img src="../../images/mw/common/btn_prev.png" width="20" alt="이전페이지"></p>
+		<h1>예약하기</h1>
+	</div>
+	<div class="sub-content">
+
+	<div class="air">
+		<p class="booking-info">
+			<span class="info1">가는항공편</span>
+			<span class="info2">김포 <img src="../../images/mw/sub_common/arrow_red.png" width="14" alt=""> 제주 <img src="../../images/mw/sub_common/kor_air.png" width="15" class="airline" alt=""> 대한항공 8929편</span>
+			<span class="info3">출발 : 2015. 09. 02(화)15:30 <em>|</em> 도착 : 2015. 09. 02(화) 15:30<br>
+			좌석 : 할인석 1명 (성인1)</span>
+		</p>
+		<p class="booking-info">
+			<span class="info1">오는항공편</span>
+			<span class="info2">김포 <img src="../../images/mw/sub_common/arrow_red.png" width="14" alt=""> 제주 <img src="../../images/mw/sub_common/kor_air.png" width="15" class="airline" alt=""> 대한항공 8929편</span>
+			<span class="info3">출발 : 2015. 09. 02(화)15:30 <em>|</em> 도착 : 2015. 09. 02(화) 15:30<br>
+			좌석 : 할인석 1명 (성인1)</span>
+		</p>
+
+		<h2>예약자정보</h2>
+		<table class="bt-none">
+			<colgroup>
+				<col width="23%">
+				<col width="*">
+			</colgroup>
+			<tr>
+				<th>예약자명</th>
+				<td>김희정</td>
+			</tr>
+			<tr>
+				<th><label for="email1">이메일</label></th>
+				<td class="email">
+					<input  id="email1" type="text">
+					<span>@</span>
+					<input  id="email" type="text">
+					<select id="email2">
+						<option value="직접입력">직접입력</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th><label for="number1">전화번호</label></th>
+				<td class="tel">
+					<select id="number1">
+						<option value="직접입력">직접입력</option>
+					</select>
+					-
+					<input  id="number2" type="text">
+					-
+					<input  id="number3" type="text">
+				</td>
+			</tr>
+			<tr>
+				<th><label for="phone1">휴대폰</label></th>
+				<td class="tel">
+					<select id="phone1">
+						<option value="직접입력">직접입력</option>
+					</select>
+					-
+					<input  id="phone2" type="text">
+					-
+					<input  id="phone3" type="text">
+				</td>
+			</tr>
+		</table>
+
+		<h2>탑승객정보</h2>
+		<dl class="caution-txt bt-none">
+			<dt>탑승자 정보 입력 유의사항</dt>
+			<dd>
+				* 탑승자명이 타인일 경우 탑승이 거절되오니 반드시 주민등록증 상의 탑승자명을 기재 바랍니다.<br>
+				* 외국인일경우 여권상의 영문성함을 정확하게 기입 바랍니다.<br>
+				* 소아의경우 생년월일을 입력하지 않으면 성인요금이 적용됩니다.<br>
+				* 유아의 경우 보호자와 같은자리 탑승이며, 예약은 별도로 해주셔아합니다.<br>
+				* 항공사 마일리지는 탑승시 공항 데스크에서 적립요청하셔아 합니다.<br>
+				* 당일 결제가 아닐경우 요금이 변동될 수 있습니다.
+			</dd>
+		</dl>
+		<table class="bt-none">
+			<colgroup>
+				<col width="23%">
+				<col width="*">
+			</colgroup>
+			<tr>
+				<th>성인 1인</th>
+				<td>
+					<dl class="name">
+						<dt><label for="name1">성</label></dt>
+						<dd><input id="name1" type="text" value="김" readonly="readonly"></dd>
+						<dt><label for="name2" class="name">이름</label></dt>
+						<dd><input id="name2" type="text"  value="희정" readonly="readonly"></dd>
+						<dt>성별</dt>
+						<dd>
+							<label for="man"><input type="radio" id="man" checked> 남</label>
+							<label for="woman"><input type="radio" id="woman"> 여</label>
+						</dd>
+						<dt><label for="birth">생년월일</label></dt>
+						<dd><input  id="birth" type="text"  value="19700720" readonly="readonly"></dd>
+					</dl>
+				</td>
+			</tr>
+			<tr>
+				<th>가는항공편</th>
+				<td>
+					<dl class="airline">
+						<dt><label for="go"><img src="../../images/mw/sub_common/kor_air.png" width="15" alt="대한항공"></label></dt>
+						<dd><input type="text" id="go" value="운임대상 : 성인(14,900)" readonly="readonly"></dd>
+					</dl>
+				</td>
+			</tr>
+			<tr>
+				<th>오는항공편</th>
+				<td>
+					<dl class="airline">
+						<dt><label for="come"><img src="../../images/mw/sub_common/kor_air.png" width="15" alt="대한항공"></label></dt>
+						<dd><input type="text" id="come" value="운임대상 : 성인(14,900)" readonly="readonly"></dd>
+					</dl>
+				</td>
+			</tr>
+		</table>
+		<p class="booking-txt">예약번호와 예약안내를 위해 정확한 정보를 입력해 주세요.<br>
+		연락처가 부정확하여 발생된 불이익은 고객 과실로 당사는 일체 책임을 지지 않습니다.</p>
+
+		<h2>결제정보</h2>
+		<table class="bt-none">
+			<colgroup>
+				<col width="23%">
+				<col width="*">
+			</colgroup>
+			<tr>
+				<th>총금액</th>
+				<td><strong>000,000</strong>원</td>
+			</tr>
+			<tr>
+				<th>할인캐쉬</th>
+				<td class="cash"><strong>0,000</strong>원 | 할인캐쉬금액 : <strong>0,000</strong>원 <a href="#" class="btn btn-cash">캐쉬사용하기</a></td>
+			</tr>
+			<tr>
+				<th><label for="point">포인트</label></th>
+				<td><input  id="point" type="text"> 원 &nbsp;&nbsp;<input type="checkbox" id="check"><label for="check">모두사용</label><br>
+				*사용가능한 포인트 : <strong>0,000</strong> P</td>
+			</tr>
+			<tr>
+				<th>총결제금액</th>
+				<td class="total">000,000원</td>
+			</tr>
+		</table>
+		<p class="booking-txt caution">*09월 24일 10:00까지 결제하지 않으시면 예약이 자동 취소됩니다.</p>
+		<h2>결제방법</h2>
+			<p class="payment bt-none">
+				<input type="radio" id="credit"> <label for="credit">신용카드</label>
+				<input type="radio" id="cellphone"> <label for="cellphone">휴대폰</label>
+				<input type="radio" id="cash"> <label for="cash">실시간 계좌이체</label>
+				<input type="radio" id="kakao"> <label for="kakao">카카오페이</label><br>
+				* 실시간 항공은 신용카드만 가능합니다.
+			</p>
+			<dl class="terms">
+				<dt><input type="checkbox" id="agree1"><label for="agree1">결제대행서비스 약관에 모두 동의합니다</label></dt>
+				<dd>내용1</dd>
+				<dt><input type="checkbox" id="agree2"><label for="agree2">서비스 이용약관 동의</label></dt>
+				<dd>내용2</dd>
+				<dt><input type="checkbox" id="agree3"><label for="agree3">개인정보 수집 및 이용 동의</label></dt>
+				<dd>내용3</dd>
+			</dl>
+		<p class="btn-list"><a href="sub_air1.html" class="btn btn1">바로결제</a></p>
+
+	</div>
+	</div>
+</section>
+<!-- 콘텐츠 e -->
+
+<!-- 푸터 s -->
+<footer>
+    <ul class="list-unstyled">
+		<li><a href="">이용약관</a></li>
+		<li><a href="">개인정보처리방침</a></li>
+		<li><a href="">여행약관</a></li>
+	</ul>
+	<address>
+		상호명:제주특별자치도관광협회&nbsp; 대표:김영진&nbsp; 사업자등록번호:616-82-04092<br>
+		주소:제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층<br>
+		통신판매업번호: 제2013-제주연동 0024호<br>
+		고객센터:1577-1233 | 개인정보관리책임자:최종훈
+	</address>
+    <p>COPYRIGHT &copy; 제주특별자치도관광협회. ALL RIGHTS RESERVED</p>
+</footer>
+<!-- 푸터 e -->
+</div>
+<div id="cover"></div>
+<script src="../../js/jquery-1.11.1.js"></script>
+<script src="../../js/mw_layout.js"></script>
+</body>
+</html>

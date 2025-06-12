@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->	
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="../css/web/common.css">
+	<link rel="stylesheet" href="../css/web/style.css">
+    <!-- script -->
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/jquery-ui.js"></script>    
+    <script src="../js/html_common.js"></script>
+    <script src="../js/html_style.js"></script>
+</head>
+<body>
+    <header id="header">
+
+        <div id="topBanner">
+            <div class="Fasten">
+                <a class="img-btn" onclick="show_popup('.comm-fullPopup2');"><img src="../images/web/comm/top_banner.jpg" alt="상단배너"></a>
+                <a class="close"><img id="tbClose" src="../images/web/comm/close.png" alt="닫기"></a>
+
+                <div class="comm-fullPopup2">
+                    <a class="option-close" onclick="close_popup('.comm-fullPopup2');"><img src="../images/web/comm/view_close.png" alt="닫기"></a>
+                    <img src="../images/web/comm/top_banner_view.png" alt="배너 상세">
+                </div>
+            </div>
+        </div>
+
+        <div class="Fasten">
+            <div class="topSearch">
+                <h1 class="logo"><a href=""><img src="../images/web/comm/logo.gif" alt="탐나오"></a></h1>
+                <!-- 검색 -->
+                <p class="searchBox"><input id="search" type="text"><button id="searBT"></button></p>
+                <!-- 서브메뉴 -->
+                <nav id="topMenu">
+                    <a href="">★즐겨찾기</a>
+                    <a href="">로그인</a>
+                    <a href="">회원가입</a>
+                    <a href="">마이페이지</a>
+                    <a href="">고객센터</a>
+                </nav>
+            </div>
+        </div>
+        <!-- main menu -->
+        <nav id="mainMenu">
+            <div class="Fasten">
+                <div class="menuBT"><a id="menuBT"><img src="../images/web/comm/menu.gif" alt="메뉴"></a></div>
+                <div class="subMenu">11<br>11<br>11<br>11<br></div>
+                <ul class="mainMenu">
+                    <li><a href="air-main.html">항공</a></li>
+                    <li><a href="hotel-list.html">숙박</a></li>
+                    <li><a href="rent-list.html">렌터카</a></li>
+                    <li><a href="">관광지할인쿠폰</a></li>
+                    <li><a href="">레져/음식/뷰티</a></li>
+                    <li><a href="">카텔</a></li>
+                    <li><a href="">골프패키지</a></li>
+                    <li><a href="">버스/택시관광</a></li>
+                    <li><a href="">제주특산품</a></li>
+                    <li><a href="">특가이벤트</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- //main menu -->
+    </header>
+
+	<main id="main">
+	    <div class="mapLocation"> <!--index page에서는 삭제-->
+            <div class="Fasten">
+                <span>홈</span> <span class="gt">&gt;</span>
+                <span>제주특산품</span> <span class="gt">&gt;</span>
+                <span>결제</span>
+            </div>
+        </div>
+        <!-- quick banner -->
+        <div class="Fasten">
+            <aside id="leftAside">
+                <ul>
+                    <li><a href="http://www.hijeju.or.kr/discount/apply.htm" target="_blank"><img src="../images/web/leftBanner/01.png" alt="제주하이쿠폰"></a></li>
+                    <li><a href="http://www.jejugoldenbus.com/main/" target="_blank"><img src="../images/web/leftBanner/02.png" alt="제주황금시티투어"></a></li>
+                </ul>
+            </aside>
+
+            <aside id="rightAside">
+                <div class="fixed-wrap">
+                    <div class="ctWrap">
+
+                        <!-- 지역별 상품보기 -->
+                        <div class="product map">
+                            <h6 class="title">지역별 상품보기</h6>
+                            <div class="ct-box">
+                                <a href=""><img src="../images/web/comm/map_service.jpg" alt="지역별상품보기"></a>
+                            </div>
+                        </div>
+
+                        <!-- 상품 리스트 -->
+                        <div class="product">
+                            <h6 class="title">오늘본상품 <img src="../images/web/comm/arrow.gif" alt="arrow"></h6>
+                            <div class="today-list">
+                                <div id="todayList">
+                                    <ul class="list">
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider05.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider02.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider03.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <!--오늘본 상품없을 시 출력-->
+                                        <!--<p class="side-noContent">오늘 본 상품이 없습니다.</p>-->
+                                    </ul>
+                                </div>
+                                <ul class="itemNav">
+                                    <li>
+                                        <span id="itemPrev"><a href=""><img src="../images/web/comm/list_prev.gif" alt="이전"></a></span>
+                                        <!-- <span id="number">1/1</span> -->
+                                        <span id="itemNext"><a href=""><img src="../images/web/comm/list_next.gif" alt="다음"></a></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="shoppingCart">
+                            <h6>장바구니</h6>
+                            <p>
+                                <img src="../images/web/comm/cart2.gif" alt="장바구니">
+                                <span>9</span>
+                            </p>
+                        </div>
+                        <ul class="menuList">
+                            <li><a href=""><img src="../images/web/comm/menulist2.gif" alt="자주묻는질문">자주묻는질문</a></li>
+                            <li><a href=""><img src="../images/web/comm/menulist3.gif" alt="여행경비산출">여행경비산출</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <!-- //quick banner -->
+        <div class="subContainer">
+            <div class="subHead"></div>
+            <div class="subContents">
+                <!-- new contents -->
+                <div class="lodge3">
+                    <div class="bgWrap2">
+                        <div class="Fasten">
+                            <div class="comm_pay">
+                                <div class="pay-title">
+                                    <h2>결제하기</h2>
+                                    <p>
+                                        <!-- <span><img src="../images/web/icon/pay2.jpg" height="70" alt="결제"></span> -->
+                                    </p>
+                                </div>
+                                <article class="payArea">
+                                    <h5 class="title">상품 정보</h5>
+                                    <table class="commCol product-info">
+                                    	<colgroup>
+								            <col style="width: 10%">
+								            <col>
+								            <col style="width: 12%">
+								            <col style="width: 12%">
+								            <col style="width: 12%">
+								        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th class="title1">구분</th>
+                                                <th class="title2">상품정보</th>
+                                                <th class="title3">상품금액</th>
+                                                <th class="title5">배송비</th>
+                                                <th class="title4">최종금액</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>제주특산품</td>
+                                                <td class="left">
+                                                    <h5 class="product"><span class="cProduct">천연 녹차 비누</span></h5>
+                                                    <p class="infoText">선택 : 옵션 : 기본｜수량 : 3</p>
+
+                                                    <!-- 적용가능쿠폰 -->
+                                                    <table class="coupon-wrap">
+                                                        <tr>
+                                                            <td class="tBT">
+                                                                <a class="layer-1"><span class="couponBT">적용가능쿠폰</span></a>
+                                                                <!-- 팝업 -->
+                                                                <div class="layerP1">
+                                                                    <img class="bubble" src="../images/web/icon/bubble.gif" alt="말풍선" height="7" width="11">
+                                                                    <table class="commCol">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th class="title11"></th>
+                                                                                <th class="title12">쿠폰명</th>
+                                                                                <th class="title13">금액</th>
+                                                                                <th class="title14">사용가능일자</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td><input class="ch" type="checkbox"></td>
+                                                                                <td>설연휴 특별 할인</td>
+                                                                                <td>99,999,999</td>
+                                                                                <td>
+                                                                                    <p>2016-01-13 ~ 2016-04-21</p>
+                                                                                    <p class="t-info">가능</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="off">
+                                                                                <td><input class="ch" type="checkbox"></td>
+                                                                                <td>설연휴 특별 할인</td>
+                                                                                <td>99,999,999</td>
+                                                                                <td>
+                                                                                    <p>2016-01-13 ~ 2016-04-21</p>
+                                                                                    <p class="t-info">사용범위초과</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>                                                                    
+                                                                    <p class="comm-button1">
+                                                                        <a class="color1">선택완료</a>
+                                                                        <a class="layerP1-close">닫기</a>
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="add">
+                                                                <p class="add-ct">쿠폰명 <strong>99,999,999</strong>원 
+                                                                    <a class="close"><img src="../images/web/icon/close5.gif" alt="닫기"></a>
+                                                                </p>
+                                                                <!-- <p class="add-ct">쿠폰명 <strong>99,999,999</strong>원 
+                                                                    <a class="close"><img src="../images/web/icon/close5.gif" alt="닫기"></a>
+                                                                </p> -->
+                                                            </td>
+                                                        </tr>
+                                                    </table>                                                    
+                                                </td>
+                                                <td>
+                                                    <p class="price">200,000원</p>
+                                                    <p class="sale">(-<span>3,000</span>원)</p>
+                                                </td>
+                                                <td class="shipping-fee">
+	                                            	<p class="price">2,500원</p>
+	                                            </td>
+                                                <td class="money"><span>99,999,000</span>원</td>
+                                            </tr>
+                                            <tr>
+                                                <td>제주특산품</td>
+                                                <td class="left">
+                                                    <h5 class="product"><span class="cProduct">한라봉 초콜릿 선물 SET</span></h5>
+                                                    <p class="infoText">선택 : 옵션04 천혜향B(30EA)｜수량 : 2, 옵션06 감귤A (10EA)｜수량 : 1</p>
+
+                                                    <!-- 적용가능쿠폰 -->
+                                                    <table class="coupon-wrap">
+                                                        <tr>
+                                                            <td class="tBT">
+                                                                <a class="layer-1"><span class="couponBT">적용가능쿠폰</span></a>
+                                                                <!-- 팝업 -->
+                                                                <div class="layerP1">
+                                                                    <img class="bubble" src="../images/web/icon/bubble.gif" alt="말풍선" height="7" width="11">
+                                                                    <table class="commCol">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th class="title11"></th>
+                                                                                <th class="title12">쿠폰명</th>
+                                                                                <th class="title13">금액</th>
+                                                                                <th class="title14">사용가능일자</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td><input class="ch" type="checkbox"></td>
+                                                                                <td>설연휴 특별 할인</td>
+                                                                                <td>99,999,999</td>
+                                                                                <td>
+                                                                                    <p>2016-01-13 ~ 2016-04-21</p>
+                                                                                    <p class="t-info">가능</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="off">
+                                                                                <td><input class="ch" type="checkbox"></td>
+                                                                                <td>설연휴 특별 할인</td>
+                                                                                <td>99,999,999</td>
+                                                                                <td>
+                                                                                    <p>2016-01-13 ~ 2016-04-21</p>
+                                                                                    <p class="t-info">사용범위초과</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>                                                                    
+                                                                    <p class="comm-button1">
+                                                                        <a class="color1">선택완료</a>
+                                                                        <a class="layerP1-close">닫기</a>
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="add">
+                                                                <!-- <p class="add-ct">쿠폰명 <strong>99,999,999</strong>원 
+                                                                    <a class="close"><img src="../images/web/icon/close5.gif" alt="닫기"></a>
+                                                                </p>
+                                                                <p class="add-ct">쿠폰명 <strong>99,999,999</strong>원 
+                                                                    <a class="close"><img src="../images/web/icon/close5.gif" alt="닫기"></a>
+                                                                </p> -->
+                                                            </td>
+                                                        </tr>
+                                                    </table>                                                    
+                                                </td>
+                                                <td>
+                                                    <p class="price">200,000원</p>
+                                                    <p class="sale">(-<span>3,000</span>원)</p>
+                                                </td>
+                                                <td class="shipping-fee">
+	                                            	<p class="price">2,500원</p>
+	                                            </td>
+                                                <td class="money"><span>99,999,000</span>원</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </article>
+                                
+                                <article class="payArea buyer">
+							        <h5 class="title">구매자 정보</h5>
+							        <table class="commRow">
+							            <tbody>
+							                <tr>
+							                    <th>이름</th>
+							                    <td><input id="rsvNm" name="rsvNm" class="inpName" type="text" value="홍원기"></td>
+							                </tr>
+							                <tr>
+							                    <th>이메일</th>
+							                    <td>
+							                        <input id="rsvEmail" name="rsvEmail" class="inpName" type="hidden" value="kissl3oyhong@nate.com" placeholder="이메일을 입력하세요">
+							                        <div class="email-form">
+							                            <input class="id" type="text" name="revEmailH" id="revEmailH">
+							                            <span class="guide">@</span>
+							                            <input class="email" type="text" placeholder="nate.com" name="revEmail_host" id="revEmail_host">
+							                            <select class="select" title="E-mail 주소를 선택합니다" name="revEmail_hostS" id="revEmail_hostS" onchange="fn_revEmailHostChage(this.value)">
+							                                <option value="" selected="selected">직접입력</option>
+							                                <option value="naver.com">네이버</option>
+							                                <option value="hanmail.net">한메일</option>
+							                                <option value="nate.com">네이트</option>
+							                                <option value="gmail.com">지메일</option>
+							                                <option value="lycos.co.kr">라이코스</option>
+							                                <option value="hotmail.com">핫메일</option>
+							                                <option value="yahoo.co.kr">야후</option>
+							                                <option value="netian.com">네띠앙</option>
+							                                <option value="freechal.com">프리챌</option>
+							                                <option value="empal.com">엠팔</option>
+							                                <option value="dreamwiz.com">드림위즈</option>
+							                                <option value="hanafos.com">하나포스</option>
+							                                <option value="korea.com">코리아닷컴</option>
+							                                <option value="chollian.net">천리안</option>
+							                                <option value="hanmir.com">한미르</option>
+							                                <option value="hitel.net">하이텔</option>
+							                            </select>
+							                        </div>
+							                    </td>
+							                </tr>
+							                <tr>
+							                    <th>휴대폰</th>
+							                    <td>
+							                        <input id="rsvTelnum" name="rsvTelnum" class="inpName" type="text" value="010-2690-0248">
+							                    </td>
+							                </tr>
+							            </tbody>
+							        </table>                                     
+							    </article>
+							    
+							    <article class="payArea deli-address">
+							        <h5 class="title">배송지 정보</h5>
+							        <table class="commRow">
+							            <tbody>
+							            	<tr>
+							                    <th>배송지 선택</th>
+							                    <td>
+							                    	<label><input name="addr" type="radio" checked> <span>기본</span></label>
+							                    	<label><input name="addr" type="radio"> <span>최근 배송지</span></label>
+							                    	<label><input name="addr" type="radio"> <span>새로 입력</span></label>
+							                    </td>
+							                </tr>
+							                <tr>
+							                    <th>이름</th>
+							                    <td><input class="inpName" type="text" value="홍길동"></td>
+							                </tr>
+							                <tr>
+							                    <th>휴대폰</th>
+							                    <td>
+							                        <input class="inpName" type="text" value="010-1234-5678">
+							                    </td>
+							                </tr>
+							                <tr>
+							                    <th>배송지 주소</th>
+							                    <td>
+							                    	<!-- 기본 -->
+							                    	<!-- <div class="addr-wrap">
+												    	<p class="load">(690796) 제주특별자치도 제주시 화삼북로2길 12 (화북일동,삼화휴먼시아1단지)  119동 204호</p>
+												    </div> -->
+							                    	
+							                    	<!-- 신규 -->
+							                        <div class="addr-wrap">
+												        <input type="text" class="addr0" title="우편번호" >												        
+												        <a href="" class="btn" >우편번호검색</a>
+												        <input type="text" class="addr1" title="기본주소 입력">
+												        <input type="text" class="addr2" title="상세주소 입력">
+												    </div>
+							                    </td>
+							                </tr>
+							                <tr>
+							                    <th>배송 시 요청사항</th>
+							                    <td>
+							                        <div class="requests">
+							                        	<select title="요청사항 선택">
+							                        		<option value="">배송 시 요청사항을 선택해 주세요.</option>
+							                        		<option value="">배송 전 연락 바랍니다.</option>
+							                        		<option value="">부재 시 전화 주세요.</option>
+							                        		<option value="">부재 시 경비실에 맡겨주세요.</option>
+							                        		<option value="">부재 시 집 앞에 놔주세요.</option>
+							                        		<option value="">택배함에 놔주세요.</option>
+							                        	</select>
+							                        	
+							                        	<div class="memo">
+							                        		<textarea rows="8" placeholder="기타내용을 입력해 주세요"></textarea>
+							                        		<span>(<strong>0</strong>/50자)</span>
+							                        	</div>
+							                        </div>
+							                    </td>
+							                </tr>
+							                <tr>
+							                    <th>SMS 수신동의</th>
+							                    <td>
+							                        <label><input name="sms" type="radio"> <span>예</span></label>
+							                        <label><input name="sms" type="radio" checked> <span>아니오</span></label>
+							                    </td>
+							                </tr>
+							            </tbody>
+							        </table>                                     
+							    </article>
+
+                                <article class="payArea">
+                                    <h4 class="comm-title2">결제정보</h4>
+                                    <table class="commRow comm-payInfo">
+                                        <tbody>
+                                            <tr>
+                                                <th>총상품금액</th>
+                                                <td class="pay-st"><strong>99,999,999</strong>원</td>
+                                            </tr>
+                                            <tr>
+                                                <th>쿠폰할인</th>
+                                                <td class="sale">(-)3,000원</td>
+                                            </tr>
+                                            <tr>
+                                                <th>총 배송비</th>
+                                                <td class="shipping">6,500원</td>
+                                            </tr>
+                                            <tr>
+                                                <th>최종결제금액</th>
+                                                <td class="total-wrap pay-st">
+                                                    <strong class="comm-color1">99,999,999</strong>원
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </article>
+                                
+                                <p class="comm-button4"><a class="color2" href="">결제 확인</a></p>
+                                
+                            </div>
+                        </div> <!--//Fasten-->
+                    </div> <!--bgWrap-->
+                </div> <!-- //lodge3 -->
+                <!-- //new contents -->
+            </div> <!-- //subContents -->
+        </div> <!-- //subContainer -->
+	</main>
+
+    <footer id="footer">
+        <div class="Fasten">
+            <div class="top-wrap">
+                <a class="go-top" onclick="go_top();"><img src="../images/web/comm/top.gif" alt="맨위로"></a>
+            </div>
+        </div>
+
+        <div class="footMenu">
+            <div class="Fasten">
+                <span><a href="">회사소개</a></span>
+                <span><a href="">사업제휴</a></span>
+                <span><a href=""><strong>개인정보취급방침</strong></a></span>
+                <span><a href="">국내여행표준약관</a></span>
+                <span><a href="">전자상거래표준약관</a></span>
+                <span><a href="">이메일무단수집거부</a></span>
+                <!-- link site -->
+                <div class="footLink">
+                    <select id="site_family">
+                        <option value="" selected>패밀리사이트</option>
+                        <option value="">list1</option>
+                    </select>
+                    <select id="site_regard">
+                        <option value="" selected>관련사이트</option>
+                        <option value="">list1</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="Fasten">
+            <div class="copy">
+                제주특별자치도관광협회 | 대표 : 김영진 | 사업자 등록번호 : 616-82-04092 | 법인 등록번호 : 220121-0000107 | 통신판매업번호: 제2013-제주연동 0024호<br>
+                63122 제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층 | Tel)064-742-8861 | Fax) 064-742-8865<br>                
+                고객센터 : 1522-3454 I 개인정보관리책임자 : 김기현<br>                
+                Copyright 2016. 제주특별자치도관광협회 All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

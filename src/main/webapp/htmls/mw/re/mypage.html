@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>제주여행 공공플랫폼 탐나오</title>
+
+    <link rel="stylesheet" href="../../../css/mw/common2.css">
+    <link rel="stylesheet" href="../../../css/mw/style.css">
+    <link rel="stylesheet" href="../../../css/mw/mypage_2.css">
+
+    <script src="../../../js/jquery-1.11.1.js"></script>
+    <script src="../../../js/mw_layout.js"></script>
+    <script src="../../../js/jquery-ui-1.11.4.js"></script>
+    <script src="../../../js/jquery.cookie.js"></script>
+    <script src="../../../js/mw_common.js"></script>
+    <script src="../../../js/mw_style.js"></script>
+
+    <!-- add script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="../../../js/swiper.js"></script>
+    <script src="/js/daterangepicker.js?version=${nowDate}"></script>
+
+</head>
+<body>
+<div id="wrap">
+    <!-- 헤더 s -->
+    <header id="header">
+        <div class="head-wrap">
+            <div class="title">나의 예약/구매 내역</div>
+            <div class="l-area">
+                <a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+            </div>
+            <div class="r-area-side">
+                <button type="button" class="side-btn" title="사이드메뉴 열기" id="frame_sideOpen"></button>
+            </div>
+        </div>
+
+        <!-- 메뉴 s -->
+        <h1 class="visuallyhidden">제주여행공공플랫폼,탐나오탐나오 TAMNAO - 제주도 공식 여행 공공 플랫폼</h1>
+        <aside id="side_menu" class="side-menu">
+            <div class="side-all">
+                <div class="sitemap-header">
+                    <button type="button" id="frame_sideClose2" class="close"><img src="/images/mw/common/side/close-white.png" loading="lazy" alt="닫기"></button>
+                    <ul>
+                        <li><b>강현석</b>님 환영합니다.</li>
+                        <li class="r-btn">
+                            <a class="home" href="/mw/main.do"><img src="/images/mw/sitemap/home.png" loading="lazy" alt="홈"></a>
+                            <a class="mypage" href="/mw/mypage/mainList.do"><img src="/images/mw/sitemap/mypage.png" loading="lazy" alt="마이탐나오"></a>
+                            <a class="r-like" href="/mw/mypage/pocketList.do?type=pocket"><img src="/images/mw/sitemap/like.png" loading="lazy" alt="찜한상품"></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <nav class="sitemap-quick-menu">
+                    <ul>
+                        <li class="quick-re"><a href="/mw/mypage/rsvList.do?type=rsv">나의 예약/구매 내역</a></li>
+                        <li class="quick-cart"><a href="/mw/cart.do">장바구니</a></li>
+                    </ul>
+                </nav>
+
+                <div class="sitemap-main-menu">
+                    <ul>
+                        <li class="sitemap-rentcar"><a href="/mw/rentcar/jeju.do">렌트카</a></li>
+                        <li class="sitemap-hotel"><a href="/mw/stay/jeju.do">숙소</a></li>
+                        <li class="sitemap-air"><a href="/mw/av/mainList.do">항공</a></li>
+
+                        <li class="sitemap-agriculture"><a href="/mw/sv/sixIntro.do">6차산업</a></li>
+                    </ul>
+                </div>
+
+                <div class="sitemap-menu">
+                    <div class="leisure">
+                        <a class="leisure title" href="/mw/tour/jeju.do?sCtgr=C200"><img src="/images/mw/sitemap/leisure.png" loading="lazy" alt="관광지/레저">관광지/레저</a>
+
+                    </div>
+                    <div class="from-jeju">
+                        <a class="from-jeju title" href="/mw/goods/jeju.do"><img src="/images/mw/sitemap/fromjeju.png" loading="lazy" alt="특산/기념품">특산/기념품</a>
+
+                    </div>
+                    <a class="carseat-t title" href="/mw/tour/jeju.do?sCtgr=C500"><img src="/images/mw/sitemap/carseat-icon.png" loading="lazy" alt="유모차/카시트">유모차/카시트</a>
+
+                    <a class="food title" href="/mw/tour/jeju.do?sCtgr=C300"><img src="/images/mw/sitemap/food.png" loading="lazy" alt="맛집">맛집</a>
+                    <a class="zoom_map title" href="/mustsee.do"><img src="/images/mw/sitemap/map.png" loading="lazy" alt="관광지/맛집">내 손안의 제주 지도</a>
+                    <div class="agency">
+                        <a class="agency title" href="/mw/sp/packageList.do"><img src="/images/mw/sitemap/agency.png" loading="lazy" alt="여행사상품">여행사상품</a>
+                    </div>
+
+                    <a class="event2 title" href="/mw/evnt/prmtPlanList.do"><img src="/images/mw/sitemap/s-event2.png" loading="lazy" alt="기획전">기획전</a>
+                    <a class="event title" href="/mw/evnt/promotionList.do?finishYn=N&amp;winsYn=N"><img src="/images/mw/sitemap/s-event.png" loading="lazy" alt="이벤트">이벤트</a>
+                    <a class="sitemap-rentcar title" href="/web/rentcar/jeju.do"><img src="/images/mw/sitemap/car.png" loading="lazy" alt="제주도렌트카">제주렌트카 가격비교</a>
+                    <div class="tamnao">
+
+                        <ul class="depth4">
+                            <li><a href="/mw/bbs/bbsList.do?bbsNum=NOTICE">공지사항</a></li>
+                            <li><a href="/mw/coustomer/qaList.do">자주하는질문</a></li>
+                            <li><a href="/mw/mypage/mainList.do">마이탐나오</a></li>
+                            <li><a href="/mw/etc/introduction.do">회사소개</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="newMenuHeader" style="display: none">
+            <div class="container">
+                <div class="gnb_mall">
+                    <div class="logo">
+                        <a href="/mw/main.do" title="홈으로 가기">
+                            <img src="/images/mw/main/main_logo_2.png" loading="lazy" alt="탐나오">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="r-area-side">
+                <button type="button" id="frame_sideOpen2" class="side-btn" title="사이드메뉴 열기"></button>
+            </div>
+        </div>
+        <!-- 메뉴 e -->
+    </header>
+    <!-- 헤더 e -->
+
+    <!-- 콘텐츠 s -->
+    <h2 class="sr-only">서브콘텐츠</h2>
+    <div id="delInfo" class="comm-layer-popup delivery-popup" style="top: 0">
+        <div class="content-wrap">
+            <div class="content">
+                <div class="head">
+                    <h3 class="title">배송지키미-탐나오 </h3>
+                    <button type="button" id="dlvInfoClose" class="close">
+                        <img src="" alt="닫기">
+                    </button>
+                </div>
+                <div>
+                    <iframe id="goodsflowIframe" width="100%" height="697px;" style="max-width:100%; border:none;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="subContent">
+        <div class="menu-bar">
+            <p class="btn-prev"><img src=""></p>
+            <h2>나의 예약/구매 내역</h2>
+        </div>
+        <div class="sub-content">
+            <form name="frm">
+                <input type="hidden" name="rsvNum" id="rsvNum"/>
+                <input type="hidden" name="autoCancelYn" id="autoCancelYn" value="${RSVVO.autoCancelYn}"/>
+                <input type="hidden" name="type" id="type" value="rsv"/>
+            </form>
+            <article class="info-wrap top">
+                <div class="affiliate-info-text">
+                    <h6><span>항공권 구매내역</span>은 <span>제휴사 페이지</span>를 <br> 통해 확인하실 수 있습니다.</h6>
+
+                    <div class="banner_image">
+                        <img src="../../../images/mw/sub/mypage_character.png" alt="로그인 마이페이지 캐릭터">
+                        <span class="admin-id">gustjr724@naver.com</span>
+                    </div>
+                </div>
+
+                <div class="center-btn">
+                    <a class="btn btn0" href="https://www.jlair.net/m/index.php?mid=04&newopen=yes" target="_blank">
+                        <img src="../../../images/mw/list/jlair.png" alt="제이엘 항공">
+                    </a>
+                    <a class="btn btn1" href="https://m.jeju.com/reserve/bas_rsv_list.html?agt=tamnao&newopen=yes" target="_blank">
+                        <img src="../../../images/mw/list/jejuair.png" alt="제주항공">
+                    </a>
+                </div>
+            </article>
+
+            <!-- 구매후기 프로모션 배너 -->
+            <div class="review_content__banner">
+                <div class="main-top-slider">
+                    <div id="main_top_slider" class="swiper-container swiper-container-horizontal">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide">
+                                <div class="Fasten">
+                                    <a class="inner--link" href="https://m.site.naver.com/1ocCa" target="_blank">
+                                        <img src="/images/mw/from/banner/review_banner.png" alt="리뷰이벤트">
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div id="main_top_navi" class="swiper-pagination swiper-pagination-fraction">
+                            <span class="swiper-pagination-current">3</span> / <span class="swiper-pagination-total">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 구매 내역 목록 시작 -->
+            <div class="user-dashboard">
+
+                <!-- [구매 히스토리 필터 선택] 시작 -->
+                <div class="index-history option_before">
+                    <div class="mt">
+                        <div class="box-search">
+                            <div class="d-flex justify-start">
+                                <div class="ml">
+                                    <div class="txt-history-area" id="txtStartTime">2024-09-21</div>
+                                    <span class="arrow">~</span>
+                                    <div class="txt-history-area" id="txtEndTime">2024-10-21 </div>
+                                </div>
+                            </div>
+                            <div id="viewOrderDetails" class="justify-end">
+                                <span class="btn-detail">상세조회</span>
+                            </div>
+
+                            <!-- [구매 히스토리 필터 모달 팝업] s -->
+                            <div id="history_filter_modal" class="popup-typeA history-filter-modal">
+
+                                <div class="content-area">
+
+                                    <div class="list-group">
+                                        <ul class="select-menu col3">
+                                            <li>
+                                                <div class="lb-box">
+                                                    <input id="mouth0" name="mouth" type="radio" value="MO1" checked="">
+                                                    <label for="mouth0">1개월</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="lb-box">
+                                                    <input id="mouth1" name="mouth" type="radio" value="MO2">
+                                                    <label for="mouth1">3개월</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="lb-box">
+                                                    <input id="mouth2" name="mouth" type="radio" value="MO3">
+                                                    <label for="mouth2">6개월</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="lb-box">
+                                                    <input id="mouth3" name="mouth" type="radio" value="MO4">
+                                                    <label for="mouth3">12개월</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="search-area filter">
+                                        <div class="date-picker-wrapper">
+                                            <div class="area">
+
+                                                <!-- 클릭 시 항공 UI 통일 팝업 오픈 -->
+                                                <div class="value-text">
+                                                    <input type="hidden" name="sFromDt" id="sFromDt" value="20250103">
+                                                    <input class="datepicker sRcFromDtView hasDatepicker" type="text" name="sFromDtView" id="sRcFromDtView" placeholder="대여일 선택" value="2025-01-03" onclick="optionClose('.popup-typeA')">
+                                                    <img class="ui-datepicker-trigger" src="/images/mw/icon/mypage/calendar.png" alt="날짜를 입력하세요" title="날짜를 입력하세요">
+                                                </div>
+
+                                            </div>
+
+                                            <div class="area">
+
+                                                <!-- 클릭 시 항공 UI 통일 팝업 오픈 -->
+                                                <!-- 금일 날짜로 고정 -->
+                                                <div class="value-text">
+                                                    <input type="hidden" name="sToDt" id="sToDt" value="20250104">
+                                                    <input class="datepicker sRcToDtView hasDatepicker" type="text" name="sToDtView" id="sRcToDtView" placeholder="반납일 선택" value="2025-01-04" onclick="optionClose('.popup-typeA')"><img class="ui-datepicker-trigger" src="/images/mw/icon/mypage/calendar.png" alt="날짜를 입력하세요" title="날짜를 입력하세요">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="quick_search">
+                                            <div class="searchIcon">
+                                                <input type="text" title="주문 상품명 검색" id="orderSearchBox" placeholder="주문 상품명 검색">
+                                            </div>
+                                        </div>
+
+                                        <div class="side-wrap">
+                                            <div class="box_terms-all">
+                                                <input type="checkbox" id="autoCancelChk" class="form_checkbox sprite_join-default">
+                                                <label for="autoCancelChk" class="text_all-agree">자동취소건 포함</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="fix-cta">
+                                            <a href="#" class="result-btn close" id="closeFilter"  onclick="close_popup('#history_filter_modal');">닫기</a>
+                                            <a href="#" class="result-btn apply" id="appleFilter">조회하기</a>
+                                        </div>
+                                   </div>
+                            </div>
+                            <!-- [구매 히스토리 필터 모달 팝업] e -->
+                         </div>
+                    </div>
+                </div>
+                <!-- [구매 히스토리 필터 선택] 끝 -->
+
+                <!-- [구매 카테고리 필터 선택] 시작 -->
+                <div class="category-filter">
+                    <button id="viewFilterDetails" class="filter-button">
+                        <span class="filter-label">전체</span>
+                    </button>
+                </div>
+                <!-- [구매 카테고리 필터 선택] 끝 -->
+
+                <!-- [구매 카테고리 모달 팝업] s -->
+                <div id="category_filter_modal" class="popup-typeA category-filter-modal" style="display: ">
+
+                    <div class="content-area">
+                        <div class="top">
+                            <span class="close-btn" style="cursor:pointer;" onclick="close_popup('#category_filter_modal')"></span>
+                            <div class="condition_title">카테고리 필터</div>
+                        </div>
+                        <div class="list-group">
+                            <ul class="select-menu col3">
+                                <li>
+                                    <div class="category-lb-box">
+                                        <input id="category0" name="category" type="radio" value="CO1" checked="">
+                                        <label for="category0">
+                                            <span class="txt">전체</span>
+                                            <span class="radio-btn"></span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="category-lb-box">
+                                        <input id="category1" name="category" type="radio" value="CO2">
+                                        <label for="category1">
+                                            <span class="txt">숙소</span>
+                                            <span class="radio-btn"></span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="category-lb-box">
+                                        <input id="category2" name="category" type="radio" value="CO3">
+                                        <label for="category2">
+                                            <span class="txt">렌트카</span>
+                                            <span class="radio-btn"></span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="category-lb-box">
+                                        <input id="category3" name="category" type="radio" value="CO4">
+                                        <label for="category3">
+                                            <span class="txt">관광지</span>
+                                            <span class="radio-btn"></span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="category-lb-box">
+                                        <input id="category4" name="category" type="radio" value="CO5">
+                                        <label for="category4">
+                                            <span class="txt">맛집</span>
+                                            <span class="radio-btn"></span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="category-lb-box">
+                                        <input id="category5" name="category" type="radio" value="CO6">
+                                        <label for="category5">
+                                            <span class="txt">여행사 상품</span>
+                                            <span class="radio-btn"></span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="category-lb-box">
+                                        <input id="category6" name="category" type="radio" value="CO7">
+                                        <label for="category6">
+                                            <span class="txt">특산/기념품</span>
+                                            <span class="radio-btn"></span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="category-lb-box">
+                                        <input id="category7" name="category" type="radio" value="CO8">
+                                        <label for="category7">
+                                            <span class="txt">제주 농부의 장</span>
+                                            <span class="radio-btn"></span>
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- [구매 카테고리 모달 팝업] e -->
+
+                <div class="purchase-date">2024.10.18</div>
+                <!-- 개별 구매 항목 시작 -->
+                <div class="purchase_list">
+                    <div class="purchase_item">
+
+                        <!-- 구매 상태 표시 (예: 취소완료) -->
+                        <button type="button" class="statusInfo6 done_info_box" data-id="1">
+                            <span class="info info-buoy">취소완료</span>
+                            <img class="info_img" src="/images/mw/icon/icon-info-done.png" alt="취소처리 완료">
+                        </button>
+
+                        <!-- [button에 따른 레이어팝업] s] -->
+                        <div id="done_info_box_1" class="done_info_box_d">
+                            <p class="info_artcle">
+                                <span> 예약/구매 담당자 확인 후 취소처리 완료 </span>
+                            </p>
+                        </div>
+                        <!-- [button에 따른 레이어팝업] e] -->
+
+                        <!-- 주문 번호 표시 -->
+                        <span class="number">주문번호 RV231128000042</span>
+                    </div>
+
+                    <!-- 구매 상세 정보 시작 -->
+                    <div class="purchase_item_details">
+                        <div class="purchase_item_image">
+                            <div class="purchase_item_image_inner">
+                                <img src="/images/web/other/no-image.jpg" alt="숙소이미지" onerror="this.src='/images/web/other/no-image.jpg'">
+                            </div>
+                        </div>
+
+                        <div class="purchase_item_info">
+                            <div class="product-list add-option">
+                               <h5 class="product">[꿀먹은 한라산] 제주 벌꿀 스틱 50포</h5>
+                               <span class="infoText">꿀먹은 한라산 50포 ｜ 수량 : 1</span>
+                               <span class="item-newprice">80,000원</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 구매 상세 정보 끝 -->
+
+                    <!-- 구매 항목 액션 버튼들 시작 -->
+                    <div class="purchase_item_actions">
+                        <div class="purchase_item_button_container">
+                            <div class="purchase_item_buttons">
+                                <a href="" class="purchase_item_button">
+                                    <span class="detail">예약상세</span>
+                                </a>
+
+                                <!-- 카테고리별 배송조회 또는 재구매로 변경  -->
+                                <a href="" class="purchase_item_button item_track_btn"><span>배송조회</span></a>
+<!--                                <a href="" class="purchase_item_button"><span>재구매</span></a>-->
+
+                                <a href="" class="purchase_item_button item_review_btn"><span>이용후기</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 구매 항목 액션 버튼들 끝 -->
+                </div>
+                <!-- 개별 구매 항목 끝 -->
+
+                <!-- 개별 구매 항목 시작 -->
+                <div class="purchase_list">
+                    <div class="purchase_item">
+
+                        <!-- 구매 상태 표시 (예: 사용완료) -->
+                        <button type="button" class="statusInfo6 done_info_box" data-id="2">
+                            <span class="info info-buoy">사용완료</span>
+                            <img class="info_img" src="/images/mw/icon/icon-info-done.png" alt="취소처리 완료">
+                        </button>
+
+                        <!-- [button에 따른 레이어팝업] s] -->
+                        <div id="done_info_box_2" class="done_info_box_d">
+                            <p class="info_artcle">
+                                <span>예약 상품 사용 완료</span>
+                            </p>
+                        </div>
+                        <!-- [button에 따른 레이어팝업] e] -->
+
+                        <!-- 주문 번호 표시 -->
+                        <span class="number">주문번호 RV231128000042</span>
+                    </div>
+
+                    <!-- 구매 상세 정보 시작 -->
+                    <div class="purchase_item_details">
+                        <div class="purchase_item_image">
+                            <div class="purchase_item_image_inner">
+                                <img src="/images/web/other/no-image.jpg" alt="숙소이미지" onerror="this.src='/images/web/other/no-image.jpg'">
+                            </div>
+                        </div>
+
+                        <div class="purchase_item_info">
+                            <div class="product-list add-option">
+                                <h5 class="product">제주시티투어(1일·1회 이용권)</h5>
+                                <span class="infoText">제주시티투어 1회 이용권 성인/소인 및 청소년 ｜ 수량 : 1</span>
+                                <span class="item-newprice">6,000원</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 구매 상세 정보 끝 -->
+
+                    <!-- 구매 항목 액션 버튼들 시작 -->
+                    <div class="purchase_item_actions">
+                        <div class="purchase_item_button_container">
+                            <div class="purchase_item_buttons">
+                                <a href="" class="purchase_item_button">
+                                    <span class="detail">예약상세</span>
+                                </a>
+
+                                <!-- 카테고리별 배송조회 또는 재구매로 변경  -->
+<!--                                <a href="" class="purchase_item_button"><span>배송조회</span></a>-->
+                                <a href="" class="purchase_item_button item_reorder_btn"><span>재구매</span></a>
+
+                                <a href="" class="purchase_item_button item_review_btn"><span>이용후기</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 구매 항목 액션 버튼들 끝 -->
+                </div>
+                <!-- 개별 구매 항목 끝 -->
+
+                <!-- 구매 항목 더보기 버튼 -->
+                <button class="load-more-btn" type="button">  더보기 ＋ </button>
+
+            </div>
+            </div>
+            <!-- 구매 내역 목록 끝 -->
+        </div>
+    </section>
+    <!-- 콘텐츠 e -->
+
+    <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+    <script type="text/javascript" src="<c:url value='/validator.do'/>"></script>
+    <script type="text/javascript">
+
+        function fn_DtlRsv(rsvNum) {
+            $("#rsvNum").val(rsvNum);
+            document.frm.action = "<c:url value='/mw/mypage/detailRsv.do'/>";
+            document.frm.submit();
+        }
+
+        //예약확인 바로가기
+        function goto_direct_confirm(o) {
+            if (o.value != '') {
+                window.open(o.value, '');
+            }
+        }
+
+        function fn_goDlv(dlvCd, dlvNum) {
+            $("body").css("overflow","hidden");
+            $("body").css("touch-action","hidden");
+
+            if("${CST_PLATFORM}" == "test"){
+                $('#goodsflowIframe').attr('src', "https://trace.goodsflow.com/VIEW/V1/whereis/visitjejutest/" + dlvCd + "/" + dlvNum);
+            }else{
+                $('#goodsflowIframe').attr('src', "https://trace.goodsflow.com/VIEW/V1/whereis/visitjeju/" + dlvCd + "/" + dlvNum);
+            }
+
+            $('#dlvInfo').show();
+            $('#dlvInfo').css("top", $(document).scrollTop() + 100 + "px");
+
+            // 배송조회 버튼 추가
+            $('#delInfo').show();
+            $('#delInfo').css("top", $(document).scrollTop() + "px");
+        }
+
+        function fn_goComfirmOrder(svRsvNum) {
+            var parameters = "svRsvNum=" + svRsvNum;
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                // async:false,
+                url: "<c:url value='/web/confirmOrder.ajax'/>",
+                data: parameters,
+                success: function (data) {
+                    document.frm.action = "<c:url value='/mw/mypage/rsvList.do'/>";
+                    document.frm.submit();
+                }
+            });
+        }
+
+        // 진행상태 안내
+        function openStatusInfo(prdtCd, statusCd, idx) {
+            var info = " (";
+            if (statusCd == "${Constant.RSV_STATUS_CD_READY}") {
+                info += "예약/구매 진행 중 결제하기 전 상태";
+            } else if (statusCd == "${Constant.RSV_STATUS_CD_COM}") {
+                info += "예약/구매 결제 완료";
+            } else if (statusCd == "${Constant.RSV_STATUS_CD_CREQ}" || statusCd == "${Constant.RSV_STATUS_CD_CREQ2}") {
+                info += "취소 요청 후 예약/구매 담당자 확인 전 상태";
+            } else if (statusCd == "${Constant.RSV_STATUS_CD_CCOM}") {
+                info += "예약/구매 담당자 확인 후 취소처리 완료";
+            } else if (statusCd == "${Constant.RSV_STATUS_CD_ACC}") {
+                info += "미결제로 예약/구매가 취소된 상태";
+            } else if (statusCd == "${Constant.RSV_STATUS_CD_UCOM}") {
+                if (prdtCd == "${Constant.SV}") {
+                    info += "구매 상품 수령 완료";
+                } else {
+                    info += "예약 상품 사용 완료";
+                }
+            }
+            info += ")";
+            $("#statusInfo" + idx).html(info);
+        }
+
+        function fn_chkLogin() {
+            alert('회원은 로그인 후 이용후기를 작성하실 수 있고,\n비회원은 이용후기를 작성할 수 없습니다.');
+            return;
+        }
+
+        $(document).ready(function () {
+
+            /** 마이페이지 프로모션 슬라이드 */
+            if($('#main_top_slider .swiper-slide').length > 1) {
+                var swiper = new Swiper('#main_top_slider', {
+                    pagination: '#main_top_navi',
+                    paginationClickable: true,
+                    autoplay: 5000,
+                    loop: true,
+                    paginationType: 'fraction' // 'bullets' or 'progress' or 'fraction' or 'custom'
+                });
+            }
+
+/*            $("#autoCancelChk").click(function () {
+                if ($(this).is(":checked")) {
+                    $("#autoCancelYn").val("Y");
+                } else {
+                    $("#autoCancelYn").val("N");
+                }
+                document.frm.action = "<c:url value='/mw/mypage/rsvList.do'/>";
+                document.frm.submit();
+            });*/
+
+            //예약확인 바로가기
+            $("#layer_selBtn").on("click", function () {
+                if ($('.layer-box').css('display') == 'none') {
+                    $('.layer-box').css('display', 'block');
+                } else {
+                    $('.layer-box').css('display', 'none');
+                }
+                return false;
+            });
+
+            $("#dlvInfoClose").click(function () {
+                $("body").css("overflow","visible");
+                $("body").css("touch-action","auto");
+                $("#dlvInfo").hide();
+                $("#delInfo").hide();
+            });
+
+            $(".done_info_box").click(function(){
+                //레이어 팝업 show
+                $('#done_info_box_'+ $(this).data('id')).fadeToggle();
+                $('#done_info_box_'+ $(this).data('id')).show();
+            });
+
+            // [구매 히스토리] 필터 모달 팝업 open
+            $("#viewOrderDetails").on("click", function(e){
+                show_popup('#history_filter_modal', this);
+                $('#dimmed').show();
+                $("html, body").addClass("not_scroll");
+                $('.side-btn').hide();
+                $('.back').hide();
+                $("#header").removeClass("nonClick");
+            });
+
+            // [구매 카테고리] 필터 모달 팝업 open
+            $("#viewFilterDetails").on("click", function(e){
+                show_popup('#category_filter_modal', this);
+                $('#dimmed').show();
+                $('.side-btn').hide();
+                $("html, body").addClass("not_scroll");
+                $('.back').hide();
+                $("#header").removeClass("nonClick");
+            });
+
+        })
+
+        // 외부영역 클릭 시 팝업 닫기
+        $(document).mouseup(function (e){
+            var LayerPopup = $(".done_info_box_d");
+            if(LayerPopup.has(e.target).length === 0){
+                LayerPopup.hide("show");
+            }
+        });
+
+        //창 닫기
+        function close_popup(obj) {
+            if (typeof obj == "undefined" || obj == "" || obj == null) {
+                $('.dateRangePickMw').data('daterangepicker').hide();
+            } else {
+                $(obj).hide();
+            }
+            $('#dimmed').fadeOut(100);
+            $("html, body").removeClass("not_scroll");
+            $('.side-btn').show();
+            $('.back').show();
+        }
+
+
+        function show_popup(obj) {
+            if($(obj).is(":hidden")) {
+                $(obj).fadeIn();
+                $("body").after("<div class='lock-bg'></div>"); // 검은 불투명 배경
+            } else {
+                $(obj).hide();
+                $(".lock-bg").remove();
+            }
+        }
+
+    </script>
+
+</div>
+<div id="dimmed"></div>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="mainConfig">
+
+<resultMap id="MAIN_CONFIG_R_00" class="oss.site.vo.MAINHOTPRDTVO">
+    <result property="prdtNum" column="PRDT_NUM" />
+    <result property="prdtDiv" column="PRDT_DIV" />
+    <result property="printSn" column="PRINT_SN" />
+    <result property="corpNm"  column="CORP_NM" />
+    <result property="prdtNm"  column="PRDT_NM" />
+</resultMap>
+
+<resultMap id="MAIN_CONFIG_R_01" class="oss.site.vo.MAINAREAPRDTVO">
+    <result property="prdtNum" column="PRDT_NUM" />
+    <result property="prdtDiv" column="PRDT_DIV" />
+    <result property="areaDiv" column="AREA_DIV" />
+    <result property="corpNm"  column="CORP_NM" />
+    <result property="prdtNm"  column="PRDT_NM" />
+</resultMap>
+
+<resultMap id="MAIN_CONFIG_R_02" class="oss.site.vo.MAINCTGRRCMDVO">
+    <result property="prdtNum"      column="PRDT_NUM" />
+    <result property="prdtDiv"      column="PRDT_DIV" />
+    <result property="printSn"      column="PRINT_SN" />
+    <result property="corpNm"       column="CORP_NM" />
+    <result property="corpTradeStatus"  column="CORP_TRADE_STATUS" />
+    <result property="prdtNm"       column="PRDT_NM" />
+    <result property="tradeStatus"  column="TRADE_STATUS" />
+</resultMap>
+
+<resultMap id="MAIN_CONFIG_R_03" class="oss.site.vo.MAINBRANDSETDVO">
+    <result property="corpId" column="CORP_ID"/>
+    <result property="corpCd" column="CORP_CD"/>
+    <result property="corpAliasNm" column="CORP_ALIAS_NM"/>
+    <result property="printSn" column="PRINT_SN"/>
+    <result property="prtinYn" column="PRTIN_YN"/>
+    <result property="regDttm" column="REG_DTTM"/>
+    <result property="modDttm" column="MOD_DTTM"/>
+    <result property="corpNm" column="CORP_NM"/>
+    <result property="cardImgFileNm" column="CARD_IMG_FILE_NM"/>
+    <result property="cardSlogan" column="CARD_SLOGAN"/>
+    <result property="cardTitle" column="CARD_TITLE"/>
+    <result property="cardContent" column="CARD_CONTENT"/>
+    <result property="cardColor" column="CARD_COLOR"/>
+    <result property="logoImgFileNm" column="LOGO_IMG_FILE_NM"/>
+</resultMap>
+
+<select id="MAIN_CONFIG_S_00" resultMap="MAIN_CONFIG_R_00">
+SELECT T_HOT.PRDT_NUM
+    , PRDT_DIV
+    , PRINT_SN
+    , CORP_NM
+    , T_PRDT.PRDT_NM
+  FROM TB_MAIN_HOT_PRDT T_HOT
+    INNER JOIN (
+    <isEqual compareValue="HOT">
+        SELECT PRDT_NUM
+            , AD_NM AS CORP_NM
+            , PRDT_NM
+          FROM TB_AD_PRDTINF T_PRD
+            INNER JOIN TB_AD_DFTINF T_DFT ON T_DFT.CORP_ID=T_PRD.CORP_ID
+      UNION ALL
+        SELECT PRDT_NUM
+            , CORP_NM
+            , PRDT_NM
+          FROM TB_RC_PRDTINF T_PRD
+            INNER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID=T_PRD.CORP_ID
+      UNION ALL
+        SELECT PRDT_NUM
+            , CORP_NM
+            , PRDT_NM
+          FROM TB_SP_PRDTINF T_PRD
+            INNER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID=T_PRD.CORP_ID
+      UNION ALL
+        SELECT PRDT_NUM
+            , CORP_NM
+            , PRDT_NM
+          FROM TB_SV_PRDTINF T_PRD
+            INNER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID=T_PRD.CORP_ID
+    </isEqual>
+    <isEqual compareValue="URL">
+        SELECT PRMT_NUM AS PRDT_NUM
+            , '' AS CORP_NM
+            , PRMT_NM AS PRDT_NM
+          FROM TB_PRMT T_PRD
+      UNION ALL
+        SELECT KWA_NUM AS PRDT_NUM
+            , (SELECT CD_NM FROM TB_CD WHERE CD_NUM=T_PRD.LOCATION) AS CORP_NM
+            , KWA_NM AS PRDT_NM
+          FROM TB_KWA T_PRD
+      UNION ALL
+        SELECT RCMD_NUM AS PRDT_NUM
+            , CORP_NM
+            , SUBJECT AS PRDT_NM
+          FROM TB_ADM_RCMD T_PRD
+        INNER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID=T_PRD.CORP_ID
+    </isEqual>
+    ) T_PRDT ON T_PRDT.PRDT_NUM=T_HOT.PRDT_NUM
+  WHERE PRINT_DIV=#prdtDiv#
+  ORDER BY PRINT_SN
+</select>
+
+<select id="MAIN_CONFIG_S_01" resultMap="MAIN_CONFIG_R_01">
+SELECT T_AREA.PRDT_NUM
+    , PRDT_DIV
+    , AREA_DIV
+    , CORP_NM
+    , T_PRDT.PRDT_NM
+  FROM TB_MAIN_AREA_PRDT T_AREA
+    INNER JOIN (
+        SELECT PRDT_NUM
+            , AD_NM AS CORP_NM
+            , PRDT_NM
+          FROM TB_AD_PRDTINF T_PRD
+            INNER JOIN TB_AD_DFTINF T_DFT ON T_DFT.CORP_ID=T_PRD.CORP_ID
+      UNION ALL
+        SELECT PRDT_NUM
+            , CORP_NM
+            , PRDT_NM
+          FROM TB_SP_PRDTINF T_PRD
+            INNER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID=T_PRD.CORP_ID
+    ) T_PRDT ON T_PRDT.PRDT_NUM=T_AREA.PRDT_NUM
+</select>
+
+<select id="MAIN_CONFIG_S_02" resultMap="MAIN_CONFIG_R_02">
+SELECT PRDT_NUM
+    , PRDT_DIV
+    , PRINT_SN
+    , CORP_NM
+    , CORP_TRADE_STATUS
+    , PRDT_NM
+    , TRADE_STATUS
+FROM (SELECT MCR.PRDT_NUM
+            , MCR.PRDT_DIV
+            , MCR.PRINT_SN
+            , CORP.CORP_NM
+            , CORP.TRADE_STATUS_CD AS CORP_TRADE_STATUS
+            , AD.PRDT_NM
+            , AD.TRADE_STATUS
+        FROM TB_MAIN_CTGR_RCMD MCR
+            INNER JOIN TB_AD_PRDTINF AD ON AD.PRDT_NUM = MCR.PRDT_NUM
+            INNER JOIN TB_CORP CORP     ON CORP.CORP_ID = AD.CORP_ID
+
+        UNION ALL
+
+        SELECT MCR.PRDT_NUM
+            , MCR.PRDT_DIV
+            , MCR.PRINT_SN
+            , CORP.CORP_NM
+            , CORP.TRADE_STATUS_CD
+            , RC.PRDT_NM
+            , RC.TRADE_STATUS
+        FROM TB_MAIN_CTGR_RCMD MCR
+            INNER JOIN TB_RC_PRDTINF RC ON RC.PRDT_NUM = MCR.PRDT_NUM
+            INNER JOIN TB_CORP CORP     ON CORP.CORP_ID = RC.CORP_ID
+
+        UNION ALL
+
+        SELECT MCR.PRDT_NUM
+            , MCR.PRDT_DIV
+            , MCR.PRINT_SN
+            , CORP.CORP_NM
+            , CORP.TRADE_STATUS_CD
+            , SP.PRDT_NM
+            , SP.TRADE_STATUS
+        FROM TB_MAIN_CTGR_RCMD MCR
+            INNER JOIN TB_SP_PRDTINF SP ON SP.PRDT_NUM = MCR.PRDT_NUM
+            INNER JOIN TB_CORP CORP     ON CORP.CORP_ID = SP.CORP_ID
+
+        UNION ALL
+
+        SELECT MCR.PRDT_NUM
+            , MCR.PRDT_DIV
+            , MCR.PRINT_SN
+            , CORP.CORP_NM
+            , CORP.TRADE_STATUS_CD
+            , SV.PRDT_NM
+            , SV.TRADE_STATUS
+        FROM TB_MAIN_CTGR_RCMD MCR
+            INNER JOIN TB_SV_PRDTINF SV ON SV.PRDT_NUM = MCR.PRDT_NUM
+            INNER JOIN TB_CORP CORP     ON CORP.CORP_ID = SV.CORP_ID)
+ORDER BY PRDT_DIV
+    , PRINT_SN
+</select>
+
+<select id="MAIN_CONFIG_S_03" resultMap="MAIN_CONFIG_R_03">
+SELECT  CORP_ID
+			, CORP_CD
+			, CORP_ALIAS_NM
+			, PRINT_SN
+			, PRTIN_YN
+			, REG_DTTM
+			, MOD_DTTM
+			, (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = CORP.CORP_ID) AS CORP_NM
+            , CARD_IMG_FILE_NM
+            , CARD_SLOGAN
+            , CARD_TITLE
+            , CARD_CONTENT
+            , CARD_COLOR
+            , LOGO_IMG_FILE_NM
+FROM TB_PRMT_CORP CORP
+ORDER BY PRINT_SN, CORP_ID
+</select>
+
+<insert id="MAIN_CONFIG_I_00">
+INSERT INTO TB_MAIN_HOT_PRDT
+( PRDT_NUM
+, PRINT_DIV
+, PRDT_DIV
+, PRINT_SN
+)
+VALUES(
+  #prdtNum#
+, #printDiv#
+, #prdtDiv#
+, #printSn#
+)
+</insert>
+
+<insert id="MAIN_CONFIG_I_01">
+INSERT INTO TB_MAIN_AREA_PRDT
+( PRDT_NUM
+, AREA_DIV
+, PRDT_DIV
+)
+VALUES(
+  #prdtNum#
+, #areaDiv#
+, #prdtDiv#
+)
+</insert>
+
+<insert id="MAIN_CONFIG_I_02">
+INSERT INTO TB_MAIN_CTGR_RCMD
+( PRDT_NUM
+, PRDT_DIV
+, PRINT_SN
+)
+VALUES(
+  #prdtNum#
+, #prdtDiv#
+<isNotEmpty property="printSn">
+  <isNotNull property="printSn">
+, #printSn#
+  </isNotNull>
+</isNotEmpty>
+<isEmpty property="printSn">
+, (SELECT NVL(MAX(PRINT_SN), 0)+1 FROM TB_MAIN_CTGR_RCMD WHERE PRDT_DIV=#prdtDiv#)
+</isEmpty>
+)
+</insert>
+
+<insert id="MAIN_CONFIG_I_03">
+INSERT INTO TB_PRMT_CORP
+( CORP_ID
+, CORP_CD
+, CORP_ALIAS_NM
+, PRINT_SN
+, PRTIN_YN
+, REG_DTTM
+, MOD_DTTM
+, CARD_IMG_FILE_NM
+, CARD_SLOGAN
+, CARD_TITLE
+, CARD_CONTENT
+, CARD_COLOR
+, LOGO_IMG_FILE_NM
+)
+VALUES(
+  #corpId#
+, #corpCd#
+, #corpAliasNm#
+<isNotEmpty property="printSn">
+  <isNotNull property="printSn">
+, #printSn#
+  </isNotNull>
+</isNotEmpty>
+<isEmpty property="printSn">
+, (SELECT NVL(MAX(PRINT_SN), 0)+1 FROM TB_PRMT_CORP)
+</isEmpty>
+, 'Y'
+, SYSDATE
+, SYSDATE
+, #cardImgFileNm#
+, #cardSlogan#
+, #cardTitle#
+, #cardContent#
+, #cardColor#
+, #logoImgFileNm#
+)
+</insert>
+
+<delete id="MAIN_CONFIG_D_00">
+DELETE FROM TB_MAIN_HOT_PRDT
+WHERE PRINT_DIV=#printDiv#
+</delete>
+
+<delete id="MAIN_CONFIG_D_01">
+DELETE FROM TB_MAIN_AREA_PRDT
+</delete>
+
+<delete id="MAIN_CONFIG_D_02">
+DELETE FROM TB_MAIN_CTGR_RCMD
+</delete>
+
+<delete id="MAIN_CONFIG_D_03">
+DELETE FROM TB_PRMT_CORP
+</delete>
+
+</sqlMap>

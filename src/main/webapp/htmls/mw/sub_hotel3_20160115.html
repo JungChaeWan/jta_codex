@@ -1,0 +1,522 @@
+<?php header("Content-Type:text/html;charset=utf-8"); ?>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>제주마켓</title>
+	<link href="../../css/mw/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../css/mw/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../css/mw/common.css" rel="stylesheet">
+	<link href="../../css/mw/sub.css" rel="stylesheet">
+	<link href="../../css/mw/sub_hotel.css" rel="stylesheet">
+</head>
+<body>
+<div id="wrap">
+
+<!-- 헤더 s -->
+<header>
+	<h1><a href="main.html"><img src="../../images/mw/common/logo.png" width="106" alt="제주마켓"></a></h1>
+	<p class="gnb-view"><img src="../../images/mw/common/icon_menu.png" width="25" alt="메뉴보기"></p>
+	<p class="search-view"><img src="../../images/mw/common/icon_search.png" width="22" alt="검색"></p>
+	<p class="cart-view">
+		<a href="sub_cart.html">
+			<img src="../../images/mw/common/icon_cart.png" width="30" alt="장바구니">
+			<span class="count">9</span>
+		</a>
+	</p>
+
+	<div class="search">
+		<fieldset>
+			<div class="form-value">
+				<label for="q">검색어 입력</label>
+				<input type="text" id="q">
+			</div>
+			<input type="submit" value="검색">
+			<a href="#" class="btn-close"><img src="../../images/mw/sub_common/delete.png" width="10" alt="닫기"></a>
+		</fieldset>
+	</div>
+</header>
+<!-- 헤더 e -->
+
+<!-- 메뉴 s -->
+<nav id="gnbnavi" class="hide">
+	<p class="menu-top">
+		로그인 해주세요 <a href="login.html">로그인</a>
+	</p>
+	<ul class="menu-top">
+		<li><a href=""><img src="../../images/mw/common/icon_01.png" width="19" alt=""> 구매/예약내역</a></li>
+		<li><a href=""><img src="../../images/mw/common/icon_02.png" width="19" alt=""> 내 주변 업소</a></li>
+	</ul>
+	<div class="sub-menu">
+		<h2 class="sr-only">전체메뉴</h2>
+		<ul>
+			<li><a href="#"><img src="../../images/mw/common/icon_03.png" width="19" alt=""> 실시간예약</a>
+				<ul>
+					<li><a href="sub_air1.html">항공</a></li>
+					<li><a href="sub_hotel1.html">숙박</a></li>
+					<li><a href="sub_rent1.html">렌트카</a></li>
+					<li><a href="sub_golf1.html">골프</a></li>
+				</ul>
+			</li>
+			<li><a href="#"><img src="../../images/mw/common/icon_04.png" width="19" alt=""> 당일특가</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_05.png" width="19" alt=""> 패키지 할인상품</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_06.png" width="19" alt=""> 관광지 입장권</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_07.png" width="19" alt=""> 음식/레저/뷰티</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_08.png" width="19" alt=""> 여행경비산출</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_09.png" width="19" alt=""> 이벤트</a></li>
+			<li><a href="sub_mypage1.html"><img src="../../images/mw/common/icon_10.png" width="19" alt=""> 마이페이지</a></li>
+			<li><a href="sub_center1.html"><img src="../../images/mw/common/icon_11.png" width="19" alt=""> 고객센터</a></li>
+		</ul>
+	</div>
+	<div class="app-util">
+		<dl>
+			<dt>정보 알림 받기</dt>
+			<dd><a href=""><img src="../../images/mw/common/on.png" width="42" alt="ON"></a></dd>
+			<dt>자동로그인</dt>
+			<dd><a href=""><img src="../../images/mw/common/off.png" width="42" alt="OFF"></a></dd>
+		</dl>
+		<p>Ver 1.0.0</p>
+	</div>
+</nav>
+
+<p id="btnHideGnb" class="hide"><img src="../../images/mw/common/close.png" width="10" alt="메뉴닫기"></p>
+<!-- 메뉴 e -->
+
+
+<!-- 콘텐츠 s -->
+<h2 class="sr-only">서브콘텐츠</h2>
+<section id="subContent">
+
+	<div class="menu-bar">
+		<p class="btn-prev"><img src="../../images/mw/common/btn_prev.png" width="20" alt="이전페이지"></p>
+		<h1>실시간 숙박 선택 정보</h1>
+	</div>
+	<div class="sub-content">
+
+		<div class="hotel">
+
+			<div class="view-img">
+				<p class="tag-wrap">
+					<img src="../../images/mw/sub_common/event.gif" alt="이벤트">
+					<img src="../../images/mw/sub_common/hot.gif" alt="핫딜">
+					<img src="../../images/mw/sub_common/dday.gif" alt="당일특가">
+				</p>
+				<ul class="gallery-list1">
+					<li><a href="#"><img src="../../images/mw/sub_common/p_img.png" alt=""></a></li>
+				</ul>
+				<p>
+					<span class="btn-prev"></span>
+					<span class="btn-next"></span>
+				</p>
+				<p class="comm-like">
+					<span class="like1"></span>
+					<em>4/5</em>
+				</p>
+				<p class="sns">
+					<a href=""><img src="../../images/mw/sub_common/sns_icon1.png" alt="페이스북"></a>
+					<a href=""><img src="../../images/mw/sub_common/sns_icon2.png" alt="블로그"></a>
+					<a href=""><img src="../../images/mw/sub_common/sns_icon3.png" alt="카카오스토리"></a>
+				</p>
+			</div>
+			<div class="view-info">				
+				<p><strong>아이브리조트, 자연속힐링</strong></p>
+				<p><em>9월 객실 업그레이드 이벤트</em></p>
+				<p class="txt">특이사항 내용 들어가는 부분 특이사항 내용 들어가는 부분 특이사항 내용 들어가는 부분 특이사항 내용 들어가는 부분</p>
+				<p><a href="#" class="btn btn-map">위치 및 주변 정보 <img src="../../images/mw/sub_common/more_arrow_l.png" width="7" alt=""></a></p>
+			</div>
+
+			<dl class="view-select">
+				<dt>객실 Type 선택</dt>
+				<dd>
+					<ul class="type-select">
+						<li>
+							<label for="type1">
+								<span><input type="radio" id="type1" checked="checked"></span>
+								<span>
+									스탠다드 트리플 + 고객감사 이벤트(스탠다드) + 조식패키지(2인)
+									<img class="type-icon" src="../../images/mw/sub_common/tb_event.gif" alt="이벤트">
+									<img class="type-icon" src="../../images/mw/sub_common/tb_hot.gif" alt="핫딜">
+									<img class="type-icon" src="../../images/mw/sub_common/tb_dday.gif" alt="당일특가">
+									<img class="type-icon" src="../../images/mw/sub_common/camera.png" alt="사진">
+								</span>
+							</label>
+						</li>
+						<li>1,140,000원~</li>
+					</ul>
+					<div class="detail-gallery">
+						<div class="goods-list" id="goods-slide1">
+							<ul>
+								<li><img src="../../images/mw/sub_common/p_img2.png" alt=""></li>
+								<li><img src="../../images/mw/sub_common/p_img2.png" alt=""></li>
+							</ul>
+							<p>
+								<span class="btn-prev"></span>
+								<span class="btn-next"></span>
+							</p>
+						</div>						
+					</div>
+				</dd>
+				<dd>
+					<ul class="type-select">
+						<li>
+							<label for="type2">
+								<span><input type="radio" id="type2"></span>
+								<span>스탠다드 트리플 + 조식패키지 2인 <img src="../../images/mw/sub_common/camera.png" width="14" alt="사진"></span>
+							</label>
+						</li>
+						<li>160,000원~</li>
+					</ul>
+					<div class="detail-gallery">
+						<div class="goods-list" id="goods-slide2">
+							<ul>
+								<li><img src="../../images/mw/sub_common/p_img2.png" alt=""></li>
+								<li><img src="../../images/mw/sub_common/p_img2.png" alt=""></li>
+							</ul>
+							<p>
+								<span class="btn-prev"></span>
+								<span class="btn-next"></span>
+							</p>
+						</div>						
+					</div>
+				</dd>
+				<dd>
+					<ul class="type-select">
+						<li>
+							<label for="type3">
+								<span><input type="radio" id="type3"></span>
+								<span>스탠다드 트리플 <img src="../../images/mw/sub_common/camera.png" width="14" alt="사진"></span>
+							</label>
+						</li>
+						<li>170,000원~</li>
+					</ul>
+					<ul class="type-image hide">
+						<li><img src="../../images/mw/sub_common/p_img2.png" alt=""></li>
+					</ul>
+				</dd>
+			</dl>
+
+			<dl class="view-select">
+				<dt>투숙일자 선택</dt>
+				<dd>
+					<strong class="cal">
+						<a href="#"><img src="../../images/mw/sub_common/ca_prev.png" width="8" alt="이전"></a>
+						2015년 10월
+						<a href="#"><img src="../../images/mw/sub_common/ca_next.png" width="8" alt="다음"></a>
+					</strong>
+					<table class="cal">
+						<tr>
+							<th>일</th>
+							<th>월</th>
+							<th>화</th>
+							<th>수</th>
+							<th>목</th>
+							<th>금</th>
+							<th>토</th>
+						</tr>
+						<tr>
+							<td><a href="#">1</a></td>
+							<td><a href="#">2</a></td>
+							<td class="today"><a href="#">3<br><em>오늘</em></a></td>
+							<td><a href="#">4</a></td>
+							<td><a href="#">5</a></td>
+							<td><a href="#">6</a></td>
+							<td><a href="#">7</a></td>
+						</tr>
+						<tr>
+							<td><a href="#">8</a></td>
+							<td><a href="#">9</a></td>
+							<td><a href="#">10</a></td>
+							<td><a href="#">11</a></td>
+							<td><a href="#">12</a></td>
+							<td><a href="#">13</a></td>
+							<td><a href="#">14</a></td>
+						</tr>
+						<tr>
+							<td><a href="#">15</a></td>
+							<td><a href="#">16</a></td>
+							<td class="on"><a href="#">17<br><em>예약</em></a></td>
+							<td class="off"><a href="#">18<br><em>마감</em></a></td>
+							<td><a href="#">19</a></td>
+							<td><a href="#">20</a></td>
+							<td><a href="#">21</a></td>
+						</tr>
+						<tr>
+							<td><a href="#">22</a></td>
+							<td><a href="#">23</a></td>
+							<td><a href="#">24</a></td>
+							<td><a href="#">25</a></td>
+							<td><a href="#">26</a></td>
+							<td><a href="#">27</a></td>
+							<td class="no"><a href="#">28<br><em>미정</em></a></td>
+						</tr>
+						<tr>
+							<td class="no"><a href="#">29<br><em>미정</em></a></td>
+							<td><a href="#">30</a></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</dd>
+			</dl>
+
+			<div class="con-box select-info">
+				<p><strong>스탠다드 트리플 ★고객감사이벤트</strong></p>
+				<div class="form1 form1-4">
+					<input type="text" value="2015.10.17" readonly="readonly">
+					<select>
+						<option value="1박">1박</option>
+					</select>
+				</div>
+				<div class="form1">
+					<select>
+						<option value="성인 2인">성인 2인</option>
+					</select>
+					<select>
+						<option value="소아 0인">소아 0인</option>
+					</select>
+					<select>
+						<option value="유아 0인">유아 0인</option>
+					</select>
+				</div>
+				<p class="txt">* 추가요금(1일 1인 기준)<br>
+				&nbsp;&nbsp;성인 : 15,000원 소아 : 15,000원, 유아 : 10,000원</p>
+			</div>
+			
+			<div class="select-add">
+				<table>
+					<tbody>
+						<tr>
+							<td class="info" id="adPrdtText">15/11/30 |1박 |성인0 |소아0 |유아0</td>
+							<td class="price"><strong id="adNowPrice">0</strong>원</td>
+						</tr>
+						<tr>
+							<td class="text" id="adBtnErrInfo">투숙인원을 선택 하세요.</td>
+							<td class="button">
+								<span id="adBtnPrdt1"><a href="javascript:fn_addPrdt();">+ 선택</a></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>			
+			
+			<div class="select-del">
+				<p>
+					<span>2015/09/15, 1박, 성인 2명, 소아2명 2015/09/15, 1박, 성인 2명, 소아2명</span>
+					<span>150,000원</span>
+					<a href="#"><img src="../../images/mw/sub_common/delete.png" width="10" alt="닫기" ></a>
+				</p>
+				<p>
+					<span>2015/09/15, 1박, 성인 2명, 소아2명</span>
+					<span>150,000원</span>
+					<a href="#"><img src="../../images/mw/sub_common/delete.png" width="10" alt="닫기" ></a>
+				</p>
+			</div>
+			<div class="con-box view-btn">
+				<p class="price">합계 : <em>920,000원</em></p>
+				<!--<p class="btn-add"><a href="#" class="btn btn3">객실추가</a></p>-->
+				<p class="btn-cart"><a href="#" class="btn btn5">장바구니</a> <a href="#" class="btn btn1">예약하기</a></p>
+			</div>
+
+			<!-- 상품상세하단 S -->
+			<div class="view-bottom">
+				<p class="view-tab">
+					<a href="#info" class="active">숙소소개/<br>특전사항</a>
+					<a href="#cancel">취소/환불규정</a>
+					<a href="#review">이용후기</a>
+					<a href="#counsel">1:1문의</a>
+				</p>
+				<div id="info" class="tab-con con-info con-box comm-text1">
+					<h5>숙소 소개</h5>
+					<p>내용입력 내용입력</p>
+					<h5>객실 비품안내</h5>
+					<p>내용입력 내용입력</p>
+					<h5>이용안내</h5>
+					<p>내용입력 내용입력</p>
+					<h5>참고사항(특전사항)</h5>
+					<p>내용입력 내용입력</p>
+				</div>
+				<div id="cancel" class="tab-con con-cancel con-box hide comm-text1">
+					<h5>취소 환불 안내</h5>
+					<p>내용입력 내용입력</p>
+					<h5>취소 및 환불 규정</h5>
+					<p>내용입력 내용입력</p>
+					<h5>취소 및 환불 문의처</h5>
+					<p>내용입력 내용입력</p>
+				</div>
+				<div id="review" class="tab-con con-review hide">
+					<div class="con-box review-form">
+						<dl>
+							<dt>상품에 대한 이용후기를 작성해주세요.</dt>
+							<dd>상품평은 구매한 고객님마 작성이 가능하십니다.<br>
+							상품 문의는 1:1문의 게시판, 취소 및 환불은 마이페이지를 이용해주세요</dd>
+						</dl>
+						<p><a href="#" class="btn btn-submit">이용후기 작성</a></p>
+					</div>
+					<div class="review-list">
+						<!--변경-->
+						<dl>
+							<dt>
+								<div class="top">
+									<strong>제목출력 제목출력제목출력 제목출력제목출력제목출력 제목출력</strong>
+									<span class="like">
+										<img src="../../images/mw/sub_common/h_icon.png" alt="좋아요">
+										<img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+										<img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+										<img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+										<img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+										<em>1/5</em>
+									</span>
+								</div>
+								<div class="bottom">
+									<p class="user"><span class="user-id">tes*****</span> <span class="date">2015-11-25 14:19:16</span></p>
+								</div>
+							</dt>
+							<dd class="memo-wrap">
+								<p class="memo">내용출력 내용출력내용출력 내용출력내용출력내용출력내용출력 내용출력내용출력</p>
+								<!-- 수정버튼 -->
+								<!--글쓴 사람만 나오게 -->						
+								<p class="editBT">
+									<a href="" class="btn btn-reply">수정</a>
+									<a href="" class="btn btn-reply">삭제</a>
+								</p>
+								
+								<!--답글-->
+								<ul class="comment-wrap">
+									<li>
+										<div class="comment-user"><span class="comment-id">tes*****</span> <span class="comment-date">2015-12-01 17:56:43</span></div>
+										<div class="comment-memo">
+											답글출력 답글출력답글출력답글출력 답글출력
+											<!-- 답글수정 버튼 -->
+											<p class="editBT">
+												<a href="" class="btn btn-reply">수정</a>
+												<a href="" class="btn btn-reply">삭제</a>
+											</p>
+											<!--답글폼-->
+											<form class="int-write" action="" method="post">
+												<textarea name="textarea" cols="45" rows="5" class="focus-value" placeholder="내용 입력"></textarea>
+												<p><a href="#" class="btn btn-submit">등록</a></p>
+											</form>
+										</div>										
+									</li>
+									<li>
+										<div class="comment-user"><span class="comment-id">tes*****</span> <span class="comment-date">2015-12-01 17:56:43</span></div>
+										<div class="comment-memo">
+											답글출력 답글출력답글출력답글출력 답글출력 답글출력 답글출력답글출력답글출력 답글출력
+											<!-- 답글수정 버튼 -->
+										</div>										
+									</li>
+									<li>
+										<div class="comment-user"><span class="comment-id">tes*****</span> <span class="comment-date">2015-12-01 17:56:43</span></div>
+										<div class="comment-memo">
+											답글출력 답글출력답글출력답글출력 답글출력 답글출력 답글출력답글출력답글출력 답글출력
+											<!-- 답글수정 버튼 -->
+										</div>										
+									</li>
+									<!-- 답글버튼 -->
+									<p class="comment-write">
+										<a href="" class="btn btn-reply">답글달기</a>
+										<!-- <a href="#" class="btn btn-reply">답글보기 <img src="../../images/mw/sub_common/re_arrow.png" width="7" alt=""></a> -->
+									</p>
+								</ul>
+							</dd>
+						</dl>
+						<!--//변경-->
+					</div>
+					<p class="btn-full"><a href="#" class="btn btn-full">더보기 (3/6)</a></p>
+				</div>
+				<div id="counsel" class="tab-con con-counsel hide">
+					<div class="con-box counsel-form">
+						<dl>
+							<dt>상품에 대한 궁금한 점 남겨주시면 답변드립니다.</dt>
+							<dd>구매한 상품의 취소/환불은 마이페이지를 이용해 주세요.<br>
+							상품과 관계없는 광고, 욕설, 비방 등의 글은 사전 예고 없이 삭제처리 됩니다.</dd>
+						</dl>
+						<form action="" method="post">
+							<input type="text" value="" class="title-int" placeholder="제목을 입력해 주세요">
+							<textarea name="textarea" id="textarea" cols="45" rows="5" class="focus-value" placeholder="궁금한 점을 남겨주세요"></textarea>
+							<p><a href="#" class="btn btn-submit">등록</a></p>
+						</form>
+					</div>
+					<div class="counsel-list">
+						<dl>
+							<dt class="area">
+								<div class="icon"><em>Q</em></div>
+								<div class="text">
+									<p class="user"><span class="user-id">tes*****</span> <span class="user-date">2015-09-18 14:15:07</span></p>
+									<p class="title">제목 출력 제목 출력제목 출력제목 출력제목 출력제목 출력 제목 출력 제목 출력</p>
+									<p class="memo">항공취소 수수료는 어떻게 되나요?</p>
+									<!--수정-->
+									<p class="editBT">
+										<a href="" class="btn btn-reply">수정</a>
+										<a href="" class="btn btn-reply">삭제</a>
+									</p>
+								</div>								
+							</dt>
+							<dd class="area">
+								<div class="icon"><em>A</em></div>
+								<div class="text">
+									<p class="user"><span class="user-id">tes*****</span> <span class="user-date">2015-09-18 14:15:07</span></p>
+									<p class="title">제목 출력 제목 출력제목 출력제목 출력제목 출력제목 출력 제목 출력 제목 출력</p>
+									<p class="memo">항공취소 수수료는 어떻게 되나요?</p>
+								</div>
+							</dd>
+						</dl>						
+					</div>
+					<p class="btn-full"><a href="#" class="btn btn-full">더보기 (3/6)</a></p>
+				</div>
+			</div>
+			<!-- 상품상세하단 E -->
+
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+</section>
+<!-- 콘텐츠 e -->
+
+<!-- 푸터 s -->
+<footer>
+    <ul class="list-unstyled">
+		<li><a href="">이용약관</a></li>
+		<li><a href="">개인정보처리방침</a></li>
+		<li><a href="">여행약관</a></li>
+	</ul>
+	<address>
+		상호명:제주특별자치도관광협회&nbsp; 대표:김영진&nbsp; 사업자등록번호:616-82-04092<br>
+		주소:제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층<br>
+		통신판매업번호: 제2013-제주연동 0024호<br>
+		고객센터:1577-1233 | 개인정보관리책임자:최종훈
+	</address>
+    <p>COPYRIGHT &copy; 제주특별자치도관광협회. ALL RIGHTS RESERVED</p>
+</footer>
+<!-- 푸터 e -->
+</div>
+<div id="cover"></div>
+<script src="../../js/jquery-1.11.1.js"></script>
+<script src="../../js/jquery.bxslider.js"></script>
+<script src="../../js/mw_layout.js"></script>
+<script src="../../js/mw_slider.js"></script>
+<script>
+	$('#goods-slide1 > ul').bxSlider({
+		nextSelector: '#goods-slide1 .btn-next',
+		prevSelector: '#goods-slide1 .btn-prev'
+	});
+	$('#goods-slide2 > ul').bxSlider({
+		nextSelector: '#goods-slide2 .btn-next',
+		prevSelector: '#goods-slide2 .btn-prev'
+	});
+</script>
+</body>
+</html>

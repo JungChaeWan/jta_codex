@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!--오마이제주 -->
+	<!--<bean id="eventUser1"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="sendEvent1User" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="eventUser1Trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="eventUser1" />
+		&lt;!&ndash; 매 10분마다 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 0 20 * * ?" />
+	</bean>
+
+	&lt;!&ndash;미 결제건 취소 처리&ndash;&gt;
+	<bean id="notRsvBean"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="deleteNotRsv" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="notRsvTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="notRsvBean" />
+		&lt;!&ndash; 매 10분마다 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 0/10 * * * ?" />
+	</bean>
+
+	&lt;!&ndash; 각 예약건 사용완료 처리 & 기간만료 처리 &ndash;&gt;
+	<bean id="chkExprBean"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="exprCheck" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="exprTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="chkExprBean" />
+		&lt;!&ndash; 매일 1시에 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 0 1 * * ?" />
+	</bean>
+
+	&lt;!&ndash; 정산 처리 &ndash;&gt;
+	<bean id="adjBean"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="adjust" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="adjTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="adjBean" />
+		&lt;!&ndash; 목요일 2시에 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 0 2 ? * 5" />
+	</bean>
+
+	&lt;!&ndash; 정산 처리 시티투어 &ndash;&gt;
+	<bean id="adjBean2"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="adjust2" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="adjTrigger2" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="adjBean2" />
+		&lt;!&ndash; 매월 첫째주 목요일 2시에 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 50 1 ? * 5#1" />
+	</bean>
+
+	&lt;!&ndash; 사용 완료 대상 메일 발송 처리 &ndash;&gt;
+	<bean id="useCompleteMailBean"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="useCompleteMail" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="useCompleteTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="useCompleteMailBean" />
+		&lt;!&ndash; 금요일 9시에 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 0 9 ? * 6" />
+		&lt;!&ndash; <property name="cronExpression" value="0 31 14 ? * 2" /> &ndash;&gt;
+	</bean>
+
+	&lt;!&ndash; SMS, Mail DB서버 트랜젝션 연장 처리 &ndash;&gt;
+	<bean id="refreshBean"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="refreshSmsMail" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="refreshTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="refreshBean" />
+		&lt;!&ndash; 시작하고 5초후에 실행한다. (milisecond) &ndash;&gt;
+		<property name="startDelay" value="5000" />
+		&lt;!&ndash; 매 300분(18000 * 1000)마다 실행한다. (milisecond) &ndash;&gt;
+		<property name="repeatInterval" value="18000000" />
+	</bean>
+
+	&lt;!&ndash; L.Point 배치 파일 생성 && SFTP 업로드 &ndash;&gt;
+	<bean id="lpointBatchBean"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="lpointBatch" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="lpointBatchTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="lpointBatchBean" />
+		&lt;!&ndash; 매일 4시에 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 0 4 * * ?" />
+	</bean>
+
+	&lt;!&ndash; L.Point 배치 파일 결과 다운로드 &ndash;&gt;
+	<bean id="lpointBatchDownloadBean"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="lpointBatchDownload" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="lpointBatchDownloadTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="lpointBatchDownloadBean" />
+		&lt;!&ndash; 매일 5시 30분에 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 30 5 * * ?" />
+	</bean>
+
+	&lt;!&ndash; 업체 지수 업데이트 &ndash;&gt;
+	<bean id="updateCorpLevelBean"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="updateCorpLevel" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="updateCorpLevelTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="updateCorpLevelBean" />
+		&lt;!&ndash; 매일 4시 30분에 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 30 4 * * ?" />
+	</bean>
+
+	&lt;!&ndash; 방문 7일전 자동 메일 발송 처리 &ndash;&gt;
+	<bean id="tourPrev7SendMailBean"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="tourPrev7SendMail" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="tourPrev7SendMailTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="tourPrev7SendMailBean" />
+		&lt;!&ndash; 매일 9시 20분에 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 20 9 * * ?" />
+	</bean>
+
+	&lt;!&ndash; 휴면 예정 고객 자동 메일 발송 처리 &ndash;&gt;
+	<bean id="restUserPrevSendMailBean"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="restUserPrevSendMail" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="restUserPrevSendMailTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="restUserPrevSendMailBean" />
+		&lt;!&ndash; 매일 9시 40분에 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 40 9 * * ?" />
+	</bean>
+
+	&lt;!&ndash; 휴면 예정 고객 자동 메일 발송 처리 &ndash;&gt;
+	<bean id="restUserTargetSendMailBean"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="restUserTargetSendMail" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="restUserTargetSendMailTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="restUserTargetSendMailBean" />
+		&lt;!&ndash; 매일 10시 20분에 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 20 10 * * ?" />
+	</bean>
+
+	&lt;!&ndash; 방문 10개월된 고객 자동 메일 발송 처리 &ndash;&gt;
+	<bean id="visit10MonthSendMailBean"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="visit10MonthSendMail" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="visit10MonthSendMailTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="visit10MonthSendMailBean" />
+		&lt;!&ndash; 매일 10시에 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 0 10 * * ?" />
+	</bean>
+
+	&lt;!&ndash; 페이스북  &ndash;&gt;
+	<bean id="facebookBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="facebookPrdt" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="facebookTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="facebookBean" />
+		<property name="cronExpression" value="0 15 1 * * ?" />
+	</bean>
+
+	&lt;!&ndash;실시간렌터카 대략금액 매일 오전3시&ndash;&gt;
+	<bean id="updateRcApproxAmtBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="updateRcApproxAmt" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="updateRcApproxAmtTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="updateRcApproxAmtBean" />
+		<property name="cronExpression" value="0 0 3 * * ?" />
+	</bean>
+
+	&lt;!&ndash;배송추적 매시간마다&ndash;&gt;
+	<bean id="goodsFlowReceiveTraceBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="goodsFlowReceiveTrace" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="goodsFlowReceiveTraceTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="goodsFlowReceiveTraceBean" />
+		<property name="cronExpression" value="0 0 0/1 * * ?" />
+	</bean>
+
+	&lt;!&ndash;배송상품 구매확정&ndash;&gt;
+	<bean id="updateSVBuyFixBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="updateSVBuyFix" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="updateSVBuyFixTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="updateSVBuyFixBean" />
+		<property name="cronExpression" value="0 10 0 * * ?" />
+	</bean>
+
+	&lt;!&ndash;탐나는전 정산추출&ndash;&gt;
+	<bean id="insertTamnacardAdjBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="insertTamnacardAdj" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="insertTamnacardAdjTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="insertTamnacardAdjBean" />
+		<property name="cronExpression" value="0 59 1 * * ?" />
+	</bean>
+
+	&lt;!&ndash; 관광지API 데이터동기화 &ndash;&gt;
+	<bean id="lsProudctSyncBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="lsProudctSync" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="lsProudctSyncTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="lsProudctSyncBean" />
+		<property name="cronExpression" value="0 10 23 * * ?" />
+	</bean>
+
+	   &lt;!&ndash;포인트 오류 알림&ndash;&gt;
+    <bean id="checkPointErrAlarmBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+      <property name="targetObject" ref="ScheduleService" />
+      <property name="targetMethod" value="checkPointErrAlarm" />
+      <property name="concurrent" value="false" />
+    </bean>
+
+    <bean id="checkPointErrAlarmTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+      <property name="jobDetail" ref="checkPointErrAlarmBean" />
+      <property name="cronExpression" value="0 0/30 * * * ?" />
+    </bean>
+
+	&lt;!&ndash; 알림톡 사용완료 7일 후 발송 &ndash;&gt;
+	<bean id="kakaoSendAfter7DaysBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="kakaoSendAfter7Days" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="kakaoSendAfter7DaysTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="kakaoSendAfter7DaysBean" />
+		&lt;!&ndash; 매일 17시에 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 0 17 * * ?" />
+	</bean>
+
+	&lt;!&ndash; 알림톡 유효기간(관광지, 맛집) 알림 3일 전 발송 &ndash;&gt;
+	<bean id="kakaoSendSpBefore3DaysBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="kakaoSendSpBefore3Days" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="kakaoSendSpBefore3DaysTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="kakaoSendSpBefore3DaysBean" />
+		&lt;!&ndash; 매일 17시 10분에 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 10 17 * * ?" />
+	</bean>
+
+	&lt;!&ndash; 알림톡 유효기간(숙박, 렌트카) 알림 7일 전 발송 &ndash;&gt;
+	<bean id="kakaoSendRcAdBefore7DaysBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ScheduleService" />
+		<property name="targetMethod" value="kakaoSendRcAdBefore7Days" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="kakaoSendRcAdBefore7DaysTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="kakaoSendRcAdBefore7DaysBean" />
+		&lt;!&ndash; 매일 17시20분에 실행 &ndash;&gt;
+		<property name="cronExpression" value="0 20 17 * * ?" />
+	</bean>
+
+	<bean id="notRsvScheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="eventUser1Trigger" />
+				<ref bean="refreshTrigger" />
+				<ref bean="notRsvTrigger" />
+				<ref bean="exprTrigger" />
+				<ref bean="adjTrigger" />
+				<ref bean="adjTrigger2" />
+				<ref bean="useCompleteTrigger" />
+				<ref bean="lpointBatchTrigger" />
+				<ref bean="lpointBatchDownloadTrigger" />
+				<ref bean="updateCorpLevelTrigger" />
+				<ref bean="tourPrev7SendMailTrigger" />
+				<ref bean="restUserPrevSendMailTrigger" />
+				<ref bean="restUserTargetSendMailTrigger" />
+				<ref bean="visit10MonthSendMailTrigger" />
+				<ref bean="facebookTrigger"/>
+				<ref bean="updateRcApproxAmtTrigger"/>
+				<ref bean="goodsFlowReceiveTraceTrigger"/>
+				<ref bean="updateSVBuyFixTrigger"/>
+				<ref bean="insertTamnacardAdjTrigger" />
+				<ref bean="lsProudctSyncTrigger" />
+				<ref bean="checkPointErrAlarmTrigger" />
+				&lt;!&ndash;알림톡&ndash;&gt;
+				<ref bean="kakaoSendAfter7DaysTrigger" />
+				<ref bean="kakaoSendSpBefore3DaysTrigger" />
+				<ref bean="kakaoSendRcAdBefore7DaysTrigger" />
+			</list>
+		</property>
+	</bean>-->
+</beans>

@@ -1,0 +1,4679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="rc">
+
+<resultMap id="RC_DFTINF_R_00" class="mas.rc.vo.RC_DFTINFVO">
+     <result property="corpId" 				 column="CORP_ID" />
+     <result property="rcNm" 				 column="RC_NM" />
+     <result property="rcSimpleExp" 		 column="RC_SIMPLE_EXP" />
+     <result property="rcInf" 				 column="RC_INF" />
+     <result property="totalBuyNum" 		 column="TOTAL_BUY_NUM" />
+     <result property="wkdDisPerAplYn" 		 column="WKD_DIS_PER_APL_YN" />
+     <result property="wkdDisPerAplWeek" 	 column="WKD_DIS_PER_APL_WEEK" />
+     <result property="addUseAbleTm" 		 column="ADD_USE_ABLE_TM" />
+     <result property="addUseMaxiTm" 		 column="ADD_USE_MAXI_TM" />
+     <result property="addUseAplTm" 	     column="ADD_USE_APL_TM" />
+     <result property="rsvAbleMiniTm" 		 column="RSV_ABLE_MINI_TM" />
+     <result property="disPerAplTm" 		 column="DIS_PER_APL_TM" />
+     <result property="rntStdInf" 			 column="RNT_STD_INF" />
+     <result property="carTkovInf"	 		 column="CAR_TKOV_INF" />
+     <result property="nti"			 		 column="NTI" />
+     <result property="cancelGuide"	 		 column="CANCEL_GUIDE" />
+     <result property="frstRegDttm" 		 column="FRST_REG_DTTM" />
+     <result property="frstRegId" 			 column="FRST_REG_ID" />
+     <result property="lastModDttm" 		 column="LAST_MOD_DTTM" />
+     <result property="lastModId" 			 column="LAST_MOD_ID" />
+     <result property="isrCmGuide" 			 column="ISR_CM_GUIDE" />
+     <result property="addUseDisPerAplYn" 	 column="ADD_USE_DIS_PER_APL_YN" />
+     <result property="dayRsvUnableYn" 		 column="DAY_RSV_UNABLE_YN" />
+     <result property="dayRsvUnableTm" 		 column="DAY_RSV_UNABLE_TM" />
+     <result property="rsvMaxiTmAplYn" 		 column="RSV_MAXI_TM_APL_YN" />
+     <result property="rsvMaxiTm" 			 column="RSV_MAXI_TM" />
+     <result property="tkovRoadNmAddr" 		 column="TKOV_ROAD_NM_ADDR" />
+     <result property="tkovDtlAddr" 		 column="TKOV_DTL_ADDR" />
+     <result property="tkovLon" 			 column="TKOV_LON" />
+     <result property="tkovLat" 			 column="TKOV_LAT" />
+     <result property="shutZone1" 			 column="SHUT_ZONE_1" />
+     <result property="shutZone2" 			 column="SHUT_ZONE_2" />
+     <result property="shutRunTm" 			 column="SHUT_RUN_TM" />
+     <result property="shutRunInter" 		 column="SHUT_RUN_INTER" />
+     <result property="shutCostTm" 			 column="SHUT_COST_TM" />
+     <result property="tkovTm" 			     column="TKOV_TM" />
+     <result property="rtnTm" 			     column="RTN_TM" />
+     <result property="sccUrl" 			     column="SCC_URL" />
+     <result property="rtnMaxTm" 			 column="RTN_MAX_TM" />
+     <result property="rtnMinTm" 			 column="RTN_MIN_TM" />
+     <result property="tkovMaxTm" 		     column="TKOV_MAX_TM" />
+     <result property="tkovMinTm" 		     column="TKOV_MIN_TM" />
+     <result property="cancelAbleTm" 		 column="CANCEL_ABLE_TM" />
+     <result property="sellLink" 		     column="SELL_LINK" />
+</resultMap>
+
+<resultMap id="RC_PRDTINF_R_00" class="mas.rc.vo.RC_PRDTINFVO">
+     <result property="corpId" 			     column="CORP_ID" />
+     <result property="prdtNum" 			 column="PRDT_NUM" />
+     <result property="tradeStatus" 		 column="TRADE_STATUS" />
+     <result property="prdtNm" 			     column="PRDT_NM" />
+     <result property="prdtExp" 			 column="PRDT_EXP" />
+     <result property="printYn" 			 column="PRINT_YN" />
+     <result property="maxiNum" 			 column="MAXI_NUM" />
+     <result property="carDiv" 			     column="CAR_DIV" />
+     <result property="useFuelDiv" 		     column="USE_FUEL_DIV" />
+     <result property="transDiv" 		     column="TRANS_DIV" />
+     <result property="makerDiv" 		     column="MAKER_DIV" />
+     <result property="buyNum" 			     column="BUY_NUM" />
+     <result property="confRequestDttm" 	 column="CONF_REQUEST_DTTM" />
+     <result property="confDttm" 		     column="CONF_DTTM" />
+     <result property="frstRegDttm" 		 column="FRST_REG_DTTM" />
+     <result property="frstRegId" 		     column="FRST_REG_ID" />
+     <result property="lastModDttm" 		 column="LAST_MOD_DTTM" />
+     <result property="lastModId" 		     column="LAST_MOD_ID" />
+     <result property="isrAmtGuide" 		 column="ISR_AMT_GUIDE" />
+     <result property="viewSn" 			     column="VIEW_SN" />
+     <result property="carCd" 			     column="CAR_CD" />
+     <result property="modelYear"		     column="MODEL_YEAR" />
+     <result property="prdtLinkYn"		     column="PRDT_LINK_YN" />
+     <result property="isrDiv"			     column="ISR_DIV" />
+     <result property="rcCardivNum" 		 column="RC_CARDIV_NUM"/>
+     <result property="isrTypeDiv" 		     column="ISR_TYPE_DIV" />
+     <result property="rntQlfctAge" 		 column="RNT_QLFCT_AGE" />
+     <result property="rntQlfctCareer" 	     column="RNT_QLFCT_CAREER" />
+     <result property="rntQlfctLicense" 	 column="RNT_QLFCT_LICENSE" />
+     <result property="generalIsrAmt" 	     column="GENERAL_ISR_AMT" />
+     <result property="generalIsrAge" 	     column="GENERAL_ISR_AGE" />
+     <result property="generalIsrCareer"     column="GENERAL_ISR_CAREER" />
+     <result property="generalIsrRewardAmt"	 column="GENERAL_ISR_REWARD_AMT" />
+     <result property="generalIsrBurcha"     column="GENERAL_ISR_BURCHA" />
+     <result property="luxyIsrAmt"		     column="LUXY_ISR_AMT" />
+     <result property="luxyIsrAge"		     column="LUXY_ISR_AGE" />
+     <result property="luxyIsrCareer"	     column="LUXY_ISR_CAREER" />
+     <result property="luxyIsrRewardAmt"     column="LUXY_ISR_REWARD_AMT"/>
+     <result property="luxyIsrBurcha" 	     column="LUXY_ISR_BURCHA"/>
+     <result property="linkMappingNum" 	     column="LINK_MAPPING_NUM"/>
+     <result property="linkMappingIsrNum" 	 column="LINK_MAPPING_ISR_NUM"/>
+</resultMap>
+
+<resultMap id="RC_PRDTINF_R_01" class="mas.rc.vo.RC_PRDTINFVO">
+     <result property="corpId" 			     column="CORP_ID" />
+     <result property="prdtNum" 			 column="PRDT_NUM" />
+     <result property="tradeStatus" 		 column="TRADE_STATUS" />
+     <result property="prdtNm" 			     column="PRDT_NM" />
+     <result property="prdtExp" 			 column="PRDT_EXP" />
+     <result property="printYn" 			 column="PRINT_YN" />
+     <result property="maxiNum" 			 column="MAXI_NUM" />
+     <result property="carDiv" 			     column="CAR_DIV" />
+     <result property="useFuelDiv" 		     column="USE_FUEL_DIV" />
+     <result property="transDiv" 		     column="TRANS_DIV" />
+     <result property="makerDiv" 		     column="MAKER_DIV" />
+     <result property="buyNum" 			     column="BUY_NUM" />
+     <result property="confRequestDttm" 	 column="CONF_REQUEST_DTTM" />
+     <result property="confDttm" 		     column="CONF_DTTM" />
+     <result property="frstRegDttm" 		 column="FRST_REG_DTTM" />
+     <result property="frstRegId" 		     column="FRST_REG_ID" />
+     <result property="lastModDttm" 		 column="LAST_MOD_DTTM" />
+     <result property="lastModId" 		     column="LAST_MOD_ID" />
+     <result property="isrAmtGuide" 		 column="ISR_AMT_GUIDE" />
+     <result property="viewSn" 			     column="VIEW_SN" />
+     <result property="carCd" 			     column="CAR_CD" />
+     <result property="modelYear"		     column="MODEL_YEAR" />
+     <result property="prdtLinkYn"		     column="PRDT_LINK_YN" />
+     <result property="isrDiv"			     column="ISR_DIV" />
+     <result property="rcCardivNum" 		 column="RC_CARDIV_NUM"/>
+     <result property="isrTypeDiv" 		     column="ISR_TYPE_DIV" />
+     <result property="rntQlfctAge" 		 column="RNT_QLFCT_AGE" />
+     <result property="rntQlfctCareer" 	     column="RNT_QLFCT_CAREER" />
+     <result property="rntQlfctLicense" 	 column="RNT_QLFCT_LICENSE" />
+     <result property="generalIsrAmt" 	     column="GENERAL_ISR_AMT" />
+     <result property="generalIsrAge" 	     column="GENERAL_ISR_AGE" />
+     <result property="generalIsrCareer"     column="GENERAL_ISR_CAREER" />
+     <result property="generalIsrRewardAmt"	 column="GENERAL_ISR_REWARD_AMT" />
+     <result property="generalIsrBurcha"     column="GENERAL_ISR_BURCHA" />
+     <result property="luxyIsrAmt"		     column="LUXY_ISR_AMT" />
+     <result property="luxyIsrAge"		     column="LUXY_ISR_AGE" />
+     <result property="luxyIsrCareer"	     column="LUXY_ISR_CAREER" />
+     <result property="luxyIsrRewardAmt"     column="LUXY_ISR_REWARD_AMT"/>
+     <result property="luxyIsrBurcha" 	     column="LUXY_ISR_BURCHA"/>
+     <result property="linkMappingNum" 	     column="LINK_MAPPING_NUM"/>
+     <result property="cntAplDt" 		     column="CNT_APL_DT"/>
+     <result property="disperEndDt" 		 column="DISPER_END_DT"/>
+     <result property="linkMappingIsrNum" 	 column="LINK_MAPPING_ISR_NUM"/>
+
+</resultMap>
+
+<resultMap id="RC_PRDTINF_R_04" class="mas.rc.vo.RC_PRDTINFVO">
+     <result property="prdtNum" 		column="PRDT_NUM" />
+     <result property="prdtNm" 			column="PRDT_NM" />
+
+     <result property="corpId" 			column="CORP_ID" />
+     <result property="corpNm" 			column="CORP_NM" />
+     <result property="nmlAmt" 			column="NML_AMT" />
+     <result property="saleAmt" 		column="SALE_AMT" />
+
+     <result property="rsvTm" 			column="RSV_TM" />
+     <result property="saleTm" 			column="SALE_TM" />
+
+     <result property="saveFileNm"		column="SAVE_FILE_NM" />
+     <result property="ableYn" 			column="ABLE_YN" />
+     <result property="buyNum" 			column="BUY_NUM" />
+     <result property="corpAbleYn" 		column="CORP_ABLE_YN" />
+     <result property="useFuelDiv"		column="USE_FUEL_DIV" />
+     <result property="useFuelDivNm"	column="USE_FUEL_DIV_NM" />
+     <result property="makerDiv"		column="MAKER_DIV" />
+
+     <result property="isrDiv"			column="ISR_DIV" />
+     <result property="isrTypeDiv"		column="ISR_TYPE_DIV" />
+     <result property="maxiNum"			column="MAXI_NUM" />
+     <result property="carDiv"			column="CAR_DIV" />
+     <result property="rcCardivNum"		column="RC_CARDIV_NUM" />
+     <result property="linkMappingNum"	column="LINK_MAPPING_NUM" />
+     <result property="corpLinkYn" 		column="CORP_LINK_YN" />
+
+     <result property="modelYear" 		column="MODEL_YEAR" />
+     <result property="rntQlfctAge" 	column="RNT_QLFCT_AGE" />
+     <result property="rntQlfctCareer" 	column="RNT_QLFCT_CAREER" />
+     <result property="linkMappingIsrNum" 	column="LINK_MAPPING_ISR_NUM" />
+     <result property="corpLinkIsrYn" 	column="CORP_LINK_ISR_YN" />
+     <result property="iconCds" 	        column="ICON_CDS" />
+     <result property="tamnacardYn" 		column="TAMNACARD_YN" />
+     <result property="superbCorpYn" 		column="SUPERB_CORP_YN" />
+     <result property="apiRentDiv" 		column="API_RENT_DIV" />
+     <result property="sellLink" 		column="SELL_LINK" />
+     <result property="generalIsrRewardAmt" 	column="GENERAL_ISR_REWARD_AMT" />
+     <result property="generalIsrBurcha" 		column="GENERAL_ISR_BURCHA" />
+     <result property="luxyIsrRewardAmt" 		column="LUXY_ISR_REWARD_AMT" />
+     <result property="luxyIsrBurcha" 		    column="LUXY_ISR_BURCHA" />
+     <result property="couponCnt" 		        column="COUPON_CNT" />
+</resultMap>
+
+<resultMap id="RC_PRDTINF_R_20" class="mas.rc.vo.RC_PRDTINFVO">
+     <result property="corpLinkYn" 		column="CORP_LINK_YN" />
+     <result property="linkMappingNum"	column="LINK_MAPPING_NUM" />
+</resultMap>
+
+<resultMap id="RC_PRDTINF_R_05" class="mas.rc.vo.RC_PRDTCNTVO">
+     <result property="carDiv" 			column="CAR_DIV" />
+     <result property="cnt" 			column="CNT" />
+</resultMap>
+
+<resultMap id="RC_PRDTINF_R_06" class="mas.rc.vo.RC_PRDTINFVO">
+     <result property="corpId" 			     column="CORP_ID" />
+     <result property="prdtNum" 			 column="PRDT_NUM" />
+     <result property="tradeStatus" 		 column="TRADE_STATUS" />
+     <result property="prdtNm" 			     column="PRDT_NM" />
+     <result property="prdtExp" 			 column="PRDT_EXP" />
+     <result property="carImg" 			     column="CAR_IMG" />
+     <result property="printYn" 			 column="PRINT_YN" />
+     <result property="maxiNum" 			 column="MAXI_NUM" />
+     <result property="carDiv" 			     column="CAR_DIV" />
+     <result property="carDivNm" 		     column="CAR_DIV_NM" />
+     <result property="useFuelDiv" 		     column="USE_FUEL_DIV" />
+     <result property="useFuelDivNm" 	     column="USE_FUEL_DIV_NM" />
+     <result property="transDiv" 		     column="TRANS_DIV" />
+     <result property="transDivNm" 		     column="TRANS_DIV_NM" />
+     <result property="makerDiv" 		     column="MAKER_DIV" />
+     <result property="makerDivNm" 		     column="MAKER_DIV_NM" />
+     <result property="cardivExp" 		     column="CARDIV_EXP" />
+     <result property="buyNum" 			     column="BUY_NUM" />
+     <result property="eventCnt"			 column="EVENT_CNT" />
+     <result property="couponCnt"		     column="COUPON_CNT" />
+     <result property="confRequestDttm" 	 column="CONF_REQUEST_DTTM" />
+     <result property="confDttm" 		     column="CONF_DTTM" />
+     <result property="frstRegDttm" 		 column="FRST_REG_DTTM" />
+     <result property="frstRegId" 		     column="FRST_REG_ID" />
+     <result property="lastModDttm" 		 column="LAST_MOD_DTTM" />
+     <result property="lastModId" 		     column="LAST_MOD_ID" />
+     <result property="corpNm" 			     column="CORP_NM" />
+     <result property="rntStdInf" 		     column="RNT_STD_INF" />
+     <result property="carTkovInf" 		     column="CAR_TKOV_INF" />
+     <result property="nti" 				 column="NTI" />
+     <result property="cancelGuide" 		 column="CANCEL_GUIDE" />
+     <result property="savePath"			 column="SAVE_PATH" />
+     <result property="saveFileNm"		     column="SAVE_FILE_NM" />
+     <result property="isrCmGuide" 		     column="ISR_CM_GUIDE" />
+     <result property="isrAmtGuide" 		 column="ISR_AMT_GUIDE" />
+     <result property="rsvTelNum" 		     column="RSV_TEL_NUM" />
+     <result property="apiRentDiv" 		     column="API_RENT_DIV" />
+     <result property="modelYear" 		     column="MODEL_YEAR" />
+     <result property="superbCorpYn" 	     column="SUPERB_CORP_YN" />
+     <result property="isrDiv"			     column="ISR_DIV" />
+     <result property="isrTypeDiv" 		     column="ISR_TYPE_DIV" />
+     <result property="rntQlfctAge" 		 column="RNT_QLFCT_AGE" />
+     <result property="rntQlfctCareer" 	     column="RNT_QLFCT_CAREER" />
+     <result property="rntQlfctLicense" 	 column="RNT_QLFCT_LICENSE" />
+     <result property="generalIsrAmt" 	     column="GENERAL_ISR_AMT" />
+     <result property="generalIsrAge" 	     column="GENERAL_ISR_AGE" />
+     <result property="generalIsrCareer"     column="GENERAL_ISR_CAREER" />
+     <result property="generalIsrRewardAmt"	 column="GENERAL_ISR_REWARD_AMT" />
+     <result property="generalIsrBurcha"     column="GENERAL_ISR_BURCHA" />
+     <result property="luxyIsrAmt"		     column="LUXY_ISR_AMT" />
+     <result property="luxyIsrAge"		     column="LUXY_ISR_AGE" />
+     <result property="luxyIsrCareer"	     column="LUXY_ISR_CAREER" />
+     <result property="luxyIsrRewardAmt"     column="LUXY_ISR_REWARD_AMT"/>
+     <result property="luxyIsrBurcha" 	     column="LUXY_ISR_BURCHA"/>
+     <result property="tamnacardYn" 		column="TAMNACARD_YN" />
+</resultMap>
+
+<resultMap id="RC_PRDTINF_R_07" class="mas.rc.vo.RC_PRDTINFVO">
+     <result property="prdtNum" 		column="PRDT_NUM" />
+     <result property="ableYn" 			column="ABLE_YN" />
+</resultMap>
+
+<resultMap id="RC_PRDTINF_R_08" class="mas.rc.vo.RC_PRDTINFVO">
+     <result property="prdtNum" 		column="PRDT_NUM" />
+     <result property="prdtNm" 			column="PRDT_NM" />
+     <result property="prdtExp" 		column="PRDT_EXP" />
+     <result property="disPer" 			column="DIS_PER" />
+     <result property="nmlAmt" 			column="NML_AMT" />
+     <result property="saleAmt" 		column="SALE_AMT" />
+     <result property="savePath" 		column="SAVE_PATH" />
+     <result property="saveFileNm" 		column="SAVE_FILE_NM" />
+     <result property="corpId" 		    column="CORP_ID" />
+     <result property="rcNm" 		    column="RC_NM" />
+</resultMap>
+
+<resultMap id="RC_PRDTINF_R_17" class="mas.rc.vo.RC_PRDTINFVO">
+     <result property="prdtNum" 		column="PRDT_NUM" />
+     <result property="prdtNm" 			column="PRDT_NM" />
+     <result property="confDttm"		column="CONF_DTTM" />
+     <result property="corpId" 			column="CORP_ID" />
+     <result property="corpNm" 			column="CORP_NM" />
+     <result property="carDiv"			column="CAR_DIV" />
+     <result property="rsvTm" 			column="RSV_TM" />
+     <result property="saleTm" 			column="SALE_TM" />
+     <result property="nmlAmt" 			column="NML_AMT" />
+     <result property="disPer" 			column="DIS_PER" />
+     <result property="ableYn" 			column="ABLE_YN" />
+     <result property="buyNum" 			column="BUY_NUM" />
+     <result property="corpAbleYn" 		column="CORP_ABLE_YN" />
+     <result property="saleAmt" 		column="SALE_AMT" />
+     <result property="savePath"		column="SAVE_PATH" />
+     <result property="saveFileNm"		column="SAVE_FILE_NM" />
+     <result property="gpaAvg" 			column="GPA_AVG" />
+     <result property="gpaCnt" 			column="GPA_CNT" />
+     <result property="useFuelDiv"		column="USE_FUEL_DIV" />
+     <result property="useFuelDivNm"	column="USE_FUEL_DIV_NM" />     
+     <result property="couponCnt"		column="COUPON_CNT" />
+     <result property="isrDiv"			column="ISR_DIV" />
+     <result property="isrTypeDiv"		column="ISR_TYPE_DIV" />
+     <result property="isrDivSort"		column="ISR_DIV_SORT" />
+     <result property="maxiNum"			column="MAXI_NUM" />
+     <result property="rcCardivNum"		column="RC_CARDIV_NUM" />
+     <result property="linkMappingNum"	column="LINK_MAPPING_NUM" />
+     <result property="corpLinkYn" 		column="CORP_LINK_YN" />
+     <result property="rsvMaxiTmAplYn"	column="RSV_MAXI_TM_APL_YN" />
+     <result property="rsvMaxiTm" 		column="RSV_MAXI_TM" />
+     <result property="tamnacardYn" 	column="TAMNACARD_YN" />
+
+</resultMap>
+     <resultMap id="RC_PRDTINF_R_18" class="mas.rc.vo.RC_PRDTINFVO">
+     <result property="prdtNum" 		column="PRDT_NUM" />
+     <result property="prdtNm" 			column="PRDT_NM" />
+</resultMap>
+
+
+
+<resultMap id="RC_PRDTINF_R_10A" class="mas.rc.vo.RC_PRDTINFVO">
+     <result property="prdtNum" 		column="PRDT_NUM" />
+     <result property="prdtNm" 			column="PRDT_NM" />
+     <result property="disPer" 			column="DIS_PER" />
+     <result property="nmlAmt" 			column="NML_AMT" />
+     <result property="savePath" 		column="SAVE_PATH" />
+     <result property="saveFileNm" 		column="SAVE_FILE_NM" />
+     <result property="corpId" 		    column="CORP_ID" />
+     <result property="rcNm" 		    column="RC_NM" />
+     <result property="printSn" 		column="PRINT_SN" />
+     <result property="saleAmt" 		column="SALE_AMT" />
+</resultMap>
+
+<resultMap id="RC_PRDTINF_R_10" class="mas.rc.vo.RC_PRDTINFVO">
+     <result property="prdtNum" 		column="PRDT_NUM" />
+     <result property="prdtNm" 			column="PRDT_NM" />
+     <result property="disPer" 			column="DIS_PER" />
+     <result property="nmlAmt" 			column="NML_AMT" />
+     <result property="saleAmt" 		column="SALE_AMT" />
+     <result property="savePath" 		column="SAVE_PATH" />
+     <result property="saveFileNm" 	    column="SAVE_FILE_NM" />
+     <result property="corpId" 		    column="CORP_ID" />
+     <result property="rcNm" 		    column="RC_NM" />
+     <result property="gpaAvg" 		    column="GPA_AVG" />
+</resultMap>
+
+<resultMap id="RC_AMTINF_R_00" class="mas.rc.vo.RC_AMTINFVO">
+     <result property="prdtNum" 		column="PRDT_NUM" />
+     <result property="aplDt" 			column="APL_DT" />
+     <result property="tm6Amt" 			column="TM6_AMT" />
+     <result property="tm12Amt" 		column="TM12_AMT" />
+     <result property="tm24Amt" 		column="TM24_AMT" />
+     <result property="tm1AddAmt" 		column="TM1_ADD_AMT" />
+</resultMap>
+
+<resultMap id="RC_DISPERINF_R_00" class="mas.rc.vo.RC_DISPERINFVO">
+     <result property="prdtNum" 		column="PRDT_NUM" />
+     <result property="disPerNum" 		column="DIS_PER_NUM" />
+     <result property="aplStartDt" 		column="APL_START_DT" />
+     <result property="aplEndDt" 		column="APL_END_DT" />
+     <result property="wdayDisPer" 		column="WDAY_DIS_PER" />
+     <result property="wkdDisPer" 		column="WKD_DIS_PER" />
+</resultMap>
+
+<resultMap id="RC_DISPERINF_R_01" class="mas.rc.vo.RC_DISPERINFVO">
+     <result property="prdtNum" 		column="PRDT_NUM" />
+     <result property="prdtNm" 			column="PRDT_NM" />
+     <result property="disPerNum" 		column="DIS_PER_NUM" />
+     <result property="aplStartDt" 		column="APL_START_DT" />
+     <result property="aplEndDt" 		column="APL_END_DT" />
+     <result property="wdayDisPer" 		column="WDAY_DIS_PER" />
+     <result property="wkdDisPer" 		column="WKD_DIS_PER" />
+     <result property="tradeStatus" 	column="TRADE_STATUS" />
+     <result property="isrDiv" 		    column="ISR_DIV" />
+     <result property="isrTypeDiv" 		column="ISR_TYPE_DIV" />
+</resultMap>
+
+<resultMap id="RC_DISPERINF_R_05" class="mas.rc.vo.RC_DISPERINFVO">
+     <result property="prdtNum" 		column="PRDT_NUM" />
+     <result property="prdtNm" 			column="PRDT_NM" />
+</resultMap>
+
+<resultMap id="RC_CNTINF_R_00" class="mas.rc.vo.RC_CNTINFVO">
+     <result property="prdtNum" 		column="PRDT_NUM" />
+     <result property="aplDt" 			column="APL_DT" />
+     <result property="totalCarNum" 	column="TOTAL_CAR_NUM" />
+</resultMap>
+
+<resultMap id="RC_RSVCHART_R_00" class="mas.rc.vo.RC_RSVCHARTVO">
+     <result property="prdtNum" 		column="PRDT_NUM" />
+     <result property="prdtNm" 			column="PRDT_NM" />
+     <result property="viewSn" 			column="VIEW_SN" />
+     <result property="tradeStatus" 	column="TRADE_STATUS" />
+     <result property="dt" 				column="DT" />
+     <result property="totalCarNum" 	column="TOTAL_CAR_NUM" />
+     <result property="useCnt" 			column="USE_CNT" />
+     <result property="useFuelDiv" 		column="USE_FUEL_DIV" />
+     <result property="isrDiv" 			column="ISR_DIV" />
+     <result property="isrTypeDiv" 		column="ISR_TYPE_DIV" />
+</resultMap>
+
+<resultMap id="RC_RSVCHART_R_01" class="web.order.vo.RC_RSVVO">
+     <result property="rcRsvNum" 		column="RC_RSV_NUM" />
+     <result property="rsvNum" 			column="RSV_NUM" />
+     <result property="rsvStatusCd" 	column="RSV_STATUS_CD" />
+     <result property="prdtNum" 		column="PRDT_NUM" />
+     <result property="prdtNm" 			column="PRDT_NM" />
+     <result property="rentStartDt" 	column="RENT_START_DT" />
+     <result property="rentStartTm" 	column="RENT_START_TM" />
+     <result property="rentEndDt" 		column="RENT_END_DT" />
+     <result property="rentEndTm" 		column="RENT_END_TM" />
+     <result property="saleAmt" 		column="SALE_AMT" />
+     <result property="nmlAmt" 			column="NML_AMT" />
+     <result property="rsvNm" 			column="RSV_NM" />
+     <result property="rsvTelnum" 		column="RSV_TELNUM" />
+     <result property="useNm" 			column="USE_NM" />
+     <result property="useTelnum" 		column="USE_TELNUM" />
+     <result property="mappingRsvNum"	column="MAPPING_RSV_NUM" />
+</resultMap>
+
+<select id="RC_DFTINF_S_00" resultMap="RC_DFTINF_R_00">
+SELECT CORP_ID              /*업체 아이디*/
+     , RC_NM                /*렌트카 명*/
+     , RC_SIMPLE_EXP        /*렌트카 간략 설명*/
+     , RC_INF        		/*렌트카 정보*/
+     , TOTAL_BUY_NUM        /*총 구매 수*/
+     , WKD_DIS_PER_APL_YN   /*주말 할인율 적용 여부*/
+     , WKD_DIS_PER_APL_WEEK /*주말 할인율 적용 요일*/
+     , ADD_USE_ABLE_TM      /*추가 이용 가능 시간*/
+     , ADD_USE_MAXI_TM      /*추가 이용 최대 시간*/
+     , ADD_USE_APL_TM       /*추가 이용 적용 시간*/
+     , RSV_ABLE_MINI_TM     /*예약 가능 최소 시간*/
+     , DIS_PER_APL_TM       /*할인율 적용 시간*/
+     , RNT_STD_INF  		/*대여 기준 정보 */
+     , CAR_TKOV_INF			/*차량  인수 정보 */
+     , NTI					/*참고사항 */
+     , CANCEL_GUIDE			/*취소안내 */
+     , FRST_REG_DTTM        /*최초 등록 일시*/
+     , FRST_REG_ID          /*최초 등록 아이디*/
+     , LAST_MOD_DTTM        /*최종 수정 일시*/
+     , LAST_MOD_ID          /*최종 수정 아이디*/
+     , ISR_CM_GUIDE
+     , ADD_USE_DIS_PER_APL_YN	/*추가이용할인율적용여부*/
+     , DAY_RSV_UNABLE_YN	/*당일 예약 불가 여부*/
+     , DAY_RSV_UNABLE_TM	/*당일 예약 불가 시간*/
+     , RSV_MAXI_TM_APL_YN	/*예약 최대 시간 적용 여부*/
+     , RSV_MAXI_TM			/*예약 최대 시간*/
+     , TKOV_ROAD_NM_ADDR
+     , TKOV_DTL_ADDR
+     , TKOV_LON
+     , TKOV_LAT
+     , SHUT_ZONE_1
+     , SHUT_ZONE_2
+     , SHUT_RUN_TM
+     , SHUT_RUN_INTER
+     , SHUT_COST_TM
+     , TKOV_TM
+     , RTN_TM
+     , SCC_URL				/*홍보영상 URL*/
+     , NVL(RTN_MAX_TM,'2000') AS RTN_MAX_TM
+     , NVL(RTN_MIN_TM,'0800') AS RTN_MIN_TM
+     , NVL(TKOV_MAX_TM,'2000') AS TKOV_MAX_TM
+     , NVL(TKOV_MIN_TM,'0800') AS TKOV_MIN_TM
+     , CANCEL_ABLE_TM
+     , SELL_LINK
+  FROM TB_RC_DFTINF
+ WHERE CORP_ID = #corpId#
+</select>
+
+<insert id="RC_DFTINF_I_00">
+INSERT INTO TB_RC_DFTINF
+     ( CORP_ID              /*업체 아이디*/
+     , RC_NM                /*렌트카 명*/
+     , RC_SIMPLE_EXP        /*렌트카 간략 설명*/
+     , RC_INF               /*렌트카 정보*/
+     , TOTAL_BUY_NUM        /*총 구매 수*/
+     , WKD_DIS_PER_APL_YN   /*주말 할인율 적용 여부*/
+     , WKD_DIS_PER_APL_WEEK /*주말 할인율 적용 요일*/
+     , ADD_USE_ABLE_TM      /*추가 이용 가능 시간*/
+     , ADD_USE_MAXI_TM      /*추가 이용 최대 시간*/
+     , ADD_USE_APL_TM       /*추가 이용 적용 시간*/
+     , RSV_ABLE_MINI_TM     /*예약 가능 최소 시간*/
+     , DIS_PER_APL_TM       /*할인율 적용 시간*/
+     , FRST_REG_DTTM        /*최초 등록 일시*/
+     , FRST_REG_ID          /*최초 등록 아이디*/
+     , LAST_MOD_DTTM        /*최종 수정 일시*/
+     , LAST_MOD_ID          /*최종 수정 아이디*/
+     )
+VALUES
+     ( #corpId#
+     , #rcNm#
+     , #rcSimpleExp#
+     , #rcInf#
+     , #rcInfImg#
+     , #totalBuyNum#
+     , #wkdDisPerAplYn#
+     , #wkdDisPerAplWeek#
+     , #addUseAbleTm#
+     , #addUseMaxiTm#
+     , #addUseAplTm#
+     , #rsvAbleMiniTm#
+     , #disPerAplTm#
+     , SYSDATE
+     , #frstRegId#
+     , SYSDATE
+     , #frstRegId#
+     )
+</insert>
+<update id="RC_DFTINF_U_00">
+UPDATE TB_RC_DFTINF
+   SET RC_NM                = #rcNm#
+     , RC_SIMPLE_EXP        = #rcSimpleExp#
+     , RC_INF               = #rcInf#
+     , TOTAL_BUY_NUM        = #totalBuyNum#
+     , WKD_DIS_PER_APL_YN   = #wkdDisPerAplYn#
+     , WKD_DIS_PER_APL_WEEK = #wkdDisPerAplWeek#
+     , ADD_USE_ABLE_TM      = #addUseAbleTm#
+     , ADD_USE_MAXI_TM      = #addUseMaxiTm#
+     , ADD_USE_APL_TM       = #addUseAplTm#
+     , RSV_ABLE_MINI_TM     = #rsvAbleMiniTm#
+     , DIS_PER_APL_TM       = #disPerAplTm#
+     , LAST_MOD_DTTM        = SYSDATE
+     , LAST_MOD_ID          = #lastModId#
+ WHERE CORP_ID              = #corpId#
+</update>
+
+<!-- 렌트카 기본정보 저장 -->
+<update id="RC_DFTINF_M_00">
+ MERGE INTO TB_RC_DFTINF DFTINF
+ USING (SELECT #corpId# AS CORP_ID
+          FROM DUAL) DFTINF2
+    ON (DFTINF2.CORP_ID = DFTINF.CORP_ID)
+  WHEN MATCHED THEN
+UPDATE SET
+       RC_NM                = #rcNm#
+     , RC_SIMPLE_EXP        = #rcSimpleExp#
+     , RC_INF               = #rcInf#
+     , WKD_DIS_PER_APL_YN   = #wkdDisPerAplYn#
+     , WKD_DIS_PER_APL_WEEK = #wkdDisPerAplWeek#
+     , ADD_USE_ABLE_TM      = #addUseAbleTm#
+     , ADD_USE_MAXI_TM      = #addUseMaxiTm#
+     , ADD_USE_APL_TM       = #addUseAplTm#
+     , RSV_ABLE_MINI_TM     = #rsvAbleMiniTm#
+     , DIS_PER_APL_TM       = #disPerAplTm#
+     , RNT_STD_INF          = #rntStdInf#
+     , CAR_TKOV_INF         = #carTkovInf#
+     , NTI                  = #nti#
+     , CANCEL_GUIDE         = #cancelGuide#
+     , LAST_MOD_DTTM        = SYSDATE
+     , LAST_MOD_ID          = #lastModId#
+     , ISR_CM_GUIDE			= #isrCmGuide#
+     , ADD_USE_DIS_PER_APL_YN = #addUseDisPerAplYn#
+     , DAY_RSV_UNABLE_YN    = #dayRsvUnableYn#
+     , DAY_RSV_UNABLE_TM    = #dayRsvUnableTm#
+     , RSV_MAXI_TM_APL_YN   = #rsvMaxiTmAplYn#
+     , RSV_MAXI_TM          = #rsvMaxiTm#
+
+     , TKOV_ROAD_NM_ADDR 	= #tkovRoadNmAddr#
+     , TKOV_DTL_ADDR     	= #tkovDtlAddr#
+     , TKOV_LON          	= #tkovLon#
+     , TKOV_LAT          	= #tkovLat#
+
+     , SHUT_ZONE_1          = #shutZone1#
+     , SHUT_ZONE_2          = #shutZone2#
+     , SHUT_RUN_TM          = #shutRunTm#
+     , SHUT_RUN_INTER       = #shutRunInter#
+     , SHUT_COST_TM         = #shutCostTm#
+     , TKOV_TM          	= #tkovTm#
+     , RTN_TM           	= #rtnTm#
+     , SCC_URL          	= #sccUrl#
+     , RTN_MAX_TM           = #rtnMaxTm#
+     , RTN_MIN_TM           = #rtnMinTm#
+     , TKOV_MIN_TM          = #tkovMinTm#
+     , TKOV_MAX_TM          = #tkovMaxTm#
+     , CANCEL_ABLE_TM       = #cancelAbleTm#
+     , SELL_LINK            = #sellLink#
+
+  WHEN NOT MATCHED THEN
+INSERT
+     ( CORP_ID              /*업체 아이디*/
+     , RC_NM                /*렌트카 명*/
+     , RC_SIMPLE_EXP        /*렌트카 간략 설명*/
+     , RC_INF               /*렌트카 정보*/
+     , TOTAL_BUY_NUM        /*총 구매 수*/
+     , WKD_DIS_PER_APL_YN   /*주말 할인율 적용 여부*/
+     , WKD_DIS_PER_APL_WEEK /*주말 할인율 적용 요일*/
+     , ADD_USE_ABLE_TM      /*추가 이용 가능 시간*/
+     , ADD_USE_MAXI_TM      /*추가 이용 최대 시간*/
+     , ADD_USE_APL_TM       /*추가 이용 적용 시간*/
+     , RSV_ABLE_MINI_TM     /*예약 가능 최소 시간*/
+     , DIS_PER_APL_TM       /*할인율 적용 시간*/
+     , RNT_STD_INF			/*대여 기준 정보 */
+     , CAR_TKOV_INF			/*차량  인수 정보 */
+     , NTI					/*참고사항 */
+     , CANCEL_GUIDE			/*취소 안내*/
+     , FRST_REG_DTTM        /*최초 등록 일시*/
+     , FRST_REG_ID          /*최초 등록 아이디*/
+     , LAST_MOD_DTTM        /*최종 수정 일시*/
+     , LAST_MOD_ID          /*최종 수정 아이디*/
+     , ISR_CM_GUIDE
+     , ADD_USE_DIS_PER_APL_YN
+     , DAY_RSV_UNABLE_YN	/*당일 예약 불가 여부*/
+     , DAY_RSV_UNABLE_TM	/*당일 예약 불가 시간*/
+     , RSV_MAXI_TM_APL_YN	/*예약 최대 시간 적용 여부*/
+     , RSV_MAXI_TM			/*예약 최대 시간*/
+
+     , TKOV_ROAD_NM_ADDR
+     , TKOV_DTL_ADDR
+     , TKOV_LON
+     , TKOV_LAT
+
+     , SHUT_ZONE_1
+	 , SHUT_ZONE_2
+	 , SHUT_RUN_TM
+	 , SHUT_RUN_INTER
+	 , SHUT_COST_TM
+	 , TKOV_TM
+	 , RTN_TM
+	 , SCC_URL			/*홍보영상 URL*/
+     , RTN_MAX_TM
+     , RTN_MIN_TM
+     , TKOV_MAX_TM
+     , TKOV_MIN_TM
+     , CANCEL_ABLE_TM
+     , SELL_LINK
+
+     )
+VALUES
+     ( #corpId#
+     , #rcNm#
+     , #rcSimpleExp#
+     , #rcInf#
+     , 0
+     , #wkdDisPerAplYn#
+     , #wkdDisPerAplWeek#
+     , #addUseAbleTm#
+     , #addUseMaxiTm#
+     , #addUseAplTm#
+     , #rsvAbleMiniTm#
+     , #disPerAplTm#
+     , #rntStdInf#
+     , #carTkovInf#
+     , #nti#
+     , #cancelGuide#
+     , SYSDATE
+     , #frstRegId#
+     , SYSDATE
+     , #frstRegId#
+     , #isrCmGuide#
+     , #addUseDisPerAplYn#
+     , #dayRsvUnableYn#
+     , #dayRsvUnableTm#
+     , #rsvMaxiTmAplYn#
+     , #rsvMaxiTm#
+
+     , #tkovRoadNmAddr#
+     , #tkovDtlAddr#
+     , #tkovLon#
+     , #tkovLat#
+
+     , #shutZone1#
+	 , #shutZone2#
+	 , #shutRunTm#
+	 , #shutRunInter#
+	 , #shutCostTm#
+	 , #tkovTm#
+	 , #rtnTm#
+	 , #sccUrl#
+     , #rtnMaxTm#
+     , #rtnMinTm#
+     , #tkovMaxTm#
+     , #tkovMinTm#
+     , #cancelAbleTm#
+     , #sellLink#
+     )
+</update>
+
+<select id="RC_PRDTINF_S_00" resultMap="RC_PRDTINF_R_00">
+SELECT CORP_ID           /*업체 아이디*/
+     , PRDT_NUM          /*상품 번호*/
+     , TRADE_STATUS		 /*거래상태*/
+     , PRDT_NM           /*상품 명*/
+     , PRDT_EXP          /*상품 설명*/
+     , PRINT_YN          /*출력 여부*/
+     , MAXI_NUM          /*정원*/
+     , CAR_DIV           /*차량 구분*/
+     , USE_FUEL_DIV      /*사용 연료 구분*/
+     , TRANS_DIV         /*변속기 구분*/
+ 	 , MAKER_DIV         /*제조사 구분*/
+ 	 , BUY_NUM           /*구매 수*/
+	 , CONF_REQUEST_DTTM /*승인 요청 일시*/
+	 , CONF_DTTM         /*승인 일시*/
+     , FRST_REG_DTTM     /*최초 등록 일시*/
+     , FRST_REG_ID       /*최초 등록 아이디*/
+     , LAST_MOD_DTTM     /*최종 수정 일시*/
+     , LAST_MOD_ID       /*최종 수정 아이디*/
+     , ISR_AMT_GUIDE
+     , VIEW_SN
+     , CAR_CD            /*차량 코드*/
+     , MODEL_YEAR		 /*연식*/
+     , PRDT_LINK_YN		 /*상품 연계 여부*/
+     , ISR_DIV			 /*보험 구분*/
+     , RC_CARDIV_NUM
+     , RNT_QLFCT_AGE		/*대여 조건 나이*/
+     , RNT_QLFCT_CAREER		/*대여 조건 경력*/
+     , RNT_QLFCT_LICENSE	/*대여 조건 면허*/
+     , ISR_TYPE_DIV			/*보험 종류 구분*/
+     , GENERAL_ISR_AMT		/*일반 보험 요금*/   
+     , GENERAL_ISR_AGE		/*일반 보험 나이*/
+     , GENERAL_ISR_CAREER	/*일반 보험 경력*/
+     , GENERAL_ISR_REWARD_AMT	/*일반 보험 보상 요금*/
+     , GENERAL_ISR_BURCHA	/*일반 보험 결제 요금*/
+     , LUXY_ISR_AMT			/*고급 보험 요금*/
+     , LUXY_ISR_AGE			/*고급 보험 나이*/
+     , LUXY_ISR_CAREER		/*고급 보험 경력*/
+     , LUXY_ISR_REWARD_AMT	/*고급 보험 보상 요금*/
+     , LUXY_ISR_BURCHA		/*고급 보험 결제 요금*/
+     , LINK_MAPPING_NUM
+     , LINK_MAPPING_ISR_NUM
+  FROM TB_RC_PRDTINF
+ WHERE PRDT_NUM = #prdtNum#
+</select>
+
+<select id="RC_PRDTINF_S_01" resultMap="RC_PRDTINF_R_01">
+SELECT CORP_ID           /*업체 아이디*/
+     , PRDT_NUM          /*상품 번호*/
+     , PRDT_NM           /*상품 명*/
+     , TRADE_STATUS		 /*거래상태*/
+     , PRDT_EXP          /*상품 설명*/
+     , PRINT_YN          /*출력 여부*/
+     , MAXI_NUM          /*정원*/
+     , CAR_DIV           /*차량 구분*/
+     , USE_FUEL_DIV      /*사용 연료 구분*/
+     , TRANS_DIV         /*변속기 구분*/
+ 	 , MAKER_DIV         /*제조사 구분*/
+ 	 , BUY_NUM           /*구매 수*/
+	 , CONF_REQUEST_DTTM /*승인 요청 일시*/
+	 , CONF_DTTM         /*승인 일시*/
+     , FRST_REG_DTTM     /*최초 등록 일시*/
+     , FRST_REG_ID       /*최초 등록 아이디*/
+     , LAST_MOD_DTTM     /*최종 수정 일시*/
+     , LAST_MOD_ID       /*최종 수정 아이디*/
+     , ISR_AMT_GUIDE
+     , VIEW_SN
+     , CAR_CD            /*차량 코드*/
+     , MODEL_YEAR		 /*연식*/
+     , PRDT_LINK_YN		 /*상품 연계 여부*/
+     , ISR_DIV			 /*보험 구분*/
+     , RC_CARDIV_NUM
+     , RNT_QLFCT_AGE		/*대여 조건 나이*/
+     , RNT_QLFCT_CAREER		/*대여 조건 경력*/
+     , RNT_QLFCT_LICENSE	/*대여 조건 면허*/
+     , ISR_TYPE_DIV			/*보험 종류 구분*/
+     , GENERAL_ISR_AMT		/*일반 보험 요금*/   
+     , GENERAL_ISR_AGE		/*일반 보험 나이*/
+     , GENERAL_ISR_CAREER	/*일반 보험 경력*/
+     , GENERAL_ISR_REWARD_AMT	/*일반 보험 보상 요금*/
+     , GENERAL_ISR_BURCHA	/*일반 보험 결제 요금*/
+     , LUXY_ISR_AMT			/*고급 보험 요금*/
+     , LUXY_ISR_AGE			/*고급 보험 나이*/
+     , LUXY_ISR_CAREER		/*고급 보험 경력*/
+     , LUXY_ISR_REWARD_AMT	/*고급 보험 보상 요금*/
+     , LUXY_ISR_BURCHA		/*고급 보험 결제 요금*/
+     , LINK_MAPPING_NUM
+     , (SELECT MAX(APL_DT) AS APL_DT FROM TB_RC_CNTINF WHERE PRDT_NUM = A.PRDT_NUM GROUP BY PRDT_NUM) AS CNT_APL_DT
+     , (SELECT MAX(APL_END_DT) AS APL_END_DT FROM TB_RC_DISPERINF WHERE PRDT_NUM = A.PRDT_NUM AND DIS_PER_NUM <![CDATA[<>]]> '1' GROUP BY PRDT_NUM) AS DISPER_END_DT    /*기간할인율 종료일*/
+     , LINK_MAPPING_ISR_NUM
+  FROM (SELECT ROWNUM AS RN
+             , CORP_ID           /*업체 아이디*/
+             , PRDT_NUM          /*상품 번호*/
+             , TRADE_STATUS		 /*거래상태*/
+             , PRDT_NM           /*상품 명*/
+             , PRDT_EXP          /*상품 설명*/
+             , PRINT_YN          /*출력 여부*/
+             , MAXI_NUM          /*정원*/
+             , CAR_DIV           /*차량 구분*/
+             , USE_FUEL_DIV      /*사용 연료 구분*/
+             , TRANS_DIV         /*변속기 구분*/
+		 	 , MAKER_DIV         /*제조사 구분*/
+		 	 , BUY_NUM           /*구매 수*/
+			 , CONF_REQUEST_DTTM /*승인 요청 일시*/
+			 , CONF_DTTM         /*승인 일시*/
+             , FRST_REG_DTTM     /*최초 등록 일시*/
+             , FRST_REG_ID       /*최초 등록 아이디*/
+             , LAST_MOD_DTTM     /*최종 수정 일시*/
+             , LAST_MOD_ID       /*최종 수정 아이디*/
+             , ISR_AMT_GUIDE
+             , VIEW_SN
+             , CAR_CD            /*차량 코드*/
+             , MODEL_YEAR		 /*연식*/
+             , PRDT_LINK_YN		 /*상품 연계 여부*/
+             , ISR_DIV			 /*보험 구분*/
+             , RC_CARDIV_NUM
+             , RNT_QLFCT_AGE		/*대여 조건 나이*/
+		     , RNT_QLFCT_CAREER		/*대여 조건 경력*/
+		     , RNT_QLFCT_LICENSE	/*대여 조건 면허*/
+		     , ISR_TYPE_DIV			/*보험 종류 구분*/
+		     , GENERAL_ISR_AMT		/*일반 보험 요금*/   
+		     , GENERAL_ISR_AGE		/*일반 보험 나이*/
+		     , GENERAL_ISR_CAREER	/*일반 보험 경력*/
+		     , GENERAL_ISR_REWARD_AMT	/*일반 보험 보상 요금*/
+		     , GENERAL_ISR_BURCHA	/*일반 보험 결제 요금*/
+		     , LUXY_ISR_AMT			/*고급 보험 요금*/
+		     , LUXY_ISR_AGE			/*고급 보험 나이*/
+		     , LUXY_ISR_CAREER		/*고급 보험 경력*/
+		     , LUXY_ISR_REWARD_AMT	/*고급 보험 보상 요금*/
+		     , LUXY_ISR_BURCHA		/*고급 보험 결제 요금*/
+		     , LINK_MAPPING_NUM
+		     , LINK_MAPPING_ISR_NUM
+          FROM (SELECT CORP_ID           /*업체 아이디*/
+		             , PRDT_NUM          /*상품 번호*/
+		             , TRADE_STATUS		 /*거래상태*/
+		             , PRDT_NM           /*상품 명*/
+		             , PRDT_EXP          /*상품 설명*/
+		             , PRINT_YN          /*출력 여부*/
+		             , MAXI_NUM          /*정원*/
+		             , CAR_DIV           /*차량 구분*/
+		             , USE_FUEL_DIV      /*사용 연료 구분*/
+		             , TRANS_DIV         /*변속기 구분*/
+				 	 , MAKER_DIV         /*제조사 구분*/
+				 	 , BUY_NUM           /*구매 수*/
+					 , CONF_REQUEST_DTTM /*승인 요청 일시*/
+					 , CONF_DTTM         /*승인 일시*/
+		             , FRST_REG_DTTM     /*최초 등록 일시*/
+		             , FRST_REG_ID       /*최초 등록 아이디*/
+		             , LAST_MOD_DTTM     /*최종 수정 일시*/
+		             , LAST_MOD_ID       /*최종 수정 아이디*/
+		             , ISR_AMT_GUIDE
+		             , VIEW_SN
+		             , CAR_CD            /*차량 코드*/
+		             , MODEL_YEAR		 /*연식*/
+		             , PRDT_LINK_YN		 /*상품 연계 여부*/
+		             , ISR_DIV			 /*보험 구분*/
+		             , RC_CARDIV_NUM
+		             , RNT_QLFCT_AGE		/*대여 조건 나이*/
+				     , RNT_QLFCT_CAREER		/*대여 조건 경력*/
+				     , RNT_QLFCT_LICENSE	/*대여 조건 면허*/
+				     , ISR_TYPE_DIV			/*보험 종류 구분*/
+				     , GENERAL_ISR_AMT		/*일반 보험 요금*/   
+				     , GENERAL_ISR_AGE		/*일반 보험 나이*/
+				     , GENERAL_ISR_CAREER	/*일반 보험 경력*/
+				     , GENERAL_ISR_REWARD_AMT	/*일반 보험 보상 요금*/
+				     , GENERAL_ISR_BURCHA	/*일반 보험 결제 요금*/
+				     , LUXY_ISR_AMT			/*고급 보험 요금*/
+				     , LUXY_ISR_AGE			/*고급 보험 나이*/
+				     , LUXY_ISR_CAREER		/*고급 보험 경력*/
+				     , LUXY_ISR_REWARD_AMT	/*고급 보험 보상 요금*/
+				     , LUXY_ISR_BURCHA		/*고급 보험 결제 요금*/
+				     , LINK_MAPPING_NUM
+				     , LINK_MAPPING_ISR_NUM
+		          FROM TB_RC_PRDTINF
+		         WHERE CORP_ID = #sCorpId#
+		         AND PRINT_YN = 'Y'
+		         ORDER BY (CASE TRADE_STATUS 
+				  	WHEN 'TS01' THEN 1 
+				  	WHEN 'TS02' THEN 2 
+				  	WHEN 'TS03' THEN 3
+				  	WHEN 'TS04' THEN 5
+				  	WHEN 'TS05' THEN 8
+				  	WHEN 'TS06' THEN 4
+				  	WHEN 'TS07' THEN 6
+				  	WHEN 'TS08' THEN 7
+				  	ELSE 8 END) ,RC_CARDIV_NUM DESC, ISR_DIV, ISR_TYPE_DIV
+               )
+         WHERE 1=1
+         <isNotEmpty property="sPrdtNm">
+		   	   AND UPPER(PRDT_NM) LIKE UPPER('%'||#sPrdtNm#||'%')
+		 </isNotEmpty>
+         <isNotEmpty property="sPrdtNum">
+		   	   AND PRDT_NUM LIKE '%'||#sPrdtNum#||'%'
+		 </isNotEmpty>
+         <isNotEmpty property="sCarDivCd">
+		   	   AND CAR_DIV = #sCarDivCd#
+		 </isNotEmpty>
+         <isNotEmpty property="sTradeStatus">
+		   	   AND TRADE_STATUS = #sTradeStatus#
+		 </isNotEmpty>
+        <isNotEmpty property="sRcCardivNum">
+		   	   AND RC_CARDIV_NUM = #sRcCardivNum#
+		 </isNotEmpty>
+         <isNotEmpty property="sIsrTypeDiv">
+              <isEqual property="sIsrTypeDiv" compareValue="ID00">
+                    AND ISR_DIV = #sIsrTypeDiv# /*탐나는전*/
+              </isEqual>
+              <isNotEqual property="sIsrTypeDiv" compareValue="ID00">
+                    AND ISR_TYPE_DIV = #sIsrTypeDiv#
+              </isNotEqual>
+		 </isNotEmpty>
+       ) AS A
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+ </select>
+
+ <select id="RC_PRDTINF_S_02" resultClass="int">
+    SELECT COUNT(PRDT_NUM) AS CNT
+    FROM TB_RC_PRDTINF
+    WHERE 1=1
+    AND PRINT_YN = 'Y'
+<isNotEmpty property="sCorpId">
+  	AND CORP_ID = #sCorpId#
+</isNotEmpty>
+<isNotEmpty property="sPrdtNm">
+    AND UPPER(PRDT_NM) LIKE UPPER('%'||#sPrdtNm#||'%')
+</isNotEmpty>
+<isNotEmpty property="sPrdtNum">
+    AND PRDT_NUM LIKE '%'||#sPrdtNum#||'%'
+</isNotEmpty>
+<isNotEmpty property="sCarDivCd">
+   	AND CAR_DIV = #sCarDivCd#
+ </isNotEmpty>
+<isNotEmpty property="sTradeStatus">
+    AND TRADE_STATUS = #sTradeStatus#
+ </isNotEmpty>
+<isNotEmpty property="sRcCardivNum">
+    AND RC_CARDIV_NUM = #sRcCardivNum#
+</isNotEmpty>
+<isNotEmpty property="sIsrTypeDiv">
+    <isEqual property="sIsrTypeDiv" compareValue="ID00">
+          AND ISR_DIV = #sIsrTypeDiv# /*탐나는전*/
+    </isEqual>
+    <isNotEqual property="sIsrTypeDiv" compareValue="ID00">
+          AND ISR_TYPE_DIV = #sIsrTypeDiv#
+    </isNotEqual>
+</isNotEmpty>
+</select>
+
+<select id="RC_PRDTINF_S_03" resultMap="RC_PRDTINF_R_00">
+SELECT CORP_ID           /*업체 아이디*/
+     , PRDT_NUM          /*상품 번호*/
+     , TRADE_STATUS		 /*거래상태*/
+     , PRDT_NM           /*상품 명*/
+     , PRDT_EXP          /*상품 설명*/
+     , PRINT_YN          /*출력 여부*/
+     , MAXI_NUM          /*정원*/
+     , CAR_DIV           /*차량 구분*/
+     , USE_FUEL_DIV      /*사용 연료 구분*/
+     , TRANS_DIV         /*변속기 구분*/
+ 	 , MAKER_DIV         /*제조사 구분*/
+ 	 , BUY_NUM           /*구매 수*/
+	 , CONF_REQUEST_DTTM /*승인 요청 일시*/
+	 , CONF_DTTM         /*승인 일시*/
+     , FRST_REG_DTTM     /*최초 등록 일시*/
+     , FRST_REG_ID       /*최초 등록 아이디*/
+     , LAST_MOD_DTTM     /*최종 수정 일시*/
+     , LAST_MOD_ID       /*최종 수정 아이디*/
+     , ISR_AMT_GUIDE
+     , VIEW_SN
+     , CAR_CD            /*차량 코드*/
+     , MODEL_YEAR		 /*연식*/
+     , PRDT_LINK_YN		 /*상품 연계 여부*/
+     , ISR_DIV			 /*보험 구분*/
+     , RC_CARDIV_NUM
+     , RNT_QLFCT_AGE		/*대여 조건 나이*/
+     , RNT_QLFCT_CAREER		/*대여 조건 경력*/
+     , RNT_QLFCT_LICENSE	/*대여 조건 면허*/
+     , ISR_TYPE_DIV			/*보험 종류 구분*/
+     , GENERAL_ISR_AMT		/*일반 보험 요금*/   
+     , GENERAL_ISR_AGE		/*일반 보험 나이*/
+     , GENERAL_ISR_CAREER	/*일반 보험 경력*/
+     , GENERAL_ISR_REWARD_AMT	/*일반 보험 보상 요금*/
+     , GENERAL_ISR_BURCHA	/*일반 보험 결제 요금*/
+     , LUXY_ISR_AMT			/*고급 보험 요금*/
+     , LUXY_ISR_AGE			/*고급 보험 나이*/
+     , LUXY_ISR_CAREER		/*고급 보험 경력*/
+     , LUXY_ISR_REWARD_AMT	/*고급 보험 보상 요금*/
+     , LUXY_ISR_BURCHA		/*고급 보험 결제 요금*/
+     , LINK_MAPPING_NUM
+     , LINK_MAPPING_ISR_NUM
+  FROM TB_RC_PRDTINF
+ WHERE 1=1
+  AND PRINT_YN = 'Y'
+  <isNotEmpty property="sPrdtNm">
+  	AND PRDT_NM LIKE '%'||#sPrdtNm#||'%'
+  </isNotEmpty>
+  <isNotEmpty property="sCarDivCd">
+  	AND CAR_DIV=#sCarDivCd#
+  </isNotEmpty>
+  <isNotEmpty property="sTradeStatus">
+  	AND TRADE_STATUS=#sTradeStatus#
+  </isNotEmpty>
+  <isNotEmpty property="sCorpId">
+  	AND CORP_ID = #sCorpId#
+  </isNotEmpty>
+  ORDER BY (CASE TRADE_STATUS 
+  	WHEN 'TS01' THEN 1 
+  	WHEN 'TS02' THEN 2 
+  	WHEN 'TS03' THEN 3
+  	WHEN 'TS04' THEN 5
+  	WHEN 'TS05' THEN 8
+  	WHEN 'TS06' THEN 4
+  	WHEN 'TS07' THEN 6
+  	WHEN 'TS08' THEN 7
+  	ELSE 8 END) ,VIEW_SN ASC
+</select>
+
+<!-- 2016.12.19 기준시간 오류 수정 - 최영철
+                할인율의 경우 1. 할인율 2. 평점 3. 평점 카운트 순으로
+                -->
+<select id="RC_PRDTINF_S_04" resultMap="RC_PRDTINF_R_04">
+SELECT PRDT_NUM     /*상품번호*/
+     , PRDT_NM      /*상품명*/
+     , USE_FUEL_DIV	/*사용연료구분*/
+     , CORP_ID      /*업체아이디*/
+     , REPLACE(REPLACE(REPLACE(CORP_NM, '(주)', ''), '㈜', ''),' ','') AS CORP_NM
+     , RSV_TM     	/*선택시간*/
+     , SALE_TM    	/*기준시간*/
+     , NML_AMT 		/*정상가*/
+
+     , ABLE_YN		/*예약가능여부*/
+     , NVL(BUY_NUM,0) AS BUY_NUM /*구매수*/
+     , CORP_ABLE_YN
+     , SALE_AMT   	/*할인가*/
+
+     , SAVE_FILE_NM
+
+     , USE_FUEL_DIV_NM /*사용연료명*/
+     , MAKER_DIV    /*제조사*/
+
+     , ISR_DIV		/*보험 구분*/
+     , ISR_TYPE_DIV	/*보험 종류 구분*/
+
+     , MAXI_NUM		/*정원*/
+     , CAR_DIV		/*차량 구분*/
+     , RC_CARDIV_NUM /*렌터카 차종 번호 */
+     , LINK_MAPPING_NUM
+     , CORP_LINK_YN
+
+     , MODEL_YEAR   /*연식*/
+     , RNT_QLFCT_AGE
+     , RNT_QLFCT_CAREER
+     , LINK_MAPPING_ISR_NUM
+     , CORP_LINK_ISR_YN
+     , (SELECT LISTAGG(ICON_CD, ',') WITHIN GROUP (ORDER BY ICON_CD desc) AS ICON_CD	FROM TB_CM_ICONINF WHERE LINK_NUM = PRDT_NUM) AS ICON_CDS
+     , TAMNACARD_YN
+     , SUPERB_CORP_YN
+     , API_RENT_DIV
+     , SELL_LINK
+     , GENERAL_ISR_REWARD_AMT
+     , GENERAL_ISR_BURCHA
+     , LUXY_ISR_REWARD_AMT
+     , LUXY_ISR_BURCHA
+     , COUPON_CNT   /*할인쿠폰*/
+  FROM (SELECT ROWNUM AS RN
+             , PRDT_NUM     /*상품번호*/
+             , PRDT_NM      /*상품명*/
+             , CONF_DTTM    /*승인 일시*/
+             , CORP_ID      /*업체아이디*/
+             , CORP_NM      /*렌터카명*/
+             , CAR_DIV		/*차량구분*/
+             , RSV_TM     	/*선택시간*/
+             , SALE_TM    	/*기준시간*/
+             , NML_AMT 		/*정상가*/
+             , DIS_PER      /*할인율*/
+             , ABLE_YN
+             , BUY_NUM		/*구매수*/
+             , CORP_ABLE_YN
+             , SALE_AMT   	/*할인가*/
+             , SAVE_PATH
+             , SAVE_FILE_NM
+             , GPA_AVG
+             , GPA_CNT
+             , USE_FUEL_DIV	/*사용연료구분*/
+             , USE_FUEL_DIV_NM /*사용연료명*/
+             , MAKER_DIV    /*제조사*/
+             , EVENT_CNT
+             , COUPON_CNT
+             , ISR_DIV
+             , CASE
+             WHEN ISR_TYPE_DIV IS NULL THEN 'FEE'
+             WHEN ISR_TYPE_DIV = 'LUXY' AND LUXY_ISR_REWARD_AMT = '0' AND LUXY_ISR_BURCHA= '0' THEN 'ULIM'
+             WHEN ISR_TYPE_DIV = 'LUXY' AND LUXY_ISR_REWARD_AMT = '-1' AND LUXY_ISR_BURCHA = '0' THEN 'ULIM'
+             ELSE ISR_TYPE_DIV END AS ISR_TYPE_DIV
+             , CASE 
+                  WHEN ISR_DIV='ID10' THEN 1
+                  WHEN ISR_DIV='ID00' THEN 2
+                  ELSE 3
+               END AS ISR_DIV_SORT
+             , MAXI_NUM		/*정원*/
+             , RC_CARDIV_NUM /*렌터카 차종 번호 */ 
+             , LINK_MAPPING_NUM
+     		 , CORP_LINK_YN
+     		 , RSV_MAXI_TM_APL_YN
+     		 , RSV_MAXI_TM
+             , MODEL_YEAR   /*연식*/
+             , RNT_QLFCT_AGE
+             , RNT_QLFCT_CAREER
+             , CORP_RAND_LEVEL
+             , LINK_MAPPING_ISR_NUM
+             , CORP_LINK_ISR_YN
+             , TAMNACARD_YN
+             , SUPERB_CORP_YN
+             , API_RENT_DIV
+             , SELL_LINK
+             , GENERAL_ISR_REWARD_AMT
+             , GENERAL_ISR_BURCHA
+             , LUXY_ISR_REWARD_AMT
+             , LUXY_ISR_BURCHA
+          FROM (SELECT V_PRDT.PRDT_NUM     /*상품번호*/
+                     , V_PRDT.PRDT_NM      /*상품명*/
+                     , V_PRDT.CONF_DTTM     /*승인 일시*/
+                     , V_PRDT.CORP_ID      /*업체아이디*/
+                     , V_PRDT.CORP_NM      /*렌터카명*/
+                     , V_PRDT.RSV_TM       /*선택시간*/
+                     , V_PRDT.SALE_TM      /*기준시간*/
+                     , V_PRDT.BUY_NUM	   /*구매수*/
+                     , V_PRDT.CAR_DIV		/*차량구분*/
+                     , V_PRDT.USE_FUEL_DIV	/*사용연료구분*/
+                     , V_PRDT.USE_FUEL_DIV_NM /*사용연료명*/
+                     , V_PRDT.MAKER_DIV     /*제조사*/
+                     , (V_PRDT.NML_AMT1 + V_PRDT.NML_AMT2) AS NML_AMT /*정상가*/
+                     , V_PRDT.DIS_PER      /*할인율*/
+                     , V_PRDT.ABLE_YN	   /*사용가능여부*/
+                     , V_PRDT.CORP_ABLE_YN
+                     , V_PRDT.PRDT_LINK_YN /*상품연계여부*/
+                     , (CASE V_PRDT.ADD_USE_DIS_PER_APL_YN WHEN 'Y'
+                                                           THEN TRUNC(((V_PRDT.NML_AMT1 + V_PRDT.NML_AMT2) * (100 - V_PRDT.DIS_PER) / 100), -2)
+                                                           ELSE TRUNC((V_PRDT.NML_AMT1 * (100 - V_PRDT.DIS_PER) / 100), -2) + V_PRDT.NML_AMT2
+                         END
+                       ) AS SALE_AMT /*할인가*/
+                     , '' AS SAVE_PATH
+                     <!-- , T_IMG.SAVE_FILE_NM -->
+                     , NVL(T_GPA.GPA_AVG, 0) AS GPA_AVG /*평점 평균*/
+                     , NVL(T_GPA.GPA_CNT, 0) AS GPA_CNT	/*평점 수량*/
+                    , (SELECT NVL(COUNT(T_PRMT.PRMT_NUM), 0)
+                        FROM TB_PRMT T_PRMT
+                            INNER JOIN TB_PRMT_PRDT T_PRMT_PRDT ON T_PRMT.PRMT_NUM = T_PRMT_PRDT.PRMT_NUM
+                        WHERE T_PRMT.STATUS_CD = 'TS03'
+                            AND T_PRMT.PRMT_DIV = 'EVNT'
+                            AND #sFromDt# BETWEEN T_PRMT.START_DT AND T_PRMT.END_DT
+                            AND T_PRMT.CORP_ID = V_PRDT.CORP_ID
+                            AND T_PRMT_PRDT.PRDT_NUM = V_PRDT.PRDT_NUM) AS EVENT_CNT
+                    , (
+                         SELECT CASE WHEN
+                         (NVL(SUM(CASE WHEN CP_PRD.PRDT_NUM = V_PRDT.PRDT_NUM THEN 1 ELSE 0 END), 0)
+                         + NVL(SUM(CASE WHEN CP_CORP.CORP_ID = V_PRDT.CORP_ID THEN 1 ELSE 0 END), 0)) >= 1
+                         THEN '1' ELSE '0' END
+                         FROM TB_CP CP
+                         LEFT JOIN TB_CP_PRDT CP_PRD ON CP.CP_ID = CP_PRD.CP_ID AND CP_PRD.PRDT_NUM = V_PRDT.PRDT_NUM
+                         LEFT JOIN TB_CP_CORP CP_CORP ON CP.CP_ID = CP_CORP.CP_ID AND CP_CORP.CORP_ID = V_PRDT.CORP_ID
+                         WHERE CP.STATUS_CD = 'ST02'
+                         AND CP.TGT_DIV = 'ALL'
+                         AND #sFromDt# BETWEEN CP.APL_START_DT AND CP.APL_END_DT
+                      ) COUPON_CNT
+                     , V_PRDT.ISR_DIV
+                     , V_PRDT.ISR_TYPE_DIV
+                     , V_PRDT.MAXI_NUM		/*정원*/
+                     , V_PRDT.RC_CARDIV_NUM /*렌터카 차종 번호 */ 
+                     , V_PRDT.SAVE_FILE_NM   /*렌터카 차종 이미지 */
+                     , V_PRDT.LINK_MAPPING_NUM
+     				 , V_PRDT.CORP_LINK_YN
+     				 , V_PRDT.RSV_MAXI_TM_APL_YN
+                     , V_PRDT.RSV_MAXI_TM
+                     , V_PRDT.MODEL_YEAR   /*연식*/
+                     , V_PRDT.RNT_QLFCT_AGE
+                     , V_PRDT.RNT_QLFCT_CAREER
+                     , CORP_RAND_LEVEL
+                     , V_PRDT.LINK_MAPPING_ISR_NUM
+                     , V_PRDT.CORP_LINK_ISR_YN
+                     , TAMNACARD_YN
+                     , SUPERB_CORP_YN
+                     , API_RENT_DIV
+                     , SELL_LINK
+                     , GENERAL_ISR_REWARD_AMT
+                     , GENERAL_ISR_BURCHA
+                     , LUXY_ISR_REWARD_AMT
+                     , LUXY_ISR_BURCHA
+                  FROM (SELECT T_PRDT.PRDT_NUM      /*상품번호*/
+                             , T_CDIV.PRDT_NM || ' / ' || (SELECT CD_NM
+                                FROM TB_CD
+                                WHERE CD_NUM = T_CDIV.USE_FUEL_DIV
+                             ) AS PRDT_NM       /*상품명*/
+                             , T_PRDT.CONF_DTTM     /*승인 일시*/
+                             , T_PRDT.BUY_NUM		/*구매수*/
+                             , T_CDIV.CAR_DIV		/*차량구분*/
+                             , T_CDIV.USE_FUEL_DIV	/*사용연료구분*/
+                             , (SELECT CD_NM
+                                  FROM TB_CD
+                                 WHERE CD_NUM = T_CDIV.USE_FUEL_DIV
+                               ) AS USE_FUEL_DIV_NM /*사용연료명*/
+                             , T_CDIV.MAKER_DIV     /*제조사*/
+                             , T_CORP.CORP_ID       /*업체아이디*/
+                             , T_DFT.RC_NM AS CORP_NM        /*렌터카 명*/
+                             , SALE_TM              /*기준시간*/
+                             , RSV_TM               /*선택시간*/
+                             , (TRUNC(T_DFT.SALE_TM / 24) * T_AMT.TM24_AMT +
+                                TRUNC(MOD(T_DFT.SALE_TM, 24) / 12) * T_AMT.TM12_AMT +
+                                TRUNC(MOD(MOD(T_DFT.SALE_TM, 24), 12) / 6) * T_AMT.TM6_AMT) AS NML_AMT1   /*기본금액*/
+                             , T_DFT.ADD_USE_APL_TM
+                             , CASE WHEN MOD(MOD(MOD(T_DFT.SALE_TM, 24), 12), 6) > T_DFT.ADD_USE_APL_TM
+                                    THEN T_DFT.ADD_USE_APL_TM * T_AMT.TM1_ADD_AMT
+                                    ELSE MOD(MOD(MOD(T_DFT.SALE_TM, 24), 12), 6) * T_AMT.TM1_ADD_AMT
+                                END AS NML_AMT2           /*추가금액*/
+                             , T_DFT.WKD_DIS_PER_APL_YN   /*주말 할인율 적용 여부*/
+                             , T_DFT.WKD_DIS_PER_APL_WEEK /*주말 할인율 적용 요일*/
+                             /*사용기간 할인율 적용시간과 비교*/
+                             <![CDATA[
+                             , (CASE WHEN WEEK_YN = 'Y' THEN WKD_DIS_PER  ELSE WDAY_DIS_PER  END) AS DIS_PER
+                             ]]>
+
+                             <![CDATA[
+                             , (CASE WHEN RSV_TM < TO_NUMBER(T_DFT.RSV_ABLE_MINI_TM)
+                             ]]>
+                                     THEN 'N'
+                                     ELSE (CASE WHEN RSV_MAXI_TM_APL_YN = 'Y'
+                           		                THEN (CASE WHEN RSV_TM > RSV_MAXI_TM
+                           		                           THEN 'N'
+                           		                           ELSE (CASE
+                           		                           		/*당일예약불가 체크*/
+                           		                           		WHEN (TO_CHAR(SYSDATE, 'YYYYMMDD') = #sFromDt# AND T_DFT.DAY_RSV_UNABLE_YN = 'Y' )
+                           		                           			<![CDATA[
+						                                              THEN (CASE WHEN TO_CHAR(SYSDATE, 'HH24') < DAY_RSV_UNABLE_TM
+						                                            ]]>
+						                                               		     THEN T_ABLE.ABLE_YN
+						                                                         ELSE 'N'
+						                                                     END)
+						                                              ELSE T_ABLE.ABLE_YN
+						                                          END
+						                                        )
+						                               END)
+						                        ELSE (CASE
+						                        		/*당일예약불가 체크*/
+						                        		WHEN (TO_CHAR(SYSDATE, 'YYYYMMDD') = #sFromDt# AND T_DFT.DAY_RSV_UNABLE_YN = 'Y' )
+						                        		<![CDATA[
+			                                              THEN (CASE WHEN TO_CHAR(SYSDATE, 'HH24') < DAY_RSV_UNABLE_TM
+			                                            ]]>
+			                                               		     THEN T_ABLE.ABLE_YN
+			                                                         ELSE 'N'
+			                                                     END)
+			                                              ELSE T_ABLE.ABLE_YN
+			                                          END
+			                                        )
+						                    END
+                                          )
+                                 END) AS ABLE_YN
+                             <![CDATA[
+                             , (CASE WHEN ROUND((TO_DATE(#sToDt#||#sToTm#, 'YYYYMMDDHH24MI') - TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI')) * 24) < TO_NUMBER(T_DFT.RSV_ABLE_MINI_TM)
+                                        OR ROUND((TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI') - SYSDATE ) * 24) - 2 < T_DFT.CANCEL_ABLE_TM
+                                        OR (#sFromTm# NOT BETWEEN T_DFT.TKOV_MIN_TM AND T_DFT.TKOV_MAX_TM OR #sToTm# NOT BETWEEN T_DFT.RTN_MIN_TM AND T_DFT.RTN_MAX_TM)
+                             THEN 'N'
+                             WHEN RSV_TM < TO_NUMBER(T_DFT.RSV_ABLE_MINI_TM)
+                             ]]>
+                                     THEN 'N'
+                                     ELSE (CASE WHEN RSV_MAXI_TM_APL_YN = 'Y'
+                           		                THEN (CASE WHEN RSV_TM > RSV_MAXI_TM
+                           		                           THEN 'N'
+                           		                           ELSE (CASE
+                           		                           		 /*당일예약불가 체크*/
+                           		                           		WHEN (TO_CHAR(SYSDATE, 'YYYYMMDD') = #sFromDt# AND T_DFT.DAY_RSV_UNABLE_YN = 'Y' )
+                           		                           			<![CDATA[
+						                                              THEN (CASE WHEN TO_CHAR(SYSDATE, 'HH24') < DAY_RSV_UNABLE_TM
+						                                            ]]>
+						                                               		     THEN 'Y'
+						                                                         ELSE 'N'
+						                                                     END)
+						                                              ELSE 'Y'
+						                                          END
+						                                        )
+						                               END)
+						                        ELSE (CASE
+                       		                        /*당일예약불가 체크*/
+                       		                       	WHEN (TO_CHAR(SYSDATE, 'YYYYMMDD') = #sFromDt# AND T_DFT.DAY_RSV_UNABLE_YN = 'Y' )
+                       		                       	<![CDATA[
+		                                              THEN (CASE WHEN TO_CHAR(SYSDATE, 'HH24') < DAY_RSV_UNABLE_TM
+		                                            ]]>
+		                                               		     THEN 'Y'
+		                                                         ELSE 'N'
+		                                                     END)
+		                                              ELSE 'Y'
+		                                          END
+		                                        )
+						                    END
+                                          )
+                                 END) AS CORP_ABLE_YN
+                             , T_DFT.ADD_USE_DIS_PER_APL_YN	/*추가이용할인율적용여부*/
+                             , T_PRDT.PRDT_LINK_YN
+                             , T_PRDT.ISR_DIV
+                             , T_PRDT.ISR_TYPE_DIV
+                             , T_CDIV.MAXI_NUM		/*정원*/          
+                             , T_PRDT.RC_CARDIV_NUM /*렌터카 차종 번호 */
+                             , T_CDIV.CAR_IMG AS SAVE_FILE_NM /*렌터카 차종 이미지 */
+                             , T_PRDT.LINK_MAPPING_NUM
+     				 		 , T_CORP.CORP_LINK_YN
+     				 		 , T_DFT.RSV_MAXI_TM_APL_YN
+                             , T_DFT.RSV_MAXI_TM
+                             , T_PRDT.MODEL_YEAR    /*연식*/
+                             , T_PRDT.CORP_RAND_LEVEL
+                             , T_PRDT.RNT_QLFCT_AGE
+                             , T_PRDT.RNT_QLFCT_CAREER
+                             , WEEK_YN
+                             , T_PRDT.LINK_MAPPING_ISR_NUM
+                             , T_CORP.CORP_LINK_ISR_YN
+                             , CASE WHEN T_CORP.TAMNACARD_MNG_YN = 'C' OR (T_CORP.TAMNACARD_MNG_YN = 'P' AND T_PRDT.TAMNACARD_PRDT_YN = 'Y') THEN 'Y' ELSE 'N' END AS TAMNACARD_YN
+                             , T_CORP.SUPERB_CORP_YN
+                             , T_CORP.API_RENT_DIV
+                             , T_DFT.SELL_LINK
+                             , T_PRDT.GENERAL_ISR_REWARD_AMT
+							 , T_PRDT.GENERAL_ISR_BURCHA
+							 , T_PRDT.LUXY_ISR_REWARD_AMT
+							 , T_PRDT.LUXY_ISR_BURCHA
+                          FROM TB_RC_PRDTINF T_PRDT
+                         INNER JOIN TB_CORP T_CORP
+                            ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+                           AND T_CORP.CORP_CD = 'RC'
+                           AND T_CORP.TRADE_STATUS_CD = 'TS03'
+                         
+                         /*렌터카회사-조회조건*/
+                         <isNotEmpty property="sCorpId">
+                           AND T_CORP.CORP_ID = #sCorpId#
+                         </isNotEmpty>
+                         INNER JOIN TB_RC_CARDIV T_CDIV
+                         	ON T_CDIV.RC_CARDIV_NUM=T_PRDT.RC_CARDIV_NUM
+                         	  AND USE_YN='Y'
+
+                         INNER JOIN (
+									SELECT PRDT_NUM
+									     , DECODE(SUM(DISABLE_CNT), 0 , 'Y', 'N') AS ABLE_YN
+									  FROM (SELECT T_ABLE.PRDT_NUM      /*상품번호*/
+									             , DT                   /*예약일*/
+									             , CASE WHEN TOTAL_CAR_NUM - NVL(USE_CNT, 0) <![CDATA[<]]> 1 THEN 1
+									                    ELSE 0
+									                END AS DISABLE_CNT  /*불가능여부(1이면 불가능)*/
+									          FROM (
+									              (SELECT PRDT_NUM, DT, TOTAL_CAR_NUM,RK FROM (
+                                                  WITH APL_TABLE AS
+                                                  (SELECT TO_CHAR(TO_DATE(#sFromDt#, 'YYYYMMDD') + (LEVEL-1), 'YYYYMMDD') AS DT
+                                                                                  FROM    DUAL
+                                                                                          CONNECT BY LEVEL <![CDATA[<=]]>  TO_DATE(#sToDt#, 'YYYYMMDD') - TO_DATE(#sFromDt#, 'YYYYMMDD') + 1)
+                                                  SELECT PRDT_NUM, DT, TOTAL_CAR_NUM, RANK() OVER(PARTITION BY A.PRDT_NUM, DT ORDER BY APL_DT DESC) AS RK
+                                                     FROM    TB_RC_CNTINF AS A
+                                                     LEFT JOIN APL_TABLE AS B
+                                                     ON A.APL_DT <![CDATA[<=]]> B.DT
+                                                  )
+                                                  WHERE RK = 1 AND DT IS NOT NULL
+                                                  <isNotEmpty property="sPrdtNum">
+									                           AND PRDT_NUM = #sPrdtNum#
+                                                  </isNotEmpty>
+                                                         )
+
+									                ) T_ABLE
+									                <![CDATA[
+									         /*예약현황 체크 조인*/
+									         LEFT OUTER JOIN (
+									         	SELECT 
+										         	PRDT_NUM, 
+										         	USE_DT, 
+										         	COUNT(*) AS USE_CNT 
+									         	FROM(
+									         	    SELECT PRDT_NUM,DT AS USE_DT FROM(
+                                                       (SELECT TO_CHAR(TO_DATE(#sFromDt#, 'YYYYMMDD') + (LEVEL-1), 'YYYYMMDD') AS DT FROM DUAL CONNECT BY LEVEL <= TO_DATE(#sToDt#, 'YYYYMMDD') - TO_DATE(#sFromDt#, 'YYYYMMDD') +1 )) AS A
+                                                    LEFT JOIN
+                                                       (SELECT * FROM TB_RC_RSV WHERE RSV_STATUS_CD IN ('RS00','RS02','RS10','RS11','RS12','RS30')
+                                                       AND LINK_YN = 'N'
+                                                       AND RENT_START_DT >= TO_CHAR(TO_DATE(#sFromDt#, 'YYYYMMDD')-30,'YYYYMMDD')
+                                                       ) AS B
+                                                    ON A.DT BETWEEN B.RENT_START_DT AND B.RENT_END_DT
+												) GROUP BY PRDT_NUM, USE_DT
+												HAVING USE_DT BETWEEN #sFromDt# AND #sToDt#
+									                         ) AS T_USEABLE
+									            ON T_USEABLE.PRDT_NUM = T_ABLE.PRDT_NUM
+									           AND T_USEABLE.USE_DT = T_ABLE.DT
+									       )
+									 GROUP BY PRDT_NUM
+
+                                    ) T_ABLE
+                            ON T_ABLE.PRDT_NUM = T_PRDT.PRDT_NUM
+                            AND T_ABLE.ABLE_YN = 'Y'
+                         /*기본정보+기준시간*/
+                         INNER JOIN (SELECT CASE ADD_USE_ABLE_TM
+                                            WHEN '1'
+                                            THEN (CASE WHEN ADD_USE_MAXI_TM >= T24_MOD
+                                                       THEN T24_CNT * 24 + ADD_TIME
+                                                       ELSE (CASE WHEN T12_CNT > 0
+                                                                  THEN DECODE(ADD_TIME, 0, DECODE(T6_CNT, 0, T24_CNT * 24 + 12, T24_CNT * 24 + 24), T24_CNT * 24 + 24)
+                                                                  WHEN T6_CNT > 0
+                                                                  THEN DECODE(ADD_TIME, 0, T24_CNT * 24 + 6, T24_CNT * 24 + 12)
+                                                                  ELSE T24_CNT * 24 + 6
+                                                              END
+                                                             )
+                                                   END
+                                                 ) /*24시간 기준 시간계산*/
+                                            ELSE (CASE WHEN T12_CNT > 0
+                                                       THEN (CASE WHEN ADD_USE_MAXI_TM >= T12_MOD
+                                                                  THEN T24_CNT * 24 + 12 + T12_MOD
+                                                                  ELSE (T24_CNT + 1) * 24
+                                                              END
+                                                            )
+                                                       WHEN T6_CNT > 0
+                                                       THEN (CASE WHEN ADD_USE_MAXI_TM >= ADD_TIME
+                                                                  THEN T24_CNT * 24 + 6 + ADD_TIME
+                                                                  ELSE T24_CNT * 24 + 12
+                                                              END
+                                                            )
+                                                       ELSE (CASE WHEN ADD_USE_MAXI_TM >= ADD_TIME
+                                                                  THEN T24_CNT * 24 + ADD_TIME
+                                                                  ELSE T24_CNT * 24 + 6
+                                                              END
+                                                            )
+                                                   END
+                                                 ) /*기준시간 기준 시간계산*/
+                                             END AS SALE_TM
+                                          , CORP_ID
+                                          , RC_NM
+                                          , WKD_DIS_PER_APL_YN
+                                          , WKD_DIS_PER_APL_WEEK
+                                          , ADD_USE_ABLE_TM
+                                          , ADD_USE_APL_TM
+                                          , RSV_ABLE_MINI_TM
+                                          , DIS_PER_APL_TM
+                                          , RSV_TM
+                                          , ADD_USE_DIS_PER_APL_YN
+                                          , DAY_RSV_UNABLE_YN
+                                          , DAY_RSV_UNABLE_TM
+                                          , RSV_MAXI_TM_APL_YN
+                                          , RSV_MAXI_TM
+                                          , RTN_MAX_TM
+                                          , RTN_MIN_TM
+                                          , TKOV_MAX_TM
+                                          , TKOV_MIN_TM
+                                          , CANCEL_ABLE_TM
+                                          , SELL_LINK
+                                       FROM TB_RC_DFTINF
+                                          , (SELECT RSV_TM
+                                                  , TRUNC(RSV_TM / 24)                  AS T24_CNT
+                                                  , MOD(RSV_TM, 24)                     AS T24_MOD
+                                                  , MOD(RSV_TM, 12)                     AS T12_MOD
+                                                  , TRUNC(MOD(RSV_TM, 24) / 12)         AS T12_CNT
+                                                  , TRUNC(MOD(MOD(RSV_TM, 24), 12) / 6) AS T6_CNT
+                                                  , MOD(MOD(MOD(RSV_TM, 24), 12), 6)    AS ADD_TIME
+                                               FROM (
+                                                       SELECT
+                                                       CASE
+                                                            WHEN 24<= ROUND((TO_DATE(#sToDt#||#sToTm#, 'YYYYMMDDHH24MI') - TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI')) * 24)
+                                                            THEN ROUND((TO_DATE(#sToDt#||#sToTm#, 'YYYYMMDDHH24MI') - TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI')) * 24)
+                                                            ELSE 24
+                                                            END
+                                                            AS RSV_TM
+                                                       FROM DUAL
+                                                    )
+                                            ) /*입력된 날짜에 대한 필요 변수*/
+                                    ) T_DFT
+                            ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+                         /*요금*/
+                         INNER JOIN (SELECT PRDT_NUM
+                                          , APL_DT
+                                          , TM6_AMT
+                                          , TM12_AMT
+                                          , TM24_AMT
+                                          , TM1_ADD_AMT
+                                          , RANK() OVER(PARTITION BY PRDT_NUM ORDER BY (#sFromDt# - APL_DT)) AS RK
+                                       FROM TB_RC_AMTINF
+                                      WHERE APL_DT <= #sFromDt#
+                                    ) T_AMT
+                            ON T_AMT.RK = 1
+                           AND T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM
+                         /*할인율*/
+                         INNER JOIN ( SELECT
+                                           PRDT_NUM
+                                           , DIS_PER_NUM
+                                           , APL_START_DT
+                                           , APL_END_DT
+                                           , WDAY_DIS_PER
+                                           , WKD_DIS_PER
+                                           , WEEK_YN
+                                           , RK
+                                       FROM (
+                                           SELECT /*+ ORDERED USE_NL(S1,S2) */
+                                           S1.PRDT_NUM
+                                           , DIS_PER_NUM
+                                           , APL_START_DT
+                                           , APL_END_DT
+                                           , WDAY_DIS_PER
+                                           , WKD_DIS_PER
+                                           , RANK() OVER(PARTITION BY S1.PRDT_NUM ORDER BY(
+                                              CASE
+                                                       WHEN WDAY_DIS_PER = 100
+                                                       THEN 1
+                                                       WHEN DIS_PER_NUM != 1
+                                                       THEN 2
+                                                       ELSE 3
+                                              END ), (
+                                              CASE
+                                                       WHEN WEEK_YN = 'Y'
+                                                       THEN WKD_DIS_PER
+                                                       ELSE WDAY_DIS_PER
+                                              END ), APL_START_DT ) AS RK
+                                           , WEEK_YN
+                                           FROM
+                                           TB_RC_DISPERINF
+                                            AS S1
+                                           JOIN TB_RC_PRDTINF AS S2
+                                           ON S1.PRDT_NUM = S2.PRDT_NUM
+                                           LEFT JOIN
+                                           (SELECT
+                                                (CASE
+                                                WHEN
+                                                    WKD_DIS_PER_APL_YN = 'N' THEN 'N'
+                                                WHEN
+                                                    (INSTR(WKD_DIS_PER_APL_WEEK, 0) * INSTR(COMPARE_WDAY, 0)) +
+                                                    (INSTR(WKD_DIS_PER_APL_WEEK, 1) * INSTR(COMPARE_WDAY, 1)) +
+                                                    (INSTR(WKD_DIS_PER_APL_WEEK, 2) * INSTR(COMPARE_WDAY, 2)) +
+                                                    (INSTR(WKD_DIS_PER_APL_WEEK, 3) * INSTR(COMPARE_WDAY, 3)) +
+                                                    (INSTR(WKD_DIS_PER_APL_WEEK, 4) * INSTR(COMPARE_WDAY, 4)) +
+                                                    (INSTR(WKD_DIS_PER_APL_WEEK, 5) * INSTR(COMPARE_WDAY, 5)) +
+                                                    (INSTR(WKD_DIS_PER_APL_WEEK, 6) * INSTR(COMPARE_WDAY, 6))
+                                                > 0
+                                                THEN 'Y' ELSE 'N' END) AS WEEK_YN ,
+                                                CORP_ID
+                                            FROM(
+                                                SELECT
+                                                    WKD_DIS_PER_APL_WEEK,
+                                                    CORP_ID,
+                                                    WKD_DIS_PER_APL_YN,
+                                                    (SELECT WMSYS.WM_CONCAT(DAY) AS COMPARE_WDAY
+                                                    FROM (SELECT TO_CHAR( TO_DATE( #sFromDt#, 'YYYYMMDD' ) + LEVEL-1, 'D' ) - 1 AS DAY
+                                                    FROM DUAL
+                                                    WHERE ROWNUM <= 7
+                                                    CONNECT BY LEVEL <=( TO_DATE(#sToDt#, 'YYYYMMDD' ) - TO_DATE( #sFromDt#, 'YYYYMMDD' ) +1 ))) AS COMPARE_WDAY
+                                                FROM TB_RC_DFTINF)) AS S3
+                                                ON S2.CORP_ID = S3.CORP_ID
+                                           WHERE  (#sFromDt# BETWEEN APL_START_DT AND APL_END_DT ) OR (#sToDt# BETWEEN APL_START_DT AND APL_END_DT) OR (#sFromDt# <= APL_START_DT AND #sToDt# >=  APL_END_DT)
+                                       )
+                                    ) T_DISPER
+                            ON T_DISPER.PRDT_NUM = T_PRDT.PRDT_NUM
+                           AND T_DISPER.RK = 1
+                         ]]>
+                         WHERE 1=1
+                         <isEmpty property="preViewYn">
+                           AND T_PRDT.TRADE_STATUS = 'TS03'
+                         </isEmpty>
+                         <isNotEmpty property="sApiRentDiv">
+                            AND API_RENT_DIV = #sApiRentDiv#
+                         </isNotEmpty>
+                         /*차량구분검색조건*/
+                         <isNotEmpty property="sCarDivCd">
+                           AND T_CDIV.CAR_DIV = #sCarDivCd#
+                         </isNotEmpty>
+                         /*보험여부검색조건*/
+                         <isNotEmpty property="sIsrDiv">
+                           AND T_PRDT.ISR_DIV = #sIsrDiv#
+                         </isNotEmpty>
+                         /*차량구분검색조건(탭)*/
+                         <isNotEmpty property="sCarDivCdView">
+                           AND T_CDIV.CAR_DIV = #sCarDivCdView#
+                         </isNotEmpty>
+                         /*단건조회용*/
+                         <isNotEmpty property="sPrdtNum">
+                           AND T_PRDT.PRDT_NUM = #sPrdtNum#
+                         </isNotEmpty>
+                         /* 차량명(검색) */
+                         <isEmpty property="searchWord">
+                           <isNotEmpty property="sPrdtNm">
+                              AND INSTR(REPLACE(UPPER(T_CDIV.PRDT_NM), ' ', ''), REPLACE(UPPER(#sPrdtNm#), ' ', '')) > 0
+                           </isNotEmpty>
+                         </isEmpty>
+                         /*제조사 조회용*/
+                         <isNotEmpty property="sMakerDivCd">
+                           AND T_CDIV.MAKER_DIV = #sMakerDivCd#
+                         </isNotEmpty>
+                         /*사용연료 조회용*/
+                         <isNotEmpty property="sUseFuelDiv">
+                           AND T_CDIV.USE_FUEL_DIV = #sUseFuelDiv#
+                         </isNotEmpty>
+                         /*대여조건 조회용*/
+                         <isNotEmpty property="sRntQlfctAge">
+                           AND RNT_QLFCT_AGE <![CDATA[<=]]> #sRntQlfctAge#
+                         </isNotEmpty>
+                         <isNotEmpty property="sRntQlfctCareer">
+                           AND RNT_QLFCT_CAREER <![CDATA[<=]]> #sRntQlfctCareer#
+                         </isNotEmpty>
+                         /*연식 조회용*/
+                         <isNotEmpty property="sModelYear">
+                           AND T_PRDT.MODEL_YEAR = #sModelYear#
+                         </isNotEmpty>
+                         <isNotEmpty property="searchWord">
+                            		AND ((REPLACE(UPPER(T_CDIV.PRDT_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#searchWord#), ' ', '')||'%') OR
+                            		     (T_CDIV.RC_CARDIV_NUM IN (SELECT LINK_NUM
+													 	 	    FROM TB_CM_SRCHWORD
+													 		   WHERE SRCH_WORD = #searchWord#)
+                            		    ))
+                         </isNotEmpty>
+                         <isNotEmpty property="prdtNumList">
+                            AND T_PRDT.PRDT_NUM IN
+                            <iterate property="prdtNumList"  open="(" close=")" conjunction=",">
+                             #prdtNumList[]#
+                            </iterate>
+                        </isNotEmpty>
+
+                        <isNotEmpty property="sIconCd">
+                         	AND #sIconCdCnt# = (SELECT COUNT(*) FROM TB_CM_ICONINF WHERE LINK_NUM = T_PRDT.PRDT_NUM AND ICON_CD IN
+                         	<iterate open="(" close="))" conjunction="," property="sIconCd">
+							 		#sIconCd[]#
+							</iterate>
+                        </isNotEmpty>
+                        <isNotEmpty property="sCarCds">
+							 	<iterate prepend="AND T_PRDT.CAR_CD IN " open="(" close=")" conjunction="," property="sCarCds">
+							 		#sCarCds[]#
+							 	</iterate>
+						</isNotEmpty>
+                       ) AS V_PRDT
+                  LEFT OUTER JOIN TB_GPA_ANLS T_GPA
+                    ON T_GPA.LINK_NUM = V_PRDT.PRDT_NUM
+                  WHERE 1=1
+                  	<isEqual property="sMainViewYn" compareValue="N">
+                    AND ( ABLE_YN = 'Y' AND CORP_LINK_YN = 'N' AND CORP_ABLE_YN = 'Y')
+		            </isEqual>
+               ) V_PRDT2
+            /*보험종류검색조건*/
+            WHERE 1=1
+            <isEqual property="sIsrTypeDiv" compareValue="GENL">
+            AND ISR_TYPE_DIV = #sIsrTypeDiv#
+            </isEqual>
+            <isEqual property="sIsrTypeDiv" compareValue="LUXY">
+            AND ISR_TYPE_DIV = #sIsrTypeDiv#
+            </isEqual>
+            <isEqual property="sIsrTypeDiv" compareValue="FEE">
+            <!-- AND ISR_TYPE_DIV IS NULL -->
+            AND ISR_TYPE_DIV IS NULL AND ISR_DIV = 'ID00'
+            </isEqual>
+
+            <isNotEmpty property="sRcCardivNum">
+                    AND RC_CARDIV_NUM = #sRcCardivNum#
+            </isNotEmpty>
+       )
+     WHERE 1=1
+     <!-- AND RC_CARDIV_NUM IS NOT NULL -->
+     <isEqual property="sMainViewYn" compareValue="N">
+        <isNotEqual property="lastIndex" compareValue="0">
+        </isNotEqual>
+     </isEqual>
+     <isEqual property="sTamnacardYn" compareValue="Y">
+          AND TAMNACARD_YN = #sTamnacardYn# /*탐나는전*/
+     </isEqual>
+     <isEqual property="sSuperbCorpYn" compareValue="Y">
+          AND SUPERB_CORP_YN = #sSuperbCorpYn#
+     </isEqual>
+     <isEqual property="sCouponCnt" compareValue="1">
+          AND COUPON_CNT = '1' /*할인쿠폰*/
+     </isEqual>
+     <isNotEqual property="searchYn" compareValue="Y">
+        AND RN BETWEEN 1 AND 40
+     </isNotEqual>
+</select>
+
+<select id="RC_PRDTINF_S_21" resultMap="RC_PRDTINF_R_04">
+     SELECT
+         PRDT_NUM,
+         PRDT_NM,
+
+         CORP_ID,
+         CORP_NM,
+         RSV_TM,
+         SALE_TM,
+         NML_AMT,
+
+         ABLE_YN,
+         NVL(BUY_NUM,0) AS BUY_NUM,
+         CORP_ABLE_YN,
+         SALE_AMT,
+
+         SAVE_FILE_NM,
+         USE_FUEL_DIV,
+         USE_FUEL_DIV_NM,
+         MAKER_DIV,
+
+         ISR_DIV,
+         ISR_TYPE_DIV,
+
+         CAR_DIV,
+         MAXI_NUM,
+         RC_CARDIV_NUM,
+         LINK_MAPPING_NUM,
+         CORP_LINK_YN,
+
+         MODEL_YEAR,
+         RNT_QLFCT_AGE,
+         RNT_QLFCT_CAREER,
+         LINK_MAPPING_ISR_NUM,
+         CORP_LINK_ISR_YN,
+         ICON_CDS,
+         TAMNACARD_YN,
+         SUPERB_CORP_YN,
+         API_RENT_DIV,
+         SELL_LINK,
+         GENERAL_ISR_REWARD_AMT,
+         GENERAL_ISR_BURCHA,
+         LUXY_ISR_REWARD_AMT,
+         LUXY_ISR_BURCHA,
+         COUPON_CNT
+     FROM(
+         SELECT
+             A.PRDT_NUM,
+             A.PRDT_NM || ' / ' || F.CD_NM AS PRDT_NM,
+             A.CONF_DTTM,
+             A.CORP_ID,
+             REPLACE(REPLACE(REPLACE(B.CORP_NM, '(주)', ''), '㈜', ''),' ','') AS CORP_NM,
+             ROUND((TO_DATE(#sToDt#||#sToTm#, 'YYYYMMDDHH24MI') - TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI')) * 24) AS RSV_TM,
+             ROUND((TO_DATE(#sToDt#||#sToTm#, 'YYYYMMDDHH24MI') - TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI')) * 24) AS SALE_TM,
+             0 AS NML_AMT,
+             0 AS DIS_PER,
+             'N' AS ABLE_YN,
+             A.BUY_NUM,
+             (CASE
+                 WHEN ROUND((TO_DATE(#sToDt#||#sToTm#, 'YYYYMMDDHH24MI') - TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI')) * 24) <![CDATA[<]]> TO_NUMBER(C.RSV_ABLE_MINI_TM)
+                    OR ROUND((TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI') - SYSDATE ) * 24) - 2 <![CDATA[<]]> C.CANCEL_ABLE_TM
+                    OR (#sFromTm# NOT BETWEEN TKOV_MIN_TM AND TKOV_MAX_TM OR #sToTm# NOT BETWEEN RTN_MIN_TM AND RTN_MAX_TM)
+                 THEN 'N'
+                 ELSE
+                     (CASE
+                         WHEN RSV_MAXI_TM_APL_YN = 'Y'
+                         THEN
+                             (CASE
+                                WHEN ROUND((TO_DATE(#sToDt#||#sToTm#, 'YYYYMMDDHH24MI') - TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI')) * 24) > RSV_MAXI_TM
+                                THEN 'N'
+                                ELSE
+                                     (CASE
+                                         WHEN (TO_CHAR(SYSDATE, 'YYYYMMDD') = #sFromDt# AND C.DAY_RSV_UNABLE_YN = 'Y' )
+                                         THEN
+                                             (CASE
+                                                 WHEN TO_CHAR(SYSDATE, 'HH24') <![CDATA[<]]> DAY_RSV_UNABLE_TM
+                                                 THEN 'Y'
+                                                 ELSE 'N'
+                                             END)
+                                         ELSE 'Y'
+                                     END)
+                             END)
+                         ELSE
+                             (CASE
+                                 WHEN (TO_CHAR(SYSDATE, 'YYYYMMDD') = #sFromDt# AND C.DAY_RSV_UNABLE_YN = 'Y' )
+                                 THEN
+                                     (CASE
+                                         WHEN TO_CHAR(SYSDATE, 'HH24') <![CDATA[<]]> DAY_RSV_UNABLE_TM
+                                         THEN 'Y'
+                                         ELSE 'N'
+                                     END)
+                                 ELSE 'Y'
+                             END)
+                     END)
+             END) AS CORP_ABLE_YN,
+             0 AS SALE_AMT,
+             NULL AS SAVE_PATH,
+             D.CAR_IMG AS SAVE_FILE_NM,
+
+             D.USE_FUEL_DIV,
+             F.CD_NM AS USE_FUEL_DIV_NM,
+             D.MAKER_DIV,
+             (	SELECT NVL(COUNT(T_PRMT.PRMT_NUM), 0)
+                 FROM TB_PRMT T_PRMT
+                     JOIN TB_PRMT_PRDT T_PRMT_PRDT ON T_PRMT.PRMT_NUM = T_PRMT_PRDT.PRMT_NUM
+                 WHERE T_PRMT.STATUS_CD = 'TS03'
+                 AND T_PRMT.PRMT_DIV = 'EVNT'
+                 AND #sFromDt# BETWEEN T_PRMT.START_DT AND T_PRMT.END_DT
+                 AND T_PRMT.CORP_ID = A.CORP_ID
+                 AND T_PRMT_PRDT.PRDT_NUM = A.PRDT_NUM
+             ) AS EVENT_CNT,
+             (CASE WHEN 0 <![CDATA[<]]>
+                NVL(( SELECT
+                        COUNT(*)
+                FROM    TB_CP CP
+
+                        JOIN TB_CP_CORP CP_CORP
+                        ON      CP.CP_ID        = CP_CORP.CP_ID
+                        AND     CP_CORP.CORP_ID = A.CORP_ID
+                WHERE   CP.STATUS_CD            = 'ST02'
+                AND     CP.TGT_DIV              = 'ALL'
+                AND     TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN CP.APL_START_DT AND     CP.APL_END_DT
+                ),0) +
+                NVL((
+                	SELECT
+                        COUNT(*)
+                FROM    TB_CP CP
+
+                        JOIN TB_CP_PRDT CP_PRD
+                        ON      CP.CP_ID        = CP_PRD.CP_ID
+                        AND     CP_PRD.PRDT_NUM = A.PRDT_NUM
+                WHERE   CP.STATUS_CD            = 'ST02'
+                AND     CP.TGT_DIV              = 'ALL'
+                AND     TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN CP.APL_START_DT AND     CP.APL_END_DT
+                ),0)
+                THEN '1' ELSE '0' END) COUPON_CNT,
+             A.PRDT_LINK_YN,
+             A.ISR_DIV,
+             CASE WHEN A.ISR_TYPE_DIV IS NULL THEN 'FEE' ELSE ISR_TYPE_DIV END AS ISR_TYPE_DIV,
+             CASE
+                 WHEN A.ISR_DIV='ID10' THEN 1
+                 WHEN ISR_DIV='ID00' THEN 2
+                 ELSE 3
+             END AS ISR_DIV_SORT,
+             A.CAR_DIV,
+             D.MAXI_NUM,
+             A.RC_CARDIV_NUM,
+             A.LINK_MAPPING_NUM,
+             B.CORP_LINK_YN,
+             C.RSV_MAXI_TM_APL_YN,
+             C.RSV_MAXI_TM,
+             A.MODEL_YEAR,
+             A.RNT_QLFCT_AGE,
+             A.RNT_QLFCT_CAREER,
+             A.CORP_RAND_LEVEL,
+             A.LINK_MAPPING_ISR_NUM,
+             B.CORP_LINK_ISR_YN,
+             (SELECT LISTAGG(ICON_CD, ',') WITHIN GROUP (ORDER BY ICON_CD desc) AS ICON_CD	FROM TB_CM_ICONINF WHERE LINK_NUM = A.PRDT_NUM) AS ICON_CDS,
+             CASE WHEN B.TAMNACARD_MNG_YN = 'C' OR (B.TAMNACARD_MNG_YN = 'P' AND A.TAMNACARD_PRDT_YN = 'Y') THEN 'Y' ELSE 'N' END AS TAMNACARD_YN,
+             B.SUPERB_CORP_YN,
+             B.API_RENT_DIV,
+             C.SELL_LINK,
+             A.GENERAL_ISR_REWARD_AMT,
+             A.GENERAL_ISR_BURCHA,
+             A.LUXY_ISR_REWARD_AMT,
+             A.LUXY_ISR_BURCHA
+         FROM
+             TB_RC_PRDTINF AS A
+         JOIN
+             TB_CORP AS B
+         ON A.CORP_ID = B.CORP_ID
+         JOIN
+             TB_RC_DFTINF AS C
+         ON B.CORP_ID = C.CORP_ID
+         JOIN
+             TB_RC_CARDIV AS D
+         ON D.RC_CARDIV_NUM = A.RC_CARDIV_NUM
+         LEFT JOIN
+             TB_CD AS F
+         ON F.CD_NUM = D.USE_FUEL_DIV
+         WHERE 1=1
+         AND A.TRADE_STATUS = 'TS03'
+         AND B.TRADE_STATUS_CD = 'TS03'
+         AND API_RENT_DIV != 'N'
+         <isNotEmpty property="sIconCd">
+         AND #sIconCdCnt# = (SELECT COUNT(*) FROM TB_CM_ICONINF WHERE LINK_NUM = A.PRDT_NUM AND ICON_CD IN
+             <iterate open="(" close="))" conjunction="," property="sIconCd">
+                     #sIconCd[]#
+             </iterate>
+         </isNotEmpty>
+         <isNotEmpty property="sModelYear">
+         AND A.MODEL_YEAR = #sModelYear#
+         </isNotEmpty>
+         <isNotEmpty property="sMakerDivCd">
+         AND D.MAKER_DIV = #sMakerDivCd#
+         </isNotEmpty>
+         <isNotEmpty property="sRntQlfctAge">
+         AND A.RNT_QLFCT_AGE <![CDATA[<=]]> #sRntQlfctAge#
+         </isNotEmpty>
+         <isNotEmpty property="sRntQlfctCareer">
+         AND A.RNT_QLFCT_CAREER <![CDATA[<=]]> #sRntQlfctCareer#
+         </isNotEmpty>
+         <isNotEmpty property="sPrdtNum">
+         AND A.PRDT_NUM = #sPrdtNum#
+         </isNotEmpty>
+         <isNotEmpty property="sCorpId">
+         AND B.CORP_ID = #sCorpId#
+         </isNotEmpty>
+     )WHERE 1=1
+     <isNotEqual property="sInfo" compareValue="Y">
+     AND CORP_ABLE_YN = 'Y'
+     AND LINK_MAPPING_NUM IS NOT NULL
+     </isNotEqual>
+     <isEqual property="sTamnacardYn" compareValue="Y">
+     AND TAMNACARD_YN = #sTamnacardYn#
+     </isEqual>
+     <isEqual property="sSuperbCorpYn" compareValue="Y">
+     AND SUPERB_CORP_YN = #sSuperbCorpYn#
+     </isEqual>
+     <isEqual property="sCouponCnt" compareValue="1">
+     AND COUPON_CNT = '1' /*할인쿠폰*/
+     </isEqual>
+</select>
+
+<select id="RC_PRDTINF_S_22" resultClass="String">
+     SELECT
+        A.API_RENT_DIV
+     FROM
+        TB_CORP AS A
+     JOIN TB_RC_PRDTINF AS B
+     ON A.CORP_ID = B.CORP_ID
+     WHERE PRDT_NUM = #sPrdtNum#
+</select>
+
+<select id="RC_PRDTINF_S_16" resultClass="int">
+     SELECT COUNT(*)
+     FROM (SELECT ROWNUM AS RN
+     , PRDT_NUM     /*상품번호*/
+     , PRDT_NM      /*상품명*/
+     , CONF_DTTM    /*승인 일시*/
+     , CORP_ID      /*업체아이디*/
+     , CORP_NM      /*렌터카명*/
+     , CAR_DIV		/*차량구분*/
+     , RSV_TM     	/*선택시간*/
+     , SALE_TM    	/*기준시간*/
+     , NML_AMT 		/*정상가*/
+     , DIS_PER      /*할인율*/
+     , ABLE_YN
+     , BUY_NUM		/*구매수*/
+     , CORP_ABLE_YN
+     , SALE_AMT   	/*할인가*/
+     , SAVE_PATH
+     , SAVE_FILE_NM
+     , GPA_AVG
+     , GPA_CNT
+     , USE_FUEL_DIV	/*사용연료구분*/
+     , USE_FUEL_DIV_NM /*사용연료명*/
+     , EVENT_CNT
+     , COUPON_CNT
+     , ISR_DIV
+     , CASE WHEN ISR_TYPE_DIV IS NULL THEN 'FEE' ELSE ISR_TYPE_DIV END AS ISR_TYPE_DIV
+     , CASE
+     WHEN ISR_DIV='ID10' THEN 1
+     WHEN ISR_DIV='ID00' THEN 2
+     ELSE 3
+     END AS ISR_DIV_SORT
+     , MAXI_NUM		/*정원*/
+     , RC_CARDIV_NUM /*렌터카 차종 번호 */
+     , LINK_MAPPING_NUM
+     , CORP_LINK_YN
+     , RSV_MAXI_TM_APL_YN
+     , RSV_MAXI_TM
+     , RANK() OVER(PARTITION BY CAR_DIV ORDER BY ABLE_YN DESC, SALE_AMT ASC, PRDT_NUM) AS RK
+     FROM (SELECT V_PRDT.PRDT_NUM     /*상품번호*/
+     , V_PRDT.PRDT_NM      /*상품명*/
+     , V_PRDT.CONF_DTTM     /*승인 일시*/
+     , V_PRDT.CORP_ID      /*업체아이디*/
+     , V_PRDT.CORP_NM      /*렌터카명*/
+     , V_PRDT.RSV_TM       /*선택시간*/
+     , V_PRDT.SALE_TM      /*기준시간*/
+     , V_PRDT.BUY_NUM	   /*구매수*/
+     , V_PRDT.CAR_DIV		/*차량구분*/
+     , V_PRDT.USE_FUEL_DIV	/*사용연료구분*/
+     , V_PRDT.USE_FUEL_DIV_NM /*사용연료명*/
+     , (V_PRDT.NML_AMT1 + V_PRDT.NML_AMT2) AS NML_AMT /*정상가*/
+     , V_PRDT.DIS_PER      /*할인율*/
+     , V_PRDT.ABLE_YN	   /*사용가능여부*/
+     , V_PRDT.CORP_ABLE_YN
+     , V_PRDT.PRDT_LINK_YN /*상품연계여부*/
+     , (CASE V_PRDT.ADD_USE_DIS_PER_APL_YN WHEN 'Y'
+     THEN TRUNC(((V_PRDT.NML_AMT1 + V_PRDT.NML_AMT2) * (100 - V_PRDT.DIS_PER) / 100), -2)
+     ELSE TRUNC((V_PRDT.NML_AMT1 * (100 - V_PRDT.DIS_PER) / 100), -2) + V_PRDT.NML_AMT2
+     END
+     ) AS SALE_AMT /*할인가*/
+     , '' AS SAVE_PATH
+     <!-- , T_IMG.SAVE_FILE_NM -->
+     , NVL(T_GPA.GPA_AVG, 0) AS GPA_AVG /*평점 평균*/
+     , NVL(T_GPA.GPA_CNT, 0) AS GPA_CNT	/*평점 수량*/
+     , (SELECT NVL(COUNT(T_PRMT.PRMT_NUM), 0)
+     FROM TB_PRMT T_PRMT
+     INNER JOIN TB_PRMT_PRDT T_PRMT_PRDT
+     ON T_PRMT.PRMT_NUM = T_PRMT_PRDT.PRMT_NUM
+     WHERE T_PRMT_PRDT.PRDT_NUM = V_PRDT.PRDT_NUM
+     AND STATUS_CD = 'TS03'
+     AND PRMT_DIV='EVNT'
+     AND T_PRMT.START_DT<![CDATA[ <= ]]>#sFromDt#
+     AND T_PRMT.END_DT <![CDATA[>=]]> #sFromDt#
+     ) EVENT_CNT
+     , (SELECT NVL(COUNT(T_CPC.PRDT_NUM), 0)
+     FROM TB_CP T_CP
+          INNER JOIN TB_CP_PRDT T_CPC
+               ON T_CPC.CP_ID = T_CP.CP_ID
+               AND T_CP.STATUS_CD = 'ST02'
+               AND T_CP.TGT_DIV = 'ALL'
+     WHERE T_CPC.PRDT_NUM = V_PRDT.PRDT_NUM
+          AND APL_START_DT <![CDATA[<=]]> #sFromDt#
+          AND APL_END_DT <![CDATA[>=]]> #sToDt#
+     ) COUPON_CNT
+     , V_PRDT.ISR_DIV
+     , V_PRDT.ISR_TYPE_DIV
+     , V_PRDT.MAXI_NUM		/*정원*/
+     , V_PRDT.RC_CARDIV_NUM /*렌터카 차종 번호 */
+     , V_PRDT.SAVE_FILE_NM   /*렌터카 차종 이미지 */
+     , V_PRDT.LINK_MAPPING_NUM
+     , V_PRDT.CORP_LINK_YN
+     , V_PRDT.RSV_MAXI_TM_APL_YN
+     , V_PRDT.RSV_MAXI_TM
+     <isEqual property="sMainViewYn" compareValue="Y">
+          , V_PRDT.CORP_LEVEL
+          , RANK() OVER(PARTITION BY CORP_ID
+          ORDER BY PRDT_NUM) AS C_RK
+     </isEqual>
+     FROM (SELECT T_PRDT.PRDT_NUM      /*상품번호*/
+     , T_CDIV.PRDT_NM || ' / ' || (SELECT CD_NM
+     FROM TB_CD
+     WHERE CD_NUM = T_CDIV.USE_FUEL_DIV
+     ) AS PRDT_NM       /*상품명*/
+     , T_PRDT.CONF_DTTM     /*승인 일시*/
+     , T_PRDT.BUY_NUM		/*구매수*/
+     , T_CDIV.CAR_DIV		/*차량구분*/
+     , T_CDIV.USE_FUEL_DIV	/*사용연료구분*/
+     , (SELECT CD_NM
+     FROM TB_CD
+     WHERE CD_NUM = T_CDIV.USE_FUEL_DIV
+     ) AS USE_FUEL_DIV_NM /*사용연료명*/
+     , T_CORP.CORP_ID       /*업체아이디*/
+     , T_DFT.RC_NM AS CORP_NM        /*렌터카 명*/
+     , SALE_TM              /*기준시간*/
+     , RSV_TM               /*선택시간*/
+     , (TRUNC(T_DFT.SALE_TM / 24) * T_AMT.TM24_AMT +
+     TRUNC(MOD(T_DFT.SALE_TM, 24) / 12) * T_AMT.TM12_AMT +
+     TRUNC(MOD(MOD(T_DFT.SALE_TM, 24), 12) / 6) * T_AMT.TM6_AMT) AS NML_AMT1   /*기본금액*/
+     , T_DFT.ADD_USE_APL_TM
+     , CASE WHEN MOD(MOD(MOD(T_DFT.SALE_TM, 24), 12), 6) > T_DFT.ADD_USE_APL_TM
+     THEN T_DFT.ADD_USE_APL_TM * T_AMT.TM1_ADD_AMT
+     ELSE MOD(MOD(MOD(T_DFT.SALE_TM, 24), 12), 6) * T_AMT.TM1_ADD_AMT
+     END AS NML_AMT2           /*추가금액*/
+     , T_DFT.WKD_DIS_PER_APL_YN   /*주말 할인율 적용 여부*/
+     , T_DFT.WKD_DIS_PER_APL_WEEK /*주말 할인율 적용 요일*/
+     /*사용기간 할인율 적용시간과 비교*/
+     <![CDATA[
+                        , (CASE WHEN RSV_TM < TO_NUMBER(T_DFT.DIS_PER_APL_TM)
+                        ]]>
+     THEN 0
+     /*주말할인율 적용여부*/
+     ELSE (CASE T_DFT.WKD_DIS_PER_APL_YN
+     WHEN 'Y'
+     /*입력된 예약 시작일에 대한 요일 체크*/
+     THEN (CASE WHEN INSTR(WKD_DIS_PER_APL_WEEK, TO_CHAR(TO_DATE(#sFromDt#, 'YYYYMMDD'), 'D') - 1) > 0
+     THEN T_DISPER.WKD_DIS_PER
+     ELSE T_DISPER.WDAY_DIS_PER
+     END
+     )
+     ELSE T_DISPER.WDAY_DIS_PER
+     END
+     )
+     END) AS DIS_PER
+     <![CDATA[
+                        , (CASE WHEN RSV_TM < TO_NUMBER(T_DFT.RSV_ABLE_MINI_TM)
+                        ]]>
+     THEN 'N'
+     ELSE (CASE WHEN RSV_MAXI_TM_APL_YN = 'Y'
+     THEN (CASE WHEN RSV_TM > RSV_MAXI_TM
+     THEN 'N'
+     ELSE (CASE
+     /*당일예약불가 체크*/
+     WHEN (TO_CHAR(SYSDATE, 'YYYYMMDD') = #sFromDt# AND T_DFT.DAY_RSV_UNABLE_YN = 'Y' )
+     <![CDATA[
+	                                              THEN (CASE WHEN TO_CHAR(SYSDATE, 'HH24') < DAY_RSV_UNABLE_TM
+	                                            ]]>
+     THEN T_ABLE.ABLE_YN
+     ELSE 'N'
+     END)
+     ELSE T_ABLE.ABLE_YN
+     END
+     )
+     END)
+     ELSE (CASE
+     /*당일예약불가 체크*/
+     WHEN (TO_CHAR(SYSDATE, 'YYYYMMDD') = #sFromDt# AND T_DFT.DAY_RSV_UNABLE_YN = 'Y' )
+     <![CDATA[
+                                            THEN (CASE WHEN TO_CHAR(SYSDATE, 'HH24') < DAY_RSV_UNABLE_TM
+                                          ]]>
+     THEN T_ABLE.ABLE_YN
+     ELSE 'N'
+     END)
+     ELSE T_ABLE.ABLE_YN
+     END
+     )
+     END
+     )
+     END) AS ABLE_YN
+     <![CDATA[
+                        , (CASE WHEN RSV_TM < TO_NUMBER(T_DFT.RSV_ABLE_MINI_TM)
+                        ]]>
+     THEN 'N'
+     ELSE (CASE WHEN RSV_MAXI_TM_APL_YN = 'Y'
+     THEN (CASE WHEN RSV_TM > RSV_MAXI_TM
+     THEN 'N'
+     ELSE (CASE
+     /*당일예약불가 체크*/
+     WHEN (TO_CHAR(SYSDATE, 'YYYYMMDD') = #sFromDt# AND T_DFT.DAY_RSV_UNABLE_YN = 'Y' )
+     <![CDATA[
+	                                              THEN (CASE WHEN TO_CHAR(SYSDATE, 'HH24') < DAY_RSV_UNABLE_TM
+	                                            ]]>
+     THEN 'Y'
+     ELSE 'N'
+     END)
+     ELSE 'Y'
+     END
+     )
+     END)
+     ELSE (CASE
+     /*당일예약불가 체크*/
+     WHEN (TO_CHAR(SYSDATE, 'YYYYMMDD') = #sFromDt# AND T_DFT.DAY_RSV_UNABLE_YN = 'Y' )
+     <![CDATA[
+                                           THEN (CASE WHEN TO_CHAR(SYSDATE, 'HH24') < DAY_RSV_UNABLE_TM
+                                         ]]>
+     THEN 'Y'
+     ELSE 'N'
+     END)
+     ELSE 'Y'
+     END
+     )
+     END
+     )
+     END) AS CORP_ABLE_YN
+     , T_DFT.ADD_USE_DIS_PER_APL_YN	/*추가이용할인율적용여부*/
+     , T_PRDT.PRDT_LINK_YN
+     , T_PRDT.ISR_DIV
+     , T_PRDT.ISR_TYPE_DIV
+     , T_CDIV.MAXI_NUM		/*정원*/
+     , T_PRDT.RC_CARDIV_NUM /*렌터카 차종 번호 */
+     , T_CDIV.CAR_IMG AS SAVE_FILE_NM /*렌터카 차종 이미지 */
+     , T_PRDT.LINK_MAPPING_NUM
+     , T_CORP.CORP_LINK_YN
+     , T_DFT.RSV_MAXI_TM_APL_YN
+     , T_DFT.RSV_MAXI_TM
+     , T_PRDT.CORP_RAND_LEVEL
+     <isEqual property="sMainViewYn" compareValue="Y">
+          , (SELECT CORP_LEVEL - NVL(COMPLAIN_LEVEL, 0) + NVL(JOIN_LEVEL, 0) + NVL(AMT_LEVEL, 0)
+          FROM TB_CORP_LEVEL
+          WHERE CORP_ID=T_PRDT.CORP_ID) AS CORP_LEVEL
+     </isEqual>
+     FROM TB_RC_PRDTINF T_PRDT
+     INNER JOIN TB_CORP T_CORP
+     ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+     AND T_CORP.CORP_CD = 'RC'
+     AND T_CORP.TRADE_STATUS_CD = 'TS03'
+
+     /*렌터카회사-조회조건*/
+     <isNotEmpty property="sCorpId">
+               AND T_CORP.CORP_ID = #sCorpId#
+     </isNotEmpty>
+     INNER JOIN TB_RC_CARDIV T_CDIV
+     ON T_CDIV.RC_CARDIV_NUM=T_PRDT.RC_CARDIV_NUM
+     AND USE_YN='Y'
+     <![CDATA[
+                    INNER JOIN (
+				SELECT PRDT_NUM
+				     , DECODE(SUM(DISABLE_CNT), 0 , 'Y', 'N') AS ABLE_YN
+				  FROM (SELECT T_ABLE.PRDT_NUM      /*상품번호*/
+				             , DT                   /*예약일*/
+				             , CASE WHEN TOTAL_CAR_NUM - NVL(USE_CNT, 0) < 1 THEN 1
+				                    ELSE 0
+				                END AS DISABLE_CNT  /*불가능여부(1이면 불가능)*/
+				          FROM (SELECT PRDT_NUM         /*상품번호*/
+				                     , DT               /*예약일*/
+				                     , TOTAL_CAR_NUM    /*차량보유대수*/
+				                  /*(예약일자별 * 상품별)의 차량보유대수*/
+				                  FROM (SELECT T_PRDT.PRDT_NUM
+				                             , DT
+				                             , NVL(TOTAL_CAR_NUM, 0) AS TOTAL_CAR_NUM
+				                             , RANK() OVER(PARTITION BY T_PRDT.PRDT_NUM, DT ORDER BY (DT - APL_DT)) AS RK
+				                          FROM (SELECT PRDT_NUM
+				                                     , DT
+				                                  FROM (SELECT TO_CHAR(TO_DATE(#sFromDt#, 'YYYYMMDD') + (LEVEL-1), 'YYYYMMDD') AS DT
+				                                          FROM DUAL
+				                                       CONNECT BY LEVEL <= TO_DATE(#sToDt#, 'YYYYMMDD') - TO_DATE(#sFromDt#, 'YYYYMMDD') + 1
+				                                       ), (SELECT PRDT_NUM FROM TB_RC_PRDTINF WHERE TRADE_STATUS = 'TS03')
+				                               ) T_PRDT
+				                          LEFT OUTER JOIN TB_RC_CNTINF T_CNTINF
+				                            ON T_CNTINF.PRDT_NUM = T_PRDT.PRDT_NUM
+				                           AND T_CNTINF.APL_DT <= T_PRDT.DT
+				                         WHERE 1=1
+				                         ]]>
+     <isNotEmpty property="sPrdtNum">
+               AND T_PRDT.PRDT_NUM = #sPrdtNum#
+     </isNotEmpty>
+     )
+     WHERE RK = 1
+     ) T_ABLE
+     <![CDATA[
+				         /*예약현황 체크 조인*/
+				         LEFT OUTER JOIN (
+				         	SELECT
+					         	PRDT_NUM,
+					         	USE_DT,
+					         	COUNT(*) AS USE_CNT
+				         	FROM(
+								SELECT
+									PRDT_NUM,TO_CHAR(TO_DATE(RENT_START_DT, 'YYYYMMDD') + NUM -1,'YYYYMMDD')  AS USE_DT
+								FROM(
+									SELECT
+										T1.*,  (TO_DATE(RENT_END_DT, 'YYYYMMDD')-TO_DATE(RENT_START_DT, 'YYYYMMDD')+1) AS CNT
+									FROM(
+										SELECT
+											*
+										FROM
+											TB_RC_RSV WHERE RSV_STATUS_CD IN ('RS00','RS02','RS10','RS11','RS12','RS30') AND (RENT_START_DT > = #sFromDt# AND RENT_START_DT <= #sToDt# )
+
+										) AS T1
+								),(SELECT LEVEL NUM FROM DUAL CONNECT BY LEVEL < TO_DATE(#sToDt#, 'YYYYMMDD') - TO_DATE(#sFromDt#, 'YYYYMMDD') + 1) AS T2
+								WHERE
+									NUM BETWEEN 1 AND CNT
+								AND RSV_STATUS_CD IN ('RS00','RS02','RS10','RS11','RS12','RS30')
+							) GROUP BY PRDT_NUM, USE_DT
+							HAVING USE_DT BETWEEN #sFromDt# AND #sToDt#
+				                         ) AS T_USEABLE
+				            ON T_USEABLE.PRDT_NUM = T_ABLE.PRDT_NUM
+				           AND T_USEABLE.USE_DT = T_ABLE.DT
+				       )
+				 GROUP BY PRDT_NUM
+
+                               ) T_ABLE
+                       ON T_ABLE.PRDT_NUM = T_PRDT.PRDT_NUM
+                      /*AND T_ABLE.ABLE_YN = 'Y'*/
+                    /*기본정보+기준시간*/
+                    INNER JOIN (SELECT CASE ADD_USE_ABLE_TM
+                                       WHEN '1'
+                                       THEN (CASE WHEN ADD_USE_MAXI_TM >= T24_MOD
+                                                  THEN T24_CNT * 24 + ADD_TIME
+                                                  ELSE (CASE WHEN T12_CNT > 0
+                                                             THEN DECODE(ADD_TIME, 0, DECODE(T6_CNT, 0, T24_CNT * 24 + 12, T24_CNT * 24 + 24), T24_CNT * 24 + 24)
+                                                             WHEN T6_CNT > 0
+                                                             THEN DECODE(ADD_TIME, 0, T24_CNT * 24 + 6, T24_CNT * 24 + 12)
+                                                             ELSE T24_CNT * 24 + 6
+                                                         END
+                                                        )
+                                              END
+                                            ) /*24시간 기준 시간계산*/
+                                       ELSE (CASE WHEN T12_CNT > 0
+                                                  THEN (CASE WHEN ADD_USE_MAXI_TM >= T12_MOD
+                                                             THEN T24_CNT * 24 + 12 + T12_MOD
+                                                             ELSE (T24_CNT + 1) * 24
+                                                         END
+                                                       )
+                                                  WHEN T6_CNT > 0
+                                                  THEN (CASE WHEN ADD_USE_MAXI_TM >= ADD_TIME
+                                                             THEN T24_CNT * 24 + 6 + ADD_TIME
+                                                             ELSE T24_CNT * 24 + 12
+                                                         END
+                                                       )
+                                                  ELSE (CASE WHEN ADD_USE_MAXI_TM >= ADD_TIME
+                                                             THEN T24_CNT * 24 + ADD_TIME
+                                                             ELSE T24_CNT * 24 + 6
+                                                         END
+                                                       )
+                                              END
+                                            ) /*기준시간 기준 시간계산*/
+                                        END AS SALE_TM
+                                     , CORP_ID
+                                     , RC_NM
+                                     , WKD_DIS_PER_APL_YN
+                                     , WKD_DIS_PER_APL_WEEK
+                                     , ADD_USE_ABLE_TM
+                                     , ADD_USE_APL_TM
+                                     , RSV_ABLE_MINI_TM
+                                     , DIS_PER_APL_TM
+                                     , RSV_TM
+                                     , ADD_USE_DIS_PER_APL_YN
+                                     , DAY_RSV_UNABLE_YN
+                                     , DAY_RSV_UNABLE_TM
+                                     , RSV_MAXI_TM_APL_YN
+                                     , RSV_MAXI_TM
+                                  FROM TB_RC_DFTINF
+                                     , (SELECT RSV_TM
+                                             , TRUNC(RSV_TM / 24)                  AS T24_CNT
+                                             , MOD(RSV_TM, 24)                     AS T24_MOD
+                                             , MOD(RSV_TM, 12)                     AS T12_MOD
+                                             , TRUNC(MOD(RSV_TM, 24) / 12)         AS T12_CNT
+                                             , TRUNC(MOD(MOD(RSV_TM, 24), 12) / 6) AS T6_CNT
+                                             , MOD(MOD(MOD(RSV_TM, 24), 12), 6)    AS ADD_TIME
+                                          FROM (
+                                                  SELECT
+                                                  CASE
+                                                       WHEN 24<= ROUND((TO_DATE(#sToDt#||#sToTm#, 'YYYYMMDDHH24MI') - TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI')) * 24)
+                                                       THEN ROUND((TO_DATE(#sToDt#||#sToTm#, 'YYYYMMDDHH24MI') - TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI')) * 24)
+                                                       ELSE 24
+                                                       END
+                                                       AS RSV_TM
+                                                  FROM DUAL
+                                               )
+                                       ) /*입력된 날짜에 대한 필요 변수*/
+                               ) T_DFT
+                       ON T_DFT.CORP_ID = T_CORP.CORP_ID
+                    /*요금*/
+                    INNER JOIN (SELECT PRDT_NUM
+                                     , APL_DT
+                                     , TM6_AMT
+                                     , TM12_AMT
+                                     , TM24_AMT
+                                     , TM1_ADD_AMT
+                                     , RANK() OVER(PARTITION BY PRDT_NUM ORDER BY (#sFromDt# - APL_DT)) AS RK
+                                  FROM TB_RC_AMTINF
+                                 WHERE APL_DT <= #sFromDt#
+                               ) T_AMT
+                       ON T_AMT.RK = 1
+                      AND T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM
+                    /*할인율*/
+                    INNER JOIN ( SELECT
+                                   PRDT_NUM
+                                   , DIS_PER_NUM
+                                   , APL_START_DT
+                                   , APL_END_DT
+                                   , WDAY_DIS_PER
+                                   , WKD_DIS_PER
+                                   , RANK() OVER(PARTITION BY PRDT_NUM ORDER BY(CASE WHEN WDAY_DIS_PER = 100 THEN 1 WHEN DIS_PER_NUM = 1 THEN 3ELSE 2  END), WDAY_DIS_PER, WKD_DIS_PER) AS RK
+                                  FROM TB_RC_DISPERINF
+                                 WHERE  (#sFromDt# BETWEEN APL_START_DT AND APL_END_DT ) OR (#sToDt# BETWEEN APL_START_DT AND APL_END_DT ) OR (#sFromDt# <= APL_START_DT AND #sToDt# >=  APL_END_DT)
+                               ) T_DISPER
+                       ON T_DISPER.PRDT_NUM = T_PRDT.PRDT_NUM
+                      AND T_DISPER.RK = 1
+                    ]]>
+     WHERE 1=1
+
+     <isEmpty property="preViewYn">
+          AND T_PRDT.TRADE_STATUS = 'TS03'
+     </isEmpty>
+     /*차량구분검색조건*/
+     <isNotEmpty property="sCarDivCd">
+               AND T_CDIV.CAR_DIV = #sCarDivCd#
+     </isNotEmpty>
+     <!--검색 속도 문제로 중복 선택 기능 보류-->
+     <!--<isNotEmpty property="sCarDivCdList">
+       AND T_CDIV.CAR_DIV IN
+         <iterate open="(" close=")" conjunction="," property="sCarDivCdList">
+           #sCarDivCdList[]#
+         </iterate>
+     </isNotEmpty>-->
+     /*보험여부검색조건*/
+     <isNotEmpty property="sIsrDiv">
+               AND T_PRDT.ISR_DIV = #sIsrDiv#
+     </isNotEmpty>
+     /*차량구분검색조건(탭)*/
+     <isNotEmpty property="sCarDivCdView">
+               AND T_CDIV.CAR_DIV = #sCarDivCdView#
+     </isNotEmpty>
+     /*단건조회용*/
+     <isNotEmpty property="sPrdtNum">
+               AND T_PRDT.PRDT_NUM = #sPrdtNum#
+     </isNotEmpty>
+     /* 차량명(검색) */
+     <isEmpty property="searchWord">
+          <isNotEmpty property="sPrdtNm">
+                    AND REPLACE(UPPER(T_CDIV.PRDT_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#sPrdtNm#), ' ', '')||'%'
+          </isNotEmpty>
+     </isEmpty>
+     /*제조사 조회용*/
+     <isNotEmpty property="sMakerDivCd">
+               AND T_CDIV.MAKER_DIV = #sMakerDivCd#
+     </isNotEmpty>
+     /*사용연료 조회용*/
+     <isNotEmpty property="sUseFuelDiv">
+               AND T_CDIV.USE_FUEL_DIV = #sUseFuelDiv#
+     </isNotEmpty>
+     /*대여조건 조회용*/
+     <isNotEmpty property="sRntQlfctAge">
+               AND RNT_QLFCT_AGE <![CDATA[<=]]> #sRntQlfctAge#
+     </isNotEmpty>
+     /*연식 조회용*/
+     <isNotEmpty property="sModelYear">
+               AND T_PRDT.MODEL_YEAR = #sModelYear#
+     </isNotEmpty>
+     <isNotEmpty property="searchWord">
+               AND ((REPLACE(UPPER(T_CDIV.PRDT_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#searchWord#), ' ', '')||'%') OR
+               (T_CDIV.RC_CARDIV_NUM IN (SELECT LINK_NUM
+               FROM TB_CM_SRCHWORD
+               WHERE SRCH_WORD = #searchWord#)
+               ))
+     </isNotEmpty>
+     <isNotEmpty property="prdtNumList">
+               AND T_PRDT.PRDT_NUM IN
+               <iterate property="prdtNumList"  open="(" close=")" conjunction=",">
+                    #prdtNumList[]#
+               </iterate>
+     </isNotEmpty>
+
+     <isNotEmpty property="sIconCd">
+               AND #sIconCdCnt# = (SELECT COUNT(*) FROM TB_CM_ICONINF WHERE LINK_NUM = T_PRDT.PRDT_NUM AND ICON_CD IN
+               <iterate open="(" close="))" conjunction="," property="sIconCd">
+                    #sIconCd[]#
+               </iterate>
+     </isNotEmpty>
+     <isNotEmpty property="sCarCds">
+               <iterate prepend="AND T_PRDT.CAR_CD IN " open="(" close=")" conjunction="," property="sCarCds">
+                    #sCarCds[]#
+               </iterate>
+     </isNotEmpty>
+     <isEqual property="sMainViewYn" compareValue="Y">
+          AND T_PRDT.PRDT_NUM NOT IN (
+          SELECT PRDT_NUM FROM TB_MAIN_CTGR_RCMD
+          <![CDATA[
+       	 	WHERE PRINT_SN <= 7
+       	   ]]>
+          )
+     </isEqual>
+     ) AS V_PRDT
+     LEFT OUTER JOIN TB_GPA_ANLS T_GPA
+     ON T_GPA.LINK_NUM = V_PRDT.PRDT_NUM
+     WHERE 1=1
+     <isEqual property="sMainViewYn" compareValue="N">
+          AND (CORP_ABLE_YN = 'Y' AND ABLE_YN = 'Y' AND CORP_LINK_YN = 'N') OR (CORP_ABLE_YN = 'Y' AND CORP_LINK_YN = 'Y')
+     </isEqual>
+     <isNotEmpty property="orderCd">
+               <isEqual property="orderCd" compareValue="PRICE">
+                    ORDER BY SALE_AMT
+               </isEqual>
+               <isEqual property="orderCd" compareValue="NEW">
+                    ORDER BY CONF_DTTM
+               </isEqual>
+               <isEqual property="orderCd" compareValue="SALE">
+                    ORDER BY BUY_NUM
+               </isEqual>
+               <isEqual property="orderCd" compareValue="GPA">
+                    ORDER BY (CASE ISR_DIV WHEN 'ID10' THEN 1 ELSE 2 END), CORP_RAND_LEVEL DESC
+               </isEqual>
+               <!-- <isEqual property="orderCd" compareValue="DISPER">
+               ORDER BY DIS_PER
+               </isEqual> -->
+     </isNotEmpty>
+     ) V_PRDT2
+     /*보험종류검색조건*/
+     <isEqual property="sMainViewYn" compareValue="Y">
+          WHERE C_RK = 1
+          AND SALE_AMT > 0
+          <isEqual property="sIsrTypeDiv" compareValue="GENL">
+               AND ISR_TYPE_DIV = #sIsrTypeDiv#
+          </isEqual>
+          <isEqual property="sIsrTypeDiv" compareValue="LUXY">
+               AND ISR_TYPE_DIV = #sIsrTypeDiv#
+          </isEqual>
+          <isEqual property="sIsrTypeDiv" compareValue="FEE">
+               <!-- AND ISR_TYPE_DIV IS NULL -->
+               AND ISR_TYPE_DIV IS NULL AND ISR_DIV = 'ID00'
+          </isEqual>
+     </isEqual>
+     <isEqual property="sMainViewYn" compareValue="N">
+          WHERE SALE_AMT > 0
+          <isEqual property="sIsrTypeDiv" compareValue="GENL">
+               AND ISR_TYPE_DIV = #sIsrTypeDiv#
+          </isEqual>
+          <isEqual property="sIsrTypeDiv" compareValue="LUXY">
+               AND ISR_TYPE_DIV = #sIsrTypeDiv#
+          </isEqual>
+          <isEqual property="sIsrTypeDiv" compareValue="FEE">
+               <!-- AND ISR_TYPE_DIV IS NULL -->
+               AND ISR_TYPE_DIV IS NULL AND ISR_DIV = 'ID00'
+          </isEqual>
+     </isEqual>
+     )
+     WHERE 1=1
+</select>
+
+<select id="RC_PRDTINF_S_17" resultMap="RC_PRDTINF_R_17">
+     SELECT PRDT_NUM     /*상품번호*/
+     , PRDT_NM      /*상품명*/
+     , CONF_DTTM    /*승인 일시*/
+     , CORP_ID      /*업체아이디*/
+     , CORP_NM      /*렌터카명*/
+     , CAR_DIV		/*차량구분*/
+     , RSV_TM     	/*선택시간*/
+     , SALE_TM    	/*기준시간*/
+     , NML_AMT 		/*정상가*/
+     , DIS_PER      /*할인율*/
+     , ABLE_YN
+     , BUY_NUM		/*구매수*/
+     , CORP_ABLE_YN
+     , SALE_AMT   	/*할인가*/
+     , SAVE_PATH
+     , SAVE_FILE_NM
+     , GPA_AVG
+     , GPA_CNT
+     , USE_FUEL_DIV	/*사용연료구분*/
+     , USE_FUEL_DIV_NM /*사용연료명*/
+     , EVENT_CNT
+     , COUPON_CNT
+     , ISR_DIV
+     , CASE WHEN ISR_TYPE_DIV IS NULL THEN 'FEE' ELSE ISR_TYPE_DIV END AS ISR_TYPE_DIV
+     , CASE
+     WHEN ISR_DIV='ID10' THEN 1
+     WHEN ISR_DIV='ID00' THEN 2
+     ELSE 3
+     END AS ISR_DIV_SORT
+     , MAXI_NUM		/*정원*/
+     , RC_CARDIV_NUM /*렌터카 차종 번호 */
+     , LINK_MAPPING_NUM
+     , CORP_LINK_YN
+     , RSV_MAXI_TM_APL_YN
+     , RSV_MAXI_TM
+     , TAMNACARD_YN
+     FROM (SELECT V_PRDT.PRDT_NUM     /*상품번호*/
+     , V_PRDT.PRDT_NM      /*상품명*/
+     , V_PRDT.CONF_DTTM     /*승인 일시*/
+     , V_PRDT.CORP_ID      /*업체아이디*/
+     , V_PRDT.CORP_NM      /*렌터카명*/
+     , V_PRDT.RSV_TM       /*선택시간*/
+     , V_PRDT.SALE_TM      /*기준시간*/
+     , V_PRDT.BUY_NUM	   /*구매수*/
+     , V_PRDT.CAR_DIV		/*차량구분*/
+     , V_PRDT.USE_FUEL_DIV	/*사용연료구분*/
+     , V_PRDT.USE_FUEL_DIV_NM /*사용연료명*/
+     , (V_PRDT.NML_AMT1 + V_PRDT.NML_AMT2) AS NML_AMT /*정상가*/
+     , V_PRDT.DIS_PER      /*할인율*/
+     , V_PRDT.ABLE_YN	   /*사용가능여부*/
+     , V_PRDT.CORP_ABLE_YN
+     , V_PRDT.PRDT_LINK_YN /*상품연계여부*/
+     , (CASE V_PRDT.ADD_USE_DIS_PER_APL_YN WHEN 'Y'
+     THEN TRUNC(((V_PRDT.NML_AMT1 + V_PRDT.NML_AMT2) * (100 - V_PRDT.DIS_PER) / 100), -2)
+     ELSE TRUNC((V_PRDT.NML_AMT1 * (100 - V_PRDT.DIS_PER) / 100), -2) + V_PRDT.NML_AMT2
+     END
+     ) AS SALE_AMT /*할인가*/
+     , '' AS SAVE_PATH
+     <!-- , T_IMG.SAVE_FILE_NM -->
+     , NVL(T_GPA.GPA_AVG, 0) AS GPA_AVG /*평점 평균*/
+     , NVL(T_GPA.GPA_CNT, 0) AS GPA_CNT	/*평점 수량*/
+     , (SELECT NVL(COUNT(T_PRMT.PRMT_NUM), 0)
+     FROM TB_PRMT T_PRMT
+     INNER JOIN TB_PRMT_PRDT T_PRMT_PRDT
+     ON T_PRMT.PRMT_NUM = T_PRMT_PRDT.PRMT_NUM
+     WHERE T_PRMT_PRDT.PRDT_NUM = V_PRDT.PRDT_NUM
+     AND STATUS_CD = 'TS03'
+     AND PRMT_DIV='EVNT'
+     AND T_PRMT.START_DT<![CDATA[ <= ]]>#sFromDt#
+     AND T_PRMT.END_DT <![CDATA[>=]]> #sFromDt#
+     ) EVENT_CNT
+     , (SELECT NVL(COUNT(T_CPC.PRDT_NUM), 0)
+     FROM TB_CP T_CP
+          INNER JOIN TB_CP_PRDT T_CPC
+               ON T_CPC.CP_ID = T_CP.CP_ID
+               AND T_CP.STATUS_CD = 'ST02'
+               AND T_CP.TGT_DIV = 'ALL'
+     WHERE T_CPC.PRDT_NUM = V_PRDT.PRDT_NUM
+          AND APL_START_DT <![CDATA[<=]]> #sFromDt#
+          AND APL_END_DT <![CDATA[>=]]> #sToDt#
+     ) COUPON_CNT
+     , V_PRDT.ISR_DIV
+     , V_PRDT.ISR_TYPE_DIV
+     , V_PRDT.MAXI_NUM		/*정원*/
+     , V_PRDT.RC_CARDIV_NUM /*렌터카 차종 번호 */
+     , V_PRDT.SAVE_FILE_NM   /*렌터카 차종 이미지 */
+     , V_PRDT.LINK_MAPPING_NUM
+     , V_PRDT.CORP_LINK_YN
+     , V_PRDT.RSV_MAXI_TM_APL_YN
+     , V_PRDT.RSV_MAXI_TM
+     <isEqual property="sMainViewYn" compareValue="Y">
+          , V_PRDT.CORP_LEVEL
+          , RANK() OVER(PARTITION BY CORP_ID
+          ORDER BY PRDT_NUM) AS C_RK
+     </isEqual>
+     , TAMNACARD_YN
+     FROM (SELECT T_PRDT.PRDT_NUM      /*상품번호*/
+     , T_CDIV.PRDT_NM || ' / ' || (SELECT CD_NM
+     FROM TB_CD
+     WHERE CD_NUM = T_CDIV.USE_FUEL_DIV
+     ) AS PRDT_NM       /*상품명*/
+     , T_PRDT.CONF_DTTM     /*승인 일시*/
+     , T_PRDT.BUY_NUM		/*구매수*/
+     , T_CDIV.CAR_DIV		/*차량구분*/
+     , T_CDIV.USE_FUEL_DIV	/*사용연료구분*/
+     , (SELECT CD_NM
+     FROM TB_CD
+     WHERE CD_NUM = T_CDIV.USE_FUEL_DIV
+     ) AS USE_FUEL_DIV_NM /*사용연료명*/
+     , T_CORP.CORP_ID       /*업체아이디*/
+     , T_DFT.RC_NM AS CORP_NM        /*렌터카 명*/
+     , SALE_TM              /*기준시간*/
+     , RSV_TM               /*선택시간*/
+     , (TRUNC(T_DFT.SALE_TM / 24) * T_AMT.TM24_AMT +
+     TRUNC(MOD(T_DFT.SALE_TM, 24) / 12) * T_AMT.TM12_AMT +
+     TRUNC(MOD(MOD(T_DFT.SALE_TM, 24), 12) / 6) * T_AMT.TM6_AMT) AS NML_AMT1   /*기본금액*/
+     , T_DFT.ADD_USE_APL_TM
+     , CASE WHEN MOD(MOD(MOD(T_DFT.SALE_TM, 24), 12), 6) > T_DFT.ADD_USE_APL_TM
+     THEN T_DFT.ADD_USE_APL_TM * T_AMT.TM1_ADD_AMT
+     ELSE MOD(MOD(MOD(T_DFT.SALE_TM, 24), 12), 6) * T_AMT.TM1_ADD_AMT
+     END AS NML_AMT2           /*추가금액*/
+     , T_DFT.WKD_DIS_PER_APL_YN   /*주말 할인율 적용 여부*/
+     , T_DFT.WKD_DIS_PER_APL_WEEK /*주말 할인율 적용 요일*/
+     /*사용기간 할인율 적용시간과 비교*/
+     <![CDATA[
+                        , (CASE WHEN RSV_TM < TO_NUMBER(T_DFT.DIS_PER_APL_TM)
+                        ]]>
+     THEN 0
+     /*주말할인율 적용여부*/
+     ELSE (CASE T_DFT.WKD_DIS_PER_APL_YN
+     WHEN 'Y'
+     /*입력된 예약 시작일에 대한 요일 체크*/
+     THEN (CASE WHEN INSTR(WKD_DIS_PER_APL_WEEK, TO_CHAR(TO_DATE(#sFromDt#, 'YYYYMMDD'), 'D') - 1) > 0
+     THEN T_DISPER.WKD_DIS_PER
+     ELSE T_DISPER.WDAY_DIS_PER
+     END
+     )
+     ELSE T_DISPER.WDAY_DIS_PER
+     END
+     )
+     END) AS DIS_PER
+     <![CDATA[
+                        , (CASE WHEN RSV_TM < TO_NUMBER(T_DFT.RSV_ABLE_MINI_TM)
+                        ]]>
+     THEN 'N'
+     ELSE (CASE WHEN RSV_MAXI_TM_APL_YN = 'Y'
+     THEN (CASE WHEN RSV_TM > RSV_MAXI_TM
+     THEN 'N'
+     ELSE (CASE
+     /*당일예약불가 체크*/
+     WHEN (TO_CHAR(SYSDATE, 'YYYYMMDD') = #sFromDt# AND T_DFT.DAY_RSV_UNABLE_YN = 'Y' )
+     <![CDATA[
+	                                              THEN (CASE WHEN TO_CHAR(SYSDATE, 'HH24') < DAY_RSV_UNABLE_TM
+	                                            ]]>
+     THEN T_ABLE.ABLE_YN
+     ELSE 'N'
+     END)
+     ELSE T_ABLE.ABLE_YN
+     END
+     )
+     END)
+     ELSE (CASE
+     /*당일예약불가 체크*/
+     WHEN (TO_CHAR(SYSDATE, 'YYYYMMDD') = #sFromDt# AND T_DFT.DAY_RSV_UNABLE_YN = 'Y' )
+     <![CDATA[
+                                            THEN (CASE WHEN TO_CHAR(SYSDATE, 'HH24') < DAY_RSV_UNABLE_TM
+                                          ]]>
+     THEN T_ABLE.ABLE_YN
+     ELSE 'N'
+     END)
+     ELSE T_ABLE.ABLE_YN
+     END
+     )
+     END
+     )
+     END) AS ABLE_YN
+     <![CDATA[
+                        , (CASE WHEN RSV_TM < TO_NUMBER(T_DFT.RSV_ABLE_MINI_TM)
+                        ]]>
+     THEN 'N'
+     ELSE (CASE WHEN RSV_MAXI_TM_APL_YN = 'Y'
+     THEN (CASE WHEN RSV_TM > RSV_MAXI_TM
+     THEN 'N'
+     ELSE (CASE
+     /*당일예약불가 체크*/
+     WHEN (TO_CHAR(SYSDATE, 'YYYYMMDD') = #sFromDt# AND T_DFT.DAY_RSV_UNABLE_YN = 'Y' )
+     <![CDATA[
+	                                              THEN (CASE WHEN TO_CHAR(SYSDATE, 'HH24') < DAY_RSV_UNABLE_TM
+	                                            ]]>
+     THEN 'Y'
+     ELSE 'N'
+     END)
+     ELSE 'Y'
+     END
+     )
+     END)
+     ELSE (CASE
+     /*당일예약불가 체크*/
+     WHEN (TO_CHAR(SYSDATE, 'YYYYMMDD') = #sFromDt# AND T_DFT.DAY_RSV_UNABLE_YN = 'Y' )
+     <![CDATA[
+                                           THEN (CASE WHEN TO_CHAR(SYSDATE, 'HH24') < DAY_RSV_UNABLE_TM
+                                         ]]>
+     THEN 'Y'
+     ELSE 'N'
+     END)
+     ELSE 'Y'
+     END
+     )
+     END
+     )
+     END) AS CORP_ABLE_YN
+     , T_DFT.ADD_USE_DIS_PER_APL_YN	/*추가이용할인율적용여부*/
+     , T_PRDT.PRDT_LINK_YN
+     , T_PRDT.ISR_DIV
+     , T_PRDT.ISR_TYPE_DIV
+     , T_CDIV.MAXI_NUM		/*정원*/
+     , T_PRDT.RC_CARDIV_NUM /*렌터카 차종 번호 */
+     , T_CDIV.CAR_IMG AS SAVE_FILE_NM /*렌터카 차종 이미지 */
+     , T_PRDT.LINK_MAPPING_NUM
+     , T_CORP.CORP_LINK_YN
+     , T_DFT.RSV_MAXI_TM_APL_YN
+     , T_DFT.RSV_MAXI_TM
+     , T_PRDT.CORP_RAND_LEVEL
+     <isEqual property="sMainViewYn" compareValue="Y">
+          , (SELECT CORP_LEVEL - NVL(COMPLAIN_LEVEL, 0) + NVL(JOIN_LEVEL, 0) + NVL(AMT_LEVEL, 0)
+          FROM TB_CORP_LEVEL
+          WHERE CORP_ID=T_PRDT.CORP_ID) AS CORP_LEVEL
+     </isEqual>
+     , CASE WHEN T_CORP.TAMNACARD_MNG_YN = 'C' OR (T_CORP.TAMNACARD_MNG_YN = 'P' AND T_PRDT.TAMNACARD_PRDT_YN = 'Y') THEN 'Y' ELSE 'N' END AS TAMNACARD_YN
+     FROM TB_RC_PRDTINF T_PRDT
+     INNER JOIN TB_CORP T_CORP
+     ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+     AND T_CORP.CORP_CD = 'RC'
+     AND T_CORP.TRADE_STATUS_CD = 'TS03'
+
+     /*렌터카회사-조회조건*/
+     <isNotEmpty property="sCorpId">
+               AND T_CORP.CORP_ID = #sCorpId#
+     </isNotEmpty>
+     INNER JOIN TB_RC_CARDIV T_CDIV
+     ON T_CDIV.RC_CARDIV_NUM=T_PRDT.RC_CARDIV_NUM
+     AND USE_YN='Y'
+     <![CDATA[
+                    INNER JOIN (
+				SELECT PRDT_NUM
+				     , DECODE(SUM(DISABLE_CNT), 0 , 'Y', 'N') AS ABLE_YN
+				  FROM (SELECT T_ABLE.PRDT_NUM      /*상품번호*/
+				             , DT                   /*예약일*/
+				             , CASE WHEN TOTAL_CAR_NUM - NVL(USE_CNT, 0) < 1 THEN 1
+				                    ELSE 0
+				                END AS DISABLE_CNT  /*불가능여부(1이면 불가능)*/
+				          FROM (SELECT PRDT_NUM         /*상품번호*/
+				                     , DT               /*예약일*/
+				                     , TOTAL_CAR_NUM    /*차량보유대수*/
+				                  /*(예약일자별 * 상품별)의 차량보유대수*/
+				                  FROM (SELECT T_PRDT.PRDT_NUM
+				                             , DT
+				                             , NVL(TOTAL_CAR_NUM, 0) AS TOTAL_CAR_NUM
+				                             , RANK() OVER(PARTITION BY T_PRDT.PRDT_NUM, DT ORDER BY (DT - APL_DT)) AS RK
+				                          FROM (SELECT PRDT_NUM
+				                                     , DT
+				                                  FROM (SELECT TO_CHAR(TO_DATE(#sFromDt#, 'YYYYMMDD') + (LEVEL-1), 'YYYYMMDD') AS DT
+				                                          FROM DUAL
+				                                       CONNECT BY LEVEL <= TO_DATE(#sToDt#, 'YYYYMMDD') - TO_DATE(#sFromDt#, 'YYYYMMDD') + 1
+				                                       ), (SELECT PRDT_NUM FROM TB_RC_PRDTINF WHERE TRADE_STATUS = 'TS03')
+				                               ) T_PRDT
+				                          LEFT OUTER JOIN TB_RC_CNTINF T_CNTINF
+				                            ON T_CNTINF.PRDT_NUM = T_PRDT.PRDT_NUM
+				                           AND T_CNTINF.APL_DT <= T_PRDT.DT
+				                         WHERE 1=1
+				                         ]]>
+     <isNotEmpty property="sPrdtNum">
+               AND T_PRDT.PRDT_NUM = #sPrdtNum#
+     </isNotEmpty>
+     )
+     WHERE RK = 1
+     ) T_ABLE
+     <![CDATA[
+				         /*예약현황 체크 조인*/
+				         LEFT OUTER JOIN (
+				         	SELECT
+					         	PRDT_NUM,
+					         	USE_DT,
+					         	COUNT(*) AS USE_CNT
+				         	FROM(
+								SELECT
+									PRDT_NUM,TO_CHAR(TO_DATE(RENT_START_DT, 'YYYYMMDD') + NUM -1,'YYYYMMDD')  AS USE_DT
+								FROM(
+									SELECT
+										T1.*,  (TO_DATE(RENT_END_DT, 'YYYYMMDD')-TO_DATE(RENT_START_DT, 'YYYYMMDD')+1) AS CNT
+									FROM(
+										SELECT
+											*
+										FROM
+											TB_RC_RSV WHERE RSV_STATUS_CD IN ('RS00','RS02','RS10','RS11','RS12','RS30') AND (RENT_START_DT > = #sFromDt# AND RENT_START_DT <= #sToDt# )
+
+										) AS T1
+								),(SELECT LEVEL NUM FROM DUAL CONNECT BY LEVEL < TO_DATE(#sToDt#, 'YYYYMMDD') - TO_DATE(#sFromDt#, 'YYYYMMDD') + 1) AS T2
+								WHERE
+									NUM BETWEEN 1 AND CNT
+								AND RSV_STATUS_CD IN ('RS00','RS02','RS10','RS11','RS12','RS30')
+							) GROUP BY PRDT_NUM, USE_DT
+							HAVING USE_DT BETWEEN #sFromDt# AND #sToDt#
+				                         ) AS T_USEABLE
+				            ON T_USEABLE.PRDT_NUM = T_ABLE.PRDT_NUM
+				           AND T_USEABLE.USE_DT = T_ABLE.DT
+				       )
+				 GROUP BY PRDT_NUM
+
+                               ) T_ABLE
+                       ON T_ABLE.PRDT_NUM = T_PRDT.PRDT_NUM
+                      /*AND T_ABLE.ABLE_YN = 'Y'*/
+                    /*기본정보+기준시간*/
+                    INNER JOIN (SELECT CASE ADD_USE_ABLE_TM
+                                       WHEN '1'
+                                       THEN (CASE WHEN ADD_USE_MAXI_TM >= T24_MOD
+                                                  THEN T24_CNT * 24 + ADD_TIME
+                                                  ELSE (CASE WHEN T12_CNT > 0
+                                                             THEN DECODE(ADD_TIME, 0, DECODE(T6_CNT, 0, T24_CNT * 24 + 12, T24_CNT * 24 + 24), T24_CNT * 24 + 24)
+                                                             WHEN T6_CNT > 0
+                                                             THEN DECODE(ADD_TIME, 0, T24_CNT * 24 + 6, T24_CNT * 24 + 12)
+                                                             ELSE T24_CNT * 24 + 6
+                                                         END
+                                                        )
+                                              END
+                                            ) /*24시간 기준 시간계산*/
+                                       ELSE (CASE WHEN T12_CNT > 0
+                                                  THEN (CASE WHEN ADD_USE_MAXI_TM >= T12_MOD
+                                                             THEN T24_CNT * 24 + 12 + T12_MOD
+                                                             ELSE (T24_CNT + 1) * 24
+                                                         END
+                                                       )
+                                                  WHEN T6_CNT > 0
+                                                  THEN (CASE WHEN ADD_USE_MAXI_TM >= ADD_TIME
+                                                             THEN T24_CNT * 24 + 6 + ADD_TIME
+                                                             ELSE T24_CNT * 24 + 12
+                                                         END
+                                                       )
+                                                  ELSE (CASE WHEN ADD_USE_MAXI_TM >= ADD_TIME
+                                                             THEN T24_CNT * 24 + ADD_TIME
+                                                             ELSE T24_CNT * 24 + 6
+                                                         END
+                                                       )
+                                              END
+                                            ) /*기준시간 기준 시간계산*/
+                                        END AS SALE_TM
+                                     , CORP_ID
+                                     , RC_NM
+                                     , WKD_DIS_PER_APL_YN
+                                     , WKD_DIS_PER_APL_WEEK
+                                     , ADD_USE_ABLE_TM
+                                     , ADD_USE_APL_TM
+                                     , RSV_ABLE_MINI_TM
+                                     , DIS_PER_APL_TM
+                                     , RSV_TM
+                                     , ADD_USE_DIS_PER_APL_YN
+                                     , DAY_RSV_UNABLE_YN
+                                     , DAY_RSV_UNABLE_TM
+                                     , RSV_MAXI_TM_APL_YN
+                                     , RSV_MAXI_TM
+                                  FROM TB_RC_DFTINF
+                                     , (SELECT RSV_TM
+                                             , TRUNC(RSV_TM / 24)                  AS T24_CNT
+                                             , MOD(RSV_TM, 24)                     AS T24_MOD
+                                             , MOD(RSV_TM, 12)                     AS T12_MOD
+                                             , TRUNC(MOD(RSV_TM, 24) / 12)         AS T12_CNT
+                                             , TRUNC(MOD(MOD(RSV_TM, 24), 12) / 6) AS T6_CNT
+                                             , MOD(MOD(MOD(RSV_TM, 24), 12), 6)    AS ADD_TIME
+                                          FROM (
+                                                  SELECT
+                                                  CASE
+                                                       WHEN 24<= ROUND((TO_DATE(#sToDt#||#sToTm#, 'YYYYMMDDHH24MI') - TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI')) * 24)
+                                                       THEN ROUND((TO_DATE(#sToDt#||#sToTm#, 'YYYYMMDDHH24MI') - TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI')) * 24)
+                                                       ELSE 24
+                                                       END
+                                                       AS RSV_TM
+                                                  FROM DUAL
+                                               )
+                                       ) /*입력된 날짜에 대한 필요 변수*/
+                               ) T_DFT
+                       ON T_DFT.CORP_ID = T_CORP.CORP_ID
+                    /*요금*/
+                    INNER JOIN (SELECT PRDT_NUM
+                                     , APL_DT
+                                     , TM6_AMT
+                                     , TM12_AMT
+                                     , TM24_AMT
+                                     , TM1_ADD_AMT
+                                     , RANK() OVER(PARTITION BY PRDT_NUM ORDER BY (#sFromDt# - APL_DT)) AS RK
+                                  FROM TB_RC_AMTINF
+                                 WHERE APL_DT <= #sFromDt#
+                               ) T_AMT
+                       ON T_AMT.RK = 1
+                      AND T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM
+                    /*할인율*/
+                    INNER JOIN ( SELECT
+                                   PRDT_NUM
+                                   , DIS_PER_NUM
+                                   , APL_START_DT
+                                   , APL_END_DT
+                                   , WDAY_DIS_PER
+                                   , WKD_DIS_PER
+                                   , RANK() OVER(PARTITION BY PRDT_NUM ORDER BY(CASE WHEN WDAY_DIS_PER = 100 THEN 1 WHEN DIS_PER_NUM = 1 THEN 3ELSE 2  END), WDAY_DIS_PER, WKD_DIS_PER) AS RK
+                                  FROM TB_RC_DISPERINF
+                                 WHERE  (#sFromDt# BETWEEN APL_START_DT AND APL_END_DT ) OR (#sToDt# BETWEEN APL_START_DT AND APL_END_DT ) OR (#sFromDt# <= APL_START_DT AND #sToDt# >=  APL_END_DT)
+                               ) T_DISPER
+                       ON T_DISPER.PRDT_NUM = T_PRDT.PRDT_NUM
+                      AND T_DISPER.RK = 1
+                    ]]>
+     WHERE 1=1
+
+     <isEmpty property="preViewYn">
+          AND T_PRDT.TRADE_STATUS = 'TS03'
+     </isEmpty>
+     /*차량구분검색조건*/
+     <isNotEmpty property="sCarDivCd">
+               AND T_CDIV.CAR_DIV = #sCarDivCd#
+     </isNotEmpty>
+     <!--검색 속도 문제로 중복 선택 기능 보류-->
+     <!--<isNotEmpty property="sCarDivCdList">
+       AND T_CDIV.CAR_DIV IN
+         <iterate open="(" close=")" conjunction="," property="sCarDivCdList">
+           #sCarDivCdList[]#
+         </iterate>
+     </isNotEmpty>-->
+     /*보험여부검색조건*/
+     <isNotEmpty property="sIsrDiv">
+               AND T_PRDT.ISR_DIV = #sIsrDiv#
+     </isNotEmpty>
+     /*차량구분검색조건(탭)*/
+     <isNotEmpty property="sCarDivCdView">
+               AND T_CDIV.CAR_DIV = #sCarDivCdView#
+     </isNotEmpty>
+     /*단건조회용*/
+     <isNotEmpty property="sPrdtNum">
+               AND T_PRDT.PRDT_NUM = #sPrdtNum#
+     </isNotEmpty>
+     /* 차량명(검색) */
+     <isEmpty property="searchWord">
+          <isNotEmpty property="sPrdtNm">
+                    AND REPLACE(UPPER(T_CDIV.PRDT_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#sPrdtNm#), ' ', '')||'%'
+          </isNotEmpty>
+     </isEmpty>
+     /*제조사 조회용*/
+     <isNotEmpty property="sMakerDivCd">
+               AND T_CDIV.MAKER_DIV = #sMakerDivCd#
+     </isNotEmpty>
+     /*사용연료 조회용*/
+     <isNotEmpty property="sUseFuelDiv">
+               AND T_CDIV.USE_FUEL_DIV = #sUseFuelDiv#
+     </isNotEmpty>
+     /*대여조건 조회용*/
+     <isNotEmpty property="sRntQlfctAge">
+               AND RNT_QLFCT_AGE <![CDATA[<=]]> #sRntQlfctAge#
+     </isNotEmpty>
+     /*연식 조회용*/
+     <isNotEmpty property="sModelYear">
+               AND T_PRDT.MODEL_YEAR = #sModelYear#
+     </isNotEmpty>
+     <isNotEmpty property="searchWord">
+               AND ((REPLACE(UPPER(T_CDIV.PRDT_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#searchWord#), ' ', '')||'%') OR
+               (T_CDIV.RC_CARDIV_NUM IN (SELECT LINK_NUM
+               FROM TB_CM_SRCHWORD
+               WHERE SRCH_WORD = #searchWord#)
+               ))
+     </isNotEmpty>
+     <isNotEmpty property="prdtNumList">
+               AND T_PRDT.PRDT_NUM IN
+               <iterate property="prdtNumList"  open="(" close=")" conjunction=",">
+                    #prdtNumList[]#
+               </iterate>
+     </isNotEmpty>
+
+     <isNotEmpty property="sIconCd">
+               AND #sIconCdCnt# = (SELECT COUNT(*) FROM TB_CM_ICONINF WHERE LINK_NUM = T_PRDT.PRDT_NUM AND ICON_CD IN
+               <iterate open="(" close="))" conjunction="," property="sIconCd">
+                    #sIconCd[]#
+               </iterate>
+     </isNotEmpty>
+     <isNotEmpty property="sCarCds">
+               <iterate prepend="AND T_PRDT.CAR_CD IN " open="(" close=")" conjunction="," property="sCarCds">
+                    #sCarCds[]#
+               </iterate>
+     </isNotEmpty>
+     <isEqual property="sMainViewYn" compareValue="Y">
+          AND T_PRDT.PRDT_NUM NOT IN (
+          SELECT PRDT_NUM FROM TB_MAIN_CTGR_RCMD
+          <![CDATA[
+       	 	WHERE PRINT_SN <= 7
+       	   ]]>
+          )
+     </isEqual>
+     ) AS V_PRDT
+     LEFT OUTER JOIN TB_GPA_ANLS T_GPA
+     ON T_GPA.LINK_NUM = V_PRDT.PRDT_NUM
+     WHERE 1=1
+     <isEqual property="sMainViewYn" compareValue="N">
+          AND (CORP_ABLE_YN = 'Y' AND ABLE_YN = 'Y' AND CORP_LINK_YN = 'N') OR (CORP_ABLE_YN = 'Y' AND CORP_LINK_YN = 'Y')
+     </isEqual>
+     ) V_PRDT2
+     /*보험종류검색조건*/
+     <isEqual property="sMainViewYn" compareValue="Y">
+          WHERE C_RK = 1
+          AND SALE_AMT > 0
+          <isEqual property="sIsrTypeDiv" compareValue="GENL">
+               AND ISR_TYPE_DIV = #sIsrTypeDiv#
+          </isEqual>
+          <isEqual property="sIsrTypeDiv" compareValue="LUXY">
+               AND ISR_TYPE_DIV = #sIsrTypeDiv#
+          </isEqual>
+          <isEqual property="sIsrTypeDiv" compareValue="FEE">
+               <!-- AND ISR_TYPE_DIV IS NULL -->
+               AND ISR_TYPE_DIV IS NULL AND ISR_DIV = 'ID00'
+          </isEqual>
+     </isEqual>
+     <isEqual property="sMainViewYn" compareValue="N">
+          WHERE SALE_AMT > 0
+          <isEqual property="sIsrTypeDiv" compareValue="GENL">
+               AND ISR_TYPE_DIV = #sIsrTypeDiv#
+          </isEqual>
+          <isEqual property="sIsrTypeDiv" compareValue="LUXY">
+               AND ISR_TYPE_DIV = #sIsrTypeDiv#
+          </isEqual>
+          <isEqual property="sIsrTypeDiv" compareValue="FEE">
+               <!-- AND ISR_TYPE_DIV IS NULL -->
+               AND ISR_TYPE_DIV IS NULL AND ISR_DIV = 'ID00'
+          </isEqual>
+     </isEqual>
+</select>
+
+<!--업체별 차종명-->
+<select id="RC_PRDTINF_S_18" resultMap="RC_PRDTINF_R_18">
+SELECT PRDT_NUM,PRDT_NM
+FROM
+TB_RC_PRDTINF WHERE 1=1 AND PRINT_YN = 'Y' AND CORP_ID = 'C160000124'
+GROUP BY PRDT_NUM, PRDT_NM
+ORDER BY PRDT_NM
+</select>
+
+<select id="RC_PRDTINF_S_05" resultMap="RC_PRDTINF_R_05">
+SELECT CD_NUM      AS CAR_DIV
+     , NVL(CNT, 0) AS CNT
+  FROM TB_CD T_CD
+  LEFT OUTER JOIN (<![CDATA[
+					SELECT CAR_DIV
+					     , COUNT(PRDT_NUM) AS CNT
+					  FROM (SELECT T_PRDT.PRDT_NUM      /*상품번호*/
+							     , T_CDIV.CAR_DIV       /*차량구분*/
+							  FROM TB_RC_PRDTINF T_PRDT
+							 INNER JOIN TB_CORP T_CORP
+							    ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+							   AND T_CORP.CORP_CD = 'RC'
+							   AND T_CORP.TRADE_STATUS_CD = 'TS03'
+							  ]]>
+							 /*렌터카회사-조회조건*/
+							 <isNotEmpty property="sCorpId">
+							   AND T_CORP.CORP_ID = #sCorpId#
+							 </isNotEmpty>
+							 INNER JOIN TB_RC_CARDIV T_CDIV
+                         		ON T_CDIV.RC_CARDIV_NUM=T_PRDT.RC_CARDIV_NUM
+                         		  AND USE_YN='Y'
+							 <![CDATA[
+							 INNER JOIN (
+										SELECT PRDT_NUM
+										     , DECODE(SUM(DISABLE_CNT), 0 , 'Y', 'N') AS ABLE_YN
+										  FROM (SELECT T_ABLE.PRDT_NUM      /*상품번호*/
+										             , DT                   /*예약일*/
+										             , DTTM                 /*체크시간*/
+										             , CASE WHEN TOTAL_CAR_NUM - NVL(USE_CNT, 0) < 1 THEN 1
+										                    ELSE 0
+										                END AS DISABLE_CNT  /*불가능여부(1이면 불가능)*/
+										          FROM (SELECT PRDT_NUM         /*상품번호*/
+										                     , DT               /*예약일*/
+										                     , TOTAL_CAR_NUM    /*차량보유대수*/
+										                  /*(예약일자별 * 상품별)의 차량보유대수*/
+										                  FROM (SELECT T_PRDT.PRDT_NUM
+										                             , DT
+										                             , NVL(TOTAL_CAR_NUM, 0) AS TOTAL_CAR_NUM
+										                             , RANK() OVER(PARTITION BY T_PRDT.PRDT_NUM, DT ORDER BY (DT - APL_DT)) AS RK
+										                          FROM (SELECT PRDT_NUM
+										                                     , DT
+										                                  FROM (SELECT TO_CHAR(TO_DATE(#sFromDt#, 'YYYYMMDD') + (LEVEL-1), 'YYYYMMDD') AS DT
+										                                          FROM DUAL
+										                                       CONNECT BY LEVEL <= TO_DATE(#sToDt#, 'YYYYMMDD') - TO_DATE(#sFromDt#, 'YYYYMMDD') + 1
+										                                       ), TB_RC_PRDTINF
+										                               ) T_PRDT
+										                          LEFT OUTER JOIN TB_RC_CNTINF T_CNTINF
+										                            ON T_CNTINF.PRDT_NUM = T_PRDT.PRDT_NUM
+										                           AND T_CNTINF.APL_DT <= T_PRDT.DT
+										                         WHERE 1=1
+										                         ]]>
+										                        <isNotEmpty property="sPrdtNum">
+										                           AND T_PRDT.PRDT_NUM = #sPrdtNum#
+										                         </isNotEmpty>
+										                        )
+										                  WHERE RK = 1
+										                ) T_ABLE
+										                <![CDATA[
+										         /*예약현황 체크 조인*/
+										         LEFT OUTER JOIN (SELECT PRDT_NUM         /*예약상품번호*/
+										                               , DTTM             /*사용일시*/
+										                               , COUNT(*) AS USE_CNT    /*사용건수*/
+										                            FROM (SELECT PRDT_NUM
+										                                       , DTTM
+										                                    FROM (SELECT *
+										                                            FROM TB_RC_USEHIST
+										                                           WHERE USE_DT BETWEEN #sFromDt# AND #sToDt#) T_USEHIST
+										                                   INNER JOIN (SELECT TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI') + ((LEVEL -1) / 24) AS DTTM
+										                                                 FROM DUAL
+										                                              CONNECT BY LEVEL <= ROUND(TO_DATE(#sToDt#||#sToTm#, 'YYYYMMDDHH24MI') - TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI')) * 24
+										                                              ) T_DTTM
+										                                      ON T_DTTM.DTTM BETWEEN TO_DATE(USE_DT||START_TM, 'YYYYMMDDHH24MI') AND TO_DATE(USE_DT||END_TM, 'YYYYMMDDHH24MI')
+										                                 )
+										                           GROUP BY PRDT_NUM
+										                                  , DTTM
+										                         ) AS T_USEABLE
+										            ON T_USEABLE.PRDT_NUM = T_ABLE.PRDT_NUM
+										           AND TO_CHAR(T_USEABLE.DTTM, 'YYYYMMDD') = T_ABLE.DT
+										       )
+										 GROUP BY PRDT_NUM
+
+	                                    ) T_ABLE
+	                            ON T_ABLE.PRDT_NUM = T_PRDT.PRDT_NUM
+	                           /*AND T_ABLE.ABLE_YN = 'Y'*/
+							 INNER JOIN TB_RC_DFTINF T_DFT
+							    ON T_DFT.CORP_ID = T_CORP.CORP_ID
+							 INNER JOIN (SELECT PRDT_NUM
+							                  , RANK() OVER(PARTITION BY PRDT_NUM ORDER BY (#sFromDt# - APL_DT)) AS RK
+							               FROM TB_RC_AMTINF
+							               WHERE APL_DT <= #sFromDt#
+							            ) T_AMT
+							    ON T_AMT.RK = 1
+							   AND T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM
+							 /*할인율*/
+							 INNER JOIN (SELECT PRDT_NUM
+							                  , RANK() OVER(PARTITION BY PRDT_NUM ORDER BY DIS_PER_NUM DESC) AS RK
+							               FROM TB_RC_DISPERINF
+							              WHERE APL_START_DT <= #sFromDt#
+							                AND APL_END_DT   >= #sFromDt#
+							            ) T_DISPER
+							    ON T_DISPER.PRDT_NUM = T_PRDT.PRDT_NUM
+							   AND T_DISPER.RK = 1
+							  ]]>
+							 WHERE T_PRDT.TRADE_STATUS = 'TS03'
+					         /*차량구분검색조건*/
+					         <isNotEmpty property="sCarDivCd">
+					           AND T_CDIV.CAR_DIV = #sCarDivCd#
+					         </isNotEmpty>
+					         /*보험여부검색조건*/
+	                         <isNotEmpty property="sIsrDiv">
+	                           AND T_PRDT.ISR_DIV = #sIsrDiv#
+	                         </isNotEmpty>
+					         /* 차량명(검색) */
+					         <isNotEmpty property="sPrdtNm">
+					           AND REPLACE(UPPER(T_CDIV.PRDT_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#sPrdtNm#), ' ', '')||'%'
+					         </isNotEmpty>
+					         <isNotEmpty property="searchWord">
+                            		AND ((REPLACE(UPPER(T_PRDT.PRDT_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#searchWord#), ' ', '')||'%') OR
+                            		     (T_CDIV.RC_CARDIV_NUM IN (SELECT LINK_NUM
+													 	 	    FROM TB_CM_SRCHWORD
+													 		   WHERE SRCH_WORD = #searchWord#)
+                            		    ))
+                           	</isNotEmpty>
+					         <isNotEmpty property="sIconCd">
+                         	AND #sIconCdCnt# = (SELECT COUNT(*) FROM TB_CM_ICONINF WHERE LINK_NUM = T_PRDT.PRDT_NUM AND ICON_CD IN
+                         	<iterate open="(" close="))" conjunction="," property="sIconCd">
+							 		#sIconCd[]#
+							 	</iterate>
+                         	</isNotEmpty>
+					         <isNotEmpty property="sCarCds">
+								 	<iterate prepend="AND T_PRDT.CAR_CD IN " open="(" close=")" conjunction="," property="sCarCds">
+								 		#sCarCds[]#
+								 	</iterate>
+							</isNotEmpty>
+					       )
+					 GROUP BY CAR_DIV
+                  ) AS V_PRDTCNT
+    ON V_PRDTCNT.CAR_DIV = CD_NUM
+ WHERE HRK_CD_NUM = 'CDIV'
+   AND USE_YN     = 'Y'
+</select>
+
+<select id="RC_PRDTINF_S_06" resultMap="RC_PRDTINF_R_06">
+SELECT T_PRDT.CORP_ID           /*업체 아이디*/
+    , T_DFT.RC_NM AS CORP_NM
+    , T_PRDT.PRDT_NUM          /*상품 번호*/
+    , T_PRDT.TRADE_STATUS		 /*거래상태*/
+    , T_CDIV.PRDT_NM           /*상품 명*/
+    , T_PRDT.PRDT_EXP          /*상품 설명*/
+    , T_CDIV.CAR_IMG			/*차종 이미지*/
+    , T_PRDT.PRINT_YN          /*출력 여부*/
+    , T_CDIV.MAXI_NUM          /*정원*/
+    , T_CDIV.CAR_DIV           /*차량 구분*/
+    , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = T_CDIV.CAR_DIV) AS CAR_DIV_NM
+    , T_CDIV.USE_FUEL_DIV      /*사용 연료 구분*/
+    , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = T_CDIV.USE_FUEL_DIV) AS USE_FUEL_DIV_NM
+    , T_PRDT.TRANS_DIV         /*변속기 구분*/
+    , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = TRANS_DIV) AS TRANS_DIV_NM
+    , T_CDIV.MAKER_DIV         /*제조사 구분*/
+    , T_CDIV.CARDIV_EXP
+    , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = T_CDIV.MAKER_DIV) AS MAKER_DIV_NM
+    , T_PRDT.BUY_NUM           /*구매 수*/
+    , (SELECT NVL(COUNT(T_PRMT.PRMT_NUM), 0)
+        FROM TB_PRMT T_PRMT
+            INNER JOIN TB_PRMT_PRDT T_PRMT_PRDT ON T_PRMT.PRMT_NUM = T_PRMT_PRDT.PRMT_NUM
+        WHERE STATUS_CD = 'TS03'
+            AND PRMT_DIV = 'EVNT'
+            AND TO_DATE(#sFromDt#, 'YYYY/MM/DD') BETWEEN T_PRMT.START_DT AND T_PRMT.END_DT
+            AND T_PRMT.CORP_ID = T_PRDT.CORP_ID
+            AND T_PRMT_PRDT.PRDT_NUM = T_PRDT.PRDT_NUM) AS EVENT_CNT				/*이벤트 수*/
+    ,
+        (
+          SELECT CASE WHEN
+          (NVL(SUM(CASE WHEN CP_PRD.PRDT_NUM = T_PRDT.PRDT_NUM THEN 1 ELSE 0 END), 0)
+          + NVL(SUM(CASE WHEN CP_CORP.CORP_ID = T_PRDT.CORP_ID THEN 1 ELSE 0 END), 0)) >= 1
+          THEN '1' ELSE '0' END
+          FROM TB_CP CP
+          LEFT JOIN TB_CP_PRDT CP_PRD ON CP.CP_ID = CP_PRD.CP_ID AND CP_PRD.PRDT_NUM = T_PRDT.PRDT_NUM
+          LEFT JOIN TB_CP_CORP CP_CORP ON CP.CP_ID = CP_CORP.CP_ID AND CP_CORP.CORP_ID = T_PRDT.CORP_ID
+          WHERE CP.STATUS_CD = 'ST02'
+          AND CP.TGT_DIV = 'ALL'
+          AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN CP.APL_START_DT AND CP.APL_END_DT
+        ) COUPON_CNT    /*할인쿠폰 1:있음 0:없음*/
+    , T_PRDT.CONF_REQUEST_DTTM /*승인 요청 일시*/
+    , T_PRDT.CONF_DTTM         /*승인 일시*/
+    , T_PRDT.FRST_REG_DTTM     /*최초 등록 일시*/
+    , T_PRDT.FRST_REG_ID       /*최초 등록 아이디*/
+    , T_PRDT.LAST_MOD_DTTM     /*최종 수정 일시*/
+    , T_PRDT.LAST_MOD_ID       /*최종 수정 아이디*/
+    , RNT_STD_INF  			/*대여 기준 정보 */
+    , CAR_TKOV_INF				/*차량  인수 정보 */
+    , NTI						/*참고사항 */
+    , CANCEL_GUIDE				/*취소안내 */
+    , T_IMG.SAVE_PATH
+    , T_IMG.SAVE_FILE_NM
+    , ISR_CM_GUIDE
+    , ISR_AMT_GUIDE
+    , T_CORP.RSV_TEL_NUM
+    , T_CORP.API_RENT_DIV
+    , T_PRDT.MODEL_YEAR		/*연식*/
+    , T_CORP.SUPERB_CORP_YN 	/*우수관광사업체 */
+    , T_PRDT.ISR_DIV
+    , T_PRDT.RNT_QLFCT_AGE			/*대여 조건 나이*/
+    , T_PRDT.RNT_QLFCT_CAREER		/*대여 조건 경력*/
+    , T_PRDT.RNT_QLFCT_LICENSE		/*대여 조건 면허*/
+    , T_PRDT.ISR_TYPE_DIV			/*보험 종류 구분*/
+    , T_PRDT.GENERAL_ISR_AMT		/*일반 보험 요금*/
+    , T_PRDT.GENERAL_ISR_AGE		/*일반 보험 나이*/
+    , T_PRDT.GENERAL_ISR_CAREER	/*일반 보험 경력*/
+    , T_PRDT.GENERAL_ISR_REWARD_AMT	/*일반 보험 보상 요금*/
+    , T_PRDT.GENERAL_ISR_BURCHA	/*일반 보험 결제 요금*/
+    , T_PRDT.LUXY_ISR_AMT			/*고급 보험 요금*/
+    , T_PRDT.LUXY_ISR_AGE			/*고급 보험 나이*/
+    , T_PRDT.LUXY_ISR_CAREER		/*고급 보험 경력*/
+    , T_PRDT.LUXY_ISR_REWARD_AMT	/*고급 보험 보상 요금*/
+    , T_PRDT.LUXY_ISR_BURCHA		/*고급 보험 결제 요금*/
+    , CASE WHEN T_CORP.TAMNACARD_MNG_YN = 'C' OR (T_CORP.TAMNACARD_MNG_YN = 'P' AND T_PRDT.TAMNACARD_PRDT_YN = 'Y') THEN 'Y' ELSE 'N' END AS TAMNACARD_YN /*탐나는전 예약가능 여부*/
+FROM TB_RC_PRDTINF T_PRDT
+    INNER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+    INNER JOIN TB_RC_CARDIV T_CDIV ON T_CDIV.RC_CARDIV_NUM = T_PRDT.RC_CARDIV_NUM
+        AND USE_YN = 'Y'
+    INNER JOIN TB_RC_DFTINF T_DFT ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+    LEFT OUTER JOIN TB_CM_IMG T_IMG ON T_IMG.LINK_NUM = T_PRDT.PRDT_NUM
+        AND T_IMG.IMG_SN = 1
+WHERE T_PRDT.PRDT_NUM = #prdtNum#
+</select>
+
+<!-- 예약가능여부 확인 쿼리 -->
+<select id="RC_PRDTINF_S_07" resultMap="RC_PRDTINF_R_07">
+<![CDATA[
+SELECT PRDT_NUM
+     , DECODE(SUM(DISABLE_CNT), 0 , 'Y', 'N') AS ABLE_YN
+  FROM (SELECT T_ABLE.PRDT_NUM      /*상품번호*/
+             , DT                   /*예약일*/
+             , DTTM                 /*체크시간*/
+             , CASE WHEN TOTAL_CAR_NUM - NVL(USE_CNT, 0) < 1 THEN 1
+                    ELSE 0
+                END AS DISABLE_CNT  /*불가능여부(1이면 불가능)*/
+          FROM (SELECT PRDT_NUM         /*상품번호*/
+                     , DT               /*예약일*/
+                     , TOTAL_CAR_NUM    /*차량보유대수*/
+                  /*(예약일자별 * 상품별)의 차량보유대수*/
+                  FROM (SELECT T_PRDT.PRDT_NUM
+                             , DT
+                             , NVL(TOTAL_CAR_NUM, 0) AS TOTAL_CAR_NUM
+                             , RANK() OVER(PARTITION BY T_PRDT.PRDT_NUM, DT ORDER BY (DT - APL_DT)) AS RK
+                          FROM (SELECT PRDT_NUM
+                                     , DT
+                                  FROM (SELECT TO_CHAR(TO_DATE(#sFromDt#, 'YYYYMMDD') + (LEVEL-1), 'YYYYMMDD') AS DT
+                                          FROM DUAL
+                                       CONNECT BY LEVEL <= TO_DATE(#sToDt#, 'YYYYMMDD') - TO_DATE(#sFromDt#, 'YYYYMMDD') + 1
+                                       ), TB_RC_PRDTINF
+                               ) T_PRDT
+                          LEFT OUTER JOIN TB_RC_CNTINF T_CNTINF
+                            ON T_CNTINF.PRDT_NUM = T_PRDT.PRDT_NUM
+                           AND T_CNTINF.APL_DT <= T_PRDT.DT
+                         WHERE 1=1
+                         ]]>
+                        <isNotEmpty property="sPrdtNum">
+                           AND T_PRDT.PRDT_NUM = #sPrdtNum#
+                         </isNotEmpty>
+                        )
+                  WHERE RK = 1
+                ) T_ABLE
+                <![CDATA[
+         /*예약현황 체크 조인*/
+         LEFT OUTER JOIN (SELECT PRDT_NUM         /*예약상품번호*/
+                               , DTTM             /*사용일시*/
+                               , COUNT(*) AS USE_CNT    /*사용건수*/
+                            FROM (SELECT PRDT_NUM
+                                       , DTTM
+                                    FROM (SELECT *
+                                            FROM TB_RC_USEHIST
+                                           WHERE USE_DT BETWEEN #sFromDt# AND #sToDt#) T_USEHIST
+                                   INNER JOIN (SELECT TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI') + ((LEVEL -1) / 24) AS DTTM
+                                                 FROM DUAL
+                                              CONNECT BY LEVEL <= ROUND(TO_DATE(#sToDt#||#sToTm#, 'YYYYMMDDHH24MI') - TO_DATE(#sFromDt#||#sFromTm#, 'YYYYMMDDHH24MI')) * 24
+                                              ) T_DTTM
+                                      ON T_DTTM.DTTM BETWEEN TO_DATE(USE_DT||START_TM, 'YYYYMMDDHH24MI') AND TO_DATE(USE_DT||END_TM, 'YYYYMMDDHH24MI')
+                                 )
+                           GROUP BY PRDT_NUM
+                                  , DTTM
+                         ) AS T_USEABLE
+            ON T_USEABLE.PRDT_NUM = T_ABLE.PRDT_NUM
+           AND TO_CHAR(T_USEABLE.DTTM, 'YYYYMMDD') = T_ABLE.DT
+       )
+ GROUP BY PRDT_NUM
+ ]]>
+</select>
+
+<select id="RC_PRDTINF_S_08" resultMap="RC_PRDTINF_R_08">
+<![CDATA[
+WITH T_ABLE AS (
+  SELECT PRDT_NUM, (
+           CASE
+             WHEN (SELECT LINK_YN
+                FROM TB_API
+                WHERE CORP_ID = V_PRDT2.CORP_ID) = 'Y' THEN DECODE(V_PRDT2.PRDT_LINK_YN, 'Y', 'N', ABLE_YN)
+             ELSE ABLE_YN
+           END ) AS ABLE_YN
+         FROM (SELECT T_CORP.CORP_ID, T_PRDT1.PRDT_NUM, PRDT_LINK_YN, (
+           CASE
+             WHEN RSV_TM < TO_NUMBER(T_DFT.RSV_ABLE_MINI_TM) THEN 'N'
+             ELSE (
+               CASE
+                 WHEN RSV_MAXI_TM_APL_YN = 'Y' THEN (
+                   CASE
+                     WHEN RSV_TM > RSV_MAXI_TM THEN 'N'
+                     ELSE T_ABLE.ABLE_YN
+                   END)
+                 ELSE 'N'
+                 END )
+               END) AS ABLE_YN
+             FROM TB_RC_PRDTINF T_PRDT1
+               INNER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID = T_PRDT1.CORP_ID AND T_CORP.CORP_CD = 'RC' AND T_CORP.TRADE_STATUS_CD = 'TS03' /*렌터카회사-조회조건*/
+               INNER JOIN (
+                    SELECT PRDT_NUM , DECODE(SUM(DISABLE_CNT), 0 , 'Y', 'N') AS ABLE_YN
+                      FROM (
+                        SELECT T_ABLE.PRDT_NUM /*상품번호*/,
+                                   DT /*예약일*/,
+                                   DTTM /*체크시간*/,
+                                       CASE
+                                         WHEN TOTAL_CAR_NUM - NVL(USE_CNT, 0) < 1 THEN 1
+                                         ELSE 0
+                                       END AS DISABLE_CNT /*불가능여부(1이면 불가능)*/
+                              FROM (
+                                    SELECT PRDT_NUM /*상품번호*/,
+                                               DT /*예약일*/,
+                                               TOTAL_CAR_NUM /*차량보유대수*/ /*(예약일자별 * 상품별)의 차량보유대수*/
+                                  FROM (
+                                    SELECT T_PRDT1.PRDT_NUM ,
+                                               DT ,
+                                               NVL(TOTAL_CAR_NUM, 0) AS TOTAL_CAR_NUM ,
+                                               RANK() OVER(PARTITION BY T_PRDT1.PRDT_NUM, DT
+                                                 ORDER BY (DT - APL_DT)) AS RK
+                                          FROM (
+                                            SELECT PRDT_NUM ,
+                                                       DT
+                                                  FROM (SELECT TO_CHAR(TO_DATE(TO_CHAR(SYSDATE+1, 'YYYYMMDD'), 'YYYYMMDD') + (LEVEL-1), 'YYYYMMDD') AS DT
+                                                          FROM DUAL CONNECT BY LEVEL <= TO_DATE(TO_CHAR(SYSDATE+2, 'YYYYMMDD'), 'YYYYMMDD') - TO_DATE(TO_CHAR(SYSDATE+1, 'YYYYMMDD'), 'YYYYMMDD') + 1 ),
+                                                       TB_RC_PRDTINF ) T_PRDT1
+                                             LEFT OUTER JOIN TB_RC_CNTINF T_CNTINF ON T_CNTINF.PRDT_NUM = T_PRDT1.PRDT_NUM AND T_CNTINF.APL_DT <= T_PRDT1.DT
+                                          )
+                             WHERE RK = 1 ) T_ABLE /*예약현황 체크 조인*/
+                             LEFT OUTER JOIN (SELECT PRDT_NUM /*예약상품번호*/, DTTM /*사용일시*/, COUNT(*) AS USE_CNT /*사용건수*/
+                              FROM (SELECT PRDT_NUM ,
+                                           DTTM
+                                      FROM (SELECT *
+                                              FROM TB_RC_USEHIST
+                                             WHERE USE_DT BETWEEN TO_CHAR(SYSDATE+1, 'YYYYMMDD') AND TO_CHAR(SYSDATE+2, 'YYYYMMDD')) T_USEHIST INNER JOIN (SELECT TO_DATE(TO_CHAR(SYSDATE+1, 'YYYYMMDD') || '1200', 'YYYYMMDDHH24MI') + ((LEVEL -1) / 24) AS DTTM
+                                              FROM DUAL CONNECT BY LEVEL <= ROUND(TO_DATE(TO_CHAR(SYSDATE+2, 'YYYYMMDD') || '1200', 'YYYYMMDDHH24MI') - TO_DATE(TO_CHAR(SYSDATE+1, 'YYYYMMDD') || '1200', 'YYYYMMDDHH24MI')) * 24 ) T_DTTM ON T_DTTM.DTTM BETWEEN TO_DATE(USE_DT||START_TM, 'YYYYMMDDHH24MI') AND TO_DATE(USE_DT||END_TM, 'YYYYMMDDHH24MI') )
+                             GROUP BY PRDT_NUM , DTTM ) AS T_USEABLE ON T_USEABLE.PRDT_NUM = T_ABLE.PRDT_NUM
+                       AND TO_CHAR(T_USEABLE.DTTM, 'YYYYMMDD') = T_ABLE.DT )
+             GROUP BY PRDT_NUM ) T_ABLE ON T_ABLE.PRDT_NUM = T_PRDT1.PRDT_NUM /*AND T_ABLE.ABLE_YN = 'Y'*/ /*기본정보+기준시간*/
+           INNER JOIN (SELECT
+                  CORP_ID , RSV_ABLE_MINI_TM , RSV_TM , DAY_RSV_UNABLE_YN , RSV_MAXI_TM_APL_YN, RSV_MAXI_TM, DAY_RSV_UNABLE_TM
+                    FROM TB_RC_DFTINF , (SELECT RSV_TM
+                                FROM (SELECT ROUND((TO_DATE(TO_CHAR(SYSDATE+2, 'YYYYMMDD') || '1200', 'YYYYMMDDHH24MI') - TO_DATE(TO_CHAR(SYSDATE+1, 'YYYYMMDD') || '1200', 'YYYYMMDDHH24MI')) * 24) AS RSV_TM
+                        FROM DUAL ) ) /*입력된 날짜에 대한 필요 변수*/) T_DFT ON T_DFT.CORP_ID = T_CORP.CORP_ID /*요금*/
+                 WHERE 1=1
+                   AND T_PRDT1.TRADE_STATUS = 'TS03') V_PRDT2
+)
+]]>
+
+<![CDATA[
+SELECT PRDT_NUM
+     , PRDT_NM
+     , PRDT_EXP
+     , DIS_PER
+     , TM24_AMT AS NML_AMT
+     , TRUNC((TM24_AMT * (100 - DIS_PER) / 100), -2) AS SALE_AMT
+     , SAVE_PATH
+     , SAVE_FILE_NM
+     , CORP_ID
+     , RC_NM
+  FROM (SELECT V_PRDT.PRDT_NUM
+             , V_PRDT.PRDT_NM
+             , V_PRDT.PRDT_EXP
+             , V_PRDT.CONF_DTTM
+             , V_PRDT.TM24_AMT
+             , V_PRDT.DIS_PER
+             , '' AS SAVE_PATH
+		     , V_PRDT.CAR_IMG AS SAVE_FILE_NM
+             , SUM(NVL(T_ANLS.BUY_NUM, 0)) AS BUY_NUM
+             /*, ROW_NUMBER() OVER (ORDER BY SUM(NVL(T_ANLS.BUY_NUM, 0)) DESC, V_PRDT.CONF_DTTM DESC) AS RN*/
+             /*, ROW_NUMBER() OVER (ORDER BY DBMS_RANDOM.VALUE) AS RN*/
+             /*, ROW_NUMBER() OVER (ORDER BY V_PRDT.DIS_PER DESC, TRUNC((TM24_AMT * (100 - DIS_PER) / 100), -2) ASC) AS RN*/
+             , ROW_NUMBER() OVER (ORDER BY TRUNC((TM24_AMT * (100 - DIS_PER) / 100), -2) ASC, V_PRDT.PRDT_NUM) AS RN
+             , V_PRDT.CORP_ID
+             , (SELECT RC_NM FROM TB_RC_DFTINF WHERE CORP_ID=V_PRDT.CORP_ID) AS RC_NM
+          FROM (SELECT T_PRDT.PRDT_NUM
+                     , T_DIV.PRDT_NM
+                     , T_PRDT.PRDT_EXP
+                     , T_PRDT.CONF_DTTM
+                     , T_AMT.TM24_AMT
+                     , (CASE WHEN TO_NUMBER(T_DFT.DIS_PER_APL_TM) > 24
+                             THEN 0
+                             /*주말할인율 적용여부*/
+                             ELSE (CASE T_DFT.WKD_DIS_PER_APL_YN
+                                   WHEN 'Y'
+                                   /*입력된 예약 시작일에 대한 요일 체크*/
+                                   THEN (CASE WHEN INSTR(T_DFT.WKD_DIS_PER_APL_WEEK, TO_CHAR(SYSDATE, 'D') - 1) > 0
+                                              THEN T_DISPER.WKD_DIS_PER
+                                              ELSE T_DISPER.WDAY_DIS_PER
+                                          END
+                                        )
+                                   ELSE T_DISPER.WDAY_DIS_PER
+                                    END
+                                  )
+                          END) AS DIS_PER
+                      , T_PRDT.CORP_ID
+                      , T_DIV.CAR_IMG
+                  FROM TB_RC_PRDTINF T_PRDT
+                 INNER JOIN TB_RC_CARDIV T_DIV
+                    ON T_DIV.RC_CARDIV_NUM=T_PRDT.RC_CARDIV_NUM
+                 INNER JOIN TB_RC_DFTINF T_DFT
+                    ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+                  /*요금*/
+                 INNER JOIN (SELECT PRDT_NUM
+                                  , APL_DT
+                                  , TM6_AMT
+                                  , TM12_AMT
+                                  , TM24_AMT
+                                  , TM1_ADD_AMT
+                                  , RANK() OVER(PARTITION BY PRDT_NUM ORDER BY (TO_CHAR(SYSDATE+1, 'YYYYMMDD') - APL_DT)) AS RK
+                               FROM TB_RC_AMTINF
+                            ) T_AMT
+                    ON T_AMT.RK = 1
+                   AND T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM
+                   /*할인율*/
+                 INNER JOIN (SELECT PRDT_NUM
+                                  , DIS_PER_NUM
+                                  , APL_START_DT
+                                  , APL_END_DT
+                                  , WDAY_DIS_PER
+                                  , WKD_DIS_PER
+                                  , RANK() OVER(PARTITION BY PRDT_NUM ORDER BY DIS_PER_NUM DESC) AS RK
+                               FROM TB_RC_DISPERINF
+                              WHERE APL_START_DT <= TO_CHAR(SYSDATE+1, 'YYYYMMDD')
+                                AND APL_END_DT   >= TO_CHAR(SYSDATE+1, 'YYYYMMDD')
+                            ) T_DISPER
+                    ON T_DISPER.PRDT_NUM = T_PRDT.PRDT_NUM
+                   AND T_DISPER.RK = 1
+                 WHERE T_PRDT.TRADE_STATUS = 'TS03'
+                   AND T_PRDT.PRDT_NUM IN (SELECT PRDT_NUM FROM T_ABLE WHERE ABLE_YN='Y')
+               ) V_PRDT
+          LEFT OUTER JOIN TB_SALE_ANLS T_ANLS
+            ON T_ANLS.PRDT_NUM = V_PRDT.PRDT_NUM
+           AND BUY_DT BETWEEN TO_CHAR(SYSDATE, 'YYYYMMDD') AND TO_CHAR(SYSDATE -90, 'YYYYMMDD')
+          LEFT OUTER JOIN TB_CM_IMG T_IMG
+		    ON T_IMG.LINK_NUM = V_PRDT.PRDT_NUM
+		   AND T_IMG.IMG_SN   = 1
+         GROUP BY V_PRDT.PRDT_NUM
+                , V_PRDT.PRDT_NM
+                , V_PRDT.PRDT_EXP
+                , V_PRDT.CONF_DTTM
+                , V_PRDT.TM24_AMT
+                , V_PRDT.DIS_PER
+                , V_PRDT.CAR_IMG
+                , V_PRDT.CORP_ID
+       )
+ WHERE RN < 6
+]]>
+</select>
+
+
+<select id="RC_PRDTINF_S_09" resultClass="int">
+SELECT COUNT(PRDT_NUM) FROM TB_RC_PRDTINF
+WHERE CORP_ID = #corpId#
+	<isNotEmpty property="tradeStatus">
+  			AND TRADE_STATUS = #tradeStatus#
+  	</isNotEmpty>
+</select>
+
+
+<select id="RC_PRDTINF_S_10" resultMap="RC_PRDTINF_R_10A">
+<![CDATA[
+SELECT
+     PRDT_NUM,
+     PRDT_NM,
+     DIS_PER,
+     (CASE WHEN APPROX_NML_AMT IS NOT NULL THEN APPROX_NML_AMT ELSE NML_AMT END  ) AS NML_AMT,
+     (CASE WHEN APPROX_SALE_AMT IS NOT NULL THEN APPROX_SALE_AMT ELSE TRUNC((NML_AMT * (100 - DIS_PER) / 100), -2) END  ) AS SALE_AMT,
+     SAVE_PATH,
+     SAVE_FILE_NM,
+     CORP_ID,
+     RC_NM,
+     PRINT_SN
+FROM(
+	SELECT
+		A.PRDT_NUM,
+		B.PRDT_NM,
+		(CASE
+			WHEN TO_NUMBER(E.DIS_PER_APL_TM) > 24
+				THEN 0
+				ELSE(
+					CASE E.WKD_DIS_PER_APL_YN
+						WHEN 'Y'
+							THEN(
+								CASE
+									WHEN INSTR(E.WKD_DIS_PER_APL_WEEK, TO_CHAR(SYSDATE, 'D') - 1) > 0
+										THEN D.WKD_DIS_PER
+										ELSE D.WDAY_DIS_PER
+								END
+							)
+							ELSE D.WDAY_DIS_PER
+					END
+				)
+		END) AS DIS_PER,
+		C.TM24_AMT AS NML_AMT,
+		'' AS SAVE_PATH,
+		F.CAR_IMG AS SAVE_FILE_NM,
+		B.CORP_ID,
+		REPLACE(REPLACE(REPLACE(E.RC_NM, '(주)', ''), '㈜', ''),' ','') AS RC_NM,
+        B.APPROX_NML_AMT,
+		B.APPROX_SALE_AMT,
+		A.PRINT_SN
+	FROM
+		TB_PRMT_PRDT AS A
+	JOIN
+		TB_RC_PRDTINF AS B
+	ON A.PRDT_NUM = B.PRDT_NUM
+	 JOIN(
+	 	SELECT
+			PRDT_NUM,
+			TM24_AMT,
+			RANK() OVER(PARTITION BY PRDT_NUM ORDER BY (TO_CHAR(SYSDATE+1, 'YYYYMMDD') - APL_DT)) AS RK
+		FROM TB_RC_AMTINF
+	) AS C
+	ON C.RK = 1 AND A.PRDT_NUM = C.PRDT_NUM
+	 JOIN(
+	 	SELECT
+				PRDT_NUM,
+				WDAY_DIS_PER,
+				WKD_DIS_PER,
+				RANK() OVER(PARTITION BY PRDT_NUM ORDER BY DIS_PER_NUM DESC) AS RK
+			FROM TB_RC_DISPERINF
+			WHERE APL_START_DT <= TO_CHAR(SYSDATE+1, 'YYYYMMDD')
+			AND APL_END_DT   >= TO_CHAR(SYSDATE+1, 'YYYYMMDD')
+	) AS D
+	ON D.RK = 1 AND A.PRDT_NUM = D.PRDT_NUM
+	JOIN TB_RC_DFTINF AS E
+	ON B.CORP_ID = E.CORP_ID
+	JOIN TB_RC_CARDIV AS F
+	ON B.RC_CARDIV_NUM = F.RC_CARDIV_NUM
+	WHERE 1=1
+	AND A.PRMT_NUM = #sPrmtNum#
+	AND B.TRADE_STATUS = 'TS03'
+) AS T1
+]]>
+</select>
+
+<select id="RC_PRDTINF_S_11" resultClass="java.lang.String">
+SELECT PRDT_NUM
+  FROM TB_RC_PRDTINF
+ WHERE MAPPING_NUM = #sMappingNum#
+</select>
+
+
+<select id="RC_PRDTINF_S_20" resultMap="RC_PRDTINF_R_20">
+
+SELECT A.LINK_MAPPING_NUM,CORP_LINK_YN FROM TB_RC_PRDTINF AS A
+JOIN TB_CORP AS B
+ON A.CORP_ID = B.CORP_ID
+WHERE A.PRDT_NUM = #sPrdtNum#
+</select>
+
+<select id="RC_PRDTINF_S_12" resultMap="RC_PRDTINF_R_10">
+<![CDATA[
+SELECT PRDT_NUM
+     , PRDT_NM
+     , DIS_PER
+     , NML_AMT
+     , SALE_AMT
+     , SAVE_PATH
+     , SAVE_FILE_NM
+     , CORP_ID
+     , RC_NM
+     , GPA_AVG
+  FROM (SELECT ROWNUM AS RN
+             , PRDT_NUM
+             , PRDT_NM
+             , DIS_PER
+             , NML_AMT
+             , SALE_AMT
+             , SAVE_PATH
+             , SAVE_FILE_NM
+             , CORP_ID
+             , RC_NM
+             , GPA_AVG
+          FROM (SELECT PRDT_NUM
+                     , PRDT_NM
+                     , DIS_PER
+                     , NML_AMT
+                     , SALE_AMT
+                     , SAVE_PATH
+                     , SAVE_FILE_NM
+                     , CORP_ID
+                     , CORP_NM AS RC_NM
+                     , NVL(GPA.GPA_AVG, 0) GPA_AVG
+                     , CONF_DTTM
+                     , SALE_NUM
+                  FROM (SELECT T_CORP.CORP_ID
+                             , T_PRDT.PRDT_NUM
+                             , T_PRDT.PRDT_NM
+                             , (CASE WHEN NML_AMT = 0 THEN 0
+                                     ELSE 100 - SALE_AMT / NML_AMT * 100
+                                 END) AS DIS_PER
+                             , T_CORP.CORP_NM
+                             , T_OPT.NML_AMT
+                             , T_OPT.SALE_AMT
+                             , T_PRDT.CONF_DTTM
+                             , T_OPT.SALE_NUM
+                             , RANK( ) OVER (PARTITION BY T_PRDT.PRDT_NUM ORDER BY T_OPT.SALE_AMT ASC, T_OPT.SP_DIV_SN ASC, T_OPT.SP_OPT_SN ASC ) AS RK
+                          FROM TB_SP_PRDTINF T_PRDT
+                         INNER JOIN TB_CORP T_CORP
+                            ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+                           AND T_CORP.TRADE_STATUS_CD = 'TS03'
+                         INNER JOIN TB_SP_DIVINF T_DIV
+                            ON T_DIV.PRDT_NUM = T_PRDT.PRDT_NUM
+                         INNER JOIN TB_SP_OPTINF T_OPT
+                            ON T_OPT.PRDT_NUM = T_PRDT.PRDT_NUM
+                           AND T_OPT.SP_DIV_SN = T_DIV.SP_DIV_SN
+                           AND T_OPT.APL_DT >= TO_CHAR(SYSDATE, 'YYYYMMDD')
+                         WHERE T_PRDT.PRDT_DIV = 'TOUR'
+                           AND T_PRDT.CTGR = 'C420'
+                           AND T_PRDT.TRADE_STATUS = 'TS03'
+                           AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN T_PRDT.SALE_START_DT AND T_PRDT.SALE_END_DT
+                       ) V_PRDT
+                  LEFT OUTER JOIN TB_GPA_ANLS GPA
+                    ON V_PRDT.PRDT_NUM = GPA.LINK_NUM
+                  LEFT OUTER JOIN TB_CM_IMG T_IMG
+                    ON T_IMG.LINK_NUM = V_PRDT.PRDT_NUM
+                   AND T_IMG.IMG_SN = 1
+                 WHERE RK = 1
+                 ]]>
+                 <isNotEmpty property="orderCd">
+                        <isEqual property="orderCd" compareValue="PRICE">
+                        ORDER BY SALE_AMT ASC
+                        </isEqual>
+                        <isEqual property="orderCd" compareValue="NEW">
+                        ORDER BY CONF_DTTM DESC
+                        </isEqual>
+                        <isEqual property="orderCd" compareValue="DISPER">
+                        ORDER BY DIS_PER DESC
+                        </isEqual>
+                        <isEqual property="orderCd" compareValue="GPA">
+                        ORDER BY NVL(GPA.GPA_AVG, 0) DESC
+                        </isEqual>
+                        <isEqual property="orderCd" compareValue="SALE">
+                        ORDER BY SALE_NUM DESC
+                        </isEqual>
+                </isNotEmpty>
+               )
+       )
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+
+</select>
+
+<select id="RC_PRDTINF_S_13" resultClass="int">
+<![CDATA[
+SELECT COUNT(*) AS CNT
+  FROM (SELECT T_CORP.CORP_ID
+             , T_PRDT.PRDT_NUM
+             , T_PRDT.PRDT_NM
+             , T_CORP.CORP_NM
+             , T_OPT.NML_AMT
+             , T_OPT.SALE_AMT
+             , RANK( ) OVER (PARTITION BY T_PRDT.PRDT_NUM ORDER BY T_OPT.SALE_AMT ASC, T_OPT.SP_DIV_SN ASC, T_OPT.SP_OPT_SN ASC ) AS RK
+          FROM TB_SP_PRDTINF T_PRDT
+         INNER JOIN TB_CORP T_CORP
+            ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+           AND T_CORP.TRADE_STATUS_CD = 'TS03'
+         INNER JOIN TB_SP_DIVINF T_DIV
+            ON T_DIV.PRDT_NUM = T_PRDT.PRDT_NUM
+         INNER JOIN TB_SP_OPTINF T_OPT
+            ON T_OPT.PRDT_NUM = T_PRDT.PRDT_NUM
+           AND T_OPT.SP_DIV_SN = T_DIV.SP_DIV_SN
+           AND T_OPT.APL_DT >= TO_CHAR(SYSDATE, 'YYYYMMDD')
+         WHERE T_PRDT.PRDT_DIV = 'TOUR'
+           AND T_PRDT.CTGR = 'C420'
+           AND T_PRDT.TRADE_STATUS = 'TS03'
+           AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN T_PRDT.SALE_START_DT AND T_PRDT.SALE_END_DT
+       ) V_PRDT
+ WHERE RK = 1
+]]>
+</select>
+
+<select id="RC_PRDTINF_S_14" resultClass="int">
+SELECT COUNT(*) AS CNT
+	FROM TB_RC_PRDTINF
+	WHERE PRDT_NUM=#prdtNum#
+		AND CORP_ID=#corpId#
+</select>
+
+
+<select id="RC_PRDTINF_S_15" resultMap="RC_PRDTINF_R_10">
+<![CDATA[
+SELECT V4_PRDT.PRDT_NUM
+     , PRDT_NM
+     , DIS_PER
+     , TM24_AMT AS NML_AMT
+     , TRUNC((TM24_AMT * (100 - DIS_PER) / 100), -2) AS SALE_AMT
+     , SAVE_PATH
+     , SAVE_FILE_NM
+     , CORP_ID
+     , RC_NM
+     , NVL((SELECT GPA_AVG FROM TB_GPA_ANLS WHERE LINK_NUM=V4_PRDT.PRDT_NUM), 0) AS GPA_AVG
+  FROM (SELECT V_PRDT.PRDT_NUM
+             , V_PRDT.PRDT_NM
+             , V_PRDT.CONF_DTTM
+             , V_PRDT.TM24_AMT
+             , V_PRDT.DIS_PER
+             , '' AS SAVE_PATH
+		     , (SELECT CAR_IMG FROM TB_RC_CARDIV
+                  WHERE RC_CARDIV_NUM IN (
+                  	SELECT RC_CARDIV_NUM
+                          FROM TB_RC_PRDTINF
+                         WHERE PRDT_NUM=V_PRDT.PRDT_NUM 
+                 )
+                 AND USE_YN='Y'
+              ) AS SAVE_FILE_NM
+             , SUM(NVL(T_ANLS.BUY_NUM, 0)) AS BUY_NUM
+             /*, ROW_NUMBER() OVER (ORDER BY SUM(NVL(T_ANLS.BUY_NUM, 0)) DESC, V_PRDT.CONF_DTTM DESC) AS RN*/
+             , ROW_NUMBER() OVER (ORDER BY DBMS_RANDOM.VALUE) AS RN
+             , V_PRDT.CORP_ID
+             , (SELECT RC_NM FROM TB_RC_DFTINF WHERE CORP_ID=V_PRDT.CORP_ID) AS RC_NM
+          FROM (SELECT T_PRDT.PRDT_NUM
+                     , T_DIV.PRDT_NM || ' / ' ||
+      					(SELECT CD_NM FROM TB_CD WHERE CD_NUM=T_PRDT.USE_FUEL_DIV)
+                        || ' / ' ||
+      					CASE
+                          WHEN ISR_DIV='ID00' THEN '자차자율'
+                          WHEN ISR_DIV='ID10' THEN 
+                            CASE
+                              WHEN ISR_TYPE_DIV='GENL' THEN '자차포함(일반자차)'
+                              WHEN ISR_TYPE_DIV='LUXY' THEN '자차포함(고급자차)'
+                              ELSE '자차포함'
+                            END                                                         
+                          WHEN ISR_DIV='ID20' THEN '자차필수'
+                        END AS PRDT_NM
+                     , T_PRDT.CONF_DTTM
+                     , T_AMT.TM24_AMT
+                     , (CASE WHEN TO_NUMBER(T_DFT.DIS_PER_APL_TM) > 24
+                             THEN 0
+                             /*주말할인율 적용여부*/
+                             ELSE (CASE T_DFT.WKD_DIS_PER_APL_YN
+                                   WHEN 'Y'
+                                   /*입력된 예약 시작일에 대한 요일 체크*/
+                                   THEN (CASE WHEN INSTR(T_DFT.WKD_DIS_PER_APL_WEEK, TO_CHAR(SYSDATE, 'D') - 1) > 0
+                                              THEN T_DISPER.WKD_DIS_PER
+                                              ELSE T_DISPER.WDAY_DIS_PER
+                                          END
+                                        )
+                                   ELSE T_DISPER.WDAY_DIS_PER
+                                    END
+                                  )
+                          END) AS DIS_PER
+                      , T_PRDT.CORP_ID
+                  FROM TB_RC_PRDTINF T_PRDT
+                    INNER JOIN TB_CORP T_CP
+                    ON T_CP.CORP_ID = T_PRDT.CORP_ID
+                        AND T_CP.CORP_CD = 'RC'
+                        AND T_CP.TRADE_STATUS_CD = 'TS03'
+                 INNER JOIN TB_RC_CARDIV T_DIV
+                    ON T_DIV.RC_CARDIV_NUM = T_PRDT.RC_CARDIV_NUM         
+                 INNER JOIN TB_RC_DFTINF T_DFT
+                    ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+                  /*요금*/
+                 INNER JOIN (SELECT PRDT_NUM
+                                  , APL_DT
+                                  , TM6_AMT
+                                  , TM12_AMT
+                                  , TM24_AMT
+                                  , TM1_ADD_AMT
+                                  , RANK() OVER(PARTITION BY PRDT_NUM ORDER BY (TO_CHAR(SYSDATE+1, 'YYYYMMDD') - APL_DT)) AS RK
+                               FROM TB_RC_AMTINF
+                            ) T_AMT
+                    ON T_AMT.RK = 1
+                   AND T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM
+                   /*할인율*/
+                 INNER JOIN (SELECT PRDT_NUM
+                                  , DIS_PER_NUM
+                                  , APL_START_DT
+                                  , APL_END_DT
+                                  , WDAY_DIS_PER
+                                  , WKD_DIS_PER
+                                  , RANK() OVER(PARTITION BY PRDT_NUM ORDER BY DIS_PER_NUM DESC) AS RK
+                               FROM TB_RC_DISPERINF
+                              WHERE APL_START_DT <= TO_CHAR(SYSDATE+1, 'YYYYMMDD')
+                                AND APL_END_DT   >= TO_CHAR(SYSDATE+1, 'YYYYMMDD')
+                            ) T_DISPER
+                    ON T_DISPER.PRDT_NUM = T_PRDT.PRDT_NUM
+                   AND T_DISPER.RK = 1
+                 WHERE T_PRDT.TRADE_STATUS = 'TS03'
+               ) V_PRDT          
+          LEFT OUTER JOIN TB_SALE_ANLS T_ANLS
+            ON T_ANLS.PRDT_NUM = V_PRDT.PRDT_NUM
+           AND BUY_DT BETWEEN TO_CHAR(SYSDATE, 'YYYYMMDD') AND TO_CHAR(SYSDATE -90, 'YYYYMMDD')
+          LEFT OUTER JOIN TB_CM_IMG T_IMG
+		    ON T_IMG.LINK_NUM = V_PRDT.PRDT_NUM
+		   AND T_IMG.IMG_SN   = 1
+         GROUP BY V_PRDT.PRDT_NUM
+                , V_PRDT.PRDT_NM
+                , V_PRDT.CONF_DTTM
+                , V_PRDT.TM24_AMT
+                , V_PRDT.DIS_PER
+                , T_IMG.SAVE_PATH
+		        , T_IMG.SAVE_FILE_NM
+                , V_PRDT.CORP_ID
+       )AS V4_PRDT
+INNER JOIN  TB_KWA_PRDT T_PRMT
+  ON T_PRMT.PRDT_NUM = V4_PRDT.PRDT_NUM
+WHERE T_PRMT.KWA_NUM=#kwaNum#
+ORDER BY T_PRMT.PRINT_SN
+]]>
+</select>
+
+<insert id="RC_PRDTINF_I_00">
+<selectKey keyProperty="prdtNum" resultClass="String">
+SELECT 'RC'||LPAD(TO_CHAR(NVL(MAX(TO_NUMBER(SUBSTR(PRDT_NUM,3))),0) + 1), 8,'0') AS PRDT_NUM
+  FROM TB_RC_PRDTINF
+</selectKey>
+INSERT INTO TB_RC_PRDTINF
+     ( PRDT_NUM         /*상품 번호*/
+     , PRDT_NM          /*상품 명*/
+     , CORP_ID          /*업체 아이디*/
+     , TRADE_STATUS     /*거래 상태*/
+     , PRDT_EXP         /*상품 설명*/
+     , PRINT_YN         /*출력 여부*/
+     , MAXI_NUM         /*정원*/
+     , CAR_DIV          /*차량 구분*/
+     , USE_FUEL_DIV     /*사용 연료 구분*/
+     , TRANS_DIV        /*변속기 구분*/
+ 	 , MAKER_DIV        /*제조사 구분*/
+ 	 , CAR_CD           /*차량 코드*/
+ 	 , BUY_NUM          /*구매 수*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+     , ISR_AMT_GUIDE
+     , VIEW_SN
+     , MODEL_YEAR		/*연식*/
+     , ISR_DIV			/*보험 구분*/
+     , RC_CARDIV_NUM
+     , RNT_QLFCT_AGE		/*대여 조건 나이*/
+     , RNT_QLFCT_CAREER		/*대여 조건 경력*/
+     , RNT_QLFCT_LICENSE	/*대여 조건 면허*/
+     <isNotEmpty property="isrTypeDiv">
+     , ISR_TYPE_DIV			/*보험 종류 구분*/
+     </isNotEmpty>
+     <isNotEmpty property="generalIsrAmt">
+     , GENERAL_ISR_AMT		/*일반 보험 요금*/
+     </isNotEmpty>
+     , GENERAL_ISR_AGE		/*일반 보험 나이*/
+     , GENERAL_ISR_CAREER	/*일반 보험 경력*/
+     , GENERAL_ISR_REWARD_AMT	/*일반 보험 보상 요금*/
+     , GENERAL_ISR_BURCHA	/*일반 보험 결제 요금*/
+     <isNotEmpty property="luxyIsrAmt">
+     , LUXY_ISR_AMT			/*고급 보험 요금*/
+     </isNotEmpty>
+     , LUXY_ISR_AGE			/*고급 보험 나이*/
+     , LUXY_ISR_CAREER		/*고급 보험 경력*/
+     , LUXY_ISR_REWARD_AMT	/*고급 보험 보상 요금*/
+     , LUXY_ISR_BURCHA		/*고급 보험 결제 요금*/
+     , LINK_MAPPING_NUM
+     , LINK_MAPPING_ISR_NUM
+     )
+VALUES
+     ( #prdtNum#
+     , #prdtNm#
+     , #corpId#
+     , 'TS01'
+     , #prdtExp#
+     , 'Y'
+     , #maxiNum#
+     , #carDiv#
+     , #useFuelDiv#
+     , #transDiv#
+     , #makerDiv#
+     , #carCd#
+     , 0
+     , SYSDATE
+     , #frstRegId#
+     , SYSDATE
+     , #frstRegId#
+     , #isrAmtGuide#
+     , #viewSn#
+     , #modelYear#
+     , #isrDiv#
+     , #rcCardivNum#
+     , #rntQlfctAge#
+     , #rntQlfctCareer#
+     , #rntQlfctLicense#
+     <isNotEmpty property="isrTypeDiv">
+     , #isrTypeDiv#
+     </isNotEmpty>
+     <isNotEmpty property="generalIsrAmt">
+     , #generalIsrAmt#
+     </isNotEmpty>
+     , #generalIsrAge#
+     , #generalIsrCareer#
+     , #generalIsrRewardAmt#
+     , #generalIsrBurcha#
+     <isNotEmpty property="luxyIsrAmt">
+     , #luxyIsrAmt#
+     </isNotEmpty>
+     , #luxyIsrAge#
+     , #luxyIsrCareer#
+     , #luxyIsrRewardAmt#
+     , #luxyIsrBurcha#
+     , #linkMappingNum#
+     , #linkMappingIsrNum#
+     )
+</insert>
+
+<update id="RC_PRDTINF_U_00">
+UPDATE TB_RC_PRDTINF
+   SET PRDT_NM      = #prdtNm#
+     , PRDT_EXP     = #prdtExp#
+     , MAXI_NUM     = #maxiNum#
+     , CAR_DIV      = #carDiv#
+     , USE_FUEL_DIV = #useFuelDiv#
+     , TRANS_DIV    = #transDiv#
+     , MAKER_DIV    = #makerDiv#
+     , CAR_CD       = #carCd#
+     , LAST_MOD_DTTM = SYSDATE
+     , LAST_MOD_ID  = #lastModId#
+     , ISR_AMT_GUIDE = #isrAmtGuide#
+     , MODEL_YEAR   = #modelYear#
+     , ISR_DIV		= #isrDiv#
+     , RC_CARDIV_NUM = #rcCardivNum#
+     , RNT_QLFCT_AGE	= #rntQlfctAge#		
+     , RNT_QLFCT_CAREER	= #rntQlfctCareer#	
+     , RNT_QLFCT_LICENSE= #rntQlfctLicense#	
+     <isNotEmpty property="isrTypeDiv">
+     , ISR_TYPE_DIV		= #isrTypeDiv#
+     </isNotEmpty>
+     <isNotEmpty property="generalIsrAmt">
+     , GENERAL_ISR_AMT	= #generalIsrAmt#
+     </isNotEmpty>
+     , GENERAL_ISR_AGE	= #generalIsrAge#
+     , GENERAL_ISR_CAREER= #generalIsrCareer#
+     , GENERAL_ISR_REWARD_AMT= #generalIsrRewardAmt#
+     , GENERAL_ISR_BURCHA= #generalIsrBurcha#
+     <isNotEmpty property="luxyIsrAmt">
+     , LUXY_ISR_AMT		= #luxyIsrAmt#
+     </isNotEmpty>
+     , LUXY_ISR_AGE		= #luxyIsrAge#	
+     , LUXY_ISR_CAREER	= #luxyIsrCareer#
+     , LUXY_ISR_REWARD_AMT= #luxyIsrRewardAmt#
+     , LUXY_ISR_BURCHA	= #luxyIsrBurcha#
+     , LINK_MAPPING_NUM	= #linkMappingNum#
+     , LINK_MAPPING_ISR_NUM = #linkMappingIsrNum#
+ WHERE PRDT_NUM     = #prdtNum#
+</update>
+
+<!-- 상품 승인 요청 -->
+<update id="RC_PRDTINF_U_01">
+UPDATE TB_RC_PRDTINF
+   SET TRADE_STATUS = #tradeStatus#
+<isEqual property="tradeStatus" compareValue="TS02">
+     , CONF_REQUEST_DTTM = SYSDATE
+</isEqual>
+<isEqual property="tradeStatus" compareValue="TS03">
+     , CONF_DTTM = (SELECT CASE WHEN CONF_DTTM IS NULL THEN SYSDATE ELSE CONF_DTTM END FROM TB_RC_PRDTINF WHERE PRDT_NUM = #prdtNum#)
+</isEqual>
+ WHERE PRDT_NUM     = #prdtNum#
+</update>
+
+<!-- 상품 승인 취소 요청 -->
+<update id="RC_PRDTINF_U_02">
+UPDATE TB_RC_PRDTINF
+   SET TRADE_STATUS = #tradeStatus#
+     , CONF_REQUEST_DTTM = NULL
+ WHERE PRDT_NUM = #prdtNum#
+</update>
+
+<!-- 상품 구매수 증가 -->
+<update id="RC_PRDTINF_U_03">
+UPDATE TB_RC_PRDTINF
+   SET BUY_NUM = BUY_NUM + 1
+ WHERE PRDT_NUM = #prdtNum#
+</update>
+
+<!-- 상품 구매수 감소 -->
+<update id="RC_PRDTINF_U_04">
+UPDATE TB_RC_PRDTINF
+   SET BUY_NUM = BUY_NUM - 1
+ WHERE PRDT_NUM = #prdtNum#
+</update>
+
+<update id="RC_PRDTINF_U_05">
+UPDATE TB_RC_PRDTINF
+   SET TRADE_STATUS = #tradeStatus#
+     , LAST_MOD_DTTM = SYSDATE
+     , LAST_MOD_ID   = #lastModId#
+ WHERE PRDT_NUM = #prdtNum#
+</update>
+
+<!-- 노출 순번 증가 -->
+<update id="RC_PRDTINF_U_06">
+UPDATE TB_RC_PRDTINF
+   SET VIEW_SN = VIEW_SN + 1
+ WHERE CORP_ID    =  #corpId#
+  <isNotEqual property="oldSn" compareValue="0">
+   <![CDATA[
+   AND VIEW_SN <  #oldSn#
+   ]]>
+  </isNotEqual>
+   <![CDATA[
+   AND VIEW_SN >= #newSn#
+   ]]>
+</update>
+
+<!-- 노출 순번 감소 -->
+<update id="RC_PRDTINF_U_07">
+UPDATE TB_RC_PRDTINF
+   SET VIEW_SN = VIEW_SN - 1
+ WHERE CORP_ID    =  #corpId#
+ <isNotEqual property="newSn" compareValue="0">
+ <![CDATA[
+   AND VIEW_SN <= #newSn#
+ ]]>
+ </isNotEqual>
+ <![CDATA[
+   AND VIEW_SN >  #oldSn#
+ ]]>
+
+</update>
+
+<!-- 노출 순번 변경 -->
+<update id="RC_PRDTINF_U_08">
+UPDATE TB_RC_PRDTINF
+   SET VIEW_SN		= #viewSn#
+ WHERE CORP_ID     	= #corpId#
+   AND PRDT_NUM		= #prdtNum#
+   AND VIEW_SN		= #oldSn#
+</update>
+
+<!-- 상품 연계/해제처리 -->
+<update id="RC_PRDTINF_U_09">
+UPDATE TB_RC_PRDTINF
+   SET PRDT_LINK_YN = #prdtLinkYn#
+ WHERE PRDT_NUM = #prdtNum#
+</update>
+
+<!-- 상품 히든처리 -->
+<update id="RC_PRDTINF_U_10">
+UPDATE TB_RC_PRDTINF
+   SET PRINT_YN = 'N'
+		,  LAST_MOD_DTTM	= SYSDATE
+		,  LAST_MOD_ID		= #lastModId#   
+ WHERE PRDT_NUM = #prdtNum#
+</update>
+
+<delete id="RC_PRDTINF_D_00">
+DELETE TB_RC_PRDTINF
+ WHERE PRDT_NUM = #prdtNum#
+</delete>
+
+<select id="RC_AMTINF_S_00" resultMap="RC_AMTINF_R_00">
+SELECT PRDT_NUM     /*상품 번호*/
+     , APL_DT       /*적용 일자*/
+     , TM6_AMT      /*6시간 금액*/
+     , TM12_AMT     /*12시간 금액*/
+     , TM24_AMT     /*24시간 금액*/
+     , TM1_ADD_AMT  /*1시간 추가 금액*/
+  FROM TB_RC_AMTINF
+ WHERE PRDT_NUM = #prdtNum#
+   AND APL_DT   = #aplDt#
+</select>
+
+<!-- 렌터카 요금 리스트 조회 -->
+<select id="RC_AMTINF_S_01" resultMap="RC_AMTINF_R_00">
+SELECT PRDT_NUM     /*상품 번호*/
+     , APL_DT       /*적용 일자*/
+     , TM6_AMT      /*6시간 금액*/
+     , TM12_AMT     /*12시간 금액*/
+     , TM24_AMT     /*24시간 금액*/
+     , TM1_ADD_AMT  /*1시간 추가 금액*/
+  FROM TB_RC_AMTINF
+ WHERE PRDT_NUM = #prdtNum#
+ ORDER BY APL_DT DESC
+</select>
+
+<insert id="RC_AMTINF_I_00">
+INSERT INTO TB_RC_AMTINF
+     ( PRDT_NUM
+     , APL_DT
+     , TM6_AMT
+     , TM12_AMT
+     , TM24_AMT
+     , TM1_ADD_AMT
+     )
+VALUES
+     ( #prdtNum#
+     , #aplDt#
+     , #tm6Amt#
+     , #tm12Amt#
+     , #tm24Amt#
+     , #tm1AddAmt#
+     )
+</insert>
+
+<update id="RC_AMTINF_U_00">
+UPDATE TB_RC_AMTINF
+   SET TM6_AMT     = #tm6Amt#
+     , TM12_AMT    = #tm12Amt#
+     , TM24_AMT    = #tm24Amt#
+     , TM1_ADD_AMT = #tm1AddAmt#
+ WHERE PRDT_NUM    = #prdtNum#
+   AND APL_DT      = #aplDt#
+</update>
+
+<delete id="RC_AMTINF_D_00">
+DELETE TB_RC_AMTINF
+ WHERE PRDT_NUM    = #prdtNum#
+   AND APL_DT      = #aplDt#
+</delete>
+
+<delete id="RC_AMTINF_D_01">
+DELETE TB_RC_AMTINF
+ WHERE PRDT_NUM    = #prdtNum#
+</delete>
+
+<select id="RC_DISPERINF_S_00" resultMap="RC_DISPERINF_R_00">
+SELECT PRDT_NUM     /*상품 번호*/
+     , DIS_PER_NUM  /*할인율 번호*/
+     , APL_START_DT /*적용 시작 일자*/
+     , APL_END_DT   /*적용 종료 일자*/
+     , WDAY_DIS_PER /*평일 할인율*/
+     , WKD_DIS_PER  /*주말 할인율*/
+  FROM TB_RC_DISPERINF
+ WHERE PRDT_NUM = #prdtNum#
+   AND DIS_PER_NUM = #disPerNum#
+</select>
+
+<select id="RC_DISPERINF_S_01" resultMap="RC_DISPERINF_R_00">
+SELECT PRDT_NUM     /*상품 번호*/
+     , DIS_PER_NUM  /*할인율 번호*/
+     , APL_START_DT /*적용 시작 일자*/
+     , APL_END_DT   /*적용 종료 일자*/
+     , WDAY_DIS_PER /*평일 할인율*/
+     , WKD_DIS_PER  /*주말 할인율*/
+  FROM TB_RC_DISPERINF
+ WHERE PRDT_NUM = #prdtNum#
+ <![CDATA[
+   AND DIS_PER_NUM <> '1'
+ ]]>
+ ORDER BY APL_START_DT DESC
+</select>
+
+<select id="RC_DISPERINF_S_02" resultMap="RC_DISPERINF_R_00">
+SELECT PRDT_NUM     /*상품 번호*/
+     , DIS_PER_NUM  /*할인율 번호*/
+     , APL_START_DT /*적용 시작 일자*/
+     , APL_END_DT   /*적용 종료 일자*/
+     , WDAY_DIS_PER /*평일 할인율*/
+     , WKD_DIS_PER  /*주말 할인율*/
+  FROM TB_RC_DISPERINF
+ WHERE PRDT_NUM    = #prdtNum#
+   AND DIS_PER_NUM = '1'
+</select>
+
+<select id="RC_DISPERINF_S_03" resultClass="int">
+SELECT COUNT(*) AS CNT
+  FROM TB_RC_DISPERINF
+ WHERE PRDT_NUM = #prdtNum#
+ <isNotEmpty property="disPerNum">
+ 	<![CDATA[
+   AND DIS_PER_NUM <> #disPerNum#
+    ]]>
+   </isNotEmpty>
+ <![CDATA[
+   AND DIS_PER_NUM <> '1'
+   AND ((#aplStartDt# BETWEEN APL_START_DT AND APL_END_DT)
+     OR (#aplEndDt# BETWEEN APL_START_DT AND APL_END_DT)
+     OR (APL_START_DT BETWEEN #aplStartDt# AND #aplEndDt#)
+     OR (APL_END_DT BETWEEN #aplStartDt# AND #aplEndDt#))
+ ]]>
+</select>
+
+<select id="RC_DISPERINF_S_04" resultMap="RC_DISPERINF_R_01">
+SELECT T_DISPER.PRDT_NUM     /*상품 번호*/
+     , T_PRDT.PRDT_NM		 /*상품 명*/
+     , T_DISPER.DIS_PER_NUM  /*할인율 번호*/
+     , T_DISPER.APL_START_DT /*적용 시작 일자*/
+     , T_DISPER.APL_END_DT   /*적용 종료 일자*/
+     , T_DISPER.WDAY_DIS_PER /*평일 할인율*/
+     , T_DISPER.WKD_DIS_PER  /*주말 할인율*/
+     , T_PRDT.TRADE_STATUS /*거래상태*/
+     , T_PRDT.ISR_DIV /*보험구분*/
+     , T_PRDT.ISR_TYPE_DIV /*보험세부구분*/
+  FROM TB_RC_PRDTINF T_PRDT
+ INNER JOIN TB_RC_DISPERINF T_DISPER
+    ON T_DISPER.PRDT_NUM = T_PRDT.PRDT_NUM
+ WHERE CORP_ID = #sCorpId#
+   AND PRINT_YN = 'Y'
+ <isNotEmpty property="sPrdtNum">
+   AND T_PRDT.PRDT_NUM = #sPrdtNum#
+ </isNotEmpty>
+ <isNotEmpty property="sTradeStatus">
+   AND T_PRDT.TRADE_STATUS = #sTradeStatus#
+ </isNotEmpty>
+ <isNotEmpty property="sFromDtView">
+   AND TO_DATE(T_DISPER.APL_END_DT, 'YYYYMMDD') >= TO_DATE(#sFromDtView#, 'YYYY-MM-DD')
+ </isNotEmpty>
+ <isNotEmpty property="sDisperDiv">
+          <isEqual property="sDisperDiv" compareValue="1">
+          AND DIS_PER_NUM = '1'
+          </isEqual>
+         <isEqual property="sDisperDiv" compareValue="2">
+          AND DIS_PER_NUM != '1'
+         </isEqual>
+ </isNotEmpty>
+     ORDER BY (CASE TRADE_STATUS
+     WHEN 'TS01' THEN 1
+     WHEN 'TS02' THEN 2
+     WHEN 'TS03' THEN 3
+     WHEN 'TS04' THEN 5
+     WHEN 'TS05' THEN 8
+     WHEN 'TS06' THEN 4
+     WHEN 'TS07' THEN 6
+     WHEN 'TS08' THEN 7
+     ELSE 8 END) ,VIEW_SN ASC
+</select>
+
+<select id="RC_DISPERINF_S_05" resultMap="RC_DISPERINF_R_05">
+SELECT PRDT_NUM
+     , PRDT_NM
+  FROM TB_RC_PRDTINF    T_PRDT
+ WHERE CORP_ID = #sCorpId#
+   AND NOT EXISTS (SELECT PRDT_NUM
+                     FROM TB_RC_DISPERINF
+                    WHERE PRDT_NUM = T_PRDT.PRDT_NUM
+                      AND DIS_PER_NUM = 1
+                  )
+</select>
+
+<insert id="RC_DISPERINF_I_00">
+INSERT INTO TB_RC_DISPERINF
+     ( PRDT_NUM     /*상품 번호*/
+     , DIS_PER_NUM  /*할인율 번호*/
+     , APL_START_DT /*적용 시작 일자*/
+     , APL_END_DT   /*적용 종료 일자*/
+     , WDAY_DIS_PER /*평일 할인율*/
+     , WKD_DIS_PER  /*주말 할인율*/
+     )
+VALUES
+     ( #prdtNum#
+     , #disPerNum#
+     , #aplStartDt#
+     , #aplEndDt#
+     , #wdayDisPer#
+     , #wkdDisPer#
+     )
+</insert>
+
+<insert id="RC_DISPERINF_I_01">
+INSERT INTO TB_RC_DISPERINF
+     ( PRDT_NUM     	/*상품 번호*/
+     , DIS_PER_NUM  	/*할인율 번호*/
+     , APL_START_DT 	/*적용 시작 일자*/
+     , APL_END_DT   	/*적용 종료 일자*/
+     , WDAY_DIS_PER 	/*평일 할인율*/
+     , WKD_DIS_PER  	/*주말 할인율*/
+     , FRST_REG_DTTM	/*최초 등록 일시*/
+     , FRST_REG_ID		/*최초 등록 아이디*/
+     , LAST_MOD_DTTM	/*최종 수정 일시*/
+     , LAST_MOD_ID		/*최종 수정 아이디*/
+     )
+VALUES
+     ( #prdtNum#
+     , (SELECT TO_CHAR(MAX(TO_NUMBER(DIS_PER_NUM)) + 1)
+          FROM TB_RC_DISPERINF
+         WHERE PRDT_NUM = #prdtNum#
+       )
+     , #aplStartDt#
+     , #aplEndDt#
+     , #wdayDisPer#
+     , #wkdDisPer#
+     , SYSDATE
+     , #frstRegId#
+     , SYSDATE
+     , #frstRegId#
+     )
+</insert>
+
+<update id="RC_DISPERINF_U_00">
+UPDATE TB_RC_DISPERINF
+   SET APL_START_DT = #aplStartDt#
+     , APL_END_DT   = #aplEndDt#
+     , WDAY_DIS_PER = #wdayDisPer#
+     , WKD_DIS_PER  = #wkdDisPer#
+     , LAST_MOD_DTTM = SYSDATE
+     , LAST_MOD_ID  = #lastModId#
+ WHERE PRDT_NUM     = #prdtNum#
+   AND DIS_PER_NUM  = #disPerNum#
+</update>
+
+<delete id="RC_DISPERINF_D_00">
+DELETE TB_RC_DISPERINF
+ WHERE PRDT_NUM     = #prdtNum#
+   AND DIS_PER_NUM  = #disPerNum#
+</delete>
+
+<delete id="RC_DISPERINF_D_01">
+DELETE TB_RC_DISPERINF
+ WHERE PRDT_NUM     = #prdtNum#
+</delete>
+
+<select id="RC_CNTINF_S_00" resultMap="RC_CNTINF_R_00">
+SELECT PRDT_NUM         /*상품 번호*/
+     , APL_DT           /*적용 일자*/
+     , TOTAL_CAR_NUM    /*총 차량 수*/
+  FROM TB_RC_CNTINF
+ WHERE PRDT_NUM = #prdtNum#
+   AND APL_DT   = #aplDt#
+</select>
+
+<select id="RC_CNTINF_S_01" resultMap="RC_CNTINF_R_00">
+SELECT PRDT_NUM         /*상품 번호*/
+     , APL_DT           /*적용 일자*/
+     , TOTAL_CAR_NUM    /*총 차량 수*/
+  FROM TB_RC_CNTINF
+ WHERE PRDT_NUM = #prdtNum#
+</select>
+
+<insert id="RC_CNTINF_I_00">
+INSERT INTO TB_RC_CNTINF
+     ( PRDT_NUM         /*상품 번호*/
+     , APL_DT           /*적용 일자*/
+     , TOTAL_CAR_NUM    /*총 차량 수*/
+     )
+VALUES
+     ( #prdtNum#
+     , #aplDt#
+     , #totalCarNum#
+     )
+</insert>
+
+<update id="RC_CNTINF_U_00">
+UPDATE TB_RC_CNTINF
+   SET TOTAL_CAR_NUM = #totalCarNum#
+ WHERE PRDT_NUM = #prdtNum#
+   AND APL_DT = #aplDt#
+</update>
+
+<delete id="RC_CNTINF_D_00">
+DELETE TB_RC_CNTINF
+ WHERE PRDT_NUM = #prdtNum#
+   AND APL_DT = #aplDt#
+</delete>
+
+<delete id="RC_CNTINF_D_01">
+DELETE TB_RC_CNTINF
+ WHERE PRDT_NUM    = #prdtNum#
+</delete>
+
+<!-- 예약현황 조회 -->
+<select id="RC_RSVCHART_S_00" resultMap="RC_RSVCHART_R_00">
+     SELECT T_ABLE.PRDT_NUM
+     , T_ABLE.PRDT_NM
+     , T_ABLE.VIEW_SN
+     , TRADE_STATUS
+     , T_ABLE.DT
+     , T_ABLE.TOTAL_CAR_NUM
+     , NVL(USE_CNT, 0) AS USE_CNT
+     , USE_FUEL_DIV
+     , ISR_DIV
+     , ISR_TYPE_DIV
+     FROM (
+          SELECT PRDT_NUM /*상품번호*/
+          , PRDT_NM /*상품명*/
+          , TRADE_STATUS /*거래상태*/
+          , VIEW_SN
+          , DT /*예약일*/
+          , TOTAL_CAR_NUM /*차량보유대수*/
+          , USE_FUEL_DIV
+          , ISR_DIV
+          , ISR_TYPE_DIV /*(예약일자별 * 상품별)의 차량보유대수*/
+          FROM (
+               SELECT T_PRDT.PRDT_NUM
+               , T_PRDT.PRDT_NM
+               , T_PRDT.TRADE_STATUS
+               , VIEW_SN
+               , DT
+               , NVL(TOTAL_CAR_NUM, 0) AS TOTAL_CAR_NUM
+               , USE_FUEL_DIV
+               , ISR_DIV
+               , ISR_TYPE_DIV
+               , RANK() OVER(PARTITION BY T_PRDT.PRDT_NUM, DT ORDER BY (DT - APL_DT)) AS RK
+               FROM (
+                    SELECT PRDT_NUM
+                    , PRDT_NM
+                    , CORP_ID
+                    , TRADE_STATUS
+                    , VIEW_SN
+                    , #sDay# AS DT
+                    , USE_FUEL_DIV
+                    , ISR_DIV
+                    , ISR_TYPE_DIV
+                    FROM TB_RC_PRDTINF
+                    WHERE PRINT_YN = 'Y'
+               ) T_PRDT
+               LEFT OUTER JOIN TB_RC_CNTINF T_CNTINF ON T_CNTINF.PRDT_NUM = T_PRDT.PRDT_NUM AND T_CNTINF.APL_DT <![CDATA[ <= ]]> T_PRDT.DT
+               WHERE 1 = 1
+               AND CORP_ID = #sCorpId#
+               <isNotEmpty property="sTradeStatus">
+                    AND T_PRDT.TRADE_STATUS = #sTradeStatus#
+               </isNotEmpty>
+          )
+          WHERE RK = 1
+     ) T_ABLE
+     LEFT OUTER JOIN (
+          SELECT PRDT_NUM, COUNT(1) AS USE_CNT
+          FROM (
+               SELECT PRDT_NUM
+               FROM TB_RC_RSV
+               WHERE RSV_STATUS_CD IN ( 'RS00', 'RS02', 'RS10', 'RS11', 'RS12', 'RS30' )
+                AND   #sDay# BETWEEN RENT_START_DT AND RENT_END_DT
+          )
+          GROUP BY PRDT_NUM
+     ) T_USE ON T_USE.PRDT_NUM = T_ABLE.PRDT_NUM
+     ORDER BY VIEW_SN, DT
+</select>
+
+<select id="RC_RSVCHART_S_01" resultMap="RC_RSVCHART_R_01">
+	SELECT 
+		A.RSV_NUM,
+		B.RSV_NM,
+		B.RSV_TELNUM,
+		B.USE_NM,
+		B.USE_TELNUM,
+		B.RSV_STATUS_CD,
+		A.PRDT_NM,
+		A.SALE_AMT,
+		A.NML_AMT,
+		A.RENT_START_DT,
+		A.RENT_START_TM,
+		A.RENT_END_DT,
+		A.RENT_END_TM,
+		A.RC_RSV_NUM,
+		'' AS MAPPING_RSV_NUM,
+		'' AS PRDT_NUM 
+		FROM(
+			SELECT 
+				PRDT_NUM,RC_RSV_NUM,TO_CHAR(TO_DATE(RENT_START_DT, 'YYYYMMDD') + NUM -1,'YYYYMMDD') AS USE_DT,RSV_NUM,PRDT_NM,SALE_AMT,NML_AMT,RENT_START_DT,RENT_START_TM,RENT_END_DT,RENT_END_TM
+				
+			FROM(
+				SELECT 
+					T1.*,  (TO_DATE(RENT_END_DT, 'YYYYMMDD')-TO_DATE(RENT_START_DT, 'YYYYMMDD')+1) AS CNT 
+				FROM(
+					SELECT 
+						* 
+					FROM 
+						TB_RC_RSV WHERE RSV_STATUS_CD IN ('RS00','RS02','RS10','RS11','RS12','RS30')
+					) AS T1
+			),(SELECT LEVEL NUM FROM DUAL CONNECT BY LEVEL <![CDATA[<=]]> 90) AS T2		
+			WHERE
+				NUM BETWEEN 1 AND CNT
+		) AS A
+	JOIN TB_RSV AS B
+	ON A.RSV_NUM = B.RSV_NUM
+	WHERE PRDT_NUM = #sPrdtNum#
+	AND USE_DT   = #sUseDt#
+	AND RSV_STATUS_CD = 'RS02'
+</select>
+
+
+
+<resultMap id="RC_CARDIV_R_00" class="mas.rc.vo.RC_CARDIVVO">
+     <result property="rcCardivNum"     column="RC_CARDIV_NUM"></result>
+     <result property="prdtNm"          column="PRDT_NM"></result>
+     <result property="cardivExp"       column="CARDIV_EXP"></result>
+     <result property="maxiNum"         column="MAXI_NUM"></result>
+     <result property="carDiv"          column="CAR_DIV"></result>
+     <result property="makerDiv"        column="MAKER_DIV"></result>
+     <result property="useFuelDiv"      column="USE_FUEL_DIV"></result>
+     <result property="carImg"          column="CAR_IMG"></result>
+     <result property="carMobileImg"    column="CAR_MOBILE_IMG"></result>
+     <result property="useYn"           column="USE_YN"></result>
+     <result property="carDivNm"        column="CAR_DIV_NM"></result>
+     <result property="useFuelDivNm"    column="USE_FUEL_DIV_NM"></result>
+     <result property="makerDivNm"      column="MAKER_DIV_NM"></result>
+</resultMap>
+
+<resultMap id="RC_CARDIV_R_04" class="mas.rc.vo.RC_CARDIVVO">
+     <result property="rcCardivNum"     column="RC_CARDIV_NUM"></result>
+     <result property="prdtNm"          column="PRDT_NM"></result>
+     <result property="prdtAllNm"       column="PRDT_ALL_NM"></result>
+     <result property="cardivExp"       column="CARDIV_EXP"></result>
+     <result property="maxiNum"         column="MAXI_NUM"></result>
+     <result property="carDiv"          column="CAR_DIV"></result>
+     <result property="makerDiv"        column="MAKER_DIV"></result>
+     <result property="useFuelDiv"      column="USE_FUEL_DIV"></result>
+     <result property="carImg"          column="CAR_IMG"></result>
+     <result property="carMobileImg"    column="CAR_MOBILE_IMG"></result>
+     <result property="useYn"           column="USE_YN"></result>
+     <result property="carDivNm"        column="CAR_DIV_NM"></result>
+     <result property="useFuelDivNm"    column="USE_FUEL_DIV_NM"></result>
+     <result property="makerDivNm"      column="MAKER_DIV_NM"></result>
+     <result property="buyNum"          column="BUY_NUM"></result>
+</resultMap>
+
+<resultMap id="RC_CARDIV_R_06" class="mas.rc.vo.RC_CARDIVVO">
+     <result property="prdtNm"     column="PRDT_NM"></result>
+</resultMap>
+
+
+<sql id="RC_CARDIV_S_00_FILD">
+      RC_CARDIV_NUM
+    , PRDT_NM
+    , CARDIV_EXP
+    , MAXI_NUM
+    , CAR_DIV
+    , USE_FUEL_DIV
+    , MAKER_DIV
+    , CAR_IMG
+    , CAR_MOBILE_IMG
+    , USE_YN
+    , (SELECT CD_NM FROM TB_CD WHERE CD_NUM=CAR_DIV) CAR_DIV_NM
+    , (SELECT CD_NM FROM TB_CD WHERE CD_NUM=USE_FUEL_DIV) USE_FUEL_DIV_NM
+    , (SELECT CD_NM FROM TB_CD WHERE CD_NUM=MAKER_DIV) MAKER_DIV_NM
+</sql>
+
+<sql id="RC_CARDIV_S_01_WHERE">
+	<isNotEmpty property="sRcCardivNum">
+       AND RC_CARDIV_NUM LIKE '%' || UPPER(#sRcCardivNum#) || '%'
+ 	</isNotEmpty>
+	<isNotEmpty property="sPrdtNm">
+       AND UPPER(PRDT_NM) LIKE '%' || UPPER(#sPrdtNm#) || '%'
+	</isNotEmpty>
+	<isNotEmpty property="sCarDiv">
+       AND CAR_DIV = #sCarDiv#
+ 	</isNotEmpty>
+ 	<isNotEmpty property="sMakerDiv">
+       AND MAKER_DIV = #sMakerDiv#
+ 	</isNotEmpty>
+ 	<isNotEmpty property="sUseFuelDiv">
+       AND USE_FUEL_DIV = #sUseFuelDiv#
+ 	</isNotEmpty>
+ 	<isNotEmpty property="sUseYn">
+       AND USE_YN = #sUseYn#
+ 	</isNotEmpty>
+</sql>
+
+<select id="RC_CARDIV_S_00" resultMap="RC_CARDIV_R_00">
+SELECT <include refid="RC_CARDIV_S_00_FILD" />
+FROM TB_RC_CARDIV
+WHERE 1=1
+	<isNotEmpty property="rcCardivNum">
+       AND RC_CARDIV_NUM = #rcCardivNum#
+    </isNotEmpty>
+</select>
+
+<select id="RC_CARDIV_S_01" resultMap="RC_CARDIV_R_00">
+SELECT <include refid="RC_CARDIV_S_00_FILD" />
+FROM (
+	SELECT <include refid="RC_CARDIV_S_00_FILD" />
+		, ROWNUM AS RN
+	FROM (
+		SELECT <include refid="RC_CARDIV_S_00_FILD" />
+		FROM TB_RC_CARDIV
+        WHERE 1=1
+		 	<include refid="RC_CARDIV_S_01_WHERE" />
+		ORDER BY PRDT_NM
+	)
+)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="RC_CARDIV_S_02" resultClass="int">
+SELECT COUNT(*)
+FROM TB_RC_CARDIV
+WHERE 1=1
+ 	<include refid="RC_CARDIV_S_01_WHERE" />
+</select>
+
+<select id="RC_CARDIV_S_03" resultClass="int">
+SELECT COUNT(*)
+FROM TB_RC_CARDIV
+WHERE 1=1
+ 	<isNotEmpty property="rcCardivNum">
+       AND RC_CARDIV_NUM != #rcCardivNum#
+	</isNotEmpty>
+ 	<isNotEmpty property="prdtNm">
+       AND UPPER(PRDT_NM) = UPPER(#prdtNm#)
+	</isNotEmpty>
+	<isNotEmpty property="carDiv">
+       AND CAR_DIV = #carDiv#
+ 	</isNotEmpty>
+ 	<isNotEmpty property="makerDiv">
+       AND MAKER_DIV = #makerDiv#
+ 	</isNotEmpty>
+ 	<isNotEmpty property="useFuelDiv">
+       AND USE_FUEL_DIV = #useFuelDiv#
+ 	</isNotEmpty>
+</select>
+
+<select id="RC_CARDIV_S_04" resultMap="RC_CARDIV_R_04">
+SELECT RC_CARDIV_NUM
+    , PRDT_NM
+    , PRDT_NM || ' / ' || (SELECT CD_NM FROM TB_CD WHERE CD_NUM = USE_FUEL_DIV) AS PRDT_ALL_NM
+    , CARDIV_EXP
+    , MAXI_NUM
+    , CAR_DIV
+    , USE_FUEL_DIV
+    , MAKER_DIV
+    , CAR_IMG
+    , CAR_MOBILE_IMG
+    , USE_YN
+    , CAR_DIV_NM
+    , USE_FUEL_DIV_NM
+    , MAKER_DIV_NM
+    , BUY_NUM
+FROM (
+	SELECT <include refid="RC_CARDIV_S_00_FILD" />
+    , BUY_NUM
+  	FROM TB_RC_CARDIV AS A
+    WHERE 1=1
+	AND EXISTS (SELECT 1 FROM TB_RC_PRDTINF WHERE TRADE_STATUS = 'TS03' AND RC_CARDIV_NUM = A.RC_CARDIV_NUM AND PRINT_YN = 'Y'  )
+	 	<include refid="RC_CARDIV_S_01_WHERE" />
+    ORDER BY PRDT_NM, RC_CARDIV_NUM
+)
+</select>
+
+<select id="RC_CARDIV_S_05" resultClass="int">
+SELECT NVL(MAX(TO_NUMBER(SUBSTR(RC_CARDIV_NUM, 7))), 0) + 1
+FROM TB_RC_CARDIV
+WHERE RC_CARDIV_NUM LIKE '%RD' || #sMakerDiv# || #sCarDiv#  || '%'
+</select>
+
+     <!--차명-->
+<select id="RC_CARDIV_S_06" resultMap="RC_CARDIV_R_06">
+SELECT PRDT_NM
+FROM TB_RC_CARDIV
+WHERE 1=1
+    <isNotEmpty property="sPrdtNm">
+        AND UPPER(PRDT_NM) LIKE '%' || UPPER(#sPrdtNm#) || '%'
+    </isNotEmpty>
+GROUP BY PRDT_NM
+</select>
+
+<insert id="RC_CARDIV_I_00">
+INSERT INTO TB_RC_CARDIV (
+      RC_CARDIV_NUM
+    , PRDT_NM
+    , CARDIV_EXP
+    , MAXI_NUM
+    , CAR_DIV
+    , USE_FUEL_DIV
+    , MAKER_DIV
+    , CAR_IMG
+    , CAR_MOBILE_IMG
+    , USE_YN
+)
+VALUES (
+      UPPER(#rcCardivNum#)
+    , #prdtNm#
+    , #cardivExp#
+    , #maxiNum#
+    , #carDiv#
+    , #useFuelDiv#
+    , #makerDiv#
+    , #carImg#
+    , #carMobileImg#
+    , #useYn#
+)
+</insert>
+
+<update id="RC_CARDIV_U_00">
+UPDATE TB_RC_CARDIV
+SET PRDT_NM = #prdtNm#
+    , CARDIV_EXP = #cardivExp#
+    , MAXI_NUM = #maxiNum#
+    , CAR_DIV = #carDiv#
+    , USE_FUEL_DIV = #useFuelDiv#
+    , MAKER_DIV	= #makerDiv#
+    , CAR_IMG = #carImg#
+    , CAR_MOBILE_IMG = #carMobileImg#
+    , USE_YN = #useYn#
+WHERE RC_CARDIV_NUM = #rcCardivNum#
+</update>
+
+<delete id="RC_CARDIV_D_00">
+DELETE TB_RC_CARDIV
+WHERE RC_CARDIV_NUM = #rcCardivNum#
+</delete>
+
+<update id="RC_PRDTINF_U_11">
+UPDATE TB_RC_PRDTINF SET
+    APPROX_NML_AMT = #nmlAmt#,
+    APPROX_SALE_AMT = #saleAmt#
+WHERE PRDT_NUM = #prdtNum#
+</update>
+
+<update id="RC_PRDTINF_U_12">
+UPDATE TB_RC_PRDTINF SET
+    APPROX_NML_AMT = null, APPROX_SALE_AMT = null
+</update>
+
+<!-- 누적예약, 예약가능 차량, 입점업체 수 -->
+<select id="RC_INTRO_S_00" resultClass="java.util.HashMap">
+     SELECT
+          /*누적예약*/
+          (SELECT SUM(BUY_NUM) FROM TB_RC_PRDTINF) AS ALL_RSV
+          /*예약가능차량*/
+          , (SELECT COUNT(1) FROM TB_RC_PRDTINF WHERE TRADE_STATUS = 'TS03') AS ABLE_RSV
+          /*탐나오입점업체*/
+          , (SELECT COUNT (1) FROM TB_CORP WHERE CORP_CD = 'RC' AND TRADE_STATUS_CD = 'TS03') AS IN_CORP
+     FROM DUAL
+</select>
+
+</sqlMap>

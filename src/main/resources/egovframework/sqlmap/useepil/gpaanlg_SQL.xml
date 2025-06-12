@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="gpaanlg">
+
+<resultMap id="GPAANLS_R_00" class="oss.useepil.vo.GPAANLSVO">
+	<result property="linkNum" column="LINK_NUM"/>
+	<result property="gpaAvg" column="GPA_AVG"/>
+	<result property="gpaCnt" column="GPA_CNT"/>
+</resultMap>
+
+<select id="GPAANLS_S_00" resultMap="GPAANLS_R_00">
+SELECT LINK_NUM     /*연계 번호*/
+     , GPA_AVG      /*평점 평균*/
+     , GPA_CNT      /*평점 수량*/
+FROM TB_GPA_ANLS
+WHERE 1=1
+	<isNotEmpty property="linkNum">
+	 	<isNotNull property="linkNum">
+	   	  	AND LINK_NUM = #linkNum#
+	    </isNotNull>
+	</isNotEmpty>
+</select>
+
+<select id="GPAANLS_S_01" resultMap="GPAANLS_R_00">
+SELECT '0' AS LINK_NUM
+     , TO_CHAR(NVL(AVG(GPA),0),'0.0') AS GPA_AVG
+     , COUNT(GPA) AS GPA_CNT
+FROM TB_USEEPIL
+WHERE 1=1
+	<isNotEmpty property="sCorpId">
+	 	<isNotNull property="sCorpId">
+	   	  	AND CORP_ID = #sCorpId#
+	    </isNotNull>
+	</isNotEmpty>
+	<isNotEmpty property="sPrdtNum">
+	 	<isNotNull property="sPrdtNum">
+	   	  	AND PRDT_NUM = #sPrdtNum#
+	    </isNotNull>
+	</isNotEmpty>
+		AND PRINT_YN = 'Y'
+</select>
+
+<update id="GPAANLSF_M_00">
+ MERGE INTO TB_GPA_ANLS AMT1
+ USING (SELECT #linkNum# AS LINK_NUM
+          FROM DUAL) AMT2
+    ON (AMT2.LINK_NUM = AMT1.LINK_NUM)
+  WHEN MATCHED THEN
+UPDATE SET
+      	GPA_AVG = #gpaAvg#,
+       	GPA_CNT = #gpaCnt#
+  WHEN NOT MATCHED THEN
+INSERT 
+     ( LINK_NUM 
+     , GPA_AVG  
+     , GPA_CNT  
+       )
+VALUES 
+     ( #linkNum#
+     , #gpaAvg#
+     , #gpaCnt#
+     )
+</update>
+
+</sqlMap>

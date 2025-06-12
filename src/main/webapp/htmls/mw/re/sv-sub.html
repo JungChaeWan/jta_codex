@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- add css -->
+    <link rel="stylesheet" href="../../../css/mw/common2.css">
+    <link rel="stylesheet" href="../../../css/mw/style.css">
+    <link rel="stylesheet" href="../../../css/mw/sv.css">
+
+    <script src="../../../js/jquery-1.11.1.js"></script>
+    <script src="../../../js/jquery-ui-1.11.4.js"></script>
+    <script src="../../../js/jquery.cookie.js"></script>
+    <script src="../../../js/mw_common.js"></script>
+    <script src="../../../js/mw_style.js"></script>
+    <script src="../../../js/moment.min.js"></script>
+    <script src="../../../js/daterangepicker-ad.js"></script>
+
+    <!-- add script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script type="text/javascript">
+
+        // Hide Header on on scroll down
+        var lastScrollTop = 0;
+        var delta = 5;
+        var navbarHeight = $('.head-wrap').outerHeight();
+
+        $(window).scroll(function (event) {
+            var st = $(this).scrollTop();
+
+            if (Math.abs(lastScrollTop - st) <= delta)
+                return;
+
+            if (st > lastScrollTop && st > navbarHeight) {
+                // Scroll Down
+                $('.head-wrap').removeClass('nav-down').addClass('nav-up');
+            } else {
+                // Scroll Up
+                if (st + $(window).height() < $(document).height()) {
+                    $('.head-wrap').removeClass('nav-up').addClass('nav-down');
+                }
+            }
+            lastScrollTop = st;
+        });
+
+        $(document).ready(function () {
+
+            /**특산/기념품 기획전 슬라이드*/
+            if ($('#main_top_slider .swiper-slide').length > 1) {
+                new Swiper('#main_top_slider', {
+                    pagination: '#main_top_navi',
+                    paginationClickable: true,
+                    /*			autoplay: 5000,*/
+                    loop: true
+                });
+            }
+
+            /**띠 배너 슬라이드*/
+            if ($('#pop_Slider3 .swiper-slide').length > 1) {
+                new Swiper('#pop_Slider3', {
+                    pagination: '#line_top_navi',
+                    paginationClickable: true,
+                    /*			autoplay: 5000,*/
+                    loop: true
+                });
+            }
+
+            /**브랜드관 슬라이드*/
+            const arr = ['제주시인정', '수협','아작아작오메기떡','한미농수산','서귀포에퐁당','하나더입력'];
+            if ($('#pop_Slider4 .swiper-slide').length > 1) {
+
+                console.log("go");
+                new Swiper('#pop_Slider4', {
+                    pagination: {
+                        el          : ".swiper-pagination-brand",
+                        clickable   : true,
+                        renderBullet: function (index, className) {
+                            return '<span class="' + className + '">' + arr[index] + "</span>";
+                        },
+                        // el: ".swiper-pagination-number",
+                        // type: "fraction",
+                    }
+                });
+            }
+
+            /**브랜드관 click*/
+            // $('#brandList ul.list__item-tab li p').click(function () {
+            //     const tab_id = $(this).attr('data-tab');
+            //
+            //     $('#brandList ul.list__item-tab li p').removeClass('current active');
+            //     $('.tab-content').removeClass('current');
+            //
+            //     $(this).addClass('current active');
+            //     $("#" + tab_id).addClass('current');
+            // });
+            // $(".list__item-tab li p:first").addClass("active");
+            // $(".list__item-tab li p").click(function () {
+            //     if (!($(this).hasClass("active"))) {
+            //         $(".list__item-tab li p.active").removeClass("active");
+            //         $(this).addClass("active");
+            //     }
+            // });
+
+            /* 브랜드관 로고 */
+            if ($('#brandList .swiper-slide').length > 6) {
+                new Swiper("#brandList", {
+                    slidesPerView         : 6,
+                    slidesPerGroup        : 6,
+                    loopFillGroupWithBlank: true,
+                    nextButton            : '#main_top_prev',
+                    prevButton            : '#main_top_next'
+                });
+            }
+
+            doSwiper();
+
+            // Hide Header on on scroll down
+            var didScroll;
+            var lastScrollTop = 0;
+            var delta = 5;
+            var navbarHeight = $('.head-wrap').outerHeight();
+
+            $(window).scroll(function (event) {
+                didScroll = true;
+            });
+
+            setInterval(function () {
+                if (didScroll) {
+                    hasScrolled();
+                    didScroll = false;
+                }
+            }, 250);
+
+            function hasScrolled() {
+                var st = $(this).scrollTop();
+
+                // Make sure they scroll more than delta
+                if (Math.abs(lastScrollTop - st) <= delta)
+                    return;
+
+                // If they scrolled down and are past the navbar, add class .nav-up.
+                // This is necessary so you never see what is "behind" the navbar.
+                if (st > lastScrollTop && st > navbarHeight) {
+                    // Scroll Down
+                    $('.head-wrap').removeClass('nav-down').addClass('nav-up');
+                } else {
+                    // Scroll Up
+                    if (st + $(window).height() < $(document).height()) {
+                        $('.head-wrap').removeClass('nav-up').addClass('nav-down');
+                    }
+                }
+                lastScrollTop = st;
+            }
+
+            /*** 찜한 상품 ***/
+            function fn_SvAddPocket(){
+                var pocket = [{
+                    prdtNum 	: "<c:out value='${prdtInfo.prdtNum}'/>",
+                    prdtNm 		: "<c:out value='${prdtInfo.prdtNm}'/>",
+                    corpId 		: "<c:out value='${prdtInfo.corpId}'/>",
+                    corpNm 		: "<c:out value='${prdtInfo.corpNm}'/>",
+                    prdtDiv 	: "${Constant.SV}"
+                }];
+
+                fn_AddPocket(pocket);
+            }
+
+            // 화면 사이즈별 슬라이드 설정
+            var screenWidth = 360;
+            var slideCnt = 2;
+            var swiper1 = null;
+
+            function doSwiper() {
+                screenWidth = $(window).width();
+
+                if (screenWidth < 720) {
+                    slideCnt = 2;
+                } else {
+                    slideCnt = 3;
+                }
+
+                /**카테고리별 추천상품*/
+                if ($('#pop_Slider1 .swiper-slide').length > 1) {
+                    if (swiper1 != null) {
+                        swiper1.destroy();
+                    }
+                    swiper1 = new Swiper('#pop_Slider1', {
+                        spaceBetween: 20,
+                        slidesPerView: slideCnt,
+                        paginationClickable: true,
+                        loop: true
+                    });
+                }
+            }
+
+            // 화면 사이즈 변경 이벤트
+            $(window).resize(function () {
+                var screenWidth2 = $(window).width();
+
+                if (screenWidth2 >= 720) {
+                    if (screenWidth < 720) {
+                        doSwiper();
+                    }
+                } else {
+                    if (screenWidth >= 720) {
+                        doSwiper();
+                    }
+                }
+                $(".bx-wrapper").css("max-width", screenWidth2);
+            });
+        })
+
+    </script>
+</head>
+<body class="main">
+<div id="hotel-sub">
+
+    <!-- header -->
+    <header id="m_header" class="mo_header">
+        <div id="m_gnb" class="container">
+            <div class="gnb_mall">
+                <h1 class="logo">
+                    <a href="/mw" title="홈으로 가기">
+                        <img src="../../../images/mw/main/main_logo.png" alt="탐나오">
+                    </a>
+                </h1>
+            </div>
+        </div>
+        <div class="r-area-side">
+            <button type="button" id="frame_sideOpen" class="side-btn" title="사이드메뉴 열기"></button>
+        </div>
+    </header><!-- //header -->
+
+    <!-- GNB -->
+    <nav class="navigation">
+        <ol class="category-bar">
+            <li class="navigation_tab">
+                <a href="/mw/av/mainList.do" class="navigation_title">
+                    <span>항공</span>
+                </a>
+            </li>
+            <li class="navigation_tab">
+                <a href="/mw/ad/mainList.do?sMen=2&sAdultCnt=2&sChildCnt=0&sBabyCnt=0" class="navigation_title">
+                    <span>숙소</span>
+                </a>
+            </li>
+            <li class="navigation_tab">
+                <a href="/mw/rentcar/jeju.do" class="navigation_title">
+                    <span>렌터카</span>
+                </a>
+            </li>
+            <li class="navigation_tab">
+                <a href="/mw/tour/jeju.do?prevIndex=1" class="navigation_title">
+                    <span>관광지/레저</span>
+                </a>
+            </li>
+            <li class="navigation_tab active-tab">
+                <a href="/mw/sv/mainList.do " class="navigation_title">
+                    <span>특산/기념품</span>
+                </a>
+            </li>
+            <li class="navigation_tab">
+                <a href="/mw/evnt/prmtPlanList.do" class="navigation_title">
+                    <span>기획전</span>
+                </a>
+            </li>
+        </ol>
+    </nav><!-- //GNB -->
+
+    <!-- key-visual -->
+    <section class="sv-panels-new">
+        <div class="main-list">
+            <div class="main-top-slider">
+                <div id="main_top_slider" class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide" style="background-color: #c6f3ef">
+                            <div class="Fasten">
+                                <a href=""><img src="../../../images/mw/from/banner/sv_banner.jpg" alt="기획전"></a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div id="main_top_navi" class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section><!-- //key-visual -->
+
+    <!-- 카테고리 메뉴 -->
+    <div class="menu-typeA">
+        <nav id="sv_scroll_menu" class="sv_scroll-menu">
+            <div class="score-area category-menu">
+                <ul>
+                    <li class="active">
+                        <a class="active" href="/mw/sv/productList.do?sCtgr=S100&sSubCtgr=S110">
+                            <img src="../../../images/mw/from/product/Agricultural-product.png" alt="농산품">
+                            <div>농산품</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mw/sv/productList.do?sCtgr=S100&sSubCtgr=S120">
+                            <img src="../../../images/mw/from/product/seafood.png" alt="수산품">
+                            <div>수산품</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mw/sv/productList.do?sCtgr=S100&sSubCtgr=S130">
+                            <img src="../../../images/mw/from/product/livestock.png" alt="축산품">
+                            <div>축산품</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mw/sv/productList.do?sCtgr=S400&sSubCtgr=S470">
+                            <img src="../../../images/mw/from/product/rice-cake.png" alt="오메기떡/기정떡">
+                            <div>오메기떡 <p>기정떡</p></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mw/sv/productList.do?sCtgr=S400&sSubCtgr=S430">
+                            <img src="../../../images/mw/from/product/side-dish.png" alt="초콜릿/스낵/간식">
+                            <div>초콜릿 <p>스낵/간식</p></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mw/sv/productList.do?sCtgr=S400&sSubCtgr=S460">
+                            <img src="../../../images/mw/from/product/health-food.png" alt="건강식품">
+                            <div>건강식품</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mw/sv/productList.do?sCtgr=S400&sSubCtgr=S440">
+                            <img src="../../../images/mw/from/product/coffee.png" alt="커피/차/음료">
+                            <div>커피/차 <p>음료</p></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mw/sv/productList.do?sCtgr=S400&sSubCtgr=S420">
+                            <img src="../../../images/mw/from/product/honey.png" alt="꿀/잼">
+                            <div>꿀/잼</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mw/sv/productList.do?sCtgr=S400&sSubCtgr=S490">
+                            <img src="../../../images/mw/from/product/soy-sauce.png" alt="장류/양념/가루/오일">
+                            <div>장류/양념 <p>가루/오일</p></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mw/sv/productList.do?sCtgr=S500">
+                            <img src="../../../images/mw/from/product/cosmetics.png" alt="화장품/미용">
+                            <div>화장품/미용</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mw/sv/productList.do?sCtgr=S600&sSubCtgr=S610">
+                            <img src="../../../images/mw/from/product/souvenir.png" alt="제주기념품">
+                            <div>제주 <p>기념품</p></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mw/sv/productList.do?sCtgr=S600&sSubCtgr=S620">
+                            <img src="../../../images/mw/from/product/crafts.png" alt="제주공예품">
+                            <div>제주 <p>공예품</p></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <span class="side-bg"></span>
+            <span class="side-bg"></span>
+        </nav>
+    </div><!-- //카테고리 메뉴 -->
+
+    <!-- promotion/best -->
+    <div class="sv-List mw-list-area">
+        <div class="according">
+            <div class="sv-list">
+                <div class="con-header">
+                    <p class="con-title">Hot! <span>카테고리별</span> 추천상품</p>
+                </div>
+                <div id="pop_Slider1" class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <div class="main-photo">
+                                    <img src="../../images/mw/from/product/jeju-product1-03.png" alt="기획전" onerror="this.src='/images/web/other/no-image.jpg'">
+                                </div>
+                                <div class="main-text">
+                                    <div class="j-info">★특1급 호텔 셰프의 프리미엄 뷔페</div>
+                                    <div class="j-title">메종글래드호텔 삼다정 뷔페</div>
+                                    <div class="main-price">9000<span class="won">원~</span></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <div class="main-photo">
+                                    <img src="../../images/mw/from/product/jeju-product1-03.png" alt="기획전" onerror="this.src='/images/web/other/no-image.jpg'">
+                                </div>
+                                <div class="main-text">
+                                    <div class="j-info">★특1급 호텔 셰프의 프리미엄 뷔페</div>
+                                    <div class="j-title">메종글래드호텔 삼다정 뷔페</div>
+                                    <div class="main-price">9000<span class="won">원~</span></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <div class="main-photo">
+                                    <img src="../../images/mw/from/product/jeju-product1-03.png" alt="기획전" onerror="this.src='/images/web/other/no-image.jpg'">
+                                </div>
+                                <div class="main-text">
+                                    <div class="j-info">★특1급 호텔 셰프의 프리미엄 뷔페</div>
+                                    <div class="j-title">메종글래드호텔 삼다정 뷔페</div>
+                                    <div class="main-price">9000<span class="won">원~</span></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <div class="main-photo">
+                                    <img src="../../images/mw/from/product/jeju-product1-03.png" alt="기획전" onerror="this.src='/images/web/other/no-image.jpg'">
+                                </div>
+                                <div class="main-text">
+                                    <div class="j-info">★특1급 호텔 셰프의 프리미엄 뷔페</div>
+                                    <div class="j-title">메종글래드호텔 삼다정 뷔페</div>
+                                    <div class="main-price">9000<span class="won">원~</span></div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!--//promotion/best -->
+
+    <!-- line-banner -->
+    <section>
+        <div class="main-top-slider">
+            <div id="line_top_slider" class="swiper-container">
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                        <a href="#" class="">
+                            <div class="line-banner brand-new">
+                                <img class="sv-pic" src="../../../images/mw/from/product/sv-pic-ticket.png" alt="당일특가">
+                                <em>신규상품 5% 할인 혜택</em>
+                                <img class="sv-icon" src="../../../images/mw/from/product/sv-pic-brand.png" alt="당일특가">
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section><!-- //line-banner -->
+
+    <!-- theme product -->
+    <section class="theme-product_wrap">
+        <div class="con-header">
+            <p class="theme-con-title"><span>테마 추천 상품</span></p>
+            <p class="con-sub-title">청정지역 제주가 생산한 기념품까지 받아볼 수 있는 직배송!</p>
+        </div>
+        <div class="menu-typeA">
+            <!-- theme_scroll-menu -->
+            <nav class="theme_scroll-menu">
+                <div class="score-area category-menu">
+                    <ul class="list-tag">
+                        <li class="prd-tab">
+                            <a href="#tabs-1" class="active">
+                                <div>싱싱생생 제주 농산물</div>
+                            </a>
+                        </li>
+                        <li class="prd-tab">
+                            <a href="#tabs-2">
+                                <div>믿고 먹는 제주의 맛</div>
+                            </a>
+                        </li>
+                        <li class="prd-tab">
+                            <a href="#tabs-3">
+                                <div>우수품질 JQ인증 상품</div>
+                            </a>
+                        </li>
+                        <li class="prd-tab">
+                            <a href="#tabs-4">
+                                <div>새콤달콤 제주의 감귤</p></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <span class="side-bg"></span>
+                <span class="side-bg"></span>
+            </nav><!-- //theme_scroll-menu -->
+        </div>
+
+        <!-- keyword_thumb-1 -->
+        <div id="div_productAjax" class="keyword_thumb ">
+            <div id="pageInfoCnt" class="re_theme">
+                <div class="theme_wrap">
+                    <figure class="prd_img">
+                        <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                        <span class="prd_mask"></span>
+                    </figure>
+                    <div class="prd_info">
+                        <div class="prd_price">30,000원
+                            <div class="bxLabel">
+                                <span class="main_label yellow">탐나는전</span>
+                            </div>
+                        </div>
+                        <div class="prd_title">[제주직송] 그린파파야 3kg</div>
+                        <div class="prd_name">무농약으로 재배한 제주도 그린...</div>
+                    </div>
+                    <a href="" class="prd_link">
+                        <span class="blind">상품 바로가기</span>
+                    </a>
+                    <a type="button" class="btn_wish" href="javascript:void(0)" onclick="javascript:fn_SvAddPocket();" id="pocketBtnId" style="display: none;">
+                        <img src="../../../images/mw/from/product/like_off.png" alt="찜하기">
+                    </a>
+                    <a type="button" class="btn_wish" href="javascript:void(0)">
+                        <img src="../../../images/mw/from/product/like_on.png" alt="찜하기">
+                    </a>
+                </div>
+            </div>
+            <div class="re_theme">
+                <div class="theme_wrap">
+                    <figure class="prd_img">
+                        <img src="" alt=""  onerror="this.src='/images/web/other/no-image.jpg'">
+                        <span class="prd_mask"></span>
+                    </figure>
+                    <div class="prd_info">
+                        <div class="prd_price">30,000원
+                            <div class="bxLabel">
+                                <span class="main_label yellow">탐나는전</span>
+                            </div>
+                        </div>
+                        <div class="prd_title">[제주직송] 그린파파야 3kg</div>
+                        <div class="prd_name">무농약으로 재배한 제주도 그린...</div>
+                    </div>
+                    <a href="" class="prd_link">
+                        <span class="blind">상품 바로가기</span>
+                    </a>
+                    <a href="javascript:void(0)" type="button" class="btn_wish" onclick="javascript:fn_SvAddPocket();">
+                        <img src="../../../images/mw/from/product/like_off.png" alt="좋아요">
+                    </a>
+                </div>
+            </div>
+            <div class="re_theme">
+                <div class="theme_wrap">
+                    <figure class="prd_img">
+                        <img src="" alt=""  onerror="this.src='/images/web/other/no-image.jpg'">
+                        <span class="prd_mask"></span>
+                    </figure>
+                    <div class="prd_info">
+                        <div class="prd_price">30,000원
+                            <div class="bxLabel">
+                                <span class="main_label pink">할인쿠폰</span>
+                            </div>
+                        </div>
+                        <div class="prd_title">[제주직송] 그린파파야 3kg</div>
+                        <div class="prd_name">무농약으로 재배한 제주도 그린...</div>
+                    </div>
+                    <a href="" class="prd_link">
+                        <span class="blind">상품 바로가기</span>
+                    </a>
+                    <a href="javascript:void(0)" type="button" class="btn_wish" onclick="javascript:fn_SvAddPocket();">
+                        <img src="../../../images/mw/from/product/like_off.png" alt="좋아요">
+                    </a>
+                </div>
+            </div>
+            <div class="re_theme">
+                <div class="theme_wrap">
+                    <figure class="prd_img">
+                        <img src="" alt=""  onerror="this.src='/images/web/other/no-image.jpg'">
+                        <span class="prd_mask"></span>
+                    </figure>
+                    <div class="prd_info">
+                        <div class="prd_price">30,000원
+                            <div class="bxLabel">
+                                <span class="main_label pink">할인쿠폰</span>
+                                <span class="main_label yellow">탐나는전</span>
+                            </div>
+                        </div>
+                        <div class="prd_title">[제주직송] 그린파파야 3kg</div>
+                        <div class="prd_name">무농약으로 재배한 제주도 그린...</div>
+                    </div>
+                    <a href="" class="prd_link">
+                        <span class="blind">상품 바로가기</span>
+                    </a>
+                    <a href="javascript:void(0)" type="button" class="btn_wish" onclick="javascript:fn_SvAddPocket();">
+                        <img src="../../../images/mw/from/product/like_off.png" alt="좋아요">
+                    </a>
+                </div>
+            </div><!-- //re_theme -->
+        </div><!-- //keyword_thumb-1 -->
+    </section><!-- //theme product -->
+
+    <!-- 브랜드관 -->
+    <section class="brand-wrap">
+        <div class="con-header">
+            <img src="../../../images/mw/from/banner/brand_tamnao.png" alt="">
+            <span>브랜드관</span>
+        </div>
+
+        <!-- 1007 pagination-brand-tab -->
+        <div class="pagination-brand-tab">
+            <ul class="list-tag">
+                <li class="swiper-pagination-brand"></li>
+            </ul>
+        </div><!-- //1007 pagination-brand-tab -->
+
+        <!-- main-hit-brand -->
+        <div class="sv-top-slider">
+            <div id="pop_Slider4" class="swiper-container swiper-container-horizontal">
+                <ul class="list__item-tab swiper-wrapper">
+
+                    <!-- product-01 -->
+                    <li class="tab-content swiper-slide mySlides">
+                        <div class="main-hit-brand ">
+                            <!-- index-item__wrap -->
+                            <div class="index-item__wrap">
+                                <div class="production-item-image">
+                                    <img src="../../../images/mw/from/banner/box__image.jpg" alt="" >
+                                </div>
+                                <div class="production-item-content">서귀포인정</div>
+                                <h1 class="item-header">따스함이 햇살처럼, 신선함이 바람처럼</h1>
+                                <span class="item_article">신선한 농산물만 엄선합니다.</span>
+                                <p class="view-more">더보기</p>
+                            </div><!-- //index-item__wrap -->
+
+                            <!-- index-item__goods -->
+                            <div class="index-item__goods">
+                                <div class="prd_list">
+                                    <ul class="prd_list">
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div><!-- //prd_list -->
+                                <div class="prd_list">
+                                    <ul class="prd_list">
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div><!-- //prd_list -->
+                            </div><!-- //index-item__goods -->
+                        </div>
+                    </li><!-- //main-hit-brand -->
+
+                    <!-- product-02 -->
+                    <li class="swiper-slide mySlides">
+                        <div class="main-hit-brand ">
+                            <!-- index-item__wrap -->
+                            <div class="index-item__wrap">
+                                <div class="production-item-image">
+                                    <img src="../../../images/mw/from/banner/box__image.jpg" alt="" >
+                                </div>
+                                <div class="production-item-content">서귀포인정</div>
+                                <h1 class="item-header">따스함이 햇살처럼, 신선함이 바람처럼</h1>
+                                <span class="item_article">신선한 농산물만 엄선합니다.</span>
+                                <p class="view-more">더보기</p>
+                            </div><!-- //index-item__wrap -->
+
+                            <!-- index-item__goods -->
+                            <div class="index-item__goods">
+                                <div class="prd_list">
+                                    <ul class="prd_list">
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div><!-- //prd_list -->
+                                <div class="prd_list">
+                                    <ul class="prd_list">
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div><!-- //prd_list -->
+                            </div><!-- //index-item__goods -->
+                        </div>
+                    </li><!-- //main-hit-brand -->
+
+                    <!-- product-03 -->
+                    <li class="swiper-slide mySlides">
+                        <div class="main-hit-brand ">
+                            <!-- index-item__wrap -->
+                            <div class="index-item__wrap">
+                                <div class="production-item-image">
+                                    <img src="../../../images/mw/from/banner/box__image.jpg" alt="" >
+                                </div>
+                                <div class="production-item-content">서귀포인정</div>
+                                <h1 class="item-header">따스함이 햇살처럼, 신선함이 바람처럼</h1>
+                                <span class="item_article">신선한 농산물만 엄선합니다.</span>
+                                <p class="view-more">더보기</p>
+                            </div><!-- //index-item__wrap -->
+
+                            <!-- index-item__goods -->
+                            <div class="index-item__goods">
+                                <div class="prd_list">
+                                    <ul class="prd_list">
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div><!-- //prd_list -->
+                                <div class="prd_list">
+                                    <ul class="prd_list">
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div><!-- //prd_list -->
+                            </div><!-- //index-item__goods -->
+                        </div>
+                    </li><!-- //main-hit-brand -->
+
+                    <li class="swiper-slide mySlides">
+                        <div class="main-hit-brand ">
+                            <!-- index-item__wrap -->
+                            <div class="index-item__wrap">
+                                <div class="production-item-image">
+                                    <img src="../../../images/mw/from/banner/box__image.jpg" alt="" >
+                                </div>
+                                <div class="production-item-content">서귀포인정</div>
+                                <h1 class="item-header">따스함이 햇살처럼, 신선함이 바람처럼</h1>
+                                <span class="item_article">신선한 농산물만 엄선합니다.</span>
+                                <p class="view-more">더보기</p>
+                            </div><!-- //index-item__wrap -->
+
+                            <!-- index-item__goods -->
+                            <div class="index-item__goods">
+                                <div class="prd_list">
+                                    <ul class="prd_list">
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div><!-- //prd_list -->
+                                <div class="prd_list">
+                                    <ul class="prd_list">
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div><!-- //prd_list -->
+                            </div><!-- //index-item__goods -->
+                        </div>
+                    </li>
+                    <li class="swiper-slide mySlides">
+                        <div class="main-hit-brand ">
+                            <!-- index-item__wrap -->
+                            <div class="index-item__wrap">
+                                <div class="production-item-image">
+                                    <img src="../../../images/mw/from/banner/box__image.jpg" alt="" >
+                                </div>
+                                <div class="production-item-content">서귀포인정</div>
+                                <h1 class="item-header">따스함이 햇살처럼, 신선함이 바람처럼</h1>
+                                <span class="item_article">신선한 농산물만 엄선합니다.</span>
+                                <p class="view-more">더보기</p>
+                            </div><!-- //index-item__wrap -->
+
+                            <!-- index-item__goods -->
+                            <div class="index-item__goods">
+                                <div class="prd_list">
+                                    <ul class="prd_list">
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div><!-- //prd_list -->
+                                <div class="prd_list">
+                                    <ul class="prd_list">
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div><!-- //prd_list -->
+                            </div><!-- //index-item__goods -->
+                        </div>
+                    </li>
+
+                    <li class="swiper-slide mySlides">
+                        <div class="main-hit-brand ">
+                            <!-- index-item__wrap -->
+                            <div class="index-item__wrap">
+                                <div class="production-item-image">
+                                    <img src="../../../images/mw/from/banner/box__image.jpg" alt="" >
+                                </div>
+                                <div class="production-item-content">서귀포인정</div>
+                                <h1 class="item-header">따스함이 햇살처럼, 신선함이 바람처럼</h1>
+                                <span class="item_article">신선한 농산물만 엄선합니다.</span>
+                                <p class="view-more">더보기</p>
+                            </div><!-- //index-item__wrap -->
+
+                            <!-- index-item__goods -->
+                            <div class="index-item__goods">
+                                <div class="prd_list">
+                                    <ul class="prd_list">
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div><!-- //prd_list -->
+                                <div class="prd_list">
+                                    <ul class="prd_list">
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                        <li class="goods-list-thumb">
+                                            <a href="" class="thumb">
+                                                <img src="" alt="" onerror="this.src='/images/web/other/no-image.jpg'">
+                                            </a>
+                                            <div class="info">
+                                                <p class="j-title">[제주농협] 귤로장생 하우스감귤</p>
+                                                <span class="main-price">28,600원</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div><!-- //prd_list -->
+                            </div><!-- //index-item__goods -->
+                        </div>
+                    </li>
+                </ul>
+                <div class="caption-container">
+                    <p id="caption"></p>
+                </div>
+                <!-- page_box -->
+                <!--      <div id="popularPlanBtn" class="page_box">
+                          <div class="arrow-box" id="main_top_arrow">
+
+                                  <a class="prev" onclick="plusSlides(-1)">
+                                      <span id="main_top_prev" class="button-prev "></span>
+                                  </a>
+                                  <a class="next" onclick="plusSlides(1)">
+                                        <span id="main_top_next" class="button-next"></span>
+                                  </a>
+                          </div>
+                          <div id="sv_top_navi" class="fraction_pagination">
+                              <span class="current"></span>
+                          </div>
+                      </div>-->
+                <!-- //page_box -->
+            </div>
+        </div>
+    </section><!-- //브랜드관 -->
+    <footer id="footer"></footer>
+</div> <!-- //wrap -->
+</body>
+</html>

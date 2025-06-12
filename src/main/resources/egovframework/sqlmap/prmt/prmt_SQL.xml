@@ -1,0 +1,2251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="prmt">
+
+<resultMap id="PRMT_R_00" class="mas.prmt.vo.PRMTVO">
+	<result property="prmtNum" 			column="PRMT_NUM" />
+	<result property="prmtNm" 			column="PRMT_NM" />
+	<result property="startDt" 			column="START_DT" />
+	<result property="endDt" 			column="END_DT" />
+	<result property="cmtYn" 			column="CMT_YN" />
+	<result property="prmtDiv" 			column="PRMT_DIV" />
+	<result property="prmtDivNm" 		column="PRMT_DIV_NM" />
+	<result property="statusCd" 		column="STATUS_CD" />
+	<result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+	<result property="prdtViewDiv" 		column="PRDT_VIEW_DIV" />
+	<result property="ddayViewYn"		column="DDAY_VIEW_YN" />
+	<result property="viewCnt"		column="VIEW_CNT" />
+</resultMap>
+
+<resultMap id="PRMT_R_01" class="mas.prmt.vo.PRMTVO">
+	<result property="prmtNum" 			column="PRMT_NUM" />
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="prmtNm" 			column="PRMT_NM" />
+	<result property="prmtExp" 			column="PRMT_EXP" />
+	<result property="startDt" 			column="START_DT" />
+	<result property="endDt" 			column="END_DT" />
+	<result property="prmtDiv" 			column="PRMT_DIV" />
+	<result property="prmtDivNm"		column="PRMT_DIV_NM" />
+	<result property="listImg" 			column="LIST_IMG" />
+	<result property="mainImg" 			column="MAIN_IMG" />
+	<result property="mobileMainImg" 	column="MOBILE_MAIN_IMG" />
+	<result property="bgColorNum"		column="BG_COLOR_NUM" />
+	<result property="dtlImg" 			column="DTL_IMG" />
+	<result property="mobileDtlImg" 	column="MOBILE_DTL_IMG" />
+	<result property="dtlBgColor" 		column="DTL_BG_COLOR" />
+	<result property="dtlBgImg" 		column="DTL_BG_IMG" />
+	<result property="mobileDtlBgImg"	column="MOBILE_DTL_BG_IMG" />
+	<result property="winsImg" 			column="WINS_IMG" />
+	<result property="statusCd" 		column="STATUS_CD" />
+	<result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+	<result property="frstRegId" 		column="FRST_REG_ID" />
+	<result property="frstRegIp" 		column="FRST_REG_IP" />
+	<result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+	<result property="lastModId" 		column="LAST_MOD_ID" />
+	<result property="lastModIp" 		column="LAST_MOD_IP" />
+	<result property="confRequestDttm" 	column="CONF_REQUEST_DTTM" />
+	<result property="confDttm" 		column="CONF_DTTM" />
+	<result property="dtlUrl" 			column="DTL_URL" />
+	<result property="dtlNwdYn" 		column="DTL_NWD_YN" />
+	<result property="dtlUrlMobile" 	column="DTL_URL_MOBILE" />
+	<result property="cmtYn" 			column="CMT_YN" />
+	<result property="prdtViewDiv" 		column="PRDT_VIEW_DIV" />
+	<result property="ddayViewYn"		column="DDAY_VIEW_YN" />
+	<result property="adbannerViewYn"		column="ADBANNER_VIEW_YN" />
+</resultMap>
+
+<resultMap id="PRMT_R_02" class="mas.prmt.vo.PRMTVO">
+	<result property="prmtNum" 			column="PRMT_NUM" />
+	<result property="statusCd" 		column="STATUS_CD" />
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="corpNm" 			column="CORP_NM" />
+	<result property="prmtDiv" 			column="PRMT_DIV" />
+	<result property="prmtDivNm"		column="PRMT_DIV_NM" />
+	<result property="prmtNm" 			column="PRMT_NM" />
+	<result property="startDt" 			column="START_DT" />
+	<result property="endDt" 			column="END_DT" />
+	<result property="confRequestDttm" 	column="CONF_REQUEST_DTTM" />
+	<result property="confDttm" 		column="CONF_DTTM" />
+	<result property="prdtViewDiv" 		column="PRDT_VIEW_DIV" />
+</resultMap>
+
+<resultMap id="PRMT_R_08" class="mas.prmt.vo.PRMTVO">
+	<result property="prmtNum" 			column="PRMT_NUM" />
+	<result property="prmtNm" 			column="PRMT_NM"/>
+	<result property="corpId" 			column="CORP_ID"/>
+	<result property="corpNm" 			column="CORP_NM"/>
+	<result property="startDt" 			column="START_DT"/>
+	<result property="endDt" 			column="END_DT" />
+	<result property="statusCd" 		column="STATUS_CD"/>
+	<result property="frstRegDttm" 		column="FRST_REG_DTTM"/>
+	<result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+	<result property="prdtViewDiv" 		column="PRDT_VIEW_DIV" />
+</resultMap>
+
+<resultMap id="PRMT_PRDT_R_00" class="mas.prmt.vo.PRMTPRDTVO">
+	<result property="prmtNum" 			column="PRMT_NUM" />
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="prdtNm" 			column="PRDT_NM" />
+	<result property="printSn" 			column="PRINT_SN" />
+</resultMap>
+
+<resultMap id="PRMT_PRDT_R_01" class="mas.prmt.vo.PRMTPRDTVO">
+	<result property="prmtNum" 			column="PRMT_NUM" />
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="prdtNm" 			column="PRDT_NM" />
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="corpNm" 			column="CORP_NM" />
+	<result property="printSn" 			column="PRINT_SN" />
+	<result property="label1" 			column="LABEL1" />
+	<result property="label2" 			column="LABEL2" />
+	<result property="label3" 			column="LABEL3" />
+	<result property="note" 			column="NOTE" />
+</resultMap>
+
+<resultMap id="PRMT_PRDT_R_02" class="mas.prmt.vo.PRMTPRDTVO">
+	<result property="prmtNum" 			column="PRMT_NUM" />
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="label1" 			column="LABEL1" />
+	<result property="label2" 			column="LABEL2" />
+	<result property="label3" 			column="LABEL3" />
+	<result property="note" 			column="NOTE" />
+	<result property="printSn" 			column="PRINT_SN" />
+</resultMap>
+
+<resultMap id="PRMT_WEBLIST_R_00" class="mas.prmt.vo.PRMTVO">
+	<result property="prmtNum" 			column="PRMT_NUM" />
+	<result property="prmtDiv" 			column="PRMT_DIV" />
+	<result property="prmtNm" 			column="PRMT_NM" />
+	<result property="startDt" 			column="START_DT" />
+	<result property="endDt" 			column="END_DT" />
+	<result property="listImg" 			column="LIST_IMG" />
+	<result property="ddayViewYn"		column="DDAY_VIEW_YN" />
+</resultMap>
+
+<resultMap id="MAIN_PRMT_R_00" class="mas.prmt.vo.MAINPRMTVO">
+	<result property="prmtNum" 			column="PRMT_NUM" />
+	<result property="printSn" 			column="PRINT_SN" />
+</resultMap>
+
+<resultMap id="MAIN_PRMT_R_01" class="mas.prmt.vo.MAINPRMTVO">
+	<result property="prmtNum" 			column="PRMT_NUM" />
+	<result property="printSn" 			column="PRINT_SN" />
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="corpNm" 			column="CORP_NM" />
+	<result property="prmtNm" 			column="PRMT_NM" />
+	<result property="startDt" 			column="START_DT" />
+	<result property="endDt" 			column="END_DT" />
+	<result property="prmtDiv" 			column="PRMT_DIV" />
+	<result property="listImg" 			column="LIST_IMG" />
+	<result property="mainImg" 			column="MAIN_IMG" />
+	<result property="mobileMainImg" 	column="MOBILE_MAIN_IMG" />
+	<result property="bgColorNum"		column="BG_COLOR_NUM" />
+	<result property="dtlImg" 			column="DTL_IMG" />
+	<result property="mobileDtlImg" 	column="MOBILE_DTL_IMG" />
+	<result property="statusCd" 		column="STATUS_CD" />
+	<result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+	<result property="confRequestDttm" 	column="CONF_REQUEST_DTTM" />
+	<result property="confDttm" 		column="CONF_DTTM" />
+	<result property="endEvent" 		column="END_EVENT" />
+	<result property="prdtViewDiv" 		column="PRDT_VIEW_DIV" />
+	<result property="snRandomYn" 		column="SN_RANDOM_YN" />
+</resultMap>
+
+<resultMap id="MAIN_PRMT_R_02" class="mas.prmt.vo.MAINPRMTVO">
+	<result property="prmtNum" 			column="PRMT_NUM" />
+	<result property="printSn" 			column="PRINT_SN" />
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="prmtNm" 			column="PRMT_NM" />
+	<result property="startDt" 			column="START_DT" />
+	<result property="endDt" 			column="END_DT" />
+	<result property="prmtDiv" 			column="PRMT_DIV" />
+	<result property="mainImg" 			column="MAIN_IMG" />
+	<result property="mobileMainImg" 	column="MOBILE_MAIN_IMG" />
+	<result property="bgColorNum"		column="BG_COLOR_NUM" />
+	<result property="listImg" 			column="LIST_IMG" />
+	<result property="dtlImg" 			column="DTL_IMG" />
+	<result property="mobileDtlImg" 	column="MOBILE_DTL_IMG" />
+	<result property="statusCd" 		column="STATUS_CD" />
+	<result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+	<result property="prdtViewDiv" 		column="PRDT_VIEW_DIV" />
+</resultMap>
+
+<resultMap id="PRMT_CMT_R_00" class="mas.prmt.vo.PRMTCMTVO">
+	<result property="prmtNum" column="PRMT_NUM"/>
+	<result property="cmtSn" column="CMT_SN"/>
+	<result property="userId" column="USER_ID"/>
+	<result property="contents" column="CONTENTS"/>
+	<result property="printYn" column="PRINT_YN"/>
+	<result property="frstRegDttm" column="FRST_REG_DTTM"/>
+	<result property="lastModDttm" column="LAST_MOD_DTTM"/>
+	<result property="frstRegId" column="FRST_REG_ID"/>
+	<result property="lastModId" column="LAST_MOD_ID"/>
+	<result property="frstRegIp" column="FRST_REG_IP"/>
+	<result property="lastModIp" column="LAST_MOD_IP"/>
+	<result property="email" column="EMAIL"/>
+</resultMap>
+
+<resultMap id="PRMT_CMT_R_02" class="mas.prmt.vo.PRMTCMTVO">
+	<result property="prmtNum" column="PRMT_NUM"/>
+	<result property="cmtSn" column="CMT_SN"/>
+	<result property="userId" column="USER_ID"/>
+	<result property="contents" column="CONTENTS"/>
+	<result property="printYn" column="PRINT_YN"/>
+	<result property="frstRegDttm" column="FRST_REG_DTTM"/>
+	<result property="lastModDttm" column="LAST_MOD_DTTM"/>
+	<result property="frstRegId" column="FRST_REG_ID"/>
+	<result property="lastModId" column="LAST_MOD_ID"/>
+	<result property="frstRegIp" column="FRST_REG_IP"/>
+	<result property="lastModIp" column="LAST_MOD_IP"/>
+	<result property="email" column="EMAIL"/>
+	<result property="userNm" column="USER_NM"/>
+	<result property="telNum" column="TEL_NUM"/>
+</resultMap>
+
+<resultMap id="PRMT_FILE_R_00" class="oss.prmt.vo.PRMTFILEVO">
+	<result property="prmtFileNum" column="PRMT_FILE_NUM"/>
+	<result property="prmtNum" column="PRMT_NUM"/>
+	<result property="savePath" column="SAVE_PATH"/>
+	<result property="saveFileNm" column="SAVE_FILE_NM"/>
+	<result property="realFileNm" column="REAL_FILE_NM"/>
+</resultMap>
+
+<resultMap id="PRMT_FILE_R_01" class="oss.etc.vo.FILEVO">
+	<result property="docId"        column="DOC_ID" />
+	<result property="fileNum"      column="FILE_NUM" />
+	<result property="savePath"     column="SAVE_PATH" />
+	<result property="saveFileNm"   column="SAVE_FILE_NM" />
+	<result property="realFileNm"   column="REAL_FILE_NM" />
+	<result property="docDiv"       column="DOC_DIV" />
+	<result property="docNm"        column="DOC_NM" />
+	<result property="regDttm"      column="REG_DTTM" />
+</resultMap>
+
+<resultMap id="PRMT_WEBLIST_R_03" class="mas.prmt.vo.PRMTVO">
+	<result property="prmtNum" 			column="PRMT_NUM" />
+	<result property="prmtNm" 			column="PRMT_NM" />
+	<result property="prmtExp" 			column="PRMT_EXP" />
+	<result property="startDt" 			column="START_DT" />
+	<result property="endDt" 			column="END_DT" />
+	<result property="dtlImg"			column="DTL_IMG" />
+</resultMap>
+
+<resultMap id="PRMT_WEBLIST_R_04" class="mas.prmt.vo.PRMTVO">
+	<result property="prevPrmtNum" 		column="PREV_PRMT_NUM" />
+	<result property="prevPrmtNm" 		column="PREV_PRMT_NM" />
+	<result property="prevStartDt" 		column="PREV_START_DT" />
+	<result property="prevEndDt" 		column="PREV_END_DT" />
+	<result property="nextPrmtNum" 		column="NEXT_PRMT_NUM" />
+	<result property="nextPrmtNm" 		column="NEXT_PRMT_NM" />
+	<result property="nextStartDt" 		column="NEXT_START_DT" />
+	<result property="nextEndDt" 		column="NEXT_END_DT" />
+</resultMap>
+
+<resultMap id="PRMT_WEBLIST_R_05" class="mas.prmt.vo.PRMTVO">
+	<result property="prmtNum" 		column="PRMT_NUM" />
+	<result property="prmtNm" 		column="PRMT_NM" />
+	<result property="prmtExp" 		column="PRMT_EXP" />
+</resultMap>
+
+
+<resultMap id="PRMT_WEBLIST_R_06" class="oss.point.vo.POINT_CPVO">
+	<result property="partnerCode" 		column="PARTNER_CODE" />
+	<result property="partnerNm" 		column="PARTNER_NM" />
+	<result property="cpNm" 		column="CP_NM" />
+	<result property="aplStartDt" 		column="APL_START_DT" />
+	<result property="aplEndDt" 		column="APL_END_DT" />
+	<result property="cpComments" 		column="CP_COMMENTS" />
+	<result property="bannerThumb" 		column="BANNER_THUMB" />
+</resultMap>
+
+<select id="PRMT_S_00" resultMap="PRMT_R_00">
+SELECT PRMT_NUM
+    , PRMT_NM
+    , START_DT
+    , END_DT
+    , PRMT_DIV
+    , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = PRMT_DIV) AS PRMT_DIV_NM
+    , STATUS_CD
+    , CMT_YN
+    , DDAY_VIEW_YN
+    , FRST_REG_DTTM
+    , PRDT_VIEW_DIV
+    , VIEW_CNT
+FROM (SELECT ROWNUM AS RN
+            , PRMT_NUM
+            , PRMT_NM
+            , START_DT
+            , END_DT
+            , PRMT_DIV
+            , STATUS_CD
+            , CMT_YN
+            , DDAY_VIEW_YN
+            , FRST_REG_DTTM
+            , PRDT_VIEW_DIV
+            , VIEW_CNT
+        FROM (SELECT PRMT_NUM
+                    , PRMT_NM
+                    , START_DT
+                    , END_DT
+                    , PRMT_DIV
+                    , STATUS_CD
+                    , CMT_YN
+                    , DDAY_VIEW_YN
+                    , FRST_REG_DTTM
+                    , PRDT_VIEW_DIV
+                    , VIEW_CNT
+                FROM TB_PRMT
+                WHERE CORP_ID = #corpId#
+                ORDER BY FRST_REG_DTTM DESC))
+WHERE RN BETWEEN TO_NUMBER (#firstIndex#) + 1 AND TO_NUMBER (#lastIndex#)
+ORDER BY (CASE STATUS_CD WHEN 'TS02' THEN 1
+                         				   WHEN 'TS03' THEN 2
+                                           WHEN 'TS01' THEN 3
+                                           ELSE 4 END), FRST_REG_DTTM desc
+</select>
+
+<select id="PRMT_S_01" resultClass="int">
+SELECT COUNT(PRMT_NUM)
+			  FROM TB_PRMT
+			 WHERE CORP_ID = #corpId#
+</select>
+
+<select id="PRMT_S_02" resultClass="String">
+SELECT 'PM'||LPAD(NVL(MAX(SUBSTR(PRMT_NUM,3)),0) + 1, 8,'0')
+  FROM TB_PRMT
+</select>
+
+<select id="PRMT_S_03" resultMap="PRMT_R_01">
+SELECT PRMT_NUM
+	, CORP_ID
+	, PRMT_NM
+	, PRMT_EXP
+	, START_DT
+	, END_DT
+	, PRMT_DIV
+	, (SELECT CD_NM FROM TB_CD WHERE CD_NUM = PRMT_DIV) AS PRMT_DIV_NM
+	, LIST_IMG
+	, MAIN_IMG
+	, MOBILE_MAIN_IMG
+	, BG_COLOR_NUM
+	, DTL_IMG
+	, MOBILE_DTL_IMG
+	, DTL_BG_COLOR
+	, DTL_BG_IMG
+	, MOBILE_DTL_BG_IMG
+	, WINS_IMG
+	, STATUS_CD
+	, FRST_REG_DTTM
+	, FRST_REG_ID
+	, FRST_REG_IP
+	, LAST_MOD_DTTM
+	, LAST_MOD_ID
+	, LAST_MOD_IP
+	, CONF_REQUEST_DTTM
+	, CONF_DTTM
+	, DTL_URL
+	, DTL_NWD_YN
+	, DTL_URL_MOBILE
+	, CMT_YN
+	, PRDT_VIEW_DIV
+	, DDAY_VIEW_YN
+	, ADBANNER_VIEW_YN
+FROM TB_PRMT
+WHERE PRMT_NUM = #prmtNum#
+	<isNotEmpty property="corpId">
+		AND CORP_ID = #corpId#
+	</isNotEmpty>
+</select>
+
+<select id="PRMT_S_04" resultMap="PRMT_R_02">
+SELECT PRMT_NUM
+	, STATUS_CD
+	, CORP_ID
+	, CORP_NM
+	, PRMT_DIV
+	, (SELECT CD_NM FROM TB_CD WHERE CD_NUM = PRMT.PRMT_DIV) AS PRMT_DIV_NM
+	, PRMT_NM
+	, START_DT
+	, END_DT
+	, CONF_REQUEST_DTTM
+	, CONF_DTTM
+	, PRDT_VIEW_DIV
+FROM (SELECT ROWNUM AS RN
+		, PRMT_NUM
+		, STATUS_CD
+		, CORP_ID
+		, CORP_NM
+		, PRMT_DIV
+		, PRMT_NM
+		, START_DT
+		, END_DT
+		, CONF_REQUEST_DTTM
+		, CONF_DTTM
+		, PRDT_VIEW_DIV
+	FROM (SELECT PRMT_NUM
+			, STATUS_CD
+			, T1.CORP_ID
+			, T2.CORP_NM
+			, PRMT_DIV
+			, PRMT_NM
+			, START_DT
+			, END_DT
+			, CONF_REQUEST_DTTM
+			, CONF_DTTM
+			, PRDT_VIEW_DIV
+		FROM TB_PRMT T1
+			INNER JOIN TB_CORP T2 ON T1.CORP_ID = T2.CORP_ID
+		WHERE 1=1
+			<isNotEmpty property="sTradeStatus">
+				AND T1.STATUS_CD = #sTradeStatus#
+			</isNotEmpty>
+			<isEmpty property="sTradeStatus">
+				AND T1.STATUS_CD != 'TS01'
+			</isEmpty>
+			<isNotEmpty property="sStartDt">
+				<isNotEmpty property="sEndDt">
+					<![CDATA[
+					AND (TO_DATE(T1.START_DT, 'YYYY/MM/DD') <= TO_DATE(#sStartDt#, 'YYYY/MM/DD')
+					OR TO_DATE(T1.START_DT, 'YYYY/MM/DD') <= TO_DATE(#sEndDt#, 'YYYY/MM/DD') )
+					]]>
+				</isNotEmpty>
+				<isEmpty property="sEndDt">
+					<![CDATA[
+					AND (TO_DATE(T1.START_DT, 'YYYY/MM/DD') >= TO_DATE(#sStartDt#, 'YYYY/MM/DD')
+					OR TO_DATE(T1.END_DT, 'YYYY/MM/DD') >= TO_DATE(#sStartDt#, 'YYYY/MM/DD') )
+					]]>
+				</isEmpty>
+			</isNotEmpty>
+			<isNotEmpty property="sEndDt">
+				<isNotEmpty property="sStartDt">
+					<![CDATA[
+					AND (TO_DATE(T1.END_DT, 'YYYY/MM/DD') >= TO_DATE(#sEndDt#, 'YYYY/MM/DD')
+					OR TO_DATE(T1.END_DT, 'YYYY/MM/DD') >= TO_DATE(#sStartDt#, 'YYYY/MM/DD') )
+					]]>
+				</isNotEmpty>
+				<isEmpty property="sStartDt">
+					<![CDATA[
+					AND( TO_DATE(T1.END_DT, 'YYYY/MM/DD') <= TO_DATE(#sEndDt#, 'YYYY/MM/DD')
+					OR TO_DATE(T1.START_DT, 'YYYY/MM/DD') <= TO_DATE(#sEndDt#, 'YYYY/MM/DD') )
+					]]>
+				</isEmpty>
+			</isNotEmpty>
+			<isNotEmpty property="sConfRequestStartDt">
+				<![CDATA[
+				AND TO_DATE(T1.CONF_REQUEST_DTTM, 'YYYY/MM/DD') >= TO_DATE(#sConfRequestStartDt#, 'YYYY/MM/DD')
+				]]>
+			</isNotEmpty>
+			<isNotEmpty property="sConfRequestEndDt">
+				<![CDATA[
+				AND TO_DATE(T1.CONF_REQUEST_DTTM, 'YYYY/MM/DD') <= TO_DATE(#sConfRequestEndDt#, 'YYYY/MM/DD')
+				]]>
+			</isNotEmpty>
+			<isNotEmpty property="sCorpNm">
+				AND T2.CORP_NM LIKE '%' || #sCorpNm# || '%'
+			</isNotEmpty>
+			<isNotEmpty property="sPrmtNm">
+				AND T1.PRMT_NM LIKE '%' || #sPrmtNm# || '%'
+			</isNotEmpty>
+		ORDER BY T1.CONF_REQUEST_DTTM DESC
+	)
+) PRMT
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="PRMT_S_05" resultClass="int">
+SELECT COUNT(T1.PRMT_NUM)
+  FROM TB_PRMT T1
+    INNER JOIN TB_CORP T2
+   		ON T1.CORP_ID = T2.CORP_ID
+    WHERE 1=1
+    <isNotEmpty property="sTradeStatus">
+     AND T1.STATUS_CD = #sTradeStatus#
+  </isNotEmpty>
+  <isEmpty property="sTradeStatus">
+    AND T1.STATUS_CD != 'TS01'
+  </isEmpty>
+  <isNotEmpty property="sStartDt">
+ 	<isNotEmpty property="sEndDt">
+ 	<![CDATA[
+     AND (TO_DATE(T1.START_DT, 'YYYY/MM/DD') <= TO_DATE(#sStartDt#, 'YYYY/MM/DD')
+      OR TO_DATE(T1.START_DT, 'YYYY/MM/DD') <= TO_DATE(#sEndDt#, 'YYYY/MM/DD') )
+     ]]>
+     </isNotEmpty>
+	  <isEmpty property="sEndDt">
+	  <![CDATA[
+	     AND (TO_DATE(T1.START_DT, 'YYYY/MM/DD') >= TO_DATE(#sStartDt#, 'YYYY/MM/DD')
+	     OR TO_DATE(T1.END_DT, 'YYYY/MM/DD') >= TO_DATE(#sStartDt#, 'YYYY/MM/DD') )
+	    ]]>
+	  </isEmpty>
+  </isNotEmpty>
+  <isNotEmpty property="sEndDt">
+  	<isNotEmpty property="sStartDt">
+	  <![CDATA[
+	     AND (TO_DATE(T1.END_DT, 'YYYY/MM/DD') >= TO_DATE(#sEndDt#, 'YYYY/MM/DD')
+	    OR TO_DATE(T1.END_DT, 'YYYY/MM/DD') >= TO_DATE(#sStartDt#, 'YYYY/MM/DD') )
+	      ]]>
+	   </isNotEmpty>
+   		<isEmpty property="sStartDt">
+	  <![CDATA[
+	     AND( TO_DATE(T1.END_DT, 'YYYY/MM/DD') <= TO_DATE(#sEndDt#, 'YYYY/MM/DD')
+	     OR TO_DATE(T1.START_DT, 'YYYY/MM/DD') <= TO_DATE(#sEndDt#, 'YYYY/MM/DD') )
+	     ]]>
+	     </isEmpty>
+  </isNotEmpty>
+  <isNotEmpty property="sConfRequestStartDt">
+  <![CDATA[
+    AND TO_DATE(T1.CONF_REQUEST_DTTM, 'YYYY/MM/DD') >= TO_DATE(#sConfRequestStartDt#, 'YYYY/MM/DD')
+  ]]>
+  </isNotEmpty>
+  <isNotEmpty property="sConfRequestEndDt">
+  <![CDATA[
+  AND TO_DATE(T1.CONF_REQUEST_DTTM, 'YYYY/MM/DD') <= TO_DATE(#sConfRequestEndDt#, 'YYYY/MM/DD')
+  ]]>
+  </isNotEmpty>
+  <isNotEmpty property="sCorpNm">
+  AND T2.CORP_NM LIKE '%'||#sCorpNm#||'%'
+  </isNotEmpty>
+  <isNotEmpty property="sPrmtNm">
+  AND T1.PRMT_NM LIKE '%'||#sPrmtNm#||'%'
+  </isNotEmpty>
+</select>
+
+<select id="PRMT_S_06" resultMap="PRMT_R_00">
+SELECT PRMT_NUM
+	, PRMT_NM
+	, START_DT
+	, END_DT
+	, CMT_YN
+	, DDAY_VIEW_YN
+	, PRMT_DIV
+	, (SELECT CD_NM FROM TB_CD WHERE CD_NUM = PRMT.PRMT_DIV) AS PRMT_DIV_NM
+	, STATUS_CD
+	, FRST_REG_DTTM
+	, PRDT_VIEW_DIV
+	, VIEW_CNT
+FROM (SELECT ROWNUM AS RN
+		, PRMT_NUM
+		, PRMT_NM
+		, START_DT
+		, END_DT
+		, CMT_YN
+		, DDAY_VIEW_YN
+		, PRMT_DIV
+		, STATUS_CD
+		, FRST_REG_DTTM
+		, PRDT_VIEW_DIV
+		, VIEW_CNT
+	FROM (SELECT PRMT_NUM
+			, PRMT_NM
+			, START_DT
+			, END_DT
+			, CMT_YN
+			, DDAY_VIEW_YN
+			, PRMT_DIV
+			, STATUS_CD
+			, FRST_REG_DTTM
+			, PRDT_VIEW_DIV
+			, VIEW_CNT
+		FROM TB_PRMT
+		WHERE CORP_ID IS NULL
+		<isNotEmpty property="sPrmtDiv">
+			AND PRMT_DIV = #sPrmtDiv#
+		</isNotEmpty>
+		<isNotEmpty property="prmtNm">
+			AND REPLACE(UPPER(PRMT_NM), ' ', '') LIKE '%'||REPLACE(UPPER(#prmtNm#), ' ', '')||'%' /*프로모션명*/
+		</isNotEmpty>
+		ORDER BY PRMT_NUM DESC)) PRMT
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="PRMT_S_07" resultClass="int">
+SELECT COUNT(PRMT_NUM)
+FROM TB_PRMT
+WHERE CORP_ID IS NULL
+<isNotEmpty property="sPrmtDiv">
+	AND PRMT_DIV = #sPrmtDiv#
+</isNotEmpty>
+<isNotEmpty property="prmtNm">
+	AND REPLACE(UPPER(PRMT_NM), ' ', '') LIKE '%'||REPLACE(UPPER(#prmtNm#), ' ', '')||'%' /*프로모션명*/
+</isNotEmpty>
+</select>
+
+<select id="PRMT_S_08" resultMap="PRMT_R_08">
+SELECT PRMT_NUM
+     , PRMT_NM
+     , CORP_ID
+     , CORP_NM
+     , START_DT
+     , END_DT
+     , STATUS_CD
+     , FRST_REG_DTTM
+     , LAST_MOD_DTTM
+     , PRDT_VIEW_DIV
+FROM (SELECT ROWNUM AS RN
+         , PRMT_NUM
+         , PRMT_NM
+         , CORP_ID
+         , CORP_NM
+         , START_DT
+         , END_DT
+         , STATUS_CD
+         , FRST_REG_DTTM
+         , LAST_MOD_DTTM
+         , PRDT_VIEW_DIV
+    FROM (SELECT PRMT_NUM
+             , PRMT_NM
+             , CORP_ID
+             , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = T_PR.CORP_ID) AS CORP_NM
+             , START_DT
+             , END_DT
+             , STATUS_CD
+             , FRST_REG_DTTM
+             , LAST_MOD_DTTM
+             , PRDT_VIEW_DIV
+        FROM TB_PRMT T_PR
+        WHERE STATUS_CD = 'TS03'
+        	AND CORP_ID IS NULL
+			<isNotEmpty property="prmtDiv">
+				AND PRMT_DIV = #prmtDiv#
+			</isNotEmpty>
+		ORDER BY PRMT_NUM DESC
+        )
+	<isNotEmpty property="sKey">
+		<isEqual property="sKeyOpt" compareValue="1">
+			WHERE PRMT_NM LIKE '%'||#sKey#||'%'
+		</isEqual>
+		<isEqual property="sKeyOpt" compareValue="2">
+			WHERE CORP_NM LIKE '%'||#sKey#||'%'
+		</isEqual>
+	</isNotEmpty>
+    )
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="PRMT_S_09" resultClass="int" >
+SELECT COUNT(PRMT_NUM)
+FROM ( SELECT ROWNUM AS RN
+         , PRMT_NUM
+         , PRMT_NM
+         , CORP_ID
+         , CORP_NM
+         , START_DT
+         , END_DT
+         , STATUS_CD
+         , FRST_REG_DTTM
+         , LAST_MOD_DTTM
+    FROM (SELECT PRMT_NUM
+             , PRMT_NM
+             , CORP_ID
+             , NVL((SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = T_PR.CORP_ID), '탐나오') AS CORP_NM
+             , START_DT
+             , END_DT
+             , STATUS_CD
+             , FRST_REG_DTTM
+             , LAST_MOD_DTTM
+        FROM TB_PRMT T_PR
+        WHERE STATUS_CD = 'TS03'
+        	 <isNotEmpty property="prmtDiv">
+			 AND PRMT_DIV=#prmtDiv#
+			 </isNotEmpty>
+        )
+    WHERE 1=1
+        <isNotEmpty property="sKey">
+		 		<isEqual property="sKeyOpt" compareValue="1">
+		   			AND PRMT_NM LIKE '%'||#sKey#||'%'
+		 		</isEqual>
+		 		<isEqual property="sKeyOpt" compareValue="2">
+		   			AND CORP_NM LIKE '%'||#sKey#||'%'
+		 		</isEqual>
+		 </isNotEmpty>
+    )
+</select>
+
+<select id="PRMT_S_10" resultClass="int" >
+SELECT COUNT(PRMT_NUM)
+FROM TB_PRMT
+WHERE CORP_ID = #corpId#
+  AND STATUS_CD = 'TS03'
+ <![CDATA[ AND TO_DATE(END_DT,'YYYYMMDD')+1> SYSDATE ]]>
+ <![CDATA[ AND TO_DATE(START_DT,'YYYYMMDD') < SYSDATE ]]>
+</select>
+
+
+<select id="PRMT_S_11" resultClass="int" >
+SELECT COUNT(PRMT_NUM)
+ FROM TB_PRMT
+ WHERE STATUS_CD=#statusCd#
+</select>
+
+<insert id="PRMT_I_00">
+INSERT INTO TB_PRMT
+     ( PRMT_NUM
+     , CORP_ID
+     , PRMT_NM
+     , PRMT_EXP
+     , START_DT
+     , END_DT
+     , PRMT_DIV
+     , LIST_IMG
+     , MAIN_IMG
+     , MOBILE_MAIN_IMG
+     , BG_COLOR_NUM
+     , DTL_IMG
+     , MOBILE_DTL_IMG
+     , WINS_IMG
+     , STATUS_CD
+     , FRST_REG_DTTM
+     , FRST_REG_ID
+     , FRST_REG_IP
+     , LAST_MOD_DTTM
+     , LAST_MOD_ID
+     , LAST_MOD_IP
+     , PRDT_VIEW_DIV
+     )
+VALUES
+     ( #prmtNum#
+     , #corpId#
+     , #prmtNm#
+     , #prmtExp#
+     , #startDt#
+     , #endDt#
+     , #prmtDiv#
+     , #listImg#
+     , #mainImg#
+     , #mobileMainImg#
+     , #bgColorNum#
+     , #dtlImg#
+     , #mobileDtlImg#
+     , #winsImg#
+     , #statusCd#
+     , SYSDATE
+     , #frstRegId#
+     , #frstRegIp#
+     , SYSDATE
+     , #frstRegId#
+     , #frstRegIp#
+     , #prdtViewDiv#
+     )
+</insert>
+
+
+<insert id="PRMT_I_01">
+INSERT INTO TB_PRMT
+     ( PRMT_NUM
+     , PRMT_NM
+     , START_DT
+     , END_DT
+     , PRMT_DIV
+     , LIST_IMG
+     , MAIN_IMG
+	 , MOBILE_MAIN_IMG
+     , BG_COLOR_NUM
+     , DTL_IMG
+     , MOBILE_DTL_IMG
+     , DTL_BG_COLOR
+     , DTL_BG_IMG
+     , MOBILE_DTL_BG_IMG
+     , WINS_IMG
+     , STATUS_CD
+     , FRST_REG_DTTM
+     , FRST_REG_ID
+     , FRST_REG_IP
+     , LAST_MOD_DTTM
+     , LAST_MOD_ID
+     , LAST_MOD_IP
+     , CONF_REQUEST_DTTM
+     , CONF_DTTM
+     , DTL_URL
+     , DTL_NWD_YN
+     , DTL_URL_MOBILE
+     , CMT_YN
+     , PRDT_VIEW_DIV
+     , DDAY_VIEW_YN
+     , ADBANNER_VIEW_YN
+     )
+VALUES
+     ( #prmtNum#
+     , #prmtNm#
+     , #startDt#
+     , #endDt#
+     , #prmtDiv#
+     , #listImg#
+     , #mainImg#
+     , #mobileMainImg#
+     , #bgColorNum#
+     , #dtlImg#
+     , #mobileDtlImg#
+     , #dtlBgColor#
+     , #dtlBgImg#
+     , #mobileDtlBgImg#
+     , #winsImg#
+     , #statusCd#
+     , SYSDATE
+     , #frstRegId#
+     , #frstRegIp#
+     , SYSDATE
+     , #frstRegId#
+     , #frstRegIp#
+     , SYSDATE
+     , SYSDATE
+     , #dtlUrl#
+     , #dtlNwdYn#
+     , #dtlUrlMobile#
+     , #cmtYn#
+     , #prdtViewDiv#
+     , #ddayViewYn#
+     , #adbannerViewYn#
+     )
+</insert>
+
+<update id="PRMT_U_00">
+UPDATE TB_PRMT
+   SET LAST_MOD_DTTM 	= SYSDATE
+     , LAST_MOD_ID 		= #lastModId#
+     , LAST_MOD_IP 		= #lastModIp#
+     , PRMT_NM 			= #prmtNm#
+     , PRMT_EXP			= #prmtExp#
+     , START_DT 		= #startDt#
+     , END_DT 			= #endDt#
+     , PRMT_DIV 		= #prmtDiv#
+     , LIST_IMG 		= #listImg#
+     , MAIN_IMG			= #mainImg#
+     , MOBILE_MAIN_IMG  = #mobileMainImg#
+     , BG_COLOR_NUM		= #bgColorNum#
+     , DTL_IMG 			= #dtlImg#
+     , MOBILE_DTL_IMG 	= #mobileDtlImg#
+     , WINS_IMG 		= #winsImg#
+     , PRDT_VIEW_DIV 	= #prdtViewDiv#
+ WHERE 1=1
+   AND PRMT_NUM = #prmtNum#
+   AND CORP_ID  = #corpId#
+</update>
+
+<update id="PRMT_U_01">
+UPDATE TB_PRMT
+   SET
+       LAST_MOD_DTTM = SYSDATE
+     , LAST_MOD_ID = #lastModId#
+     , LAST_MOD_IP = #lastModIp#
+     , STATUS_CD = #statusCd#
+     <isEqual property="statusCd" compareValue="TS02">
+     , CONF_REQUEST_DTTM = SYSDATE
+     </isEqual>
+     <isEqual property="statusCd" compareValue="TS01">
+     , CONF_REQUEST_DTTM = ''
+     </isEqual>
+     <isEqual property="statusCd" compareValue="TS03">
+     , CONF_DTTM = SYSDATE
+     </isEqual>
+ WHERE 1=1
+ 	AND PRMT_NUM = #prmtNum#
+ 	<isNotEmpty property="corpId">
+    AND CORP_ID = #corpId#
+    </isNotEmpty>
+</update>
+
+<update id="PRMT_U_02">
+UPDATE TB_PRMT
+   SET LAST_MOD_DTTM 		= SYSDATE
+     , LAST_MOD_ID 			= #lastModId#
+     , LAST_MOD_IP 			= #lastModIp#
+     , PRMT_NM 				= #prmtNm#
+     , START_DT 			= #startDt#
+     , END_DT 				= #endDt#
+     , PRMT_DIV 			= #prmtDiv#
+     , LIST_IMG 			= #listImg#
+     , MAIN_IMG				= #mainImg#
+     , MOBILE_MAIN_IMG  	= #mobileMainImg#
+     , BG_COLOR_NUM			= #bgColorNum#
+     , DTL_IMG 				= #dtlImg#
+     , MOBILE_DTL_IMG 		= #mobileDtlImg#
+     , DTL_BG_COLOR			= #dtlBgColor#
+     , DTL_BG_IMG			= #dtlBgImg#
+     , MOBILE_DTL_BG_IMG 	= #mobileDtlBgImg#
+     , WINS_IMG 			= #winsImg#
+     , DTL_URL 				= #dtlUrl#
+     , DTL_NWD_YN 			= #dtlNwdYn#
+     , DTL_URL_MOBILE 		= #dtlUrlMobile#
+     , CMT_YN 				= #cmtYn#
+     , PRDT_VIEW_DIV 		= #prdtViewDiv#
+     , DDAY_VIEW_YN			= #ddayViewYn#
+     , ADBANNER_VIEW_YN		= #adbannerViewYn#
+ WHERE 1=1
+   AND PRMT_NUM = #prmtNum#
+</update>
+
+<update id="PRMT_U_03">
+UPDATE TB_PRMT
+   SET VIEW_CNT = VIEW_CNT + 1
+WHERE PRMT_NUM = #prmtNum#
+</update>
+
+<update id="PRMT_U_04">
+	UPDATE TB_MAIN_PRMT
+	SET SN_RANDOM_YN = #snRandomYn#
+	WHERE PRMT_NUM = #prmtNum#
+</update>
+
+<delete id="PRMT_D_00">
+DELETE
+  FROM TB_PRMT
+ WHERE PRMT_NUM = #prmtNum#
+</delete>
+
+<select id="PRMT_PRDT_S_00" resultMap="PRMT_PRDT_R_00">
+SELECT T_PRMT.PRMT_NUM
+		 , T_PRMT.PRDT_NUM
+		 , T_PRDT.PRDT_NM
+		 , PRINT_SN
+  FROM TB_PRMT_PRDT T_PRMT
+  	INNER JOIN (
+		<isEqual property="corpCd" compareValue="AD">
+		SELECT PRDT_NUM
+		     , PRDT_NM
+		  FROM TB_AD_PRDTINF
+		</isEqual>
+		<isEqual property="corpCd" compareValue="RC">
+		SELECT PRDT_NUM
+		     , PRDT_NM
+		  FROM TB_RC_PRDTINF
+		</isEqual>
+		<isEqual property="corpCd" compareValue="GL">
+		SELECT PRDT_NUM
+		     , PRDT_NM
+		  FROM TB_GL_PRDTINF
+		  </isEqual>
+		  <isEqual property="corpCd" compareValue="SP">
+		  SELECT PRDT_NUM
+		  		, PRDT_NM || '('|| TO_DATE(SALE_START_DT, 'yyyy-MM-dd') || '~' || TO_DATE(SALE_END_DT, 'yyyy-MM-dd') || ')' PRDT_NM
+		    FROM TB_SP_PRDTINF
+		  </isEqual>
+		  <isEqual property="corpCd" compareValue="SV">
+		  SELECT PRDT_NUM
+		  		, PRDT_NM || '('|| TO_DATE(SALE_START_DT, 'yyyy-MM-dd') || '~' || TO_DATE(SALE_END_DT, 'yyyy-MM-dd') || ')' PRDT_NM
+		    FROM TB_SV_PRDTINF
+		  </isEqual>
+	) T_PRDT
+	ON T_PRMT.PRDT_NUM = T_PRDT.PRDT_NUM
+	AND T_PRMT.PRMT_NUM = #prmtNum#
+</select>
+
+
+<select id="PRMT_PRDT_S_01" resultMap="PRMT_PRDT_R_01">
+SELECT T_PRMT.PRMT_NUM
+	, T_PRMT.PRDT_NUM
+	, T_PRDT.PRDT_NM
+	, T_PRDT.CORP_ID
+	, (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = T_PRDT.CORP_ID) AS CORP_NM
+	, T_PRMT.LABEL1
+	, T_PRMT.LABEL2
+	, T_PRMT.LABEL3
+	, T_PRMT.NOTE
+	, T_PRMT.PRINT_SN
+FROM TB_PRMT_PRDT T_PRMT
+    INNER JOIN
+        (SELECT PRDT_NUM
+			, PRDT_NM
+			, CORP_ID
+		FROM TB_AD_PRDTINF
+
+		UNION
+
+		SELECT PRDT_NUM
+			, (PRDT_NM || ' / ' || (SELECT CD_NM FROM TB_CD WHERE CD_NUM = T_PRDT.USE_FUEL_DIV) || ' / ' ||
+				(CASE
+					WHEN ISR_DIV = 'ID00' THEN '자차자율'
+					WHEN ISR_DIV = 'ID10' THEN CASE
+													WHEN ISR_TYPE_DIV = 'GENL' THEN '자차포함(일반자차)'
+													WHEN ISR_TYPE_DIV = 'LUXY' THEN '자차포함(고급자차)'
+													ELSE '자차포함'
+												END
+					 WHEN ISR_DIV = 'ID20' THEN '자차필수'
+				END)) AS PRDT_NM
+			, CORP_ID
+		FROM TB_RC_PRDTINF T_PRDT
+
+		UNION
+
+		SELECT PRDT_NUM
+			, PRDT_NM
+			, CORP_ID
+		FROM TB_GL_PRDTINF
+
+		UNION
+
+		SELECT PRDT_NUM
+			, (PRDT_NM || '('|| TO_DATE (SALE_START_DT, 'yyyy-MM-dd') || '~' || TO_DATE (SALE_END_DT, 'yyyy-MM-dd') || ')') AS PRDT_NM
+			, CORP_ID
+		FROM TB_SP_PRDTINF
+
+		UNION
+
+		SELECT PRDT_NUM
+			, (PRDT_NM || '('|| TO_DATE (SALE_START_DT, 'yyyy-MM-dd') || '~' || TO_DATE (SALE_END_DT, 'yyyy-MM-dd') || ')') AS PRDT_NM
+		  	, CORP_ID
+		FROM TB_SV_PRDTINF) T_PRDT
+    ON  T_PRMT.PRDT_NUM = T_PRDT.PRDT_NUM
+        AND T_PRMT.PRMT_NUM = #prmtNum#
+ORDER BY PRINT_SN
+</select>
+
+<select id="PRMT_PRDT_S_02" resultMap="PRMT_PRDT_R_02">
+SELECT PRMT_NUM
+  , PRDT_NUM
+  , LABEL1
+  , LABEL2
+  , LABEL3
+  , NOTE
+  , PRINT_SN
+FROM TB_PRMT_PRDT
+WHERE PRMT_NUM = #prmtNum#
+ORDER BY PRINT_SN
+</select>
+
+<insert id="PRMT_PRDT_I_00">
+INSERT INTO TB_PRMT_PRDT ( PRMT_NUM, PRDT_NUM)
+SELECT
+	#prmtNum#
+	, PRDT_NUM
+  FROM
+  <isEqual property="corpCd" compareValue="SP">
+	TB_SP_PRDTINF
+   </isEqual>
+   <isEqual property="corpCd" compareValue="RC">
+   TB_RC_PRDTINF
+   </isEqual>
+   <isEqual property="corpCd" compareValue="AD">
+   TB_AD_PRDTINF
+   </isEqual>
+   <isEqual property="corpCd" compareValue="GL">
+   TB_GL_PRDTINF
+   </isEqual>
+   <isEqual property="corpCd" compareValue="SV">
+   TB_SV_PRDTINF
+   </isEqual>
+WHERE
+<iterate property="prdtNum"  prepend="PRDT_NUM IN" open="(" close=")" conjunction=",">
+	 #prdtNum[]#
+</iterate>
+</insert>
+
+<insert id="PRMT_PRDT_I_01">
+INSERT INTO TB_PRMT_PRDT ( PRMT_NUM, PRDT_NUM, PRINT_SN)
+VALUES (
+	   #prmtNum#
+     , #prdtNumOne#
+     , (SELECT NVL(MAX(PRINT_SN) + 1, 1) FROM TB_PRMT_PRDT
+     	  WHERE PRMT_NUM=#prmtNum#)
+       )
+</insert>
+
+<insert id="PRMT_PRDT_I_02">
+INSERT
+INTO TB_PRMT_PRDT
+    (PRMT_NUM
+      , PRDT_NUM
+      , PRINT_SN
+      , LABEL1
+      , LABEL2
+      , LABEL3
+      , NOTE)
+    VALUES
+    (#prmtNum#
+      , #prdtNum#
+      , (SELECT NVL(MAX(PRINT_SN) + 1, 1)
+            FROM TB_PRMT_PRDT
+            WHERE PRMT_NUM = #prmtNum#)
+      , #label1#
+      , #label2#
+      , #label3#
+      , #note#)
+</insert>
+
+<!-- 프로모션 상품 순번변경 (증가) -->
+<update id="PRMT_PRDT_U_00">
+UPDATE TB_PRMT_PRDT
+   SET PRINT_SN = PRINT_SN + 1
+ WHERE 1 = 1
+ 	AND PRMT_NUM = #prmtNum#
+  <isNotEqual property="oldSn" compareValue="0">
+   <![CDATA[
+   AND PRINT_SN < #oldSn#
+   ]]>
+  </isNotEqual>
+   <![CDATA[
+   AND PRINT_SN >= #newSn#
+   ]]>
+</update>
+
+<!-- 프로모션 상품 순번변경 (감소) -->
+<update id="PRMT_PRDT_U_01">
+UPDATE TB_PRMT_PRDT
+   SET PRINT_SN = PRINT_SN - 1
+ WHERE 1 = 1
+ 	AND PRMT_NUM = #prmtNum#
+ <isNotEqual property="newSn" compareValue="0">
+ <![CDATA[
+   AND PRINT_SN <= #newSn#
+ ]]>
+ </isNotEqual>
+ <![CDATA[
+   AND PRINT_SN >  #oldSn#
+ ]]>
+</update>
+
+<!-- 프로모션 상품 순번변경된 객체 -->
+<update id="PRMT_PRDT_U_02">
+UPDATE TB_PRMT_PRDT
+   SET PRINT_SN = #newSn#
+ WHERE 1 = 1
+   AND PRMT_NUM = #prmtNum#
+   AND PRDT_NUM = #prdtNum#
+</update>
+
+<delete id="PRMT_PRDT_D_00">
+DELETE
+  FROM TB_PRMT_PRDT
+ WHERE PRMT_NUM = #prmtNum#
+</delete>
+
+<select id="PRMT_WEBLIST_S_00" resultMap="PRMT_WEBLIST_R_00">
+SELECT PRMT_NUM
+	, PRMT_DIV
+	, PRMT_NM
+	, START_DT
+	, END_DT
+	, LIST_IMG
+	, DDAY_VIEW_YN
+FROM (SELECT ROWNUM AS RN
+		, PRMT_NUM
+		, PRMT_DIV
+		, PRMT_NM
+		, START_DT
+		, END_DT
+		, LIST_IMG
+		, DDAY_VIEW_YN
+	FROM (SELECT PRMT_NUM
+			, PRMT_DIV
+			, PRMT_NM
+			, START_DT
+			, END_DT
+			, LIST_IMG
+			, DDAY_VIEW_YN
+		FROM TB_PRMT
+		WHERE STATUS_CD = 'TS03'
+			AND CORP_ID IS NULL
+			<isNotEmpty property="prmtDiv">
+				<isEqual property="prmtDiv" compareValue="PLAN">
+				AND PRMT_DIV IN ('PLAN', 'FROM')
+				</isEqual>
+				<isNotEqual property="prmtDiv" compareValue="PLAN">
+				AND PRMT_DIV = #prmtDiv#
+				</isNotEqual>
+			</isNotEmpty>
+			<isEqual property="finishYn" compareValue="N">
+				AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN START_DT AND END_DT
+		ORDER BY START_DT DESC
+			</isEqual>
+			<isEqual property="finishYn" compareValue="Y">
+				AND END_DT <![CDATA[ < ]]> TO_CHAR(SYSDATE, 'YYYYMMDD')
+				<isEqual property="winsYn" compareValue="Y">
+					AND WINS_IMG IS NOT NULL
+				</isEqual>
+		ORDER BY END_DT DESC
+			</isEqual>
+	)
+)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+
+<select id="PRMT_WEBLIST_S_01" resultClass="int">
+SELECT COUNT(PRMT_NUM)
+FROM (SELECT ROWNUM AS RN
+		, PRMT_NUM
+		, PRMT_DIV
+		, PRMT_NM
+		, START_DT
+		, END_DT
+		, LIST_IMG
+		, MOBILE_MAIN_IMG
+		, DDAY_VIEW_YN
+	FROM (SELECT PRMT_NUM
+			, PRMT_DIV
+			, PRMT_NM
+			, START_DT
+			, END_DT
+			, LIST_IMG
+			, MOBILE_MAIN_IMG
+			, DDAY_VIEW_YN
+			, ROW_NUMBER() OVER (PARTITION BY PRMT_NM ORDER BY PRMT_NUM) RN2
+		FROM TB_PRMT
+		WHERE STATUS_CD = 'TS03'
+			AND CORP_ID IS NULL
+		<isNotEqual property="finishYn" compareValue="N">
+			<isEqual property="winsYn" compareValue="N">
+				<![CDATA[
+				AND END_DT < TO_CHAR(SYSDATE, 'YYYYMMDD')
+				]]>
+			</isEqual>
+		</isNotEqual>
+		<isEqual property="finishYn" compareValue="N">
+			<isEqual property="winsYn" compareValue="N">
+				<![CDATA[
+				AND START_DT <= TO_CHAR(SYSDATE,'YYYYMMDD')
+				AND END_DT >= TO_CHAR(SYSDATE,'YYYYMMDD')
+				]]>
+			</isEqual>
+		</isEqual>
+		<isEqual property="winsYn" compareValue="Y">
+			<![CDATA[
+			AND END_DT < TO_CHAR(SYSDATE, 'YYYYMMDD')
+			]]>
+			AND WINS_IMG IS NOT NULL
+		</isEqual>
+		<isNotEmpty property="prmtDiv">
+				<isEqual property="prmtDiv" compareValue="PLAN">
+					AND PRMT_DIV IN ('PLAN', 'FROM')
+				</isEqual>
+				<isNotEqual property="prmtDiv" compareValue="PLAN">
+					AND PRMT_DIV = #prmtDiv#
+				</isNotEqual>
+		</isNotEmpty>
+		<isNotEmpty property="prmtNum">
+				AND PRMT_NUM != #prmtNum#
+		</isNotEmpty>
+		<isEqual property="winsYn" compareValue="N">
+			<isEqual property="finishYn" compareValue="N">
+				ORDER BY DBMS_RANDOM.VALUE
+			</isEqual>
+			<isEqual property="finishYn" compareValue="Y">
+				ORDER BY END_DT DESC
+			</isEqual>
+		</isEqual>
+		<isEqual property="winsYn" compareValue="Y">
+			ORDER BY END_DT ASC
+		</isEqual>
+	)
+	WHERE RN2 = 1
+)
+</select>
+
+<select id="PRMT_WEBLIST_S_03" resultMap="PRMT_WEBLIST_R_03">
+SELECT PRMT.PRMT_NUM
+	, PRMT.PRMT_NM
+	, PRMT.PRMT_EXP
+	, PRMT.START_DT
+	, PRMT.END_DT
+	, PRMT.DTL_IMG
+FROM TB_PRMT PRMT
+<isNotEmpty property="prdtNum">
+	INNER JOIN TB_PRMT_PRDT PRM_PRD ON PRM_PRD.PRMT_NUM = PRMT.PRMT_NUM
+		AND PRM_PRD.PRDT_NUM = #prdtNum#
+</isNotEmpty>
+WHERE PRMT.STATUS_CD = 'TS03'
+	AND PRMT.PRMT_DIV IN ('EVNT', 'NOTI')
+	<isNotEmpty property="corpId">
+		AND PRMT.CORP_ID = #corpId#
+	</isNotEmpty>
+	AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN PRMT.START_DT AND PRMT.END_DT
+ORDER BY PRMT.PRMT_DIV, PRMT.PRMT_NUM DESC
+</select>
+
+<select id="PRMT_WEBLIST_S_04" resultMap="PRMT_WEBLIST_R_04">
+SELECT PREV_PRMT_NUM
+	, PREV_PRMT_NM
+	, PREV_START_DT
+	, PREV_END_DT
+	, NEXT_PRMT_NUM
+	, NEXT_PRMT_NM
+	, NEXT_START_DT
+	, NEXT_END_DT
+FROM (SELECT PRMT_NUM
+		, PRMT_NM
+		, START_DT
+		, END_DT
+		<isEqual property="finishYn" compareValue="N">
+			, LAG (PRMT_NUM, 1) OVER (ORDER BY START_DT DESC) PREV_PRMT_NUM
+			, LAG (PRMT_NM, 1) OVER (ORDER BY START_DT DESC) PREV_PRMT_NM
+			, LAG (START_DT, 1) OVER (ORDER BY START_DT DESC) PREV_START_DT
+			, LAG (END_DT, 1) OVER (ORDER BY START_DT DESC) PREV_END_DT
+			, LEAD (PRMT_NUM, 1) OVER (ORDER BY START_DT DESC) NEXT_PRMT_NUM
+			, LEAD (PRMT_NM, 1) OVER (ORDER BY START_DT DESC) NEXT_PRMT_NM
+			, LEAD (START_DT, 1) OVER (ORDER BY START_DT DESC) NEXT_START_DT
+			, LEAD (END_DT, 1) OVER (ORDER BY START_DT DESC) NEXT_END_DT
+		</isEqual>
+		<isEqual property="finishYn" compareValue="Y">
+			, LAG (PRMT_NUM, 1) OVER (ORDER BY END_DT DESC) PREV_PRMT_NUM
+			, LAG (PRMT_NM, 1) OVER (ORDER BY END_DT DESC) PREV_PRMT_NM
+			, LAG (START_DT, 1) OVER (ORDER BY END_DT DESC) PREV_START_DT
+			, LAG (END_DT, 1) OVER (ORDER BY END_DT DESC) PREV_END_DT
+			, LEAD (PRMT_NUM, 1) OVER (ORDER BY END_DT DESC) NEXT_PRMT_NUM
+			, LEAD (PRMT_NM, 1) OVER (ORDER BY END_DT DESC) NEXT_PRMT_NM
+			, LEAD (START_DT, 1) OVER (ORDER BY END_DT DESC) NEXT_START_DT
+			, LEAD (END_DT, 1) OVER (ORDER BY END_DT DESC) NEXT_END_DT
+		</isEqual>
+	FROM TB_PRMT
+	WHERE STATUS_CD = 'TS03'
+		AND CORP_ID IS NULL
+		<isEqual property="prmtDiv" compareValue="PLAN">
+			AND PRMT_DIV IN ('PLAN', 'FROM')
+		</isEqual>
+		<isNotEqual property="prmtDiv" compareValue="PLAN">
+			AND PRMT_DIV = #prmtDiv#
+		</isNotEqual>
+		<isEqual property="finishYn" compareValue="N">
+			AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN START_DT AND END_DT
+			ORDER BY START_DT DESC
+		</isEqual>
+		<isEqual property="finishYn" compareValue="Y">
+			AND END_DT <![CDATA[ < ]]> TO_CHAR(SYSDATE, 'YYYYMMDD')
+			<isEqual property="winsYn" compareValue="Y">
+				AND WINS_IMG IS NOT NULL
+			</isEqual>
+			ORDER BY END_DT DESC
+		</isEqual>
+)
+WHERE PRMT_NUM = #prmtNum#
+</select>
+
+<select id="PRMT_WEBLIST_S_05" resultMap="PRMT_WEBLIST_R_05">
+	SELECT
+		PRMT_NUM,
+		PRMT_NM,
+		PRMT_EXP
+	FROM (
+		SELECT
+			PRMT_NUM, PRMT_NM,PRMT_EXP
+		FROM
+			TB_PRMT AS A
+		WHERE 1=1
+		AND TO_CHAR(SYSDATE,'YYYYMMDD') BETWEEN START_DT AND END_DT
+		AND STATUS_CD = 'TS03'
+		AND ADBANNER_VIEW_YN = 'Y'
+		ORDER BY DBMS_RANDOM.RANDOM
+	) AS A
+WHERE ROWNUM = 1
+</select>
+
+<select id="PRMT_WEBLIST_S_06" resultMap="PRMT_WEBLIST_R_06">
+	SELECT
+		PARTNER_CODE,
+		PARTNER_NM,
+		CP_NM,
+		APL_START_DT,
+		APL_END_DT,
+		CP_COMMENTS,
+	    BANNER_THUMB
+	FROM TB_POINT_CP
+	WHERE 1=1
+	AND	APL_START_DT <![CDATA[<=]]> TO_CHAR(SYSDATE,'YYYYMMDD')
+	AND	APL_END_DT >= TO_CHAR(SYSDATE,'YYYYMMDD')
+	ORDER BY APL_START_DT
+</select>
+
+
+<select id="MAIN_PRMT_S_00" resultMap="MAIN_PRMT_R_00">
+SELECT PRMT_NUM
+     , PRINT_SN
+FROM TB_MAIN_PRMT
+WHERE PRMT_NUM=#prmtNum#
+</select>
+
+
+<select id="MAIN_PRMT_S_01" resultMap="MAIN_PRMT_R_01">
+SELECT T_PR.PRMT_NUM
+     , PRINT_SN
+     , CORP_ID
+     , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = T_PR.CORP_ID) AS CORP_NM
+     , PRMT_NM
+     , START_DT
+     , END_DT
+     , PRMT_DIV
+     , LIST_IMG
+     , MAIN_IMG
+     , MOBILE_MAIN_IMG
+     , BG_COLOR_NUM
+     , DTL_IMG
+     , MOBILE_DTL_IMG
+     , STATUS_CD
+     , FRST_REG_DTTM
+     , CONF_REQUEST_DTTM
+     , CONF_DTTM
+     , (CASE WHEN(TO_DATE(END_DT,'YYYYMMDD')+1 > SYSDATE) THEN 'N' ELSE 'Y' END) AS END_EVENT
+     , PRDT_VIEW_DIV
+	 , SN_RANDOM_YN
+FROM TB_MAIN_PRMT T_MPR
+LEFT OUTER JOIN TB_PRMT T_PR
+ON T_MPR.PRMT_NUM = T_PR.PRMT_NUM
+ORDER BY PRINT_SN
+</select>
+
+<select id="MAIN_PRMT_S_02" resultMap="MAIN_PRMT_R_02">
+SELECT * FROM (
+	SELECT T_PR.PRMT_NUM
+		 , ROWNUM AS PRINT_SN
+		 , CORP_ID
+		 , PRMT_NM
+		 , START_DT
+		 , END_DT
+		 , PRMT_DIV
+		 , MAIN_IMG
+		 , MOBILE_MAIN_IMG
+		 , BG_COLOR_NUM
+		 , LIST_IMG
+		 , DTL_IMG
+		 , MOBILE_DTL_IMG
+		 , STATUS_CD
+		 , FRST_REG_DTTM
+		 , PRDT_VIEW_DIV
+	FROM (
+			/*ORDER BY 순번 처리 후 랜덤 처리*/
+			 SELECT * FROM (
+				   SELECT *
+				   FROM TB_MAIN_PRMT
+				   WHERE SN_RANDOM_YN = 'N'
+				   ORDER BY PRINT_SN
+			 ) AS A
+			 UNION ALL
+			 SELECT * FROM (
+				   SELECT *
+				   FROM TB_MAIN_PRMT B
+				   WHERE SN_RANDOM_YN = 'Y'
+				   ORDER BY dbms_random.random()
+			 ) AS B
+		 ) T_MPR
+	LEFT OUTER JOIN TB_PRMT T_PR
+	ON T_MPR.PRMT_NUM = T_PR.PRMT_NUM
+	WHERE START_DT <![CDATA[<=]]> TO_CHAR(SYSDATE,'YYYYMMDD')
+	  AND END_DT <![CDATA[>=]]> TO_CHAR(SYSDATE,'YYYYMMDD')
+	  AND STATUS_CD = 'TS03'
+) ORDER BY PRINT_SN
+</select>
+
+<select id="MAIN_PRMT_S_03" resultMap="MAIN_PRMT_R_02">
+SELECT T_PR.PRMT_NUM
+         , PRINT_SN
+         , CORP_ID
+         , PRMT_NM
+         , START_DT
+         , END_DT
+         , PRMT_DIV
+         , MAIN_IMG
+         , MOBILE_MAIN_IMG
+         , BG_COLOR_NUM
+         , LIST_IMG
+         , DTL_IMG
+         , MOBILE_DTL_IMG
+         , STATUS_CD
+         , FRST_REG_DTTM
+         , PRDT_VIEW_DIV
+    FROM TB_MAIN_PRMT T_MPR
+    LEFT OUTER JOIN TB_PRMT T_PR
+    ON T_MPR.PRMT_NUM = T_PR.PRMT_NUM
+    WHERE T_MPR.PRMT_NUM=#prmtNum#
+</select>
+
+<insert id="MAIN_PRMT_I_01">
+INSERT INTO TB_MAIN_PRMT
+     ( PRMT_NUM
+     , PRINT_SN
+     )
+VALUES
+     ( #prmtNum#
+     , #printSn#
+     )
+</insert>
+
+<!-- 상품 이미지 순번변경 -->
+<update id="MAIN_PRMT_U_01">
+UPDATE TB_MAIN_PRMT
+   SET PRINT_SN = PRINT_SN + 1
+ WHERE 1 = 1
+  <isNotEqual property="oldSn" compareValue="0">
+   <![CDATA[
+   AND PRINT_SN < #oldSn#
+   ]]>
+  </isNotEqual>
+   <![CDATA[
+   AND PRINT_SN >= #newSn#
+   ]]>
+</update>
+
+<!-- 상품 이미지 순번변경 -->
+<update id="MAIN_PRMT_U_02">
+UPDATE TB_MAIN_PRMT
+   SET PRINT_SN = PRINT_SN - 1
+ WHERE 1  =  1
+ <isNotEqual property="newSn" compareValue="0">
+ <![CDATA[
+   AND PRINT_SN <= #newSn#
+ ]]>
+ </isNotEqual>
+ <![CDATA[
+   AND PRINT_SN > #oldSn#
+ ]]>
+</update>
+
+<!-- 상품 이미지 순번변경 수정된 객체 -->
+<update id="MAIN_PRMT_U_03">
+UPDATE TB_MAIN_PRMT
+   SET PRINT_SN       = #newSn#
+ WHERE 1 = 1
+   AND PRMT_NUM      = #prmtNum#
+   AND PRINT_SN       = #oldSn#
+</update>
+
+<delete id="MAIN_PRMT_D_00">
+DELETE FROM TB_MAIN_PRMT
+ WHERE PRMT_NUM = #prmtNum#
+</delete>
+
+<select id="PRMT_CMT_S_00" resultMap="PRMT_CMT_R_00">
+SELECT CMT_SN           /*댓글 순번*/
+     , PRMT_NUM     	/*프로모션 번호*/
+     , USER_ID          /*사용자 아이디*/
+     , EMAIL            /*이메일*/
+     , UTL_RAW.CAST_TO_VARCHAR2(CONTENTS) AS CONTENTS         /*내용*/
+     , PRINT_YN         /*출력 여부*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+     , FRST_REG_IP      /*최초 등록 아이피*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+     , LAST_MOD_IP      /*최종 수정 아이피*/
+FROM (
+	SELECT ROWNUM AS RN
+		 , CMT_SN           /*댓글 순번*/
+	     , PRMT_NUM     	/*프로모션 번호*/
+	     , USER_ID          /*사용자 아이디*/
+	     , EMAIL            /*이메일*/
+	     , CONTENTS		    /*내용*/
+	     , PRINT_YN         /*출력 여부*/
+	     , FRST_REG_DTTM    /*최초 등록 일시*/
+	     , LAST_MOD_DTTM    /*최종 수정 일시*/
+	     , FRST_REG_ID      /*최초 등록 아이디*/
+	     , FRST_REG_IP      /*최초 등록 아이피*/
+	     , LAST_MOD_ID      /*최종 수정 아이디*/
+	     , LAST_MOD_IP      /*최종 수정 아이피*/
+	FROM (
+			SELECT ROWNUM AS RN
+			 , CMT_SN           /*댓글 순번*/
+		     , PRMT_NUM     	/*프로모션 번호*/
+		     , USER_ID          /*사용자 아이디*/
+		     , EMAIL            /*이메일*/
+		     , CONTENTS		    /*내용*/
+		     , PRINT_YN         /*출력 여부*/
+		     , FRST_REG_DTTM    /*최초 등록 일시*/
+		     , LAST_MOD_DTTM    /*최종 수정 일시*/
+		     , FRST_REG_ID      /*최초 등록 아이디*/
+		     , FRST_REG_IP      /*최초 등록 아이피*/
+		     , LAST_MOD_ID      /*최종 수정 아이디*/
+		     , LAST_MOD_IP      /*최종 수정 아이피*/
+		FROM TB_PRMT_CMT
+		WHERE 1=1
+				<isNotEmpty property="prmtNum">
+				   	   AND PRMT_NUM = #prmtNum#
+				</isNotEmpty>
+				<isNotEmpty property="printYn">
+				   	   AND PRINT_YN = #printYn#
+				</isNotEmpty>
+				ORDER BY TO_NUMBER(CMT_SN) DESC
+		)
+	)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="PRMT_CMT_S_01" resultClass="int">
+SELECT COUNT(*) AS cnt
+FROM TB_PRMT_CMT
+	WHERE 1=1
+	<isNotEmpty property="prmtNum">
+	   	   AND PRMT_NUM = #prmtNum#
+	</isNotEmpty>
+	<isNotEmpty property="printYn">
+	   	   AND PRINT_YN = #printYn#
+	</isNotEmpty>
+</select>
+
+<!-- 프로모션 댓글 엑셀 저장용 -->
+<select id="PRMT_CMT_S_02" resultMap="PRMT_CMT_R_02">
+SELECT CMT_SN           /*댓글 순번*/
+     , PRMT_NUM     	/*프로모션 번호*/
+     , USER_ID          /*사용자 아이디*/
+     , EMAIL            /*이메일*/
+     , UTL_RAW.CAST_TO_VARCHAR2(CONTENTS) AS CONTENTS         /*내용*/
+     , PRINT_YN         /*출력 여부*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+     , FRST_REG_IP      /*최초 등록 아이피*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+     , LAST_MOD_IP      /*최종 수정 아이피*/
+     , (SELECT USER_NM FROM TB_USER WHERE USER_ID=TB_PRMT_CMT.USER_ID) USER_NM
+     , (SELECT TEL_NUM FROM TB_USER WHERE USER_ID=TB_PRMT_CMT.USER_ID) TEL_NUM
+FROM TB_PRMT_CMT
+WHERE 1=1
+	<isNotEmpty property="prmtNum">
+	   	   AND PRMT_NUM = #prmtNum#
+	</isNotEmpty>
+	<isNotEmpty property="printYn">
+	   	   AND PRINT_YN = #printYn#
+	</isNotEmpty>
+ORDER BY TO_NUMBER(CMT_SN) DESC
+</select>
+
+<insert id="PRMT_CMT_I_00">
+INSERT INTO TB_PRMT_CMT
+	(PRMT_NUM
+	, CMT_SN
+	, USER_ID
+	, EMAIL
+	, CONTENTS
+	, PRINT_YN
+	, FRST_REG_DTTM
+	, LAST_MOD_DTTM
+	, FRST_REG_ID
+	, LAST_MOD_ID
+	, FRST_REG_IP
+	, LAST_MOD_IP
+	)
+	VALUES
+	(#prmtNum#
+	, (SELECT TO_CHAR(NVL(MAX(TO_NUMBER(CMT_SN)),0) + 1) FROM TB_PRMT_CMT)
+	, #userId#
+	, #email#
+	, UTL_RAW.CAST_TO_RAW(#contents#)
+	, 'Y'
+	, SYSDATE
+	, SYSDATE
+	, #userId#
+	, #userId#
+	, #frstRegIp#
+	, #frstRegIp#
+	)
+</insert>
+
+<update id="PRMT_CMT_U_00">
+UPDATE TB_PRMT_CMT
+   SET PRINT_YN       = #printYn#
+ WHERE 1 = 1
+   AND CMT_SN      = #cmtSn#
+</update>
+
+<delete id="PRMT_CMT_D_00">
+DELETE FROM TB_PRMT_CMT
+WHERE CMT_SN=#cmtSn#
+</delete>
+
+<delete id="PRMT_CMT_D_01">
+DELETE FROM TB_PRMT_CMT
+WHERE PRMT_NUM=#prmtNum#
+</delete>
+
+<select id="PRMT_SV_S_00" resultMap="MAIN_PRMT_R_00">
+SELECT PRMT_NUM
+     , PRINT_SN
+FROM TB_PRMT_SV
+WHERE PRMT_NUM=#prmtNum#
+</select>
+
+<select id="PRMT_SV_S_01" resultMap="MAIN_PRMT_R_01">
+SELECT T_PR.PRMT_NUM
+     , PRINT_SN
+     , CORP_ID
+     , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = T_PR.CORP_ID) AS CORP_NM
+     , PRMT_NM
+     , START_DT
+     , END_DT
+     , PRMT_DIV
+     , LIST_IMG
+     , MAIN_IMG
+     , MOBILE_MAIN_IMG
+     , BG_COLOR_NUM
+     , DTL_IMG
+     , MOBILE_DTL_IMG
+     , STATUS_CD
+     , FRST_REG_DTTM
+     , CONF_REQUEST_DTTM
+     , CONF_DTTM
+     <![CDATA[
+     , (CASE WHEN(TO_DATE(END_DT,'YYYYMMDD')+1 > SYSDATE) THEN 'N' ELSE 'Y' END) AS END_EVENT
+     ]]>
+     , PRDT_VIEW_DIV
+     , '' AS SN_RANDOM_YN
+FROM TB_PRMT_SV T_MPR
+LEFT OUTER JOIN TB_PRMT T_PR
+ON T_MPR.PRMT_NUM = T_PR.PRMT_NUM
+ORDER BY PRINT_SN
+</select>
+
+<select id="PRMT_SV_S_02" resultMap="MAIN_PRMT_R_02">
+SELECT PRMT_NUM
+     , PRINT_SN
+     , CORP_ID
+     , PRMT_NM
+     , START_DT
+     , END_DT
+     , PRMT_DIV
+     , LIST_IMG
+     , MAIN_IMG
+     , MOBILE_MAIN_IMG
+     , BG_COLOR_NUM
+     , DTL_IMG
+     , MOBILE_DTL_IMG
+     , STATUS_CD
+     , FRST_REG_DTTM
+     , PRDT_VIEW_DIV
+FROM (
+     SELECT ROWNUM AS RN
+          , PRMT_NUM
+          , PRINT_SN
+          , CORP_ID
+          , PRMT_NM
+          , START_DT
+          , END_DT
+          , PRMT_DIV
+          , MAIN_IMG
+          , MOBILE_MAIN_IMG
+     	  , BG_COLOR_NUM
+          , LIST_IMG
+          , DTL_IMG
+          , MOBILE_DTL_IMG
+          , STATUS_CD
+          , FRST_REG_DTTM
+          , PRDT_VIEW_DIV
+       FROM (SELECT T_PR.PRMT_NUM
+                  , PRINT_SN
+                  , CORP_ID
+                  , PRMT_NM
+                  , START_DT
+                  , END_DT
+                  , PRMT_DIV
+                  , MAIN_IMG
+                  , MOBILE_MAIN_IMG
+     			  , BG_COLOR_NUM
+                  , LIST_IMG
+                  , DTL_IMG
+                  , MOBILE_DTL_IMG
+                  , STATUS_CD
+                  , FRST_REG_DTTM
+                  , PRDT_VIEW_DIV
+               FROM TB_PRMT_SV T_MPR
+               LEFT OUTER JOIN TB_PRMT T_PR
+                 ON T_MPR.PRMT_NUM = T_PR.PRMT_NUM
+              <![CDATA[
+              WHERE TO_DATE(END_DT,'YYYYMMDD')+1 > SYSDATE
+              ]]>
+                AND STATUS_CD = 'TS03'
+              ORDER BY PRINT_SN
+             )
+        )
+ WHERE RN BETWEEN 1 AND 5
+</select>
+
+<select id="PRMT_SV_S_03" resultMap="MAIN_PRMT_R_02">
+SELECT T_PR.PRMT_NUM
+         , PRINT_SN
+         , CORP_ID
+         , PRMT_NM
+         , START_DT
+         , END_DT
+         , PRMT_DIV
+         , MAIN_IMG
+ 		 , BG_COLOR_NUM
+         , LIST_IMG
+         , DTL_IMG
+         , MOBILE_DTL_IMG
+         , STATUS_CD
+         , FRST_REG_DTTM
+         , PRDT_VIEW_DIV
+      FROM TB_PRMT_SV T_MPR
+      LEFT OUTER JOIN TB_PRMT T_PR
+        ON T_MPR.PRMT_NUM = T_PR.PRMT_NUM     
+     WHERE T_MPR.PRMT_NUM=#prmtNum#
+</select>
+
+<insert id="PRMT_SV_I_01">
+INSERT INTO TB_PRMT_SV
+     ( PRMT_NUM
+     , PRINT_SN
+     )
+VALUES
+     ( #prmtNum#
+     , #printSn#
+     )
+</insert>
+
+<!-- 상품 이미지 순번변경 -->
+<update id="PRMT_SV_U_01">
+UPDATE TB_PRMT_SV
+   SET PRINT_SN = PRINT_SN + 1
+ WHERE 1 = 1
+  <isNotEqual property="oldSn" compareValue="0">
+   <![CDATA[
+   AND PRINT_SN < #oldSn#
+   ]]>
+  </isNotEqual>
+   <![CDATA[
+   AND PRINT_SN >= #newSn#
+   ]]>
+</update>
+
+<!-- 상품 이미지 순번변경 -->
+<update id="PRMT_SV_U_02">
+UPDATE TB_PRMT_SV
+   SET PRINT_SN = PRINT_SN - 1
+ WHERE 1  =  1
+ <isNotEqual property="newSn" compareValue="0">
+ <![CDATA[
+   AND PRINT_SN <= #newSn#
+ ]]>
+ </isNotEqual>
+ <![CDATA[
+   AND PRINT_SN > #oldSn#
+ ]]>
+</update>
+
+<!-- 상품 이미지 순번변경 수정된 객체 -->
+<update id="PRMT_SV_U_03">
+UPDATE TB_PRMT_SV
+   SET PRINT_SN       = #newSn#
+ WHERE 1 = 1
+   AND PRMT_NUM      = #prmtNum#
+   AND PRINT_SN       = #oldSn#
+</update>
+
+<delete id="PRMT_SV_D_00">
+DELETE FROM TB_PRMT_SV
+ WHERE PRMT_NUM = #prmtNum#
+</delete>
+
+<!-- 모바일 프로모션 -->
+<select id="PRMT_MW_S_00" resultMap="MAIN_PRMT_R_00">
+SELECT PRMT_NUM
+     , PRINT_SN
+FROM TB_PRMT_MOBILE
+WHERE PRMT_NUM=#prmtNum#
+</select>
+
+<select id="PRMT_MW_S_01" resultMap="MAIN_PRMT_R_01">
+SELECT T_PR.PRMT_NUM
+     , PRINT_SN
+     , CORP_ID
+     , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = T_PR.CORP_ID) AS CORP_NM
+     , PRMT_NM
+     , START_DT
+     , END_DT
+     , PRMT_DIV
+     , LIST_IMG
+     , MAIN_IMG
+     , MOBILE_MAIN_IMG
+     , BG_COLOR_NUM
+     , DTL_IMG
+     , MOBILE_DTL_IMG
+     , STATUS_CD
+     , FRST_REG_DTTM
+     , CONF_REQUEST_DTTM
+     , CONF_DTTM
+     <![CDATA[
+     , (CASE WHEN(TO_DATE(END_DT,'YYYYMMDD')+1 > SYSDATE) THEN 'N' ELSE 'Y' END) AS END_EVENT
+     ]]>
+     , PRDT_VIEW_DIV
+	 , '' AS SN_RANDOM_YN
+FROM TB_PRMT_MOBILE T_MPR
+LEFT OUTER JOIN TB_PRMT T_PR
+ON T_MPR.PRMT_NUM = T_PR.PRMT_NUM
+ORDER BY PRINT_SN
+</select>
+
+<select id="PRMT_MW_S_02" resultMap="MAIN_PRMT_R_02">
+SELECT ROWNUM AS RN
+     , PRMT_NUM
+     , PRINT_SN
+     , CORP_ID
+     , PRMT_NM
+     , START_DT
+     , END_DT
+     , PRMT_DIV
+     , LIST_IMG
+     , MAIN_IMG
+     , MOBILE_MAIN_IMG
+     , BG_COLOR_NUM
+     , DTL_IMG
+     , MOBILE_DTL_IMG
+     , STATUS_CD
+     , FRST_REG_DTTM
+     , PRDT_VIEW_DIV
+FROM (
+     SELECT ROWNUM AS RN
+          , PRMT_NUM
+          , PRINT_SN
+          , CORP_ID
+          , PRMT_NM
+          , START_DT
+          , END_DT
+          , PRMT_DIV
+          , LIST_IMG
+          , MAIN_IMG
+          , MOBILE_MAIN_IMG
+    	  , BG_COLOR_NUM
+          , DTL_IMG
+          , MOBILE_DTL_IMG
+          , STATUS_CD
+          , FRST_REG_DTTM
+          , PRDT_VIEW_DIV
+       FROM (SELECT T_PR.PRMT_NUM
+                  , PRINT_SN
+                  , CORP_ID
+                  , PRMT_NM
+                  , START_DT
+                  , END_DT
+                  , PRMT_DIV
+                  , LIST_IMG
+                  , MAIN_IMG
+                  , MOBILE_MAIN_IMG
+     			  , BG_COLOR_NUM
+                  , DTL_IMG
+                  , MOBILE_DTL_IMG
+                  , STATUS_CD
+                  , FRST_REG_DTTM
+                  , PRDT_VIEW_DIV
+               FROM TB_PRMT_MOBILE T_MPR
+               LEFT OUTER JOIN TB_PRMT T_PR
+                 ON T_MPR.PRMT_NUM = T_PR.PRMT_NUM
+              <![CDATA[
+              WHERE TO_DATE(END_DT,'YYYYMMDD')+1 > SYSDATE
+              ]]>
+                AND STATUS_CD = 'TS03'
+              ORDER BY PRINT_SN
+             )
+        )
+ WHERE RN BETWEEN 1 AND 5
+</select>
+
+<select id="PRMT_MW_S_03" resultMap="MAIN_PRMT_R_02">
+SELECT T_PR.PRMT_NUM
+         , PRINT_SN
+         , CORP_ID
+         , PRMT_NM
+         , START_DT
+         , END_DT
+         , PRMT_DIV
+         , LIST_IMG
+         , MAIN_IMG
+         , MOBILE_MAIN_IMG
+ 		 , BG_COLOR_NUM
+         , DTL_IMG
+         , MOBILE_DTL_IMG
+         , STATUS_CD
+         , FRST_REG_DTTM
+         , PRDT_VIEW_DIV
+      FROM TB_PRMT_MOBILE T_MPR
+      LEFT OUTER JOIN TB_PRMT T_PR
+        ON T_MPR.PRMT_NUM = T_PR.PRMT_NUM     
+     WHERE T_MPR.PRMT_NUM=#prmtNum#
+</select>
+
+<insert id="PRMT_MW_I_01">
+INSERT INTO TB_PRMT_MOBILE
+     ( PRMT_NUM
+     , PRINT_SN
+     )
+VALUES
+     ( #prmtNum#
+     , #printSn#
+     )
+</insert>
+
+<!-- 상품 이미지 순번변경 -->
+<update id="PRMT_MW_U_01">
+UPDATE TB_PRMT_MOBILE
+   SET PRINT_SN = PRINT_SN + 1
+ WHERE 1 = 1
+  <isNotEqual property="oldSn" compareValue="0">
+   <![CDATA[
+   AND PRINT_SN <  #oldSn#
+   ]]>
+  </isNotEqual>
+   <![CDATA[
+   AND PRINT_SN >= #newSn#
+   ]]>
+</update>
+
+<!-- 상품 이미지 순번변경 -->
+<update id="PRMT_MW_U_02">
+UPDATE TB_PRMT_MOBILE
+   SET PRINT_SN = PRINT_SN - 1
+ WHERE 1  =  1
+ <isNotEqual property="newSn" compareValue="0">
+ <![CDATA[
+   AND PRINT_SN <= #newSn#
+ ]]>
+ </isNotEqual>
+ <![CDATA[
+   AND PRINT_SN > #oldSn#
+ ]]>
+</update>
+
+<!-- 상품 이미지 순번변경 수정된 객체 -->
+<update id="PRMT_MW_U_03">
+UPDATE TB_PRMT_MOBILE
+   SET PRINT_SN       = #newSn#
+ WHERE 1 = 1
+   AND PRMT_NUM      = #prmtNum#
+   AND PRINT_SN       = #oldSn#
+</update>
+
+<delete id="PRMT_MW_D_00">
+DELETE FROM TB_PRMT_MOBILE
+ WHERE PRMT_NUM = #prmtNum#
+</delete>
+
+<!-- 프로모션 첨부 파일 -->
+<select id="PRMT_FILE_S_00" resultMap="PRMT_FILE_R_00">
+SELECT PRMT_FILE_NUM
+	 , PRMT_NUM
+     , SAVE_PATH
+	 , SAVE_FILE_NM
+     , REAL_FILE_NM
+FROM TB_PRMT_FILE
+ WHERE 1=1
+ 	<isNotEmpty property="prmtFileNum">
+			AND PRMT_FILE_NUM = #prmtFileNum#
+ 	</isNotEmpty>
+ 	<isNotEmpty property="prmtNum">
+			AND PRMT_NUM = #prmtNum#
+ 	</isNotEmpty>
+ORDER BY REAL_FILE_NM
+</select>
+
+<select id="PRMT_FILE_S_01" resultMap="PRMT_FILE_R_01">
+SELECT DOC_ID
+  , FILE_NUM
+  , SAVE_PATH
+  , SAVE_FILE_NM
+  , REAL_FILE_NM
+  , DOC_DIV
+  , DOC_NM
+  , REG_DTTM
+FROM (SELECT ROWNUM AS RN
+          , DOC_ID
+          , FILE_NUM
+          , SAVE_PATH
+          , SAVE_FILE_NM
+          , REAL_FILE_NM
+          , DOC_DIV
+          , DOC_NM
+          , REG_DTTM
+        FROM (SELECT B.PRMT_NUM AS DOC_ID
+                  , B.PRMT_FILE_NUM AS FILE_NUM
+                  , B.SAVE_PATH
+                  , B.SAVE_FILE_NM
+                  , B.REAL_FILE_NM
+				  , A.PRMT_DIV AS DOC_DIV
+                  , A.PRMT_NM AS DOC_NM
+                  , A.FRST_REG_DTTM AS REG_DTTM
+                FROM TB_PRMT A
+                    INNER JOIN TB_PRMT_FILE B
+                    ON  A.PRMT_NUM = B.PRMT_NUM
+				<isNotEmpty property="docDiv">
+                	WHERE A.PRMT_DIV = #docDiv#
+				</isNotEmpty>
+                ORDER BY B.PRMT_NUM DESC
+                  , TO_NUMBER (B.PRMT_FILE_NUM)))
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="PRMT_FILE_S_02" resultClass="int">
+SELECT COUNT(*) AS CNT
+FROM TB_PRMT A
+    INNER JOIN TB_PRMT_FILE B
+    ON  A.PRMT_NUM = B.PRMT_NUM
+<isNotEmpty property="docDiv">
+	WHERE A.PRMT_DIV = #docDiv#
+</isNotEmpty>
+</select>
+
+<insert id="PRMT_FILE_I_00">
+INSERT INTO TB_PRMT_FILE
+     (PRMT_FILE_NUM
+	 , PRMT_NUM
+     , SAVE_PATH
+	 , SAVE_FILE_NM
+     , REAL_FILE_NM
+     )
+VALUES
+     ((SELECT TO_CHAR(NVL(MAX(TO_NUMBER(PRMT_FILE_NUM)),0) + 1) FROM TB_PRMT_FILE)
+	 , #prmtNum#
+     , #savePath#
+	 , #saveFileNm#
+     , #realFileNm#
+     )
+</insert>
+
+<!-- 파일 delete -->
+<delete id="PRMT_FILE_D_00">
+DELETE FROM TB_PRMT_FILE
+WHERE  PRMT_FILE_NUM = #prmtFileNum#
+</delete>
+
+<!-- 파일 delete- 전부 삭제 -->
+<delete id="PRMT_FILE_D_01">
+DELETE FROM TB_PRMT_FILE
+WHERE  PRMT_NUM = #prmtNum#
+</delete>
+
+<insert id="PRMT_FILE_I_01">
+	MERGE INTO TB_HT_FILE T_FILE
+	USING DUAL
+	ON ( T_FILE.USER_ID = #userId#)
+	WHEN MATCHED THEN
+	UPDATE
+	  SET T_FILE.SAVE_PATH = #savePath#
+	    , T_FILE.SAVE_FILE_NM = #saveFileNm#
+	    , T_FILE.REAL_FILE_NM = #realFileNm#
+	    , T_FILE.REG_DTTM = SYSDATE
+	WHEN NOT MATCHED THEN
+	INSERT
+	     (USER_ID
+	     , SAVE_PATH
+		 , SAVE_FILE_NM
+	     , REAL_FILE_NM
+	     , CONF_YN
+	     , REG_DTTM
+	     )
+	VALUES
+	     (#userId#
+	     , #savePath#
+		 , #saveFileNm#
+	     , #realFileNm#
+	     , 'N'
+	     , SYSDATE
+	     )
+</insert>
+
+<insert id="PRMT_FILE_I_02">
+	MERGE INTO TB_PRMT_IMG_FILE T_FILE
+	USING DUAL
+	ON ( T_FILE.PRMT_NUM = #prmtNum# AND T_FILE.USER_ID = #userId#)
+	WHEN MATCHED THEN
+	UPDATE
+	  SET T_FILE.SAVE_PATH = #savePath#
+	    , T_FILE.SAVE_FILE_NM = #saveFileNm#
+	    , T_FILE.REAL_FILE_NM = #realFileNm#
+	    , T_FILE.REG_DTTM = SYSDATE
+	WHEN NOT MATCHED THEN
+	INSERT
+	     ( PRMT_NUM
+	     , USER_ID
+	     , SAVE_PATH
+		 , SAVE_FILE_NM
+	     , REAL_FILE_NM
+	     , CONF_YN
+	     , REG_DTTM
+	     )
+	VALUES
+	     ( #prmtNum#
+	     , #userId#
+	     , #savePath#
+		 , #saveFileNm#
+	     , #realFileNm#
+	     , 'N'
+	     , SYSDATE
+	     )
+</insert>
+
+<insert id="GOVA_I_01">
+INSERT INTO TB_GOVA (
+	SEQ, USER_ID, ORG_NAME, GOVA_TYPE, FOLDER_NAME, PRMT_NUM
+)
+VALUES (
+	SEQ_GOVA_SN.NEXTVAL,
+	#userId#,
+	#orgName#,
+	#govaType#,
+	#folderName#,
+	#prmtNum#
+)
+</insert>
+
+<!-- GOVA_FILE 테이블 insert -->
+<insert id="GOVA_FILE_I_01">
+INSERT INTO TB_GOVA_FILE (
+	SAVE_PATH,
+	FOLDER_NAME,
+	REAL_FILE_NM,
+	SAVE_FILE_NM,
+	PRMT_NUM
+) VALUES (
+	#savePath#,
+	#folderName#,
+	#realFileNm#,
+	#saveFileNm#,
+	#prmtNum#
+)
+</insert>
+
+<select id="GOVA_LIST_S_01" resultClass="common.LowerHashMap">
+	SELECT
+	SEQ,
+	TG.USER_ID,
+	REG_DTTM,
+	ORG_NAME,
+	CASE WHEN GOVA_TYPE = 'P' THEN '사전' ELSE '결과' END AS GOVA_TYPE,
+	FOLDER_NAME,
+	IS_CONFIRMED,
+	DEL_YN,
+	MEMO,
+	PRMT_NUM,
+	TU.USER_NM,
+	TU.TEL_NUM
+	FROM TB_GOVA TG
+	LEFT JOIN TB_USER TU
+	ON TG.USER_ID = TU.USER_ID
+	WHERE PRMT_NUM = #prmtNum#
+	<isNotEmpty property="userNm">
+		<isNotNull property="userNm">
+			AND TU.USER_NM LIKE '%'||#userNm#||'%'
+		</isNotNull>
+	</isNotEmpty>
+	<isNotEmpty property="telNum">
+		<isNotNull property="telNum">
+			AND TEL_NUM LIKE '%'||#telNum#||'%'
+		</isNotNull>
+	</isNotEmpty>
+	<isNotEmpty property="orgName">
+		<isNotNull property="orgName">
+			AND ORG_NAME LIKE '%'||#orgName#||'%'
+		</isNotNull>
+	</isNotEmpty>
+	<isNotEmpty property="govaType">
+		<isNotNull property="govaType">
+			AND GOVA_TYPE = #govaType#
+		</isNotNull>
+	</isNotEmpty>
+	<isEqual property="isConfirmed" compareValue="N">
+		AND IS_CONFIRMED = 'N'
+	</isEqual>
+
+	ORDER BY SEQ
+</select>
+
+<select id="GOVA_LIST_S_02" resultClass="common.LowerHashMap">
+	SELECT PRMT_NUM, PRMT_NM  FROM TB_PRMT WHERE PRMT_DIV = 'GOVA' ORDER BY PRMT_NUM
+</select>
+
+<update id="GOVA_LIST_U_01">
+	UPDATE TB_GOVA
+	SET MEMO = #memo#
+	WHERE 1 = 1
+	  AND SEQ = #seq#
+</update>
+
+<update id="GOVA_LIST_U_02">
+	UPDATE TB_GOVA
+	SET IS_CONFIRMED = #isConfirmed#
+	WHERE 1 = 1
+	  AND SEQ = #seq#
+</update>
+</sqlMap>

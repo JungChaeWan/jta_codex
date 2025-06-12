@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC 
+    "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN" 
+    "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+<form-validation>
+
+    <formset>
+        <form name="DFTINFVO">
+			<field property="disMaxiPct" depends="required, integer">
+        		<arg0 key="이용제한율" />
+			</field>
+			<field property="userRegCpAmt" depends="required, integer">
+        		<arg0 key="회원가입" />
+			</field>
+			<field property="useEpilCpAmt" depends="required, integer">
+        		<arg0 key="이용후기" />
+			</field>
+			<field property="appRegCpAmt" depends="required, integer">
+        		<arg0 key="APP설치" />
+			</field>
+			<field property="cpExprDayNum" depends="required, integer">
+        		<arg0 key="유효일수" />
+			</field>
+        </form>
+    </formset>
+
+</form-validation>

@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->	
+    <link rel="stylesheet" href="../../css/common/jquery-ui.css">
+	<link rel="stylesheet" href="../../css/web/common2.css">
+	<link rel="stylesheet" href="../../css/web/style.css">
+	<link rel="stylesheet" href="../../css/web/rc.css">
+	<link rel="stylesheet" href="../../css/web/re/rc2.css">
+    <!-- script -->
+    <script src="../../js/jquery-1.11.1.js"></script>
+    <script src="../../js/jquery-ui.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+    <script src="../../js/swiper.js"></script>
+    <script src="../../js/html_common.js"></script>
+    <script src="../../js/html_style.js"></script>
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
+    <!-- add -->
+    <script>
+		// 필터 가격
+		$(function() {
+
+			$("#slider-range").slider({
+				range: true,
+				min: 0,
+				max: 500,
+				values: [0, 500],
+				slide: function(event, ui) {
+					$("#amount2").val( ui.values[0] + "원" + " - " + (ui.values[1]) + "원");
+				}
+			});
+			$( "#amount2" ).text( commaNum($( "#slider-range" ).slider( "values", 0 )) + "원" + " - " + commaNum($( "#slider-range" ).slider( "values", 1 )) + "원" );
+		});
+
+		function fn_OrderChange(orCd) {
+			$(".sort-filter button").removeClass("active");
+			if(orCd == "${Constant.ORDER_GPA}"){
+				$(".sortRent1 button").addClass("active");
+			}else if(orCd == "${Constant.ORDER_SALE}"){
+				$(".sortRent2 button").addClass("active");
+			}else if(orCd == "${Constant.ORDER_PRICE}"){
+				$(".sortRent3 button").addClass("active");
+			}else if(orCd == "${Constant.ORDER_NEW}"){
+				$(".sortRent4 button").addClass("active");
+			}
+			var orAs;
+			if (orCd == "${Constant.ORDER_PRICE}") {
+				orAs = "${Constant.ORDER_ASC}";
+			} else {
+				orAs = "${Constant.ORDER_DESC}";
+			}
+			$("#orderCd").val(orCd);
+			$("#orderAsc").val(orAs);
+		}
+
+	</script>
+</head>
+<body>
+
+	<!-- top banner zone-->
+	<div id="top_banner" class="top-banner swiper-container">
+		<ul class="swiper-wrapper">
+			<li class="swiper-slide" style="background-color: rgb(246, 12, 64)">
+				<a href="${result.url}" target="_blank">
+					<div class="bar-tw">
+						<p class="bar-t"><em class="bar-em">회원가입</em>만 해도 혜택이 팡팡!</p>
+					</div>
+					<img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+				</a>
+			</li>
+			<li class="swiper-slide" style="background-color: rgb(246, 12, 64)">
+				<a href="${result.url}" target="_blank">
+					<div class="bar-tw">
+						<p class="bar-t">착한수수료 동참을 지지하는 <em class="bar-em">댓글이벤트</em> 참여하세요!</p>
+					</div>
+					<img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+				</a>
+			</li>
+		</ul>
+		<div class="container">
+			<a href="javascript:void(0)" id="top_close" class="close"><img src="/images/web/comm/btn_close.png" alt="닫기"></a>
+		</div>
+	</div>
+	<!--// top banner zone-->
+
+	<!-- re_header -->
+	<div id="_header">
+		<div class="re_header">
+			<div class="inner">
+				<div class="header-top">
+					<div class="box__usermenu">
+						<ul class="list__usermenu">
+							<li><b>이은민</b>님 환영합니다.</li>
+							<li class="list-item">
+								<a class="link__usermenu" href="javascript:fn_login();">로그인</a>
+							</li>
+							<li class="list-item">
+								<a class="link__usermenu" href="/web/signUp00.do">회원가입</a>
+							</li>
+							<!-- 로그인 -->
+							<!--
+							<li class="list-item">
+								<a class="link__usermenu" href="javascript:fn_logout();">로그아웃</a>
+							</li>-->
+							<!-- //로그인 -->
+
+							<li class="list-item">
+								<a class="link__usermenu" href="/web/coustmer/viewCorpPns.do">입점신청</a>
+							</li>
+							<li class="list-item">
+								<a class="link__usermenu" href="/web/bbs/bbsList.do?bbsNum=NOTICE">고객센터</a>
+							</li>
+						</ul>
+					</div>
+					<div class="tamnao-logo">
+						<a href="/" title="제주렌트카 | 숙소 | 관광지: 제주여행 공공예약플랫폼 탐나오">
+							<img src="/images/web/r_main/nao_logo2.png" width="194" height="53" alt="탐나오" title="제주여행 공공 플랫폼, 탐나오">
+						</a>
+					</div>
+					<div class="srh_area">
+						<form id="submitFrm" name="submitFrm">
+							<fieldset>
+								<legend class="for-a11y"> 검색</legend>
+								<div class="top_search" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+									<input name="keyword" title="검색어 입력" class="form_input" value="[기획전] 제주 봄꽃 여행" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+									<button type="submit" title="검색" class="srh_btn" onclick="fn_searBtClick();">
+										<img src="/images/web/r_main/srh_btn.png" alt="검색">
+									</button>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+					<div class="util_menu">
+						<ui>
+							<li id="unpaidInfo" class="nopay">
+								<a href="javascript:fn_DtlRsv('${unpaidRsvNum}');" class="blinking text-red">
+									<span class="ico count">&nbsp;</span>미결제상품
+									<span class="cnt">0</span>
+								</a>
+							</li>
+							<li class="coupon more">
+								<a href="/web/mypage/pocketList.do">
+									<span class="ico"></span>쿠폰
+									<span class="cnt">0</span>
+								</a>
+							</li>
+							<li class="cart more">
+								<a href="/web/cart.do">
+									<span class="ico">&nbsp;</span>장바구니
+									<span class="cnt">0</span>
+								</a>
+							</li>
+							<li class="mypage more">
+								<a href="/web/mypage/rsvList.do">
+									<span class="ico">&nbsp;</span>마이탐나오
+								</a>
+							</li>
+						</ui>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- global-navigation -->
+		<div class="gnb2">
+			<div class="inner">
+				<div class="box__service-all">
+					<ul class="menu">
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/av/mainList.do">항공</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/stay/jeju.do">숙소</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/rentcar/car-list.do">렌트카</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C200">관광지</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C300">맛집</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/sp/packageList.do">여행사 상품</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/sv/mainList.do">특산/기념품</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/evnt/promotionList.do">이벤트</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //re_header -->
+
+	<main id="main">
+		<div class="mapLocation">
+			<div class="inner">
+				<span>홈</span> <span class="gt">&gt;</span>
+				<span>렌터카 가격비교</span>
+			</div>
+		</div>
+
+		<div id="subContents" class="sub_wrap">
+			<div class="subHead"></div>
+
+			<!-- filter_wrap -->
+			<div class="filter_wrap">
+				<div class="filter_check">
+					<div class="f_hd">
+						<h2>렌터카검색</h2>
+					</div>
+					<div class="f_con">
+						<div class="date_wrap">
+							<div class="date_checkin">
+								<label>대여일</label>
+								<div class="value-text">
+									<div class="date-container">
+										<span class="date-pick">
+											<input type="hidden" name="vNights" id="vNights" value="${searchVO.sNights}">
+											<input class="datepicker" type="text" placeholder="대여일 선택" onclick="optionClose('.popup-typeA')">
+										</span>
+										<div class="time-area">
+											<select class="full" title="시간선택">
+												<option value="0800" selected>08:00</option>
+												<option value="0900">09:00</option>
+												<option value="1000">10:00</option>
+												<option value="1100">11:00</option>
+												<option value="1200">12:00</option>
+												<option value="1300">13:00</option>
+												<option value="1400">14:00</option>
+												<option value="1500">15:00</option>
+												<option value="1600">16:00</option>
+												<option value="1700">17:00</option>
+												<option value="1800">18:00</option>
+												<option value="1900">19:00</option>
+												<option value="2000">20:00</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="date_checkout">
+								<label>반납일</label>
+								<div class="value-text">
+									<div class="date-container">
+										<span class="date-pick">
+											<input class="datepicker" type="text" placeholder="반납일 선택" onclick="optionClose('.popup-typeA')">
+										</span>
+										<div class="time-area">
+											<select class="full" title="시간선택">
+												<option value="0800" selected>08:00</option>
+												<option value="0900">09:00</option>
+												<option value="1000">10:00</option>
+												<option value="1100">11:00</option>
+												<option value="1200">12:00</option>
+												<option value="1300">13:00</option>
+												<option value="1400">14:00</option>
+												<option value="1500">15:00</option>
+												<option value="1600">16:00</option>
+												<option value="1700">17:00</option>
+												<option value="1800">18:00</option>
+												<option value="1900">19:00</option>
+												<option value="2000">20:00</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<button class="search_btn">검색</button>
+					</div>
+				</div>
+
+				<div class="filter_btn">
+					<a href="/web/sp/detailPrdt.do?prdtNum=SP00001671" class="carTransArea" target="_blank">
+						차량탁송서비스
+					</a>
+					<a href="/web/sp/detailPrdt.do?prdtNum=SP00001671" class="carSeatArea" target="_blank">
+						카시트/유모차
+					</a>
+				</div>
+
+				<!-- 0304 탐나는전 check point -->
+				<div class="filter_jejupay">
+					<div class="pay-check">
+						<input type="checkbox" name="payCheck" id="payCheck" value="Y" checked="checked">
+						<label for="payCheck">
+							<img src="../../images/web/icon/jeju_pay_icon.png" alt="탐나는전">
+							<span>탐나는전 가맹점보기</span>
+						</label>
+					</div>
+				</div><!-- //0304 탐나는전 check point -->
+				<div class="filter_refine">
+					<div class="filter_header">
+						<button type="button" onclick="funcClear();"> 전체해제 </button>
+					</div>
+					<section>
+						<h3>차종</h3>
+						<ul>
+							<li>
+								<input type="checkbox" id="model_1" name="model" class="rf_chk" value="2">
+								<label for="model_1" class="label_chk">소형</label>
+							</li>
+							<li>
+								<input type="checkbox" id="model_2" name="model" class="rf_chk" value="2">
+								<label for="model_2" class="label_chk">중형</label>
+							</li>
+							<li>
+								<input type="checkbox" id="model_3" name="model" class="rf_chk" value="2">
+								<label for="model_3" class="label_chk" >고급</label>
+							</li>
+							<li>
+								<input type="checkbox" id="model_4" name="model" class="rf_chk" value="2">
+								<label for="model_4" class="label_chk" >SUV/승합</label>
+							</li>
+							<li>
+								<input type="checkbox" id="model_5" name="model" class="rf_chk" value="2">
+								<label for="model_5" class="label_chk" >수입</label>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>보험
+							<div class="btnPack">
+								<div class="insurance_btn">
+									<a href="javascript:void(0)" onclick="layer_popup('#insurance_info');">자차보험 안내</a>
+								</div>
+							</div>
+						</h3>
+						<ul class="hide_type">
+							<li>
+								<input type="checkbox" id="type_1" name="stay_type" class="rf_chk" value="2">
+								<label for="type_1" class="label_chk" >자차 미포함</label>
+							</li>
+							<li>
+								<input type="checkbox" id="type_2" name="stay_type" class="rf_chk" value="2">
+								<label for="type_2" class="label_chk" >일반자차포함</label>
+							</li>
+							<li>
+								<input type="checkbox" id="type_3" name="stay_type" class="rf_chk" value="2">
+								<label for="type_3" class="label_chk" >고급자차포함</label>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>연료</h3>
+						<ul class="hide_type half">
+							<li>
+								<input type="checkbox" id="fuel_1" name="stay_type" class="rf_chk" value="2">
+								<label for="fuel_1" class="label_chk" >휘발유</label>
+							</li>
+							<li>
+								<input type="checkbox" id="fuel_2" name="stay_type" class="rf_chk" value="2">
+								<label for="fuel_2" class="label_chk" >경유</label>
+							</li>
+							<li>
+								<input type="checkbox" id="fuel_3" name="stay_type" class="rf_chk" value="2">
+								<label for="fuel_3" class="label_chk" >LPG</label>
+							</li>
+							<li>
+								<input type="checkbox" id="fuel_4" name="stay_type" class="rf_chk" value="2">
+								<label for="fuel_4" class="label_chk" >전기</label>
+							</li>
+							<li>
+								<input type="checkbox" id="fuel_5" name="stay_type" class="rf_chk" value="2">
+								<label for="fuel_5" class="label_chk" >하이브리드</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="price_bar">
+						<h3 class="f_price">가격</h3>
+						<p>
+							<input type="text" id="amount2" readonly style="border:0; color:#f01e58; font-weight:bold;">
+						</p>
+						<div class="area type select stay">
+							<dl class="type1">
+
+								<div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+									<span class="ui-slider-handle ui-state-default ui-corner-all" href="#" ></span>
+									<span class="ui-slider-handle ui-state-default ui-corner-all" href="#" ></span>
+								</div>
+							</dl>
+						</div>
+					</section>
+
+					<section class="item-list">
+						<h3>연령</h3>
+						<ul class="hide_type half">
+							<li>
+								<input type="checkbox" id="info_0" name="reserve[]" class="rf_chk" value="2">
+								<label for="info_0" class="label_chk">만21세이상</label>
+							</li>
+							<li>
+								<input type="checkbox" id="info_1" name="reserve[]" class="rf_chk" value="2">
+								<label for="info_1" class="label_chk">만22세이상</label>
+							</li>
+							<li>
+								<input type="checkbox" id="info_2" name="reserve[]" class="rf_chk" value="2">
+								<label for="info_2" class="label_chk">만23세이상</label>
+							</li>
+							<li>
+								<input type="checkbox" id="info_3" name="reserve[]" class="rf_chk" value="2">
+								<label for="info_3" class="label_chk">만24세이상</label>
+							</li>
+							<li>
+								<input type="checkbox" id="info_4" name="reserve[]" class="rf_chk" value="2">
+								<label for="info_4" class="label_chk">만25세이상</label>
+							</li>
+							<li>
+								<input type="checkbox" id="info_5" name="reserve[]" class="rf_chk" value="2">
+								<label for="info_5" class="label_chk">만26세이상</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="item-list">
+						<h3>연식</h3>
+						<ul class="hide_type half">
+							<li>
+								<input type="checkbox" id="old_0" name="reserve[]" class="rf_chk" value="2">
+								<label for="old_0" class="label_chk">연식전체</label>
+							</li>
+							<li>
+								<input type="checkbox" id="old_1" name="reserve[]" class="rf_chk" value="2">
+								<label for="old_1" class="label_chk">2012-14년</label>
+							</li>
+							<li>
+								<input type="checkbox" id="old_2" name="reserve[]" class="rf_chk" value="2">
+								<label for="old_2" class="label_chk">2014-16년</label>
+							</li>
+							<li>
+								<input type="checkbox" id="old_3" name="reserve[]" class="rf_chk" value="2">
+								<label for="old_3" class="label_chk">2016-17년</label>
+							</li>
+							<li>
+								<input type="checkbox" id="old_4" name="reserve[]" class="rf_chk" value="2">
+								<label for="old_4" class="label_chk">2016-18년</label>
+							</li>
+							<li>
+								<input type="checkbox" id="old_5" name="reserve[]" class="rf_chk" value="2">
+								<label for="old_5" class="label_chk">2017-18년</label>
+							</li>
+							<li>
+								<input type="checkbox" id="old_6" name="reserve[]" class="rf_chk" value="2">
+								<label for="old_5" class="label_chk">2018-19년</label>
+							</li>
+							<li>
+								<input type="checkbox" id="old_7" name="reserve[]" class="rf_chk" value="2">
+								<label for="old_5" class="label_chk">2019-20년</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="item-list">
+						<h3>부가서비스</h3>
+						<ul class="hide_type half">
+							<li>
+								<input type="checkbox" id="add_0" name="reserve[]" class="rf_chk" value="2">
+								<label for="add_0" class="label_chk">애견동반</label>
+							</li>
+							<li>
+								<input type="checkbox" id="add_1" name="reserve[]" class="rf_chk" value="2">
+								<label for="add_1" class="label_chk">애견동반</label>
+							</li>
+							<li>
+								<input type="checkbox" id="add_2" name="reserve[]" class="rf_chk" value="2">
+								<label for="add_2" class="label_chk">애견동반</label>
+							</li>
+							<li>
+								<input type="checkbox" id="add_3" name="reserve[]" class="rf_chk" value="2">
+								<label for="add_3" class="label_chk">애견동반</label>
+							</li>
+							<li>
+								<input type="checkbox" id="add_4" name="reserve[]" class="rf_chk" value="2">
+								<label for="add_4" class="label_chk">애견동반</label>
+							</li>
+						</ul>
+					</section>
+
+				</div>
+
+			</div><!-- // filter_wrap -->
+
+			<!-- list_wrap / 0528 renewal -->
+			<div class="list_wrap">
+
+				<!-- 렌터카 목록 -->
+				<div>
+					<h2 class="sec-caption">렌터카 목록</h2>
+						<div class="rc_list">
+							<div class="align-area">
+
+								<!-- caption-typeB -->
+								<div class="caption-typeB">
+									<strong class="text-red">2024-04-18부터 24시간 기준</strong>
+									가격입니다. 자차 보험 포함여부에 따라 가격이 다르니 꼼꼼히 따져보고 선택해주세요.
+								</div>
+							</div>
+
+							<!-- filter-select -->
+							<div class="__sort">
+								<div class="sort-filter">
+									<ul>
+										<li class="sortRent1">
+											<button type="button" onclick="" class="sort active">추천순</button>
+										</li>
+										<li class="sortRent2">
+											<button type="button" onclick="" class="sort">가격순</button>
+										</li>
+										<li class="sortRent3">
+											<button type="button" onclick="" class="sort">판매순</button>
+										</li>
+									</ul>
+
+									<div class="sort-right">
+										<div class="area type select">
+											<select title="판매처 선택" name="sCorpId" onclick="optionClose('.popup-typeA')">
+												<option value="" selected>판매처 전체</option>
+												<option value="">KD렌트카</option>
+												<option value="">K렌터카</option>
+												<option value="">가자제주렌트카</option>
+												<option value="">고고씽렌트카</option>
+												<option value="">공항렌트카</option>
+												<option value="">공항전기차렌트카</option>
+												<option value="">국가대표 렌트카</option>
+												<option value="">금강렌트카</option>
+												<option value="">녹원렌트카</option>
+												<option value="">뉴대한렌트카</option>
+												<option value="">대진렌트카</option>
+												<option value="">더쎄븐렌트카</option>
+												<option value="">땡큐제주렌트카</option>
+											</select>
+										</div>
+
+										<div class="sort-search">
+											<input type="text" class="" placeholder="검색 결과 내 차량명 검색" autocapitalize="off">
+											<button type="button" title="검색" class="sort-search-btn"></button>
+										</div>
+									</div>
+								</div>
+							</div><!-- //filter-select -->
+
+							<!-- rent-list-area2 / item-list -->
+							<div class="rent-list-area rent-list-area2">
+
+								<!-- rent-group -->
+								<div class="rent-group" data-filter="Y" data-top-price="468000" data-top-seller="11109" data-filter-child="Y">
+
+									<!-- item-list__left -->
+									<div class="top-info">
+										<div class="info-tie">
+											<div class="photo">
+												<!-- 현대 -->
+												<img class="logo-play hyundal" alt="현대로고" src="/images/web/rent/rent_hyundal_logo.png" loading="lazy">
+												<img alt="렌터카이미지" src="/images/web/rent/ex_rent_img.png" loading="lazy">
+											</div>
+											<div class="text">
+												<div class="align-left">
+													<h2 class="title">K5 2세대</h2>
+													<div class="sub-memo">
+														<ul >
+															<li>
+																<img src="/images/web/rent/list_kind.png" alt="차종">
+																<span>SUV/승합차</span>
+															</li>
+															<li>
+																<img src="/images/web/rent/list_people.png" alt="탑승인원">
+																<span>9명</span>
+															</li>
+															<li>
+																<img src="/images/web/rent/list_oil.png" alt="주유">
+																<span>경유</span>
+															</li>
+														</ul>
+
+													</div>
+												</div>
+												<div class="align-right">
+													<div class="memo">72시간</div>
+													<div class="info">
+														<div class="red-sticker">최저가</div>
+														<div class="price">468,000원</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- 최저가 예약_CTA -->
+										<div class="reservation-btn-group">
+											<button class="lowest-price" type="button">최저가 예약</button>
+										</div>
+									</div>
+
+									<!-- item-list__right -->
+									<div class="list">
+										<ul class="list-item-more">
+											<li data-price="468000" data-filter-child="Y" data-filter1="CAR2" data-filter1-visible="Y" data-filter2="LUXY" data-filter2-visible="Y" class="prdtView_RD02R20001">
+												<div class="link-area">
+													<a class="info-wrap rent" href="javascript:fn_DetailPrdt('RC00004181')">
+														<div class="product-info">
+															<div class="name"><p>탐라렌트카</p></div>
+															<div class="rent-cover">
+
+																<!-- 일반자차 -->
+																<div class="text">자차 미포함</div>
+																<div class="career">경력 2년 이상</div>
+															</div>
+															<div class="rent-option">
+																<div class="since">2016~2017</div>
+																<div class="age">만26세이상</div>
+															</div>
+														</div>
+
+														<!-- option-view -->
+														<div class="rc-tx">
+															<span class="car_op">
+																<ul>
+																	<li>애견동반</li>
+																	<li>낚시용품</li>
+																	<li>외국인</li>
+																	<li>군인 대여</li>
+																	<li class="on">금연차량</li>
+																	<li>블랙박스</li>
+																	<li>전방센서</li>
+																	<li class="on">후방센서</li>
+																	<li>열선시트</li>
+																</ul>
+															</span>
+														</div>
+														<div class="price-info">
+															<div class="price">468,000<span class="won">원</span></div>
+														</div>
+													</a>
+												</div>
+											</li>
+
+											<li data-price="468000" data-filter-child="Y" data-filter1="CAR2" data-filter1-visible="Y" data-filter2="LUXY" data-filter2-visible="Y" class="prdtView_RD02R20001">
+												<div class="link-area">
+													<a class="info-wrap rent" href="javascript:fn_DetailPrdt('RC00004181')">
+														<div class="product-info">
+															<div class="name"><p>탐라렌트카</p></div>
+															<div class="rent-cover">
+
+																<!-- 고급자차 시 / advanced-->
+																<div class="text advanced">고급자차(전액무제한)</div>
+																<div class="career">경력 2년 이상</div>
+															</div>
+															<div class="rent-option">
+																<div class="since">2016~2017</div>
+																<div class="age">만26세이상</div>
+															</div>
+														</div>
+														<div class="rc-tx">
+															<span class="car_op">
+																<ul>
+																	<li>애견동반</li>
+																	<li class="on">낚시용품</li>
+																	<li class="on">외국인</li>
+																	<li class="on">군인 대여</li>
+																	<li>금연차량</li>
+																	<li>블랙박스</li>
+																	<li>전방센서</li>
+																	<li class="on">후방센서</li>
+																	<li>열선시트</li>
+																</ul>
+															</span>
+														</div>
+														<div class="price-info">
+															<div class="bxLabel">
+																<span class="main_label yellow">탐나는전</span>
+															</div>
+															<div class="price">468,000<span class="won">원</span></div>
+														</div>
+													</a>
+												</div>
+											</li>
+
+											<li data-price="468000" data-filter-child="Y" data-filter1="CAR2" data-filter1-visible="Y" data-filter2="LUXY" data-filter2-visible="Y" class="prdtView_RD02R20001">
+												<div class="link-area">
+													<a class="info-wrap rent" href="javascript:fn_DetailPrdt('RC00004181')">
+														<div class="product-info">
+															<div class="name"><p>탐라렌트카</p></div>
+															<div class="rent-cover">
+
+																<!-- 고급자차 시 / common -->
+																<div class="text common">일반자차</div>
+																<div class="career">경력 2년 이상</div>
+															</div>
+															<div class="rent-option">
+																<div class="since">2016~2017</div>
+																<div class="age">만26세이상</div>
+															</div>
+														</div>
+														<div class="rc-tx">
+															<span class="car_op">
+																<ul>
+																	<li class="on">애견동반</li>
+																	<li class="on">낚시용품</li>
+																	<li>외국인</li>
+																	<li>군인 대여</li>
+																	<li class="on">금연차량</li>
+																	<li>블랙박스</li>
+																	<li class="on">전방센서</li>
+																	<li >후방센서</li>
+																	<li>열선시트</li>
+																</ul>
+															</span>
+														</div>
+
+														<div class="price-info">
+															<div class="bxLabel">
+																<span class="main_label yellow">탐나는전</span>
+															</div>
+															<div class="price">468,000<span class="won">원</span></div>
+														</div>
+													</a>
+												</div>
+											</li>
+
+											<li data-price="468000" data-filter-child="Y" data-filter1="CAR2" data-filter1-visible="Y" data-filter2="LUXY" data-filter2-visible="Y" class="prdtView_RD02R20001">
+												<div class="link-area">
+													<a class="info-wrap rent" href="javascript:fn_DetailPrdt('RC00004181')">
+														<div class="product-info">
+															<div class="name"><p>탐라렌트카</p></div>
+															<div class="rent-cover">
+
+																<!-- 고급자차 시 / common -->
+																<div class="text common">일반자차</div>
+																<div class="career">경력 2년 이상</div>
+															</div>
+															<div class="rent-option">
+																<div class="since">2016~2017</div>
+																<div class="age">만26세이상</div>
+															</div>
+														</div>
+														<div class="rc-tx">
+															<span class="car_op">
+																<ul>
+																	<li class="on">애견동반</li>
+																	<li class="on">낚시용품</li>
+																	<li>외국인</li>
+																	<li>군인 대여</li>
+																	<li class="on">금연차량</li>
+																	<li>블랙박스</li>
+																	<li class="on">전방센서</li>
+																	<li >후방센서</li>
+																	<li>열선시트</li>
+																</ul>
+															</span>
+														</div>
+
+														<div class="price-info">
+															<div class="bxLabel">
+																<span class="main_label yellow">탐나는전</span>
+															</div>
+															<div class="price">468,000<span class="won">원</span></div>
+														</div>
+													</a>
+												</div>
+											</li>
+										</ul>
+
+										<!-- btn-more -->
+										<button class="paging-wrap">
+											<span class="mobile">11개 업체 더보기</span>
+											<img class="add_arrow" src="/images/web/rent/add_arrow.png" alt="더보기">
+										</button>
+
+									</div><!-- //rent-group -->
+								</div>
+
+								<!-- rent-group -->
+								<div class="rent-group" data-filter="Y" data-top-price="468000" data-top-seller="11109" data-filter-child="Y">
+
+									<!-- item-list__left -->
+									<div class="top-info">
+										<div class="info-tie">
+											<div class="photo">
+												<!-- 기아 -->
+												<img class="logo-play kia" alt="기아로고" src="/images/web/rent/rent_kia_logo.png" loading="lazy">
+												<img alt="렌터카이미지" src="/images/web/rent/ex_rent_img2.png" loading="lazy">
+											</div>
+											<div class="text">
+												<div class="align-left">
+													<h2 class="title">K5 2세대</h2>
+													<div class="sub-memo">
+														<ul >
+															<li>
+																<img src="/images/web/rent/list_kind.png" alt="차종">
+																<span>SUV/승합차</span>
+															</li>
+															<li>
+																<img src="/images/web/rent/list_people.png" alt="탑승인원">
+																<span>9명</span>
+															</li>
+															<li>
+																<img src="/images/web/rent/list_oil.png" alt="주유">
+																<span>경유</span>
+															</li>
+														</ul>
+
+													</div>
+												</div>
+												<div class="align-right">
+													<div class="memo">72시간</div>
+													<div class="info">
+														<div class="red-sticker">최저가</div>
+														<div class="price">468,000원</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- 최저가 예약_CTA -->
+										<div class="reservation-btn-group">
+											<button class="lowest-price" type="button">최저가 예약</button>
+										</div>
+									</div>
+
+									<!-- item-list__right -->
+									<div class="list">
+										<ul class="list-item-more">
+											<li data-price="468000" data-filter-child="Y" data-filter1="CAR2" data-filter1-visible="Y" data-filter2="LUXY" data-filter2-visible="Y" class="prdtView_RD02R20001">
+												<div class="link-area">
+													<a class="info-wrap rent" href="javascript:fn_DetailPrdt('RC00004181')">
+														<div class="product-info">
+															<div class="name"><p>탐라렌트카</p></div>
+															<div class="rent-cover">
+
+																<!-- 일반자차 -->
+																<div class="text">자차 미포함</div>
+																<div class="career">경력 2년 이상</div>
+															</div>
+															<div class="rent-option">
+																<div class="since">2016~2017</div>
+																<div class="age">만26세이상</div>
+															</div>
+														</div>
+
+														<!-- option-view -->
+														<div class="rc-tx">
+														<span class="car_op">
+															<ul>
+																<li>애견동반</li>
+																<li>낚시용품</li>
+																<li>외국인</li>
+																<li>군인 대여</li>
+																<li class="on">금연차량</li>
+																<li>블랙박스</li>
+																<li>전방센서</li>
+																<li class="on">후방센서</li>
+																<li>열선시트</li>
+															</ul>
+														</span>
+														</div>
+														<div class="price-info">
+															<div class="bxLabel">
+																<span class="main_label yellow">탐나는전</span>
+															</div>
+															<div class="price">468,000<span class="won">원</span></div>
+														</div>
+													</a>
+												</div>
+											</li>
+
+											<li data-price="468000" data-filter-child="Y" data-filter1="CAR2" data-filter1-visible="Y" data-filter2="LUXY" data-filter2-visible="Y" class="prdtView_RD02R20001">
+												<div class="link-area">
+													<a class="info-wrap rent" href="javascript:fn_DetailPrdt('RC00004181')">
+														<div class="product-info">
+															<div class="name"><p>탐라렌트카</p></div>
+															<div class="rent-cover">
+
+																<!-- 고급자차 시 / advanced-->
+																<div class="text advanced">고급자차(전액무제한)</div>
+																<div class="career">경력 2년 이상</div>
+															</div>
+															<div class="rent-option">
+																<div class="since">2016~2017</div>
+																<div class="age">만26세이상</div>
+															</div>
+														</div>
+														<div class="rc-tx">
+														<span class="car_op">
+															<ul>
+																<li>애견동반</li>
+																<li class="on">낚시용품</li>
+																<li class="on">외국인</li>
+																<li class="on">군인 대여</li>
+																<li>금연차량</li>
+																<li>블랙박스</li>
+																<li>전방센서</li>
+																<li class="on">후방센서</li>
+																<li>열선시트</li>
+															</ul>
+														</span>
+														</div>
+														<div class="price-info">
+															<div class="price">468,000<span class="won">원</span></div>
+														</div>
+													</a>
+												</div>
+											</li>
+
+										</ul>
+									</div><!-- //rent-group -->
+								</div>
+							</div><!-- //rc_list2 -->
+						</div><!-- //rent-list-area2 / item-list -->
+				</div><!-- //렌터카 목록 -->
+			</div><!-- //list_wrap / 0522 renewal -->
+
+			<div id="insurance_info" class="comm-layer-popup">
+				<div class="content-wrap">
+					<div class="content">
+						<div class="installment-head">
+							<h3 class="title"></h3>
+							<button type="button" class="close"><img src="../../images/mw/icon/close/dark-gray.png" alt="닫기"></button>
+							<div class="rent-qna">
+								<img src="../../images/web/rent/qna2.jpg" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- //subContents -->
+	</main>
+
+	<div id="_footer" data-container="footer" class="footer_wrap">
+		<div class="service_support">
+			<div class="inner">
+				<ul>
+					<li>
+						<a href="/web/etc/introduction.do" target="_blank" title="새창 열림">
+							<span>회사소개</span>
+						</a>
+					</li>
+					<li>
+						<a href="/web/etc/buyToS.do" target="_blank" title="새창 열림">
+							<span>이용약관</span>
+						</a>
+					</li>
+					<li>
+						<a href="/web/coustmer/viewCorpPns.do" target="_blank" title="새창 열림">
+							<span>입점/제휴안내</span>
+						</a>
+					</li>
+					<li>
+						<a href="/web/etc/personalData.do" target="_blank" title="새창 열림">
+							<strong>개인정보취급방침</strong>
+						</a>
+					</li>
+					<li>
+						<a href="/web/coustmer/qaList.do" target="_blank" title="새창 열림">
+							<span>고객센터</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=6168204092" target="_blank" title="새창 열림">
+							<span>사업자정보확인</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="corp_wrap">
+			<div class="inner">
+				<div class="corp_wrap_row">
+					<div class="corp_info">
+						<dl>
+							<dt>제주특별자치도관광협회</dt>
+							<dd class="corp_info_cs">
+								<p>
+									<em>1522-3454</em>
+									<span>월~금 09:00 - 18:00</span>
+									<span>점심시간 12:00 - 13:00</span>
+								</p>
+							</dd>
+							<dd class="corp_info_tx">
+								<p>
+									<span>대표이사:부동석</span>
+									<span>63309 제주특별자치도 제주시 첨단로 213-65 제주종합비즈니스센터 3층</span>
+									<span>법인 등록번호:220121-0000107</span>
+									<span>사업자 등록번호:616-82-04092</span>
+								</p>
+								<p>
+									<span>통신판매업번호:제2018-제주아라0049호</span>
+									<span>개인정보관리책임자:김철휘</span>
+									<span>E-mail : tamnao@tamnao.com</span>
+									<span>Fax : 064-749-7445</span>
+								</p>
+							</dd>
+							<dd class="corp_info_copy">
+								<p>탐나오는 통신판매중개자로서 거래당사자가 아니므로 개별 판매자가 등록한 상품거래정보 및 거래에 대해서 책임을 지지 않습니다.</p>
+								<p>Copyright 2018. 제주특별자치도관광협회 All Rights Reserved.</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="corp_rgt" >
+						<div class="f_sns">
+							<a href="https://blog.naver.com/jta0119" class="bl" target="_blank">
+								<span class="blind">블로그</span>
+							</a>
+							<a href="https://post.naver.com/jta0119" class="nv" target="_blank">
+								<span class="blind">네이버</span>
+							</a>
+							<a href="https://www.facebook.com/JEJUTAMNAOTRAVEL/" class="fb" target="_blank">
+								<span class="blind">페이스북</span>
+							</a>
+							<a href="https://www.instagram.com/tamnao_jeju/" class="ig" target="_blank">
+								<span class="blind">인스타그램</span>
+							</a>
+							<a href="https://www.youtube.com/channel/UC5Hk3MfM3RFDz5_Xm9BDJZQ" class="ub" target="_blank">
+								<span class="blind">유튜브</span>
+							</a>
+						</div>
+						<div class="f_down">
+							<a href="https://apps.apple.com/kr/app/%ED%83%90%EB%82%98%EC%98%A4-%EC%A0%9C%EC%A3%BC%EC%97%AC%ED%96%89%EC%8A%A4%ED%86%A0%EC%96%B4/id1489404866" target="_blank">
+								<img src="/images/web/r_main/apple.png" alt="애플 앱다운로드">
+								<span>ISO</span>
+							</a>
+							<a href="https://play.google.com/store/apps/details?id=kr.or.hijeju.tamnao" target="_blank">
+								<img src="/images/web/r_main/google.png" alt="구글 앱다운로드">
+								<span>Android</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="mark-zone">
+					<div class="award">
+						<ul>
+							<li><img src="/images/web/mark/gcs.png" alt="gcs"></li>
+							<li><img src="/images/web/mark/maket.png" alt="market"></li>
+							<li><img src="/images/web/mark/int.png" alt="int"></li>
+							<li><img src="/images/web/mark/web.png" alt="web"></li>
+							<li><img src="/images/web/mark/nba.png" alt="nba"></li>
+							<li><img src="/images/web/mark/ieco.png" alt="ieco"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+
+
+		$(document).ready(function() {
+
+		});
+
+		/** 더보기 접기 구현 hide*/
+
+		for(let i=0; i<$(".rent-group .list").length; ++i){
+			$(".list:eq("+ i + ")").height();
+			if( $(".list:eq("+ i + ")").height() > 110) {
+				$(".list:eq("+ i + ")").children(".list-item-more").css("height", "450px");
+				$(".list:eq("+ i + ") .mobile").css("display", "block");
+			}else{
+				$(".list:eq("+ i + ") .mobile").css("display", "none");
+			}
+		}
+
+		$("span.mobile").click(function() {
+			if ($(this).text() == "접기") {
+				$(this).text("11개 업체 더보기");
+				$(this).parents(".rent-group .list").children(".list-item-more").css("height","450px");
+				$(this).parents(".paging-wrap").children(".add_arrow").css("transform","rotate(0)").animate(200);
+			} else {
+				$(this).text("접기");
+				$(this).parents(".rent-group .list").children(".list-item-more").css("height","");
+				$(this).parents(".paging-wrap").children(".add_arrow").css("transform","rotate(180deg)").animate(200);
+			}
+		})
+
+	</script>
+</body>
+</html>

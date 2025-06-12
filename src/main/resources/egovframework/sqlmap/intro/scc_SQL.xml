@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="scc">
+
+<resultMap id="SCC_R_00" class="web.etc.vo.SCCVO">
+<result property="noticeNum" 	column="NOTICE_NUM" />
+<result property="subject" 		column="SUBJECT" />
+<result property="simpleExp" 	column="SIMPLE_EXP" />
+<result property="contents" 	column="CONTENTS" />
+<result property="inqCnt" 		column="INQ_CNT" />
+<result property="viewYn" 		column="VIEW_YN" />
+<result property="youtubeId" 	column="YOUTUBE_ID" />
+<result property="lastModDttm" 	column="LAST_MOD_DTTM" />
+<result property="frstRegDttm" 	column="FRST_REG_DTTM" />
+<result property="lastModId" 	column="LAST_MOD_ID" />
+<result property="frstRegId" 	column="FRST_REG_ID" />
+</resultMap>
+
+<select id="SCC_S_00" resultMap="SCC_R_00">
+SELECT NOTICE_NUM       /*게시물 번호*/
+     , SUBJECT          /*제목*/
+     , SIMPLE_EXP       /*간략 설명*/
+     , CONTENTS         /*내용*/
+     , INQ_CNT          /*조회 건수*/
+     , VIEW_YN          /*노출 여부*/
+     , YOUTUBE_ID       /*유투브 아이디*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+  FROM TB_SCC
+ WHERE NOTICE_NUM = #noticeNum#
+</select>
+
+<select id="SCC_S_01" resultMap="SCC_R_00">
+SELECT NOTICE_NUM       /*게시물 번호*/
+     , SUBJECT          /*제목*/
+     , SIMPLE_EXP       /*간략 설명*/
+     , CONTENTS         /*내용*/
+     , INQ_CNT          /*조회 건수*/
+     , VIEW_YN          /*노출 여부*/
+     , YOUTUBE_ID       /*유투브 아이디*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+  FROM (SELECT ROWNUM AS RN
+             , NOTICE_NUM       /*게시물 번호*/
+		     , SUBJECT          /*제목*/
+		     , SIMPLE_EXP       /*간략 설명*/
+		     , CONTENTS         /*내용*/
+		     , INQ_CNT          /*조회 건수*/
+		     , VIEW_YN          /*노출 여부*/
+		     , YOUTUBE_ID       /*유투브 아이디*/
+		     , LAST_MOD_DTTM    /*최종 수정 일시*/
+		     , FRST_REG_DTTM    /*최초 등록 일시*/
+		     , LAST_MOD_ID      /*최종 수정 아이디*/
+		     , FRST_REG_ID      /*최초 등록 아이디*/
+		  FROM TB_SCC
+		 WHERE 1=1
+		 <isNotEmpty property="sSubject">
+            <isNotNull property="sSubject">
+           AND SUBJECT LIKE '%'||#sSubject#||'%'
+            </isNotNull>
+         </isNotEmpty>
+       )
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="SCC_S_02" resultClass="int">
+SELECT COUNT(NOTICE_NUM) AS CNT
+  FROM TB_SCC
+ WHERE 1=1
+<isNotEmpty property="sSubject">
+   <isNotNull property="sSubject">
+  AND SUBJECT LIKE '%'||#sSubject#||'%'
+   </isNotNull>
+</isNotEmpty>
+</select>
+
+
+<select id="SCC_S_03" resultMap="SCC_R_00">
+SELECT NOTICE_NUM       /*게시물 번호*/
+     , SUBJECT          /*제목*/
+     , SIMPLE_EXP       /*간략 설명*/
+     , CONTENTS         /*내용*/
+     , INQ_CNT          /*조회 건수*/
+     , VIEW_YN          /*노출 여부*/
+     , YOUTUBE_ID       /*유투브 아이디*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+  FROM (SELECT ROWNUM AS RN
+             , NOTICE_NUM       /*게시물 번호*/
+		     , SUBJECT          /*제목*/
+		     , SIMPLE_EXP       /*간략 설명*/
+		     , CONTENTS         /*내용*/
+		     , INQ_CNT          /*조회 건수*/
+		     , VIEW_YN          /*노출 여부*/
+		     , YOUTUBE_ID       /*유투브 아이디*/
+		     , LAST_MOD_DTTM    /*최종 수정 일시*/
+		     , FRST_REG_DTTM    /*최초 등록 일시*/
+		     , LAST_MOD_ID      /*최종 수정 아이디*/
+		     , FRST_REG_ID      /*최초 등록 아이디*/
+		  FROM TB_SCC
+		 WHERE VIEW_YN = 'Y'
+		 <isNotEmpty property="sSubject">
+            <isNotNull property="sSubject">
+           AND SUBJECT LIKE '%'||#sSubject#||'%'
+            </isNotNull>
+         </isNotEmpty>
+       )
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="SCC_S_04" resultClass="int">
+SELECT COUNT(NOTICE_NUM) AS CNT
+  FROM TB_SCC
+ WHERE VIEW_YN = 'Y'
+<isNotEmpty property="sSubject">
+   <isNotNull property="sSubject">
+  AND SUBJECT LIKE '%'||#sSubject#||'%'
+   </isNotNull>
+</isNotEmpty>
+</select>
+
+<insert id="SCC_I_00">
+INSERT INTO TB_SCC
+     ( NOTICE_NUM       /*게시물 번호*/
+     , SUBJECT          /*제목*/
+     , SIMPLE_EXP       /*간략 설명*/
+     , CONTENTS         /*내용*/
+     , INQ_CNT          /*조회 건수*/
+     , VIEW_YN          /*노출 여부*/
+     , YOUTUBE_ID       /*유투브 아이디*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+     )
+VALUES
+     ( #noticeNum#
+     , #subject#
+     , #simpleExp#
+     , #contents#
+     , #inqCnt#
+     , #viewYn#
+     , #youtubeId#
+     , SYSDATE
+     , SYSDATE
+     , #frstRegId#
+     , #frstRegId#
+     )
+</insert>
+
+<insert id="SCC_I_01">
+<selectKey keyProperty="noticeNum" resultClass="String">
+SELECT 'SCC'||LPAD(TO_CHAR(NVL(MAX(TO_NUMBER(SUBSTR(NOTICE_NUM,9))),0) + 1), 7,'0') AS NOTICE_NUM
+  FROM TB_SCC
+</selectKey>
+INSERT INTO TB_SCC
+     ( NOTICE_NUM       /*게시물 번호*/
+     , SUBJECT          /*제목*/
+     , SIMPLE_EXP       /*간략 설명*/
+     , CONTENTS         /*내용*/
+     , INQ_CNT          /*조회 건수*/
+     , VIEW_YN          /*노출 여부*/
+     , YOUTUBE_ID       /*유투브 아이디*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+     )
+VALUES
+     ( #noticeNum#
+     , #subject#
+     , #simpleExp#
+     , #contents#
+     , #inqCnt#
+     , #viewYn#
+     , #youtubeId#
+     , SYSDATE
+     , SYSDATE
+     , #frstRegId#
+     , #frstRegId#
+     )
+</insert>
+
+<update id="SCC_U_00">
+UPDATE TB_SCC
+   SET SUBJECT          = #subject#
+     , SIMPLE_EXP       = #simpleExp#
+     , CONTENTS         = #contents#
+     , VIEW_YN          = #viewYn#
+     , YOUTUBE_ID       = #youtubeId#
+     , LAST_MOD_DTTM    = SYSDATE
+     , LAST_MOD_ID      = #lastModId#
+ WHERE NOTICE_NUM       = #noticeNum#
+</update>
+
+<delete id="SCC_D_00">
+DELETE FROM TB_SCC
+ WHERE NOTICE_NUM       = #noticeNum#
+</delete>
+
+</sqlMap>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->	
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="../css/web/common.css">
+	<link rel="stylesheet" href="../css/web/style.css">
+    <!-- script -->
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/jquery-ui.js"></script>    
+    <script src="../js/html_common.js"></script>
+    <script src="../js/html_style.js"></script>
+</head>
+<body>
+    <div id="topBanner">
+        <div class="Fasten">
+            <a class="img-btn" onclick="show_popup('.comm-fullPopup');"><img src="../images/web/comm/top_banner.jpg" alt="상단배너"></a>
+            <a class="close"><img id="tbClose" src="../images/web/comm/close.png" alt="닫기"></a>
+
+            <div class="comm-fullPopup">
+                <a class="option-close" onclick="close_popup('.comm-fullPopup');"><img src="../images/web/comm/view_close.png" alt="닫기"></a>
+                <img src="../images/web/comm/top_banner_view.png" alt="배너 상세">
+            </div>
+        </div>
+    </div>
+    
+    <header id="header">
+        <div class="Fasten">
+            <div class="topSearch">
+                <h1 class="logo"><a href="#"><img src="../images/web/comm/logo.gif" alt="탐나오"></a></h1>
+                <!-- 검색 -->
+                <p class="searchBox"><input id="search" type="text"><button id="searBT"></button></p>
+                <!-- 서브메뉴 -->
+                <nav id="topMenu">
+                    <a href="">★즐겨찾기</a>
+                    <a href="">로그인</a>
+                    <a href="">회원가입</a>
+                    <a href="">마이페이지</a>
+                    <a href="">고객센터</a>
+                </nav>
+            </div>
+        </div>
+        <!-- main menu -->
+        <nav id="mainMenu">
+            <div class="Fasten">
+                <div class="menuBT"><a id="menuBT"><img src="../images/web/comm/menu.gif" alt="메뉴"></a></div>
+                <div class="subMenu">11<br>11<br>11<br>11<br></div>
+                <ul class="mainMenu">
+                    <li><a class="select" href="air-main.html">항공</a></li>
+                    <li><a href="hotel-list.html">숙박</a></li>
+                    <li><a href="rent-list.html">렌터카</a></li>
+                    <li><a href="">골프</a></li>
+                    <li><a href="">패키지할인상품</a></li>
+                    <li><a href="">관광지입장권</a></li>
+                    <li><a href="">레져/음식/뷰티</a></li>
+                    <li><a href="event-list.html">이벤트</a></li>
+                    <li><a href="">여행경비산출</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- //main menu -->
+    </header>
+
+	<main id="main">
+	    <div class="mapLocation"> <!--index page에서는 삭제-->
+            <div class="Fasten">
+                <span>홈</span> <span class="gt">&gt;</span>
+                <span>실시간 예약</span> <span class="gt">&gt;</span>
+                <span>실시간 숙박</span> <span class="gt">&gt;</span>
+                <span>숙박상세</span>
+            </div>
+        </div>
+        <!-- quick banner -->
+        <div class="Fasten">
+            <aside id="leftAside">
+                <ul>
+                    <li><a href="http://www.hijeju.or.kr/discount/apply.htm" target="_blank"><img src="../images/web/leftBanner/01.png" alt="제주하이쿠폰"></a></li>
+                    <li><a href="http://www.jejugoldenbus.com/main/" target="_blank"><img src="../images/web/leftBanner/02.png" alt="제주황금시티투어"></a></li>
+                </ul>
+            </aside>
+        </div>
+        <!-- //quick banner -->
+        <div class="subContainer">
+            <div class="subHead"></div>
+            <div class="subContents">
+                <!-- new contents -->
+                <div class="event2-wrap">
+                    <div class="bgWrap2">
+                        <div class="Fasten">
+                            <div class="tabs-wrap">
+                                <div class="tabs-left">
+                                    <ul class="event-list">
+                                        <li>
+                                            <!-- <p class="pr-img"><img src="../images/web/event/sub_01.jpg" alt="이벤트"></p> -->
+                                            <img src="http://www.tamnao.com/data/prmt/dtl/PM00000152.jpg" alt="이벤트">
+                                            
+                                            <!-- 디데이 추가 -->
+											<div class="d-day">
+												<span>001</span>
+											</div>                                           
+                                        </li>                                        
+                                    </ul>
+                                    
+                                    <!-- 첨부파일 (없을 시 삭제) -->
+                                    <div class="view-file">
+								        <dl>
+								            <dt>첨부파일</dt>
+								            <dd>
+								                <ul>
+								                    <li>
+								                        <img class="icon" src="../images/web/board/link_file.png" alt="첨부">
+								                        <a href="" download>2014 한국은행 신진작가 공모 공고문.hwp</a>
+								                    </li>
+								                    <li>
+								                        <img class="icon" src="../images/web/board/link_file.png" alt="첨부">
+								                        <a href="" download>2015 한국은행 신진작가 공모 공고문.hwp</a>
+								                    </li>
+								                </ul>
+								            </dd>
+								        </dl>
+								    </div>
+                                    <!-- //첨부파일 -->
+                                    
+                                    <!--이벤트댓글-->
+                                    <div class="event-review">
+                                    	<div class="regi">
+									        <textarea class="review-t" placeholder="최대 50자 까지 작성할 수 있습니다."></textarea>
+									        <a class="cm-btn" href="#">등록</a>
+									    </div>
+									    
+								        <ul class="comment-list">
+								            <li>
+							                    <div class="user-info">
+											        <span class="user">bloo***</span><span class="date">2014-12-11 14:11:35</span>
+											    </div>
+							                    <div class="memo">
+						                        	이번 휴가 때 제주도 여행을 가려고 검색하다가 탐나오 페이스북 공유 이벤트를 알게 되었어요. 꼭 당첨됐으면 좋겠네요!
+							                    </div>
+								            </li>
+								            <li>
+							                    <div class="user-info">
+											        <span class="user">tamn*******</span><span class="date">2014-12-11 14:11:35</span>
+											        <a href="#"><img src="../images/web/icon/del.gif" alt="삭제"></a>
+											    </div>
+							                    <div class="memo">
+						                        	이번 휴가 때 제주도 여행을 가려고 검색하다가 탐나오 페이스북 공유 이벤트를 알게 되었어요. 꼭 당첨됐으면 좋겠네요! 이번 휴가 때 제주도 여행을 가려고 검색하다가 탐나오 페이스북 공유 이벤트를 알게 되었어요. 꼭 당첨됐으면 좋겠네요!
+							                    </div>
+								            </li>
+								            <li>
+							                    <div class="user-info">
+											        <span class="user">tamn*******</span><span class="date">2014-12-11 14:11:35</span>
+											        <a href="#"><img src="../images/web/icon/del.gif" alt="삭제"></a>
+											    </div>
+							                    <div class="memo">
+						                        	이번 휴가 때 제주도 여행을 가려고 검색하다가 탐나오 페이스북 공유 이벤트를 알게 되었어요. 꼭 당첨됐으면 좋겠네요! 이번 휴가 때 제주도 여행을 가려고 검색하다가 탐나오 페이스북 공유 이벤트를 알게 되었어요. 꼭 당첨됐으면 좋겠네요!
+							                    </div>
+								            </li>
+								        </ul>
+								        
+								        <div class="pageNumber">
+									        <p class="list_pageing">
+									            <span class="btn">
+									                <a href="#"><img src="../images/web/icon/page1.gif" alt="처음페이지"></a>
+									                <a href="#"><img src="../images/web/icon/page2.gif" alt="이전페이지"></a>
+									            </span>
+									            <a href="#">1</a>
+									            <a href="#">2</a>
+									            <a href="#">3</a>
+									            <a href="#">4</a>
+									            <strong>5</strong>
+									            <a href="#">6</a>
+									            <a href="#">7</a>
+									            <a href="#">8</a>
+									            <a href="#">9</a>
+									            <a href="#">10</a>
+									            <span class="btn">
+									                <a href="#"><img src="../images/web/icon/page3.gif" alt="다음페이지"></a>
+									                <a href="#"><img src="../images/web/icon/page4.gif" alt="마지막페이지"></a>
+									            </span>
+									        </p>
+									    </div> <!--//pageNumber-->
+								    </div> <!--//event-review-->
+								    
+								    
+								    <div class="product-wrap">
+                                        <h5 class="listTitle1">상품 바로가기</h5>
+                                        <ul class="product-list">
+                                            <li>
+                                                <div class="cell cell1">
+                                                    <p class="photo">
+                                                        <img class="img" src="../images/web/rent/slider01.jpg" alt="">
+                                                        <span class="nt ntReservation">예약가능</span>
+                                                    </p>
+                                                </div>
+                                                <div class="cell cell2">
+                                                    <h5 class="title">모닝</h5>
+                                                    <p class="subTitle">제주Ok렌터카</p>
+                                                </div>
+                                                <div class="cell cell3">
+                                                    <div class="saleWrap">
+                                                        <p class="sale">45%</p>
+                                                        <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="cell cell4">
+                                                    <a href="">바로가기</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cell cell1">
+                                                    <p class="photo">
+                                                        <img class="img" src="../images/web/lodge/01.jpg" alt="">
+                                                        <span class="nt ntDisabled">예약불가</span>
+                                                    </p>
+                                                </div>
+                                                <div class="cell cell2">
+                                                    <h5 class="title">모닝</h5>
+                                                    <p class="subTitle">제주Ok렌터카</p>
+                                                </div>
+                                                <div class="cell cell3">
+                                                    <div class="saleWrap">
+                                                        <p class="sale">45%</p>
+                                                        <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="cell cell4">
+                                                    <a href="">바로가기</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cell cell1">
+                                                    <p class="photo">
+                                                        <img class="img" src="../images/web/lodge/01.jpg" alt="">
+                                                        <span class="nt ntSale">할인쿠폰</span>
+                                                    </p>
+                                                </div>
+                                                <div class="cell cell2">
+                                                    <h5 class="title">모닝</h5>
+                                                    <p class="subTitle">제주Ok렌터카</p>
+                                                </div>
+                                                <div class="cell cell3">
+                                                    <div class="saleWrap">
+                                                        <p class="sale">45%</p>
+                                                        <p class="won"><span class="won1">200,000</span><span class="won2">59,900</span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="cell cell4">
+                                                    <a href="">바로가기</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                        <!-- 협회바로가기 -->
+                                        <!-- <p class="oss-quick"><a href="">상품 바로가기</a></p> -->
+                                        
+                                    </div> <!-- //product-wrap -->
+
+                                </div> <!--//tabs-left-->
+                                <div class="tabs-right">
+                                    <h4>진행중인 이벤트</h4>
+                                    <ul class="different">
+                                        <li>
+                                            <a href="">
+                                                <p class="photo"><img src="../images/web/package/different01.jpg" alt=""></p>
+                                                <p class="text">[신라스테이제주]9~12월 스탠다드/디럭스 숙박권</p>
+                                                <p class="date">2015.12.31 ~ 2016. 1. 30</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <p class="photo"><img src="../images/web/package/different01.jpg" alt=""></p>
+                                                <p class="text">[신라스테이제주]9~12월 스탠다드/디럭스 숙박권</p>
+                                                <p class="date">2015.12.31 ~ 2016. 1. 30</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div> <!--tabs-right-->
+                            </div> <!--//tabs-wrap-->
+                        </div> <!--//Fasten-->
+                    </div> <!--//bgWrap-->
+                </div> <!-- //event2-wrap -->
+                <!-- //new contents -->
+            </div> <!-- //subContents -->
+        </div> <!-- //subContainer -->
+	</main>
+	
+	<aside id="rightAside">
+        <div class="ctWrap">            
+            <!-- 상품 리스트 -->
+            <div class="product">
+                <h6 class="title">오늘본상품 <img src="../images/web/comm/arrow.gif" alt="arrow"></h6>
+                <div class="today-list">
+                    <div id="todayList">
+                        <ul class="list">
+                            <li><a href=""><img class="photo" src="../images/web/comm/product1.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                            <li><a href=""><img class="photo" src="../images/web/comm/product1.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                            <li><a href=""><img class="photo" src="../images/web/comm/product1.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                            <!--오늘본 상품없을 시 출력-->
+                            <!--<p class="side-noContent">오늘 본 상품이 없습니다.</p>-->
+                        </ul>
+                    </div>
+                    <ul class="itemNav">
+                        <li>
+                            <span id="itemPrev"><a href=""><img src="../images/web/comm/list_prev.gif" alt="이전"></a></span>
+                            <!-- <span id="number">1/1</span> -->
+                            <span id="itemNext"><a href=""><img src="../images/web/comm/list_next.gif" alt="다음"></a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="shoppingCart">
+                <a href="">
+                    <h6>장바구니</h6>
+                    <p>
+                        <img src="../images/web/comm/cart2.gif" alt="장바구니">
+                        <span>9</span>
+                    </p>
+                </a>
+            </div>
+            <ul class="menuList">
+                <li><a href=""><img src="../images/web/comm/menulist1.gif" alt="맞춤견적">맞춤견적</a></li>
+                <li><a href=""><img src="../images/web/comm/menulist2.gif" alt="자주묻는질문">자주묻는질문</a></li>
+            </ul>
+            <div id="floatingBT"><img src="../images/web/comm/side.gif" alt="side button"></div>
+        </div>
+    </aside>
+
+	<footer id="footer">
+	    <div class="footMenu">
+	        <div class="Fasten">
+	            <span><a href="">회사소개</a></span>
+	            <span><a href="">사업제휴</a></span>
+	            <span><a href=""><strong>개인정보취급방침</strong></a></span>
+	            <span><a href="">국내여행표준약관</a></span>
+	            <span><a href="">전자상거래표준약관</a></span>
+	            <span><a href="">이메일무단수집거부</a></span>
+	            <!-- link site -->
+	            <div class="footLink">
+	                <select id="site_family">
+	                    <option value="" selected>패밀리사이트</option>
+	                    <option value="">list1</option>
+	                </select>
+	                <select id="site_regard">
+	                    <option value="" selected>관련사이트</option>
+	                    <option value="">list1</option>
+	                </select>
+	            </div>
+		    </div>
+	    </div>
+	    <div class="Fasten">
+            <div class="copy">
+                690-785 제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층 Tel)064-742-8861 관리자 직통(8774) Fax) 064-742-8865<br>
+                사업자 등록번호 : 616-82-04092 법인 등록번호 : 220121-0000107 통신판매업번호: 제2013-제주연동 0024호<br>
+                고객센터 1577-1233 I 개인정보관리 책임자 최종훈<br>
+                부득이한 사정에 의해 여행일저이 변경되는 경우 여행자의 사전동의를 받습니다.<br>
+                Copyright 2015. 제주특별자치도관광협회 All Rights Reserved.
+            </div>
+	    </div>
+	    <!-- banner zone -->
+	    <div class="footBanner">
+            <div class="Fasten">
+                <ul>
+                    <li><a href=""><img src="../images/web/footBanner/01.jpg" alt="제주관광협회"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/02.jpg" alt="하이제주"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/03.jpg" alt="제주관광공사"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/04.jpg" alt="공정거래위원회"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/05.jpg" alt="한국소비자원"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/06.jpg" alt="한국여행업협회"></a></li>
+                </ul>
+            </div>
+	    </div>
+	</footer>
+</body>
+</html>

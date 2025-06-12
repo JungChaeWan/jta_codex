@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="userRefundInf">
+
+<resultMap id="REFUNDACCINF_R_00" class="oss.user.vo.REFUNDACCINFVO">
+<result property="userId" 		column="USER_ID" />
+<result property="bankNm" 		column="BANK_NM" />
+<result property="bankCode" 		column="BANK_CODE" />
+<result property="accNum" 		column="ACC_NUM" />
+<result property="depositorNm" 	column="DEPOSITOR_NM" />
+<result property="regDttm" 		column="REG_DTTM" />
+</resultMap>
+
+
+<select id="REFUNDACCINF_S_00" resultMap="REFUNDACCINF_R_00">
+SELECT USER_ID          /*사용자 아이디*/
+     ,  (SELECT CD_NM FROM TB_CD WHERE HRK_CD_NUM = 'RFAC' AND CD_NUM = BANK_CODE) AS BANK_NM          /*은행 명*/
+     , BANK_CODE          /*은행 명*/
+     , ACC_NUM   /*환불 계좌 번호*/
+     , DEPOSITOR_NM     /*예금주 명*/
+     , REG_DTTM         /*등록 일시*/
+  FROM TB_REFUNDACCINF
+ WHERE USER_ID = #sUserId#
+</select>
+
+<update id="REFUNDACCINF_M_00">
+ MERGE INTO TB_REFUNDACCINF A
+ USING (SELECT #userId# AS USER_ID
+          FROM DUAL) B
+    ON (B.USER_ID = A.USER_ID)
+  WHEN MATCHED THEN
+UPDATE 
+   SET BANK_NM      = #bankNm#
+     , BANK_CODE    = #bankCode#
+     , ACC_NUM      = #accNum#
+     , DEPOSITOR_NM = #depositorNm#
+     , REG_DTTM     = SYSDATE
+  WHEN NOT MATCHED THEN
+INSERT
+     ( USER_ID
+     , BANK_CODE
+     , ACC_NUM
+     , DEPOSITOR_NM
+     , REG_DTTM
+     )
+VALUES
+     ( #userId#
+     , #bankCode#
+     , #accNum#
+     , #depositorNm#
+     , SYSDATE
+     )
+</update>
+
+</sqlMap>

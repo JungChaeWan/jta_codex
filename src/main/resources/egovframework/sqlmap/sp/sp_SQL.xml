@@ -1,0 +1,2142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="sp">
+
+<resultMap id="SP_PRDTINF_R_00" class="mas.sp.vo.SP_PRDTINFVO">
+	<result property="prdtNum" 		column="PRDT_NUM" />
+	<result property="corpId" 		column="CORP_ID" />
+	<result property="tradeStatus" 	column="TRADE_STATUS" />
+	<result property="ctgr" 		column="CTGR" />
+	<result property="prdtNm" 		column="PRDT_NM" />
+	<result property="saleStartDt" 	column="SALE_START_DT" />
+	<result property="saleEndDt" 	column="SALE_END_DT" />
+	<result property="prdtDiv" 		column="PRDT_DIV" />
+	<result property="frstRegDttm" 	column="FRST_REG_DTTM" />
+	<result property="ctgrNm" 		column="CTGR_NM" />
+	<result property="optCnt" 		column="OPT_CNT" />
+	<result property="advRvYn" 		column="ADV_RV_YN" />
+	<result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+</resultMap>
+
+<resultMap id="SP_PRDTINF_R_02" class="mas.sp.vo.SP_PRDTINFVO">
+	<result property="prdtNum" 		column="PRDT_NUM" />
+	<result property="corpId" 		column="CORP_ID" />
+	<result property="tradeStatus" 	column="TRADE_STATUS" />
+	<result property="ctgr" 		column="CTGR" />
+	<result property="prdtNm" 		column="PRDT_NM" />
+	<result property="prdtInf" 		column="PRDT_INF" />
+	<result property="subExp" 		column="SUB_EXP" />
+	<result property="saleStartDt" 	column="SALE_START_DT" />
+	<result property="saleEndDt" 	column="SALE_END_DT" />
+	<result property="exprStartDt" 	column="EXPR_START_DT" />
+	<result property="exprEndDt" 	column="EXPR_END_DT" />
+	<result property="prdtDiv" 		column="PRDT_DIV" />
+	<result property="frstRegDttm" 	column="FRST_REG_DTTM" />
+	<result property="frstRegId" 	column="FRST_REG_ID" />
+	<result property="frstRegIp" 	column="FRST_REG_IP" />
+	<result property="lastModDttm" 	column="LAST_MOD_DTTM" />
+	<result property="lastModId" 	column="LAST_MOD_ID" />
+	<result property="lastModIp" 	column="LAST_MOD_IP" />
+	<result property="useQlfct" 	column="USE_QLFCT" />
+	<result property="disInf" 		column="DIS_INF" />
+	<result property="ctgrNm" 		column="CTGR_NM" />
+	<result property="cancelGuide" 	column="CANCEL_GUIDE" />
+	<result property="useAbleTm" 	column="USE_ABLE_TM" />
+	<result property="exprDaynumYn" column="EXPR_DAYNUM_YN" />
+	<result property="exprDaynum" 	column="EXPR_DAYNUM" />
+	<result property="adDiv" 		column="AD_DIV" />
+	<result property="adArea" 		column="AD_AREA" />
+	<result property="roadNmAddr" 	column="ROAD_NM_ADDR" />
+	<result property="dtlAddr" 		column="DTL_ADDR" />
+	<result property="lon" 			column="LON" />
+	<result property="lat" 			column="LAT" />
+	<result property="linkPrdtYn"	column="LINK_PRDT_YN" />
+	<result property="linkUrl"		column="LINK_URL" />
+	<result property="cmssRate"		column="CMSS_RATE" />
+	<result property="adMov"		column="AD_MOV" />
+	<result property="area"		    column="AREA" />
+	<result property="lsLinkYn"		    column="LS_LINK_YN" />
+	<result property="lsLinkPrdtNum"	column="LS_LINK_PRDT_NUM" />
+	<result property="advRvYn"	column="ADV_RV_YN" />
+</resultMap>
+
+<resultMap id="SP_PRDTINF_R_03" class="oss.sp.vo.OSS_PRDTINFVO">
+	<result property="prdtNum" column="PRDT_NUM" />
+	<result property="tradeStatus" column="TRADE_STATUS" />
+	<result property="tradeStatusNm" column="TRADE_STATUS_NM" />
+	<result property="corpId" column="CORP_ID" />
+	<result property="corpNm" column="CORP_NM" />
+	<result property="prdtDiv" column="PRDT_DIV" />
+	<result property="prdtNm" column="PRDT_NM" />
+	<result property="saleStartDt" column="SALE_START_DT" />
+	<result property="saleEndDt" column="SALE_END_DT" />
+	<result property="confRequestDttm" column="CONF_REQUEST_DTTM" />
+	<result property="confDttm" column="CONF_DTTM" />
+	<result property="corpAdmEmail" column="ADM_EMAIL" />
+	<result property="exprStartDt" column="EXPR_START_DT" />
+	<result property="exprEndDt" column="EXPR_END_DT" />
+	<result property="sixCertiYn" column="SIX_CERTI_YN" />
+</resultMap>
+
+<resultMap id="SP_PRDTINF_R_05" class="oss.sp.vo.OSS_PRDTINFVO">
+    <result property="prdtNum" column="PRDT_NUM" />
+	<result property="tradeStatus" column="TRADE_STATUS" />
+	<result property="prdtDiv" column="PRDT_DIV" />
+	<result property="prdtNm" column="PRDT_NM" />
+	<result property="saleStartDt" column="SALE_START_DT" />
+	<result property="saleEndDt" column="SALE_END_DT" />
+</resultMap>
+
+<resultMap id="SP_OPTINF_R_00" class="mas.sp.vo.SP_OPTINFVO">
+	<result property="prdtNum" column="PRDT_NUM" />
+	<result property="spDivSn" column="SP_DIV_SN" />
+	<result property="spOptSn" column="SP_OPT_SN" />
+	<result property="optNm" column="OPT_NM" />
+	<result property="nmlAmt" column="NML_AMT" />
+	<result property="saleAmt" column="SALE_AMT" />
+	<result property="viewSn" column="VIEW_SN" />
+	<result property="aplDt" column="APL_DT" />
+	<result property="optPrdtNum" column="OPT_PRDT_NUM" />
+	<result property="saleNum" column="SALE_NUM" />
+	<result property="ddlYn" column="DDL_YN" />
+	<result property="stdMem" column="STD_MEM" />
+	<result property="printYn" column="PRINT_YN" />
+	<result property="lsLinkOptNum" column="LS_LINK_OPT_NUM" />
+</resultMap>
+
+<resultMap id="SP_OPTINF_R_01" class="mas.sp.vo.SP_OPTINFVO">
+	<result property="prdtNum" 		column="PRDT_NUM" />
+	<result property="spDivSn" 		column="SP_DIV_SN" />
+	<result property="spOptSn" 		column="SP_OPT_SN" />
+	<result property="prdtDivNm" 	column="PRDT_DIV_NM" />
+	<result property="optNm" 		column="OPT_NM" />
+	<result property="nmlAmt" 		column="NML_AMT" />
+	<result property="saleAmt" 		column="SALE_AMT" />
+	<result property="optPrdtNum" 	column="OPT_PRDT_NUM" />
+	<result property="optCount" 	column="OPT_COUNT" />
+	<result property="aplDt" 		column="APL_DT" />
+	<result property="ddlYn" 		column="DDL_YN" />
+	<result property="stdMem" 		column="STD_MEM" />
+	<result property="printYn" 		column="PRINT_YN" />
+	<result property="rsvNum" 		column="RSV_NUM" />
+	<result property="lsLinkOptNum" column="LS_LINK_OPT_NUM" />
+</resultMap>
+
+<resultMap id="SP_OPTINF_R_02" class="mas.sp.vo.SP_OPTINFVO">
+	<result property="prdtDivNm" column="PRDT_DIV_NM" />
+	<result property="optNm" column="OPT_NM" />
+	<result property="aplDt" column="APL_DT" />
+	<result property="saleAmt" column="SALE_AMT" />
+	<result property="optPrdtNum" column="OPT_PRDT_NUM" />
+	<result property="saleNum" column="SALE_NUM" />
+	<result property="ddlYn" column="DDL_YN" />
+	<result property="spOptSn" column="SP_OPT_SN" />
+	<result property="prdtNum" column="PRDT_NUM" />
+	<result property="spDivSn" column="SP_DIV_SN" />
+</resultMap>
+
+<resultMap id="SP_DIVINF_R_00" class="mas.sp.vo.SP_DIVINFVO">
+	<result property="prdtNum" column="PRDT_NUM" />
+	<result property="spDivSn" column="SP_DIV_SN" />
+	<result property="prdtDivNm" column="PRDT_DIV_NM" />
+	<result property="viewSn" column="VIEW_SN" />
+</resultMap>
+
+<resultMap id="SP_DIVINF_R_02" class="mas.sp.vo.SP_OPTINFVO">
+	<result property="spDivSn" column="SP_DIV_SN" />
+	<result property="prdtDivNm" column="PRDT_DIV_NM" />
+	<result property="startAplDt" column="START_APL_DT" />
+	<result property="endAplDt" column="END_APL_DT" />
+</resultMap>
+
+<resultMap id="SP_ADDOPT_R_00" class="mas.sp.vo.SP_ADDOPTINFVO">
+	<result property="addOptSn" column="ADD_OPT_SN" />
+	<result property="addOptNm"	column="ADD_OPT_NM" />
+	<result property="addOptAmt" column="ADD_OPT_AMT" />
+</resultMap>
+
+<resultMap id="SP_ADDOPT_R_02" class="mas.sp.vo.SP_ADDOPTINFVO">
+	<result property="prdtNum" column="PRDT_NUM" />
+	<result property="addOptSn" column="ADD_OPT_SN" />
+	<result property="addOptNm"	column="ADD_OPT_NM" />
+	<result property="addOptAmt" column="ADD_OPT_AMT" />
+	<result property="viewSn" column="VIEW_SN" />
+</resultMap>
+
+
+<resultMap id="SP_DTLINF_R_00" class="mas.sp.vo.SP_DTLINFVO">
+	<result property="spDtlinfNum" column="SP_DTLINF_NUM"></result>
+	<result property="prdtNum" column="PRDT_NUM"></result>
+	<result property="dtlinfType" column="DTLINF_TYPE"></result>
+	<result property="printSn" column="PRINT_SN"></result>
+	<result property="printYn" column="PRINT_YN"></result>
+	<result property="selNm" column="SEL_NM"></result>
+	<result property="subject" column="SUBJECT"></result>
+	<result property="dtlinfExp" column="DTLINF_EXP"></result>
+</resultMap>
+
+
+<resultMap id="SP_DTLINF_ITEM_R_00" class="mas.sp.vo.SP_DTLINF_ITEMVO">
+	<result property="spDtlinfItemNum" column="SP_DTLINF_ITEM_NUM"></result>
+	<result property="spDtlinfNum" column="SP_DTLINF_NUM"></result>
+	<result property="prdtNum" column="PRDT_NUM"></result>
+	<result property="itemNm" column="ITEM_NM"></result>
+	<result property="itemAmt" column="ITEM_AMT"></result>
+	<result property="itemDisAmt" column="ITEM_DIS_AMT"></result>
+	<result property="itemEtc" column="ITEM_ETC"></result>
+</resultMap>
+
+<resultMap id="SP_GUIDINFO_R_00" class="mas.sp.vo.SP_GUIDINFOVO">
+	<result property="prdtNum" column="PRDT_NUM"></result>
+	<result property="subject" column="SUBJECT"></result>
+	<result property="telnum" column="TELNUM"></result>
+	<result property="roadNmAddr" column="ROAD_NM_ADDR"></result>
+	<result property="dtlAddr" column="DTL_ADDR"></result>
+	<result property="prdtExp" column="PRDT_EXP"></result>
+	<result property="useQlfct" column="USE_QLFCT"></result>
+	<result property="useGuide" column="USE_GUIDE"></result>
+	<result property="cancelRefundGuide" column="CANCEL_REFUND_GUIDE"></result>
+	<result property="printYn" column="PRINT_YN"></result>
+	<result property="bgColor" column="BG_COLOR"></result>
+</resultMap>
+
+<resultMap id="SP_MRTNUSER_S_00" class="web.order.vo.MRTNVO">
+	<result property="mrtnNum" 			    column="MRTN_NUM" />
+    <result property="rsvNum" 			    column="RSV_NUM" />
+    <result property="spRsvNum" 			column="SP_RSV_NUM" />
+    <result property="corpId" 		    	column="CORP_ID" />
+    <result property="prdtNum" 		    	column="PRDT_NUM" />
+    <result property="apctNm" 		    	column="APCT_NM" />
+    <result property="birth" 		    	column="BIRTH" />
+    <result property="lrrn" 		    	column="LRRN" />
+    <result property="apctTelnum" 		    column="APCT_TELNUM" />
+    <result property="ageRange" 		    column="AGE_RANGE" />
+    <result property="gender"	 		    column="GENDER" />
+    <result property="bloodType"	 		column="BLOOD_TYPE" />
+    <result property="region"		 		column="REGION" />
+    <result property="fullAddr"		 		column="FULL_ADDR" />
+    <result property="apctEmail"		 	column="APCT_EMAIL" />
+    <result property="course"		 		column="COURSE" />
+    <result property="tshirts"		 		column="TSHIRTS" />
+    <result property="groupNm"		 		column="GROUP_NM" />
+    <result property="regDttm"		 		column="REG_DTTM" />
+</resultMap>
+
+<resultMap id="SP_MRTNUSER_R_01" class="web.order.vo.MRTNVO">
+	<result property="corpId" 			    column="CORP_ID" />
+    <result property="prdtNum" 		    	column="PRDT_NUM" />
+    <result property="txsCnt" 		    	column="TXS_CNT" />
+    <result property="tsCnt" 		    	column="TS_CNT" />
+    <result property="tmCnt" 		    	column="TM_CNT" />
+    <result property="tlCnt" 		    	column="TL_CNT" />
+    <result property="txlCnt" 		    	column="TXL_CNT" />
+    <result property="t2xlCnt"	 		    column="T2XL_CNT" />
+    <result property="t3xlCnt"	 			column="T3XL_CNT" />
+</resultMap>
+
+<select id="SP_PRDTINF_S_00" resultMap="SP_PRDTINF_R_00">
+  SELECT PRDT_NUM
+	     , CORP_ID
+	     , TRADE_STATUS
+	     , CTGR
+	     , PRDT_NM
+	     , SALE_START_DT
+	     , SALE_END_DT
+	     , PRDT_DIV
+	     , FRST_REG_DTTM
+	     ,  (SELECT CD_NM FROM TB_CD WHERE CD_NUM = CTGR) CTGR_NM
+	     , (SELECT COUNT(SP_OPT_SN) FROM TB_SP_OPTINF T WHERE T.PRDT_NUM = R.PRDT_NUM) OPT_CNT
+	     , ADV_RV_YN
+	     , LAST_MOD_DTTM
+  FROM (SELECT ROWNUM AS RN
+			 , PRDT_NUM
+		     , CORP_ID
+		     , TRADE_STATUS
+		     , CTGR
+		     , PRDT_NM
+		     , SALE_START_DT
+		     , SALE_END_DT
+		     , PRDT_DIV
+		     , FRST_REG_DTTM
+		     , ADV_RV_YN
+		     , LAST_MOD_DTTM
+		  FROM (SELECT PRDT_NUM
+				     , CORP_ID
+				     , TRADE_STATUS
+				     , CTGR
+				     , PRDT_NM
+				     , SALE_START_DT
+				     , SALE_END_DT
+				     , PRDT_DIV
+				     , FRST_REG_DTTM
+				     , ADV_RV_YN
+				     , LAST_MOD_DTTM
+				  FROM TB_SP_PRDTINF
+				 WHERE 1=1
+				   AND PRINT_YN = 'Y'
+				   AND CORP_ID = #sCorpId#
+				  <isNotEmpty property="sPrdtNm">
+				   AND PRDT_NM LIKE '%'||#sPrdtNm#||'%'
+				 </isNotEmpty>
+				  <isNotEmpty property="sTradeStatus">
+				   AND TRADE_STATUS = #sTradeStatus#
+				 </isNotEmpty>
+				 ORDER BY (CASE TRADE_STATUS 
+				  	WHEN 'TS01' THEN 1 
+				  	WHEN 'TS02' THEN 2 
+				  	WHEN 'TS03' THEN 3
+				  	WHEN 'TS04' THEN 5
+				  	WHEN 'TS05' THEN 8
+				  	WHEN 'TS06' THEN 4
+				  	WHEN 'TS07' THEN 6
+				  	WHEN 'TS08' THEN 7
+				  	ELSE 8 END) ,FRST_REG_DTTM DESC
+		 		)
+	 ) R
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="SP_PRDTINF_S_01" resultClass="int">
+SELECT COUNT(PRDT_NUM)
+  FROM TB_SP_PRDTINF
+ WHERE 1=1
+   AND PRINT_YN = 'Y'
+   AND CORP_ID = #sCorpId#
+<isNotEmpty property="sPrdtNm">
+   AND PRDT_NM LIKE '%'||#sPrdtNm#||'%'
+ </isNotEmpty>
+  <isNotEmpty property="sTradeStatus">
+   AND TRADE_STATUS = #sTradeStatus#
+ </isNotEmpty>
+</select>
+
+<select id="SP_PRDTINF_S_02" resultMap="SP_PRDTINF_R_02">
+SELECT PRDT_NUM
+     , SP.CORP_ID
+     , TRADE_STATUS
+     , CTGR
+     , PRDT_NM
+     , PRDT_INF
+     , SUB_EXP
+     , SALE_START_DT
+     , SALE_END_DT
+     , EXPR_START_DT
+     , EXPR_END_DT
+     , PRDT_DIV
+     , SP.FRST_REG_DTTM
+     , SP.FRST_REG_ID
+     , SP.FRST_REG_IP
+     , SP.LAST_MOD_DTTM
+     , SP.LAST_MOD_ID
+     , SP.LAST_MOD_IP
+     , USE_QLFCT
+     , DIS_INF
+     , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = CTGR) CTGR_NM
+     , CANCEL_GUIDE
+     , USE_ABLE_TM
+     , EXPR_DAYNUM_YN
+     , EXPR_DAYNUM
+     , AD_DIV
+     , AD_AREA
+     , SP.ROAD_NM_ADDR
+     , SP.DTL_ADDR
+     , SP.LON
+     , SP.LAT
+     , LINK_PRDT_YN
+     , LINK_URL
+     , (SELECT ADJ_APL_PCT FROM TB_CMSS WHERE CMSS_NUM=CP.CMSS_NUM) AS CMSS_RATE
+     , AD_MOV
+     , AREA
+	 , CP.LS_LINK_YN
+     , SP.LS_LINK_PRDT_NUM
+     , SP.ADV_RV_YN
+  FROM TB_SP_PRDTINF SP
+    INNER JOIN TB_CORP CP ON CP.CORP_ID=SP.CORP_ID
+ WHERE 1=1
+ <isNotEmpty property="corpId">
+ 	AND SP.CORP_ID = #corpId#
+ </isNotEmpty>
+  <isNotEmpty property="prdtNum">
+ 	AND PRDT_NUM = #prdtNum#
+ </isNotEmpty>
+ <isEqual  property="stockYn" compareValue="Y">
+  <![CDATA[
+    AND (TO_DATE(SALE_END_DT, 'YYYY/MM/DD') >= sysdate or TO_DATE(SALE_START_DT, 'YYYY/MM/DD') >= sysdate)
+    ]]>
+ </isEqual>
+ <isNotEmpty property="tradeStatus">
+    AND TRADE_STATUS = #tradeStatus#
+ </isNotEmpty>
+ORDER BY PRDT_NM ASC
+</select>
+
+<select id="SP_PRDTINF_S_03" resultMap="SP_PRDTINF_R_03">
+SELECT PRDT_NUM
+		 , TRADE_STATUS
+		 , (SELECT CD_NM FROM TB_CD WHERE HRK_CD_NUM = 'TS' AND CD_NUM = TRADE_STATUS) AS TRADE_STATUS_NM
+		 , CORP_ID
+		 , CORP_NM
+		 , PRDT_DIV
+		 , PRDT_NM
+		 , SALE_START_DT
+		 , SALE_END_DT
+		 , CONF_REQUEST_DTTM
+		 , CONF_DTTM
+		 , ADM_EMAIL
+		 , EXPR_START_DT
+		 , EXPR_END_DT
+		 , SIX_CERTI_YN
+  FROM (SELECT ROWNUM AS RN
+					 , PRDT_NUM
+					 , TRADE_STATUS
+					 , CORP_ID
+					 , CORP_NM
+					 , PRDT_DIV
+					 , PRDT_NM
+					 , SALE_START_DT
+					 , SALE_END_DT
+					 , CONF_REQUEST_DTTM
+					 , CONF_DTTM
+					 , ADM_EMAIL
+                     , EXPR_START_DT
+                     , EXPR_END_DT
+        			 , SIX_CERTI_YN
+			FROM (SELECT ROWNUM AS RN
+								 , T1.PRDT_NUM
+								 , T1.TRADE_STATUS
+								 , T1.CORP_ID
+								 , T2.CORP_NM
+								 , T1.PRDT_DIV
+								 , T1.PRDT_NM
+								 , T1.SALE_START_DT
+								 , T1.SALE_END_DT
+								 , T1.CONF_REQUEST_DTTM
+								 , T1.CONF_DTTM
+								 , T2.ADM_EMAIL
+								 , T1.EXPR_START_DT
+								 , T1.EXPR_END_DT
+			      				 , CASE WHEN T1.SIX_CERTI_CATE IS NULL THEN 'N' ELSE 'Y' END AS SIX_CERTI_YN
+						   FROM TB_SP_PRDTINF T1,
+						        TB_CORP T2
+						  WHERE T1.CORP_ID =T2.CORP_ID
+						  <isNotEmpty property="sTradeStatus">
+						     AND T1.TRADE_STATUS = #sTradeStatus#
+						  </isNotEmpty>
+						  <isEmpty property="sTradeStatus">
+						    AND T1.TRADE_STATUS != 'TS01'
+						  </isEmpty>
+						 <isNotEmpty property="sSaleStartDt">
+						 	<isNotEmpty property="sSaleEndDt">
+						 	<![CDATA[
+						     AND (TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD')
+						      OR TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD') )
+						     ]]>
+						     </isNotEmpty>
+							  <isEmpty property="sSaleEndDt">
+							  <![CDATA[
+							     AND (TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD')
+							     OR TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD') )
+							    ]]>
+							  </isEmpty>
+						  </isNotEmpty>
+						  <isNotEmpty property="sSaleEndDt">
+						  	<isNotEmpty property="sSaleStartDt">
+							  <![CDATA[
+							     AND (TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD')
+							    OR TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD') )
+							      ]]>
+							   </isNotEmpty>
+						   		<isEmpty property="sSaleStartDt">
+							  <![CDATA[
+							     AND( TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD')
+							     OR TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD') )
+							     ]]>
+							     </isEmpty>
+						  </isNotEmpty>
+						  <isNotEmpty property="sConfStartDt">
+						  <![CDATA[
+						    AND TO_DATE(T1.CONF_DTTM, 'YYYY/MM/DD') >= TO_DATE(#sConfStartDt#, 'YYYY/MM/DD')
+						  ]]>
+						  </isNotEmpty>
+						  <isNotEmpty property="sConfEndDt">
+						  <![CDATA[
+						  AND TO_DATE(T1.CONF_DTTM, 'YYYY/MM/DD') <= TO_DATE(#sConfEndDt#, 'YYYY/MM/DD')
+						  ]]>
+						  </isNotEmpty>
+						  <isNotEmpty property="sCorpId">
+						  AND T2.CORP_ID=#sCorpId#
+						  </isNotEmpty>
+						  <isNotEmpty property="sCorpNm">
+						  AND T2.CORP_NM LIKE '%'||#sCorpNm#||'%'
+						  </isNotEmpty>
+						  <isNotEmpty property="sPrdtNm">
+						  AND T1.PRDT_NM LIKE '%'||#sPrdtNm#||'%'
+						  </isNotEmpty>
+						  <isNotEmpty property="sCtgr">
+						  AND SUBSTR(T1.CTGR, 0,2) = SUBSTR(#sCtgr#, 0, 2)
+						  </isNotEmpty>
+						  <isNotEmpty property="sSubCtgr">
+						  	<isNotEmpty property="sSubCtgr">
+						  AND T1.CTGR = #sSubCtgr#
+						  	</isNotEmpty>
+						  </isNotEmpty>
+						  <isNotEmpty property="sCorpSubCd">
+						  AND T2.CORP_SUB_CD = #sCorpSubCd#
+						  </isNotEmpty>
+						  <!-- 기간만료 예정 상품-->
+						  <isEqual property="sExprYn" compareValue="Y">
+						  <![CDATA[
+						  AND TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') -TO_DATE(SYSDATE, 'YYYY-MM-DD') < 14
+						  ]]>
+						  </isEqual>
+	                      <!-- 유효만료 예정 상품 (30일)-->
+						  <isEqual property="sExprEndYn" compareValue="Y">
+						  <![CDATA[
+						  AND TO_DATE(T1.EXPR_END_DT, 'YYYY-MM-DD') -TO_DATE(SYSDATE, 'YYYY-MM-DD') < 31
+						  ]]>
+						  </isEqual>
+						  <isEqual property="sDisplayYn" compareValue="Y">
+				          AND TRADE_STATUS = 'TS03'
+                   		  AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN SALE_START_DT AND SALE_END_DT
+				          </isEqual>
+				          <isEqual property="sDisplayYn" compareValue="N">
+				          <![CDATA[
+				          AND (TRADE_STATUS != 'TS03'
+                     		OR SALE_END_DT < TO_CHAR(SYSDATE, 'YYYYMMDD'))
+                     	  ]]>
+				          </isEqual>
+						  <isNotEmpty property="sOrderCd">
+						  <isEqual property="sOrderCd" compareValue="saleEndDt">
+						  ORDER BY T1.SALE_END_DT
+						  </isEqual>
+						  </isNotEmpty>
+						  <isEmpty property="sOrderCd">
+						  ORDER BY T1.CONF_REQUEST_DTTM DESC
+						  </isEmpty>
+				)
+	)
+	WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="SP_PRDTINF_S_04" resultClass="int">
+SELECT COUNT(T1.PRDT_NUM)
+   FROM TB_SP_PRDTINF T1,
+        TB_CORP T2
+  WHERE T1.CORP_ID =T2.CORP_ID
+  <isNotEmpty property="sTradeStatus">
+     AND T1.TRADE_STATUS = #sTradeStatus#
+  </isNotEmpty>
+  <isEmpty property="sTradeStatus">
+    AND T1.TRADE_STATUS != 'TS01'
+  </isEmpty>
+   <isNotEmpty property="sSaleStartDt">
+ 	<isNotEmpty property="sSaleEndDt">
+ 	<![CDATA[
+     AND (TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD')
+      OR TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD') )
+     ]]>
+     </isNotEmpty>
+	  <isEmpty property="sSaleEndDt">
+	  <![CDATA[
+	     AND (TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD')
+	     OR TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD') )
+	    ]]>
+	  </isEmpty>
+  </isNotEmpty>
+  <isNotEmpty property="sSaleEndDt">
+  	<isNotEmpty property="sSaleStartDt">
+	  <![CDATA[
+	     AND (TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD')
+	    OR TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD') )
+	      ]]>
+	   </isNotEmpty>
+   		<isEmpty property="sSaleStartDt">
+	  <![CDATA[
+	     AND( TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD')
+	     OR TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD') )
+	     ]]>
+	     </isEmpty>
+  </isNotEmpty>
+  <isNotEmpty property="sConfStartDt">
+  <![CDATA[
+    AND TO_DATE(T1.CONF_DTTM, 'YYYY/MM/DD') >= TO_DATE(#sConfStartDt#, 'YYYY/MM/DD')
+  ]]>
+  </isNotEmpty>
+  <isNotEmpty property="sConfEndDt">
+  <![CDATA[
+  AND TO_DATE(T1.CONF_DTTM, 'YYYY/MM/DD') <= TO_DATE(#sConfEndDt#, 'YYYY/MM/DD')
+  ]]>
+  </isNotEmpty>
+  <isNotEmpty property="sCorpId">
+  AND T2.CORP_ID=#sCorpId#
+  </isNotEmpty>
+  <isNotEmpty property="sCorpNm">
+  AND T2.CORP_NM LIKE '%'||#sCorpNm#||'%'
+  </isNotEmpty>
+  <isNotEmpty property="sPrdtNm">
+  AND T1.PRDT_NM LIKE '%'||#sPrdtNm#||'%'
+  </isNotEmpty>
+  <isNotEmpty property="sCtgr">  
+  AND SUBSTR(T1.CTGR, 0,2) = SUBSTR(#sCtgr#, 0, 2)
+  </isNotEmpty>
+  <isNotEmpty property="sSubCtgr">
+  	<isNotEmpty property="sSubCtgr">
+  AND T1.CTGR = #sSubCtgr#
+  	</isNotEmpty>
+  </isNotEmpty>
+  <isNotEmpty property="sCorpSubCd">
+  AND T2.CORP_SUB_CD = #sCorpSubCd#
+  </isNotEmpty>
+  <isEqual property="sExprYn" compareValue="Y">
+  <![CDATA[
+  AND TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') -TO_DATE(SYSDATE, 'YYYY-MM-DD') < 14
+  ]]>
+  </isEqual>
+  <isEqual property="sExprEndYn" compareValue="Y">
+  <![CDATA[
+  AND TO_DATE(T1.EXPR_END_DT, 'YYYY-MM-DD') -TO_DATE(SYSDATE, 'YYYY-MM-DD') < 31
+  ]]>
+  </isEqual>
+  <isEqual property="sDisplayYn" compareValue="Y">
+  AND TRADE_STATUS = 'TS03'
+  AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN SALE_START_DT AND SALE_END_DT
+  </isEqual>
+  <isEqual property="sDisplayYn" compareValue="N">
+  <![CDATA[
+  AND (TRADE_STATUS != 'TS03'
+    OR SALE_END_DT < TO_CHAR(SYSDATE, 'YYYYMMDD'))
+  ]]>
+  </isEqual>
+
+</select>
+
+<select id="SP_PRDTINF_S_05" resultMap="SP_PRDTINF_R_05">
+SELECT PRDT_NUM,
+        TRADE_STATUS,
+        PRDT_DIV,
+        PRDT_NM,
+        SALE_START_DT,
+        SALE_END_DT
+   FROM TB_SP_PRDTINF
+ WHERE 1=1
+     AND CORP_ID = #corpId#
+     AND  TRADE_STATUS in ('TS03', 'TS05')
+    <![CDATA[
+    AND (TO_DATE(SALE_END_DT, 'YYYY/MM/DD') >= sysdate or TO_DATE(SALE_START_DT, 'YYYY/MM/DD') >= sysdate)
+    ]]>
+
+</select>
+
+<select id="SP_PRDTINF_S_06" resultMap="SP_PRDTINF_R_03">
+SELECT PRDT_NUM
+		 , TRADE_STATUS
+		 , '' AS TRADE_STATUS_NM
+		 , CORP_ID
+		 , CORP_NM
+		 , PRDT_DIV
+		 , PRDT_NM
+		 , SALE_START_DT
+		 , SALE_END_DT
+		 , CONF_REQUEST_DTTM
+		 , CONF_DTTM
+	     , ADM_EMAIL
+		 , EXPR_START_DT
+		 , EXPR_END_DT
+		 , SIX_CERTI_YN
+  FROM (SELECT ROWNUM AS RN
+					 , PRDT_NUM
+					 , TRADE_STATUS
+					 , CORP_ID
+					 , CORP_NM
+					 , PRDT_DIV
+					 , PRDT_NM
+					 , SALE_START_DT
+					 , SALE_END_DT
+					 , CONF_REQUEST_DTTM
+					 , CONF_DTTM
+	                 , ADM_EMAIL
+					 , EXPR_START_DT
+					 , EXPR_END_DT
+        			 , SIX_CERTI_YN
+	FROM (SELECT ROWNUM AS RN
+								 , T1.PRDT_NUM
+								 , T1.TRADE_STATUS
+								 , T1.CORP_ID
+								 , T2.CORP_NM
+								 , T1.PRDT_DIV
+								 , T1.PRDT_NM
+								 , T1.SALE_START_DT
+								 , T1.SALE_END_DT
+								 , T1.CONF_REQUEST_DTTM
+								 , T1.CONF_DTTM
+	                             , T2.ADM_EMAIL
+								 , T1.EXPR_START_DT
+								 , T1.EXPR_END_DT
+								 , CASE WHEN T1.SIX_CERTI_CATE IS NULL THEN 'N' ELSE 'Y' END AS SIX_CERTI_YN
+						   FROM TB_SP_PRDTINF T1,
+						        TB_CORP T2
+						  WHERE T1.CORP_ID =T2.CORP_ID
+						  <isNotEmpty property="sTradeStatus">
+						     AND T1.TRADE_STATUS = #sTradeStatus#
+						  </isNotEmpty>
+						  <isEmpty property="sTradeStatus">
+						    AND T1.TRADE_STATUS != 'TS01'
+						  </isEmpty>
+						 <isNotEmpty property="sSaleStartDt">
+						 	<isNotEmpty property="sSaleEndDt">
+						 	<![CDATA[
+						     AND (TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD')
+						      OR TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD') )
+						     ]]>
+						     </isNotEmpty>
+							  <isEmpty property="sSaleEndDt">
+							  <![CDATA[
+							     AND (TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD')
+							     OR TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD') )
+							    ]]>
+							  </isEmpty>
+						  </isNotEmpty>
+						  <isNotEmpty property="sSaleEndDt">
+						  	<isNotEmpty property="sSaleStartDt">
+							  <![CDATA[
+							     AND (TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD')
+							    OR TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD') )
+							      ]]>
+							   </isNotEmpty>
+						   		<isEmpty property="sSaleStartDt">
+							  <![CDATA[
+							     AND( TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD')
+							     OR TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD') )
+							     ]]>
+							     </isEmpty>
+						  </isNotEmpty>
+						  <isNotEmpty property="sConfRequestStartDt">
+						  <![CDATA[
+						    AND TO_DATE(T1.CONF_REQUEST_DTTM, 'YYYY/MM/DD') >= TO_DATE(#sConfRequestStartDt#, 'YYYY/MM/DD')
+						  ]]>
+						  </isNotEmpty>
+						  <isNotEmpty property="sConfRequestEndDt">
+						  <![CDATA[
+						  AND TO_DATE(T1.CONF_REQUEST_DTTM, 'YYYY/MM/DD') <= TO_DATE(#sConfRequestEndDt#, 'YYYY/MM/DD')
+						  ]]>
+						  </isNotEmpty>
+						  <isNotEmpty property="sCorpId">
+						  AND T2.CORP_ID=#sCorpId#
+						  </isNotEmpty>
+						  <isNotEmpty property="sCorpNm">
+						  AND T2.CORP_NM LIKE '%'||#sCorpNm#||'%'
+						  </isNotEmpty>
+						  <isNotEmpty property="sPrdtNm">
+						  AND T1.PRDT_NM LIKE '%'||#sPrdtNm#||'%'
+						  </isNotEmpty>
+						  <isNotEmpty property="sCtgr">
+						  AND (
+						  	SUBSTR(T1.CTGR, 0,2) = SUBSTR(#sCtgr#, 0, 2)
+						  	<isEqual property="sCtgr" compareValue="C100">
+						  	 OR SUBSTR(T1.CTGR, 0,2) = 'C4'
+						  	</isEqual>
+						  )
+						  </isNotEmpty>
+						  <isNotEmpty property="sSubCtgr">
+						  	<isNotEmpty property="sSubCtgr">
+						  AND T1.CTGR = #sSubCtgr#
+						  	</isNotEmpty>
+						  </isNotEmpty>
+						  <isNotEmpty property="sCorpSubCd">
+						  AND T2.CORP_SUB_CD = #sCorpSubCd#
+						  </isNotEmpty>
+						  <isNotNull property="sAreaCd">
+						  	<isNotEmpty property="sAreaCd">
+						  AND TRIM(T1.AREA) = TRIM(#sAreaCd#)
+						  	</isNotEmpty>
+						  </isNotNull>
+						  <isEqual property="sExprYn" compareValue="Y">
+						  <![CDATA[
+						  AND TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') -TO_DATE(SYSDATE, 'YYYY-MM-DD') < 14
+						  AND TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') -TO_DATE(SYSDATE, 'YYYY-MM-DD') >= 0
+						  ]]>
+						  </isEqual>
+						  <isEqual property="sDisplayYn" compareValue="Y">
+				          AND TRADE_STATUS = 'TS03'
+                   		  AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN SALE_START_DT AND SALE_END_DT
+				          </isEqual>
+				          <isEqual property="sDisplayYn" compareValue="N">
+				          <![CDATA[
+				          AND (TRADE_STATUS != 'TS03'
+                     		OR SALE_END_DT < TO_CHAR(SYSDATE, 'YYYYMMDD'))
+                     	  ]]>
+				          </isEqual>
+				           ORDER BY (CASE T1.TRADE_STATUS WHEN 'TS01' THEN 1 WHEN 'TS02' THEN 2 WHEN 'TS03' THEN 3 WHEN 'TS04' THEN 5 WHEN 'TS05' THEN 8 WHEN 'TS06' THEN 4 WHEN 'TS07' THEN 6 WHEN 'TS08' THEN 7 ELSE 8 END),
+						   T1.CONF_REQUEST_DTTM DESC
+				)
+	)
+	WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="SP_PRDTINF_S_07" resultClass="int">
+SELECT COUNT(T1.PRDT_NUM)
+   FROM TB_SP_PRDTINF T1,
+        TB_CORP T2
+  WHERE T1.CORP_ID =T2.CORP_ID
+  <isNotEmpty property="sTradeStatus">
+     AND T1.TRADE_STATUS = #sTradeStatus#
+  </isNotEmpty>
+  <isEmpty property="sTradeStatus">
+    AND T1.TRADE_STATUS != 'TS01'
+  </isEmpty>
+   <isNotEmpty property="sSaleStartDt">
+ 	<isNotEmpty property="sSaleEndDt">
+ 	<![CDATA[
+     AND (TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD')
+      OR TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD') )
+     ]]>
+     </isNotEmpty>
+	  <isEmpty property="sSaleEndDt">
+	  <![CDATA[
+	     AND (TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD')
+	     OR TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD') )
+	    ]]>
+	  </isEmpty>
+  </isNotEmpty>
+  <isNotEmpty property="sSaleEndDt">
+  	<isNotEmpty property="sSaleStartDt">
+	  <![CDATA[
+	     AND (TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD')
+	    OR TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') >= TO_DATE(#sSaleStartDt#, 'YYYY/MM/DD') )
+	      ]]>
+	   </isNotEmpty>
+   		<isEmpty property="sSaleStartDt">
+	  <![CDATA[
+	     AND( TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD')
+	     OR TO_DATE(T1.SALE_START_DT, 'YYYY/MM/DD') <= TO_DATE(#sSaleEndDt#, 'YYYY/MM/DD') )
+	     ]]>
+	     </isEmpty>
+  </isNotEmpty>
+  <isNotEmpty property="sConfRequestStartDt">
+  <![CDATA[
+    AND TO_DATE(T1.CONF_REQUEST_DTTM, 'YYYY/MM/DD') >= TO_DATE(#sConfRequestStartDt#, 'YYYY/MM/DD')
+  ]]>
+  </isNotEmpty>
+  <isNotEmpty property="sConfRequestEndDt">
+  <![CDATA[
+  AND TO_DATE(T1.CONF_REQUEST_DTTM, 'YYYY/MM/DD') <= TO_DATE(#sConfRequestEndDt#, 'YYYY/MM/DD')
+  ]]>
+  </isNotEmpty>
+  <isNotEmpty property="sCorpId">
+  AND T2.CORP_ID=#sCorpId#
+  </isNotEmpty>
+  <isNotEmpty property="sCorpNm">
+  AND T2.CORP_NM LIKE '%'||#sCorpNm#||'%'
+  </isNotEmpty>
+  <isNotEmpty property="sPrdtNm">
+  AND T1.PRDT_NM LIKE '%'||#sPrdtNm#||'%'
+  </isNotEmpty>
+  <isNotEmpty property="sCtgr">  
+  AND (
+  	SUBSTR(T1.CTGR, 0,2) = SUBSTR(#sCtgr#, 0, 2)
+  	<isEqual property="sCtgr" compareValue="C100">
+  	 OR SUBSTR(T1.CTGR, 0,2) = 'C4'
+  	</isEqual>
+  )
+  </isNotEmpty>  
+  <isNotEmpty property="sSubCtgr">
+  	<isNotEmpty property="sSubCtgr">
+  AND T1.CTGR = #sSubCtgr#
+  	</isNotEmpty>
+  </isNotEmpty>
+  <isNotEmpty property="sCorpSubCd">
+  AND T2.CORP_SUB_CD = #sCorpSubCd#
+  </isNotEmpty>
+  <isNotNull property="sAreaCd">
+  	<isNotEmpty property="sAreaCd">
+  AND TRIM(T1.AREA) = TRIM(#sAreaCd#)
+  	</isNotEmpty>
+  </isNotNull>
+  <isEqual property="sExprYn" compareValue="Y">
+  <![CDATA[
+  AND TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') -TO_DATE(SYSDATE, 'YYYY-MM-DD') < 14
+  AND TO_DATE(T1.SALE_END_DT, 'YYYY/MM/DD') -TO_DATE(SYSDATE, 'YYYY-MM-DD') >= 0
+  ]]>
+  </isEqual>
+  <isEqual property="sDisplayYn" compareValue="Y">
+  AND TRADE_STATUS = 'TS03'
+  AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN SALE_START_DT AND SALE_END_DT
+  </isEqual>
+  <isEqual property="sDisplayYn" compareValue="N">
+  <![CDATA[
+  AND (TRADE_STATUS != 'TS03'
+    OR SALE_END_DT < TO_CHAR(SYSDATE, 'YYYYMMDD'))
+  ]]>
+  </isEqual>
+</select>
+
+<insert id="SP_PRDTINF_I_00" >
+<selectKey keyProperty="prdtNum" resultClass="String">
+       	SELECT 'SP'||LPAD(NVL(MAX(SUBSTR(PRDT_NUM,3)),0) + 1, 8,'0')
+          FROM TB_SP_PRDTINF
+   </selectKey>
+INSERT INTO TB_SP_PRDTINF
+     ( PRDT_NUM
+     , CORP_ID
+     , TRADE_STATUS
+	 , CTGR
+     , PRDT_NM
+     , PRDT_INF
+     , SUB_EXP
+     , SALE_START_DT
+     , SALE_END_DT
+     , EXPR_START_DT
+     , EXPR_END_DT
+     , PRDT_DIV
+     , FRST_REG_DTTM
+     , FRST_REG_ID
+     , FRST_REG_IP
+     , LAST_MOD_DTTM
+     , LAST_MOD_ID
+     , LAST_MOD_IP
+     , USE_QLFCT
+     , DIS_INF
+     , CANCEL_GUIDE
+     , USE_ABLE_TM
+     , EXPR_DAYNUM_YN
+     , EXPR_DAYNUM
+     , AD_DIV
+     , AD_AREA
+     , ROAD_NM_ADDR
+     , DTL_ADDR
+     , LON
+     , LAT
+     , LINK_PRDT_YN
+     , LINK_URL
+     , AD_MOV
+     , AREA
+	 , LS_LINK_PRDT_NUM
+	 , ADV_RV_YN
+     , API_IMG_THUMB
+     , API_IMG_DETAIL
+     )
+VALUES
+     ( #prdtNum#
+     , #corpId#
+     , #tradeStatus#
+     , #ctgr#
+     , #prdtNm#
+     , #prdtInf#
+     , #subExp#
+     , #saleStartDt#
+     , #saleEndDt#
+     , #exprStartDt#
+     , #exprEndDt#
+     , #prdtDiv#
+     , SYSDATE
+     , #frstRegId#
+     , #frstRegIp#
+     , SYSDATE
+     , #lastModId#
+     , #lastModIp#
+     , #useQlfct#
+     , #disInf#
+     , #cancelGuide#
+     , #useAbleTm#
+     , #exprDaynumYn#
+     , #exprDaynum#
+     , #adDiv#
+     , #adArea#
+     , #roadNmAddr#
+     , #dtlAddr#
+     , #lon#
+     , #lat#
+     , #linkPrdtYn#
+     , #linkUrl#
+     , #adMov#
+     , TRIM(#area#)
+	 , #lsLinkPrdtNum#
+	 , #advRvYn#
+	 , #apiImgThumb#
+     , #apiImgDetail#
+     )
+</insert>
+<update id="SP_PRDTINF_U_00">
+UPDATE TB_SP_PRDTINF
+   SET
+   	   LAST_MOD_DTTM = SYSDATE
+     , LAST_MOD_ID = #lastModId#
+     , LAST_MOD_IP = #lastModIp#
+   	<isNotEmpty property="tradeStatus">
+     , TRADE_STATUS = #tradeStatus#
+	 </isNotEmpty>
+	 <isNotEmpty property="ctgr">
+	 , CTGR = #ctgr#
+	 </isNotEmpty>
+	 <isNotEmpty property="prdtNm">
+     , PRDT_NM = #prdtNm#
+     </isNotEmpty>
+     <isNotNull property="prdtInf">
+     , PRDT_INF = #prdtInf#
+     </isNotNull>
+     <isNotEmpty property="subExp">
+     , SUB_EXP = #subExp#
+     </isNotEmpty>
+     <isNotEmpty property="saleStartDt">
+     , SALE_START_DT = #saleStartDt#
+     </isNotEmpty>
+     <isNotEmpty property="saleEndDt">
+     , SALE_END_DT = #saleEndDt#
+     </isNotEmpty>
+
+	<isNotEmpty property="exprDaynumYn">
+	, EXPR_DAYNUM_YN = #exprDaynumYn#
+	</isNotEmpty>
+	<isEqual property="exprDaynumYn" compareValue="N">
+	, EXPR_START_DT = #exprStartDt#
+	, EXPR_END_DT = #exprEndDt#
+	, EXPR_DAYNUM = 0
+	</isEqual>
+	<isEqual property="exprDaynumYn" compareValue="Y">
+	, EXPR_START_DT = ''
+	, EXPR_END_DT = ''
+	, EXPR_DAYNUM = #exprDaynum#
+	</isEqual>
+
+     <isNotEmpty property="prdtDiv">
+     , PRDT_DIV = #prdtDiv#
+       </isNotEmpty>
+     <isNotNull property="useQlfct">
+     , USE_QLFCT = #useQlfct#
+       </isNotNull>
+       <isNotNull property="disInf">
+      , DIS_INF = #disInf#
+       </isNotNull>
+       <isEqual property="tradeStatus" compareValue="TS02">
+        , CONF_REQUEST_DTTM = SYSDATE
+        </isEqual>
+        <isEqual property="tradeStatus" compareValue="TS01">
+         , CONF_REQUEST_DTTM = ''
+        </isEqual>
+	    <isEqual property="tradeStatus" compareValue="TS03">
+		 , CONF_DTTM = (SELECT CASE WHEN CONF_DTTM IS NULL THEN SYSDATE ELSE CONF_DTTM END FROM TB_SP_PRDTINF WHERE PRDT_NUM = #prdtNum#)
+	    </isEqual>
+	    <isNotNull property="cancelGuide">
+     	, CANCEL_GUIDE = #cancelGuide#
+       </isNotNull>
+       <isNotNull property="useAbleTm">
+       	, USE_ABLE_TM = NVL(#useAbleTm#, 0)
+       	</isNotNull>
+       <isNotNull property="adDiv">
+       	<isNotEmpty property="adDiv">
+       	, AD_DIV = #adDiv#
+       	</isNotEmpty>
+       </isNotNull>
+       <isNotNull property="adArea">
+       	<isNotEmpty property="adArea">
+       	, AD_AREA = #adArea#
+       	</isNotEmpty>
+       </isNotNull>
+       <isNotNull property="roadNmAddr">
+       	<isNotEmpty property="roadNmAddr">
+       	, ROAD_NM_ADDR = #roadNmAddr#
+       	</isNotEmpty>
+       </isNotNull>
+       <isNotNull property="dtlAddr">
+       	<isNotEmpty property="dtlAddr">
+       	, DTL_ADDR = #dtlAddr#
+       	</isNotEmpty>
+       </isNotNull>
+       <isNotNull property="lon">
+       	<isNotEmpty property="lon">
+       	, LON = #lon#
+       	</isNotEmpty>
+       </isNotNull>
+       <isNotNull property="lat">
+       	<isNotEmpty property="lat">
+       	, LAT = #lat#
+       	</isNotEmpty>
+       </isNotNull>
+       <isNotNull property="linkPrdtYn">
+       	<isNotEmpty property="linkPrdtYn">
+       	, LINK_PRDT_YN = #linkPrdtYn#
+       	</isNotEmpty>
+       </isNotNull>
+       <isNotNull property="linkUrl">
+       	<isNotEmpty property="linkUrl">
+       	, LINK_URL = #linkUrl#
+       	</isNotEmpty>
+       </isNotNull>
+	    , AD_MOV = #adMov#
+	   <isNotEmpty property="area">
+	     , AREA = TRIM(#area#)
+	   </isNotEmpty>
+	   <isNotNull property="lsLinkPrdtNum">
+       	<isNotEmpty property="lsLinkPrdtNum">
+       	, LS_LINK_PRDT_NUM = #lsLinkPrdtNum#
+       	</isNotEmpty>
+       </isNotNull>
+       , ADV_RV_YN = #advRvYn#
+ WHERE 1=1
+ 	 AND PRDT_NUM = #prdtNum#
+ 	 AND CORP_ID = #corpId#
+</update>
+
+<update id="SP_PRDTINF_U_01">
+UPDATE TB_SP_PRDTINF
+   SET
+   	   LAST_MOD_DTTM = SYSDATE
+     , LAST_MOD_ID = #lastModId#
+     , LAST_MOD_IP = #lastModIp#
+     , TRADE_STATUS = #tradeStatus#
+	 , SIX_CERTI_CATE = #sixCertiCate#
+    <isEqual property="tradeStatus" compareValue="TS02">
+   , CONF_REQUEST_DTTM = SYSDATE
+   </isEqual>
+   <isEqual property="tradeStatus" compareValue="TS01">
+    , CONF_REQUEST_DTTM = ''
+   </isEqual>
+    <isEqual property="tradeStatus" compareValue="TS03">
+   	 , CONF_DTTM = (SELECT CASE WHEN CONF_DTTM IS NULL THEN SYSDATE ELSE CONF_DTTM END FROM TB_SP_PRDTINF WHERE PRDT_NUM = #prdtNum#)
+    </isEqual>
+ WHERE 1=1
+ 	 AND PRDT_NUM = #prdtNum#
+</update>
+
+<!-- 상품 히든처리 -->
+<update id="SP_PRDTINF_U_02">
+UPDATE TB_SP_PRDTINF
+	SET PRINT_YN = 'N'
+		,  LAST_MOD_DTTM	= SYSDATE
+		,  LAST_MOD_ID		= #lastModId#
+		,  LAST_MOD_IP		= #lastModIp#          
+ WHERE PRDT_NUM = #prdtNum#
+</update>
+
+<select id="SP_OPTINF_S_00" resultMap="SP_OPTINF_R_00">
+SELECT PRDT_NUM
+     , SP_DIV_SN
+     , SP_OPT_SN
+     , OPT_NM
+     , NML_AMT
+     , SALE_AMT
+     , VIEW_SN
+     , APL_DT
+     , OPT_PRDT_NUM
+     , SALE_NUM
+     , DDL_YN
+     , STD_MEM
+     , PRINT_YN
+     , LS_LINK_OPT_NUM
+  FROM TB_SP_OPTINF
+ WHERE 1=1
+ <isNotEmpty property="prdtNum">
+ 	AND PRDT_NUM = #prdtNum#
+ </isNotEmpty>
+ <isNotEmpty property="spDivSn">
+    AND SP_DIV_SN = #spDivSn#
+ </isNotEmpty>
+ <isNotEmpty property="spOptSn">
+    AND SP_OPT_SN = #spOptSn#
+ </isNotEmpty>
+</select>
+
+<insert id="SP_OPTINF_I_00">
+INSERT INTO TB_SP_OPTINF
+     ( PRDT_NUM
+     , SP_DIV_SN
+     , SP_OPT_SN
+     , OPT_NM
+     , NML_AMT
+     , SALE_AMT
+     , VIEW_SN
+     , APL_DT
+     , OPT_PRDT_NUM
+     , SALE_NUM
+     , DDL_YN
+     , STD_MEM
+     , PRINT_YN
+     , LS_LINK_OPT_NUM
+     )
+VALUES
+     ( #prdtNum#
+     , #spDivSn#
+     ,  (SELECT NVL(MAX(SP_OPT_SN), 0) + 1
+          FROM TB_SP_OPTINF
+         WHERE PRDT_NUM = #prdtNum#
+            AND SP_DIV_SN = #spDivSn#)
+     , #optNm#
+     , #nmlAmt#
+     , #saleAmt#
+     , #viewSn#
+     , #aplDt#
+     , #optPrdtNum#
+     , 0
+     , #ddlYn#
+     , #stdMem#
+     , #printYn#
+     , #lsLinkOptNum#
+     )
+</insert>
+
+<insert id="SP_OPTINF_I_01">
+INSERT INTO TB_SP_OPTINF /* 옵션 일괄등록 */
+     ( PRDT_NUM
+     , SP_DIV_SN
+     , SP_OPT_SN
+     , OPT_NM
+     , NML_AMT
+     , SALE_AMT
+     , VIEW_SN
+     , APL_DT
+     , OPT_PRDT_NUM
+     , DDL_YN
+     , SALE_NUM
+     , STD_MEM
+     , PRINT_YN
+     )
+SELECT
+     	 #prdtNum#
+     	, #spDivSn#
+     	, (SELECT NVL(MAX(SP_OPT_SN), 0)
+          FROM TB_SP_OPTINF
+         WHERE PRDT_NUM = #prdtNum#
+            AND SP_DIV_SN = #spDivSn#) + ROWNUM
+     	, #optNm#
+     	, #nmlAmt#
+     	, #saleAmt#
+     	, ROWNUM + #oldSn#
+     	, aplDt
+     	, #optPrdtNum#
+    	 , #ddlYn#
+    	 , 0
+    	 , #stdMem#
+    	 , #printYn#
+   FROM (SELECT TO_CHAR(TO_DATE(#startAplDt#, 'YYYY/MM/DD')+LEVEL-1, 'YYYYMMDD') AS aplDt
+          FROM DUAL
+         CONNECT BY LEVEL &lt;= (TO_DATE(#endAplDt#, 'YYYY/MM/DD')-TO_DATE(#startAplDt#, 'YYYY/MM/DD')+1)
+       )
+ WHERE TO_CHAR(TO_DATE(aplDt, 'YYYYMMDD'), 'D') IN
+ 	<iterate open="(" close=")" conjunction="," property="aplWeek">
+		#aplWeek[]#
+	</iterate>
+</insert>
+
+<update id="SP_OPTINF_U_00">
+UPDATE TB_SP_OPTINF
+   SET
+       OPT_PRDT_NUM = #optPrdtNum#
+      <isGreaterThan property="optNm" compareValue="0">
+     , OPT_NM = #optNm#
+     </isGreaterThan>
+      <isGreaterThan property="nmlAmt" compareValue="0">
+     , NML_AMT = #nmlAmt#
+     </isGreaterThan>
+     <isGreaterThan property="saleAmt" compareValue="0">
+     , SALE_AMT = #saleAmt#
+     </isGreaterThan>
+     <isGreaterThan property="viewSn" compareValue="0">
+     , VIEW_SN = #viewSn#
+     </isGreaterThan>
+     <isNotEmpty property="aplDt">
+     , APL_DT = #aplDt#
+     </isNotEmpty>
+     <isGreaterThan property="saleNum" compareValue="0">
+     , SALE_NUM = #saleNum#
+     </isGreaterThan>
+     <isNotEmpty property="ddlYn">
+     , DDL_YN = #ddlYn#
+     </isNotEmpty>
+     <isGreaterThan property="stdMem" compareValue="0">
+     , STD_MEM = #stdMem#
+     </isGreaterThan>
+     <isNotEmpty property="printYn">
+     , PRINT_YN = #printYn#
+     </isNotEmpty>
+
+     , LS_LINK_OPT_NUM = #lsLinkOptNum#
+ WHERE 1=1
+    AND PRDT_NUM = #prdtNum#
+    AND SP_DIV_SN = #spDivSn#
+    AND SP_OPT_SN = #spOptSn#
+</update>
+
+<update id="SP_OPTINF_U_01">
+UPDATE TB_SP_OPTINF
+   SET VIEW_SN = VIEW_SN + 1
+ WHERE PRDT_NUM = #prdtNum#
+    AND SP_DIV_SN = #spDivSn#
+   <isNotEqual property="oldSn" compareValue="0">
+   <![CDATA[
+   AND VIEW_SN <  #oldSn#
+   ]]>
+  </isNotEqual>
+   <![CDATA[
+   AND VIEW_SN >= #newSn#
+   ]]>
+</update>
+
+<update id="SP_OPTINF_U_02">
+UPDATE TB_SP_OPTINF
+   SET VIEW_SN = VIEW_SN - 1
+ WHERE PRDT_NUM = #prdtNum#
+    AND SP_DIV_SN = #spDivSn#
+ <isNotNull property="newSn">
+   <isNotEqual property="newSn" compareValue="0">
+ <![CDATA[
+   AND VIEW_SN <= #newSn#
+ ]]>
+ </isNotEqual>
+ </isNotNull>
+ <![CDATA[
+   AND VIEW_SN >  #oldSn#
+ ]]>
+</update>
+
+<update id="SP_OPTINF_U_03">
+UPDATE TB_SP_OPTINF
+   SET
+     	DDL_YN = #ddlYn#
+ WHERE 1=1
+    AND PRDT_NUM = #prdtNum#
+    AND SP_DIV_SN = #spDivSn#
+    AND SP_OPT_SN = #spOptSn#
+</update>
+
+<!-- 구매수 증가 -->
+<update id="SP_OPTINF_U_04">
+UPDATE TB_SP_OPTINF
+   SET SALE_NUM = NVL(SALE_NUM, 0) + #buyNum#
+ WHERE PRDT_NUM = #prdtNum#
+   AND SP_DIV_SN = #spDivSn#
+   AND SP_OPT_SN = #spOptSn#
+</update>
+
+<!-- 구매수 감소 -->
+<update id="SP_OPTINF_U_05">
+UPDATE TB_SP_OPTINF
+   SET SALE_NUM = (SELECT NVL(SUM(BUY_NUM),0) FROM TB_SP_RSV WHERE PRDT_NUM = #prdtNum# AND SP_DIV_SN = #spDivSn# AND SP_OPT_SN = #spOptSn# AND RSV_STATUS_CD IN ('RS02','RS30','RS31'))
+ WHERE PRDT_NUM = #prdtNum#
+   AND SP_DIV_SN = #spDivSn#
+   AND SP_OPT_SN = #spOptSn#
+</update>
+
+<!-- 일괄 수정 -->
+<update id="SP_OPTINF_U_06">
+UPDATE TB_SP_OPTINF
+   SET
+      <isGreaterThan property="optPrdtNum" compareValue="0">
+      OPT_PRDT_NUM = #optPrdtNum#
+     </isGreaterThan>
+      <isGreaterThan property="nmlAmt" compareValue="0">
+     NML_AMT = #nmlAmt#
+     </isGreaterThan>
+     <isGreaterThan property="saleAmt" compareValue="0">
+     SALE_AMT = #saleAmt#
+     </isGreaterThan>
+     <isNotEmpty property="optNm">
+     OPT_NM = #optNm#
+     </isNotEmpty>
+ WHERE 1=1
+    AND PRDT_NUM = #prdtNum#
+    AND SP_DIV_SN = #spDivSn#
+    AND TO_CHAR(TO_DATE(APL_DT, 'YYYYMMDD'), 'D') IN
+ 	<iterate open="(" close=")" conjunction="," property="aplWeek">
+		#aplWeek[]#
+	</iterate>
+	AND TO_DATE(APL_DT, 'YYYYMMDD') >= TO_DATE(#startAplDt#, 'YYYYMMDD')
+	AND TO_DATE(APL_DT, 'YYYYMMDD')<![CDATA[  <= ]]>TO_DATE(#endAplDt#, 'YYYYMMDD')
+</update>
+
+<select id="SP_DIVINF_S_00" resultMap="SP_DIVINF_R_00">
+SELECT PRDT_NUM
+     , SP_DIV_SN
+     , PRDT_DIV_NM
+     , VIEW_SN
+  FROM TB_SP_DIVINF
+ WHERE PRDT_NUM = #prdtNum#
+ <isNotEmpty property="spDivSn">
+    AND SP_DIV_SN = #spDivSn#
+ </isNotEmpty>
+</select>
+
+<insert id="SP_DIVINF_I_00">
+<selectKey keyProperty="spDivSn" resultClass="Integer">
+       	SELECT NVL(MAX(SP_DIV_SN), 0) + 1
+          FROM TB_SP_DIVINF
+         WHERE PRDT_NUM = #prdtNum#
+   </selectKey>
+INSERT INTO TB_SP_DIVINF
+     ( PRDT_NUM
+     , SP_DIV_SN
+     , PRDT_DIV_NM
+     , VIEW_SN
+     )
+VALUES
+     ( #prdtNum#
+     , #spDivSn#
+     , #prdtDivNm#
+     , #viewSn#
+     )
+</insert>
+
+<update id="SP_DIVINF_U_00">
+UPDATE TB_SP_DIVINF
+   SET PRDT_DIV_NM = #prdtDivNm#
+     , VIEW_SN = #viewSn#
+ WHERE 1=1
+    AND PRDT_NUM= #prdtNum#
+    AND SP_DIV_SN = #spDivSn#
+</update>
+
+<select id="SP_OPTINF_S_01" resultMap="SP_OPTINF_R_01">
+SELECT T2.PRDT_NUM
+	, T1.SP_DIV_SN
+	, T1.SP_OPT_SN
+	, T2.PRDT_DIV_NM
+	, T3.OPT_NM
+	, NVL(T3.NML_AMT, 0) NML_AMT
+	, NVL(T3.SALE_AMT, 0) SALE_AMT
+	, NVL(T3.OPT_PRDT_NUM, 0) OPT_PRDT_NUM
+	, T3.DDL_YN
+	, T3.STD_MEM
+	, OPT_COUNT
+	, TO_DATE(T3.APL_DT,'YYYY-MM-DD') || ' (' || TO_CHAR(TO_DATE(T3.APL_DT,'YYYY-MM-DD'),'DY','NLS_DATE_LANGUAGE=korean') || ')' AS APL_DT
+	, T3.PRINT_YN
+	, T3.LS_LINK_OPT_NUM
+	, (SELECT COUNT(*) FROM TB_SP_RSV WHERE PRDT_NUM = T1.PRDT_NUM AND SP_DIV_SN = T1.SP_DIV_SN AND SP_OPT_SN = T1.SP_OPT_SN) AS RSV_NUM
+FROM (SELECT *
+	FROM (SELECT A.PRDT_NUM
+			, A.SP_DIV_SN
+			, B.SP_OPT_SN
+			, count(B.sp_opt_sn) opt_count
+			, MIN(B.VIEW_SN) OPT_VIEW_SN
+		FROM TB_SP_DIVINF A
+			, TB_SP_OPTINF B
+		WHERE A.PRDT_NUM = B.PRDT_NUM (+)
+			AND A.SP_DIV_SN = B.SP_DIV_SN (+)
+			AND A.PRDT_NUM = #prdtNum#
+			<isNotEmpty property="spDivSn">
+				AND A.SP_DIV_SN = #spDivSn#
+			</isNotEmpty>
+		GROUP BY A.PRDT_NUM
+			, A.SP_DIV_SN
+			, ROLLUP (B.SP_OPT_SN))
+	GROUP BY PRDT_NUM
+		, SP_DIV_SN
+		, SP_OPT_SN
+		, OPT_COUNT
+		, OPT_VIEW_SN) T1
+	INNER JOIN TB_SP_DIVINF T2
+	ON T1.PRDT_NUM = T2.PRDT_NUM
+		AND T1.SP_DIV_SN = T2.SP_DIV_SN
+	LEFT OUTER JOIN TB_SP_OPTINF T3
+	ON T1.PRDT_NUM = T3.PRDT_NUM
+		AND T1.SP_DIV_SN = T3.SP_DIV_SN
+		AND T1.SP_OPT_SN = T3.SP_OPT_SN
+ORDER BY T2.VIEW_SN
+	, T1.SP_DIV_SN
+	, T1.OPT_VIEW_SN
+	, T1.OPT_COUNT DESC
+	, T3.SP_OPT_SN DESC
+</select>
+
+<select id="SP_OPTINF_S_02" resultClass="int">
+SELECT NVL(MAX(VIEW_SN),0)
+  FROM TB_SP_OPTINF
+ WHERE PRDT_NUM = #prdtNum#
+    AND SP_DIV_SN = #spDivSn#
+</select>
+
+<select id="SP_OPTINF_S_03" resultMap="SP_OPTINF_R_02">
+SELECT T1.PRDT_DIV_NM
+		, T2.OPT_NM
+		, T2.APL_DT
+		, T2.SALE_AMT
+		, T2.OPT_PRDT_NUM
+		, T2.SALE_NUM
+		, T2.DDL_YN
+		, T2.SP_OPT_SN
+		, T1.PRDT_NUM
+		, T1.SP_DIV_SN
+FROM TB_SP_DIVINF T1, TB_SP_OPTINF T2
+WHERE T1.PRDT_NUM = #prdtNum#
+   AND T1.PRDT_NUM = T2.PRDT_NUM
+   AND T1.SP_DIV_SN = T2.SP_DIV_SN
+   ORDER BY
+   <isEqual property="sOrderCd" compareValue="VIEWSN">
+    T1.VIEW_SN, T2.VIEW_SN
+    </isEqual>
+    <isEqual property="sOrderCd" compareValue="APLDT">
+    T1.SP_DIV_SN, T2.APL_DT
+    </isEqual>
+     <isEmpty property="sOrderCd">
+     T1.VIEW_SN, T2.VIEW_SN
+    </isEmpty>
+</select>
+
+<select id="SP_DIVINF_S_01" resultClass="int">
+SELECT  NVL(MAX(VIEW_SN),0)
+  FROM TB_SP_DIVINF
+ WHERE PRDT_NUM = #prdtNum#
+</select>
+
+<select id="SP_DIVINF_S_02" resultMap="SP_DIVINF_R_02">
+SELECT A.PRDT_DIV_NM
+	 , A.SP_DIV_SN
+	 , MIN(APL_DT) START_APL_DT
+	 , MAX(APL_DT) END_APL_DT
+  FROM TB_SP_DIVINF A
+ INNER JOIN TB_SP_OPTINF B
+   ON A.PRDT_NUM = B.PRDT_NUM
+   AND A.SP_DIV_SN = B.SP_DIV_SN
+  WHERE A.PRDT_NUM = #prdtNum#
+  GROUP BY A.PRDT_DIV_NM, A.SP_DIV_SN, A.VIEW_SN
+  ORDER BY A.VIEW_SN
+</select>
+
+<update id="SP_DIVINF_U_01">
+UPDATE TB_SP_DIVINF
+   SET VIEW_SN = VIEW_SN + 1
+ WHERE PRDT_NUM = #prdtNum#
+   <isNotEqual property="oldSn" compareValue="0">
+   <![CDATA[
+   AND VIEW_SN <  #oldSn#
+   ]]>
+  </isNotEqual>
+   <![CDATA[
+   AND VIEW_SN >= #newSn#
+   ]]>
+</update>
+
+<update id="SP_DIVINF_U_02">
+UPDATE TB_SP_DIVINF
+   SET VIEW_SN = VIEW_SN - 1
+ WHERE PRDT_NUM = #prdtNum#
+ <isNotNull property="newSn">
+   <isNotEqual property="newSn" compareValue="0">
+ <![CDATA[
+   AND VIEW_SN <= #newSn#
+ ]]>
+ </isNotEqual>
+ </isNotNull>
+ <![CDATA[
+   AND VIEW_SN >  #oldSn#
+ ]]>
+</update>
+
+<delete id="SP_DIVINF_D_00">
+DELETE TB_SP_DIVINF
+WHERE PRDT_NUM = #prdtNum#
+	<isNotEmpty property="spDivSn">
+    	AND SP_DIV_SN = #spDivSn#
+  	</isNotEmpty>
+	AND SP_DIV_SN NOT IN (SELECT SP_DIV_SN FROM TB_SP_RSV WHERE PRDT_NUM = #prdtNum#)
+</delete>
+
+<delete id="SP_OPTINF_D_00">
+DELETE TB_SP_OPTINF
+WHERE PRDT_NUM = #prdtNum#
+ 	<isNotEmpty property="spDivSn">
+    	AND SP_DIV_SN = #spDivSn#
+    </isNotEmpty>
+    <isNotEmpty property="spOptSn">
+    	AND SP_OPT_SN = #spOptSn#
+    </isNotEmpty>
+	AND (SP_DIV_SN, SP_OPT_SN) NOT IN (SELECT SP_DIV_SN, SP_OPT_SN FROM TB_SP_RSV WHERE PRDT_NUM = #prdtNum#)
+	<![CDATA[
+	AND SALE_NUM < 1
+	]]>
+</delete>
+
+<delete id="SP_OPTINF_D_01">
+DELETE FROM TB_SP_OPTINF
+WHERE PRDT_NUM = #prdtNum#
+AND (SP_DIV_SN, SP_OPT_SN) NOT IN
+(SELECT SP_DIV_SN, SP_OPT_SN FROM TB_SP_RSV WHERE PRDT_NUM = #prdtNum#)
+</delete>
+
+<delete id="SP_PRDTINF_D_00">
+DELETE TB_SP_PRDTINF
+WHERE PRDT_NUM = #prdtNum#
+</delete>
+
+<insert id="SP_PRDTINF_I_01">
+<selectKey keyProperty="newPrdtNum" resultClass="String">
+       	SELECT 'SP'||LPAD(NVL(MAX(SUBSTR(PRDT_NUM,3)),0) + 1, 8,'0')
+          FROM TB_SP_PRDTINF
+   </selectKey>
+INSERT INTO TB_SP_PRDTINF
+     ( PRDT_NUM
+     , CORP_ID
+     , TRADE_STATUS
+	 , CTGR
+     , PRDT_NM
+     , PRDT_INF
+     , SUB_EXP
+     , SALE_START_DT
+     , SALE_END_DT
+     , EXPR_START_DT
+     , EXPR_END_DT
+     , PRDT_DIV
+     , FRST_REG_DTTM
+     , FRST_REG_ID
+     , FRST_REG_IP
+     , LAST_MOD_DTTM
+     , LAST_MOD_ID
+     , LAST_MOD_IP
+     , USE_QLFCT
+     , DIS_INF
+     , CANCEL_GUIDE
+     , USE_ABLE_TM
+     , EXPR_DAYNUM_YN
+     , EXPR_DAYNUM
+     , AD_DIV
+     , AD_AREA
+     , ROAD_NM_ADDR
+     , DTL_ADDR
+     , LON
+     , LAT
+     , LINK_PRDT_YN
+     , LINK_URL
+     , AD_MOV
+     , AREA
+     , LS_LINK_PRDT_NUM
+     , ADV_RV_YN
+     , PRINT_YN
+     )
+SELECT
+     #newPrdtNum#
+     , CORP_ID
+     , 'TS01'
+	 , CTGR
+     , PRDT_NM
+     , PRDT_INF
+     , SUB_EXP
+     , SALE_START_DT
+     , SALE_END_DT
+     , EXPR_START_DT
+     , EXPR_END_DT
+     , PRDT_DIV
+     , SYSDATE
+     , #frstRegId#
+     , #frstRegIp#
+     , SYSDATE
+     , #frstRegId#
+     , #frstRegIp#
+     , USE_QLFCT
+     , DIS_INF
+     , CANCEL_GUIDE
+	 , USE_ABLE_TM
+	 , EXPR_DAYNUM_YN
+	 , EXPR_DAYNUM
+	 , AD_DIV
+	 , AD_AREA
+	 , ROAD_NM_ADDR
+	 , DTL_ADDR
+	 , LON
+	 , LAT
+	 , LINK_PRDT_YN
+	 , LINK_URL
+	 , AD_MOV
+	 , AREA
+	 , LS_LINK_PRDT_NUM
+	 , ADV_RV_YN
+	 , PRINT_YN
+  FROM TB_SP_PRDTINF
+ WHERE PRDT_NUM = #prdtNum#
+    AND CORP_ID = #corpId#
+</insert>
+
+<insert id="SP_DIVINF_I_01">
+INSERT INTO TB_SP_DIVINF
+     ( PRDT_NUM
+     , SP_DIV_SN
+     , PRDT_DIV_NM
+     , VIEW_SN
+     )
+SELECT
+      #newPrdtNum#
+     , SP_DIV_SN
+     , PRDT_DIV_NM
+     , VIEW_SN
+  FROM TB_SP_DIVINF
+ WHERE PRDT_NUM = #prdtNum#
+</insert>
+
+<insert id="SP_OPTINF_I_02">
+INSERT INTO TB_SP_OPTINF /* 옵션 복사 */
+     ( PRDT_NUM
+     , SP_DIV_SN
+     , SP_OPT_SN
+     , OPT_NM
+     , NML_AMT
+     , SALE_AMT
+     , VIEW_SN
+     , APL_DT
+     , OPT_PRDT_NUM
+     , DDL_YN
+     , SALE_NUM
+     )
+SELECT
+     	 #newPrdtNum#
+     	, SP_DIV_SN
+        , SP_OPT_SN
+     	, OPT_NM
+	    , NML_AMT
+	    , SALE_AMT
+	    , VIEW_SN
+	    , APL_DT
+	    , OPT_PRDT_NUM
+	    , DDL_YN
+	    , 0
+   FROM TB_SP_OPTINF
+  WHERE PRDT_NUM = #prdtNum#
+</insert>
+
+<select id="SP_ADDOPT_S_00" resultMap="SP_ADDOPT_R_00">
+SELECT ADD_OPT_SN
+	 , ADD_OPT_NM
+	 , ADD_OPT_AMT
+  FROM TB_SP_ADDOPT
+ WHERE PRDT_NUM = #prdtNum#
+ ORDER BY VIEW_SN
+</select>
+
+<select id="SP_ADDOPT_S_01" resultClass="int">
+SELECT NVL(MAX(VIEW_SN),0)
+  FROM TB_SP_ADDOPT
+ WHERE PRDT_NUM = #prdtNum#
+</select>
+
+<select id="SP_ADDOPT_S_02" resultMap="SP_ADDOPT_R_02">
+SELECT PRDT_NUM
+	 , ADD_OPT_SN
+	 , ADD_OPT_NM
+	 , ADD_OPT_AMT
+	 , VIEW_SN
+  FROM TB_SP_ADDOPT
+ WHERE PRDT_NUM = #prdtNum#
+   AND ADD_OPT_SN = #addOptSn#
+</select>
+
+<insert id="SP_ADDOPT_I_00">
+INSERT INTO TB_SP_ADDOPT
+     ( PRDT_NUM
+     , ADD_OPT_SN
+     , ADD_OPT_NM
+     , ADD_OPT_AMT
+     , VIEW_SN
+     , FRST_REG_DTTM
+     , FRST_REG_ID
+     , LAST_MOD_DTTM
+     , LAST_MOD_ID
+     )
+VALUES
+     ( #prdtNum#
+     ,  (SELECT NVL(MAX(ADD_OPT_SN), 0) + 1
+          FROM TB_SP_ADDOPT
+         WHERE PRDT_NUM = #prdtNum#)
+     , #addOptNm#
+     , #addOptAmt#
+     , #viewSn#
+     , SYSDATE
+     , #frstRegId#
+     , SYSDATE
+     , #frstRegId#
+     )
+</insert>
+
+<update id="SP_ADDOPT_U_00">
+UPDATE TB_SP_ADDOPT
+   SET ADD_OPT_NM = #addOptNm#
+     , ADD_OPT_AMT = #addOptAmt#
+     , VIEW_SN = #viewSn#
+     , LAST_MOD_DTTM = SYSDATE
+     , LAST_MOD_ID = #lastModId#
+ WHERE PRDT_NUM = #prdtNum#
+   AND ADD_OPT_SN = #addOptSn#
+</update>
+
+<update id="SP_ADDOPT_U_01">
+UPDATE TB_SP_ADDOPT
+   SET VIEW_SN = VIEW_SN + 1
+     , LAST_MOD_DTTM = SYSDATE
+     , LAST_MOD_ID = #lastModId#
+ WHERE PRDT_NUM = #prdtNum#
+   <isNotEqual property="oldSn" compareValue="0">
+   <![CDATA[
+   AND VIEW_SN <  #oldSn#
+   ]]>
+  </isNotEqual>
+   <![CDATA[
+   AND VIEW_SN >= #newSn#
+   ]]>
+</update>
+
+<update id="SP_ADDOPT_U_02">
+UPDATE TB_SP_ADDOPT
+   SET VIEW_SN = VIEW_SN - 1
+     , LAST_MOD_DTTM = SYSDATE
+     , LAST_MOD_ID = #lastModId#
+ WHERE PRDT_NUM = #prdtNum#
+ <isNotNull property="newSn">
+   <isNotEqual property="newSn" compareValue="0">
+ <![CDATA[
+   AND VIEW_SN <= #newSn#
+ ]]>
+ </isNotEqual>
+ </isNotNull>
+ <![CDATA[
+   AND VIEW_SN >  #oldSn#
+ ]]>
+</update>
+
+<delete id="SP_ADDOPT_D_00">
+DELETE FROM TB_SP_ADDOPT
+WHERE PRDT_NUM = #prdtNum#
+	<isNotNull property="addOptSn">
+		AND ADD_OPT_SN = #addOptSn#
+	</isNotNull>
+</delete>
+
+<sql id="SP_DTLINF_S_00_FILD">
+	   SP_DTLINF_NUM
+     , PRDT_NUM
+     , DTLINF_TYPE
+     , PRINT_SN
+     , PRINT_YN
+     , SEL_NM
+     , SUBJECT
+     , DTLINF_EXP
+</sql>
+
+
+<sql id="SP_DTLINF_S_00_WHERE">
+	<isNotEmpty property="spDtlinfNum">
+			AND SP_DTLINF_NUM = #spDtlinfNum#
+ 	</isNotEmpty>
+	<isNotEmpty property="prdtNum">
+			AND PRDT_NUM = #prdtNum#
+ 	</isNotEmpty>
+ 	<isNotEmpty property="printYn">
+			AND PRINT_YN = #printYn#
+ 	</isNotEmpty>
+</sql>
+
+<select id="SP_DTLINF_S_00" resultMap="SP_DTLINF_R_00">
+SELECT
+	<include refid="SP_DTLINF_S_00_FILD" />
+FROM TB_SP_DTLINF
+ WHERE 1=1
+ 	<include refid="SP_DTLINF_S_00_WHERE" />
+ ORDER BY PRINT_SN
+</select>
+
+<select id="SP_DTLINF_S_01" resultClass="String">
+SELECT TO_CHAR(NVL(MAX(TO_NUMBER(SP_DTLINF_NUM)),0) + 1)
+  FROM TB_SP_DTLINF
+</select>
+
+
+<select id="SP_DTLINF_S_02" resultClass="int">
+SELECT MAX(PRINT_SN) AS CNT
+  FROM TB_SP_DTLINF
+WHERE PRDT_NUM = #prdtNum#
+</select>
+
+<insert id="SP_DTLINF_I_00">
+INSERT INTO TB_SP_DTLINF
+	(SP_DTLINF_NUM
+     , PRDT_NUM
+     , DTLINF_TYPE
+     , PRINT_SN
+     , PRINT_YN
+     , SEL_NM
+     , SUBJECT
+     , DTLINF_EXP
+    )
+VALUES
+	( #spDtlinfNum#
+     , #prdtNum#
+     , #dtlinfType#
+     , (SELECT NVL(MAX(PRINT_SN), 0) + 1 FROM TB_SP_DTLINF WHERE PRDT_NUM = #prdtNum#)
+     , #printYn#
+     , #selNm#
+     , #subject#
+     , #dtlinfExp#
+     )
+</insert>
+
+
+<update id="SP_DTLINF_U_00">
+UPDATE TB_SP_DTLINF
+   SET <!-- PRDT_NUM -->
+       DTLINF_TYPE = #dtlinfType#
+     <isNotEmpty property="printSn">
+	  		, PRINT_SN = #printSn#
+	 </isNotEmpty>
+     , PRINT_YN = #printYn#
+     , SEL_NM = #selNm#
+     , SUBJECT = #subject#
+     , DTLINF_EXP = #dtlinfExp#
+WHERE SP_DTLINF_NUM = #spDtlinfNum#
+</update>
+
+
+<!-- 순번 변경 관련 -->
+<update id="SP_DTLINF_U_01">
+UPDATE TB_SP_DTLINF
+   SET PRINT_SN = PRINT_SN + 1
+ WHERE PRDT_NUM = #prdtNum#
+ <isNotEqual property="oldSn" compareValue="0">
+	<![CDATA[ AND PRINT_SN <  #oldSn# ]]>
+ </isNotEqual>
+ <![CDATA[  AND PRINT_SN >= #newSn#  ]]>
+</update>
+
+<update id="SP_DTLINF_U_02">
+UPDATE TB_SP_DTLINF
+   SET PRINT_SN = PRINT_SN - 1
+ WHERE PRDT_NUM = #prdtNum#
+ <isNotNull property="newSn">
+   <isNotEqual property="newSn" compareValue="0">
+ 		<![CDATA[  AND PRINT_SN <= #newSn# ]]>
+ 	</isNotEqual>
+ </isNotNull>
+ <![CDATA[ AND PRINT_SN >  #oldSn# ]]>
+</update>
+
+
+<insert id="SP_DTLINF_D_00">
+DELETE FROM TB_SP_DTLINF
+WHERE SP_DTLINF_NUM = #spDtlinfNum#
+</insert>
+
+
+<sql id="SP_DTLINF_ITEM_S_00_FILD">
+	   SP_DTLINF_ITEM_NUM
+     , SP_DTLINF_NUM
+     , PRDT_NUM
+     , ITEM_NM
+     , ITEM_AMT
+     , ITEM_DIS_AMT
+     , ITEM_ETC
+</sql>
+
+<sql id="SP_DTLINF_ITEM_S_00_WHERE">
+	<isNotEmpty property="spDtlinfItemNum">
+			AND SP_DTLINF_ITEM_NUM = #spDtlinfItemNum#
+ 	</isNotEmpty>
+	<isNotEmpty property="spDtlinfNum">
+			AND SP_DTLINF_NUM = #spDtlinfNum#
+ 	</isNotEmpty>
+	<isNotEmpty property="prdtNum">
+			AND PRDT_NUM = #prdtNum#
+ 	</isNotEmpty>
+</sql>
+
+
+<select id="SP_DTLINF_ITEM_S_00" resultMap="SP_DTLINF_ITEM_R_00">
+SELECT <include refid="SP_DTLINF_ITEM_S_00_FILD" />
+FROM TB_SP_DTLINF_ITEM
+ WHERE 1=1
+ 	<include refid="SP_DTLINF_ITEM_S_00_WHERE" />
+ ORDER BY SP_DTLINF_ITEM_NUM
+</select>
+
+
+<insert id="SP_DTLINF_ITEM_I_00">
+INSERT INTO TB_SP_DTLINF_ITEM
+	(SP_DTLINF_ITEM_NUM
+     , SP_DTLINF_NUM
+     , PRDT_NUM
+     , ITEM_NM
+     , ITEM_AMT
+     , ITEM_DIS_AMT
+     , ITEM_ETC
+    )
+VALUES
+	( (SELECT TO_CHAR(NVL(MAX(TO_NUMBER(SP_DTLINF_ITEM_NUM)),0) + 1) FROM TB_SP_DTLINF_ITEM)
+     , #spDtlinfNum#
+     , #prdtNum#
+     , #itemNm#
+     , #itemAmt#
+     , #itemDisAmt#
+     , #itemEtc#
+     )
+</insert>
+
+
+<insert id="SP_DTLINF_ITEM_D_00">
+DELETE FROM TB_SP_DTLINF_ITEM
+WHERE 1=1
+	AND SP_DTLINF_NUM = #spDtlinfNum#
+	AND PRDT_NUM = #prdtNum#
+</insert>
+
+
+<select id="SP_GUIDINFO_S_00" resultMap="SP_GUIDINFO_R_00">
+SELECT PRDT_NUM
+     , SUBJECT
+     , TELNUM
+     , ROAD_NM_ADDR
+     , DTL_ADDR
+     , PRDT_EXP
+     , USE_QLFCT
+     , USE_GUIDE
+     , CANCEL_REFUND_GUIDE
+     , PRINT_YN
+     , BG_COLOR
+FROM TB_SP_GUIDINFO
+WHERE 1=1
+	<isNotEmpty property="prdtNum">
+			AND PRDT_NUM = #prdtNum#
+ 	</isNotEmpty>
+ 	<isNotEmpty property="printYn">
+			AND PRINT_YN = #printYn#
+ 	</isNotEmpty>
+</select>
+
+
+<insert id="SP_GUIDINFO_I_00">
+INSERT INTO TB_SP_GUIDINFO
+	(PRDT_NUM
+     , SUBJECT
+     , TELNUM
+     , ROAD_NM_ADDR
+     , DTL_ADDR
+     , PRDT_EXP
+     , USE_QLFCT
+     , USE_GUIDE
+     , CANCEL_REFUND_GUIDE
+     , PRINT_YN
+    )
+VALUES
+	(  #prdtNum#
+     , #subject#
+     , #telnum#
+     , #roadNmAddr#
+     , #dtlAddr#
+     , #prdtExp#
+     , #useQlfct#
+     , #useGuide#
+     , #cancelRefundGuide#
+     , #printYn#
+     )
+</insert>
+
+<insert id="SP_GUIDINFO_I_01">
+INSERT INTO TB_SP_GUIDINFO
+	(PRDT_NUM
+      , PRINT_YN
+      , BG_COLOR
+    )
+VALUES
+	(  #prdtNum#
+     , 'N'
+     , #bgColor#
+     )
+</insert>
+
+<update id="SP_GUIDINFO_U_00">
+UPDATE TB_SP_GUIDINFO
+   SET SUBJECT = #subject#
+     , TELNUM = #telnum#
+     , ROAD_NM_ADDR = #roadNmAddr#
+     , DTL_ADDR = #dtlAddr#
+     , PRDT_EXP = #prdtExp#
+     , USE_QLFCT = #useQlfct#
+     , USE_GUIDE = #useGuide#
+     , CANCEL_REFUND_GUIDE = #cancelRefundGuide#
+     , PRINT_YN = #printYn#
+WHERE PRDT_NUM = #prdtNum#
+</update>
+
+<update id="SP_GUIDINFO_U_01">
+UPDATE TB_SP_GUIDINFO
+   SET BG_COLOR = #bgColor#
+WHERE PRDT_NUM = #prdtNum#
+</update>
+
+<select id="SP_MRTNUSER_S_00" resultMap="SP_MRTNUSER_S_00">
+	SELECT T_MRTN.MRTN_NUM AS MRTN_NUM
+	     , T_MRTN.RSV_NUM AS RSV_NUM
+	     , T_MRTN.SP_RSV_NUM AS SP_RSV_NUM
+	     , T_MRTN.CORP_ID AS CORP_ID
+	     , T_MRTN.PRDT_NUM AS PRDT_NUM
+	     , T_MRTN.APCT_NM AS APCT_NM
+	     , FN_DEC(T_MRTN.BIRTH) AS BIRTH
+		 , FN_DEC(T_MRTN.LRRN) AS LRRN
+		 , T_MRTN.APCT_TELNUM AS APCT_TELNUM
+		 , T_MRTN.AGE_RANGE AS AGE_RANGE
+		 , T_MRTN.GENDER AS GENDER
+		 , TRIM(T_MRTN.BLOOD_TYPE) AS BLOOD_TYPE
+		 , T_MRTN.REGION AS REGION
+		 , T_MRTN.FULL_ADDR AS FULL_ADDR
+		 , T_MRTN.APCT_EMAIL AS APCT_EMAIL
+		 , T_MRTN.COURSE AS COURSE
+		 , T_MRTN.TSHIRTS AS TSHIRTS
+		 , T_MRTN.GROUP_NM AS GROUP_NM
+		 , T_MRTN.REG_DTTM AS REG_DTTM
+ 	  FROM TB_RSV T_RSV
+INNER JOIN TB_SP_RSV T_SPRSV ON T_SPRSV.RSV_NUM = T_RSV.RSV_NUM
+INNER JOIN TB_MRTN_USER T_MRTN ON T_MRTN.SP_RSV_NUM = T_SPRSV.SP_RSV_NUM
+     WHERE T_SPRSV.RSV_STATUS_CD IN ('RS02', 'RS30')
+       AND T_MRTN.CORP_ID = #corpId#
+	   AND T_MRTN.PRDT_NUM = #prdtNum#
+		<isNotEmpty property="sApctNm">
+			AND T_MRTN.APCT_NM LIKE '%'||#sApctNm#||'%'
+	   	</isNotEmpty>
+	   	<isNotEmpty property="sApctTelnum">
+			AND REPLACE(T_MRTN.APCT_TELNUM, '-') = REPLACE(#sApctTelnum#, '-')
+	   	</isNotEmpty>
+  ORDER BY T_MRTN.APCT_NM  
+</select>
+
+<update id="SP_MRTNUSER_U_00">
+	UPDATE TB_MRTN_USER
+	   SET APCT_NM = #apctNm#
+		 , APCT_TELNUM = #apctTelnum#
+		 , AGE_RANGE = #ageRange#
+		 , GENDER = #gender#
+		 , BLOOD_TYPE = #bloodType#
+	     , APCT_EMAIL = #apctEmail#
+    WHERE MRTN_NUM = #mrtnNum#	 
+</update>
+
+<select id="SP_MRTNUSER_S_01" resultMap="SP_MRTNUSER_R_01">
+	SELECT CORP_ID
+	     , PRDT_NUM
+	     , TXS_CNT
+	     , TS_CNT
+	     , TM_CNT
+	     , TL_CNT
+	     , TXL_CNT
+	     , T2XL_CNT
+	     , T3XL_CNT
+	  FROM TB_MRTN_TSHIRTS
+	 WHERE CORP_ID = #corpId#
+	   AND PRDT_NUM = #prdtNum#
+</select>
+
+<insert id="SP_MRTNUSER_I_00">
+	INSERT INTO TB_MRTN_TSHIRTS
+		(CORP_ID
+	      , PRDT_NUM
+	    )
+	VALUES
+		(  #corpId#
+	     , #prdtNum#
+	     )
+</insert>
+
+<update id="SP_MRTNUSER_U_01">
+	UPDATE TB_MRTN_TSHIRTS
+	   SET TXS_CNT = #txsCnt#
+	     , TS_CNT = #tsCnt#
+	     , TM_CNT = #tmCnt#
+	     , TL_CNT = #tlCnt#
+	     , TXL_CNT = #txlCnt#
+	     , T2XL_CNT = #t2xlCnt#
+	     , T3XL_CNT = #t3xlCnt#
+	 WHERE CORP_ID = #corpId#
+	   AND PRDT_NUM = #prdtNum#
+</update>
+</sqlMap>

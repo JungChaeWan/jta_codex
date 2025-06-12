@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- main add -->
+    <!--<script src="../../js/cycle.js"></script>-->
+    <!--<script src="../../js/freewall.js"></script>-->
+    <!--<script src="../../js/multiple-select.js"></script>-->
+    <script src="../../js/air_step1.js"></script>
+
+    <!-- css -->
+    <link rel="stylesheet" href="../../css/common/jquery-ui.css?version=1.2">
+    <link rel="stylesheet" href="../../css/web/common.css">
+    <link rel="stylesheet" href="../../css/web/style.css">
+    <link rel="stylesheet" href="../../css/web/main.css">
+    <link rel="stylesheet" href="../../css/web/agriculture.css">
+    <link rel="stylesheet" href="../../css/common/multiple-select.css">
+    <link rel="canonical" href="https://www.tamnao.com">
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.tamnao.com/mw">
+
+    <!-- script -->
+    <script src="../../js/jquery-1.11.1.js"></script>
+    <script src="../../js/jquery-ui.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+    <script src="../../js/swiper.js"></script>
+    <script src="../../js/html_common.js"></script>
+    <script src="../../js/html_style.js"></script>
+
+    <!-- main add -->
+    <script src="../js/cycle.js"></script>
+    <script src="../js/slider.js"></script>
+    <script>
+
+
+        /* --------------------------------------------------------- 실시간 검색바  ------------------------------------------------------------------ */
+        //Main Top Fixed Search
+        function mainTopFixedSearch() {
+            var searchTarget = $('.product-search-area').offset().top;								//실시간검색 위치값
+            var searchTargetHeight = searchTarget+184;
+            var obj = '#top_fixed_search';
+
+            if($(obj).length >= 1) {
+                var scrollHeight = $(window).scrollTop();
+
+                if(scrollHeight > searchTargetHeight) {
+                    $(obj).addClass('active');
+                }
+                else {
+                    $(obj).removeClass('active');
+                    $(obj + ' .content-bg').hide();
+                    $(obj + ' .tabPanel').hide();
+                    $(obj + ' .menu-wrap').removeClass('active');
+                }
+            }
+
+            $(obj + ' .nav-menu li a').on('click', function() {
+                $(obj + ' #top_tabPanel_close').show();
+                $(obj + ' .content-bg').show();
+                $(obj + ' .menu-wrap').addClass('active');
+            });
+
+            $(obj + ' #top_tabPanel_close').on('click', function() {
+                $(this).hide();
+                $(obj + ' .content-bg').hide();
+                $(obj + ' .tabPanel').hide();
+                $(obj + ' .menu-wrap').removeClass('active');
+                $(obj + ' .nav-menu li').removeClass('active');
+            });
+
+        }
+        $(window).scroll(function(event) {
+            mainTopFixedSearch();
+        });
+
+        //상단 Top Banner Close
+        function topBanner() {
+            var obj = '#top_banner';											//target
+            var cookieName = 'topBanner';										//쿠키이름
+
+            if($.cookie(cookieName)) {
+                $(obj).remove();
+            } else {
+                $(obj).show();
+            }
+
+            $("#top_close").click(function() {
+                $(obj).remove();
+                $.cookie(cookieName, 'close', {expires: 1, path: "/"});
+                return false;
+            });
+
+            if($('#top_banner ul li').length > 1) {
+                topBannerSlider();
+            }
+        }
+
+        function topBannerSlider() {
+            new Swiper('#top_banner', {
+                paginationClickable: true,
+                direction: 'vertical',
+                autoplay: 5000,
+                loop: true
+            });
+        }
+
+        function closeLayer( obj ) {
+            $(obj).parent().parent().hide();
+        }
+
+
+        $(document).ready(function() {
+
+            $(".list-tag li a:first").addClass("active");
+            $(".list-tag li a").click(function () {
+                if (!($(this).hasClass("active"))) {
+                    $(".list-tag li a.active").removeClass("active");
+                    $(this).addClass("active");
+                }
+            });
+
+            /* Hot! 카테고리별 추천상품 */
+            if ($('#product_theme .swiper-slide').length > 4) {
+                new Swiper('#product_theme', {
+                    slidesPerView      : 4,
+                    spaceBetween       : 30,
+                    paginationClickable: true,
+                    nextButton         : '#theme_next',
+                    prevButton         : '#theme_prev',
+                    autoplay           : 1000
+                });
+            } else {
+                $('#theme_arrow').hide();
+            }
+
+            //테마 추천 상품 List (첫번째 테마 상품 리스트 노출)
+            fn_SvSearchNoSrc("${crtnNum}");
+            $(".datepicker").datepicker({
+                showOn: "both",
+                buttonImage: "../../images/web/icon/calendar_icon01.gif",
+                buttonImageOnly: true,
+                showOtherMonths: true, 										//빈칸 이전달, 다음달 출력
+                numberOfMonths: [1, 2],				    					//여러개월 달력 표시
+                stepMonths: 2 												//좌우 선택시 이동할 개월 수
+            });
+
+            $('ul.list__item-tab li').click(function(){
+                var tab_id = $(this).attr('data-tab');
+
+                $('ul.list__item-tab li').removeClass('current');
+                $('.tab-content').removeClass('current');
+
+                $(this).addClass('current');
+                $("#"+tab_id).addClass('current');
+            });
+
+            //실시간 검색 탭패널
+            tabPanel2({
+                container: "#product_search",
+                firstItem: "#tabs-1"
+            });
+
+            //실시간 검색 탭패널 > 상단 고정바
+            tabPanel2({
+                container: "#product_top_search",
+                firstItem: "#tabs-11",
+                allHide: 1
+            });
+
+            //관련기관 배너 (4개 이상시 롤링)
+            if ($('#foot_organBanner ul li').length > 6) {
+                var swiper = new Swiper('#foot_organBanner', {
+                    slidesPerView: 6,
+                    spaceBetween: 9,
+                    paginationClickable: true,
+                    nextButton: '#foot_organNext',
+                    prevButton: '#foot_organPrev',
+                    autoplay: 5000,
+                    loop: true
+                });
+            }
+            else {
+                $('#foot_organArrow').hide();
+            }
+
+            //Main Top Banner Slider
+            if ($('#main_top_slider .swiper-slide').length > 1) {
+                new Swiper('#main_top_slider', {
+                    pagination: '#main_top_navi',
+                    nextButton: '#main_top_next',
+                    prevButton: '#main_top_prev',
+                    paginationClickable: true,
+                    /*autoplay: 8000,*/
+                    loop: true,
+                    paginationType: 'fraction',
+                    effect: 'fade',
+                    touchRatio: 0
+                });
+            } else {
+                $('#main_top_arrow').hide();
+            }
+
+
+            /* 지금 제일 잘나가는 상품 */
+            if($('#product_theme .swiper-slide').length > 5) {
+                new Swiper('#product_theme', {
+                    slidesPerView: 5,
+                    spaceBetween: 30,
+                    paginationClickable: true,
+                    nextButton: '#theme_next',
+                    prevButton: '#theme_prev',
+                    autoplay: 2000
+                });
+            } else {
+                $('#theme_arrow').hide();
+            }
+
+            // 미결제 상품 바로가기
+            function fn_DtlRsv(rsvNum) {
+                $.cookie("unpaidInfo", rsvNum, {path: "/"});
+
+                location.href = "<c:url value='/web/mypage/detailRsv.do'/>?rsvNum=" + rsvNum;
+            }
+        });
+        new Swiper('#product_slideItem', {
+            slidesPerView: 3,
+            paginationClickable: true,
+            spaceBetween: 15,
+            nextButton: '#slideItem_next',
+            prevButton: '#slideItem_prev'
+        });
+
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            var captionText = document.getElementById("caption");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+            captionText.innerHTML = dots[slideIndex-1].alt;
+        }
+
+    </script>
+</head>
+<body>
+
+    <!-- re_header -->
+    <header id="header">
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-131733641-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+        <script>
+            console.log('');
+            /** http -> https 변환*/
+            if(document.location.protocol == 'http:') {
+                var chkInclude = document.location.host;
+                var chkPath = document.location.pathname;
+                // 로그인 페이지는 java 에서 처리
+                if(chkInclude.indexOf("localhost") < 0 && chkInclude.indexOf("dev") < 0 && chkInclude.indexOf("218.157.128.119") < 0 && chkPath.indexOf("mw/viewLogin.do") < 0 && chkInclude.indexOf("tamnao.iptime.org") < 0) {
+                    document.location.href = document.location.href.replace("http:", "https:");
+
+                }
+            }
+            /** 서브도메인없을경우 www 변환*/
+            var url1 = 'tamnao.com';
+            var url2 = 'www.tamnao.com';
+            if( url1 == document.domain ) document.location.href = document.URL.replace(url1, url2);
+
+            var getContextPath = "";
+            var queryString = "";
+            var servletPath = "/web/goods/jeju.do";
+
+            //가로 길이
+            var winWidth = window.innerWidth;
+            //세로길이
+            var winHeight = window.innerHeight;
+
+            /** 먹깨비 */
+            /*if(window.location.search.indexOf("partner=mukkebi") > 0 ){
+                document.location.href = "/web/evnt/detailPromotion.do?prmtDiv=EVNT&prmtNum=PM00001496";
+            }*/
+
+            /**
+             * 이미지 에러시 대체 이미지 처리
+             */
+            function OnErrorImageNull(obj) {
+                if(obj != null) {
+                    obj.src = "/images/web/comm/no_img.jpg";
+                }
+            }
+
+            //main menu
+            function mainMenu() {
+                var speed = 300;
+                $('#menuBT').click(function(){
+                    if($('.subMenu').css('display')=='none') {
+                        $('.subMenu').slideDown(speed);
+                    } else {
+                        $('.subMenu').slideUp(speed);
+                    }
+                });
+            }
+
+            //right aside
+            function rightAside() {
+                $('#floatingBT').click(function() {
+                    $('#rightAside').toggleClass('rightAside-open');
+                });
+
+                //상단에 배너에 따른 시작위치 추가
+                if(document.getElementById('topBannerPopup')) {
+                    // $('#rightAside').css('top', '250px');
+                }
+                if($('#topBannerPopup').css('display')=='none') {
+                    // $('#rightAside').css('top', '140px');
+                }
+            };
+
+            /* top (상단으로 가기) */
+            function go_top() {
+                $('.go-top').click(function(){
+                    $('html, body').animate({scrollTop : 0}, 400);
+                    return false;
+                });
+            }
+
+            //스크롤시
+            $(window).scroll(function(){
+                var scrollHeight = $(window).scrollTop();
+                //go-top (상단으로 가기)
+                if(scrollHeight > 500) {
+                    $(".go-top").fadeIn("slow");
+                } else {
+                    $(".go-top").fadeOut("fast");
+                }
+
+                //leftAside (좌측 사이드 배너 고정)
+                if(scrollHeight > 300) {
+                    $("#leftAside > ul").css({
+                        'position': 'fixed',
+                        'top': '20px'
+                    });
+                    //우측배너
+                    $("#rightAside > .fixed-wrap").css({
+                        'position': 'fixed',
+                        'top': '20px'
+                    });
+                } else {
+                    $("#leftAside > ul").css({
+                        'position': 'static',
+                        'top': 'auto'
+                    });
+                    //우측배너
+                    $("#rightAside > .fixed-wrap").css({
+                        'position': 'static',
+                        'top': 'auto'
+                    });
+                }
+            });
+
+
+            /* payAccordion */
+            function payAccordion() {
+                var speed = 300;
+
+                $('.payAccordion .downBT').click(function(event){
+                    if ($(this).parent().next('dd').css('display')=='none') {
+                        $('.payAccordion dd').slideUp(speed);
+                        $(this).parent().next('dd').slideDown(speed);
+                    } else {
+                        $(this).parent().next('dd').slideUp(speed);
+                    }
+                });
+            }
+
+            /* default Accordion */
+            function accordion() {
+                var speed = 300;
+
+                $('.default-accordion dt').click(function(event){
+                    if($(this).next('dd').css('display')=='none') {
+                        $('.default-accordion dd').slideUp(speed);
+                        $(this).next('dd').slideDown(speed);
+                    } else {
+                        //펴졌다 접히는 오류 - 17-09-18 (홍원기)
+                        //$('.default-accordion dd').slideUp(speed);
+                    }
+                });
+            }
+
+            /* tab panel (detailTabMenu1) */
+            function tabPanel(params) {
+                var defaults = {
+                    container:"#tabs", //item wrap id
+                    firstItem:"#tabs-1" //first show item
+                };
+
+                for(var def in defaults) { //array object 확인
+                    if(typeof params[def] == 'undefined') {
+                        params[def] = defaults[def];
+                    } else if(typeof params[def] == 'object') {
+                        for(var deepDef in defaults[def]) {
+                            if(typeof params[def][deepDef] == 'undefined') {
+                                params[def][deepDef] = defaults[def][deepDef];
+                            }
+                        }
+                    }
+                };
+
+                var item = params.container + " ";
+                $(item + ' .tabPanel').css('display', 'none');
+                $(item).children(".tabPanel").eq(0).css('display', 'block');
+
+                // alert($(item+'.menuList a').length);
+
+                $(item + '.menuList a').each(function(index){
+                    $(item + '.menuList a').eq(index).click(function(){
+                        var show = $(this).attr('href');
+
+                        $(item + '.menuList a').removeClass('select');
+                        $(this).addClass('select');
+
+                        $(item + ' .tabPanel').css('display', 'none');
+                        $(show).css('display', 'block');
+
+                        return false;
+                    });
+                });
+            }
+
+
+            /* ---------------------------------------- sub11(마이페이지) ---------------------------------------- */
+            /* side menu */
+            function subLeftMenu() {
+                $('#sub-leftMenu .depth1 li').click(function(){
+                    var speed = 300;
+
+                    if($(this).children('.depth2').css('display') == 'none') {
+                        /* content slide */
+                        $('#sub-leftMenu .depth1 li .depth2').slideUp(speed);
+                        $(this).children('.depth2').slideDown(speed);
+                        /* arrow */
+                        $('#sub-leftMenu .depth1 li').removeClass('open');
+                        $(this).addClass('open');
+                    } else {
+                        /*$('#sub-leftMenu .depth1 li .depth2').slideUp(speed);
+                        $('#sub-leftMenu .depth1 li').removeClass('open');*/
+                    }
+                });
+            }
+
+            /**
+             * 로그인 - 이전 url 정보포함
+             */
+            function fn_login() {
+                if(servletPath != "/web/viewLogin.do" && servletPath != "/web/actionLogin.do") {
+                    var param = "?rtnUrl=" + servletPath;
+                    if(queryString != "") {
+                        param += "&" + queryString;
+                    }
+                    location.href = "/web/viewLogin.do" + param;
+                }
+            }
+
+            /**
+             * 로그인 - 이전 url 정보포함 - 사용자 로그인 전용
+             */
+            function fn_loginUser() {
+                if(servletPath != "/web/viewLogin.do" && servletPath != "/web/actionLogin.do") {
+                    var param = "?mode=user&rtnUrl=" + servletPath;
+                    if(queryString != "") {
+                        param += "&" + queryString;
+                    }
+                    location.href = "/web/viewLogin.do" + param;
+                }
+            }
+
+            /**
+             * logout
+             */
+            function fn_logout() {
+                if(confirm("로그아웃하시겠습니까?")) {
+                    location.href = "/web/logout.do";
+                }
+            }
+
+            function show_popup(obj) {
+                if($(obj).is(":hidden")) {
+                    $(obj).show();
+                    $('body').after('<div class="lock-bg"></div>'); // 검은 불투명 배경
+                } else {
+                    $(obj).hide();
+                    $('.lock-bg').remove();
+                }
+            }
+
+            function close_popup(obj) {
+                $(obj).hide();
+                $('.lock-bg').remove();
+            }
+
+            /**
+             * 오늘 본 상품 추가
+             */
+            function fn_AddCart(params) {
+                $.ajax({
+                    type:"post",
+                    dataType:"json",
+                    contentType:"application/json;",
+                    url:"/web/addCart.ajax",
+                    data:JSON.stringify({cartList:params}),
+                    success:function(data){
+                        $("#headCartCnt").html(data.cartCnt);
+                        //	$("#rightCartCnt").html(data.cartCnt);
+                        if(confirm("장바구니에 담겼습니다.\n장바구니로 이동하시겠습니까?")) {
+                            location.href="/web/cart.do";
+                        }
+                    },
+                    error:fn_AjaxError
+                });
+            }
+
+            /**
+             * 찜한 상품
+             */
+            function fn_AddPocket(params, gubun, chgId) {
+
+                if(confirm('로그인 후 상품을 찜할 수 있습니다.\n로그인 하시겠습니까?')) {
+                    fn_login();
+                }
+            }
+
+            /**
+             * 즉시구매
+             */
+            function fn_InstantBuy(params) {
+                $.ajax({
+                    type:"post",
+                    dataType:"json",
+                    contentType:"application/json;",
+                    url:"/web/instantBuy.ajax",
+                    data:JSON.stringify({cartList: params}) ,
+                    success:function(data){
+                        if(data.result == "N") {
+                            alert("예약마감 또는 구매불가 상품입니다.");
+                            return;
+                        }
+                        if (data.chkPointBuyAble == "N"){
+                            alert("포인트 사용기간 또는 포인트 한도가 종료되었습니다.");
+                            return;
+                        }
+                        location.href = "/web/order01.do?rsvDiv=i";
+                    },
+                    error:fn_AjaxError
+                });
+            }
+
+            function fn_CartCnt() {
+
+                $.ajax({
+                    type:"post",
+                    dataType:"json",
+                    url:"/web/cartCnt.ajax",
+                    success:function(data){
+                        if(data.cartCnt > 0) {
+                            $("#headCartCnt").html(data.cartCnt);
+                            $("#footCartCnt").html(data.cartCnt);
+                        }
+                        //		$("#rightCartCnt").html(data.cartCnt);
+                    }
+                });
+            }
+
+            function fn_PocketCnt() {
+                var parameters = "";
+
+                $.ajax({
+                    type:"post",
+                    dataType:"json",
+                    url:"/web/mypage/pocketCnt.ajax",
+                    data:parameters,
+                    success:function(data){
+                        $("#headPocketCnt").html("(" + data.pocketCnt + ")");
+                    }
+                });
+            }
+            function fn_CouponCnt() {
+                var parameters = "";
+
+                $.ajax({
+                    type:"post",
+                    dataType:"json",
+                    url:"/web/mypage/couponCnt.ajax",
+                    data:parameters,
+                    success:function(data){
+                        $(".coupon .cnt").text(data.pocketCnt);
+                    }
+                });
+            }
+
+            function fn_CloseTopBanner() {
+                $.cookie("topB", "Y", {expires: 1, path: "/"});
+            }
+
+            function fn_searBtClick() {
+                if($.trim($("#search").val()) == "") {
+                    alert("검색어를 입력해 주세요.");
+
+                    $("#search").focus();
+                    return false;
+                }else{
+                    location.href = "/web/cerca.do?search=" + encodeURIComponent($("#search").val());
+                }
+            }
+
+            // 미결제 상품 바로가기
+            function fn_DtlRsv(rsvNum) {
+                $.cookie("unpaidInfo", rsvNum, {path: "/"});
+                location.href = "/web/mypage/detailRsv.do?rsvNum=" + rsvNum + "&partnerCode=";
+            }
+
+        </script>
+
+        <!-- top banner zone-->
+        <div id="top_banner" class="top-banner swiper-container" style="">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide" style="background-color: #F60C40;">
+                    <a href="https://www.tamnao.com/web/evnt/detailPromotion.do?prmtDiv=EVNT&amp;prmtNum=PM00001607" target="_blank">
+                        <div class="bar-tw">
+                            <p class="bar-t"><em class="bar-em">잠깐!</em> 20% <em class="bar-em">빅할인쿠폰</em> 받으셨나요?</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <div class="container">
+                <a href="javascript:void(0)" id="top_close" class="close"><img src="/images/web/comm/btn_close.png" alt="닫기"></a>
+            </div>
+        </div><!--// top banner zone-->
+
+        <div id="_header">
+            <div class="re_header">
+                <div class="inner">
+                    <div class="header-top">
+                        <div class="box__usermenu">
+                            <ul class="list__usermenu">
+
+                                <li class="list-item">
+                                    <a class="link__usermenu" href="javascript:fn_login();">로그인</a>
+                                </li>
+                                <li class="list-item">
+                                    <a class="link__usermenu" href="/web/signUp00.do">회원가입</a>
+                                </li>
+
+                                <li class="list-item">
+                                    <a class="link__usermenu" href="/web/coustmer/viewCorpPns.do?menuIndex=2">입점신청</a>
+                                </li>
+                                <li class="list-item">
+                                    <a class="link__usermenu" href="/web/coustmer/qaList.do?menuIndex=0">고객센터</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <h1>
+                            <a href="/" title="tamnao - 제주여행종합쇼핑몰">
+                                <img src="/images/web/r_main/nao_logo2.png" alt="탐나오">
+                            </a>
+                        </h1>
+                        <div class="srh_area">
+                            <form name="totalSearchForm" id="totalSearchForm" onsubmit="javascript:fn_searBtClick();return false;">
+                                <fieldset>
+                                    <legend class="for-a11y"> 검색</legend>
+                                    <div class="top_search">
+                                        <input name="search" id="search" title="검색어 입력" class="form_input" value="" onkeydown="javascript:if(event.keyCode==13){fn_searBtClick();}" placeholder="검색어를 입력해주세요">
+                                        <button type="submit" title="검색" class="srh_btn" id="searBT" onclick="fn_searBtClick();">
+                                            <img src="/images/web/r_main/srh_btn.png" alt="검색">
+                                        </button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="util_menu">
+                            <ul>
+                                <li class="cart more">
+                                    <a href="/web/cart.do">
+                                        <span class="ico">&nbsp;</span>장바구니
+                                        <span class="cnt" id="headCartCnt">0</span>
+                                    </a>
+                                </li>
+                                <li class="mypage more">
+                                    <a href="/web/mypage/rsvList.do">
+                                        <span class="ico">&nbsp;</span>마이탐나오
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- main menu -->
+            <div class="gnb2">
+                <div class="inner">
+                    <div class="box__service-all">
+                        <ul class="menu">
+                            <li><a href="/web/av/mainList.do">항공</a></li>
+                            <li><a href="/web/sp/vesselList.do">선박</a></li><!-- ?mYn=Y -->
+                            <li><a href="/web/stay/jeju.do">숙소</a></li>
+                            <li><a href="/web/rc/intro.do">렌터카</a></li><!-- ?mYn=Y -->
+                            <li><a href="/web/tour/jeju.do?sCtgr=C200">관광지/레저</a></li>
+                            <li><a href="/web/goods/jeju.do">특산/기념품</a></li>
+                            <li><a href="/web/tour/jeju.do?sCtgr=C270">체험</a></li>
+                            <li><a href="/web/tour/jeju.do?sCtgr=C300">맛집</a></li>
+                            <li><a href="/web/sp/packageList.do">여행사 상품</a></li>
+                            <li><a href="/web/evnt/prmtPlanList.do">기획전</a></li>
+                            <li><a href="/web/evnt/promotionList.do">이벤트</a></li>
+                            <li>
+                                <a href="/web/goods/jeju.do">6차산업인증
+                                    <span class="new">인트로리뉴얼</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- //main menu -->
+        </div>
+    </header>
+
+    <div id="ag_wrap">
+        <div class="svmain_topslide">
+            <div class="_svmain_topslide_list">
+
+                <!-- lnb(snb) -->
+                <article class="sv_lnb" role="navigation">
+                    <h2 class="blinds"></h2>
+                    <ul class="sv_lnb_ul_0">
+                        <li class="sv_lnb_li snack">
+                            <a class="sv_lnb_btn_0" href="#">
+                                <div class="jb-a">
+                                    <div class="jb-a__size">
+                                        <img class="jb-b" src="../../images/web/agriculture/snack.png" alt="간식·음료">
+                                        <img class="jb-c" src="../../images/web/agriculture/snack_hover.png" alt="간식·음료">
+                                    </div>
+                                    <span class="sv_lnb_text">간식·음료</span>
+                                </div>
+
+                            </a>
+                        </li>
+                        <li class="sv_lnb_li tea">
+                            <a class="_categoryDepth0 sv_lnb_btn_0" href="#">
+                                <div class="jb-a">
+                                    <div class="jb-a__size">
+                                        <img class="jb-b" src="../../images/web/agriculture/tea.png" alt="차·식초">
+                                        <img class="jb-c" src="../../images/web/agriculture/tea_hover.png" alt="차·식초">
+                                    </div>
+                                    <span class="sv_lnb_text">차·식초</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="sv_lnb_li livestock">
+                            <a class="_categoryDepth0 sv_lnb_btn_0" href="#">
+                                <div class="jb-a">
+                                    <div class="jb-a__size">
+                                        <img class="jb-b" src="../../images/web/agriculture/livestock.png" alt="유제품·육가공·축산식품">
+                                        <img class="jb-c" src="../../images/web/agriculture/livestock_hover.png" alt="유제품·육가공·축산식품">
+                                    </div>
+                                    <span class="sv_lnb_text">유제품·육가공·축산식품</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="sv_lnb_li tradition">
+                            <a class="_categoryDepth0 sv_lnb_btn_0" href="#">
+                                <div class="jb-a">
+                                    <div class="jb-a__size">
+                                        <img class="jb-b" src="../../images/web/agriculture/tradition.png" alt="전통·발효식품·반찬">
+                                        <img class="jb-c" src="../../images/web/agriculture/tradition_hover.png" alt="전통·발효식품·반찬">
+                                    </div>
+                                    <span class="sv_lnb_text">전통·발효식품·반찬</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="sv_lnb_li cereals">
+                            <a class="_categoryDepth0 sv_lnb_btn_0" href="#">
+                                <div class="jb-a">
+                                    <div class="jb-a__size">
+                                        <img class="jb-b" src="../../images/web/agriculture/cereals.png" alt="곡류·원물가공식품">
+                                        <img class="jb-c" src="../../images/web/agriculture/cereals_hover.png" alt="곡류·원물가공식품">
+                                    </div>
+                                    <span class="sv_lnb_text">곡류·원물가공식품</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="sv_lnb_li jam">
+                            <a class="_categoryDepth0 sv_lnb_btn_0" href="#">
+                                <div class="jb-a">
+                                    <div class="jb-a__size">
+                                        <img class="jb-b" src="../../images/web/agriculture/jam.png" alt="잼·꿀·조청·당류가공식품">
+                                        <img class="jb-c" src="../../images/web/agriculture/jam_hover.png" alt="잼·꿀·조청·당류가공식품">
+                                    </div>
+                                    <span class="sv_lnb_text">잼·꿀·조청·당류가공식품</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="sv_lnb_li fruit">
+                            <a class="_categoryDepth0 sv_lnb_btn_0" href="#">
+                                <div class="jb-a">
+                                    <div class="jb-a__size">
+                                        <img class="jb-b" src="../../images/web/agriculture/fruit.png" alt="원물·과일">
+                                        <img class="jb-c" src="../../images/web/agriculture/fruit_hover.png" alt="원물·과일">
+                                    </div>
+                                    <span class="sv_lnb_text">원물·과일</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="sv_lnb_li life">
+                            <a class="_categoryDepth0 sv_lnb_btn_0" href="#">
+                                <div class="jb-a">
+                                    <div class="jb-a__size">
+                                        <img class="jb-b" src="../../images/web/agriculture/life.png" alt="생활용품·화장품·천연염색">
+                                        <img class="jb-c" src="../../images/web/agriculture/life_hover.png" alt="생활용품·화장품·천연염색">
+                                    </div>
+                                    <span class="sv_lnb_text">생활용품·화장품·천연염색</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="sv_lnb_li bonsai">
+                            <a class="_categoryDepth0 sv_lnb_btn_0" href="#">
+                                <div class="jb-a">
+                                    <div class="jb-a__size">
+                                        <img class="jb-b" src="../../images/web/agriculture/bonsai.png" alt="분재·화분">
+                                        <img class="jb-c" src="../../images/web/agriculture/bonsai_hover.png" alt="분재·화분">
+                                    </div>
+                                    <span class="sv_lnb_text">분재·화분</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="sv_lnb_li experience">
+                            <a class="_categoryDepth0 sv_lnb_btn_0" href="#">
+                                <div class="jb-a">
+                                    <div class="jb-a__size">
+                                        <img class="jb-b" src="../../images/web/agriculture/experience.png" alt="체험·관광">
+                                        <img class="jb-c" src="../../images/web/agriculture/experience_hover.png" alt="체험·관광">
+                                    </div>
+                                    <span class="sv_lnb_text">체험·관광</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="sv_lnb_li kit">
+                            <a class="_categoryDepth0 sv_lnb_btn_0" href="#">
+                                <div class="jb-a">
+                                    <div class="jb-a__size">
+                                        <img class="jb-b" src="../../images/web/agriculture/kit.png" alt="체험키트꾸러미">
+                                        <img class="jb-c" src="../../images/web/agriculture/kit_hover.png" alt="체험키트꾸러미">
+                                    </div>
+                                    <span class="sv_lnb_text">체험키트꾸러미</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </article><!-- //lnb(snb) -->
+
+                <!-- topslide_swiper-container -->
+                <div class="swiper-container">
+                    <div class="mySlides viewPoint">
+                        <img src="../../images/web/main/banner/top/PM00000910.jpg">
+                    </div>
+                    <div class="mySlides">
+                        <img src="../../images/web/main/banner/top/PM00000911.jpg">
+                    </div>
+                    <div class="mySlides">
+                        <img src="../../images/web/main/banner/top/PM00000910.jpg">
+                    </div>
+
+                    <div class="caption-container">
+                        <p id="caption"></p>
+                    </div>
+                    <!-- topslide_swiper-nav -->
+                    <div class="svmain_topslide_nav">
+                        <div class="pass_over">
+
+                            <!-- topslide_swiper-container_ctrl -->
+                            <div class="svmain_topslide_ctrl add-control">
+                                <div class="svmain_topslide_pager">
+                                    <div class="svmain_pager_tx">
+                                        <p class="demo active" onclick="currentSlide(1)">
+                                            <span>제주농부의 정성과 진심만을 담습니다.</span>
+                                        </p>
+                                    </div>
+                                    <div class="svmain_pager_tx">
+                                        <p class="demo" onclick="currentSlide(2)">
+                                            <span>맛에 놀라고 가격에 놀라고</span>
+                                        </p>
+                                    </div>
+                                    <div class="svmain_pager_tx">
+                                        <p class="demo" onclick="currentSlide(3)">
+                                            <span>풍미가득 제주돼지 모음전</span>
+                                        </p>
+                                    </div>
+                                    </div>
+                                    <div class="arrow_ctrl">
+                                        <a class="prev" onclick="plusSlides(-1)">
+                                            <span class="swiper-button-prev"></span>
+                                        </a>
+                                        <a class="next" onclick="plusSlides(1)">
+                                            <span class="swiper-button-next"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                           </div><!-- //topslide_swiper-container_ctrl -->
+                        </div><!-- //pass_over -->
+                    </div><!-- //topslide_swiper-nav -->
+                </div><!-- //topslide_swiper-container -->
+            </div>
+        </div>
+
+        <!-- layer popup -->
+        <!-- certification_1 / 6차산업이란? -->
+        <div id="certification_1" class="comm-layer-popup">
+            <div class="certification-wrap">
+                <div class="table-scroll">
+                    <button type="button" class="close">확인</button>
+                    <img src="../../images/web/agriculture/certification_1.jpg" alt="6차산업이란">
+                </div>
+            </div>
+        </div>
+        <!-- certification_2 / 6차산업지원센터 -->
+        <div id="certification_2" class="comm-layer-popup">
+            <div class="certification-wrap">
+                <div class="table-scroll">
+                    <button type="button" class="close">확인</button>
+                    <img src="../../images/web/agriculture/certification_2.jpg" alt="6차산업지원센터">
+                </div>
+            </div>
+        </div>
+        <!-- certification_3 / 6차산업이란? -->
+        <div id="certification_3" class="comm-layer-popup">
+            <div class="certification-wrap">
+                <div class="table-scroll">
+                    <button type="button" class="close">확인</button>
+                    <img src="../../images/web/agriculture/certification_3.jpg" alt="6차산업이란">
+                </div>
+            </div>
+        </div>
+        <!-- //layer popup -->
+
+        <!-- framing introduction -->
+        <section class="framing--introd">
+            <section class="inner">
+                <div class="tit">
+                    제주농부의 <span>정성과 진심</span>만 담습니다.
+                </div>
+                <div class="certification">
+
+                    <!-- certification_1 -->
+                    <a class="content" href="javascript:void(0)" onclick="layer_popup('#certification_1')">
+                        <div class="business--info">
+                            <div class="image">
+                                <img src="../../images/web/agriculture/certification_1.png" alt="6차산업이란?">
+                            </div>
+                            <div class="article">
+                                <h5>6차산업이란?</h5>
+                                <span>농촌융복합산업(6차산업)이란?</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- certification_2 -->
+                    <a class="content" href="javascript:void(0)" onclick="layer_popup('#certification_2')">
+                        <div class="business--info">
+                            <div class="image">
+                                <img src="../../images/web/agriculture/certification_2.png" alt="6차산업지원센터">
+                            </div>
+                            <div class="article">
+                                <h5>6차산업지원센터</h5>
+                                <span>농촌관광 활성화 지원 / 인프라 정비</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- certification_3 -->
+                    <a class="content" href="javascript:void(0)" onclick="layer_popup('#certification_3')">
+                        <div class="business--info">
+                            <div class="image">
+                                <img src="../../images/web/agriculture/certification_3.png" alt="사업자인증제란">
+                            </div>
+                            <div class="article">
+                                <h5>사업자인증제란</h5>
+                                <span>농촌융복합산업(6차산업)이란?</span>
+                            </div>
+                        </div>
+                    </a>
+            </div>
+        </section><!-- //framing introduction -->
+
+        <!-- Best Category -->
+        <section class="categoryBestSection">
+            <div class="inner">
+                <div class="one-place">
+                    <div class="left--aside__img">
+                        <img src="../../images/web/agriculture/aside_img.png" alt="제주농부의 정성과 진심만을 담습니다">
+                        <a class="desc">이 시간 업데이트 상품으로<br> 남들보다 먼저 똑똑한 쇼핑</a>
+                    </div>
+                    <div class="product-area">
+                        <div id="product_theme" class="swiper-container swiper-container-horizontal">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="photo">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                        </div>
+                                        <div class="bx-info">
+                                            <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                            <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승합니다</div>
+                                            <div class="box__price">
+                                                <span class="text__price">2,000</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="photo">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                        </div>
+                                        <div class="bx-info">
+                                            <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                            <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승합니다</div>
+                                            <div class="box__price">
+                                                <span class="text__price">2,000</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="photo">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                        </div>
+                                        <div class="bx-info">
+                                            <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                            <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                            <div class="box__price">
+                                                <span class="text__price">2,000</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="photo">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                        </div>
+                                        <div class="bx-info">
+                                            <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                            <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                            <div class="box__price">
+                                                <span class="text__price">2,000</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="photo">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                        </div>
+                                        <div class="bx-info">
+                                            <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                            <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                            <div class="box__price">
+                                                <span class="text__price">2,000</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="photo">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                        </div>
+                                        <div class="bx-info">
+                                            <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                            <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                            <div class="box__price">
+                                                <span class="text__price">2,000</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="photo">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                        </div>
+                                        <div class="bx-info">
+                                            <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                            <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                            <div class="box__price">
+                                                <span class="text__price">2,000</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="photo">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                        </div>
+                                        <div class="bx-info">
+                                            <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                            <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                            <div class="box__price">
+                                                <span class="text__price">2,000</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="photo">
+                                            <img src="../../data/cardiv/RD02R40014.png" alt="아반떼" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                        </div>
+                                        <div class="bx-info">
+                                            <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                            <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                            <div class="box__price">
+                                                <span class="text__price">2,000</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="photo">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                        </div>
+                                        <div class="bx-info">
+                                            <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                            <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                            <div class="box__price">
+                                                <span class="text__price">2,000</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="arrow-box" >
+                            <div id="theme_next" class="swiper-button-next"></div>
+                            <div id="theme_prev" class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- //Best Category -->
+
+        <!-- 광고 banner -->
+        <section class="content__banner">
+            <div class="content__banner-inner">
+                <a href="#" class="inner--link" target="_blank">
+                    <img class="middle_banner" src="/images/web/agriculture/beyondfarm.png" alt="6차산업인증 비욘드팜">
+                </a>
+            </div>
+        </section><!-- //광고 banner -->
+
+
+        <!-- popularity trip -->
+        <section class="theme-push">
+            <h2>
+                <strong>인기 트립</strong>
+            </h2>
+            <ul class="popularity--trip">
+                <li class="">
+                    <a href="">
+                        <img src="../../images/web/agriculture/life_banner.jpg" alt="생활">
+                        <div class="article">
+                            <div class="txt_box">
+                                <h3 class="subject">생 활</h3>
+                                <p>#화장품 #마유 #염색</p>
+                            </div>
+                            <div class="discount-rate">
+                                최대 ~30%
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="">
+                        <img src="../../images/web/agriculture/experience_banner.jpg" alt="체험">
+                        <div class="article">
+                            <div class="txt_box">
+                                <h3 class="subject">체 험</h3>
+                                <p>#가공제품 #체험키트 #체험프로그램</p>
+                            </div>
+                            <div class="discount-rate">
+                                최대 ~40%
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </section><!-- //popularity trip -->
+
+        <!-- themed merchandise -->
+        <section class="theme-push footer-connection">
+            <div class="ftLt">
+                <h2>
+                    <strong>
+                        테마 추천 상품
+                    </strong>
+                </h2>
+                <p class="desc">
+                    청정지역 제주가 생산한
+                    <br>
+                    기념품까지 받아볼 수 있는 직배송
+                </p>
+                <ul class="list-tag">
+                    <li>
+                        <a href="">#싱싱생생 농산물</a>
+                    </li>
+                    <li>
+                        <a href="">#체험키트 꾸러미</a>
+                    </li>
+                    <li>
+                        <a href="">#체험·관광</a>
+                    </li>
+                    <li>
+                        <a href="">#제주로얄식품</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ftRt">
+                <div class="item-area">
+                    <ul class="col4">
+                        <li class="list-item">
+                            <a href="" target="_blank">
+                                <div class="box__image">
+                                    <img src="../../images/web/other/no-image.jpg" alt="product">
+                                </div>
+                                <div class="box__information">
+                                    <strong class="bx_label _green">SOAP COOK(솝쿡)</strong>
+                                    <div class="bxTitle">버튼 한 번으로 완벽한 커피를 즐겨보세요</div>
+                                    <div class="bxEvent">제주다정팜</div>
+                                    <div class="bxPrice">
+                                        <span class="text__price">13,000</span>
+                                        <span class="text__unit">원</span>
+                                    </div>
+                                    <!-- 0221 라벨추가 -->
+                                    <div class="bxLabel">
+                                        <span class="main_label eventblue">이벤트</span>
+                                        <span class="main_label pink">할인쿠폰</span>
+                                        <span class="main_label back-purple">공모전수상작</span>
+                                        <span class="main_label back-red">JQ인증</span>
+                                        <span class="main_label fullpink">우수관광사업체</span>
+                                        <span class="main_label yellow">탐나는전</span>
+                                    </div><!-- //0221 라벨추가 -->
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="" target="_blank">
+                                <div class="box__image">
+                                    <img src="../../images/web/other/no-image.jpg" alt="product">
+                                </div>
+                                <div class="box__information">
+                                       <strong class="bx_label _green">SOAP COOK(솝쿡)</strong>
+                                    <div class="bxTitle">버튼 한 번으로 완벽한 커피를 즐겨보세요</div>
+                                    <div class="bxEvent">제주다정팜</div>
+                                    <div class="bxPrice">
+                                        <span class="text__price">13,000</span>
+                                        <span class="text__unit">원</span>
+                                    </div>
+                                    <div class="bxLabel">
+                                        <span class="main_label eventblue">이벤트</span>
+                                        <span class="main_label pink">할인쿠폰</span>
+                                        <span class="main_label back-purple">공모전수상작</span>
+                                        <span class="main_label back-red">JQ인증</span>
+                                        <span class="main_label fullpink">우수관광사업체</span>
+                                        <span class="main_label yellow">탐나는전</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="" target="_blank">
+                                <div class="box__image">
+                                    <img src="../../images/web/other/no-image.jpg" alt="product">
+                                </div>
+                                <div class="box__information">
+                                    <strong class="bx_label _green">SOAP COOK(솝쿡)</strong>
+                                    <div class="bxTitle">버튼 한 번으로 완벽한 커피를 즐겨보세요</div>
+                                    <div class="bxEvent">제주다정팜</div>
+                                    <div class="bxPrice">
+                                        <span class="text__price">13,000</span>
+                                        <span class="text__unit">원</span>
+                                    </div>
+                                    <div class="bxLabel">
+                                        <span class="main_label eventblue">이벤트</span>
+                                        <span class="main_label pink">할인쿠폰</span>
+                                        <span class="main_label back-purple">공모전수상작</span>
+                                        <span class="main_label back-red">JQ인증</span>
+                                        <span class="main_label fullpink">우수관광사업체</span>
+                                        <span class="main_label yellow">탐나는전</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="" target="_blank">
+                                <div class="box__image">
+                                    <img src="../../images/web/other/no-image.jpg" alt="product">
+                                </div>
+                                <div class="box__information">
+                                    <strong class="bx_label _green">SOAP COOK(솝쿡)</strong>
+                                    <div class="bxTitle">버튼 한 번으로 완벽한 커피를 즐겨보세요</div>
+                                    <div class="bxEvent">제주다정팜</div>
+                                    <div class="bxPrice">
+                                        <span class="text__price">13,000</span>
+                                        <span class="text__unit">원</span>
+                                    </div>
+                                    <div class="bxLabel">
+                                        <span class="main_label eventblue">이벤트</span>
+                                        <span class="main_label pink">할인쿠폰</span>
+                                        <span class="main_label back-purple">공모전수상작</span>
+                                        <span class="main_label back-red">JQ인증</span>
+                                        <span class="main_label fullpink">우수관광사업체</span>
+                                        <span class="main_label yellow">탐나는전</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="col4">
+                        <li class="list-item">
+                            <a href="" target="_blank">
+                                <div class="box__image">
+                                    <img src="../../images/web/other/no-image.jpg" alt="product">
+                                </div>
+                                <div class="box__information">
+                                    <strong class="bx_label _green">SOAP COOK(솝쿡)</strong>
+                                    <div class="bxTitle">버튼 한 번으로 완벽한 커피를 즐겨보세요</div>
+                                    <div class="bxEvent">제주다정팜</div>
+                                    <div class="bxPrice">
+                                        <span class="text__price">13,000</span>
+                                        <span class="text__unit">원</span>
+                                    </div>
+                                    <!-- 0221 라벨추가 -->
+                                    <div class="bxLabel">
+                                        <span class="main_label eventblue">이벤트</span>
+                                        <span class="main_label pink">할인쿠폰</span>
+                                        <span class="main_label back-purple">공모전수상작</span>
+                                        <span class="main_label back-red">JQ인증</span>
+                                        <span class="main_label fullpink">우수관광사업체</span>
+                                        <span class="main_label yellow">탐나는전</span>
+                                    </div><!-- //0221 라벨추가 -->
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="" target="_blank">
+                                <div class="box__image">
+                                    <img src="../../images/web/other/no-image.jpg" alt="product">
+                                </div>
+                                <div class="box__information">
+                                    <strong class="bx_label _green">SOAP COOK(솝쿡)</strong>
+                                    <div class="bxTitle">버튼 한 번으로 완벽한 커피를 즐겨보세요</div>
+                                    <div class="bxEvent">제주다정팜</div>
+                                    <div class="bxPrice">
+                                        <span class="text__price">13,000</span>
+                                        <span class="text__unit">원</span>
+                                    </div>
+                                    <div class="bxLabel">
+                                        <span class="main_label eventblue">이벤트</span>
+                                        <span class="main_label pink">할인쿠폰</span>
+                                        <span class="main_label back-purple">공모전수상작</span>
+                                        <span class="main_label back-red">JQ인증</span>
+                                        <span class="main_label fullpink">우수관광사업체</span>
+                                        <span class="main_label yellow">탐나는전</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="" target="_blank">
+                                <div class="box__image">
+                                    <img src="../../images/web/other/no-image.jpg" alt="product">
+                                </div>
+                                <div class="box__information">
+                                    <strong class="bx_label _green">SOAP COOK(솝쿡)</strong>
+                                    <div class="bxTitle">버튼 한 번으로 완벽한 커피를 즐겨보세요</div>
+                                    <div class="bxEvent">제주다정팜</div>
+                                    <div class="bxPrice">
+                                        <span class="text__price">13,000</span>
+                                        <span class="text__unit">원</span>
+                                    </div>
+                                    <div class="bxLabel">
+                                        <span class="main_label eventblue">이벤트</span>
+                                        <span class="main_label pink">할인쿠폰</span>
+                                        <span class="main_label back-purple">공모전수상작</span>
+                                        <span class="main_label back-red">JQ인증</span>
+                                        <span class="main_label fullpink">우수관광사업체</span>
+                                        <span class="main_label yellow">탐나는전</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="" target="_blank">
+                                <div class="box__image">
+                                    <img src="../../images/web/other/no-image.jpg" alt="product">
+                                </div>
+                                <div class="box__information">
+                                    <strong class="bx_label _green">SOAP COOK(솝쿡)</strong>
+                                    <div class="bxTitle">버튼 한 번으로 완벽한 커피를 즐겨보세요</div>
+                                    <div class="bxEvent">제주다정팜</div>
+                                    <div class="bxPrice">
+                                        <span class="text__price">13,000</span>
+                                        <span class="text__unit">원</span>
+                                    </div>
+                                    <div class="bxLabel">
+                                        <span class="main_label eventblue">이벤트</span>
+                                        <span class="main_label pink">할인쿠폰</span>
+                                        <span class="main_label back-purple">공모전수상작</span>
+                                        <span class="main_label back-red">JQ인증</span>
+                                        <span class="main_label fullpink">우수관광사업체</span>
+                                        <span class="main_label yellow">탐나는전</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section><!-- //themed merchandise -->
+
+        <!-- asideMenu-recent view -->
+        <div class="skyscraper">
+            <div class="recent_products">
+                <section class="sv-cs">
+                    <a href="/web/coustmer/qaList.do?menuIndex=0"><img src="/images/web/main/sv_cs.png" alt="탐나오 고객센터"></a>
+                </section>
+                <section class="lately selected">
+                    <h2>최근 본 상품</h2>
+                    <div class="lst">
+                        <ul class="point_lnb_ul_0">
+                            <li>
+                                <a class="imgSelect" href="#">
+                                    <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="">
+                                </a>
+                                <!-- hover -->
+                                <div class="detail">
+                                    <span class="thumbnail-name">농신 육개장 사발면(86g 6입)</span>
+                                    <span class="price">
+                                        <em class="sales-price">4,700</em>원
+                                    </span>
+                                    <a href="#" class="btn_delete"></a>
+                                </div><!-- //hover -->
+                            </li>
+                            <li>
+                                <a class="imgSelect" href="#">
+                                    <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="">
+                                </a>
+                                <!-- hover -->
+                                <div class="detail">
+                                    <span class="thumbnail-name">농신 육개장 사발면(86g 6입)</span>
+                                    <span class="price">
+                                        <em class="sales-price">4,700</em>원
+                                    </span>
+                                    <a href="#" class="btn_delete"></a>
+                                </div><!-- //hover -->
+                            </li>
+                            <li>
+                                <a class="imgSelect" href="#">
+                                    <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="">
+                                </a>
+                                <!-- hover -->
+                                <div class="detail">
+                                    <span class="thumbnail-name">농신 육개장 사발면(86g 6입)</span>
+                                    <span class="price">
+                                        <em class="sales-price">4,700</em>원
+                                    </span>
+                                    <a href="#" class="btn_delete"></a>
+                                </div><!-- //hover -->
+                            </li>
+                            <li>
+                                <a class="imgSelect" href="#">
+                                    <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="">
+                                </a>
+                                <!-- hover -->
+                                <div class="detail">
+                                    <span class="thumbnail-name">농신 육개장 사발면(86g 6입)</span>
+                                    <span class="price">
+                                        <em class="sales-price">4,700</em>원
+                                    </span>
+                                    <a href="#" class="btn_delete"></a>
+                                </div><!-- //hover -->
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- view scroll -->
+                    <div class="direction">
+                        <a class="prev" type="button">
+                            <span class="blind">이전</span>
+                        </a>
+                        <a class="next" type="button">
+                            <span class="blind">다음</span>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div><!-- //asideMenu-recent view -->
+    </section>
+    <div id="_footer" data-container="footer" class="footer_wrap">
+        <div class="service_support">
+            <div class="inner">
+                <div class="top-wrap">
+                    <a class="go-top" onclick="go_top();" style="display: inline;">
+                        <img src="/images/web/comm/top.png" alt="맨위로">
+                    </a>
+                </div>
+                <ul>
+                    <li>
+                        <a href="/web/etc/introduction.do" target="_blank" title="새창 열림">
+                            <span>회사소개</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/etc/buyToS.do" target="_blank" title="새창 열림">
+                            <span>이용약관</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/coustmer/viewCorpPns.do" target="_blank" title="새창 열림">
+                            <span>입점/제휴안내</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/etc/personalData.do" target="_blank" title="새창 열림">
+                            <strong>개인정보취급방침</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/coustmer/qaList.do" target="_blank" title="새창 열림">
+                            <span>고객센터</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=6168204092" target="_blank" title="새창 열림">
+                            <span>사업자정보확인</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="corp_wrap">
+            <div class="inner">
+                <div class="corp_wrap_row">
+                    <div class="corp_info">
+                        <dl>
+                            <dt>제주특별자치도관광협회</dt>
+                            <dd class="corp_info_cs">
+                                <p>
+                                    <em>1522-3454</em>
+                                    <span>월~금 09:00 - 18:00</span>
+                                    <span>점심시간 12:00 - 13:00</span>
+                                </p>
+                            </dd>
+                            <dd class="corp_info_tx">
+                                <p>
+                                    <span>대표이사:부동석</span>
+                                    <span>63309 제주특별자치도 제주시 첨단로 213-65 제주종합비즈니스센터 3층</span>
+                                    <span>법인 등록번호:220121-0000107</span>
+                                    <span>사업자 등록번호:616-82-04092</span>
+                                </p>
+                                <p>
+                                    <span>통신판매업번호:제2018-제주아라0049호</span>
+                                    <span>개인정보관리책임자:김철휘</span>
+                                    <span>E-mail : tamnao@tamnao.com</span>
+                                    <span>Fax : 064-749-7445</span>
+                                </p>
+                            </dd>
+                            <dd class="corp_info_copy">
+                                <p>탐나오는 통신판매중개자로서 거래당사자가 아니므로 개별 판매자가 등록한 상품거래정보 및 거래에 대해서 책임을 지지 않습니다.</p>
+                                <p>Copyright 2018. 제주특별자치도관광협회 All Rights Reserved.</p>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="corp_rgt" >
+                        <div class="f_sns">
+                            <a href="https://blog.naver.com/jta0119" class="bl" target="_blank">
+                                <span class="blind">블로그</span>
+                            </a>
+                            <a href="https://post.naver.com/jta0119" class="nv" target="_blank">
+                                <span class="blind">네이버</span>
+                            </a>
+                            <a href="https://www.facebook.com/JEJUTAMNAOTRAVEL/" class="fb" target="_blank">
+                                <span class="blind">페이스북</span>
+                            </a>
+                            <a href="https://www.instagram.com/tamnao_jeju/" class="ig" target="_blank">
+                                <span class="blind">인스타그램</span>
+                            </a>
+                            <a href="https://www.youtube.com/channel/UC5Hk3MfM3RFDz5_Xm9BDJZQ" class="ub" target="_blank">
+                                <span class="blind">유튜브</span>
+                            </a>
+                        </div>
+                        <div class="f_down">
+                            <a href="https://apps.apple.com/kr/app/%ED%83%90%EB%82%98%EC%98%A4-%EC%A0%9C%EC%A3%BC%EC%97%AC%ED%96%89%EC%8A%A4%ED%86%A0%EC%96%B4/id1489404866" target="_blank">
+                                <img src="/images/web/r_main/apple.png" alt="애플 앱다운로드">
+                                <span>ISO</span>
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=kr.or.hijeju.tamnao" target="_blank">
+                                <img src="/images/web/r_main/google.png" alt="구글 앱다운로드">
+                                <span>Android</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mark-zone">
+                    <div class="award">
+                        <ul>
+                            <li><img src="/images/web/mark/gcs.png" alt="gcs"></li>
+                            <li><img src="/images/web/mark/maket.png" alt="market"></li>
+                            <li><img src="/images/web/mark/int.png" alt="int"></li>
+                            <li><img src="/images/web/mark/web.png" alt="web"></li>
+                            <li><img src="/images/web/mark/nba.png" alt="nba"></li>
+                            <li><img src="/images/web/mark/ieco.png" alt="ieco"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

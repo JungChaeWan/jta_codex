@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="mntr">
+
+	<resultMap id="MNTRTL_R_00" class="web.order.vo.ORDERVO">
+		<result property="corpId" 			column="CORP_ID" />
+		<result property="rsvNum" 			column="RSV_NUM" />
+		<result property="adRsvNum" 		column="AD_RSV_NUM" />
+		<result property="corpNm" 			column="CORP_NM" />
+		<result property="prdtNm" 			column="PRDT_NM" />
+		<result property="prdtInf" 			column="PRDT_INF" />
+		<result property="rsvStatusCd" 		column="RSV_STATUS_CD" />
+		<result property="regDttm" 			column="REG_DTTM" />
+		<result property="modDttm" 			column="MOD_DTTM" />
+	</resultMap>
+	<resultMap id="MNTRTL_R_01" class="oss.monitoring.vo.TLCORPVO">
+		<result property="corpId" 					column="CORP_ID" />
+		<result property="corpNm" 					column="CORP_NM" />
+		<result property="rsvTelNum" 				column="RSV_TEL_NUM" />
+		<result property="admMobile" 				column="ADM_MOBILE" />
+		<result property="addr" 					column="ADDR" />
+		<result property="adultAgeStdApicode" 		column="ADULT_AGE_STD_APICODE" />
+		<result property="juniorAgeStdApicode" 		column="JUNIOR_AGE_STD_APICODE" />
+		<result property="childAgeStdApicode" 		column="CHILD_AGE_STD_APICODE" />
+		<result property="adultAgeStd" 				column="ADULT_AGE_STD" />
+		<result property="juniorAgeStd" 			column="JUNIOR_AGE_STD" />
+		<result property="childAgeStd" 				column="CHILD_AGE_STD" />
+		<result property="tllPriceLink"				column="TLL_PRICE_LINK" />
+		<result property="tllRsvLink"				column="TLL_RSV_LINK" />
+	</resultMap>
+	<resultMap id="MNTRTL_R_02" class="web.order.vo.ORDERVO">
+		<result property="rsvNum" 				column="RSV_NUM" />
+		<result property="partnerCode" 			column="PARTNER_CODE" />
+		<result property="usePoint"				column="USE_POINT" />
+		<result property="payPoint"				column="PAY_POINT" />
+	</resultMap>
+
+	<!--TL린칸 예약 전송 후 Tamnao 취소(RS99) 인데 취소전송을 보내지 않은 리스트 -->
+	<select id="MNTRTL_S_00" resultMap="MNTRTL_R_00">
+		SELECT
+			TC.CORP_ID
+			, TAPI.RSV_NUM
+			, TAPI.AD_RSV_NUM
+			, TC.CORP_NM
+			, TAR.PRDT_NM
+			, TAR.PRDT_INF
+			, TAPI.REG_DTTM
+			, TAR.RSV_STATUS_CD
+			, TRUNC((SYSDATE - TAPI.REG_DTTM)* 24 * 60) as MOD_DTTM /*경과시간*/
+		FROM TB_APITL_RSV TAPI
+		LEFT JOIN TB_AD_RSV TAR
+		ON TAPI.AD_RSV_NUM = TAR.AD_RSV_NUM
+		LEFT JOIN TB_CORP TC ON TAR.CORP_ID = TC.CORP_ID
+		WHERE TAR.RSV_STATUS_CD IN ('RS20','RS99')
+		AND TAPI.RSV_RESULT = 'Y'
+		AND TAPI.SEQ_NUM ='0'
+		AND TAPI.AD_RSV_NUM NOT IN (SELECT AD_RSV_NUM FROM TB_APITL_RSV WHERE SEQ_NUM = '1' AND RSV_RESULT = 'Y')
+	</select>
+
+	<!--TL린칸 연동 업체 List -->
+	<select id="MNTRTL_S_01" resultMap="MNTRTL_R_01">
+		SELECT
+			TC.CORP_ID
+			 , CASE WHEN SHOP_NM IS NULL THEN CORP_NM ELSE SHOP_NM END AS CORP_NM
+			 , RSV_TEL_NUM /*예약전화번호*/
+			 , ADM_MOBILE
+			 , ROAD_NM_ADDR || ' ' ||DTL_ADDR AS  ADDR
+			 , ADULT_AGE_STD_APICODE
+			 , JUNIOR_AGE_STD_APICODE
+			 , CHILD_AGE_STD_APICODE
+			 , ADULT_AGE_STD
+			 , JUNIOR_AGE_STD
+		     , CHILD_AGE_STD
+			 , TLL_PRICE_LINK	/*TLL 금액연동 기준 */
+			 , TLL_RSV_LINK		/*TLL 예약연동 기준 */
+		FROM TB_CORP TC
+				 LEFT JOIN TB_AD_DFTINF TAD ON TC.CORP_ID = TAD.CORP_ID
+		WHERE AD_APILINK_NM ='TLL'
+		ORDER BY TC.CORP_ID
+	</select>
+
+	<!--TL린칸 CHILD TYPE 매핑 업데이트-->
+	<update id="MNTRTL_U_00">
+		UPDATE TB_AD_DFTINF
+		SET
+			<isEqual property="ageType" compareValue="juniorAgeStdApicode" >
+			JUNIOR_AGE_STD_APICODE = #apiCode#
+			</isEqual>
+			<isEqual property="ageType" compareValue="childAgeStdApicode"  >
+			CHILD_AGE_STD_APICODE = #apiCode#
+			</isEqual>
+		WHERE CORP_ID= #corpId#
+	</update>
+
+	<!--TL린칸 금액 연동 기준 update-->
+	<update id="MNTRTL_U_01">
+		UPDATE TB_AD_DFTINF
+		<isNotEmpty property="tllPriceLink">
+			<isNotNull property="tllPriceLink">
+				SET TLL_PRICE_LINK = #tllPriceLink#
+			</isNotNull>
+		</isNotEmpty>
+		<isNotEmpty property="tllRsvLink">
+			<isNotNull property="tllRsvLink">
+				SET TLL_RSV_LINK = #tllRsvLink#
+			</isNotNull>
+		</isNotEmpty>
+		WHERE CORP_ID= #corpId#
+	</update>
+
+	<!--대시보드 TL린칸 취소 오류건-->
+	<select id="MNTRTL_S_02" resultClass="int">
+		SELECT
+			COUNT(1) AS CNT
+		FROM TB_APITL_RSV TAPI
+		LEFT JOIN TB_AD_RSV TAR
+		ON TAPI.AD_RSV_NUM = TAR.AD_RSV_NUM
+		WHERE TAR.RSV_STATUS_CD IN ('RS20','RS99')
+		  AND TAPI.RSV_RESULT = 'Y'
+		  AND TAPI.SEQ_NUM ='0'
+		  AND NOT EXISTS (SELECT AD_RSV_NUM FROM TB_APITL_RSV WHERE SEQ_NUM = '1' AND RSV_RESULT = 'Y')
+	</select>
+
+	<select id="MNTRTL_S_03"  resultMap="MNTRTL_R_02">
+		WITH DTL_RSV AS (
+			SELECT AD_RSV_NUM AS DTL_RSV_NUM, RSV_NUM, RSV_STATUS_CD
+			FROM TB_AD_RSV WHERE RSV_STATUS_CD IN ('RS02', 'RS13', 'RS20', 'RS30', 'RS33')
+			UNION ALL
+			SELECT RC_RSV_NUM AS DTL_RSV_NUM, RSV_NUM, RSV_STATUS_CD
+			FROM TB_RC_RSV WHERE RSV_STATUS_CD IN ('RS02', 'RS13', 'RS20', 'RS30', 'RS33')
+			UNION ALL
+			SELECT SV_RSV_NUM AS DTL_RSV_NUM, RSV_NUM, RSV_STATUS_CD
+			FROM TB_SV_RSV WHERE RSV_STATUS_CD IN ('RS02', 'RS13', 'RS20', 'RS30', 'RS33')
+			UNION ALL
+			SELECT SP_RSV_NUM AS DTL_RSV_NUM, RSV_NUM, RSV_STATUS_CD
+			FROM TB_SP_RSV WHERE RSV_STATUS_CD IN ('RS02', 'RS13', 'RS20', 'RS30', 'RS33')
+		),
+			 POINT_USE AS (
+				  /*포인트 사용 데이터 (USE)만 가져옴*/
+				 SELECT RSV_NUM, DTL_RSV_NUM, PARTNER_CODE, POINT, PLUS_MINUS, TYPES
+				 FROM TB_POINT
+				 WHERE TYPES = 'USE' AND PLUS_MINUS = 'M'
+			 ),
+			 POINT_CANCEL AS (
+				 /*포인트 취소 데이터 (CANCEL)만 가져옴*/
+				 SELECT RSV_NUM, DTL_RSV_NUM, PARTNER_CODE, POINT, PLUS_MINUS, TYPES
+				 FROM TB_POINT
+				 WHERE TYPES = 'CANCEL' AND PLUS_MINUS = 'P'
+			 ),
+			 POINT_VALIDATION AS (
+				 SELECT
+					 DR.RSV_NUM,
+					 DR.DTL_RSV_NUM,
+					 DR.RSV_STATUS_CD,
+					 T.PARTNER_CODE,
+					 T.USE_POINT,
+					 NVL(PU.POINT, 0) AS TB_USE_POINT,
+					 NVL(PC.POINT, 0) AS TB_CANCEL_POINT
+				 FROM DTL_RSV DR
+						  LEFT JOIN TB_RSV T
+									ON DR.RSV_NUM = T.RSV_NUM
+						  LEFT JOIN POINT_USE PU
+									ON DR.RSV_NUM = PU.RSV_NUM
+										AND DR.DTL_RSV_NUM = PU.DTL_RSV_NUM
+										AND DR.RSV_STATUS_CD IN ('RS02', 'RS30', 'RS33')
+						  LEFT JOIN POINT_CANCEL PC
+									ON DR.RSV_NUM = PC.RSV_NUM
+										AND DR.DTL_RSV_NUM = PC.DTL_RSV_NUM
+										AND DR.RSV_STATUS_CD IN ('RS20', 'RS13')
+				 WHERE T.PARTNER_CODE IS NOT NULL
+			 )
+
+		SELECT RSV_NUM , PARTNER_CODE, USE_POINT, PAY_POINT
+		FROM (
+				 /*부분환불 일 경우 TB_USE_POINT + TB_CANCEL_PONT = USE_POINT 인지 체크*/
+				 SELECT RSV_NUM
+					  , PARTNER_CODE
+					  , MAX(USE_POINT) AS USE_POINT
+					  , SUM(TB_USE_POINT) + SUM(TB_CANCEL_POINT) AS PAY_POINT
+					  , CASE WHEN MAX(USE_POINT) = SUM(TB_USE_POINT) + SUM(TB_CANCEL_POINT) THEN 'VALID'
+							 ELSE 'INVALID'
+					 END AS F_VALID_RESULT
+
+				 FROM (
+						  /*장바구니 구매로 인해 포인트가 나뉜 경우 합산하여 비교*/
+						  SELECT RSV_NUM
+							   , RSV_STATUS_CD
+							   , PARTNER_CODE
+							   , MAX(USE_POINT) AS USE_POINT
+							   , SUM(TB_USE_POINT) AS TB_USE_POINT
+							   , SUM(TB_CANCEL_POINT) AS TB_CANCEL_POINT
+							   , CASE WHEN MAX(USE_POINT) = SUM(TB_USE_POINT)    THEN 'VALID'
+									  WHEN MAX(USE_POINT) = SUM(TB_CANCEL_POINT) THEN 'VALID'
+									  ELSE 'INVALID'
+							  END AS VALID_RESULT
+						  FROM POINT_VALIDATION
+						  GROUP BY RSV_NUM, RSV_STATUS_CD, PARTNER_CODE
+					  )
+				 WHERE VALID_RESULT = 'INVALID'
+				 GROUP BY RSV_NUM, PARTNER_CODE
+			 )
+		WHERE F_VALID_RESULT = 'INVALID';
+	</select>
+</sqlMap>

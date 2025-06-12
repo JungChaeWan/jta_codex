@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="cmmDtlImg">
+
+<resultMap id="CM_DTL_IMG_R_00" class="oss.cmm.vo.CM_DTLIMGVO">
+	<result property="imgNum" 		column="IMG_NUM"/>
+	<result property="linkNum" 	column="LINK_NUM"/>
+	<result property="imgSn" 		column="IMG_SN"/>
+	<result property="pcImgYn" 	column="PC_IMG_YN"/>
+	<result property="savePath" 	column="SAVE_PATH"/>
+	<result property="realFileNm" column="REAL_FILE_NM"/>
+	<result property="saveFileNm" column="SAVE_FILE_NM"/>
+</resultMap>
+
+<resultMap id="CM_DTL_IMG_R_01" class="oss.etc.vo.FILEVO">
+    <result property="docId"        column="DOC_ID" />
+    <result property="fileNum"      column="FILE_NUM" />
+    <result property="savePath"     column="SAVE_PATH" />
+    <result property="saveFileNm"   column="SAVE_FILE_NM" />
+    <result property="realFileNm"   column="REAL_FILE_NM" />
+    <result property="docDiv"       column="DOC_DIV" />
+    <result property="docNm"        column="DOC_NM" />
+    <result property="regDttm"      column="REG_DTTM" />
+</resultMap>
+
+<select id="CM_DTL_IMG_S_00" resultMap="CM_DTL_IMG_R_00">
+SELECT IMG_NUM          /*이미지 번호*/
+    , LINK_NUM          /*연계 번호*/
+    , IMG_SN            /*이미지 순번*/
+    , PC_IMG_YN         /*PC 이미지 여부*/
+    , SAVE_PATH         /*저장 경로*/
+    , REAL_FILE_NM      /*실제 파일 명*/
+    , SAVE_FILE_NM      /*저장 파일 명*/
+FROM TB_CM_DTL_IMG
+ WHERE 1=1
+   AND IMG_NUM  = #imgNum#
+   AND LINK_NUM = #linkNum#
+ </select>
+
+
+<select id="CM_DTL_IMG_S_01" resultClass="java.lang.String">
+SELECT TO_CHAR(NVL(MAX(TO_NUMBER(IMG_NUM)),0) + 1) AS IMG_NUM
+          FROM TB_CM_DTL_IMG
+         WHERE LINK_NUM = #linkNum#       
+</select>
+
+<select id="CM_DTL_IMG_S_02" resultMap="CM_DTL_IMG_R_00">
+SELECT IMG_NUM      /*이미지 번호*/
+     , LINK_NUM     /*연계 번호*/
+     , IMG_SN       /*이미지 순번*/
+     , PC_IMG_YN    /*PC 이미지 여부*/
+     , SAVE_PATH    /*저장 경로*/
+     , REAL_FILE_NM /*실제 파일 명*/
+     , SAVE_FILE_NM /*저장 파일 명*/
+  FROM TB_CM_DTL_IMG
+ WHERE LINK_NUM = #linkNum#
+ <isNotEmpty property="pcImgYn">
+    AND PC_IMG_YN = #pcImgYn#
+ </isNotEmpty>
+ ORDER BY PC_IMG_YN DESC, IMG_SN
+</select>
+
+<select id="CM_DTL_IMG_S_03" resultMap="CM_DTL_IMG_R_01">
+SELECT DOC_ID
+    , FILE_NUM
+    , SAVE_PATH
+    , SAVE_FILE_NM
+    , REAL_FILE_NM
+    , DOC_DIV
+    , DOC_NM
+    , REG_DTTM
+FROM (SELECT ROWNUM AS RN
+        , DOC_ID
+        , FILE_NUM
+        , SAVE_PATH
+        , SAVE_FILE_NM
+        , REAL_FILE_NM
+        , DOC_DIV
+        , DOC_NM
+        , REG_DTTM
+    FROM (SELECT B.LINK_NUM AS DOC_ID
+            , B.IMG_NUM AS FILE_NUM
+            , B.SAVE_PATH
+            , B.SAVE_FILE_NM
+            , B.REAL_FILE_NM
+        <isEqual property="docDiv" compareValue="">
+            , A.CORP_CD AS DOC_DIV
+            , A.CORP_NM AS DOC_NM
+            , A.FRST_REG_DTTM AS REG_DTTM
+        FROM TB_CORP A
+            INNER JOIN TB_CM_DTL_IMG B
+            ON A.CORP_ID = B.LINK_NUM
+        </isEqual>
+        <isNotEqual property="docDiv" compareValue="">
+            , SUBSTR(A.PRDT_NUM, 0, 2) AS DOC_DIV
+            , A.PRDT_NM AS DOC_NM
+            , A.FRST_REG_DTTM AS REG_DTTM
+            <isEqual property="docDiv" compareValue="SP">
+        FROM TB_SP_PRDTINF A
+            </isEqual>
+            <isEqual property="docDiv" compareValue="SV">
+        FROM TB_SV_PRDTINF A
+            </isEqual>
+            <isEqual property="docDiv" compareValue="AD">
+        FROM TB_AD_PRDTINF A
+            </isEqual>
+            <isEqual property="docDiv" compareValue="RC">
+        FROM TB_RC_PRDTINF A
+            </isEqual>
+            INNER JOIN TB_CM_DTL_IMG B
+            ON A.PRDT_NUM = B.LINK_NUM
+        </isNotEqual>
+        <isNotEmpty property="docNm">
+            <isEqual property="docDiv" compareValue="">
+        WHERE A.CORP_NM LIKE '%'||#docNm#||'%'
+            </isEqual>
+            <isNotEqual property="docDiv" compareValue="">
+        WHERE A.PRDT_NM LIKE '%'||#docNm#||'%'
+            </isNotEqual>
+        </isNotEmpty>
+            <isEqual property="docDiv" compareValue="">
+        ORDER BY A.FRST_REG_DTTM DESC
+            </isEqual>
+            <isNotEqual property="docDiv" compareValue="">
+        ORDER BY B.LINK_NUM DESC
+            </isNotEqual>
+            , B.IMG_SN))
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="CM_DTL_IMG_S_04" resultClass="int">
+SELECT COUNT(*) AS CNT
+<isEqual property="docDiv" compareValue="">
+FROM TB_CORP A
+    INNER JOIN TB_CM_DTL_IMG B
+    ON A.CORP_ID = B.LINK_NUM
+</isEqual>
+<isNotEqual property="docDiv" compareValue="">
+    <isEqual property="docDiv" compareValue="SP">
+FROM TB_SP_PRDTINF A
+    </isEqual>
+    <isEqual property="docDiv" compareValue="SV">
+FROM TB_SV_PRDTINF A
+    </isEqual>
+    <isEqual property="docDiv" compareValue="AD">
+FROM TB_AD_PRDTINF A
+    </isEqual>
+    <isEqual property="docDiv" compareValue="RC">
+FROM TB_RC_PRDTINF A
+    </isEqual>
+    INNER JOIN TB_CM_DTL_IMG B
+    ON A.PRDT_NUM = B.LINK_NUM
+</isNotEqual>
+<isNotEmpty property="docNm">
+    <isEqual property="docDiv" compareValue="">
+        WHERE A.CORP_NM LIKE '%'||#docNm#||'%'
+    </isEqual>
+    <isNotEqual property="docDiv" compareValue="">
+        WHERE A.PRDT_NM LIKE '%'||#docNm#||'%'
+    </isNotEqual>
+</isNotEmpty>
+</select>
+
+<insert id="CM_DTL_IMG_I_00">
+INSERT INTO TB_CM_DTL_IMG
+     ( IMG_NUM      /*이미지 번호*/
+     , LINK_NUM     /*연계 번호*/
+     , IMG_SN       /*이미지 순번*/
+     , PC_IMG_YN    /*PC 이미지 여부*/
+     , SAVE_PATH    /*저장 경로*/
+     , REAL_FILE_NM /*실제 파일 명*/
+     , SAVE_FILE_NM /*저장 파일 명*/
+     )
+VALUES
+     ( #imgNum#
+     , #linkNum#
+     , (SELECT NVL(MAX(IMG_SN),0) + 1
+          FROM TB_CM_DTL_IMG
+         WHERE LINK_NUM = #linkNum#
+          <isNotEmpty property="pcImgYn">
+		    AND PC_IMG_YN = #pcImgYn#
+		 </isNotEmpty>
+       )
+     , #pcImgYn#
+     , #savePath#
+     , #realFileNm#
+     , #saveFileNm#
+     )
+</insert>
+
+<insert id="CM_DTL_IMG_I_01">
+INSERT INTO TB_CM_DTL_IMG
+     ( IMG_NUM      /*이미지 번호*/
+     , LINK_NUM     /*연계 번호*/
+     , IMG_SN       /*이미지 순번*/
+     , PC_IMG_YN    /*PC 이미지 여부*/
+     , SAVE_PATH    /*저장 경로*/
+     , REAL_FILE_NM /*실제 파일 명*/
+     , SAVE_FILE_NM /*저장 파일 명*/
+     )
+VALUES
+     ( #imgNum#
+     , #linkNum#
+     , #imgSn#
+     , #pcImgYn#
+     , #savePath#
+     , #realFileNm#
+     , #saveFileNm#
+     )
+</insert>
+
+<!-- 상품 이미지 순번변경 -->
+<update id="CM_DTL_IMG_U_01">
+UPDATE TB_CM_DTL_IMG
+   SET IMG_SN = IMG_SN + 1
+ WHERE LINK_NUM    =  #linkNum#
+ 	AND PC_IMG_YN = #pcImgYn#
+  <isNotEqual property="oldSn" compareValue="0">
+   <![CDATA[
+   AND IMG_SN <  #oldSn#
+   ]]>
+  </isNotEqual>
+   <![CDATA[
+   AND IMG_SN >= #newSn#
+   ]]>
+ 
+</update>
+
+<!-- 상품 이미지 순번변경 -->
+<update id="CM_DTL_IMG_U_02">
+UPDATE TB_CM_DTL_IMG
+   SET IMG_SN = IMG_SN - 1
+ WHERE LINK_NUM    =  #linkNum#
+ 	AND PC_IMG_YN = #pcImgYn#
+ <isNotEqual property="newSn" compareValue="0">
+ <![CDATA[
+   AND IMG_SN <= #newSn#
+ ]]>
+ </isNotEqual>
+ <![CDATA[
+   AND IMG_SN >  #oldSn#
+ ]]>
+
+</update>
+
+<!-- 상품 이미지 순번변경 수정된 객체 -->
+<update id="CM_DTL_IMG_U_03">
+UPDATE TB_CM_DTL_IMG
+   SET IMG_SN       = #newSn#
+ WHERE LINK_NUM     = #linkNum#
+   AND PC_IMG_YN = #pcImgYn#
+   AND IMG_NUM      = #imgNum#
+   AND IMG_SN       = #oldSn#
+</update>
+
+<delete id="CM_DTL_IMG_D_00">
+DELETE TB_CM_DTL_IMG
+ WHERE LINK_NUM = #linkNum#
+ <isNotEmpty property="imgNum">
+   AND IMG_NUM  = #imgNum#
+  </isNotEmpty>
+</delete>
+
+</sqlMap>

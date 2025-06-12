@@ -1,0 +1,508 @@
+@charset "utf-8";
+
+
+
+/* --------------------------------------------------------- 타이포그래피(Typography) ------------------------------------------------------------------ */
+/* 제목 */
+.title1 {font-size: 20px; font-size: 1.25rem; font-weight: 400; color: #333; border-bottom: 1px solid #dbdbdb; padding-bottom: 10px;}
+
+.title2 {font-size: 16px; font-size: 1rem; font-weight: 400; color: #333; margin: 28px 0 10px; position: relative;}
+.title2:first-child {margin-top: 0;}
+.title2::before {content: ""; display: block; width: 65px; height: 1px; background: #4ba9df; margin-bottom: 8px;}
+.title2 small {font-size: 13px;}
+.title2 .side-wrap {position: absolute; top: 1px; right: 0;}
+.title2 .side-wrap2 {position: absolute; top: 11px; right: 0; font-size: 12px;}
+
+.title3 {font-size: 15px; font-size: 0.937rem; font-weight: 700; color: #333; position: relative; margin: 20px 0 8px;}
+.title3:first-child {margin-top: 0;}
+.title3::before {
+    content: ""; display: inline-block; vertical-align: middle;
+    width: 2px; height: 15px; background: #4ba9df;
+    margin-right: 5px;
+}
+
+
+/* 본문 */
+.type-body {font-size: 14px; line-height: 26px;}
+
+/* 캡션 */
+.sec-caption {display: none;} /*section title*/
+
+.cap-check {text-align: right; font-size: 13px; color: #e95b4c; margin-bottom: 8px;}
+.cap-check img {width: 15px;}
+
+.cap-memo {font-size: 13px; line-height: 20px; color: #5f5f60; margin: 10px 0;}
+.cap-memo * {font-size: 13px; color: #5f5f60;}
+
+.cap-form {font-size: 12px; color: #5f5f60; margin: 3px 0;}
+/* --------------------------------------------------------- //타이포그래피(Typography) ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- 컬러(color) ------------------------------------------------------------------ */
+/* 폰트 */
+.text-black {color: #222222;}
+.text-gray {color: #999999;}
+.text-red {color: #e74c3c;}
+.text-blue {color: #4ba9df;}
+.text-green {color: #1fcf6d;}
+/* --------------------------------------------------------- //컬러(color) ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- 버튼(button) ------------------------------------------------------------------ */
+/* 버튼 옵션 */
+.btn-wrap {text-align: center; margin-top: 16px;}
+
+.btn {
+    display: inline-block; vertical-align: middle; color: #222; background-color: #f2f2f2; text-transform: uppercase; letter-spacing: 1px;
+    font-size: 12px; font-weight: 700; margin: 2px 1px; line-height: 30px; white-space: nowrap;
+    border: 1px solid #e1e3e4; border-color: rgba(0,0,0,0.1); border-bottom-width: 3px; border-radius: .25em; cursor: pointer;
+    padding: 0px 20px; min-width: 70px;
+}
+a.btn {min-width: 30px;}
+
+.btn:active {background-color: #ccc;}
+
+.btn.white {background-color: #fff; border-color: rgba(0,0,0,0.2); text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #444;}
+.btn.white:active {background-color: #f2f2f2;}
+
+.btn.black {background-color: #494949; border-color: rgba(0,0,0,0.2); text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff;}
+.btn.black:active {background-color: #000;}
+
+.btn.blue {background-color: #4ba9df; border-color: rgba(0,0,0,0.2); text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff;}
+.btn.blue:active {background-color: #3981a9;}
+
+.btn.red {background-color: #e74c3c; border-color: rgba(0,0,0,0.2); text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff;}
+.btn.red:active {background-color: #d21c09;}
+
+.btn.green {background-color: #1fcf6d; border-color: rgba(0,0,0,0.2); text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff;}
+.btn.green:active {background-color: #178e4b;}
+
+
+/* 버튼 크기 */
+.btn.sm {font-size: 11px; line-height: 25px; padding: 0 12px;}
+.btn.vsm {font-size: 11px; line-height: 17px; padding: 0 4px;}
+
+
+/* 비활성화 */
+.btn.disabled {opacity: .5; cursor: not-allowed;}
+.btn.disabled:hover {background-color: #f2f2f2;}
+
+.btn.disabled.black:hover {background-color: #494949;}
+.btn.disabled.black:active {background-color: #494949;}
+
+.btn.disabled.blue:hover {background-color: #4ba9df;}
+.btn.disabled.blue:active {background-color: #4ba9df;}
+
+.btn.disabled.red:hover {background-color: #e74c3c;}
+.btn.disabled.red:active {background-color: #e74c3c;}
+
+.btn.disabled.green:hover {background-color: #1fcf6d;}
+.btn.disabled.green:active {background-color: #1fcf6d;}
+/* --------------------------------------------------------- //버튼(button) ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- 테이블(table) ------------------------------------------------------------------ */
+/* common */
+table td.left {text-align: left !important;}
+table td.center {text-align: center !important;}
+table td.right {text-align: right !important;}
+table a.link {color: #4ba9df; font-weight: 700; border-bottom: 1px solid #4ba9df; padding-bottom: 1px;}
+
+
+/* 테이블 옵션 (col) */
+.table-col {width: 100%; border-spacing: 0px; border-collapse: collapse; font-size: 13px;}
+.table-col > thead > tr > th {font-weight: 700; background: #eee; height: 30px; padding: 4px 10px; border: 1px solid #e1e3e4; text-align: center;}
+.table-col > tbody > tr:hover {background: #f5f5f5; border: 1px solid #4ba9df;}
+.table-col > tbody > tr:nth-child(even) {background: #fbfbfb;}
+.table-col > tbody > tr:nth-child(even):hover {background: #f5f5f5;}
+.table-col > tbody > tr > td {height: 30px; padding: 4px 10px; border: 1px solid #e1e3e4;}
+.table-col > tfoot > tr > td {font-weight: 700; background: #eee; height: 30px; padding: 4px 10px; border: 1px solid #e1e3e4; text-align: center;}
+
+.table-col.left > tbody > tr > td {text-align: left;}
+.table-col.center > tbody > tr > td {text-align: center;}
+.table-col.right > tbody > tr > td {text-align: right;}
+
+/* 테이블 옵션 (col) - 장대수대리 스타일 추가 */
+table.jsgrid-table {font-size: 13px;}
+table.jsgrid-table > thead > tr > th {font-weight: 700; background: #eee; padding: 10px 10px; border: 1px solid #e1e3e4; text-align: center;}
+table.jsgrid-table > tbody > tr > th {font-weight: 700; background: #eee; padding: 10px 10px; border: 1px solid #e1e3e4; text-align: center;}
+table.jsgrid-table > tbody > tr > td {padding: 10px 10px; border: 1px solid #e1e3e4;}
+table.jsgrid-table > tfoot > tr > td {font-weight: 700; background: #eee; padding: 10px 10px; border: 1px solid #e1e3e4; text-align: center;}
+
+
+/* 테이블 옵션 (row) */
+.table-row {width: 100%; border-spacing: 0px; border-collapse: collapse; font-size: 13px;}
+.table-row > tbody > tr > th {font-size: 13px; line-height: 18px; font-weight: 700; background: #eee; height: 30px; padding: 4px 10px; border: 1px solid #e1e3e4; text-align: left;}
+.table-row > tbody > tr > td {font-size: 13px; height: 30px; padding: 8px 10px; border: 1px solid #e1e3e4;}
+.table-row > tbody > tr > td p {line-height: 1.25rem;}
+.table-row td .info {display: inline-block; margin-left: 10px;}
+.table-row td .info2 {margin-top: 5px; line-height: 20px;}
+
+
+/* 테이블 가로 스크롤 */
+#tblBackground {width: 100%; table-layout: fixed;}
+#tblBackground .text-center {text-align: center;}
+#tblBackground .text-left {text-align: left;}
+#tblBackground .text-right {text-align: right;}
+#divHeadScroll {
+    /*안의 내용이 790보다 길게 적용이 되므로 overflow-x, overflow-y를 hidden을 걸어줘서 설정한 가로너비만큼만 화면에 보이도록 잡아줍니다.*/
+    width: 100%; overflow-x: hidden; overflow-y: hidden;
+}
+#tblHead {
+    /*
+    *  Table의 필드명의 너비를 여기에서 지정합니다.
+    *  필드명을 보여줄 테이블은 body보다 하나의 td를 더 가지며 마지막 td는 아무것도 입력하지 않고 크기만 잡아줍니다.
+    *  이렇게 하는 이유는 데이터를 보여주는 테이블은 세로 스크롤의 가로두께만큼 더 이동하기 때문입니다.
+    */
+    table-layout: fixed; width: 1117px; border-collapse: collapse;
+}
+#tblHead th {text-align: center;}
+#divBodyScroll {
+    /*
+    *  overflow-x, overflow-y는 scroll로 지정하고,
+    *  height는 테이블의 데이터가 나올 기본 크기를 잡아줍니다.
+    *  세로길이를 잡아주지 않으면 overflow-y가 걸리지 않습니다.
+    */
+    width: 100%; height: auto; max-height: 478px; overflow-x: scroll; overflow-y: scroll;
+}
+#tblBody {
+    /* tblBody의 데이터는 필요한 열의 수만큼만 만드시고 헤더와 col의 width는 동일해야 합니다. */
+    width: 1100px; table-layout: fixed;	border-collapse: collapse;
+}
+/* --------------------------------------------------------- //테이블(table) ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- 폼(form) ------------------------------------------------------------------ */
+/* input placeholder all */
+::-webkit-input-placeholder {color: #999;}
+         ::-moz-placeholder {color: #999;} /* firefox 19+ */
+     :-ms-input-placeholder {color: #999;} /* ie */
+     input:-moz-placeholder {color: #999;}
+
+input:focus, textarea:focus {border: 1px solid #4ba9df !important;}
+
+
+/* 기본옵션 */
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+input[type="email"],
+input[type="search"],
+select {
+    height: 30px; vertical-align: middle; min-width: 135px; margin: 2px 0;
+    font-size: 13px; font-size: 0.812rem; border: 1px solid #e1e3e4; border-radius: .25rem; padding: 0 8px;
+}
+
+input[type="text"], 
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+input[type="email"],
+input[type="search"],
+textarea {-webkit-appearance: none; /* iPhone 그림자 제거 */}
+
+input[type="file"] {height: auto; font-size: 12px; vertical-align: middle; margin: 2px 0; border: 1px solid #e1e3e4; background: #f2f2f2; padding: 3px;}
+
+input[type="checkbox"], 
+input[type="radio"] {display: inline-block; vertical-align: middle;}
+
+label {font-size: 15px; vertical-align: middle;}
+label span {display: inline-block; vertical-align: middle; cursor: pointer; margin-left: 4px; margin-right: 8px;}
+.form-label label {margin-left: 3px; margin-right: 8px; cursor: pointer;}
+
+select {padding-right: 25px !important;}
+
+textarea {font-size: 13px; line-height: 20px; border: 1px solid #e1e3e4; padding: 5px;}
+
+
+/* size */
+input.wide, select.wide, textarea.wide {min-width: 0; width: 250px;}
+input.small, select.small, textarea.small {min-width: 0; width: 80px;}
+
+
+/* table form size */
+table input[type="text"],
+table input[type="password"],
+table input[type="tel"],
+table input[type="number"],
+table input[type="email"],
+table input[type="search"],
+table select {
+    min-width: 0;
+}
+
+/* width > input, select */
+input.col1, select.col1 {width: 100%}
+input.col2, select.col2 {width: 48%; width: calc(50% - 4px); display: inline-block; margin-left: 4px;}
+input.col2:first-child, select.col2:first-child {margin-left: 0;}
+input.col3, select.col3 {width: 31.5%; width: calc(33.3% - 6px); display: inline-block; margin-left: 4px;}
+input.col3:first-child, select.col3:first-child {margin-left: 0;}
+input.col3:first-child, select.col3:first-child {width: 32%; width: calc(33.3% - 4px);}
+
+
+/* 비활성화 */
+input.disabled, select.disabled, textarea.disabled {background: #e7e7e7 !important;}
+input.disabled:hover, select.disabled:hover, textarea.disabled:hover {cursor: not-allowed;}
+/* --------------------------------------------------------- //폼(form) ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- 페이징(paging) ------------------------------------------------------------------ */
+/* 기본옵션 */
+.paging-wrap {text-align: center; margin: 20px 0;}
+.paging-wrap ul {display: inline-block;}
+.paging-wrap ul li {
+    float: left; margin-left: 3px; border: 1px solid #e1e3e4; border-radius: 3px;
+    font-size: 13px;
+}
+.paging-wrap ul li, .paging-wrap ul li a {min-width: 28px; height: 28px; line-height: 28px; text-align: center;}
+
+.paging-wrap ul li:first-child {margin-left: 0;}
+.paging-wrap ul li.active {background: #4ba9df; color: #fff; font-weight: 700;}
+.paging-wrap ul li a {color: #5f5f60; display: table-cell; vertical-align: middle;}
+.paging-wrap ul li a:hover {color: #4ba9df; font-weight: 700;}
+
+.paging-wrap ul li.first, .paging-wrap ul li.prev, .paging-wrap ul li.next, .paging-wrap ul li.last {line-height: normal;}
+.paging-wrap ul li a img {display: inline-block;}
+
+
+/* 기본옵션 - 장대수대리 스타일 추가 */
+div.jsgrid-pager-container {text-align: center; margin: 20px 0;}
+div.jsgrid-pager {display: inline-block;}
+div.jsgrid-pager span {
+    float: left; margin-left: 3px; border: 1px solid #e1e3e4; border-radius: 3px;
+    font-size: 13px;
+}
+div.jsgrid-pager span,
+div.jsgrid-pager span a {min-width: 28px; height: 28px; line-height: 28px; text-align: center; padding: 0;}
+div.jsgrid-pager span a {display: block;}
+
+div.jsgrid-pager span:first-child {margin-left: 0;}
+div.jsgrid-pager span.jsgrid-pager-current-page {background: #4ba9df; color: #fff; font-weight: 700;}
+div.jsgrid-pager span a {color: #5f5f60; display: table-cell; vertical-align: middle;}
+div.jsgrid-pager span a:hover {color: #4ba9df; font-weight: 700;}
+/* --------------------------------------------------------- //페이징(paging) ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- 라벨(label) ------------------------------------------------------------------ */
+/* 기본옵션 */
+.label {display: inline-block; margin: 0 2px; vertical-align: middle; font-size: 11px; font-weight: 700; background: #f2f2f2; color: #222; padding: 6px 10px; border-radius: .25em;}
+.label.black {background: #494949; color: #fff;}
+.label.blue {background: #4ba9df; color: #fff;}
+.label.red {background: #e74c3c; color: #fff;}
+.label.green {background: #1fcf6d; color: #fff;}
+
+
+/* 버튼 크기 */
+.label.big {font-size: 13px; padding: 10px 18px;}
+.label.sm {font-size: 10px; font-weight: 400; padding: 3px 6px;}
+/* --------------------------------------------------------- //라벨(label) ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- 팝업(popup) ------------------------------------------------------------------ */
+/* 레이어팝업 */
+.lock-bg {position: fixed; left: 0; right: 0; top: 0; bottom: 0; width: 100%; height: 100%; background: #333; opacity: .7; filter: alpha(opacity=70); z-index: 99;}
+
+.layer-popup {
+    position: absolute; left: 10px; right: 10px; top: 0; z-index: 100; display: none;
+}
+.layer-popup .content-wrap {
+    width: 100%; max-width: 600px; margin: auto;
+    background: #fff; box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5); border: 1px solid #e1e3e4; border-radius: .3em; overflow: hidden;
+}
+
+.layer-popup .head {background: #f2f2f2; border-bottom: 1px solid #f2f2f2; padding: 15px 10px; position: relative;}
+.layer-popup .head .title {font-size: 16px; font-weight: 700; color: #2f2f2f;}
+.layer-popup .head .close {position: absolute; right: 20px; top: 16px; border: none; background: transparent;}
+
+.layer-popup .main {padding: 15px 10px; font-size: 13px; line-height: 20px; color: #000000;}
+.layer-popup .main .memo {font-size: 13px; line-height: 20px; color: #000000; text-align: center;}
+.layer-popup .main .scroll {height: auto; overflow-y: auto;}
+
+.layer-popup .foot {padding: 10px 20px 20px; border-top: 1px solid #e1e3e4; text-align: right;}
+
+
+/* 레이어팝업 > 크기 */
+.layer-popup .content-wrap.sm {width: 400px;}
+.layer-popup .content-wrap.big {width: 900px;}
+/* --------------------------------------------------------- //팝업(popup) ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- 네비게이션 ------------------------------------------------------------------ */
+/* 탭패널 (nav tabs) */
+.nav-tabs1 {margin: 10px 0;}
+.nav-tabs1 .tabPanel {display: none; border-top: 1px solid #ccc;}
+.nav-tabs1 .tabPanel .pd-wrap {padding: 20px; font-size: 14px; line-height: 22px;}
+.nav-tabs1 .menu-wrap {position: relative; z-index: 2; margin-bottom: -1px;}
+.nav-tabs1 ul.nav-menu {overflow: hidden;}
+.nav-tabs1 ul.nav-menu li {float: left; border-right: 1px solid #eff1f6; border-top: 1px solid #eff1f6;}
+.nav-tabs1 ul.nav-menu li:first-child {border-left: 1px solid #eff1f6;}
+.nav-tabs1 ul.nav-menu li a {display: table-cell; height: 45px; vertical-align: middle; line-height: 1.3em; padding: 0 25px; font-size: 14px; color: #59607d; text-align: center;}
+.nav-tabs1 ul.nav-menu li a span {color: #e74c3c;}
+.nav-tabs1 ul.nav-menu li a span * {color: #e74c3c;}
+.nav-tabs1 ul.nav-menu li.active {border: 1px solid #ccc; border-bottom: 1px solid #fff;}
+.nav-tabs1 ul.nav-menu li.active a {color: #2a2b33; font-weight: 700;}
+.nav-tabs1 ul.nav-menu li:hover {background: #f2f2f2;}
+/* --------------------------------------------------------- //네비게이션 ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- 리스트 스타일 ------------------------------------------------------------------ */
+/* style1 */
+ul.list-style1 {}
+ul.list-style1 li {
+    font-size: 13px; line-height: 20px; font-weight: 400; padding: 4px 0;
+    background: url(../../images/adm_mw/list/01.png) no-repeat left top 13px; padding-left: 8px;
+}
+ul.list-style1 li.danger {color: #e74c3c; background-image: url("../../images/adm_mw/list/02.png");}
+/* --------------------------------------------------------- //리스트 스타일 ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- Not Content ------------------------------------------------------------------ */
+/* 콘텐츠 없을 시 (message) */
+.not-msg {font-size: 12px; line-height: 18px; text-align: center; color: #59607d;}
+
+/* 콘텐츠 없을 시 (content) */
+.not-content {padding: 65px 20px; text-align: center; width: 100%; clear: both; float: none;}
+.not-content img {display: inline-block;}
+.not-content .title {font-size: 24px; font-weight: bold; color: #3f3f3f; margin-top: 30px;}
+.not-content .memo {font-size: 14px; font-weight: bold; color: #5f5f60; border-top: 1px solid #e1e3e4; margin-top: 15px; padding-top: 15px;}
+.not-content .btn-wrap {margin-top: 70px;}
+
+.not-content2 {padding: 65px 20px; text-align: center; width: 100%; clear: both; float: none;}
+.not-content2 img {display: inline-block;}
+.not-content2 .title {font-size: 24px; font-weight: bold; color: #3f3f3f; margin-top: 30px;}
+.not-content2 .memo {font-size: 14px; font-weight: bold; color: #5f5f60; border-top: 1px solid #e1e3e4; margin-top: 15px; padding-top: 15px;}
+.not-content2 .btn-wrap {margin-top: 70px;}
+
+
+/* error page (404 error) */
+.error-wrap {width: 500px; margin: auto; padding: 150px 20px; text-align: center;}
+.error-wrap img.icon {display: inline-block;}
+.error-wrap .error-msg {font-size: 24px; font-weight: bold; color: #3f3f3f; margin-top: 30px;}
+.error-wrap .error-text {font-size: 14px; font-weight: bold; color: #5f5f60; border-top: 1px solid #e1e3e4; margin-top: 15px; padding-top: 15px;}
+.error-wrap .button {margin-top: 70px;}
+.error-wrap .button a {display: inline-block; background: #5f5f60; color: #fff; font-size: 14px; line-height: 35px; padding: 0 15px; font-weight: 700;}
+.error-wrap .button a:hover {background: #3f3f3f;}
+/* --------------------------------------------------------- //Not Content ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- 아코디언(accordion) ------------------------------------------------------------------ */
+/* 기본옵션 */
+dl.accordion {border-top: 1px solid #e1e3e4;}
+dl.accordion dt {border-bottom: 1px solid #e1e3e4; padding: 10px 20px; background: #f2f2f2;}
+dl.accordion dt a {display: block; font-size: 15px;}
+dl.accordion dt a:hover {font-weight: 700;}
+dl.accordion dd {
+    color: #5f5f60; font-size: 14px; line-height: 20px; padding: 20px; border: 1px solid #e1e3e4; border-top: none; display: none;
+}
+/* --------------------------------------------------------- //아코디언(accordion) ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- 사진효과(photo effect) ------------------------------------------------------------------ */
+/* 기본옵션 */
+img.del {opacity: 0.4;}
+/* --------------------------------------------------------- //사진효과(photo effect) ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- 이용약관 ------------------------------------------------------------------ */
+/* 이용약관 */
+.comm-rule {}
+.comm-rule .title {font-size: 14px; font-weight: bold; margin: 20px 0 10px;}
+.comm-rule .title:first-child {margin-top: 0;}
+.comm-rule .memo {font-size: 13px; line-height: 22px; white-space: pre-line;}
+/* --------------------------------------------------------- //이용약관 ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- jquery ui ------------------------------------------------------------------ */
+/* container */
+.date-container .date-guide {display: inline-block;}
+
+.date-wrap {position: relative; display: inline-block; width: 120px;}
+.date-wrap.width100 {width: 100%;}
+.date-wrap .datepicker {width: 100%; min-width: 0; padding-right: 0;}
+
+
+/* datepicker > calendar */
+.ui-datepicker.ui-widget {z-index: 9 !important;}
+.layer-popup .ui-datepicker.ui-widget {z-index: 101 !important;}
+
+/* datepicker > input */
+img.ui-icker-trigger {position: absolute; right: 6px; top: 0px; z-index: 9;}
+img.ui-datepicker-trigger {
+    position: absolute; right: 10px; top: 10px; top: calc(50% - 7px); z-index: 9;
+    height: 15px;
+}
+
+.inline.datepicker {margin-right: 0;}
+
+
+/* datepicker > 년,월 선택시 */
+select.ui-datepicker-year {padding-top: 0; padding-bottom: 0; width: 100px !important; min-width: 0; height: 30px; font-size: 15px !important;}
+select.ui-datepicker-month {padding-top: 0; padding-bottom: 0; width: 100px !important; min-width: 0; height: 30px; font-size: 15px !important; margin-left: 5px !important;}
+/* --------------------------------------------------------- //jquery ui ------------------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 본문 설명 */
+.type-info {
+    font-size: 13px; line-height: 20px; color: #5f5f60; margin-top: 15px;
+    background: url("../images/icon/info2.png") no-repeat left 2px; background-size: 14px 14px; padding-left: 18px;
+}
+
+
+
+/* 본문 경고 정보 */
+.alert-info {font-size: 12px; font-weight: 700; line-height: 20px; color: #fe5b35; border: 1px solid #eff1f6; padding: 15px 20px;}
+
+
+
+
+/* 메뉴바 (nav) */
+.nav1-wrap {position: relative;}
+.nav1-wrap .grd-hide {
+    position: absolute; top: 0; right: 0; width: 10px; height: 40px; background: #fff; z-index: 2;
+    -webkit-box-shadow: -4px 0px 2px #e5e5e5; box-shadow: -4px 0px 2px #e5e5e5;
+}
+.nav1 {
+    background: #fff; border-bottom: 1px solid #e1e3e4; text-align: center; height: 40px;
+    overflow-y: hidden; overflow-x: auto; -webkit-overflow-scrolling: touch;
+}
+.nav1 ul {display: inline-block;}
+.nav1 ul li {float: left; position: relative;}
+.nav1 ul li.active a {font-weight: 700;}
+.nav1 ul li.active::after {content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: #37a0d3;}
+.nav1 ul li a {display: block; font-size: 0.875em; color: #3b3c3d; padding: 0 14px; line-height: 40px; white-space: nowrap; position: relative;}
+
+
+
+
+
+
+
+

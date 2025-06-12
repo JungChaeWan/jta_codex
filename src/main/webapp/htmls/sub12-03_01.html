@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->	
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="../css/web/common.css">
+	<link rel="stylesheet" href="../css/web/style.css">
+    <!-- script -->
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
+    <script src="../js/swiper.js"></script>
+    <script src="../js/html_common.js"></script>
+    <script src="../js/html_style.js"></script>
+    <!-- add script -->
+    <script src="../js/slider.js"></script>
+    <script>
+	  	//이용후기 사진뷰
+		function review_photo() {
+			var review_img = "";
+			review_img += "<div class='custom-container gallery-view2 detail-view1'>";
+			review_img += "    <a class='photo_close' href='javascript:void(0)' onclick='review_close();'><img src='../images/web/icon/close3.gif' alt='닫기'></a>";
+			review_img += "    <div class='mid'>";
+			review_img += "        <img src='../images/web/lodge/album/01.jpg' alt='1'>";
+			review_img += "    </div>";
+			review_img += "    <div class='carousel'>";
+			review_img += "        <ul>";
+			review_img += "            <li class='select'><img src='../images/web/lodge/album/01.jpg'></li>";
+			review_img += "            <li><img src='../images/web/lodge/album/02.jpg'></li>";
+			review_img += "            <li><img src='../images/web/lodge/album/01.jpg'></li>";
+			review_img += "            <li><img src='../images/web/lodge/album/02.jpg'></li>";
+			review_img += "            <li><img src='../images/web/lodge/album/01.jpg'></li>";
+			review_img += "        </ul>";
+			review_img += "    </div>";
+			review_img += "    <div class='clear'></div>";
+			review_img += "</div>";
+			
+			$('body').after('<div class="lock-bg"></div>');							//lock bg open
+			$('.review-gallery').addClass('active');								//gallery block
+			$('.review-gallery').html(review_img);									//html tag add
+			
+			$(".review-gallery .carousel").jCarouselLite({							//slide start
+	            visible: 5,
+	            circular: false
+	        });
+			
+	        $(".review-gallery .carousel img").click(function() { 					//썸네일 이미지 변경
+	            $(".review-gallery .mid img").attr("src", $(this).attr("src"));
+	        });
+	        
+	        $('.review-gallery .carousel li').click(function(){ 					//class add
+	            $('.review-gallery .carousel li').removeClass('select');
+	            $(this).addClass('select');
+	        });
+		}
+		
+		function review_close() {													//close event
+			$('.lock-bg').remove();													//lock bg hide
+			$('.review-gallery').removeClass('active');								//gallery none
+			$('.review-gallery').html('');											//html tag remove
+		}
+    
+    
+    
+    
+        $(document).ready(function() {
+        	//이용후기 상세보기
+            $('a.reduction').click(function(event) {
+                if ($(this).parents('tr').next('.re-comment').css('display')=='none') {
+                    $('.re-comment').css('display', 'none');
+                    $(this).parents('tr').next('.re-comment').css('display', 'table-row');
+                }
+                else {
+                    $('.re-comment').css('display', 'none');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header id="header">        
+        
+        <div id="top_banner" class="top-banner swiper-container">
+	        <ul class="swiper-wrapper">
+	            <li class="swiper-slide" style="background-color: #c6c0dc">
+	            	<a href="#"><img src="http://www.tamnao.com/data/banner/2017-08/ban_20170802030831_0.jpg" alt="상단배너1"></a>
+	            </li>
+	            <li class="swiper-slide" style="background-color: #fff3be">
+	            	<a href="#"><img src="../images/web/comm/top_banner.jpg" alt="상단배너2"></a>
+	            </li>
+	        </ul>
+	        <div class="container">
+	        	<a href="javascript:void(0)" id="top_close" class="close">
+	        		<img src="../images/web/comm/close.png" alt="닫기">
+	        	</a>
+	        </div>
+	    </div>
+        <!--//New top banner zone-->
+
+        <div class="Fasten">
+            <div class="topSearch">
+                <h1 class="logo"><a href=""><img src="../images/web/comm/logo.gif" alt="탐나오"></a></h1>
+                <!-- 검색 -->
+                <p class="searchBox"><input id="search" type="text"><button id="searBT"></button></p>
+                <!-- 서브메뉴 -->
+                <nav id="topMenu">
+                    <a href="">★즐겨찾기</a>
+                    <a href="">로그인</a>
+                    <a href="">회원가입</a>
+                    <a href="">마이페이지</a>
+                    <a href="">고객센터</a>
+                </nav>
+            </div>
+        </div>
+        <!-- main menu -->
+        <nav id="mainMenu">
+            <div class="Fasten">
+                <div class="menuBT"><a id="menuBT"><img src="../images/web/comm/menu.gif" alt="메뉴"></a></div>
+                <div class="subMenu">11<br>11<br>11<br>11<br></div>
+                <ul class="mainMenu">
+                    <li><a href="air-main.html">항공</a></li>
+                    <li><a href="hotel-list.html">숙박</a></li>
+                    <li><a href="rent-list.html">렌터카</a></li>
+                    <li><a href="">관광지할인쿠폰</a></li>
+                    <li><a href="">레져/음식/뷰티</a></li>
+                    <li><a href="">카텔</a></li>
+                    <li><a href="">골프패키지</a></li>
+                    <li><a href="">버스/택시관광</a></li>
+                    <li><a href="">제주특산품</a></li>
+                    <li><a href="">특가이벤트</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- //main menu -->
+    </header>
+
+	<main id="main">
+	    <div class="mapLocation"> <!--index page에서는 삭제-->
+            <div class="Fasten">
+                <span>홈</span> <span class="gt">&gt;</span>
+                <span>실시간 예약</span> <span class="gt">&gt;</span>
+                <span>실시간 숙박</span> <span class="gt">&gt;</span>
+                <span>숙박상세</span>
+            </div>
+        </div>
+        <!-- quick banner -->
+        <div class="Fasten">
+            <aside id="leftAside">
+                <ul>
+                    <li><a href="http://www.hijeju.or.kr/discount/apply.htm" target="_blank"><img src="../images/web/leftBanner/01.png" alt="제주하이쿠폰"></a></li>
+                    <li><a href="http://www.jejugoldenbus.com/main/" target="_blank"><img src="../images/web/leftBanner/02.png" alt="제주황금시티투어"></a></li>
+                </ul>
+            </aside>
+
+            <aside id="rightAside">
+                <div class="fixed-wrap">
+                    <div class="ctWrap">
+
+                        <!-- 지역별 상품보기 -->
+                        <div class="product map">
+                            <h6 class="title">지역별 상품보기</h6>
+                            <div class="ct-box">
+                                <a href=""><img src="../images/web/comm/map_service.jpg" alt="지역별상품보기"></a>
+                            </div>
+                        </div>
+
+                        <!-- 상품 리스트 -->
+                        <div class="product">
+                            <h6 class="title">오늘본상품 <img src="../images/web/comm/arrow.gif" alt="arrow"></h6>
+                            <div class="today-list">
+                                <div id="todayList">
+                                    <ul class="list">
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider05.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider02.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider03.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <!--오늘본 상품없을 시 출력-->
+                                        <!--<p class="side-noContent">오늘 본 상품이 없습니다.</p>-->
+                                    </ul>
+                                </div>
+                                <ul class="itemNav">
+                                    <li>
+                                        <span id="itemPrev"><a href=""><img src="../images/web/comm/list_prev.gif" alt="이전"></a></span>
+                                        <!-- <span id="number">1/1</span> -->
+                                        <span id="itemNext"><a href=""><img src="../images/web/comm/list_next.gif" alt="다음"></a></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="shoppingCart">
+                            <h6>장바구니</h6>
+                            <p>
+                                <img src="../images/web/comm/cart2.gif" alt="장바구니">
+                                <span>9</span>
+                            </p>
+                        </div>
+                        <ul class="menuList">
+                            <li><a href=""><img src="../images/web/comm/menulist2.gif" alt="자주묻는질문">자주묻는질문</a></li>
+                            <li><a href=""><img src="../images/web/comm/menulist3.gif" alt="여행경비산출">여행경비산출</a></li>
+                        </ul>
+                        
+                        <!-- 여행경비산출 -->
+                        <!-- <div class="product tItem">
+                            <h6 class="title">여행경비산출</h6>
+                            <div class="ct-box">
+                                <a href=""><img src="../images/web/comm/map_service.jpg" alt="지역별상품보기"></a>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <!-- //quick banner -->
+        <div class="subContainer">
+            <div class="subHead"></div>
+            <div class="subContents">
+                <!-- new contents -->
+                <div class="service-center sideON">
+                    <div class="bgWrap2">
+                        <div class="Fasten">
+                            <div class="tbWrap">
+                                <aside id="sub-leftMenu" class="smON">
+                                    <h4 class="title">고객센터</h4>
+                                    <div class="pdWrap">
+                                        <ul class="depth1">
+                                            <li>
+                                                <a href="">자주묻는질문</a>
+                                            </li>
+                                            <li>
+                                                <a href="">1:1 문의</a>                                                
+                                            </li>
+                                            <li>
+                                                <a href="">이용후기</a>
+                                            </li>
+                                            <li>
+                                                <a href="">환불/취소규정</a>
+                                            </li>
+                                            <li>
+                                                <a href="">입점/제휴안내</a>
+                                            </li>
+                                            <li>
+                                                <a href="">공지사항</a>
+                                            </li>
+                                        </ul>
+                                        <div class="serviceCenter">
+                                            <h5>고객센터</h5>
+                                            <p class="tel">1588-8282</p>
+                                            <p class="timeWrap">
+                                                <span class="icon"><img src="../images/web/mypage/clock.gif" alt="시계"></span>
+                                                <span class="time">평일 08:30~18;00<br>주말 09:00 ~13:00</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </aside>
+                                <div class="rContents smON">
+                                    <h3 class="mainTitle">이용후기</h3>
+                                    <!--콘텐츠 없을 시-->
+                                    <!--<p class="no-content">이용후기 내역이 없습니다.</p>-->
+                                    <div class="commBoard-wrap">
+                                        <div class="board-list">
+                                            <div class="bdSearch">
+                                                <p class="cmTitle cmInfo">총 110913개의 게시물이 있습니다. (1/7395)</p>
+                                                <div class="searchForm">
+                                                    <select id="search">
+                                                        <option value="">작성자</option>
+                                                        <option value="" selected>제목</option>
+                                                        <option value="">내용</option>
+                                                    </select>
+                                                    <input class="int" type="text">
+                                                    <input class="button" type="image" src="../images/web/board/search.gif" alt="검색">
+                                                </div>
+                                            </div>
+
+                                            <div class="bdList">
+                                                <table class="commCol">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="title1">번호</th>
+                                                            <th class="title2">제목</th>
+                                                            <th class="title3">작성자</th>
+                                                            <th class="title4">등록일</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>3</td>
+                                                            <td class="left">
+                                                                <a class="reduction">
+                                                                    <span>[</span><span class="product">상품명 상품명 상품명 상품명 상품명 상품명</span><span>]</span> 자주 하시는 질문들을 한방에~ 자주 하시는 질문들을 한방에~ 자주 하시는 질문들을 한방에~
+                                                                </a>
+                                                            </td>
+                                                            <td>홍길동</td>
+                                                            <td>2015-12-31</td>
+                                                        </tr>
+                                                        <!-- 이용후기 추가 -->
+                                                        <tr class="re-comment">
+                                                            <td colspan="4">
+                                                                <dl class="default-accordion2 reviews-ad">
+                                                                    <dt>
+                                                                        <ul class="tbOption">                                                                            
+                                                                            <li class="memoWrap">
+                                                                            	<div class="photo-area"> <!-- 사진 없을 시 div 삭제 -->
+							                                                    	<div class="photo-wrap">
+							                                                    		<p class="photo"><img src="../images/web/lodge/slider01.jpg" alt="review"></p>
+							                                                    		<div class="over-rap">
+							                                                    			<a class="add-btn" href="javascript:void(0)" onclick="review_photo();">+5</a>
+							                                                    		</div>
+						                                                    		</div>
+							                                                    </div>
+                                                                            	<div class="text-area">
+	                                                                                <p class="user-info">
+	                                                                                    <span class="heart">
+	                                                                                        <img src="../images/web/icon/heart3_on.gif" alt="좋아요">
+	                                                                                        <img src="../images/web/icon/heart3_on.gif" alt="좋아요">
+	                                                                                        <img src="../images/web/icon/heart3_on.gif" alt="좋아요">
+	                                                                                        <img src="../images/web/icon/heart3_off.gif" alt="좋아요">
+	                                                                                        <img src="../images/web/icon/heart3_off.gif" alt="좋아요">
+	                                                                                    </span>                                                                                    
+	                                                                                    <span class="date">|&nbsp;&nbsp;</span>
+	                                                                                    <span class="date">2014-12-11 14:11:35</span>
+	                                                                                </p>
+	                                                                                <h5 class="user-title">제주 신라호텔로 떠난 힐리여행♥ 강추합니다</h5>
+	                                                                                <p class="user-memo">
+	                                                                                    댓글 출력... 댓글 출력... 세계의 내로라하는 과학자들이 눈에 불을 켜고 중력파를 추적했지만, 아직까지 아무도 그것을 찾아내지 못하고 있다.
+	                                                                                    <span class="comment-count">(1)답글달기</span>
+	                                                                                </p>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </dt>
+                                                                    <dd>
+                                                                        <ul class="re_comment">
+                                                                            <li class="ic2"><img src="../images/web/icon/re2.png" alt="re"></li>
+                                                                            <li class="re">
+                                                                                답변 출력... 답변 출력...답변 출력... 다른 사이트랑 가격은 같은데 답변 출력... 답변 출력...답변 출력... 다른 사이트랑 가격은 같은데답변 출력... 답변 출력...답변 출력... 다른 사이트랑 가격은 같은데                                                    
+                                                                            </li>
+                                                                        </ul>
+                                                                        <ul class="re_comment">
+                                                                            <li class="ic2"><img src="../images/web/icon/re2.png" alt="re"></li>
+                                                                            <li class="re">
+                                                                                답변 출력... 답변 출력...답변 출력... 다른 사이트랑 가격은 같은데 답변 출력... 답변 출력...답변 출력... 다른 사이트랑 가격은 같은데답변 출력... 답변 출력...답변 출력... 다른 사이트랑 가격은 같은데                                                    
+                                                                            </li>
+                                                                        </ul>
+                                                                    </dd>
+                                                                </dl>
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td>2</td>
+                                                            <td class="left">
+                                                                <a class="reduction">
+                                                                    <span>[</span><span class="product">상품명 상품명 상품명 상품명 상품명 상품명</span><span>]</span> 자주 하시는 질문들을 한방에~ 자주 하시는 질문들을 한방에~ 자주 하시는 질문들을 한방에~
+                                                                </a>
+                                                            </td>
+                                                            <td>홍길동</td>
+                                                            <td>2015-12-31</td>
+                                                        </tr>
+                                                        <!-- 이용후기 추가 -->
+                                                        <tr class="re-comment">
+                                                            <td colspan="4">
+                                                                <dl class="default-accordion2 reviews-ad">
+                                                                    <dt>
+                                                                        <ul class="tbOption">                                                                            
+                                                                            <li class="memoWrap">
+                                                                            	<div class="text-area">
+	                                                                                <p class="user-info">
+	                                                                                    <span class="heart">
+	                                                                                        <img src="../images/web/icon/heart3_on.gif" alt="좋아요">
+	                                                                                        <img src="../images/web/icon/heart3_on.gif" alt="좋아요">
+	                                                                                        <img src="../images/web/icon/heart3_on.gif" alt="좋아요">
+	                                                                                        <img src="../images/web/icon/heart3_off.gif" alt="좋아요">
+	                                                                                        <img src="../images/web/icon/heart3_off.gif" alt="좋아요">
+	                                                                                    </span>                                                                                    
+	                                                                                    <span class="date">|&nbsp;&nbsp;</span>
+	                                                                                    <span class="date">2014-12-11 14:11:35</span>
+	                                                                                </p>
+	                                                                                <h5 class="user-title">제주 신라호텔로 떠난 힐리여행♥ 강추합니다</h5>
+	                                                                                <p class="user-memo">
+	                                                                                    댓글 출력... 댓글 출력... 세계의 내로라하는 과학자들이 눈에 불을 켜고 중력파를 추적했지만, 아직까지 아무도 그것을 찾아내지 못하고 있다.
+	                                                                                    <span class="comment-count">(1)</span>
+	                                                                                </p>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </dt>
+                                                                    <dd>
+                                                                        <ul class="re_comment">
+                                                                            <li class="ic2"><img src="../images/web/icon/re2.png" alt="re"></li>
+                                                                            <li class="re">
+                                                                                답변 출력... 답변 출력...답변 출력... 다른 사이트랑 가격은 같은데 답변 출력... 답변 출력...답변 출력... 다른 사이트랑 가격은 같은데답변 출력... 답변 출력...답변 출력... 다른 사이트랑 가격은 같은데                                                    
+                                                                            </li>
+                                                                        </ul>
+                                                                        <ul class="re_comment">
+                                                                            <li class="ic2"><img src="../images/web/icon/re2.png" alt="re"></li>
+                                                                            <li class="re">
+                                                                                답변 출력... 답변 출력...답변 출력... 다른 사이트랑 가격은 같은데 답변 출력... 답변 출력...답변 출력... 다른 사이트랑 가격은 같은데답변 출력... 답변 출력...답변 출력... 다른 사이트랑 가격은 같은데                                                    
+                                                                            </li>
+                                                                        </ul>
+                                                                    </dd>
+                                                                </dl>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td class="left">
+                                                                <span>[</span><span class="product">상품명</span><span>]</span> 자주 하시는 질문들을 한방에~
+                                                            </td>
+                                                            <td>김철수</td>
+                                                            <td>2015-12-31</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                
+                                                <!-- 이용후기 사진 레이어 팝업 (클릭시 호출) -->
+							                    <div class="detail-gallery review-gallery"></div> <!--//review-gallery-->
+                                            </div> <!--//bdList-->
+
+                                            <div class="boardBT"><a href=""><img src="../images/web/board/write.gif" alt="글쓰기"></a></div>
+                                        </div> <!--//board-list-->
+                                    </div> <!--//commBoard-wrap-->
+
+                                    <div class="pageNumber">
+                                        <p class="floatWrap">
+                                            <span class="page_first"><a href=""><img src="../images/web/icon/page1.gif" alt="처음"></a></span>
+                                            <span class="page_prev"><a href=""><img src="../images/web/icon/page2.gif" alt="이전"></a></span>
+                                            <span><a href="">1</a></span>
+                                            <span><a href="">2</a></span>
+                                            <span><a href="">3</a></span>
+                                            <span><a href="">4</a></span>
+                                            <span class="select">5</span>
+                                            <span><a href="">6</a></span>
+                                            <span><a href="">7</a></span>
+                                            <span><a href="">8</a></span>
+                                            <span><a href="">9</a></span>
+                                            <span><a href="">10</a></span>
+                                            <span class="page_next"><a href=""><img src="../images/web/icon/page3.gif" alt="다음"></a></span>
+                                            <span class="page_last"><a href=""><img src="../images/web/icon/page4.gif" alt="끝"></a></span>
+                                        </p>
+                                    </div> <!--//pageNumber-->
+                                </div> <!--//rContents-->
+                            </div> <!--//tbWrap-->
+                        </div> <!--//Fasten-->
+                    </div> <!--//bgWrap2-->
+                </div> <!-- //reviews -->
+                <!-- //new contents -->
+            </div> <!-- //subContents -->
+        </div> <!-- //subContainer -->
+	</main>
+
+	<footer id="footer">
+        <div class="Fasten">
+            <div class="top-wrap">
+                <a class="go-top" onclick="go_top();"><img src="../images/web/comm/top.gif" alt="맨위로"></a>
+            </div>
+        </div>
+
+        <div class="footMenu">
+            <div class="Fasten">
+                <span><a href="">회사소개</a></span>
+                <span><a href="">사업제휴</a></span>
+                <span><a href=""><strong>개인정보취급방침</strong></a></span>
+                <span><a href="">국내여행표준약관</a></span>
+                <span><a href="">전자상거래표준약관</a></span>
+                <span><a href="">이메일무단수집거부</a></span>
+                <!-- link site -->
+                <div class="footLink">
+                    <select id="site_family">
+                        <option value="" selected>패밀리사이트</option>
+                        <option value="">list1</option>
+                    </select>
+                    <select id="site_regard">
+                        <option value="" selected>관련사이트</option>
+                        <option value="">list1</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="Fasten">
+            <div class="copy">
+                제주특별자치도관광협회 | 대표 : 김영진 | 사업자 등록번호 : 616-82-04092 | 법인 등록번호 : 220121-0000107 | 통신판매업번호: 제2013-제주연동 0024호<br>
+                63122 제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층 | Tel)064-742-8861 | Fax) 064-742-8865<br>                
+                고객센터 : 1522-3454 I 개인정보관리책임자 : 김기현<br>                
+                Copyright 2016. 제주특별자치도관광협회 All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

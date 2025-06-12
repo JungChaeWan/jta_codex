@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="notice">
+
+<resultMap id="NOTICE_R_00" class="web.bbs.vo.NOTICEVO">
+	<result property="bbsNum"           column="BBS_NUM"/>
+	<result property="noticeNum"        column="NOTICE_NUM"/>
+	<result property="hrkNoticeNum"     column="HRK_NOTICE_NUM"/>
+	<result property="ansNum"           column="ANS_NUM"/>
+	<result property="ansSn"            column="ANS_SN"/>
+	<result property="writer"           column="WRITER"/>
+	<result property="noticePwd"        column="NOTICE_PWD"/>
+	<result property="email"            column="EMAIL"/>
+	<result property="anmYn"            column="ANM_YN"/>
+	<result property="subject"          column="SUBJECT"/>
+    <result property="contents"         column="CONTENTS"/>
+	<result property="inqCnt"           column="INQ_CNT"/>
+	<result property="cmtCnt"           column="CMT_CNT"/>
+	<result property="brtagYn"          column="BRTAG_YN"/>
+	<result property="htmlYn"           column="HTML_YN"/>
+	<result property="gpaAvg"           column="GPA_AVG"/>
+	<result property="lastModDttm"      column="LAST_MOD_DTTM"/>
+	<result property="lastModId"        column="LAST_MOD_ID"/>
+	<result property="frstRegIp"        column="LAST_MOD_IP"/>
+	<result property="frstRegDttm"      column="FRST_REG_DTTM"/>
+	<result property="frstRegId"        column="FRST_REG_ID"/>
+	<result property="lastModIp"        column="FRST_REG_IP"/>
+	<result property="userId"           column="USER_ID"/>
+	<result property="cmplRequestDt"    column="CMPL_REQUEST_DT"/>
+	<result property="cmplItdDt"        column="CMPL_ITD_DT"/>
+	<result property="cmplDt"           column="CMPL_DT"/>
+	<result property="statusDiv"        column="STATUS_DIV"/>
+</resultMap>
+
+<resultMap id="NOTICE_R_06" class="web.bbs.vo.NOTICEVO">
+    <result property="bbsNum"           column="BBS_NUM"/>
+    <result property="noticeNum"        column="NOTICE_NUM"/>
+    <result property="subject"          column="SUBJECT"/>
+    <result property="hrkNoticeNum"     column="HRK_NOTICE_NUM"/>
+    <result property="ansSn"            column="ANS_SN"/>
+    <result property="contents"         column="CONTENTS"/>
+    <result property="writer"           column="WRITER"/>
+    <result property="frstRegDttm"      column="FRST_REG_DTTM"/>
+    <result property="frstRegId"        column="FRST_REG_ID"/>
+    <result property="lastModDttm"      column="LAST_MOD_DTTM"/>
+    <result property="lastModId"        column="LAST_MOD_ID"/>
+    <result property="userId"           column="USER_ID"/>
+</resultMap>
+
+<resultMap id="NOTICEFILE_R_00" class="web.bbs.vo.NOTICEFILEVO">
+	<result property="bbsNum"           column="BBS_NUM"/>
+	<result property="noticeNum"        column="NOTICE_NUM"/>
+	<result property="fileNum"          column="FILE_NUM"/>
+	<result property="savePath"         column="SAVE_PATH"/>
+	<result property="fileSize"         column="FILE_SIZE"/>
+	<result property="contentsIcdYn"    column="CONTENTS_ICD_YN"/>
+	<result property="ext"              column="EXT"/>
+	<result property="dwldCnt"          column="DWLD_CNT"/>
+	<result property="realFileNm"       column="REAL_FILE_NM"/>
+	<result property="saveFileNm"       column="SAVE_FILE_NM"/>
+</resultMap>
+
+<resultMap id="NOTICEFILE_R_01" class="oss.etc.vo.FILEVO">
+    <result property="docId"        column="DOC_ID" />
+    <result property="fileNum"      column="FILE_NUM" />
+    <result property="savePath"     column="SAVE_PATH" />
+    <result property="saveFileNm"   column="SAVE_FILE_NM" />
+    <result property="realFileNm"   column="REAL_FILE_NM" />
+    <result property="docDiv"       column="DOC_DIV" />
+    <result property="docNm"        column="DOC_NM" />
+    <result property="regDttm"      column="REG_DTTM" />
+</resultMap>
+
+<resultMap id="NOTICECMT_R_00" class="web.bbs.vo.NOTICECMTVO">
+	<result property="cmtSn"        column="CMT_SN"/>
+	<result property="bbsNum"       column="BBS_NUM"/>
+	<result property="noticeNum"    column="NOTICE_NUM"/>
+	<result property="cmtContents"  column="CMT_CONTENTS"/>
+	<result property="regDttm"      column="REG_DTTM"/>
+	<result property="regId"        column="REG_ID"/>
+	<result property="gpa"          column="GPA"/>
+	<result property="email"        column="EMAIL"/>
+</resultMap>
+
+<select id="NOTICE_S_00" resultMap="NOTICE_R_00">
+SELECT BBS_NUM			/*게시판 번호*/
+	 , NOTICE_NUM		/*게시물 번호*/
+	 , HRK_NOTICE_NUM	/*상위 게시물 번호*/
+	 , ANS_NUM			/*답변 번호*/
+	 , NVL(ANS_SN, 0) AS ANS_SN	/*답변 순번*/
+	 , WRITER			/*작성자*/
+	 , NOTICE_PWD		/*게시물 패스워드*/
+	 , EMAIL			/*이메일*/
+	 , ANM_YN			/*공지글 여부*/
+	 , SUBJECT			/*제목*/
+	 , CONTENTS	/*내용*/
+	 , INQ_CNT			/*조회 건수*/
+	 , CMT_CNT			/*댓글 건수*/
+	 , BRTAG_YN			/*BR태그 사용 여부*/
+	 , HTML_YN			/*HTML 사용 여부*/
+	 , GPA_AVG			/*평점 편균*/
+	 , LAST_MOD_DTTM	/*최종 수정 일시*/
+	 , LAST_MOD_ID		/*최종 수정 아이디*/
+	 , LAST_MOD_IP		/*최종 수정 아이피*/
+	 , FRST_REG_DTTM	/*최초 등록 일시*/
+	 , FRST_REG_ID		/*최초 등록 아이디*/
+	 , FRST_REG_IP 		/*최초 등록 아이피*/
+	 , USER_ID
+	 , CMPL_REQUEST_DT	/*완료 요청 일자*/
+	 , CMPL_ITD_DT		/*완료 예정 일자 */
+	 , CMPL_DT			/*완료 일자 */
+	 , STATUS_DIV		/*상태 구분 */
+FROM TB_NOTICE		/*게시글 테이블*/
+ WHERE 1=1
+ 	AND BBS_NUM = #bbsNum#
+    AND NOTICE_NUM = #noticeNum#
+ </select>
+ 
+ 
+ <select id="NOTICE_S_01" resultMap="NOTICE_R_00">
+SELECT BBS_NUM			/*게시판 번호*/
+     , NOTICE_NUM		/*게시물 번호*/
+     , HRK_NOTICE_NUM	/*상위 게시물 번호*/
+     , ANS_NUM			/*답변 번호*/
+     , NVL(ANS_SN, 0) AS ANS_SN	/*답변 순번*/
+     , WRITER			/*작성자*/
+     , NOTICE_PWD		/*게시물 패스워드*/
+     , EMAIL			/*이메일*/
+     , ANM_YN			/*공지글 여부*/
+     , SUBJECT			/*제목*/
+     , '' AS CONTENTS		/*내용*/
+     , INQ_CNT			/*조회 건수*/
+     , CMT_CNT			/*댓글 건수*/
+     , BRTAG_YN			/*BR태그 사용 여부*/
+     , HTML_YN			/*HTML 사용 여부*/
+     , GPA_AVG			/*평점 편균*/
+     , LAST_MOD_DTTM	/*최종 수정 일시*/
+     , LAST_MOD_ID		/*최종 수정 아이디*/
+     , LAST_MOD_IP		/*최종 수정 아이피*/
+     , FRST_REG_DTTM	/*최초 등록 일시*/
+     , FRST_REG_ID		/*최초 등록 아이디*/
+     , FRST_REG_IP 		/*최초 등록 아이피*/
+     , USER_ID
+     , CMPL_REQUEST_DT	/*완료 요청 일자*/
+	 , CMPL_ITD_DT		/*완료 예정 일자 */
+	 , CMPL_DT			/*완료 일자 */
+	 , STATUS_DIV		/*상태 구분 */
+FROM (
+    SELECT ROWNUM AS RN
+         , BBS_NUM			/*게시판 번호*/
+         , NOTICE_NUM		/*게시물 번호*/
+         , HRK_NOTICE_NUM	/*상위 게시물 번호*/
+         , ANS_NUM			/*답변 번호*/
+         , ANS_SN			/*답변 순번*/
+         , WRITER			/*작성자*/
+         , NOTICE_PWD		/*게시물 패스워드*/
+         , EMAIL			/*이메일*/
+         , ANM_YN			/*공지글 여부*/
+         , SUBJECT			/*제목*/
+         , CONTENTS			/*내용*/
+         , INQ_CNT			/*조회 건수*/
+         , CMT_CNT			/*댓글 건수*/
+         , BRTAG_YN			/*BR태그 사용 여부*/
+         , HTML_YN			/*HTML 사용 여부*/
+         , GPA_AVG			/*평점 편균*/
+         , LAST_MOD_DTTM	/*최종 수정 일시*/
+         , LAST_MOD_ID		/*최종 수정 아이디*/
+         , LAST_MOD_IP		/*최종 수정 아이피*/
+         , FRST_REG_DTTM	/*최초 등록 일시*/
+         , FRST_REG_ID		/*최초 등록 아이디*/
+         , FRST_REG_IP 		/*최초 등록 아이피*/
+         , USER_ID
+         , CMPL_REQUEST_DT	/*완료 요청 일자*/
+	 	 , CMPL_ITD_DT		/*완료 예정 일자 */
+	 	 , CMPL_DT			/*완료 일자 */
+	 	 , STATUS_DIV		/*상태 구분 */
+    FROM (
+        SELECT BBS_NUM			/*게시판 번호*/
+             , NOTICE_NUM		/*게시물 번호*/
+             , HRK_NOTICE_NUM	/*상위 게시물 번호*/
+             , ANS_NUM			/*답변 번호*/
+             , ANS_SN			/*답변 순번*/
+             , WRITER			/*작성자*/
+             , NOTICE_PWD		/*게시물 패스워드*/
+             , EMAIL			/*이메일*/
+             , ANM_YN			/*공지글 여부*/
+             , SUBJECT			/*제목*/
+             , CONTENTS			/*내용*/
+             , INQ_CNT			/*조회 건수*/
+             , CMT_CNT			/*댓글 건수*/
+             , BRTAG_YN			/*BR태그 사용 여부*/
+             , HTML_YN			/*HTML 사용 여부*/
+             , GPA_AVG			/*평점 편균*/
+             , LAST_MOD_DTTM	/*최종 수정 일시*/
+             , LAST_MOD_ID		/*최종 수정 아이디*/
+             , LAST_MOD_IP		/*최종 수정 아이피*/
+             , FRST_REG_DTTM	/*최초 등록 일시*/
+             , FRST_REG_ID		/*최초 등록 아이디*/
+             , FRST_REG_IP 		/*최초 등록 아이피*/
+             , USER_ID
+             , CMPL_REQUEST_DT	/*완료 요청 일자*/
+			 , CMPL_ITD_DT		/*완료 예정 일자 */
+			 , CMPL_DT			/*완료 일자 */
+			 , STATUS_DIV		/*상태 구분 */
+        FROM TB_NOTICE		/*게시글 테이블*/
+         WHERE 1=1
+           AND BBS_NUM = #sBbsNum#
+           <isNotEmpty property="sKey">
+		 		<isEqual property="sKeyOpt" compareValue="1">
+		  			AND SUBJECT LIKE '%'||#sKey#||'%' 
+		 		</isEqual>
+		 		<isEqual property="sKeyOpt" compareValue="2">
+		   			AND WRITER LIKE '%'||#sKey#||'%'
+		 		</isEqual>
+		   </isNotEmpty>
+		   <isNotEmpty property="sStatusDiv">
+		   	    AND STATUS_DIV = #sStatusDiv#
+		   </isNotEmpty>
+		   <isEqual property="sBbsNum" compareValue="DESIGN">
+		   		<isEqual property="sAuthNm" compareValue="USER">
+					AND USER_ID =#sUserId#
+				</isEqual> 
+		   </isEqual>	
+		   <isEqual property="sBbsNum" compareValue="MASQA">
+		   		<isEqual property="sAuthNm" compareValue="USER">
+					AND USER_ID =#sUserId#
+				</isEqual> 
+		   </isEqual>		   	   
+		    START WITH HRK_NOTICE_NUM IS NULL
+              AND BBS_NUM = #sBbsNum#
+	        CONNECT BY PRIOR NOTICE_NUM = HRK_NOTICE_NUM
+	          AND BBS_NUM = #sBbsNum#
+	        ORDER SIBLINGS BY NVL(ANM_YN,'N') DESC
+              , TO_NUMBER(NOTICE_NUM) DESC
+              , FRST_REG_DTTM DESC		   
+	)
+)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="NOTICE_S_02" resultClass="int">
+SELECT COUNT(NOTICE_NUM) AS CNT
+  FROM TB_NOTICE
+ WHERE 1=1
+	<isNotEmpty property="sKey">
+	 		<isEqual property="sKeyOpt" compareValue="1">
+	  			AND SUBJECT LIKE '%'||#sKey#||'%'
+	 		</isEqual>
+	 		<isEqual property="sKeyOpt" compareValue="2">
+	   			AND WRITER LIKE '%'||#sKey#||'%'
+	 		</isEqual>
+	 </isNotEmpty>
+	 <isNotEmpty property="sStatusDiv">
+   	    AND STATUS_DIV = #sStatusDiv#
+    </isNotEmpty>
+		   <isEqual property="sBbsNum" compareValue="DESIGN">
+		   		<isEqual property="sAuthNm" compareValue="USER">
+					AND USER_ID =#sUserId#
+				</isEqual> 
+		   </isEqual>	    
+		   <isEqual property="sBbsNum" compareValue="MASQA">
+		   		<isEqual property="sAuthNm" compareValue="USER">
+					AND USER_ID =#sUserId#
+				</isEqual> 
+		   </isEqual>		   
+ 	START WITH HRK_NOTICE_NUM IS NULL
+      AND BBS_NUM = #sBbsNum#
+    CONNECT BY PRIOR NOTICE_NUM = HRK_NOTICE_NUM
+      AND BBS_NUM = #sBbsNum#
+    ORDER SIBLINGS BY NVL(ANM_YN,'N') DESC
+         , TO_NUMBER(NOTICE_NUM) DESC
+         , FRST_REG_DTTM DESC
+ </select>
+ 
+ <!-- insert 하기 전 번호 얻기 -->
+<select id="NOTICE_S_03" resultClass="int">
+SELECT TO_CHAR(NVL(MAX(TO_NUMBER(NOTICE_NUM)),0) + 1)
+  FROM TB_NOTICE
+ WHERE BBS_NUM = #bbsNum#
+</select>
+
+<select id="NOTICE_S_04" resultMap="NOTICE_R_00">
+SELECT BBS_NUM			/*게시판 번호*/
+     , NOTICE_NUM		/*게시물 번호*/
+     , HRK_NOTICE_NUM	/*상위 게시물 번호*/
+     , ANS_NUM			/*답변 번호*/
+     , ANS_SN			/*답변 순번*/
+     , WRITER			/*작성자*/
+     , NOTICE_PWD		/*게시물 패스워드*/
+     , EMAIL			/*이메일*/
+     , ANM_YN			/*공지글 여부*/
+     , SUBJECT			/*제목*/
+     , '' AS CONTENTS		/*내용*/
+     , INQ_CNT			/*조회 건수*/
+     , CMT_CNT			/*댓글 건수*/
+     , BRTAG_YN			/*BR태그 사용 여부*/
+     , HTML_YN			/*HTML 사용 여부*/
+     , GPA_AVG			/*평점 편균*/
+     , LAST_MOD_DTTM	/*최종 수정 일시*/
+     , LAST_MOD_ID		/*최종 수정 아이디*/
+     , LAST_MOD_IP		/*최종 수정 아이피*/
+     , FRST_REG_DTTM	/*최초 등록 일시*/
+     , FRST_REG_ID		/*최초 등록 아이디*/
+     , FRST_REG_IP 		/*최초 등록 아이피*/
+     , USER_ID
+     , NULL AS CMPL_REQUEST_DT	/*완료 요청 일자*/
+	 , NULL AS CMPL_ITD_DT		/*완료 예정 일자 */
+	 , NULL AS CMPL_DT			/*완료 일자 */
+	 , NULL AS STATUS_DIV		/*상태 구분 */
+FROM (
+    SELECT ROWNUM AS RN
+         , BBS_NUM			/*게시판 번호*/
+         , NOTICE_NUM		/*게시물 번호*/
+         , HRK_NOTICE_NUM	/*상위 게시물 번호*/
+         , ANS_NUM			/*답변 번호*/
+         , ANS_SN			/*답변 순번*/
+         , WRITER			/*작성자*/
+         , NOTICE_PWD		/*게시물 패스워드*/
+         , EMAIL			/*이메일*/
+         , ANM_YN			/*공지글 여부*/
+         , SUBJECT			/*제목*/
+         , CONTENTS		/*내용*/
+         , INQ_CNT			/*조회 건수*/
+         , CMT_CNT			/*댓글 건수*/
+         , BRTAG_YN			/*BR태그 사용 여부*/
+         , HTML_YN			/*HTML 사용 여부*/
+         , GPA_AVG			/*평점 편균*/
+         , LAST_MOD_DTTM	/*최종 수정 일시*/
+         , LAST_MOD_ID		/*최종 수정 아이디*/
+         , LAST_MOD_IP		/*최종 수정 아이피*/
+         , FRST_REG_DTTM	/*최초 등록 일시*/
+         , FRST_REG_ID		/*최초 등록 아이디*/
+         , FRST_REG_IP 		/*최초 등록 아이피*/
+         , USER_ID
+    FROM (
+        SELECT BBS_NUM			/*게시판 번호*/
+             , NOTICE_NUM		/*게시물 번호*/
+             , HRK_NOTICE_NUM	/*상위 게시물 번호*/
+             , ANS_NUM			/*답변 번호*/
+             , ANS_SN			/*답변 순번*/
+             , WRITER			/*작성자*/
+             , NOTICE_PWD		/*게시물 패스워드*/
+             , EMAIL			/*이메일*/
+             , ANM_YN			/*공지글 여부*/
+             , SUBJECT			/*제목*/
+             , CONTENTS			/*내용*/
+             , INQ_CNT			/*조회 건수*/
+             , CMT_CNT			/*댓글 건수*/
+             , BRTAG_YN			/*BR태그 사용 여부*/
+             , HTML_YN			/*HTML 사용 여부*/
+             , GPA_AVG			/*평점 편균*/
+             , LAST_MOD_DTTM	/*최종 수정 일시*/
+             , LAST_MOD_ID		/*최종 수정 아이디*/
+             , LAST_MOD_IP		/*최종 수정 아이피*/
+             , FRST_REG_DTTM	/*최초 등록 일시*/
+             , FRST_REG_ID		/*최초 등록 아이디*/
+             , FRST_REG_IP 		/*최초 등록 아이피*/
+             , USER_ID
+        FROM TB_NOTICE		/*게시글 테이블*/
+         WHERE 1=1
+           AND BBS_NUM = #sBbsNum#
+           ORDER BY TO_NUMBER(HRK_NOTICE_NUM) DESC
+                  , ANS_NUM ASC
+                  , FRST_REG_DTTM DESC
+	)
+)
+WHERE RN BETWEEN 0 AND #lastIndex#
+</select>
+
+<select id="NOTICE_S_05" resultClass="int">
+SELECT COUNT(HRK_NOTICE_NUM) FROM TB_NOTICE
+WHERE BBS_NUM = #bbsNum#
+  AND HRK_NOTICE_NUM=#noticeNum#
+</select>
+
+<select id="NOTICE_S_06" resultMap="NOTICE_R_06">
+SELECT BBS_NUM
+    , NOTICE_NUM
+    , HRK_NOTICE_NUM
+    , NVL(ANS_SN, 0) AS ANS_SN
+    , SUBJECT
+    , CONTENTS
+    , WRITER
+    , FRST_REG_DTTM
+    , FRST_REG_ID
+    , LAST_MOD_DTTM
+    , LAST_MOD_ID
+    , USER_ID
+FROM TB_NOTICE
+WHERE BBS_NUM = #bbsNum#
+    <isNotEmpty property="userId">
+        AND USER_ID = #userId#
+    </isNotEmpty>
+    <isNotEmpty property="noticeNum">
+        AND NOTICE_NUM = #noticeNum#
+    </isNotEmpty>
+    <isNotEmpty property="subject">
+        AND SUBJECT = #subject#
+    </isNotEmpty>
+ORDER BY SUBJECT DESC, ANS_SN ASC
+</select>
+
+<select id="NOTICE_S_07" resultClass="int">
+SELECT COUNT(*) CNT 
+FROM TB_NOTICE
+WHERE BBS_NUM = 'DESIGN'
+AND ADM_CMT_YN = 'N'
+</select>
+
+<!-- 게시글 추가 -->
+<insert id="NOTICE_I_00">
+INSERT INTO TB_NOTICE
+	( BBS_NUM			/*게시판 번호*/
+    , NOTICE_NUM		/*게시물 번호*/
+    , HRK_NOTICE_NUM	/*상위 게시물 번호*/
+    , ANS_NUM			/*답변 번호*/
+    , ANS_SN			/*답변 순번*/
+    , WRITER			/*작성자*/
+    , NOTICE_PWD		/*게시물 패스워드*/
+    , EMAIL			/*이메일*/
+    , ANM_YN			/*공지글 여부*/
+    , SUBJECT			/*제목*/
+    , CONTENTS			/*내용*/
+    , INQ_CNT			/*조회 건수*/
+    , CMT_CNT			/*댓글 건수*/
+    , BRTAG_YN			/*BR태그 사용 여부*/
+    , HTML_YN			/*HTML 사용 여부*/
+    , GPA_AVG			/*평점 편균*/
+    , LAST_MOD_DTTM	/*최종 수정 일시*/
+    , LAST_MOD_ID		/*최종 수정 아이디*/
+    , LAST_MOD_IP		/*최종 수정 아이피*/
+    , FRST_REG_DTTM	/*최초 등록 일시*/
+    , FRST_REG_ID		/*최초 등록 아이디*/
+    , FRST_REG_IP 		/*최초 등록 아이피*/
+    , USER_ID
+    , STATUS_DIV		/*상태 구분 */
+    , CMPL_REQUEST_DT  /*완료 요청 일자 */
+    , ADM_CMT_YN /* 관리자댓글여부 */     
+	)     
+VALUES
+ 	( #bbsNum#
+	, #noticeNum#
+	, NULL
+	, ''
+	, 0
+	, #writer#
+	, #noticePwd#
+	, #email#
+	, #anmYn#
+	, #subject#
+	, #contents#
+	, 0
+	, 0
+	, #brtagYn#
+	, #htmlYn#
+	, 0
+	, SYSDATE
+	, #frstRegId#
+	, #frstRegIp#
+	, SYSDATE
+	, #frstRegId#
+	, #frstRegIp#
+	, #userId#
+	, #statusDiv#
+	, #cmplRequestDt#
+	, 'N'
+	)
+</insert>
+
+<!-- 게시글 추가 - 답글 -->
+<insert id="NOTICE_I_01">
+INSERT INTO TB_NOTICE
+	( BBS_NUM			/*게시판 번호*/
+    , NOTICE_NUM		/*게시물 번호*/
+    , HRK_NOTICE_NUM	/*상위 게시물 번호*/
+    , ANS_NUM			/*답변 번호*/
+    , ANS_SN			/*답변 순번*/
+    , WRITER			/*작성자*/
+    , NOTICE_PWD		/*게시물 패스워드*/
+    , EMAIL			/*이메일*/
+    , ANM_YN			/*공지글 여부*/
+    , SUBJECT			/*제목*/
+    , CONTENTS			/*내용*/
+    , INQ_CNT			/*조회 건수*/
+    , CMT_CNT			/*댓글 건수*/
+    , BRTAG_YN			/*BR태그 사용 여부*/
+    , HTML_YN			/*HTML 사용 여부*/
+    , GPA_AVG			/*평점 편균*/
+    , LAST_MOD_DTTM	/*최종 수정 일시*/
+    , LAST_MOD_ID		/*최종 수정 아이디*/
+    , LAST_MOD_IP		/*최종 수정 아이피*/
+    , FRST_REG_DTTM	/*최초 등록 일시*/
+    , FRST_REG_ID		/*최초 등록 아이디*/
+    , FRST_REG_IP 		/*최초 등록 아이피*/
+    , USER_ID
+	)     
+VALUES
+ 	(#bbsNum#
+	,#noticeNum#
+	,#hrkNoticeNum#
+	,#ansNum#
+	,#ansSn#+1
+	,#writer#
+	,#noticePwd#
+	,#email#
+	,#anmYn#
+	,#subject#
+	,#contents#
+	,0
+	,0
+	,#brtagYn#
+	,#htmlYn#
+	,0
+	,SYSDATE
+	,#userId#
+	,#frstRegIp#
+	,SYSDATE
+	,#userId#
+	,#frstRegIp#
+	,#userId#
+	)
+</insert>
+
+
+<update id="NOTICE_U_00"> 
+UPDATE TB_NOTICE
+SET ANS_NUM = #ansNum#
+    , WRITER = #writer#
+    , NOTICE_PWD = #noticePwd#
+    , EMAIL = #email#
+    , ANM_YN = #anmYn#
+    , SUBJECT = #subject#
+    , CONTENTS = #contents#
+    , BRTAG_YN = #brtagYn#
+    , HTML_YN = #htmlYn#
+    , LAST_MOD_DTTM	= SYSDATE
+    , LAST_MOD_ID = #lastModId#
+    , LAST_MOD_IP = #lastModIp#
+    <isNotEmpty property="hrkNoticeNum">
+        , HRK_NOTICE_NUM = #hrkNoticeNum#
+    </isNotEmpty>
+    <isNotEmpty property="ansSn">
+        , ANS_SN = #ansSn#
+    </isNotEmpty>
+    <isNotEmpty property="statusDiv">
+        , STATUS_DIV = #statusDiv#
+    </isNotEmpty>
+    <isEqual property="statusDiv" compareValue="SD02">
+        , CMPL_ITD_DT = #cmplItdDt#
+    </isEqual>
+    <isEqual property="statusDiv" compareValue="SD04">
+        , CMPL_DT = #cmplDt#
+    </isEqual>
+WHERE BBS_NUM = #bbsNum#
+    AND NOTICE_NUM = #noticeNum#
+</update>
+
+<!-- 댓글수 다시 계산 -->
+<update id="NOTICE_U_01">
+UPDATE TB_NOTICE
+SET CMT_CNT=(SELECT COUNT(CMT_SN) FROM TB_NOTICECMT
+                WHERE BBS_NUM = #bbsNum#    
+                AND NOTICE_NUM = #noticeNum# )
+<isEqual property="admCmtYn" compareValue="Y">                
+,	  ADM_CMT_YN = #admCmtYn#
+</isEqual>
+WHERE BBS_NUM = #bbsNum#    
+  AND NOTICE_NUM = #noticeNum#
+</update> 
+
+
+<delete id="NOTICE_D_00">
+DELETE FROM TB_NOTICE
+WHERE BBS_NUM 		= #bbsNum# 
+  AND NOTICE_NUM	= #noticeNum#
+</delete>
+
+
+
+<select id="NOTICEFILE_S_00" resultMap="NOTICEFILE_R_00">
+SELECT BBS_NUM          /*게시판 번호*/
+     , NOTICE_NUM       /*게시물 번호*/
+     , FILE_NUM         /*파일 번호*/
+     , SAVE_PATH        /*저장 경로*/
+     , FILE_SIZE        /*파일 크기*/
+     , CONTENTS_ICD_YN  /*본문 포함 여부*/
+     , EXT              /*확장자*/
+     , DWLD_CNT         /*다운로드 건수*/
+     , REAL_FILE_NM     /*실제 파일 명*/
+     , SAVE_FILE_NM     /*저장 파일 명*/
+FROM TB_NOTICEFILE
+WHERE BBS_NUM=#bbsNum#
+  AND NOTICE_NUM=#noticeNum#
+  AND FILE_NUM=#fileNum#
+</select>
+
+<select id="NOTICEFILE_S_01" resultMap="NOTICEFILE_R_00">
+SELECT BBS_NUM          /*게시판 번호*/
+     , NOTICE_NUM       /*게시물 번호*/
+     , FILE_NUM         /*파일 번호*/
+     , SAVE_PATH        /*저장 경로*/
+     , FILE_SIZE        /*파일 크기*/
+     , CONTENTS_ICD_YN  /*본문 포함 여부*/
+     , EXT              /*확장자*/
+     , DWLD_CNT         /*다운로드 건수*/
+     , REAL_FILE_NM     /*실제 파일 명*/
+     , SAVE_FILE_NM     /*저장 파일 명*/
+FROM TB_NOTICEFILE
+WHERE BBS_NUM=#bbsNum#
+  AND NOTICE_NUM=#noticeNum#
+</select>
+
+<select id="NOTICEFILE_S_02" resultMap="NOTICEFILE_R_01">
+SELECT DOC_ID
+  , FILE_NUM
+  , SAVE_PATH
+  , SAVE_FILE_NM
+  , REAL_FILE_NM
+  , DOC_DIV
+  , DOC_NM
+  , REG_DTTM
+FROM (SELECT ROWNUM AS RN
+          , DOC_ID
+          , FILE_NUM
+          , SAVE_PATH
+          , SAVE_FILE_NM
+          , REAL_FILE_NM
+          , DOC_DIV
+          , DOC_NM
+          , REG_DTTM
+        FROM (SELECT B.NOTICE_NUM AS DOC_ID
+                  , B.FILE_NUM
+                  , B.SAVE_PATH
+                  , B.SAVE_FILE_NM || '.' || B.EXT AS SAVE_FILE_NM
+                  , B.REAL_FILE_NM
+                  , A.BBS_NUM AS DOC_DIV
+                  , A.SUBJECT AS DOC_NM
+                  , A.FRST_REG_DTTM AS REG_DTTM
+                FROM TB_NOTICE A
+                    INNER JOIN TB_NOTICEFILE B
+                    ON  A.BBS_NUM = B.BBS_NUM
+                        AND A.NOTICE_NUM = B.NOTICE_NUM
+                <isNotEmpty property="docDiv">
+                    WHERE A.BBS_NUM = #docDiv#
+                </isNotEmpty>
+                ORDER BY TO_NUMBER (B.NOTICE_NUM) DESC
+                  , TO_NUMBER (B.FILE_NUM)))
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="NOTICEFILE_S_03" resultClass="int">
+SELECT COUNT(*) AS CNT
+FROM TB_NOTICE A
+    INNER JOIN TB_NOTICEFILE B
+    ON  A.BBS_NUM = B.BBS_NUM
+        AND A.NOTICE_NUM = B.NOTICE_NUM
+<isNotEmpty property="docDiv">
+    WHERE A.BBS_NUM = #docDiv#
+</isNotEmpty>
+</select>
+
+<insert id="NOTICEFILE_I_00">
+INSERT INTO TB_NOTICEFILE
+	( BBS_NUM
+	, NOTICE_NUM
+	, FILE_NUM
+	, SAVE_PATH
+	, FILE_SIZE
+	, CONTENTS_ICD_YN
+	, EXT
+	, DWLD_CNT
+	, REAL_FILE_NM
+	, SAVE_FILE_NM
+	)
+VALUES
+	( #bbsNum#
+	, #noticeNum#
+	, (SELECT TO_CHAR(NVL(MAX(TO_NUMBER(FILE_NUM)),0) + 1) 
+	     FROM TB_NOTICEFILE
+	    WHERE BBS_NUM= #bbsNum# 
+	      AND NOTICE_NUM=#noticeNum#)
+	, #savePath#
+	, #fileSize#
+	, #contentsIcdYn#
+	, #ext#
+	, 0
+	, #realFileNm#
+	, #saveFileNm#
+	)
+</insert>
+
+<!-- 파일 다운로드 건수 업데이트 -->
+<update id="NOTICEFILE_U_02">
+UPDATE TB_NOTICEFILE
+   SET DWLD_CNT = DWLD_CNT + 1
+ WHERE BBS_NUM = #bbsNum#
+   AND NOTICE_NUM = #noticeNum#
+   AND FILE_NUM = #fileNum#   
+</update>
+
+<!-- 파일 delete -->
+<delete id="NOTICEFILE_D_00">
+DELETE FROM TB_NOTICEFILE 
+WHERE  BBS_NUM = #bbsNum#
+   AND NOTICE_NUM = #noticeNum#
+   AND FILE_NUM = #fileNum#
+</delete>
+
+<!-- 파일 delete- 게시글에꺼 전부 삭제 -->
+<delete id="NOTICEFILE_D_01">
+DELETE FROM TB_NOTICEFILE 
+WHERE  BBS_NUM = #bbsNum#
+   AND NOTICE_NUM = #noticeNum#
+</delete>
+
+<!-- 댓글 select - 목록얻기 -->
+<select id="NOTICECMT_S_01" resultMap="NOTICECMT_R_00">
+SELECT BBS_NUM			/*게시판 번호*/
+	 , NOTICE_NUM		/*게시물 번호*/
+	 , CMT_SN			/*댓글 순번*/
+	 , UTL_RAW.CAST_TO_VARCHAR2(CMT_CONTENTS) AS CMT_CONTENTS	/*댓글 내용*/
+	 , REG_DTTM			/*등록 일시*/
+	 , REG_ID			/*등록 아이디*/
+	 , GPA 				/*평점*/
+	 , EMAIL
+FROM TB_NOTICECMT		/*게시글 테이블*/
+ WHERE 1=1
+   AND BBS_NUM = #bbsNum#
+   AND NOTICE_NUM = #noticeNum#
+ ORDER BY CMT_SN
+</select>
+
+<!-- 댓글 추가 insert -->
+<insert id="NOTICECMT_I_00">
+INSERT INTO TB_NOTICECMT
+( 
+	   BBS_NUM			/*게시판 번호*/
+	 , NOTICE_NUM		/*게시물 번호*/
+	 , CMT_SN			/*댓글 순번*/
+	 , CMT_CONTENTS		/*댓글 내용*/
+	 , REG_DTTM			/*등록 일시*/
+	 , REG_ID			/*등록 아이디*/
+	 , GPA 				/*평점*/
+	 , EMAIL
+) 
+VALUES
+(	
+     #bbsNum#
+    ,#noticeNum#
+	,(SELECT TO_CHAR(NVL(MAX(TO_NUMBER(CMT_SN)),0) + 1)
+ 			FROM TB_NOTICECMT
+			WHERE BBS_NUM = #bbsNum#
+  			AND NOTICE_NUM = #noticeNum#)		
+	,UTL_RAW.CAST_TO_RAW(#cmtContents#)
+	,SYSDATE
+	,#regId#
+	,#gpa#
+	,#email#
+)
+</insert>
+
+<update id="NOTICECMT_U_00">
+UPDATE TB_NOTICECMT
+   SET CMT_CONTENTS = UTL_RAW.CAST_TO_RAW(#cmtContents#)
+ WHERE BBS_NUM = #bbsNum#
+   AND NOTICE_NUM = #noticeNum#
+   AND CMT_SN = #cmtSn#
+</update>
+
+<delete id="NOTICECMT_D_00">
+DELETE TB_NOTICECMT
+WHERE  BBS_NUM = #bbsNum#
+   AND NOTICE_NUM = #noticeNum#
+   AND CMT_SN = #cmtSn#
+</delete>
+
+
+</sqlMap>

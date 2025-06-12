@@ -1,0 +1,207 @@
+<?php header("Content-Type:text/html;charset=utf-8"); ?>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>제주마켓</title>
+	<link href="../../css/mw/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../css/mw/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../css/mw/common.css" rel="stylesheet">
+	<link href="../../css/mw/sub.css" rel="stylesheet">
+	<link href="../../css/mw/sub_mypage.css" rel="stylesheet">
+</head>
+<body>
+<div id="wrap">
+
+<!-- 헤더 s -->
+<header>
+	<h1><a href="main.html"><img src="../../images/mw/common/logo.png" width="106" alt="제주마켓"></a></h1>
+	<p class="gnb-view"><img src="../../images/mw/common/icon_menu.png" width="25" alt="메뉴보기"></p>
+	<p class="search-view"><img src="../../images/mw/common/icon_search.png" width="22" alt="검색"></p>
+	<p class="cart-view"><a href="sub_cart.html"><img src="../../images/mw/common/icon_cart.png" width="30" alt="장바구니"></a></p>
+
+	<div class="search">
+		<fieldset>
+			<div class="form-value">
+				<label for="q">검색어 입력</label>
+				<input type="text" id="q">
+			</div>
+			<input type="submit" value="검색">
+			<a href="#" class="btn-close"><img src="../../images/mw/sub_common/delete.png" width="10" alt="닫기"></a>
+		</fieldset>
+	</div>
+</header>
+<!-- 헤더 e -->
+
+<!-- 메뉴 s -->
+<nav id="gnbnavi" class="hide">
+	<p class="menu-top">
+		로그인 해주세요 <a href="login.html">로그인</a>
+	</p>
+	<ul class="menu-top">
+		<li><a href=""><img src="../../images/mw/common/icon_01.png" width="19" alt=""> 구매/예약내역</a></li>
+		<li><a href=""><img src="../../images/mw/common/icon_02.png" width="19" alt=""> 내 주변 업소</a></li>
+	</ul>
+	<div class="sub-menu">
+		<h2 class="sr-only">전체메뉴</h2>
+		<ul>
+			<li><a href="#"><img src="../../images/mw/common/icon_03.png" width="19" alt=""> 실시간예약</a>
+				<ul>
+					<li><a href="sub_air1.html">항공</a></li>
+					<li><a href="sub_hotel1.html">숙박</a></li>
+					<li><a href="sub_rent1.html">렌트카</a></li>
+					<li><a href="sub_golf1.html">골프</a></li>
+				</ul>
+			</li>
+			<li><a href="#"><img src="../../images/mw/common/icon_04.png" width="19" alt=""> 당일특가</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_05.png" width="19" alt=""> 패키지 할인상품</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_06.png" width="19" alt=""> 관광지 입장권</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_07.png" width="19" alt=""> 음식/레저/뷰티</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_08.png" width="19" alt=""> 여행경비산출</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_09.png" width="19" alt=""> 이벤트</a></li>
+			<li><a href="sub_mypage1.html"><img src="../../images/mw/common/icon_10.png" width="19" alt=""> 마이페이지</a></li>
+			<li><a href="sub_center1.html"><img src="../../images/mw/common/icon_11.png" width="19" alt=""> 고객센터</a></li>
+		</ul>
+	</div>
+	<div class="app-util">
+		<dl>
+			<dt>정보 알림 받기</dt>
+			<dd><a href=""><img src="../../images/mw/common/on.png" width="42" alt="ON"></a></dd>
+			<dt>자동로그인</dt>
+			<dd><a href=""><img src="../../images/mw/common/off.png" width="42" alt="OFF"></a></dd>
+		</dl>
+		<p>Ver 1.0.0</p>
+	</div>
+</nav>
+
+<p id="btnHideGnb" class="hide"><img src="../../images/mw/common/close.png" width="10" alt="메뉴닫기"></p>
+<!-- 메뉴 e -->
+
+<!-- 콘텐츠 s -->
+<h2 class="sr-only">서브콘텐츠</h2>
+<section id="subContent">
+
+	<div class="menu-bar">
+		<p class="btn-prev"><img src="../../images/mw/common/btn_prev.png" width="20" alt="이전페이지"></p>
+		<h1>환불계좌정보</h1>
+	</div>
+	<div class="sub-content">
+		<div class="mypage">
+			
+			<!--환불계좌정보-->
+			<div class="passbook-wrap">
+				
+				<!--  -->
+                <article class="payArea refund">
+                    <h4>무통장 환불계좌</h4>
+                    <table>
+                        <colgroup>
+                            <col width="20%" />
+                            <col />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th>환불계좌</th>
+                                <td>
+                                    <span class="info"> 	농협은행 00000000000 (예금주 : 홍길동)</span>
+                                    <a href="" class="comm-sideBT2">계좌변경</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>               
+                
+                <!-- 환불계좌 입력 -->
+                <article class="payArea refund2">
+                    <h4 class="comm-title2">무통장 환불계좌 입력</h4>
+                    <table class="commRow">
+                        <colgroup>
+                            <col width="20%" />
+                            <col />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th>예금주</th>
+                                <td>홍길동</td>
+                            </tr>
+                            <tr>
+                                <th>은행</th>
+                                <td>
+                                    <select class="bank">
+                                        <option value="">은행을 선택하세요</option>
+                                        <option value="" selected>기업은행</option>
+                                        <option value="">국민은행</option>
+                                        <option value="">외환은행</option>
+                                        <option value="">수협은행</option>
+                                        <option value="">농협은행</option>
+                                        <option value="">우리은행</option>
+                                        <option value="">SC제일은행</option>
+                                        <option value="">신한은행</option>
+                                        <option value="">부산은행</option>
+                                        <option value="">광주은행</option>
+                                        <option value="">우체국</option>
+                                        <option value="">하나은행</option>
+                                        <option value="">경남은행</option>
+                                        <option value="">농협은행(단위조합)</option>
+                                        <option value="">대구은행</option>
+                                        <option value="">산업은행</option>
+                                        <option value="">새마을금고</option>
+                                        <option value="">신협은행</option>
+                                        <option value="">씨티은행</option>
+                                        <option value="">전북은행</option>
+                                        <option value="">제주은행</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>계좌번호</th>
+                                <td>
+                                    <input type="text" class="passbook" value="00000000000">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="comm-agree1">
+                        <input id="agree1" type="checkbox">
+                        <label for="agree1">입력한 정보를 환불계좌로 수집/설정하는데 동의합니다.</label>
+                    </div>
+
+                    <p class="btn-list">
+						<a href="" class="btn btn1">변경</a>
+						<a href="" class="btn btn2">취소</a>
+					</p>
+                </article>
+				
+			</div>
+			
+		</div>
+	</div>
+</section>
+<!-- 콘텐츠 e -->
+
+<!-- 푸터 s -->
+<footer>
+    <ul class="list-unstyled">
+		<li><a href="">이용약관</a></li>
+		<li><a href="">개인정보처리방침</a></li>
+		<li><a href="">여행약관</a></li>
+	</ul>
+	<address>
+		상호명:제주특별자치도관광협회&nbsp; 대표:김영진&nbsp; 사업자등록번호:616-82-04092<br>
+		주소:제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층<br>
+		통신판매업번호: 제2013-제주연동 0024호<br>
+		고객센터:1577-1233 | 개인정보관리책임자:최종훈
+	</address>
+    <p>COPYRIGHT &copy; 제주특별자치도관광협회. ALL RIGHTS RESERVED</p>
+</footer>
+<!-- 푸터 e -->
+</div>
+<div id="cover"></div>
+<script src="../../js/jquery-1.11.1.js"></script>
+<script src="../../js/mw_layout.js"></script>
+</body>
+</html>

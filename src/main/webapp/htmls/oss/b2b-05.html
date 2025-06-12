@@ -1,0 +1,1215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>모객 관리자시스템</title>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<meta http-equiv="imagetoolbar" content="false" />
+<link rel="stylesheet" type="text/css" href="../../css/common/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/oss/layout.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common/page_style.css" />
+<link rel="stylesheet" type="text/css" href="/css/common/jquery-ui.css" />
+
+<script type="text/javascript" src="/js/jquery-1.11.1.js" ></script>
+<script type="text/javascript" src="/js/jquery-ui.js"></script>
+</head>
+<body>
+<div id="wrapper"> 
+    
+    <!--Header 영역-->
+    <div id="header_wrapper">
+        <h1><img src="../../images/oss/common/logo.gif" alt="모객 관리자 시스템" /></h1>
+        <ul class="lnb_menu">
+			<li class="home"><a href="/" target="_blank">탐나오바로가기</a></li>&gt;
+			<!-- <li class="home"><a href="/">홈으로</a></li> -->
+			<li><a href="/web/viewLogin.do?rtnUrl=/web/mypage/viewChangePw.do" target="_blank">비밀번호변경</a></li>
+			<li class="log"><a href="/oss/ossLogout.do">로그아웃</a></li>
+		</ul>
+        <!--상단메뉴-->
+        <h2 class="lay_none">상단메뉴</h2>
+        <ul class="gnb_menu">
+			<li class="menu01 on"><a href="/oss/home.do">홈</a>
+				<!-- <ul class="gnb_depth" id="menu01" style="display:none">
+				</ul> -->
+			</li>
+			<li class="menu02"><a href="/oss/siteManage.do">환경설정</a>
+				<ul class="gnb_depth" id="menu02" style="display: none;">
+					<li><a href="/oss/siteManage.do">운영설정</a></li>
+					<li><a href="/oss/codeList.do">코드관리</a></li>
+					<li><a href="/oss/cmssList.do">수수료관리</a></li>
+					<li><a href="/oss/bbsList.do">게시판관리</a></li>
+                    <li><a href="/oss/bbsGrpList.do">게시판그룹관리</a></li>
+				</ul>
+			</li>
+			<li class="menu03"><a href="/oss/userList.do">고객관리</a>
+				<ul class="gnb_depth" id="menu03" style="display: none;">
+					<li><a href="/oss/userList.do">사용자관리</a></li>
+                    <li><a href="/oss/dropUserList.do">탈퇴사용자관리</a></li>
+				</ul>
+			</li>
+			<li class="menu11"><a href="/oss/corpList.do">업체/제휴관리</a>
+                <ul class="gnb_depth" id="menu11" style="display: none;">
+                	<li><a href="/oss/corpList.do">입점업체관리</a></li>
+                	<li><a href="/oss/corpPnsReqList.do">입점신청관리</a></li>
+                	<li><a href="/oss/nbbs/bbsList.do?bbsNum=MASNOTI">업체공지사항</a></li>
+                	<li><a href="/oss/nbbs/bbsList.do?bbsNum=MASQA">업체 Q&amp;A 게시판</a></li>                 
+                </ul>
+            </li>
+            <li class="menu05"><a href="/oss/prdtList.do">상품관리</a>
+                <ul class="gnb_depth" id="menu05" style="display: none;">
+                    <li><a href="/oss/prdtList.do">상품관리</a></li>
+                    <li><a href="/oss/socialProductList.do">소셜상품관리</a></li>
+                    <li><a href="/oss/couponList.do">탐나오쿠폰</a></li>
+                    <li><a href="/oss/promotionList.do">프로모션승인관리</a></li>                    
+                </ul>
+            </li>
+            <li class="menu06"><a href="/oss/otoinqList.do">커뮤니티</a>
+                <ul class="gnb_depth" id="menu06" style="display: none;">
+                	<li><a href="/oss/otoinqList.do">1:1문의</a></li>
+                    <li><a href="/oss/useepilList.do">상품평관리</a></li>                    
+                    <li><a href="/oss/nbbs/bbsList.do?bbsNum=NOTICE">공지사항</a></li>
+                </ul>
+            </li>            
+            <li class="menu07"><a href="/oss/rsvList.do">예약관리</a>
+            	<ul class="gnb_depth" id="menu07" style="display: none;">
+					<li><a href="/oss/rsvList.do">예약관리</a></li>
+					<li><a href="/oss/rsvAtPrdtList.do">상품별예약관리</a></li>
+					<li><a href="/oss/refundRsvList.do">환불요청예약관리</a></li>
+				</ul>
+            </li>
+            <li class="menu10"><a href="/oss/eventList.do">마케팅</a>
+            	<ul class="gnb_depth" id="menu10" style="display: none;">
+            		<li><a href="/oss/eventList.do">프로모션</a></li>
+					<li><a href="/oss/smsForm.do">문자 전송</a></li>
+					<li><a href="/oss/emailForm.do">E-Mail 전송</a></li>
+					<li><a href="/oss/pushForm.do">Push 전송</a></li>
+				</ul>
+            </li>
+            <li class="menu09"><a href="/oss/adjList.do">정산</a>
+            	<ul class="gnb_depth" id="menu09" style="display: none;">
+					<li><a href="/oss/adjList.do">정산관리</a></li>
+				</ul>
+            </li>
+            <li class="menu08"><a href="/oss/anls06.do">통계</a>
+            	<ul class="gnb_depth" id="menu08" style="display: none;">
+					<li><a href="/oss/anls06.do">매출통계</a></li>
+					<li><a href="/oss/anls05.do">고객통계</a></li>
+					<li><a href="/oss/anls03.do">일별현황</a></li>
+				</ul>
+            </li>
+            <li class="menu04"><a href="/oss/nbbs/bbsList.do?bbsNum=FNREQ">지원</a>
+            	<ul class="gnb_depth" id="menu04" style="display: none;">
+					<li><a href="/oss/nbbs/bbsList.do?bbsNum=FNREQ">기능개선요청</a></li>
+				</ul>
+            </li>
+            <li class="menu-bi"><a href="#">BI시스템</a>
+                <ul class="gnb_depth" id="menu11" style="display:none">
+                    <li><a href="#">고객이용 통계</a></li>
+                    <li><a href="#">입점업체 통계</a></li>
+                    <li><a href="#">판매 통계</a></li>
+                    <li><a href="#">광고수익률 통계</a></li>
+                    <li><a href="#">정산 통계</a></li>
+                </ul>
+            </li>
+		</ul>
+        <!--//상단메뉴--> 
+    </div>
+    <!--//Header 영역--> 
+    <!--Contents 영역-->
+    <div id="contents_wrapper">
+        <div id="contents_area">
+            <div id="contents">
+                
+                <!-- change contents -->
+				<form id="calendar" name="calendar" action="/mas/ad/cntList.do" method="post" enctype="multipart/form-data">
+
+			        <!--상품요금 입력-->
+			        <table width="100%" border="0">
+			            <tbody>
+			                <tr>
+			                    <td valign="top" width="290">
+			                        <h5 class="title02" style="margin-top: 0">간편입력기</h5>			
+			                        <table class="quick_calendar" style="width:285px;">
+			                            <colgroup>
+			                                <col width="28%" />
+			                                <col width="72%" />
+			                            </colgroup>
+			                            <tbody>
+			                                <tr>
+			                                    <th>적용기간</th>
+			                                    <td class="td_align_lt01">
+			                                        <div style="display:inline-block;">
+			
+			                                            <input type="text" id="startDtView" name="startDtView" class="input_text3 center hasDatepicker" value="" readonly="readonly"><img class="ui-datepicker-trigger" src="/images/jqueryui/calendar_icon01.gif" alt="날짜를 입력하세요" title="날짜를 입력하세요"> <input type="hidden" id="startDt" name="startDt" class="input_text3 center" value="">
+			                                        </div>
+			                                        <div style="display:inline-block;">
+			                                            ~
+			
+			                                            <input type="text" id="endDtView" name="endDtView" class="input_text3 center hasDatepicker" value="" readonly="readonly"><img class="ui-datepicker-trigger" src="/images/jqueryui/calendar_icon01.gif" alt="날짜를 입력하세요" title="날짜를 입력하세요"> <input type="hidden" id="endDt" name="endDt" class="input_text3 center" value="">
+			                                        </div>
+			
+			                                    </td>
+			                                </tr>
+			                                <tr>
+			                                    <th>적용요일</th>
+			                                    <td class="td_align_lt01">
+			                                        <table border="1" style="width:100%;">
+			                                            <tbody><tr>
+			                                                <td>
+			                                                    <div class="btn_sty06"><span><a href="javascript:fn_WdayAllSel()">전체선택</a></span></div>
+			                                                    <div class="btn_sty06"><span><a href="javascript:fn_WdayInvSel()">선택반전</a></span></div>
+			                                                </td>
+			                                                </tr>
+			                                                <tr>
+			                                                    <td style="line-height:1.9em;">
+			                                                        <input type="checkbox" name="wday" class="required" id="wday_1" value="1" title="적용요일을 선택하세요.">
+			                                                        <label for="wday_1" style="color:red">일요일</label>
+			                                                        <br>
+			                                                        <input type="checkbox" name="wday" id="wday_2" value="2">
+			                                                        <label for="wday_2">월요일</label>
+			                                                        <br>
+			                                                        <input type="checkbox" name="wday" id="wday_3" value="3">
+			                                                        <label for="wday_3">화요일</label>
+			                                                        <br>
+			                                                        <input type="checkbox" name="wday" id="wday_4" value="4">
+			                                                        <label for="wday_4">수요일</label>
+			                                                        <br>
+			                                                        <input type="checkbox" name="wday" id="wday_5" value="5">
+			                                                        <label for="wday_4">목요일</label>
+			                                                        <br>
+			                                                        <input type="checkbox" name="wday" id="wday_6" value="6">
+			                                                        <label for="wday_6">금요일</label>
+			                                                        <br>
+			                                                        <input type="checkbox" name="wday" id="wday_7" value="7">
+			                                                        <label for="wday_7" style="color:blue">토요일</label>
+			                                                    </td>
+			                                                </tr>
+			                                            </tbody></table>
+			                                    </td>
+			                                </tr>
+			                                <tr>
+			                                    <th>B2B판매가</th>
+			                                    <td class="td_align_lt01">
+			                                        <input type="text" name="totalRoomNumSmp" class="full right" title="간편입력 판매가을 입력하세요." value="">
+			                                    </td>
+			                                </tr>
+			                                <input type="hidden" name="useRoomNumSmp" class="full right" title="간편입력 정가을 입력하세요." value="">                                
+			                            </tbody>
+		                            </table>
+			                        <!--  </form> -->
+			
+			                        <div class="btn_ct02">
+			                            <li class="btn_sty04">
+			                                <a href="javascript:fn_SimpleCal()">간편 입력 적용</a>
+			                            </li>
+			                        </div>
+		                        </td>
+			                    <!--//간편입력폼-->
+			
+			
+			                    <td valign="top"><!--달력입력폼-->
+			
+			                        <input type="hidden" id="prdtNum" name="prdtNum" value="AD00000047">                       		
+			                        <input type="hidden" id="iYear" name="iYear" value="2016">
+			                        <input type="hidden" id="iMonth" name="iMonth" value="9">
+			                        <input type="hidden" id="iMonthLastDay" name="iMonthLastDay" value="30">
+			                        <input type="hidden" id="sPrevNext" name="sPrevNext" value="">
+			                        
+			                        <h5 class="title02" style="margin-top: 0">A그룹 | 아이올로스</h5>			
+			                        <table border="0" class="calendar_form">
+			                            <colgroup>
+			                                <col width="25%">
+			                                <col width="25%">
+			                                <col width="25%">
+			                                <col width="25%">
+			                            </colgroup>
+			                            <tbody>
+			                                <tr class="title">
+			                                    <th onclick="fn_Calendar('prev'); return false;" style="cursor:pointer;">◀</th>
+			                                    <th id="current_month">2016-9</th>
+			                                    <th onclick="fn_Calendar('next'); return false;" style="cursor:pointer;">▶</th>
+			                                    <td align="right" style="border:0; padding-left:25px;">
+			                                        <div class="btn_sty01">
+			                                            <span>
+			                                                <input type="button" value="수정값 변경 적용" onclick="fn_SetCalendar(); return false;">
+			                                            </span>
+			                                        </div>
+			                                    </td>
+			                                </tr>
+			                            </tbody>
+			                        </table>
+			                        <div id="lay_calendar">
+			                            <table width="100%" border="0" class="calendar">
+			                                <colgroup><col width="*">
+			                                    <col width="14.2%">
+			                                    <col width="14.2%">
+			                                    <col width="14.2%">
+			                                    <col width="14.2%">
+			                                    <col width="14.2%">
+			                                    <col width="14.2%">
+			                                </colgroup><tbody><tr>
+			                                <th scope="col" class="font_red">일</th>
+			                                <th scope="col">월</th>
+			                                <th scope="col">화</th>
+			                                <th scope="col">수</th>
+			                                <th scope="col">목</th>
+			                                <th scope="col">금</th>
+			                                <th scope="col" class="font_blue">토</th>
+			                                </tr>
+			                                <tr>
+			
+			                                    <td><p><strong>&nbsp;</strong></p></td>
+			
+			                                    <td><p><strong>&nbsp;</strong></p></td>
+			
+			                                    <td><p><strong>&nbsp;</strong></p></td>
+			
+			                                    <td><p><strong>&nbsp;</strong></p></td>
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>1</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>2</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			                                        <p class="font_blue"><strong>3</strong></p>
+			
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			                                </tr>
+			                                <tr>
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			                                        <p class="font_red"><strong>4</strong></p>
+			
+			
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>5</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>6</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>7</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>8</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>9</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			                                        <p class="font_blue"><strong>10</strong></p>
+			
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			                                </tr>
+			                                <tr>
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			                                        <p class="font_red"><strong>11</strong></p>
+			
+			
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>12</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>13</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>14</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>15</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>16</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			                                        <p class="font_blue"><strong>17</strong></p>
+			
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			                                </tr>
+			                                <tr>
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			                                        <p class="font_red"><strong>18</strong></p>
+			
+			
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>19</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>20</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>21</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>22</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>23</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			                                        <p class="font_blue"><strong>24</strong></p>
+			
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			                                </tr>
+			                                <tr>
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			                                        <p class="font_red"><strong>25</strong></p>
+			
+			
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>26</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>27</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>28</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>29</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			
+			                                    <td>
+			
+			
+			
+			
+			
+			                                        <p><strong>30</strong></p>
+			
+			
+			                                        <div>
+			                                            <p class="calendar_price"><span>총</span> <input type="text" id="totalRoomNum" name="totalRoomNum" class="right" title="판매가을 입력하세요." value="2" onchange="fn_SetExitParm();"></p>
+			                                            <p class="calendar_ipgum"><span>사</span> <input type="text" id="useRoomNum" name="useRoomNum" class="right" title="정상가을 입력하세요." value="0" readonly="" style="background-color: #DCDCDC"></p>
+			                                            <p class="calendar_gubun">
+			                                                <select name="ddlYn" id="ddlYn" style="width:100%;" onchange="fn_SetExitParm();">
+			
+			                                                    <option value="N" selected="selected">접수</option>
+			                                                    <option value="Y">마감</option>
+			                                                </select>
+			                                            </p>
+			
+			                                        </div>
+			                                    </td>
+			
+			
+			
+			
+			
+			
+			
+			                                    <td><p><strong>&nbsp;</strong></p></td>
+			
+			
+			                                </tr>
+			
+			                                </tbody>
+			                            </table>
+			
+			
+			
+			                            <!--<div style="width:100%;height:500px;text-align:center;font-size:16px;padding-top:100px;"> 로딩중입니다. 잠시만 기다려주세요... </div>-->
+			                        </div> 
+			
+			                        <!--//달력입력폼--></td>
+			                </tr>
+			            </tbody>
+			        </table>
+			        <!--//상품요금 입력-->
+			
+			        <!--//본문--> 
+			    </form>
+                <!-- //change contents -->
+                
+            </div>
+        </div>
+    </div>
+    <!--//Contents 영역-->
+    
+</div>
+</body>
+</html>

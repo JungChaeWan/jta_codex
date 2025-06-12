@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="banner">
+
+<resultMap id="BANNER_R_00" class="oss.benner.vo.BANNERVO">
+	<result property="bannerNum" column="BANNER_NUM"/>
+	<result property="bannerNm" column="BANNER_NM"/>
+	<result property="startDttm" column="START_DTTM"/>
+	<result property="endDttm" column="END_DTTM"/>
+	<result property="regDttm" column="REG_DTTM"/>
+	<result property="imgPath" column="IMG_PATH"/>
+	<result property="imgFileNm" column="IMG_FILE_NM"/>
+	<result property="location" column="LOCATION"/>
+	<result property="url" column="URL"/>
+	<result property="printYn" column="PRINT_YN"/>
+	<result property="nwd" column="NWD"/>
+	<result property="printSn" column="PRINT_SN"/>
+	<result property="bgColor" column="BG_COLOR"/>
+	<result property="viewPttn" column="VIEW_PTTN"/>
+	<result property="viewTm" column="VIEW_TM"/>
+</resultMap>
+
+
+<select id="BANNER_S_00" resultMap="BANNER_R_00">
+SELECT 	BANNER_NUM
+	  , BANNER_NM
+	  , START_DTTM
+	  , END_DTTM
+	  , REG_DTTM
+	  , IMG_PATH
+	  , IMG_FILE_NM
+	  , LOCATION
+	  , URL
+	  , PRINT_YN
+	  , NWD
+	  , PRINT_SN
+	  , BG_COLOR
+	  , VIEW_PTTN
+	  , VIEW_TM
+ FROM TB_BANNER
+ WHERE 1=1
+ 	<isNotEmpty property="bannerNum">
+		AND BANNER_NUM = #bannerNum#
+ 	</isNotEmpty>
+ 	<isNotEmpty property="location">
+		AND LOCATION=#location#
+ 	</isNotEmpty>
+ ORDER BY END_DTTM DESC, START_DTTM DESC
+</select>
+
+<select id="BANNER_S_01" resultClass="int">
+SELECT MAX(PRINT_SN) AS CNT
+  FROM TB_BANNER
+WHERE LOCATION = #location#
+</select>
+
+<select id="BANNER_S_02" resultMap="BANNER_R_00">
+SELECT 	BANNER_NUM
+	  , BANNER_NM
+	  , START_DTTM
+	  , END_DTTM
+	  , REG_DTTM
+	  , IMG_PATH
+	  , IMG_FILE_NM
+	  , LOCATION
+	  , URL
+	  , PRINT_YN
+	  , NWD
+	  , PRINT_SN
+	  , BG_COLOR
+	  , VIEW_PTTN
+	  , VIEW_TM
+ FROM TB_BANNER
+ WHERE LOCATION=#location#
+   AND PRINT_YN = 'Y'
+   AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN START_DTTM AND END_DTTM
+ ORDER BY DBMS_RANDOM.RANDOM
+</select>
+
+<select id="BANNER_S_03" resultMap="BANNER_R_00">
+SELECT 	BANNER_NUM
+	  , BANNER_NM
+	  , START_DTTM
+	  , END_DTTM
+	  , REG_DTTM
+	  , IMG_PATH
+	  , IMG_FILE_NM
+	  , LOCATION
+	  , URL
+	  , PRINT_YN
+	  , NWD
+	  , PRINT_SN
+	  , BG_COLOR
+	  , VIEW_PTTN
+	  , VIEW_TM
+      , ROWNUM RN
+FROM
+(
+    SELECT 	BANNER_NUM
+		  , BANNER_NM
+		  , START_DTTM
+		  , END_DTTM
+		  , REG_DTTM
+		  , IMG_PATH
+		  , IMG_FILE_NM
+		  , LOCATION
+		  , URL
+		  , PRINT_YN
+		  , NWD
+		  , PRINT_SN
+		  , BG_COLOR
+		  , VIEW_PTTN
+		  , VIEW_TM
+     FROM TB_BANNER
+     WHERE LOCATION=#location#
+       AND PRINT_YN = 'Y'
+       AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN START_DTTM AND END_DTTM
+     ORDER BY PRINT_SN
+)
+WHERE <![CDATA[ ROWNUM <= #rn# ]]>
+ORDER BY PRINT_SN
+</select>
+
+<select id="BANNER_S_04" resultMap="BANNER_R_00">
+SELECT 	BANNER_NUM
+	  , BANNER_NM
+	  , START_DTTM
+	  , END_DTTM
+	  , REG_DTTM
+	  , IMG_PATH
+	  , IMG_FILE_NM
+	  , LOCATION
+	  , URL
+	  , PRINT_YN
+	  , NWD
+	  , PRINT_SN
+	  , BG_COLOR
+	  , VIEW_PTTN
+	  , VIEW_TM
+ FROM TB_BANNER
+ WHERE LOCATION=#location#
+   AND PRINT_YN = 'Y'
+   AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN START_DTTM AND END_DTTM
+ ORDER BY PRINT_SN ASC
+</select>
+
+<insert id="BANNER_I_00">
+INSERT INTO TB_BANNER
+	(	BANNER_NUM
+	  , BANNER_NM
+	  , START_DTTM
+	  , END_DTTM
+	  , REG_DTTM
+	  , IMG_PATH
+	  , IMG_FILE_NM
+	  , LOCATION
+	  , URL
+	  , PRINT_YN
+	  , NWD
+	  , PRINT_SN
+	  , BG_COLOR
+	  , VIEW_PTTN
+	  , VIEW_TM
+	)
+VALUES
+	( (SELECT TO_CHAR(NVL(MAX(TO_NUMBER(BANNER_NUM)),0) + 1) FROM TB_BANNER)
+	  , #bannerNm#
+	  , #startDttm#
+	  , #endDttm#
+	  , SYSDATE
+	  , #imgPath#
+	  , #imgFileNm#
+	  , #location#
+	  , #url#
+	  , 'Y'
+	  , #nwd#
+	  , (SELECT NVL(MAX(PRINT_SN), 0) + 1 FROM TB_BANNER WHERE LOCATION = #location# )
+	  , #bgColor#
+	  , #viewPttn#
+	  , #viewTm#
+	 )
+</insert>
+
+<update id="BANNER_U_00">
+UPDATE TB_BANNER
+   SET  BANNER_NM = #bannerNm#
+	  , START_DTTM = #startDttm#
+	  , END_DTTM = #endDttm#
+	  , IMG_PATH = #imgPath#
+	  , IMG_FILE_NM = #imgFileNm#
+	  <!-- , LOCATION = #location# -->
+	  , URL = #url#
+	  , PRINT_YN = #printYn#
+	  , NWD = #nwd#
+	  <isNotEmpty property="printSn">
+		, PRINT_SN = #printSn#
+	  </isNotEmpty>
+	  , BG_COLOR = #bgColor#
+	  , VIEW_PTTN = #viewPttn#
+	  , VIEW_TM = #viewTm#
+WHERE BANNER_NUM = #bannerNum#
+</update>
+
+
+<!-- 순번 변경 관련 -->
+<update id="BANNER_U_01">
+UPDATE TB_BANNER
+   SET PRINT_SN = PRINT_SN + 1
+ WHERE LOCATION = #location#
+ <isNotEqual property="oldSn" compareValue="0">
+	<![CDATA[ AND PRINT_SN <  #oldSn# ]]>
+ </isNotEqual>
+ <![CDATA[  AND PRINT_SN >= #newSn#  ]]>
+</update>
+
+<update id="BANNER_U_02">
+UPDATE TB_BANNER
+   SET PRINT_SN = PRINT_SN - 1
+ WHERE LOCATION = #location#
+ <isNotEmpty property="newSn">
+   <isNotEqual property="newSn" compareValue="0">
+ 		<![CDATA[  AND PRINT_SN <= #newSn# ]]>
+ 	</isNotEqual>
+ </isNotEmpty>
+ <![CDATA[ AND PRINT_SN >  #oldSn# ]]>
+</update>
+
+
+<!-- 이미지 변경 없는 업데이트 -->
+<update id="BANNER_U_03">
+UPDATE TB_BANNER
+   SET  BANNER_NM = #bannerNm#
+	  , START_DTTM = #startDttm#
+	  , END_DTTM = #endDttm#
+	  <!-- , IMG_PATH = #imgPath# -->
+	  <!-- , IMG_FILE_NM = #imgFileNm# -->
+	  <!-- , LOCATION = #location# -->
+	  , URL = #url#
+	  , PRINT_YN = #printYn#
+	  , NWD = #nwd#
+	  <isNotEmpty property="printSn">
+		, PRINT_SN = #printSn#
+	  </isNotEmpty>
+	  , BG_COLOR = #bgColor#
+	  , VIEW_PTTN = #viewPttn#
+	  , VIEW_TM = #viewTm#
+WHERE BANNER_NUM = #bannerNum#
+</update>
+
+
+<delete id="BANNER_D_00">
+DELETE TB_BANNER
+ WHERE BANNER_NUM = #bannerNum#
+</delete>
+
+</sqlMap>

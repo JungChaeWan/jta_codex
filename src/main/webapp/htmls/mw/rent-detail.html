@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+	
+	<title>탐나오</title>
+	
+	<link rel="stylesheet" href="../../css/mw/common2.css">
+	<link rel="stylesheet" href="../../css/mw/style.css">
+
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/jquery.cookie.js"></script>
+	<script src="../../js/mw_common.js"></script>
+	<script src="../../js/mw_style.js"></script>
+
+	<!-- add script -->
+	<script src="../../js/swiper.js"></script>
+	<script>
+		$(document).ready(function() {
+
+			// 레이어팝업 동작
+			$(".procedure").click(function(){
+				if($('#application_popup').is(":hidden")) {
+					$('#application_popup').fadeToggle();
+					$('#application_popup').show();
+					$('body').after('<div class="lock-bg"></div>'); // 검은 불투명 배경
+					$('body').addClass('not_scroll');
+				} else {
+					$(obj).hide();
+					$('.lock-bg').remove();
+					$('.not_scroll').remove();
+				}
+			});
+
+
+			//Tab Menu (상품설명, 사용조건 등)
+    		targetTabMenu('#scroll_tabs');
+    		
+    		//추천 렌트카
+    		if($('#promotion_product .swiper-slide').length > 1) {
+    			var swiper = new Swiper('#promotion_product', {
+    	            slidesPerView: 'auto',
+    	            paginationClickable: true,
+    	            spaceBetween: 15
+    		    });
+    		}
+    		
+    		//유모차, 카시트
+    		if($('#promotion_product2 .swiper-slide').length > 1) {
+    			var swiper = new Swiper('#promotion_product2', {
+    	            slidesPerView: 'auto',
+    	            paginationClickable: true,
+    	            spaceBetween: 15
+    		    });
+    		}
+
+			function show_popup(obj) {
+				if($(obj).is(":hidden")) {
+					$(obj).show();
+					$('body').after('<div class="lock-bg"></div>'); // 검은 불투명 배경
+				} else {
+					$(obj).hide();
+					$('.lock-bg').remove();
+				}
+			}
+
+		});
+
+		function close_popup(obj) {
+			$(obj).hide();
+			$('.lock-bg').remove();
+		}
+
+	</script>
+</head>
+<body class="main">
+<div id="wrap">
+
+<header id="header">
+	<div class="head-wrap">
+		<h1 class="title">렌터카</h1>
+		<div class="l-area">
+			<a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+		</div>
+		<div class="r-area-side">
+			<button type="button" id="frame_sideOpen" class="side-btn" title="사이드메뉴 열기"></button>
+		</div>
+	</div>
+	
+	<aside id="side_menu" class="side-menu">
+		<button type="button" id="frame_sideClose" class="close"><img src="../../images/mw/common/side/close-white.png" alt="닫기"></button>
+
+		<nav class="top-menu">
+			<a href=""><img src="../../images/mw/common/side/home.png" alt="홈"></a>
+			<a href="javascript:void(0)" id="top_searchOpen">
+				<img src="../../images/mw/common/side/search-white.png" alt="검색">
+			</a>
+			<a href="" class="like">20</a>
+			<a href="" class="cart">5</a>
+		</nav>
+		
+		<div class="menu-area">
+			<ul>
+				<li><a href="air-search.html">항공</a></li>
+			    <li><a href="hotel-list.html">숙박</a></li>
+			    <li><a href="rent-list.html">렌터카</a></li>
+			    <li><a href="social-list.html">관광/레저</a></li>
+			    <li><a href="social-list.html">맛집</a></li>
+			    <li><a href="social-list.html">여행사 상품</a></li>
+			    <li><a href="from-jeju-main.html">from 제주</a></li>
+			    <li><a href="main4-4.html">기획전</a></li>
+			    <li><a href="main4-5.html">이벤트</a></li>
+			</ul>
+			<ul>
+				<li><a href="">MY PAGE</a></li>
+			    <li><a href="">HELP</a></li>
+			    <li><a href="">LOGOUT</a></li>
+			    <li><a href="">SETTING</a></li>
+			</ul>
+		</div>
+	</aside>
+	
+	<div id="top_search" class="search-area">
+		<button type="button" id="top_searchClose" class="close"><img src="../../images/mw/common/side/close-gray.png" alt="닫기"></button>
+		<div class="form-area">
+			<div class="form">
+				<form>
+					<input type="text" placeholder="검색어 입력" class="search">
+					<button type="submit" class="search-btn" title="검색"></button>
+				</form>
+			</div>
+			<div class="keyword">
+				<h2 class="title">HOT KEYWORD</h2>
+				<ul>
+					<li><a href="">수영장 숙소</a></li>
+				    <li><a href="">제주도 맛집</a></li>
+				    <li><a href="">패들보드</a></li>
+				    <li><a href="">제주 선물</a></li>
+				    <li><a href="">연인과 함께 즐기기</a></li>
+				    <li><a href="">흑돼지</a></li>
+				    <li><a href="">감귤</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+
+<main id="main">
+
+	<!-- 0221 change contents -->
+	<div class="mw-detail-area">
+		<section class="detail-product-area">
+			<h2 class="sec-caption">상품 정보</h2>
+			<div class="detail-slider rentcar">
+				<div class="title-box">
+					<h3 class="title">코나 일렉트릭 EV</h3>
+					<div class="history"></div>
+				</div>
+				<div id="detail_slider" class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="/data/cardiv/RD01R10002.png" alt="">
+						</div>
+					</div>
+				</div>
+				<div class="bottom-info">
+					<ul>
+						<li>
+							<img src="/images/mw/rent/info/kind.png" alt="">
+							<span>SUV/승합</span>
+						</li>
+						<li>
+							<img src="/images/mw/rent/info/people.png" alt="">
+							<span>5명</span>
+						</li>
+						<li>
+							<img src="/images/mw/rent/info/oil.png" alt="">
+							<span>전기</span>
+						</li>
+					</ul>
+				</div>
+			</div> <!-- //detail-slider -->
+
+			<div class="product-info">
+				<div class="title-area">
+					<div class="title">씨유렌트카</div>
+					<div class="grade-area">
+						<div class="score-area">
+							<span class="score">평점 <strong class="text-red">3</strong>/5</span>
+							<span class="icon">
+	                		<img src="../../images/mw/icon/star_on.png" alt="좋아요">
+	                		<img src="../../images/mw/icon/star_on.png" alt="좋아요">
+	                		<img src="../../images/mw/icon/star_on.png" alt="좋아요">
+	                		<img src="../../images/mw/icon/star_off.png" alt="좋아요">
+	                		<img src="../../images/mw/icon/star_off.png" alt="좋아요">
+	                	</span>
+						</div>
+						<!-- 0307 label class 변경 -->
+						<div class="bxLabel">
+							<span class="main_label eventblue">이벤트</span>
+							<span class="main_label pink">할인쿠폰</span>
+							<span class="main_label yellow">탐나는전</span>
+						</div><!-- //0307 label class 변경 -->
+					</div>
+					<div class="rent-info">
+						<span class="text">17시간 대여료</span>
+						<strong class="price">999,000원</strong>
+					</div>
+				</div>
+			</div> <!-- //product-info -->
+			<div class="selected-option-info side-padding">
+				<div class="search-value">
+					<div class="text">
+						<a href="javascript:document.frm.submit();" class="text-white">02월 22일 12시 - 02월 23일 12시
+							<span>
+								<img class="clock_icon" src="/images/mw/icon/clock_r.png" alt="대여시간">대여
+								<span class="usedHourStr">0시간</span>
+							</span>
+						</a>
+						<input type="hidden" name="carSaleAmt" id="carSaleAmt" />
+						<input type="hidden" name="nmlAmt" id="nmlAmt" />
+						<input type="hidden" name="insuSaleAmt" id="insuSaleAmt" value="0" />
+						<input type="hidden" name="totalAmt" id="totalAmt" />
+						<input type="hidden" id="ableYn" />
+					</div>
+					<form name="frm" id="frm" method="get" onSubmit="return false;" action = "/mw/rentcar/mainList.do">
+						<input type="hidden" name="pageIndex" id="pageIndex" value="1" />
+						<input type="hidden" name="sCarDivCdView" id="sCarDivCdView" value="" />
+						<input type="hidden" name="orderCd" id="orderCd" value="PRICE" />
+						<input type="hidden" name="orderAsc" id="orderAsc" value="" />
+						<input type="hidden" name="mYn" id="mYn" value="" />
+						<input type="hidden" name="searchYn" id="searchYn" value="N" />
+						<input type="hidden" name="sPrdtNum" id="sPrdtNum" value="RC00003719" />
+						<input type="hidden" name="sIsrDiv" id="sIsrDiv" value="" />	<!-- 보험여부 -->
+						<input type="hidden" name="sCorpId" id="sCorpId" value="" /> <!-- 렌터카회사 -->
+						<input type="hidden" name="sCarDivCd" id="sCarDivCd" value="" /> <!-- 차량 유형 검색 -->
+						<input type="hidden" name="sMakerDivCd" id="sMakerDivCd" value="" /> <!-- 제조사 검색 -->
+						<input type="hidden" name="sUseFuelDiv" id="sUseFuelDiv" value="" /> <!-- 사용연료 검색 -->
+						<input type="hidden" name="sModelYear" id="sModelYear" value="" /> <!-- 연식 검색 -->
+						<input type="hidden" name="sFromDt" id="sFromDt" value="20220222" />
+						<input type="hidden" name="sFromDtView" id="sFromDtView" value="2022-02-22" />
+						<input type="hidden" name="sToDt" id="sToDt" value="20220223" />
+						<input type="hidden" name="sToDtView" id="sToDtView" value="2022-02-23" />
+						<input type="hidden" name="sFromTm" id="sFromTm" value="1200" />
+						<input type="hidden" name="sToTm" id="sToTm" value="1200" />
+					</form>
+				</div>
+			</div>
+			<div class="point-area">
+				<div class="col2-area line">
+					<div class="row">
+						<span class="col1">L.POINT적립금</span>
+						<span class="col2" id="lpointSavePoint">0원</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- 무이자할부 팝업콘텐츠 -->
+			<div id="installment_info" class="comm-layer-popup">
+				<div class="content-wrap">
+					<div class="content">
+						<div class="installment-head">
+							<h3 class="title">2월 무이자 할부 <span>행사안내</span></h3>
+							<button type="button" class="close"><img src="/images/mw/icon/close/rcpopup_close.png" alt="닫기"></button>
+						</div>
+						<!DOCTYPE html>
+						<html lang="ko">
+							<head>
+								<meta charset="UTF-8">
+								<title>할부 안내</title>
+							</head>
+							<body>
+								<div class="installment-main">
+									<div class="img-box">
+										<div class="freeall">1. 무이자 할부 안내</div>
+										<div class="allguide">
+											<table>
+												<colgroup>
+													<col style="width:10%">
+													<col style="width:30%">
+													<col style="width:20%">
+													<col style="width:10%">
+												</colgroup>
+												<thead>
+												<th>카드사</th>
+												<th>내용</th>
+												<th>대상</th>
+												<th>비고</th>
+												</thead>
+												<tbody>
+												<!--신한-->
+												<tr>
+													<td>신한</td>
+													<td>
+														<dl>
+															<dt>5만원 이상</dt>
+															<dd>2~6개월 무이자 할부</dd>
+														</dl>
+													</td>
+													<td rowspan="10">
+														<dl>
+															<dt class="lg">LG 유플러스 가맹점 대상</dt>
+															<dd class="lgcaption">(일부제외)</dd>
+														</dl>
+													</td>
+													<td>신한BC제외</td>
+												</tr>
+												<!--//신한-->
+												<!--하나-->
+												<tr>
+													<td>
+														<div>하나</div>
+														<div class="hana">(구 하나SK, 구 외환)</div>
+													</td>
+													<td>
+														<dl>
+															<dt>5만원 이상</dt>
+															<dd>2~6개월 무이자 할부</dd>
+															<dd>*면세점 2~5개월 무이자 할부</dd>
+															<dd class="hanacaption">(의약품 및 일부업종 제외)</dd>
+														</dl>
+													</td>
+													<td>하나BC포함</td>
+												</tr>
+												<!--//하나-->
+												<!--현대-->
+												<tr>
+													<td>현대</td>
+													<td>
+														<dl>
+															<dt>5만원 이상</dt>
+															<dd>2~5개월 무이자 할부</dd>
+														</dl>
+													</td>
+													<td></td>
+												</tr>
+												<!--//현대-->
+												<!--KB국민-->
+												<tr>
+													<td>KB국민</td>
+													<td>
+														<dl>
+															<dt>5만원 이상</dt>
+															<dd>2~6개월 무이자 할부</dd>
+															<dd>농협, 국민BC제외</dd>
+														</dl>
+													</td>
+													<td></td>
+												</tr>
+												<!--//KB국민-->
+												<!--삼성-->
+												<tr>
+													<td>삼성</td>
+													<td>
+														<dl>
+															<dt>5만원 이상</dt>
+															<dd>2~6개월 무이자 할부</dd>
+															<dd>*면세점 2~5개월 무이자 할부</dd>
+															<dd class="samsungcaption">(의약품업종 제외)</dd>
+														</dl>
+													</td>
+													<td></td>
+												</tr>
+												<!--//삼성-->
+												<!--BC,NH농협,롯데-->
+												<tr>
+													<td>BC</td>
+													<td rowspan="3">
+														<dl>
+															<dt>5만원 이상</dt>
+															<dd>2~6개월 무이자 할부</dd>
+														</dl>
+													<td></td>
+												</tr>
+												<tr>
+													<td>NH농협</td>
+													<td>농협BC포함</td>
+												</tr>
+												<tr>
+													<td>롯데</td>
+													<td></td>
+												</tr>
+												<!--//BC,NH농협,롯데-->
+												<!--씨티, 전북-->
+												<tr>
+													<td>씨티</td>
+													<td rowspan="2">
+														<dl>
+															<dt>5만원 이상</dt>
+															<dd>2~6개월 무이자 할부</dd>
+														</dl>
+													</td>
+													<td>씨티BC제외</td>
+												</tr>
+												<tr>
+													<td>전북</td>
+													<td></td>
+												</tr>
+												<!--//씨티, 전북-->
+												</tbody>
+											</table>
+										</div>
+										<div class="freepart">2. 부분 무이자 할부 안내<span>(5만원 이상 결제 시)</span></div>
+										<div class="partguide">
+											<table>
+												<colgroup>
+													<col style="width:12%">
+													<col style="width:20%">
+												</colgroup>
+												<tbody>
+												<tr>
+													<td>롯데</td>
+													<td><p><span>10개월 :</span> 1,2회차 고객부담, 잔여할부 수수료 면제/ 법인, 체크, 기프트 제외</p></td>
+												</tr>
+												<tr>
+													<td>하나
+														<div class="hana_2">
+															(구 하나 SK, 구 외환)
+														</div>
+													</td>
+													<td><p><span>10개월 :</span> 1,2회차 고객부담, 잔여할부 수수료 면제/ 법인, 체크, 하나BC, 기프트 제외</p>
+														<p class="p-h-caption">(의약품 결제 및 일부업종 제외)</p>
+													</td>
+												</tr>
+												<tr>
+													<td>삼성</td>
+													<td>
+														<p><span>10개월 :</span> 1,2회차 고객부담, 잔여할부 수수료 면제/ 법인, 체크, 기프트 제외</p>
+														<p><span>11개월 :</span> 1,2,3회차 고객부담, 잔여할부 수수료 면제/ 법인, 체크, 기프트 제외</p>
+														<p class="p-s-caption">(의약품 결제 및 일부업종 제외)</p>
+													</td>
+												</tr>
+												</tbody>
+											</table>
+										</div>
+
+										<div class="event-note">
+											<ul>
+												<!--<li><span>●</span> 기간:2019년 4월 31일</li>-->
+												<li><span>●</span> 공공기간 및 오프라인 제외(비즈페이나우 무이자 적용)/카드사 사정에 따라 변경될 수 있습니다.</li>
+												<li><span>●</span> 법인/개인사업자 기업카드/체크/기프트/선불/하이브리드/은행계열 카드 제외</li>
+												<li><span>●</span> 결제창에 '무' 표시가 되어 있어도 제외카드는 무이자할부가 적용되지 않습니다.</li>
+												<li><span>●</span> 직가맹점, 상점부담 무이자 가맹점, 특별제휴가맹점, 전용가맹점 제외</li>
+												<li><span>●</span> 무이자건은 포인트/마일리지 적립/할인서비스 등 다른 혜택과 중복 적용되지 않습니다.</li>
+												<li><span>●</span> 전 카드사 지방세 납부 무이자 제외</li>
+												<li>*하나카드 무이자 제외 업종:의약품, 통신, 방문판매, 공공기관, 상품권, 보험(여행자보험은 적용대상)</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</body>
+						</html>
+					</div>
+				</div>
+			</div>
+		</section> <!-- //detail-product-area -->
+
+		<section class="rent-info-area">
+			<h2 class="sec-caption">렌터카 정보</h2>
+
+			<!-- 1103 현대캐피탈 추가 -->
+			<section class="hd-capital">
+				<h2>현대캐피탈 EV 충전카드 안내</h2>
+				<div class="hd-article-wrap">
+					<ul>
+						<li>· 현대캐피탈 EV 충전카드 하나로 제주도 내 모든 충전기를 자유롭게 이용가능</li>
+						<li>· 렌터카 예약완료 후 발송되는 전용 URL 통해 회원가입 시 즉시 이용 가능한 충전 포인트 지급 (3,000P)</li>
+					</ul>
+				</div>
+				<div class="ev-select">
+					<ul>
+						<li class="procedure">
+							<input type="radio" name="area" id="app" class="application" checked="checked">
+							<label for="app">신청</label>
+						</li>
+						<li>
+							<input type="radio" name="area" id="notapp" class="Not-applied" >
+							<label for="notapp">미신청</label>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- 현대캐피탈 EV 충전카드 이용안내 -->
+			<div id="application_popup" class="comm-layer-popup application-popup">
+				<div class="content-wrap">
+					<div class="content">
+						<div class="head">
+							<div class="head_detail">
+								<h3 class="title">현대캐피탈 EV 충전카드 이용안내</h3>
+								<button class="popup_close" type="button" onclick="close_popup('#application_popup');">
+									<img src="/images/mw/icon/close/faq_close.png" alt="닫기" onclick="">
+								</button>
+							</div>
+							<div class="main">
+								<div>
+									<ul class="list-disc type-B">
+										<li>1. 현대캐피탈 EV 충전카드 ‘신청’ 선택</li>
+										<li>2. 렌터카 예약을 완료하고, 발송되는 링크를 통해 회원 가입</li>
+										<li>3. 제주공항 도착 후 1층 제주관광협회 종합안내센터에서 카드 수령</li>
+										<li>4. 카드 사용 등록하고 제주도 내 모든 충전기를 자유롭게 이용(등록 방법 별도 안내 예정)</li>
+										<li>* 한 번 사용 등록한 충전카드는 다음 제주 방문 때 또 다시 사용가능</li>
+									</ul>
+								</div>
+								유의사항
+								<div>
+									<ul class="list-disc type-B">
+										<li>- 현대캐피탈 EV 충전카드는 현대캐피탈과 제휴한 충전 사업자를 통해 제공됩니다.</li>
+										<li>- 현대캐피탈 EV 충전카드는 서비스 제공업체의 책임하에 운영되므로 서비스와 관련된 모든 법적 책임은 해당 업체에 있습니다.</li>
+										<li>- 충전기 고장 등 서비스 이용 중에 발생하는 사항은 현대캐피탈과 무관함을 알려드립니다.</li>
+									</ul>
+								</div>
+								<div class="purchase-btn-group">
+									<button type="button" class="comm-btn" onclick="javascript:fn_RcInstantBuy();">확인</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!-- //1103 현대캐피탈 추가 -->
+
+			<section class="content-group-area">
+				<h3 class="title-type4">대여 기준</h3>
+				<div class="inline-typeA side-padding">
+					<dl>
+						<dt>나이 : </dt>
+						<dd>만 26세 이상</dd>
+					</dl>
+					<dl>
+						<dt>운전경력 : </dt>
+						<dd>1년 이상</dd>
+					</dl>
+					<dl>
+						<dt>면허종류 : </dt>
+						<dd>2종보통 이상</dd>
+					</dl>
+				</div>
+			</section> <!-- //content-group-area -->
+
+			<section class="content-group-area">
+				<div class="question-area">
+					<h3 class="title-type4">자차보험 안내
+						<button type="button" class="question" onclick="layer_popup('#question_memo');">
+							<img src="/images/mw/icon/question.png" alt="질문">
+						</button>
+					</h3>
+
+					<!-- 1114 자차보험 안내 레이어팝업 업데이트 -->
+					<div id="question_memo" class="comm-layer-popup">
+						<div class="content-wrap">
+							<div class="content">
+								<div class="head">
+									<h3 class="title">자차보험 안내</h3>
+									<button type="button" class="close"><img src="/images/mw/icon/close/dark-gray.png" onclick="itemSingleHide('.car_info_box1');" alt="닫기"></button>
+								</div>
+								<div class="rent-qna">
+									<!-- info -->
+									<div class="event-note">
+										<ul>
+											<li> <span class="tit">· 자차보험이란 :</span> 차량 사고 발생 시 대여한 렌터카 파손에 대하여 보장해주는 보험</li>
+											<li>* 세부 내용은 렌터카 업체마다 다를 수 있습니다. 차량 상세페이지 보험내용을 꼭 확인해주세요.</li>
+										</ul>
+									</div><!-- //info -->
+									<div class="car_insurance">
+										<!-- 일반보험 -->
+										<h1>일반보험</h1>
+										<div class="free-wrap">
+											<div class="allguide">
+												<table>
+													<colgroup>
+														<col style="width:33.3%">
+														<col style="width:33.3%">
+														<col style="width:33.3%">
+													</colgroup>
+													<thead>
+														<th>구분</th>
+														<th>일반자차</th>
+														<th>일반자차<span>(부분무제한)</span></th>
+													</thead>
+													<tbody>
+
+													<!-- 보상한도 -->
+													<tr>
+														<td class="aside_tit">
+															<button onclick="layer_popup('.car_info_box1');">
+																보상한도
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+															</button>
+														</td>
+														<div class="car_info_box_d car_info_box1 show">
+															<p class="info_artcle">
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+																<span>보상한도</span> : <br>보험으로 처리 가능한 사고비용의 <br>최대한도 비용</p>
+															<button>
+																<img src="/images/mw/icon/close/rcpopup_close.png" alt="닫기버튼" onclick="itemSingleHide('.car_info_box_d');">
+															</button>
+														</div>
+														<td>한도 내 보상</td>
+														<td>무제한</td>
+													</tr><!-- //보상한도 -->
+
+													<!-- 면책금 -->
+													<tr>
+														<td class="aside_tit">
+															<button onclick="layer_popup('.car_info_box2');">
+																면책금
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+															</button>
+														</td>
+														<div class="car_info_box_d car_info_box2 show">
+															<p class="info_artcle">
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+																<span>면책금</span> : <br>사고에 대한 책임을 면하기 위해 <br>지불 하는 돈
+															</p>
+															<button>
+																<img src="/images/mw/icon/close/rcpopup_close.png" alt="닫기버튼" onclick="itemSingleHide('.car_info_box_d');">
+															</button>
+														</div>
+														<td>한도 내 면제<br>(일부업체 발생)</td>
+														<td>면제</td>
+													</tr><!--//면책금-->
+
+													<!--휴차 보상료-->
+													<tr>
+														<td class="aside_tit">
+															<button onclick="layer_popup('.car_info_box3');">
+																휴차 보상료
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+															</button>
+														</td>
+														<div class="car_info_box_d car_info_box3 show">
+															<p class="info_artcle">
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+																<span>휴차 보상료</span> : <br>사고 발생 후 차량 수리기간 동안 <br>발생한 영업손실 비용</p>
+															<button>
+																<img src="/images/mw/icon/close/rcpopup_close.png" alt="닫기버튼" onclick="itemSingleHide('.car_info_box_d');">
+															</button>
+														</div>
+														<td>부담금 발생</td>
+														<td>부담금 발생</td>
+													</tr><!-- //휴차 보상료 -->
+
+													<!-- 단독 사고 -->
+													<tr>
+														<td class="aside_tit">
+															<button onclick="layer_popup('.car_info_box4');">
+																단독 사고
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+															</button>
+														</td>
+														<div class="car_info_box_d car_info_box4 show">
+															<p class="info_artcle">
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+																<span>단독사고</span> : <br>과실 유무와 상관없이 주·정차된 차량 및 <br>시설물을 접촉하거나 본인과실<br> 100% 사고인 경우</p>
+															<button>
+																<img src="/images/mw/icon/close/rcpopup_close.png" alt="닫기버튼" onclick="itemSingleHide('.car_info_box_d');">
+															</button>
+														</div>
+														<td>보장 안됨</td>
+														<td>보장</td>
+													</tr><!-- //단독사고 -->
+
+													<!--휠/타이어 -->
+													<tr>
+														<td class="aside_tit">
+															<button onclick="layer_popup('.car_info_box5');">
+																휠/타이어
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+															</button>
+														</td>
+														<div class="car_info_box_d car_info_box5 show">
+															<p class="info_artcle">
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+																<span>휠/타이어 보장</span> : <br>타이어, 휠 파손에 대한 수리비용</p>
+															<button>
+																<img src="/images/mw/icon/close/rcpopup_close.png" alt="닫기버튼" onclick="itemSingleHide('.car_info_box_d');">
+															</button>
+														</div>
+														<td>보장 안됨</td>
+														<td>보장</td>
+													</tr><!-- //휠/타이어 -->
+													</tbody>
+												</table>
+											</div>
+										</div><!-- //free-wrap --><!-- //일반보험 -->
+
+										<!-- 고급보험 -->
+										<h1>고급보험</h1>
+										<div class="free-wrap">
+											<div class="allguide">
+												<table>
+													<colgroup>
+														<col style="width:33.3%">
+														<col style="width:33.3%">
+														<col style="width:33.3%">
+													</colgroup>
+													<thead>
+														<th>구분</th>
+														<th>고급자차</th>
+														<th>고급자차<br>(전액무제한)</th>
+													</thead>
+													<tbody>
+													<!-- 보상한도 -->
+													<tr>
+														<td class="aside_tit">
+															<button onclick="layer_popup('.car_info_box6');">
+																보상한도
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+															</button>
+														</td>
+														<div class="car_info_box_d car_info_box6 show">
+															<p class="info_artcle">
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+																<span>보상한도</span> : <br>보험으로 처리 가능한 사고비용의<br> 최대한도 비용</p>
+															<button>
+																<img src="/images/mw/icon/close/rcpopup_close.png" alt="닫기버튼" onclick="itemSingleHide('.car_info_box_d');">
+															</button>
+														</div>
+														<td>한도 내 보상</td>
+														<td>무제한</td>
+													</tr><!-- //보상한도 -->
+
+													<!-- 면책금 -->
+													<tr>
+														<td class="aside_tit">
+															<button onclick="layer_popup('.car_info_box7');">
+																면책금
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+															</button>
+														</td>
+														<div class="car_info_box_d car_info_box7 show">
+															<p class="info_artcle">
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+																<span>면책금</span> : <br>사고에 대한 책임을 면하기 위해 <br>지불 하는 돈</p>
+															<button>
+																<img src="/images/mw/icon/close/rcpopup_close.png" alt="닫기버튼" onclick="itemSingleHide('.car_info_box_d');">
+															</button>
+														</div>
+														<td>한도 내 면제<br>(일부업체 발생)</td>
+														<td>면제</td>
+													</tr><!--//면책금-->
+
+													<!--휴차 보상료-->
+													<tr>
+														<td class="aside_tit">
+															<button onclick="layer_popup('.car_info_box8');">
+																휴차 보상료
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+															</button>
+														</td>
+														<div class="car_info_box_d car_info_box8 show">
+															<p class="info_artcle">
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+																<span>휴차 보상료</span> : <br>사고 발생 후 차량 수리기간 동안 <br>발생한 영업손실 비용</p>
+															<button>
+																<img src="/images/mw/icon/close/rcpopup_close.png" alt="닫기버튼" onclick="itemSingleHide('.car_info_box_d');">
+															</button>
+														</div>
+														<td>한도 내 면제<br>(일부업체 발생)</td>
+														<td>면제</td>
+													</tr><!-- //휴차 보상료 -->
+
+													<!-- 단독 사고 -->
+													<tr>
+														<td class="aside_tit">
+															<button onclick="layer_popup('.car_info_box9');">
+																단독 사고
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+															</button>
+														</td>
+														<div class="car_info_box_d car_info_box9 show">
+															<p class="info_artcle">
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+																<span>단독사고</span> : <br>과실 유무와 상관없이 주·정차된 차량 및 <br>시설물을 접촉하거나 <br>본인과실 100% 사고인 경우</p>
+															<button>
+																<img src="/images/mw/icon/close/rcpopup_close.png" alt="닫기버튼" onclick="itemSingleHide('.car_info_box_d');">
+															</button>
+														</div>
+														<td>보장 안됨<br>(일부업체 보장)</td>
+														<td>보장</td>
+													</tr><!-- //단독사고 -->
+
+													<!--휠/타이어 -->
+													<tr>
+														<td class="aside_tit">
+															<button onclick="layer_popup('.car_info_box10');">
+																휠/타이어
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+															</button>
+														</td>
+														<div class="car_info_box_d car_info_box10 show">
+															<p class="info_artcle">
+																<img src="../../images/mw/icon/question_mark.png" alt="">
+																<span>휠/타이어 보장</span> : <br>타이어, 휠 파손에 대한 수리비용</p>
+															<button>
+																<img src="/images/mw/icon/close/rcpopup_close.png" alt="닫기버튼" onclick="itemSingleHide('.car_info_box_d');">
+															</button>
+														</div>
+														<td>보장 안됨</td>
+														<td>보장</td>
+													</tr><!-- //휠/타이어 -->
+													</tbody>
+												</table>
+											</div>
+										</div><!-- //free-wrap --><!-- //고급보험 -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> <!-- //1114 자차보험 안내 레이어팝업 업데이트 -->
+				</div>
+				<div class="side-padding">
+					<dl class="type-A">
+						<dt>자차포함 상품</dt>
+						<dd>본 상품은 <strong class="text-red"><u>자차 보험
+							(고급자차)
+							포함</u></strong>된 상품</dd>
+					</dl>
+				</div>
+				<h3 class="title-type4 margin-top50">보험요금 안내</h3>
+				<div class="type-body1 side-padding">
+					<dl class="type-A">
+						<dt>완전자차</dt>
+						<dd>
+							<div>
+								<strong>나이</strong> :
+								만 26세 이상
+							</div>
+							<div>
+								<strong>운전경력</strong> :
+								1년 이상
+							</div>
+							<div>
+								<strong>보상한도</strong> :
+								350만원
+							</div>
+							<div>
+								<strong>고객부담금</strong> :
+								초과시 차액부담
+							</div>
+						</dd>
+					</dl>
+				</div>
+			</section> <!-- //content-group-area -->
+		</section> <!-- //rent-info-area -->
+		<!-- //0221 change contents -->
+
+		<div class="nav-tabs2">
+		    <div class="menu-wrap">
+		        <ul id="scroll_tabs"  class="nav-menu">
+		            <li class="active"><a href="#tabs-info">상품설명</a></li>
+		            <li><a href="#tabs-cancel">취소/환불</a></li>
+		            <li><a href="#tabs-review">이용후기</a></li>
+		            <li><a href="#tabs-counsel">1:1문의</a></li>
+		        </ul>
+		    </div>
+
+		    <div id="tabs-info" class="tabPanel">
+		        <div class="text-groupA">
+					<dl class="inline">
+						<dt class="title-type3">연식</dt>
+						<dd class="type-body1">2015~2016년</dd>
+					</dl>
+					<dl class="inline">
+						<dt class="title-type3">변속기</dt>
+						<dd class="type-body1">오토</dd>
+					</dl>
+					<dl>
+
+						<!-- 1114 차량옵션 수정 -->
+						<dt class="title-type3">차량옵션</dt>
+						<dd class="type-body1">
+
+							<div class="text-info-typeA">
+						        <ul>
+						            <li class="off">애견동반</li>
+						            <li class="off">낚시용품지참</li>
+						            <li class="off">외국인 대여</li>
+						            <li class="on">군인 대여</li>
+						            <li class="off">금연차량</li>
+						            <li class="on">블랙박스</li>
+						            <li class="off">전방센서</li>
+						            <li class="off">후방센서</li>
+						            <li class="off">열선시트</li>
+						            <li class="off">통풍시트</li>
+						            <li class="on">스마트키</li>
+						            <li class="off">썬루프</li>
+									<li class="off">열선핸들</li>
+									<li class="off">후방카메라</li>
+									<li class="off">네비게이션</li>
+									<li class="on">블루투스</li>
+									<li class="off">전방충돌방지</li>
+									<li class="on">후측방경고등</li>
+									<li class="off">차선이탈방지</li>
+									<li class="off">크루즈컨트롤</li>
+									<li class="off">오토홀드</li>
+									<li class="off">HUD</li>
+									<li class="on">어라운드뷰</li>
+									<li class="off">4륜구동</li>
+						        </ul>
+						    </div>
+						</dd><!-- //1114 차량옵션 수정 -->
+					</dl>
+					<dl>
+						<dt class="title-type3">셔틀버스</dt>
+						<dd class="type-body1">
+							제주공항 도착 게이트 5번 건너편 (구)렌트카하우스
+							<strong class="text-red">1구역 8번</strong>
+						</dd>
+					</dl>
+					<div class="inline-typeA margin-top15">
+						<dl>
+							<dt>운행간격</dt>
+							<dd>20분~30분</dd>
+						</dl>
+						<dl>
+							<dt>소요시간</dt>
+							<dd>10분~15분</dd>
+						</dl>
+					</div>
+					<dl>
+						<dt class="title-type3">차량 인수/반납 위치</dt>
+						<dd class="type-body1">
+							<div class="map-area rent">
+								<!-- 기존코드 동일 -->
+							</div>
+							<div class="map-text-info">
+								<p>상호 : 씨유렌트카</p>
+								<p>주소 : 제주시 아연로 33</p>
+								<p>전화번호 : 064-784-2333</p>
+							</div>
+						</dd>
+					</dl>
+					<!-- 전기차인 경우 노출 -->
+					<dl>
+						<dt class="title-type3">전기차 충전소 안내</dt>
+						<dd class="type-body1">
+							<h4 class="title-type5">환경부 전기차 충전소 홈페이지</h4>
+							<div class="type-body1 depth">
+								<a href="http://www.ev.or.kr/portalmonitor" target="_blank" class="link">http://www.ev.or.kr/portalmonitor</a>
+							</div>
+
+							<h4 class="title-type5">모바일 앱 스토어</h4>
+							<div class="type-body1 depth rent-app">
+								<div class="icon">
+									<img src="../../images/mw/rent/app-electric.png" alt="제주충전소앱">
+								</div>
+								<div class="text">
+									<p>‘제주 전기차 충전소’ 검색해 보세요.</p>
+									<div class="app">
+										<a href="">
+											<span><img src="../../images/mw/rent/app-google.png" alt=""> 안드로이드</span>
+										</a>
+										<a href="">
+											<span><img src="../../images/mw/rent/app-ios.png" alt=""> iOS</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</dd>
+					</dl>
+					<!-- //전기차인 경우 노출 -->
+				</div> <!-- //text-groupA -->
+		    </div> <!-- //tabs-info -->
+
+		    <div id="tabs-cancel" class="tabPanel">
+		        <div class="text-groupA">
+					<dl>
+						<dt class="title-type3">취소/환불</dt>
+						<dd class="type-body1">
+							예약 전 일 16:00 까지 100% 까지 환불 가능<br>
+							전 일 16:00시 부터 당일 환불 절대불가.<br>
+							유효기간 내 사용<br>
+						</dd>
+					</dl>
+				</div> <!-- //text-groupA -->
+		    </div> <!-- //tabs-cancel -->
+
+		    <!-- 이용후기 -->
+		    <div id="tabs-review" class="tabPanel">
+		    	<div class="text-groupA">
+			        <!-- 기존코드 동일 -->
+			        <div id="review" class="tab-con con-review">
+					    <div class="con-box review-form">
+					        <dl>
+					            <dt>상품에 대한 이용후기를 작성해주세요.</dt>
+					            <dd>상품평은 구매한 고객님마 작성이 가능하십니다.<br>
+					                상품 문의는 1:1문의 게시판, 취소 및 환불은 마이페이지를 이용해주세요</dd>
+					        </dl>
+					        <p><a href="#" class="btn btn-submit">이용후기 작성</a></p>
+					    </div>
+					    <div class="review-list">
+					        <!--변경-->
+					        <dl>
+					            <dt>
+					                <strong>제목출력 제목출력제목출력</strong>
+					                <span class="like">
+					                    <img src="../../images/mw/sub_common/h_icon.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <em>1/5</em>
+					                </span>
+					                <div class="bottom">
+					                    <p class="user"><span class="user-id">tes*****</span> <span class="date">2015-11-25 14:19:16</span></p>
+					                </div>
+					            </dt>
+					            <dd class="memo-wrap">
+
+					                <!-- 사진등록 추가 -->
+					                <div class="review-photo-list">
+					                    <ul>
+					                        <li><img src="../../images/mw/sub_common/p_img.png" alt="review"></li>
+					                        <li><img src="../../images/mw/sub_common/p_img.png" alt="review"></li>
+					                    </ul>
+					                    <div class="memo">내용출력 내용출력 내용출력 내용출력 내용출력 내용출력 내용출력 내용출력 내용출력</div>
+					                </div>
+
+					                <!-- 수정버튼 -->
+					                <!--글쓴 사람만 나오게 -->
+					                <p class="editBT">
+					                    <a href="" class="btn btn-reply">수정</a>
+					                    <a href="" class="btn btn-reply">삭제</a>
+					                </p>
+
+					                <!--답글-->
+					                <ul class="comment-wrap">
+					                    <li>
+					                        <div class="comment-user"><span class="comment-id">tes*****</span> <span class="comment-date">2015-12-01 17:56:43</span></div>
+					                        <div class="comment-memo">
+					                            답글출력 답글출력답글출력답글출력 답글출력
+					                            <!-- 답글수정 버튼 -->
+					                            <p class="editBT">
+					                                <a href="" class="btn btn-reply">수정</a>
+					                                <a href="" class="btn btn-reply">삭제</a>
+					                            </p>
+					                            <!--답글폼-->
+					                            <form class="int-write" action="" method="post">
+					                                <textarea name="textarea" cols="45" rows="5" class="focus-value" placeholder="내용 입력"></textarea>
+					                                <p><a href="#" class="btn btn-submit">등록</a></p>
+					                            </form>
+					                        </div>
+					                    </li>
+					                    <li>
+					                        <div class="comment-user"><span class="comment-id">tes*****</span> <span class="comment-date">2015-12-01 17:56:43</span></div>
+					                        <div class="comment-memo">
+					                            답글출력 답글출력답글출력답글출력 답글출력 답글출력 답글출력답글출력답글출력 답글출력
+					                            <!-- 답글수정 버튼 -->
+					                        </div>
+					                    </li>
+					                    <li>
+					                        <div class="comment-user"><span class="comment-id">tes*****</span> <span class="comment-date">2015-12-01 17:56:43</span></div>
+					                        <div class="comment-memo">
+					                            답글출력 답글출력답글출력답글출력 답글출력 답글출력 답글출력답글출력답글출력 답글출력
+					                            <!-- 답글수정 버튼 -->
+					                        </div>
+					                    </li>
+					                    <!-- 답글버튼 -->
+					                    <p class="comment-write">
+					                        <a href="" class="btn btn-reply">답글달기</a>
+					                        <!-- <a href="#" class="btn btn-reply">답글보기 <img src="../../images/mw/sub_common/re_arrow.png" width="7" alt=""></a> -->
+					                    </p>
+					                </ul>
+					            </dd>
+					        </dl>
+					        <dl>
+					            <dt>
+					                <strong>제목출력 제목출력제목출력</strong>
+					                <span class="like">
+					                    <img src="../../images/mw/sub_common/h_icon.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <em>1/5</em>
+					                </span>
+					                <div class="bottom">
+					                    <p class="user"><span class="user-id">tes*****</span> <span class="date">2015-11-25 14:19:16</span></p>
+					                </div>
+					            </dt>
+					            <dd class="memo-wrap">
+
+					                <!-- 사진등록 추가 -->
+					                <div class="photo-comment">
+					                    <div class="area-photo">
+					                        <div class="photo-wrap">
+					                            <p class="photo" onclick="review_photo();"><img src="../../images/mw/sub_common/p_img.png" alt="review"></p>
+					                        </div>
+					                    </div>
+					                    <div class="area-text">
+					                        <p class="memo">내용출력 내용출력내용출력 내용출력내용출력내용출력내용출력 내용출력내용출력</p>
+					                    </div>
+					                </div>
+
+					                <!-- 수정버튼 -->
+					                <!--글쓴 사람만 나오게 -->
+					                <!--<p class="editBT">
+					                    <a href="" class="btn btn-reply">수정</a>
+					                    <a href="" class="btn btn-reply">삭제</a>
+					                </p>-->
+
+					                <!--답글-->
+					                <ul class="comment-wrap">
+					                    <li>
+					                        <div class="comment-user"><span class="comment-id">tes*****</span> <span class="comment-date">2015-12-01 17:56:43</span></div>
+					                        <div class="comment-memo">
+					                            답글출력 답글출력답글출력답글출력 답글출력
+					                            <!-- 답글수정 버튼 -->
+					                            <p class="editBT">
+					                                <a href="" class="btn btn-reply">수정</a>
+					                                <a href="" class="btn btn-reply">삭제</a>
+					                            </p>
+					                            <!--답글폼-->
+					                            <form class="int-write" action="" method="post">
+					                                <textarea name="textarea" cols="45" rows="5" class="focus-value" placeholder="내용 입력"></textarea>
+					                                <p><a href="#" class="btn btn-submit">등록</a></p>
+					                            </form>
+					                        </div>
+					                    </li>
+					                    <li>
+					                        <div class="comment-user"><span class="comment-id">tes*****</span> <span class="comment-date">2015-12-01 17:56:43</span></div>
+					                        <div class="comment-memo">
+					                            답글출력 답글출력답글출력답글출력 답글출력 답글출력 답글출력답글출력답글출력 답글출력
+					                            <!-- 답글수정 버튼 -->
+					                        </div>
+					                    </li>
+					                    <li>
+					                        <div class="comment-user"><span class="comment-id">tes*****</span> <span class="comment-date">2015-12-01 17:56:43</span></div>
+					                        <div class="comment-memo">
+					                            답글출력 답글출력답글출력답글출력 답글출력 답글출력 답글출력답글출력답글출력 답글출력
+					                            <!-- 답글수정 버튼 -->
+					                        </div>
+					                    </li>
+					                    <!-- 답글버튼 -->
+					                    <p class="comment-write">
+					                        <a href="" class="btn btn-reply">답글달기</a>
+					                        <!-- <a href="#" class="btn btn-reply">답글보기 <img src="../../images/mw/sub_common/re_arrow.png" width="7" alt=""></a> -->
+					                    </p>
+					                </ul>
+					            </dd>
+					        </dl>
+					        <!--//변경-->
+					    </div> <!-- //review-list -->
+
+					    <div class="paging-wrap">
+						    <a href="" class="mobile">더보기 15/20</a>
+						</div>
+					</div> <!-- //#review -->
+				</div>
+		    </div> <!-- //tabs-review -->
+
+		    <!-- 1:1문의 -->
+		    <div id="tabs-counsel" class="tabPanel">
+		        <div class="text-groupA">
+		        	<!-- 기존코드 동일 -->
+		        	<div id="counsel" class="tab-con con-counsel">
+					    <div class="con-box counsel-form">
+					        <dl>
+					            <dt>상품에 대한 궁금한 점 남겨주시면 답변드립니다.</dt>
+					            <dd>구매한 상품의 취소/환불은 마이페이지를 이용해 주세요.<br>
+					                상품과 관계없는 광고, 욕설, 비방 등의 글은 사전 예고 없이 삭제처리 됩니다.</dd>
+					        </dl>
+					        <form action="" method="post">
+					            <input type="text" value="" class="title-int" placeholder="제목을 입력해 주세요">
+					            <textarea name="textarea" id="textarea" cols="45" rows="5" class="focus-value" placeholder="궁금한 점을 남겨주세요"></textarea>
+					            <p><a href="#" class="btn btn-submit">등록</a></p>
+					        </form>
+					    </div>
+					    <div class="counsel-list">
+					        <dl>
+					            <dt class="area">
+					                <div class="icon"><em>Q</em></div>
+					                <div class="text">
+					                    <p class="user"><span class="user-id">tes*****</span> <span class="user-date">2015-09-18 14:15:07</span></p>
+					                    <p class="title">제목 출력 제목 출력제목 출력제목 출력제목 출력제목 출력 제목 출력 제목 출력</p>
+					                    <p class="memo">항공취소 수수료는 어떻게 되나요?</p>
+					                    <!--수정-->
+					                    <p class="editBT">
+					                        <a href="" class="btn btn-reply">수정</a>
+					                        <a href="" class="btn btn-reply">삭제</a>
+					                    </p>
+					                </div>
+					            </dt>
+					            <dd class="area">
+					                <div class="icon"><em>A</em></div>
+					                <div class="text">
+					                    <p class="user"><span class="user-id">tes*****</span> <span class="user-date">2015-09-18 14:15:07</span></p>
+					                    <p class="title">제목 출력 제목 출력제목 출력제목 출력제목 출력제목 출력 제목 출력 제목 출력</p>
+					                    <p class="memo">항공취소 수수료는 어떻게 되나요?</p>
+					                </div>
+					            </dd>
+					        </dl>
+					    </div> <!-- //counsel-list -->
+
+					    <div class="paging-wrap">
+						    <a href="" class="mobile">더보기 15/20</a>
+						</div>
+					</div> <!-- //counsel -->
+		        </div>
+		    </div> <!-- //tabs-counsel -->
+		</div>
+
+		<section class="recommend-product">
+			<h2 class="sec-caption">추천 상품</h2>
+
+			<div class="recommend-group">
+				<div class="title-side-area">
+					<div class="l-area">
+						<h3 class="title-type2">추천 렌터카</h3>
+					</div>
+					<div class="r-area text">
+						<a href="rent-detail-all.html">씨유렌터카 전체보기</a>
+					</div>
+				</div>
+
+				<div class="promotion-content">
+		            <div id="promotion_product" class="swiper-container">
+		                <ul class="swiper-wrapper">
+		                    <li class="swiper-slide">
+		                        <div class="photo">
+		                            <a href="">
+		                                <img class="product" src="../../images/mw/other/rent-01.png" alt="product">
+		                            </a>
+		                        </div>
+		                        <div class="text">
+								    <div class="title">K5</div>
+								    <div class="info">
+								        <dl>
+								            <dt class="text-red">탐나오가</dt>
+								            <dd>
+								                <div class="price">
+								                    <del>999,000원</del>
+								                    <strong>999,000원~</strong>
+								                </div>
+								            </dd>
+								        </dl>
+								        <div class="like">
+								            <a href="javascript:void(0)">
+								                <img src="../../images/mw/icon/product_like_on.png" alt="찜하기">
+								            </a>
+								        </div>
+								    </div>
+								</div>
+		                    </li>
+		                    <li class="swiper-slide">
+		                        <div class="photo">
+		                            <a href="">
+		                                <img class="product" src="../../images/web/other/product_01.jpg" alt="product">
+		                            </a>
+		                        </div>
+		                        <div class="text">
+								    <div class="title">예촌민박</div>
+								    <div class="info">
+								        <dl>
+								            <dt class="text-red">탐나오가</dt>
+								            <dd>
+								                <div class="price">
+								                    <del>110,000원</del>
+								                    <strong>49,000원~</strong>
+								                </div>
+								            </dd>
+								        </dl>
+								        <div class="like">
+								            <a href="javascript:void(0)">
+								                <img src="../../images/mw/icon/product_like_off.png" alt="찜하기">
+								            </a>
+								        </div>
+								    </div>
+								</div>
+		                    </li>
+		                    <li class="swiper-slide">
+		                        <div class="photo">
+		                            <a href="">
+		                                <img class="product" src="../../images/web/other/product_01.jpg" alt="product">
+		                            </a>
+		                        </div>
+		                        <div class="text">
+								    <div class="title">예촌민박</div>
+								    <div class="info">
+								        <dl>
+								            <dt class="text-red">탐나오가</dt>
+								            <dd>
+								                <div class="price">
+								                    <del>110,000원</del>
+								                    <strong>49,000원~</strong>
+								                </div>
+								            </dd>
+								        </dl>
+								        <div class="like">
+								            <a href="javascript:void(0)">
+								                <img src="../../images/mw/icon/product_like_off.png" alt="찜하기">
+								            </a>
+								        </div>
+								    </div>
+								</div>
+		                    </li>
+		                </ul>
+		            </div>
+		        </div>
+			</div> <!-- //recommend-group -->
+		</section> <!-- //recommend-product -->
+
+		<section class="recommend-product margin-top0">
+			<h2 class="sec-caption">추천 상품</h2>
+
+			<div class="recommend-group">
+				<div class="title-side-area">
+					<div class="l-area">
+						<h3 class="title-type2">유모차/카시트</h3>
+					</div>
+					<div class="r-area text">
+						<a href="rent-list-seat.html">전체보기</a>
+					</div>
+				</div>
+
+				<div class="promotion-content">
+		            <div id="promotion_product2" class="swiper-container">
+		                <ul class="swiper-wrapper">
+		                    <li class="swiper-slide">
+		                        <div class="photo">
+		                            <a href="">
+		                                <img class="product" src="../../images/mw/other/carseat.jpg" alt="product">
+		                            </a>
+		                        </div>
+		                        <div class="text">
+								    <div class="title">조이스핀 360</div>
+								    <div class="info">
+								        <dl>
+								            <dt class="text-red">탐나오가</dt>
+								            <dd>
+								                <div class="price">
+								                    <strong>999,000원~</strong>
+								                </div>
+								            </dd>
+								        </dl>
+								        <div class="like">
+								            <a href="javascript:void(0)">
+								                <img src="../../images/mw/icon/product_like_on.png" alt="찜하기">
+								            </a>
+								        </div>
+								    </div>
+								</div>
+		                    </li>
+		                    <li class="swiper-slide">
+		                        <div class="photo">
+		                            <a href="">
+		                                <img class="product" src="../../images/web/other/product_01.jpg" alt="product">
+		                            </a>
+		                        </div>
+		                        <div class="text">
+								    <div class="title">예촌민박</div>
+								    <div class="info">
+								        <dl>
+								            <dt class="text-red">탐나오가</dt>
+								            <dd>
+								                <div class="price">
+								                    <strong>49,000원~</strong>
+								                </div>
+								            </dd>
+								        </dl>
+								        <div class="like">
+								            <a href="javascript:void(0)">
+								                <img src="../../images/mw/icon/product_like_off.png" alt="찜하기">
+								            </a>
+								        </div>
+								    </div>
+								</div>
+		                    </li>
+		                    <li class="swiper-slide">
+		                        <div class="photo">
+		                            <a href="">
+		                                <img class="product" src="../../images/web/other/product_01.jpg" alt="product">
+		                            </a>
+		                        </div>
+		                        <div class="text">
+								    <div class="title">예촌민박</div>
+								    <div class="info">
+								        <dl>
+								            <dt class="text-red">탐나오가</dt>
+								            <dd>
+								                <div class="price">
+								                    <strong>49,000원~</strong>
+								                </div>
+								            </dd>
+								        </dl>
+								        <div class="like">
+								            <a href="javascript:void(0)">
+								                <img src="../../images/mw/icon/product_like_off.png" alt="찜하기">
+								            </a>
+								        </div>
+								    </div>
+								</div>
+		                    </li>
+		                </ul>
+		            </div>
+		        </div>
+			</div> <!-- //recommend-group -->
+		</section> <!-- //recommend-product -->
+
+		<!-- 구매하기 -->
+		<div class="purchase-area">
+			<div class="basic">
+				<div class="icon-area">
+					<a href="javascript:void(0)" onclick="itemSingleShow('#sns_popup');">
+						<img src="../../images/mw/icon/sns.png" alt="sns">
+					</a>
+					<a href="javascript:void(0)">
+						<img src="../../images/mw/icon/product_like2_off.png" alt="찜하기">
+					</a>
+				</div>
+				<div class="text-area">
+					<button type="button" class="purchase-btn" onclick="itemSingleShow('#purchase_popup');">구매하기</button>
+				</div>
+			</div>
+
+			<div id="purchase_popup" class="purchase-popup rent">
+				<div class="top-area">
+					<strong>구매 전 확인 필수</strong>
+					<button type="button" class="close" onclick="itemSingleHide('#purchase_popup');">
+						<img src="../../images/mw/icon/close/white.png" alt="닫기">
+					</button>
+				</div>
+
+				<div class="middle-area">
+					<ul class="list-disc type-B">
+					    <li>
+					    	<strong class="title">대여기간</strong>
+					    	<div>2017년 9월 10일 10시 ~ 2017년 9월 15일 17시</div>
+					    </li>
+					    <li>
+					    	<strong class="title">총 대여시간</strong>
+					    	<div>34시간</div>
+					    </li>
+					    <li>
+					    	<strong class="title">자차보험</strong>
+					    	<div>
+					    		<p>자차필수 상품</p>
+								<p>(<span class="text-yellow">인수현장</span>에서 <span class="text-yellow">자차보험</span>를 <span class="text-yellow">꼭 결제</span>해야 하는 상품)</p>
+								<p>자차보험료는 1일 기준</p>
+							</div>
+					    </li>
+					    <li>
+					    	<strong class="title">취소/환불</strong>
+					    	<div>24시간 이전 취소 시 전액환불 / 당일환불 불가</div>
+					    </li>
+					</ul>
+					<div class="type-body3">
+						<p>08:00~20:00 외 차량 대여 / 반납은 일부 업체만
+						가능하며, 추가요금이 발생하거나 완전자차 보험가입이
+						필요할 수 있습니다.</p>
+						<p>기타 문의사항은 해당업체로 연락바랍니다.</p>
+						<p>XX렌터카 : 064-741-8760</p>
+					</div>
+				</div> <!-- //middle-area -->
+
+				<div class="bottom-area">
+					<div class="purchase-btn-group">
+						<button type="button" class="comm-btn gray width40">장바구니</button>
+						<button type="button" class="comm-btn red width60">바로구매</button>
+					</div>
+				</div>
+			</div>
+		</div> <!-- //purchase-area -->
+
+		<!-- SNS 링크 -->
+		<div id="sns_popup" class="sns-popup">
+		    <button type="button" class="close" onclick="itemSingleHide('#sns_popup');"><img src="../../images/mw/icon/close/white.png" alt="닫기"></button>
+		    <div class="sns-area">
+		        <ul>
+		            <li>
+		                <a href="">
+		                    <img src="../../images/mw/icon/sns/kakaotalk.png" alt="카카오톡">
+		                    <span>카카오톡</span>
+		                </a>
+		            </li>
+		            <li>
+		                <a href="">
+		                    <img src="../../images/mw/icon/sns/facebook.png" alt="페이스북">
+		                    <span>페이스북</span>
+		                </a>
+		            </li>
+		            <li>
+		                <a href="">
+		                    <img src="../../images/mw/icon/sns/kakaostory.png" alt="카카오 스토리">
+		                    <span>카카오 스토리</span>
+		                </a>
+		            </li>
+		            <li>
+		                <a href="">
+		                    <img src="../../images/mw/icon/sns/band.png" alt="네이버밴드">
+		                    <span>네이버 밴드</span>
+		                </a>
+		            </li>
+		            <li>
+		                <a href="">
+		                    <img src="../../images/mw/icon/sns/line.png" alt="라인">
+		                    <span>라인</span>
+		                </a>
+		            </li>
+		            <li>
+		                <a href="">
+		                    <img src="../../images/mw/icon/sns/url.png" alt="URL 복사">
+		                    <span>URL 복사</span>
+		                </a>
+		            </li>
+		        </ul>
+		    </div>
+		</div> <!-- //sns-popup -->
+	</div> <!-- //mw-detail-area -->
+</main>
+
+<footer id="footer">
+
+</footer>
+
+</div> <!-- //wrap -->
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->	
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="../css/web/common.css">
+	<link rel="stylesheet" href="../css/web/style.css">
+    <!-- script -->
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/jquery-ui.js"></script>    
+    <script src="../js/html_common.js"></script>
+    <script src="../js/html_style.js"></script>
+</head>
+<body>
+    <header id="header">
+
+        <div id="topBanner">
+            <div class="Fasten">
+                <a class="img-btn" onclick="show_popup('.comm-fullPopup2');"><img src="../images/web/comm/top_banner.jpg" alt="상단배너"></a>
+                <a class="close"><img id="tbClose" src="../images/web/comm/close.png" alt="닫기"></a>
+
+                <div class="comm-fullPopup2">
+                    <a class="option-close" onclick="close_popup('.comm-fullPopup2');"><img src="../images/web/comm/view_close.png" alt="닫기"></a>
+                    <img src="../images/web/comm/top_banner_view.png" alt="배너 상세">
+                </div>
+            </div>
+        </div>
+
+        <div class="Fasten">
+            <div class="topSearch">
+                <h1 class="logo"><a href=""><img src="../images/web/comm/logo.gif" alt="탐나오"></a></h1>
+                <!-- 검색 -->
+                <p class="searchBox"><input id="search" type="text"><button id="searBT"></button></p>
+                <!-- 서브메뉴 -->
+                <nav id="topMenu">
+                    <a href="">★즐겨찾기</a>
+                    <a href="">로그인</a>
+                    <a href="">회원가입</a>
+                    <a href="">마이페이지</a>
+                    <a href="">고객센터</a>
+                </nav>
+            </div>
+        </div>
+        <!-- main menu -->
+        <nav id="mainMenu">
+            <div class="Fasten">
+                <div class="menuBT"><a id="menuBT"><img src="../images/web/comm/menu.gif" alt="메뉴"></a></div>
+                <div class="subMenu">11<br>11<br>11<br>11<br></div>
+                <ul class="mainMenu">
+                    <li><a class="select" href="air-main.html">항공</a></li>
+                    <li><a href="hotel-list.html">숙박</a></li>
+                    <li><a href="rent-list.html">렌터카</a></li>
+                    <li><a href="">관광지할일쿠폰</a></li>
+                    <li><a href="">레져/음식/뷰티</a></li>
+                    <li><a href="">카텔</a></li>
+                    <li><a href="">골프패키지</a></li>
+                    <li><a href="">버스관광</a></li>
+                    <li><a href="">특가이벤트</a></li>
+                    <li><a href="">여행경비산출</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- //main menu -->
+    </header>
+
+	<main id="main">
+	    <div class="mapLocation"> <!--index page에서는 삭제-->
+            <div class="Fasten">
+                <span>홈</span> <span class="gt">&gt;</span>
+                <span>실시간 예약</span> <span class="gt">&gt;</span>
+                <span>실시간 숙박</span> <span class="gt">&gt;</span>
+                <span>숙박상세</span>
+            </div>
+        </div>
+        <!-- quick banner -->
+        <div class="Fasten">
+            <aside id="leftAside">
+                <ul>
+                    <li><a href=""><img src="../images/web/leftBanner/01.jpg" alt=""></a></li>
+                    <li><a href=""><img src="../images/web/leftBanner/02.jpg" alt=""></a></li>
+                    <li><a href=""><img src="../images/web/leftBanner/03.jpg" alt=""></a></li>
+                </ul>
+            </aside>
+        </div>
+        <!-- //quick banner -->
+        <div class="subContainer">
+            <div class="subHead"></div>
+            <div class="subContents">
+                <!-- new contents -->
+                <div class="user-login">
+                    <div class="bgWrap2">
+                        <div class="Fasten">
+                            <div class="member-title">
+                                <h2>로그인</h2>
+                            </div>
+                            <div class="login-ctWrap">
+                                <div class="lArea">
+                                    <div class="loginBox">
+
+                                        <div class="login-head">
+                                            <!--<p>비회원 예약시 탐나오쿠폰, 이벤트 참여 등 다양한 혜택을 받으실 수 없습니다.</p>-->
+                                            
+                                            <!--<img src="../images/web/sign/login_1.jpg" alt="회원 로그인">-->
+                                            <img src="../images/web/sign/login_2.jpg" alt="비회원 로그인">
+                                        </div>
+                                        
+                                        <div class="user-check">
+                                            <input id="memY" type="radio" name="memberChoice" checked><label for="memY">회원</label>
+                                            <input id="memN" type="radio" name="memberChoice"><label for="memN">비회원</label>
+                                        </div>
+                                        
+                                        <!--회원 로그인-->
+                                        <!--<div class="user-y">
+                                            <div class="login">
+                                                <table class="int-login">
+                                                    <tr>
+                                                        <th>아이디(이메일)</th>
+                                                        <td><input class="int" type="text"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>비밀번호</th>
+                                                        <td><input class="int pw" type="password"></td>
+                                                    </tr>
+                                                </table>
+                                                <button type="submit">로그인</button>
+                                            </div>
+
+                                            <div class="login-info">
+                                                <a href="">아이디 찾기</a>
+                                                <a href="">비밀번호 찾기</a>
+                                                <a href="">회원가입</a>
+                                            </div>
+                                        </div>-->
+                                        
+                                        <!--비회원 로그인-->
+                                        <div class="user-n">
+                                            <div class="login">
+                                                <table class="int-login">
+                                                    <tr>
+                                                        <th>이름</th>
+                                                        <td><input class="int" type="text"></td>
+                                                        <td class="bt"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>휴대폰</th>
+                                                        <td>
+                                                            <input class="int phone" type="text">
+                                                            <input class="int phone" type="text">
+                                                            <input class="int phone" type="text">
+                                                        </td>
+                                                        <td class="bt"><a href="" class="mcBT">인증</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>인증번호</th>
+                                                        <td><input class="int number" type="text"></td>
+                                                        <td class="bt"><a href="" class="mcBT">확인</a></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                        <!--비회원 구매 로그인-->
+                                        <!--<div class="user-n2">
+                                            <div class="login">
+                                                <ul class="info">
+                                                    <li>비회원으로 구매서비스를 이용하시려면 <strong>비회원 구매 약관동의</strong>를 하셔야 합니다.</li>
+                                                    <li><strong>다음 단계로 이동버튼</strong>을 클릭해 주십시오.</li>
+                                                </ul>
+                                                <p class="btn-wrap"><a href="">다음단계로 이동</a></p>
+                                            </div>
+                                        </div>-->
+                                        
+                                    </div>
+                                </div>
+                                <div class="rArea">
+                                    <div class="bestInfo">
+                                        <!--<h4 class="title"><img src="../images/web/icon/best.png" alt="best">베스트 인기차량</h4>-->
+                                    </div>
+                                    <!-- Slides Container -->
+                                    <div class="slideWrap">
+                                        <script src="../js/slideshow_dot.js"></script>
+                                        <script>
+                                            $(function() {
+                                                $("#demo3").webwidget_slideshow_dot({
+                                                    slideshow_window_width: '336',
+                                                    slideshow_window_height: '224',
+                                                    slideshow_title_color: '#fff',
+                                                    slideshow_foreColor: '#2993d8',
+                                                    directory: '../images/web/package/' //icon image
+                                                });
+                                            });
+                                        </script>
+                                        <div id="demo3" class="webwidget_slideshow_dot">
+                                            <ul>
+                                                <li>
+                                                    <a href="" data-icon="<p class='proName'>[광주↔제주] 아시아나+렌터카 4일</p><p class='price'>187,000<span>원</span></p>">
+                                                        <img src="../images/web/package/slider01.jpg" alt=""/>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" data-icon="<p class='proName'>[제주↔광주] 아시아나+렌터카 4일</p><p class='price'>20,000<span>원</span></p>">
+                                                        <img src="../images/web/package/slider01.jpg" alt=""/>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" data-icon="<p class='proName'>[제주↔광주] 아시아나+렌터카 4일</p><p class='price'>20,000<span>원</span></p>">
+                                                        <img src="../images/web/package/slider01.jpg" alt=""/>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" data-icon="<p class='proName'>[제주↔광주] 아시아나+렌터카 4일</p><p class='price'>20,000<span>원</span></p>">
+                                                        <img src="../images/web/package/slider01.jpg" alt=""/>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" data-icon="<p class='proName'>[제주↔광주] 아시아나+렌터카 4일</p><p class='price'>20,000<span>원</span></p>">
+                                                        <img src="../images/web/package/slider01.jpg" alt=""/>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div style="clear: both"></div>
+                                        </div>
+                                    </div> <!-- //slideWrap -->
+                                </div>
+                            </div> <!--//login-ctWrap-->
+                        </div>
+                    </div>
+                </div> <!-- //user-login -->
+                <!-- //new contents -->
+            </div> <!-- //subContents -->
+        </div> <!-- //subContainer -->
+	</main>
+	
+	<aside id="rightAside">
+        <div class="ctWrap">
+            <div class="login">
+                <h2>LOGIN</h2>
+                <p>반갑습니다.<br>로그인해주세요.</p>
+                <button id="sideLogin">로그인</button>
+            </div>
+            <!-- 상품 리스트 -->
+            <div class="product">
+                <ul class="list">
+                    <li><a href=""><img class="photo" src="../images/web/comm/product1.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                    <li><a href=""><img class="photo" src="../images/web/comm/product1.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                </ul>
+                <ul class="itemNav">
+                    <li>
+                        <span id="itemPrev"><a href=""><img src="../images/web/comm/itemPrev.gif" alt="이전"></a></span>
+                        <span id="number">1/1</span>
+                        <span id="itemNext"><a href=""><img src="../images/web/comm/itemNext.gif" alt="이전"></a></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="shoppingCart">
+                <h6>장바구니</h6>
+                <p>
+                    <img src="../images/web/comm/cart2.gif" alt="장바구니">
+                    <span>9</span>
+                </p>
+            </div>
+            <ul class="menuList">
+                <li><a href=""><img src="../images/web/comm/menulist1.gif" alt="맞춤견적">맞춤견적</a></li>
+                <li><a href=""><img src="../images/web/comm/menulist2.gif" alt="자주묻는질문">자주묻는질문</a></li>
+            </ul>
+	        <div id="floatingBT"><img src="../images/web/comm/side.gif" alt="side button"></div>
+        </div>        
+	</aside>
+
+    <footer id="footer">
+        <div class="Fasten">
+            <div class="top-wrap">
+                <a class="go-top" onclick="go_top();"><img src="../images/web/comm/top.gif" alt="맨위로"></a>
+            </div>
+        </div>
+
+        <div class="footMenu">
+            <div class="Fasten">
+                <span><a href="">회사소개</a></span>
+                <span><a href="">사업제휴</a></span>
+                <span><a href=""><strong>개인정보취급방침</strong></a></span>
+                <span><a href="">국내여행표준약관</a></span>
+                <span><a href="">전자상거래표준약관</a></span>
+                <span><a href="">이메일무단수집거부</a></span>
+                <!-- link site -->
+                <div class="footLink">
+                    <select id="site_family">
+                        <option value="" selected>패밀리사이트</option>
+                        <option value="">list1</option>
+                    </select>
+                    <select id="site_regard">
+                        <option value="" selected>관련사이트</option>
+                        <option value="">list1</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="Fasten">
+            <div class="copy">
+                제주특별자치도관광협회 | 대표 : 김영진 | 사업자 등록번호 : 616-82-04092 | 법인 등록번호 : 220121-0000107 | 통신판매업번호: 제2013-제주연동 0024호<br>
+                63122 제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층 | Tel)064-742-8861 | Fax) 064-742-8865<br>                
+                고객센터 : 1522-3454 I 개인정보관리책임자 : 김기현<br>                
+                Copyright 2016. 제주특별자치도관광협회 All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

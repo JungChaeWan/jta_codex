@@ -1,0 +1,87 @@
+@charset "utf-8";
+
+@import url(sub_goods.css);
+
+/* 입장권 */
+#subContent .form1 {float:left; width:100%;}
+#subContent .form1-1 span.cal {position:relative; float:left; display:block; width:30%; line-height:25px; margin-right:2%;}
+#subContent .form1-1 span.cal input {width:100%;}
+/*#subContent .form1-1 span.cal img {position:absolute; top:6px; right:8px;}*/
+#subContent .form1-1 select:nth-of-type(1) {float:left; width:30%;}
+#subContent .form1-1 select:last-child {float:right; width:36%;}
+
+
+
+
+/* --------------------------------------------------------- add ------------------------------------------------------------------ */
+/* 이메일로 받기 팝업 */
+.pop-seller > .ticket-mail {display: block; margin: 20px 10px 0 10px;}
+.ticket-mail table {width: 100%;}
+.ticket-mail table .full {width: 100%; height: 30px; padding: 5px; font-size:.8rem;}
+
+.pop-seller a.btn, #subContent button.btn {
+	display:inline-block; width:125px; height:37px;
+	padding:0; line-height:37px; font-size:1.2rem; font-weight:bold; text-align:center; margin: 0px 5px;
+}
+.pop-seller a.btn img, #subContent button.btn img {vertical-align:middle; margin-top:-2px;}
+.pop-seller a.btn1 {background:#FE434C; border: none; color:#FFF; border-radius: 7px; float: left; width: 45%;}
+.pop-seller a.btn2 {background:#FFF; border:1px solid #CCC; color:#777;}
+.pop-seller a.btn3 {background:#707070; border:0 none; color:#FFF;}
+.pop-seller a.btn4, #subContent button.btn4 {width:70px; background:#FE434C; border:1px solid #E5252E; color:#FFF;}
+.pop-seller a.btn5 {background:#fff; border:1px solid #353435; color:#353435; border-radius: 7px; float: right; width: 45%;}
+.pop-seller a.btn6 {width:70px; height:20px; line-height:20px; background:#ABABAB; border:1px solid #979797; color:#FFF;}
+.pop-seller h2 {font-size: 16px; font-weight: 700; padding: 6px 0 0 10px;}
+
+
+/* md's pick */
+.item-box.article-list {border: none; background: #fff; margin-bottom: 10px;}
+
+.article-list #md_list,
+.article-list #sale_list {height: 48px; overflow: hidden; background: #fff; border: 1px solid #e5e5e5;}
+.article-list > div:nth-child(2) {margin-top: -1px;}
+.article-list ul {}
+.article-list ul li {height: 48px;}
+.article-list ul li a {display: block; padding: 0 40px 0 29px;}
+
+.article-list ul li a span {display: inline-block; vertical-align: middle;}
+.article-list ul li a span.photo {width: 72px; height: 48px; overflow: hidden;}
+.article-list ul li a span.photo img {width: 100%;}
+.article-list ul li a span.text {
+	width: 64%; width: calc(100% - 82px); margin-left: 5px;
+	overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #2a1818; font-weight: 700;
+}
+
+.article-list .event-list,
+.article-list .sale-list {position: relative;}
+.article-list .fixed .icon {position: absolute; left: 0; top: 0; z-index: 2;}
+.article-list .fixed .icon img {height: 47px;}
+.article-list .fixed button {width: 42px; height: 48px; position: absolute; right: 0px; top: 0px; padding: 0; border: none; background: transparent; z-index: 9; outline: none;}
+.article-list .fixed button img {height: 23px;}
+
+/* ------------------------------------ responsive media query -------------------------------------- */
+
+/* mobile*/
+
+/* Phone Mini (iPhone 4, 5, 5s, SE) / Font Size */
+@media screen and (min-width: 320px) and (max-width: 360px) {
+
+	.pop-seller a.btn, #subContent button.btn{height: 42px; line-height: 42px;}
+
+}
+
+
+@media screen and (min-width: 360px) and (max-width: 415px){
+
+	.pop-seller a.btn1 {font-size:0.80rem;}
+	.pop-seller a.btn5 {font-size:0.80rem;}
+	.pop-seller a.btn, #subContent button.btn{height: 40px; line-height: 40px;}
+}
+
+/* iPhone 6 Plus / Font Size */
+@media screen and (min-width: 415px) {
+
+	.pop-seller a.btn1 {font-size:0.95rem;}
+	.pop-seller a.btn5 {font-size:0.95rem;}
+	table.commRow th{font-size:0.95rem;}
+	.pop-seller a.btn, #subContent button.btn{height: 45px; line-height: 45px;}
+}

@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="corpPnsReq">
+
+<resultMap id="CORP_PNSREQ_R_00" class="oss.corp.vo.CORP_PNSREQVO">
+    <result property="requestNum"   column="REQUEST_NUM" />
+    <result property="statusCd"     column="STATUS_CD" />
+    <result property="corpCd"       column="CORP_CD" />
+    <result property="corpCdNm"     column="CORP_CD_NM" />
+    <result property="corpNm"       column="CORP_NM" />
+    <result property="ceoNm"        column="CEO_NM" />
+    <result property="admNm"        column="ADM_NM" />
+    <result property="admTelnum"    column="ADM_TELNUM" />
+    <result property="admMobile"    column="ADM_MOBILE" />
+    <result property="frstRegDttm"  column="FRST_REG_DTTM" />
+    <result property="lastModDttm"  column="LAST_MOD_DTTM" />
+</resultMap>
+
+<resultMap id="CORP_PNSREQ_R_02" class="oss.corp.vo.CORP_PNSREQVO">
+    <result property="requestNum"   column="REQUEST_NUM" />
+    <result property="corpCd"       column="CORP_CD" />
+    <result property="frstRegDttm"  column="FRST_REG_DTTM" />
+    <result property="lastModDttm"  column="LAST_MOD_DTTM" />
+    <result property="coRegNum"     column="CO_REG_NUM" />
+    <result property="corpEmail"    column="CORP_EMAIL" />
+    <result property="statusCd"     column="STATUS_CD" />
+    <result property="hmpgAddr"     column="HMPG_ADDR" />
+    <result property="ceoTelNum"    column="CEO_TEL_NUM" />
+    <result property="rsvTelNum"    column="RSV_TEL_NUM" />
+    <result property="corpNm"       column="CORP_NM" />
+    <result property="ceoNm"        column="CEO_NM" />
+    <result property="addr"         column="ADDR" />
+    <result property="dtlAddr"      column="DTL_ADDR" />
+    <result property="shopNm"       column="SHOP_NM" />
+    <result property="corpType"     column="CORP_TYPE" />
+    <result property="faxNum"       column="FAX_NUM" />
+    <result property="branchNm"     column="BRANCH_NM" />
+    <result property="ceoBth"       column="CEO_BTH" />
+    <result property="bsncon"       column="BSNCON" />
+    <result property="bsntyp"       column="BSNTYP" />
+    <result property="bankNm"       column="BANK_NM" />
+    <result property="accNum"       column="ACC_NUM" />
+    <result property="depositor"    column="DEPOSITOR" />
+    <result property="admMemo"      column="ADM_MEMO" />
+    <result property="salePrdtList" column="SALE_PRDT_LIST" />
+    <result property="admNm"        column="ADM_NM" />
+    <result property="admDep"       column="ADM_DEP" />
+    <result property="admOfcpos"    column="ADM_OFCPOS" />
+    <result property="admMobile"    column="ADM_MOBILE" />
+    <result property="admTelnum"    column="ADM_TELNUM" />
+    <result property="admEmail"     column="ADM_EMAIL" />
+    <result property="frstRegId"    column="FRST_REG_ID" />
+    <result property="lastModId"    column="LAST_MOD_ID" />
+    <result property="confCorpId"   column="CONF_CORP_ID" />
+    <result property="tamnacardMngYn"   column="TAMNACARD_MNG_YN" />
+</resultMap>
+
+<resultMap id="CORP_PNSREQFILE_R_00" class="oss.corp.vo.CORP_PNSREQFILEVO">
+    <result property="requestNum"   column="REQUEST_NUM" />
+    <result property="fileNum"      column="FILE_NUM" />
+    <result property="savePath"     column="SAVE_PATH" />
+    <result property="realFileNm"   column="REAL_FILE_NM" />
+    <result property="saveFileNm"   column="SAVE_FILE_NM" />
+</resultMap>
+
+<resultMap id="CORP_PNSREQFILE_R_01" class="oss.etc.vo.FILEVO">
+    <result property="docId"        column="DOC_ID" />
+    <result property="fileNum"      column="FILE_NUM" />
+    <result property="savePath"     column="SAVE_PATH" />
+    <result property="saveFileNm"   column="SAVE_FILE_NM" />
+    <result property="realFileNm"   column="REAL_FILE_NM" />
+    <result property="docDiv"       column="DOC_DIV" />
+    <result property="docNm"        column="DOC_NM" />
+    <result property="regDttm"      column="REG_DTTM" />
+</resultMap>
+
+<select id="CORP_PNSREQ_S_00" resultMap="CORP_PNSREQ_R_00">
+SELECT REQUEST_NUM
+    , STATUS_CD
+    , CORP_CD
+    , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = CORP_CD) AS CORP_CD_NM
+    , CORP_NM
+    , CEO_NM
+    , ADM_NM
+    , ADM_TELNUM
+    , ADM_MOBILE
+    , FRST_REG_DTTM
+    , LAST_MOD_DTTM
+FROM (SELECT ROWNUM AS RN
+        , REQUEST_NUM
+        , STATUS_CD
+        , CORP_CD
+        , CORP_NM
+        , CEO_NM
+        , ADM_NM
+        , ADM_TELNUM
+        , ADM_MOBILE
+        , FRST_REG_DTTM
+        , LAST_MOD_DTTM
+    FROM (SELECT REQUEST_NUM
+            , STATUS_CD
+            , CORP_CD
+            , CORP_NM
+            , CEO_NM
+            , ADM_NM
+            , ADM_TELNUM
+            , ADM_MOBILE
+            , FRST_REG_DTTM
+            , LAST_MOD_DTTM
+        FROM TB_CORP_PNS_REQUEST
+        WHERE 1=1
+            <isNotEmpty property="sCorpCd">
+                AND CORP_CD = #sCorpCd#
+            </isNotEmpty>
+            <isNotEmpty property="sStatusCd">
+                AND STATUS_CD = #sStatusCd#
+            </isNotEmpty>
+            <isNotEmpty property="sStartDt">
+                <![CDATA[
+                AND TO_DATE(FRST_REG_DTTM, 'YYYY/MM/DD') >= TO_DATE(#sStartDt#, 'YYYY/MM/DD')
+                ]]>
+            </isNotEmpty>
+            <isNotEmpty property="sEndDt">
+                <![CDATA[
+                AND TO_DATE(FRST_REG_DTTM, 'YYYY/MM/DD') <= TO_DATE(#sEndDt#, 'YYYY/MM/DD')
+                ]]>
+            </isNotEmpty>
+            <isNotEmpty property="sStartDt2">
+                <![CDATA[
+                AND TO_DATE(LAST_MOD_DTTM, 'YYYY/MM/DD') >= TO_DATE(#sStartDt2#, 'YYYY/MM/DD')
+                ]]>
+            </isNotEmpty>
+            <isNotEmpty property="sEndDt2">
+                <![CDATA[
+                AND TO_DATE(LAST_MOD_DTTM, 'YYYY/MM/DD') <= TO_DATE(#sEndDt2#, 'YYYY/MM/DD')
+                ]]>
+            </isNotEmpty>
+            <isNotEmpty property="sCorpNm">
+                AND CORP_NM LIKE '%' || #sCorpNm# || '%'
+            </isNotEmpty>
+        ORDER BY FRST_REG_DTTM DESC
+    )
+)
+<isNotEqual property="firstIndex" compareValue="-1">
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+</isNotEqual>
+</select>
+
+<select id="CORP_PNSREQ_S_01" resultClass="int">
+SELECT COUNT(REQUEST_NUM)
+FROM TB_CORP_PNS_REQUEST
+WHERE 1=1
+ 	<isNotEmpty property="sCorpCd">
+ 	    AND CORP_CD = #sCorpCd#
+ 	</isNotEmpty>
+   	<isNotEmpty property="sStatusCd">
+   	    AND STATUS_CD = #sStatusCd#
+   	</isNotEmpty>
+   	<isNotEmpty property="sStartDt">
+   	    <![CDATA[
+	    AND TO_DATE(FRST_REG_DTTM, 'YYYY/MM/DD') >= TO_DATE(#sStartDt#, 'YYYY/MM/DD')
+	    ]]>
+    </isNotEmpty>
+	<isNotEmpty property="sEndDt">
+   	    <![CDATA[
+	    AND TO_DATE(FRST_REG_DTTM, 'YYYY/MM/DD') <= TO_DATE(#sEndDt#, 'YYYY/MM/DD')
+	    ]]>
+ 	</isNotEmpty>
+    <isNotEmpty property="sStartDt2">
+        <![CDATA[
+        AND TO_DATE(LAST_MOD_DTTM, 'YYYY/MM/DD') >= TO_DATE(#sStartDt2#, 'YYYY/MM/DD')
+        ]]>
+    </isNotEmpty>
+    <isNotEmpty property="sEndDt2">
+        <![CDATA[
+        AND TO_DATE(LAST_MOD_DTTM, 'YYYY/MM/DD') <= TO_DATE(#sEndDt2#, 'YYYY/MM/DD')
+        ]]>
+    </isNotEmpty>
+	<isNotEmpty property="sCorpNm">
+	    AND CORP_NM LIKE '%' || #sCorpNm# || '%'
+	</isNotEmpty>
+</select>
+
+<select id="CORP_PNSREQ_S_02" resultMap="CORP_PNSREQ_R_02">
+SELECT REQUEST_NUM
+    , CORP_CD
+    , FRST_REG_DTTM
+    , LAST_MOD_DTTM
+    , CO_REG_NUM
+    , CORP_EMAIL
+    , STATUS_CD
+    , HMPG_ADDR
+    , CEO_TEL_NUM
+    , RSV_TEL_NUM
+    , CORP_NM
+    , CEO_NM
+    , ADDR
+    , DTL_ADDR
+    , SHOP_NM
+    , CORP_TYPE
+    , FAX_NUM
+    , BRANCH_NM
+    , CEO_BTH
+    , BSNCON
+    , BSNTYP
+    , BANK_NM
+    , ACC_NUM
+    , DEPOSITOR
+    , UTL_RAW.CAST_TO_VARCHAR2(ADM_MEMO) ADM_MEMO
+    , SALE_PRDT_LIST
+    , ADM_NM
+    , ADM_DEP
+    , ADM_OFCPOS
+    , ADM_MOBILE
+    , ADM_TELNUM
+    , ADM_EMAIL
+    , FRST_REG_ID
+    , LAST_MOD_ID
+    , CONF_CORP_ID
+    , TAMNACARD_MNG_YN
+FROM TB_CORP_PNS_REQUEST
+WHERE REQUEST_NUM = #requestNum# 
+</select>
+
+<select id="CORP_PNSREQ_S_03" resultClass="int">
+SELECT COUNT(REQUEST_NUM)
+FROM TB_CORP_PNS_REQUEST
+WHERE STATUS_CD = 'ST01'
+    OR STATUS_CD = 'ST02'
+</select>
+
+<select id="CORP_PNSREQ_S_04" resultClass="String">
+SELECT 'REQ'||LPAD(NVL(MAX(SUBSTR(REQUEST_NUM, 4)), 0) + 1, 7, '0')
+FROM TB_CORP_PNS_REQUEST
+</select>
+
+<insert id="CORP_PNSREQ_I_00">
+INSERT INTO TB_CORP_PNS_REQUEST
+    ( REQUEST_NUM
+    , CORP_CD
+    , FRST_REG_DTTM
+    , CO_REG_NUM
+    , CORP_EMAIL
+    , STATUS_CD
+    , HMPG_ADDR
+    , CEO_TEL_NUM
+    , RSV_TEL_NUM
+    , CORP_NM
+    , CEO_NM
+    , ADDR
+    , DTL_ADDR
+    , SHOP_NM
+    , CORP_TYPE
+    , FAX_NUM
+    , BRANCH_NM
+    , CEO_BTH
+    , BSNCON
+    , BSNTYP
+    , BANK_NM
+    , ACC_NUM
+    , DEPOSITOR
+    , FRST_REG_IP
+    , ADM_MEMO
+    , SALE_PRDT_LIST
+    , ADM_NM
+    , ADM_DEP
+    , ADM_OFCPOS
+    , ADM_MOBILE
+    , ADM_TELNUM
+    , ADM_EMAIL
+    , FRST_REG_ID
+    , CONF_CORP_ID
+    , TAMNACARD_MNG_YN
+    )
+VALUES
+    ( #requestNum#
+    , #corpCd#
+    , SYSDATE
+    , #coRegNum#
+    , #corpEmail#
+    , 'ST01'
+    , #hmpgAddr#
+    , #ceoTelNum#
+    , #rsvTelNum#
+    , #corpNm#
+    , #ceoNm#
+    , #addr#
+    , #dtlAddr#
+    , #shopNm#
+    , #corpType#
+    , #faxNum#
+    , #branchNm#
+    , #ceoBth#
+    , #bsncon#
+    , #bsntyp#
+    , #bankNm#
+    , #accNum#
+    , #depositor#
+    , #frstRegIp#
+    , #admMemo#
+    , #salePrdtList#
+    , #admNm#
+    , #admDep#
+    , #admOfcpos#
+    , #admMobile#
+    , #admTelnum#
+    , #admEmail#
+    , #frstRegId#
+    , #confCorpId#
+    , #tamnacardMngYn#
+    )
+</insert>
+
+<update id="CORP_PNSREQ_U_00">
+UPDATE TB_CORP_PNS_REQUEST
+SET STATUS_CD = #statusCd#
+    , ADM_MEMO = UTL_RAW.CAST_TO_RAW(#admMemo#)
+    , LAST_MOD_ID = #lastModId#
+    , LAST_MOD_IP = #lastModIp#
+    , LAST_MOD_DTTM = SYSDATE
+WHERE REQUEST_NUM = #requestNum#
+</update>
+
+<update id="CORP_PNSREQ_U_01">
+UPDATE TB_CORP_PNS_REQUEST
+SET CONF_CORP_ID = #confCorpId#
+    , CORP_CD = #corpCd#
+WHERE REQUEST_NUM = #requestNum#
+</update>
+
+<update id="CORP_PNSREQ_U_02">
+UPDATE TB_CORP_PNS_REQUEST
+SET RSV_TEL_NUM = #rsvTelNum#
+    , FAX_NUM = #faxNum#
+    , CORP_EMAIL = #corpEmail#
+    , HMPG_ADDR = #hmpgAddr#
+    , BRANCH_NM = #branchNm#
+    , ADDR = #addr#
+    , DTL_ADDR = #dtlAddr#
+    , CEO_TEL_NUM = #ceoTelNum#
+    , CEO_NM = #ceoNm#
+    , BSNCON = #bsncon#
+    , BSNTYP = #bsntyp#
+    , BANK_NM = #bankNm#
+    , ACC_NUM = #accNum#
+    , DEPOSITOR = #depositor#
+    , SALE_PRDT_LIST = #salePrdtList#
+    , ADM_NM = #admNm#
+    , ADM_DEP = #admDep#
+    , ADM_OFCPOS = #admOfcpos#
+    , ADM_MOBILE = #admMobile#
+    , ADM_TELNUM = #admTelnum#
+    , ADM_EMAIL = #admEmail#
+    , LAST_MOD_DTTM = SYSDATE
+    , LAST_MOD_IP = #lastModIp#
+    , LAST_MOD_ID = #lastModId#
+    , TAMNACARD_MNG_YN = #tamnacardMngYn#
+WHERE REQUEST_NUM = #requestNum#
+</update>
+
+<select id="CORP_PNSREQFILE_S_00" resultMap="CORP_PNSREQFILE_R_00">
+SELECT REQUEST_NUM
+    , FILE_NUM
+    , SAVE_PATH
+    , REAL_FILE_NM
+    , SAVE_FILE_NM
+FROM TB_CORP_PNS_REQUEST_FILE
+WHERE 1 = 1
+    <isNotEmpty property="requestNum">
+        AND REQUEST_NUM = #requestNum#
+    </isNotEmpty>
+    <isNotEmpty property="fileNum">
+        AND FILE_NUM = #fileNum#
+    </isNotEmpty>
+ORDER BY REQUEST_NUM DESC, FILE_NUM
+</select>
+
+<select id="CORP_PNSREQFILE_S_01" resultMap="CORP_PNSREQFILE_R_01">
+SELECT DOC_ID
+    , FILE_NUM
+    , SAVE_PATH
+    , SAVE_FILE_NM
+    , REAL_FILE_NM
+    , DOC_DIV
+    , DOC_NM
+    , REG_DTTM
+FROM (SELECT ROWNUM AS RN
+        , DOC_ID
+        , FILE_NUM
+        , SAVE_PATH
+        , SAVE_FILE_NM
+        , REAL_FILE_NM
+        , DOC_DIV
+        , DOC_NM
+        , REG_DTTM
+    FROM (SELECT B.REQUEST_NUM AS DOC_ID
+            , B.FILE_NUM
+            , B.SAVE_PATH
+            , B.SAVE_FILE_NM
+            , B.REAL_FILE_NM
+            , A.CORP_CD AS DOC_DIV
+            , A.CORP_NM AS DOC_NM
+            , A.FRST_REG_DTTM AS REG_DTTM
+        <isEmpty property="docDiv">
+        FROM TB_CORP_PNS_REQUEST A
+            INNER JOIN TB_CORP_PNS_REQUEST_FILE B ON A.REQUEST_NUM = B.REQUEST_NUM
+                AND A.CORP_CD IS NULL
+        </isEmpty>
+        <isNotEmpty property="docDiv">
+        FROM TB_CORP A
+            INNER JOIN TB_CORP_PNS_REQUEST_FILE B ON A.CORP_ID = B.REQUEST_NUM
+                AND A.CORP_CD = #docDiv#
+        </isNotEmpty>
+        <isNotEmpty property="docNm">
+            AND A.CORP_NM LIKE '%' || #docNm# || '%'
+        </isNotEmpty>
+        ORDER BY B.REQUEST_NUM DESC
+          , TO_NUMBER (B.FILE_NUM)
+    )
+)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="CORP_PNSREQFILE_S_02" resultClass="int">
+SELECT COUNT(*) AS CNT
+<isEmpty property="docDiv">
+    FROM TB_CORP_PNS_REQUEST A
+        INNER JOIN TB_CORP_PNS_REQUEST_FILE B ON A.REQUEST_NUM = B.REQUEST_NUM
+            AND A.CORP_CD IS NULL
+</isEmpty>
+<isNotEmpty property="docDiv">
+    FROM TB_CORP A
+        INNER JOIN TB_CORP_PNS_REQUEST_FILE B ON A.CORP_ID = B.REQUEST_NUM
+            AND A.CORP_CD = #docDiv#
+</isNotEmpty>
+<isNotEmpty property="docNm">
+    AND A.CORP_NM LIKE '%'||#docNm#||'%'
+</isNotEmpty>
+</select>
+
+<insert id="CORP_PNSREQFILE_I_00">
+INSERT INTO TB_CORP_PNS_REQUEST_FILE
+    ( REQUEST_NUM
+    , FILE_NUM
+    , SAVE_PATH
+    , REAL_FILE_NM
+    , SAVE_FILE_NM
+    )
+VALUES
+    ( #requestNum#
+    , #fileNum#
+    , #savePath#
+    , #realFileNm#
+    , #saveFileNm#
+    )
+</insert>
+
+<update id="CORP_PNSREQFILE_U_00">
+UPDATE TB_CORP_PNS_REQUEST_FILE
+SET REQUEST_NUM = #corpId#
+WHERE REQUEST_NUM = #requestNum#
+</update>
+
+<delete id="CORP_PNSREQFILE_D_00">
+DELETE FROM TB_CORP_PNS_REQUEST_FILE
+WHERE REQUEST_NUM = #requestNum#
+    <isNotEmpty property="fileNum">
+        AND FILE_NUM = #fileNum#
+    </isNotEmpty>
+</delete>
+
+</sqlMap>

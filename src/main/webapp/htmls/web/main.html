@@ -1,0 +1,2479 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- main add -->
+    <script src="../../js/air_step1.js"></script>
+
+    <!-- css -->
+    <link rel="stylesheet" href="../../css/common/jquery-ui.css?version=1.2">
+    <link rel="stylesheet" href="../../css/web/common.css">
+    <link rel="stylesheet" href="../../css/web/style.css">
+    <link rel="stylesheet" href="../../css/web/main.css">
+    <link rel="stylesheet" href="../../css/common/multiple-select.css">
+    <link rel="canonical" href="https://www.tamnao.com">
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.tamnao.com/mw">
+    <!-- script -->
+    <script src="../../js/dimmed.js"></script>
+    <script src="../../js/jquery-1.11.1.js"></script>
+    <script src="../../js/jquery-ui.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+    <script src="../../js/swiper.js"></script>
+    <script src="../../js/html_common.js"></script>
+    <script src="../../js/html_style.js"></script>
+
+    <!-- main add -->
+    <script src="../js/cycle.js"></script>
+    <script src="../js/slider.js"></script>
+    <script type="text/javascript">
+
+        let prevIndex = 0;
+        function stopPopupToday(){
+            $.cookie("today", "Y", {expires: 1, path: "/"});
+            $("#mainPopupAll").fadeOut(0);
+        }
+
+        function closePopupToday(){
+            $("#mainPopupAll").fadeOut(0);
+        }
+
+        function fn_RcSearch(){
+            $('#sFromDt').val($('.sRcFromDtView').val().replace(/-/g, ''));
+            $('#sToDt').val($('.sRcToDtView').val().replace(/-/g, ''));
+            $("#sCorpId").val($("select[name=vCorpId] option:selected").val());
+            $("#sIsrDiv").val($("select[name=vIsrDiv] option:selected").val());
+            document.rcSearchFrm.action = "<c:url value='/web/rentcar/car-list.do'/>";
+            document.rcSearchFrm.submit();
+
+            ++prevIndex;
+            history.replaceState($("#_wrap").html(), "title"+ prevIndex, "?prevIndex="+ prevIndex);
+            currentState = history.state;
+        }
+
+        function fn_AdSearch(type){
+            $("#sSearchYn").val('Y');
+            $("#pageIndex").val(1);
+            $("#sResEnable").val($("input:radio[name=vResEnable]:checked").val());
+            $("#sAdDiv").val($("select[name=sAdDivSel]:selected").val());
+            $("#sPriceSe").val($("select[name=sPriceSeSel]:selected").val());
+            $("#sPrdtNm").val($("#vPrdtNm").val());
+            $('#sAdFromDt').val($('.sAdFromDtView').val().replace(/-/g, ''));
+            $('#sAdToDt').val($('.sAdToDtView').val().replace(/-/g, ''));
+            $('#sFromDtMap').val($('.sAdFromDtView').val());
+            $('#sToDtMap').val($('.sAdToDtView').val());
+            document.adSearchFrm.target = "";
+            if(type == "main"){
+                $('#type').val("main");
+                document.adSearchFrm.action = "<c:url value='/web/stay/jeju.do'/>";
+            }else{
+                $('#type').val("map");
+                document.adSearchFrm.action = "<c:url value='/web/stay/jeju.do?type=map'/>";
+            }
+            document.adSearchFrm.submit();
+
+            ++prevIndex;
+            history.replaceState($("#_wrap").html(), "title"+ prevIndex, "?prevIndex="+ prevIndex);
+            currentState = history.state;
+        }
+
+        var adMaxDate = "+12m";
+        var rcMaxDate = "+6m";
+
+        // 객실수 및 인원 정보 수정
+        function modify_room_person() {
+            var str =  "성인 " + $('#AdultNum').text();
+            if ($('#ChildNum').text() > 0) {
+                str += ", 소아 " + $('#ChildNum').text();
+            }
+            if ($('#BabyNum').text() > 0) {
+                str += ", 유아 " + $('#BabyNum').text();
+            }
+            $('#room_person_str').text(str);
+        }
+
+        // 인원수 변경 이벤트
+        function ad_chg_person(type, gubun) {
+            var num = 0;
+
+            if (type == '+') {
+                num = eval($('#' + gubun + 'Num').text()) + 1;
+            } else {
+                num = eval($('#' + gubun + 'Num').text()) - 1;
+            }
+            // 최저 인원 수 - 성인 : 1, 소아&유아 : 0
+            if (gubun == 'Adult') {
+                if (num < 1) {
+                    num = 1;
+                } else if (num > 9) {
+                    num = 9;
+                }
+            } else {
+                if (num < 0) {
+                    num = 0;
+                } else if (num > 8) {
+                    num = 8;
+                }
+            }
+            $('#' + gubun + 'Num').text(num);
+            $('input[name=s' + gubun + 'Cnt]').val(num);
+
+            var sMen = eval($('#AdultNum').text()) + eval($('#ChildNum').text()) + eval($('#BabyNum').text());
+            $('#sMen').val(sMen);
+
+            modify_room_person();
+        }
+
+        // 여백 클릭 시 팝업 닫기
+        $(document).mouseup(function(e){
+            var divPop = $(".popup-typeA");
+            if(divPop.has(e.target).length == 0){
+                divPop.hide();
+                return;
+            }
+        });
+
+        $(document).ready(function() {
+            $(".datepicker").datepicker({
+                showOn: "both",
+                buttonImage: "../../images/web/icon/calendar_icon01.gif",
+                buttonImageOnly: true,
+                showOtherMonths: true, 										//빈칸 이전달, 다음달 출력
+                numberOfMonths: [1, 2],				    					//여러개월 달력 표시
+                stepMonths: 2 												//좌우 선택시 이동할 개월 수
+            });
+
+            $(' .check-area li').on('click', function() {
+                $('.lb-ch').removeClass("active")
+                $(this).addClass("active");
+            });
+
+            //실시간 검색 탭패널
+            tabPanel2({
+                container: "#product_search",
+                firstItem: "#tabs-1"
+            });
+
+            //실시간 검색 탭패널 > 상단 고정바
+            tabPanel2({
+                container: "#product_top_search",
+                firstItem: "#tabs-11",
+                allHide: 1
+            });
+
+
+            //관련기관 배너 (4개 이상시 롤링)
+            if ($('#foot_organBanner ul li').length > 6) {
+                var swiper = new Swiper('#foot_organBanner', {
+                    slidesPerView: 6,
+                    spaceBetween: 9,
+                    paginationClickable: true,
+                    nextButton: '#foot_organNext',
+                    prevButton: '#foot_organPrev',
+                    autoplay: 5000,
+                    loop: true
+                });
+            }
+            else {
+                $('#foot_organArrow').hide();
+            }
+
+            $("#sCarCd").multipleSelect({
+                filter 		: true,
+                multiple 	: true,
+                multipleWidth : 85,
+                maxHeight	: 110,
+                minimumCountSelected : 7
+            });
+
+            //Main Top Banner Slider
+            if ($('#main_top_slider .swiper-slide').length > 1) {
+                new Swiper('#main_top_slider', {
+                    pagination: '#main_top_navi',
+                    nextButton: '#main_top_next',
+                    prevButton: '#main_top_prev',
+                    paginationClickable: true,
+                    /*autoplay: 8000,*/
+                    loop: true,
+                    paginationType: 'fraction',
+                    effect: 'fade',
+                    touchRatio: 0
+                });
+            } else {
+                $('#main_top_arrow').hide();
+            }
+
+            /* layer-popup Slider */
+            if ($('#mainPopupAll .swiper-slide').length > 1) {
+                new Swiper('#mainPopupAll', {
+                    nextButton: '#bx-next',
+                    prevButton: '#bx-prev',
+                    paginationClickable: true,
+                    /*autoplay: 8000,*/
+                    loop: true,
+                    paginationType: 'fraction',
+                    effect: 'fade',
+                    touchRatio: 0,
+                    el: '.swiper-pagination'
+                });
+            } else {
+                $('#main_top_arrow').hide();
+                $('.bx-controls-direction').hide();
+            }
+
+            /* 지금 제일 잘나가는 상품 */
+            if($('#product_theme .swiper-slide').length > 5) {
+                new Swiper('#product_theme', {
+                    slidesPerView: 5,
+                    spaceBetween: 30,
+                    paginationClickable: true,
+                    nextButton: '#theme_next',
+                    prevButton: '#theme_prev',
+                    autoplay: 2000
+                });
+            } else {
+                $('#theme_arrow').hide();
+            }
+
+            /* 숙박 Slider */
+            if($('#ConEvnt .swiper-slide').length > 1) {
+                new Swiper('#ConEvnt', {
+                    slidesPerView: 1,
+                    paginationClickable: true,
+                    nextButton: '.bx-next',
+                    prevButton: '.bx-prev',
+                    autoplay: 2000
+                });
+            } else {
+                $('#theme_arrow').hide();
+            }
+
+            /* 렌터카 Slider */
+            if($('#ConEvnt2 .swiper-slide').length > 1) {
+                new Swiper('#ConEvnt2', {
+                    slidesPerView: 1,
+                    paginationClickable: true,
+                    nextButton: '.bx-next',
+                    prevButton: '.bx-prev',
+                    autoplay: 2000
+                });
+            } else {
+                $('#theme_arrow').hide();
+            }
+
+            /* 특산기념품 Slider*/
+            if($('#product_slider .swiper-slide').length > 1) {
+                new Swiper('#product_slider', {
+                    slidesPerView: 5,
+                    spaceBetween: 20,
+                    paginationClickable: true,
+                    nextButton: '#product_next',
+                    prevButton: '#product_prev',
+                    autoplay: 2000
+                });
+            }
+            else {
+                $('#product_prev').hide();
+                $('#product_next').hide();
+            }
+
+            // 미결제 상품 바로가기
+            function fn_DtlRsv(rsvNum) {
+                $.cookie("unpaidInfo", rsvNum, {path: "/"});
+
+                location.href = "<c:url value='/web/mypage/detailRsv.do'/>?rsvNum=" + rsvNum;
+            }
+
+            //map-control
+            var allStates = $("svg.us > *");
+
+            allStates.addClass("on");
+
+            allStates.on("click", function() {
+                console.log("aaaa");
+                if ( $('.on').length == 6){
+                    allStates.removeClass("on");
+                    $(this).addClass("on");
+                }else {
+                    $(this).toggleClass("on", "");
+                }
+            });
+
+        });
+
+
+        new Swiper('#product_slideItem', {
+            slidesPerView: 3,
+            paginationClickable: true,
+            spaceBetween: 15,
+            nextButton: '#slideItem_next',
+            prevButton: '#slideItem_prev'
+        });
+
+    </script>
+</head>
+<body>
+
+    <!-- 0214 visitjeju_header -->
+<!--    <div class="visit_header">
+        <div class="inner">
+            <h1>
+                <a href="https://www.visitjeju.net/kr" target="_blank" title="visit jeju - 제주도 공식 관광정보 포털">
+                    <img src="/images/web/r_main/visit_logo.png" alt="비짓제주">
+                </a>
+            </h1>
+            <div class="box__service-all">
+                <ul>
+                    <li>
+                        <a href="https://www.visitjeju.net/kr/detail/list?menuId=DOM_000001718000000000" target="_blank">여행지</a>
+                    </li>
+                    <li>
+                        <a href="https://www.visitjeju.net/kr/thememap/list?menuId=DOM_200000000010920" target="_blank">추천</a>
+                    </li>
+                    <li>
+                        <a href="https://www.visitjeju.net/kr/jejudfs?menuId=DOM_200000000010720" target="_blank">쇼핑</a>
+                    </li>
+                    <li>
+                        <a href="https://www.visitjeju.net/kr/jejuStory/unesco_one?etc=e04&menuId=DOM_000001703010001000" target="_blank">브랜드</a>
+                    </li>
+                    <li>
+                        <a href="https://www.visitjeju.net/kr/jejuStory/culture?tap=one&menuId=DOM_000001703003001000" target="_blank">여행정보</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="srh_area">
+                <form>
+                    <fieldset>
+                        <legend class="for-a11y">검색</legend>
+                        <div class="top_search">
+                            <input type="text" value="제주도 공식관광정보 검색">
+                            <button>
+                                <img src="/images/web/r_main/srh_btn2.png" alt="검색">
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>--><!-- //visitjeju_header -->
+
+    <!-- re_header -->
+    <div id="_header">
+        <!-- top banner zone-->
+        <div id="top_banner" class="top-banner swiper-container">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide" style="background-color: rgb(246, 12, 64)">
+                    <a href="${result.url}" target="_blank">
+                        <div class="bar-tw">
+                            <p class="bar-t"><em class="bar-em">회원가입</em>만 해도 혜택이 팡팡!</p>
+                        </div>
+                        <img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+                    </a>
+                </li>
+                <li class="swiper-slide" style="background-color: rgb(246, 12, 64)">
+                    <a href="${result.url}" target="_blank">
+                        <div class="bar-tw">
+                            <p class="bar-t">착한수수료 동참을 지지하는 <em class="bar-em">댓글이벤트</em> 참여하세요!</p>
+                        </div>
+                        <img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+                    </a>
+                </li>
+            </ul>
+            <div class="container">
+                <a href="javascript:void(0)" id="top_close" class="close"><img src="/images/web/comm/btn_close.png" alt="닫기"></a>
+            </div>
+        </div>
+        <!--// top banner zone-->
+
+        <div class="re_header">
+            <div class="inner">
+                <div class="header-top">
+                    <div class="box__usermenu">
+                        <ul class="list__usermenu">
+                            <li><b>이은민</b>님 환영합니다.</li>
+                            <li class="list-item">
+                                <a class="link__usermenu" href="javascript:fn_login();">로그인</a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link__usermenu" href="/web/signUp00.do">회원가입</a>
+                            </li>
+                            <!-- 로그인 -->
+                            <!--
+                            <li class="list-item">
+                                <a class="link__usermenu" href="javascript:fn_logout();">로그아웃</a>
+                            </li>-->
+                            <!-- //로그인 -->
+
+                            <li class="list-item">
+                                <a class="link__usermenu" href="/web/coustmer/viewCorpPns.do">입점신청</a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link__usermenu" href="/web/bbs/bbsList.do?bbsNum=NOTICE">고객센터</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <h1>
+                        <a href="/" title="tamnao - 제주여행종합쇼핑몰">
+                            <img src="/images/web/r_main/nao_logo2.png" alt="탐나오">
+                        </a>
+                    </h1>
+                    <div class="srh_area">
+                        <form id="submitFrm" name="submitFrm">
+                            <fieldset>
+                                <legend class="for-a11y"> 검색</legend>
+                                <div class="top_search" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+                                    <input name="keyword" title="검색어 입력" class="form_input" value="검색어를 입력해주세요" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+                                    <button type="submit" title="검색" class="srh_btn" onclick="fn_searBtClick();">
+                                        <img src="/images/web/r_main/srh_btn.png" alt="검색">
+                                    </button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="util_menu">
+                        <ui>
+                            <li id="unpaidInfo" class="nopay">
+                                <a href="javascript:fn_DtlRsv('${unpaidRsvNum}');" class="blinking text-red">
+                                    <span class="ico count">&nbsp;</span>미결제상품
+                                    <span class="cnt">0</span>
+                                </a>
+                            </li>
+                            <li class="coupon more">
+                                <a href="/web/mypage/pocketList.do">
+                                    <span class="ico"></span>쿠폰
+                                    <span class="cnt">0</span>
+                                </a>
+                            </li>
+                            <li class="cart more">
+                                <a href="/web/cart.do">
+                                    <span class="ico">&nbsp;</span>장바구니
+                                    <span class="cnt">0</span>
+                                </a>
+                            </li>
+                            <li class="mypage more">
+                                <a href="/web/mypage/rsvList.do">
+                                    <span class="ico">&nbsp;</span>마이탐나오
+                                </a>
+                            </li>
+                        </ui>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- global-navigation -->
+        <div class="gnb2">
+            <div class="inner">
+                <div class="box__service-all">
+                    <ul class="menu">
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/av/mainList.do">항공</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/sp/vesselList.do">선박</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/stay/jeju.do">숙소</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/rentcar/car-list.do">렌터카</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C200">관광지/레저</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/sv/mainList.do">특산/기념품</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C270">체험</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C300">맛집</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/sp/packageList.do">여행사 상품</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/evnt/prmtPlanList.do">기획전</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/evnt/promotionList.do">이벤트</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //re_header -->
+
+
+    <div id="_wrap">
+
+        <!-- Main Top Slider -->
+        <div class="mainPrimary">
+            <div class="main-top-slider">
+                <div id="main_top_slider" class="swiper-container swiper-container-horizontal swiper-container-fade">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <div class="main_visual">
+                                <a href="">
+                                    <img src="../../images/web/main/banner/top/PM00000907.jpg" alt="기획전">
+                                </a>
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="main_visual">
+                                <a href=""><img src="../../images/web/main/banner/top/PM00000934.jpg" alt="기획전"></a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="main_visual_btn">
+                        <div class="pass_over">
+                            <div id="main_top_navi" class="swiper-pagination swiper-pagination-fraction">
+                                <span class="swiper-pagination-current">1</span>
+                                <span class="swiper-pagination-total">6</span>
+                            </div>
+                                <span id="main_top_prev" class="swiper-button-prev"></span>
+                                <span id="main_top_next" class="swiper-button-next"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //main slider -->
+
+
+        <!-- 0406 예약 네비게이션 개선 -->
+        <!-- 자차보험 안내 레이어팝업 -->
+        <div id="insurance_info" class="comm-layer-popup">
+            <div class="content-wrap">
+                <div class="content">
+                    <div class="installment-head">
+                        <h3 class="title"></h3>
+                        <button type="button" class="close"><img src="../../images/mw/icon/close/dark-gray.png" alt="닫기"></button>
+                        <div class="rent-qna">
+
+                            <!-- car_insurance -->
+                            <div class="car_insurance">
+                                <h1>자차보험 <span>안내</span></h1>
+                                <div class="free-wrap">
+                                    <div class="allguide">
+                                        <table>
+                                            <colgroup>
+                                                <col style="width:16%">
+                                                <col style="width:21%">
+                                                <col style="width:21%">
+                                                <col style="width:21%">
+                                                <col style="width:21%">
+                                            </colgroup>
+                                            <thead>
+                                            <th>구분</th>
+                                            <th>일반자차</th>
+                                            <th>일반자차(부분무제한)</th>
+                                            <th>고급자차</th>
+                                            <th>고급자차(전액무제한)</th>
+                                            </thead>
+                                            <tbody>
+                                            <!-- 보상한도 -->
+                                            <tr>
+                                                <td class="aside_tit">보상한도</td>
+                                                <td>한도 내 보상</td>
+                                                <td>무제한</td>
+                                                <td>한도 내 보상</td>
+                                                <td>무제한</td>
+                                            </tr><!-- //보상한도 -->
+
+                                            <!-- 면책금 -->
+                                            <tr>
+                                                <td class="aside_tit">면책금</td>
+                                                <td>면책금 발생</td>
+                                                <td>면책금 발생</td>
+                                                <td>
+                                                    <dl>
+                                                        <dt>한도 내 면제</dt>
+                                                        <dd>(일부업체 발생)</dd>
+                                                    </dl>
+                                                </td>
+                                                <td>면제</td>
+                                            </tr><!--//면책금-->
+
+                                            <!--휴차 보상료-->
+                                            <tr>
+                                                <td class="aside_tit">휴차 보상료</td>
+                                                <td>부담금 발생</td>
+                                                <td>부담금 발생</td>
+                                                <td>
+                                                    <dl>
+                                                        <dt>한도 내 면제</dt>
+                                                        <dd>(일부업체 발생)</dd>
+                                                    </dl>
+                                                </td>
+                                                <td>면제</td>
+                                            </tr><!-- //휴차 보상료 -->
+
+                                            <!-- 단독 사고 -->
+                                            <tr>
+                                                <td class="aside_tit">단독 사고</td>
+                                                <td>보장 안됨</td>
+                                                <td>보장</td>
+                                                <td>
+                                                    <dl>
+                                                        <dt>보장 안됨</dt>
+                                                        <dd>(일부업체 보장)</dd>
+                                                    </dl>
+                                                </td>
+                                                <td>보장</td>
+                                            </tr><!-- //단독사고 -->
+
+                                            <!--휠/타이어 -->
+                                            <tr>
+                                                <td class="aside_tit">휠/타이어</td>
+                                                <td>보장 안됨</td>
+                                                <td>보장</td>
+                                                <td>보장 안됨</td>
+                                                <td>보장</td>
+                                            </tr><!-- //휠/타이어 -->
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+                                    <!-- info -->
+                                    <div class="event-note">
+                                        <ul>
+                                            <li><span>●</span> <span class="tit">자차보험이란 :</span> 차량 사고 발생 시 대여한 렌터카 파손에 대하여 보장해주는 보험</li>
+                                            <li><span>●</span> <span class="tit">보상한도 :</span> 보험으로 처리 가능한 사고비용의 최대한도 비용</li>
+                                            <li><span>●</span> <span class="tit">면책금 :</span> 사고에 대한 책임을 면하기 위해 지불 하는 돈</li>
+                                            <li><span>●</span> <span class="tit">휴차 보상료 :</span> 사고 발생 후 차량 수리기간 동안 발생한 영업손실 비용</li>
+                                            <li><span>●</span> <span class="tit">단독사고 :</span> 과실 유무와 상관없이 주·정차된 차량 및 시설물을 접촉하거나 본인과실 100% 사고인 경우</li>
+                                            <li><span>●</span> <span class="tit">휠/타이어 보장 :</span> 타이어, 휠 파손에 대한 수리비용</li>
+                                            <li>* 세부 내용은 렌터카 업체마다 다를 수 있습니다. 차량 상세페이지 보험내용을 꼭 확인해주세요.</li>
+                                        </ul>
+                                    </div><!-- //info -->
+                                    <div class="character">
+                                        <img src="../../images/web/rent/insurance.png" alt="탐나르방">
+                                    </div>
+                                </div><!-- //free-wrap -->
+                            </div><!-- //car_insurance -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- //자차보험 안내 레이어팝업 -->
+
+        <!-- 실시간 검색 -->
+        <div class="quick-area">
+            <div class="product-search-area">
+                <div id="product_search" class="nav-tabs1">
+                    <div class="new-quick-wrap">
+                        <ul class="nav-menu">
+                            <li class="rent"><a href="#tabs-1">렌터카</a></li>
+                            <li class="hotel"><a href="#tabs-2">숙소</a></li>
+                            <li class="air"><a href="#tabs-3">항공</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- tabs-1 / 렌터카 -->
+                    <div id="tabs-1" class="tabPanel">
+                        <div class="index-box-search">
+                            <div class="web-search-area">
+                                <div class="form-area">
+                                    <form class="rent_search_form" method="post" name="page_type" value="main">
+                                        <input type="hidden" name="page_type" value="main">
+                                        <div class="search-area rent">
+                                            <div class="border--cover">
+                                                <div class="area">
+                                                    <dl>
+                                                        <dt>
+                                                            <div class="date-icon">
+                                                                <span class="IconSide">대여일</span>
+                                                            </div>
+                                                        </dt>
+                                                        <dd>
+                                                            <div class="value-text">
+                                                                <input class="datepicker" type="text" placeholder="대여일 선택" onclick="optionClose('.popup-typeA')">
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="guide">
+                                                    <span class="underscore"></span>
+                                                </div>
+                                                <div class="time-picker">
+                                                    <dl>
+                                                        <dt>
+                                                            <div class="hour-icon">
+                                                                <span class="IconSide">대여시간</span>
+                                                            </div>
+                                                        </dt>
+                                                        <dd>
+                                                            <div class="value-text">
+                                                                <select title="시간선택">
+                                                                    <option value="0800" selected>08:00</option>
+                                                                    <option value="0900">09:00</option>
+                                                                    <option value="1000">10:00</option>
+                                                                    <option value="1100">11:00</option>
+                                                                    <option value="1200">12:00</option>
+                                                                    <option value="1300">13:00</option>
+                                                                    <option value="1400">14:00</option>
+                                                                    <option value="1500">15:00</option>
+                                                                    <option value="1600">16:00</option>
+                                                                    <option value="1700">17:00</option>
+                                                                    <option value="1800">18:00</option>
+                                                                    <option value="1900">19:00</option>
+                                                                    <option value="2000">20:00</option>
+                                                                </select>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="align-self-center">
+                                                <div class="box_text">
+                                                    <img src="../../../images/web/rent/arrow.png">
+                                                    <span class="txt-rent-period">
+                                                        <p>24시간</p>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="border--cover">
+                                                <div class="area">
+                                                    <dl>
+                                                        <dt>
+                                                            <div class="date-icon">
+                                                                <span class="IconSide">반납일</span>
+                                                            </div>
+                                                        </dt>
+                                                        <dd>
+                                                            <div class="value-text">
+                                                                <input class="datepicker" type="text" placeholder="반납일 선택" onclick="optionClose('.popup-typeA')">
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <span class="guide2">
+                                                    <span class="underscore"></span>
+                                                </span>
+                                                <div class="time-picker">
+                                                    <dl>
+                                                        <dt>
+                                                            <div class="hour-icon">
+                                                                <span class="IconSide">반납시간</span>
+                                                            </div>
+                                                        </dt>
+                                                        <dd>
+                                                            <div class="value-text">
+                                                                <select title="시간선택">
+                                                                    <option value="0800" selected>08:00</option>
+                                                                    <option value="0900">09:00</option>
+                                                                    <option value="1000">10:00</option>
+                                                                    <option value="1100">11:00</option>
+                                                                    <option value="1200">12:00</option>
+                                                                    <option value="1300">13:00</option>
+                                                                    <option value="1400">14:00</option>
+                                                                    <option value="1500">15:00</option>
+                                                                    <option value="1600">16:00</option>
+                                                                    <option value="1700">17:00</option>
+                                                                    <option value="1800">18:00</option>
+                                                                    <option value="1900">19:00</option>
+                                                                    <option value="2000">20:00</option>
+                                                                </select>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+
+                                            <!-- insurance selection -->
+                                            <div class="area select">
+                                                <dl>
+                                                    <dt>
+                                                        <div class="cn-icon">
+                                                            <span class="IconSide">보험선택</span>
+                                                        </div>
+                                                    </dt>
+                                                    <div class="btnPack">
+                                                        <div class="insurance_btn">
+                                                            <a href="javascript:void(0)" onclick="layer_popup('#insurance_info');">자차보험 안내</a>
+                                                        </div>
+                                                    </div>
+                                                    <dd>
+                                                        <div class="btn-category">
+                                                            <input type="radio" id="chkPoint0" name="sIsrTypeDiv" value="" >
+                                                            <label for="chkPoint0">전체</label>
+                                                        </div>
+                                                        <div class="btn-category">
+                                                            <input type="radio" id="chkPoint1" name="sIsrTypeDiv" value="FEE">
+                                                            <label for="chkPoint1">자차 미포함</label>
+                                                        </div>
+                                                        <div class="btn-category">
+                                                            <input type="radio" id="chkPoint2" name="sIsrTypeDiv" value="GENL">
+                                                            <label for="chkPoint2">일반자차포함</label>
+                                                        </div>
+                                                        <div class="btn-category">
+                                                            <input type="radio" id="chkPoint3" name="sIsrTypeDiv" value="LUXY" checked>
+                                                            <label for="chkPoint3">고급자차포함</label>
+                                                        </div>
+                                                    </dd>
+                                                </dl>
+                                            </div><!-- //insurance selection -->
+                                            <div class="area search">
+                                                <button type="button" class="btn red" onclick="fnGoMainList();">
+                                                    <div class="MagGlass">
+                                                        <span class="TicSec">최저가 검색</span>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form><!-- //rent_search_form -->
+                                </div><!-- //form-area -->
+                            </div><!-- //web-search-area -->
+                        </div><!-- //index-box-search -->
+                    </div><!-- //tabs-1 / 렌터카 -->
+
+                    <!-- tabs-2 / 숙소 -->
+                    <div id="tabs-2" class="tabPanel">
+                        <div class="inner">
+                            <div class="form-area">
+                                <input type="hidden" name="page_type" value="main" />
+                                <div class="search-area hotel">
+                                    <div class="area date">
+                                        <dl>
+                                            <dt>
+                                                <div class="date-icon">
+                                                    <span class="IconSide">입실일</span>
+                                                </div>
+                                            </dt>
+                                            <dd>
+                                                <div class="value-text">
+                                                    <div class="date-container">
+                                                        <span class="date-wrap">
+                                                            <input class="datepicker" type="text" placeholder="입실일 선택" onclick="optionClose('.popup-typeA')">
+                                                            <img class="ui-datepicker-trigger" src="../../images/web/icon/calendar_icon01.gif" alt="날짜를 입력하세요" title="날짜를 입력하세요">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                        <span class="guide"></span>
+                                        <dl>
+                                            <dt>
+                                                <div class="date-icon">
+                                                    <span class="IconSide">퇴실일</span>
+                                                </div>
+                                            </dt>
+                                            <dd>
+                                                <div class="value-text">
+                                                    <div class="date-container">
+                                                        <span class="date-wrap">
+                                                            <input class="datepicker" type="text" placeholder="퇴실일 선택" onclick="optionClose('.popup-typeA')">
+                                                            <img class="ui-datepicker-trigger" src="../../images/web/icon/calendar_icon01.gif" alt="날짜를 입력하세요" title="날짜를 입력하세요">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="area zone select">
+                                        <dl>
+                                            <dt>
+                                                <div class="rt-icon">
+                                                    <span class="IconSide">지역</span>
+                                                </div>
+                                            </dt>
+                                            <dd>
+                                                <div class="value-text"><a href="javascript:void(0)" onclick="optionPopup('#hotel_zone')" id="area_str">제주도 전체</a></div>
+
+                                                <!-- 지역선택 / layer-popup -->
+                                                <div id="hotel_zone" class="popup-typeA hotel-zone" style="display: none;">
+                                                    <div class="popup-typeA_title">지역선택</div>
+                                                    <div class="searchTabGroup stay">
+                                                        <div class="searchGroup quick_mapArea">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680.9 384.06" class="us">
+                                                                <!-- 제주시 동부 -->
+                                                                <g class="on">
+                                                                    <path class="cls-1 off" d="M441.3,104.18a363.77,363.77,0,0,1-20.88,46.42c44-10.58,90.14-8.44,135-7.91,26,.31,52.51.89,77.56-6.92,17-5.3,32.71-13.79,47.88-23.09-1.23-4.68-7.51-8.17-16.85-11-12.82-3.86-9.68-8.36-3.9-16.07s5.79-12.86-4.5-19.28-5.14-2.58-17.35-18-16.71-5.79-31.49-5.14S594,33.57,585,14.93s-21.21-3.86-30.85-3.22S534.82-5,521.32,1.43,504.61,13,486,12.21c-11.83-.49-18.48,3.06-24.72,6.88-1.1,10-2.57,19.93-4.48,29.78A357.12,357.12,0,0,1,441.3,104.18Z"/>
+                                                                    <path class="cls-2 off" d="M506.66,79.66c0,3.39,1.26,6.82,4,8.43l-1.29,1.65a9,9,0,0,1-3.73-5.37,9.83,9.83,0,0,1-3.82,5.85l-1.33-1.67c2.75-1.76,4.05-5.35,4.05-8.89V78.23h-3.43V76.36h8.8v1.87h-3.22Zm4.66-5.08h2.09V93.11h-2.09V83h-2.87V81.18h2.87Zm6-.4V94.05h-2.11V74.18Z"/>
+                                                                    <path class="cls-2 off" d="M537.75,87.21H530V94.1h-2.22V87.21h-7.63V85.38h17.62Zm-16.62-5.06c3.71-.51,6.45-2.69,6.58-5h-5.93V75.33h14.34v1.82h-5.89c.13,2.31,2.87,4.49,6.58,5l-.8,1.78c-3.21-.48-5.87-2.11-7-4.31-1.19,2.2-3.82,3.83-7,4.31Z"/>
+                                                                    <path class="cls-2 off" d="M546.74,79.11c0,3.65,2,7.31,5,8.71l-1.29,1.81a9.85,9.85,0,0,1-4.83-6,10.32,10.32,0,0,1-5,6.4l-1.32-1.89c3.11-1.43,5.13-5.24,5.13-9.07V75.85h2.22Zm8.84-4.93V94.12h-2.24V74.18Z"/>
+                                                                    <path class="cls-2 off" d="M528.07,110.2v1.85H510.48V110.2h7.68v-2h-5.5v-6.74h13.26v1.81H514.86v3.1h11.19v1.83h-5.67v2Zm-2.15,6.66c0,2.31-2.53,3.63-6.71,3.63s-6.7-1.32-6.7-3.63,2.54-3.6,6.7-3.6S525.92,114.58,525.92,116.86Zm-2.25,0c0-1.21-1.61-1.87-4.46-1.87s-4.44.66-4.44,1.87,1.6,1.88,4.44,1.88S523.67,118.1,523.67,116.86Z"/>
+                                                                    <path class="cls-2 off" d="M547.5,114.05h-7.79v6.44h-2.22v-6.44h-7.65v-1.83H547.5Zm-2.18-4H532v-8.7h2.23v2.51h8.9v-2.51h2.22Zm-2.22-4.36h-8.9v2.53h8.9Z"/>
+                                                                    <path class="cls-3 off" d="M529.09,35.1a9.59,9.59,0,0,0-9.6,9.59c0,5.3,9.6,20.26,9.6,20.26s9.6-15,9.6-20.26A9.59,9.59,0,0,0,529.09,35.1Zm0,13a3.73,3.73,0,1,1,3.73-3.73A3.73,3.73,0,0,1,529.09,48.07Z"/>
+                                                                </g>
+                                                                <!-- 시내권 -->
+                                                                <g>
+                                                                    <path class="cls-1 off" d="M185.84,110.08c3.74,5.84,6.58,12.18,9.63,18.38,1.51,3.06,3.07,6.1,4.82,9,.9,1.52,1.85,3,2.87,4.46.31.45.64.89,1,1.33l.44.57c.26.31.51.63.78.93a40.41,40.41,0,0,0,3.61,3.79c.6.55,1.22,1.06,1.84,1.58l.12.11.13.09.94.67a54,54,0,0,0,8.08,4.48c.83.38,1.65.74,2.48,1.1.36.16.72.32,1.08.46-1.18-.47,0,0,.24.1,1.71.72,3.43,1.43,5.14,2.16a86.14,86.14,0,0,1,8.36,4,41,41,0,0,1,14,12.76c3.24,4.72,5.5,10,7.7,15.28.56,1.34,1.11,2.69,1.67,4l.39.93,0,.14c.23.58.5,1.15.75,1.73,1.07,2.45,2.2,4.88,3.5,7.22.65,1.16,1.33,2.3,2.08,3.41.35.53.72,1,1.09,1.56l0,0c.19.23.37.46.56.68a29.34,29.34,0,0,0,2.84,3c.08.07.71.62,1.12,1l.36.25.8.55a5.4,5.4,0,0,1,2.06,2.49,322.69,322.69,0,0,0,63.93-30.71c21.46-13.22,42.72-26,67-33.36l.35-.1a4.84,4.84,0,0,1,.61-2q7.83-13.89,14.41-28.43c1-2.19,1.95-4.38,2.9-6.58.14-.34.28-.68.43-1l0-.06c.2-.49.41-1,.61-1.45.46-1.11.91-2.22,1.36-3.33q2.64-6.57,5-13.23,4.76-13.32,8.44-27t6.31-27.8Q449,36.28,450,29.39c.11-.74.21-1.48.32-2.22,0-.21,0-.42.08-.63v-.05c.06-.51.13-1,.19-1.52l-.59.24c-11.57,4.5-17.35,0-26.35-9s-18.64,0-18.64,0c-12.21,0-20.57,7.72-42.74,19.28S318.87,49,298.62,47.06s-25.07,7.72-38.56,26-26,7.72-40.5,11.57-10.6,7.72-30.85,4.82c-6.3-.9-13.07.82-19.82,4C176.05,97.23,181.53,103.36,185.84,110.08Z"/>
+                                                                    <path class="cls-2 off" d="M303,141.22c0,3.66,2,7.31,5,8.72l-1.29,1.8a9.88,9.88,0,0,1-4.83-6,10.29,10.29,0,0,1-5,6.4l-1.31-1.89c3.1-1.43,5.13-5.24,5.13-9.07V138H303Zm8.84-4.93v19.94h-2.24V136.29Z"/>
+                                                                    <path class="cls-2 off" d="M318.34,149.23a35.61,35.61,0,0,0,5.72-.59l.24,1.93a36.3,36.3,0,0,1-6.88.6h-1.3V138.6h2.22Zm13.48-12.91v19.87h-2.11v-10.1H327.4v9.1h-2.09V136.71h2.09v7.51h2.31v-7.9Z"/>
+                                                                    <path class="cls-2 off" d="M339.84,145.73c-1.79.09-3.51.11-5,.11l-.31-1.8c2.42,0,5.37,0,8.28-.24a35.11,35.11,0,0,0,.46-4.54H336.3v-1.84h9.15v.74a33.59,33.59,0,0,1-.39,5.46c.67-.06,1.36-.15,2-.24l.17,1.61c-1.71.28-3.47.5-5.2.61v4.45h-2.22ZM351.35,154v1.85H337.3v-6.07h2.22V154Zm-2.67-6.91V136.32h2.22v15h-2.22v-2.48h-4.05v-1.79Z"/>
+                                                                    <path class="cls-3 off" d="M326.16,95.88a9.59,9.59,0,0,0-9.59,9.59c0,5.3,9.59,20.26,9.59,20.26s9.6-15,9.6-20.26A9.59,9.59,0,0,0,326.16,95.88Zm0,13a3.74,3.74,0,1,1,3.74-3.73A3.73,3.73,0,0,1,326.16,108.85Z"/>
+                                                                </g>
+                                                                <!-- 제주시 서부 -->
+                                                                <g >
+                                                                    <path class="cls-1 off" d="M265.72,221.69A41.83,41.83,0,0,1,256.53,210c-1.41-2.6-2.63-5.3-3.79-8-.7-1.62-1.38-3.26-2.06-4.89-.3-.72-.59-1.45-.89-2.17-.17-.4-.32-.81-.51-1.2l0-.08a70.59,70.59,0,0,0-7.46-13.82l-.24-.3-.63-.74c-.42-.49-.86-1-1.31-1.43s-1-1-1.45-1.39l-.87-.76-.3-.25a37.17,37.17,0,0,0-7.74-4.61c-1.39-.67-2.81-1.3-4.23-1.91l-.5-.22-.81-.34-2.15-.89c-3.14-1.32-6.3-2.62-9.33-4.18A46,46,0,0,1,196.74,150c-8.52-11-12.56-24.42-20.22-35.9-.47-.7-1-1.39-1.45-2.07,0-.08-.37-.5-.47-.64l-.55-.68a45.07,45.07,0,0,0-3.37-3.68c-.66-.63-1.33-1.23-2-1.81-.15-.13-1.21-.9-.21-.18-.22-.16-.42-.32-.64-.47a32.75,32.75,0,0,0-4-2.46c-.46-.24-.93-.47-1.4-.69-.23-.11-1.3-.74-.24-.11a9.76,9.76,0,0,0-2.18-.78c-.7-.22-1.44-.44-2.18-.61-10.87,7.33-20.92,16.87-27.88,23.34-13.5,12.53-20.25-1.93-36.64,21.21s-28.92,40.49-54.23,54S5,245.66,5,245.66c-10.8,24.25-2.33,41.78,9.24,52.71.73.69,1.4,1.39,2,2.09C49.39,276.73,88.77,263,128.13,253.27,173.81,242,220.71,235.68,265.72,221.69Z"/>
+                                                                    <path class="cls-2 off" d="M78.53,212.36c0,3.39,1.25,6.83,4,8.43l-1.29,1.65a9,9,0,0,1-3.73-5.37,9.9,9.9,0,0,1-3.82,5.86l-1.34-1.68c2.76-1.76,4.06-5.34,4.06-8.89v-1.42H73v-1.87h8.79v1.87H78.53Zm4.66-5.08h2.09v18.53H83.19V215.73H80.32v-1.85h2.87Zm6-.39v19.87H87.11V206.89Z"/>
+                                                                    <path class="cls-2 off" d="M109.62,219.91h-7.74v6.89H99.66v-6.89H92v-1.82h17.61ZM93,214.85c3.71-.5,6.44-2.68,6.57-5H93.65V208H108v1.83H102.1c.13,2.31,2.86,4.49,6.57,5l-.79,1.78c-3.22-.48-5.87-2.11-7.06-4.31-1.18,2.2-3.81,3.83-7,4.31Z"/>
+                                                                    <path class="cls-2 off" d="M118.61,211.82c0,3.65,2,7.3,5,8.71l-1.3,1.8a9.91,9.91,0,0,1-4.83-6,10.26,10.26,0,0,1-5,6.4l-1.31-1.89c3.1-1.43,5.13-5.24,5.13-9.06v-3.26h2.22Zm8.84-4.93v19.93h-2.24V206.89Z"/>
+                                                                    <path class="cls-2 off" d="M143.49,211.79c0,3.7,1.86,7.31,4.83,8.72L147,222.33a9.76,9.76,0,0,1-4.62-6,10.21,10.21,0,0,1-4.68,6.29l-1.4-1.8c3-1.52,4.94-5.35,4.94-9.07v-3.28h2.24Zm9.12-4.93V226.8h-2.24V215.25h-4.16V213.4h4.16v-6.54Z"/>
+                                                                    <path class="cls-2 off" d="M173.48,220.35H165.7v6.45h-2.22v-6.45h-7.66v-1.82h17.66Zm-2.18-4H158v-8.69h2.22v2.51h8.9v-2.51h2.22ZM169.08,212h-8.9v2.53h8.9Z"/>
+                                                                    <path class="cls-3 off" d="M127.2,167a9.59,9.59,0,0,0-9.59,9.6c0,5.3,9.59,20.26,9.59,20.26s9.6-15,9.6-20.26A9.6,9.6,0,0,0,127.2,167Zm0,13a3.74,3.74,0,1,1,3.73-3.74A3.74,3.74,0,0,1,127.2,180Z"/>
+                                                                </g>
+                                                                <!-- 서귀포시 -->
+                                                                <g>
+                                                                    <path class="cls-1 off" d="M447,272.78l-12.42-38.39q-11.5-35.55-23-71.08c-5.27,1.56-10.5,3.32-15.67,5.33-23.62,9.17-44.11,24.26-66,36.69a307.89,307.89,0,0,1-56.79,24.5c-.21.4-.42.8-.62,1.21-.3.61-.58,1.23-.86,1.85l-.05.11h0c-.1.26-.21.51-.31.76-.45,1.15-.86,2.31-1.24,3.48a90.66,90.66,0,0,0-3.36,15.2l-.08.55c0,.16-.05.34-.06.41-.07.55-.13,1.11-.2,1.66-.12,1-.24,2.09-.35,3.13-.25,2.38-.46,4.76-.67,7.14q-.72,8.18-1.4,16.35-1.36,16.37-2.57,32.73-1.25,16.92-2.33,33.85c4.57-3.47,9.12-6.12,13.54-1.7,9.64,9.64,13.5,7.72,22.49,4.78s16.07-10.56,41.54-2.21,50.7-.32,71.58-18.64c13.27-11.63,2.58-19.92,48.85-12.21a103.84,103.84,0,0,0,10.6,1.23c-2.34-3.56-4.6-7.16-6.6-10.92C455,297.25,451,285,447,272.78Z"/>
+                                                                    <path class="cls-2 off" d="M321.22,280.46c0,3.7,1.85,7.3,4.83,8.71L324.73,291a9.74,9.74,0,0,1-4.61-6,10.3,10.3,0,0,1-4.68,6.29l-1.4-1.8c3-1.52,4.93-5.35,4.93-9.07v-3.28h2.25Zm9.12-4.93v19.94h-2.25V283.91h-4.16v-1.84h4.16v-6.54Z"/>
+                                                                    <path class="cls-2 off" d="M346.55,286.05c-1.88.24-3.8.44-5.69.53v7.78h-2.24v-7.67c-1.73.06-3.39.08-4.9.08l-.28-1.87c2.48,0,5.33,0,8.13-.17a34.08,34.08,0,0,0,.58-5.86h-7V277h9.23V278a36.8,36.8,0,0,1-.52,6.63c.89-.07,1.75-.14,2.59-.25Zm3.32-10.48v19.87h-2.22V275.57Z"/>
+                                                                    <path class="cls-2 off" d="M370.63,291.22v1.87H353v-1.87h7.68v-4.09h-6.15V285.3h2.81v-6.12h-2.87v-1.82h14.64v1.82h-2.87v6.12H369v1.83h-6.16v4.09Zm-11.12-5.92H364v-6.12h-4.48Z"/>
+                                                                    <path class="cls-2 off" d="M379.56,280.48c0,3.65,2,7.31,5,8.71L383.31,291a9.88,9.88,0,0,1-4.83-6,10.29,10.29,0,0,1-5,6.4l-1.31-1.89c3.1-1.43,5.13-5.24,5.13-9.07v-3.26h2.22Zm8.84-4.93v19.94h-2.24V275.55Z"/>
+                                                                    <path class="cls-3 off" d="M353.42,236.32a9.59,9.59,0,0,0-9.59,9.59c0,5.3,9.59,20.26,9.59,20.26s9.6-15,9.6-20.26A9.59,9.59,0,0,0,353.42,236.32Zm0,13a3.73,3.73,0,1,1,3.73-3.73A3.73,3.73,0,0,1,353.42,249.29Z"/>
+                                                                </g>
+                                                                <!-- 서귀포시 서부-->
+                                                                <g>
+                                                                    <path class="cls-1 off" d="M254.41,276.24c.86-10.2,1.52-20.49,3.32-30.58a83.39,83.39,0,0,1,3-12c-46.76,13.6-95.27,19.72-142.24,32.44-34.14,9.25-68.11,22.11-96.84,42.81,3.85,8.23,5.47,17.36,15.69,28,6,6.31,12.52,8,18.06,7.79a12.61,12.61,0,0,1,12.19,8.07c4.67,11.72,24.76,23.17,41.74,29.78,23.14,9,24.42-25.07,34.06-35.35S159.47,344,171,344.64s10.93,19.93,35.35,13.5,27-11.57,36.63-4.4a6.37,6.37,0,0,0,5.63,1.13q.36-6,.74-11.92Q251.58,309.58,254.41,276.24Z"/>
+                                                                    <path class="cls-2 off" d="M107,309.76c0,3.69,1.85,7.3,4.83,8.71l-1.32,1.83a9.79,9.79,0,0,1-4.61-6,10.26,10.26,0,0,1-4.68,6.3l-1.4-1.81c3-1.52,4.94-5.35,4.94-9.06v-3.28H107Zm9.12-4.93v19.93h-2.24V313.21h-4.16v-1.85h4.16v-6.53Z"/>
+                                                                    <path class="cls-2 off" d="M132.34,315.34c-1.87.25-3.79.44-5.69.53v7.79h-2.24V316c-1.73.07-3.39.09-4.9.09l-.28-1.87c2.48,0,5.33,0,8.13-.18a33,33,0,0,0,.58-5.85h-7v-1.85h9.23v.95a36.76,36.76,0,0,1-.52,6.62c.89-.06,1.75-.13,2.59-.24Zm3.32-10.47v19.87h-2.22V304.87Z"/>
+                                                                    <path class="cls-2 off"  d="M156.43,320.52v1.87H138.75v-1.87h7.67v-4.1h-6.14V314.6h2.8v-6.12h-2.87v-1.83h14.64v1.83H152v6.12h2.83v1.82h-6.17v4.1ZM145.3,314.6h4.48v-6.12H145.3Z"/>
+                                                                    <path class="cls-2 off"  d="M165.35,309.78c0,3.65,2,7.3,5.05,8.71l-1.3,1.81a9.91,9.91,0,0,1-4.83-6,10.31,10.31,0,0,1-5,6.41l-1.31-1.9c3.1-1.43,5.13-5.23,5.13-9.06v-3.26h2.22Zm8.84-4.93v19.93H172V304.85Z"/>
+                                                                    <path class="cls-2 off"  d="M190.23,309.76c0,3.69,1.86,7.3,4.83,8.71l-1.31,1.83a9.81,9.81,0,0,1-4.62-6,10.26,10.26,0,0,1-4.68,6.3l-1.4-1.81c3-1.52,4.94-5.35,4.94-9.06v-3.28h2.24Zm9.12-4.93v19.93h-2.24V313.21H193v-1.85h4.16v-6.53Z"/>
+                                                                    <path class="cls-2 off"  d="M220.22,318.32h-7.78v6.44h-2.22v-6.44h-7.66v-1.83h17.66Zm-2.18-4H204.7v-8.69h2.22v2.51h8.9v-2.51H218ZM215.82,310h-8.9v2.53h8.9Z"/>
+                                                                    <path class="cls-3 off" d="M158.76,265.54a9.6,9.6,0,0,0-9.6,9.6c0,5.3,9.6,20.25,9.6,20.25s9.59-14.95,9.59-20.25A9.59,9.59,0,0,0,158.76,265.54Zm0,13a3.73,3.73,0,1,1,3.73-3.73A3.73,3.73,0,0,1,158.76,278.51Z"/>
+                                                                </g>
+                                                                <!-- 서귀포시 동부-->
+                                                                <g>
+                                                                    <path class="cls-1 off"  d="M542.25,152.51c-40.23-.61-81.7-1.5-121,8.18l11.85,36.64c8.28,25.57,16.48,51.17,24.83,76.73,2,6,4,11.93,6.3,17.77l1,2.34,0,0,.1.24.37.84q.92,2.1,1.91,4.17,2,4.11,4.28,8.06c2.4,4.07,5,8,7.68,11.9,28-2.55,36.88-21.35,43.67-31,8.36-11.88,33.42-8.68,52.06-8.68S574,265,587.52,264.3s23.14-5.78,7.72-15.42S619.66,225.1,614.52,211s0-7.07,14.14-13.5,30.21-16.07,35.35-39.85c3.21-14.87,7.18-23.45,10.65-29.69-17,9.58-34.87,17.61-54.11,21.28C594.84,154.1,568.29,152.9,542.25,152.51Z"/>
+                                                                    <path class="cls-2 off"  d="M495.73,214.68c0,3.7,1.86,7.31,4.83,8.72l-1.31,1.82a9.79,9.79,0,0,1-4.62-6,10.22,10.22,0,0,1-4.67,6.29l-1.41-1.8c3-1.52,4.94-5.35,4.94-9.07V211.4h2.24Zm9.12-4.93v19.94h-2.24V218.14h-4.16v-1.85h4.16v-6.54Z"/>
+                                                                    <path class="cls-2 off"  d="M521.07,220.27c-1.88.24-3.8.44-5.69.53v7.79h-2.25v-7.68c-1.72.06-3.38.09-4.89.09l-.28-1.87c2.48,0,5.32,0,8.13-.18a34.07,34.07,0,0,0,.58-5.85h-7v-1.85h9.23v.94a36.8,36.8,0,0,1-.52,6.63c.88-.07,1.75-.13,2.59-.24Zm3.32-10.47v19.87h-2.22V209.8Z"/>
+                                                                    <path class="cls-2 off"  d="M545.15,225.44v1.87H527.47v-1.87h7.68v-4.09H529v-1.83h2.8v-6.11h-2.86v-1.83h14.64v1.83h-2.87v6.11h2.82v1.83h-6.16v4.09ZM534,219.52h4.48v-6.11H534Z"/>
+                                                                    <path class="cls-2 off"  d="M554.08,214.7c0,3.66,2,7.31,5,8.72l-1.29,1.8a9.88,9.88,0,0,1-4.83-6,10.32,10.32,0,0,1-5,6.4l-1.32-1.89c3.11-1.43,5.14-5.24,5.14-9.07v-3.25h2.22Zm8.84-4.92v19.93h-2.25V209.78Z"/>
+                                                                    <path class="cls-2 off"  d="M525.7,245.79v1.85H508.11v-1.85h7.68v-2h-5.5v-6.73h13.26v1.8H512.49V242h11.19v1.83H518v2Zm-2.15,6.67c0,2.31-2.53,3.63-6.71,3.63s-6.7-1.32-6.7-3.63,2.54-3.61,6.7-3.61S523.55,250.17,523.55,252.46Zm-2.25,0c0-1.21-1.61-1.87-4.46-1.87s-4.44.66-4.44,1.87,1.6,1.87,4.44,1.87S521.3,253.69,521.3,252.46Z"/>
+                                                                    <path class="cls-2 off"  d="M545.13,249.64h-7.79v6.45h-2.22v-6.45h-7.65v-1.83h17.66Zm-2.18-4H529.6V237h2.23v2.51h8.9V237H543Zm-2.22-4.36h-8.9v2.53h8.9Z"/>
+                                                                    <path class="cls-3 off" d="M526.68,169.69a9.59,9.59,0,0,0-9.59,9.6c0,5.29,9.59,20.25,9.59,20.25s9.6-15,9.6-20.25A9.6,9.6,0,0,0,526.68,169.69Zm0,13a3.73,3.73,0,1,1,3.73-3.73A3.73,3.73,0,0,1,526.68,182.66Z"/>
+                                                                </g>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <button href="#" class="map--btn map--btn_default">
+                                                        적용
+                                                    </button>
+                                                </div><!-- //지역선택 / layer-popup -->
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="area count select">
+                                        <dl>
+                                            <dt>
+                                                <div class="cn-icon">
+                                                    <span class="IconSide">인원 선택</span>
+                                                </div>
+                                            </dt>
+                                            <div class="btnPack">
+                                                <div class="insurance_btn">
+                                                    <a href="javascript:void(0)" onclick="funcClear();layer_popup('#ad_map');fn_MapAdSearch('1','mapSearch');">지도 검색</a>
+                                                </div>
+                                            </div>
+                                            <dd>
+                                                <div class="value-text">
+                                                    <a href="javascript:void(0)" onclick="optionPopup('#hotel_count', this)" id="room_person_str">성인 2</a>
+                                                </div>
+
+                                                <!-- 인원선택 / layer-popup -->
+                                                <div id="hotel_count" class="popup-typeA hotel-count" style="display: none;">
+                                                    <div class="detail-area">
+                                                        <input type="hidden" name="sRoomNum" id="sRoomNum" value="1">
+                                                    </div>
+                                                    <div class="detail-area counting-area">
+                                                        <div class="counting">
+                                                            <div class="l-area">
+                                                                <strong class="sub-title">성인</strong>
+                                                                <span class="memo">만 13세 이상</span>
+                                                            </div>
+                                                            <div class="r-area">
+                                                                <input type="hidden" name="sAdultCnt" value="2">
+                                                                <button type="button" class="counting-btn" onclick="ad_chg_person('-', 'Adult')"><img src="/images/web/main/form/subtraction.png" alt="빼기"></button>
+                                                                <span class="counting-text" id="AdultNum">2</span>
+                                                                <button type="button" class="counting-btn" onclick="ad_chg_person('+', 'Adult')"><img src="/images/web/main/form/addition.png" alt="더하기"></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="counting">
+                                                            <div class="l-area">
+                                                                <strong class="sub-title">소아</strong>
+                                                                <span class="memo">만 2 ~ 13세 미만</span>
+                                                            </div>
+                                                            <div class="r-area">
+                                                                <input type="hidden" name="sChildCnt" value="0">
+                                                                <button type="button" class="counting-btn" onclick="ad_chg_person('-', 'Child')"><img src="/images/web/main/form/subtraction.png" alt="빼기"></button>
+                                                                <span class="counting-text" id="ChildNum">0</span>
+                                                                <button type="button" class="counting-btn" onclick="ad_chg_person('+', 'Child')"><img src="/images/web/main/form/addition.png" alt="더하기"></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="counting">
+                                                            <div class="l-area">
+                                                                <strong class="sub-title">유아</strong>
+                                                                <span class="memo">만 2세(24개월) 미만</span>
+                                                            </div>
+                                                            <div class="r-area">
+                                                                <input type="hidden" name="sBabyCnt" value="0">
+                                                                <button type="button" class="counting-btn" onclick="ad_chg_person('-', 'Baby')"><img src="/images/web/main/form/subtraction.png" alt="빼기"></button>
+                                                                <span class="counting-text" id="BabyNum">0</span>
+                                                                <button type="button" class="counting-btn" onclick="ad_chg_person('+', 'Baby')"><img src="/images/web/main/form/addition.png" alt="더하기"></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="detail-area info-area">
+                                                        <ul class="list-disc sm">
+                                                            <li>업체별로 연령 기준은 다를 수 있습니다.</li>
+                                                        </ul>
+                                                    </div>
+                                                    <button class="map--btn map--btn_default">
+                                                        적용
+                                                    </button>
+                                                </div><!-- //인원선택 / layer-popup -->
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="area search">
+                                        <button type="button" class="btn red" onclick="fn_AdSearch('main')">
+                                            <div class="MagGlass">
+                                                <span class="TicSec">최저가 검색</span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div><!-- //search-area -->
+                            </div><!-- //form-area -->
+                        </div><!-- //inner -->
+                    </div><!-- //tabs-2 / 숙소 -->
+
+                    <!-- tabs-3 / 항공 -->
+                    <div id="tabs-3" class="tabPanel">
+                        <div class="inner">
+                            <div class="form-area">
+                                <input type="hidden" name="page_type" value="main" />
+                                <ul class="check-area">
+                                    <li class="lb-ch active">
+                                        <input type="checkbox" id="air_typeRT" value="RT" class="textY" name="datepick" checked="checked" onclick="airtype_click(this.value);">
+                                        <label for="air_typeRT" class="label_av">왕복</label>
+                                    </li>
+                                    <li class="lb-ch">
+                                        <input type="checkbox" id="air_typeOW" value="OW" class="textN" name="datepick" onclick="airtype_click(this.value);">
+                                        <label for="air_typeOW" class="label_av">편도</label>
+                                    </li>
+                                </ul>
+                                <div class="search-area air">
+                                    <div class="area zone">
+                                        <dl>
+                                            <dt>
+                                                <div class="rt-icon">
+                                                    <span class="IconSide">출발지</span>
+                                                </div>
+                                            </dt>
+                                            <dd>
+                                                <div class="value-text"><a href="javascript:void(0)" onclick="optionPopup('#air_departure', this)">김포(GMP)</a></div>
+
+                                                <!-- 출발지선택 / layer-popup -->
+                                                <div id="air_departure" class="popup-typeA air-zone">
+                                                    <ul class="select-menu col4">
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test0" name="test_start" type="radio" checked>
+                                                                <label for="air_test0">김포</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test1" name="test_start" type="radio">
+                                                                <label for="air_test1">제주</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test2" name="test_start" type="radio">
+                                                                <label for="air_test2">부산</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test3" name="test_start" type="radio">
+                                                                <label for="air_test3">대구</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test4" name="test_start" type="radio">
+                                                                <label for="air_test4">광주</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test5" name="test_start" type="radio">
+                                                                <label for="air_test5">청주</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test6" name="test_start" type="radio">
+                                                                <label for="air_test6">무안</label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div><!-- //출발지선택 / layer-popup -->
+                                            </dd>
+                                        </dl>
+                                        <a href="javascript:void(0)" class="change"><img src="../../images/web/air/change.png" alt="변경"></a>
+                                        <dl>
+                                            <dt>
+                                                <div class="rt-icon">
+                                                    <span class="IconSide">도착지</span>
+                                                </div>
+                                            </dt>
+                                            <dd>
+                                                <div class="value-text"><a href="javascript:void(0)" onclick="optionPopup('#air_arrival', this)" id="end_region_str">제주(CJU)</a></div>
+
+                                                <!-- 도착지선택 / layer-popup -->
+                                                <div id="air_arrival" class="popup-typeA air-zone">
+                                                    <ul class="select-menu col4">
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test13" name="end_region" type="radio" value="GMP">
+                                                                <label for="air_test13">김포</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test14" name="end_region" type="radio" value="CJU" checked="checked">
+                                                                <label for="air_test14">제주</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test15" name="end_region" type="radio" value="PUS">
+                                                                <label for="air_test15">부산</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test16" name="end_region" type="radio" value="TAE">
+                                                                <label for="air_test16">대구</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test17" name="end_region" type="radio" value="KWJ">
+                                                                <label for="air_test17">광주</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test18" name="end_region" type="radio" value="CJJ">
+                                                                <label for="air_test18">청주</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test19" name="end_region" type="radio" value="MWX">
+                                                                <label for="air_test19">무안</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test20" name="end_region" type="radio" value="RSU">
+                                                                <label for="air_test20">여수</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test21" name="end_region" type="radio" value="USN">
+                                                                <label for="air_test21">울산</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test22" name="end_region" type="radio" value="HIN">
+                                                                <label for="air_test22">진주</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test23" name="end_region" type="radio" value="KUV">
+                                                                <label for="air_test23">군산</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test24" name="end_region" type="radio" value="KPO">
+                                                                <label for="air_test24">포항</label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="lb-box">
+                                                                <input id="air_test25" name="end_region" type="radio" value="WJU">
+                                                                <label for="air_test25">원주</label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div><!-- //도착지선택 / layer-popup -->
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="area Date">
+                                        <dl>
+                                            <dt>
+                                                <div class="date-icon">
+                                                    <span class="IconSide">가는날</span>
+                                                </div>
+                                            </dt>
+                                            <dd>
+                                                <div class="value-text">
+                                                    <div class="date-container">
+                                                        <span class="date-wrap">
+                                                         	<input class="datepicker" type="text"  placeholder="가는날 선택" onclick="optionClose('.popup-typeA')">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                        <span class="guide"></span>
+                                        <dl>
+                                            <dt>
+                                                <div class="date-icon">
+                                                    <span class="IconSide">오는날</span>
+                                                </div>
+                                            </dt>
+                                            <dd>
+                                                <div class="value-text">
+                                                    <div class="date-container">
+                                                        <span class="date-wrap">
+                                                            <input class="datepicker" type="text" placeholder="오는날 선택" onclick="optionClose('.popup-typeA')">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="area count select">
+                                        <dl>
+                                            <dt>
+                                                <div class="cn-icon">
+                                                    <span class="IconSide">좌석 등급 및 인원 선택</span>
+                                                </div>
+                                            </dt>
+                                            <dd>
+                                                <div class="value-text">
+                                                    <a href="javascript:void(0)" onclick="optionPopup('#air_count', this)" id="seat_person_str">전체 | 성인 1</a>
+                                                </div>
+
+                                                <!-- 좌석 등급 및 인원선택 / layer-popup -->
+                                                <div id="air_count" class="popup-typeA air-count">
+                                                    <div class="detail-area">
+                                                        <strong class="sub-title">좌석 등급</strong>
+                                                        <select class="full" name="seat_type" id="seat_type" title="등급 선택" onchange="modify_seat_person();">
+                                                            <option value="N@S@B" selected>전체</option>
+                                                            <option value="N">일반석</option>
+                                                            <option value="S">할인석</option>
+                                                            <option value="B">비즈니스석</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="detail-area counting-area">
+                                                        <div class="counting">
+                                                            <div class="l-area">
+                                                                <strong class="sub-title">성인</strong>
+                                                                <span class="memo">만 13세 이상</span>
+                                                            </div>
+                                                            <div class="r-area">
+                                                                <input type="hidden" name="adult_cnt" value="1" />
+                                                                <button type="button" class="counting-btn" onclick="chg_person('-', 'adult')"><img src="/images/web/main/form/subtraction.png" alt="빼기"></button>
+                                                                <span class="counting-text" id="adult_num">1</span>
+                                                                <button type="button" class="counting-btn" onclick="chg_person('+', 'adult')"><img src="/images/web/main/form/addition.png" alt="더하기"></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="counting">
+                                                            <div class="l-area">
+                                                                <strong class="sub-title">소아</strong>
+                                                                <span class="memo">만 2세 ~ 13세 미만</span>
+                                                            </div>
+                                                            <div class="r-area">
+                                                                <input type="hidden" name="child_cnt" value="0" />
+                                                                <button type="button" class="counting-btn" onclick="chg_person('-', 'child')"><img src="/images/web/main/form/subtraction.png" alt="빼기"></button>
+                                                                <span class="counting-text" id="child_num">0</span>
+                                                                <button type="button" class="counting-btn" onclick="chg_person('+', 'child')"><img src="/images/web/main/form/addition.png" alt="더하기"></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="counting">
+                                                            <div class="l-area">
+                                                                <strong class="sub-title">유아</strong>
+                                                                <span class="memo">만 2세(24개월) 미만</span>
+                                                            </div>
+                                                            <div class="r-area">
+                                                                <input type="hidden" name="baby_cnt" value="0" />
+                                                                <button type="button" class="counting-btn" onclick="chg_person('-', 'baby')"><img src="/images/web/main/form/subtraction.png" alt="빼기"></button>
+                                                                <span class="counting-text" id="baby_num">0</span>
+                                                                <button type="button" class="counting-btn" onclick="chg_person('+', 'baby')"><img src="/images/web/main/form/addition.png" alt="더하기"></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="detail-area info-area">
+                                                        <ul class="list-disc sm">
+                                                            <li>나이는 가는날/오는날 기준으로 적용됩니다.</li>
+                                                            <li>유아 선택 시 성인은 꼭 포함되어야 합니다.</li>
+                                                            <li>유아는 보호자 1인당 1명만 예약이 가능합니다.</li>
+                                                            <li>항공사별로 기준 나이는 상이할 수 있습니다.</li>
+                                                        </ul>
+                                                    </div>
+                                                    <button class="map--btn map--btn_default">
+                                                        적용
+                                                    </button>
+                                                </div><!-- //좌석 등급 및 인원선택 / layer-popup -->
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="area search">
+                                        <button type="button" class="btn red" onclick="fnGoMainList();">
+                                            <div class="MagGlass">
+                                                <span class="TicSec">항공권 검색</span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div><!-- //search-area -->
+                            </div><!-- //form-area -->
+                        </div><!-- //inner -->
+                    </div><!-- //tabs-3 / 항공 -->
+                </div>
+            </div>
+        </div><!-- //실시간 검색 -->
+        <!-- //0406 예약 네비게이션 개선 -->
+
+        <!-- Best Category -->
+        <div class="categoryBestSection">
+            <div class="inner">
+                <h2>지금 제일 잘나가는 상품</h2>
+                <div class="product-area">
+                    <div id="product_theme" class="swiper-container swiper-container-horizontal">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide">
+                                <a href="">
+                                    <div class="photo">
+                                        <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                    </div>
+                                    <div class="bx-info">
+                                        <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                        <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승합니다</div>
+                                        <div class="box__price">
+                                            <span class="text__price">2,000</span>
+                                            <span class="text__unit">원</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="">
+                                    <div class="photo">
+                                        <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                    </div>
+                                    <div class="bx-info">
+                                        <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                        <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승합니다</div>
+                                        <div class="box__price">
+                                            <span class="text__price">2,000</span>
+                                            <span class="text__unit">원</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="">
+                                    <div class="photo">
+                                        <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                    </div>
+                                    <div class="bx-info">
+                                        <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                        <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                        <div class="box__price">
+                                            <span class="text__price">2,000</span>
+                                            <span class="text__unit">원</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="">
+                                    <div class="photo">
+                                        <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                    </div>
+                                    <div class="bx-info">
+                                        <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                        <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                        <div class="box__price">
+                                            <span class="text__price">2,000</span>
+                                            <span class="text__unit">원</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="">
+                                    <div class="photo">
+                                        <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                    </div>
+                                    <div class="bx-info">
+                                        <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                        <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                        <div class="box__price">
+                                            <span class="text__price">2,000</span>
+                                            <span class="text__unit">원</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="">
+                                    <div class="photo">
+                                        <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                    </div>
+                                    <div class="bx-info">
+                                        <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                        <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                        <div class="box__price">
+                                            <span class="text__price">2,000</span>
+                                            <span class="text__unit">원</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="">
+                                    <div class="photo">
+                                        <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                    </div>
+                                    <div class="bx-info">
+                                        <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                        <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                        <div class="box__price">
+                                            <span class="text__price">2,000</span>
+                                            <span class="text__unit">원</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="">
+                                    <div class="photo">
+                                        <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                    </div>
+                                    <div class="bx-info">
+                                        <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                        <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                        <div class="box__price">
+                                            <span class="text__price">2,000</span>
+                                            <span class="text__unit">원</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="">
+                                    <div class="photo">
+                                        <img src="../../data/cardiv/RD02R40014.png" alt="아반떼" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                    </div>
+                                    <div class="bx-info">
+                                        <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                        <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                        <div class="box__price">
+                                            <span class="text__price">2,000</span>
+                                            <span class="text__unit">원</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="">
+                                    <div class="photo">
+                                        <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="제주시티투어(1회, 1일 이용권)" onerror="this.src='../../images/web/other/no-image.jpg'">
+                                    </div>
+                                    <div class="bx-info">
+                                        <div class="text__name">제주시티투어(1회, 1일 이용권)</div>
+                                        <div class="text__memo">당일 티켓 한 장으로 자유롭게 환승</div>
+                                        <div class="box__price">
+                                            <span class="text__price">2,000</span>
+                                            <span class="text__unit">원</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="theme_arrow" class="arrow-box">
+                        <div id="theme_next" class="swiper-button-next"></div>
+                        <div id="theme_prev" class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //Best Category -->
+
+        <!-- 카테고리별 추천상품 -->
+        <div class="categoryPopularSection">
+            <div class="inner">
+                <h2>카테고리별 추천상품</h2>
+                <div class="PopularContent PopularContent1">
+                    <div class="col depth1">
+                        <h3>숙소</h3>
+                        <span class="con_more">상품 더 보기 ></span>
+                        <div class="PopularKeyword">
+                            <h4>인기키워드</h4>
+                            <ul>
+                                <li>
+                                    <a href="">#산책로인근숙소</a>
+                                </li>
+                                <li>
+                                    <a href="">#공항10분</a>
+                                </li>
+                                <li>
+                                    <a href="">#독채펜션</a>
+                                </li>
+                                <li>
+                                    <a href="">#애완동물동반가능</a>
+                                </li>
+                                <li>
+                                    <a href="">#호캉스</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col depth2">
+                        <div id="ConEvnt" class="ConEvnt swiper-container swiper-container-horizontal">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">
+                                    <a href="#">
+                                        <div class="ConTx">
+                                            <pre>바베큐할인 및 루프탑생맥 1+1</pre>
+                                            <span>다인오세아노호텔</span>
+                                        </div>
+                                        <div class="ConPhoto">
+                                            <img src="../../images/web/ad/thumb/CADO180020_12.jpg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#">
+                                        <div class="ConTx">
+                                            <pre>따뜻한 스파에서 편안하게 휴식하세요.</pre>
+                                            <span>산방산에펜션</span>
+                                        </div>
+                                        <div class="ConPhoto">
+                                            <img src="../../data/ad/thumb/CADO190022_17.jpg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#">
+                                        <div class="ConTx">
+                                            <pre>입실 특가 이벤트</pre>
+                                            <span>플레이스 캠프 제주</span>
+                                        </div>
+                                        <div class="ConPhoto">
+                                            <img src="../../data/ad/thumb/C160000644_13.jpg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#">
+                                        <div class="ConTx">
+                                            <pre>4박 연박시 1박 무료 제공</pre>
+                                            <span>베니키아호텔제주</span>
+                                        </div>
+                                        <div class="ConPhoto">
+                                            <img src="../../data/ad/thumb/C001511080_5.jpg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bxBtn">
+                            <a class="bx-prev" href="">Prev</a>
+                            <a class="bx-next" href="">Next</a>
+                        </div>
+                    </div>
+                    <div class="col depth3">
+                        <div class="categoryPopularItems">
+                            <ul class="col_3">
+                                <li>
+                                    <a href="#" class="bx_list">
+                                        <div class="bxPhoto">
+                                            <img src="../../data/ad/thumb/CADO180017_2.jpg" alt="product">
+                                        </div>
+                                        <div class="bxInfo">
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">101,200</span>
+                                                <span class="text__unit">원</span>
+
+                                            </div>
+                                            <div class="bxLabel">
+                                                <span class="main_label">이벤트</span>
+                                                <span class="main_label">할인쿠폰</span>
+                                                <span class="main_label">연박할인</span>
+                                                <span class="main_label">당일특가</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="bx_list">
+                                        <div class="bxPhoto">
+                                            <img src="../../data/ad/thumb/C160000236_4.jpg" alt="product">
+                                        </div>
+                                        <div class="bxInfo">
+                                            <div class="bxTitle">그라벨호텔제주</div>
+                                            <div class="bxEvent">루프탑인피니티풀 오픈, 공항인근</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">79,000</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="bx_list">
+                                        <div class="bxPhoto">
+                                            <img src="../../data/ad/thumb/CADO180017_2.jpg" alt="product">
+                                        </div>
+                                        <div class="bxInfo">
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">101,200</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="bx_list">
+                                        <div class="bxPhoto">
+                                            <img src="../../data/ad/thumb/C160000730_24.jpg" alt="product">
+                                        </div>
+                                        <div class="bxInfo">
+                                            <div class="bxTitle">더포그레이스리조트</div>
+                                            <div class="bxEvent">동부권 성산일출봉 가까운 숙소</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,900</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                            <div class="bxLabel">
+                                                <span class="main_label">이벤트</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="bx_list">
+                                        <div class="bxPhoto">
+                                            <img src="../../data/ad/thumb/C160000619_23.jpg" alt="product">
+                                        </div>
+                                        <div class="bxInfo">
+                                            <div class="bxTitle">하모니리조트</div>
+                                            <div class="bxEvent">협재해변인근</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">74,070</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="bx_list">
+                                        <div class="bxPhoto">
+                                            <img src="../../data/ad/thumb/C160000320_9.jpg" alt="product">
+                                        </div>
+                                        <div class="bxInfo">
+                                            <div class="bxTitle">제주신라호텔</div>
+                                            <div class="bxEvent">중문관광단지의 중심</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">349,200</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="PopularContent PopularContent2">
+                    <div class="col depth1">
+                        <h3>렌터카</h3>
+                        <span class="con_more">상품 더 보기 ></span>
+                        <div class="PopularKeyword">
+                            <h4>인기키워드</h4>
+                            <ul>
+                                <li>
+                                    <a href="">#산책로인근숙소</a>
+                                </li>
+                                <li>
+                                    <a href="">#공항10분</a>
+                                </li>
+                                <li>
+                                    <a href="">#독채펜션</a>
+                                </li>
+                                <li>
+                                    <a href="">#애완동물동반가능</a>
+                                </li>
+                                <li>
+                                    <a href="">#호캉스</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col depth2">
+                        <div id="ConEvnt2" class="ConEvnt swiper-container swiper-container-horizontal">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">
+                                    <a href="#">
+                                        <div class="ConTx">
+                                            <p>친환경 전기차<br>모음</br></p>
+                                            <span>청정제주와 함께하는 제주여행</span>
+                                        </div>
+                                        <div class="ConPhoto">
+                                            <img src="../../images/web/r_main/cardiv_1.png" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#">
+                                        <div class="ConTx">
+                                            <p>중형차<br>모음</p>
+                                            <span>넉넉한 공간, 합리적인 선택</span>
+                                        </div>
+                                        <div class="ConPhoto">
+                                            <img src="../../images/web/r_main/cardiv_2.png" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#">
+                                        <div class="ConTx">
+                                            <p>고급차<br>모음</p>
+                                            <span>럭셔리하고 편안한 제주여행</span>
+                                        </div>
+                                        <div class="ConPhoto">
+                                            <img src="../../images/web/r_main/cardiv_3.png" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#">
+                                        <div class="ConTx">
+                                            <p>SUV/승합차<br>모음</p>
+                                            <span>다같이 함께하는 즐거운 드라이빙</span>
+                                        </div>
+                                        <div class="ConPhoto">
+                                            <img src="../../images/web/r_main/cardiv_4.png" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#">
+                                        <div class="ConTx">
+                                            <p>오픈카/수입차<br>모음</p>
+                                            <span>새로운 경험, 특별한 제주여행!</span>
+                                        </div>
+                                        <div class="ConPhoto">
+                                            <img src="../../images/web/r_main/cardiv_5.png" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="#">
+                                        <div class="ConTx">
+                                            <p>경차/소형차<br>모음</p>
+                                            <span>합리적인 당신, 실속있는 선택!</span>
+                                        </div>
+                                        <div class="ConPhoto">
+                                            <img src="../../images/web/r_main/cardiv_6.png" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bxBtn">
+                            <a class="bx-prev" href="">Prev</a>
+                            <a class="bx-next" href="">Next</a>
+                        </div>
+                    </div>
+                    <div class="col depth3">
+                        <div class="categoryPopularItems">
+                            <ul class="col_3">
+                                <li>
+                                    <a href="#" class="bx_list">
+                                        <div class="bxPhoto">
+                                            <img src="../../data/cardiv/RD01R20009.png" alt="product">
+                                        </div>
+                                        <div class="bxInfo">
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">101,200</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                            <div class="bxLabel">
+                                                <span class="main_label">이벤트</span>
+                                                <span class="main_label">할인쿠폰</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="bx_list">
+                                        <div class="bxPhoto">
+                                            <img src="../../data/cardiv/RD25R50006.png" alt="product">
+                                        </div>
+                                        <div class="bxInfo">
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">101,200</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="bx_list">
+                                        <div class="bxPhoto">
+                                            <img src="../../data/cardiv/RD25R20001.png" alt="product">
+                                        </div>
+                                        <div class="bxInfo">
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">101,200</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="bx_list">
+                                        <div class="bxPhoto">
+                                            <img src="../../data/cardiv/RD22R50003.png" alt="product">
+                                        </div>
+                                        <div class="bxInfo">
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">101,200</span>
+                                                <span cclass="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="bx_list">
+                                        <div class="bxPhoto">
+                                            <img src="../../data/cardiv/RD18R40001.png" alt="product">
+                                        </div>
+                                        <div class="bxInfo">
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">101,200</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="bx_list">
+                                        <div class="bxPhoto">
+                                            <img src="../../data/cardiv/RD18R20002.png" alt="product">
+                                        </div>
+                                        <div class="bxInfo">
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">101,200</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //카테고리별 추천상품 -->
+
+        <!-- 여행사상품 -->
+        <div class="categoryPackageSection">
+            <div class="inner">
+                <h2>카테고리별 추천상품</h2>
+                <span class="con_more">상품 더 보기 ></span>
+                <div class="category-tab">
+                    <div class="tabList tab-s1"><a href="javascript:tabFunc('package');" class="active">여행사 상품</a></div>
+                    <div class="tabList tab-s2"><a href="javascript:tabFunc('leisure');">관광지/레저</a></div>
+                    <div class="tabList tab-s3"><a href="javascript:tabFunc('food');">맛집</a></div>
+                </div>
+                <section class="category-area package">
+                    <div class="item-area">
+                        <div class="item__List">
+                            <ul>
+                                <li class="list-item">
+                                    <a href="#" class="link__item">
+                                        <div class="box__image">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _green">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                            <div class="bxLabel">
+                                                <span class="main_label">이벤트</span>
+                                                <span class="main_label">할인쿠폰</span>
+                                                <span class="main_label">우수관광기념품</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="link__item">
+                                        <div class="box__image">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _green">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="link__item">
+                                        <div class="box__image">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _green">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="link__item">
+                                        <div class="box__image">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _green">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="link__item">
+                                        <div class="box__image">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _green">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="link__item">
+                                        <div class="box__image">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _green">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="link__item">
+                                        <div class="box__image">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _green">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="link__item">
+                                        <div class="box__image">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _green">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="link__item">
+                                        <div class="box__image">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _green">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#" class="link__item">
+                                        <div class="box__image">
+                                            <img src="../../data/sp/thumb/SP00001022_6.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _green">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- //여행사상품 -->
+
+        <!-- 특산기념품 -->
+        <div class="categoryProductSection">
+            <div class="conBg">
+                <div class="inner">
+                    <h2>제주 특산/기념품</h2>
+                    <span class="con_more">상품 더 보기 ></span>
+                    <div class="product-area">
+                        <div id="product_slider" class="swiper-container swiper-container-horizontal">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="box__image">
+                                            <span class="main_label_JQ">JQ인증</span>
+                                            <img src="../../data/sv/thumb/SV00000471_2.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _red">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                            <div class="bxLabel">
+                                                <span class="main_label">이벤트</span>
+                                                <span class="main_label">할인쿠폰</span>
+                                                <span class="main_label">공모전수상작</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="box__image">
+                                            <img src="../../data/sv/thumb/SV00000471_2.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _red">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="box__image">
+                                            <img src="../../data/sv/thumb/SV00000471_2.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _red">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="box__image">
+                                            <img src="../../data/sv/thumb/SV00000471_2.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _red">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="box__image">
+                                            <img src="../../data/sv/thumb/SV00000471_2.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _red">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="box__image">
+                                            <img src="../../data/sv/thumb/SV00000471_2.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _red">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="box__image">
+                                            <img src="../../data/sv/thumb/SV00000471_2.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _red">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="box__image">
+                                            <img src="../../data/sv/thumb/SV00000471_2.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _red">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="">
+                                        <div class="box__image">
+                                            <img src="../../data/sv/thumb/SV00000471_2.jpg" alt="product">
+                                        </div>
+                                        <div class="box__information">
+                                            <strong class="bx_label _red">스위트호텔제주</strong>
+                                            <div class="bxTitle">스위트호텔제주</div>
+                                            <div class="bxEvent">블루투스스피커 및 면세점할인권 증정</div>
+                                            <div class="bxPrice">
+                                                <span class="text__price">59,836</span>
+                                                <span class="text__unit">원</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="product_arrow" class="arrow-box">
+                            <div id="product_next" class="swiper-button-next"></div>
+                            <div id="product_prev" class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //특산기념품 -->
+
+        <!-- layer-popup-slider -->
+        <div id="mainPopupAll" class="layer crm bx-viewport">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide">
+                    <a href="" title="바로가기">
+                        <img src="../../images/web/main/layer-popup_02.png" alt="">
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="" title="바로가기">
+                        <img src="../../images/web/main/layer-popup_01.png" alt="">
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="" title="바로가기">
+                        <img src="../../images/web/main/layer-popup_02.png" alt="" >
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="" title="바로가기" >
+                        <img src="../../images/web/main/layer-popup_01.png" alt="" >
+                    </a>
+                </li>
+            </ul>
+            <div class="bx-controls">
+                <div class="bx-controls-direction">
+                    <a id="bx-prev" href="">Prev</a>
+                    <a id="bx-next" href="">Next</a>
+                </div>
+                <div class="bx-pager bx-default-pager">
+                    <div class="bx-pager-item">
+                        <a href data-slide-index="0" class="bx-pager-link active">1</a>
+                    </div>
+                    <div class="bx-pager-item">
+                        <a href data-slide-index="1" class="bx-pager-link">2</a>
+                    </div>
+                </div>
+            </div>
+            <button type="button">오늘 그만 보기</button>
+            <button type="button" class="close">닫기</button>
+        </div> <!-- //layer-popup-slider -->
+
+        <!--main foot banner (사이트링크)-->
+        <div class="main-footBanner">
+            <div class="inner">
+                <div id="foot_organBanner" class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <a href="http://www.jeju.go.kr/" target="_blank" title="새창">
+                                <img src="../../images/web/main/organ-jejudo.jpg" alt="제주특별자치도">
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="http://www.visitjeju.or.kr/" target="_blank" title="새창">
+                                <img src="../../images/web/main/organ-jta.jpg" alt="제주관광협회">
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="http://www.visitjeju.net/" target="_blank" title="새창">
+                                <img src="../../images/web/main/organ-visit.jpg" alt="VISIT JEJU">
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="http://www.jejusi.go.kr/" target="_blank" title="새창">
+                                <img src="../../images/web/main/organ-jejusi.jpg" alt="제주시">
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="http://www.seogwipo.go.kr/" target="_blank" title="새창">
+                                <img src="../../images/web/main/organ-seogwipo.jpg" alt="서귀포시">
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="http://www.changwonmall.kr/" target="_blank" title="새창">
+                                <img src="../../images/web/main/organ-changwon.jpg" alt="창원몰">
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="http://www.changwonmall.kr/" target="_blank" title="새창">
+                                <img src="../../images/web/main/organ-changwon.jpg" alt="창원몰">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="_footer" data-container="footer" class="footer_wrap">
+        <div class="service_support">
+            <div class="inner">
+                <div class="top-wrap">
+                    <a class="main-cs" href="../../web/coustmer/qaList.do"><img src="../../images/web/main/main_cs.png" alt="맨위로"></a>
+                    <a class="go-top" onclick="go_top();"><img src="../../images/web/comm/top.gif" alt="맨위로"></a>
+                </div>
+                <ul>
+                    <li>
+                        <a href="/web/etc/introduction.do" target="_blank" title="새창 열림">
+                            <span>회사소개</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/etc/buyToS.do" target="_blank" title="새창 열림">
+                            <span>이용약관</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/coustmer/viewCorpPns.do" target="_blank" title="새창 열림">
+                            <span>입점/제휴안내</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/etc/personalData.do" target="_blank" title="새창 열림">
+                            <strong>개인정보취급방침</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/web/coustmer/qaList.do" target="_blank" title="새창 열림">
+                            <span>고객센터</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=6168204092" target="_blank" title="새창 열림">
+                            <span>사업자정보확인</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="corp_wrap">
+            <div class="inner">
+                <div class="corp_wrap_row">
+                    <div class="corp_info">
+                        <dl>
+                            <dt>제주특별자치도관광협회</dt>
+                            <dd class="corp_info_cs">
+                                <p>
+                                    <em>1522-3454</em>
+                                    <span>월~금 09:00 - 18:00</span>
+                                    <span>점심시간 12:00 - 13:00</span>
+                                </p>
+                            </dd>
+                            <dd class="corp_info_tx">
+                                <p>
+                                    <span>대표이사:부동석</span>
+                                    <span>63309 제주특별자치도 제주시 첨단로 213-65 제주종합비즈니스센터 3층</span>
+                                    <span>법인 등록번호:220121-0000107</span>
+                                    <span>사업자 등록번호:616-82-04092</span>
+                                </p>
+                                <p>
+                                    <span>통신판매업번호:제2018-제주아라0049호</span>
+                                    <span>개인정보관리책임자:김철휘</span>
+                                    <span>E-mail : tamnao@tamnao.com</span>
+                                    <span>Fax : 064-749-7445</span>
+                                </p>
+                            </dd>
+                            <dd class="corp_info_copy">
+                                <p>탐나오는 통신판매중개자로서 거래당사자가 아니므로 개별 판매자가 등록한 상품거래정보 및 거래에 대해서 책임을 지지 않습니다.</p>
+                                <p>Copyright 2018. 제주특별자치도관광협회 All Rights Reserved.</p>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="corp_rgt" >
+                        <div class="f_sns">
+                            <a href="https://blog.naver.com/jta0119" class="bl" target="_blank">
+                                <span class="blind">블로그</span>
+                            </a>
+                            <a href="https://post.naver.com/jta0119" class="nv" target="_blank">
+                                <span class="blind">네이버</span>
+                            </a>
+                            <a href="https://www.facebook.com/JEJUTAMNAOTRAVEL/" class="fb" target="_blank">
+                                <span class="blind">페이스북</span>
+                            </a>
+                            <a href="https://www.instagram.com/tamnao_jeju/" class="ig" target="_blank">
+                                <span class="blind">인스타그램</span>
+                            </a>
+                            <a href="https://www.youtube.com/channel/UC5Hk3MfM3RFDz5_Xm9BDJZQ" class="ub" target="_blank">
+                                <span class="blind">유튜브</span>
+                            </a>
+                        </div>
+                        <div class="f_down">
+                            <a href="https://apps.apple.com/kr/app/%ED%83%90%EB%82%98%EC%98%A4-%EC%A0%9C%EC%A3%BC%EC%97%AC%ED%96%89%EC%8A%A4%ED%86%A0%EC%96%B4/id1489404866" target="_blank">
+                                <img src="/images/web/r_main/apple.png" alt="애플 앱다운로드">
+                                <span>ISO</span>
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=kr.or.hijeju.tamnao" target="_blank">
+                                <img src="/images/web/r_main/google.png" alt="구글 앱다운로드">
+                                <span>Android</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mark-zone">
+                    <div class="award">
+                        <ul>
+                            <li><img src="/images/web/mark/gcs.png" alt="gcs"></li>
+                            <li><img src="/images/web/mark/maket.png" alt="market"></li>
+                            <li><img src="/images/web/mark/int.png" alt="int"></li>
+                            <li><img src="/images/web/mark/web.png" alt="web"></li>
+                            <li><img src="/images/web/mark/nba.png" alt="nba"></li>
+                            <li><img src="/images/web/mark/ieco.png" alt="ieco"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

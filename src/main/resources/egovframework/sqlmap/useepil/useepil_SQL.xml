@@ -1,0 +1,1025 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="useepil">
+
+<resultMap id="USEEPIL_R_00" class="oss.useepil.vo.USEEPILVO">
+	<result property="useEpilNum" 		column="USE_EPIL_NUM"/>
+	<result property="corpId" 			column="CORP_ID"/>
+	<result property="prdtnum" 			column="PRDT_NUM"/>
+	<result property="userId" 			column="USER_ID"/>
+	<result property="email" 			column="EMAIL"/>
+	<result property="subject" 			column="SUBJECT"/>
+	<result property="gpa" 				column="GPA"/>
+	<result property="contents" 		column="CONTENTS"/>
+	<result property="cmtCnt" 			column="CMT_CNT"/>
+	<result property="printYn" 			column="PRINT_YN"/>
+	<result property="frstRegDttm" 		column="FRST_REG_DTTM"/>
+	<result property="lastModDttm" 		column="LAST_MOD_DTTM"/>
+	<result property="frstRegId" 		column="FRST_REG_ID"/>
+	<result property="frstRegIp" 		column="FRST_REG_IP"/>
+	<result property="lastModId" 		column="LAST_MOD_ID"/>
+	<result property="lastModIp" 		column="LAST_MOD_IP"/>
+	<result property="corpNm" 			column="CORP_NM"/>
+	<result property="prdtNm" 			column="PRDT_NM"/>
+	<result property="userNm" 			column="USER_NM"/>
+	<result property="telNum" 			column="TEL_NUM"/>
+	<result property="reviewType"		column="REVIEW_TYPE"/>
+</resultMap>
+
+<resultMap id="USEEPIL_R_01" class="oss.useepil.vo.USEEPILVO">
+	<result property="useEpilNum" 		column="USE_EPIL_NUM"/>
+	<result property="corpId" 			column="CORP_ID"/>
+	<result property="prdtnum" 			column="PRDT_NUM"/>
+	<result property="userId" 			column="USER_ID"/>
+	<result property="email" 			column="EMAIL"/>
+	<result property="subject" 			column="SUBJECT"/>
+	<result property="gpa" 				column="GPA"/>
+	<result property="contents" 		column="CONTENTS"/>
+	<result property="cmtCnt" 			column="CMT_CNT"/>
+	<result property="printYn" 			column="PRINT_YN"/>
+	<result property="frstRegDttm" 		column="FRST_REG_DTTM"/>
+	<result property="lastModDttm" 		column="LAST_MOD_DTTM"/>
+	<result property="frstRegId" 		column="FRST_REG_ID"/>
+	<result property="frstRegIp" 		column="FRST_REG_IP"/>
+	<result property="lastModId" 		column="LAST_MOD_ID"/>
+	<result property="lastModIp" 		column="LAST_MOD_IP"/>
+	<result property="corpNm" 			column="CORP_NM"/>
+	<result property="prdtNm" 			column="PRDT_NM"/>
+	<result property="imgCnt" 			column="IMG_CNT"/>
+	<result property="cate" 			column="CATE"/>
+</resultMap>
+
+<resultMap id="USEEPIL_R_06" class="oss.useepil.vo.USEEPILVO">
+	<result property="useEpilNum" 		column="USE_EPIL_NUM"/>
+	<result property="corpId" 			column="CORP_ID"/>
+	<result property="prdtnum" 			column="PRDT_NUM"/>
+	<result property="userId" 			column="USER_ID"/>
+	<result property="email" 			column="EMAIL"/>
+	<result property="subject" 			column="SUBJECT"/>
+	<result property="gpa" 				column="GPA"/>
+	<result property="contents" 		column="CONTENTS"/>
+	<result property="cmtCnt" 			column="CMT_CNT"/>
+	<result property="printYn" 			column="PRINT_YN"/>
+	<result property="frstRegDttm" 		column="FRST_REG_DTTM"/>
+	<result property="lastModDttm" 		column="LAST_MOD_DTTM"/>
+	<result property="frstRegId" 		column="FRST_REG_ID"/>
+	<result property="frstRegIp" 		column="FRST_REG_IP"/>
+	<result property="lastModId" 		column="LAST_MOD_ID"/>
+	<result property="lastModIp" 		column="LAST_MOD_IP"/>
+	<result property="corpNm" 			column="CORP_NM"/>
+	<result property="prdtNm" 			column="PRDT_NM"/>
+	<result property="imgCnt" 			column="IMG_CNT"/>
+	<result property="userNm" 			column="USER_NM"/>
+	<result property="telNum" 			column="TEL_NUM"/>
+	<result property="cate" 			column="CATE"/>
+	<result property="subCate" 			column="SUB_CATE"/>
+	<result property="reviewType" 		column="REVIEW_TYPE"/>
+</resultMap>
+
+<resultMap id="USEEPILCMT_R_00" class="oss.useepil.vo.USEEPILCMTVO">
+	<result property="cmtSn" 			column="CMT_SN"/>
+	<result property="useEpilNum" 		column="USE_EPIL_NUM"/>
+	<result property="userId" 			column="USER_ID"/>
+	<result property="email" 			column="EMAIL"/>
+	<result property="contents" 		column="CONTENTS"/>
+	<result property="printYn" 			column="PRINT_YN"/>
+	<result property="frstRegDttm" 		column="FRST_REG_DTTM"/>
+	<result property="lastModDttm" 		column="LAST_MOD_DTTM"/>
+	<result property="frstRegId" 		column="FRST_REG_ID"/>
+	<result property="frstRegIp" 		column="FRST_REG_IP"/>
+	<result property="lastModId" 		column="LAST_MOD_ID"/>
+	<result property="lastModIp" 		column="LAST_MOD_IP"/>
+</resultMap>
+
+<resultMap id="USEEPILIMG_R_00" class="oss.useepil.vo.USEEPILIMGVO">
+	<result property="useEpilNum"		column="USE_EPIL_NUM"/>
+	<result property="imgNum" 			column="IMG_NUM"/>
+	<result property="savePath" 		column="SAVE_PATH"/>
+	<result property="realFileNm"		column="REAL_FILE_NM"/>
+	<result property="saveFileNm" 		column="SAVE_FILE_NM"/>
+</resultMap>
+
+<resultMap id="USEEPILIMG_R_01" class="oss.etc.vo.FILEVO">
+	<result property="docId"        column="DOC_ID" />
+	<result property="fileNum"      column="FILE_NUM" />
+	<result property="savePath"     column="SAVE_PATH" />
+	<result property="saveFileNm"   column="SAVE_FILE_NM" />
+	<result property="realFileNm"   column="REAL_FILE_NM" />
+	<result property="docDiv"       column="DOC_DIV" />
+	<result property="docNm"        column="DOC_NM" />
+	<result property="regDttm"      column="REG_DTTM" />
+</resultMap>
+<resultMap id="USEEPIL_R_02" class="oss.useepil.vo.USEEPILADDVO">
+	<result property="seq"			column="SEQ" />
+	<result property="cPrdtNum"		column="C_PRDT_NUM" />
+	<result property="cPrdtNm"		column="C_PRDT_NM" />
+	<result property="cConfDttm"	column="C_CONF_DTTM" />
+</resultMap>
+
+<select id="UEEPIL_S_00" resultMap="USEEPIL_R_00">
+SELECT USE_EPIL_NUM     /*이용 후기 번호*/
+     , CORP_ID           /*업체아이디*/
+     , PRDT_NUM          /*상품번호*/
+     , USER_ID          /*사용자 아이디*/
+     , EMAIL            /*이메일*/
+     , SUBJECT          /*제목*/
+     , GPA              /*평점*/
+     , UTL_RAW.CAST_TO_VARCHAR2(CONTENTS) AS CONTENTS         /*내용*/
+     , CMT_CNT          /*댓글 건수*/
+     , PRINT_YN         /*출력 여부*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM   /*최종 수정 일시*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+     , FRST_REG_IP      /*최초 등록 아이피*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+     , LAST_MOD_IP      /*최종 수정 아이피*/
+     , CORP_NM
+     , PRDT_NM
+     , (SELECT USER_NM FROM TB_USER WHERE USER_ID=TB_USEEPIL.USER_ID) USER_NM
+     , (SELECT TEL_NUM FROM TB_USER WHERE USER_ID=TB_USEEPIL.USER_ID) TEL_NUM
+	 , REVIEW_TYPE
+FROM TB_USEEPIL
+	WHERE 1=1
+		<isNotEmpty property="useEpilNum">
+		   	  	AND USE_EPIL_NUM = #useEpilNum#
+		</isNotEmpty>
+		<isNotEmpty property="corpId">
+		   	   AND CORP_ID = #corpId#
+		</isNotEmpty>
+		<isNotEmpty property="prdtnum">
+		 		AND PRDT_NUM =#prdtnum#
+		</isNotEmpty>
+</select>
+
+<select id="UEEPIL_S_01" resultMap="USEEPIL_R_01">
+SELECT USE_EPIL_NUM     /*이용 후기 번호*/
+	, CORP_ID           /*업체아이디*/
+	, PRDT_NUM          /*상품번호*/
+	, USER_ID          /*사용자 아이디*/
+	, EMAIL            /*이메일*/
+	, SUBJECT          /*제목*/
+	, GPA              /*평점*/
+	, UTL_RAW.CAST_TO_VARCHAR2(CONTENTS) AS CONTENTS         /*내용*/
+	, CMT_CNT          /*댓글 건수*/
+	, PRINT_YN         /*출력 여부*/
+	, TO_CHAR(FRST_REG_DTTM, 'YYYY-MM-DD') AS FRST_REG_DTTM /*최초 등록 일시*/
+	, TO_CHAR(LAST_MOD_DTTM, 'YYYY-MM-DD') AS LAST_MOD_DTTM /*최종 수정 일시*/
+	, FRST_REG_ID      /*최초 등록 아이디*/
+	, FRST_REG_IP      /*최초 등록 아이피*/
+	, LAST_MOD_ID      /*최종 수정 아이디*/
+	, LAST_MOD_IP      /*최종 수정 아이피*/
+	, CORP_NM
+	, PRDT_NM
+	, IMG_CNT
+	, CATE
+FROM ( SELECT ROWNUM AS RN
+            , USE_EPIL_NUM
+            , CORP_ID           /*업체아이디*/
+            , PRDT_NUM          /*상품번호*/
+            , USER_ID          /*사용자 아이디*/
+            , EMAIL            /*이메일*/
+            , SUBJECT          /*제목*/
+            , GPA              /*평점*/
+            , CONTENTS         /*내용*/
+            , CMT_CNT          /*댓글 건수*/
+            , PRINT_YN         /*출력 여부*/
+            , FRST_REG_DTTM    /*최초 등록 일시*/
+            , LAST_MOD_DTTM    /*최종 수정 일시*/
+            , FRST_REG_ID      /*최초 등록 아이디*/
+            , FRST_REG_IP      /*최초 등록 아이피*/
+            , LAST_MOD_ID      /*최종 수정 아이디*/
+            , LAST_MOD_IP      /*최종 수정 아이피*/
+		    , CORP_NM
+     		, PRDT_NM
+     		, IMG_CNT
+			, CATE
+	FROM ( SELECT USE_EPIL_NUM     /*이용 후기 번호*/
+				, CORP_ID           /*업체아이디*/
+				, PRDT_NUM          /*상품번호*/
+				, USER_ID          /*사용자 아이디*/
+				, EMAIL            /*이메일*/
+				, SUBJECT          /*제목*/
+				, GPA              /*평점*/
+				, CONTENTS         /*내용*/
+				, CMT_CNT          /*댓글 건수*/
+				, PRINT_YN         /*출력 여부*/
+				, FRST_REG_DTTM    /*최초 등록 일시*/
+				, LAST_MOD_DTTM    /*최종 수정 일시*/
+				, FRST_REG_ID      /*최초 등록 아이디*/
+				, FRST_REG_IP      /*최초 등록 아이피*/
+				, LAST_MOD_ID      /*최종 수정 아이디*/
+				, LAST_MOD_IP      /*최종 수정 아이피*/
+				, CORP_NM
+				, PRDT_NM
+				, (SELECT COUNT(*) FROM TB_USEEPIL_IMG WHERE USE_EPIL_NUM=TB_USEEPIL.USE_EPIL_NUM) IMG_CNT
+				, CASE WHEN SUBSTR(PRDT_NUM,1,2) = 'SP' THEN '소셜'
+				WHEN SUBSTR(PRDT_NUM,1,2) = 'SV' THEN '특산기념품'
+				WHEN SUBSTR(PRDT_NUM,1,2) = 'RC' THEN '렌트카'
+				WHEN SUBSTR(PRDT_NUM,1,2) = 'AD' THEN '숙박'
+				ELSE '기타' END AS CATE
+			FROM TB_USEEPIL
+			WHERE 1=1
+			<isNotEmpty property="sCorpId">
+				   AND CORP_ID = #sCorpId#
+			</isNotEmpty>
+			<isNotEmpty property="sPrdtNum">
+					AND PRDT_NUM =#sPrdtNum#
+			</isNotEmpty>
+			<isNotEmpty property="sPrintYn">
+					AND PRINT_YN =#sPrintYn#
+			</isNotEmpty>
+			<isNotEmpty property="sStartFrstRegDttm">
+				<![CDATA[
+					AND FRST_REG_DTTM >= TO_DATE(#sStartFrstRegDttm# || ' 00:00:00', 'YYYY-MM-DD HH24:MI:SS')
+				]]>
+			</isNotEmpty>
+			<isNotEmpty property="sEndFrstRegDttm">
+				<![CDATA[
+			  		AND FRST_REG_DTTM <= TO_DATE(#sEndFrstRegDttm# || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+				]]>
+			</isNotEmpty>
+			<isNotEmpty property="sCorpNm">
+				AND CORP_NM  LIKE '%'||#sCorpNm#||'%'
+			</isNotEmpty>
+			<isNotEmpty property="sPrdtNm">
+				AND PRDT_NM  LIKE '%'||#sPrdtNm#||'%'
+			</isNotEmpty>
+			<isNotEmpty property="sReviewType">
+				AND REVIEW_TYPE =#sReviewType#
+			</isNotEmpty>
+			<isEqual property="sReviewFeedback" compareValue="1">
+				AND GPA <![CDATA[>=]]> 4
+			</isEqual>
+			<isEqual property="sReviewFeedback" compareValue="0">
+				AND GPA <![CDATA[<=]]> 2
+			</isEqual>
+			<isNotEmpty property="sCate">
+				AND SUBSTR(PRDT_NUM,1,2) = #sCate#
+			</isNotEmpty>
+			ORDER BY TO_NUMBER(USE_EPIL_NUM) DESC
+			)
+    )
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="UEEPIL_S_02" resultClass="int">
+SELECT COUNT(USE_EPIL_NUM)
+  FROM TB_USEEPIL
+ WHERE 1=1
+	<isNotEmpty property="sCorpId">
+		AND CORP_ID = #sCorpId#
+	</isNotEmpty>
+	<isNotEmpty property="sPrdtNum">
+		AND PRDT_NUM =#sPrdtNum#
+	</isNotEmpty>
+	<isNotEmpty property="sPrintYn">
+		AND PRINT_YN =#sPrintYn#
+	</isNotEmpty>
+	<isNotEmpty property="sStartFrstRegDttm">
+		<![CDATA[
+			AND FRST_REG_DTTM >= TO_DATE(#sStartFrstRegDttm# || ' 00:00:00', 'YYYY-MM-DD HH24:MI:SS')
+		]]>
+	</isNotEmpty>
+	<isNotEmpty property="sEndFrstRegDttm">
+		<![CDATA[
+			AND FRST_REG_DTTM <= TO_DATE(#sEndFrstRegDttm# || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+		]]>
+	</isNotEmpty>
+	<isNotEmpty property="sCorpNm">
+		AND CORP_NM  LIKE '%'||#sCorpNm#||'%'
+	</isNotEmpty>
+	<isNotEmpty property="sPrdtNm">
+		AND PRDT_NM  LIKE '%'||#sPrdtNm#||'%'
+	</isNotEmpty>
+	<isNotEmpty property="sReviewType">
+		AND REVIEW_TYPE =#sReviewType#
+	</isNotEmpty>
+	<isEqual property="sReviewFeedback" compareValue="1">
+		AND GPA <![CDATA[>=]]> 4
+	</isEqual>
+	<isEqual property="sReviewFeedback" compareValue="0">
+		AND GPA <![CDATA[<=]]> 2
+	</isEqual>
+	<isNotEmpty property="sCate">
+		AND SUBSTR(PRDT_NUM,1,2) = #sCate#
+	</isNotEmpty>
+</select>
+
+
+
+<select id="UEEPIL_S_03" resultMap="USEEPIL_R_00">
+SELECT USE_EPIL_NUM     /*이용 후기 번호*/
+     , CORP_ID           /*업체아이디*/
+     , PRDT_NUM          /*상품번호*/
+     , USER_ID          /*사용자 아이디*/
+     , EMAIL            /*이메일*/
+     , SUBJECT          /*제목*/
+     , GPA              /*평점*/
+     , UTL_RAW.CAST_TO_VARCHAR2(CONTENTS) AS CONTENTS         /*내용*/
+     , CMT_CNT          /*댓글 건수*/
+     , PRINT_YN         /*출력 여부*/
+     , FRST_REG_DTTM 	/*최초 등록 일시*/
+     , LAST_MOD_DTTM 	/*최종 수정 일시*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+     , FRST_REG_IP      /*최초 등록 아이피*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+     , LAST_MOD_IP      /*최종 수정 아이피*/
+     , CORP_NM
+     , PRDT_NM
+     , (SELECT USER_NM FROM TB_USER WHERE USER_ID=TB_USEEPIL.USER_ID) USER_NM
+     , (SELECT TEL_NUM FROM TB_USER WHERE USER_ID=TB_USEEPIL.USER_ID) TEL_NUM
+	 , REVIEW_TYPE
+FROM ( SELECT ROWNUM AS RN
+            , USE_EPIL_NUM
+            , CORP_ID           /*업체아이디*/
+            , PRDT_NUM          /*상품번호*/
+            , USER_ID          /*사용자 아이디*/
+            , EMAIL            /*이메일*/
+            , SUBJECT          /*제목*/
+            , GPA              /*평점*/
+            , CONTENTS         /*내용*/
+            , CMT_CNT          /*댓글 건수*/
+            , PRINT_YN         /*출력 여부*/
+            , FRST_REG_DTTM    /*최초 등록 일시*/
+            , LAST_MOD_DTTM    /*최종 수정 일시*/
+            , FRST_REG_ID      /*최초 등록 아이디*/
+            , FRST_REG_IP      /*최초 등록 아이피*/
+            , LAST_MOD_ID      /*최종 수정 아이디*/
+            , LAST_MOD_IP      /*최종 수정 아이피*/
+            , CORP_NM
+            , PRDT_NM
+			, REVIEW_TYPE
+        FROM ( SELECT USE_EPIL_NUM     /*이용 후기 번호*/
+					, CORP_ID           /*업체아이디*/
+					, PRDT_NUM          /*상품번호*/
+					, USER_ID          /*사용자 아이디*/
+					, EMAIL            /*이메일*/
+					, SUBJECT          /*제목*/
+					, GPA              /*평점*/
+					, CONTENTS         /*내용*/
+					, CMT_CNT          /*댓글 건수*/
+					, PRINT_YN         /*출력 여부*/
+					, FRST_REG_DTTM    /*최초 등록 일시*/
+					, LAST_MOD_DTTM    /*최종 수정 일시*/
+					, FRST_REG_ID      /*최초 등록 아이디*/
+					, FRST_REG_IP      /*최초 등록 아이피*/
+					, LAST_MOD_ID      /*최종 수정 아이디*/
+					, LAST_MOD_IP      /*최종 수정 아이피*/
+					, CORP_NM
+					, PRDT_NM
+					, REVIEW_TYPE
+				FROM TB_USEEPIL
+				WHERE PRINT_YN ='Y'
+				<isNotEmpty property="sCorpId">
+				   AND CORP_ID = #sCorpId#
+				</isNotEmpty>
+				<isNotEmpty property="sPrdtNum">
+					AND PRDT_NUM =#sPrdtNum#
+				</isNotEmpty>
+				<isNotEmpty property="useepilPrdtList">
+					AND PRDT_NUM IN
+					<iterate property="useepilPrdtList" open="(" close=")" conjunction=",">
+						#useepilPrdtList[]#
+					</iterate>
+				</isNotEmpty>
+				<isNotEmpty property="sUserId">
+					AND USER_ID =#sUserId#
+				</isNotEmpty>
+				<isNotEmpty property="sSubject">
+					AND SUBJECT LIKE '%'||#sSubject#||'%'
+				</isNotEmpty>
+
+				ORDER BY TO_NUMBER(USE_EPIL_NUM) DESC
+              )
+      ) TB_USEEPIL
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+
+<select id="UEEPIL_S_04" resultClass="int">
+SELECT COUNT(USE_EPIL_NUM)
+  FROM TB_USEEPIL
+ WHERE PRINT_YN ='Y'
+      	<isNotEmpty property="sCorpId">
+		   	   AND CORP_ID = #sCorpId#
+		</isNotEmpty>
+		<isNotEmpty property="sPrdtNum">
+		 		AND PRDT_NUM =#sPrdtNum#
+		</isNotEmpty>
+		<isNotEmpty property="useepilPrdtList">
+			AND PRDT_NUM IN
+			<iterate property="useepilPrdtList" open="(" close=")" conjunction=",">
+				#useepilPrdtList[]#
+			</iterate>
+		</isNotEmpty>
+		<isNotEmpty property="sUserId">
+		 		AND USER_ID =#sUserId#
+		</isNotEmpty>
+		<isNotEmpty property="sSubject">
+		 		AND SUBJECT LIKE '%'||#sSubject#||'%'
+		</isNotEmpty>
+</select>
+
+<select id="UEEPIL_S_05" resultClass="int">
+SELECT COUNT(USE_EPIL_NUM)
+  FROM TB_USEEPIL
+  WHERE CORP_ID=#corpId#
+     AND PRINT_YN='Y'
+</select>
+
+
+
+<!-- 엑셀 저장용 -->
+<select id="UEEPIL_S_06" resultMap="USEEPIL_R_06">
+SELECT USE_EPIL_NUM     /*이용 후기 번호*/
+	, CORP_ID           /*업체아이디*/
+	, PRDT_NUM          /*상품번호*/
+	, USER_ID          /*사용자 아이디*/
+	, EMAIL            /*이메일*/
+	, SUBJECT          /*제목*/
+	, GPA              /*평점*/
+	, UTL_RAW.CAST_TO_VARCHAR2(CONTENTS) AS CONTENTS         /*내용*/
+	, CMT_CNT          /*댓글 건수*/
+	, PRINT_YN         /*출력 여부*/
+	, TO_CHAR(FRST_REG_DTTM, 'YYYY-MM-DD') AS FRST_REG_DTTM /*최초 등록 일시*/
+	, TO_CHAR(LAST_MOD_DTTM, 'YYYY-MM-DD') AS LAST_MOD_DTTM /*최종 수정 일시*/
+	, FRST_REG_ID      /*최초 등록 아이디*/
+	, FRST_REG_IP      /*최초 등록 아이피*/
+	, LAST_MOD_ID      /*최종 수정 아이디*/
+	, LAST_MOD_IP      /*최종 수정 아이피*/
+	, CORP_NM
+	, PRDT_NM
+	, (SELECT COUNT(*) FROM TB_USEEPIL_IMG WHERE USE_EPIL_NUM=TB_USEEPIL.USE_EPIL_NUM) IMG_CNT
+	, (SELECT USER_NM FROM TB_USER WHERE USER_ID=TB_USEEPIL.USER_ID) USER_NM
+	, (SELECT TEL_NUM FROM TB_USER WHERE USER_ID=TB_USEEPIL.USER_ID) TEL_NUM
+	, CASE WHEN SUBSTR(PRDT_NUM,1,2) = 'SP' THEN '소셜'
+		WHEN SUBSTR(PRDT_NUM,1,2) = 'SV' THEN '특산기념품'
+		WHEN SUBSTR(PRDT_NUM,1,2) = 'RC' THEN '렌트카'
+		WHEN SUBSTR(PRDT_NUM,1,2) = 'AD' THEN '숙박' END AS CATE
+	, (SELECT CD_NM FROM TB_CD	WHERE CD_NUM = REVIEW_TYPE	) AS REVIEW_TYPE       /*리뷰유형*/
+	, CASE WHEN SUBSTR(PRDT_NUM,1,2) = 'SP' THEN GET_PRDT_CATEGORY(PRDT_NUM)
+	    ELSE
+			CASE WHEN SUBSTR(PRDT_NUM,1,2) = 'SV' THEN '특산기념품'
+				WHEN SUBSTR(PRDT_NUM,1,2) = 'RC' THEN '렌트카'
+				WHEN SUBSTR(PRDT_NUM,1,2) = 'AD' THEN '숙박'
+			END
+		END AS SUB_CATE
+FROM TB_USEEPIL
+WHERE 1=1
+<isNotEmpty property="sCorpId">
+	AND CORP_ID = #sCorpId#
+</isNotEmpty>
+<isNotEmpty property="sPrdtNum">
+	AND PRDT_NUM =#sPrdtNum#
+</isNotEmpty>
+<isNotEmpty property="sPrintYn">
+	AND PRINT_YN =#sPrintYn#
+</isNotEmpty>
+<isNotEmpty property="sStartFrstRegDttm">
+	<![CDATA[
+		AND FRST_REG_DTTM >= TO_DATE(#sStartFrstRegDttm# || ' 00:00:00', 'YYYY-MM-DD HH24:MI:SS')
+	]]>
+</isNotEmpty>
+<isNotEmpty property="sEndFrstRegDttm">
+	<![CDATA[
+		AND FRST_REG_DTTM <= TO_DATE(#sEndFrstRegDttm# || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+	]]>
+</isNotEmpty>
+<isNotEmpty property="sCorpNm">
+	AND CORP_NM  LIKE '%'||#sCorpNm#||'%'
+</isNotEmpty>
+<isNotEmpty property="sPrdtNm">
+	AND PRDT_NM  LIKE '%'||#sPrdtNm#||'%'
+</isNotEmpty>
+<isNotEmpty property="sReviewType">
+	AND REVIEW_TYPE =#sReviewType#
+</isNotEmpty>
+<isEqual property="sReviewFeedback" compareValue="1">
+	AND GPA <![CDATA[>=]]> 4
+</isEqual>
+<isEqual property="sReviewFeedback" compareValue="0">
+	AND GPA <![CDATA[<=]]> 2
+</isEqual>
+<isNotEmpty property="sCate">
+	AND SUBSTR(PRDT_NUM,1,2) = #sCate#
+</isNotEmpty>
+ORDER BY TO_NUMBER(USE_EPIL_NUM) DESC
+
+</select>
+
+
+
+<insert id="UEEPIL_I_00">
+<selectKey keyProperty="useEpilNum" resultClass="String">
+SELECT TO_CHAR(NVL(MAX(TO_NUMBER(USE_EPIL_NUM)),0) + 1) FROM TB_USEEPIL
+</selectKey>
+INSERT INTO TB_USEEPIL
+     ( USE_EPIL_NUM     /*이용 후기 번호*/
+     , CORP_ID           /*업체아이디*/
+     , PRDT_NUM          /*상품번호*/
+     , USER_ID          /*사용자 아이디*/
+     , EMAIL            /*이메일*/
+     , SUBJECT          /*제목*/
+     , GPA              /*평점*/
+     , CONTENTS         /*내용*/
+     , CMT_CNT          /*댓글 건수*/
+     , PRINT_YN         /*출력 여부*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM   /*최종 수정 일시*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+     , FRST_REG_IP      /*최초 등록 아이피*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+     , LAST_MOD_IP      /*최종 수정 아이피*/
+     , CORP_NM
+     , PRDT_NM
+     , REVIEW_TYPE
+     )
+VALUES
+     ( 	#useEpilNum#
+		, #corpId#
+		, #prdtnum#
+		, #userId#
+		, #email#
+		, #subject#
+		, #gpa#
+		, UTL_RAW.CAST_TO_RAW(#contents#)
+		, 0
+		, 'Y'
+		, SYSDATE
+		, SYSDATE
+		, #userId#
+		, #frstRegIp#
+		, #userId#
+		, #frstRegIp#
+		, #corpNm#
+		, #prdtNm#
+		, #reviewType#
+    )
+</insert>
+
+
+
+
+<update id="UEEPIL_U_00">
+UPDATE TB_USEEPIL
+   SET   CORP_ID=    	  #corpId#
+		,PRDT_NUM=        #prdtnum#
+		,USER_ID=    	  #userId#
+		,EMAIL=      	  #email#
+		,SUBJECT=         #subject#
+		,GPA=        	  #gpa#
+		,CONTENTS=        UTL_RAW.CAST_TO_RAW(#contents#)
+		,CMT_CNT=    	  #cmtCnt#
+		<!-- ,PRINT_YN=        #printYn# -->
+		,LAST_MOD_DTTM=   SYSDATE
+		,LAST_MOD_ID=     #lastModId#
+		,LAST_MOD_IP=     #lastModIp#
+		,CORP_NM=		  #corpNm#
+		,PRDT_NM=		  #prdtNm#
+		,REVIEW_TYPE=	  #reviewType#
+ WHERE USE_EPIL_NUM = #useEpilNum#
+</update>
+
+<update id="UEEPIL_U_01">
+UPDATE TB_USEEPIL
+   SET  PRINT_YN=        #printYn#
+ WHERE USE_EPIL_NUM = #useEpilNum#
+</update>
+
+<update id="UEEPIL_U_02">
+UPDATE TB_USEEPIL
+SET CMT_CNT=(SELECT COUNT(CMT_SN)
+            FROM TB_USEEPILCMT
+        WHERE USE_EPIL_NUM = #useEpilNum#
+          AND PRINT_YN = 'Y'
+        )
+WHERE USE_EPIL_NUM = #useEpilNum#
+</update>
+
+<update id="UEEPIL_U_03">
+UPDATE TB_USEEPIL
+   SET  SUBJECT=          #subject#
+		,GPA=        	  #gpa#
+		,CONTENTS=        UTL_RAW.CAST_TO_RAW(#contents#)
+		,LAST_MOD_DTTM=   SYSDATE
+		,LAST_MOD_ID=     #lastModId#
+		,LAST_MOD_IP=     #lastModIp#
+		,REVIEW_TYPE=	  #reviewType#
+ WHERE USE_EPIL_NUM = #useEpilNum#
+</update>
+
+
+<select id="USEEPILCMT_S_00" resultMap="USEEPILCMT_R_00">
+SELECT CMT_SN           /*댓글 순번*/
+     , USE_EPIL_NUM     /*이용 후기 번호*/
+     , USER_ID          /*사용자 아이디*/
+     , EMAIL            /*이메일*/
+     , UTL_RAW.CAST_TO_VARCHAR2(CONTENTS) AS CONTENTS         /*내용*/
+     , PRINT_YN         /*출력 여부*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+     , FRST_REG_IP      /*최초 등록 아이피*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+     , LAST_MOD_IP      /*최종 수정 아이피*/
+FROM TB_USEEPILCMT
+WHERE 1=1
+		<isNotEmpty property="cmtSn">
+		   	  AND USE_EPIL_NUM = #cmtSn#
+		</isNotEmpty>
+		<isNotEmpty property="useEpilNum">
+		   	   AND USE_EPIL_NUM = #useEpilNum#
+		</isNotEmpty>
+		<isNotEmpty property="corpId">
+		   	   AND CORP_ID = #corpcd#
+		</isNotEmpty>
+		<isNotEmpty property="prdtnum">
+		 		AND PRDT_NM =#prdtnum#
+		</isNotEmpty>
+</select>
+
+
+
+
+<select id="USEEPILCMT_S_01" resultMap="USEEPILCMT_R_00">
+SELECT T_SUB.CMT_SN
+     , T_SUB.USE_EPIL_NUM
+     , T_SUB.USER_ID
+     , T_SUB.EMAIL
+     , UTL_RAW.CAST_TO_VARCHAR2(T_SUB.CONTENTS) AS CONTENTS
+     , T_SUB.PRINT_YN
+     , T_SUB.FRST_REG_DTTM
+     , T_SUB.LAST_MOD_DTTM
+     , T_SUB.FRST_REG_ID
+     , T_SUB.FRST_REG_IP
+     , T_SUB.LAST_MOD_ID
+     , T_SUB.LAST_MOD_IP
+FROM (
+	SELECT USE_EPIL_NUM     /*이용 후기 번호*/
+	     , CORP_ID           /*업체아이디*/
+	     , PRDT_NUM          /*상품번호*/
+	     , USER_ID          /*사용자 아이디*/
+	     , EMAIL            /*이메일*/
+	     , SUBJECT          /*제목*/
+	     , GPA              /*평점*/
+	     , UTL_RAW.CAST_TO_VARCHAR2(CONTENTS) AS CONTENTS         /*내용*/
+	     , CMT_CNT          /*댓글 건수*/
+	     , PRINT_YN         /*출력 여부*/
+	     , TO_CHAR(FRST_REG_DTTM, 'YYYY-MM-DD') AS FRST_REG_DTTM /*최초 등록 일시*/
+	     , TO_CHAR(LAST_MOD_DTTM, 'YYYY-MM-DD') AS LAST_MOD_DTTM /*최종 수정 일시*/
+	     , FRST_REG_ID      /*최초 등록 아이디*/
+	     , FRST_REG_IP      /*최초 등록 아이피*/
+	     , LAST_MOD_ID      /*최종 수정 아이디*/
+	     , LAST_MOD_IP      /*최종 수정 아이피*/
+	FROM ( SELECT ROWNUM AS RN
+	            , USE_EPIL_NUM
+	            , CORP_ID           /*업체아이디*/
+	            , PRDT_NUM          /*상품번호*/
+	            , USER_ID          /*사용자 아이디*/
+	            , EMAIL            /*이메일*/
+	            , SUBJECT          /*제목*/
+	            , GPA              /*평점*/
+	            , CONTENTS         /*내용*/
+	            , CMT_CNT          /*댓글 건수*/
+	            , PRINT_YN         /*출력 여부*/
+	            , FRST_REG_DTTM    /*최초 등록 일시*/
+	            , LAST_MOD_DTTM    /*최종 수정 일시*/
+	            , FRST_REG_ID      /*최초 등록 아이디*/
+	            , FRST_REG_IP      /*최초 등록 아이피*/
+	            , LAST_MOD_ID      /*최종 수정 아이디*/
+	            , LAST_MOD_IP      /*최종 수정 아이피*/
+	        FROM ( SELECT USE_EPIL_NUM     /*이용 후기 번호*/
+	                  , CORP_ID           /*업체아이디*/
+	                  , PRDT_NUM          /*상품번호*/
+	                  , USER_ID          /*사용자 아이디*/
+	                  , EMAIL            /*이메일*/
+	                  , SUBJECT          /*제목*/
+	                  , GPA              /*평점*/
+	                  , CONTENTS         /*내용*/
+	                  , CMT_CNT          /*댓글 건수*/
+	                  , PRINT_YN         /*출력 여부*/
+	                  , FRST_REG_DTTM    /*최초 등록 일시*/
+	                  , LAST_MOD_DTTM    /*최종 수정 일시*/
+	                  , FRST_REG_ID      /*최초 등록 아이디*/
+	                  , FRST_REG_IP      /*최초 등록 아이피*/
+	                  , LAST_MOD_ID      /*최종 수정 아이디*/
+	                  , LAST_MOD_IP      /*최종 수정 아이피*/
+	               FROM TB_USEEPIL
+	              WHERE 1=1
+			      	<isNotEmpty property="sCorpId">
+					   	   AND CORP_ID = #sCorpId#
+					</isNotEmpty>
+					<isNotEmpty property="sPrdtNum">
+					 		AND PRDT_NUM =#sPrdtNum#
+					</isNotEmpty>
+					<isNotEmpty property="useepilPrdtList">
+						AND PRDT_NUM IN
+						<iterate property="useepilPrdtList" open="(" close=")" conjunction=",">
+							#useepilPrdtList[]#
+						</iterate>
+					</isNotEmpty>
+					<isNotEmpty property="sPrintYn">
+					 		AND PRINT_YN =#sPrintYn#
+					</isNotEmpty>
+					<isNotEmpty property="sKey">
+					 		<isEqual property="sKeyOpt" compareValue="1">
+					   			AND CORP_ID LIKE '%'||#sKey#||'%'
+					 		</isEqual>
+					 		<isEqual property="sKeyOpt" compareValue="2">
+					   			AND PRDT_NUM LIKE '%'||#sKey#||'%'
+					 		</isEqual>
+					 		<isEqual property="sKeyOpt" compareValue="3">
+					   			AND EMAIL LIKE '%'||#sKey#||'%'
+					 		</isEqual>
+					 		<isEqual property="sKeyOpt" compareValue="4">
+					   			AND SUBJECT LIKE '%'||#sKey#||'%'
+					 		</isEqual>
+					 </isNotEmpty>
+			      ORDER BY TO_NUMBER(USE_EPIL_NUM) DESC
+	              )
+	      )
+	WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+) T_MAIN
+ INNER JOIN TB_USEEPILCMT T_SUB
+    ON T_SUB.USE_EPIL_NUM = T_MAIN.USE_EPIL_NUM
+</select>
+
+
+
+<select id="USEEPILCMT_S_03" resultMap="USEEPILCMT_R_00">
+SELECT CMT_SN           /*댓글 순번*/
+     , USE_EPIL_NUM     /*이용 후기 번호*/
+     , USER_ID          /*사용자 아이디*/
+     , EMAIL            /*이메일*/
+     , UTL_RAW.CAST_TO_VARCHAR2(CONTENTS) AS CONTENTS         /*내용*/
+     , PRINT_YN         /*출력 여부*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+     , FRST_REG_IP      /*최초 등록 아이피*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+     , LAST_MOD_IP      /*최종 수정 아이피*/
+FROM TB_USEEPILCMT
+WHERE 1=1
+		<isNotEmpty property="useEpilNum">
+		   	   AND USE_EPIL_NUM = #useEpilNum#
+		</isNotEmpty>
+		ORDER BY TO_NUMBER(CMT_SN) ASC
+</select>
+
+
+<insert id="USEEPILCMT_I_00">
+INSERT INTO TB_USEEPILCMT
+     ( CMT_SN           /*댓글 순번*/
+     , USE_EPIL_NUM     /*이용 후기 번호*/
+     , USER_ID          /*사용자 아이디*/
+     , EMAIL            /*이메일*/
+     , CONTENTS         /*내용*/
+     , PRINT_YN         /*출력 여부*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , FRST_REG_ID      /*최초 등록 아이디*/
+     , FRST_REG_IP      /*최초 등록 아이피*/
+     , LAST_MOD_ID      /*최종 수정 아이디*/
+     , LAST_MOD_IP      /*최종 수정 아이피*/
+     )
+VALUES
+     ( 	(SELECT TO_CHAR(NVL(MAX(TO_NUMBER(CMT_SN)),0) + 1) FROM TB_USEEPILCMT)
+		, #useEpilNum#
+		, #userId#
+		, #email#
+		, UTL_RAW.CAST_TO_RAW(#contents#)
+		, 'Y'
+		, SYSDATE
+		, SYSDATE
+		, #userId#
+		, #frstRegIp#
+		, #userId#
+		, #frstRegIp#
+    )
+</insert>
+
+<update id="USEEPILCMT_U_00">
+UPDATE TB_USEEPILCMT
+   SET USE_EPIL_NUM = #useEpilNum#
+	 , USER_ID = 	#userId#
+	 , EMAIL = 		#email#
+	 , CONTENTS = 	UTL_RAW.CAST_TO_RAW(#contents#)
+	 <!-- , PRINT_YN = 	#printYn# -->
+	 , LAST_MOD_DTTM =SYSDATE
+	 , LAST_MOD_ID  = 	#lastModId#
+	 , LAST_MOD_IP = 	#lastModIp#
+ WHERE CMT_SN = 		#cmtSn#
+</update>
+
+<update id="USEEPILCMT_U_01">
+UPDATE TB_USEEPILCMT
+   SET PRINT_YN = 	#printYn#
+ WHERE CMT_SN = 		#cmtSn#
+</update>
+
+<update id="USEEPILCMT_U_02">
+UPDATE TB_USEEPILCMT
+   SET CONTENTS = 	UTL_RAW.CAST_TO_RAW(#contents#)
+	 <!-- , PRINT_YN = 	#printYn# -->
+	 , LAST_MOD_DTTM =SYSDATE
+	 , LAST_MOD_ID  = 	#lastModId#
+	 , LAST_MOD_IP = 	#lastModIp#
+ WHERE CMT_SN = 		#cmtSn#
+</update>
+
+<delete id="USEEPILCMT_D_00">
+DELETE TB_USEEPILCMT
+ WHERE 1=1
+   	   AND CMT_SN = #cmtSn#
+</delete>
+
+
+<delete id="USEEPILCMT_D_01">
+DELETE TB_USEEPILCMT
+ WHERE 1=1
+   	   AND USE_EPIL_NUM = #useEpilNum#
+</delete>
+
+<select id="USEEPILIMG_S_00" resultMap="USEEPILIMG_R_00">
+SELECT T_SUB.IMG_NUM
+     , T_SUB.USE_EPIL_NUM
+     , T_SUB.SAVE_PATH
+     , T_SUB.REAL_FILE_NM
+     , T_SUB.SAVE_FILE_NM
+FROM (
+	SELECT USE_EPIL_NUM     /*이용 후기 번호*/
+	FROM ( SELECT ROWNUM AS RN
+	            , USE_EPIL_NUM
+	        FROM ( SELECT USE_EPIL_NUM     /*이용 후기 번호*/
+	               FROM TB_USEEPIL
+	              WHERE 1=1
+			      	<isNotEmpty property="sCorpId">
+					   	   AND CORP_ID = #sCorpId#
+					</isNotEmpty>
+					<isNotEmpty property="sPrdtNum">
+					 		AND PRDT_NUM =#sPrdtNum#
+					</isNotEmpty>
+					<isNotEmpty property="useepilPrdtList">
+						AND PRDT_NUM IN
+						<iterate property="useepilPrdtList" open="(" close=")" conjunction=",">
+							#useepilPrdtList[]#
+						</iterate>
+					</isNotEmpty>
+					<isNotEmpty property="sPrintYn">
+					 		AND PRINT_YN =#sPrintYn#
+					</isNotEmpty>
+					<isNotEmpty property="sKey">
+					 		<isEqual property="sKeyOpt" compareValue="1">
+					   			AND CORP_ID LIKE '%'||#sKey#||'%'
+					 		</isEqual>
+					 		<isEqual property="sKeyOpt" compareValue="2">
+					   			AND PRDT_NUM LIKE '%'||#sKey#||'%'
+					 		</isEqual>
+					 		<isEqual property="sKeyOpt" compareValue="3">
+					   			AND EMAIL LIKE '%'||#sKey#||'%'
+					 		</isEqual>
+					 		<isEqual property="sKeyOpt" compareValue="4">
+					   			AND SUBJECT LIKE '%'||#sKey#||'%'
+					 		</isEqual>
+					 </isNotEmpty>
+			      ORDER BY TO_NUMBER(USE_EPIL_NUM) DESC
+	              )
+	      )
+	WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+) T_MAIN
+ INNER JOIN TB_USEEPIL_IMG T_SUB
+    ON T_SUB.USE_EPIL_NUM = T_MAIN.USE_EPIL_NUM
+</select>
+
+<select id="USEEPILIMG_S_01" resultMap="USEEPILIMG_R_00">
+SELECT IMG_NUM
+     , USE_EPIL_NUM
+     , SAVE_PATH
+     , REAL_FILE_NM
+     , SAVE_FILE_NM
+FROM TB_USEEPIL_IMG
+WHERE USE_EPIL_NUM=#useEpilNum#
+</select>
+
+<select id="USEEPILIMG_S_02" resultMap="USEEPILIMG_R_00">
+SELECT IMG_NUM
+     , USE_EPIL_NUM
+     , SAVE_PATH
+     , REAL_FILE_NM
+     , SAVE_FILE_NM
+FROM TB_USEEPIL_IMG
+WHERE USE_EPIL_NUM=#useEpilNum#
+	AND IMG_NUM=#imgNum#
+</select>
+
+<select id="USEEPILIMG_S_03" resultMap="USEEPILIMG_R_01">
+SELECT DOC_ID
+  , FILE_NUM
+  , SAVE_PATH
+  , SAVE_FILE_NM
+  , REAL_FILE_NM
+  , DOC_DIV
+  , DOC_NM
+  , REG_DTTM
+FROM (SELECT ROWNUM AS RN
+          , DOC_ID
+          , FILE_NUM
+          , SAVE_PATH
+          , SAVE_FILE_NM
+          , REAL_FILE_NM
+          , DOC_DIV
+          , DOC_NM
+          , REG_DTTM
+        FROM (SELECT B.USE_EPIL_NUM AS DOC_ID
+                  , B.IMG_NUM AS FILE_NUM
+                  , B.SAVE_PATH
+                  , B.SAVE_FILE_NM
+                  , B.REAL_FILE_NM
+                  , SUBSTR(A.PRDT_NUM, 0, 2) AS DOC_DIV
+                  , A.SUBJECT AS DOC_NM
+                  , A.FRST_REG_DTTM AS REG_DTTM
+                FROM TB_USEEPIL A
+                    INNER JOIN TB_USEEPIL_IMG B
+                    ON  A.USE_EPIL_NUM = B.USE_EPIL_NUM
+                ORDER BY TO_NUMBER(B.USE_EPIL_NUM) DESC
+                  , TO_NUMBER (B.IMG_NUM)))
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="USEEPILIMG_S_04" resultClass="int">
+SELECT COUNT(*) AS CNT
+FROM TB_USEEPIL A
+    INNER JOIN TB_USEEPIL_IMG B
+    ON  A.USE_EPIL_NUM = B.USE_EPIL_NUM
+</select>
+
+<insert id="USEEPILIMG_I_00">
+INSERT INTO TB_USEEPIL_IMG
+     ( IMG_NUM          /*이미지 번호*/
+     , USE_EPIL_NUM     /*이용 후기 번호*/
+     , SAVE_PATH        /*저장 경로*/
+     , REAL_FILE_NM     /*실제 파일 명*/
+     , SAVE_FILE_NM     /*저장 파일 명*/
+     )
+VALUES
+     ( 	(SELECT TO_CHAR(NVL(MAX(TO_NUMBER(IMG_NUM)),0) + 1) FROM TB_USEEPIL_IMG)
+		, #useEpilNum#
+		, #savePath#
+		, #realFileNm#
+		, #saveFileNm#
+    )
+</insert>
+
+<delete id="USEEPILIMG_D_00">
+DELETE FROM TB_USEEPIL_IMG
+	WHERE IMG_NUM=#imgNum#
+	  AND USE_EPIL_NUM=#useEpilNum#
+</delete>
+
+<delete id="USEEPIL_D_00">
+DELETE TB_USEEPIL
+ WHERE 1=1
+   	   AND USE_EPIL_NUM = #useEpilNum#
+</delete>
+
+<delete id="USEEPILIMG_D_01">
+DELETE TB_USEEPIL_IMG
+ WHERE 1=1
+   	   AND USE_EPIL_NUM=#useEpilNum#
+</delete>
+
+<insert id="UEEPIL_I_01">
+	INSERT INTO TB_USEEPIL_ADD
+	( SEQ
+	, O_PRDT_NUM
+	, C_PRDT_NUM
+	, C_PRDT_NM
+	, C_CONF_DTTM
+	, REG_ID
+	)
+	VALUES
+	( 	SEQ_USEEPILADD_SN.NEXTVAL
+	, #oPrdtNumSend#
+	, #cPrdtNumSend#
+	, #cPrdtNm#
+	, TO_DATE(#cConfDttm#, 'YYYY-MM-DD HH24:MI:SS')
+	, #regId#
+	)
+</insert>
+<select id="UEEPIL_S_07" resultMap="USEEPIL_R_02">
+	SELECT SEQ
+	, C_PRDT_NUM
+	, C_PRDT_NM
+	, C_CONF_DTTM
+	FROM TB_USEEPIL_ADD
+	WHERE O_PRDT_NUM = #prdtNum#
+	ORDER BY SEQ
+</select>
+<delete id="USEEPIL_D_02">
+	DELETE TB_USEEPIL_ADD
+	WHERE 1=1
+   AND SEQ=#seq#
+</delete>
+</sqlMap>

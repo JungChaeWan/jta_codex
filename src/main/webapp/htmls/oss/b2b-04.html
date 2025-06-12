@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>모객 관리자시스템</title>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<meta http-equiv="imagetoolbar" content="false" />
+<link rel="stylesheet" type="text/css" href="../../css/common/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/oss/layout.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common/page_style.css" />
+<link rel="stylesheet" type="text/css" href="/css/common/jquery-ui.css" />
+
+<script type="text/javascript" src="/js/jquery-1.11.1.js" ></script>
+<script type="text/javascript" src="/js/jquery-ui.js"></script>
+</head>
+<body>
+<div id="wrapper"> 
+    
+    <!--Header 영역-->
+    <div id="header_wrapper">
+        <h1><img src="../../images/oss/common/logo.gif" alt="모객 관리자 시스템" /></h1>
+        <ul class="lnb_menu">
+			<li class="home"><a href="/" target="_blank">탐나오바로가기</a></li>&gt;
+			<!-- <li class="home"><a href="/">홈으로</a></li> -->
+			<li><a href="/web/viewLogin.do?rtnUrl=/web/mypage/viewChangePw.do" target="_blank">비밀번호변경</a></li>
+			<li class="log"><a href="/oss/ossLogout.do">로그아웃</a></li>
+		</ul>
+        <!--상단메뉴-->
+        <h2 class="lay_none">상단메뉴</h2>
+        <ul class="gnb_menu">
+			<li class="menu01 on"><a href="/oss/home.do">홈</a>
+				<!-- <ul class="gnb_depth" id="menu01" style="display:none">
+				</ul> -->
+			</li>
+			<li class="menu02"><a href="/oss/siteManage.do">환경설정</a>
+				<ul class="gnb_depth" id="menu02" style="display: none;">
+					<li><a href="/oss/siteManage.do">운영설정</a></li>
+					<li><a href="/oss/codeList.do">코드관리</a></li>
+					<li><a href="/oss/cmssList.do">수수료관리</a></li>
+					<li><a href="/oss/bbsList.do">게시판관리</a></li>
+                    <li><a href="/oss/bbsGrpList.do">게시판그룹관리</a></li>
+				</ul>
+			</li>
+			<li class="menu03"><a href="/oss/userList.do">고객관리</a>
+				<ul class="gnb_depth" id="menu03" style="display: none;">
+					<li><a href="/oss/userList.do">사용자관리</a></li>
+                    <li><a href="/oss/dropUserList.do">탈퇴사용자관리</a></li>
+				</ul>
+			</li>
+			<li class="menu11"><a href="/oss/corpList.do">업체/제휴관리</a>
+                <ul class="gnb_depth" id="menu11" style="display: none;">
+                	<li><a href="/oss/corpList.do">입점업체관리</a></li>
+                	<li><a href="/oss/corpPnsReqList.do">입점신청관리</a></li>
+                	<li><a href="/oss/nbbs/bbsList.do?bbsNum=MASNOTI">업체공지사항</a></li>
+                	<li><a href="/oss/nbbs/bbsList.do?bbsNum=MASQA">업체 Q&amp;A 게시판</a></li>                 
+                </ul>
+            </li>
+            <li class="menu05"><a href="/oss/prdtList.do">상품관리</a>
+                <ul class="gnb_depth" id="menu05" style="display: none;">
+                    <li><a href="/oss/prdtList.do">상품관리</a></li>
+                    <li><a href="/oss/socialProductList.do">소셜상품관리</a></li>
+                    <li><a href="/oss/couponList.do">탐나오쿠폰</a></li>
+                    <li><a href="/oss/promotionList.do">프로모션승인관리</a></li>                    
+                </ul>
+            </li>
+            <li class="menu06"><a href="/oss/otoinqList.do">커뮤니티</a>
+                <ul class="gnb_depth" id="menu06" style="display: none;">
+                	<li><a href="/oss/otoinqList.do">1:1문의</a></li>
+                    <li><a href="/oss/useepilList.do">상품평관리</a></li>                    
+                    <li><a href="/oss/nbbs/bbsList.do?bbsNum=NOTICE">공지사항</a></li>
+                </ul>
+            </li>            
+            <li class="menu07"><a href="/oss/rsvList.do">예약관리</a>
+            	<ul class="gnb_depth" id="menu07" style="display: none;">
+					<li><a href="/oss/rsvList.do">예약관리</a></li>
+					<li><a href="/oss/rsvAtPrdtList.do">상품별예약관리</a></li>
+					<li><a href="/oss/refundRsvList.do">환불요청예약관리</a></li>
+				</ul>
+            </li>
+            <li class="menu10"><a href="/oss/eventList.do">마케팅</a>
+            	<ul class="gnb_depth" id="menu10" style="display: none;">
+            		<li><a href="/oss/eventList.do">프로모션</a></li>
+					<li><a href="/oss/smsForm.do">문자 전송</a></li>
+					<li><a href="/oss/emailForm.do">E-Mail 전송</a></li>
+					<li><a href="/oss/pushForm.do">Push 전송</a></li>
+				</ul>
+            </li>
+            <li class="menu09"><a href="/oss/adjList.do">정산</a>
+            	<ul class="gnb_depth" id="menu09" style="display: none;">
+					<li><a href="/oss/adjList.do">정산관리</a></li>
+				</ul>
+            </li>
+            <li class="menu08"><a href="/oss/anls06.do">통계</a>
+            	<ul class="gnb_depth" id="menu08" style="display: none;">
+					<li><a href="/oss/anls06.do">매출통계</a></li>
+					<li><a href="/oss/anls05.do">고객통계</a></li>
+					<li><a href="/oss/anls03.do">일별현황</a></li>
+				</ul>
+            </li>
+            <li class="menu04"><a href="/oss/nbbs/bbsList.do?bbsNum=FNREQ">지원</a>
+            	<ul class="gnb_depth" id="menu04" style="display: none;">
+					<li><a href="/oss/nbbs/bbsList.do?bbsNum=FNREQ">기능개선요청</a></li>
+				</ul>
+            </li>
+            <li class="menu-bi"><a href="#">BI시스템</a>
+                <ul class="gnb_depth" id="menu11" style="display:none">
+                    <li><a href="#">고객이용 통계</a></li>
+                    <li><a href="#">입점업체 통계</a></li>
+                    <li><a href="#">판매 통계</a></li>
+                    <li><a href="#">광고수익률 통계</a></li>
+                    <li><a href="#">정산 통계</a></li>
+                </ul>
+            </li>
+		</ul>
+        <!--//상단메뉴--> 
+    </div>
+    <!--//Header 영역--> 
+    <!--Contents 영역-->
+    <div id="contents_wrapper">
+        <div id="contents_area">
+            <div id="contents">
+                
+                <!-- change contents -->
+				<div class="split-screen">
+				    <div class="col2-wrap">
+				        <div class="l-area">
+				        	<!--검색-->
+				        	<div class="form-wrap">
+			                	<input type="text" />
+			                	<a href="#" class="btn blue">검색</a>
+			                </div>
+			                
+			                <!--menu list-->
+				            <div class="scroll">
+				                <div class="nav-wrap">					                
+					                <div class="nav-group">
+						                <ul class="nav-list">
+						                	<li class="g-title">
+						                		<div class="l-box"><a href="javascript:void(0)">전체보기</a></div>
+						                	</li>
+						                	<li class="g-title">
+						                		<div class="l-box"><a href="javascript:void(0)">기본그룹</a></div>
+						                	</li>
+						                    <li>
+						                    	<div class="l-box"><a href="javascript:void(0)">A그룹</a></div>
+						                    	<div class="r-box">
+						                    		<a href="" class="btn blue">수정</a>
+						                    		<a href="" class="btn red">삭제</a>
+						                    	</div>
+					                    	</li>
+						                    <li>
+						                    	<div class="l-box"><a href="javascript:void(0)">B그룹</a></div>
+						                    	<div class="r-box">
+						                    		<a href="" class="btn blue">수정</a>
+						                    		<a href="" class="btn red">삭제</a>
+						                    	</div>
+					                    	</li>
+						                    <li class="active">
+						                    	<div class="l-box"><a href="javascript:void(0)">GroupA</a></div>
+						                    	<div class="r-box">
+						                    		<a href="" class="btn blue">수정</a>
+						                    		<a href="" class="btn red">삭제</a>
+						                    	</div>
+					                    	</li>
+						                    <li>
+						                    	<div class="l-box"><a href="javascript:void(0)">GroupB</a></div>
+						                    	<div class="r-box">
+						                    		<a href="" class="btn blue">수정</a>
+						                    		<a href="" class="btn red">삭제</a>
+						                    	</div>
+					                    	</li>
+						                </ul>
+					                </div>
+				                </div> <!--//nav-wrap-->
+				            </div> <!--//scroll-->
+				            
+				            <!--추가/삭제-->
+				            <div class="btn-wrap">
+				            	<a href="" class="btn blue">그룹추가</a>
+				            	<!-- <a href="" class="btn red">그룹삭제</a> -->
+				            </div>
+				        </div> <!--//l-area-->
+				        
+				        <div class="r-area">
+				            <div class="scroll">
+				                <div id="menu_depth3">
+									<ul>
+										<li class="on"><a class="menu_depth3" href="#">업체 전체 보기</a></li>
+										<li><a class="menu_depth3" href="#">그룹별 보기</a></li>
+									</ul>
+								</div>
+								
+								<div class="side-wrap1">
+									<h4 class="title08">업체 전체 보기</h4>
+									<div class="side-box">
+										<span class="name">업체명 검색</span>
+										<input type="text" />
+										<select title="차량구분 선택">
+											<option value="" selected="selected">전체</option>
+											<option value="">중소형</option>
+											<option value="">고급</option>
+										</select>
+										<a href="" class="btn blue">검색</a>
+									</div>
+								</div>
+								
+								<div class="list">
+							        <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table01 list_tb">
+							        	<colgroup>
+							        		<col />
+							        		<col width="15%" />
+							        		<col width="10%" />
+							        		<col width="10%" />
+							        		<col width="15%" />
+							        		<col width="10%" />
+							        		<col width="10%" />
+							        	</colgroup>
+							            <thead>
+							                <tr>
+							                    <th>업체명</th>
+							                    <th>대표자명</th>
+							                    <th>담당자명</th>
+							                    <th>전화번호</th>
+							                    <th>그룹설정일</th>
+							                    <th>그룹</th>
+							                    <th>그룹</th>
+							                </tr>
+							            </thead>
+							            <tbody>
+							                <tr>
+							                    <td class="align_ct">그랜드메르 여행사</td>
+							                    <td class="align_ct">아라이에이쥰</td>
+							                    <td class="align_ct">구본임</td>
+							                    <td class="align_ct">064-1234-5678</td>
+							                    <td class="align_ct">2016-08-0514:38:52</td>
+							                    <td class="align_ct">
+							                    	<select>
+						                    			<option selected="selected">A그룹</option>
+						                    			<option value="">B그룹</option>
+						                    		</select>
+						                    	</td>
+							                    <td class="align_ct">
+							                    	<!-- <a href="" class="btn blue sm">수정</a> -->
+							                    	<a href="" class="btn red sm">확인</a>
+						                    	</td>
+							                </tr>
+							                <tr>
+							                    <td class="align_ct">그랜드메르 여행사</td>
+							                    <td class="align_ct">아라이에이쥰</td>
+							                    <td class="align_ct">구본임</td>
+							                    <td class="align_ct">064-1234-5678</td>
+							                    <td class="align_ct">2016-08-0514:38:52</td>
+							                    <td class="align_ct">A그룹</td>
+							                    <td class="align_ct">
+							                    	<a href="" class="btn blue sm">수정</a>
+							                    	<!-- <a href="" class="btn red sm">확인</a> -->
+						                    	</td>
+							                </tr>
+							                <tr>
+							                    <td class="align_ct">그랜드메르 여행사</td>
+							                    <td class="align_ct">아라이에이쥰</td>
+							                    <td class="align_ct">구본임</td>
+							                    <td class="align_ct">064-1234-5678</td>
+							                    <td class="align_ct">2016-08-0514:38:52</td>
+							                    <td class="align_ct">A그룹</td>
+							                    <td class="align_ct">
+							                    	<a href="" class="btn blue sm">수정</a>
+							                    	<!-- <a href="" class="btn red sm">확인</a> -->
+						                    	</td>
+							                </tr>
+							                <tr>
+							                    <td class="align_ct">그랜드메르 여행사</td>
+							                    <td class="align_ct">아라이에이쥰</td>
+							                    <td class="align_ct">구본임</td>
+							                    <td class="align_ct">064-1234-5678</td>
+							                    <td class="align_ct">2016-08-0514:38:52</td>
+							                    <td class="align_ct">A그룹</td>
+							                    <td class="align_ct">
+							                    	<a href="" class="btn blue sm">수정</a>
+							                    	<!-- <a href="" class="btn red sm">확인</a> -->
+						                    	</td>
+							                </tr>
+							                <tr>
+							                    <td class="align_ct">그랜드메르 여행사</td>
+							                    <td class="align_ct">아라이에이쥰</td>
+							                    <td class="align_ct">구본임</td>
+							                    <td class="align_ct">064-1234-5678</td>
+							                    <td class="align_ct">2016-08-0514:38:52</td>
+							                    <td class="align_ct">A그룹</td>
+							                    <td class="align_ct">
+							                    	<a href="" class="btn blue sm">수정</a>
+							                    	<!-- <a href="" class="btn red sm">확인</a> -->
+						                    	</td>
+							                </tr>
+							                <tr>
+							                    <td class="align_ct">그랜드메르 여행사</td>
+							                    <td class="align_ct">아라이에이쥰</td>
+							                    <td class="align_ct">구본임</td>
+							                    <td class="align_ct">064-1234-5678</td>
+							                    <td class="align_ct">2016-08-0514:38:52</td>
+							                    <td class="align_ct">A그룹</td>
+							                    <td class="align_ct">
+							                    	<a href="" class="btn blue sm">수정</a>
+							                    	<!-- <a href="" class="btn red sm">확인</a> -->
+						                    	</td>
+							                </tr>
+							                <tr>
+							                    <td class="align_ct">그랜드메르 여행사</td>
+							                    <td class="align_ct">아라이에이쥰</td>
+							                    <td class="align_ct">구본임</td>
+							                    <td class="align_ct">064-1234-5678</td>
+							                    <td class="align_ct">2016-08-0514:38:52</td>
+							                    <td class="align_ct">A그룹</td>
+							                    <td class="align_ct">
+							                    	<a href="" class="btn blue sm">수정</a>
+							                    	<!-- <a href="" class="btn red sm">확인</a> -->
+						                    	</td>
+							                </tr>
+							                <tr>
+							                    <td class="align_ct">그랜드메르 여행사</td>
+							                    <td class="align_ct">아라이에이쥰</td>
+							                    <td class="align_ct">구본임</td>
+							                    <td class="align_ct">064-1234-5678</td>
+							                    <td class="align_ct">2016-08-0514:38:52</td>
+							                    <td class="align_ct">A그룹</td>
+							                    <td class="align_ct">
+							                    	<a href="" class="btn blue sm">수정</a>
+							                    	<!-- <a href="" class="btn red sm">확인</a> -->
+						                    	</td>
+							                </tr>
+							                <tr>
+							                    <td class="align_ct">그랜드메르 여행사</td>
+							                    <td class="align_ct">아라이에이쥰</td>
+							                    <td class="align_ct">구본임</td>
+							                    <td class="align_ct">064-1234-5678</td>
+							                    <td class="align_ct">2016-08-0514:38:52</td>
+							                    <td class="align_ct">A그룹</td>
+							                    <td class="align_ct">
+							                    	<a href="" class="btn blue sm">수정</a>
+							                    	<!-- <a href="" class="btn red sm">확인</a> -->
+						                    	</td>
+							                </tr>
+							                <tr>
+							                    <td class="align_ct">그랜드메르 여행사</td>
+							                    <td class="align_ct">아라이에이쥰</td>
+							                    <td class="align_ct">구본임</td>
+							                    <td class="align_ct">064-1234-5678</td>
+							                    <td class="align_ct">2016-08-0514:38:52</td>
+							                    <td class="align_ct">A그룹</td>
+							                    <td class="align_ct">
+							                    	<a href="" class="btn blue sm">수정</a>
+							                    	<!-- <a href="" class="btn red sm">확인</a> -->
+						                    	</td>
+							                </tr>
+							            </tbody>
+							        </table>
+							    </div>
+							    
+							    <p class="list_pageing"><strong>1</strong>&nbsp;<span><a href="#" onclick="fn_Search(2); return false;">2</a></span>&nbsp;<span><a href="#" onclick="fn_Search(3); return false;">3</a></span>&nbsp;<span><a href="#" onclick="fn_Search(4); return false;">4</a></span>&nbsp;<span><a href="#" onclick="fn_Search(5); return false;">5</a></span>&nbsp;<span><a href="#" onclick="fn_Search(6); return false;">6</a></span>&nbsp;<span><a href="#" onclick="fn_Search(7); return false;">7</a></span>&nbsp;<span><a href="#" onclick="fn_Search(8); return false;">8</a></span>&nbsp;<span><a href="#" onclick="fn_Search(9); return false;">9</a></span>&nbsp;</p>
+				            </div> <!--//scroll-->
+				        </div> <!--//r-area-->
+				    </div> <!--//col2-wrap-->
+				</div> <!--//split-screen-->
+                <!-- //change contents -->
+                
+            </div>
+        </div>
+    </div>
+    <!--//Contents 영역-->
+    
+</div>
+</body>
+</html>

@@ -1,0 +1,215 @@
+/* Normalize */
+body, ul, li {
+    padding: 0;
+    list-style: none;
+    cursor: pointer;
+}
+body {
+    margin: 0;
+    background-color: #444;
+    touch-action: pan-x pan-y;
+}
+a {text-decoration: none;}
+.zoomMap {
+    display:inline-block;
+    position: relative;
+    cursor: zoom-in;
+}
+.zoomout {cursor: zoom-out;}
+
+
+/* 사이드바-아이콘 시작 */
+.side-bar {
+    overflow: hidden;
+    position: fixed;
+    width: 82px;
+    margin-left: 15px;
+    min-height: 120vh;
+    transition: .5s;
+}
+.side-bar__icon-box {
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px 0 50px 11px;
+}
+.side-bar__icon-1 {
+    position: relative;
+    width: 30px;
+    height: 22px;
+    margin: 15px;
+}
+:root {--side-bar__icon: .5s;}
+.side-bar__icon-1 > div {
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    background-color: #fff;
+    transition: all var(--side-bar__icon);
+}
+.side-bar__icon-1 > div:nth-of-type(1) {
+    top: 0;
+    width: auto;
+    left: 0;
+    right: 0;
+    transition: all var(--side-bar__icon),
+    left calc(var(--side-bar__icon) / 2) calc(var(--side-bar__icon) / 2),
+    right calc(var(--side-bar__icon) / 2) calc(var(--side-bar__icon) / 2),
+    height calc(var(--side-bar__icon) / 2) 0s;
+}
+.side-bar__icon-1 > div:nth-of-type(2) {
+    top: 40%;
+    transform-origin:bottom left;
+}
+.side-bar__icon-1 > div:nth-of-type(3) {
+    top: 80%;
+    right: 0;
+    left: auto;
+    transform-origin:bottom right;
+}
+.side-bar:hover .side-bar__icon-1 > div:nth-of-type(2) {
+    width: 70.5%;
+    height: 20%;
+    transform: rotate(45deg);
+}
+.side-bar:hover .side-bar__icon-1 > div:nth-of-type(3) {
+    top: 40%;
+    width: 70.5%;
+    height: 20%;
+    transform:rotate(-45deg);
+}
+.side-bar:hover .side-bar__icon-1 > div:nth-of-type(1) {
+    width: 4px;
+    height: 100%;
+    right: 41%;
+    left: 42%;
+    transition: all var(--side-bar__icon),
+    left calc(var(--side-bar__icon) / 1) 0s,
+    right calc(var(--side-bar__icon) / 1) 0s,
+    height calc(var(--side-bar__icon) / 1) calc(var(--side-bar__icon) / 1);
+}
+
+
+/* 사이드바-메뉴 시작 */
+.side-bar ul > li > a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 13px;
+    margin: 8px;
+    color: white;
+    border-radius: 24px;
+    background-color: #000;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    opacity: 0.8;
+}
+.side-bar ul > li > a:hover {
+    position: relative;
+    border-radius: 12px;
+}
+.side-bar .food-map__btn {
+    position: relative;
+    top: 0px;
+    height: 34px;
+}
+.side-bar .downaload__btn {
+    position: relative;
+    left: 2px;
+    height: 34px;
+}
+.side-bar > ul > li > a > span:last-child {opacity: 1;}
+.side-bar > ul > li > a > span > i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.side-bar ul > li > a > span {
+    height: 36px;
+    line-height: 36px;
+    vertical-align: middle;
+}
+.side-bar ul > li > a > span.txt {
+    margin-left: 34px;
+    font-size: 1rem;
+    padding: 2px 0;
+    font-weight: bold;
+    line-height: 38px;
+    opacity: 1;
+}
+.side-bar ul > li > a > span > .home {
+    position: relative;
+    top: 2px;
+    left: 3px;
+    height: 34px;
+}
+.side-bar ul > li > a > span > .tourist-map__btn {
+    position: relative;
+    left: 1px;
+    height: 34px;
+}
+.side-bar ul > li > a > span.food-map__btn {margin-left: 3px;}
+.side-bar:hover {
+    width: 230px;
+    margin-left: 10px;
+    overflow: visible;
+    border-radius: 24px;
+}
+.side-bar:hover > ul > li > a > span:last-child {
+    opacity: 1;
+    transition: .5s .1s;
+    border-radius: 24px;
+}
+.side-bar ul > li:hover > a {
+    color: #ffdd00;
+    border-radius: 24px;
+    background-color: #000;
+}
+.side-bar ul > li > .must_content.active {color: #ffdd00;}
+.side-bar > ul > li {position: relative;}
+.side-bar > ul > li:last-of-type {display: none;}
+.side-bar > ul > li:before:last-of-type {content: none;}
+.side-bar > ul > li:hover > ul {
+    display: block;
+    border-radius: 12px;
+}
+
+
+/* 반응형 */
+@media screen and (max-width: 540px) {
+
+    /* 사이드바-아이콘 시작 */
+    .side-bar {margin-left: 0px; transition: .5s; width: 85px; height: 85px;}
+    .side-bar:hover {overflow: hidden; width: 85px; min-height: 100vh; margin-left: 5px; border-radius: 50%;}
+    .side-bar.active {overflow: visible; width: 150px; border-radius: 24px; margin-left: 5px;}
+    .side-bar__icon-box {justify-content: center; width: 85px; margin: 35px 0 50px;}
+    .side-bar.active .side-bar__icon-box {margin: 35px 0 50px;}
+    .side-bar__icon-1 {width: 28px; height: 20px; margin: 0;}
+    .side-bar__icon-1 > div {height: 15%;}
+
+    /* 사이드바-메뉴 시작 */
+    .side-bar ul > li > a {margin: 14px; padding: 9px; height: 38px; font-size: 0.7rem; }
+    .side-bar ul > li > a > span {width: 25px; line-height: 25px;}
+    .side-bar ul > li > .must_content.active {font-size: 0.75rem;}
+    .side-bar.active ul > li {width: 230px;}
+    .side-bar ul > li > a > span.txt {margin-left: 40px;}
+    .side-bar ul > li > a > span > .home {height: 30px; left: 4px; top: 3px;}
+    .side-bar ul > li > a > span > .tourist-map__btn {top: 1px; left: 3px; height: 30px;}
+    .side-bar .food-map__btn {top: 1px; left: 4px; height: 30px;}
+    .side-bar .downaload__btn {top: 2px; left: 3px; height: 30px;}
+    .side-bar:hover .side-bar__icon-1 > div:nth-of-type(1) {top: 0; right: 0; left: 0; width: auto; height: 15%;
+        transition: all var(--side-bar__icon),
+        left calc(var(--side-bar__icon) / 2) calc(var(--side-bar__icon) / 2),
+        right calc(var(--side-bar__icon) / 2) calc(var(--side-bar__icon) / 2),
+        height calc(var(--side-bar__icon) / 2) 0s;
+    }
+
+    .side-bar:hover .side-bar__icon-1 > div:nth-of-type(2) {width: 100%; height: 15%; transform: rotate(0);}
+    .side-bar:hover .side-bar__icon-1 > div:nth-of-type(1) {width: 100%; height: 15%; transform: rotate(0);}
+    .side-bar:hover .side-bar__icon-1 > div:nth-of-type(3) {width: 100%; height: 15%; top: 80%; right: 0; left: auto; transform: rotate(0);}
+
+    .side-bar.active .side-bar__icon-1 > div:nth-of-type(2) {top: 0; left: 0; width: 100%; height: 15%; transform: rotate(45deg);}
+    .side-bar.active .side-bar__icon-1 > div:nth-of-type(1) {display: none;}
+    .side-bar.active .side-bar__icon-1 > div:nth-of-type(3) {top: 0; left: -6px; width: 100%; height: 15%; transform:rotate(-45deg);}
+
+}

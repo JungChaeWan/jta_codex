@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>탐나오</title>
+
+    <link rel="stylesheet" href="../../../css/mw/common.css">
+    <link rel="stylesheet" href="../../../css/mw/main4.css">
+    <link rel="stylesheet" href="../../../css/mw/style.css">
+    <link rel="stylesheet" href="../../../css/mw/daterangepicker.css">
+
+    <script src="../../../js/jquery-1.11.1.js"></script>
+    <script src="../../../js/jquery-ui-1.11.4.js"></script>
+    <script src="../../../js/jquery.cookie.js"></script>
+    <script src="../../../js/mw_common.js"></script>
+    <script src="../../../js/mw_style.js"></script>
+    <script src="../../../js/moment.min.js"></script>
+    <script src="../../../js/daterangepicker.js"></script>
+    <!-- add script -->
+    <script src="../../../js/swiper.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+            $("input.search_inpbox_inp, .search_inpbox_btn").click(function () {
+                $("body").addClass("globalSearch-open");
+            });
+
+            $("#top_searchClose_inp").click(function () {
+                $("body").removeClass("globalSearch-open");
+            });
+        });
+
+        $(document).ready(function () {
+            $(".floating_call").click(function () {
+                $(this).addClass("is_open");
+            })
+        });
+        //footer
+        var getContextPath = "${pageContext.request.contextPath}";
+        var servletPath = "${requestScope['javax.servlet.forward.servlet_path']}";
+
+        function go_top() {
+            $("html, body").animate({scrollTop : 0}, 400);
+            return false;
+        }
+        $(document).ready(function () {
+            $(".bottom-menu a").click(function () {
+                $(this).addClass("on");
+            })
+        });
+        function openFoldArea() {
+            if($("#foldArea").css("display") != "block") {
+                $("#foldArea").css("display","block");
+                $(".footer-close a").text("닫기");
+            } else {
+                $("#foldArea").css("display","none");
+                $(".footer-close a").text("열기");
+            }
+        }
+
+        $(document).ready(function(){
+            $("#top_searchOpen2").on("click", function(){
+                $("#top_search").show();
+            });
+            var searchWord = location.href;
+            var comparWord = [
+                "/mw",
+                "/mw/main.do",
+                "/mw/av/productList.do",
+                "/mw/ad/productList.do",
+                "/mw/rentcar/car-list.do",
+                "/mw/tour/jeju.do",
+                "/mw/sp/packageList.do",
+                "/mw/sp/vesselList.do",
+                "/mw/sv/productList.do",
+                "/mw/sv/mainList.do",
+                "/mw/evnt/prmtPlanList.do",
+                "/mw/coustomer/mdsPickList.do",
+                "/mw/evnt/promotionList.do",
+                "/mw/coustomer/qaList.do",
+                "/mw/ad/detailPrdt.do",
+                "/mw/rentcar/car-detail.do",
+                "/mw/sp/detailPrdt.do",
+                "/mw/sv/detailPrdt.do",
+                "/mw/evnt/detailPromotion.do"
+            ];
+            var compResult;
+
+            for(var i in comparWord) {
+                compResult = searchWord.search(comparWord[i]);
+                if(compResult > 0) {
+                    break;
+                }
+            }
+            if(compResult > 0) {
+                $("#fixed_foot").addClass("active");
+
+                $(window).scroll(function(){
+                    var scrollHeight = $(document).height();
+                    var scrollPosition = $(window).height() + $(window).scrollTop();
+
+                    if(scrollHeight - scrollPosition < 400) {
+                        $("#fixed_foot").removeClass("active");
+                    } else {
+                        $("#fixed_foot").addClass("active");
+                    }
+                    if(scrollPosition > 1000) {
+                        $("#top-foot").addClass("active");
+                    } else {
+                        $("#top-foot").removeClass("active");
+                    }
+                });
+            }
+            let comparWord2 = [
+                "/mw/order01.do",
+                "/mw/order03.do",
+                "/mw/cart.do"
+            ];
+            let compResult2;
+
+            for(let i in comparWord2) {
+                compResult2 = searchWord.search(comparWord2[i]);
+                if(compResult2 > 0) {
+                    break;
+                }
+            }
+
+            if(compResult2 > 0) {
+                $("#top-foot").hide();
+            }
+
+            //상단 Top Banner Close
+            function topBanner() {
+                var obj = '#top-foot';											//target
+                var cookieName = 'topBanner';										//쿠키이름
+
+                var itemSize = $('#top_banner ul li').size();
+
+                if(itemSize > 0) {
+                    if(("localStorage" in window) && window.localStorage != null) {
+                        var prevTime = localStorage.getItem(cookieName);
+                        var currentTime = new Date().getTime();
+                        var expirationDuration = 24 * 60 * 60 * 1000;		// 24h
+
+                        var notAccepted = (prevTime == undefined);
+                        var prevAcceptedExpired = (prevTime != undefined) && ((currentTime - prevTime) > expirationDuration);
+
+                        if(notAccepted || prevAcceptedExpired) {
+                            $(obj).show();
+                        }
+                    } else {
+                        $(obj).hide();
+                    }
+
+                    $("#top_close").click(function() {
+                        $(obj).hide();
+
+                        if(("localStorage" in window) && window.localStorage != null) {
+                            var currentTime = new Date().getTime();
+                            localStorage.setItem(cookieName, currentTime);
+                        }
+                        /*$("#main").css("margin-top", $(".top_fix").height() + "px" );*/
+                        return false;
+                    });
+                }
+
+                if(itemSize > 1) {
+                    topBannerSlider();
+                }
+                /*$("#main").css("margin-top", $(".top_fix").height() + "px" );*/
+
+            }
+        });
+
+
+        // Hide Header on on scroll down
+        var lastScrollTop = 0;
+        var delta = 5;
+        var navbarHeight = $('.head-wrap').outerHeight();
+
+        $(window).scroll(function(event){
+            var st = $(this).scrollTop();
+
+            if(Math.abs(lastScrollTop - st) <= delta)
+                return;
+
+            if (st > lastScrollTop && st > navbarHeight){
+                // Scroll Down
+                $('.head-wrap').removeClass('nav-down').addClass('nav-up');
+            } else {
+                // Scroll Up
+                if(st + $(window).height() < $(document).height()) {
+                    $('.head-wrap').removeClass('nav-up').addClass('nav-down');
+                }
+            }
+            lastScrollTop = st;
+        });
+
+        let prevIndex = 0;
+        /** 숙박 검색 */
+        function fn_AdSearch() {
+            $('.popup-typeA').hide();
+            $("#sSearchYn").val('Y');
+
+            $("#pageIndex").val(1);
+            $("#sResEnable").val($("input:radio[name=vResEnable]:checked").val());
+            $("#sAdDiv").val($("select[name=sAdDivSel]:selected").val());
+            $("#sPriceSe").val($("select[name=sPriceSeSel]:selected").val());
+
+            $("#sPrdtNm").val($("#vPrdtNm").val());
+
+            $('#sAdFromDt').val($('#sAdFromDtView').val().replace(/-/g, ''));
+
+            document.adSearchFrm.target = "";
+            document.adSearchFrm.action = "${pageContext.request.contextPath}/mw/ad/productList.do";
+            document.adSearchFrm.submit();
+
+            ++prevIndex;
+            history.replaceState($("#main").html(), "title"+ prevIndex, "?prevIndex="+ prevIndex);
+            currentState = history.state;
+        }
+
+        /** 숙박 객실수 및 인원 정보 수정 */
+        function modify_room_person() {
+            var str = "성인 " + $('#AdultNum').text();
+            if ($('#ChildNum').text() > 0) {
+                str += ", 소아 " + $('#ChildNum').text();
+            }
+            if ($('#BabyNum').text() > 0) {
+                str += ", 유아 " + $('#BabyNum').text();
+            }
+            $('#room_person_str').text(str);
+        }
+
+        /** 숙박 인원수 변경 이벤트 */
+        function ad_chg_person(type, gubun) {
+            var num = 0;
+            if (type == '+') {
+                num = eval($('#' + gubun + 'Num').text()) + 1;
+            } else {
+                num = eval($('#' + gubun + 'Num').text()) - 1;
+            }
+            /** 최저 인원 수 - 성인 : 1, 소아&유아 : 0 */
+            if (gubun == 'Adult') {
+                if (num < 1) {
+                    num = 1;
+                } else if (num > 30) {
+                    num = 30;
+                }
+            } else {
+                if (num < 0) {
+                    num = 0;
+                } else if (num > 30) {
+                    num = 30;
+                }
+            }
+            $('#' + gubun + 'Num').text(num);
+            $('input[name=s' + gubun + 'Cnt]').val(num);
+
+            var sMen = eval($('#AdultNum').text()) + eval($('#ChildNum').text()) + eval($('#BabyNum').text());
+            $('#sMen').val(sMen);
+
+            modify_room_person();
+        }
+
+        /** 렌터카 검색 */
+        function fn_RcSearch() {
+            $('.popup-typeA').hide();
+            $('#sFromDt').val($('#sRcFromDtView').val().replace(/-/g, ''));
+            $('#sToDt').val($('#sRcToDtView').val().replace(/-/g, ''));
+            $("#sCorpId").val($("select[name=vCorpId] option:selected").val());
+            $("#sIsrDiv").val($("select[name=vIsrDiv] option:selected").val());
+            document.rcSearchFrm.action = "${pageContext.request.contextPath}/mw/rentcar/car-list.do";
+            document.rcSearchFrm.submit();
+
+            ++prevIndex;
+            history.replaceState($("#main").html(), "title"+ prevIndex, "?prevIndex="+ prevIndex);
+            currentState = history.state;
+        }
+
+        /** 레인지 피커 */
+        function rangePicker() {
+            $('.date-container').daterangepicker({
+                <!-- singleDatePicker: true -->
+            }, function (start, end) {
+                parentHide(false);
+                /** 숙박 날짜설정*/
+                $("#sAdFromDtView").val(start.format('YYYY-MM-DD'));
+                $("#sAdToDtView").val(end.format('YYYY-MM-DD'));
+                $("#sAdFromDt").val(start.format('YYYYMMDD'));
+                $("#sAdToDt").val(end.format('YYYYMMDD'));
+                $("#sNights").val(parseInt(moment.duration(end.diff(start)).asDays()));
+                /** 렌터카 날짜설정*/
+                $("#sRcFromDtView").val(start.format('YYYY-MM-DD'));
+                $("#sRcToDtView").val(end.format('YYYY-MM-DD'));
+                $("#sFromDtView").val(start.format('YYYY-MM-DD'));
+                $("#sToDtView").val(end.format('YYYY-MM-DD'));
+                $("#sFromDt").val(start.format('YYYYMMDD'));
+                $("#sToDt").val(end.format('YYYYMMDD'));
+                /** 항공 날짜설정*/
+                $("input[name=start_date]").val(start.format('YYYY-MM-DD'));
+                $("input[name=end_date]").val(end.format('YYYY-MM-DD'));
+            });
+            $('.date-container').on('hide.daterangepicker', function(ev, picker) {
+                parentHide(false);
+            });
+        }
+
+        /** 싱글 피커 */
+        function singlePicker() {
+            $('.date-container').daterangepicker({
+                singleDatePicker: true
+            }, function (start, end) {
+                /** 항공 날짜설정*/
+                parentHide(false);
+                $("input[name=start_date]").val(start.format('YYYY-MM-DD'));
+                $("input[name=end_date]").val(end.format('YYYY-MM-DD'));
+            });
+        }
+
+
+        /** 데이트 피커 ON/OFF일 부모스크롤 방지를 위한 함수  */
+        function parentHide(val) {
+            if(val){
+                $("#main").hide();
+                $("#footer").hide();
+            }else{
+                $("#main").show();
+                $("#footer").show();
+            }
+        }
+
+        // 화면 사이즈별 슬라이드 설정
+        var screenWidth = 360;
+        var slideCnt = 2;
+        var swiper1 = null;
+        var swiper6 = null;
+        var swiper4 = null;
+        var swiper5 = null;
+        var swiper3 = null;
+
+        function doSwiper() {
+            screenWidth = $(window).width();
+
+            if(screenWidth < 720) {
+                slideCnt = 2;
+            } else {
+                slideCnt = 3;
+            }
+
+            /**인기있수다 슬라이드*/
+            if($('#popSlider1 .swiper-slide').length > 1) {
+                if(swiper1 != null) {
+                    swiper1.destroy();
+                }
+                swiper1 = new Swiper('#popSlider1', {
+                    spaceBetween: 20,
+                    slidesPerView: slideCnt,
+                    paginationClickable: true,
+                    loop: true
+                });
+            }
+            /**당일숙박*/
+            if($('#popSlider6 .swiper-slide').length > 1) {
+                if(swiper6 != null) {
+                    swiper6.destroy();
+                }
+                swiper6 = new Swiper('#popSlider6', {
+                    spaceBetween: 20,
+                    slidesPerView: slideCnt,
+                    paginationClickable: true,
+                    loop: true
+                });
+            }
+            /**관광지 슬라이드*/
+            if($('#popSlider4 .swiper-slide').length > 1) {
+                if(swiper4 != null) {
+                    swiper4.destroy();
+                }
+                swiper4 = new Swiper('#popSlider4', {
+                    spaceBetween: 20,
+                    slidesPerView: slideCnt,
+                    paginationClickable: true,
+                    loop: true
+                });
+            }
+            /**맛집 슬라이드*/
+            if($('#popSlider5 .swiper-slide').length > 1) {
+                if(swiper5 != null) {
+                    swiper5.destroy();
+                }
+                swiper5 = new Swiper('#popSlider5', {
+                    spaceBetween: 20,
+                    slidesPerView: slideCnt,
+                    paginationClickable: true,
+                    loop: true
+                });
+            }
+            /**제주특산/기념품 슬라이드*/
+            if($('#popSlider3 .swiper-slide').length > 1) {
+                if(swiper3 != null) {
+                    swiper3.destroy();
+                }
+                swiper3 = new Swiper('#popSlider3', {
+                    spaceBetween: 20,
+                    slidesPerView: slideCnt,
+                    paginationClickable: true,
+                    loop: true
+                });
+            }
+        }
+
+        // 화면 사이즈 변경 이벤트
+        $(window).resize(function(){
+            var screenWidth2 = $(window).width();
+
+            if(screenWidth2 >= 720) {
+                if(screenWidth < 720) {
+                    doSwiper();
+                }
+            } else {
+                if(screenWidth >= 720) {
+                    doSwiper();
+                }
+            }
+            $(".bx-wrapper").css("max-width", screenWidth2);
+        });
+
+        // layer popup
+        function popupOpen() {
+            $(".popup_con").show();
+            $(".popup_mask").show();
+
+            // scroll touchmove mousewheel 방지
+            $("#wrap").on("scroll touchmove mousewheel", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            });
+
+            // 닫기
+            $(".popup_close").on("click", function() {
+                popupClose();
+            });
+            // 하루 동안 보지 않기
+            $(".popup_close2").on("click", function() {
+                popupClose();
+
+                if(("localStorage" in window) && window.localStorage != null) {
+                    var currentTime = new Date().getTime();
+                    localStorage.setItem("eventPopup", currentTime);
+                }
+            });
+        }
+
+        function popupClose() {
+            $(".popup_con").hide();
+            $(".popup_mask").hide();
+
+            $("#wrap").off("scroll touchmove mousewheel");
+        }
+
+
+        // 0214 fadeIn / fadeOut
+        //layer popup2
+        $('.view-seller, .pop-seller .btn-close').click(function(){
+            $('.pop-seller').fadeToggle();
+        });
+
+        //layer popup2
+        $('.view-seller2, .btn-close2').click(function(){
+            $('.pop-seller2').fadeToggle();
+        });
+
+
+        $(document).ready(function(){
+            var currentState = history.state;
+            if(currentState){
+                $("#main").html(currentState);
+
+                let tabIndex = $("#product_search li.active a").attr("href");
+                let tabActive = 0;
+
+                if(tabIndex == "#tabs-1"){ //항공
+                    tabActive = 2
+                }else if(tabIndex == "#tabs-2"){ //숙소
+                    tabActive = 1
+                }else if(tabIndex == "#tabs-3"){ //렌터카
+                    tabActive = 0
+                }else{ //선박
+                    tabActive = 3
+                }
+
+                tabPanel2({
+                    container: "#product_search",
+                    firstItem: tabIndex,
+                    active : tabActive
+                });
+
+            }else{
+                $('#sCarDivCd').val("CAR2");
+                $("#carDivStr").text("중형, 고급자차포함");
+                $("#sCarDivCd2").click();
+                $('#sIsrTypeDiv').val("LUXY");
+                $('#sIsrTypeDiv3').click();
+
+                /** 실시간 검색 탭패널 */
+                tabPanel2({
+                    container: "#product_search",
+                    firstItem: "#tabs-3"
+                });
+            }
+
+            /**메인 기획전 슬라이드*/
+            if($('#main_top_slider .swiper-slide').length > 1) {
+                new Swiper('#main_top_slider', {
+                    pagination: '#main_top_navi',
+                    paginationClickable: true,
+                    /*			autoplay: 5000,*/
+                    loop: true
+                });
+            }
+
+            // 해시태그 슬라이드
+            $(".hashtagSlide").bxSlider({
+                minSlides: 3,
+                maxSlides: 5,
+                slideWidth: 200,
+                speed: 20000,
+                ticker: true,
+                tickerHover: true,
+                useCSS: false
+            });
+
+            // 슬라이드
+            doSwiper();
+
+            /** 출발지 선택 */
+            $('input[name=start_region]').change(function() {
+                $("#start_region_str").html($("label[for=" + $(this).attr('id') + "]").text() + '(' + $(this).val() + ')');
+            });
+
+            /** 도착지 선택 */
+            $('input[name=end_region]').click(function() {
+                $("#end_region_str").html($("label[for=" + $(this).attr('id') + "]").text() + '(' + $(this).val() + ')');
+                optionClose($('#air_departure'));
+            });
+
+            /** 지역 선택 */
+            $('input[name=sAdAdarChk]').click(function() {
+                var area = $("label[for=" + $(this).attr('id') + "]").text();
+                if (area == '전체')
+                    area = '제주 지역 ' + area;
+                $("#area_str").text(area);
+                $("#sAdAdar").val($(this).val());
+                optionClose($("#hotel_zone"));
+            });
+
+            /** 탭이동시 레인지피커 사용  */
+            $('.nav-menu li a').click(function() {
+                if($(this).attr("href") == "#tabs-1"){
+                    /** 편도 탭 선택되어있을 경우 싱글 피커 */
+                    if($("#air_typeOW").attr("class") == "active"){
+                        singlePicker();
+                    }else{
+                        rangePicker();
+                    }
+                }else{
+                    rangePicker();
+                }
+            });
+
+            /** 왕복 탭 선택시 레인지피커 */
+            $('#air_typeRT').click(function() {
+                rangePicker();
+            });
+
+            /** 편도 탭 선택시 싱글피커 */
+            $('#air_typeOW').click(function() {
+                singlePicker();
+            });
+
+            /** 차종선택 */
+            $('input[name=sCarDivCdStr]').click(function() {
+                $('#sCarDivCd').val($(this).val());
+                $('#carDivStr').text($("label[for=" + $(this).attr('id') + "]").text() + ", " + $("input[name='sIsrTypeDiv']:checked").next().text());
+            });
+
+            /** 보험선택 */
+            $('input[name=sIsrTypeDiv]').click(function() {
+                $('#sIsrTypeDiv').val($(this).val());
+                $('#carDivStr').text($("input[name='sCarDivCdStr']:checked").next().text() + ", " +$("label[for=" + $(this).attr('id') + "]").text());
+            });
+
+            /** 레인지 피커 디폴트 싱글피커를 쓰기위함*/
+            rangePicker();
+
+            $('button').click(function(){
+                parentHide(false);
+            });
+
+
+            // 출발지 <> 도착지 체인지
+            $(' .change').on('click', function() {
+                let startReg = "";
+                let endReg = "";
+                startReg = $("input[name=start_region]:checked").val();
+                endReg = $("input[name=end_region]:checked").val();
+
+                $("input[name=start_region]").each(function(index) {
+                    if(endReg == $("#air_test"+index).val()){
+                        $("#air_test"+index).prop("checked", true);
+                        $("input[name=start_region]:checked").change();
+                        return;
+                    }
+                    if(startReg == $("#air_test"+index).val()){
+                        $("#air_test"+index).prop("checked", false);
+
+                    }
+                });
+
+                $("input[name=end_region]").each(function(index) {
+                    index = index + 13;
+                    if(startReg == $("#air_test"+index).val()){
+                        $("#air_test"+index).prop("checked", true);
+                        $("input[name=end_region]:checked").click();
+                        return;
+                    }
+                    if(endReg == $("#air_test"+index).val()){
+                        $("#air_test"+index).prop("checked", false);
+
+                    }
+                });
+            });
+
+            $('#tabs-4 button').click(function(){
+                ++prevIndex;
+                history.replaceState($("#main").html(), "title"+ prevIndex, "?prevIndex="+ prevIndex);
+                currentState = history.state;
+            });
+
+        });
+
+    </script>
+</head>
+<body class="main">
+<div id="wrap" class="m_wrap">
+    <header id="m_header" class="mo_header react-area">
+
+        <!-- 0216 visitjeju_header -->
+        <div class="visit_header">
+            <div class="inner">
+                <h1>
+                    <a href="https://www.visitjeju.net/kr" target="_blank" title="visit jeju - 제주도 공식 관광정보 포털">
+                        <img src="/images/mw/main/m_visit_logo.png" alt="비짓제주">
+                    </a>
+                </h1>
+                <div class="srh_area">
+                    <form>
+                        <fieldset>
+                            <legend class="for-a11y">검색</legend>
+                            <div class="top_search">
+                                <input type="text" placeholder="제주도 공식관광정보 검색">
+                                <button>
+                                    <img src="/images/mw/icon/search/m_srh_btn.png" alt="검색">
+                                </button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div><!-- // 0216 visitjeju_header -->
+
+        <!-- //모바일 웹만 노출 -->
+        <div id="m_gnb" class="mo_gnb">
+            <div class="gnb_mall">
+                <h1 class="logo">
+                    <a href="/" title="홈으로 가기"><img src="../../../images/mw/main/main_logo.png" alt="탐나오"></a>
+                </h1>
+            </div>
+            <div class="gnb_util">
+                <a href="javascript:void(0)" class="main-search gnb_util_m" id="top_searchOpen"></a>
+                <a href="test-cart1.html" class="main-cart gnb_util_m">
+                    <span class="cnt" id="headCartCnt">0</span>
+                </a>
+            </div>
+        </div>
+        <div class="mo-search">
+            <div class="search-wrap">
+                <fieldset>
+                    <form id="search_form">
+                        <div class="search_form_inp">
+                            <div class="search_inpbox">
+                                <input type="search" name="query" id="globalSearchInput" class="search_inpbox_inp" autocomplete="off">
+                                <button type="button" class="search_inpbox_btn" id="globalSearchButton">
+                                    <span class="blind">검색</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+        </div>
+    </header>
+    <main id="main">
+        <div id="main_area" class="main-area">
+            <div id="m_topnav" class="mo_topnav">
+                <ul class="topnav_menu" role="navigation">
+                    <li class="topnav_item">
+                        <a href="" class="topnav_lnk on clickable">
+                            <span class="topnav_txt">홈</span>
+                        </a>
+                    </li>
+                    <li class="topnav_item">
+                        <a href="" class="topnav_lnk clickable">
+                            <span class="topnav_txt">특산기념품</span>
+                        </a>
+                    </li>
+                    <li class="topnav_item">
+                        <a href="" class="topnav_lnk clickable">
+                            <span class="topnav_txt">신상품</span>
+                        </a>
+                    </li>
+                    <li class="topnav_item">
+                        <a href="" class="topnav_lnk clickable">
+                            <span class="topnav_txt">기획전</span>
+                        </a>
+                    </li>
+                    <li class="topnav_item">
+                        <a href="" class="topnav_lnk clickable">
+                            <span class="topnav_txt">이벤트</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="main_head" class="main-head">
+                <!-- Main Top Slider -->
+                <div class="main-top-slider">
+                    <div id="main_top_slider" class="swiper-container">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide" style="background-color: #c6f3ef">
+                                <div class="Fasten">
+                                    <a href=""><img src="../../../images/mw/main/banner/main_banner.jpg" alt="기획전"></a>
+                                </div>
+                            </li>
+                            <li class="swiper-slide" style="background-color: #c6f3ef">
+                                <div class="Fasten">
+                                    <a href=""><img src="../../../images/mw/main/banner/main_banner.jpg" alt="기획전"></a>
+                                </div>
+                            </li>
+                            <li class="swiper-slide" style="background-color: #c6f3ef">
+                                <div class="Fasten">
+                                    <a href=""><img src="../../../images/mw/main/banner/main_banner.jpg" alt="기획전"></a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div id="main_top_navi" class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <!-- //Main Top Slider -->
+
+                <nav class="HomeQuickCategory">
+                    <div class="HomeQuickCategory_Wrap">
+                        <a href="" class="HomeQuickCategory_Item">
+                            <span class="HomeQuickCategory_Badge">HOT</span>
+                            <img src="../../../images/mw/main/menu_01.png" alt="렌터카">
+                            <p>렌터카</p>
+                        </a>
+                        <a href="" class="HomeQuickCategory_Item">
+                            <span class="HomeQuickCategory_Badge">숙소할인</span>
+                            <img src="../../../images/mw/main/menu_02.png" alt="숙소">
+                            <p>숙소</p>
+                        </a>
+                        <a href="" class="HomeQuickCategory_Item">
+                            <span class="HomeQuickCategory_Badge">발권수수료 0원</span>
+                            <img src="../../../images/mw/main/menu_03.png" alt="항공">
+                            <p>항공</p>
+                        </a>
+                        <a href="" class="HomeQuickCategory_Item">
+                            <img src="../../../images/mw/main/menu_04.png" alt="선박">
+                            <p>선박</p>
+                        </a>
+                    </div>
+                    <div class="HomeQuickCategory_Wrap">
+                        <a href="" class="HomeQuickCategory_Item">
+                            <img src="../../../images/mw/main/menu_05.png" alt="관광지/레저">
+                            <p>관광지/레저</p>
+                        </a>
+                        <a href="" class="HomeQuickCategory_Item">
+                            <img src="../../../images/mw/main/menu_06.png" alt="특산기념품">
+                            <p>특산/기념품</p>
+                        </a>
+                        <a href="" class="HomeQuickCategory_Item">
+                            <img src="../../../images/mw/main/menu_07.png" alt="제주맛집">
+                            <p>제주맛집</p>
+                        </a>
+                        <a href="" class="HomeQuickCategory_Item">
+                            <img src="../../../images/mw/main/menu_08.png" alt="여행사상품">
+                            <p>여행사상품</p>
+                        </a>
+                    </div>
+                </nav>
+            </div> <!-- //main-head -->
+            <div class="contents-area">
+
+                <!-- 컨텐츠 리스트 -->
+                <section class="main-list-area">
+                    <div class="main-list">
+                        <div class="con-header">
+                            <p class="con-title">지금 제일 잘나가는 상품</p>
+                            <span class="memo">인기있수다</span>
+                            <p class="see-all"><a href="">더보기</a></p>
+                        </div>
+                        <ul class="main-con">
+                            <li>
+                                <div class="main-photo">
+                                    <a href=""><img src="../../../images/mw/from/product/jeju-product1-01.jpg" alt="기획전"></a>
+                                </div>
+                                <div class="main-text">
+                                    <div class="j-info">별빛과 자연.. 그리고 별이 빛나는 밤</div>
+                                    <div class="j-title">제주불빛정원 & 인생사진관</div>
+                                    <div class="main-price">9000<span class="won">원~</span></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="main-photo">
+                                    <a href=""><img src="../../../images/mw/from/product/jeju-product1-02.jpg" alt="기획전"></a>
+                                </div>
+                                <div class="main-text">
+                                    <div class="j-info">별빛과 자연.. 그리고 별이 빛나는 밤</div>
+                                    <div class="j-title">제주불빛정원 & 인생사진관</div>
+                                    <div class="main-price">9000<span class="won">원~</span></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="main-list">
+                        <div class="con-header">
+                            <p class="con-title">당일숙박할인</p>
+                            <span class="memo">오늘 숙박하면 즉시할인!</span>
+                            <p class="see-all"><a href="">더보기</a></p>
+                        </div>
+                        <ul class="main-con">
+                            <li>
+                                <div class="main-photo">
+                                    <a href=""><img src="../../../images/mw/from/product/jeju-product1-03.png" alt="기획전"></a>
+                                </div>
+                                <div class="main-text">
+                                    <div class="j-info">별빛과 자연.. 그리고 별이 빛나는 밤</div>
+                                    <div class="j-title">제주불빛정원 & 인생사진관</div>
+                                    <div class="main-price">9000<span class="won">원~</span></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="main-photo">
+                                    <a href=""><img src="../../../images/mw/from/product/jeju-product1-04.png" alt="기획전"></a>
+                                </div>
+                                <div class="main-text">
+                                    <div class="j-info">별빛과 자연.. 그리고 별이 빛나는 밤</div>
+                                    <div class="j-title">제주불빛정원 & 인생사진관</div>
+                                    <div class="main-price">9000<span class="won">원~</span></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="main-list">
+                        <div class="con-header">
+                            <p class="con-title">관광지/레저</p>
+                            <span class="memo">심심한 여행은 가라!</span>
+                            <p class="see-all"><a href="">더보기</a></p>
+                        </div>
+                        <ul class="main-con">
+                            <li>
+                                <div class="main-photo">
+                                    <a href=""><img src="../../../images/mw/from/product/jeju-product1-05.png" alt="기획전"></a>
+                                </div>
+                                <div class="main-text">
+                                    <div class="j-info">별빛과 자연.. 그리고 별이 빛나는 밤</div>
+                                    <div class="j-title">제주불빛정원 & 인생사진관</div>
+                                    <div class="main-price">9000<span class="won">원~</span></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="main-photo">
+
+                                    <a href=""><img src="../../../images/mw/from/product/jeju-product1-06.png" alt="기획전"></a>
+                                </div>
+                                <div class="main-text">
+                                    <div class="j-info">별빛과 자연.. 그리고 별이 빛나는 밤</div>
+                                    <div class="j-title">제주불빛정원 & 인생사진관</div>
+                                    <div class="main-price">9000<span class="won">원~</span></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <!-- //컨텐츠 리스트 -->
+
+            </div>	<!-- //contents-area -->
+        </div>	<!--//main-area-->
+    </main>
+
+    <footer id="footer">
+        <div class="footer-sns">
+            <p>탐나오! SNS에서 만나보세요!</p>
+            <ul>
+                <li class="sns-facebook" ><a href="https://www.facebook.com/JEJUTAMNAOTRAVEL/" ></a></li>
+                <li class="sns-blog"><a href="https://blog.naver.com/jta0119"  ></a></li>
+                <li class="sns-youtube"><a href="https://www.youtube.com/channel/UC5Hk3MfM3RFDz5_Xm9BDJZQ"  ></a></li>
+                <li class="sns-insta" ><a href="https://www.instagram.com/tamnao_jeju/" ></a></li>
+            </ul>
+        </div>
+        <nav class="foot-menu">
+            <a href="">개인정보처리방침</a>
+            <a href="">이용약관</a>
+        </nav>
+        <address class="copyright">
+
+            <p>63309 제주특별자치도 제주시 첨단로 213-65 제주종합비즈니스센터 3층</p>
+            <p>고객센터 : <span>1522-3454</span></p>
+            <p class="name"><a href="">제주특별자치도관광협회</a> │  대표이사 : 김영진 │ 사업자등록번호 : 616-82-04092</p>
+            <p>법인등록번호 : 220121-0000107 │ 	<a href="http://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=6168204092&amp;newopen=yes" class="company-confirm" target="_blank">
+                통신판매업번호: 제2018-제주아라-0049호</a></p>
+
+            <p>개인정보관리책임자 : 김철휘 │ <a href="mailto:tamnao@tamnao.com">	E-mail : tamnao@tamnao.com</a></p>
+            <p>탐나오는 통신판매중개자로서 거래당사자가 아니므로 개별 판매자가 등록한
+                상품거래정보 및 거래에 대해서 책임을 지지 않습니다.</p>
+        </address>
+        <div class="open">
+            <p>Ⓒ <span>제주특별자치도관광협회</span> </p>
+            <p class="footer-close">닫기</p>
+        </div>회
+        <div class="m_floating" id="m_floating_id">
+            <div class="floating_right" id="floating_right_id">
+                    <div class="floating_call" id="call-btn">
+                        <div class="floating_call_dimmed"></div>
+                        <div class="floating_center">
+                            <a href="" class="btn_center btn_qna" data-react-tarea="문의게시판">
+                                <span class="btn_tx">문의게시판</span>
+                            </a>
+                            <a href="tel:1522-3454" class="btn_center btn_call" data-react-tarea="전화연결">
+                                <span class="btn_tx">전화연결</span>
+                            </a>
+                        </div>
+                        <button class="floating_btn floating_btn_call f_call" type="button" aria-expanded="false">
+                            <span class="blind">알림함</span>
+                        </button>
+                    </div>
+                    <div class="floating_top_btn" id="top-foot">
+                        <a class="go-mw-top floating_btn f_top" onclick="go_top();"></a>
+                    </div>
+            </div>
+        </div>
+
+    </footer>
+    <div class="search-cover">
+        <div id="top_search" class="search-area-wrap">
+            <button type="button" id="top_searchClose_inp" class="close"><img src="../../../images/mw/common/side/close-gray.png" alt="닫기"></button>
+            <div class="form-area-wrap">
+                <form class="form-area">
+                    <input type="text" placeholder="검색어를 입력해주세요." class="category-search">
+                    <button type="submit" class="icon-search" title="검색"></button>
+                </form>
+            </div>
+            <div class="all-search">
+                <div class="condition">
+                    <div class="search_title">최근검색어</div>
+                    <div class="search_none_result">
+                        <p>최근검색어가<br>없습니다</p>
+                    </div>
+                    <div class="search_latest_keyword">
+                        <ul>
+                            <li>
+                                <a href="">김녕미로공원</a>
+                                <img src="../../../images/mw/icon/tag_close.gif" alt="">
+                            </li>
+                            <li>
+                                <a href="">우도해저투어</a>
+                                <img src="../../../images/mw/icon/tag_close.gif" alt="">
+                            </li>
+                            <li>
+                                <a href="">아라고나이트</a>
+                                <img src="../../../images/mw/icon/tag_close.gif" alt="">
+                            </li>
+                            <li>
+                                <a href="">번개과학체험관</a>
+                                <img src="../../../images/mw/icon/tag_close.gif" alt="">
+                            </li>
+                        </ul>
+                        <div class="product-sub"><a href="">모두삭제</a></div>
+                    </div>
+                </div>
+                <div class="keyword">
+                    <div class="search_title">인기검색어</div>
+                    <ul class="all-text">
+                        <li><a href="">#야간관광</a></li>
+                        <li><a href="">#퍼시픽</a></li>
+                        <li><a href="">#김녕미로공원</a></li>
+                        <li><a href="">#제주씨월드</a></li>
+                        <li><a href="">#우도해저투어</a></li>
+                        <li><a href="">#렉시제주</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class=""></div>
+    </div>
+    <aside id="side_menu" class="side-menu" style="display: block">
+        <div class="side-all">
+            <div class="sitemap-header">
+                <button type="button" id="frame_sideClose" class="close"><img src="../../../images/mw/common/side/close-white.png" alt="닫기"></button>
+                <!-- 로그인 x -->
+
+                <!-- //로그인 x -->
+
+                <!-- 로그인 o -->
+                <ul class="sitemap-intro-login">
+                    <li><b>홍길동</b>님 환영합니다.</li>
+                    <li class="r-btn">
+                        <a class="home" href=""><img src="../../../images/mw/sitemap/home.png" alt="홈"></a>
+                        <a class="mypage" href=""><img src="../../../images/mw/sitemap/mypage.png" alt="마이페이지"></a>
+                    </li>
+                </ul>
+                <!-- //로그인 o -->
+            </div>
+            <nav class="sitemap-quick-menu">
+                <ul>
+                    <li class="quick-re"><a href="">나의 예약/구매 내역</a></li>
+                    <li class="quick-like"><a href="">찜한 상품</a></li>
+                </ul>
+
+                <!-- <a href="javascript:void(0)" id="top_searchOpen">
+                    <img src="../../../images/mw/common/side/search-white.png" alt="검색">
+                </a>
+                <a href="" class="like">20</a>
+                <a href="" class="cart">5</a> -->
+
+            </nav>
+            <div class="sitemap-main-menu">
+                <ul>
+                    <li class="sitemap-rentcar"><a href="rent-list.html">렌터카</a></li>
+                    <li class="sitemap-hotel"><a href="hotel-list.html">숙박</a></li>
+                    <li class="sitemap-air"><a href="air-search.html">항공</a></li>
+                    <li class="sitemap-ship"><a href="">선박</a></li>
+                </ul>
+            </div>
+            <div class="sitemap-menu">
+
+                <!-- 0213 포인트 등록 및 현황 -->
+
+                <!-- 포인트 등록 -->
+                <div class="point-registration">
+                    <a class="point-registration title view-seller">
+                        <img src="/images/mw/sitemap/coupon-point.png" alt="포인트 등록">포인트 등록
+                    </a>
+                </div>
+
+                <!-- 포인트 등록/레이어 팝업 -->
+                <div class="couponRegPop_1 pop-seller">
+                    <div class="content-wrap">
+
+                        <a href="#" class="btn-close">
+                            <img src="/images/mw/sub_common/delete.png" alt="닫기">
+                        </a>
+                        <h2>포인트 등록</h2>
+                        <form name="frmPop" id="frmPop">
+                            <input type="hidden" name="partnerCode" value="${ssPartnerCode}">
+                            <input type="hidden" name="plusMinus" value="P">
+                            <input type="hidden" name="typesContent" value="">
+                            쿠폰번호 : <input type="text" name="cpNum" >
+                            <a href="javascript:fn_CouponReg()">등록</a>
+                        </form>
+                        <div class="pop-article">
+                            <ul>
+                                <li>1. 포인트 제공 업체별 1회만 적립 가능 합니다.</li>
+                                <li>2. 수수료 발생 시 포인트 부터 차감 됩니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> <!--//포인트 등록/레이어 팝업-->
+
+
+                <div class="coupon-current">
+                    <a class="coupon-current title view-seller2">
+                        <div class="current-situation">포인트 내역</div>
+                        <div class="exposure-point">10,269,789</div>
+                    </a>
+                </div>
+
+                <!-- 포인트 내역/레이어 팝업 -->
+                <div class="couponRegPop_2 pop-seller2">
+                    <div class="content-wrap">
+                        <a href="#" class="btn-close2">
+                            <img src="/images/mw/sub_common/delete.png" alt="닫기">
+                        </a>
+                        <h2>포인트 내역</h2>
+
+                        <!-- 포인트 내역 있을 시 -->
+                        <div class="point-view">
+                            <ul>
+                                <!-- 사용 -->
+                                <li class="point-list">
+                                    <a href="">
+                                        <div class="point-list-item">
+                                            <div class="situation use">
+                                                <span class="status-icon">사 용</span>
+                                            </div>
+                                            <div class="point-name">
+                                                <span class="date">2022.09.19</span>
+                                                <strong>결제 시 사용</strong>
+                                            </div>
+                                            <div class="real-point use">- 4,000 P</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- 충전 -->
+                                <li class="point-list">
+                                    <div class="point-list-item">
+                                        <div class="situation charge">
+                                            <span class="status-icon">충 전</span>
+                                        </div>
+                                        <div class="point-name">
+                                            <span class="date">2022.09.19</span>
+                                            <strong>현대캐피탈 이벤트 쿠폰 1</strong>
+                                        </div>
+                                        <div class="real-point charge">+ 10,000 P</div>
+                                    </div>
+                                </li>
+
+                                <!-- 적립 -->
+                                <li class="point-list">
+                                    <div class="point-list-item">
+                                        <div class="situation accumulate">
+                                            <span class="status-icon">적 립</span>
+                                        </div>
+                                        <div class="point-name">
+                                            <span class="date">2022.09.19</span>
+                                            <strong>[우리농산] 귤 한박스</strong>
+                                        </div>
+                                        <div class="real-point accumulate">+ 250 P</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- 없을 시 -->
+                        <div class="no-point-view" style="display: none;">포인트 내역이 없습니다.</div>
+
+                    </div>
+                </div> <!--//포인트 내역/레이어 팝업-->
+                <!-- //0213 포인트 등록 및 현황 -->
+
+
+                <div class="leisure">
+                    <a class="leisure title" href="social-list.html">
+                        <img src="../../../images/mw/sitemap/leisure.png" alt="나의 혜택정보">관광지/레저</a>
+                    <ul class="depth4">
+                        <li><a href="">전시/박물관</a></li>
+                        <li><a href="">테마공원</a></li>
+                        <li><a href="">스포츠/레저</a></li>
+                        <li><a href="">해양관광</a></li>
+                        <li><a href="">공연/쇼</a></li>
+                        <li><a href="">뷰티/테라피</a></li>
+                    </ul>
+                </div>
+                <div class="from-jeju">
+                    <a class="from-jeju title" href="from-jeju-main.html">
+                        <img src="../../../images/mw/sitemap/fromjeju.png" alt="나의 혜택정보">특산/기념품</a>
+                    <ul class="depth4">
+                        <li><a href="">농/수/축산물</a></li>
+                        <li><a href="">가공식품</a></li>
+                        <li><a href="">화장품/미용</a></li>
+                        <li><a href="">제주기념품</a></li>
+                        <li><a href="">브랜드</a></li>
+                        <li><a href="">슬기로운제주쇼핑</a></li>
+                    </ul>
+                </div>
+                <a class="carseat-t title" href="/mw/tour/jeju.do?sCtgr=C500">
+                    <img src="/images/mw/sitemap/carseat-icon.png" alt="유모차/카시트">유모차/카시트</a>
+                <a class="jeju title" href="social-list.html">
+                    <img src="../../../images/mw/sitemap/jeju.png" alt="체험">체험</a>
+                <a class="food title" href="social-list.html">
+                    <img src="../../../images/mw/sitemap/food.png" alt="나의 혜택정보">맛집</a>
+                <div class="agency">
+                    <a class="agency title" href="social-list.html">
+                        <img src="../../../images/mw/sitemap/agency.png" alt="나의 혜택정보">여행사상품</a>
+                    <ul class="depth4">
+                        <li><a href="">전체보기</a></li>
+                        <li><a href="">버스/택시관광</a></li>
+                        <li><a href="">렌터카</a></li>
+                        <li><a href="">테마여행</a></li>
+                    </ul>
+                </div>
+                <a class="event2 title" href="main4-4.html">
+                    <img src="../../../images/mw/sitemap/s-event2.png" alt="나의 혜택정보">기획전</a>
+                <a class="event title" href="main4-5.html">
+                    <img src="../../../images/mw/sitemap/s-event.png" alt="나의 혜택정보">이벤트</a>
+                <div class="tamnao">
+                    <a class="tamnao title" href="from-jeju-main.html">
+                        <img src="../../../images/mw/sitemap/nao.png" alt="나의 혜택정보">TAMNAO</a>
+                    <ul class="depth4">
+                        <li><a href="">공지사항</a></li>
+                        <li><a href="">자주하는질문</a></li>
+                        <li><a href="">마이페이지</a></li>
+                        <li><a href="">회원가입</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </aside>
+    <div id="fixed_foot" class="fixed-foot">
+        <!--
+            <div id="top_banner" class="top-banner swiper-container">
+                <div class="banner-inner">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <a href=""target="_blank">
+                                <div class="bar-tw">
+                                    <p class="bar-t">
+                                        <em class="bar-em">BRAND NEW</em>2월 신규상품<em class="bar-em">추가할인</em>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="container">
+                        <a href="javascript:void(0)" id="top_close" class="close"><img src="../../../images/mw/common/close.png" alt="닫기"></a>
+                    </div>
+                </div>
+            </div>
+            -->
+        <nav id="bottomMenu" class="bottom-menu product-search-area">
+            <!-- 검색페이지 이동 -->
+            <a href="javascript:void(0)" class="side-btn" id="frame_sideOpen">카테고리</a>
+            <a href="javascript:void(0)" class="sch" id="top_searchOpen2">검색</a>
+            <a href="<c:url value='/mw/main.do' />" class="home">홈</a>
+            <a href="<c:url value='/mw/cart.do' />" class="cart">
+                장바구니
+                <span class="cnt" id="headCartCnt">0</span>
+            </a>
+            <a href="<c:url value='/mw/mypage/mainList.do' />" class="my">마이페이지</a>
+        </nav>
+
+    </div>
+
+</div> <!-- //wrap -->
+</body>
+</html>

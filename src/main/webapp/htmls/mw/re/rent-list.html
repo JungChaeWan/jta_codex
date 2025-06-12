@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+	<title>탐나오</title>
+
+	<link rel="stylesheet" href="../../../css/mw/common2.css">
+	<link rel="stylesheet" href="../../../css/mw/style.css">
+	<link rel="stylesheet" href="../../../css/mw/daterangepicker.css">
+	<link rel="stylesheet" href="../../../css/mw/rc.css">
+
+	<script src="../../../js/jquery-1.11.1.js"></script>
+	<script src="../../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../../js/jquery.cookie.js"></script>
+	<script src="../../../js/common.js"></script>
+	<script src="../../../js/mw_common.js"></script>
+	<script src="../../../js/mw_style.js"></script>
+
+	<script src="../../../js/dimmed.js"></script>
+	<script src="../../../js/moment.min.js"></script>
+	<script src="../../../js/daterangepicker-rc-list.js"></script>
+
+	<!-- 0913 add script -->
+	<script type="text/javascript">
+
+		//창 닫기
+		function rc_close_popup(obj) {
+			console.log('aaa');
+			if (typeof obj == "undefined" || obj == "" || obj == null) {
+				$('.dateRangePickMw').data('daterangepicker').hide();
+			} else {
+				$(obj).hide();
+			}
+			$('#dimmed').fadeOut(100);
+			$("html, body").removeClass("not_scroll");
+			$('.side-btn').show();
+			$('.back').show();
+		}
+
+		$(document).ready(function () {
+
+			/** intro 대여일시/반납일시 설정 **/
+			const today = new Date();
+			const startDay = new Date(today.setDate(today.getDate() + 1));
+			const endDay = new Date(today.setDate(startDay.getDate() + 1));
+			$("#txtStartDt").val(startDay.getFullYear() + '. ' + ('0' + (startDay.getMonth() + 1)).slice(-2) + '. ' + ('0' + startDay.getDate()).slice(-2) + "(" + getDate(startDay) + ")");
+			$("#txtEndtDt").val(endDay.getFullYear() + '. ' + ('0' + (endDay.getMonth() + 1)).slice(-2) + '. ' + ('0' + endDay.getDate()).slice(-2) + "(" + getDate(endDay) + ")");
+
+			/**dateRangePickMw 생성**/
+			$('.dateRangePickMw').daterangepicker({}, function (start, end, search) {
+
+				//대여/반납일 설정
+				const sFromDt = start.format('YYYY-MM-DD');
+				const sToDt = end.format('YYYY-MM-DD');
+				$("#sFromDt").val(sFromDt.replace(/-/gi, ""));
+				$("#sToDt").val(sToDt.replace(/-/gi, ""));
+				$("#sFromDtView").val(sFromDt);
+				$("#sToDtView").val(sToDt);
+
+				$("#selFromDt").val(start.format('MM. DD') + "(" + getDate(sFromDt) + ")");
+				$("#selToDt").val(end.format('MM. DD') + "(" + getDate(sToDt) + ")");
+			});
+
+			var posY;
+
+			// close-btn 이벤트
+			$(".close-btn").on("click", function(){
+				$("html, body").removeClass("not_scroll");
+				$(".daterangepicker").css("display","none");
+				$('#dimmed').hide();
+
+				posY = $(window).scrollTop(posY);
+			});
+
+			// dimmed click lock 처리
+			$("#dimmed").click(function () {
+				$(".daterangepicker").css("display","block");
+			});
+
+
+			// layer-popup 오픈
+			$(".mw-rent-insurance").on("click", function(e){
+				optionPopup('#rent_zone', this);
+				$('#dimmed').show();
+				$("html, body").addClass("not_scroll");
+				$('.side-btn').hide();
+				$('.back').hide();
+				$("#header").removeClass("nonClick");
+			});
+
+			$(".dateRangePickMw").on("click", function(e){
+				console.log('aaabb');
+				$('#dimmed').show();
+				$("html, body").addClass("not_scroll");
+				$('.side-btn').hide();
+				$('.back').hide();
+			});
+
+			$("#sIsrTypeDivStr").on("click", function(e){
+				optionPopup('#rent_zone2', this);
+				$('#dimmed').show();
+				$("html, body").addClass("not_scroll");
+				$('.side-btn').hide();
+				$('.back').hide();
+				$("#header").removeClass("nonClick");
+			});
+
+			// filter click
+			$(".rent-f-btn").on("click", function(e){
+				optionPopup('#rent_option', this);
+				$('#dimmed').show();
+				$("html, body").addClass("not_scroll");
+				$('.side-btn').hide();
+				$('.back').hide();
+				$("#header").removeClass("nonClick");
+			});
+
+
+
+			$("#header .title").click(function () {
+				$('.dateRangePickMw').data('daterangepicker').hide();
+			});
+
+			doSwiper();
+
+			//차종선택 완료 버튼 클릭
+			$("#decide_cta", ".close-btn").click(function (){
+				$("#rent_zone").hide();
+				$('#dimmed').fadeOut(100);
+				$("html, body").removeClass("not_scroll");
+				$('.side-btn').show();
+			});
+
+			//보험선택 완료 버튼 클릭
+			$("#decide_date").click(function (){
+				$("#rent_zone2").hide();
+				$('#dimmed').fadeOut(100);
+				$("html, body").removeClass("not_scroll");
+				$('.back').show();
+				$('.side-btn').show();
+			});
+
+			$(".decideBtn").click(function (){
+				rc_close_popup("");
+			});
+
+			// datepicker dimmed click lock 추가처리
+			$(".dateRangePickMw").click(function (){
+				console.log('aaaa');
+				$("#header").addClass("nonClick");
+			});
+
+			$(document).on("click", ".nonClick", function () {
+				$('.dateRangePickMw').data('daterangepicker').show();
+			});
+
+			$("#dimmed").click(function () {
+				$(".daterangepicker").css("display","block");
+			});
+
+
+    		//차종 선택시 값 설정
+			$('input[name=sCarDivCdStr]').click(function () {
+				$('#sCarDivCd').val($(this).val());
+ 			});
+
+			/** 스크롤 발생 시 카운트 애니메이션 처리 **/
+			$(window).scroll(function () {
+				var scrollT = $(window).scrollTop(); //스크롤바의 상단위치
+				var scrollH = $('.navigation').height() + $('.key-visual').height() + $('.mw-search-area').height() - 60; //스크롤바를 갖는 div의 높이
+
+				if (scrollT >= scrollH) {
+
+					const allRsv = "<c:out value='${cntList.ALL_RSV}'/>";
+					const ableRsv = "<c:out value='${cntList.ABLE_RSV}'/>";
+					const inCorp = "<c:out value='${cntList.IN_CORP}'/>";
+
+					//누적예약
+					$({val: 0}).animate({val: allRsv}, {
+						duration: 2000,
+						step: function () {
+							var num = numberWithCommas(Math.floor(this.val));
+							$("#allRsv").text(num);
+						},
+						complete: function () {
+							var num = numberWithCommas(Math.floor(this.val));
+							$("#allRsv").text(num);
+						}
+					});
+
+					//예약 가능 차량
+					$({val: 0}).animate({val: ableRsv}, {
+						duration: 2000,
+						step: function () {
+							var num = numberWithCommas(Math.floor(this.val));
+							$("#ableRsv").text(num);
+						},
+						complete: function () {
+							var num = numberWithCommas(Math.floor(this.val));
+							$("#ableRsv").text(num);
+						}
+					});
+
+					//제주도 입점 업체
+					$({val: 0}).animate({val: inCorp}, {
+						duration: 2000,
+						step: function () {
+							var num = numberWithCommas(Math.floor(this.val));
+							$("#inCorp").text(num);
+						},
+						complete: function () {
+							var num = numberWithCommas(Math.floor(this.val));
+							$("#inCorp").text(num);
+						}
+					});
+
+					//스크롤 한번만 실행
+					$(window).off('scroll');
+				}
+			});;
+		});
+
+		function numberWithCommas(x) {
+			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+
+		function fn_ClickSearchPage() {
+			$("#sFromDtView").val($("#sFromDtView").val().replace(/-/gi, ". ")+ "(" + getDate($("#sFromDtView").val()) + ")");
+			$("#sToDtView").val($("#sToDtView").val().replace(/-/gi, ". ")+ "(" + getDate($("#sToDtView").val()) + ")");
+			document.frm.action = "<c:url value='/mw/rentcar/car-list.do'/>";
+			document.frm.submit();
+		}
+
+		/**
+		 * App 체크
+		 * AA : 안드로이드 앱, AW : 안드로이드 웹, IA : IOS 앱, IW : IOS 웹
+		 */
+		function fn_AppCheck() {
+			var headInfo = ("${header['User-Agent']}").toLowerCase();
+			var mobile = (/iphone|ipad|ipod|android|windows phone|iemobile|blackberry|mobile safari|opera mobi/i.test(headInfo));
+
+			if (mobile) {
+				if ((/android/.test(headInfo))) {
+					if (/webview_android/.test(headInfo)) {
+						return "AA";
+					} else {
+						return "AW";
+					}
+				} else if ((/iphone|ipad|/.test(headInfo))) {
+					if (!(/safari/.test(headInfo))) {
+						return "IA";
+					} else {
+						return "IW";
+					}
+				}
+			} else {
+				return "PC";
+			}
+
+			$(document).ready(function(){
+				var device = fn_AppCheck();
+				// 모바일 웹
+				if(device == "IW" || device == "AW") {
+					$("#app_link_banner").show();
+
+					$(".advertising").click(function(){
+						if(device == "IW") {
+							window.open("https://apps.apple.com/kr/app/%ED%83%90%EB%82%98%EC%98%A4-%EC%A0%9C%EC%A3%BC%EC%97%AC%ED%96%89%EC%8A%A4%ED%86%A0%EC%96%B4/id1489404866");
+						} else {
+							window.open("https://play.google.com/store/apps/details?id=kr.or.hijeju.tamnao");
+						}
+					});
+				}
+
+				// Hide Header on on scroll down
+				var lastScrollTop = 0;
+				var delta = 5;
+				var navbarHeight = $('.head-wrap').outerHeight();
+
+				$(window).scroll(function(event){
+					var st = $(this).scrollTop();
+
+					if(Math.abs(lastScrollTop - st) <= delta)
+						return;
+
+					if (st > lastScrollTop && st > navbarHeight){
+						// Scroll Down
+						$('.head-wrap').removeClass('nav-down').addClass('nav-up');
+					} else {
+						// Scroll Up
+						if(st + $(window).height() < $(document).height()) {
+							$('.head-wrap').removeClass('nav-up').addClass('nav-down');
+						}
+					}
+					lastScrollTop = st;
+				});
+			});
+		}
+	</script>
+	<!-- 0913 add script -->
+</head>
+<body>
+<div id="wrap">
+	<!-- 0913 변경 -->
+	<header id="header" class="transBG">
+		<div class="head-wrap">
+			<h1 class="title">렌터카</h1>
+			<div class="l-area">
+				<a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+			</div>
+			<div class="r-area-side">
+				<button type="button" id="frame_sideOpen" class="side-btn" title="사이드메뉴 열기"></button>
+			</div>
+		</div>
+	</header>
+
+	<!-- site-map -->
+	<aside id="side_menu" class="side-menu">
+		<div class="side-all">
+			<div class="sitemap-header">
+				<div class="sitemap-intro">
+					<button type="button" id="frame_sideClose" class="close"><img src="/images/mw/common/side/close-white.png" alt="닫기"></button>
+					<div class="sitemap-login">
+						<h1 class="sitemap-intro-logo">
+							<a href="/mw/main.do"><img src="/images/mw/sitemap/white-logo.png" alt="탐나오"></a>
+						</h1>
+						<button type="button" class="s-login-btn" onclick="javascript:fn_login();">로그인</button>
+					</div>
+				</div>
+			</div>
+			<nav class="sitemap-quick-menu">
+				<ul>
+					<li class="quick-re"><a href="/mw/mypage/rsvList.do?type=rsv">나의 예약/구매 내역</a></li>
+					<li class="quick-cart"><a href="/mw/cart.do">장바구니</a></li>
+				</ul>
+			</nav>
+			<div class="sitemap-main-menu">
+				<ul>
+					<li class="sitemap-rentcar"><a href="/mw/rentcar/mainList.do">렌터카</a></li>
+					<li id="hrefAd" class="sitemap-hotel"><a href="/mw/ad/mainList.do?sMen=2&sAdultCnt=2&sChildCnt=0&sBabyCnt=0">숙소</a></li>
+					<li class="sitemap-air"><a href="/mw/av/mainList.do">항공</a></li>
+					<li class="sitemap-ship"><a href="/mw/sp/vesselList.do?sCtgr=C190">선박</a></li>
+				</ul>
+			</div>
+			<div class="sitemap-menu">
+				<div class="leisure">
+					<a class="leisure title" href="/mw/tour/jeju.do?sCtgr=C200"><img src="/images/mw/sitemap/leisure.png" alt="관광지/레저">관광지/레저</a>
+					<ul class="depth4">
+						<li><a href="/mw/tour/jeju.do?sCtgr=C200&sTabCtgr=C210">전시/박물관</a></li>
+						<li><a href="/mw/tour/jeju.do?sCtgr=C200&sTabCtgr=C220">테마공원</a></li>
+						<li><a href="/mw/tour/jeju.do?sCtgr=C200&sTabCtgr=C250">스포츠/레저</a></li>
+						<li><a href="/mw/tour/jeju.do?sCtgr=C200&sTabCtgr=C260">해양관광</a></li>
+						<li><a href="/mw/tour/jeju.do?sCtgr=C200&sTabCtgr=C230">공연/쇼</a></li>
+						<li><a href="/mw/tour/jeju.do?sCtgr=C200&sTabCtgr=C280">뷰티/테라피</a></li>
+					</ul>
+				</div>
+				<div class="from-jeju">
+					<a class="from-jeju title" href="/mw/sv/mainList.do"><img src="/images/mw/sitemap/fromjeju.png" alt="특산/기념품">특산/기념품</a>
+					<ul class="depth4">
+						<li><a href="/mw/sv/productList.do?sCtgr=S100">농/수/축산물</a></li>
+						<li><a href="/mw/sv/productList.do?sCtgr=S400">가공식품</a></li>
+						<li><a href="/mw/sv/productList.do?sCtgr=S500">화장품/미용</a></li>
+						<li><a href="/mw/sv/productList.do?sCtgr=S600">제주기념품</a></li>
+						<li><a href="/mw/sv/productList.do?sCorpId=CSVS210037&sFlag=Brd">브랜드</a></li>
+						<li><a href="/mw/sv/crtnList.do?crtnNum=CR00000046">슬기로운<br>제주쇼핑</a></li>
+					</ul>
+				</div>
+				<a class="carseat-t title" href="/mw/tour/jeju.do?sCtgr=C500"><img src="/images/mw/sitemap/carseat-icon.png" alt="유모차/카시트">유모차/카시트</a>
+				<a class="jeju title" href="/mw/tour/jeju.do?sCtgr=C270"><img src="/images/mw/sitemap/jeju.png" alt="체험">체험</a>
+				<a class="food title" href="/mw/tour/jeju.do?sCtgr=C300"><img src="/images/mw/sitemap/food.png" alt="맛집">맛집</a>
+				<div class="agency">
+					<a class="agency title" href="/mw/sp/packageList.do"><img src="/images/mw/sitemap/agency.png" alt="여행사상품">여행사상품</a>
+					<ul class="depth4">
+						<li><a href="/mw/tour/jeju.do?sCtgr=C100&sCtgrTab=C160">버스/택시관광</a></li>
+						<li><a href="/mw/tour/jeju.do?sCtgr=C100&sCtgrTab=C420">렌터카</a></li>
+						<li><a href="/mw/tour/jeju.do?sCtgr=C100&sCtgrTab=C180">테마여행</a></li>
+						<li><a href="/mw/tour/jeju.do?sCtgr=C100&sCtgrTab=C170">골프패키지</a></li>
+						<li><a href="/mw/tour/jeju.do?sCtgr=C100&sCtgrTab=C190">선박</a></li>
+						<li><a href="/mw/sp/detailPrdt.do?prdtNum=SP00001671">차량이동</a></li>
+					</ul>
+				</div>
+				<div id="cctv">
+					<a class="cctv title" href="/mw/cmm/cctvList.do"><img src="/images/mw/sitemap/cctv.png" alt="기획전">관광지 CCTV</a>
+				</div>
+				<a class="event2 title" href="/mw/evnt/prmtPlanList.do"><img src="/images/mw/sitemap/s-event2.png" alt="기획전">기획전</a>
+				<a class="event title" href="/mw/evnt/promotionList.do?finishYn=N&winsYn=N"><img src="/images/mw/sitemap/s-event.png" alt="이벤트">이벤트</a>
+				<div class="tamnao">
+					<a class="tamnao title" href="/mw/bbs/bbsList.do?bbsNum=NOTICE"><img src="/images/mw/sitemap/nao.png" alt="탐나오">TAMNAO</a>
+					<ul class="depth4">
+						<li><a href="/mw/bbs/bbsList.do?bbsNum=NOTICE">공지사항</a></li>
+						<li><a href="/mw/coustomer/qaList.do?type=help">자주하는질문</a></li>
+						<li><a href="/mw/mypage/mainList.do">마이탐나오</a></li>
+						<li><a href="/mw/signUp00.do">회원가입</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</aside><!-- //site-map -->
+
+	<main id="main">
+		<!--//change contents-->
+		<div class="mw-rent-header">
+
+			<!-- 0920 시간선택 html 수정 -->
+			<div class="mw-rent-date">
+				<div class="dateRangePickMw">
+					<dl>
+						<dt>인수일</dt>
+						<dd>
+							<div>
+								<input placeholder="대여일 선택" onfocus="this.blur()" id="startDt" value="0000. 00. 00 (-)">
+								<img src="../../../images/mw/icon/form/r-h-btn.png" alt="변경">
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>반납일</dt>
+						<dd>
+							<div>
+								<input placeholder="반납일 선택" onfocus="this.blur()" id="endDt" value="0000. 00. 00 (-)">
+							</div>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<!-- //0920 시간선택 html 수정 -->
+			<div class="mw-rent-time">
+				<!-- 인수일 시간 선택 -->
+				<dl>
+					<dd>
+						<div>
+							<select class="full" title="시간선택">
+								<option value="0800" selected>09:00</option>
+								<option value="0900">09:00</option>
+								<option value="1000">10:00</option>
+								<option value="1100">11:00</option>
+								<option value="1200">12:00</option>
+								<option value="1300">13:00</option>
+								<option value="1400">14:00</option>
+								<option value="1500">15:00</option>
+								<option value="1600">16:00</option>
+								<option value="1700">17:00</option>
+								<option value="1800">18:00</option>
+								<option value="1900">19:00</option>
+								<option value="2000">20:00</option>
+							</select>
+						</div>
+					</dd>
+				</dl>
+				<!-- 반납일 시간 선택 -->
+				<dl>
+					<dd>
+						<div>
+							<select class="full" title="시간선택">
+								<option value="0800" selected>09:00</option>
+								<option value="0900">09:00</option>
+								<option value="1000">10:00</option>
+								<option value="1100">11:00</option>
+								<option value="1200">12:00</option>
+								<option value="1300">13:00</option>
+								<option value="1400">14:00</option>
+								<option value="1500">15:00</option>
+								<option value="1600">16:00</option>
+								<option value="1700">17:00</option>
+								<option value="1800">18:00</option>
+								<option value="1900">19:00</option>
+								<option value="2000">20:00</option>
+							</select>
+						</div>
+					</dd>
+				</dl>
+			</div>
+			<div class="mw-rent-etc" id="searchArea">
+				<a class="mw-rent-insurance">
+					<img src="../../../images/mw/rent/rent-btn.png" alt="차종선택">차종 전체
+				</a>
+			</div>
+
+			<!-- 차종 선택 / layer-popup -->
+			<div id="rent_zone" class="popup-typeA rent-zone">
+				<div class="rent-wrapper">
+					<a class="close-btn" onclick="rc_close_popup('#rent_zone')"></a>
+					<div class="content-area">
+						<div class="list-group">
+							<strong class="list-sub-title">차종을 선택해주세요</strong>
+							<ul class="select-menu col3">
+								<li>
+									<div class="lb-box">
+										<input id="sCarDivCd0" name="sCarDivCdStr" type="radio" value checked>
+										<label for="sCarDivCd0">전체</label>
+									</div>
+								</li>
+								<li>
+									<div class="lb-box">
+										<input id="sCarDivCd1" name="sCarDivCdStr" type="radio" value="CAR1">
+										<label for="sCarDivCd1">소형</label>
+									</div>
+								</li>
+								<li>
+									<div class="lb-box">
+										<input id="sCarDivCd2" name="sCarDivCdStr" type="radio" value="CAR2">
+										<label for="sCarDivCd2">중형</label>
+									</div>
+								</li>
+								<li>
+									<div class="lb-box">
+										<input id="sCarDivCd3" name="sCarDivCdStr" type="radio" value="CAR3">
+										<label for="sCarDivCd3">고급</label>
+									</div>
+								</li>
+								<li>
+									<div class="lb-box">
+										<input id="sCarDivCd4" name="sCarDivCdStr" type="radio" value="CAR4">
+										<label for="sCarDivCd4">SUV/승합</label>
+									</div>
+								</li>
+								<li>
+									<div class="lb-box">
+										<input id="sCarDivCd5" name="sCarDivCdStr" type="radio" value="CAR5">
+										<label for="sCarDivCd5">수입</label>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="fix-cta">
+						<button href="#" class="result-btn decide comm-btn" onclick="fn_ClickSearch()">적용</button>
+					</div>
+				</div><!-- //hotel-wrapper -->
+			</div>
+
+			<a class="mw-rent-type"  id="sIsrTypeDivStr">
+				<img src="../../../images/mw/rent/rent-btn.png" alt="보험 전체">보험 전체
+			</a>
+
+			<!-- 보험 선택 / layer-popup -->
+			<div id="rent_zone2" class="popup-typeA rent-zone">
+				<div class="rent-wrapper">
+					<a class="close-btn" onclick="rc_close_popup('#rent_zone2')"></a>
+					<div class="content-area">
+						<div class="list-group">
+							<strong class="list-sub-title">보험을 선택해주세요.</strong>
+							<ul class="select-menu col4">
+								<li class="insurance">
+									<div class="lb-box">
+										<input id="sIsrTypeDiv0" name="sIsrTypeDiv" type="radio" value checked>
+										<label for="sIsrTypeDiv0">전체</label>
+									</div>
+								</li>
+								<li class="insurance">
+									<div class="lb-box">
+										<input id="sIsrTypeDiv1" name="sIsrTypeDiv" type="radio" value="FEE">
+										<label for="sIsrTypeDiv1">자차 미포함</label>
+									</div>
+								</li>
+								<li class="insurance">
+									<div class="lb-box">
+										<input id="sIsrTypeDiv2" name="sIsrTypeDiv" type="radio" value="GENL">
+										<label for="sIsrTypeDiv2">일반자차포함</label>
+									</div>
+								</li>
+								<li class="insurance">
+									<div class="lb-box">
+										<input id="sIsrTypeDiv3" name="sIsrTypeDiv" type="radio" value="LUXY">
+										<label for="sIsrTypeDiv3">고급자차포함</label>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+						<ul class="list-disc type-A">
+							<li>오전  8시 ~ 오후 8시 외 차량 대여/반납은 일부 업체만 가능하며, 추가요금이 발생하거나 완전자차 보험가입이 필요할 수 있습니다.</li>
+						</ul>
+					</div><!-- //content-area -->
+					<div class="fix-cta">
+						<button href="#" class="result-btn decide comm-btn" onclick="fn_ClickSearch()">적용</button>
+					</div>
+				</div><!-- //rent-wrapper -->
+			</div>
+		</div><!-- //0913 변경 -->
+
+		<div class="mw-list-area">
+			<section class="search-typeA">
+				<div class="form">
+					<div class="option">
+						<form>
+                            <!-- filter / layer-popup -->
+							<button type="button" class="rent-f-btn">필터</button>
+							<button type="button" class="sort-f-btn" onclick="rc_close_popup('#rent_option')">정렬</button>
+							<div id="rent_option" class="popup-typeA rent-option">
+								<div class="rent-wrapper">
+                                    <a class="close-btn" onclick="rc_close_popup('#rent_option')"></a>
+									<div class="content-area filter">
+
+                                        <strong class="condition_title">조건을 선택해주세요.</strong>
+										<div class="form">
+											<form>
+												<input type="text" class="search-rent" placeholder="차명을 검색해 주세요">
+											</form>
+										</div>
+                                        <!-- 탐나는전 추가 -->
+
+                                        <div class="list-group">
+                                            <strong class="sub-title">탐나는전 가맹점</strong>
+                                            <ul class="select-menu col3">
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sTamnacardYn" name="sTamnacardYn" value="Y" type="checkbox">
+                                                        <label for="sTamnacardYn"><span></span>탐나는전</label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div><!-- //탐나는전 추가 -->
+										<div class="list-group">
+												<strong class="sub-title">사용연료</strong>
+												<ul class="select-menu col3">
+													<li>
+														<div class="lb-box">
+															<input id="sUseFuelDiv0" name="sUseFuelDiv" type="radio" checked>
+															<label for="sUseFuelDiv0">전체</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="sUseFuelDiv1" name="sUseFuelDiv" type="radio">
+															<label for="sUseFuelDiv1">휘발유</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="sUseFuelDiv2" name="sUseFuelDiv" type="radio">
+															<label for="sUseFuelDiv2">경유</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="sUseFuelDiv3" name="sUseFuelDiv" type="radio">
+															<label for="sUseFuelDiv3">LPG</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="sUseFuelDiv4" name="sUseFuelDiv" type="radio">
+															<label for="sUseFuelDiv4">전기</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="sUseFuelDiv5" name="sUseFuelDiv" type="radio">
+															<label for="sUseFuelDiv5">하이브리드</label>
+														</div>
+													</li>
+											  </ul>
+										</div>
+										<div class="list-group">
+											<strong class="sub-title">연식</strong>
+											<ul class="select-menu col3">
+												<li>
+													<div class="lb-box">
+														<input id="modelYear1" name="sModelYear" type="radio" checked>
+														<label for="modelYear1">전체</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="modelYear2" name="sModelYear" type="radio">
+														<label for="modelYear2">2016~17년</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="modelYear3" name="sModelYear" type="radio">
+														<label for="modelYear3">2016~18년</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="modelYear4" name="sModelYear" type="radio">
+														<label for="modelYear4">2017~18년</label>
+                                                </div>
+                                                </li>
+												<li>
+													<div class="lb-box">
+														<input id="modelYear5" name="sModelYear" type="radio">
+														<label for="modelYear5">2018~19년</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="modelYear6" name="sModelYear" type="radio">
+														<label for="modelYear6">2019~20년</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="modelYear7" name="sModelYear" type="radio">
+														<label for="modelYear7">2020~21년</label>
+													</div>
+												</li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="modelYear8" name="sModelYear" type="radio">
+                                                        <label for="modelYear8">2020~21년</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="modelYear9" name="sModelYear" type="radio">
+                                                        <label for="modelYear9">2020~21년</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="modelYear10" name="sModelYear" type="radio">
+                                                        <label for="modelYear10">2020~21년</label>
+                                                    </div>
+                                                </li>
+											</ul>
+										</div>
+										<div class="list-group">
+											<strong class="sub-title">옵션</strong>
+											<ul class="select-menu col4">
+												<li>
+													<div class="lb-box">
+														<input id="iconCd0" name="sIconCd" type="checkbox" checked>
+														<label for="iconCd0">금연차량</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="iconCd1" name="sIconCd" type="checkbox">
+														<label for="iconCd1">네비게이션</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="iconCd2" name="sIconCd" type="checkbox">
+														<label for="iconCd2">블랙박스</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="iconCd3" name="sIconCd" type="checkbox">
+														<label for="iconCd3">후방카메라</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="iconCd4" name="sIconCd" type="checkbox">
+														<label for="iconCd4">전방센서</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="iconCd6" name="sIconCd" type="checkbox">
+														<label for="iconCd6">후방센서</label>
+													</div>
+												</li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd7" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd7">썬루프</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd8" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd8">블루투스</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd9" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd9">열선시트</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd10" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd10">열선핸들</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd11" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd11">가죽시트</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd12" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd12">통풍시트</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd13" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd13">카시트(유료)</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd14" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd14">카시트(무료)</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd15" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd15">운전석에어백</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd16" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd16">조수석에어백</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd17" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd17">4륜구동</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd18" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd18">스마트키</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd19" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd19">뒷자석자동문</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd20" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd20">전기충전무료</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd21" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd21">USB</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd22" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd22">AUX</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd23" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd23">DMB</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="iconCd24" name="sIconCd" type="checkbox">
+                                                        <label for="iconCd24">캠핑카</label>
+                                                    </div>
+                                                </li>
+											</ul>
+										</div>
+										<div class="list-group">
+											<strong class="sub-title">제조사</strong>
+											<ul class="select-menu col3">
+												<li>
+													<div class="lb-box">
+														<input id="sMakerDivCd0" name="sMakerDivCd" type="radio" checked>
+														<label for="sMakerDivCd0">전체</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="sMakerDivCd1" name="sMakerDivCd" type="radio">
+														<label for="sMakerDivCd1">현대</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="sMakerDivCd2" name="sMakerDivCd" type="radio">
+														<label for="sMakerDivCd2">기아</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="sMakerDivCd3" name="sMakerDivCd" type="radio">
+														<label for="sMakerDivCd3">쉐보레</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="sMakerDivCd4" name="sMakerDivCd" type="radio">
+														<label for="sMakerDivCd4">아우디</label>
+													</div>
+												</li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd5" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd5">벤츠</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd6" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd6">닛산</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd7" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd7">도요타</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd8" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd8">크라이슬러</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd9" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd9">지프</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd10" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd10">포드</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd11" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd11">한국지엠</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd12" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd12">쌍용</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd13" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd13">링컨</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd14" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd14">피아트</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd15" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd15">랜드로버</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd16" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd16">혼다</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd17" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd17">푸조</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd18" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd18">르노삼성</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd19" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd19">폭스바겐</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd20" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd20">볼보</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd21" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd21">포르쉐</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd22" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd22">캐딜락</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd23" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd23">밴택디엔시</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd24" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd24">시트로엥</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd25" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd25">BMW</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd26" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd26">북기은상</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd27" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd27">쯔더우</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="lb-box">
+                                                        <input id="sMakerDivCd28" name="sMakerDivCd" type="radio">
+                                                        <label for="sMakerDivCd28">테슬라</label>
+                                                    </div>
+                                                </li>
+											</ul>
+										</div>
+									</div>
+                                    <!-- 적용 btn -->
+                                    <div class="fix-cta">
+                                        <button href="#" class="result-btn decide comm-btn" onclick="fn_AdSearch(1)">적용</button>
+                                    </div><!-- //적용 btn -->
+								</div><!-- //rent-wrapper -->
+							</div>
+						</form>
+					</div>
+                    <!-- //filter / layer-popup -->
+					<form>
+						<!-- <input type="text" class="search" placeholder="차명을 검색해 주세요"> -->
+						<button type="button" class="search-btn" title="검색">검색</button>
+					</form>
+				</div>
+			</section>
+
+			<section class="rent-list-area">
+				<h2 class="sec-caption">렌터카 목록</h2>
+				<div class="rent-group">
+					<div class="top-info">
+						<div class="photo"><img src="../../images/web/other/product_06.jpg" alt="렌터카"></div>
+						<div class="text">
+								<h2 class="title">2017 i30</h2>
+								<div class="info">
+										<div class="red-sticker">최저가</div>
+										<p class="price">99,000원<span class="memo">24시간</span></p>
+								</div>
+								<div class="sub-memo">현대<small>ㅣ</small>중형<small>ㅣ</small>휘발유</div>
+						</div>
+					</div>
+
+					<div class="list">
+						<ul>
+							<div class="bottom">
+								<a href="">
+									예약 가능한 업체 보기
+									<span class="text-red">4</span>
+									<strong>전체보기</strong>
+								</a>
+							</div>
+							<li>
+								<div class="link-area">
+									<a href="rent-detail.html">
+										<div class="name">
+											<p>대진렌터카</p>
+											<!-- 라벨 추가-->
+											<!-- 0307 label class 변경 -->
+											<div class="bxLabel">
+												<span class="main_label eventblue">이벤트</span>
+												<span class="main_label pink">할인쿠폰</span>
+												<span class="main_label yellow">탐나는전</span>
+											</div><!-- //0307 label class 변경 -->
+										</div>
+										<div class="rent-option">
+											<div class="since">2016~2017</div>
+											<div class="text">대여료</div>
+										</div>
+										<div class="age">만26세이상</div>
+										<div class="price">9,999,000원</div>
+										<span class="arrow"></span>
+									</a>
+								</div>
+								<div class="like">
+									<a href="javascript:void(0)">
+										<img src="../../images/mw/icon/product_like_on.png" alt="찜하기">
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="link-area">
+									<a href="rent-detail.html">
+										<div class="name">
+											<p>씨유렌터카</p>
+										</div>
+										<div class="rent-option">
+											<div class="since">2016~2017</div>
+											<div class="text">대여료+자차보험</div>
+										</div>
+										<div class="age">만26세이상</div>
+										<div class="price">9,999,000원</div>
+										<span class="arrow"></span>
+									</a>
+								</div>
+								<div class="like">
+									<a href="javascript:void(0)">
+										<img src="../../images/mw/icon/product_like_off.png" alt="찜하기">
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="link-area">
+									<a href="rent-detail.html">
+										<div class="name">
+											<!-- 라벨 추가-->
+											<p>씨유렌터카</p>
+											<!-- 0307 label class 변경 -->
+											<div class="bxLabel">
+												<span class="main_label eventblue">이벤트</span>
+												<span class="main_label pink">할인쿠폰</span>
+												<span class="main_label yellow">탐나는전</span>
+											</div><!-- //0307 label class 변경 -->
+										</div>
+										<div class="rent-option">
+											<div class="since">2016~2017</div>
+											<div class="text">대여료</div>
+										</div>
+										<div class="age">만26세이상</div>
+										<div class="price">9,999,000원</div>
+										<span class="arrow"></span>
+									</a>
+								</div>
+							</li>
+						</ul>
+					</div> <!-- //list-->
+				</div> <!-- //rent-group -->
+
+				<div class="rent-group">
+					<div class="top-info">
+						<div class="photo"><img src="../../images/web/other/no-image.jpg" alt="렌터카"></div>
+						<div class="text">
+								<h2 class="title">2017 i30</h2>
+							<div class="info">
+								<div class="red-sticker">최저가</div>
+								<p class="price">99,000원<span class="memo">24시간</span></p>
+							</div>
+							<div class="sub-memo">현대<small>ㅣ</small>중형<small>ㅣ</small>휘발유</div>
+						</div>
+					</div>
+					<div class="list">
+						<ul>
+							<div class="bottom">
+								<a href="">
+									예약 가능한 업체 보기
+									<span class="text-red">4</span>
+									<strong>전체보기</strong>
+								</a>
+							</div>
+							<li>
+								<div class="link-area">
+									<a href="rent-detail.html">
+										<div class="name">
+											<p>대진렌터카</p>
+											<!-- 0307 label class 변경 -->
+											<div class="bxLabel">
+												<span class="main_label eventblue">이벤트</span>
+												<span class="main_label pink">할인쿠폰</span>
+												<span class="main_label yellow">탐나는전</span>
+											</div><!-- //0307 label class 변경 -->
+										</div>
+										<div class="rent-option">
+											<div class="since">2016~2017</div>
+											<div class="text">대여료</div>
+										</div>
+										<div class="age">만26세이상</div>
+										<div class="price">9,999,000원</div>
+										<span class="arrow"></span>
+									</a>
+								</div>
+								<div class="like">
+									<a href="javascript:void(0)">
+										<img src="../../images/mw/icon/product_like_on.png" alt="찜하기">
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="link-area">
+									<a href="rent-detail.html">
+										<div class="name">
+											<p>씨유렌터카</p>
+										</div>
+										<div class="rent-option">
+											<div class="since">2016~2017</div>
+											<div class="text">대여료+자차보험</div>
+										</div>
+										<div class="age">만26세이상</div>
+										<div class="price">9,999,000원</div>
+										<span class="arrow"></span>
+									</a>
+								</div>
+								<div class="like">
+									<a href="javascript:void(0)">
+										<img src="../../images/mw/icon/product_like_off.png" alt="찜하기">
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="link-area">
+									<a href="rent-detail.html">
+										<div class="name">
+											<p>고고씽렌터카</p>
+										</div>
+										<div class="rent-option">
+											<div class="since">2016~2017</div>
+											<div class="text">대여료+자차보험</div>
+										</div>
+										<div class="age">만26세이상</div>
+										<div class="price">9,999,000원</div>
+										<span class="arrow"></span>
+									</a>
+								</div>
+								<div class="like">
+									<a href="javascript:void(0)">
+										<img src="../../images/mw/icon/product_like_off.png" alt="찜하기">
+									</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div> <!-- //rent-group -->
+			</section> <!-- //rent-list-area -->
+			<div class="paging-wrap">
+				<a href="" class="mobile">더보기 15/20</a>
+			</div>
+		</div> <!--//mw-list-area-->
+		<!--//change contents-->
+	</main>
+	<footer id="footer"></footer>
+</div> <!-- //wrap -->
+<div id="dimmed"></div>
+</body>
+</html>

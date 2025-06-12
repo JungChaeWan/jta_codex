@@ -1,0 +1,472 @@
+<?php header("Content-Type:text/html;charset=utf-8"); ?>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>제주마켓</title>
+	<link href="../../css/mw/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../css/mw/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../css/mw/common.css" rel="stylesheet">
+	<link href="../../css/mw/sub.css" rel="stylesheet">
+	<link href="../../css/mw/sub_cart.css" rel="stylesheet">
+	<script>
+		function close_popup(obj){
+			$(obj).hide();
+			$('.lock-bg').remove();
+		}
+	</script>
+</head>
+<body>
+<div id="wrap">
+
+<!-- 헤더 s -->
+<header>
+	<h1><a href="main.html"><img src="../../images/mw/common/logo.png" width="106" alt="제주마켓"></a></h1>
+	<p class="gnb-view"><img src="../../images/mw/common/icon_menu.png" width="25" alt="메뉴보기"></p>
+	<p class="search-view"><img src="../../images/mw/common/icon_search.png" width="22" alt="검색"></p>
+	<p class="cart-view"><a href="sub_cart.html"><img src="../../images/mw/common/icon_cart.png" width="30" alt="장바구니"></a></p>
+
+	<div class="search">
+		<fieldset>
+			<div class="form-value">
+				<label for="q">검색어 입력</label>
+				<input type="text" id="q">
+			</div>
+			<input type="submit" value="검색">
+			<a href="#" class="btn-close"><img src="../../images/mw/sub_common/delete.png" width="10" alt="닫기"></a>
+		</fieldset>
+	</div>
+</header>
+<!-- 헤더 e -->
+
+<!-- 메뉴 s -->
+<nav id="gnbnavi" class="hide">
+	<p class="menu-top">
+		로그인 해주세요 <a href="login.html">로그인</a>
+	</p>
+	<ul class="menu-top">
+		<li><a href=""><img src="../../images/mw/common/icon_01.png" width="19" alt=""> 구매/예약내역</a></li>
+		<li><a href=""><img src="../../images/mw/common/icon_02.png" width="19" alt=""> 내 주변 업소</a></li>
+	</ul>
+	<div class="sub-menu">
+		<h2 class="sr-only">전체메뉴</h2>
+		<ul>
+			<li><a href="#"><img src="../../images/mw/common/icon_03.png" width="19" alt=""> 실시간예약</a>
+				<ul>
+					<li><a href="sub_air1.html">항공</a></li>
+					<li><a href="sub_hotel1.html">숙박</a></li>
+					<li><a href="sub_rent1.html">렌트카</a></li>
+					<li><a href="sub_golf1.html">골프</a></li>
+				</ul>
+			</li>
+			<li><a href="#"><img src="../../images/mw/common/icon_04.png" width="19" alt=""> 당일특가</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_05.png" width="19" alt=""> 패키지 할인상품</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_06.png" width="19" alt=""> 관광지 입장권</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_07.png" width="19" alt=""> 음식/레저/뷰티</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_08.png" width="19" alt=""> 여행경비산출</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_09.png" width="19" alt=""> 이벤트</a></li>
+			<li><a href="sub_mypage1.html"><img src="../../images/mw/common/icon_10.png" width="19" alt=""> 마이페이지</a></li>
+			<li><a href="sub_center1.html"><img src="../../images/mw/common/icon_11.png" width="19" alt=""> 고객센터</a></li>
+		</ul>
+	</div>
+	<div class="app-util">
+		<dl>
+			<dt>정보 알림 받기</dt>
+			<dd><a href=""><img src="../../images/mw/common/on.png" width="42" alt="ON"></a></dd>
+			<dt>자동로그인</dt>
+			<dd><a href=""><img src="../../images/mw/common/off.png" width="42" alt="OFF"></a></dd>
+		</dl>
+		<p>Ver 1.0.0</p>
+	</div>
+</nav>
+
+<p id="btnHideGnb" class="hide"><img src="../../images/mw/common/close.png" width="10" alt="메뉴닫기"></p>
+<!-- 메뉴 e -->
+
+<!-- 콘텐츠 s -->
+<h2 class="sr-only">서브콘텐츠</h2>
+<section id="subContent">
+
+    <div class="menu-bar">
+        <p class="btn-prev"><img src="../../images/mw/common/btn_prev.png" width="20" alt="이전페이지"></p>
+
+
+        <h1>예약하기</h1>
+    </div>
+    <div class="sub-content">
+        <form name="rsvInfo" id="rsvInfo" onsubmit="return false;">
+            <input type="hidden" name="rsvDiv" value="i">
+            <input type="hidden" name="appDiv" id="appDiv" value="IW">
+            <input type="hidden" name="flowPath" id="flowPath" value="">
+            <div class="reserve">
+
+
+
+
+
+
+                <dl class="goods-info">
+                    <input type="hidden" name="cartSn" value="1">
+
+
+
+
+
+
+
+                    <input type="hidden" name="cartPrdtDiv" id="cartPrdtDiv1" value="RC">
+                    <dt><strong>[RC]</strong> 제주공항렌트카 엑센트-후방카메라</dt>
+                    <dd>
+
+
+                        2017-09-02 12:00 ~ 2017-09-03 12:00
+                        <table class="coupon-wrap">
+                            <tbody><tr>
+                                <td class="tBT">
+
+                                    <a class="layer-1" onclick="javascript:fn_CpLayer(this, '1')"><span class="couponBT">적용가능쿠폰</span></a>
+
+                                    <div class="layerP1"></div>
+                                </td>
+                                <td class="add" id="addCp1">
+                                    <!-- <p class="add-ct">쿠폰명 99,999,999원</p> -->
+                                    <!-- <p class="add-ct">쿠폰명 99,999,999원</p> -->
+                                </td>
+                                </tr>
+                            </tbody></table>
+                    </dd>
+
+
+                </dl>
+
+                <dl class="goods-price">
+                    <input type="hidden" name="cartTotalAmt" id="cartTotalAmt1" value="13800">
+                    <input type="hidden" name="totalDisAmt" id="totalDisAmt1" value="0">
+                    <input type="hidden" name="dlvAmt" value="0">
+                    <dt>상품금액</dt>
+                    <dd>
+                        13,800원
+                        <p>(-<span id="viewTotalDisAmt1">0</span>)</p>
+                    </dd>
+                    <dt>최종금액</dt>
+                    <dd><span id="goodsAmt" class="goodsAmt">13,800</span>원</dd>
+                </dl>
+
+                <h2>예약자정보</h2>
+                <table class="bt-none">
+                    <colgroup>
+                        <col width="23%">
+                        <col width="*">
+                    </colgroup>
+                    <tbody><tr>
+                        <th><label for="rsvNm">예약자명</label></th>
+                        <td><input id="rsvNm" name="rsvNm" type="text" value="홍원기" class="full"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="rsvEmail">이메일</label></th>
+                            <td>
+                                <input id="rsvEmail" name="rsvEmail" type="text" value="kissl3oyhong@nate.com" class="full" placeholder="이메일을 입력하세요">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="rsvTelnum">휴대폰</label></th>
+                            <td>
+                                <input id="rsvTelnum" name="rsvTelnum" type="text" value="010-2690-0248" class="full">
+                            </td>
+                        </tr>
+                    </tbody></table>
+                <p class="check"><input type="checkbox" id="chk"> <label for="chk">사용자가 예약자와 동일한 경우 체크해주세요</label></p>
+                
+                <h2>사용자 정보</h2>
+                <table class="bt-none">
+			        <colgroup>
+			            <col width="23%">
+			            <col width="*">
+			        </colgroup>
+			        <tbody><tr>
+			            <th><label for="useNm">예약자명</label></th>
+			            <td><input id="useNm" name="useNm" type="text" class="full"></td>
+			            </tr>
+			            <tr>
+			                <th><label for="useEmail">이메일</label></th>
+			                <td>
+			                    <input id="useEmail" name="useEmail" type="text" class="full">
+			                </td>
+			            </tr>
+			            <tr>
+			                <th><label for="useTelnum">휴대폰</label></th>
+			                <td>
+			                    <input id="useTelnum" name="useTelnum" type="text" class="full">
+			                </td>
+			            </tr>
+			        </tbody>
+			    </table>
+			    
+			    <h2 class="caption-area">제휴 할인
+			    	<span class="caption-text-red">(L.POINT는 사용과 적립 둘 중에 하나의 서비스만 이용할 수 있습니다.)</span>
+			    </h2>
+                <table class="bt-none">
+			        <colgroup>
+			            <col width="23%">
+			            <col width="*">
+			        </colgroup>
+			        <tbody>
+			        	<tr>
+			            	<th>L. POINT<br>사용</th>
+			            	<td>
+			            		<div class="l-point-search">
+									<input type="text" class="disabled" disabled>
+									<button type="button" class="btn btn6" onclick="layer_popup('#point_search');">L.POINT 조회ㆍ사용</button>
+									
+									<div class="button-lock"></div>
+								</div>
+								
+								<!-- 조회/사용 팝업 -->
+							    <div id="point_search" class="comm-layer-popup point-search">
+							        <div class="content-wrap">
+							            <div class="content">
+							                <div class="head">
+							                    <h3 class="title">L.POINT 조회/사용</h3>
+							                    <button type="button" class="close"><img src="../../images/web/btn/close.png" alt="닫기"></button>
+							                </div>
+							
+							                <div class="main">
+							                    <table class="table-row">
+							                        <caption>포인트 조회 항목</caption>
+							                        <colgroup>
+							                            <col style="width: 25%">
+							                            <col>
+							                        </colgroup>
+							                        <tbody>
+							                            <tr>
+							                                <th>카드번호</th>
+							                                <td>
+							                                    <div class="input-col4">
+							                                        <input type="text">
+							                                        <input type="text">
+							                                        <input type="password">
+							                                        <input type="password">
+							                                    </div>
+							                                </td>
+							                            </tr>
+							                            <tr>
+							                                <th>L.POINT 비밀번호</th>
+							                                <td>
+							                                    <div class="input-btn-col2">
+							                                        <input type="password">
+							                                        <button type="button" class="btn btn6">조회</button>
+							                                    </div>
+							                                </td>
+							                            </tr>
+							                            <tr>
+							                                <th>잔액</th>
+							                                <td>
+							                                    <input type="text" class="full" disabled>
+							                                </td>
+							                            </tr>
+							                            <tr>
+							                                <th>사용할 금액</th>
+							                                <td>
+							                                    <div class="input-btn-col2">
+							                                        <input type="text">
+							                                        <button type="button" class="btn btn4">사용하기</button>
+							                                    </div>
+							                                </td>
+							                            </tr>
+							                        </tbody>
+							                    </table>
+							
+							                    <div class="popup-area-list">
+							                        <ul class="list-disc">
+							                            <li>카드번호와 L.POINT 비밀번호를 정확히 입력해야 잔액 확인이 가능합니다.</li>
+							                            <li>L.POINT는 10원 단위로 사용이 가능하며 보유 잔액 내에서 제한없이 사용 가능합니다.</li>
+							                            <li>L.POINT 비밀번호는 영문 및 숫자 혼합 6~8자리 입니다.</li>
+							                            <li>5회 이상 비밀번호 입력 오류 시 새로운 비밀번호를 등록하셔야 합니다.</li>
+							                            <li>L.POINT 적립은 PC와 모바일 모두 가능합니다.</li>
+							                        </ul>
+							                    </div>
+							                </div>
+							            </div>
+							        </div>
+							    </div> <!--//layer-popup-->
+			            	</td>
+			            </tr>
+			            <tr>
+			            	<th>L.POINT<br>적립</th>
+						    <td>
+						    	<div class="l-point-search">
+						        	<span class="value-point">180 P 적립예정</span>
+						        	<button type="button" class="btn btn6" onclick="layer_popup('#point_saving');">L.POINT 적립하기</button>
+						        	
+						        	<!-- <div class="button-lock"></div> -->
+						        </div>
+						        
+						        <!-- 적립 팝업 -->
+							    <div id="point_saving" class="comm-layer-popup point-saving">
+							        <div class="content-wrap">
+							            <div class="content">
+							                <div class="head">
+							                    <h3 class="title">L.POINT 적립</h3>
+							                    <button type="button" class="close"><img src="../../images/web/btn/close.png" alt="닫기"></button>
+							                </div>
+							
+							                <div class="main">
+							                    <table class="table-row">
+							                        <caption>포인트 조회 항목</caption>
+							                        <colgroup>
+							                            <col style="width: 25%">
+							                            <col>
+							                        </colgroup>
+							                        <tbody>
+							                            <tr>
+							                                <th>카드번호</th>
+							                                <td>
+							                                    <div class="input-col4-btn">
+							                                        <input type="text">
+							                                        <input type="text">
+							                                        <input type="password">
+							                                        <input type="password">
+							                                        <button type="button" class="btn btn4">확인</button>
+							                                    </div>
+							                                </td>
+							                            </tr>
+							                        </tbody>
+							                    </table>
+							
+							                    <div class="popup-area-list">
+							                        <ul class="list-disc">
+							                            <li>적립 시점<br>
+							                                - 관광상품 : 숙박, 렌터카, 쿠폰 등 이용 완료 후 10일 뒤 적립
+							                            </li>
+							                            <li>카드번호가 잘못 입력된 경우 적립이 불가능 하오니 정확히 입력해주세요.</li>
+							                            <li>L.POINT 적립은 신청한 건에 한해 적립이 가능하며 추후 적립은 불가 합니다.</li>
+							                            <li>이벤트코드, 할인쿠폰 등 각종 할인 수단을 제외한 실제 결제금액의 0.5%가 적립됩니다.</li>
+							                            <li>L.POINT 적립은 PC와 모바일앱에서만 가능합니다.</li>
+							                        </ul>
+							                    </div>
+							                </div>
+							            </div>
+							        </div>
+							    </div> <!--//layer-popup-->
+						    </td>
+			            </tr>
+			        </tbody>
+			    </table>
+
+                <!-- 이벤트 코드 -->
+                <h2>이벤트 코드</h2>
+                <table class="bt-none">
+                    <colgroup>
+                        <col width="23%">
+                        <col width="*">
+                    </colgroup>
+                    <tbody><tr>
+                        <th>코드번호</th>
+                        <td>
+                            <div class="event-code">
+                                <input type="text" size="20" name="vEvntCd2" id="vEvntCd2" disabled="disabled" class="disabled">
+                                <input type="hidden" name="evntCd" id="evntCd">
+                                <a href="javascript:void(0)" class="btn btn6" onclick="javascript:fn_resizeHeight();$('#cover').show();$('#code_popup').show();">조회</a>
+                            </div> <!--//event-code-->
+                        </td>
+                        </tr>
+                    </tbody></table>
+                <!-- //이벤트 코드 -->
+
+                <h2>예약확인</h2>
+                <dl class="total bt-none">
+                    <dt>총 상품금액</dt>
+                    <dd>
+                        <input type="hidden" name="totalPrdtAmt" value="13800">
+                        <input type="hidden" name="totalDlvAmt" value="0">
+                        <strong>13,800</strong>원
+                        <p>쿠폰할인 (-) <span id="cpDisAmtView">0</span>원</p>
+                        <p>L.POINT 할인	(-) <span>5,000</span>P</p>
+                        <p>L.POINT 적립 예정 <span>180</span>P</p>
+                    </dd>
+                </dl>
+                <dl class="total bt-none">
+                    <dt>최종결제금액</dt>
+                    <dd>
+                        <strong class="red" id="lastAmt">13,800</strong>원<br>
+                    </dd>
+                </dl>
+
+
+                <p>
+                    <a href="javascript:fn_RsvConfirm();" class="btn btn1">예약확인</a>
+                </p>
+
+
+            </div>
+        </form>
+    </div>
+</section>
+    
+<!-- 쿠폰1 s -->
+<div class="pop-coupon">
+	<p class="btn-close"><a href="#"><img src="../../images/mw/sub_common/close2.png" width="23" alt="닫기"></a></p>
+	<table>
+		<tr>
+			<th>쿠폰명</th>
+			<th>금액</th>
+		</tr>
+		<tr>
+			<td><input name="coupon1" type="checkbox" id="coupon1" checked>
+			설연휴 특별 할인</td>
+			<td>99,999,999</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="coupon1" id="coupon1">
+			설연휴 특별 할인</td>
+			<td>99,999,999</td>
+		</tr>
+	</table>
+	<p class="btn-center"><a href="#" class="btn btn1">선택완료</a></p>
+
+</div>
+<!-- 쿠폰1 e -->
+
+<div id="code_popup" class="code-content">
+    <div class="code-box">
+        <p class="helper blue">소지하신 이벤트 코드를 정확히 입력해 주세요.</p>
+
+        <div class="input-box">
+            <input type="text" size="30" name="vEvntCd" id="vEvntCd">
+        </div>
+
+        <p class="helper2 red"></p>
+    </div>
+
+    <div class="comm-btnWrap">
+        <a href="javascript:void(0);" class="btn btn4" onclick="javascript:fn_EvntCdConfirm();">확인</a>
+        <a href="javascript:void(0);" class="btn btn7" onclick="close_popup('#code_popup');$('#cover').hide();">닫기</a>
+    </div>
+</div>
+<!-- 콘텐츠 e -->
+
+<!-- 푸터 s -->
+<footer>
+    <ul class="list-unstyled">
+		<li><a href="">이용약관</a></li>
+		<li><a href="">개인정보처리방침</a></li>
+		<li><a href="">여행약관</a></li>
+	</ul>
+	<address>
+		상호명:제주특별자치도관광협회&nbsp; 대표:김영진&nbsp; 사업자등록번호:616-82-04092<br>
+		주소:제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층<br>
+		통신판매업번호: 제2013-제주연동 0024호<br>
+		고객센터:1577-1233 | 개인정보관리책임자:최종훈
+	</address>
+    <p>COPYRIGHT &copy; 제주특별자치도관광협회. ALL RIGHTS RESERVED</p>
+</footer>
+<!-- 푸터 e -->
+</div>
+<div id="cover"></div>
+<script src="../../js/jquery-1.11.1.js"></script>
+<script src="../../js/mw_layout.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>탐나오</title>
+</head>
+
+<body>
+	<table style="width: 740px; margin: 0 auto; text-decoration: none; border-collapse: collapse; font-family: 'NanumBarunGothic', 'Dotum', 'Helvetica', 'sans-serif';">
+		<!-- thead -->
+		#parse("mailTemplate/header.vm")
+
+		<tbody>
+			<tr>
+				<td style="width: 740px;">
+					$msg
+				</td>
+			</tr>
+			<tr>
+				<td style="padding: 35px 0 65px 0; text-align: center;">
+					<a href="${domain}" target="_blank;"><img src="${domain}/images/web/mail/home-1.png" alt="홈페이지바로가기"></a>
+				</td>
+			</tr>
+		</tbody>
+
+		<!-- tfoot -->
+		#parse("mailTemplate/footer.vm")
+	</table>
+</body>
+</html>

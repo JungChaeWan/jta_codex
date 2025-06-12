@@ -1,0 +1,1266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>모객 관리자시스템</title>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<meta http-equiv="imagetoolbar" content="false" />
+<link rel="stylesheet" type="text/css" href="../css/common/common.css" />
+<link rel="stylesheet" type="text/css" href="../css/mas/layout.css" />
+<link rel="stylesheet" type="text/css" href="../css/common/page_style.css" />
+</head>
+<body>
+<div id="wrapper">
+    <div id="header_wrapper">
+        <h1><img src="../images/oss/common/logo.gif" alt="모객 관리자 시스템" /></h1>
+        <ul class="lnb_menu">
+            <li><a href="#" target="_blank">업체 바로가기</a></li>
+            <li class="home"><a href="/">홈으로</a></li>
+            <li class="log"><a href="#" target="_blank">로그아웃</a></li>
+        </ul>
+        <h2 class="lay_none">상단메뉴</h2>
+        <ul class="gnb_menu">
+            <li class="menu01"><a href="#">홈</a>
+                <ul class="gnb_depth" id="menu01" style="display:none">
+                    <li><a href="#">메뉴명01</a></li>
+                    <li><a href="#">메뉴명02</a></li>
+                    <li><a href="#">메뉴명03</a></li>
+                    <li><a href="#">메뉴명04</a></li>
+                </ul>
+            </li>
+            <li class="on menu02"><a href="#">기본설정</a>
+                <ul class="gnb_depth" id="menu02" style="display:none">
+                    <li><a href="#">메뉴명01</a></li>
+                    <li><a href="#">메뉴명02</a></li>
+                    <li><a href="#">메뉴명03</a></li>
+                    <li><a href="#">메뉴명04</a></li>
+                </ul>
+            </li>
+            <li class="menu03"><a href="#">고객관리</a>
+                <ul class="gnb_depth" id="menu03" style="display:none">
+                    <li><a href="#">메뉴명01</a></li>
+                    <li><a href="#">메뉴명02</a></li>
+                    <li><a href="#">메뉴명03</a></li>
+                    <li><a href="#">메뉴명04</a></li>
+                </ul>
+            </li>
+            <li class="menu04"><a href="#">업체관리</a>
+                <ul class="gnb_depth" id="menu04" style="display:none">
+                    <li><a href="#">메뉴명01</a></li>
+                    <li><a href="#">메뉴명02</a></li>
+                    <li><a href="#">메뉴명03</a></li>
+                    <li><a href="#">메뉴명04</a></li>
+                </ul>
+            </li>
+            <li class="menu05"><a href="#">서비스관리</a>
+                <ul class="gnb_depth" id="menu05" style="display:none">
+                    <li><a href="#">메뉴명01</a></li>
+                    <li><a href="#">메뉴명02</a></li>
+                    <li><a href="#">메뉴명03</a></li>
+                    <li><a href="#">메뉴명04</a></li>
+                </ul>
+            </li>
+            <li class="menu06"><a href="#">커뮤니티</a>
+                <ul class="gnb_depth" id="menu06" style="display:none">
+                    <li><a href="#">메뉴명01</a></li>
+                    <li><a href="#">메뉴명02</a></li>
+                    <li><a href="#">메뉴명03</a></li>
+                    <li><a href="#">메뉴명04</a></li>
+                </ul>
+            </li>
+            <li class="menu07"><a href="#">발송시스템</a>
+                <ul class="gnb_depth" id="menu07" style="display:none">
+                    <li><a href="#">메뉴명01</a></li>
+                    <li><a href="#">메뉴명02</a></li>
+                    <li><a href="#">메뉴명03</a></li>
+                    <li><a href="#">메뉴명04</a></li>
+                </ul>
+            </li>
+            <li class="menu08"><a href="#">통계</a>
+                <ul class="gnb_depth" id="menu08" style="display:none">
+                    <li><a href="#">메뉴명01</a></li>
+                    <li><a href="#">메뉴명02</a></li>
+                    <li><a href="#">메뉴명03</a></li>
+                    <li><a href="#">메뉴명04</a></li>
+                </ul>
+            </li>
+            <li class="menu09"><a href="#">HELP</a>
+                <ul class="gnb_depth" id="menu09" style="display:none">
+                    <li><a href="#">메뉴명01</a></li>
+                    <li><a href="#">메뉴명02</a></li>
+                    <li><a href="#">메뉴명03</a></li>
+                    <li><a href="#">메뉴명04</a></li>
+                </ul>
+            </li>
+            <li class="menu10"><a href="#">모바일</a>
+                <ul class="gnb_depth" id="menu10" style="display:none">
+                    <li><a href="#">메뉴명01</a></li>
+                    <li><a href="#">메뉴명02</a></li>
+                    <li><a href="#">메뉴명03</a></li>
+                    <li><a href="#">메뉴명04</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="contents_wrapper">
+        <div id="contents_area"> 
+            <!--<div class="location"><span>ADMIN</span>&gt;<span>매물관리</span>&gt;<strong>자기매물</strong></div>-->
+            <!--<h4 class="title02">목록</h4>-->
+            <div id="contents">
+                <!--<ul id="menu_depth3">
+                    <li class="on"><a class="menu_depth3" href="#">탭메뉴명01</a></li>
+                    <li><a class="menu_depth3" href="#">탭메뉴명02</a></li>
+                </ul>-->
+                <table width="100%" border="0">
+                    <tr>
+                        <!--width="290" 변경--><td valign="top" width="290">
+                        <h5 class="title03">수량 관리</h5>
+                            
+                            <!--<table class="quick_calendar" style="width:265px;">
+                                <col width="28%" />
+                                <col width="72%" />
+                                <tr>
+                                    <th>객실</th>
+                                    <td class="td_align_lt01">&nbsp;</td>
+                                </tr>
+                            </table>-->
+                            
+                            <h5 class="title02">간편입력기</h5>
+                            <table class="quick_calendar" style="width:285px;"> <!--width:285px; 변경-->
+                                <col width="28%" />
+                                <col width="72%" />
+                                <tr>
+                                    <th>적용기간</th>
+                                    <td class="td_align_lt01">
+                                    	<div style="display:inline-block;">
+                                        	<input type="text" name="sdate" class="input_text3 center" title="시작일을 입력하세요." value="2015-10-02" /><input type="image" src="../images/oss/icon/calendar_icon01.gif" name="" alt="" />
+                                       	</div> 
+                                        <div style="display:inline-block;">    
+                                        &nbsp;~
+                                        <input type="text" name="edate" class="input_text3 center" title="종료일을 입력하세요." value="2015-10-02" /><input type="image" src="../images/oss/icon/calendar_icon01.gif" name="" alt="" />
+                                        </div> 
+                                	</td>
+                                </tr>
+                                <tr>
+                                    <th>적용요일</th>
+                                    <td class="td_align_lt01"><table border="1" style="width:100%;">
+                                            <tr>
+                                                <td><div class="btn_sty06"><span><a href="javascript:fn_WdayAllSel()">전체선택</a></span></div>
+                                                    <div class="btn_sty06"><span><a href="javascript:fn_WdayInvSel()">선택반전</a></span></div></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="line-height:1.9em;"><input type="checkbox" name="wday[]" class="required" id="wday_0" value="0" title="적용요일을 선택하세요." />
+                                                    <label for="wday_0" style="color:red">일요일</label>
+                                                    <br />
+                                                    <input type="checkbox" name="wday[]" id="wday_1" value="1" />
+                                                    <label for="wday_1">월요일</label>
+                                                    <br />
+                                                    <input type="checkbox" name="wday[]" id="wday_2" value="2" />
+                                                    <label for="wday_2">화요일</label>
+                                                    <br />
+                                                    <input type="checkbox" name="wday[]" id="wday_3" value="3" />
+                                                    <label for="wday_3">수요일</label>
+                                                    <br />
+                                                    <input type="checkbox" name="wday[]" id="wday_4" value="4" />
+                                                    <label for="wday_4">목요일</label>
+                                                    <br />
+                                                    <input type="checkbox" name="wday[]" id="wday_5" value="5" />
+                                                    <label for="wday_5">금요일</label>
+                                                    <br />
+                                                    <input type="checkbox" name="wday[]" id="wday_6" value="6" />
+                                                    <label for="wday_6" style="color:blue">토요일</label></td>
+                                            </tr>
+                                        </table></td>
+                                </tr>
+                                <tr>
+                                    <th>적용시간</th>
+                                    <td class="td_align_lt01"><table border="1" style="width:100%;">
+                                            <tr>
+                                                <td><div class="btn_sty06"><span><a href="javascript:fn_WdayAllSel()">전체선택</a></span></div>
+                                                    <div class="btn_sty06"><span><a href="javascript:fn_WdayInvSel()">선택반전</a></span></div></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="line-height:1.9em;"><input name="mTm" class="required" id="mTm_8" type="checkbox" value="8" />
+                                                    <label for="mTm_8">8시</label>
+                                                    <input name="mTm" class="required" id="mTm_9" type="checkbox" value="9" />
+                                                    <label for="mTm_9">9시</label>
+                                                    <br />
+                                                    <input name="mTm" class="required" id="mTm_10" type="checkbox" value="10" />
+                                                    <label for="mTm_10">10시</label>
+                                                    <input name="mTm" class="required" id="mTm_11" type="checkbox" value="11" />
+                                                    <label for="mTm_11">11시</label>
+                                                    <br />
+                                                    <input name="mTm" class="required" id="mTm_12" type="checkbox" value="12" />
+                                                    <label for="mTm_12">12시</label>
+                                                    <input name="mTm" class="required" id="mTm_13" type="checkbox" value="13" />
+                                                    <label for="mTm_13">13시</label>
+                                                    <br />
+                                                    <input name="mTm" class="required" id="mTm_14" type="checkbox" value="14" />
+                                                    <label for="mTm_14">14시</label>
+                                                    <input name="mTm" class="required" id="mTm_15" type="checkbox" value="15" />
+                                                    <label for="mTm_15">15시</label>
+                                                    <br />
+                                                    <input name="mTm" class="required" id="mTm_16" type="checkbox" value="16" />
+                                                    <label for="mTm_16">16시</label>
+                                                    <input name="mTm" class="required" id="mTm_17" type="checkbox" value="17" />
+                                                    <label for="mTm_17">17시</label>
+                                                    <br />
+                                                    <input name="mTm" class="required" id="mTm_18" type="checkbox" value="18" />
+                                                    <label for="mTm_18">18시</label>
+                                                    <input name="mTm" class="required" id="mTm_19" type="checkbox" value="19" />
+                                                    <label for="mTm_19">19시</label>
+                                                    <br /></td>
+                                            </tr>
+                                        </table></td>
+                                </tr>
+                                <tr>
+                                    <th>마감여부</th>
+                                    <td class="td_align_lt01"><select name="" id="">
+                                            <option value="0" selected="selected">선택</option>
+                                            <option value="1">접수</option>
+                                            <option value="2">마감</option>
+                                        </select></td>
+                                </tr>
+                                <tr>
+                                    <th>예약 가능 조</th>
+                                    <td class="td_align_lt01"><input type="text" name="quick_ipgum" class="full right" title="간편입력 입금가을 입력하세요." /></td>
+                                </tr>
+                                <tr>
+                                    <th>예약 완료 조</th>
+                                    <td class="td_align_lt01"><input type="text" name="quick_price" class="full right" title="간편입력 판매가을 입력하세요." /></td>
+                                </tr>
+                            </table>
+                            <div class="btn_ct02">
+                                <div class="btn_sty04"><span>
+                                    <input type="submit" name="" value="간편 입력 적용" />
+                                    </span></div>
+                            </div></td>
+                        <td valign="top"> 
+                        <!--아이콘 상태표시-->
+                        <div class="icon_info"><span class="possible">O</span> 예약가능 <span class="impossible">X</span> 예약마감 <span class="ready">-</span> 없음</div>
+                        <!--//아이콘 상태표시-->
+
+                            <table border="0" class="calendar_form">
+                                <col width="25%" />
+                                <col width="25%" />
+                                <col width="25%" />
+                                <col width="25%" />
+                                <tr class="title">
+                                    <th onclick="calendar_load('prev'); return false;" style="cursor:pointer;">◀</th>
+                                    <th id="current_month">2015-10</th>
+                                    <th onclick="calendar_load('next'); return false;" style="cursor:pointer;">▶</th>
+                                    <td align="right" style="border:0; padding-left:25px;"><div class="btn_sty01"><span>
+                                            <input type="button" value="수정값 변경 적용" onclick="modify_valid(); return false;" />
+                                            </span></div></td>
+                                </tr>
+                            </table>
+                            <div id="lay_calendar">
+                                <table width="100%" border="0" class="calendar">
+                                    <col width="*" />
+                                    <col width="14.2%" />
+                                    <col width="14.2%" />
+                                    <col width="14.2%" />
+                                    <col width="14.2%" />
+                                    <col width="14.2%" />
+                                    <col width="14.2%" />
+                                    <tr>
+                                        <th scope="col" class="font_red">일</th>
+                                        <th scope="col">월</th>
+                                        <th scope="col">화</th>
+                                        <th scope="col">수</th>
+                                        <th scope="col">목</th>
+                                        <th scope="col">금</th>
+                                        <th scope="col" class="font_blue">토</th>
+                                    </tr>
+                                    <tr>
+                                        <td><p class="font_red"><strong>&nbsp;</strong></p></td>
+                                        <td><p><strong>&nbsp;</strong></p></td>
+                                        <td><p><strong>&nbsp;</strong></p></td>
+                                        <td><p><strong>&nbsp;</strong></p></td>
+                                        <td><p><strong>1</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>2</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p class="font_red"><strong>3</strong><span class="day_sp">개천절</span> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p class="font_red"><strong>4</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>5</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>6</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>7</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>8</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p class="font_red"><strong>9</strong><span class="day_sp">한글날</span> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p class="font_blue"><strong>10</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p class="font_red"><strong>11</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>12</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>13</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>14</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>15</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>16</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p class="font_blue"><strong>17</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p class="font_red"><strong>18</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>19</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="ready">-</span> 8:_/_</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="ready">-</span> 9:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="ready">-</span> 10:_/_</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="ready">-</span> 11:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="ready">-</span> 12:_/_</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="ready">-</span> 13:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="ready">-</span> 14:_/_</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="ready">-</span> 15:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="ready">-</span> 16:_/_</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="ready">-</span> 17:_/_</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="ready">-</span> 18:_/_</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="ready">-</span> 19:_/_</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>20</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="impossible">X</span> 8:10/10</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="possible">O</span> 9:10/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="possible">O</span> 10:10/10</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="impossible">X</span> 11:1/4</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="possible">O</span> 12:10/10</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="possible">O</span> 13:1/4</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="possible">O</span> 14:10/10</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="possible">O</span> 15:10/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="possible">O</span> 16:10/10</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="possible">O</span> 17:10/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="possible">O</span> 18:10/10</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="possible">O</span> 19:10/10</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>21</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="possible">O</span> 8:0/10</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="possible">O</span> 9:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="possible">O</span> 10:0/10</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="possible">O</span> 11:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="possible">O</span> 12:10/10</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="possible">O</span> 13:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="possible">O</span> 14:0/10</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="possible">O</span> 15:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="possible">O</span> 16:0/10</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="possible">O</span> 17:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="possible">O</span> 18:0/10</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="possible">O</span> 19:0/10</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>22</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="possible">O</span> 8:0/10</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="possible">O</span> 9:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="possible">O</span> 10:0/10</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="possible">O</span> 11:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="possible">O</span> 12:10/10</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="possible">O</span> 13:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="possible">O</span> 14:0/10</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="possible">O</span> 15:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="possible">O</span> 16:0/10</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="possible">O</span> 17:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="possible">O</span> 18:0/10</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="possible">O</span> 19:0/10</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>23</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="possible">O</span> 8:0/10</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="possible">O</span> 9:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="possible">O</span> 10:0/10</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="possible">O</span> 11:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="possible">O</span> 12:10/10</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="possible">O</span> 13:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="possible">O</span> 14:0/10</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="possible">O</span> 15:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="possible">O</span> 16:0/10</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="possible">O</span> 17:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="possible">O</span> 18:0/10</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="possible">O</span> 19:0/10</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p class="font_blue"><strong>24</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="possible">O</span> 8:0/10</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="possible">O</span> 9:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="possible">O</span> 10:0/10</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="possible">O</span> 11:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="possible">O</span> 12:10/10</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="possible">O</span> 13:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="possible">O</span> 14:0/10</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="possible">O</span> 15:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="possible">O</span> 16:0/10</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="possible">O</span> 17:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="possible">O</span> 18:0/10</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="possible">O</span> 19:0/10</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p class="font_red"><strong>25</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="possible">O</span> 8:0/10</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="possible">O</span> 9:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="possible">O</span> 10:0/10</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="possible">O</span> 11:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="possible">O</span> 12:10/10</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="possible">O</span> 13:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="possible">O</span> 14:0/10</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="possible">O</span> 15:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="possible">O</span> 16:0/10</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="possible">O</span> 17:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="possible">O</span> 18:0/10</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="possible">O</span> 19:0/10</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>26</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="possible">O</span> 8:0/10</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="possible">O</span> 9:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="possible">O</span> 10:0/10</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="possible">O</span> 11:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="possible">O</span> 12:10/10</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="possible">O</span> 13:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="possible">O</span> 14:0/10</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="possible">O</span> 15:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="possible">O</span> 16:0/10</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="possible">O</span> 17:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="possible">O</span> 18:0/10</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="possible">O</span> 19:0/10</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>27</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="possible">O</span> 8:0/10</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="possible">O</span> 9:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="possible">O</span> 10:0/10</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="possible">O</span> 11:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="possible">O</span> 12:10/10</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="possible">O</span> 13:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="possible">O</span> 14:0/10</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="possible">O</span> 15:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="possible">O</span> 16:0/10</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="possible">O</span> 17:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="possible">O</span> 18:0/10</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="possible">O</span> 19:0/10</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>28</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="possible">O</span> 8:0/10</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="possible">O</span> 9:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="possible">O</span> 10:0/10</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="possible">O</span> 11:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="possible">O</span> 12:10/10</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="possible">O</span> 13:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="possible">O</span> 14:0/10</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="possible">O</span> 15:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="possible">O</span> 16:0/10</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="possible">O</span> 17:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="possible">O</span> 18:0/10</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="possible">O</span> 19:0/10</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>29</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="possible">O</span> 8:0/10</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="possible">O</span> 9:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="possible">O</span> 10:0/10</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="possible">O</span> 11:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="possible">O</span> 12:10/10</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="possible">O</span> 13:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="possible">O</span> 14:0/10</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="possible">O</span> 15:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="possible">O</span> 16:0/10</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="possible">O</span> 17:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="possible">O</span> 18:0/10</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="possible">O</span> 19:0/10</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p><strong>30</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="possible">O</span> 8:0/10</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="possible">O</span> 9:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="possible">O</span> 10:0/10</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="possible">O</span> 11:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="possible">O</span> 12:10/10</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="possible">O</span> 13:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="possible">O</span> 14:0/10</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="possible">O</span> 15:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="possible">O</span> 16:0/10</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="possible">O</span> 17:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="possible">O</span> 18:0/10</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="possible">O</span> 19:0/10</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                        <td><p class="font_blue"><strong>31</strong> <span class="btn_sty10"><span><a href="javascript:fn_SetDaySel(1)">수정</a></span></span></p>
+                                            <div class="icon_info margin-top2">
+                                            	<table style="width:100%;" class="calendar_price_tb">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_8"><span class="possible">O</span> 8:0/10</td>
+                                                            <td id="dp_rsvGrp20_9"><span class="possible">O</span> 9:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_10"><span class="possible">O</span> 10:0/10</td>
+                                                            <td id="dp_rsvGrp20_11"><span class="possible">O</span> 11:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_12"><span class="possible">O</span> 12:10/10</td>
+                                                            <td id="dp_rsvGrp20_13"><span class="possible">O</span> 13:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_14"><span class="possible">O</span> 14:0/10</td>
+                                                            <td id="dp_rsvGrp20_15"><span class="possible">O</span> 15:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_16"><span class="possible">O</span> 16:0/10</td>
+                                                            <td id="dp_rsvGrp20_17"><span class="possible">O</span> 17:0/10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="dp_rsvGrp20_18"><span class="possible">O</span> 18:0/10</td>
+                                                            <td id="dp_rsvGrp20_19"><span class="possible">O</span> 19:0/10</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div></td>
+                                    </tr>
+                                </table>
+                                <!--<div style="width:100%;height:500px;text-align:center;font-size:16px;padding-top:100px;"> 로딩중입니다. 잠시만 기다려주세요... </div>--> 
+                            </div></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--<div id="footer_wrapper">
+        <div class="footer_text">
+            <address>
+            </address>
+            <p><strong>CopyRight ⓒ 2015 모객 관리자 시스템. All Rights Reserved.</strong></p>
+        </div>
+    </div>-->
+</div>
+</body>
+</html>

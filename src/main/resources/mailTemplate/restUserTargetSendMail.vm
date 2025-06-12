@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>탐나오</title>
+</head>
+
+<body>
+	<table style="width: 740px; margin: 0 auto; text-decoration: none; border-collapse: collapse; font-family: 'NanumBarunGothic', 'Dotum', 'Helvetica', 'sans-serif';">
+		<!-- thead -->
+		<#parse("mailTemplate/header2.vm")
+
+		<tbody>
+			<tr>
+				<td style="width: 740px; padding-top: 30px; text-align: center;">
+					<img src="${domain}/images/web/mail2/temp/typeD/icon-01.png" alt="휴면전환">
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;">
+					<p style="font-size: 26px; color: #333435; margin: 0; padding-top: 30px; letter-spacing: -0.3px;">
+						탐나오 계정 휴면전환 안내
+					</p>
+					<p style="font-size: 16px; color: #939393; margin: 0; padding-top: 16px; line-height: 22px; letter-spacing: 0;">
+						휴면회원으로 전환됐습니다.
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 740px; padding:0 32px;">
+					<div style="background-color: #f5f4f4; border: 1px solid #dcdcdc; padding: 26px; font-size: 14px; margin-top: 30px;">
+						<p style="color: #333435; line-height: 24px;">안녕하세요. 탐나오입니다.<br>
+							<span style="text-decoration: underline; font-weight: bold;">1년 동안 로그인</span> 하지 않아 계정이 휴면 상태로 전환됐습니다.<br>
+							회원님의 소중한 개인정보는 별도 분리 보관할 예정입니다.<br>
+							휴면을 해제하시려면 <span style="color: #e94c3f; font-size: 16px; font-weight: bold;">로그인</span> 해주세요.
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td style="font-size: 13px;">
+					<table style="width: 100%; table-layout: fixed; margin-top: 30px; border-top: 1px solid #dcdcdc; border-collapse: collapse;">
+						<colgroup>
+							<col width="180">
+							<col>
+						</colgroup>
+						<tr>
+							<th height="50" style="border: 1px solid #dcdcdc; background-color: #f4f4f4;">휴면 전환일자</th>
+							<td height="50" style="border: 1px solid #dcdcdc; padding-left: 20px; color: #808080;">${dateTool.get("yyyy년 M월 dd일")}</td>
+						</tr>
+						<tr>
+							<th height="50" style="border: 1px solid #dcdcdc; background-color: #f4f4f4;">처리대상</th>
+							<td height="50" style="border: 1px solid #dcdcdc; padding-left: 20px; color: #808080;">ID : $email</td>
+						</tr>
+						<tr>
+							<th height="50" style="border: 1px solid #dcdcdc; background-color: #f4f4f4;">처리방법</th>
+							<td height="50" style="border: 1px solid #ebebeb; padding-left: 20px; color: #808080;">휴면계정 전환 및 회원가입 시 입력한 개인정보 별도 보관 처리</td>
+						</tr>
+						<tr>
+							<th height="50" style="border: 1px solid #dcdcdc; background-color: #f4f4f4;">관련법령</th>
+							<td height="50" style="border: 1px solid #ebebeb; padding-left: 20px; color: #808080;">정보통신망 이용촉진 및 보호등에 관한 법률 (제29조 2항 및 동법시행령 제 16조)</td>
+						</tr>
+					</table>
+					<p style=" color: #808080; margin-top: 20px;">※ 휴면회원으로 전환이 된 이후에도 사이트 로그인 시 정상이용 가능합니다.</p>
+				</td>
+			</tr>
+			<tr>
+				<td style="margin: 0; padding: 0;">
+					<div style="margin: 40px 0 60px 0; text-align: center;">
+						<a href="${domain}/web/viewLogin.do?rtnUrl=/" target="_blank">
+							<img src="${domain}/images/web/mail2/temp/btn/tamnao-login.png" alt="로그인하기" border="0">
+						</a>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+
+		<!-- tfoot -->
+		#parse("mailTemplate/footer.vm")
+	</table>
+</body>
+</html>

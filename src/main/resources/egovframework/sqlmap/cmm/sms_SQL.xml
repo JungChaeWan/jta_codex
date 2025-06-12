@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="SMS">
+
+<insert id="SC_TRAN_I_00">
+INSERT INTO SC_TRAN
+     ( TR_SENDDATE
+     , TR_SENDSTAT
+     , TR_MSGTYPE
+     , TR_PHONE
+     , TR_CALLBACK
+     , TR_MSG
+     , TR_ETC6
+     ) 
+VALUES 
+     ( NOW()
+     , '0'
+     , '0'
+     , #trPhone#
+     , #trCallback#
+     , #trMsg#
+     , 'tamnao'
+     )
+</insert>
+
+
+<insert id="SC_TRAN_I_01">
+INSERT INTO SC_TRAN
+     ( TR_SENDDATE
+     , TR_SENDSTAT
+     , TR_MSGTYPE
+     , TR_PHONE
+     , TR_CALLBACK
+     , TR_MSG
+     , TR_ETC6
+     ) 
+VALUES 
+     ( #trSenddate#
+     , '0'
+     , '0'
+     , #trPhone#
+     , #trCallback#
+     , #trMsg#
+     , 'tamnao'
+     )
+</insert>
+
+<insert id="MMS_MSG_I_00">
+INSERT INTO MMS_MSG
+     ( SUBJECT
+     , PHONE
+     , CALLBACK
+     , STATUS
+     , REQDATE
+     , MSG
+     , FILE_CNT
+     , FILE_PATH1
+     , FILE_PATH2
+     , FILE_PATH3
+     , FILE_PATH4
+     , FILE_PATH5
+     , ETC1
+     , ETC2
+     , ETC3
+     , TYPE
+     ) 
+VALUES 
+     ( #subject#
+     , #phone#
+     , #callback#
+     , '0'
+     , NOW()
+     , #msg#
+     , #fileCnt#
+     , #filePath1#
+     , #filePath2#
+     , #filePath3#
+     , #filePath4#
+     , #filePath5#
+     , #etc1#
+     , #etc2#
+     , #etc3#
+     , #type#
+     )
+</insert>
+
+
+<insert id="MMS_MSG_I_01">
+INSERT INTO MMS_MSG
+     ( SUBJECT
+     , PHONE
+     , CALLBACK
+     , STATUS
+     , REQDATE
+     , MSG
+     , FILE_CNT
+     , FILE_PATH1
+     , FILE_PATH2
+     , FILE_PATH3
+     , FILE_PATH4
+     , FILE_PATH5
+     , ETC1
+     , ETC2
+     , ETC3
+     , TYPE
+     ) 
+VALUES 
+     ( #subject#
+     , #phone#
+     , #callback#
+     , '0'
+     , #reqdate#
+     , #msg#
+     , #fileCnt#
+     , #filePath1#
+     , #filePath2#
+     , #filePath3#
+     , #filePath4#
+     , #filePath5#
+     , #etc1#
+     , #etc2#
+     , #etc3#
+     , #type#
+     )
+</insert>
+
+<!-- 디비 트랙젝션 연장을 위한 쿼리 -->
+<select id="selectRefresh">
+SELECT 1
+  FROM DUAL
+</select>
+
+</sqlMap>

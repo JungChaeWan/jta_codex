@@ -1,0 +1,4306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="ad">
+
+<resultMap id="AD_DFTINF_R_00" class="mas.ad.vo.AD_DFTINFVO">
+	<result property="corpId"	 				column="CORP_ID" />
+	<result property="adNm" 					column="AD_NM" />
+	<result property="adInf" 					column="AD_INF" />
+	<result property="frstRegDttm"				column="FRST_REG_DTTM" />
+	<result property="lastModDttm" 				column="LAST_MOD_DTTM" />
+	<result property="adInfImg" 				column="AD_INF_IMG" />
+	<result property="adSimpleExp" 				column="AD_SIMPLE_EXP" />
+	<result property="frstRegId" 				column="FRST_REG_ID" />
+	<result property="lastModId" 				column="LAST_MOD_ID" />
+	<result property="totalBuyNum" 				column="TOTAL_BUY_NUM" />
+	<result property="adultAgeStd" 				column="ADULT_AGE_STD" />
+	<result property="juniorAgeStd" 			column="JUNIOR_AGE_STD" />
+	<result property="childAgeStd" 				column="CHILD_AGE_STD" />
+	<result property="adDiv" 					column="AD_DIV" />
+	<result property="adArea" 					column="AD_AREA" />
+	<result property="adGrd" 					column="AD_GRD" />
+	<result property="tip" 						column="TIP" />
+	<result property="infIntrolod"				column="INF_INTROLOD" />
+	<result property="infEquif"					column="INF_EQUINF" />
+	<result property="infOpergud"				column="INF_OPERGUD" />
+	<result property="infNti" 					column="INF_NTI" />
+	<result property="chkinTm" 					column="CHKIN_TM" />
+	<result property="chkoutTm" 				column="CHKOUT_TM" />
+	<result property="cancelGuide" 				column="CANCEL_GUIDE" />
+	<result property="juniorAbleYn" 			column="JUNIOR_ABLE_YN" />
+	<result property="childAbleYn" 				column="CHILD_ABLE_YN" />
+	<result property="dayRsvUnableYn"			column="DAY_RSV_UNABLE_YN" />
+	<result property="dayRsvUnableTm"			column="DAY_RSV_UNABLE_TM" />
+	<result property="sccUrl"					column="SCC_URL" />
+	<result property="juniorAgeStdApicode"		column="JUNIOR_AGE_STD_APICODE" />
+	<result property="childAgeStdApicode"		column="CHILD_AGE_STD_APICODE" />
+	<result property="tllPriceLink"				column="TLL_PRICE_LINK" />
+</resultMap>
+
+<resultMap id="AD_ADDAMT_R_00" class="mas.ad.vo.AD_ADDAMTVO">
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="aplStartDt" 		column="APL_START_DT" />
+	<result property="adultAddAmt" 		column="ADULT_ADD_AMT" />
+	<result property="juniorAddAmt" 	column="JUNIOR_ADD_AMT" />
+	<result property="childAddAmt" 		column="CHILD_ADD_AMT" />
+</resultMap>
+
+<resultMap id="AD_PRDINF_R_00"		class="mas.ad.vo.AD_PRDTINFVO">
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="prdtNm" 			column="PRDT_NM" />
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="tradeStatus" 		column="TRADE_STATUS" />
+	<result property="stdMem" 			column="STD_MEM" />
+	<result property="maxiMem" 			column="MAXI_MEM" />
+	<result property="prdtExp" 			column="PRDT_EXP" />
+	<result property="memExcdAbleYn" 	column="MEM_EXCD_ABLE_YN" />
+	<result property="printYn" 			column="PRINT_YN" />
+	<result property="viewSn" 			column="VIEW_SN" />
+	<result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+	<result property="frstRegId" 		column="FRST_REG_ID" />
+	<result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+	<result property="lastModId" 		column="LAST_MOD_ID" />
+	<result property="breakfastYn" 		column="BREAKFAST_YN" />
+	<result property="buyNum" 			column="BUY_NUM" />
+	<result property="confRequestDttm" 	column="CONF_REQUEST_DTTM" />
+	<result property="confDttm" 		column="CONF_DTTM" />
+	<result property="mappingNum" 		column="MAPPING_NUM" />
+	<result property="addamtYn" 		column="ADDAMT_YN" />
+	<result property="ctnAplYn" 		column="CTN_APL_YN" />
+	<result property="minRsvNight" 		column="MIN_RSV_NIGHT" />
+	<result property="maxRsvNight" 		column="MAX_RSV_NIGHT" />
+</resultMap>
+
+<resultMap id="AD_PRDINF_R_01"		class="mas.ad.vo.AD_PRDTINFVO">
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="prdtNm" 			column="PRDT_NM" />
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="tradeStatus" 		column="TRADE_STATUS" />
+	<result property="stdMem" 			column="STD_MEM" />
+	<result property="maxiMem" 			column="MAXI_MEM" />
+	<result property="prdtExp" 			column="PRDT_EXP" />
+	<result property="memExcdAbleYn" 	column="MEM_EXCD_ABLE_YN" />
+	<result property="printYn" 			column="PRINT_YN" />
+	<result property="viewSn" 			column="VIEW_SN" />
+	<result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+	<result property="frstRegId" 		column="FRST_REG_ID" />
+	<result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+	<result property="lastModId" 		column="LAST_MOD_ID" />
+	<result property="breakfastYn" 		column="BREAKFAST_YN" />
+	<result property="buyNum" 			column="BUY_NUM" />
+	<result property="confRequestDttm" 	column="CONF_REQUEST_DTTM" />
+	<result property="confDttm" 		column="CONF_DTTM" />
+	<result property="mappingNum" 		column="MAPPING_NUM" />
+	<result property="addamtYn" 		column="ADDAMT_YN" />
+	<result property="ctnAplYn" 		column="CTN_APL_YN" />
+	<result property="minRsvNight" 		column="MIN_RSV_NIGHT" />
+	<result property="maxRsvNight" 		column="MAX_RSV_NIGHT" />
+	<result property="cntAplDt"			column="CNT_APL_DT" />
+	<result property="amtAplDt" 		column="AMT_APL_DT" />
+</resultMap>
+
+<resultMap id="AD_PRDINF_R_04"		class="mas.ad.vo.AD_PRDTINFVO">
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="prdtNm" 			column="PRDT_NM" />
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="tradeStatus" 		column="TRADE_STATUS" />
+	<result property="stdMem" 			column="STD_MEM" />
+	<result property="maxiMem" 			column="MAXI_MEM" />
+	<result property="prdtExp" 			column="PRDT_EXP" />
+	<result property="memExcdAbleYn" 	column="MEM_EXCD_ABLE_YN" />
+	<result property="printYn" 			column="PRINT_YN" />
+	<result property="viewSn" 			column="VIEW_SN" />
+	<result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+	<result property="frstRegId" 		column="FRST_REG_ID" />
+	<result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+	<result property="lastModId" 		column="LAST_MOD_ID" />
+	<result property="breakfastYn" 		column="BREAKFAST_YN" />
+	<result property="buyNum" 			column="BUY_NUM" />
+	<result property="ableRsvNum"		column="ABLE_RSV_NUM" />
+	<result property="confRequestDttm" 	column="CONF_REQUEST_DTTM" />
+	<result property="confDttm" 		column="CONF_DTTM" />
+	<result property="mappingNum" 		column="MAPPING_NUM" />
+	<result property="eventCnt" 		column="EVENT_CNT" />
+	<result property="couponCnt" 		column="COUPON_CNT" />
+	<result property="addamtYn" 		column="ADDAMT_YN" />
+	<result property="ctnAplYn" 		column="CTN_APL_YN" />
+	<result property="ctnAmt"	 		column="CTN_AMT" />
+	<result property="tamnacardYn" 		column="TAMNACARD_YN" />
+	<result property="rsvAbleYn" 		column="RSV_ABLE_YN" />
+</resultMap>
+
+<resultMap id="AD_PRDINF_R_07"		class="mas.ad.vo.AD_PRDTINFVO">
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="prdtNm" 			column="PRDT_NM" />
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="tradeStatus" 		column="TRADE_STATUS" />
+	<result property="ctnAplYn" 		column="CTN_APL_YN" />
+	<result property="cmssRate" 		column="CMSS_RATE" />
+</resultMap>
+
+<resultMap id="AD_CNTINF_R_00" class="mas.ad.vo.AD_CNTINFVO">
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="aplDt" 			column="APL_DT" />
+	<result property="totalRoomNum" 	column="TOTAL_ROOM_NUM" />
+	<result property="useRoomNum" 		column="USE_ROOM_NUM" />
+	<result property="ddlYn" 			column="DDL_YN" />
+</resultMap>
+
+<resultMap id="AD_AMTINF_R_00" class="mas.ad.vo.AD_AMTINFVO">
+	<result property="prdtNum" 		column="PRDT_NUM" />
+	<result property="aplDt" 		column="APL_DT" />
+	<result property="saleAmt" 		column="SALE_AMT" />
+	<result property="nmlAmt" 		column="NML_AMT" />
+	<result property="hotdallYn" 	column="HOTDEALL_YN" />
+	<result property="daypriceYn" 	column="DAYPRICE_YN" />
+	<result property="daypriceAmt"	column="DAYPRICE_AMT" />
+	<result property="disDaypriceAmt"	column="DIS_DAYPRICE_AMT" />
+	<result property="depositAmt"	column="DEPOSIT_AMT" />
+</resultMap>
+
+<resultMap id="AD_WEBLIST_R_00" class="oss.ad.vo.AD_WEBLISTVO">
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="adArea" 			column="AD_AREA" />
+	<result property="adDiv" 			column="AD_DIV" />
+	<result property="adNm" 			column="AD_NM" />
+	<result property="roomNm" 			column="ROOM_NM" />
+	<result property="adSimpleExp" 		column="AD_SIMPLE_EXP" />
+	<result property="totalBuyNum" 		column="TOTAL_BUY_NUM" />
+	<result property="nmlAmt" 			column="NML_AMT" />
+	<result property="saleAmt" 			column="SALE_AMT" />
+	<result property="hotdallYn" 		column="HOTDEALL_YN" />
+	<result property="daypriceYn" 		column="DAYPRICE_YN" />
+	<result property="daypriceAmt"		column="DAYPRICE_AMT" />
+	<result property="salePent" 		column="SALE_PENT" />
+	<result property="stdMem" 			column="STD_MEM" />
+	<result property="maxiMem" 			column="MAXI_MEM" />
+	<result property="totalRoomNum" 	column="TOTAL_ROOM_NUM" />
+	<result property="useRoomNum" 		column="USE_ROOM_NUM" />
+	<result property="ddlYn" 			column="DDL_YN" />
+	<result property="rsvAbleYn" 		column="RSV_ABLE_YN" />
+	<result property="savePath" 		column="SAVE_PATH" />
+	<result property="saveFileNm" 		column="SAVE_FILE_NM" />
+	<result property="gpaAvg" 			column="GPA_AVG" />
+	<result property="gpaCnt" 			column="GPA_CNT" />
+	<result property="lon" 				column="LON" />
+	<result property="lat" 				column="LAT" />
+	<result property="adAreaNm" 		column="AD_AREA_NM" />
+	<result property="eventCnt" 		column="EVENT_CNT" />
+	<result property="couponCnt" 		column="COUPON_CNT" />
+</resultMap>
+
+<resultMap id="AD_WEBLIST_R_01" class="oss.ad.vo.AD_WEBLIST2VO">
+	<result property="corpId" 		column="CORP_ID" />
+	<result property="prdtNum" 		column="PRDT_NUM" />
+	<result property="adNm" 		column="AD_NM" />
+	<result property="adArea" 		column="AD_AREA" />
+	<result property="saleAmt" 		column="SALE_AMT" />
+	<result property="nmlAmt" 		column="NML_AMT" />
+	<result property="savePath" 	column="SAVE_PATH" />
+	<result property="saveFileNm" 	column="SAVE_FILE_NM" />
+	<result property="adAreaNm" 	column="AD_AREA_NM" />
+</resultMap>
+
+<resultMap id="AD_WEBLIST_R_06" class="oss.ad.vo.AD_WEBLISTVO">
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="adArea" 			column="AD_AREA" />
+	<result property="adDiv" 			column="AD_DIV" />
+	<result property="adNm" 			column="AD_NM" />
+	<result property="roomNm" 			column="ROOM_NM" />
+	<result property="adSimpleExp" 		column="AD_SIMPLE_EXP" />
+	<result property="totalBuyNum" 		column="TOTAL_BUY_NUM" />
+	<result property="nmlAmt" 			column="NML_AMT" />
+	<result property="saleAmt" 			column="SALE_AMT" />
+	<result property="hotdallYn" 		column="HOTDEALL_YN" />
+	<result property="daypriceYn" 		column="DAYPRICE_YN" />
+	<result property="daypriceAmt"		column="DAYPRICE_AMT" />
+	<result property="salePent" 		column="SALE_PENT" />
+	<result property="stdMem" 			column="STD_MEM" />
+	<result property="maxiMem" 			column="MAXI_MEM" />
+	<result property="savePath" 		column="SAVE_PATH" />
+	<result property="saveFileNm" 		column="SAVE_FILE_NM" />
+	<result property="gpaAvg" 			column="GPA_AVG" />
+	<result property="gpaCnt" 			column="GPA_CNT" />
+	<result property="lon" 				column="LON" />
+	<result property="lat" 				column="LAT" />
+	<result property="adAreaNm" 		column="AD_AREA_NM" />
+	<result property="eventCnt" 		column="EVENT_CNT" />
+	<result property="couponCnt" 		column="COUPON_CNT" />
+	<result property="printSn" 			column="PRINT_SN" />
+</resultMap>
+
+<resultMap id="AD_WEBLIST_R_08" class="oss.ad.vo.AD_WEBLISTVO">
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="adArea" 			column="AD_AREA" />
+	<result property="adDiv" 			column="AD_DIV" />
+	<result property="superbCorpYn" 	column="SUPERB_CORP_YN" />
+	<result property="corpCd" 			column="CORP_CD" />
+	<result property="lon" 				column="LON" />
+	<result property="lat" 				column="LAT" />
+	<result property="adNm" 			column="AD_NM" />
+	<result property="adSimpleExp" 		column="AD_SIMPLE_EXP" />
+	<result property="tip"		 		column="TIP" />
+	<result property="totalBuyNum" 		column="TOTAL_BUY_NUM" />
+	<result property="aplDt" 			column="APL_DT" />
+	<result property="hotdallYn" 		column="HOTDEALL_YN" />
+	<result property="stdMem" 			column="STD_MEM" />
+	<result property="maxiMem" 			column="MAXI_MEM" />
+	<result property="daypriceYn" 		column="DAYPRICE_YN" />
+	<result property="daypriceAmt"		column="DAYPRICE_AMT" />
+	<result property="nmlAmt" 			column="NML_AMT" />
+	<result property="saleAmt" 			column="SALE_AMT" />
+	<result property="savePath" 		column="SAVE_PATH" />
+	<result property="saveFileNm" 		column="SAVE_FILE_NM" />
+	<result property="rsvAbleYn" 		column="RSV_ABLE_YN" />
+	<result property="salePent" 		column="SALE_PENT" />
+	<result property="stayNight" 		column="STAY_NIGHT" />
+	<result property="eventCnt" 		column="EVENT_CNT" />
+	<result property="couponCnt" 		column="COUPON_CNT" />
+	<result property="adAreaNm" 		column="AD_AREA_NM" />
+	<result property="iconCd" 			column="ICON_CD" />
+	<result property="tamnacardYn" 		column="TAMNACARD_YN" />
+	<result property="gpaAvg" 			column="GPA_AVG" />
+	<result property="gpaCnt" 			column="GPA_CNT" />
+	<result property="minRsvNight" 		column="MIN_RSV_NIGHT" />
+	<result property="maxRsvNight" 		column="MAX_RSV_NIGHT" />
+	<result property="continueNightYn" 	column="CONTINUE_NIGHT_YN" />
+</resultMap>
+
+<resultMap id="AD_WEBLIST_R_11" class="oss.ad.vo.AD_WEBLISTVO">
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="corpCd" 			column="CORP_CD" />
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="adNm" 			column="AD_NM" />
+	<result property="adArea" 			column="AD_AREA" />
+	<result property="saleAmt" 			column="SALE_AMT" />
+	<result property="nmlAmt" 			column="NML_AMT" />
+	<result property="savePath" 		column="SAVE_PATH" />
+	<result property="saveFileNm" 		column="SAVE_FILE_NM" />
+	<result property="adAreaNm" 		column="AD_AREA_NM" />
+	<result property="prmtContents"		column="PRMT_CONTENTS" />
+	<result property="tamnacardYn" 		column="TAMNACARD_YN" />
+</resultMap>
+
+<resultMap id="AD_WEBLIST_R_12" class="oss.ad.vo.AD_WEBLISTVO">
+	<result property="adNm" 		column="AD_NM" />
+</resultMap>
+
+<resultMap id="AD_PRDTCNT_R_00" class="oss.ad.vo.AD_PRDTCNTVO">
+	<result property="adDiv" 	column="AD_DIV" />
+	<result property="cnt" 		column="CNT" />
+</resultMap>
+
+<resultMap id="AD_WEBDTL_R_00" class="oss.ad.vo.AD_WEBDTLVO">
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="gpaAvg" 			column="GPA_AVG" />
+	<result property="gpaCnt" 			column="GPA_CNT" />
+	<result property="adNm" 			column="AD_NM" />
+	<result property="adArea" 			column="AD_AREA" />
+	<result property="adGrd" 			column="AD_GRD" />
+	<result property="roadNmAddr" 		column="ROAD_NM_ADDR" />
+	<result property="dtlAddr" 			column="DTL_ADDR" />
+	<result property="hmpgAddr"			column="HMPG_ADDR" />
+	<result property="chkinTm" 			column="CHKIN_TM" />
+	<result property="chkoutTm"			column="CHKOUT_TM" />
+	<result property="rsvTelNum" 		column="RSV_TEL_NUM" />
+	<result property="ceoTelNum" 		column="CEO_TEL_NUM" />
+	<result property="tip" 				column="TIP" />
+	<result property="sccUrl"			column="SCC_URL" />
+	<result property="infIntrolod" 		column="INF_INTROLOD" />
+	<result property="infEquinf"		column="INF_EQUINF" />
+	<result property="infOpergud" 		column="INF_OPERGUD" />
+	<result property="infNti" 			column="INF_NTI" />
+	<result property="cancelGuide" 		column="CANCEL_GUIDE" />
+	<result property="lon" 				column="LON" />
+	<result property="lat" 				column="LAT" />
+	<result property="adultAgeStd" 		column="ADULT_AGE_STD" />
+	<result property="juniorAgeStd" 	column="JUNIOR_AGE_STD" />
+	<result property="childAgeStd" 		column="CHILD_AGE_STD" />
+	<result property="adDiv" 			column="AD_DIV" />
+	<result property="adAreaNm" 		column="AD_AREA_NM" />
+	<result property="adSimpleExp" 		column="AD_SIMPLE_EXP" />
+	<result property="juniorAbleYn" 	column="JUNIOR_ABLE_YN" />
+	<result property="childAbleYn" 		column="CHILD_ABLE_YN" />
+	<result property="superbCorpYn" 		column="SUPERB_CORP_YN" />
+</resultMap>
+
+<resultMap id="AD_WEBLIST_R_04" class="oss.ad.vo.AD_WEBLIST4VO">
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="corpCd" 			column="CORP_CD" />
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="prdtNm" 			column="PRDT_NM" />
+	<result property="tradeStatus" 		column="TRADE_STATUS" />
+	<result property="stdMem" 			column="STD_MEM" />
+	<result property="maxiMem" 			column="MAXI_MEM" />
+	<result property="viewSn" 			column="VIEW_SN" />
+	<result property="breakfastYn" 		column="BREAKFAST_YN" />
+	<result property="buyNum" 			column="BUY_NUM" />
+	<result property="confRequestDttm" 	column="CONF_REQUEST_DTTM" />
+	<result property="confDttm" 		column="CONF_DTTM" />
+	<result property="corpNm" 			column="CORP_NM" />
+	<result property="lon" 				column="LON" />
+	<result property="lat" 				column="LAT" />
+	<result property="tradeStatusCd" 	column="TRADE_STATUS_CD" />
+	<result property="dist" 			column="DIST" />
+	<result property="adNm" 			column="AD_NM" />
+	<result property="savePath"			column="SAVE_PATH" />
+	<result property="saveFileNm"		column="SAVE_FILE_NM" />
+</resultMap>
+
+<resultMap id="AD_WEBLIST_R_07" class="oss.ad.vo.AD_WEBDTLVO">
+	<result property="adNm" 		column="CORP_NM" />
+	<result property="adDiv"		column="AD_DIV" />
+	<result property="corpId" 		column="CORP_ID" />
+	<result property="lon" 			column="LON" />
+	<result property="lat" 			column="LAT" />
+	<result property="roadNmAddr" 	column="ROAD_NM_ADDR" />
+	<result property="dtlAddr" 		column="DTL_ADDR" />
+	<result property="saleAmt" 		column="SALE_AMT" />
+</resultMap>
+
+<resultMap id="AD_WEBLIST_R_05" class="oss.ad.vo.AD_WEBLIST5VO">
+	<result property="hotdeallYn" 		column="HOTDEALL_YN"/>
+	<result property="daypriceYn" 		column="DAYPRICE_YN"/>
+	<result property="continueNightYn" 	column="CONTINUE_NIGHT_YN"/>
+	<result property="eventYn" 			column="EVENT_YN"/>
+	<result property="couponYn" 		column="COUPON_YN"/>
+	<result property="tamnacardYn" 		column="TAMNACARD_YN"/>
+	<result property="superbCorpYn" 	column="SUPERB_CORP_YN"/>
+</resultMap>
+
+<resultMap id="AD_SYNCINF_R_00" class="oss.ad.vo.AD_SYNCINFVO">
+	<result property="corpId" 		column="CORP_ID" />
+	<result property="lastSyncDttm" column="LAST_SYNC_DTTM" />
+	<result property="nextSyncDttm" column="NEXT_SYNC_DTTM" />
+	<result property="useYn" 		column="USE_YN" />
+</resultMap>
+
+<resultMap id="AD_CTNINF_R_00" class="mas.ad.vo.AD_CTNINFVO">
+	<result property="ctnInfSn" column="CTN_INF_SN" />
+	<result property="prdtNum" 	column="PRDT_NUM" />
+	<result property="startDt" 	column="START_DT" />
+	<result property="endDt" 	column="END_DT" />
+	<result property="ctnExp" 	column="CTN_EXP" />
+	<result property="ampInf" 	column="AMP_INF" />
+</resultMap>
+
+<resultMap id="AD_CTNAMT_R_00" class="mas.ad.vo.AD_CTNAMTVO">
+	<result property="ctnInfSn" column="CTN_INF_SN" />
+	<result property="aplNight"	column="APL_NIGHT" />
+	<result property="amtDiv" 	column="AMT_DIV" />
+	<result property="disAmt" 	column="DIS_AMT" />
+</resultMap>
+
+<resultMap id="AD_CTNAMT_R_01" class="mas.ad.vo.AD_CTNAMTVO">
+	<result property="amtDiv" 	column="AMT_DIV" />
+</resultMap>
+
+<select id="AD_DFTINF_S_00" resultMap="AD_DFTINF_R_00">
+SELECT CORP_ID			/*업체 아이디*/
+	, AD_NM				/*숙박 명*/
+	, UTL_RAW.CAST_TO_VARCHAR2(AD_INF) AS AD_INF			/*숙박 정보*/
+	, FRST_REG_DTTM		/*최초 등록 일시*/
+	, LAST_MOD_DTTM		/*최종 수정 일시*/
+	, AD_INF_IMG		/*숙박 정보 이미지*/
+	, AD_SIMPLE_EXP		/*숙박 간략 설명*/
+	, FRST_REG_ID		/*최초 등록 아이디*/
+	, LAST_MOD_ID		/*최종 수정 아이디*/
+	, TOTAL_BUY_NUM		/*총 구매 수*/
+	, ADULT_AGE_STD		/*성인 연령 기준*/
+	, JUNIOR_AGE_STD	/*소인 연령 기준*/
+	, CHILD_AGE_STD		/*유아 연령 기준*/
+	, AD_DIV			/*숙박 구분*/
+	, AD_AREA			/*숙박 지역*/
+	, AD_GRD			/*숙박 등급*/
+	, TIP				/*팁*/
+	, INF_INTROLOD      /*정보 숙소소개*/
+	, INF_EQUINF        /*정보 비품안내*/
+	, INF_OPERGUD       /*정보 이용안내*/
+	, INF_NTI           /*정보 참고사항*/
+	, CHKIN_TM
+	, CHKOUT_TM
+	, CANCEL_GUIDE		/*취소안내*/
+	, JUNIOR_ABLE_YN
+	, CHILD_ABLE_YN
+	, DAY_RSV_UNABLE_YN	/*당일 예약 불가 여부*/
+	, DAY_RSV_UNABLE_TM	/*당일 예약 불가 시간*/
+	, SCC_URL			/*홍보영상 URL*/
+	, JUNIOR_AGE_STD_APICODE /*소아 타입 숙소 연동 매핑 코드 */
+	, CHILD_AGE_STD_APICODE /*유아 타입 숙소 연동 매핑 코드 */
+	, TLL_PRICE_LINK	/*TLL 금액 연동 기준 */
+FROM TB_AD_DFTINF
+WHERE 1=1
+	<isNotEmpty property="corpId">
+		AND CORP_ID = #corpId#
+	</isNotEmpty>
+</select>
+
+<insert id="AD_DFTINF_I_00">
+INSERT INTO TB_AD_DFTINF
+     ( CORP_ID		/*업체 아이디*/
+     , AD_NM			/*숙박 명*/
+     , AD_INF			/*숙박 정보*/
+     , FRST_REG_DTTM	/*최초 등록 일시*/
+     , LAST_MOD_DTTM	/*최종 수정 일시*/
+     , AD_INF_IMG		/*숙박 정보 이미지*/
+     , AD_SIMPLE_EXP	/*숙박 간략 설명*/
+     , FRST_REG_ID		/*최초 등록 아이디*/
+     , LAST_MOD_ID		/*최종 수정 아이디*/
+     , TOTAL_BUY_NUM	/*총 구매 수*/
+     , ADULT_AGE_STD	/*성인 연령 기준*/
+     , JUNIOR_AGE_STD	/*소인 연령 기준*/
+     , CHILD_AGE_STD	/*유아 연령 기준*/
+     , AD_DIV			/*숙박 구분*/
+     , AD_AREA			/*숙박 지역*/
+     , AD_GRD			/*숙박 등급*/
+     , TIP				/*팁*/
+     , INF_INTROLOD    /*정보 숙소소개*/
+	 , INF_EQUINF      /*정보 비품안내*/
+	 , INF_OPERGUD     /*정보 이용안내*/
+	 , INF_NTI
+	 , CHKIN_TM
+	 , CHKOUT_TM
+	 , CANCEL_GUIDE
+	 , JUNIOR_ABLE_YN
+	 , CHILD_ABLE_YN
+	 , DAY_RSV_UNABLE_YN	/*당일 예약 불가 여부*/
+	 , DAY_RSV_UNABLE_TM 	/*당일 예약 불가 시간*/
+	 , SCC_URL		 	/*홍보영상 URL*/
+	 , ADULT_AGE_STD_APICODE
+	 , JUNIOR_AGE_STD_APICODE
+	 , CHILD_AGE_STD_APICODE
+     )
+VALUES
+     ( #corpId#
+	, #adNm#
+	, UTL_RAW.CAST_TO_RAW(#adInf#)
+	, SYSDATE
+	, SYSDATE
+	, #adInfImg#
+	, #adSimpleExp#
+	, #frstRegId#
+	, #lastModId#
+	, 0
+	, #adultAgeStd#
+	, #juniorAgeStd#
+	, #childAgeStd#
+	, #adDiv#
+	, #adArea#
+	, #adGrd#
+	, #tip#
+	, #infIntrolod#
+	, #infEquif#
+	, #infOpergud#
+	, #infNti#
+	, #chkinTm#
+	, #chkoutTm#
+	, #cancelGuide#
+	, #juniorAbleYn#
+	, #childAbleYn#
+	, #dayRsvUnableYn#
+	, #dayRsvUnableTm#
+	, #sccUrl#
+	, #adultAgeStdApicode#
+	, #juniorAgeStdApicode#
+	, #childAgeStdApicode#
+    )
+</insert>
+
+<update id="AD_DFTINF_U_00">
+UPDATE TB_AD_DFTINF
+   SET AD_NM			= #adNm#
+     , AD_INF			= UTL_RAW.CAST_TO_RAW(#adInf#)
+	 , LAST_MOD_DTTM	= SYSDATE
+	 , AD_INF_IMG		= #adInfImg#
+	 , AD_SIMPLE_EXP	= #adSimpleExp#
+	 , LAST_MOD_ID		= #lastModId#
+	 , ADULT_AGE_STD	= #adultAgeStd#
+	 , JUNIOR_AGE_STD	= #juniorAgeStd#
+	 , CHILD_AGE_STD	= #childAgeStd#
+	 , AD_DIV			= #adDiv#
+	 , AD_AREA			= #adArea#
+	 , AD_GRD			= #adGrd#
+	 , TIP				= #tip#
+	 , INF_INTROLOD   	= #infIntrolod#
+	 , INF_EQUINF     	= #infEquif#
+	 , INF_OPERGUD    	= #infOpergud#
+	 , INF_NTI        	= #infNti#
+	 , CHKIN_TM			= #chkinTm#
+	 , CHKOUT_TM		= #chkoutTm#
+	 , CANCEL_GUIDE		= #cancelGuide#
+	 , JUNIOR_ABLE_YN	= #juniorAbleYn#
+	 , CHILD_ABLE_YN	= #childAbleYn#
+	 , DAY_RSV_UNABLE_YN = #dayRsvUnableYn#
+	 , DAY_RSV_UNABLE_TM = #dayRsvUnableTm#
+	 , SCC_URL 			= #sccUrl#
+	 , JUNIOR_AGE_STD_APICODE = #juniorAgeStdApicode#
+	 , CHILD_AGE_STD_APICODE = #childAgeStdApicode#
+	 , TLL_PRICE_LINK 	= #tllPriceLink#
+ WHERE CORP_ID= #corpId#
+</update>
+
+<!-- 판매 숫자 변경 -->
+<update id="AD_DFTINF_U_01">
+UPDATE TB_AD_DFTINF
+   SET  TOTAL_BUY_NUM	= #totalBuyNum#
+ WHERE CORP_ID= #corpId#
+</update>
+
+<!-- 총 판매 숫자 추가 -->
+<update id="AD_DFTINF_U_02">
+UPDATE TB_AD_DFTINF
+   SET TOTAL_BUY_NUM = TOTAL_BUY_NUM + 1
+ WHERE CORP_ID = #corpId#
+</update>
+
+<!-- 총 판매 숫자 감소 -->
+<update id="AD_DFTINF_U_03">
+UPDATE TB_AD_DFTINF
+   SET TOTAL_BUY_NUM = TOTAL_BUY_NUM - 1
+ WHERE CORP_ID = #corpId#
+</update>
+
+
+<select id="AD_ADDAMT_S_00" resultMap="AD_ADDAMT_R_00">
+SELECT CORP_ID			/*업체 아이디*/
+	, APL_START_DT	/*적용 시작 일자*/
+	, ADULT_ADD_AMT	/*성인 추가 요금*/
+	, JUNIOR_ADD_AMT	/*소인 추가 요금*/
+	, CHILD_ADD_AMT	/*유아 추가 요금*/
+FROM TB_AD_ADDAMT
+WHERE 1=1
+	<isNotEmpty property="corpId">
+		AND CORP_ID = #corpId#
+	</isNotEmpty>
+	<isNotEmpty property="aplStartDt">
+		AND APL_START_DT = #aplStartDt#
+	</isNotEmpty>
+</select>
+
+<select id="AD_ADDAMT_S_01" resultMap="AD_ADDAMT_R_00">
+SELECT CORP_ID			/*업체 아이디*/
+	, APL_START_DT	/*적용 시작 일자*/
+	, ADULT_ADD_AMT	/*성인 추가 요금*/
+	, JUNIOR_ADD_AMT	/*소인 추가 요금*/
+	, CHILD_ADD_AMT	/*유아 추가 요금*/
+FROM (SELECT ROWNUM AS RN
+		, CORP_ID			/*업체 아이디*/
+		, APL_START_DT		/*적용 시작 일자*/
+		, ADULT_ADD_AMT		/*성인 추가 요금*/
+		, JUNIOR_ADD_AMT	/*소인 추가 요금*/
+		, CHILD_ADD_AMT		/*유아 추가 요금*/
+	FROM (SELECT CORP_ID			/*업체 아이디*/
+			, APL_START_DT		/*적용 시작 일자*/
+			, ADULT_ADD_AMT		/*성인 추가 요금*/
+			, JUNIOR_ADD_AMT	/*소인 추가 요금*/
+			, CHILD_ADD_AMT		/*유아 추가 요금*/
+		FROM TB_AD_ADDAMT
+		WHERE 1=1
+			<isNotEmpty property="sCorpId">
+				AND CORP_ID = #sCorpId#
+			</isNotEmpty>
+			<isNotEmpty property="sAplStartDt">
+				AND APL_START_DT LIKE '%' || #sAplStartDt# || '%'
+			</isNotEmpty>
+		ORDER BY APL_START_DT DESC
+	)
+)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="AD_ADDAMT_S_02" resultClass="int">
+SELECT COUNT(APL_START_DT)
+FROM TB_AD_ADDAMT
+WHERE 1=1
+	<isNotEmpty property="sCorpId">
+   		AND CORP_ID = #sCorpId#
+	</isNotEmpty>
+	<isNotEmpty property="sAplStartDt">
+		AND APL_START_DT LIKE '%' || #sAplStartDt# || '%'
+	</isNotEmpty>
+</select>
+
+
+<!-- 추가요금 정보 -->
+<select id="AD_ADDAMT_S_03" resultMap="AD_ADDAMT_R_00">
+SELECT CORP_ID
+	, APL_START_DT
+	, TO_CHAR(ADULT_ADD_AMT, '999,999,999') AS ADULT_ADD_AMT
+	, TO_CHAR(JUNIOR_ADD_AMT, '999,999,999') AS JUNIOR_ADD_AMT
+	, TO_CHAR(CHILD_ADD_AMT, '999,999,999') AS CHILD_ADD_AMT
+FROM (SELECT CORP_ID
+		, APL_START_DT
+		, ADULT_ADD_AMT
+		, JUNIOR_ADD_AMT
+		, CHILD_ADD_AMT
+		, RANK() OVER(PARTITION BY CORP_ID ORDER BY (#aplStartDt# - APL_START_DT)) AS RK
+    FROM TB_AD_ADDAMT
+    WHERE 1=1
+		AND CORP_ID = #corpId#
+     	<![CDATA[
+     	AND (#aplStartDt# - APL_START_DT) >= 0
+     	]]>
+)
+WHERE RK=1
+</select>
+
+<select id="AD_ADDAMT_S_04" resultMap="AD_ADDAMT_R_00">
+SELECT CORP_ID
+     , APL_START_DT
+     , ADULT_ADD_AMT
+     , JUNIOR_ADD_AMT
+     , CHILD_ADD_AMT
+FROM(SELECT CORP_ID
+		, APL_START_DT
+		, ADULT_ADD_AMT
+		, JUNIOR_ADD_AMT
+		, CHILD_ADD_AMT
+		, RANK() OVER(PARTITION BY CORP_ID ORDER BY (#aplStartDt# - APL_START_DT)) AS RK
+    FROM TB_AD_ADDAMT
+    WHERE 1=1
+		AND CORP_ID = #corpId#
+     	<![CDATA[
+     	AND (#aplStartDt# - APL_START_DT) >= 0
+     	]]>
+)
+WHERE RK=1
+</select>
+
+<insert id="AD_ADDAMT_I_00">
+INSERT INTO TB_AD_ADDAMT
+     ( 	CORP_ID			/*업체 아이디*/
+       ,APL_START_DT	/*적용 시작 일자*/
+       ,ADULT_ADD_AMT	/*성인 추가 요금*/
+       ,JUNIOR_ADD_AMT	/*소인 추가 요금*/
+       ,CHILD_ADD_AMT	/*유아 추가 요금*/
+     )
+VALUES
+     (
+		#corpId#
+		,#aplStartDt#
+		,#adultAddAmt#
+		,#juniorAddAmt#
+		,#childAddAmt#
+     )
+</insert>
+
+
+<update id="AD_ADDAMT_U_00">
+UPDATE TB_AD_ADDAMT
+   SET	ADULT_ADD_AMT	= #adultAddAmt#
+       ,JUNIOR_ADD_AMT	= #juniorAddAmt#
+       ,CHILD_ADD_AMT	= #childAddAmt#
+ WHERE 	CORP_ID			= #corpId#
+ AND	APL_START_DT	= #aplStartDt#
+ </update>
+
+<delete id="AD_ADDAMT_D_00">
+DELETE FROM TB_AD_ADDAMT
+ WHERE 	CORP_ID			= #corpId#
+ AND	APL_START_DT	= #aplStartDt#
+</delete>
+
+
+<select id="AD_PRDTINF_S_00" resultMap="AD_PRDINF_R_00">
+SELECT PRDT_NUM	        	/*상품 번호*/
+       ,PRDT_NM				/*상품 명*/
+       ,CORP_ID				/*업체 아이디*/
+       ,TRADE_STATUS		/*거래 상태*/
+       ,STD_MEM				/*기준 인원*/
+       ,MAXI_MEM			/*최대 인원*/
+       ,PRDT_EXP			/*상품 설명*/
+       ,MEM_EXCD_ABLE_YN	/*인원 초과 가능 여부*/
+       ,PRINT_YN			/*출력 여부*/
+       ,VIEW_SN				/*노출 순번*/
+       ,FRST_REG_DTTM		/*최초 등록 일시*/
+       ,FRST_REG_ID			/*최초 등록 아이디*/
+       ,LAST_MOD_DTTM		/*최종 등록 일시*/
+       ,LAST_MOD_ID			/*최종 등록 아이디*/
+       ,BREAKFAST_YN		/*조식 여부*/
+       ,BUY_NUM				/*판매 수*/
+       ,CONF_REQUEST_DTTM 	/*승인 요청 일시*/
+       ,CONF_DTTM         	/*승인 일시*/
+       ,MAPPING_NUM
+       ,ADDAMT_YN
+       ,CTN_APL_YN         	/*연박 적용 여부*/
+       ,MIN_RSV_NIGHT     	/*최소 예약 박수*/
+       ,MAX_RSV_NIGHT      	/*최대 예약 박수*/
+  FROM TB_AD_PRDTINF
+   WHERE 1=1
+  	<isNotEmpty property="prdtNum">
+	   AND PRDT_NUM = #prdtNum#
+	</isNotEmpty>
+	<isNotEmpty property="corpId">
+	   AND CORP_ID = #corpId#
+	</isNotEmpty>
+	<isNotEmpty property="mappingNum">
+	   AND MAPPING_NUM = #mappingNum#
+	</isNotEmpty>
+</select>
+
+<select id="AD_PRDTINF_S_01" resultMap="AD_PRDINF_R_01">
+SELECT PRDT_NUM	        	/*상품 번호*/
+       ,PRDT_NM				/*상품 명*/
+       ,CORP_ID				/*업체 아이디*/
+       ,TRADE_STATUS		/*거래 상태*/
+       ,STD_MEM				/*기준 인원*/
+       ,MAXI_MEM			/*최대 인원*/
+       ,PRDT_EXP			/*상품 설명*/
+       ,MEM_EXCD_ABLE_YN	/*인원 초과 가능 여부*/
+       ,PRINT_YN			/*출력 여부*/
+       ,VIEW_SN				/*노출 순번*/
+       ,FRST_REG_DTTM		/*최초 등록 일시*/
+       ,FRST_REG_ID			/*최초 등록 아이디*/
+       ,LAST_MOD_DTTM		/*최종 등록 일시*/
+       ,LAST_MOD_ID			/*최종 등록 아이디*/
+       ,BREAKFAST_YN		/*조식 여부*/
+       ,BUY_NUM				/*판매 수*/
+       ,CONF_REQUEST_DTTM 	/*승인 요청 일시*/
+       ,CONF_DTTM         	/*승인 일시*/
+       ,MAPPING_NUM
+       ,ADDAMT_YN
+       ,CTN_APL_YN         	/*연박 적용 여부*/
+       ,MIN_RSV_NIGHT     	/*최소 예약 박수*/
+       ,MAX_RSV_NIGHT      	/*최대 예약 박수*/
+       ,(SELECT MAX(APL_DT) AS APL_DT FROM TB_AD_CNTINF WHERE PRDT_NUM = A.PRDT_NUM GROUP BY PRDT_NUM) AS CNT_APL_DT
+	   ,(SELECT MAX(APL_DT) AS APL_DT FROM TB_AD_AMTINF WHERE PRDT_NUM = A.PRDT_NUM GROUP BY PRDT_NUM) AS AMT_APL_DT
+  FROM (SELECT ROWNUM AS RN
+	           ,PRDT_NUM	       	/*상품 번호*/
+		       ,PRDT_NM				/*상품 명*/
+		       ,CORP_ID				/*업체 아이디*/
+		       ,TRADE_STATUS		/*거래 상태*/
+		       ,STD_MEM				/*기준 인원*/
+		       ,MAXI_MEM			/*최대 인원*/
+		       ,PRDT_EXP			/*상품 설명*/
+		       ,MEM_EXCD_ABLE_YN	/*인원 초과 가능 여부*/
+		       ,PRINT_YN			/*출력 여부*/
+		       ,VIEW_SN				/*노출 순번*/
+		       ,FRST_REG_DTTM		/*최초 등록 일시*/
+		       ,FRST_REG_ID			/*최초 등록 아이디*/
+		       ,LAST_MOD_DTTM		/*최종 등록 일시*/
+		       ,LAST_MOD_ID			/*최종 등록 아이디*/
+		       ,BREAKFAST_YN		/*조식 여부*/
+		       ,BUY_NUM				/*판매 수*/
+		       ,CONF_REQUEST_DTTM 	/*승인 요청 일시*/
+	       	   ,CONF_DTTM         	/*승인 일시*/
+	       	   ,MAPPING_NUM
+	       	   ,ADDAMT_YN
+	       	   ,CTN_APL_YN         	/*연박 적용 여부*/
+	       	   ,MIN_RSV_NIGHT     	/*최소 예약 박수*/
+       		   ,MAX_RSV_NIGHT      	/*최대 예약 박수*/
+	          FROM ( SELECT PRDT_NUM	       	/*상품 번호*/
+					       ,PRDT_NM				/*상품 명*/
+					       ,CORP_ID				/*업체 아이디*/
+					       ,TRADE_STATUS		/*거래 상태*/
+					       ,STD_MEM				/*기준 인원*/
+					       ,MAXI_MEM			/*최대 인원*/
+					       ,PRDT_EXP			/*상품 설명*/
+					       ,MEM_EXCD_ABLE_YN	/*인원 초과 가능 여부*/
+					       ,PRINT_YN			/*출력 여부*/
+					       ,VIEW_SN				/*노출 순번*/
+					       ,FRST_REG_DTTM		/*최초 등록 일시*/
+					       ,FRST_REG_ID			/*최초 등록 아이디*/
+					       ,LAST_MOD_DTTM		/*최종 등록 일시*/
+					       ,LAST_MOD_ID			/*최종 등록 아이디*/
+					       ,BREAKFAST_YN		/*조식 여부*/
+					       ,BUY_NUM				/*판매 수*/
+					       ,CONF_REQUEST_DTTM 	/*승인 요청 일시*/
+				       	   ,CONF_DTTM         	/*승인 일시*/
+				       	   ,MAPPING_NUM
+				       	   ,ADDAMT_YN
+				       	   ,CTN_APL_YN         	/*연박 적용 여부*/
+				       	   ,MIN_RSV_NIGHT     	/*최소 예약 박수*/
+       					   ,MAX_RSV_NIGHT      	/*최대 예약 박수*/
+				          FROM TB_AD_PRDTINF
+				         WHERE 1=1
+				         AND PRINT_YN = 'Y'
+				        <isNotEmpty property="sCorpId">
+						   	   AND CORP_ID = #sCorpId#
+						</isNotEmpty>
+						<isNotEmpty property="sPrdtNm">
+						 		AND PRDT_NM LIKE '%'||#sPrdtNm#||'%'
+						</isNotEmpty>
+						<isNotEmpty property="sTradeStatus">
+						   	   AND TRADE_STATUS = #sTradeStatus#
+						</isNotEmpty>
+					     ORDER BY (CASE TRADE_STATUS 
+						  	WHEN 'TS01' THEN 1 
+						  	WHEN 'TS02' THEN 2 
+						  	WHEN 'TS03' THEN 3
+						  	WHEN 'TS04' THEN 5
+						  	WHEN 'TS05' THEN 8
+						  	WHEN 'TS06' THEN 4
+						  	WHEN 'TS07' THEN 6
+						  	WHEN 'TS08' THEN 7
+						  	ELSE 8 END) ,VIEW_SN ASC
+			        )
+       ) AS A
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+
+<select id="AD_PRDTINF_S_02" resultClass="int">
+SELECT COUNT(PRDT_NUM)
+  FROM TB_AD_PRDTINF
+ WHERE 1=1
+ AND PRINT_YN = 'Y' 
+ 	<isNotEmpty property="sCorpId">
+	   	   AND CORP_ID = #sCorpId#
+	</isNotEmpty>
+	<isNotEmpty property="sPrdtNm">
+	 		AND PRDT_NM LIKE '%'||#sPrdtNm#||'%'
+	</isNotEmpty>
+	<isNotEmpty property="sTradeStatus">
+	   	   AND TRADE_STATUS = #sTradeStatus#
+	</isNotEmpty>
+</select>
+
+
+<!-- 수량 관리에서 객실 목록 -->
+<select id="AD_PRDTINF_S_03" resultMap="AD_PRDINF_R_00">
+SELECT PRDT_NUM	        	/*상품 번호*/
+       ,PRDT_NM				/*상품 명*/
+       ,CORP_ID				/*업체 아이디*/
+       ,TRADE_STATUS		/*거래 상태*/
+       ,STD_MEM				/*기준 인원*/
+       ,MAXI_MEM			/*최대 인원*/
+       ,PRDT_EXP			/*상품 설명*/
+       ,MEM_EXCD_ABLE_YN	/*인원 초과 가능 여부*/
+       ,PRINT_YN			/*출력 여부*/
+       ,VIEW_SN				/*노출 순번*/
+       ,FRST_REG_DTTM		/*최초 등록 일시*/
+       ,FRST_REG_ID			/*최초 등록 아이디*/
+       ,LAST_MOD_DTTM		/*최종 등록 일시*/
+       ,LAST_MOD_ID			/*최종 등록 아이디*/
+       ,BREAKFAST_YN		/*조식 여부*/
+       ,BUY_NUM				/*판매 수*/
+       ,CONF_REQUEST_DTTM 	/*승인 요청 일시*/
+       ,CONF_DTTM         	/*승인 일시*/
+       ,MAPPING_NUM
+       ,ADDAMT_YN
+       ,CTN_APL_YN         	/*연박 적용 여부*/
+       ,MIN_RSV_NIGHT     	/*최소 예약 박수*/
+       ,MAX_RSV_NIGHT      	/*최대 예약 박수*/
+  FROM TB_AD_PRDTINF
+   WHERE 1=1
+   	 AND CORP_ID = #corpId#
+   	 <isNotEmpty property="viewSn">
+	   	   AND VIEW_SN = #viewSn#
+	</isNotEmpty>
+   	<isNotEmpty property="sTradeStatus">
+	   	   AND TRADE_STATUS NOT IN (#sTradeStatus#)
+	</isNotEmpty>
+	ORDER BY VIEW_SN
+</select>
+
+
+<!-- 상세에서 객실 목록 -->
+<select id="AD_PRDTINF_S_04" resultMap="AD_PRDINF_R_04">
+SELECT PRDT_NUM	        	/*상품 번호*/
+	, PRDT_NM				/*상품 명*/
+	, T_PRDT.CORP_ID		/*업체 아이디*/
+	, TRADE_STATUS		/*거래 상태*/
+	, STD_MEM				/*기준 인원*/
+	, MAXI_MEM			/*최대 인원*/
+	, PRDT_EXP			/*상품 설명*/
+	, MEM_EXCD_ABLE_YN	/*인원 초과 가능 여부*/
+	, PRINT_YN			/*출력 여부*/
+	, VIEW_SN				/*노출 순번*/
+	, T_PRDT.FRST_REG_DTTM	/*최초 등록 일시*/
+	, T_PRDT.FRST_REG_ID	/*최초 등록 아이디*/
+	, T_PRDT.LAST_MOD_DTTM	/*최종 등록 일시*/
+	, LAST_MOD_ID			/*최종 등록 아이디*/
+	, BREAKFAST_YN		/*조식 여부*/
+	, BUY_NUM				/*판매 수*/
+	, CONF_REQUEST_DTTM 	/*승인 요청 일시*/
+	, CONF_DTTM         	/*승인 일시*/
+	, ADDAMT_YN
+	, CASE CTN_APL_YN
+			WHEN 'Y' THEN (SELECT CASE COUNT(PRDT_NUM) WHEN 0 THEN 'N' ELSE 'Y' END
+					FROM TB_AD_CTN_INF
+					WHERE PRDT_NUM = T_PRDT.PRDT_NUM
+						AND TO_DATE(#fromDt#, 'YYYYMMDD') BETWEEN START_DT AND END_DT)
+			ELSE 'N'
+		END AS CTN_APL_YN         	/*연박 적용 여부*/
+	, MAPPING_NUM
+	, (SELECT NVL(COUNT(T_PRMT.PRMT_NUM), 0)
+		FROM TB_PRMT T_PRMT
+			INNER JOIN TB_PRMT_PRDT T_PRMT_PRDT
+			ON T_PRMT.PRMT_NUM = T_PRMT_PRDT.PRMT_NUM
+		WHERE T_PRMT_PRDT.PRDT_NUM = T_PRDT.PRDT_NUM
+			AND STATUS_CD = 'TS03'
+			AND PRMT_DIV = 'EVNT'
+			AND TO_DATE(#fromDt#, 'YYYYMMDD') BETWEEN T_PRMT.START_DT AND T_PRMT.END_DT
+		) AS EVENT_CNT
+	, (SELECT NVL(COUNT(T_CPC.PRDT_NUM), 0)
+		FROM TB_CP_PRDT T_CPC
+			INNER JOIN TB_CP T_CP
+			ON T_CP.CP_ID=T_CPC.CP_ID
+				AND T_CP.STATUS_CD = 'ST02'
+				AND T_CP.TGT_DIV = 'ALL'
+		WHERE T_CPC.PRDT_NUM = T_PRDT.PRDT_NUM
+			<![CDATA[
+			AND APL_START_DT <= #fromDt#
+			AND APL_END_DT >= #toDt#
+			]]>
+		) COUPON_CNT
+	, NVL((SELECT DIS_AMT
+			FROM TB_AD_CTN_INF T_CTIN
+				INNER JOIN TB_AD_CTN_AMT T_CTAM
+				ON T_CTAM.CTN_INF_SN = T_CTIN.CTN_INF_SN
+					AND T_CTAM.APL_NIGHT = #nights#
+			WHERE T_CTIN.PRDT_NUM = T_PRDT.PRDT_NUM
+				AND #fromDt# BETWEEN T_CTIN.START_DT AND T_CTIN.END_DT
+		), 0) AS CTN_AMT
+	, NVL((SELECT MIN(CASE DDL_YN WHEN 'Y' THEN 0 ELSE TOTAL_ROOM_NUM-USE_ROOM_NUM END)
+		FROM TB_AD_CNTINF
+		WHERE PRDT_NUM = T_PRDT.PRDT_NUM
+			AND APL_DT BETWEEN #fromDt#	AND TO_CHAR(TO_DATE(#toDt#, 'YYYYMMDD') - 1, 'YYYYMMDD')
+		), 0) AS ABLE_RSV_NUM /*예약 가능 수*/
+	,CASE WHEN TC.TAMNACARD_MNG_YN = 'C' OR (TC.TAMNACARD_MNG_YN = 'P' AND T_PRDT.TAMNACARD_PRDT_YN = 'Y') THEN 'Y' ELSE 'N' END AS TAMNACARD_YN
+	, CASE
+	WHEN (
+		SELECT COUNT(1)
+		FROM TB_AD_AMTINF A
+		WHERE A.PRDT_NUM = T_PRDT.PRDT_NUM
+		AND A.APL_DT BETWEEN #fromDt# AND TO_CHAR(TO_DATE(#fromDt#, 'YYYYMMDD') + (#nights# - 1), 'YYYYMMDD')
+		AND NVL(A.SALE_AMT, 0) != 0
+		AND NVL(A.NML_AMT, 0) != 0
+	) = #nights#
+	AND (
+		SELECT COUNT(1)
+		FROM TB_AD_CNTINF C
+		WHERE C.PRDT_NUM = T_PRDT.PRDT_NUM
+		AND C.APL_DT BETWEEN #fromDt# AND TO_CHAR(TO_DATE(#fromDt#, 'YYYYMMDD') + (#nights# - 1), 'YYYYMMDD')
+		AND C.DDL_YN = 'N'
+		AND C.TOTAL_ROOM_NUM - C.USE_ROOM_NUM > 0
+	) = #nights#
+	AND #nights# >= T_PRDT.MIN_RSV_NIGHT
+	THEN 'Y' ELSE 'N'
+	END AS RSV_ABLE_YN
+FROM TB_AD_PRDTINF T_PRDT
+LEFT JOIN TB_CORP TC
+ON T_PRDT.CORP_ID = TC.CORP_ID
+WHERE 1=1
+	<isEqual property="searchYn" compareValue="Y">
+		AND #nights# BETWEEN MIN_RSV_NIGHT AND MAX_RSV_NIGHT
+	</isEqual>
+	<isNotEmpty property="corpId">
+		AND T_PRDT.CORP_ID = #corpId#
+	</isNotEmpty>
+	<isEmpty property="ossMaster">
+		AND PRINT_YN = 'Y'
+		AND TRADE_STATUS = 'TS03' /*승인 완료 된것만*/
+	</isEmpty>
+ORDER BY VIEW_SN
+</select>
+
+
+<select id="AD_PRDTINF_S_05" resultMap="AD_PRDINF_R_00">
+SELECT PRDT_NUM	        	/*상품 번호*/
+	, PRDT_NM				/*상품 명*/
+	, CORP_ID				/*업체 아이디*/
+	, TRADE_STATUS		/*거래 상태*/
+	, STD_MEM				/*기준 인원*/
+	, MAXI_MEM			/*최대 인원*/
+	, PRDT_EXP			/*상품 설명*/
+	, MEM_EXCD_ABLE_YN	/*인원 초과 가능 여부*/
+	, PRINT_YN			/*출력 여부*/
+	, VIEW_SN				/*노출 순번*/
+	, FRST_REG_DTTM		/*최초 등록 일시*/
+	, FRST_REG_ID			/*최초 등록 아이디*/
+	, LAST_MOD_DTTM		/*최종 등록 일시*/
+	, LAST_MOD_ID			/*최종 등록 아이디*/
+	, BREAKFAST_YN		/*조식 여부*/
+	, BUY_NUM				/*판매 수*/
+	, CONF_REQUEST_DTTM 	/*승인 요청 일시*/
+	, CONF_DTTM         	/*승인 일시*/
+	, MAPPING_NUM
+	, ADDAMT_YN
+	, CTN_APL_YN         	/*연박 적용 여부*/
+	, MIN_RSV_NIGHT     	/*최소 예약 박수*/
+	, MAX_RSV_NIGHT      	/*최대 예약 박수*/
+FROM (SELECT PRDT_NUM	        	/*상품 번호*/
+		, PRDT_NM				/*상품 명*/
+		, CORP_ID				/*업체 아이디*/
+		, TRADE_STATUS		/*거래 상태*/
+		, STD_MEM				/*기준 인원*/
+		, MAXI_MEM			/*최대 인원*/
+		, PRDT_EXP			/*상품 설명*/
+		, MEM_EXCD_ABLE_YN	/*인원 초과 가능 여부*/
+		, PRINT_YN			/*출력 여부*/
+		, VIEW_SN				/*노출 순번*/
+		, FRST_REG_DTTM		/*최초 등록 일시*/
+		, FRST_REG_ID			/*최초 등록 아이디*/
+		, LAST_MOD_DTTM		/*최종 등록 일시*/
+		, LAST_MOD_ID			/*최종 등록 아이디*/
+		, BREAKFAST_YN		/*조식 여부*/
+		, BUY_NUM				/*판매 수*/
+		, CONF_REQUEST_DTTM 	/*승인 요청 일시*/
+		, CONF_DTTM         	/*승인 일시*/
+		, MAPPING_NUM
+		, ADDAMT_YN
+		, CTN_APL_YN         	/*연박 적용 여부*/
+		, MIN_RSV_NIGHT     	/*최소 예약 박수*/
+		, MAX_RSV_NIGHT      	/*최대 예약 박수*/
+		, RANK() OVER (ORDER BY VIEW_SN ASC ) as RK
+	FROM TB_AD_PRDTINF
+	WHERE CORP_ID = #corpId#
+        AND PRINT_YN = 'Y'
+		<isNotEmpty property="totMem">
+			<![CDATA[
+		 	AND MAXI_MEM >= #totMem#
+		 	]]>
+		</isNotEmpty>
+)
+WHERE RK=1
+</select>
+
+
+<select id="AD_PRDTINF_S_06" resultMap="AD_PRDINF_R_00">
+
+SELECT PRDT_NUM	        	/*상품 번호*/
+	, PRDT_NM				/*상품 명*/
+	, CORP_ID				/*업체 아이디*/
+	, TRADE_STATUS		/*거래 상태*/
+	, STD_MEM				/*기준 인원*/
+	, MAXI_MEM			/*최대 인원*/
+	, PRDT_EXP			/*상품 설명*/
+	, MEM_EXCD_ABLE_YN	/*인원 초과 가능 여부*/
+	, PRINT_YN			/*출력 여부*/
+	, VIEW_SN				/*노출 순번*/
+	, FRST_REG_DTTM		/*최초 등록 일시*/
+	, FRST_REG_ID			/*최초 등록 아이디*/
+	, LAST_MOD_DTTM		/*최종 등록 일시*/
+	, LAST_MOD_ID			/*최종 등록 아이디*/
+	, BREAKFAST_YN		/*조식 여부*/
+	, BUY_NUM				/*판매 수*/
+	, CONF_REQUEST_DTTM 	/*승인 요청 일시*/
+	, CONF_DTTM         	/*승인 일시*/
+	, MAPPING_NUM
+	, ADDAMT_YN
+	, CTN_APL_YN         	/*연박 적용 여부*/
+	, MIN_RSV_NIGHT     	/*최소 예약 박수*/
+	, MAX_RSV_NIGHT      	/*최대 예약 박수*/
+FROM (SELECT rownum RN
+		, PRDT_NUM	        /*상품 번호*/
+		, PRDT_NM				/*상품 명*/
+		, CORP_ID				/*업체 아이디*/
+		, TRADE_STATUS		/*거래 상태*/
+		, STD_MEM				/*기준 인원*/
+		, MAXI_MEM			/*최대 인원*/
+		, PRDT_EXP			/*상품 설명*/
+		, MEM_EXCD_ABLE_YN	/*인원 초과 가능 여부*/
+		, PRINT_YN			/*출력 여부*/
+		, VIEW_SN				/*노출 순번*/
+		, FRST_REG_DTTM		/*최초 등록 일시*/
+		, FRST_REG_ID			/*최초 등록 아이디*/
+		, LAST_MOD_DTTM		/*최종 등록 일시*/
+		, LAST_MOD_ID			/*최종 등록 아이디*/
+		, BREAKFAST_YN		/*조식 여부*/
+		, BUY_NUM				/*판매 수*/
+		, CONF_REQUEST_DTTM 	/*승인 요청 일시*/
+		, CONF_DTTM         	/*승인 일시*/
+		, MAPPING_NUM
+		, ADDAMT_YN
+		, CTN_APL_YN         	/*연박 적용 여부*/
+		, MIN_RSV_NIGHT     	/*최소 예약 박수*/
+		, MAX_RSV_NIGHT      	/*최대 예약 박수*/
+	FROM TB_AD_PRDTINF
+  	WHERE CORP_ID = #corpId#
+		<isNotEmpty property="sTradeStatus">
+			AND TRADE_STATUS NOT IN (#sTradeStatus#)
+		</isNotEmpty>
+	ORDER BY VIEW_SN
+)
+WHERE RN=1
+</select>
+
+<select id="AD_PRDTINF_S_07" resultMap="AD_PRDINF_R_07">
+SELECT PRDT_NUM	        	/*상품 번호*/
+	, PRDT_NM				/*상품 명*/
+	, AP.CORP_ID			/*업체 아이디*/
+	, TRADE_STATUS		/*거래 상태*/
+	, CTN_APL_YN         	/*연박 적용 여부*/
+	, (SELECT ADJ_APL_PCT FROM TB_CMSS WHERE CMSS_NUM=CP.CMSS_NUM) AS CMSS_RATE	/*정산 적용률*/
+FROM TB_AD_PRDTINF AP
+	INNER JOIN TB_CORP CP
+	ON CP.CORP_ID = AP.CORP_ID
+WHERE 1=1
+  	<isNotEmpty property="prdtNum">
+	   AND PRDT_NUM = #prdtNum#
+	</isNotEmpty>
+	<isNotEmpty property="corpId">
+	   AND AP.CORP_ID = #corpId#
+ 	</isNotEmpty>
+	<isNotEmpty property="mappingNum">
+	   AND MAPPING_NUM = #mappingNum#
+	</isNotEmpty>
+</select>
+
+<insert id="AD_PRDTINF_I_00">
+<selectKey keyProperty="prdtNum" resultClass="String">
+SELECT 'AD'||LPAD(NVL(MAX(SUBSTR(PRDT_NUM,3)),0) + 1, 8,'0') AS PRDT_NUM
+  FROM TB_AD_PRDTINF
+</selectKey>
+INSERT INTO TB_AD_PRDTINF
+     ( 	PRDT_NUM	       	/*상품 번호*/
+       ,PRDT_NM				/*상품 명*/
+       ,CORP_ID				/*업체 아이디*/
+       ,TRADE_STATUS		/*거래 상태*/
+       ,STD_MEM				/*기준 인원*/
+       ,MAXI_MEM			/*최대 인원*/
+       ,PRDT_EXP			/*상품 설명*/
+       ,MEM_EXCD_ABLE_YN	/*인원 초과 가능 여부*/
+       ,PRINT_YN			/*출력 여부*/
+       ,VIEW_SN				/*노출 순번*/
+       ,FRST_REG_DTTM		/*최초 등록 일시*/
+       ,FRST_REG_ID			/*최초 등록 아이디*/
+       ,LAST_MOD_DTTM		/*최종 등록 일시*/
+       ,LAST_MOD_ID			/*최종 등록 아이디*/
+       ,BREAKFAST_YN		/*조식 여부*/
+       ,BUY_NUM				/*판매 수*/
+       ,MAPPING_NUM
+       ,ADDAMT_YN
+       ,CTN_APL_YN         	/*연박 적용 여부*/
+       ,MIN_RSV_NIGHT     	/*최소 예약 박수*/
+       ,MAX_RSV_NIGHT      	/*최대 예약 박수*/
+     )
+VALUES
+     (
+		#prdtNum#
+		,#prdtNm#
+		,#corpId#
+		,'TS01'
+		,#stdMem#
+		,#maxiMem#
+		,#prdtExp#
+		,#memExcdAbleYn#
+		,#printYn#
+		,#viewSn#
+		,SYSDATE
+		,#frstRegId#
+		,SYSDATE
+		,#frstRegId#
+		,#breakfastYn#
+		,0
+		,#mappingNum#
+		,#addamtYn#
+		,#ctnAplYn#
+		,#minRsvNight#
+		,#maxRsvNight#
+     )
+</insert>
+
+
+<update id="AD_PRDTINF_U_00">
+UPDATE TB_AD_PRDTINF
+   SET	PRDT_NM		= #prdtNm#
+		,CORP_ID		= #corpId#
+		,TRADE_STATUS	= #tradeStatus#
+		,STD_MEM		= #stdMem#
+		,MAXI_MEM	   	= #maxiMem#
+		,PRDT_EXP	   	= #prdtExp#
+		,MEM_EXCD_ABLE_YN = #memExcdAbleYn#
+		,PRINT_YN	   	= #printYn#
+		<!-- ,VIEW_SN		= #viewSn# -->
+		,LAST_MOD_DTTM	= SYSDATE
+		,LAST_MOD_ID	= #lastModId#
+		,BREAKFAST_YN	= #breakfastYn#
+		,MAPPING_NUM	= #mappingNum#
+		,ADDAMT_YN		= #addamtYn#
+		,CTN_APL_YN		= #ctnAplYn#
+		,MIN_RSV_NIGHT  = #minRsvNight#
+        ,MAX_RSV_NIGHT  = #maxRsvNight#
+ WHERE 	PRDT_NUM		= #prdtNum#
+ </update>
+
+
+ <!-- 상품 이미지 순번변경 -->
+<update id="AD_PRDTINF_U_01">
+UPDATE TB_AD_PRDTINF
+   SET VIEW_SN = VIEW_SN + 1
+ WHERE CORP_ID = #corpId#
+	<isNotEqual property="oldSn" compareValue="0">
+		<![CDATA[
+   		AND VIEW_SN < #oldSn#
+  		]]>
+  	</isNotEqual>
+   	<![CDATA[
+   	AND VIEW_SN >= #newSn#
+   	]]>
+</update>
+
+<!-- 상품 이미지 순번변경 -->
+<update id="AD_PRDTINF_U_02">
+UPDATE TB_AD_PRDTINF
+   SET VIEW_SN = VIEW_SN - 1
+ WHERE CORP_ID = #corpId#
+	<isNotEqual property="newSn" compareValue="0">
+ 		<![CDATA[
+   		AND VIEW_SN <= #newSn#
+ 		]]>
+ 	</isNotEqual>
+ 	<![CDATA[
+   		AND VIEW_SN > #oldSn#
+ 	]]>
+
+</update>
+
+<!-- 상품 이미지 순번변경 수정된 객체 -->
+<update id="AD_PRDTINF_U_03">
+UPDATE TB_AD_PRDTINF
+   SET VIEW_SN		= #viewSn#
+ WHERE CORP_ID     	= #corpId#
+   AND PRDT_NUM		= #prdtNum#
+   AND VIEW_SN		= #oldSn#
+</update>
+
+
+<update id="AD_PRDTINF_U_04">
+UPDATE TB_AD_PRDTINF
+   SET TRADE_STATUS = #tradeStatus#
+<isEqual property="tradeStatus" compareValue="TS02">
+    , CONF_REQUEST_DTTM = SYSDATE
+</isEqual>
+<isEqual property="tradeStatus" compareValue="TS03">
+     , CONF_DTTM = (SELECT CASE WHEN CONF_DTTM IS NULL THEN SYSDATE ELSE CONF_DTTM END FROM TB_AD_PRDTINF WHERE PRDT_NUM = #prdtNum#)
+</isEqual>
+ WHERE PRDT_NUM     = #prdtNum#
+</update>
+
+
+<update id="AD_PRDTINF_U_05">
+UPDATE TB_AD_PRDTINF
+   SET TRADE_STATUS = #tradeStatus#
+ WHERE PRDT_NUM = #prdtNum#
+</update>
+
+<!-- 구매 수 증가 -->
+<update id="AD_PRDTINF_U_06">
+UPDATE TB_AD_PRDTINF
+   SET BUY_NUM = BUY_NUM + 1
+ WHERE PRDT_NUM = #prdtNum#
+</update>
+
+<!-- 구매수 감소 -->
+<update id="AD_PRDTINF_U_07">
+UPDATE TB_AD_PRDTINF
+   SET BUY_NUM = BUY_NUM - 1
+ WHERE PRDT_NUM = #prdtNum#
+</update>
+
+<!-- 연박 기능 적용 여부 -->
+<update id="AD_PRDTINF_U_08">
+UPDATE TB_AD_PRDTINF
+   SET CTN_APL_YN = #ctnAplYn#
+ WHERE PRDT_NUM = #prdtNum#
+</update>
+
+<!-- 상품 히든처리 -->
+<update id="AD_PRDTINF_U_09">
+UPDATE TB_AD_PRDTINF
+	SET PRINT_YN = 'N'
+		,  LAST_MOD_DTTM	= SYSDATE
+		,  LAST_MOD_ID		= #lastModId#
+ WHERE PRDT_NUM = #prdtNum#
+</update>
+
+<delete id="AD_PRDTINF_D_00">
+DELETE FROM TB_AD_PRDTINF
+ WHERE 	PRDT_NUM			= #prdtNum#
+</delete>
+
+
+
+<select id="AD_CNTINF_S_00" resultMap="AD_CNTINF_R_00">
+SELECT PRDT_NUM         /*상품 번호*/
+     , APL_DT           /*적용 일자*/
+     , NVL(TOTAL_ROOM_NUM,0) AS TOTAL_ROOM_NUM   /*총 객실 수*/
+     , NVL(USE_ROOM_NUM, 0) AS USE_ROOM_NUM     /*사용 객실 수*/
+     , DDL_YN           /*마감 여부*/
+  FROM TB_AD_CNTINF
+  WHERE 1=1
+  	<isNotEmpty property="prdtNum">
+		AND PRDT_NUM = #prdtNum#
+	</isNotEmpty>
+	<isNotEmpty property="aplDt">
+	   	AND APL_DT = #aplDt#
+	</isNotEmpty>
+</select>
+
+<select id="AD_CNTINF_S_01" resultMap="AD_CNTINF_R_00">
+SELECT PRDT_NUM         /*상품 번호*/
+     , APL_DT           /*적용 일자*/
+     , NVL(TOTAL_ROOM_NUM,0) AS TOTAL_ROOM_NUM   /*총 객실 수*/
+     , NVL(USE_ROOM_NUM, 0) AS USE_ROOM_NUM     /*사용 객실 수*/
+     , DDL_YN           /*마감 여부*/
+  FROM TB_AD_CNTINF
+  WHERE 1=1
+  	<isNotEmpty property="sPrdtNum">
+	   	   AND PRDT_NUM = #sPrdtNum#
+	</isNotEmpty>
+	<isNotEmpty property="sAplDt">
+	 		AND APL_DT LIKE #sAplDt#||'%'
+	</isNotEmpty>
+	ORDER BY APL_DT ASC
+</select>
+
+<select id="AD_CNTINF_S_02" resultMap="AD_CNTINF_R_00">
+SELECT T_CNT.PRDT_NUM
+     , T_CNT.APL_DT
+     , NVL(T_CNT.TOTAL_ROOM_NUM, 0) AS TOTAL_ROOM_NUM
+     , NVL(T_CNT.USE_ROOM_NUM, 0)   AS USE_ROOM_NUM
+     <![CDATA[
+     , (CASE DDL_YN WHEN 'Y' THEN 'Y'
+                    ELSE (CASE WHEN (TO_CHAR(SYSDATE, 'YYYYMMDD') = T_CNT.APL_DT AND T_DFT.DAY_RSV_UNABLE_YN = 'Y' )
+                               THEN (CASE WHEN TO_CHAR(SYSDATE, 'HH24') < DAY_RSV_UNABLE_TM
+                                          THEN 'N'
+                                          ELSE 'Y'
+                                      END)
+                               ELSE 'N'
+                           END)
+         END
+       ) AS DDL_YN
+      ]]>
+  FROM TB_AD_PRDTINF T_PRDT
+ INNER JOIN TB_AD_CNTINF T_CNT
+    ON T_CNT.PRDT_NUM = T_PRDT.PRDT_NUM
+ INNER JOIN TB_AD_DFTINF T_DFT
+    ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+  WHERE 1=1
+  	<isNotEmpty property="sPrdtNum">
+	   	   AND T_PRDT.PRDT_NUM = #sPrdtNum#
+	</isNotEmpty>
+	<isNotEmpty property="sAplDt">
+	 		AND T_CNT.APL_DT LIKE #sAplDt#||'%'
+	</isNotEmpty>
+	ORDER BY T_CNT.APL_DT ASC
+</select>
+
+
+<select id="AD_CNTINF_S_10" resultMap="AD_CNTINF_R_00">
+SELECT PRDT_NUM         /*상품 번호*/
+     , RSV_DT AS APL_DT          /*적용 일자*/
+     , NVL(TOTAL_ROOM_NUM,0) AS TOTAL_ROOM_NUM  /*총 객실 수*/
+     , NVL(USE_ROOM_NUM,0) AS USE_ROOM_NUM   /*사용 객실 수*/
+     , DDL_YN           /*마감 여부*/
+FROM (
+    SELECT TO_CHAR(TO_DATE(#startDt#,'YYYYMMDD')+LEVEL-1, 'YYYYMMDD') AS RSV_DT
+      FROM DUAL
+      <![CDATA[ CONNECT BY LEVEL <= #sNights# ]]>
+) T_D
+	LEFT OUTER JOIN (
+	    SELECT T_CNT.PRDT_NUM
+		     , T_CNT.APL_DT
+		     , T_CNT.TOTAL_ROOM_NUM
+		     , T_CNT.USE_ROOM_NUM
+		     <![CDATA[
+			 , CASE WHEN T_DFT.DAY_RSV_UNABLE_YN = 'Y' AND TO_CHAR(SYSDATE, 'YYYYMMDD') = T_CNT.APL_DT THEN 'Y'
+					WHEN T_DFT.DAY_RSV_UNABLE_YN = 'N' AND TO_CHAR(SYSDATE, 'YYYYMMDDHH24') > T_CNT.APL_DT || DAY_RSV_UNABLE_TM THEN 'Y'
+					WHEN DDL_YN = 'Y' THEN 'Y'
+					ELSE 'N'
+				END AS DDL_YN
+		     ]]>
+		  FROM TB_AD_PRDTINF T_PRDT
+		 INNER JOIN TB_AD_CNTINF T_CNT
+		    ON T_CNT.PRDT_NUM = T_PRDT.PRDT_NUM
+		 INNER JOIN TB_AD_DFTINF T_DFT
+		    ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+	     WHERE T_PRDT.PRDT_NUM = #sPrdtNum#
+) T_C
+ON T_C.APL_DT = T_D.RSV_DT
+ORDER BY RSV_DT
+</select>
+
+<!-- 숙소 수 가격 - 간단 입력용 삽입 -->
+<insert id="AD_CNTINF_I_01">
+INSERT INTO TB_AD_CNTINF
+     ( PRDT_NUM
+     , APL_DT
+     <isNotEmpty property="totalRoomNum">
+     		, TOTAL_ROOM_NUM
+     </isNotEmpty>
+     <isNotEmpty property="useRoomNum">
+     		, USE_ROOM_NUM
+     </isNotEmpty>
+	, DDL_YN
+       )
+SELECT  #prdtNum#
+     , DT
+     <isNotEmpty property="totalRoomNum">
+     		, #totalRoomNum#
+     </isNotEmpty>
+     <isNotEmpty property="useRoomNum">
+     		, #useRoomNum#
+     </isNotEmpty>
+     <isNotEmpty property="ddlYn">
+     	, #ddlYn#
+     </isNotEmpty>
+     <isEmpty property="ddlYn">
+     	,'N'
+     </isEmpty>
+  FROM (SELECT TO_CHAR(TO_DATE(#startDt#, 'YYYYMMDD')+LEVEL-1, 'YYYYMMDD') AS DT
+          FROM DUAL
+         CONNECT BY LEVEL &lt;= (TO_DATE(#endDt#, 'YYYYMMDD')-TO_DATE(#startDt#, 'YYYYMMDD')+1)
+       )
+ WHERE DT NOT IN (SELECT APL_DT
+                    FROM TB_AD_CNTINF
+                   WHERE PRDT_NUM = #prdtNum#
+                     AND APL_DT BETWEEN #startDt# AND #endDt#)
+  <!-- AND TO_CHAR(TO_DATE(DT, 'YYYYMMDD'), 'D') IN (#wday#) -->
+  <dynamic prepend="AND TO_CHAR(TO_DATE(DT, 'YYYYMMDD'), 'D') IN ">
+ 	<iterate open="(" close=")" conjunction="," property="wdayList">
+ 		#wdayList[]#
+ 	</iterate>
+ </dynamic>
+
+</insert>
+
+<!-- 숙소 수 가격 -간단 입력용 수정 -->
+<update id="AD_CNTINF_U_01">
+UPDATE TB_AD_CNTINF
+SET PRDT_NUM = PRDT_NUM
+	<isNotEmpty property="totalRoomNum">
+			, TOTAL_ROOM_NUM = #totalRoomNum#
+	</isNotEmpty>
+	<isNotEmpty property="useRoomNum">
+    		, USE_ROOM_NUM = #useRoomNum#
+    </isNotEmpty>
+    <isNotEmpty property="ddlYn">
+    		, DDL_YN = #ddlYn#
+    </isNotEmpty>
+WHERE PRDT_NUM = #prdtNum#
+       AND APL_DT BETWEEN #startDt# AND #endDt#
+       <!-- AND TO_CHAR(TO_DATE(APL_DT, 'YYYYMMDD'), 'D') IN (#wday#) -->
+       <dynamic prepend="AND TO_CHAR(TO_DATE(APL_DT, 'YYYYMMDD'), 'D') IN ">
+		<iterate open="(" close=")" conjunction="," property="wdayList">
+	 		#wdayList[]#
+	 	</iterate>
+	  </dynamic>
+</update>
+
+<!-- 사용 객실수 증가 -->
+<update id="AD_CNTINF_U_02">
+UPDATE TB_AD_CNTINF
+   SET USE_ROOM_NUM = NVL(USE_ROOM_NUM, 0) + 1
+ WHERE PRDT_NUM = #prdtNum#
+   AND APL_DT BETWEEN #useDt# AND TO_CHAR(TO_DATE(#useDt#, 'YYYYMMDD') + TO_NUMBER(#useNight#) -1, 'YYYYMMDD')
+</update>
+
+<!-- 사용 객실수 감소 -->
+<update id="AD_CNTINF_U_03">
+UPDATE TB_AD_CNTINF
+   SET USE_ROOM_NUM = NVL(USE_ROOM_NUM, 1) - 1
+ WHERE PRDT_NUM = #prdtNum#
+   AND APL_DT BETWEEN #useDt# AND TO_CHAR(TO_DATE(#useDt#, 'YYYYMMDD') + TO_NUMBER(#useNight#) -1, 'YYYYMMDD')
+</update>
+
+
+<update id="AD_CNTINF_U_04">
+UPDATE TB_AD_CNTINF
+   SET USE_ROOM_NUM = <![CDATA[ (CASE WHEN (NVL(USE_ROOM_NUM, 0) + 1 > TOTAL_ROOM_NUM) THEN TOTAL_ROOM_NUM ELSE NVL(USE_ROOM_NUM, 0) + 1 END) ]]>
+ WHERE PRDT_NUM = #prdtNum#
+   AND APL_DT BETWEEN #useDt# AND TO_CHAR(TO_DATE(#useDt#, 'YYYYMMDD') + TO_NUMBER(#useNight#) -1, 'YYYYMMDD')
+</update>
+
+<update id="AD_CNTINF_U_05">
+UPDATE TB_AD_CNTINF
+   SET USE_ROOM_NUM = <![CDATA[ (CASE WHEN (NVL(USE_ROOM_NUM, 0) - 1 < 0) THEN 0 ELSE NVL(USE_ROOM_NUM, 0) - 1 END) ]]>
+ WHERE PRDT_NUM = #prdtNum#
+   AND APL_DT BETWEEN #useDt# AND TO_CHAR(TO_DATE(#useDt#, 'YYYYMMDD') + TO_NUMBER(#useNight#) -1, 'YYYYMMDD')
+</update>
+
+
+<!-- 객실 수 머지(달력용) -->
+<update id="AD_CNTINF_M_00">
+ MERGE INTO TB_AD_CNTINF AMT1
+ USING (SELECT #prdtNum# AS PRDT_NUM, #aplDt# AS APL_DT
+          FROM DUAL) AMT2
+    ON (AMT2.PRDT_NUM = AMT1.PRDT_NUM AND AMT2.APL_DT = AMT1.APL_DT)
+  WHEN MATCHED THEN
+UPDATE SET
+       TOTAL_ROOM_NUM = #totalRoomNum#,
+       USE_ROOM_NUM = #useRoomNum#,
+       DDL_YN = #ddlYn#
+  WHEN NOT MATCHED THEN
+INSERT
+     ( PRDT_NUM
+     , APL_DT
+     , TOTAL_ROOM_NUM
+     , USE_ROOM_NUM
+     , DDL_YN
+       )
+VALUES
+     ( #prdtNum#
+     , #aplDt#
+     , #totalRoomNum#
+     , #useRoomNum#
+     , #ddlYn#
+     )
+</update>
+
+
+<!-- 객실 수 머지(Api용) -->
+<update id="AD_CNTINF_M_01">
+ MERGE INTO TB_AD_CNTINF AMT1
+ USING (SELECT #prdtNum# AS PRDT_NUM, #aplDt# AS APL_DT
+          FROM DUAL) AMT2
+    ON (AMT2.PRDT_NUM = AMT1.PRDT_NUM AND AMT2.APL_DT = AMT1.APL_DT)
+  WHEN MATCHED THEN
+UPDATE SET
+       TOTAL_ROOM_NUM = #totalRoomNum#,
+       USE_ROOM_NUM = #useRoomNum#
+  WHEN NOT MATCHED THEN
+INSERT
+     ( PRDT_NUM
+     , APL_DT
+     , TOTAL_ROOM_NUM
+     , USE_ROOM_NUM
+     , DDL_YN
+       )
+VALUES
+     ( #prdtNum#
+     , #aplDt#
+     , #totalRoomNum#
+     , #useRoomNum#
+     , 'N'
+     )
+</update>
+
+<delete id="AD_CNTINF_D_00">
+DELETE FROM TB_AD_CNTINF
+WHERE 1=1
+ AND PRDT_NUM = #prdtNum#
+</delete>
+
+<select id="AD_AMTINF_S_00" resultMap="AD_AMTINF_R_00">
+SELECT PRDT_NUM     /*상품 번호 */
+    , APL_DT        /*적용 일자 */
+    , NVL(SALE_AMT,0) AS SALE_AMT    /*판매 금액 */
+    , NVL(NML_AMT,0) AS NML_AMT     /*정상 금액 */
+    , HOTDEALL_YN   /*핫딜 여부 */
+    , DAYPRICE_YN   /*당일특가 여부 */
+    , NVL(DAYPRICE_AMT, 0) AS DAYPRICE_AMT  /*당일특가 금액 */
+    , NVL(SALE_AMT - DAYPRICE_AMT, 0) AS DIS_DAYPRICE_AMT /*당일특가 할인금액 */
+	, NVL(DEPOSIT_AMT, 0) AS DEPOSIT_AMT	/* 입금가*/
+FROM TB_AD_AMTINF
+WHERE 1=1
+	<isNotEmpty property="prdtNum">
+	   AND PRDT_NUM = #prdtNum#
+	</isNotEmpty>
+	<isNotEmpty property="aplDt">
+	   AND APL_DT = #aplDt#
+	</isNotEmpty>
+</select>
+
+<select id="AD_AMTINF_S_01" resultMap="AD_AMTINF_R_00">
+SELECT PRDT_NUM     /*상품 번호, */
+    , APL_DT        /*적용 일자, */
+    , NVL((CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN DAYPRICE_AMT ELSE SALE_AMT END), 0) AS SALE_AMT      /*판매 금액, */
+    , NVL(NML_AMT,0) AS NML_AMT     /*정상 금액 */
+    , HOTDEALL_YN   /*핫딜 여부 */
+    , (CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN 'Y' ELSE 'N' END)  AS DAYPRICE_YN  /*당일특가 여부 */
+    , NVL(DAYPRICE_AMT, 0) AS DAYPRICE_AMT  /*당일특가 금액 */
+    , NVL(SALE_AMT - DAYPRICE_AMT, 0) AS DIS_DAYPRICE_AMT /*당일특가 할인금액 */
+	, NVL(DEPOSIT_AMT, 0) AS DEPOSIT_AMT	/* 입금가 */
+FROM TB_AD_AMTINF
+WHERE 1=1
+	<isNotEmpty property="sPrdtNum">
+	   	AND PRDT_NUM = #sPrdtNum#
+	</isNotEmpty>
+	<isNotEmpty property="sAplDt">
+		AND APL_DT LIKE #sAplDt#||'%'
+	</isNotEmpty>
+	ORDER BY APL_DT ASC
+</select>
+
+
+<select id="AD_AMTINF_S_02" resultMap="AD_AMTINF_R_00">
+SELECT PRDT_NUM     /*상품 번호, */
+    , APL_DT        /*적용 일자, */
+    , NVL(SALE_AMT,0) AS SALE_AMT    /*판매 금액 */
+    , NVL(NML_AMT,0) AS NML_AMT     /*정상 금액 */
+    , HOTDEALL_YN   /*핫딜 여부 */
+    , DAYPRICE_YN  /*당일특가 여부 */
+    , NVL(DAYPRICE_AMT, 0) AS DAYPRICE_AMT  /*당일특가 금액 */
+    , NVL(SALE_AMT - DAYPRICE_AMT, 0) AS DIS_DAYPRICE_AMT /*당일특가 할인금액 */
+	, NVL(DEPOSIT_AMT, 0) AS DEPOSIT_AMT	/* 입금가 */
+FROM TB_AD_AMTINF
+WHERE 1=1
+	<isNotEmpty property="sPrdtNum">
+	   	AND PRDT_NUM = #sPrdtNum#
+	</isNotEmpty>
+	<isNotEmpty property="sAplDt">
+		AND APL_DT LIKE #sAplDt#||'%'
+	</isNotEmpty>
+	ORDER BY APL_DT ASC
+</select>
+
+
+<!-- 상세에 상품 가격 -->
+<select id="AD_AMTINF_S_03" resultMap="AD_AMTINF_R_00">
+SELECT T_PRDT.PRDT_NUM
+     , T_AMT.APL_DT
+     <!-- , NVL((CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN DAYPRICE_AMT ELSE SALE_AMT END), 0) AS SALE_AMT      /*판매 금액, */ -->
+     , (CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN DAYPRICE_AMT ELSE SALE_AMT END) AS SALE_AMT      /*판매 금액, */
+     , NVL(NML_AMT,0) AS NML_AMT     /*정상 금액 */
+     , HOTDEALL_YN   /*핫딜 여부 */
+     , (CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN 'Y' ELSE 'N' END)  AS DAYPRICE_YN  /*당일특가 여부 */
+     , NVL(DAYPRICE_AMT, 0) AS DAYPRICE_AMT  /*당일특가 금액 */
+     , (CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN NVL(SALE_AMT - DAYPRICE_AMT, 0) ELSE 0 END) AS DIS_DAYPRICE_AMT /*당일특가 할인금액 */
+	 , NVL(DEPOSIT_AMT, 0) AS DEPOSIT_AMT
+  FROM TB_AD_PRDTINF T_PRDT
+LEFT OUTER JOIN (
+		SELECT PRDT_NUM     /*상품 번호, */
+		    , APL_DT        /*적용 일자, */
+		    , SALE_AMT      /*판매 금액, */
+		    , NML_AMT       /*정상 금액, */
+		    , HOTDEALL_YN   /*핫딜 여부 */
+      		, DAYPRICE_YN   /*당일특가 여부 */
+      		, DAYPRICE_AMT  /*당일특가 금액 */
+			, DEPOSIT_AMT	/* 입금가 */
+		FROM TB_AD_AMTINF
+		WHERE APL_DT= #startDt#
+		) T_AMT
+ON T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM
+ WHERE T_PRDT.CORP_ID=#sCorpId#
+ 	<isEmpty property="ossMaster">
+   		AND T_PRDT.PRINT_YN = 'Y'
+   		AND T_PRDT.TRADE_STATUS = 'TS03'
+   	</isEmpty>
+</select>
+
+<select id="AD_AMTINF_S_10" resultMap="AD_AMTINF_R_00">
+SELECT PRDT_NUM     /*상품 번호, */
+     , RSV_DT AS APL_DT          /*적용 일자*/
+     , NVL((CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN DAYPRICE_AMT ELSE SALE_AMT END), 0) AS SALE_AMT      /*판매 금액, */
+     , NVL(NML_AMT, 0) AS  NML_AMT     /*정상 금액, */
+     , HOTDEALL_YN   /*핫딜 여부 */
+     , (CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN 'Y' ELSE 'N' END)  AS DAYPRICE_YN  /*당일특가 여부 */
+     , NVL(DAYPRICE_AMT, 0) AS  DAYPRICE_AMT  /*당일특가 금액 */
+     , NVL(SALE_AMT - DAYPRICE_AMT, 0) AS DIS_DAYPRICE_AMT /*당일특가 할인금액 */
+	 , NVL(DEPOSIT_AMT, 0) AS DEPOSIT_AMT
+FROM (
+    SELECT TO_CHAR(TO_DATE(#startDt#,'YYYYMMDD')+LEVEL-1, 'YYYYMMDD') AS RSV_DT
+      FROM DUAL
+      <![CDATA[ CONNECT BY LEVEL <= #sNights# ]]>
+) T_D
+    LEFT OUTER JOIN (
+    SELECT PRDT_NUM			/*상품 번호, */
+         , APL_DT			/*적용 일자, */
+         , SALE_AMT			/*판매 금액, */
+         , NML_AMT			/*정상 금액, */
+         , HOTDEALL_YN		/*핫딜 여부 */
+      	 , DAYPRICE_YN		/*당일특가 여부 */
+      	 , DAYPRICE_AMT		/*당일특가 금액 */
+    	 , DEPOSIT_AMT		/* 입금가 */
+    FROM TB_AD_AMTINF
+    WHERE PRDT_NUM=#sPrdtNum#
+) T_A
+ON T_A.APL_DT = T_D.RSV_DT
+ORDER BY RSV_DT
+</select>
+
+
+<!-- 숙소 상품 가격 - 간단 입력용 삽입 -->
+<insert id="AD_AMTINF_I_01">
+INSERT INTO TB_AD_AMTINF
+     ( PRDT_NUM
+     , APL_DT
+     <isNotEmpty property="saleAmt">
+     		, SALE_AMT
+     </isNotEmpty>
+     <isNotEmpty property="nmlAmt">
+     		, NML_AMT
+     </isNotEmpty>
+	<isNotEmpty property="depositAmt">
+		, DEPOSIT_AMT
+	</isNotEmpty>
+     <isNotEmpty property="hotdallYn">
+     		, HOTDEALL_YN
+     </isNotEmpty>
+     <isNotEmpty property="daypriceYn">
+     		, DAYPRICE_YN
+     </isNotEmpty>
+     <isNotEmpty property="daypriceAmt">
+     		, DAYPRICE_AMT
+     </isNotEmpty>
+       )
+SELECT  #prdtNum#
+     , DT
+     <isNotEmpty property="saleAmt">
+     		, #saleAmt#
+     </isNotEmpty>
+     <isNotEmpty property="nmlAmt">
+     		, #nmlAmt#
+     </isNotEmpty>
+	<isNotEmpty property="depositAmt">
+			, #depositAmt#
+	</isNotEmpty>
+     <isNotEmpty property="hotdallYn">
+			, #hotdallYn#
+	</isNotEmpty>
+	<isNotEmpty property="daypriceYn">
+     		, #daypriceYn#
+     </isNotEmpty>
+     <isNotEmpty property="daypriceAmt">
+     		, #daypriceAmt#
+     </isNotEmpty>
+  FROM (SELECT TO_CHAR(TO_DATE(#startDt#, 'YYYYMMDD')+LEVEL-1, 'YYYYMMDD') AS DT
+          FROM DUAL
+         CONNECT BY LEVEL &lt;= (TO_DATE(#endDt#, 'YYYYMMDD')-TO_DATE(#startDt#, 'YYYYMMDD')+1)
+       )
+ WHERE DT NOT IN (SELECT APL_DT
+                    FROM TB_AD_AMTINF
+                   WHERE PRDT_NUM = #prdtNum#
+                     AND APL_DT BETWEEN #startDt# AND #endDt#)
+  <!-- AND TO_CHAR(TO_DATE(DT, 'YYYYMMDD'), 'D') IN (#wday#) -->
+  <dynamic prepend="AND TO_CHAR(TO_DATE(DT, 'YYYYMMDD'), 'D') IN ">
+ 	<iterate open="(" close=")" conjunction="," property="wdayList">
+ 		#wdayList[]#
+ 	</iterate>
+ </dynamic>
+</insert>
+
+
+<!-- 숙소 상품 가격 -간단 입력용 수정 -->
+<update id="AD_AMTINF_U_01">
+UPDATE TB_AD_AMTINF
+SET  PRDT_NUM = PRDT_NUM
+	<isNotEmpty property="saleAmt">
+	 		,SALE_AMT = #saleAmt#
+	</isNotEmpty>
+	<isNotEmpty property="nmlAmt">
+     		,NML_AMT  = #nmlAmt#
+    </isNotEmpty>
+	<isNotEmpty property="depositAmt">
+		,DEPOSIT_AMT  = #depositAmt#
+	</isNotEmpty>
+    <isNotEmpty property="hotdallYn">
+     		,HOTDEALL_YN  = #hotdallYn#
+    </isNotEmpty>
+    <isNotEmpty property="daypriceYn">
+     		,DAYPRICE_YN  = #daypriceYn#
+    </isNotEmpty>
+    <isNotEmpty property="daypriceAmt">
+     		,DAYPRICE_AMT  = #daypriceAmt#
+    </isNotEmpty>
+WHERE PRDT_NUM = #prdtNum#
+       AND APL_DT BETWEEN #startDt# AND #endDt#
+       <!-- AND TO_CHAR(TO_DATE(APL_DT, 'YYYYMMDD'), 'D') IN (#wday#) -->
+       <dynamic prepend="AND TO_CHAR(TO_DATE(APL_DT, 'YYYYMMDD'), 'D') IN ">
+		<iterate open="(" close=")" conjunction="," property="wdayList">
+	 		#wdayList[]#
+	 	</iterate>
+	  </dynamic>
+</update>
+
+
+<!-- 객실 요금 머지(달력용) -->
+<update id="AD_AMTINF_M_00">
+ MERGE INTO TB_AD_AMTINF AMT1
+ USING (SELECT #prdtNum# AS PRDT_NUM, #aplDt# AS APL_DT
+          FROM DUAL) AMT2
+    ON (AMT2.PRDT_NUM = AMT1.PRDT_NUM AND AMT2.APL_DT = AMT1.APL_DT)
+  WHEN MATCHED THEN
+UPDATE SET
+       SALE_AMT = #saleAmt#,
+       NML_AMT = #nmlAmt#,
+       HOTDEALL_YN = #hotdallYn#,
+       DAYPRICE_YN = #daypriceYn#,
+       DAYPRICE_AMT = #daypriceAmt#,
+       DEPOSIT_AMT = #depositAmt#
+  WHEN NOT MATCHED THEN
+INSERT
+     ( PRDT_NUM
+     , APL_DT
+     , SALE_AMT
+     , NML_AMT
+     , HOTDEALL_YN
+	 , DAYPRICE_YN
+	 , DAYPRICE_AMT
+     , DEPOSIT_AMT
+       )
+VALUES
+     ( #prdtNum#
+     , #aplDt#
+     , #saleAmt#
+     , #nmlAmt#
+     , #hotdallYn#
+     , #daypriceYn#
+     , #daypriceAmt#
+     , #depositAmt#
+     )
+</update>
+
+<delete id="AD_AMTINF_D_00">
+DELETE FROM TB_AD_AMTINF
+WHERE 1=1
+ 	AND PRDT_NUM = #prdtNum#
+</delete>
+
+<delete id="AD_AMTINF_D_01">
+DELETE FROM 
+	TB_AD_AMTINF
+WHERE
+	PRDT_NUM = #prdtNum#
+AND APL_DT = #aplDt#
+</delete>
+
+<select id="AD_WEBDTL_S_00" resultMap="AD_WEBDTL_R_00">
+SELECT T_CORP.CORP_ID
+	,(SELECT GPA_AVG FROM TB_GPA_ANLS WHERE LINK_NUM = T_CORP.CORP_ID) AS GPA_AVG
+	,(SELECT GPA_CNT FROM TB_GPA_ANLS WHERE LINK_NUM = T_CORP.CORP_ID) AS GPA_CNT
+	, T_PFT.AD_NM
+	, T_PFT.AD_AREA
+	, T_PFT.AD_GRD
+	, T_CORP.ROAD_NM_ADDR
+	, T_CORP.DTL_ADDR
+	, T_CORP.HMPG_ADDR
+	, T_PFT.CHKIN_TM
+	, T_PFT.CHKOUT_TM
+	, T_CORP.RSV_TEL_NUM
+	, T_CORP.CEO_TEL_NUM
+	, TIP
+	, SCC_URL			 /*홍보영상 URL*/
+	, INF_INTROLOD      /*정보 숙소소개*/
+	, INF_EQUINF        /*정보 비품안내*/
+	, INF_OPERGUD       /*정보 이용안내*/
+	, INF_NTI           /*정보 참고사항*/
+	, CANCEL_GUIDE           /*취소안내*/
+	, LON
+	, LAT
+	, ADULT_AGE_STD
+	, JUNIOR_AGE_STD
+	, CHILD_AGE_STD
+	, AD_DIV
+	, (SELECT CD_NM FROM TB_CD WHERE HRK_CD_NUM = 'ADAR' AND CD_NUM = AD_AREA) AS AD_AREA_NM
+	, T_PFT.AD_SIMPLE_EXP
+	, T_PFT.JUNIOR_ABLE_YN
+	, T_PFT.CHILD_ABLE_YN
+	, T_CORP.SUPERB_CORP_YN
+FROM TB_CORP T_CORP
+	INNER JOIN TB_AD_DFTINF T_PFT
+ 	ON T_PFT.CORP_ID = T_CORP.CORP_ID
+WHERE T_CORP.CORP_ID = (SELECT CORP_ID FROM TB_AD_PRDTINF WHERE PRDT_NUM = #sPrdtNum#)
+</select>
+
+<!-- 사용자 페이지 목록 -->
+<select id="AD_WEBLIST_S_01" resultMap="AD_WEBLIST_R_00">
+SELECT CORP_ID			/*업체ID*/
+     , PRDT_NUM			/*상품번호*/
+     , AD_AREA			/*지역*/
+     , AD_DIV			/*호텔/모텔*/
+     , AD_NM			/*숙소이름*/
+     , ROOM_NM			/*객실이름*/
+     , AD_SIMPLE_EXP	/*간단 설명*/
+     , TOTAL_BUY_NUM	/*총판매량*/
+     , NML_AMT			/*정가*/
+     , SALE_AMT			/*판매가*/
+     , HOTDEALL_YN
+     , DAYPRICE_YN
+     , DAYPRICE_AMT
+     , SALE_PENT		/*할인률*/
+     , STD_MEM			/*기준 수용인원*/
+     , MAXI_MEM			/*최대 수용인원*/
+     , TOTAL_ROOM_NUM	/*객실 수*/
+     , USE_ROOM_NUM 	/*사용 객실 수*/
+     , DDL_YN			/*마감 여부*/
+     , RSV_ABLE_YN		/*가능 여부*/
+     , SAVE_PATH		/*이미지 경로*/
+     , SAVE_FILE_NM		/*이미지 파일명*/
+     , GPA_AVG			/*평점 평균*/
+     , GPA_CNT			/*평점 수*/
+     , LON				/*위도*/
+     , LAT				/*경도*/
+     , AD_AREA_NM		/*지역 명*/
+     , EVENT_CNT
+     , COUPON_CNT
+    FROM (SELECT ROWNUM AS RN
+         , V3_PRDT.CORP_ID
+         , PRDT_NUM
+         , AD_AREA
+         , AD_DIV
+         , AD_NM
+         , ROOM_NM
+         , AD_SIMPLE_EXP
+         , TOTAL_BUY_NUM
+         , NML_AMT
+         , SALE_AMT
+         , HOTDEALL_YN
+         , DAYPRICE_YN
+         , DAYPRICE_AMT
+         , SALE_PENT
+         , STD_MEM
+         , MAXI_MEM
+         , TOTAL_ROOM_NUM
+         , USE_ROOM_NUM
+         , DDL_YN
+         , RSV_ABLE_YN
+         , SAVE_PATH
+         , SAVE_FILE_NM
+         , NVL(GPA_AVG, 0) AS GPA_AVG
+         , NVL(GPA_CNT, 0) AS GPA_CNT
+         , T_COP.LON AS LON
+         , T_COP.LAT AS LAT
+         , (SELECT CD_NM FROM TB_CD WHERE HRK_CD_NUM = 'ADAR' AND CD_NUM = AD_AREA) AS AD_AREA_NM
+         , CONF_DTTM
+         , V3_PRDT.FRST_REG_DTTM
+         , EVENT_CNT
+         , COUPON_CNT
+         <isNotEmpty property="orderCd">
+			<isEqual property="orderCd" compareValue="DIST">
+		        , (ROUND(6371000 * ACOS(SIN(RADIANS(LAT)) * SIN(RADIANS(#sLAT#)) +
+	            	COS(RADIANS(LAT)) * COS(RADIANS((#sLAT#))) * COS(RADIANS(LON - #sLON#))))
+	            ) AS DIST
+			</isEqual>
+	    </isNotEmpty>
+    FROM (SELECT CORP_ID
+             , PRDT_NUM
+             , AD_AREA
+             , AD_DIV
+             , AD_NM
+             , ROOM_NM
+             , AD_SIMPLE_EXP
+             , TOTAL_BUY_NUM
+             , NML_AMT
+             , SALE_AMT
+             , HOTDEALL_YN
+             , DAYPRICE_YN
+             , DAYPRICE_AMT
+             , SALE_PENT
+             , STD_MEM
+             , MAXI_MEM
+             , TOTAL_ROOM_NUM
+             , USE_ROOM_NUM
+             , DDL_YN
+             , RSV_ABLE_YN
+             , SAVE_PATH
+             , SAVE_FILE_NM
+             , T_GPA.GPA_AVG AS GPA_AVG
+             , T_GPA.GPA_CNT AS GPA_CNT
+             , CONF_DTTM
+             , V2_PRDT.FRST_REG_DTTM
+             , EVENT_CNT
+             , COUPON_CNT
+        FROM (SELECT CORP_ID
+                     , PRDT_NUM
+                     , AD_AREA
+                     , AD_DIV
+                     , AD_NM
+                     , ROOM_NM
+                     , AD_SIMPLE_EXP
+                     , TOTAL_BUY_NUM
+                     , NML_AMT
+                     , SALE_AMT
+                     , HOTDEALL_YN
+                     , DAYPRICE_YN
+                     , DAYPRICE_AMT
+                     , SALE_PENT
+                     , STD_MEM
+                     , MAXI_MEM
+                     , TOTAL_ROOM_NUM
+                     , USE_ROOM_NUM
+                     , DDL_YN
+                     , RSV_ABLE_YN
+                     , T_IMG.SAVE_PATH
+                     , T_IMG.SAVE_FILE_NM
+                     , CONF_DTTM
+                     , V_PRDT.FRST_REG_DTTM
+                     , EVENT_CNT
+                     , COUPON_CNT
+                FROM (SELECT CORP_ID
+                         , PRDT_NUM
+                         , AD_AREA
+                         , AD_DIV
+                         , AD_NM
+                         , ROOM_NM
+                         , AD_SIMPLE_EXP
+                         , TOTAL_BUY_NUM
+                         , NML_AMT
+                         , SALE_AMT
+                         , HOTDEALL_YN
+                         , DAYPRICE_YN
+                         , DAYPRICE_AMT
+                         , SALE_PENT
+                         , TOTAL_ROOM_NUM
+                         , USE_ROOM_NUM
+                         , DDL_YN
+                         , STD_MEM
+                         , MAXI_MEM
+                         , RSV_ABLE_YN
+                         , CONF_DTTM
+                         , FRST_REG_DTTM
+                         , EVENT_CNT
+                         , COUPON_CNT
+                      FROM (SELECT T_PRDT.CORP_ID
+                                 , T_PRDT.PRDT_NUM
+                                 , T_DFT.AD_AREA
+                                 , T_DFT.AD_DIV
+                                 , T_DFT.AD_NM
+                                 , T_PRDT.PRDT_NM AS ROOM_NM
+                                 , T_DFT.AD_SIMPLE_EXP
+                                 , T_DFT.TOTAL_BUY_NUM
+                                 , T_AMT.NML_AMT
+                                 , (CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN DAYPRICE_AMT ELSE SALE_AMT END)  AS SALE_AMT      /*판매 금액, */
+                                 , T_AMT.HOTDEALL_YN
+                                 , (CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN 'Y' ELSE 'N' END)  AS DAYPRICE_YN  /*당일특가 여부 */
+                                 , T_AMT.DAYPRICE_AMT
+                                 , '0' AS SALE_PENT /*TO_CHAR( 100-(T_AMT.SALE_AMT*100/T_AMT.NML_AMT), '999' ) AS SALE_PENT*/
+                                 , STD_MEM
+                                 , MAXI_MEM
+                                 , TOTAL_ROOM_NUM
+                                 , USE_ROOM_NUM
+                                 , DDL_YN
+                                 , (CASE APL_CNT WHEN #sNights# /*몇박*/
+                                                 THEN 'Y'
+                                                 ELSE 'N'
+                                     END
+                                   ) AS RSV_ABLE_YN
+                                 , RANK() OVER(PARTITION BY T_PRDT.CORP_ID ORDER BY T_AMT.SALE_AMT ASC, T_PRDT.PRDT_NUM) AS RK
+                                 , T_PRDT.CONF_DTTM
+                                 , T_PRDT.FRST_REG_DTTM
+                                 , (SELECT NVL(COUNT(T_PRMT.PRMT_NUM), 0)
+											FROM TB_PRMT T_PRMT
+									INNER JOIN TB_PRMT_PRDT T_PRMT_PRDT
+												ON T_PRMT.PRMT_NUM = T_PRMT_PRDT.PRMT_NUM
+							                WHERE T_PRMT.CORP_ID = T_PRDT.CORP_ID
+												AND STATUS_CD = 'TS03'
+												AND PRMT_DIV='EVNT'
+							                    <![CDATA[ AND T_PRMT.START_DT  <= TO_DATE(#sFromDt#, 'YYYY/MM/DD') ]]>
+												<![CDATA[ AND T_PRMT.END_DT >= TO_DATE(#sFromDt#, 'YYYY/MM/DD') ]]>
+									) AS EVENT_CNT
+								  , (SELECT NVL(COUNT(T_CPC.PRDT_NUM), 0)
+							       	  FROM TB_CP_PRDT T_CPC
+							       	    INNER JOIN TB_CP T_CP
+											ON T_CP.CP_ID = T_CPC.CP_ID
+											AND T_CP.STATUS_CD = 'ST02'
+											AND T_CP.TGT_DIV = 'ALL'
+							       	  WHERE T_CPC.PRDT_NUM IN (
+							       	  			SELECT PRDT_NUM FROM TB_AD_PRDTINF
+							       	  				WHERE CORP_ID=T_PRDT.CORP_ID
+							       	  		)
+							       	  	<![CDATA[ AND APL_START_DT <= #sFromDt# ]]>
+										AND APL_END_DT >= #sToDt#
+							       	) COUPON_CNT
+                              FROM TB_AD_PRDTINF        T_PRDT
+                             INNER JOIN TB_AD_DFTINF    T_DFT
+                                ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+                              INNER JOIN (SELECT T_CNT.PRDT_NUM
+                                               , T_CNT.TOTAL_ROOM_NUM
+                                               , NVL(T_CNT.USE_ROOM_NUM, 0) AS USE_ROOM_NUM
+                                               , T_CNT.DDL_YN
+                                               , NVL(COUNT(APL_DT),0) AS APL_CNT
+                                            FROM TB_AD_CNTINF T_CNT
+                                           INNER JOIN (SELECT TO_CHAR(TO_DATE(#sFromDt#,'YYYYMMDD')+LEVEL-1, 'YYYYMMDD') AS RSV_DT
+                                                         FROM DUAL
+                                                     <![CDATA[  CONNECT BY LEVEL <= #sNights#  ]]> /*몇박*/
+                                                      ) AS T_RSV1
+                                              ON T_RSV1.RSV_DT = T_CNT.APL_DT
+                                           WHERE T_CNT.APL_DT >= #sFromDt#
+                                               <!--
+                                               AND T_CNT.DDL_YN = 'N'
+                                               AND NVL(T_CNT.TOTAL_ROOM_NUM,0) > NVL(T_CNT.USE_ROOM_NUM, 0)
+                                                -->
+                                           GROUP BY T_CNT.PRDT_NUM
+                                                  , T_CNT.TOTAL_ROOM_NUM
+                                                  , T_CNT.USE_ROOM_NUM
+                                                  , T_CNT.DDL_YN
+                                              )         T_APL
+                                ON T_APL.PRDT_NUM = T_PRDT.PRDT_NUM
+                              LEFT OUTER JOIN (SELECT T_PRDT.CORP_ID
+												    , SUM(T_ANLS.BUY_NUM) AS BUY_NUM
+											     FROM TB_SALE_ANLS T_ANLS
+											    INNER JOIN TB_AD_PRDTINF T_PRDT
+												   ON T_PRDT.PRDT_NUM = T_ANLS.PRDT_NUM
+												<![CDATA[
+												WHERE BUY_DT > TO_CHAR(SYSDATE - 30, 'YYYYMMDD')
+												]]>
+												GROUP BY T_PRDT.CORP_ID
+					                          ) T_SA
+					            ON T_SA.CORP_ID = T_PRDT.CORP_ID
+                             INNER JOIN TB_AD_AMTINF    T_AMT
+                                ON T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM
+                               AND T_AMT.APL_DT = #sFromDt# /*시작 날짜*/
+                                <isNotEmpty property="sPriceSe">
+				 						/*가격구간*/
+					 					<isEqual property="sPriceSe" compareValue="1">
+			                                <![CDATA[ AND T_AMT.SALE_AMT * #sNights# <= 50000 	]]>
+                              			</isEqual>
+                              			<isEqual property="sPriceSe" compareValue="2">
+			                                <![CDATA[ AND 50000 <= T_AMT.SALE_AMT * #sNights# AND T_AMT.SALE_AMT * #sNights#  <= 100000 	]]>
+                              			</isEqual>
+                              			<isEqual property="sPriceSe" compareValue="3">
+			                                <![CDATA[ AND 100000 <= T_AMT.SALE_AMT * #sNights# AND T_AMT.SALE_AMT * #sNights# <= 200000 	]]>
+                              			</isEqual>
+                              			<isEqual property="sPriceSe" compareValue="4">
+			                                <![CDATA[ AND 200000 <= T_AMT.SALE_AMT * #sNights# 	]]>
+                              			</isEqual>
+                              	</isNotEmpty>
+                             WHERE 1=1
+                             	AND T_PRDT.PRINT_YN = 'Y'        /*화면 출력 하게 한것만*/
+                            	AND T_PRDT.TRADE_STATUS = 'TS03' /*승인 완료 된것만*/
+                             <isNotEmpty property="sResEnable">
+                            		AND T_APL.APL_CNT = #sNights# /* 몇박 */ /*예약가능여부*/
+							</isNotEmpty>
+							<isNotEmpty property="sAdDiv">
+                            		AND T_DFT.AD_DIV = #sAdDiv# /*숙박 유형*/
+							</isNotEmpty>
+							<isNotEmpty property="sAdAdar">
+                            		AND T_DFT.AD_AREA = #sAdAdar# /*지역*/
+							</isNotEmpty>
+							<isNotEmpty property="sPrdtNm">
+                            		AND REPLACE(UPPER(T_DFT.AD_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#sPrdtNm#), ' ', '')||'%' /*숙소명*/
+                           	</isNotEmpty>
+							<isNotEmpty property="searchWord">
+                            		AND ((REPLACE(UPPER(T_DFT.AD_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#searchWord#), ' ', '')||'%') OR
+                            		     (T_PRDT.CORP_ID IN (SELECT LINK_NUM
+													 		   FROM TB_CM_SRCHWORD
+													 		  WHERE SRCH_WORD = #searchWord#)
+                            		    ))
+                           	</isNotEmpty>
+                           	<isNotEmpty property="sMen">
+                            		<![CDATA[ AND #sMen# <= T_PRDT.MAXI_MEM  /*인원*/ ]]>
+                            </isNotEmpty>
+                            <isNotEmpty property="sAdDivCdView">
+		                     		AND T_DFT.AD_DIV = #sAdDivCdView# /*숙박 유형 탭*/
+							</isNotEmpty>
+							<isNotEmpty property="sDaypriceYn">
+		                     		AND T_AMT.DAYPRICE_YN = #sDaypriceYn# /*당일특가*/
+							</isNotEmpty>
+							<isNotEmpty property="sCorpId">
+		                     		AND T_PRDT.CORP_ID = #sCorpId# /*업체 ID*/
+							</isNotEmpty>
+
+							<isNotEmpty property="sIconCd">
+                            		<iterate property="sIconCd">
+                           			AND T_PRDT.CORP_ID IN (SELECT LINK_NUM
+			                                                  FROM TB_CM_ICONINF
+			                                                 WHERE LINK_NUM = T_PRDT.CORP_ID
+			                                                   AND ICON_CD = #sIconCd[]#)
+									</iterate>
+                         	</isNotEmpty>
+
+							<isNotEmpty property="orderCd">
+						    		<isEqual property="orderCd" compareValue="SALE">
+						            	<![CDATA[ ORDER BY T_SA.BUY_NUM DESC    /*구매순*/ 	]]>
+						        	</isEqual>
+						    		<isEqual property="orderCd" compareValue="PRICE">
+						            	<![CDATA[ ORDER BY SALE_AMT ASC   /*가격순*/ 	]]>
+						        	</isEqual>
+						        	<isEqual property="orderCd" compareValue="NEW">
+						        		/* ORDER BY CONF_DTTM  DESC   최신상품순 => 승인일시 -> 등록일시로 변경 2017-06-20 By JDongS(장경연 팀장 요청) */
+						            	ORDER BY T_PRDT.FRST_REG_DTTM  DESC   /*최신상품순격순*/
+						        	</isEqual>
+						    </isNotEmpty>
+                           )
+                     WHERE RK = 1) AS V_PRDT
+                 LEFT OUTER JOIN TB_CM_IMG T_IMG
+                            ON T_IMG.LINK_NUM = V_PRDT.CORP_ID
+                           AND T_IMG.IMG_SN   = 1 ) AS V2_PRDT
+         LEFT OUTER JOIN TB_GPA_ANLS T_GPA
+                    ON T_GPA.LINK_NUM = V2_PRDT.CORP_ID
+                    <isNotEmpty property="orderCd">
+							<isEqual property="orderCd" compareValue="GPA">
+						    	<![CDATA[ ORDER BY NVL(T_GPA.GPA_AVG, 0) DESC, T_GPA.GPA_CNT ASC   /*추천순*/	]]>
+						    </isEqual>
+					</isNotEmpty>
+
+                    ) AS V3_PRDT
+    LEFT OUTER JOIN  TB_CORP T_COP
+      ON T_COP.CORP_ID = V3_PRDT.CORP_ID
+   WHERE T_COP.TRADE_STATUS_CD='TS03'
+        <isNotEmpty property="orderCd">
+	        	<isEqual property="orderCd" compareValue="DIST">
+	            	<![CDATA[ ORDER BY DIST ASC   /*거리순*/	]]>
+	        	</isEqual>
+	    </isNotEmpty>
+)
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+
+</select>
+
+<select id="AD_WEBLIST_S_02" resultClass="int">
+SELECT COUNT(PRDT_NUM) AS CNT
+  FROM (SELECT CORP_ID
+             , PRDT_NUM
+             , AD_AREA
+             , AD_DIV
+             , AD_NM
+             , AD_SIMPLE_EXP
+             , TOTAL_BUY_NUM
+             , NML_AMT
+             , SALE_AMT
+             , SALE_PENT
+             , TOTAL_ROOM_NUM
+             , USE_ROOM_NUM
+             , DDL_YN
+             , STD_MEM
+             , MAXI_MEM
+             , RSV_ABLE_YN
+             , CONF_DTTM
+          FROM (SELECT T_PRDT.CORP_ID
+                     , T_PRDT.PRDT_NUM
+                     , T_DFT.AD_AREA
+                     , T_DFT.AD_DIV
+                     , T_DFT.AD_NM
+                     , T_DFT.AD_SIMPLE_EXP
+                     , T_DFT.TOTAL_BUY_NUM
+                     , T_AMT.NML_AMT
+                     , T_AMT.SALE_AMT
+                     , 0 AS SALE_PENT /*TO_CHAR( 100-(T_AMT.SALE_AMT*100/T_AMT.NML_AMT), '99' ) AS SALE_PENT*/
+                     , STD_MEM
+                     , MAXI_MEM
+                     , TOTAL_ROOM_NUM
+                     , USE_ROOM_NUM
+                     , DDL_YN
+                     , (CASE APL_CNT WHEN #sNights# /*몇박*/
+                                     THEN 'Y'
+                                     ELSE 'N'
+                         END
+                       ) AS RSV_ABLE_YN
+                     , RANK() OVER(PARTITION BY T_PRDT.CORP_ID ORDER BY T_AMT.SALE_AMT ASC, T_PRDT.PRDT_NUM) AS RK
+                     , T_PRDT.CONF_DTTM
+                  FROM TB_AD_PRDTINF        T_PRDT
+                 INNER JOIN TB_AD_DFTINF    T_DFT
+                    ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+                 INNER JOIN TB_CORP T_CORP
+                    ON T_CORP.CORP_ID = T_DFT.CORP_ID
+                   AND T_CORP.TRADE_STATUS_CD='TS03'
+                 INNER JOIN (SELECT T_CNT.PRDT_NUM
+                                  , T_CNT.TOTAL_ROOM_NUM
+                                  , NVL(T_CNT.USE_ROOM_NUM, 0)  AS USE_ROOM_NUM
+                                  , T_CNT.DDL_YN
+                                  , NVL(COUNT(APL_DT),0) AS APL_CNT
+                               FROM TB_AD_CNTINF T_CNT
+                              INNER JOIN (SELECT TO_CHAR(TO_DATE(#sFromDt#,'YYYYMMDD')+LEVEL-1, 'YYYYMMDD') AS RSV_DT
+                                            FROM DUAL
+                              <![CDATA[  CONNECT BY LEVEL <= #sNights#  ]]> /*몇박*/
+                                         ) AS T_RSV1
+                                 ON T_RSV1.RSV_DT = T_CNT.APL_DT
+                               WHERE T_CNT.APL_DT >= #sFromDt#
+                               	<!--
+                                 AND T_CNT.DDL_YN = 'N'
+                                 AND NVL(T_CNT.TOTAL_ROOM_NUM,0) > NVL(T_CNT.USE_ROOM_NUM, 0)
+                                    -->
+                               GROUP BY T_CNT.PRDT_NUM
+                                      , T_CNT.TOTAL_ROOM_NUM
+                                      , T_CNT.USE_ROOM_NUM
+                                      , T_CNT.DDL_YN
+                             )         T_APL
+                     ON T_APL.PRDT_NUM = T_PRDT.PRDT_NUM
+                  INNER JOIN TB_AD_AMTINF    T_AMT
+                     ON T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM
+                    AND T_AMT.APL_DT = #sFromDt# /*시작 날짜*/
+                  <isNotEmpty property="sPriceSe">
+	                /*가격구간*/
+	                    <isEqual property="sPriceSe" compareValue="1">
+                         <![CDATA[ AND T_AMT.SALE_AMT * #sNights# <= 50000 	]]>
+               			</isEqual>
+               			<isEqual property="sPriceSe" compareValue="2">
+                         <![CDATA[ AND 50000 <= T_AMT.SALE_AMT * #sNights# AND T_AMT.SALE_AMT * #sNights#  <= 100000 	]]>
+               			</isEqual>
+               			<isEqual property="sPriceSe" compareValue="3">
+                         <![CDATA[ AND 100000 <= T_AMT.SALE_AMT * #sNights# AND T_AMT.SALE_AMT * #sNights# <= 200000 	]]>
+               			</isEqual>
+               			<isEqual property="sPriceSe" compareValue="4">
+                         <![CDATA[ AND 200000 <= T_AMT.SALE_AMT * #sNights# 	]]>
+               			</isEqual>
+               	  </isNotEmpty>
+                  WHERE 1=1
+                  	AND T_PRDT.PRINT_YN = 'Y'        /*화면 출력 하게 한것만*/
+                  	AND T_PRDT.TRADE_STATUS = 'TS03' /*승인 완료 된것만*/
+                 <isNotEmpty property="sResEnable">
+                    AND T_APL.APL_CNT = #sNights# /* 몇박 */ /*예약가능여부*/
+                 </isNotEmpty>
+                 <isNotEmpty property="sAdDiv">
+                   	AND T_DFT.AD_DIV = #sAdDiv# /*숙박 유형*/
+                 </isNotEmpty>
+                 <isNotEmpty property="sAdAdar">
+                    AND T_DFT.AD_AREA = #sAdAdar# /*지역*/
+                 </isNotEmpty>
+                 <isNotEmpty property="sPrdtNm">
+                    AND REPLACE(UPPER(T_DFT.AD_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#sPrdtNm#), ' ', '')||'%' /*숙소명*/
+                 </isNotEmpty>
+                 <isNotEmpty property="searchWord">
+                    AND ((REPLACE(UPPER(T_DFT.AD_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#searchWord#), ' ', '')||'%') OR
+                         (T_PRDT.CORP_ID IN (SELECT LINK_NUM
+									 		   FROM TB_CM_SRCHWORD
+									 		  WHERE SRCH_WORD = #searchWord#)
+                        ))
+                 </isNotEmpty>
+                 <isNotEmpty property="sMen">
+         	<![CDATA[ AND #sMen# <= T_PRDT.MAXI_MEM  /*인원*/ ]]>
+                 </isNotEmpty>
+                 <isNotEmpty property="sAdDivCdView">
+                	AND T_DFT.AD_DIV = #sAdDivCdView# /*숙박 유형 탭*/
+                </isNotEmpty>
+                <isNotEmpty property="sDaypriceYn">
+                    AND T_AMT.DAYPRICE_YN = #sDaypriceYn# /*당일특가*/
+                </isNotEmpty>
+                <isNotEmpty property="sIconCd">
+                    	<iterate property="sIconCd">
+                    AND T_PRDT.CORP_ID IN (SELECT LINK_NUM
+                                              FROM TB_CM_ICONINF
+                                             WHERE LINK_NUM = T_PRDT.CORP_ID
+                                               AND ICON_CD = #sIconCd[]#)
+						</iterate>
+                </isNotEmpty>
+           )
+ WHERE RK = 1)
+</select>
+
+<!-- 베스트 상품 (기존) -->
+<select id="AD_WEBLIST_S_03" resultMap="AD_WEBLIST_R_01">
+SELECT  CORP_ID
+      , SUM_NUM
+      , PRDT_NUM
+      , AD_NM
+      , AD_AREA
+      , SALE_AMT
+      , NML_AMT
+      , SAVE_PATH
+      , SAVE_FILE_NM
+      , AD_AREA_NM
+FROM(SELECT  T_PRDT5.CORP_ID
+          , SUM_NUM
+          , PRDT_NUM
+          , AD_NM
+          , AD_AREA
+          , SALE_AMT
+          , NML_AMT
+          , SAVE_PATH
+          , SAVE_FILE_NM
+          , AD_AREA_NM
+    FROM(
+        SELECT  CORP_ID
+              , SUM_NUM
+              , PRDT_NUM
+              , AD_NM
+              , AD_AREA
+              , SALE_AMT
+              , NML_AMT
+              , T_IMG.SAVE_PATH
+              , T_IMG.SAVE_FILE_NM
+              ,(SELECT CD_NM
+                FROM TB_CD
+                WHERE HRK_CD_NUM='ADAR'
+                AND CD_NUM=AD_AREA) AS AD_AREA_NM
+        FROM(
+            SELECT T_SUM.CORP_ID
+                 , SUM_NUM
+                 , PRDT_NUM
+                 , AD_NM
+                 , AD_AREA
+                 , SALE_AMT
+                 , NML_AMT
+            FROM(
+                SELECT T_PRDT.CORP_ID
+                     , SUM(NVL(T_SA.BUY_NUM, 0)) AS SUM_NUM
+                  FROM TB_AD_PRDTINF T_PRDT
+                  LEFT OUTER JOIN (SELECT T_PRDT.CORP_ID
+									    , SUM(T_ANLS.BUY_NUM) AS BUY_NUM
+								     FROM TB_SALE_ANLS T_ANLS
+								    INNER JOIN TB_AD_PRDTINF T_PRDT
+									   ON T_PRDT.PRDT_NUM = T_ANLS.PRDT_NUM
+									<![CDATA[
+									WHERE BUY_DT > TO_CHAR(SYSDATE - 30, 'YYYYMMDD')
+									]]>
+									GROUP BY T_PRDT.CORP_ID
+		                          ) T_SA
+		            ON T_SA.CORP_ID = T_PRDT.CORP_ID
+                 WHERE PRINT_YN='Y'
+                   AND TRADE_STATUS='TS03'
+                 GROUP BY T_PRDT.CORP_ID
+            ) T_SUM
+            INNER JOIN
+            (
+                SELECT T_PRDT2.PRDT_NUM
+                        , PRDT_NM
+                        , CORP_ID
+                        , TRADE_STATUS
+                        , PRINT_YN
+                        , VIEW_SN
+                        , CONF_REQUEST_DTTM
+                        , AD_NM
+                        , AD_AREA
+                        , T_AMT.SALE_AMT
+                        , T_AMT.NML_AMT
+                 FROM(SELECT PRDT_NUM
+                        , PRDT_NM
+                        , CORP_ID
+                        , TRADE_STATUS
+                        , PRINT_YN
+                        , VIEW_SN
+                        , CONF_REQUEST_DTTM
+                        , AD_NM
+                        , AD_AREA
+                     FROM(
+                           SELECT T_PRDT.PRDT_NUM
+                                , T_PRDT.PRDT_NM
+                                , T_PRDT.CORP_ID
+                                , T_PRDT.TRADE_STATUS
+                                , T_PRDT.PRINT_YN
+                                , T_PRDT.VIEW_SN
+                                , T_PRDT.CONF_REQUEST_DTTM
+                                , T_DFT.AD_NM
+                                , T_DFT.AD_AREA
+                                , RANK() OVER ( PARTITION BY T_PRDT.CORP_ID ORDER BY VIEW_SN ASC ) as RK
+                             FROM TB_AD_PRDTINF T_PRDT
+                            INNER JOIN TB_AD_DFTINF T_DFT
+                               ON T_DFT.CORP_ID =  T_PRDT.CORP_ID
+                            WHERE PRINT_YN='Y'
+                              AND TRADE_STATUS='TS03'
+                    )
+                    WHERE RK=1
+                 ) T_PRDT2
+                 LEFT OUTER JOIN (
+                    SELECT PRDT_NUM, APL_DT, SALE_AMT, NML_AMT
+                     FROM TB_AD_AMTINF
+                     WHERE APL_DT = TO_CHAR(SYSDATE,'YYYYMMDD') ) T_AMT
+                  ON T_PRDT2.PRDT_NUM = T_AMT.PRDT_NUM
+            ) T_PRDT3
+            ON T_PRDT3.CORP_ID = T_SUM.CORP_ID
+        ) T_PRDT4
+        LEFT OUTER JOIN TB_CM_IMG T_IMG
+            ON T_IMG.LINK_NUM = T_PRDT4.CORP_ID
+            AND T_IMG.IMG_SN   = 1
+         <!--ORDER BY SUM_NUM DESC-->
+         ORDER BY DBMS_RANDOM.VALUE <!-- 오픈할때는 랜덤으로 -->
+        )AS T_PRDT5
+    LEFT OUTER JOIN  TB_CORP T_COP
+                ON T_COP.CORP_ID = T_PRDT5.CORP_ID
+         WHERE T_COP.TRADE_STATUS_CD='TS03'
+           AND SALE_AMT IS NOT NULL
+ )
+  WHERE ROWNUM BETWEEN 1 AND 5
+</select>
+
+<!-- 주변숙소 검색 -->
+<select id="AD_WEBLIST_S_04" resultMap="AD_WEBLIST_R_04">
+SELECT CORP_ID
+	 , CORP_CD
+     , PRDT_NUM
+     , PRDT_NM
+     , TRADE_STATUS
+     , STD_MEM
+     , MAXI_MEM
+     , VIEW_SN
+     , BREAKFAST_YN
+     , BUY_NUM
+     , CONF_REQUEST_DTTM
+     , CONF_DTTM
+     , CORP_NM
+     , LON
+     , LAT
+     , TRADE_STATUS_CD
+     , DIST
+     , AD_NM
+     , SAVE_PATH
+     , SAVE_FILE_NM
+ FROM
+    (SELECT T_PRDT.CORP_ID
+         , T_PRDT.PRDT_NUM
+         , T_PRDT.PRDT_NM
+         , T_PRDT.TRADE_STATUS
+         , T_PRDT.STD_MEM
+         , T_PRDT.MAXI_MEM
+         , T_PRDT.VIEW_SN
+         , T_PRDT.BREAKFAST_YN
+         , T_PRDT.BUY_NUM
+         , T_PRDT.CONF_REQUEST_DTTM
+         , T_PRDT.CONF_DTTM
+         , T_CO.CORP_CD
+         , T_CO.CORP_NM
+         , T_CO.LON
+         , T_CO.LAT
+         , T_CO.TRADE_STATUS_CD
+         , ( ROUND( 6371000 * ACOS(SIN(RADIANS (LAT) ) * SIN(RADIANS (#lat#) ) +
+             COS(RADIANS (LAT) ) * COS(RADIANS ((#lat#)) ) * COS(RADIANS (LON- #lon#) ) ) )
+            ) AS DIST
+         , AD_NM
+         , T_IMG.SAVE_PATH
+         , T_IMG.SAVE_FILE_NM
+    FROM
+        (SELECT PRDT_NUM
+             , PRDT_NM
+             , CORP_ID
+             , TRADE_STATUS
+             , STD_MEM
+             , MAXI_MEM
+             , VIEW_SN
+             , BREAKFAST_YN
+             , BUY_NUM
+             , CONF_REQUEST_DTTM
+             , CONF_DTTM
+             , AD_NM
+        FROM
+            (SELECT T_PRDT.PRDT_NUM
+                 , PRDT_NM
+                 , CORP_ID
+                 , TRADE_STATUS
+                 , STD_MEM
+                 , MAXI_MEM
+                 , PRINT_YN
+                 , VIEW_SN
+                 , BREAKFAST_YN
+                 , BUY_NUM
+                 , CONF_REQUEST_DTTM
+                 , CONF_DTTM
+                 , RANK() OVER (PARTITION BY CORP_ID ORDER BY VIEW_SN ASC ) RK
+                 , (SELECT AD_NM FROM TB_AD_DFTINF T_DFT WHERE T_DFT.CORP_ID=T_PRDT.CORP_ID) AS AD_NM
+            FROM TB_AD_PRDTINF T_PRDT
+
+              <![CDATA[
+            INNER JOIN (SELECT T_CNT.PRDT_NUM
+                      FROM TB_AD_CNTINF T_CNT
+                     INNER JOIN (SELECT TO_CHAR(SYSDATE+LEVEL-1, 'YYYYMMDD') AS RSV_DT
+                                   FROM DUAL
+                                 CONNECT BY LEVEL <= '1'
+                                ) AS T_RSV1
+                        ON T_RSV1.RSV_DT = T_CNT.APL_DT
+                     WHERE T_CNT.APL_DT >= TO_CHAR(SYSDATE, 'YYYYMMDD')
+                        AND DDL_YN='N'
+                        AND TOTAL_ROOM_NUM > 0
+                     ) TB_CNT ON TB_CNT.PRDT_NUM=T_PRDT.PRDT_NUM
+               ]]>
+
+            WHERE TRADE_STATUS = 'TS03'
+              AND PRINT_YN = 'Y'
+            ORDER BY T_PRDT.CORP_ID
+            )
+        WHERE RK = 1) T_PRDT
+        INNER JOIN TB_CORP T_CO
+    		ON T_CO.CORP_ID = T_PRDT.CORP_ID
+    	LEFT OUTER JOIN TB_CM_IMG T_IMG
+           ON T_IMG.LINK_NUM = T_PRDT.CORP_ID
+          AND T_IMG.IMG_SN   = 1
+    WHERE T_CO.LON IS NOT NULL
+      AND T_CO.TRADE_STATUS_CD='TS03'
+    ORDER BY DIST
+) WHERE ROWNUM BETWEEN 1 AND #sRowCount#
+    <isNotEmpty property="corpId">
+    		AND CORP_ID != #corpId#
+    </isNotEmpty>
+
+
+</select>
+
+
+<!-- 날짜,박수에 핫딜,당일 특가 있는지 검사 -->
+<select id="AD_WEBLIST_S_05" resultMap="AD_WEBLIST_R_05">
+SELECT (
+		CASE
+			WHEN (COUNT (
+					CASE
+						WHEN HOTDEALL_YN = 'Y'
+						THEN 1
+						ELSE NULL
+					END)) > 0
+			THEN 'Y'
+			ELSE 'N'
+		END) AS HOTDEALL_YN
+	, (
+		CASE
+			WHEN (COUNT (
+					CASE
+						WHEN DAYPRICE_YN = 'Y'
+						THEN 1
+						ELSE NULL
+					END)) > 0
+			THEN 'Y'
+			ELSE 'N'
+		END) AS DAYPRICE_YN
+  	, (
+		CASE
+			(SELECT COUNT(*) AS CNT
+			FROM TB_AD_CTN_AMT AS CA
+				LEFT OUTER JOIN TB_AD_CTN_INF AS CI
+				ON  CI.CTN_INF_SN = CA.CTN_INF_SN
+			WHERE PRDT_NUM IN
+				(SELECT PRDT_NUM
+				FROM TB_AD_PRDTINF
+				WHERE CORP_ID = #corpId#)
+					AND #fromDt# BETWEEN START_DT AND END_DT
+					AND DIS_AMT > 0)
+			WHEN 0
+			THEN 'N'
+			ELSE 'Y'
+		END) AS CONTINUE_NIGHT_YN
+  	, (
+		CASE (SELECT NVL (COUNT (PRMT_NUM), 0)
+				FROM TB_PRMT T_PRMT
+				WHERE STATUS_CD = 'TS03'
+					AND #fromDt# BETWEEN START_DT AND END_DT
+					AND CORP_ID = #corpId#)
+			WHEN 0 THEN 'N'
+			ELSE 'Y'
+		END) AS EVENT_YN
+  	, (
+		SELECT
+			CASE WHEN NVL(COUNT(DISTINCT T_CPC.PRDT_NUM), 0) + NVL(SUM(CASE WHEN CP_CORP.CORP_ID = #corpId# THEN 1 ELSE 0 END), 0) >= 1
+					 THEN 'Y' ELSE 'N' END
+		FROM TB_CP T_CP
+		LEFT JOIN TB_CP_PRDT T_CPC ON T_CP.CP_ID = T_CPC.CP_ID AND T_CPC.PRDT_NUM IN (SELECT PRDT_NUM FROM TB_AD_PRDTINF WHERE CORP_ID = #corpId#)
+		LEFT JOIN TB_CP_CORP CP_CORP ON T_CP.CP_ID = CP_CORP.CP_ID AND CP_CORP.CORP_ID = #corpId#
+		WHERE T_CP.STATUS_CD = 'ST02'
+		  AND T_CP.TGT_DIV = 'ALL'
+		  AND #fromDt# BETWEEN T_CP.APL_START_DT AND T_CP.APL_END_DT
+			) AS COUPON_YN
+	/* 탐나는전 */
+	, (
+	    CASE ( SELECT COUNT(1) AS CNT FROM TB_CORP WHERE CORP_ID = #corpId# AND TAMNACARD_MNG_YN = 'C' )
+		WHEN 0 THEN 'N'
+		ELSE 'Y'
+		END) AS TAMNACARD_YN
+     /*우수관광사업체*/
+	,(
+		SELECT  SUPERB_CORP_YN
+		FROM TB_CORP
+		WHERE CORP_ID = #corpId#
+	) AS SUPERB_CORP_YN
+FROM (
+	SELECT T_PRDT.CORP_ID
+		, T_PRDT.PRDT_NUM
+		, TRADE_STATUS
+		, PRINT_YN
+		, APL_DT	/*적용 일자 */
+		, SALE_AMT	/*판매 금액 */
+		, NML_AMT	/*정상 금액 */
+		, HOTDEALL_YN	/*핫딜 여부 */
+		, (
+			CASE
+				WHEN (APL_DT = TO_CHAR (SYSDATE, 'YYYYMMDD')
+					AND DAYPRICE_YN = 'Y')
+				THEN 'Y'
+				ELSE 'N'
+			END) AS DAYPRICE_YN	/*당일특가 여부 */
+		, DAYPRICE_AMT	/*당일특가 금액 */
+		, 'N' AS CONTINUE_NIGHT_YN	/* 연박 할인 여부 */
+		FROM TB_AD_AMTINF T_AMT
+			INNER JOIN TB_AD_PRDTINF T_PRDT
+			ON  T_PRDT.PRDT_NUM = T_AMT.PRDT_NUM
+		WHERE T_PRDT.PRINT_YN = 'Y'
+			AND T_PRDT.TRADE_STATUS = 'TS03'
+			AND T_PRDT.CORP_ID = #corpId#
+			AND (HOTDEALL_YN = 'Y' OR DAYPRICE_YN = 'Y')) T_PRDT2
+INNER JOIN
+	(SELECT TO_CHAR (TO_DATE (#fromDt#, 'YYYYMMDD') + LEVEL - 1, 'YYYYMMDD') AS RSV_DT
+	FROM DUAL
+		<![CDATA[CONNECT BY LEVEL <= #nights#) AS T_RSV1 ]]>
+ON  T_RSV1.RSV_DT = T_PRDT2.APL_DT
+</select>
+
+<!-- 프로모션 용 -->
+<!-- 상품별 업체 출력에서 관련 상품 전체 출력으로 변경 (2017.06.19 By JDongS) : MD 장경연 팀장 통화 -->
+<!-- 수량 조건 제거 2024.11.19 chaewan.jung -->
+<select id="AD_WEBLIST_S_06" resultMap="AD_WEBLIST_R_06">
+  SELECT DISTINCT
+      	   CORP_ID
+         , V4_PRDT.PRDT_NUM
+         , AD_AREA
+         , AD_DIV
+         , AD_NM
+         , ROOM_NM
+         , AD_SIMPLE_EXP
+         , TOTAL_BUY_NUM
+         , NML_AMT
+         , SALE_AMT
+         , '' AS HOTDEALL_YN
+         , '' AS DAYPRICE_YN
+         , '' AS DAYPRICE_AMT
+         , SALE_PENT
+         , STD_MEM
+         , MAXI_MEM
+         , SAVE_PATH
+         , SAVE_FILE_NM
+         , NVL((SELECT GPA_AVG FROM TB_GPA_ANLS WHERE LINK_NUM=CORP_ID), 0) AS GPA_AVG			/*평점 평균*/
+	     , '0' AS GPA_CNT			/*평점 수*/
+	     , '0' AS LON				/*위도*/
+	     , '0' AS LAT				/*경도*/
+	     , (SELECT CD_NM FROM TB_CD
+            WHERE HRK_CD_NUM='ADAR'
+              AND CD_NUM=AD_AREA) AS AD_AREA_NM		/*지역 명*/
+         , EVENT_CNT
+         , COUPON_CNT
+         , PRINT_SN
+      FROM (SELECT V3_PRDT.CORP_ID
+                 , PRDT_NUM
+                 , AD_AREA
+                 , AD_DIV
+                 , AD_NM
+                 , ROOM_NM
+                 , AD_SIMPLE_EXP
+                 , TOTAL_BUY_NUM
+                 , NML_AMT
+                 , SALE_AMT
+                 , SALE_PENT
+                 , STD_MEM
+				 , MAXI_MEM
+                 , SAVE_PATH
+                 , SAVE_FILE_NM
+                 , CONF_DTTM
+                 , EVENT_CNT
+                 , COUPON_CNT
+                 , PRINT_SN
+          FROM (SELECT CORP_ID
+                     , PRDT_NUM
+                     , AD_AREA
+                     , AD_DIV
+                     , AD_NM
+                     , ROOM_NM
+                     , AD_SIMPLE_EXP
+                     , TOTAL_BUY_NUM
+                     , NML_AMT
+                     , SALE_AMT
+                     , SALE_PENT
+                     , STD_MEM
+                     , MAXI_MEM
+                     , T_IMG.SAVE_PATH
+                     , T_IMG.SAVE_FILE_NM
+                     , CONF_DTTM
+                     , EVENT_CNT
+                     , COUPON_CNT
+                     , PRINT_SN
+                FROM (SELECT CORP_ID
+                         , PRDT_NUM
+                         , AD_AREA
+                         , AD_DIV
+                         , AD_NM
+                         , ROOM_NM
+                         , AD_SIMPLE_EXP
+                         , TOTAL_BUY_NUM
+                         , NML_AMT
+                         , SALE_AMT
+                         , SALE_PENT
+                         , STD_MEM
+                         , MAXI_MEM
+                         , CONF_DTTM
+                         , EVENT_CNT
+                         , COUPON_CNT
+                         , PRINT_SN
+                      FROM (SELECT T_PRDT.CORP_ID
+                                 , T_PRDT.PRDT_NUM
+                                 , T_DFT.AD_AREA
+                                 , T_DFT.AD_DIV
+                                 , T_DFT.AD_NM
+                                 , T_PRDT.PRDT_NM AS ROOM_NM
+                                 , T_DFT.AD_SIMPLE_EXP
+                                 , T_DFT.TOTAL_BUY_NUM
+                                 , T_AMT.NML_AMT
+                                 , T_AMT.SALE_AMT
+                                 , '0' AS SALE_PENT /*TO_CHAR( 100-(T_AMT.SALE_AMT*100/T_AMT.NML_AMT), '999' ) AS SALE_PENT*/
+                                 , STD_MEM
+                                 , MAXI_MEM
+                                 , RANK() OVER(PARTITION BY T_PRDT.CORP_ID ORDER BY T_AMT.SALE_AMT ASC, T_PRDT.PRDT_NUM) AS RK
+                                 , T_PRDT.CONF_DTTM
+                                 , (SELECT NVL(COUNT(T_PRMT.PRMT_NUM), 0)
+											FROM TB_PRMT T_PRMT
+										INNER JOIN TB_PRMT_PRDT T_PRMT_PRDT
+												ON T_PRMT.PRMT_NUM = T_PRMT_PRDT.PRMT_NUM
+							                WHERE T_PRMT.CORP_ID = T_PRDT.CORP_ID
+												AND STATUS_CD = 'TS03'
+												AND PRMT_DIV='EVNT'
+							                    <![CDATA[ AND T_PRMT.START_DT  <= TO_CHAR(SYSDATE, 'YYYYMMDD') ]]>
+												<![CDATA[ AND T_PRMT.END_DT >= TO_CHAR(SYSDATE, 'YYYYMMDD') ]]>
+									) AS EVENT_CNT								 
+								 , (SELECT NVL(COUNT(T_CPC.PRDT_NUM), 0)
+							       	  FROM TB_CP_PRDT T_CPC
+							       	    INNER JOIN TB_CP T_CP
+											ON T_CP.CP_ID=T_CPC.CP_ID
+											AND T_CP.STATUS_CD = 'ST02'
+											AND T_CP.TGT_DIV = 'ALL'
+							       	  WHERE T_CPC.PRDT_NUM = T_PRDT.PRDT_NUM
+							       	    AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN APL_START_DT AND APL_END_DT
+							       	) COUPON_CNT
+							     , PRINT_SN
+                              FROM TB_AD_PRDTINF        T_PRDT
+                             INNER JOIN TB_AD_DFTINF    T_DFT
+                                ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+                             INNER JOIN (
+		                    	 SELECT 
+			                    	PRDT_NUM, MIN(APL_DT) AS APL_DT, MIN(SALE_AMT) AS SALE_AMT, MIN(NML_AMT) AS NML_AMT
+			                     FROM 
+			                     	TB_AD_AMTINF
+		                     	 WHERE 
+		                     	 	APL_DT BETWEEN TO_CHAR(SYSDATE,'YYYYMMDD') AND TO_CHAR(SYSDATE+60,'YYYYMMDD') AND SALE_AMT > 0
+			                     GROUP BY PRDT_NUM
+                     			 ) T_AMT
+                                ON T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM
+                             INNER JOIN TB_PRMT_PRDT T_PRMT
+                                ON T_PRMT.PRDT_NUM = T_PRDT.PRDT_NUM
+                               AND T_PRMT.PRMT_NUM = #sPrmtNum#
+                             WHERE 1=1
+                             	AND T_PRDT.PRINT_YN = 'Y'        /*화면 출력 하게 한것만*/
+                            	AND T_PRDT.TRADE_STATUS = 'TS03' /*승인 완료 된것만*/
+                         )
+                     ) AS V_PRDT	<!-- WHERE RK = 1 -->
+                 LEFT OUTER JOIN TB_CM_IMG T_IMG
+                            ON T_IMG.LINK_NUM = V_PRDT.CORP_ID
+                           AND T_IMG.IMG_SN   = 1 ) AS V3_PRDT
+               LEFT OUTER JOIN  TB_CORP T_COP
+               ON T_COP.CORP_ID = V3_PRDT.CORP_ID
+             WHERE T_COP.TRADE_STATUS_CD='TS03') AS V4_PRDT
+</select>
+<!--숙박 리스트 ORDER BY-->
+<sql id ="AD_INCLUDE_00">
+	<isNotEmpty property="orderCd">
+		<isEqual property="orderCd" compareValue="SALE">
+			ORDER BY RSV_ABLE_YN DESC, TOTAL_BUY_NUM DESC    	/* 판매순*/
+		</isEqual>
+		<isEqual property="orderCd" compareValue="PRICE">
+			ORDER BY RSV_ABLE_YN DESC, SALE_AMT ASC				/* 가격순*/
+		</isEqual>
+		<isEqual property="orderCd" compareValue="PRICE_DESC">
+			ORDER BY RSV_ABLE_YN DESC, SALE_AMT DESC				/* 오름차순*/
+		</isEqual>
+		<isEqual property="orderCd" compareValue="NEW">
+			ORDER BY RSV_ABLE_YN DESC, FRST_REG_DTTM  DESC  	/* 최신상품순*/
+		</isEqual>
+		<isEqual property="orderCd" compareValue="GPA">
+			ORDER BY RSV_ABLE_YN DESC, CORP_LEVEL DESC, CORP_ID /* 탐나오추천순*/
+		</isEqual>
+	</isNotEmpty>
+	<isEmpty property="orderCd">
+		ORDER BY RSV_ABLE_YN DESC, CORP_LEVEL DESC, CORP_ID /* 탐나오추천순*/
+	</isEmpty>
+</sql>
+<!--금액 필터 모바일에서만 쓰임-->
+<sql id="AD_INCLUDE_01">
+	<isNotEmpty property="sPriceSe">
+		<isEqual property="sPriceSe" compareValue="1">
+			<![CDATA[ AND SALE_AMT <= 50000    ]]>
+		</isEqual>
+		<isEqual property="sPriceSe" compareValue="2">
+			<![CDATA[ AND 50000 <= SALE_AMT AND SALE_AMT <= 100000    ]]>
+		</isEqual>
+		<isEqual property="sPriceSe" compareValue="3">
+			<![CDATA[ AND 100000 <= SALE_AMT AND SALE_AMT <= 200000    ]]>
+		</isEqual>
+		<isEqual property="sPriceSe" compareValue="4">
+			<![CDATA[ AND 200000 <= SALE_AMT ]]>
+		</isEqual>
+	</isNotEmpty>
+</sql>
+
+<!--
+	판매가격,연박할인, 추가요금
+	실제 판매가 : 판매가격(SALE_AMT) - 연박할인(DISCOUNT) + 추가요금(ADD_AMT)
+-->
+<sql id="AD_INCLUDE_02">
+	,SUM(CASE WHEN DAYPRICE_YN='Y' AND TO_CHAR(SYSDATE, 'YYYYMMDD')=TAMT.APL_DT THEN TAMT.DAYPRICE_AMT ELSE TAMT.SALE_AMT END) OVER(PARTITION BY TAMT.PRDT_NUM ) AS SALE_AMT
+	, SUM(TAMT.NML_AMT) OVER (PARTITION BY TAMT.PRDT_NUM ) AS NML_AMT
+	/* 연박할인*/
+	,NVL((
+		SELECT MAX(DIS_AMT)
+		FROM TB_AD_CTN_AMT AS S1
+		JOIN TB_AD_CTN_INF AS S2 ON S1.CTN_INF_SN = S2.CTN_INF_SN
+		WHERE APL_NIGHT <![CDATA[<=]]> #sNights#    /* 숙박일수 확인 */
+	AND S1.DIS_AMT > 0
+	AND #sFromDt# BETWEEN S2.START_DT AND S2.END_DT
+	AND S2.PRDT_NUM = TAP.PRDT_NUM
+	GROUP BY PRDT_NUM), 0
+	)  AS DISCOUNT
+	/*
+	추가요금 구하기
+	초과인원수 X 등록된추가요금 X 숙박일수
+	기준인원 초과시 성인 신청수부터 초과된 인원을 뺀다.
+	등록된추가요금의 우선순위 1.상품별추가요금 2.통합추가요금
+	무조건 숙박일수를 곱하여 상품별추과요금과 통합추가요금이 겹칠때 계산식이 맞지 않음.
+	*/
+	<![CDATA[
+	, NVL(
+		/* 성인추가요금*/
+		(CASE WHEN ADDAMT_YN = 'Y' AND STD_MEM < TO_NUMBER(#sAdultCnt#) + TO_NUMBER(#sChildCnt#) + TO_NUMBER(#sBabyCnt#) THEN
+		CASE WHEN STD_MEM - TO_NUMBER(#sAdultCnt#) >= 0 THEN 0 ELSE ABS(STD_MEM - TO_NUMBER(#sAdultCnt#)) END
+		ELSE 0 END
+		* CASE WHEN TAA2.ADULT_ADD_AMT + TAA2.JUNIOR_ADD_AMT + TAA2.CHILD_ADD_AMT > 0 THEN TAA2.ADULT_ADD_AMT ELSE TAA1.ADULT_ADD_AMT END)
+
+		/* 소인추가요금*/
+		+ (CASE WHEN ADDAMT_YN = 'Y' AND STD_MEM < TO_NUMBER(#sAdultCnt#) + TO_NUMBER(#sChildCnt#) + TO_NUMBER(#sBabyCnt#) THEN
+		CASE WHEN STD_MEM - TO_NUMBER(#sAdultCnt#) <= 0 THEN TO_NUMBER(#sChildCnt#)
+		WHEN STD_MEM - (TO_NUMBER(#sAdultCnt#) + TO_NUMBER(#sChildCnt#)) >= 0 THEN 0
+		ELSE ABS(STD_MEM - (TO_NUMBER(#sAdultCnt#)+TO_NUMBER(#sChildCnt#))) END
+		ELSE 0 END
+		* CASE WHEN TAA2.ADULT_ADD_AMT + TAA2.JUNIOR_ADD_AMT + TAA2.CHILD_ADD_AMT > 0 THEN TAA2.JUNIOR_ADD_AMT ELSE TAA1.JUNIOR_ADD_AMT END)
+
+		/* 유아추가요금*/
+		+ (CASE WHEN ADDAMT_YN = 'Y' AND STD_MEM < TO_NUMBER(#sAdultCnt#) + TO_NUMBER(#sChildCnt#) + TO_NUMBER(#sBabyCnt#) THEN
+		CASE WHEN STD_MEM - (TO_NUMBER(#sAdultCnt#) + TO_NUMBER(#sChildCnt#)) <= 0 THEN TO_NUMBER(#sBabyCnt#)
+		WHEN STD_MEM - (TO_NUMBER(#sAdultCnt#) + TO_NUMBER(#sChildCnt#) + TO_NUMBER(#sBabyCnt#)) >= 0 THEN 0 ELSE ABS(STD_MEM - (TO_NUMBER(#sAdultCnt#) + TO_NUMBER(#sChildCnt#) + TO_NUMBER(#sBabyCnt#))) END
+		ELSE 0 END
+		* CASE WHEN TAA2.ADULT_ADD_AMT + TAA2.JUNIOR_ADD_AMT + TAA2.CHILD_ADD_AMT > 0 THEN TAA2.CHILD_ADD_AMT ELSE TAA1.CHILD_ADD_AMT END)
+		,0) * #sNights# AS ADD_AMT
+	]]>
+</sql>
+<!-- 숙박 리스트 -->
+<select id="AD_WEBLIST_S_08" resultMap="AD_WEBLIST_R_08">
+SELECT TA.*
+FROM
+	(
+		SELECT
+			CORP_ID
+			 , PRDT_NUM
+			 , AD_AREA
+			 , AD_DIV
+			 , SUPERB_CORP_YN
+			 , CORP_CD
+			 , LON
+			 , LAT
+			 , AD_NM
+			 , AD_SIMPLE_EXP
+			 , TIP
+			 , TOTAL_BUY_NUM
+			 , APL_DT
+			 , HOTDEALL_YN
+			 , STD_MEM
+			 , MAXI_MEM
+			 , DAYPRICE_YN
+			 , DAYPRICE_AMT
+			 , NML_AMT
+			 , SALE_AMT
+			 , SAVE_PATH
+			 , SAVE_FILE_NM
+			 , RSV_ABLE_YN
+			 , 0 AS SALE_PENT
+			 , #sNights# AS STAY_NIGHT
+			 /* 연박 할인 여부 */
+			 ,(CASE (SELECT NVL(COUNT(1), 0) AS CNT
+				 FROM TB_AD_CTN_AMT S1
+				 INNER JOIN TB_AD_CTN_INF AS S2
+				 ON S1.CTN_INF_SN= S2.CTN_INF_SN
+				 WHERE PRDT_NUM = V1.PRDT_NUM AND #sFromDt# BETWEEN START_DT AND END_DT AND DIS_AMT > 0)
+				 WHEN 0 THEN 'N' ELSE 'Y' END
+			 ) AS CONTINUE_NIGHT_YN
+			 /*이벤트 카운트 */
+			 ,(SELECT NVL(COUNT(PRMT_NUM), 0)
+			   FROM TB_PRMT
+			   WHERE STATUS_CD = 'TS03' AND PRMT_DIV = 'EVNT' AND #sFromDt# BETWEEN START_DT AND END_DT AND CORP_ID = V1.CORP_ID
+			 ) AS EVENT_CNT
+			 /* 할인쿠폰 1:있음. 0:없음*/
+			 ,(
+				SELECT CASE WHEN
+				(NVL(SUM(CASE WHEN CP_PRD.PRDT_NUM = V1.PRDT_NUM THEN 1 ELSE 0 END), 0)
+				+ NVL(SUM(CASE WHEN CP_CORP.CORP_ID = V1.CORP_ID THEN 1 ELSE 0 END), 0)) >= 1
+				THEN '1' ELSE '0' END
+				FROM TB_CP CP
+				LEFT JOIN TB_CP_PRDT CP_PRD ON CP.CP_ID = CP_PRD.CP_ID AND CP_PRD.PRDT_NUM = V1.PRDT_NUM
+				LEFT JOIN TB_CP_CORP CP_CORP ON CP.CP_ID = CP_CORP.CP_ID AND CP_CORP.CORP_ID = V1.CORP_ID
+				WHERE CP.STATUS_CD = 'ST02'
+				AND CP.TGT_DIV = 'ALL'
+				AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN CP.APL_START_DT AND CP.APL_END_DT
+			 ) AS COUPON_CNT
+			 , (SELECT CD_NM FROM TB_CD WHERE HRK_CD_NUM = 'ADAR' AND CD_NUM = V1.AD_AREA) AS AD_AREA_NM
+			 , (SELECT LISTAGG(ICON_CD, ',') WITHIN GROUP (ORDER BY ICON_CD desc) AS ICON_CD FROM TB_CM_ICONINF WHERE LINK_NUM = V1.CORP_ID) AS ICON_CD
+			 , GPA_AVG
+			 , GPA_CNT
+			 , MIN_RSV_NIGHT
+			 , MAX_RSV_NIGHT
+			 , FRST_REG_DTTM
+			 , TAMNACARD_YN
+		FROM(
+
+			SELECT
+			CORP_ID
+			, PRDT_NUM
+			, AD_AREA
+			, AD_DIV
+			, SUPERB_CORP_YN
+			, CORP_CD
+			, LON
+			, LAT
+			, AD_NM
+			, AD_SIMPLE_EXP
+			, TIP
+			, TOTAL_BUY_NUM
+			, APL_DT
+			, HOTDEALL_YN
+			, STD_MEM
+			, MAXI_MEM
+			, CONF_DTTM
+			, MIN_RSV_NIGHT
+			, MAX_RSV_NIGHT
+			, FRST_REG_DTTM
+			, DAYPRICE_YN
+			, DAYPRICE_AMT
+			, NML_AMT + ADD_AMT AS NML_AMT
+			, SALE_AMT - DISCOUNT + ADD_AMT AS SALE_AMT
+			, SAVE_PATH
+			, SAVE_FILE_NM
+			, RSV_ABLE_YN
+			/* 일자별 수량이 있는것 중에 가격(판매가-연박할인가+추가요금)이 낮은순 RANK*/
+			, RANK() OVER( PARTITION BY CORP_ID ORDER BY RSV_ABLE_YN DESC , SALE_AMT - DISCOUNT + ADD_AMT, APL_DT, PRDT_NUM ) AS RK
+			, GPA_AVG
+			, GPA_CNT
+			, CORP_LEVEL
+			, TAMNACARD_YN
+
+			FROM (
+				SELECT
+				TAP.CORP_ID
+					, TAP.PRDT_NUM
+					, TAP.PRDT_NM
+					, TAD.AD_AREA
+					, TAD.AD_DIV
+					, TC.SUPERB_CORP_YN
+					, TC.CORP_CD
+					, TC.LON
+					, TC.LAT
+					, CASE WHEN TAD.AD_NM IS NOT NULL THEN TAD.AD_NM ELSE TC.CORP_NM END AS AD_NM
+					, TAD.AD_SIMPLE_EXP
+					, DBMS_LOB.SUBSTR(TAD.TIP, DBMS_LOB.GETLENGTH(TAD.TIP), 1) AS TIP
+					, TAD.TOTAL_BUY_NUM
+					, TAMT.APL_DT
+					, TAMT.HOTDEALL_YN
+					, TAP.STD_MEM
+					, TAP.MAXI_MEM
+					, TAP.CONF_DTTM
+					, TAP.MIN_RSV_NIGHT
+					, TAP.MAX_RSV_NIGHT
+					, TAP.FRST_REG_DTTM
+					, TAMT.DAYPRICE_YN
+					, TAMT.DAYPRICE_AMT
+					, TAC.ROOM_CNT
+					/*재고나 요금이 없을 경우 및 최소 숙박일 조건. 예약불가상품은 하단으로 SORT*/
+					, CASE
+					WHEN (
+						SELECT COUNT(1)
+						FROM TB_AD_AMTINF A
+						WHERE A.PRDT_NUM = TAP.PRDT_NUM
+						AND A.APL_DT BETWEEN #sFromDt# AND TO_CHAR(TO_DATE(#sFromDt#, 'YYYYMMDD') + (#sNights# - 1), 'YYYYMMDD')
+						AND NVL(A.SALE_AMT, 0) != 0
+						AND NVL(A.NML_AMT, 0) != 0
+					) = #sNights#
+					AND TAC.ROOM_CNT = #sNights#
+					AND #sNights# >= MIN_RSV_NIGHT
+					THEN 'Y'
+					ELSE 'N'
+					END AS RSV_ABLE_YN
+					<include refid="AD_INCLUDE_02"/>
+					, TCI.SAVE_PATH
+					, TCI.SAVE_FILE_NM
+					, NVL(TGA.GPA_AVG, 0) AS GPA_AVG
+					, NVL(TGA.GPA_CNT, 0) AS GPA_CNT
+					,(SELECT CORP_LEVEL - NVL(COMPLAIN_LEVEL, 0) + NVL(JOIN_LEVEL, 0) + NVL(AMT_LEVEL, 0)
+						FROM TB_CORP_LEVEL
+						WHERE CORP_CD = 'AD' AND CORP_ID = TAP.CORP_ID
+					) AS CORP_LEVEL
+
+					,CASE WHEN TC.TAMNACARD_MNG_YN = 'C' OR (TC.TAMNACARD_MNG_YN = 'P' AND TAP.TAMNACARD_PRDT_YN = 'Y') THEN 'Y' ELSE 'N' END AS TAMNACARD_YN
+				FROM TB_AD_PRDTINF TAP
+				JOIN TB_AD_DFTINF TAD ON TAP.CORP_ID = TAD.CORP_ID
+				LEFT JOIN TB_AD_AMTINF TAMT ON TAP.PRDT_NUM = TAMT.PRDT_NUM AND TAMT.APL_DT BETWEEN #sFromDt# AND TO_CHAR(TO_DATE(#sToDt#, 'YYYYMMDD') - 1, 'YYYYMMDD') /*일자별 요금*/
+				/*일자별 수량 있는지 체크*/
+				LEFT JOIN (
+					SELECT COUNT(1) AS ROOM_CNT, PRDT_NUM
+					FROM TB_AD_CNTINF
+					WHERE APL_DT BETWEEN #sFromDt# AND TO_CHAR(TO_DATE(#sToDt#, 'YYYYMMDD') - 1, 'YYYYMMDD')
+					AND DDL_YN = 'N'
+					AND TOTAL_ROOM_NUM - USE_ROOM_NUM > 0
+					GROUP BY PRDT_NUM
+				) TAC
+				ON TAP.PRDT_NUM = TAC.PRDT_NUM
+				/* 추가요금 : 공통 */
+				LEFT JOIN (
+					SELECT S1.APL_START_DT, S1.CORP_ID, S1.ADULT_ADD_AMT, S1.JUNIOR_ADD_AMT, S1.CHILD_ADD_AMT
+					FROM TB_AD_ADDAMT AS S1
+					JOIN (
+						SELECT CORP_ID, MAX(APL_START_DT) AS APL_START_DT
+						FROM TB_AD_ADDAMT
+						WHERE APL_START_DT <![CDATA[<=]]> #sFromDt# AND CORP_ID LIKE 'C' ||'%'
+						GROUP BY CORP_ID
+					) AS S2 ON S1.CORP_ID = S2.CORP_ID AND S1.APL_START_DT = S2.APL_START_DT
+				) TAA1 ON TAP.CORP_ID = TAA1.CORP_ID
+				/* 추가요금 : 상품 */
+				LEFT JOIN (
+					SELECT S1.APL_START_DT, S1.CORP_ID, S1.ADULT_ADD_AMT, S1.JUNIOR_ADD_AMT, S1.CHILD_ADD_AMT
+					FROM TB_AD_ADDAMT AS S1
+					JOIN (
+						SELECT CORP_ID, MAX (APL_START_DT) AS APL_START_DT
+						FROM TB_AD_ADDAMT
+						WHERE APL_START_DT <![CDATA[<=]]> #sFromDt# AND CORP_ID LIKE 'A' ||'%'
+						GROUP BY CORP_ID
+					) AS S2 ON S2.CORP_ID = S1.CORP_ID AND S2.APL_START_DT = S1.APL_START_DT
+				) TAA2 ON TAP.PRDT_NUM = TAA2.CORP_ID
+				INNER JOIN TB_CORP TC ON TAD.CORP_ID = TC.CORP_ID AND TC.TRADE_STATUS_CD = 'TS03'
+				INNER JOIN TB_CM_IMG AS TCI ON TC.CORP_ID = TCI.LINK_NUM AND TCI.IMG_SN = 1 AND TCI.LINK_NUM LIKE 'C%'
+				LEFT JOIN TB_GPA_ANLS AS TGA ON TGA.LINK_NUM = TC.CORP_ID
+				WHERE TRADE_STATUS = 'TS03'
+				AND NOT (DAY_RSV_UNABLE_YN ='Y' AND TO_CHAR(SYSDATE, 'YYYYMMDD')=#sFromDt#) /* 당일예약불가 제외*/
+				AND TO_CHAR(SYSDATE, 'YYYYMMDDHH24') <![CDATA[<=]]> #sFromDt#||DAY_RSV_UNABLE_TM /* 당일예약불가시간 체크*/
+				AND (JUNIOR_ABLE_YN= 'Y' OR (JUNIOR_ABLE_YN= 'N' AND #sChildCnt# = '0')) /* 접수가능 또는 소아불가면 소아인원 체크*/
+				AND (CHILD_ABLE_YN = 'Y' OR (CHILD_ABLE_YN = 'N' AND #sBabyCnt# = '0')) /* 접수가능 또는 유아불가면 유아인원 체크*/
+				AND ((MEM_EXCD_ABLE_YN='Y' AND MAXI_MEM >= #sMen#) OR (MEM_EXCD_ABLE_YN='N' AND STD_MEM >= #sMen#)) /*인원제한*/
+				AND #sNights# <![CDATA[<=]]> MAX_RSV_NIGHT /*최대연박일 체크*/
+				<!-- 모바일에서만 사용 -->
+				<isNotEmpty property="sIconCd">
+					<iterate property="sIconCd">
+						AND TAP.CORP_ID IN (SELECT LINK_NUM FROM TB_CM_ICONINF WHERE LINK_NUM = TAP.CORP_ID AND ICON_CD = #sIconCd[]#) /* 편의시설*/
+					</iterate>
+				</isNotEmpty>
+				<isNotEmpty property="sAdDiv">
+					AND AD_DIV = #sAdDiv# /* 숙박 유형*/
+				</isNotEmpty>
+				<isNotEmpty property="arrAdAdar">
+					<iterate prepend="AND AD_AREA IN " property="arrAdAdar" open="(" close=")" conjunction=",">
+						#arrAdAdar[]#
+					</iterate>
+				</isNotEmpty>
+				<isNotEmpty property="sPrdtNm">
+					AND REPLACE(UPPER(AD_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#sPrdtNm#), ' ', '')||'%' /*숙소명*/
+				</isNotEmpty>
+				<isNotEmpty property="sDaypriceYn">
+					AND TAMT.DAYPRICE_YN = #sDaypriceYn# /*당일특가*/
+				</isNotEmpty>
+				<isNotEmpty property="sCorpId">
+					AND TC.CORP_ID = #sCorpId# 			/*모바일지도에서 선택 업체 보여주는 용도로 쓰임*/
+				</isNotEmpty>
+				<!-- //모바일에서만 사용 -->
+
+				<!--검색 시-->
+				<isNotEmpty property="searchWord">
+					AND ((REPLACE(UPPER(TAD.AD_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#searchWord#), ' ', '')||'%')
+							OR (TAP.CORP_ID IN (SELECT LINK_NUM FROM TB_CM_SRCHWORD WHERE SRCH_WORD = #searchWord#)))
+				</isNotEmpty>
+
+			) A1
+		)V1
+		WHERE RK = 1
+		<isEqual property="rsvAbleYn" compareValue="Y">
+			AND RSV_ABLE_YN = 'Y'
+		</isEqual>
+		<!-- 모바일에서만 사용 -->
+		<isEqual property="sTamnacardYn" compareValue="Y">
+			AND TAMNACARD_YN = #sTamnacardYn# /*탐나는전*/
+		</isEqual>
+		<isEqual property="sSuperbCorpYn" compareValue="Y">
+			AND SUPERB_CORP_YN = #sSuperbCorpYn# /*우수관광사업체*/
+		</isEqual>
+		<!-- //모바일에서만 사용 -->
+
+		<include refid="AD_INCLUDE_01"/>
+		/* ORDER BY*/
+		<include refid="AD_INCLUDE_00"/>
+	) TA
+	<!-- 모바일에서만 사용 -->
+	<isEqual property="sCouponCnt" compareValue="1">
+		WHERE COUPON_CNT = '1' /*할인쿠폰*/
+	</isEqual>
+	<!-- //모바일에서만 사용 -->
+</select>
+<!--모바일 지도 리스트-->
+<select id="AD_WEBLIST_S_13" resultMap="AD_WEBLIST_R_08">
+    SELECT
+    *
+    FROM(
+		SELECT
+		T1.*,
+		ROWNUM RN
+		FROM(
+			SELECT
+				A.CORP_ID,
+				B.SUPERB_CORP_YN,
+				B.CORP_CD,
+				A.PRDT_NUM,
+				C.AD_AREA,
+				C.AD_DIV,
+				(CASE WHEN C.AD_NM  IS NOT NULL THEN C.AD_NM  ELSE B.CORP_NM END) AS AD_NM,
+				C.AD_SIMPLE_EXP,
+				DBMS_LOB.SUBSTR(C.TIP, DBMS_LOB.GETLENGTH(C.TIP), 1) AS TIP,
+				C.TOTAL_BUY_NUM,
+				A.NML_AMT,
+				A.APL_DT,
+				(CASE WHEN (A.APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND E.DAYPRICE_YN ='Y') THEN E.DAYPRICE_AMT ELSE A.SALE_AMT END)  AS SALE_AMT,      /*판매 금액 */
+				0 AS SALE_PENT,
+				D.STD_MEM,
+				D.MAXI_MEM,
+				'N' AS RSV_ABLE_YN,
+				D.CONF_DTTM,
+				B.LON,
+				B.LAT,
+				E.HOTDEALL_YN,
+				(CASE WHEN A.DAYPRICE_YN > 0 THEN 'Y' ELSE 'N' END) AS DAYPRICE_YN,
+				D.FRST_REG_DTTM,
+				(CASE WHEN E.DAYPRICE_YN = 'Y' THEN E.DAYPRICE_AMT ELSE 0 END) AS DAYPRICE_AMT,
+				/* 연박 할인 여부 */
+				(CASE (SELECT NVL(COUNT(*), 0) AS CNT
+						FROM TB_AD_CTN_AMT S1
+						INNER JOIN TB_AD_CTN_INF AS S2
+						ON S1.CTN_INF_SN= S2.CTN_INF_SN
+						WHERE PRDT_NUM IN (SELECT PRDT_NUM FROM TB_AD_PRDTINF WHERE CORP_ID=A.CORP_ID)
+						AND #sFromDt# BETWEEN START_DT AND END_DT
+						AND DIS_AMT <![CDATA[>]]> 0) WHEN 0 THEN 'N' ELSE 'Y' END
+				) AS CONTINUE_NIGHT_YN,
+				/* 이벤트 카운트 */
+				(SELECT NVL(COUNT(PRMT_NUM), 0)
+					FROM TB_PRMT
+					WHERE STATUS_CD = 'TS03'
+					AND PRMT_DIV = 'EVNT'
+					AND #sFromDt# BETWEEN START_DT AND END_DT
+					AND CORP_ID = A.CORP_ID
+				) AS EVENT_CNT,
+				/*	쿠폰카운터 */
+				(SELECT NVL(COUNT(CP_PRD.PRDT_NUM), 0)
+					FROM TB_CP_PRDT CP_PRD
+					INNER JOIN TB_CP CP
+					ON CP.CP_ID = CP_PRD.CP_ID AND CP.STATUS_CD = 'ST02' AND CP.TGT_DIV = 'ALL' AND #sFromDt# BETWEEN CP.APL_START_DT AND CP.APL_END_DT
+					WHERE CP_PRD.PRDT_NUM IN (SELECT PRDT_NUM FROM TB_AD_PRDTINF WHERE CORP_ID = A.CORP_ID)
+				) COUPON_CNT,
+				F.SAVE_PATH,
+				F.SAVE_FILE_NM,
+				NVL(H.GPA_AVG, 0) AS GPA_AVG,
+				NVL(H.GPA_CNT, 0) AS GPA_CNT,
+				(SELECT CD_NM FROM TB_CD WHERE HRK_CD_NUM='ADAR' AND CD_NUM=C.AD_AREA) AS AD_AREA_NM,
+				(SELECT LISTAGG(ICON_CD, ',') WITHIN GROUP (ORDER BY ICON_CD desc) AS ICON_CD	FROM TB_CM_ICONINF WHERE LINK_NUM = A.CORP_ID) AS ICON_CD,
+				A.MAX_RSV_NIGHT,
+				A.MIN_RSV_NIGHT,
+				#sNights# AS STAY_NIGHT,
+				CASE WHEN B.TAMNACARD_MNG_YN = 'C' OR (B.TAMNACARD_MNG_YN = 'P' AND D.TAMNACARD_PRDT_YN = 'Y') THEN 'Y' ELSE 'N' END AS TAMNACARD_YN
+			FROM
+			(
+				SELECT
+					CORP_LEVEL, CORP_ID, TRADE_STATUS, PRDT_NUM, APL_DT, NML_AMT, SALE_AMT,
+					DISCOUNT, HOTDEALL_YN, DAYPRICE_AMT, DAYPRICE_YN, MIN_RSV_NIGHT, MAX_RSV_NIGHT, RK
+				FROM
+				(
+					SELECT
+						(SELECT CORP_LEVEL - NVL(COMPLAIN_LEVEL,0) + NVL(JOIN_LEVEL,0) + NVL(AMT_LEVEL,0)
+							FROM TB_CORP_LEVEL
+							WHERE CORP_CD='AD'
+							AND CORP_ID=V1.CORP_ID
+						) AS CORP_LEVEL,
+						V1.CORP_ID, TRADE_STATUS, V2.PRDT_NUM, V2.APL_DT, NML_AMT, SALE_AMT,
+						<!-- 연박할인  -->
+						NVL((SELECT MAX(DIS_AMT) FROM 	TB_AD_CTN_AMT AS S1 JOIN TB_AD_CTN_INF AS S2 ON	S1.CTN_INF_SN = S2.CTN_INF_SN WHERE APL_NIGHT <![CDATA[<=]]> #sNights# AND S1.DIS_AMT > 0  AND #sFromDt# BETWEEN S2.START_DT AND S2.END_DT AND S2.PRDT_NUM = V2.PRDT_NUM GROUP BY PRDT_NUM),0) AS DISCOUNT,
+						HOTDEALL_YN,
+						DAYPRICE_AMT,
+						CASE WHEN COUNT(DECODE(V2.DAYPRICE_YN,'Y','1')) OVER(PARTITION BY V1.CORP_ID)  > '0' AND V2.APL_DT = #sFromDt#  THEN '1' ELSE '0' END AS DAYPRICE_YN,
+						MIN(MIN_RSV_NIGHT) OVER(PARTITION BY V1.CORP_ID) AS MIN_RSV_NIGHT,
+						MAX(MAX_RSV_NIGHT) OVER(PARTITION BY V1.CORP_ID) AS MAX_RSV_NIGHT,
+						<!-- 최저가 랭킹  -->
+						RANK() OVER(PARTITION BY V1.CORP_ID ORDER BY V2.SALE_AMT,V2.APL_DT,V2.PRDT_NUM DESC) AS RK
+					FROM TB_AD_PRDTINF AS V1
+					JOIN TB_AD_AMTINF  AS V2 ON V1.PRDT_NUM = V2.PRDT_NUM
+					WHERE 1=1
+						AND APL_DT BETWEEN TO_CHAR(SYSDATE, 'YYYYMMDD') AND TO_CHAR(SYSDATE+60, 'YYYYMMDD')
+						AND NVL(SALE_AMT, 0) <![CDATA[>]]> 0
+						AND TRADE_STATUS = 'TS03'
+				)
+				WHERE RK= 1
+			) AS A
+			LEFT JOIN TB_CORP AS B ON B.CORP_ID = A.CORP_ID
+			LEFT JOIN TB_AD_DFTINF AS C ON C.CORP_ID = A.CORP_ID
+			LEFT JOIN TB_AD_PRDTINF AS D ON D.PRDT_NUM = A.PRDT_NUM
+			LEFT JOIN TB_AD_AMTINF AS E ON E.PRDT_NUM = A.PRDT_NUM AND E.APL_DT = TO_CHAR(SYSDATE,'YYYYMMDD')
+			LEFT JOIN TB_CM_IMG AS F ON B.CORP_ID = F.LINK_NUM AND F.IMG_SN = 1
+			LEFT JOIN TB_GPA_ANLS AS H ON H.LINK_NUM = B.CORP_ID
+			WHERE 1=1
+				AND	B.TRADE_STATUS_CD = 'TS03'
+				AND A.CORP_ID = #sCorpId# /*업체 ID*/
+		)T1
+		WHERE 1=1
+    )
+    WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<!--숙소 리스트 개수 - 1. 모바일리스트, 2.웹 및 모바일 검색에서 사용-->
+<select id="AD_WEBLIST_S_09" resultClass="int">
+	SELECT COUNT(1)
+	FROM
+	(
+		SELECT RK
+		, SALE_AMT - DISCOUNT + ADD_AMT AS SALE_AMT
+		, TAMNACARD_YN
+		, COUPON_CNT
+		FROM
+		(
+			SELECT
+			/*일자별 수량이 있는것 중에 가격이 낮은순 RANK*/
+			RANK() OVER( PARTITION BY TAP.CORP_ID
+				ORDER BY TAC.ROOM_CNT NULLS LAST
+				, CASE WHEN DAYPRICE_YN = 'Y' AND TO_CHAR(SYSDATE, 'YYYYMMDD') = TAMT.APL_DT THEN DAYPRICE_AMT ELSE SALE_AMT END
+				, TAMT.APL_DT, TAP.PRDT_NUM
+			) AS RK
+			<include refid="AD_INCLUDE_02"/>
+			,CASE WHEN TC.TAMNACARD_MNG_YN = 'C' OR (TC.TAMNACARD_MNG_YN = 'P' AND TAP.TAMNACARD_PRDT_YN = 'Y') THEN 'Y' ELSE 'N' END AS TAMNACARD_YN
+			/* 할인쿠폰 1:있음. 0:없음*/
+			,(
+			SELECT CASE WHEN
+			(NVL(SUM(CASE WHEN CP_PRD.PRDT_NUM = TAP.PRDT_NUM THEN 1 ELSE 0 END), 0)
+			+ NVL(SUM(CASE WHEN CP_CORP.CORP_ID = TC.CORP_ID THEN 1 ELSE 0 END), 0)) >= 1
+			THEN '1' ELSE '0' END
+			FROM TB_CP CP
+			LEFT JOIN TB_CP_PRDT CP_PRD ON CP.CP_ID = CP_PRD.CP_ID AND CP_PRD.PRDT_NUM = TAP.PRDT_NUM
+			LEFT JOIN TB_CP_CORP CP_CORP ON CP.CP_ID = CP_CORP.CP_ID AND CP_CORP.CORP_ID = TC.CORP_ID
+			WHERE CP.STATUS_CD = 'ST02'
+			AND CP.TGT_DIV = 'ALL'
+			AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN CP.APL_START_DT AND CP.APL_END_DT
+			) AS COUPON_CNT
+			FROM TB_AD_PRDTINF TAP
+			JOIN TB_AD_DFTINF TAD ON TAP.CORP_ID = TAD.CORP_ID
+			/*일자별 요금*/
+			LEFT JOIN TB_AD_AMTINF TAMT ON TAP.PRDT_NUM = TAMT.PRDT_NUM AND TAMT.APL_DT BETWEEN #sFromDt# AND TO_CHAR(TO_DATE(#sToDt#, 'YYYYMMDD') - 1, 'YYYYMMDD') AND NVL(TAMT.SALE_AMT, 0) != 0 AND NVL(TAMT.NML_AMT, 0) != 0
+			/*일자별 수량 있는지 체크*/
+			LEFT JOIN (
+				SELECT COUNT(1) AS ROOM_CNT, PRDT_NUM
+				FROM TB_AD_CNTINF
+				WHERE APL_DT BETWEEN #sFromDt# AND TO_CHAR(TO_DATE(#sToDt#, 'YYYYMMDD') - 1, 'YYYYMMDD')
+				AND DDL_YN = 'N'
+				AND TOTAL_ROOM_NUM - USE_ROOM_NUM > 0
+				GROUP BY PRDT_NUM
+			) TAC
+			ON TAP.PRDT_NUM = TAC.PRDT_NUM
+			/* 추가요금 : 공통 */
+			LEFT JOIN (
+				SELECT S1.APL_START_DT, S1.CORP_ID, S1.ADULT_ADD_AMT, S1.JUNIOR_ADD_AMT, S1.CHILD_ADD_AMT
+				FROM TB_AD_ADDAMT AS S1
+				JOIN (
+					SELECT CORP_ID, MAX(APL_START_DT) AS APL_START_DT
+					FROM TB_AD_ADDAMT
+					WHERE APL_START_DT <![CDATA[<=]]> #sFromDt# AND CORP_ID LIKE 'C' ||'%'
+					GROUP BY CORP_ID
+				) AS S2 ON S1.CORP_ID = S2.CORP_ID AND S1.APL_START_DT = S2.APL_START_DT
+			) TAA1 ON TAP.CORP_ID = TAA1.CORP_ID
+			/* 추가요금 : 상품 */
+			LEFT JOIN (
+				SELECT S1.APL_START_DT, S1.CORP_ID, S1.ADULT_ADD_AMT, S1.JUNIOR_ADD_AMT, S1.CHILD_ADD_AMT
+				FROM TB_AD_ADDAMT AS S1
+				JOIN (
+					SELECT CORP_ID, MAX (APL_START_DT) AS APL_START_DT
+					FROM TB_AD_ADDAMT
+					WHERE APL_START_DT <![CDATA[<=]]> #sFromDt# AND CORP_ID LIKE 'A' ||'%'
+					GROUP BY CORP_ID
+				) AS S2 ON S2.CORP_ID = S1.CORP_ID AND S2.APL_START_DT = S1.APL_START_DT
+			) TAA2 ON TAP.PRDT_NUM = TAA2.CORP_ID
+			INNER JOIN TB_CORP TC ON TAD.CORP_ID = TC.CORP_ID AND TC.TRADE_STATUS_CD = 'TS03'
+			LEFT JOIN TB_CM_IMG AS TCI ON TC.CORP_ID = TCI.LINK_NUM AND TCI.IMG_NUM = 1
+			LEFT JOIN TB_GPA_ANLS AS TGA ON TGA.LINK_NUM = TC.CORP_ID
+			WHERE TRADE_STATUS = 'TS03'
+			AND NOT (DAY_RSV_UNABLE_YN ='Y' AND TO_CHAR(SYSDATE, 'YYYYMMDD')=#sFromDt#) /*당일예약불가 제외*/
+			AND TO_CHAR(SYSDATE, 'YYYYMMDDHH24') <![CDATA[<=]]> #sFromDt#||DAY_RSV_UNABLE_TM /*당일예약불가시간 체크*/
+			AND (JUNIOR_ABLE_YN= 'Y' OR (JUNIOR_ABLE_YN= 'N' AND #sChildCnt# = '0')) /* 접수가능 또는 소아불가면 소아인원 체크*/
+			AND (CHILD_ABLE_YN = 'Y' OR (CHILD_ABLE_YN = 'N' AND #sBabyCnt# = '0')) /* 접수가능 또는 유아불가면 유아인원 체크*/
+			AND ((MEM_EXCD_ABLE_YN='Y' AND MAXI_MEM >= #sMen#) OR (MEM_EXCD_ABLE_YN='N' AND STD_MEM >= #sMen#)) /* 인원제한*/
+			AND #sNights# <![CDATA[<=]]> MAX_RSV_NIGHT /*최대연박일 체크*/
+
+			<isNotEmpty property="sIconCd">
+				<iterate property="sIconCd">
+					AND TAP.CORP_ID IN (SELECT LINK_NUM FROM TB_CM_ICONINF WHERE LINK_NUM = TAP.CORP_ID AND ICON_CD = #sIconCd[]#) /* 편의시설*/
+				</iterate>
+			</isNotEmpty>
+			<isNotEmpty property="sAdDiv">
+				AND AD_DIV = #sAdDiv# /*숙박 유형*/
+			</isNotEmpty>
+			<isNotEmpty property="arrAdAdar">
+				<iterate prepend="AND AD_AREA IN " property="arrAdAdar" open="(" close=")" conjunction=",">
+					#arrAdAdar[]#
+				</iterate>
+			</isNotEmpty>
+			<isNotEmpty property="sPrdtNm">
+				AND REPLACE(UPPER(AD_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#sPrdtNm#), ' ', '')||'%' /*숙소명*/
+			</isNotEmpty>
+			<isNotEmpty property="sDaypriceYn">
+				AND TAMT.DAYPRICE_YN = #sDaypriceYn# /*당일특가*/
+			</isNotEmpty>
+			<!--검색 시-->
+			<isNotEmpty property="searchWord">
+				AND ((REPLACE(UPPER(TAD.AD_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#searchWord#), ' ', '')||'%')
+					OR (TAP.CORP_ID IN (SELECT LINK_NUM FROM TB_CM_SRCHWORD WHERE SRCH_WORD = #searchWord#)))
+			</isNotEmpty>
+		) V1
+		WHERE RK = 1
+		<isEqual property="sTamnacardYn" compareValue="Y">
+			AND TAMNACARD_YN = #sTamnacardYn# /*탐나는전*/
+		</isEqual>
+		<isEqual property="sCouponCnt" compareValue="1">
+			AND COUPON_CNT = '1' /*할인쿠폰*/
+		</isEqual>
+		<include refid="AD_INCLUDE_01"/>
+	)
+</select>
+<!-- 숙소 키워드 광고 상품 -->
+<select id="AD_WEBLIST_S_10" resultMap="AD_WEBLIST_R_00">
+  SELECT DISTINCT
+      	   CORP_ID
+         , V4_PRDT.PRDT_NUM
+         , AD_AREA
+         , AD_DIV
+         , AD_NM
+         , ROOM_NM
+         , AD_SIMPLE_EXP
+         , TOTAL_BUY_NUM
+         , NML_AMT
+         , SALE_AMT
+         , HOTDEALL_YN
+         , DAYPRICE_YN
+         , DAYPRICE_AMT
+         , SALE_PENT
+         , STD_MEM
+         , MAXI_MEM
+         , TOTAL_ROOM_NUM
+         , USE_ROOM_NUM
+         , DDL_YN
+         , RSV_ABLE_YN
+         , SAVE_PATH
+         , SAVE_FILE_NM
+         , NVL((SELECT GPA_AVG FROM TB_GPA_ANLS WHERE LINK_NUM=CORP_ID), 0) AS GPA_AVG			/*평점 평균*/
+	     , '0' AS GPA_CNT			/*평점 수*/
+	     , '0' AS LON				/*위도*/
+	     , '0' AS LAT				/*경도*/
+	     , (SELECT CD_NM FROM TB_CD
+            WHERE HRK_CD_NUM='ADAR'
+              AND CD_NUM=AD_AREA) AS AD_AREA_NM		/*지역 명*/
+         , EVENT_CNT
+         , COUPON_CNT
+         , PRINT_SN
+      FROM (SELECT V3_PRDT.CORP_ID
+                 , PRDT_NUM
+                 , AD_AREA
+                 , AD_DIV
+                 , AD_NM
+                 , ROOM_NM
+                 , AD_SIMPLE_EXP
+                 , TOTAL_BUY_NUM
+                 , NML_AMT
+                 , SALE_AMT
+                 , HOTDEALL_YN
+                 , DAYPRICE_YN
+                 , DAYPRICE_AMT
+                 , SALE_PENT
+                 , STD_MEM
+                 , MAXI_MEM
+                 , TOTAL_ROOM_NUM
+                 , USE_ROOM_NUM
+                 , DDL_YN
+                 , RSV_ABLE_YN
+                 , SAVE_PATH
+                 , SAVE_FILE_NM
+                 , CONF_DTTM
+                 , EVENT_CNT
+                 , COUPON_CNT
+                 , PRINT_SN
+          FROM (SELECT CORP_ID
+                     , PRDT_NUM
+                     , AD_AREA
+                     , AD_DIV
+                     , AD_NM
+                     , ROOM_NM
+                     , AD_SIMPLE_EXP
+                     , TOTAL_BUY_NUM
+                     , NML_AMT
+                     , SALE_AMT
+                     , HOTDEALL_YN
+                     , DAYPRICE_YN
+                     , DAYPRICE_AMT
+                     , SALE_PENT
+                     , STD_MEM
+                     , MAXI_MEM
+                     , TOTAL_ROOM_NUM
+                     , USE_ROOM_NUM
+                     , DDL_YN
+                     , RSV_ABLE_YN
+                     , T_IMG.SAVE_PATH
+                     , T_IMG.SAVE_FILE_NM
+                     , CONF_DTTM
+                     , EVENT_CNT
+                     , COUPON_CNT
+                     , PRINT_SN
+                FROM (SELECT CORP_ID
+                         , PRDT_NUM
+                         , AD_AREA
+                         , AD_DIV
+                         , AD_NM
+                         , ROOM_NM
+                         , AD_SIMPLE_EXP
+                         , TOTAL_BUY_NUM
+                         , NML_AMT
+                         , SALE_AMT
+                         , HOTDEALL_YN
+                         , DAYPRICE_YN
+                         , DAYPRICE_AMT
+                         , SALE_PENT
+                         , TOTAL_ROOM_NUM
+                         , USE_ROOM_NUM
+                         , DDL_YN
+                         , STD_MEM
+                         , MAXI_MEM
+                         , RSV_ABLE_YN
+                         , CONF_DTTM
+                         , EVENT_CNT
+                         , COUPON_CNT
+                         , PRINT_SN
+                      FROM (SELECT T_PRDT.CORP_ID
+                                 , T_PRDT.PRDT_NUM
+                                 , T_DFT.AD_AREA
+                                 , T_DFT.AD_DIV
+                                 , T_DFT.AD_NM
+                                 , T_PRDT.PRDT_NM AS ROOM_NM
+                                 , T_DFT.AD_SIMPLE_EXP
+                                 , T_DFT.TOTAL_BUY_NUM
+                                 , T_AMT.NML_AMT
+                                 , (CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN DAYPRICE_AMT ELSE SALE_AMT END)  AS SALE_AMT      /*판매 금액, */
+                                 , T_AMT.HOTDEALL_YN
+                                 , (CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN 'Y' ELSE 'N' END)  AS DAYPRICE_YN  /*당일특가 여부 */
+                                 , T_AMT.DAYPRICE_AMT
+                                 , '0' AS SALE_PENT /*TO_CHAR( 100-(T_AMT.SALE_AMT*100/T_AMT.NML_AMT), '999' ) AS SALE_PENT*/
+                                 , STD_MEM
+                                 , MAXI_MEM
+                                 , TOTAL_ROOM_NUM
+                                 , USE_ROOM_NUM
+                                 , DDL_YN
+                                 , (CASE APL_CNT WHEN '1'
+                                                 THEN 'Y'
+                                                 ELSE 'N'
+                                     END
+                                   ) AS RSV_ABLE_YN
+                                 , RANK() OVER(PARTITION BY T_PRDT.CORP_ID ORDER BY T_AMT.SALE_AMT ASC, T_PRDT.PRDT_NUM) AS RK
+                                 , T_PRDT.CONF_DTTM
+                                 <!-- , (SELECT NVL(COUNT(T_PRMT.PRMT_NUM), 0)
+											FROM TB_PRMT T_PRMT
+									INNER JOIN TB_PRMT_PRDT T_PRMT_PRDT
+												ON T_PRMT.PRMT_NUM = T_PRMT_PRDT.PRMT_NUM
+							                WHERE T_PRMT.CORP_ID = T_PRDT.CORP_ID
+												AND STATUS_CD = 'TS03'
+									) AS EVENT_CNT
+								 -->
+								 , 0 EVENT_CNT
+								 , 0 COUPON_CNT
+								 , T_PRMT.PRINT_SN
+                              FROM TB_AD_PRDTINF        T_PRDT
+                             INNER JOIN TB_AD_DFTINF    T_DFT
+                                ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+                              INNER JOIN (SELECT T_CNT.PRDT_NUM
+                                                    , T_CNT.TOTAL_ROOM_NUM
+                                                    , NVL(T_CNT.USE_ROOM_NUM, 0) AS USE_ROOM_NUM
+                                                    , T_CNT.DDL_YN
+                                                    , NVL(COUNT(APL_DT),0) AS APL_CNT
+                                                 FROM TB_AD_CNTINF T_CNT
+                                                INNER JOIN (SELECT TO_CHAR(SYSDATE+LEVEL-1, 'YYYYMMDD') AS RSV_DT
+                                                              FROM DUAL
+                                                           <![CDATA[ CONNECT BY LEVEL <= '1' /*몇박*/ ]]>
+                                                           ) AS T_RSV1
+                                                   ON T_RSV1.RSV_DT = T_CNT.APL_DT
+                                                WHERE T_CNT.APL_DT >= TO_CHAR(SYSDATE, 'YYYYMMDD')
+                                                GROUP BY T_CNT.PRDT_NUM
+                                                       , T_CNT.TOTAL_ROOM_NUM
+                                                       , T_CNT.USE_ROOM_NUM
+                                                       , T_CNT.DDL_YN
+                                              )         T_APL
+                                ON T_APL.PRDT_NUM = T_PRDT.PRDT_NUM
+                             INNER JOIN TB_AD_AMTINF    T_AMT
+                                ON T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM
+                               AND T_AMT.APL_DT = TO_CHAR(SYSDATE, 'YYYYMMDD') /*시작 날짜*/
+                             INNER JOIN TB_KWA_PRDT T_PRMT
+                                ON T_PRMT.PRDT_NUM = T_PRDT.PRDT_NUM
+                               AND T_PRMT.KWA_NUM = #kwaNum#
+                             WHERE 1=1
+                             	AND T_PRDT.PRINT_YN = 'Y'        /*화면 출력 하게 한것만*/
+                            	AND T_PRDT.TRADE_STATUS = 'TS03' /*승인 완료 된것만*/
+                         )
+                     ) AS V_PRDT	<!-- WHERE RK = 1 -->
+                 LEFT OUTER JOIN TB_CM_IMG T_IMG
+                            ON T_IMG.LINK_NUM = V_PRDT.CORP_ID
+                           AND T_IMG.IMG_SN   = 1 ) AS V3_PRDT
+               LEFT OUTER JOIN  TB_CORP T_COP
+               ON T_COP.CORP_ID = V3_PRDT.CORP_ID
+             WHERE T_COP.TRADE_STATUS_CD='TS03'
+             ) AS V4_PRDT
+         ORDER BY PRINT_SN
+</select>
+
+<!-- 숙소 베스트 상품 리스트 -->
+<select id="AD_WEBLIST_S_11" resultMap="AD_WEBLIST_R_11">
+	SELECT
+		B.CORP_ID,
+		A.CORP_CD,
+		0 AS SUM_NUM,
+		B.PRDT_NUM,
+		E.AD_NM,
+		(SELECT CD_NM
+		FROM TB_CD
+		WHERE HRK_CD_NUM='ADAR'
+		AND CD_NUM=E.AD_AREA) AS AD_AREA_NM,
+		C.SALE_AMT,
+		C.NML_AMT,
+		F.SAVE_PATH,
+		F.SAVE_FILE_NM,
+		E.AD_AREA,
+		A.PRMT_CONTENTS,
+		CASE
+			WHEN D.TAMNACARD_MNG_YN = 'C' OR
+			(D.TAMNACARD_MNG_YN = 'P' AND B.TAMNACARD_PRDT_YN = 'Y')
+			THEN 'Y'
+			ELSE 'N'
+		END AS TAMNACARD_YN
+	FROM
+		TB_BESTPRDT AS A
+	JOIN TB_AD_PRDTINF AS B
+	ON A.PRDT_NUM = B.PRDT_NUM
+	LEFT JOIN
+		(SELECT  PRDT_NUM,
+		MIN(APL_DT)   AS APL_DT,
+		MIN(SALE_AMT) AS SALE_AMT,
+		MIN(NML_AMT)  AS NML_AMT
+		FROM     TB_AD_AMTINF
+		WHERE    APL_DT BETWEEN TO_CHAR(SYSDATE,'YYYYMMDD') AND TO_CHAR(SYSDATE+30,'YYYYMMDD')
+		GROUP BY PRDT_NUM
+		) AS C
+		ON B.PRDT_NUM = C.PRDT_NUM
+	JOIN TB_CORP D
+		ON D.CORP_ID = B.CORP_ID
+	JOIN TB_AD_DFTINF E
+		ON E.CORP_ID = D.CORP_ID
+	LEFT OUTER JOIN TB_CM_IMG F
+		ON      F.LINK_NUM = D.CORP_ID
+		AND     F.IMG_SN   = 1
+	WHERE 1=1
+	AND A.CORP_CD = 'AD'
+	AND NVL(SALE_AMT,0) > 0
+	AND NVL(NML_AMT,0) > 0
+	ORDER BY A.PRINT_SN
+</select>
+
+<!-- 숙소명 used by 자동완성 -->
+<select id="AD_WEBLIST_S_12" resultMap="AD_WEBLIST_R_12">
+	SELECT
+		B.AD_NM
+	FROM
+		TB_CORP AS A
+	JOIN TB_AD_DFTINF AS B
+	ON A.CORP_ID = B.CORP_ID
+	WHERE 1=1
+	AND A.TRADE_STATUS_CD = 'TS03'
+	AND A.CORP_CD = 'AD'
+	<isNotEmpty property="sPrdtNm">
+			AND UPPER(B.AD_NM) LIKE '%'||UPPER(#sPrdtNm#)||'%'
+	</isNotEmpty>
+	ORDER BY AD_NM
+</select>
+
+<!-- 탭에 숫자 -->
+<select id="AD_PRDTCNT_S_00" resultMap="AD_PRDTCNT_R_00">
+SELECT CD_NUM      AS AD_DIV
+     , NVL(CNT, 0) AS CNT
+  FROM TB_CD T_CD
+  LEFT OUTER JOIN (SELECT AD_DIV
+                        , COUNT(PRDT_NUM) AS CNT
+                     FROM (
+
+                     SELECT V1_PRDT.CORP_ID
+                          , PRDT_NUM
+                          , AD_DIV
+                          FROM(SELECT CORP_ID
+                                    , PRDT_NUM
+                                    , AD_DIV
+                             FROM (SELECT T_PRDT.CORP_ID
+                                        , T_PRDT.PRDT_NUM
+                                        , T_DFT.AD_DIV
+                                        , RANK() OVER(PARTITION BY T_PRDT.CORP_ID ORDER BY T_AMT.SALE_AMT ASC, T_PRDT.PRDT_NUM) AS RK
+                                     FROM TB_AD_PRDTINF        T_PRDT
+                                    INNER JOIN TB_AD_DFTINF    T_DFT
+                                       ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+                                     INNER JOIN (SELECT T_CNT.PRDT_NUM
+                                                      , T_CNT.TOTAL_ROOM_NUM
+                                                      , T_CNT.USE_ROOM_NUM
+                                                      , T_CNT.DDL_YN
+                                                      , NVL(COUNT(APL_DT),0) AS APL_CNT
+                                                   FROM TB_AD_CNTINF T_CNT
+                                                  INNER JOIN (SELECT TO_CHAR(TO_DATE(#sFromDt#,'YYYYMMDD')+LEVEL-1, 'YYYYMMDD') AS RSV_DT
+                                                                FROM DUAL
+                                                  <![CDATA[  CONNECT BY LEVEL <= #sNights#  ]]> /*몇박*/
+                                                              ) AS T_RSV1
+                                                     ON T_RSV1.RSV_DT = T_CNT.APL_DT
+                                                   WHERE T_CNT.APL_DT >= #sFromDt#
+                                                     <!--
+                                                     AND T_CNT.DDL_YN = 'N'
+                                                     AND NVL(T_CNT.TOTAL_ROOM_NUM,0) > NVL(T_CNT.USE_ROOM_NUM, 0)
+                                                      -->
+                                                   GROUP BY T_CNT.PRDT_NUM
+                                                          , T_CNT.TOTAL_ROOM_NUM
+                                                          , T_CNT.USE_ROOM_NUM
+                                                          , T_CNT.DDL_YN
+                                                  )         T_APL
+                                       ON T_APL.PRDT_NUM = T_PRDT.PRDT_NUM
+                                    INNER JOIN TB_AD_AMTINF    T_AMT
+                                       ON T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM
+                                      AND T_AMT.APL_DT = #sFromDt# /*시작 날짜*/
+                                       <isNotEmpty property="sPriceSe">
+                                               /*가격구간*/
+                                               <isEqual property="sPriceSe" compareValue="1">
+                                                   <![CDATA[ AND T_AMT.SALE_AMT * #sNights# <= 50000 	]]>
+                                               </isEqual>
+                                               <isEqual property="sPriceSe" compareValue="2">
+                                                   <![CDATA[ AND 50000 <= T_AMT.SALE_AMT * #sNights# AND T_AMT.SALE_AMT * #sNights#  <= 100000 	]]>
+                                               </isEqual>
+                                               <isEqual property="sPriceSe" compareValue="3">
+                                                   <![CDATA[ AND 100000 <= T_AMT.SALE_AMT * #sNights# AND T_AMT.SALE_AMT * #sNights# <= 200000 	]]>
+                                               </isEqual>
+                                               <isEqual property="sPriceSe" compareValue="4">
+                                                   <![CDATA[ AND 200000 <= T_AMT.SALE_AMT * #sNights# 	]]>
+                                               </isEqual>
+                                       </isNotEmpty>
+                                    WHERE 1=1
+                                       AND T_PRDT.PRINT_YN = 'Y'        /*화면 출력 하게 한것만*/
+                                       AND T_PRDT.TRADE_STATUS = 'TS03' /*승인 완료 된것만*/
+                                    <isNotEmpty property="sResEnable">
+                                           AND T_APL.APL_CNT = #sNights# /* 몇박 */ /*예약가능여부*/
+                                   </isNotEmpty>
+                                   <isNotEmpty property="sAdDiv">
+                                           AND T_DFT.AD_DIV = #sAdDiv# /*숙박 유형*/
+                                   </isNotEmpty>
+                                   <isNotEmpty property="sAdAdar">
+                                           AND T_DFT.AD_AREA = #sAdAdar# /*지역*/
+                                   </isNotEmpty>
+                                   <isNotEmpty property="sPrdtNm">
+                                           AND T_DFT.AD_NM LIKE '%'||#sPrdtNm#||'%' /*숙소명*/
+                                   </isNotEmpty>
+                                   <isNotEmpty property="sMen">
+                                           <![CDATA[ AND #sMen# <= T_PRDT.MAXI_MEM  /*인원*/ ]]>
+                                   </isNotEmpty>
+                                   <isNotEmpty property="sAdDivCdView">
+                                           AND T_DFT.AD_DIV = #sAdDivCdView# /*숙박 유형 탭*/
+                                   </isNotEmpty>
+                                   <isNotEmpty property="sDaypriceYn">
+				                     		AND T_AMT.DAYPRICE_YN = #sDaypriceYn# /*당일특가*/
+									</isNotEmpty>
+									<isNotEmpty property="sIconCd">
+					                    	<iterate property="sIconCd">
+					                    AND T_PRDT.CORP_ID IN (SELECT LINK_NUM
+					                                              FROM TB_CM_ICONINF
+					                                             WHERE LINK_NUM = T_PRDT.CORP_ID
+					                                               AND ICON_CD = #sIconCd[]#)
+											</iterate>
+					                </isNotEmpty>
+                                  )
+                            WHERE RK = 1) AS V1_PRDT
+                            LEFT OUTER JOIN  TB_CORP T_COP
+                ON T_COP.CORP_ID = V1_PRDT.CORP_ID
+            WHERE T_COP.TRADE_STATUS_CD='TS03')
+                    GROUP BY AD_DIV
+                  ) AS V_PRDTCNT
+    ON V_PRDTCNT.AD_DIV = CD_NUM
+ WHERE HRK_CD_NUM = 'ADDV'
+   AND USE_YN     = 'Y'
+
+</select>
+
+<select id="AD_PRDTCNT_S_01" resultMap="AD_PRDTCNT_R_00">
+SELECT CD_NUM      AS AD_DIV
+     , NVL(CNT, 0) AS CNT
+  FROM TB_CD T_CD
+  LEFT OUTER JOIN (SELECT AD_DIV
+                        , COUNT(PRDT_NUM) AS CNT
+                     FROM (
+
+                     SELECT V1_PRDT.CORP_ID
+                          , PRDT_NUM
+                          , AD_DIV
+                          FROM(SELECT CORP_ID
+                                    , PRDT_NUM
+                                    , AD_DIV
+                             FROM (SELECT CORP_ID
+                                         , PRDT_NUM
+                                         , AD_DIV
+                                         , RK
+                                  FROM (SELECT T_PRDT.CORP_ID
+                                             , T_CORP.CORP_CD
+                                             , T_PRDT.PRDT_NUM
+                                             , T_DFT.AD_AREA
+                                             , T_DFT.AD_DIV
+                                             , T_DFT.AD_NM
+                                             , T_DFT.AD_SIMPLE_EXP
+                                             , T_DFT.TOTAL_BUY_NUM
+                                             , T_AMT.NML_AMT
+                                             , (CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN DAYPRICE_AMT ELSE SALE_AMT END)  AS SALE_AMT      /*판매 금액 */
+                                             , T_AMT.HOTDEALL_YN
+                                             , 0 AS SALE_PENT /*TO_CHAR( 100-(T_AMT.SALE_AMT*100/T_AMT.NML_AMT), '99' ) AS SALE_PENT*/
+                                             , STD_MEM
+                                             , MAXI_MEM
+                                             , TOTAL_ROOM_NUM
+                                             , USE_ROOM_NUM
+                                             , DDL_YN
+                                             , (CASE APL_CNT WHEN #sNights# /*몇박*/
+                                                             THEN 'Y'
+                                                             ELSE 'N'
+                                                 END
+                                               ) AS RSV_ABLE_YN
+                                             , RANK() OVER(PARTITION BY T_PRDT.CORP_ID ORDER BY T_AMT.SALE_AMT ASC, T_PRDT.PRDT_NUM) AS RK
+                                             , T_PRDT.CONF_DTTM
+                                             , T_PRDT.FRST_REG_DTTM
+                                             , T_CORP.LON
+                                             , T_CORP.LAT
+                                             , (SELECT NVL(COUNT(T_PRMT.PRMT_NUM), 0)
+                                                                    FROM TB_PRMT T_PRMT
+                                                            INNER JOIN TB_PRMT_PRDT T_PRMT_PRDT
+                                                                        ON T_PRMT.PRMT_NUM = T_PRMT_PRDT.PRMT_NUM
+                                                                    WHERE T_PRMT.CORP_ID = T_PRDT.CORP_ID
+                                                                        AND STATUS_CD = 'TS03'
+                                                                        AND PRMT_DIV='EVNT'
+                                                                        <![CDATA[ AND T_PRMT.START_DT  <= TO_DATE(#sFromDt#, 'YYYY/MM/DD') ]]>
+                                                                        <![CDATA[ AND T_PRMT.END_DT >= TO_DATE(#sFromDt#, 'YYYY/MM/DD') ]]>
+                                                            ) AS EVENT_CNT
+                                             , (CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN 'Y' ELSE 'N' END)  AS DAYPRICE_YN  /*당일특가 여부 */
+                                             , T_AMT.DAYPRICE_AMT
+                                          FROM TB_AD_PRDTINF        T_PRDT
+                                         INNER JOIN TB_AD_DFTINF    T_DFT
+                                            ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+                                         INNER JOIN (SELECT T_CNT.PRDT_NUM
+                                                          , T_CNT.TOTAL_ROOM_NUM
+                                                          , NVL(T_CNT.USE_ROOM_NUM, 0) AS USE_ROOM_NUM
+                                                          , T_CNT.DDL_YN
+                                                          , NVL(COUNT(APL_DT),0) AS APL_CNT
+                                                       FROM TB_AD_CNTINF T_CNT
+                                                       <![CDATA[
+                                                      INNER JOIN (SELECT TO_CHAR(TO_DATE(#sFromDt#,'YYYYMMDD')+LEVEL-1, 'YYYYMMDD') AS RSV_DT
+                                                                    FROM DUAL
+                                                                 CONNECT BY LEVEL <= #sNights# /*몇박*/
+                                                                 ) AS T_RSV1
+                                                         ON T_RSV1.RSV_DT = T_CNT.APL_DT
+                                                      WHERE T_CNT.APL_DT >= #sFromDt#
+                                                      ]]>
+                                                      GROUP BY T_CNT.PRDT_NUM
+                                                             , T_CNT.TOTAL_ROOM_NUM
+                                                             , T_CNT.USE_ROOM_NUM
+                                                             , T_CNT.DDL_YN
+                                                        )         T_APL
+                                            ON T_APL.PRDT_NUM = T_PRDT.PRDT_NUM
+                                         INNER JOIN TB_AD_AMTINF    T_AMT
+                                            ON T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM
+                                           AND T_AMT.APL_DT = #sFromDt#
+                                         INNER JOIN TB_CORP T_CORP
+                                            ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+                                           AND T_CORP.TRADE_STATUS_CD = 'TS03'
+                                         WHERE 1=1
+                                           AND T_PRDT.PRINT_YN = 'Y'        /*화면 출력 하게 한것만*/
+                                           AND T_PRDT.TRADE_STATUS = 'TS03' /*승인 완료 된것만*/
+                                        <isNotEmpty property="searchWord">
+                                           AND ((REPLACE(UPPER(T_DFT.AD_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#searchWord#), ' ', '')||'%') OR
+                                                (T_PRDT.CORP_ID IN (SELECT LINK_NUM
+                                                                      FROM TB_CM_SRCHWORD
+                                                                     WHERE SRCH_WORD = #searchWord#)
+                                                            ))
+                                        </isNotEmpty>
+                                        <isNotEmpty property="sIconCd">
+                                                <iterate property="sIconCd">
+                                        AND T_PRDT.CORP_ID IN (SELECT LINK_NUM
+                                                                 FROM TB_CM_ICONINF
+                                                                WHERE LINK_NUM = T_PRDT.CORP_ID
+                                                                  AND ICON_CD = #sIconCd[]#)
+                                                </iterate>
+                                        </isNotEmpty>
+                                        <isNotEmpty property="sMen">
+											<![CDATA[ AND #sMen# <= MAXI_MEM  /*인원*/ ]]>
+										</isNotEmpty>
+                                         UNION ALL
+                                        SELECT T_CORP.CORP_ID
+                                             , T_CORP.CORP_CD
+                                             , T_PRDT.PRDT_NUM
+                                             , T_PRDT.AD_AREA
+                                             , T_PRDT.AD_DIV
+                                             , T_PRDT.PRDT_NM AS AD_NM
+                                             , T_PRDT.PRDT_INF AS AD_SIMPLE_EXP
+                                             , T_OPT.SALE_NUM AS TOTAL_BUY_NUM
+                                             , T_OPT.NML_AMT
+                                             , T_OPT.SALE_AMT
+                                             , 'N' AS HOTDEALL_YN
+                                             , 0 AS SALE_PENT
+                                             , T_OPT.STD_MEM
+                                             , T_OPT.STD_MEM AS MAXI_MEM
+                                             , T_OPT.OPT_PRDT_NUM AS TOTAL_ROOM_NUM
+                                             , T_OPT.SALE_NUM AS USE_ROOM_NUM
+                                             , T_OPT.DDL_YN
+                                             , 'Y' AS RSV_ABLE_YN
+                                             , RANK() OVER(PARTITION BY T_PRDT.PRDT_NUM ORDER BY T_OPT.SALE_AMT ASC, T_DIV.SP_DIV_SN ASC, T_OPT.SP_OPT_SN ASC) AS RK
+                                             , T_PRDT.CONF_DTTM
+                                             , T_PRDT.FRST_REG_DTTM
+                                             , T_PRDT.LON
+                                             , T_PRDT.LAT
+                                             , 0 AS EVENT_CNT
+                                             , 'N' AS DAYPRICE_YN
+                                             , 0 AS DAYPRICE_AMT
+                                          FROM TB_SP_PRDTINF T_PRDT
+                                         INNER JOIN TB_CORP T_CORP
+                                            ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+                                           AND T_CORP.TRADE_STATUS_CD = 'TS03'
+                                         INNER JOIN TB_SP_DIVINF T_DIV
+                                            ON T_DIV.PRDT_NUM = T_PRDT.PRDT_NUM
+                                         INNER JOIN TB_SP_OPTINF T_OPT
+                                            ON T_OPT.PRDT_NUM = T_PRDT.PRDT_NUM
+                                           AND T_OPT.SP_DIV_SN = T_DIV.SP_DIV_SN
+                                           AND T_OPT.APL_DT = #sFromDt#
+                                         WHERE T_PRDT.PRDT_DIV = 'TOUR'
+                                           AND T_PRDT.CTGR = 'C410'
+                                           AND T_PRDT.TRADE_STATUS = 'TS03'
+                                           AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN T_PRDT.SALE_START_DT AND T_PRDT.SALE_END_DT
+                                        <isNotEmpty property="searchWord">
+                                           AND ((REPLACE(UPPER(T_PRDT.PRDT_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#searchWord#), ' ', '')||'%') OR
+                                                (T_PRDT.PRDT_NUM IN (SELECT LINK_NUM
+                                                                       FROM TB_CM_SRCHWORD
+                                                                      WHERE SRCH_WORD = #searchWord#)
+                                                            ))
+                                        </isNotEmpty>
+                                        <isNotEmpty property="sIconCd">
+                                                <iterate property="sIconCd">
+                                        AND T_PRDT.PRDT_NUM IN (SELECT LINK_NUM
+                                                                  FROM TB_CM_ICONINF
+                                                                 WHERE LINK_NUM = T_PRDT.PRDT_NUM
+                                                                   AND ICON_CD = #sIconCd[]#)
+                                                </iterate>
+                                        </isNotEmpty>
+                                        <isNotEmpty property="sMen">
+											<![CDATA[ AND #sMen# <= T_OPT.STD_MEM  /*인원*/ ]]>
+										</isNotEmpty>
+                                       )
+                                 WHERE 1=1
+                                <isNotEmpty property="sAdDiv">
+                                   AND AD_DIV = #sAdDiv# /*숙박 유형*/
+                                </isNotEmpty>
+                                <isNotEmpty property="sAdAdar">
+                                   AND AD_AREA = #sAdAdar# /*지역*/
+                                </isNotEmpty>
+                                <isNotEmpty property="sPrdtNm">
+                                   AND REPLACE(UPPER(AD_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#sPrdtNm#), ' ', '')||'%' /*숙소명*/
+                                </isNotEmpty>
+                                <isNotEmpty property="sDaypriceYn">
+                                   AND DAYPRICE_YN = #sDaypriceYn# /*당일특가*/
+                                </isNotEmpty>
+                                <isNotEmpty property="sCorpId">
+                                   AND CORP_ID = #sCorpId# /*업체 ID*/
+                                </isNotEmpty>
+                                <isNotEmpty property="sPriceSe">
+                                    /*가격구간*/
+                                        <isEqual property="sPriceSe" compareValue="1">
+                                            <![CDATA[ AND SALE_AMT * #sNights# <= 50000 	]]>
+                                        </isEqual>
+                                        <isEqual property="sPriceSe" compareValue="2">
+                                            <![CDATA[ AND 50000 <= SALE_AMT * #sNights# AND SALE_AMT * #sNights#  <= 100000 	]]>
+                                        </isEqual>
+                                        <isEqual property="sPriceSe" compareValue="3">
+                                            <![CDATA[ AND 100000 <= SALE_AMT * #sNights# AND SALE_AMT * #sNights# <= 200000 	]]>
+                                        </isEqual>
+                                        <isEqual property="sPriceSe" compareValue="4">
+                                            <![CDATA[ AND 200000 <= SALE_AMT * #sNights# 	]]>
+                                        </isEqual>
+                                </isNotEmpty>
+                                <isNotEmpty property="orderCd">
+                                        <isEqual property="orderCd" compareValue="SALE">
+                                            <![CDATA[ ORDER BY TOTAL_BUY_NUM DESC    /*구매순*/ 	]]>
+                                        </isEqual>
+                                        <isEqual property="orderCd" compareValue="PRICE">
+                                            <![CDATA[ ORDER BY SALE_AMT ASC   /*가격순*/ 	]]>
+                                        </isEqual>
+                                        <isEqual property="orderCd" compareValue="NEW">
+                                        	/* ORDER BY CONF_DTTM  DESC   최신상품순 => 승인일시 -> 등록일시로 변경 2017-06-20 By JDongS(장경연 팀장 요청) */
+                                            ORDER BY FRST_REG_DTTM  DESC   /*최신상품순*/
+                                        </isEqual>
+                                </isNotEmpty>
+                                  )
+                            WHERE RK = 1) AS V1_PRDT
+                            LEFT OUTER JOIN  TB_CORP T_COP
+                ON T_COP.CORP_ID = V1_PRDT.CORP_ID
+            WHERE T_COP.TRADE_STATUS_CD='TS03')
+                    GROUP BY AD_DIV
+                  ) AS V_PRDTCNT
+    ON V_PRDTCNT.AD_DIV = CD_NUM
+ WHERE HRK_CD_NUM = 'ADDV'
+   AND USE_YN     = 'Y'
+</select>
+
+<!--  지도별 상품 업체 리스트 -->
+<select id="AD_WEBLIST_S_07" resultMap="AD_WEBLIST_R_07">
+SELECT V_PRDT.CORP_ID
+	 , V_PRDT.AD_DIV
+     , T_COP.CORP_NM
+     , T_COP.LON
+     , T_COP.LAT
+     , T_COP.ROAD_NM_ADDR
+     , T_COP.DTL_ADDR
+	 , V_PRDT.SALE_AMT
+  FROM (SELECT CORP_ID
+             , PRDT_NUM
+             , AD_DIV
+			 , SALE_AMT
+          FROM (SELECT T_PRDT.CORP_ID
+                     , T_PRDT.PRDT_NUM
+                     , T_DFT.AD_DIV
+					 , T_AMT.SALE_AMT
+                     , RANK() OVER(PARTITION BY T_PRDT.CORP_ID ORDER BY T_AMT.SALE_AMT ASC, T_PRDT.PRDT_NUM) AS RK
+                  FROM TB_AD_PRDTINF        T_PRDT
+                 INNER JOIN TB_AD_DFTINF    T_DFT
+                    ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+                  INNER JOIN (SELECT T_CNT.PRDT_NUM
+                                   , T_CNT.TOTAL_ROOM_NUM
+                                   , NVL(T_CNT.USE_ROOM_NUM, 0) AS USE_ROOM_NUM
+                                   , T_CNT.DDL_YN
+                                   , NVL(COUNT(APL_DT),0) AS APL_CNT
+                                FROM TB_AD_CNTINF T_CNT
+                               INNER JOIN (SELECT TO_CHAR(SYSDATE+LEVEL-1, 'YYYYMMDD') AS RSV_DT
+                                             FROM DUAL
+                                         <![CDATA[  CONNECT BY LEVEL <= '1' /*몇박*/ ]]>
+                                          ) AS T_RSV1
+                                  ON T_RSV1.RSV_DT = T_CNT.APL_DT
+                               WHERE T_CNT.APL_DT >= TO_CHAR(SYSDATE, 'YYYYMMDD')
+                               GROUP BY T_CNT.PRDT_NUM
+                                      , T_CNT.TOTAL_ROOM_NUM
+                                      , T_CNT.USE_ROOM_NUM
+                                      , T_CNT.DDL_YN
+                                  )         T_APL
+                    ON T_APL.PRDT_NUM = T_PRDT.PRDT_NUM
+                 INNER JOIN TB_AD_AMTINF    T_AMT
+                    ON T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM
+                   AND T_AMT.APL_DT = TO_CHAR(SYSDATE, 'YYYYMMDD') /*시작 날짜*/
+                 WHERE 1=1
+                 	AND T_PRDT.PRINT_YN = 'Y'        /*화면 출력 하게 한것만*/
+                	AND T_PRDT.TRADE_STATUS = 'TS03' /*승인 완료 된것만*/
+             )
+         WHERE RK = 1) AS V_PRDT
+   INNER JOIN  TB_CORP T_COP
+   ON T_COP.CORP_ID = V_PRDT.CORP_ID
+ WHERE T_COP.TRADE_STATUS_CD='TS03'
+   AND '1' = (SELECT COUNT(*) FROM TB_AD_CNTINF AS S1 WHERE S1. PRDT_NUM = V_PRDT.PRDT_NUM AND S1.APL_DT = TO_CHAR(SYSDATE,'YYYYMMDD') AND S1.DDL_YN = 'N' )
+   AND '1' = (SELECT COUNT(*) FROM TB_AD_AMTINF AS S1 WHERE S1. PRDT_NUM = V_PRDT.PRDT_NUM AND S1.APL_DT = TO_CHAR(SYSDATE,'YYYYMMDD'))
+   AND T_COP.LON is not null
+   AND T_COP.LAT is not null
+</select>
+<select id="AD_WEBDTL_S_01" resultClass="int">
+SELECT NVL(COUNT(T_PRMT.PRMT_NUM), 0)
+		FROM TB_PRMT T_PRMT
+INNER JOIN TB_PRMT_PRDT T_PRMT_PRDT
+			ON T_PRMT.PRMT_NUM = T_PRMT_PRDT.PRMT_NUM
+              WHERE T_PRMT.CORP_ID = #sCorpId#
+			AND STATUS_CD = 'TS03'
+            <![CDATA[ AND T_PRMT.START_DT  <= TO_DATE(#sFromDt#, 'YYYY/MM/DD') ]]>
+			<![CDATA[ AND T_PRMT.END_DT >= TO_DATE(#sFromDt#, 'YYYY/MM/DD') ]]>
+</select>
+
+<select id="AD_CTNINF_S_00" resultMap="AD_CTNINF_R_00">
+SELECT CTN_INF_SN
+		, PRDT_NUM
+		, START_DT
+		, END_DT
+		, CTN_EXP
+		, (SELECT LISTAGG(APL_NIGHT||'박 :'||TO_CHAR(DIS_AMT, '999,999')||'원 할인', '@')
+            WITHIN GROUP(ORDER BY APL_NIGHT||'박 :'||TO_CHAR(DIS_AMT, '999,999')||'원 할인')  AS NIGHT_STR FROM TB_AD_CTN_AMT
+               WHERE CTN_INF_SN=CI.CTN_INF_SN AND DIS_AMT!=0) AS AMP_INF
+	FROM TB_AD_CTN_INF AS CI
+	WHERE PRDT_NUM=#prdtNum#
+	ORDER BY START_DT DESC, END_DT
+</select>
+
+<select id="AD_CTNINF_S_01" resultMap="AD_CTNINF_R_00">
+SELECT CTN_INF_SN
+		, PRDT_NUM
+		, START_DT
+		, END_DT
+		, CTN_EXP
+		, '' AS AMP_INF
+	FROM TB_AD_CTN_INF
+	WHERE PRDT_NUM=#prdtNum#
+		AND CTN_INF_SN=#ctnInfSn#
+</select>
+
+<insert id="AD_CTNINF_I_00">
+INSERT INTO TB_AD_CTN_INF (
+	CTN_INF_SN
+	, PRDT_NUM
+	, START_DT
+	, END_DT
+	, CTN_EXP
+)
+VALUES (
+	(SELECT NVL(MAX(CTN_INF_SN), 0) + 1 FROM TB_AD_CTN_INF)
+	, #prdtNum#
+	, #startDt#
+	, #endDt#
+	, #ctnExp#
+)
+</insert>
+
+<select id="AD_CTN_AMT_S_00" resultMap="AD_CTNAMT_R_00">
+SELECT CTN_INF_SN
+		, AMT_DIV
+		, APL_NIGHT
+		, DIS_AMT
+	FROM TB_AD_CTN_AMT
+	WHERE CTN_INF_SN=#ctnInfSn#
+</select>
+
+<select id="AD_CTN_AMT_S_01" resultMap="AD_CTNAMT_R_00">
+	SELECT 
+		CTN_INF_SN,
+		APL_NIGHT,
+		AMT_DIV,
+		DIS_AMT
+	FROM(
+		SELECT 
+			CA.CTN_INF_SN,
+			APL_NIGHT,
+			AMT_DIV,
+			NVL(DIS_AMT, 0) AS DIS_AMT,
+			RANK() OVER(PARTITION BY PRDT_NUM ORDER BY START_DT, APL_NIGHT DESC) AS RK
+		FROM TB_AD_CTN_INF AS CI
+		LEFT OUTER JOIN 
+			TB_AD_CTN_AMT AS CA 
+		ON CA.CTN_INF_SN=CI.CTN_INF_SN
+		WHERE 
+			PRDT_NUM=#sPrdtNum#
+			AND #startDt# BETWEEN START_DT AND END_DT
+			AND APL_NIGHT <![CDATA[<=]]> #sNights#
+			AND DIS_AMT != 0
+	)
+	WHERE RK=1
+</select>
+
+<select id="AD_CTN_AMT_S_02" resultMap="AD_CTNAMT_R_00">
+SELECT CA.CTN_INF_SN, APL_NIGHT, AMT_DIV, NVL(DIS_AMT, 0) AS DIS_AMT FROM TB_AD_CTN_INF AS CI
+            LEFT OUTER JOIN TB_AD_CTN_AMT AS CA ON CA.CTN_INF_SN=CI.CTN_INF_SN
+        WHERE PRDT_NUM=#sPrdtNum#
+            AND #startDt# BETWEEN START_DT AND END_DT
+</select>
+
+<select id="AD_CTN_AMT_S_03" resultMap="AD_CTNAMT_R_01">
+SELECT LISTAGG(APL_NIGHT||'박 :'||TO_CHAR(DIS_AMT, '9,999,999')||'원 할인', '@')
+    WITHIN GROUP(ORDER BY APL_NIGHT||'박 :'||TO_CHAR(DIS_AMT, '9,999,999')||'원 할인') AS AMT_DIV FROM TB_AD_CTN_AMT
+            WHERE CTN_INF_SN=#ctnInfSn# AND DIS_AMT!=0
+</select>
+
+<delete id="AD_CTN_AMT_D_00">
+DELETE FROM TB_AD_CTN_AMT
+    WHERE CTN_INF_SN=#ctnInfSn#
+</delete>
+
+<update id="AD_CTNINF_U_00">
+UPDATE TB_AD_CTN_INF SET
+		START_DT=#startDt#
+		, END_DT=#endDt#
+		, CTN_EXP=#ctnExp#
+		WHERE CTN_INF_SN=#ctnInfSn#
+</update>
+
+<update id="AD_CTNINF_M_00">
+MERGE INTO TB_AD_CTN_AMT ctnAmt
+USING ( SELECT #ctnInfSn# AS CTN_INF_SN, #aplNight# AS APL_NIGHT
+		  FROM DUAL) ctnAmt2
+   ON (ctnAmt.CTN_INF_SN = ctnAmt2.CTN_INF_SN
+  AND ctnAmt.APL_NIGHT = ctnAmt2.APL_NIGHT
+  )
+  WHEN MATCHED THEN
+UPDATE SET
+	   AMT_DIV = #amtDiv#,
+	   DIS_AMT = #disAmt#
+  WHEN NOT MATCHED THEN
+INSERT
+	 ( CTN_INF_SN
+	 , APL_NIGHT
+	 , AMT_DIV
+	 , DIS_AMT
+	 )
+VALUES
+	 ( #ctnInfSn#
+	 , #aplNight#
+	 , #amtDiv#
+	 , #disAmt#
+  	 )
+</update>
+
+<delete id="AD_CTNINF_D_00">
+DELETE FROM TB_AD_CTN_INF 
+		WHERE CTN_INF_SN=#ctnInfSn#
+</delete>
+
+<resultMap id="AD_BREAKFAST_AMT_R_00" class="mas.ad.vo.AD_BREAKFASTAMTVO">
+<result property="corpId" column="CORP_ID"></result>
+<result property="adultAmt" column="ADULT_AMT"></result>
+<result property="juniorAmt" column="JUNIOR_AMT"></result>
+<result property="childAmt" column="CHILD_AMT"></result>
+</resultMap>
+
+<select id="AD_BREAKFAST_AMT_S_00" resultMap="AD_BREAKFAST_AMT_R_00">
+SELECT CORP_ID
+	 , ADULT_AMT
+     , JUNIOR_AMT
+     , CHILD_AMT
+	FROM TB_AD_BREAKFAST_AMT
+ 	WHERE CORP_ID=#corpId#
+</select>
+
+<update id="AD_BREAKFAST_AMT_M_00">
+ MERGE INTO TB_AD_BREAKFAST_AMT AD1
+ USING (SELECT #corpId# AS CORP_ID
+          FROM DUAL) AD2
+    ON (AD2.CORP_ID = AD1.CORP_ID)
+  WHEN MATCHED THEN
+UPDATE SET
+       ADULT_AMT  = #adultAmt#
+     , JUNIOR_AMT = #juniorAmt#
+     , CHILD_AMT  = #childAmt#
+  WHEN NOT MATCHED THEN
+INSERT
+     ( CORP_ID
+	 , ADULT_AMT
+     , JUNIOR_AMT
+     , CHILD_AMT
+       )
+VALUES
+     ( #corpId#
+	 , #adultAmt#
+     , #juniorAmt#
+     , #childAmt#
+     )
+</update>
+
+<insert id="AD_RSV_DAYPRICE_I_00">
+	INSERT INTO TB_AD_RSV_DAYPRICE
+	(
+		AD_RSV_NUM
+		,APL_DT
+		,RSV_NUM
+		,SALE_AMT
+		,ADULT_ADD_AMT
+		,JUNIOR_ADD_AMT
+		,CHILD_ADD_AMT
+		,CTN_DIS_AMT
+		,TOT_AMT
+		,TLL_PRICE_LINK
+		,DEPOSIT_AMT
+	)
+	VALUES
+	(
+		#adRsvNum#
+		,#aplDt#
+		,#rsvNum#
+		,#saleAmt#
+		,#adultAddAmt#
+		,#juniorAddAmt#
+		,#childAddAmt#
+		,#ctnDisAmt#
+		,#saleAmt# + #adultAddAmt# + #juniorAddAmt# + #childAddAmt# - #ctnDisAmt#
+		,#tllPriceLink#
+		,#depositAmt#
+	)
+</insert>
+
+<select id="AD_TAMNACARD_S_00" resultClass="String">
+	SELECT
+		CASE WHEN A.TAMNACARD_MNG_YN = 'C' OR (A.TAMNACARD_MNG_YN = 'P' AND B.TAMNACARD_PRDT_YN = 'Y') THEN 'Y' ELSE 'N' END AS TAMNACARD_YN
+	FROM
+		TB_CORP AS A
+	JOIN TB_AD_PRDTINF AS B
+	ON A.CORP_ID = B.CORP_ID
+	WHERE B.PRDT_NUM = #sPrdtNum#
+</select>
+
+<!--당일예약 가능여부 체크-->
+<select id="AD_WEBDTL_S_02" resultClass="int">
+	SELECT COUNT(1) FROM TB_AD_DFTINF
+	WHERE CORP_ID = #corpId#
+	AND NOT (DAY_RSV_UNABLE_YN ='Y' AND TO_CHAR(SYSDATE, 'YYYYMMDD')=#sFromDt#) /* 당일예약불가 제외*/
+	AND NOT(DAY_RSV_UNABLE_YN ='N' AND TO_CHAR(SYSDATE, 'YYYYMMDDHH24') <![CDATA[>]]> #sFromDt#||DAY_RSV_UNABLE_TM) /* 당일예약불가시간 체크*/
+</select>
+
+</sqlMap>

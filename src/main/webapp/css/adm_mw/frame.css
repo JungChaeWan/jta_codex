@@ -1,0 +1,93 @@
+@charset "utf-8";
+
+
+
+/* --------------------------------------------------------- container/main ------------------------------------------------------------------ */
+/*#wrap {}*/
+#main {/*background: #f7f7f7;*/}
+#main .contents-wrap {padding: 80px 10px;}
+
+
+/* not scroll */
+body.not-scroll {overflow: hidden; position: fixed;}
+/* --------------------------------------------------------- //container/main ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- html header ------------------------------------------------------------------ */
+#header {
+  background: #232831; height: 60px; position: fixed; width: 100%; top: 0; z-index: 99;
+  -webkit-transition: top 0.3s ease-in-out;
+          transition: top 0.3s ease-in-out;
+}
+#header.head-hide {top: -80px;}
+#header .logo {text-align: center;}
+#header .logo a {display: inline-block; padding: 10px 5px 12px;}
+#header .logo img {height: 30px;}
+
+#header .left-menu, #header .right-menu {width: 30px; height: 30px; position: absolute; top: 15px; border: 1px solid #5b5c5f; border-radius: 4px;}
+#header .left-menu a, #header .right-menu a {display: block;}
+#header .left-menu a img, #header .right-menu a img {width: 100%; height: 100%;}
+
+#header .left-menu {left: 10px;}
+#header .left-menu .menu {  
+  position: fixed; top: 30px; bottom: 0; left: 26px; right: 0; background: #fff; z-index: 101;
+  overflow: hidden; padding: 0; width: 0; height: 0;
+  -webkit-transition: all .3s ease;
+          transition: all .3s ease;
+}
+#header .left-menu .menu.active {
+  top: 0; left: 0;
+  overflow-y: auto; padding: 20px; padding-top: 40px; width: 88%; width: calc(100% - 40px); height: auto;
+}
+#header .left-menu .menu .close {position: fixed; right: 15px; top: 15px; padding: 5px; display: none;}
+#header .left-menu .menu .close img {width: 18px; height: 18px;}
+#header .left-menu .menu .nav-wrap nav {margin-top: 30px; padding-right: 30px;}
+#header .left-menu .menu .nav-wrap nav:first-child {margin-top: 0;}
+#header .left-menu .menu nav > a {font-size: 1em; font-weight: 700;}
+#header .left-menu .menu nav > a.active {color:#58c0f0;}
+#header .left-menu .menu nav ul {display: none;}
+#header .left-menu .menu nav ul.active {display: block;}
+#header .left-menu .menu nav ul li:first-child {margin-top: 8px;}
+#header .left-menu .menu nav ul li a {font-size: 0.937em; color: #5f5f60; padding: 6px 0;}
+
+#header .right-menu {right: 10px;}
+#header .right-menu .menu {display: none;}
+#header .right-menu .menu.active {display: block;}
+#header .right-menu .menu.active::after {content: ""; position: fixed; top: 60px; bottom: 0; left: 0; right: 0; background: rgba(47,47,47,.9); z-index: 99;}
+#header .right-menu .menu nav {position: relative; top: 26px; right: 10px; z-index: 100;}
+#header .right-menu .menu nav a {display: block; width: 43px; height: 43px; border-radius: 43px; margin-top: 15px; position: relative; background: #fff; text-align: center;}
+#header .right-menu .menu nav a:first-child {margin-top: 0;}
+#header .right-menu .menu nav a span {display: inline-block; text-align: right; position: absolute; top: 16px; right: 50px; font-size: 11px; color: #cccccc; white-space: nowrap;}
+#header .right-menu .menu nav a img {width: 20px; height: 20px; position: relative; top: 20%; top: calc(50% - 11px);}
+
+/* 메뉴 아이콘 배경처리시 */
+#header .right-menu #right_btn {width: 30px; height: 30px; display: block; background: url("../../images/adm_mw/comm/menu_right.png") no-repeat center; background-size: 30px;}
+#header .right-menu #right_btn.active {background-image: url("../../images/adm_mw/comm/menu_right_on.png");}
+#header .right-menu #right_btn img {display: none;}
+/* --------------------------------------------------------- //html header ------------------------------------------------------------------ */
+
+
+/* --------------------------------------------------------- html footer ------------------------------------------------------------------ */
+#footer {/*border-top: 2px solid #e1e3e4;*/ padding: 20px 10px;}
+#footer .foot-menu {text-align: center;}
+#footer .foot-menu li {
+  display: inline-block; height: 28px; border: 1px solid #ccc; border-radius: 4px; min-width: 65px;
+  background: url("../../images/adm_mw/btn/btn_bg.png") repeat-x left bottom #f2f2f2; overflow: hidden;
+  margin: 0 2px;
+}
+#footer .foot-menu li a {display: block; font-size: 12px; line-height: 28px; white-space: nowrap; padding: 0 5px;}
+
+#footer address {font-size: 12px; line-height: 18px; color: #888888; font-style: normal;}
+#footer address p {color: #888888;}
+#footer address p.copy {margin-top: 10px; color: #5f5f60;}
+/* --------------------------------------------------------- //html footer ------------------------------------------------------------------ */
+
+
+
+/* --------------------------------------------------------- page header ------------------------------------------------------------------ */
+/* --------------------------------------------------------- //page header ------------------------------------------------------------------ */
+
+
+/* --------------------------------------------------------- page footer ------------------------------------------------------------------ */
+/* --------------------------------------------------------- //page footer ------------------------------------------------------------------ */

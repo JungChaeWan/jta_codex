@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>탐나오</title>
+</head>
+
+<body>
+	<table style="width: 740px; margin: 0 auto; text-decoration: none; border-collapse: collapse; font-family: 'NanumBarunGothic', 'Dotum', 'Helvetica', 'sans-serif';">
+		<!-- thead -->
+		#parse("mailTemplate/header.vm")
+
+		<tbody>
+			<tr>
+				<td style="width: 740px; padding-top: 30px; text-align: center;">
+					<img src="${domain}/images/web/mail/top-icon5.png" alt="입점승인">
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;">
+					<p style="font-size: 26px; color: #333435; margin: 0; padding-top: 30px; letter-spacing: -0.3px;">
+						탐나오 입점을 환영합니다.
+					</p>
+					<p style="font-size: 16px; color: #939393; margin: 0; padding-top: 16px; line-height: 22px; letter-spacing: 0;">
+						제주여행 오픈마켓 탐나오 입점을 진심으로 환영합니다.<br>
+						항상 업체와 함께하는 탐나오가 되겠습니다.
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div style="background-color: #f5f4f4; border: 1px solid #dcdcdc; padding: 10px 0; font-size: 14px; margin-top: 30px;">
+						<p style="height: 30px; text-align: center;">
+							상점 아이디 : <span style="color: #e94c3f; font-size: 16px; font-weight: bold;">$corpId</span>
+						</p>
+						<ul style="line-height: 30px; padding-left: 150px;">
+							<li>비밀번호 : 입점신청한 담당자(회원)의 비밀번호와 동일</li>
+							<li>
+								입점업체 관리자 시스템 : <a style="color: #7a72c3" href="${domain}/mas/intro.do" target="_blank">${domain}/mas</a>
+							</li>
+							<li style="color: #e94c3f;">관리자 페이지 접속 후 우측 상단의 매뉴얼을 다운받아주세요.</li>
+							<li>매뉴얼 참조 후 판매하실 상품을 등록해주세요.</li>
+						</ul>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td style="padding: 40px 0 60px 0; text-align: center;">
+					<a href="${domain}/mas/intro.do" target="_blank"><img src="${domain}/images/web/mail/admin.png" alt="관리자페이지 바로가기"></a>
+				</td>
+			</tr>
+		</tbody>
+
+		<!-- tfoot -->
+		#parse("mailTemplate/footer.vm")
+	</table>
+</body>
+</html>

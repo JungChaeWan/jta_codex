@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>JTA</groupId>
+    <artifactId>JTA</artifactId>
+    <packaging>war</packaging>
+    <version>3.2.0</version>
+    <name>jta</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <spring.maven.artifact.version>3.2.9.RELEASE</spring.maven.artifact.version>
+        <egovframework.rte.version>3.1.0</egovframework.rte.version>
+        <encoding>1.8</encoding>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>mvn2</id>
+            <url>http://insecure.repo1.maven.org/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>egovframe</id>
+            <url>http://www.egovframe.go.kr/maven/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- 표준프레임워크 실행환경 -->
+        <dependency>
+            <groupId>egovframework.rte</groupId>
+            <artifactId>egovframework.rte.ptl.mvc</artifactId>
+            <version>${egovframework.rte.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>egovframework.rte</groupId>
+            <artifactId>egovframework.rte.psl.dataaccess</artifactId>
+            <version>${egovframework.rte.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>cnspay_lite</artifactId>
+                    <groupId>cnspay_lite</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>log4j-over-slf4j</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>egovframework.rte</groupId>
+            <artifactId>egovframework.rte.fdl.idgnr</artifactId>
+            <version>${egovframework.rte.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>egovframework.rte</groupId>
+            <artifactId>egovframework.rte.fdl.property</artifactId>
+            <version>${egovframework.rte.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+            <version>2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.8.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr</artifactId>
+            <version>3.5</version>
+        </dependency>
+
+        <!-- <dependency>
+          <groupId>org.hsqldb</groupId>
+          <artifactId>hsqldb</artifactId>
+          <version>2.3.2</version>
+        </dependency> -->
+
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>3.4.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
+        </dependency>
+
+        <!-- tibero -->
+        <dependency>
+            <groupId>tibero</groupId>
+            <artifactId>tibero</artifactId>
+            <scope>system</scope>
+            <version>5</version>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/tibero5-jdbc.jar</systemPath>
+        </dependency>
+
+        <!-- Ajax용 Json -->
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
+            <classifier>jdk15</classifier>
+        </dependency>
+        <!-- <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.8.5</version>
+        </dependency> -->
+        <dependency>
+            <groupId>org.codehaus.jackson-all</groupId>
+            <artifactId>jackson-all</artifactId>
+            <scope>system</scope>
+            <version>1.9.9</version>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jackson-all-1.9.9.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib-ext-spring</artifactId>
+            <version>1.0.2</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- validation mask 정규식 처리를 위해 추가 -->
+        <dependency>
+            <groupId>oro</groupId>
+            <artifactId>oro</artifactId>
+            <version>2.0.8</version>
+        </dependency>
+
+        <!-- file uploader -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.5</version>
+        </dependency>
+
+        <!-- 이메일(vm) -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-tools</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+        <!-- LG U+ 결제 관련 -->
+        <dependency>
+            <groupId>XPayClient</groupId>
+            <artifactId>XPayClient</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/XPayClient.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.solvoj.zxing-java6</groupId>
+            <artifactId>javase-java6</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.solvoj.zxing-java6</groupId>
+            <artifactId>core-java6</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
+        <!-- 카카오페이 관련 -->
+        <dependency>
+            <groupId>cnspay_lite</groupId>
+            <artifactId>cnspay_lite</artifactId>
+            <version>0.1.2</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/cnspay_lite-0.1.2.0.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>mpay_shopping</groupId>
+            <artifactId>mpay_shopping</artifactId>
+            <version>0.4.13</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/mpay_shopping_merchant_v0.4.13.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>mpay_merchant</groupId>
+            <artifactId>mpay_merchant</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/mpay_merchant_encoder_1.0.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>connectMPay</groupId>
+            <artifactId>connectMPay</artifactId>
+            <version>2.1</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/connectMPay_v2.1.jar</systemPath>
+        </dependency>
+
+        <!-- DEXT5 관련 -->
+        <dependency>
+            <groupId>dext5</groupId>
+            <artifactId>dext5</artifactId>
+            <version>5</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/dext5.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>Raonwiz_dext5</groupId>
+            <artifactId>Raonwiz_dext5</artifactId>
+            <version>5</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/Raonwiz.Dext5.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>cos</groupId>
+            <artifactId>cos</artifactId>
+            <version>5</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/cos.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>jcifs</groupId>
+            <artifactId>jcifs</artifactId>
+            <version>1.3.18</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jcifs-1.3.18.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>dext_commons-fileupload</groupId>
+            <artifactId>dext_commons-fileupload</artifactId>
+            <version>1.2</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/commons-fileupload-1.2.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>dext_commons-io</groupId>
+            <artifactId>dext_commons-io</artifactId>
+            <version>1.4</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/commons-io-1.4.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>Raonwiz_dext_license</groupId>
+            <artifactId>Raonwiz_dext_license</artifactId>
+            <version>1.4</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/Raonwiz.Dext5.License.Library.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>zip4j</groupId>
+            <artifactId>zip4j</artifactId>
+            <version>1.3.2</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/zip4j_1.3.2.jar</systemPath>
+        </dependency>
+
+        <!-- Quartz framework -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.1.7</version>
+        </dependency>
+
+        <!-- 탐나는전 -->
+        <dependency>
+            <groupId>remote-payment-lib</groupId>
+            <artifactId>remote-payment-lib</artifactId>
+            <version>1.8</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/remote-payment-lib-1.8_public_ip.jar</systemPath>
+        </dependency>
+
+        <!-- 설문지 암호화모듈 -->
+        <dependency>
+            <groupId>jtaa-cipher.jar</groupId>
+            <artifactId>jtaa-cipher.jar</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jtaa-cipher.jar</systemPath>
+        </dependency>
+
+        <!-- json-simple -->
+        <dependency>
+            <groupId>json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <scope>system</scope>
+            <version>1.8</version>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/json-simple.jar</systemPath>
+        </dependency>
+
+        <!-- <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+          <version>1.7.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.7</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+          <version>1.7.7</version>
+          <scope>runtime</scope>
+        </dependency> -->
+
+        <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.17.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.17.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.17.1</version>
+         </dependency>
+
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.31</version>
+        </dependency>
+
+        <!--  excel -->
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <version>2.6.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.directory.studio</groupId>
+            <artifactId>org.apache.httpcomponents.httpcore</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+
+        <!-- IOS PUSH 관련 -->
+        <dependency>
+            <groupId>com.github.fernandospr</groupId>
+            <artifactId>javapns-jdk16</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+
+
+        <!-- Android PUSH 관련 -->
+        <dependency>
+            <groupId>com.ganyo</groupId>
+            <artifactId>gcm-server</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>net.spy</groupId>
+            <artifactId>spymemcached</artifactId>
+            <version>2.11.2</version>
+        </dependency>
+
+        <!-- xml marshalling 관련 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>3.2.9.RELEASE</version>
+        </dependency>
+
+        <!-- AES 암호화 알고리즘 관련 -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.10</version>
+        </dependency>
+
+        <!-- L.Point 관련 -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.4.3</version>
+        </dependency>
+        <!-- 암호화-->
+        <dependency>
+            <groupId>openpoint</groupId>
+            <artifactId>openpoint</artifactId>
+            <scope>system</scope>
+            <version>1</version>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/openpoint.aria.jar</systemPath>
+        </dependency>
+        <!-- SFTP 전송 관련-->
+        <dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+            <version>0.1.54</version>
+        </dependency>
+
+        <!-- Meta 테그 얻기 -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.10.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.4.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.1</version>
+        </dependency>
+
+        <!-- mysql이나 oracle 필요시 사용 -->
+        <!--
+        <dependency>
+            <groupId>com.googlecode.log4jdbc</groupId>
+            <artifactId>log4jdbc</artifactId>
+            <version>1.2</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.31</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ojdbc</groupId>
+            <artifactId>ojdbc</artifactId>
+            <version>14</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc-14.jar</systemPath>
+        </dependency>
+        -->
+
+        <!--로그 자세히-->
+        <dependency>
+            <groupId>org.bgee.log4jdbc-log4j2</groupId>
+            <artifactId>log4jdbc-log4j2-jdbc4</artifactId>
+            <version>1.16</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf</groupId>
+            <artifactId>log4jdbc3</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <!--cfx framework-->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>2.4.4</version>
+        </dependency>
+
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>real</id>
+            <properties>
+                <env>real</env>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <!-- <resources>
+          <resource>
+            <directory>src/main/resources/${env}</directory>
+          </resource>
+        </resources> -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources/${env}</directory>
+            </resource>
+        </resources>
+
+        <defaultGoal>install</defaultGoal>
+        <directory>${basedir}/target</directory>
+        <!--<finalName>${artifactId}-${version}</finalName>-->
+        <finalName>tamnao</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.2</version>
+                    <configuration>
+                        <port>80</port>
+                        <path>/</path>
+                        <systemProperties>
+                            <JAVA_OPTS>-Xms256m -Xmx768m -XX:MaxPermSize=256m</JAVA_OPTS>
+                        </systemProperties>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>hibernate3-maven-plugin</artifactId>
+                    <version>2.1</version>
+                    <configuration>
+                        <components>
+                            <component>
+                                <name>hbm2ddl</name>
+                                <implementation>annotationconfiguration</implementation>
+                            </component>
+                        </components>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.hsqldb</groupId>
+                            <artifactId>hsqldb</artifactId>
+                            <version>2.3.2</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                <!-- EMMA -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>emma-maven-plugin</artifactId>
+                    <version>1.0-alpha-3</version>
+                </plugin>
+                <!-- PMD manven plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>3.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <!-- EMMA -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                    <forkMode>once</forkMode>
+                    <reportFormat>xml</reportFormat>
+                    <excludes>
+                        <exclude>**/Abstract*.java</exclude>
+                        <exclude>**/*Suite.java</exclude>
+                    </excludes>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>emma-maven-plugin</artifactId>
+                <inherited>true</inherited>
+            </plugin>
+            <!-- JavaDoc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <reporting>
+        <outputDirectory>${basedir}/target/site</outputDirectory>
+        <plugins>
+
+            <!-- JUnit Test Results & EMMA Coverage Reporting -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>emma-maven-plugin</artifactId>
+                <inherited>true</inherited>
+            </plugin>
+            <!-- Generating JavaDoc Report -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <minmemory>128m</minmemory>
+                    <maxmemory>512m</maxmemory>
+                    <encoding>${encoding}</encoding>
+                    <docencoding>${encoding}</docencoding>
+                    <charset>${encoding}</charset>
+                </configuration>
+            </plugin>
+            <!-- Generating Java Source in HTML -->
+        </plugins>
+    </reporting>
+</project>

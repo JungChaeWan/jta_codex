@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="smsEmailWords">
+
+<resultMap id="WORDS_R_00" class="oss.marketing.vo.SMSEMAILWORDSVO">
+	<result property="smsEmailNum" 		column="SMS_EMAIL_NUM"/>
+	<result property="wordsDiv" 		column="WORDS_DIV"/>
+	<result property="wordsSubject" 	column="WORDS_SUBJECT"/>
+	<result property="wordsContents" 	column="WORDS_CONTENTS"/>
+	<result property="aplStartDt" 		column="APL_START_DT"/>
+	<result property="aplEndDt" 		column="APL_END_DT"/>
+</resultMap>
+
+<select id="WORDS_S_00" resultMap="WORDS_R_00">
+SELECT SMS_EMAIL_NUM
+	, WORDS_DIV
+	, WORDS_SUBJECT
+	, WORDS_CONTENTS
+	, APL_START_DT
+	, APL_END_DT
+FROM TB_SMS_EMAIL_WORDS
+WHERE SMS_EMAIL_NUM = #smsEmailNum#
+ORDER BY WORDS_SUBJECT
+</select>
+
+<select id="WORDS_S_01" resultMap="WORDS_R_00">
+SELECT SMS_EMAIL_NUM
+	, WORDS_DIV
+	, WORDS_SUBJECT
+	, WORDS_CONTENTS
+	, APL_START_DT
+	, APL_END_DT
+FROM (SELECT SMS_EMAIL_NUM
+	 	, WORDS_DIV
+		, WORDS_SUBJECT
+		, WORDS_CONTENTS
+		, APL_START_DT
+		, APL_END_DT
+		, ROWNUM AS RN
+	FROM TB_SMS_EMAIL_WORDS
+	WHERE 1=1
+	<isNotEmpty property="wordsDiv">
+		AND WORDS_DIV = #wordsDiv#
+ 	</isNotEmpty>
+ 	<isNotEmpty property="wordsSubject">
+		AND WORDS_SUBJECT LIKE '%' || #wordsSubject# || '%'
+	</isNotEmpty>
+	<isNotEmpty property="aplStartDt">
+		<![CDATA[
+		AND APL_START_DT <= #aplStartDt#
+		]]>
+	</isNotEmpty>
+	<isNotEmpty property="aplEndDt">
+		<![CDATA[
+		AND APL_END_DT >= #aplEndDt#
+		]]>
+	</isNotEmpty>
+	ORDER BY APL_END_DT DESC NULLS LAST, APL_START_DT DESC, WORDS_SUBJECT
+)
+<isNotEqual property="firstIndex" compareValue="0">
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</isNotEqual>
+</select>
+
+<select id="WORDS_S_02" resultClass="int">
+SELECT COUNT(*)
+FROM TB_SMS_EMAIL_WORDS
+WHERE 1=1
+ 	<isNotEmpty property="wordsDiv">
+		AND WORDS_DIV = #wordsDiv#
+ 	</isNotEmpty>
+ 	<isNotEmpty property="wordsSubject">
+		AND WORDS_SUBJECT LIKE '%'||#wordsSubject#||'%'
+	</isNotEmpty>
+	<isNotEmpty property="aplStartDt">
+		<![CDATA[
+		AND APL_START_DT <= #aplStartDt#
+		]]>
+	</isNotEmpty>
+	<isNotEmpty property="aplEndDt">
+		<![CDATA[
+		AND APL_END_DT >= #aplEndDt#
+		]]>
+	</isNotEmpty>
+</select>
+
+<select id="WORDS_S_03" resultClass="String">
+SELECT TO_CHAR(NVL(MAX(TO_NUMBER(WORDS_NUM)), 0) + 1)
+FROM TB_SMS_EMAIL_WORDS
+</select>
+
+<insert id="WORDS_I_00">
+INSERT INTO TB_SMS_EMAIL_WORDS (
+	SMS_EMAIL_NUM
+	, WORDS_DIV
+	, WORDS_SUBJECT
+	, WORDS_CONTENTS
+	, APL_START_DT
+	, APL_END_DT
+)
+VALUES (
+	(SELECT TO_CHAR(NVL(MAX(TO_NUMBER(SMS_EMAIL_NUM)),0) + 1) FROM TB_SMS_EMAIL_WORDS)
+	, #wordsDiv#
+	, #wordsSubject#
+ 	, #wordsContents#
+ 	, #aplStartDt#
+ 	, #aplEndDt#
+)
+</insert>
+
+<update id="WORDS_U_00">
+UPDATE TB_SMS_EMAIL_WORDS
+SET WORDS_DIV = #wordsDiv#
+	, WORDS_SUBJECT = #wordsSubject#
+	, WORDS_CONTENTS = #wordsContents#
+	, APL_START_DT = #aplStartDt#
+	, APL_END_DT = #aplEndDt#
+WHERE SMS_EMAIL_NUM = #smsEmailNum#
+</update>
+
+<delete id="WORDS_D_00">
+DELETE TB_SMS_EMAIL_WORDS
+WHERE SMS_EMAIL_NUM = #smsEmailNum#
+</delete>
+
+
+</sqlMap>

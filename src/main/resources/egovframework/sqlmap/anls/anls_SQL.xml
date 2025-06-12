@@ -1,0 +1,1518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="anls">
+
+<resultMap id="ANLS_R_00" class="mas.anls.vo.ANLSVO">
+<result property="prdtNum" 		column="PRDT_NUM"/>
+<result property="prdtNm" 		column="PRDT_NM"/>
+<result property="rsvCnt" 		column="RSV_CNT"/>
+<result property="rsvCntPer" 	column="RSV_CNT_PER"/>
+<result property="sumAmt" 		column="SUM_AMT"/>
+<result property="sumAmtPer" 	column="SUM_AMT_PER"/>
+</resultMap>
+
+<resultMap id="ANLS_R_01" class="mas.anls.vo.ANLSVO">
+<result property="rsvCnt" 		column="RSV_CNT"/>
+<result property="dt" 			column="DT"/>
+<result property="cancelCnt" 	column="CANCEL_CNT"/>
+<result property="nmlAmt" 		column="NML_AMT"/>
+<result property="cmssAmt" 		column="CMSS_AMT"/>
+</resultMap>
+
+<resultMap id="ANLS_R_05" class="mas.anls.vo.ANLS05VO">
+<result property="nowJoin" 		column="NOW_JOIN" />
+<result property="userJoin" 	column="USER_JOIN" />
+<result property="allJoin" 		column="ALL_JOIN" />
+</resultMap>
+
+<resultMap id="ANLS_R_06" class="mas.anls.vo.ANLS06VO">
+<result property="nmlAmt" 		column="NML_AMT" />
+<result property="rsvCnt" 		column="RSV_CNT" />
+<result property="rsvCnt1" 		column="RSV_CNT1" />
+<result property="ctgr" 		column="CTGR" />
+</resultMap>
+
+<resultMap id="ANLS_R_07" class="oss.anls.vo.ANLS07VO">
+<result property="totalAmt" 		column="TOTAL_AMT"/>
+<result property="adTotalAmt" 		column="AD_TOTAL_AMT"/>
+<result property="rcTotalAmt" 		column="RC_TOTAL_AMT"/>
+<result property="avTotalAmt" 		column="AV_TOTAL_AMT"/>
+<result property="svTotalAmt" 		column="SV_TOTAL_AMT"/>
+<result property="c100TotalAmt" 	column="C100_TOTAL_AMT"/>
+<!-- <result property="c110TotalAmt" 	column="C110_TOTAL_AMT"/>
+<result property="c120TotalAmt" 	column="C120_TOTAL_AMT"/>
+<result property="c130TotalAmt" 	column="C130_TOTAL_AMT"/>
+<result property="c140TotalAmt" 	column="C140_TOTAL_AMT"/>
+<result property="c150TotalAmt" 	column="C150_TOTAL_AMT"/>
+<result property="c160TotalAmt" 	column="C160_TOTAL_AMT"/>
+<result property="c170TotalAmt" 	column="C170_TOTAL_AMT"/>
+<result property="c180TotalAmt" 	column="C180_TOTAL_AMT"/> -->
+<result property="c200TotalAmt" 	column="C200_TOTAL_AMT"/>
+<result property="c300TotalAmt" 	column="C300_TOTAL_AMT"/>
+<result property="c500TotalAmt" 	column="C500_TOTAL_AMT"/>
+<result property="totalCnt" 		column="TOTAL_CNT"/>
+<result property="adTotalCnt" 		column="AD_TOTAL_CNT"/>
+<result property="rcTotalCnt" 		column="RC_TOTAL_CNT"/>
+<result property="avTotalCnt" 		column="AV_TOTAL_CNT"/>
+<result property="svTotalCnt" 		column="SV_TOTAL_CNT"/>
+<result property="c100TotalCnt" 	column="C100_TOTAL_CNT"/>
+<!-- <result property="c110TotalCnt" 	column="C110_TOTAL_CNT"/>
+<result property="c120TotalCnt" 	column="C120_TOTAL_CNT"/>
+<result property="c130TotalCnt" 	column="C130_TOTAL_CNT"/>
+<result property="c140TotalCnt" 	column="C140_TOTAL_CNT"/>
+<result property="c150TotalCnt" 	column="C150_TOTAL_CNT"/>
+<result property="c160TotalCnt" 	column="C160_TOTAL_CNT"/>
+<result property="c170TotalCnt" 	column="C170_TOTAL_CNT"/>
+<result property="c180TotalCnt" 	column="C180_TOTAL_CNT"/> -->
+<result property="c200TotalCnt" 	column="C200_TOTAL_CNT"/>
+<result property="c300TotalCnt" 	column="C300_TOTAL_CNT"/>
+<result property="c500TotalCnt" 	column="C500_TOTAL_CNT"/>
+<result property="userCnt" 			column="USER_CNT"/>
+<result property="adUserCnt" 		column="AD_USER_CNT"/>
+<result property="rcUserCnt" 		column="RC_USER_CNT"/>
+<result property="avUserCnt" 		column="AV_USER_CNT"/>
+<result property="svUserCnt" 		column="SV_USER_CNT"/>
+<result property="c100UserCnt" 		column="C100_USER_CNT"/>
+<!-- <result property="c110UserCnt" 		column="C110_USER_CNT"/>
+<result property="c120UserCnt" 		column="C120_USER_CNT"/>
+<result property="c130UserCnt" 		column="C130_USER_CNT"/>
+<result property="c140UserCnt" 		column="C140_USER_CNT"/>
+<result property="c150UserCnt" 		column="C150_USER_CNT"/>
+<result property="c160UserCnt" 		column="C160_USER_CNT"/>
+<result property="c170UserCnt" 		column="C170_USER_CNT"/>
+<result property="c180UserCnt" 		column="C180_USER_CNT"/> -->
+<result property="c200UserCnt" 		column="C200_USER_CNT"/>
+<result property="c300UserCnt" 		column="C300_USER_CNT"/>
+<result property="c500UserCnt" 		column="C500_USER_CNT"/>
+<result property="avgAmt" 			column="AVG_AMT"/>
+<result property="adAvgAmt" 		column="AD_AVG_AMT"/>
+<result property="rcAvgAmt" 		column="RC_AVG_AMT"/>
+<result property="avAvgAmt" 		column="AV_AVG_AMT"/>
+<result property="svAvgAmt" 		column="SV_AVG_AMT"/>
+<result property="c100AvgAmt" 		column="C100_AVG_AMT"/>
+<!-- <result property="c110AvgAmt" 		column="C110_AVG_AMT"/>
+<result property="c120AvgAmt" 		column="C120_AVG_AMT"/>
+<result property="c130AvgAmt" 		column="C130_AVG_AMT"/>
+<result property="c140AvgAmt" 		column="C140_AVG_AMT"/>
+<result property="c150AvgAmt" 		column="C150_AVG_AMT"/>
+<result property="c160AvgAmt" 		column="C160_AVG_AMT"/>
+<result property="c170AvgAmt" 		column="C170_AVG_AMT"/>
+<result property="c180AvgAmt" 		column="C180_AVG_AMT"/> -->
+<result property="c200AvgAmt" 		column="C200_AVG_AMT"/>
+<result property="c300AvgAmt" 		column="C300_AVG_AMT"/>
+<result property="c500AvgAmt" 		column="C500_AVG_AMT"/>
+<result property="avgCnt" 			column="AVG_CNT"/>
+
+<result property="adDisAmt" 			column="AD_DIS_AMT"/>
+<result property="rcDisAmt" 			column="RC_DIS_AMT"/>
+<result property="avDisAmt" 			column="AV_DIS_AMT"/>
+<result property="svDisAmt" 			column="SV_DIS_AMT"/>
+<result property="c100DisAmt" 			column="C100_DIS_AMT"/>
+<result property="c200DisAmt" 			column="C200_DIS_AMT"/>
+<result property="c300DisAmt" 			column="C300_DIS_AMT"/>
+<result property="c500DisAmt" 			column="C500_DIS_AMT"/>
+<result property="disAmt" 			column="DIS_AMT"/>
+
+<result property="adDisCnt" 			column="AD_DIS_CNT"/>
+<result property="rcDisCnt" 			column="RC_DIS_CNT"/>
+<result property="avDisCnt" 			column="AV_DIS_CNT"/>
+<result property="svDisCnt" 			column="SV_DIS_CNT"/>
+<result property="c100DisCnt" 			column="C100_DIS_CNT"/>
+<result property="c200DisCnt" 			column="C200_DIS_CNT"/>
+<result property="c300DisCnt" 			column="C300_DIS_CNT"/>
+<result property="c500DisCnt" 			column="C500_DIS_CNT"/>
+<result property="disCnt" 			column="DIS_CNT"/>
+</resultMap>
+
+<resultMap id="ANLS_R_08" class="oss.anls.vo.ANLS08VO">
+<result property="totalCancelAmt" 		column="TOTAL_CANCEL_AMT"/>
+<result property="adTotalCancelAmt" 	column="AD_TOTAL_CANCEL_AMT"/>
+<result property="rcTotalCancelAmt" 	column="RC_TOTAL_CANCEL_AMT"/>
+<result property="avTotalCancelAmt" 	column="AV_TOTAL_CANCEL_AMT"/>
+<result property="svTotalCancelAmt" 	column="SV_TOTAL_CANCEL_AMT"/>
+<result property="c100TotalCancelAmt" 	column="C100_TOTAL_CANCEL_AMT"/>
+<!-- <result property="c110TotalCancelAmt" 	column="C110_TOTAL_CANCEL_AMT"/>
+<result property="c120TotalCancelAmt" 	column="C120_TOTAL_CANCEL_AMT"/>
+<result property="c130TotalCancelAmt" 	column="C130_TOTAL_CANCEL_AMT"/>
+<result property="c140TotalCancelAmt" 	column="C140_TOTAL_CANCEL_AMT"/>
+<result property="c150TotalCancelAmt" 	column="C150_TOTAL_CANCEL_AMT"/>
+<result property="c160TotalCancelAmt" 	column="C160_TOTAL_CANCEL_AMT"/>
+<result property="c170TotalCancelAmt" 	column="C170_TOTAL_CANCEL_AMT"/>
+<result property="c180TotalCancelAmt" 	column="C180_TOTAL_CANCEL_AMT"/> -->
+<result property="c200TotalCancelAmt" 	column="C200_TOTAL_CANCEL_AMT"/>
+<result property="c300TotalCancelAmt" 	column="C300_TOTAL_CANCEL_AMT"/>
+<result property="c500TotalCancelAmt" 	column="C500_TOTAL_CANCEL_AMT"/>
+<result property="totalCancelCnt" 		column="TOTAL_CANCEL_CNT"/>
+<result property="adTotalCancelCnt" 	column="AD_TOTAL_CANCEL_CNT"/>
+<result property="rcTotalCancelCnt" 	column="RC_TOTAL_CANCEL_CNT"/>
+<result property="avTotalCancelCnt" 	column="AV_TOTAL_CANCEL_CNT"/>
+<result property="svTotalCancelCnt" 	column="SV_TOTAL_CANCEL_CNT"/>
+<result property="c100TotalCancelCnt" 	column="C100_TOTAL_CANCEL_CNT"/>
+<!-- <result property="c110TotalCancelCnt" 	column="C110_TOTAL_CANCEL_CNT"/>
+<result property="c120TotalCancelCnt" 	column="C120_TOTAL_CANCEL_CNT"/>
+<result property="c130TotalCancelCnt" 	column="C130_TOTAL_CANCEL_CNT"/>
+<result property="c140TotalCancelCnt" 	column="C140_TOTAL_CANCEL_CNT"/>
+<result property="c150TotalCancelCnt" 	column="C150_TOTAL_CANCEL_CNT"/>
+<result property="c160TotalCancelCnt" 	column="C160_TOTAL_CANCEL_CNT"/>
+<result property="c170TotalCancelCnt" 	column="C170_TOTAL_CANCEL_CNT"/>
+<result property="c180TotalCancelCnt" 	column="C180_TOTAL_CANCEL_CNT"/> -->
+<result property="c200TotalCancelCnt" 	column="C200_TOTAL_CANCEL_CNT"/>
+<result property="c300TotalCancelCnt" 	column="C300_TOTAL_CANCEL_CNT"/>
+<result property="c500TotalCancelCnt" 	column="C500_TOTAL_CANCEL_CNT"/>
+<result property="nmCancelCnt" 			column="NM_CANCEL_CNT"/>
+<result property="adNmCancelCnt" 		column="AD_NM_CANCEL_CNT"/>
+<result property="rcNmCancelCnt" 		column="RC_NM_CANCEL_CNT"/>
+<result property="avNmCancelCnt" 		column="AV_NM_CANCEL_CNT"/>
+<result property="svNmCancelCnt" 		column="SV_NM_CANCEL_CNT"/>
+<result property="c100NmCancelCnt" 		column="C100_NM_CANCEL_CNT"/>
+<!-- <result property="c110NmCancelCnt" 		column="C110_NM_CANCEL_CNT"/>
+<result property="c120NmCancelCnt" 		column="C120_NM_CANCEL_CNT"/>
+<result property="c140NmCancelCnt" 		column="C140_NM_CANCEL_CNT"/>
+<result property="c130NmCancelCnt" 		column="C130_NM_CANCEL_CNT"/>
+<result property="c150NmCancelCnt" 		column="C150_NM_CANCEL_CNT"/>
+<result property="c160NmCancelCnt" 		column="C160_NM_CANCEL_CNT"/>
+<result property="c170NmCancelCnt" 		column="C170_NM_CANCEL_CNT"/>
+<result property="c180NmCancelCnt" 		column="C180_NM_CANCEL_CNT"/> -->
+<result property="c200NmCancelCnt" 		column="C200_NM_CANCEL_CNT"/>
+<result property="c300NmCancelCnt" 		column="C300_NM_CANCEL_CNT"/>
+<result property="c500NmCancelCnt" 		column="C500_NM_CANCEL_CNT"/>
+<result property="omCancelCnt" 			column="OM_CANCEL_CNT"/>
+<result property="adOmCancelCnt" 		column="AD_OM_CANCEL_CNT"/>
+<result property="rcOmCancelCnt" 		column="RC_OM_CANCEL_CNT"/>
+<result property="avOmCancelCnt" 		column="AV_OM_CANCEL_CNT"/>
+<result property="svOmCancelCnt" 		column="SV_OM_CANCEL_CNT"/>
+<result property="c100OmCancelCnt" 		column="C100_OM_CANCEL_CNT"/>
+<!-- <result property="c110OmCancelCnt" 		column="C110_OM_CANCEL_CNT"/>
+<result property="c120OmCancelCnt" 		column="C120_OM_CANCEL_CNT"/>
+<result property="c130OmCancelCnt" 		column="C130_OM_CANCEL_CNT"/>
+<result property="c140OmCancelCnt" 		column="C140_OM_CANCEL_CNT"/>
+<result property="c150OmCancelCnt" 		column="C150_OM_CANCEL_CNT"/>
+<result property="c160OmCancelCnt" 		column="C160_OM_CANCEL_CNT"/>
+<result property="c170OmCancelCnt" 		column="C170_OM_CANCEL_CNT"/>
+<result property="c180OmCancelCnt" 		column="C180_OM_CANCEL_CNT"/> -->
+<result property="c200OmCancelCnt" 		column="C200_OM_CANCEL_CNT"/>
+<result property="c300OmCancelCnt" 		column="C300_OM_CANCEL_CNT"/>
+<result property="c500OmCancelCnt" 		column="C500_OM_CANCEL_CNT"/>
+<result property="totalCmssAmt" 		column="TOTAL_CMSS_AMT"/>
+</resultMap>
+
+<resultMap id="ANLS_R_09" class="mas.anls.vo.ANLS05VO">
+<result property="dt" 			column="DT"/>
+<result property="userJoin" 	column="USER_JOIN"/>
+<result property="userOut" 		column="USER_OUT"/>
+</resultMap>
+
+<resultMap id="ANLS_R_10" class="oss.anls.vo.ANLS10VO">
+<result property="totalCnt" 	column="TOTAL_CNT"/>
+<result property="qutCnt" 		column="QUT_CNT"/>
+<result property="qutPer" 		column="QUT_PER"/>
+<result property="rsvCnt" 		column="RSV_CNT"/>
+<result property="rsvPer" 		column="RSV_PER"/>
+<result property="duplRsvCnt" 	column="DUPL_RSV_CNT"/>
+<result property="duplPer" 		column="DUPL_PER"/>
+<result property="reRsvCnt" 	column="RE_RSV_CNT"/>
+<result property="reRsvPer" 	column="RE_RSV_PER"/>
+</resultMap>
+
+<resultMap id="ANLS_R_11" class="oss.anls.vo.ANLS11VO">
+<result property="dt" 			column="DT"/>
+<result property="saleAmt" 		column="SALE_AMT"/>
+<result property="cancelAmt" 	column="CANCEL_AMT"/>
+<result property="totalAmt" 	column="TOTAL_AMT"/>
+<result property="totalAmtPer" 	column="TOTAL_AMT_PER"/>
+</resultMap>
+
+<select id="ANLS_S_00" resultMap="ANLS_R_01">
+WITH T_RSV AS (
+SELECT TO_CHAR(TO_DATE(USE_DT, 'YYYY-MM-DD'), 'YYYY-MM-DD') AS RSV_DT
+     , CORP_ID
+     , AD_RSV_NUM AS RSV_NUM
+     , RSV_STATUS_CD
+     , (CASE WHEN RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN RSV_STATUS_CD IN ('RS20') THEN CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_AD_RSV
+ WHERE RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+ UNION
+SELECT TO_CHAR(TO_DATE(RENT_START_DT, 'YYYY-MM-DD'), 'YYYY-MM-DD') AS RSV_DT
+     , CORP_ID
+     , RC_RSV_NUM AS RSV_NUM
+     , RSV_STATUS_CD
+     , (CASE WHEN RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN RSV_STATUS_CD IN ('RS20') THEN CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_RC_RSV
+ WHERE RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+ UNION
+SELECT TO_CHAR(TO_DATE(USE_DT, 'YYYY-MM-DD'), 'YYYY-MM-DD') AS RSV_DT
+     , CORP_ID
+     , GL_RSV_NUM AS RSV_NUM
+     , RSV_STATUS_CD
+     , (CASE WHEN RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN RSV_STATUS_CD IN ('RS20') THEN CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_GL_RSV
+ WHERE RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+ UNION
+SELECT TO_CHAR(USE_DTTM, 'YYYY-MM-DD') AS RSV_DT
+     , CORP_ID
+     , SP_RSV_NUM AS RSV_NUM
+     , RSV_STATUS_CD
+     , (CASE WHEN RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN RSV_STATUS_CD IN ('RS20') THEN CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_SP_RSV
+ WHERE RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+)
+SELECT T_DT.DT
+     , NVL(T_GRP.RSV_CNT, 0) 	AS RSV_CNT
+     , NVL(T_GRP.CANCEL_CNT, 0) AS CANCEL_CNT
+     , NVL(T_GRP.NML_AMT, 0) 	AS NML_AMT
+     , NVL(T_GRP.CMSS_AMT, 0) 	AS CMSS_AMT
+  FROM (SELECT #sFromYear#||'-'||LPAD(LEVEL, 2, '0') AS DT
+          FROM DUAL
+        <![CDATA[
+        CONNECT BY LEVEL < ]]> (CASE WHEN TO_CHAR(SYSDATE, 'YYYY') = #sFromYear#
+                                 THEN TO_CHAR(SYSDATE, 'MM') + 1
+                                 ELSE 13
+                             END
+                           )
+       ) T_DT
+  LEFT OUTER JOIN (SELECT SUBSTR(T_RSV.RSV_DT,0,7) AS RSV_DT
+                        , COUNT(RSV_NUM) AS RSV_CNT
+                        , SUM(DECODE(RSV_STATUS_CD, 'RS20', 1, 0)) AS CANCEL_CNT
+                        , NVL(SUM(NML_AMT), 0) AS NML_AMT
+                        , NVL(SUM(CMSS_AMT), 0) AS CMSS_AMT
+                     FROM T_RSV
+                    WHERE SUBSTR(RSV_DT,0,4) = #sFromYear#
+                    GROUP BY SUBSTR(T_RSV.RSV_DT,0,7)
+                  ) T_GRP
+    ON T_GRP.RSV_DT = T_DT.DT
+ ORDER BY T_DT.DT ASC
+</select>
+
+<select id="ANLS_S_01" resultMap="ANLS_R_01">
+WITH T_RSV AS (
+SELECT TO_CHAR(TO_DATE(USE_DT, 'YYYY-MM-DD'), 'YYYY-MM-DD') AS RSV_DT
+     , CORP_ID
+     , AD_RSV_NUM AS RSV_NUM
+     , RSV_STATUS_CD
+     , (CASE WHEN RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN RSV_STATUS_CD IN ('RS20') THEN CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_AD_RSV
+ WHERE RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+ UNION
+SELECT TO_CHAR(TO_DATE(RENT_START_DT, 'YYYY-MM-DD'), 'YYYY-MM-DD') AS RSV_DT
+     , CORP_ID
+     , RC_RSV_NUM AS RSV_NUM
+     , RSV_STATUS_CD
+     , (CASE WHEN RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN RSV_STATUS_CD IN ('RS20') THEN CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_RC_RSV
+ WHERE RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+ UNION
+SELECT TO_CHAR(TO_DATE(USE_DT, 'YYYY-MM-DD'), 'YYYY-MM-DD') AS RSV_DT
+     , CORP_ID
+     , GL_RSV_NUM AS RSV_NUM
+     , RSV_STATUS_CD
+     , (CASE WHEN RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN RSV_STATUS_CD IN ('RS20') THEN CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_GL_RSV
+ WHERE RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+ UNION
+SELECT TO_CHAR(USE_DTTM, 'YYYY-MM-DD') AS RSV_DT
+     , CORP_ID
+     , SP_RSV_NUM AS RSV_NUM
+     , RSV_STATUS_CD
+     , (CASE WHEN RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN RSV_STATUS_CD IN ('RS20') THEN CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_SP_RSV
+ WHERE RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+)
+SELECT T_DT.DT
+     , NVL(T_GRP.RSV_CNT, 0) 	AS RSV_CNT
+     , NVL(T_GRP.CANCEL_CNT, 0) AS CANCEL_CNT
+     , NVL(T_GRP.NML_AMT, 0) 	AS NML_AMT
+     , NVL(T_GRP.CMSS_AMT, 0) 	AS CMSS_AMT
+  FROM (SELECT #sFromYear#||'-'||LPAD(#sFromMonth#, 2, '0')||'-'||LPAD(LEVEL, 2, '0') AS DT
+          FROM DUAL
+        <![CDATA[
+        CONNECT BY LEVEL < ]]> (CASE WHEN TO_CHAR(SYSDATE, 'YYYYMM') = #sFromYear#||#sFromMonth#
+                                     THEN TO_CHAR(SYSDATE, 'DD') + 1
+                                     ELSE TO_CHAR(LAST_DAY(TO_DATE(#sFromYear#||#sFromMonth#, 'YYYYMM')), 'DD') + 1
+                                 END
+                                )
+       ) T_DT
+  LEFT OUTER JOIN (SELECT T_RSV.RSV_DT
+                        , COUNT(RSV_NUM) AS RSV_CNT
+                        , SUM(DECODE(RSV_STATUS_CD, 'RS20', 1, 0)) AS CANCEL_CNT
+                        , NVL(SUM(NML_AMT), 0) AS NML_AMT
+                        , NVL(SUM(CMSS_AMT), 0) AS CMSS_AMT
+                     FROM T_RSV
+                    WHERE SUBSTR(RSV_DT,0,7) = #sFromYear#||'-'||LPAD(#sFromMonth#, 2, '0')
+                    GROUP BY T_RSV.RSV_DT
+                  ) T_GRP
+    ON T_GRP.RSV_DT = T_DT.DT
+ ORDER BY T_DT.DT ASC
+</select>
+
+<!-- 예약날짜별 통계 -->
+<select id="ANLS_S_03" resultMap="ANLS_R_01">
+WITH T_RSV AS (
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYY-MM-DD') AS RSV_DT
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.AD_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_AD_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ WHERE T_DTLRSV.RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+ UNION
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYY-MM-DD') AS RSV_DT
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.RC_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_RC_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ WHERE T_DTLRSV.RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+ UNION
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYY-MM-DD') AS RSV_DT
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.GL_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_GL_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ WHERE T_DTLRSV.RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+ UNION
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYY-MM-DD') AS RSV_DT
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.SP_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_SP_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ WHERE T_DTLRSV.RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+)
+SELECT T_DT.DT
+     , NVL(T_GRP.RSV_CNT, 0) 	AS RSV_CNT
+     , NVL(T_GRP.CANCEL_CNT, 0) AS CANCEL_CNT
+     , NVL(T_GRP.NML_AMT, 0) 	AS NML_AMT
+     , NVL(T_GRP.CMSS_AMT, 0) 	AS CMSS_AMT
+  FROM (SELECT #sFromYear#||'-'||LPAD(LEVEL, 2, '0') AS DT
+          FROM DUAL
+        <![CDATA[
+        CONNECT BY LEVEL < ]]> (CASE WHEN TO_CHAR(SYSDATE, 'YYYY') = #sFromYear#
+                                 THEN TO_CHAR(SYSDATE, 'MM') + 1
+                                 ELSE 13
+                             END
+                           )
+       ) T_DT
+  LEFT OUTER JOIN (SELECT SUBSTR(T_RSV.RSV_DT,0,7) AS RSV_DT
+                        , COUNT(RSV_NUM) AS RSV_CNT
+                        , SUM(DECODE(RSV_STATUS_CD, 'RS20', 1, 0)) AS CANCEL_CNT
+                        , NVL(SUM(NML_AMT), 0) AS NML_AMT
+                        , NVL(SUM(CMSS_AMT), 0) AS CMSS_AMT
+                     FROM T_RSV
+                    WHERE SUBSTR(RSV_DT,0,4) = #sFromYear#
+                    GROUP BY SUBSTR(T_RSV.RSV_DT,0,7)
+                  ) T_GRP
+    ON T_GRP.RSV_DT = T_DT.DT
+ ORDER BY T_DT.DT ASC
+</select>
+
+<!-- 예약일별 통계 -->
+<select id="ANLS_S_04" resultMap="ANLS_R_01">
+WITH T_RSV AS (
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYY-MM-DD') AS RSV_DT
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.AD_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_AD_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ WHERE T_DTLRSV.RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+ UNION
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYY-MM-DD') AS RSV_DT
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.RC_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_RC_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ WHERE T_DTLRSV.RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+ UNION
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYY-MM-DD') AS RSV_DT
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.GL_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_GL_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ WHERE T_DTLRSV.RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+ UNION
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYY-MM-DD') AS RSV_DT
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.SP_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_SP_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ WHERE T_DTLRSV.RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+)
+SELECT T_DT.DT
+     , NVL(T_GRP.RSV_CNT, 0) 	AS RSV_CNT
+     , NVL(T_GRP.CANCEL_CNT, 0) AS CANCEL_CNT
+     , NVL(T_GRP.NML_AMT, 0) 	AS NML_AMT
+     , NVL(T_GRP.CMSS_AMT, 0) 	AS CMSS_AMT
+  FROM (SELECT #sFromYear#||'-'||LPAD(#sFromMonth#, 2, '0')||'-'||LPAD(LEVEL, 2, '0') AS DT
+          FROM DUAL
+        <![CDATA[
+        CONNECT BY LEVEL < ]]> (CASE WHEN TO_CHAR(SYSDATE, 'YYYYMM') = #sFromYear#||#sFromMonth#
+                                     THEN TO_CHAR(SYSDATE, 'DD') + 1
+                                     ELSE TO_CHAR(LAST_DAY(TO_DATE(#sFromYear#||#sFromMonth#, 'YYYYMM')), 'DD') + 1
+                                 END
+                                )
+       ) T_DT
+  LEFT OUTER JOIN (SELECT T_RSV.RSV_DT
+                        , COUNT(RSV_NUM) AS RSV_CNT
+                        , SUM(DECODE(RSV_STATUS_CD, 'RS20', 1, 0)) AS CANCEL_CNT
+                        , NVL(SUM(NML_AMT), 0) AS NML_AMT
+                        , NVL(SUM(CMSS_AMT), 0) AS CMSS_AMT
+                     FROM T_RSV
+                    WHERE SUBSTR(RSV_DT,0,7) = #sFromYear#||'-'||LPAD(#sFromMonth#, 2, '0')
+                    GROUP BY T_RSV.RSV_DT
+                  ) T_GRP
+    ON T_GRP.RSV_DT = T_DT.DT
+ ORDER BY T_DT.DT ASC
+</select>
+
+<!-- 사용자 유입 건수 조회 -->
+<select id="ANLS_S_05" resultMap="ANLS_R_05">
+SELECT COUNT(*) AS USER_JOIN
+     , SUM(CASE WHEN FRST_REG_DTTM BETWEEN TO_DATE(#sFromDt#||'000000', 'YYYYMMDDHH24MISS') AND TO_DATE(#sFromDt#||'235959', 'YYYYMMDDHH24MISS')
+                THEN 1
+                ELSE 0
+            END
+          ) AS NOW_JOIN
+     , (SELECT COUNT(*) FROM TB_USER WHERE QUT_YN  = 'N') AS ALL_JOIN
+  FROM (SELECT USER_ID
+             , FRST_REG_DTTM
+          FROM TB_USER
+         WHERE AUTH_NM = 'USER'
+           AND QUT_YN  = 'N'
+        MINUS
+        SELECT T_CORPADM.USER_ID
+             , FRST_REG_DTTM
+          FROM TB_USER T_USER
+         INNER JOIN TB_CORPADM T_CORPADM
+            ON T_CORPADM.USER_ID = T_USER.USER_ID
+       )
+</select>
+
+<select id="ANLS_S_06" resultMap="ANLS_R_06">
+WITH T_RSV AS (
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+     , 'AD' AS CTGR
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.AD_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_AD_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ UNION
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+     , 'RC' AS CTGR
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.RC_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_RC_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ UNION
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+     , CASE SUBSTR(T_SPPRDT.CTGR,0,2) WHEN 'C1' THEN T_SPPRDT.CTGR
+                                      ELSE SUBSTR(T_SPPRDT.CTGR,0,2)||'00' 
+        END AS CTGR
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.SP_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_SP_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ INNER JOIN TB_SP_PRDTINF T_SPPRDT
+    ON T_SPPRDT.PRDT_NUM = T_DTLRSV.PRDT_NUM
+)
+SELECT CTGR
+     , COUNT(RSV_NUM) AS RSV_CNT
+     , SUM(CASE WHEN RSV_STATUS_CD IN ('RS00', 'RS01', 'RS99') THEN 0
+                ELSE 1
+            END
+          ) AS RSV_CNT1
+     , SUM(NML_AMT) AS NML_AMT
+  FROM T_RSV
+ WHERE RSV_DT = #sFromDt#
+ GROUP BY CTGR
+</select>
+
+<!-- 2016.03.17 매출통계 추가 -->
+<select id="ANLS_S_07" resultMap="ANLS_R_07">
+WITH T_RSV AS (
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+     , 'AD' AS CTGR
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.AD_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , T_RSV.USER_ID
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , T_DTLRSV.SALE_AMT
+     , T_DTLRSV.CANCEL_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+    , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS02','RS03','RS30','RS31','RS33') THEN DIS_AMT
+             ELSE 0
+         END
+    ) AS DIS_AMT
+    , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS02','RS03','RS30','RS31','RS33') AND DIS_AMT > 0 THEN 1
+             ELSE 0
+         END
+    ) AS DIS_CNT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_AD_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ WHERE T_RSV.RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01')
+ AND REG_DTTM BETWEEN TO_DATE(#sFromYear#||#sFromMonth# ,'YYYYMM') AND ADD_MONTHS(TO_DATE(#sFromYear#||#sFromMonth#, 'YYYYMM'), +1)
+ UNION ALL
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+     , 'RC' AS CTGR
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.RC_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , T_RSV.USER_ID
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , T_DTLRSV.SALE_AMT
+     , T_DTLRSV.CANCEL_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+    , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS02','RS03','RS30','RS31','RS33') THEN DIS_AMT
+           ELSE 0
+         END
+    ) AS DIS_AMT
+    , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS02','RS03','RS30','RS31','RS33') AND DIS_AMT > 0 THEN 1
+           ELSE 0
+         END
+    ) AS DIS_CNT
+    FROM TB_RSV T_RSV
+ INNER JOIN TB_RC_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ WHERE T_RSV.RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01')
+ AND REG_DTTM BETWEEN TO_DATE(#sFromYear#||#sFromMonth# ,'YYYYMM') AND ADD_MONTHS(TO_DATE(#sFromYear#||#sFromMonth#, 'YYYYMM'), +1)
+ UNION ALL
+SELECT TO_CHAR(RSV_DTTM, 'YYYYMMDD') AS RSV_DT
+     , 'AV' AS CTGR
+     , '' AS CORP_ID
+     , AV_RSV_NUM AS RSV_NUM
+     , RSV_STATUS_CD
+     , '' AS USER_ID
+     , (CASE WHEN RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+             ELSE SALE_AMT
+         END
+       ) AS NML_AMT
+     , SALE_AMT
+     , SALE_AMT AS CANCEL_AMT
+     , 0 AS CMSS_AMT
+     , 0 AS DIS_AMT
+     , 0 AS DIS_CNT
+  FROM TB_AV_RSV
+ WHERE RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01')
+ AND RSV_DTTM BETWEEN TO_DATE(#sFromYear#||#sFromMonth# ,'YYYYMM') AND ADD_MONTHS(TO_DATE(#sFromYear#||#sFromMonth#, 'YYYYMM'), +1)
+ UNION ALL
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+     , 'SV' AS CTGR
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.SV_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , T_RSV.USER_ID
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , T_DTLRSV.SALE_AMT
+     , T_DTLRSV.CANCEL_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+     ) AS CMSS_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS02','RS03','RS30','RS31','RS33') THEN DIS_AMT
+            ELSE 0
+         END
+     ) AS DIS_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS02','RS03','RS30','RS31','RS33') AND DIS_AMT > 0 THEN 1
+           ELSE 0
+         END
+     ) AS DIS_CNT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_SV_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ WHERE T_RSV.RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01')
+ AND REG_DTTM BETWEEN TO_DATE(#sFromYear#||#sFromMonth# ,'YYYYMM') AND ADD_MONTHS(TO_DATE(#sFromYear#||#sFromMonth#, 'YYYYMM'), +1)
+ UNION ALL
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+     , CASE SUBSTR(T_SPPRDT.CTGR,0,2) WHEN 'C4' THEN T_SPPRDT.CTGR
+                                      ELSE SUBSTR(T_SPPRDT.CTGR,0,2)||'00' 
+        END AS CTGR
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.SP_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , T_RSV.USER_ID
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , T_DTLRSV.SALE_AMT
+     , T_DTLRSV.CANCEL_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS02','RS03','RS30','RS31','RS33') THEN DIS_AMT
+            ELSE 0
+          END
+     ) AS DIS_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS02','RS03','RS30','RS31','RS33') AND DIS_AMT > 0 THEN 1
+           ELSE 0
+         END
+     ) AS DIS_CNT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_SP_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ INNER JOIN TB_SP_PRDTINF T_SPPRDT
+    ON T_SPPRDT.PRDT_NUM = T_DTLRSV.PRDT_NUM
+ WHERE T_RSV.RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01')
+ AND REG_DTTM BETWEEN TO_DATE(#sFromYear#||#sFromMonth# ,'YYYYMM') AND ADD_MONTHS(TO_DATE(#sFromYear#||#sFromMonth#, 'YYYYMM'), +1)
+)
+SELECT TOTAL_AMT
+     , AD_TOTAL_AMT + C410_TOTAL_AMT AS AD_TOTAL_AMT
+     , RC_TOTAL_AMT + C420_TOTAL_AMT AS RC_TOTAL_AMT
+     , AV_TOTAL_AMT
+     , SV_TOTAL_AMT
+     , C100_TOTAL_AMT
+
+     , AD_DIS_AMT + C410_DIS_AMT AS AD_DIS_AMT
+     , RC_DIS_AMT + C420_DIS_AMT AS RC_DIS_AMT
+     , AV_DIS_AMT
+     , SV_DIS_AMT
+     , C100_DIS_AMT
+     , C200_DIS_AMT
+     , C300_DIS_AMT
+     , C500_DIS_AMT
+     , DIS_AMT
+     <!-- , C110_TOTAL_AMT
+     , C170_TOTAL_AMT
+     , C160_TOTAL_AMT
+     , C130_TOTAL_AMT
+     , C120_TOTAL_AMT
+     , C140_TOTAL_AMT
+     , C150_TOTAL_AMT
+     , C180_TOTAL_AMT -->
+     , C200_TOTAL_AMT
+     , C300_TOTAL_AMT
+     , C500_TOTAL_AMT
+     , TOTAL_CNT
+     , AD_TOTAL_CNT + C410_TOTAL_CNT AS AD_TOTAL_CNT
+     , RC_TOTAL_CNT + C420_TOTAL_CNT AS RC_TOTAL_CNT
+     , AV_TOTAL_CNT
+     , SV_TOTAL_CNT
+     , C100_TOTAL_CNT
+     <!-- , C110_TOTAL_CNT
+     , C170_TOTAL_CNT
+     , C160_TOTAL_CNT
+     , C130_TOTAL_CNT
+     , C120_TOTAL_CNT
+     , C140_TOTAL_CNT
+     , C150_TOTAL_CNT
+     , C180_TOTAL_CNT -->
+     , C200_TOTAL_CNT
+     , C300_TOTAL_CNT
+     , C500_TOTAL_CNT
+     , USER_CNT
+     , AD_USER_CNT + C410_USER_CNT AS AD_USER_CNT
+     , RC_USER_CNT + C420_USER_CNT AS RC_USER_CNT
+     , AV_USER_CNT
+     , SV_USER_CNT
+     , C100_USER_CNT
+     <!-- , C110_USER_CNT
+     , C170_USER_CNT
+     , C160_USER_CNT
+     , C130_USER_CNT
+     , C120_USER_CNT
+     , C140_USER_CNT
+     , C150_USER_CNT
+     , C180_USER_CNT -->
+     , C200_USER_CNT
+     , C300_USER_CNT
+     , C500_USER_CNT
+
+     , AD_DIS_CNT + C410_DIS_CNT AS AD_DIS_CNT
+     , RC_DIS_CNT + C420_DIS_CNT AS RC_DIS_CNT
+     , AV_DIS_CNT
+     , SV_DIS_CNT
+     , C100_DIS_CNT
+     , C200_DIS_CNT
+     , C300_DIS_CNT
+     , C500_DIS_CNT
+     , DIS_CNT
+
+     , DECODE(USER_CNT, 0, NULL, TRUNC(TOTAL_AMT / USER_CNT, 0)) AS AVG_AMT
+     , DECODE((AD_USER_CNT + C410_USER_CNT), 0, NULL, TRUNC((AD_TOTAL_AMT + C410_TOTAL_AMT) / (AD_USER_CNT + C410_USER_CNT), 0)) AS AD_AVG_AMT
+     , DECODE((RC_USER_CNT + C420_USER_CNT), 0, NULL, TRUNC((RC_TOTAL_AMT + C420_TOTAL_AMT) / (RC_USER_CNT + C420_USER_CNT), 0)) AS RC_AVG_AMT
+     , DECODE(AV_USER_CNT, 0, NULL, TRUNC(AV_TOTAL_AMT / AV_USER_CNT, 0)) AS AV_AVG_AMT
+     , DECODE(SV_USER_CNT, 0, NULL, TRUNC(SV_TOTAL_AMT / SV_USER_CNT, 0)) AS SV_AVG_AMT
+     , DECODE(C100_USER_CNT, 0, NULL, TRUNC(C100_TOTAL_AMT / C100_USER_CNT, 0)) AS C100_AVG_AMT
+     <!-- , DECODE(C110_USER_CNT, 0, NULL, TRUNC(C110_TOTAL_AMT / C110_USER_CNT, 0)) AS C110_AVG_AMT
+     , DECODE(C170_USER_CNT, 0, NULL, TRUNC(C170_TOTAL_AMT / C170_USER_CNT, 0)) AS C170_AVG_AMT
+     , DECODE(C160_USER_CNT, 0, NULL, TRUNC(C160_TOTAL_AMT / C160_USER_CNT, 0)) AS C160_AVG_AMT
+     , DECODE(C130_USER_CNT, 0, NULL, TRUNC(C130_TOTAL_AMT / C130_USER_CNT, 0)) AS C130_AVG_AMT
+     , DECODE(C120_USER_CNT, 0, NULL, TRUNC(C120_TOTAL_AMT / C120_USER_CNT, 0)) AS C120_AVG_AMT
+     , DECODE(C140_USER_CNT, 0, NULL, TRUNC(C140_TOTAL_AMT / C140_USER_CNT, 0)) AS C140_AVG_AMT
+     , DECODE(C150_USER_CNT, 0, NULL, TRUNC(C150_TOTAL_AMT / C150_USER_CNT, 0)) AS C150_AVG_AMT
+     , DECODE(C180_USER_CNT, 0, NULL, TRUNC(C180_TOTAL_AMT / C180_USER_CNT, 0)) AS C180_AVG_AMT -->     
+     , DECODE(C200_USER_CNT, 0, NULL, TRUNC(C200_TOTAL_AMT / C200_USER_CNT, 0)) AS C200_AVG_AMT
+     , DECODE(C300_USER_CNT, 0, NULL, TRUNC(C300_TOTAL_AMT / C300_USER_CNT, 0)) AS C300_AVG_AMT
+     , DECODE(C500_USER_CNT, 0, NULL, TRUNC(C500_TOTAL_AMT / C500_USER_CNT, 0)) AS C500_AVG_AMT
+     , DECODE(USER_CNT, 0, NULL, TRUNC(TOTAL_CNT / USER_CNT, 4)) AS AVG_CNT
+  FROM (SELECT NVL(SUM(SALE_AMT), 0)                                             AS TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'AD', SALE_AMT, 0)), 0)                      AS AD_TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'RC', SALE_AMT, 0)), 0)                      AS RC_TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'AV', SALE_AMT, 0)), 0)                      AS AV_TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'SV', SALE_AMT, 0)), 0)                      AS SV_TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'C100', SALE_AMT, 0)), 0)                    AS C100_TOTAL_AMT
+             <!-- , NVL(SUM(DECODE(CTGR, 'C110', SALE_AMT, 0)), 0)                    AS C110_TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'C170', SALE_AMT, 0)), 0)                    AS C170_TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'C160', SALE_AMT, 0)), 0)                    AS C160_TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'C130', SALE_AMT, 0)), 0)                    AS C130_TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'C120', SALE_AMT, 0)), 0)                    AS C120_TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'C140', SALE_AMT, 0)), 0)                    AS C140_TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'C150', SALE_AMT, 0)), 0)                    AS C150_TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'C180', SALE_AMT, 0)), 0)                    AS C180_TOTAL_AMT -->
+             , NVL(SUM(DECODE(CTGR, 'C200', SALE_AMT, 0)), 0)                    AS C200_TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'C300', SALE_AMT, 0)), 0)                    AS C300_TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'C410', SALE_AMT, 0)), 0)                    AS C410_TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'C420', SALE_AMT, 0)), 0)                    AS C420_TOTAL_AMT
+             , NVL(SUM(DECODE(CTGR, 'C500', SALE_AMT, 0)), 0)                    AS C500_TOTAL_AMT
+             , COUNT(*)                                                          AS TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'AD', 1, 0)), 0)                             AS AD_TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'RC', 1, 0)), 0)                             AS RC_TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'AV', 1, 0)), 0)                             AS AV_TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'SV', 1, 0)), 0)                             AS SV_TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'C100', 1, 0)), 0)                           AS C100_TOTAL_CNT
+             <!-- , NVL(SUM(DECODE(CTGR, 'C110', 1, 0)), 0)                           AS C110_TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'C170', 1, 0)), 0)                           AS C170_TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'C160', 1, 0)), 0)                           AS C160_TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'C130', 1, 0)), 0)                           AS C130_TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'C120', 1, 0)), 0)                           AS C120_TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'C140', 1, 0)), 0)                           AS C140_TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'C150', 1, 0)), 0)                           AS C150_TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'C180', 1, 0)), 0)                           AS C180_TOTAL_CNT -->
+             , NVL(SUM(DECODE(CTGR, 'C200', 1, 0)), 0)                           AS C200_TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'C300', 1, 0)), 0)                           AS C300_TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'C410', 1, 0)), 0)                           AS C410_TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'C420', 1, 0)), 0)                           AS C420_TOTAL_CNT
+             , NVL(SUM(DECODE(CTGR, 'C500', 1, 0)), 0)                           AS C500_TOTAL_CNT
+             , COUNT(DISTINCT USER_ID)                                           AS USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'AD', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS AD_USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'RC', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS RC_USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'AV', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS AV_USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'SV', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS SV_USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'C100', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS C100_USER_CNT
+             <!-- , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'C110', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS C110_USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'C170', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS C170_USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'C160', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS C160_USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'C130', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS C130_USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'C120', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS C120_USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'C140', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS C140_USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'C150', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS C150_USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'C180', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS C180_USER_CNT -->
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'C200', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS C200_USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'C300', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS C300_USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'C410', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS C410_USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'C420', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS C420_USER_CNT
+             , (SELECT NVL(SUM(DECODE(USER_ID, NULL, 0, 1)), 0) FROM (SELECT DISTINCT(DECODE(CTGR, 'C500', USER_ID, NULL)) AS USER_ID FROM T_RSV WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#)) AS C500_USER_CNT
+
+             , NVL(SUM(DECODE(CTGR, 'AD', DIS_AMT, 0)), 0)                      AS AD_DIS_AMT
+             , NVL(SUM(DECODE(CTGR, 'RC', DIS_AMT, 0)), 0)                      AS RC_DIS_AMT
+             , NVL(SUM(DECODE(CTGR, 'AV', DIS_AMT, 0)), 0)                      AS AV_DIS_AMT
+             , NVL(SUM(DECODE(CTGR, 'SV', DIS_AMT, 0)), 0)                      AS SV_DIS_AMT
+             , NVL(SUM(DECODE(CTGR, 'C100', DIS_AMT, 0)), 0)                    AS C100_DIS_AMT
+             , NVL(SUM(DECODE(CTGR, 'C200', DIS_AMT, 0)), 0)                    AS C200_DIS_AMT
+             , NVL(SUM(DECODE(CTGR, 'C300', DIS_AMT, 0)), 0)                    AS C300_DIS_AMT
+             , NVL(SUM(DECODE(CTGR, 'C410', DIS_AMT, 0)), 0)                    AS C410_DIS_AMT
+             , NVL(SUM(DECODE(CTGR, 'C420', DIS_AMT, 0)), 0)                    AS C420_DIS_AMT
+             , NVL(SUM(DECODE(CTGR, 'C500', DIS_AMT, 0)), 0)                    AS C500_DIS_AMT
+             , NVL(SUM(DIS_AMT),0) AS DIS_AMT
+
+             , NVL(SUM(DECODE(CTGR, 'AD', DIS_CNT, 0)), 0)                      AS AD_DIS_CNT
+             , NVL(SUM(DECODE(CTGR, 'RC', DIS_CNT, 0)), 0)                      AS RC_DIS_CNT
+             , NVL(SUM(DECODE(CTGR, 'AV', DIS_CNT, 0)), 0)                      AS AV_DIS_CNT
+             , NVL(SUM(DECODE(CTGR, 'SV', DIS_CNT, 0)), 0)                      AS SV_DIS_CNT
+             , NVL(SUM(DECODE(CTGR, 'C100', DIS_CNT, 0)), 0)                    AS C100_DIS_CNT
+             , NVL(SUM(DECODE(CTGR, 'C200', DIS_CNT, 0)), 0)                    AS C200_DIS_CNT
+             , NVL(SUM(DECODE(CTGR, 'C300', DIS_CNT, 0)), 0)                    AS C300_DIS_CNT
+             , NVL(SUM(DECODE(CTGR, 'C410', DIS_CNT, 0)), 0)                    AS C410_DIS_CNT
+             , NVL(SUM(DECODE(CTGR, 'C420', DIS_CNT, 0)), 0)                    AS C420_DIS_CNT
+             , NVL(SUM(DECODE(CTGR, 'C500', DIS_CNT, 0)), 0)                    AS C500_DIS_CNT
+             , NVL(SUM(DIS_CNT),0) AS DIS_CNT
+          FROM T_RSV
+         WHERE SUBSTR(RSV_DT, 0, 6) = #sFromYear#||#sFromMonth#
+       )
+</select>
+
+<!-- 2016.03.17 취소통계 추가 -->
+<select id="ANLS_S_08" resultMap="ANLS_R_08">
+WITH T_CANCELRSV AS (
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+     , TO_CHAR(T_DTLRSV.CANCEL_CMPL_DTTM , 'YYYYMMDD') AS RSV_CANCEL_DT
+     , 'AD' AS CTGR
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.AD_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , T_RSV.USER_ID
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , T_DTLRSV.SALE_AMT
+     , T_DTLRSV.CANCEL_AMT
+     , T_DTLRSV.CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_AD_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+   AND T_DTLRSV.RSV_STATUS_CD IN ('RS20', 'RS32')
+
+ UNION
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+     , TO_CHAR(T_DTLRSV.CANCEL_CMPL_DTTM , 'YYYYMMDD') AS RSV_CANCEL_DT
+     , 'RC' AS CTGR
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.RC_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , T_RSV.USER_ID
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , T_DTLRSV.SALE_AMT
+     , T_DTLRSV.CANCEL_AMT
+     , T_DTLRSV.CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_RC_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+   AND T_DTLRSV.RSV_STATUS_CD IN ('RS20', 'RS32')
+
+ UNION
+SELECT TO_CHAR(RSV_DTTM, 'YYYYMMDD') AS RSV_DT ,
+               TO_CHAR(RSV_DTTM , 'YYYYMMDD') AS RSV_CANCEL_DT ,
+               'AV' AS CTGR ,
+               '' AS CORP_ID ,
+               AV_RSV_NUM AS RSV_NUM ,
+               RSV_STATUS_CD ,
+               '' AS USER_ID ,
+               (
+                                       CASE
+                                         WHEN RSV_STATUS_CD IN ('RS00',
+                               'RS01',
+                               'RS20',
+                               'RS99') THEN 0
+                                         ELSE SALE_AMT
+                                       END ) AS NML_AMT ,
+               SALE_AMT ,
+               SALE_AMT AS CANCEL_AMT ,
+               0 AS CMSS_AMT
+          FROM TB_AV_RSV 
+           WHERE RSV_STATUS_CD IN ('RS20',
+                       'RS32')
+
+ UNION
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+     , TO_CHAR(T_DTLRSV.CANCEL_CMPL_DTTM , 'YYYYMMDD') AS RSV_CANCEL_DT
+     , 'SV' AS CTGR
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.SV_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , T_RSV.USER_ID
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , T_DTLRSV.SALE_AMT
+     , T_DTLRSV.CANCEL_AMT
+     , T_DTLRSV.CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_SV_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+   AND T_DTLRSV.RSV_STATUS_CD IN ('RS20', 'RS32')
+
+ UNION
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+     , TO_CHAR(T_DTLRSV.CANCEL_CMPL_DTTM , 'YYYYMMDD') AS RSV_CANCEL_DT
+     , CASE SUBSTR(T_SPPRDT.CTGR,0,2) WHEN 'C4' THEN T_SPPRDT.CTGR
+                                      ELSE SUBSTR(T_SPPRDT.CTGR,0,2)||'00' 
+        END AS CTGR
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.SP_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , T_RSV.USER_ID
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , T_DTLRSV.SALE_AMT
+     , T_DTLRSV.CANCEL_AMT
+     , T_DTLRSV.CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_SP_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ INNER JOIN TB_SP_PRDTINF T_SPPRDT
+    ON T_SPPRDT.PRDT_NUM = T_DTLRSV.PRDT_NUM
+   AND T_DTLRSV.RSV_STATUS_CD IN ('RS20', 'RS32')
+
+)
+SELECT NVL(SUM(CANCEL_AMT), 0)                                                      AS TOTAL_CANCEL_AMT
+     , NVL(SUM(DECODE(CTGR, 'AD', CANCEL_AMT, 0) + DECODE(CTGR, 'C410', CANCEL_AMT, 0)), 0)                               AS AD_TOTAL_CANCEL_AMT
+     , NVL(SUM(DECODE(CTGR, 'RC', CANCEL_AMT, 0) + DECODE(CTGR, 'C420', CANCEL_AMT, 0)), 0)                               AS RC_TOTAL_CANCEL_AMT
+     , NVL(SUM(DECODE(CTGR, 'AV', CANCEL_AMT, 0)), 0)                               AS AV_TOTAL_CANCEL_AMT
+     , NVL(SUM(DECODE(CTGR, 'SV', CANCEL_AMT, 0)), 0)                               AS SV_TOTAL_CANCEL_AMT
+     , NVL(SUM(DECODE(CTGR, 'C100', CANCEL_AMT, 0)), 0)                             AS C100_TOTAL_CANCEL_AMT
+     <!-- , NVL(SUM(DECODE(CTGR, 'C110', CANCEL_AMT, 0)), 0)                             AS C110_TOTAL_CANCEL_AMT
+     , NVL(SUM(DECODE(CTGR, 'C120', CANCEL_AMT, 0)), 0)                             AS C120_TOTAL_CANCEL_AMT
+     , NVL(SUM(DECODE(CTGR, 'C130', CANCEL_AMT, 0)), 0)                             AS C130_TOTAL_CANCEL_AMT
+     , NVL(SUM(DECODE(CTGR, 'C140', CANCEL_AMT, 0)), 0)                             AS C140_TOTAL_CANCEL_AMT
+     , NVL(SUM(DECODE(CTGR, 'C150', CANCEL_AMT, 0)), 0)                             AS C150_TOTAL_CANCEL_AMT
+     , NVL(SUM(DECODE(CTGR, 'C160', CANCEL_AMT, 0)), 0)                             AS C160_TOTAL_CANCEL_AMT
+     , NVL(SUM(DECODE(CTGR, 'C170', CANCEL_AMT, 0)), 0)                             AS C170_TOTAL_CANCEL_AMT
+     , NVL(SUM(DECODE(CTGR, 'C180', CANCEL_AMT, 0)), 0)                             AS C180_TOTAL_CANCEL_AMT -->
+     , NVL(SUM(DECODE(CTGR, 'C200', CANCEL_AMT, 0)), 0)                             AS C200_TOTAL_CANCEL_AMT
+     , NVL(SUM(DECODE(CTGR, 'C300', CANCEL_AMT, 0)), 0)                             AS C300_TOTAL_CANCEL_AMT
+     , NVL(SUM(DECODE(CTGR, 'C500', CANCEL_AMT, 0)), 0)                             AS C500_TOTAL_CANCEL_AMT
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', 1, 0)), 0)                             AS TOTAL_CANCEL_CNT
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'AD', 1, 0) + DECODE(CTGR, 'C410', 1, 0), 0)), 0)      AS AD_TOTAL_CANCEL_CNT
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'RC', 1, 0) + DECODE(CTGR, 'C420', 1, 0), 0)), 0)      AS RC_TOTAL_CANCEL_CNT
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'AV', 1, 0), 0)), 0)      AS AV_TOTAL_CANCEL_CNT
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'SV', 1, 0), 0)), 0)      AS SV_TOTAL_CANCEL_CNT
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'C100', 1, 0), 0)), 0)    AS C100_TOTAL_CANCEL_CNT
+     <!-- , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'C110', 1, 0), 0)), 0)    AS C110_TOTAL_CANCEL_CNT
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'C120', 1, 0), 0)), 0)    AS C120_TOTAL_CANCEL_CNT
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'C130', 1, 0), 0)), 0)    AS C130_TOTAL_CANCEL_CNT
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'C140', 1, 0), 0)), 0)    AS C140_TOTAL_CANCEL_CNT
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'C150', 1, 0), 0)), 0)    AS C150_TOTAL_CANCEL_CNT
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'C160', 1, 0), 0)), 0)    AS C160_TOTAL_CANCEL_CNT
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'C170', 1, 0), 0)), 0)    AS C170_TOTAL_CANCEL_CNT
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'C180', 1, 0), 0)), 0)    AS C180_TOTAL_CANCEL_CNT -->
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'C200', 1, 0), 0)), 0)    AS C200_TOTAL_CANCEL_CNT
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'C300', 1, 0), 0)), 0)    AS C300_TOTAL_CANCEL_CNT
+     , NVL(SUM(DECODE(RSV_STATUS_CD, 'RS20', DECODE(CTGR, 'C500', 1, 0), 0)), 0)    AS C500_TOTAL_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 1, 0)), 0) AS NM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'AD', 1, 0) + DECODE(CTGR, 'C410', 1, 0), 0)), 0) AS AD_NM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'RC', 1, 0) + DECODE(CTGR, 'C420', 1, 0), 0)), 0) AS RC_NM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'AV', 1, 0), 0)), 0) AS AV_NM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'SV', 1, 0), 0)), 0) AS SV_NM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'C100', 1, 0), 0)), 0) AS C100_NM_CANCEL_CNT
+     <!-- , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'C110', 1, 0), 0)), 0) AS C110_NM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'C120', 1, 0), 0)), 0) AS C120_NM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'C130', 1, 0), 0)), 0) AS C130_NM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'C140', 1, 0), 0)), 0) AS C140_NM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'C150', 1, 0), 0)), 0) AS C150_NM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'C160', 1, 0), 0)), 0) AS C160_NM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'C170', 1, 0), 0)), 0) AS C170_NM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'C180', 1, 0), 0)), 0) AS C180_NM_CANCEL_CNT -->
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'C200', 1, 0), 0)), 0) AS C200_NM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'C300', 1, 0), 0)), 0) AS C300_NM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), DECODE(CTGR, 'C500', 1, 0), 0)), 0) AS C500_NM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, 1)), 0) AS OM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'AD', 1, 0) + DECODE(CTGR, 'C410', 1, 0))), 0) AS AD_OM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'RC', 1, 0) + DECODE(CTGR, 'C420', 1, 0))), 0) AS RC_OM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'AV', 1, 0))), 0) AS AV_OM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'SV', 1, 0))), 0) AS SV_OM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'C100', 1, 0))), 0) AS C100_OM_CANCEL_CNT
+     <!-- , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'C110', 1, 0))), 0) AS C110_OM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'C120', 1, 0))), 0) AS C120_OM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'C130', 1, 0))), 0) AS C130_OM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'C140', 1, 0))), 0) AS C140_OM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'C150', 1, 0))), 0) AS C150_OM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'C160', 1, 0))), 0) AS C160_OM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'C170', 1, 0))), 0) AS C170_OM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'C180', 1, 0))), 0) AS C180_OM_CANCEL_CNT -->
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'C200', 1, 0))), 0) AS C200_OM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'C300', 1, 0))), 0) AS C300_OM_CANCEL_CNT
+     , NVL(SUM(DECODE(SUBSTR(RSV_DT, 0, 6), SUBSTR(RSV_CANCEL_DT, 0, 6), 0, DECODE(CTGR, 'C500', 1, 0))), 0) AS C500_OM_CANCEL_CNT
+     , NVL(SUM(CMSS_AMT), 0) AS TOTAL_CMSS_AMT
+  FROM T_CANCELRSV
+ WHERE SUBSTR(RSV_CANCEL_DT, 0, 6) = #sFromYear#||#sFromMonth#
+</select>
+
+<!-- 년월별 사용자 가입, 탈퇴 수 -->
+<select id="ANLS_S_09" resultMap="ANLS_R_09">
+SELECT T_DT.DT
+     , NVL(TOTAL_CNT, 0) AS USER_JOIN
+     , NVL(QUT_CNT, 0)   AS USER_OUT
+  FROM (SELECT #sFromYear#||'-'||LPAD(LEVEL, 2, '0') AS DT
+          FROM DUAL
+          <![CDATA[
+        CONNECT BY LEVEL <= DECODE(#sFromYear#, TO_CHAR(SYSDATE, 'YYYY'), TO_CHAR(SYSDATE, 'MM'), '12')
+          ]]>
+       ) T_DT
+  LEFT OUTER JOIN (SELECT TO_CHAR(FRST_REG_DTTM, 'YYYY-MM')  AS REG_DTTM
+                        , COUNT(USER_ID)                    AS TOTAL_CNT
+                        , SUM(DECODE(QUT_YN, 'Y', 1, 0))    AS QUT_CNT
+                     FROM TB_USER
+                    WHERE AUTH_NM = 'USER'
+                    GROUP BY TO_CHAR(FRST_REG_DTTM, 'YYYY-MM')
+                  ) T_USER
+    ON T_USER.REG_DTTM = T_DT.DT
+    ORDER BY T_DT.DT
+</select>
+
+<!-- 고객 효율성 -->
+<select id="ANLS_S_10" resultMap="ANLS_R_10">
+<![CDATA[
+SELECT TOTAL_CNT
+     , QUT_CNT
+     , CEIL((QUT_CNT / TOTAL_CNT) * 100) AS QUT_PER
+     , RSV_CNT
+     , CEIL((RSV_CNT / TOTAL_CNT) * 100) AS RSV_PER
+     , DUPL_RSV_CNT
+     , CEIL((DUPL_RSV_CNT / RSV_CNT) * 100) AS DUPL_PER
+     , RE_RSV_CNT
+     , CEIL((RE_RSV_CNT / RSV_CNT) * 100) AS RE_RSV_PER
+  FROM (SELECT COUNT(USER_ID)                    AS TOTAL_CNT
+             , SUM(DECODE(QUT_YN, 'Y', 1, 0))    AS QUT_CNT
+             , (SELECT COUNT(DISTINCT USER_ID) FROM TB_RSV WHERE RSV_STATUS_CD = 'RS02' AND USER_ID <> 'GUEST') AS RSV_CNT
+             , (SELECT COUNT(*)
+                  FROM (SELECT USER_ID
+                          FROM TB_RSV
+                         WHERE RSV_STATUS_CD = 'RS02'
+                           AND USER_ID <> 'GUEST'
+                         GROUP BY USER_ID
+                        HAVING COUNT(RSV_NUM) > 1)) AS DUPL_RSV_CNT
+             , (SELECT COUNT(DISTINCT USER_ID)
+                  FROM (SELECT T1.RSV_NUM
+                             , T2.RSV_NUM
+                             , T1.USER_ID
+                             , T1.RSV_NM
+                             , T1.REG_DTTM
+                             , T2.REG_DTTM
+                             , (T1.REG_DTTM - T2.REG_DTTM)
+                          FROM TB_RSV T1
+                         INNER JOIN TB_RSV T2
+                            ON T2.RSV_STATUS_CD = 'RS02'
+                           AND T1.USER_ID = T2.USER_ID
+                           AND (T1.REG_DTTM - T2.REG_DTTM) >= 7
+                         WHERE T1.USER_ID <> 'GUEST'
+                           AND T1.USER_ID IN (
+                        SELECT USER_ID
+                          FROM TB_RSV
+                         WHERE RSV_STATUS_CD = 'RS02'
+                         GROUP BY USER_ID
+                        HAVING COUNT(RSV_NUM) > 1)
+                           AND T1.RSV_STATUS_CD = 'RS02'
+                    )) AS RE_RSV_CNT
+          FROM TB_USER T_USER
+         WHERE AUTH_NM = 'USER'
+       )
+]]>
+</select>
+
+<select id="ANLS_S_11" resultMap="ANLS_R_11">
+WITH T_RSVAMT AS (
+SELECT A.RSV_DT
+     , A.SALE_AMT
+     , B.CANCEL_AMT
+     , A.SALE_AMT - B.CANCEL_AMT AS TOTAL_AMT
+  FROM (SELECT RSV_DT
+             , SUM(SALE_AMT) AS SALE_AMT
+          FROM (SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYY-MM') AS RSV_DT
+                     , TO_CHAR(T_DTLRSV.CANCEL_CMPL_DTTM , 'YYYYMMDD') AS RSV_CANCEL_DT
+                     , 'AD' AS CTGR
+                     , T_DTLRSV.CORP_ID
+                     , T_DTLRSV.AD_RSV_NUM AS RSV_NUM
+                     , T_DTLRSV.RSV_STATUS_CD
+                     , T_RSV.USER_ID
+                     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+                             ELSE T_DTLRSV.NML_AMT
+                         END
+                       ) AS NML_AMT
+                     , T_DTLRSV.SALE_AMT
+                     , T_DTLRSV.CANCEL_AMT
+                     , T_DTLRSV.CMSS_AMT
+                  FROM TB_RSV T_RSV
+                 INNER JOIN TB_AD_RSV T_DTLRSV
+                    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+                 WHERE T_RSV.RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01')
+                 UNION
+                SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYY-MM') AS RSV_DT
+                     , TO_CHAR(T_DTLRSV.CANCEL_CMPL_DTTM , 'YYYYMMDD') AS RSV_CANCEL_DT
+                     , 'RC' AS CTGR
+                     , T_DTLRSV.CORP_ID
+                     , T_DTLRSV.RC_RSV_NUM AS RSV_NUM
+                     , T_DTLRSV.RSV_STATUS_CD
+                     , T_RSV.USER_ID
+                     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+                             ELSE T_DTLRSV.NML_AMT
+                         END
+                       ) AS NML_AMT
+                     , T_DTLRSV.SALE_AMT
+                     , T_DTLRSV.CANCEL_AMT
+                     , T_DTLRSV.CMSS_AMT
+                  FROM TB_RSV T_RSV
+                 INNER JOIN TB_RC_RSV T_DTLRSV
+                    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+                 WHERE T_RSV.RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01')
+                 UNION
+                SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYY-MM') AS RSV_DT
+                     , TO_CHAR(T_DTLRSV.CANCEL_CMPL_DTTM , 'YYYYMMDD') AS RSV_CANCEL_DT
+                     , CASE SUBSTR(T_SPPRDT.CTGR,0,2) WHEN 'C1' THEN T_SPPRDT.CTGR
+                                                      ELSE SUBSTR(T_SPPRDT.CTGR,0,2)||'00' 
+                        END AS CTGR
+                     , T_DTLRSV.CORP_ID
+                     , T_DTLRSV.SP_RSV_NUM AS RSV_NUM
+                     , T_DTLRSV.RSV_STATUS_CD
+                     , T_RSV.USER_ID
+                     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+                             ELSE T_DTLRSV.NML_AMT
+                         END
+                       ) AS NML_AMT
+                     , T_DTLRSV.SALE_AMT
+                     , T_DTLRSV.CANCEL_AMT
+                     , T_DTLRSV.CMSS_AMT
+                  FROM TB_RSV T_RSV
+                 INNER JOIN TB_SP_RSV T_DTLRSV
+                    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+                 INNER JOIN TB_SP_PRDTINF T_SPPRDT
+                    ON T_SPPRDT.PRDT_NUM = T_DTLRSV.PRDT_NUM
+                 WHERE T_RSV.RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01'))
+           GROUP BY RSV_DT
+       ) A
+  LEFT OUTER JOIN (SELECT RSV_CANCEL_DT
+                        , SUM(CANCEL_AMT) AS CANCEL_AMT
+                     FROM (SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+                                , TO_CHAR(T_DTLRSV.CANCEL_CMPL_DTTM , 'YYYY-MM') AS RSV_CANCEL_DT
+                                , 'AD' AS CTGR
+                                , T_DTLRSV.CORP_ID
+                                , T_DTLRSV.AD_RSV_NUM AS RSV_NUM
+                                , T_DTLRSV.RSV_STATUS_CD
+                                , T_RSV.USER_ID
+                                , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+                                        ELSE T_DTLRSV.NML_AMT
+                                    END
+                                  ) AS NML_AMT
+                                , T_DTLRSV.SALE_AMT
+                                , T_DTLRSV.CANCEL_AMT
+                                , T_DTLRSV.CMSS_AMT
+                             FROM TB_RSV T_RSV
+                            INNER JOIN TB_AD_RSV T_DTLRSV
+                               ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+                              AND T_DTLRSV.RSV_STATUS_CD IN ('RS20', 'RS32')
+                            UNION
+                           SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+                                , TO_CHAR(T_DTLRSV.CANCEL_CMPL_DTTM , 'YYYY-MM') AS RSV_CANCEL_DT
+                                , 'RC' AS CTGR
+                                , T_DTLRSV.CORP_ID
+                                , T_DTLRSV.RC_RSV_NUM AS RSV_NUM
+                                , T_DTLRSV.RSV_STATUS_CD
+                                , T_RSV.USER_ID
+                                , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+                                        ELSE T_DTLRSV.NML_AMT
+                                    END
+                                  ) AS NML_AMT
+                                , T_DTLRSV.SALE_AMT
+                                , T_DTLRSV.CANCEL_AMT
+                                , T_DTLRSV.CMSS_AMT
+                             FROM TB_RSV T_RSV
+                            INNER JOIN TB_RC_RSV T_DTLRSV
+                               ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+                              AND T_DTLRSV.RSV_STATUS_CD IN ('RS20', 'RS32')
+                            UNION
+                           SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+                                , TO_CHAR(T_DTLRSV.CANCEL_CMPL_DTTM , 'YYYY-MM') AS RSV_CANCEL_DT
+                                , CASE SUBSTR(T_SPPRDT.CTGR,0,2) WHEN 'C1' THEN T_SPPRDT.CTGR
+                                                                 ELSE SUBSTR(T_SPPRDT.CTGR,0,2)||'00' 
+                                   END AS CTGR
+                                , T_DTLRSV.CORP_ID
+                                , T_DTLRSV.SP_RSV_NUM AS RSV_NUM
+                                , T_DTLRSV.RSV_STATUS_CD
+                                , T_RSV.USER_ID
+                                , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+                                        ELSE T_DTLRSV.NML_AMT
+                                    END
+                                  ) AS NML_AMT
+                                , T_DTLRSV.SALE_AMT
+                                , T_DTLRSV.CANCEL_AMT
+                                , T_DTLRSV.CMSS_AMT
+                             FROM TB_RSV T_RSV
+                            INNER JOIN TB_SP_RSV T_DTLRSV
+                               ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+                            INNER JOIN TB_SP_PRDTINF T_SPPRDT
+                               ON T_SPPRDT.PRDT_NUM = T_DTLRSV.PRDT_NUM
+                              AND T_DTLRSV.RSV_STATUS_CD IN ('RS20', 'RS32')
+                          )
+                    GROUP BY RSV_CANCEL_DT
+                  ) B
+    ON B.RSV_CANCEL_DT = A.RSV_DT
+)
+SELECT T_DT.DT
+     , NVL(SALE_AMT, 0) AS SALE_AMT
+     , NVL(CANCEL_AMT, 0) AS CANCEL_AMT
+     , NVL(TOTAL_AMT, 0) AS TOTAL_AMT
+     , DECODE(MAX_AMT, NULL, 0, CEIL(TOTAL_AMT / MAX_AMT * 100)) AS TOTAL_AMT_PER
+  FROM (SELECT #sFromYear#||'-'||LPAD(LEVEL, 2, '0') AS DT
+          FROM DUAL
+          <![CDATA[
+        CONNECT BY LEVEL < 13
+          ]]>
+       ) T_DT
+   LEFT OUTER JOIN (SELECT RSV_DT
+                         , NVL(SALE_AMT, 0) AS SALE_AMT
+                         , NVL(CANCEL_AMT, 0) AS CANCEL_AMT
+                         , NVL(TOTAL_AMT, 0) AS TOTAL_AMT
+                         , (SELECT MAX(TOTAL_AMT) FROM T_RSVAMT WHERE SUBSTR(RSV_DT, 0, 4) = #sFromYear#) AS MAX_AMT
+                      FROM T_RSVAMT
+                   ) T_R
+     ON T_R.RSV_DT = T_DT.DT
+</select>
+
+<insert id="CORP_ANLS_I_00">
+INSERT INTO TB_CORP_ANLS
+     ( APL_DT
+     , CORP_DIV
+     , TOTAL_CORP_CNT
+     , CONF_CORP_CNT
+     , MEM_CORP_CNT 
+     )
+SELECT TO_CHAR(SYSDATE-1, 'YYYYMMDD') AS APL_DT
+     , CORP_DIV
+     , COUNT(*)                                   AS TOTAL_CORP_CNT
+     , SUM(DECODE(TRADE_STATUS_CD, 'TS03', 1, 0)) AS CONF_CORP_CNT
+     , SUM(DECODE(ASCT_MEM_YN, 'Y', 1, 0))        AS MEM_CORP_CNT
+  FROM (SELECT CORP_MOD_CD AS CORP_DIV
+             , CORP_ID
+             , TRADE_STATUS_CD
+             , ASCT_MEM_YN
+          FROM TB_CORP
+       )
+ GROUP BY CORP_DIV
+</insert>
+
+<insert id="PRDT_ANLS_I_00">
+INSERT INTO TB_PRDT_ANLS
+     ( APL_DT
+     , CORP_DIV
+     , PRDT_DIV
+     , TOTAL_PRDT_CNT
+     , PRDT_DIV_NM
+     , PRDT_CNT01
+     , PRDT_CNT02
+     , PRDT_CNT03
+     , PRDT_CNT04
+     , PRDT_CNT05
+     , PRDT_CNT06
+     , PRDT_CNT07 
+     )
+SELECT TO_CHAR(SYSDATE-1, 'YYYYMMDD') AS APL_DT
+     , CORP_CD AS CORP_DIV
+     , PRDT_DIV
+     , COUNT(*) AS TOTAL_PRDT_CNT
+     , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = PRDT_DIV) AS PRDT_DIV_NM
+     , SUM(DECODE(TRADE_STATUS, 'TS01', 1, 0)) AS PRDT_CNT01
+     , SUM(DECODE(TRADE_STATUS, 'TS02', 1, 0)) AS PRDT_CNT02
+     , SUM(DECODE(TRADE_STATUS, 'TS03', 1, 0)) AS PRDT_CNT03
+     , SUM(DECODE(TRADE_STATUS, 'TS04', 1, 0)) AS PRDT_CNT04
+     , SUM(DECODE(TRADE_STATUS, 'TS05', 1, 0)) AS PRDT_CNT05
+     , SUM(DECODE(TRADE_STATUS, 'TS06', 1, 0)) AS PRDT_CNT06
+     , SUM(DECODE(TRADE_STATUS, 'TS07', 1, 0)) AS PRDT_CNT07
+  FROM (SELECT CORP_MOD_CD AS CORP_CD
+             , T_DFT.AD_DIV AS PRDT_DIV
+             , T_PRDT.TRADE_STATUS
+          FROM TB_AD_PRDTINF T_PRDT
+         INNER JOIN TB_CORP T_CORP
+            ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+         INNER JOIN TB_AD_DFTINF T_DFT
+            ON T_DFT.CORP_ID = T_CORP.CORP_ID
+         UNION ALL
+        SELECT CORP_MOD_CD AS CORP_CD
+             , T_PRDT.CAR_DIV AS PRDT_DIV
+             , T_PRDT.TRADE_STATUS
+          FROM TB_RC_PRDTINF T_PRDT
+         INNER JOIN TB_CORP T_CORP
+            ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+         UNION ALL
+        SELECT CORP_MOD_CD AS CORP_CD
+             , 'GL' AS PRDT_DIV
+             , T_PRDT.TRADE_STATUS
+          FROM TB_GL_PRDTINF T_PRDT
+         INNER JOIN TB_CORP T_CORP
+            ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+         UNION ALL
+        SELECT CORP_MOD_CD AS CORP_CD
+             , T_PRDT.CTGR AS PRDT_DIV
+             , T_PRDT.TRADE_STATUS
+          FROM TB_SP_PRDTINF T_PRDT
+         INNER JOIN TB_CORP T_CORP
+            ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+         UNION ALL
+        SELECT CORP_MOD_CD AS CORP_CD
+             , T_PRDT.CTGR AS PRDT_DIV
+             , T_PRDT.TRADE_STATUS
+          FROM TB_SV_PRDTINF T_PRDT
+         INNER JOIN TB_CORP T_CORP
+            ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+       )
+ GROUP BY CORP_CD
+     , PRDT_DIV
+
+</insert>
+
+
+</sqlMap>

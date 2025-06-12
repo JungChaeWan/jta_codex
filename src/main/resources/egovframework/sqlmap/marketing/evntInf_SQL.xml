@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="evntInf">
+
+<resultMap id="EVNTINF_R_00" class="oss.marketing.vo.EVNTINFVO">
+<result property="evntCd" 		column="EVNT_CD"/>
+<result property="tgtCorpNm" 	column="TGT_CORP_NM"/>
+<result property="exprStartDt" 	column="EXPR_START_DT"/>
+<result property="exprEndDt" 	column="EXPR_END_DT"/>
+<result property="evntExp" 		column="EVNT_EXP"/>
+<result property="regDttm" 		column="REG_DTTM"/>
+<result property="regId" 		column="REG_ID"/>
+</resultMap>
+
+<select id="EVNTINF_S_00" resultMap="EVNTINF_R_00">
+SELECT EVNT_CD          /*이벤트 코드*/
+     , TGT_CORP_NM      /*대상 업체 명*/
+     , EXPR_START_DT    /*유효 시작 일자*/
+     , EXPR_END_DT      /*유효 종료 일자*/
+     , EVNT_EXP         /*이벤트 설명*/
+     , REG_DTTM         /*등록 일시*/
+     , REG_ID           /*등록 아이디*/
+  FROM TB_EVNTINF
+ WHERE EVNT_CD = #evntCd#
+</select>
+
+<select id="EVNTINF_S_01" resultMap="EVNTINF_R_00">
+SELECT * FROM (
+    SELECT
+        ROWNUM AS RN
+         , EVNT_CD          /*이벤트 코드*/
+         , TGT_CORP_NM      /*대상 업체 명*/
+         , EXPR_START_DT    /*유효 시작 일자*/
+         , EXPR_END_DT      /*유효 종료 일자*/
+         , EVNT_EXP         /*이벤트 설명*/
+         , REG_DTTM         /*등록 일시*/
+         , REG_ID           /*등록 아이디*/
+      FROM (SELECT
+                   EVNT_CD          /*이벤트 코드*/
+                 , TGT_CORP_NM      /*대상 업체 명*/
+                 , EXPR_START_DT    /*유효 시작 일자*/
+                 , EXPR_END_DT      /*유효 종료 일자*/
+                 , EVNT_EXP         /*이벤트 설명*/
+                 , REG_DTTM         /*등록 일시*/
+                 , REG_ID           /*등록 아이디*/
+              FROM TB_EVNTINF
+             WHERE 1=1
+             <isNotEmpty property="sCorpNm">
+                <isNotNull property="sCorpNm">
+               AND TGT_CORP_NM LIKE '%'||#sCorpNm#||'%'
+                </isNotNull>
+            </isNotEmpty>
+            ORDER BY EXPR_END_DT DESC
+           ))
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="EVNTINF_S_02" resultClass="int">
+SELECT COUNT(EVNT_CD) AS CNT
+  FROM TB_EVNTINF
+ WHERE 1=1
+<isNotEmpty property="sCorpNm">
+	<isNotNull property="sCorpNm">
+   AND TGT_CORP_NM LIKE '%'||#sCorpNm#||'%'
+   	</isNotNull>
+</isNotEmpty>
+</select>
+
+<select id="EVNTINF_S_03" resultMap="EVNTINF_R_00">
+SELECT EVNT_CD          /*이벤트 코드*/
+     , TGT_CORP_NM      /*대상 업체 명*/
+     , EXPR_START_DT    /*유효 시작 일자*/
+     , EXPR_END_DT      /*유효 종료 일자*/
+     , EVNT_EXP         /*이벤트 설명*/
+     , REG_DTTM         /*등록 일시*/
+     , REG_ID           /*등록 아이디*/
+  FROM TB_EVNTINF
+ WHERE EVNT_CD = #evntCd#
+   AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN EXPR_START_DT AND EXPR_END_DT
+</select>
+
+<insert id="EVNTINF_I_00">
+INSERT INTO TB_EVNTINF
+     ( EVNT_CD          /*이벤트 코드*/
+     , TGT_CORP_NM      /*대상 업체 명*/
+     , EXPR_START_DT    /*유효 시작 일자*/
+     , EXPR_END_DT      /*유효 종료 일자*/
+     , EVNT_EXP         /*이벤트 설명*/
+     , REG_DTTM         /*등록 일시*/
+     , REG_ID           /*등록 아이디*/
+     )
+VALUES
+     ( #evntCd#
+     , #tgtCorpNm#
+     , REPLACE(#exprStartDt#, '-', '')
+     , REPLACE(#exprEndDt#, '-', '')
+     , #evntExp#
+     , SYSDATE
+     , #regId#
+     )
+</insert>
+
+<update id="EVNTINF_U_00">
+UPDATE TB_EVNTINF
+   SET TGT_CORP_NM      = #tgtCorpNm#
+     , EXPR_START_DT    = REPLACE(#exprStartDt#, '-', '')
+     , EXPR_END_DT      = REPLACE(#exprEndDt#, '-', '')
+     , EVNT_EXP         = #evntExp#
+ WHERE EVNT_CD          = #evntCd#
+</update>
+
+<delete id="EVNTINF_D_00">
+DELETE FROM TB_EVNTINF
+ WHERE EVNT_CD          = #evntCd#
+</delete>
+
+</sqlMap>

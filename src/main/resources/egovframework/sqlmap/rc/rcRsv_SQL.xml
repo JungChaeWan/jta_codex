@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="rcRsv">
+
+<resultMap id="RC_RSV_R_00" class="web.order.vo.RC_RSVVO">
+    <result property="rcRsvNum" 	    column="RC_RSV_NUM" />
+    <result property="rsvNum" 		    column="RSV_NUM" />
+    <result property="rsvStatusCd" 	    column="RSV_STATUS_CD" />
+    <result property="corpId" 		    column="CORP_ID" />
+    <result property="prdtNum" 		    column="PRDT_NUM" />
+    <result property="prdtNm" 		    column="PRDT_NM" />
+    <result property="prdtInf" 		    column="PRDT_INF" />
+    <result property="rentStartDt" 	    column="RENT_START_DT" />
+    <result property="rentStartTm" 	    column="RENT_START_TM" />
+    <result property="rentEndDt" 	    column="RENT_END_DT" />
+    <result property="rentEndTm" 	    column="RENT_END_TM" />
+    <result property="nmlAmt" 		    column="NML_AMT" />
+    <result property="saleAmt" 		    column="SALE_AMT" />
+    <result property="disAmt" 		    column="DIS_AMT" />
+    <result property="cancelAmt" 	    column="CANCEL_AMT" />
+    <result property="modDttm" 		    column="MOD_DTTM" />
+    <result property="adjYn" 		    column="ADJ_YN" />
+    <result property="adjDt" 		    column="ADJ_DT" />
+    <result property="cmssAmt" 		    column="CMSS_AMT" />
+    <result property="disCancelAmt"	    column="DIS_CANCEL_AMT" />
+    <result property="linkYn"		    column="LINK_YN" />
+    <result property="userId" 		    column="USER_ID" />
+    <result property="rsvEmail" 	    column="RSV_EMAIL" />
+    <result property="emailRcvAgrYn"	column="EMAIL_RCV_AGR_YN" />
+    <result property="apiRentDiv"	column="API_RENT_DIV" />
+    <result property="linkMappingRsvnum"	column="LINK_MAPPING_RSVNUM" />
+
+    <result property="rsvNm"	column="RSV_NM" />
+    <result property="rsvTelnum"	column="RSV_TELNUM" />
+    <result property="admMobile"	column="ADM_MOBILE" />
+    <result property="admMobile2"	column="ADM_MOBILE2" />
+</resultMap>
+
+<resultMap id="RC_RSV_R_01" class="web.order.vo.RC_RSVVO">
+    <result property="rcRsvNum" 			column="RC_RSV_NUM" />
+    <result property="rsvNum" 				column="RSV_NUM" />
+    <result property="rsvStatusCd" 			column="RSV_STATUS_CD" />
+    <result property="corpId" 				column="CORP_ID" />
+    <result property="prdtNum" 				column="PRDT_NUM" />
+    <result property="prdtNm" 				column="PRDT_NM" />
+    <result property="prdtInf" 				column="PRDT_INF" />
+    <result property="rentStartDt" 			column="RENT_START_DT" />
+    <result property="rentStartTm" 			column="RENT_START_TM" />
+    <result property="rentEndDt" 			column="RENT_END_DT" />
+    <result property="rentEndTm" 			column="RENT_END_TM" />
+    <result property="nmlAmt" 				column="NML_AMT" />
+    <result property="saleAmt" 				column="SALE_AMT" />
+    <result property="disAmt" 				column="DIS_AMT" />
+    <result property="cancelAmt" 			column="CANCEL_AMT" />
+    <result property="modDttm" 				column="MOD_DTTM" />
+    <result property="regDttm" 				column="REG_DTTM" />
+    <result property="adjYn" 				column="ADJ_YN" />
+    <result property="adjDt" 				column="ADJ_DT" />
+    <result property="cmssAmt" 				column="CMSS_AMT" />
+    <result property="rsvNm" 				column="RSV_NM" />
+    <result property="rsvTelnum"			column="RSV_TELNUM" />
+    <result property="useNm" 				column="USE_NM" />
+    <result property="useTelnum" 			column="USE_TELNUM" />
+    <result property="rsvIdtYn" 			column="RSV_IDT_YN" />
+    <result property="cancelRequestDttm" 	column="CANCEL_REQUEST_DTTM" />
+    <result property="refundRequestDttm" 	column="REFUND_REQUEST_DTTM" />
+    <result property="cancelCmplDttm" 		column="CANCEL_CMPL_DTTM" />
+    <result property="cancelRsn" 			column="CANCEL_RSN" />
+    <result property="linkYn"				column="LINK_YN" />
+    <result property="isrDiv"				column="ISR_DIV" />
+    <result property="isrTypeDiv"			column="ISR_TYPE_DIV" />
+    <result property="adjAmt"				column="ADJ_AMT" />
+    <result property="payDiv"				column="PAY_DIV" />
+</resultMap>
+
+<resultMap id="RC_RSV_R_03" class="web.order.vo.RC_RSVVO">
+    <result property="rcRsvNum" 			column="RC_RSV_NUM" />
+    <result property="userId" 			    column="USER_ID" />
+    <result property="rsvNum" 				column="RSV_NUM" />
+    <result property="rsvStatusCd" 			column="RSV_STATUS_CD" />
+    <result property="corpId" 				column="CORP_ID" />
+    <result property="prdtNum" 				column="PRDT_NUM" />
+    <result property="prdtNm" 				column="PRDT_NM" />
+    <result property="prdtInf" 				column="PRDT_INF" />
+    <result property="rentStartDt" 			column="RENT_START_DT" />
+    <result property="rentStartTm" 			column="RENT_START_TM" />
+    <result property="rentEndDt" 			column="RENT_END_DT" />
+    <result property="rentEndTm" 			column="RENT_END_TM" />
+    <result property="nmlAmt" 				column="NML_AMT" />
+    <result property="saleAmt" 				column="SALE_AMT" />
+    <result property="disAmt" 				column="DIS_AMT" />
+    <result property="cancelAmt" 			column="CANCEL_AMT" />
+    <result property="regDttm" 				column="REG_DTTM" />
+    <result property="lpointUsePoint"		column="LPOINT_USE_POINT" />
+    <result property="lpointSavePoint"		column="LPOINT_SAVE_POINT" />
+    <result property="adjYn" 				column="ADJ_YN" />
+    <result property="adjDt" 				column="ADJ_DT" />
+    <result property="cmssAmt" 				column="CMSS_AMT" />
+    <result property="rsvNm" 				column="RSV_NM" />
+    <result property="rsvTelnum"			column="RSV_TELNUM" />
+    <result property="rsvEmail"				column="RSV_EMAIL" />
+    <result property="useNm" 				column="USE_NM" />
+    <result property="useTelnum" 			column="USE_TELNUM" />
+    <result property="useEmail" 			column="USE_EMAIL" />
+    <result property="payDiv" 				column="PAY_DIV" />
+    <result property="cancelInf" 			column="CANCEL_INF" />
+    <result property="rsvIdtYn" 			column="RSV_IDT_YN" />
+    <result property="cancelRequestDttm" 	column="CANCEL_REQUEST_DTTM" />
+    <result property="refundRequestDttm" 	column="REFUND_REQUEST_DTTM" />
+    <result property="cancelCmplDttm" 		column="CANCEL_CMPL_DTTM" />
+    <result property="cancelRsn" 			column="CANCEL_RSN" />
+    <result property="linkYn"				column="LINK_YN" />
+    <result property="adjAmt"				column="ADJ_AMT" />
+    <result property="adjStatusCd"			column="ADJ_STATUS_CD" />
+    <result property="adjItdDt"				column="ADJ_ITD_DT" />
+    <result property="adjCmplDt"			column="ADJ_CMPL_DT" />
+    <result property="linkMappingRsvnum"	column="LINK_MAPPING_RSVNUM" />
+	<result property="cancelAbltimeYn"		column="CANCEL_ABLTIME_YN" />
+	<result property="refundBankCode"       column="REFUND_BANK_CODE" />
+	<result property="refundAccNum"		    column="REFUND_ACC_NUM" />
+	<result property="refundDepositor"		column="REFUND_DEPOSITOR" />
+	<result property="admMobile"	    	column="ADM_MOBILE" />
+	<result property="admMobile2"	    	column="ADM_MOBILE2" />
+    <result property="admMobile3"	    	column="ADM_MOBILE3" />
+	<result property="apiRentDiv"	    	column="API_RENT_DIV" />
+    <result property="usePoint"	    	    column="USE_POINT" />
+    <result property="corpDisAmt"	    	    column="CORP_DIS_AMT" />
+</resultMap>
+
+<select id="RC_RSV_S_00">
+SELECT RC_RSV_NUM       /*렌트카 예약 번호*/
+     , RSV_NUM          /*예약 번호*/
+     , RSV_STATUS_CD    /*예약 상태 코드*/
+     , CORP_ID          /*업체 아이디*/
+     , PRDT_NUM         /*상품 번호*/
+     , PRDT_NM          /*상품 명*/
+     , PRDT_INF         /*상품 정보*/
+     , RENT_START_DT    /*렌트 시작 일자*/
+     , RENT_START_TM    /*렌트 시작 시간*/
+     , RENT_END_DT      /*렌트 종료 일자*/
+     , RENT_END_TM      /*렌트 종료 시간*/
+     , NML_AMT          /*정상 금액*/
+     , SALE_AMT         /*판매 금액*/
+     , DIS_AMT          /*할인 금액*/
+     , CANCEL_AMT       /*취소 금액*/
+     , MOD_DTTM         /*수정 일시*/
+     , ADJ_YN           /*정산 여부*/
+     , ADJ_DT           /*정산 일자*/
+     , CMSS_AMT         /*수수료 금액*/
+     , DIS_CANCEL_AMT	/*할인 취소 금액*/
+  FROM TB_RC_RSV
+</select>
+
+<select id="RC_RSV_S_01" resultMap="RC_RSV_R_01">
+SELECT RC_RSV_NUM       /*렌트카 예약 번호*/
+     , RSV_NUM          /*예약 번호*/
+     , RSV_STATUS_CD    /*예약 상태 코드*/
+     , RSV_NM			/*예약명*/
+	 , RSV_TELNUM		/*예약 전화번호*/
+	 , USE_NM			/*사용명*/
+	 , USE_TELNUM		/*사용 전화번호*/
+     , CORP_ID          /*업체 아이디*/
+     , PRDT_NUM         /*상품 번호*/
+     , PRDT_NM          /*상품 명*/
+     , PRDT_INF         /*상품 정보*/
+     , RENT_START_DT    /*렌트 시작 일자*/
+     , RENT_START_TM    /*렌트 시작 시간*/
+     , RENT_END_DT      /*렌트 종료 일자*/
+     , RENT_END_TM      /*렌트 종료 시간*/
+     , NML_AMT          /*정상 금액*/
+     , SALE_AMT         /*판매 금액*/
+     , DIS_AMT          /*할인 금액*/
+     , CANCEL_AMT       /*취소 금액*/
+     , MOD_DTTM         /*수정 일시*/
+     , ADJ_YN           /*정산 여부*/
+     , ADJ_DT           /*정산 일자*/
+     , CMSS_AMT         /*수수료 금액*/
+     , REG_DTTM
+     , RSV_IDT_YN		/*예약 확인 여부*/
+     , CANCEL_REQUEST_DTTM
+     , REFUND_REQUEST_DTTM
+     , CANCEL_CMPL_DTTM
+     , CANCEL_RSN
+     , LINK_YN			/*연계 여부*/
+     , ISR_DIV			/*보험 구분*/
+     , ISR_TYPE_DIV		/*보험 타입 구분*/
+     , ADJ_AMT			/*예상정산액*/
+     , PAY_DIV          /*결제수단*/
+  FROM (SELECT ROWNUM AS RN
+		   	 , RC_RSV_NUM       /*렌트카 예약 번호*/
+		     , RSV_NUM          /*예약 번호*/
+		     , RSV_STATUS_CD    /*예약 상태 코드*/
+		     , RSV_NM			/*예약명*/
+			 , RSV_TELNUM		/*예약 전화번호*/
+			 , USE_NM			/*사용명*/
+			 , USE_TELNUM		/*사용 전화번호*/
+		     , CORP_ID          /*업체 아이디*/
+		     , PRDT_NUM         /*상품 번호*/
+		     , PRDT_NM          /*상품 명*/
+		     , PRDT_INF         /*상품 정보*/
+		     , RENT_START_DT    /*렌트 시작 일자*/
+		     , RENT_START_TM    /*렌트 시작 시간*/
+		     , RENT_END_DT      /*렌트 종료 일자*/
+		     , RENT_END_TM      /*렌트 종료 시간*/
+		     , NML_AMT          /*정상 금액*/
+		     , SALE_AMT         /*판매 금액*/
+		     , DIS_AMT          /*할인 금액*/
+		     , CANCEL_AMT       /*취소 금액*/
+		     , MOD_DTTM         /*수정 일시*/
+		     , ADJ_YN           /*정산 여부*/
+		     , ADJ_DT           /*정산 일자*/
+		     , CMSS_AMT         /*수수료 금액*/
+		     , REG_DTTM
+		     , RSV_IDT_YN		/*예약 확인 여부*/
+		     , CANCEL_REQUEST_DTTM
+		     , REFUND_REQUEST_DTTM
+		     , CANCEL_CMPL_DTTM
+		     , CANCEL_RSN
+		     , LINK_YN			/*연계 여부*/
+		     , ISR_DIV			/*보험 구분*/
+		     , ISR_TYPE_DIV		/*보험 타입 구분*/		      
+		     , CASE WHEN RSV_STATUS_CD IN ('RS02','RS30') THEN (NML_AMT - (FLOOR(CMSS_RATE * ((NML_AMT - (SELECT NVL(SUM(CORP_DIS_AMT),0) FROM TB_USER_CP AS A JOIN TB_CP AS B ON A.CP_ID = B.CP_ID WHERE USE_RSV_NUM = RC_RSV_NUM)) / 100) / 10) * 10)) - (SELECT NVL(SUM(CORP_DIS_AMT),0) FROM TB_USER_CP AS A JOIN TB_CP AS B ON A.CP_ID = B.CP_ID WHERE USE_RSV_NUM = RC_RSV_NUM)
+                    ELSE CMSS_AMT - (FLOOR(CMSS_RATE * (CMSS_AMT / 100) / 10) * 10) 
+                    END AS ADJ_AMT /* 예상정산액 */
+             , PAY_DIV          /*결제수단*/
+		  FROM (SELECT T_RSV.RSV_NM
+		   			 , T_RSV.RSV_TELNUM
+		   			 , T_RSV.USE_NM
+		   			 , T_RSV.USE_TELNUM
+		   			 , T_RSV.REG_DTTM
+		             , T_RCRSV.RC_RSV_NUM       /*렌트카 예약 번호*/
+				     , T_RCRSV.RSV_NUM          /*예약 번호*/
+				     , T_RCRSV.RSV_STATUS_CD    /*예약 상태 코드*/
+				     , T_RCRSV.CORP_ID          /*업체 아이디*/
+				     , T_RCRSV.PRDT_NUM         /*상품 번호*/
+				     , T_RCRSV.PRDT_NM          /*상품 명*/
+				     , T_RCRSV.PRDT_INF         /*상품 정보*/
+				     , T_RCRSV.RENT_START_DT    /*렌트 시작 일자*/
+				     , T_RCRSV.RENT_START_TM    /*렌트 시작 시간*/
+				     , T_RCRSV.RENT_END_DT      /*렌트 종료 일자*/
+				     , T_RCRSV.RENT_END_TM      /*렌트 종료 시간*/
+				     , T_RCRSV.NML_AMT          /*정상 금액*/
+				     , T_RCRSV.SALE_AMT         /*판매 금액*/
+				     , T_RCRSV.DIS_AMT          /*할인 금액*/
+				     , T_RCRSV.CANCEL_AMT       /*취소 금액*/
+				     , T_RCRSV.MOD_DTTM         /*수정 일시*/
+				     , T_RCRSV.ADJ_YN           /*정산 여부*/
+				     , T_RCRSV.ADJ_DT           /*정산 일자*/
+                     , T_RCRSV.CMSS_AMT         /*수수료*/
+				     , T_RCRSV.RSV_IDT_YN       /*예약 확인 여부*/
+				     , T_RCRSV.CANCEL_REQUEST_DTTM		/*취소 요청 일시*/
+				     , T_RCRSV.REFUND_REQUEST_DTTM		/*환불 요청 일시*/
+				     , T_RCRSV.CANCEL_CMPL_DTTM 		/*예약 확인 여부*/
+				     , T_RCRSV.CANCEL_RSN				/*취소 사유*/
+				     , T_RCRSV.LINK_YN			/*연계 여부*/
+				     , T_RCRSV.ISR_DIV			/*보험 구분*/
+				     , ISR_TYPE_DIV		/*보험 타입 구분*/
+				     , (SELECT ADJ_APL_PCT 
+			       		  FROM TB_CMSS 
+			       		    WHERE CMSS_NUM=T_CORP.CMSS_NUM) AS CMSS_RATE	/*정산 적용률*/
+			       	 , CASE 
+                            WHEN T_RCRSV.RSV_STATUS_CD = 'RS10' THEN 0 ELSE 1 
+                       END AS ORDER_NO
+		             , T_RSV.PAY_DIV
+				  FROM TB_RSV 			T_RSV
+				 INNER JOIN TB_RC_RSV 	T_RCRSV
+				    ON T_RCRSV.RSV_NUM = T_RSV.RSV_NUM
+				 INNER JOIN TB_CORP T_CORP 
+				 	ON T_CORP.CORP_ID=T_RCRSV.CORP_ID
+				 WHERE T_RCRSV.CORP_ID = #sCorpId#
+				   AND T_RCRSV.RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+				   <isNotEmpty property="sRsvStatusCd">
+				   AND T_RCRSV.RSV_STATUS_CD = #sRsvStatusCd#
+				 </isNotEmpty>
+				 <isNotEmpty property="sPrdtNum">
+				   AND T_RCRSV.PRDT_NUM = #sPrdtNum#
+				 </isNotEmpty>
+				 <isNotEmpty property="sRentStartDt">
+				   AND T_RCRSV.RENT_START_DT = #sRentStartDt#
+				 </isNotEmpty>
+				 <isNotEmpty property="sRsvNm">
+				   AND T_RSV.RSV_NM LIKE '%'||#sRsvNm#||'%'
+				 </isNotEmpty>
+				 <isNotEmpty property="sRsvTelnum">
+				   AND T_RSV.RSV_TELNUM LIKE '%'||#sRsvTelnum#||'%'
+				 </isNotEmpty>
+				 <isNotEmpty property="sStartDt">
+				    <![CDATA[
+				   		AND T_RSV.REG_DTTM >= TO_DATE(REPLACE(#sStartDt#, '-')||'000000', 'YYYYMMDDHH24MISS')
+				    ]]>
+				 </isNotEmpty>
+				<isNotEmpty property="sEndDt">
+				    <![CDATA[
+				   		AND T_RSV.REG_DTTM <= TO_DATE(REPLACE(#sEndDt#, '-')||'235959', 'YYYYMMDDHH24MISS')
+				    ]]>
+				 </isNotEmpty>
+				  <isEqual property="sRsvIdtYn" compareValue="N">
+				   AND T_RCRSV.RSV_STATUS_CD = 'RS02'
+				   AND T_RCRSV.RSV_IDT_YN = 'N' OR T_RCRSV.RSV_IDT_YN IS NULL
+				 </isEqual>				 
+				 ORDER BY ORDER_NO, REG_DTTM DESC
+		       )
+		 <isNotEqual property="lastIndex" compareValue="0">
+		 <![CDATA[
+		  WHERE ROWNUM <= TO_NUMBER(#lastIndex#)
+		 ]]>
+		 </isNotEqual>
+		  )
+ <isNotEqual property="lastIndex" compareValue="0">
+ <![CDATA[
+ WHERE RN >= TO_NUMBER(#firstIndex#)+1
+ ]]>
+ </isNotEqual>
+
+</select>
+
+<select id="RC_RSV_S_02" resultClass="int">
+SELECT
+       /*+ INDEX_FFS(T_RCRSV IDX_RC_RSV_02) */
+       COUNT(RC_RSV_NUM) AS CNT
+  FROM TB_RSV 			T_RSV
+ INNER JOIN TB_RC_RSV 	T_RCRSV
+    ON T_RCRSV.RSV_NUM = T_RSV.RSV_NUM
+ WHERE CORP_ID = #sCorpId#
+   AND T_RCRSV.RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+ <isNotEmpty property="sRsvStatusCd">
+   AND T_RCRSV.RSV_STATUS_CD = #sRsvStatusCd#
+ </isNotEmpty>
+ <isNotEmpty property="sPrdtNum">
+   AND T_RCRSV.PRDT_NUM = #sPrdtNum#
+ </isNotEmpty>
+ <isNotEmpty property="sRentStartDt">
+   AND T_RCRSV.RENT_START_DT = #sRentStartDt#
+ </isNotEmpty>
+ <isNotEmpty property="sRsvNm">
+   AND T_RSV.RSV_NM LIKE '%'||#sRsvNm#||'%'
+ </isNotEmpty>
+ <isNotEmpty property="sRsvTelnum">
+   AND T_RSV.RSV_TELNUM LIKE '%'||#sRsvTelnum#||'%'
+ </isNotEmpty>
+ <isNotEmpty property="sStartDt">
+    <![CDATA[
+   AND T_RSV.REG_DTTM >= TO_DATE(REPLACE(#sStartDt#, '-')||'000000', 'YYYYMMDDHH24MISS')
+    ]]>
+ </isNotEmpty>
+<isNotEmpty property="sEndDt">
+    <![CDATA[
+   AND T_RSV.REG_DTTM <= TO_DATE(REPLACE(#sEndDt#, '-')||'235959', 'YYYYMMDDHH24MISS')
+    ]]>
+ </isNotEmpty>
+ <isEqual property="sRsvIdtYn" compareValue="N">
+  AND T_RCRSV.RSV_STATUS_CD = 'RS02'
+  AND T_RCRSV.RSV_IDT_YN = 'N' OR T_RCRSV.RSV_IDT_YN IS NULL
+ </isEqual>	 
+</select>
+
+<select id="RC_RSV_S_03" resultMap="RC_RSV_R_03">
+SELECT T_RSV.RSV_NM
+	 , T_RSV.USER_ID
+     , T_RSV.RSV_TELNUM
+     , T_RSV.RSV_EMAIL
+     , T_RSV.USE_NM
+     , T_RSV.USE_TELNUM
+     , T_RSV.USE_EMAIL
+     , T_RSV.PAY_DIV
+     , T_RSV.REG_DTTM
+     , T_RSV.LPOINT_USE_POINT   /*L.Point 사용 포인트*/
+     , T_RSV.LPOINT_SAVE_POINT  /*L.Point 적립 포인트*/
+	 , T_RSV.REFUND_ACC_NUM
+	 , T_RSV.REFUND_DEPOSITOR
+	 , T_RSV.REFUND_BANK_CODE
+     , T_RCRSV.RC_RSV_NUM       /*렌트카 예약 번호*/
+     , T_RCRSV.RSV_NUM          /*예약 번호*/
+     , T_RCRSV.RSV_STATUS_CD    /*예약 상태 코드*/
+     , T_RCRSV.CORP_ID          /*업체 아이디*/
+     , T_RCRSV.PRDT_NUM         /*상품 번호*/
+     , T_RCRSV.PRDT_NM          /*상품 명*/
+     , T_RCRSV.PRDT_INF || ' [' || (SELECT CD_NM FROM TB_CD WHERE CD_NUM=T_RCRSV.ISR_DIV) ||
+     	CASE WHEN ISR_DIV='ID10' THEN 
+			CASE  
+				WHEN ISR_TYPE_DIV='GENL' THEN '-일반자차'
+				WHEN ISR_TYPE_DIV='LUXY' THEN '-고급자차'
+			END
+     	  ELSE ''
+     	END
+       || ']' AS PRDT_INF        /*상품 정보*/
+     , T_RCRSV.RENT_START_DT    /*렌트 시작 일자*/
+     , T_RCRSV.RENT_START_TM    /*렌트 시작 시간*/
+     , T_RCRSV.RENT_END_DT      /*렌트 종료 일자*/
+     , T_RCRSV.RENT_END_TM      /*렌트 종료 시간*/
+     , T_RCRSV.NML_AMT          /*정상 금액*/
+     , T_RCRSV.SALE_AMT         /*판매 금액*/
+     , T_RCRSV.DIS_AMT          /*할인 금액*/
+     , T_RCRSV.CANCEL_AMT       /*취소 금액*/
+     , T_RCRSV.MOD_DTTM         /*수정 일시*/
+     , T_RCRSV.ADJ_YN           /*정산 여부*/
+     , T_RCRSV.ADJ_DT           /*정산 일자*/
+     , T_RCRSV.CMSS_AMT         /*수수료 금액*/
+     , T_RCRSV.RSV_IDT_YN       /*예약 확인 여부*/
+     , T_RCRSV.CANCEL_INF
+     , T_RCRSV.CANCEL_REQUEST_DTTM
+     , T_RCRSV.REFUND_REQUEST_DTTM
+     , T_RCRSV.CANCEL_CMPL_DTTM
+     , T_RCRSV.CANCEL_RSN
+     , T_RCRSV.LINK_YN			/*연계 여부*/
+     , (SELECT NVL(SUM(CORP_DIS_AMT),0) FROM TB_USER_CP AS A JOIN TB_CP AS B ON A.CP_ID = B.CP_ID WHERE USE_RSV_NUM = #rcRsvNum#) AS CORP_DIS_AMT
+	 , CASE WHEN T_RCRSV.RSV_STATUS_CD IN('RS02','RS30') THEN (T_RCRSV.NML_AMT - (FLOOR(
+     		(SELECT ADJ_APL_PCT
+	  		  FROM TB_CMSS
+	  		    WHERE CMSS_NUM=T_CORP.CMSS_NUM) * ((T_RCRSV.NML_AMT- (SELECT NVL(SUM(CORP_DIS_AMT),0) FROM TB_USER_CP AS A JOIN TB_CP AS B ON A.CP_ID = B.CP_ID WHERE USE_RSV_NUM = #rcRsvNum#)) / 100) / 10) * 10))  - (SELECT NVL(SUM(CORP_DIS_AMT),0) FROM TB_USER_CP AS A JOIN TB_CP AS B ON A.CP_ID = B.CP_ID WHERE USE_RSV_NUM = #rcRsvNum#)
+	       ELSE CMSS_AMT - (FLOOR(
+	       	(SELECT ADJ_APL_PCT 
+	  		  FROM TB_CMSS 
+	  		    WHERE CMSS_NUM=T_CORP.CMSS_NUM) * (T_RCRSV.CMSS_AMT / 100) / 10) * 10) 
+	       END AS ADJ_AMT /* 예상정산액 */
+	 , NVL(T_ADJ.ADJ_STATUS_CD, '') AS ADJ_STATUS_CD	/*정산 상태 코드*/
+     , NVL(T_ADJ.ADJ_ITD_DT, '') AS ADJ_ITD_DT			/*정산 예정 일자*/
+     , NVL(T_ADJ.ADJ_CMPL_DT, '') AS ADJ_CMPL_DT		/*정산 완료 일자*/
+     , T_RCRSV.LINK_MAPPING_RSVNUM
+	 , CASE WHEN (SYSDATE - T_RSV.REG_DTTM) * 24 <![CDATA[<=]]> 48 THEN 'Y' ELSE 'N' END CANCEL_ABLTIME_YN /*예약상태 일 때 취소 가능시간 48시간이내 */
+     , T_CORP.ADM_MOBILE
+     , T_CORP.ADM_MOBILE2
+     , T_CORP.ADM_MOBILE3
+     , T_CORP.API_RENT_DIV
+     , T_RSV.USE_POINT
+  FROM TB_RSV 			T_RSV
+ INNER JOIN TB_RC_RSV 	T_RCRSV
+    ON T_RCRSV.RSV_NUM = T_RSV.RSV_NUM
+ INNER JOIN TB_CORP T_CORP 
+ 	ON T_CORP.CORP_ID=T_RCRSV.CORP_ID
+ LEFT OUTER JOIN (
+      SELECT DISTINCT T_DTL.CORP_ID, ADJ_STATUS_CD, ADJ_ITD_DT, ADJ_CMPL_DT FROM TB_ADJ T_ADJ
+           INNER JOIN TB_ADJDTLINF T_DTL 
+               ON T_DTL.ADJ_DT=T_ADJ.ADJ_DT AND T_DTL.CORP_ID=T_ADJ.CORP_ID
+             WHERE DTL_RSV_NUM=#rcRsvNum#
+ ) T_ADJ ON T_ADJ.CORP_ID=T_CORP.CORP_ID
+ WHERE T_RCRSV.RC_RSV_NUM = #rcRsvNum#
+ 	<isNotEmpty property="sCorpId">
+   AND T_RCRSV.CORP_ID = #sCorpId#
+   </isNotEmpty>
+</select>
+
+<!--렌터카자동취소-->
+<select id="RC_RSV_S_04" resultMap="RC_RSV_R_00">
+<![CDATA[
+SELECT RC_RSV_NUM       /*렌트카 예약 번호*/
+     , T_RC.RSV_NUM          /*예약 번호*/
+     , T_RC.RSV_STATUS_CD    /*예약 상태 코드*/
+     , CORP_ID          /*업체 아이디*/
+     , PRDT_NUM         /*상품 번호*/
+     , PRDT_NM          /*상품 명*/
+     , PRDT_INF         /*상품 정보*/
+     , RENT_START_DT    /*렌트 시작 일자*/
+     , RENT_START_TM    /*렌트 시작 시간*/
+     , RENT_END_DT      /*렌트 종료 일자*/
+     , RENT_END_TM      /*렌트 종료 시간*/
+     , NML_AMT          /*정상 금액*/
+     , SALE_AMT         /*판매 금액*/
+     , DIS_AMT          /*할인 금액*/
+     , CANCEL_AMT       /*취소 금액*/
+     , T_RC.MOD_DTTM         /*수정 일시*/
+     , ADJ_YN           /*정산 여부*/
+     , ADJ_DT           /*정산 일자*/
+     , CMSS_AMT         /*수수료 금액*/
+     , DIS_CANCEL_AMT	/*할인 취소 금액*/
+     , LINK_YN			/*연계 여부*/
+     , T_RSV.USER_ID
+     , RSV_EMAIL
+     , NVL(EMAIL_RCV_AGR_YN, 'N') AS EMAIL_RCV_AGR_YN
+     , (SELECT API_RENT_DIV FROM TB_CORP WHERE CORP_ID = T_RC.CORP_ID) AS API_RENT_DIV
+     , LINK_MAPPING_RSVNUM
+     , RSV_NM
+     , RSV_TELNUM
+     , (SELECT ADM_MOBILE FROM TB_CORP WHERE CORP_ID = T_RC.CORP_ID) AS ADM_MOBILE
+     , (SELECT ADM_MOBILE2 FROM TB_CORP WHERE CORP_ID = T_RC.CORP_ID) AS ADM_MOBILE2
+  FROM TB_RC_RSV T_RC
+    INNER JOIN TB_RSV T_RSV ON T_RSV.RSV_NUM=T_RC.RSV_NUM
+    LEFT OUTER JOIN TB_USER T_USER ON T_USER.USER_ID=T_RSV.USER_ID
+ WHERE T_RSV.RSV_STATUS_CD = 'RS00'  AND T_RSV.REG_DTTM <= SYSDATE - (#waitingTime# / 60 / 24) AND T_RSV.REG_DTTM >= SYSDATE - 7
+]]>
+</select>
+
+<select id="RC_RSV_S_05" resultClass="int">
+SELECT COUNT(*) AS CNT
+  FROM TB_RC_RSV
+ WHERE PRDT_NUM = #sPrdtNum#
+</select>
+
+<insert id="RC_RSV_I_00">
+INSERT INTO TB_RC_RSV
+     ( RC_RSV_NUM       /*렌트카 예약 번호*/
+     , RSV_NUM          /*예약 번호*/
+     , RSV_STATUS_CD    /*예약 상태 코드*/
+     , CORP_ID          /*업체 아이디*/
+     , PRDT_NUM         /*상품 번호*/
+     , PRDT_NM          /*상품 명*/
+     , PRDT_INF         /*상품 정보*/
+     , RENT_START_DT    /*렌트 시작 일자*/
+     , RENT_START_TM    /*렌트 시작 시간*/
+     , RENT_END_DT      /*렌트 종료 일자*/
+     , RENT_END_TM      /*렌트 종료 시간*/
+     , NML_AMT          /*정상 금액*/
+     , SALE_AMT         /*판매 금액*/
+     , DIS_AMT          /*할인 금액*/
+     , CANCEL_AMT       /*취소 금액*/
+     , MOD_DTTM         /*수정 일시*/
+     , ADJ_YN           /*정산 여부*/
+     , ADJ_DT           /*정산 일자*/
+     , CMSS_AMT         /*수수료 금액*/
+     , ISR_DIV      	/*보험 구분*/
+     )
+VALUES
+     ( #rcRsvNum#
+     , #rsvNum#
+     , #rsvStatusCd#
+     , #corpId#
+     , #prdtNum#
+     , #prdtNm#
+     , #prdtInf#
+     , #rentStartDt#
+     , #rentStartTm#
+     , #rentEndDt#
+     , #rentEndTm#
+     , #nmlAmt#
+     , #saleAmt#
+     , #disAmt#
+     , #cancelAmt#
+     , SYSDATE
+     , 'N'
+     , ''
+     , #cmssAmt#
+     , #isrDiv#
+     )
+</insert>
+
+<insert id="RC_RSV_I_01">
+<selectKey keyProperty="rcRsvNum" resultClass="String">
+SELECT 'RC'||TO_CHAR(SYSDATE, 'YYMMDD')||LPAD(TO_CHAR(NVL(MAX(TO_NUMBER(SUBSTR(RC_RSV_NUM,9))),0) + 1), 6,'0') AS RC_RSV_NUM
+  FROM TB_RC_RSV
+ WHERE RC_RSV_NUM LIKE 'RC'||TO_CHAR(SYSDATE, 'YYMMDD') || '%'
+</selectKey>
+INSERT INTO TB_RC_RSV
+     ( RC_RSV_NUM       /*렌트카 예약 번호*/
+     , RSV_NUM          /*예약 번호*/
+     , RSV_STATUS_CD    /*예약 상태 코드*/
+     , CORP_ID          /*업체 아이디*/
+     , PRDT_NUM         /*상품 번호*/
+     , PRDT_NM          /*상품 명*/
+     , PRDT_INF         /*상품 정보*/
+     , RENT_START_DT    /*렌트 시작 일자*/
+     , RENT_START_TM    /*렌트 시작 시간*/
+     , RENT_END_DT      /*렌트 종료 일자*/
+     , RENT_END_TM      /*렌트 종료 시간*/
+     , NML_AMT          /*정상 금액*/
+     , SALE_AMT         /*판매 금액*/
+     , DIS_AMT          /*할인 금액*/
+     , CANCEL_AMT       /*취소 금액*/
+     , MOD_DTTM         /*수정 일시*/
+     , ADJ_YN           /*정산 여부*/
+     , ADJ_DT           /*정산 일자*/
+     , CMSS_AMT         /*수수료 금액*/
+     , ADJ_APL_PCT      /*정산 적용 비율*/
+     , ISR_DIV      	/*보험 구분*/
+     , ISR_TYPE_DIV    	/*보험 종류 구분*/
+     )
+VALUES
+     ( #rcRsvNum#
+     , #rsvNum#
+     , #rsvStatusCd#
+     , #corpId#
+     , #prdtNum#
+     , #prdtNm#
+     , #prdtInf#
+     , #rentStartDt#
+     , #rentStartTm#
+     , #rentEndDt#
+     , #rentEndTm#
+     , #nmlAmt#
+     , #saleAmt#
+     , #disAmt#
+     , 0
+     , SYSDATE
+     , 'N'
+     , ''
+     , 0
+     , (SELECT ADJ_APL_PCT
+		  FROM TB_CMSS
+		 WHERE CMSS_NUM = (SELECT CMSS_NUM FROM TB_CORP WHERE CORP_ID = #corpId#)
+       )
+     , #isrDiv#
+     , #isrTypeDiv#
+     )
+</insert>
+
+<update id="RC_RSV_U_00">
+UPDATE TB_RC_RSV
+   SET RSV_NUM          = #rsvNum#
+     , RSV_STATUS_CD    = #rsvStatusCd#
+     , CORP_ID          = #corpId#
+     , PRDT_NUM         = #prdtNum#
+     , PRDT_NM          = #prdtNm#
+     , PRDT_INF         = #prdtInf#
+     , RENT_START_DT    = #rentStartDt#
+     , RENT_START_TM    = #rentStartTm#
+     , RENT_END_DT      = #rentEndDt#
+     , RENT_END_TM      = #rentEndTm#
+     , NML_AMT          = #nmlAmt#
+     , SALE_AMT         = #saleAmt#
+     , DIS_AMT          = #disAmt#
+     , CANCEL_AMT       = #cancelAmt#
+     , MOD_DTTM         = #modDttm#
+     , ADJ_YN           = #adjYn#
+     , ADJ_DT           = #adjDt#
+     , CMSS_AMT         = #cmssAmt#
+ WHERE RC_RSV_NUM       = #rcRsvNum#
+</update>
+
+<!-- 예약번호에 대한 예약상태코드 변경 -->
+<update id="RC_RSV_U_01">
+UPDATE TB_RC_RSV
+   SET RSV_STATUS_CD = #rsvStatusCd#
+ <isEqual property="rsvStatusCd" compareValue="RS02">
+ 	 , CMSS_AMT			   = 0
+ 	 , CANCEL_AMT		   = 0
+ 	 , CANCEL_INF		   = NULL
+ 	 , CANCEL_RSN          = NULL 	 
+     , CANCEL_REQUEST_DTTM = NULL
+     , CANCEL_CMPL_DTTM    = NULL
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS10">
+     , CANCEL_REQUEST_DTTM = SYSDATE
+     , CANCEL_RSN          = #cancelRsn#
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS11">
+     , CANCEL_REQUEST_DTTM = (CASE WHEN CANCEL_REQUEST_DTTM IS NULL THEN SYSDATE
+                                   ELSE CANCEL_REQUEST_DTTM
+                               END)
+     , REFUND_REQUEST_DTTM = SYSDATE
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS12">
+     , CANCEL_REQUEST_DTTM = (CASE WHEN CANCEL_REQUEST_DTTM IS NULL THEN SYSDATE
+                                   ELSE CANCEL_REQUEST_DTTM
+                               END)
+     , REFUND_REQUEST_DTTM = SYSDATE
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS20">
+     , CANCEL_REQUEST_DTTM = (CASE WHEN CANCEL_REQUEST_DTTM IS NULL THEN SYSDATE
+                                   ELSE CANCEL_REQUEST_DTTM
+                               END)
+     , CANCEL_CMPL_DTTM = SYSDATE
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS32">
+     , CANCEL_CMPL_DTTM = SYSDATE
+ </isEqual>
+ WHERE 1=1
+ <isNotEmpty property="rsvNum">
+   AND RSV_NUM = #rsvNum#
+ </isNotEmpty>
+ <isNotEmpty property="prdtRsvNum">
+   AND RC_RSV_NUM = #prdtRsvNum#
+ </isNotEmpty>
+ <isEqual property="rsvStatusCd" compareValue="RS10">
+   AND RSV_STATUS_CD = 'RS02'
+ </isEqual>
+</update>
+
+<!-- 취소 시 업데이트처리 -->
+<update id="RC_RSV_U_02">
+UPDATE TB_RC_RSV
+   SET RSV_STATUS_CD = #rsvStatusCd#
+     , CANCEL_AMT    = #cancelAmt#
+     , CMSS_AMT      = #cmssAmt#
+     , DIS_CANCEL_AMT = #disCancelAmt#
+     , MOD_DTTM      = SYSDATE
+     , CANCEL_INF = #cancelInf#
+<isEqual property="rsvStatusCd" compareValue="RS10">
+     , CANCEL_REQUEST_DTTM = SYSDATE
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS11">
+     , CANCEL_REQUEST_DTTM = (CASE WHEN CANCEL_REQUEST_DTTM IS NULL THEN SYSDATE
+                                   ELSE CANCEL_REQUEST_DTTM
+                               END)
+     , REFUND_REQUEST_DTTM = SYSDATE
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS12">
+     , CANCEL_REQUEST_DTTM = (CASE WHEN CANCEL_REQUEST_DTTM IS NULL THEN SYSDATE
+                                   ELSE CANCEL_REQUEST_DTTM
+                               END)
+     , REFUND_REQUEST_DTTM = SYSDATE
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS20">
+     , CANCEL_REQUEST_DTTM = (CASE WHEN CANCEL_REQUEST_DTTM IS NULL THEN SYSDATE
+                                   ELSE CANCEL_REQUEST_DTTM
+                               END)
+     , CANCEL_CMPL_DTTM = SYSDATE
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS32">
+     , CANCEL_CMPL_DTTM = SYSDATE
+ </isEqual>
+ WHERE 1=1
+   AND RSV_NUM    = #rsvNum#
+   AND RC_RSV_NUM = #rcRsvNum#
+</update>
+
+<!-- 예약대기중인 건 자동취소 처리 -->
+<update id="RC_RSV_U_03">
+UPDATE TB_RC_RSV
+   SET RSV_STATUS_CD = 'RS99'
+     , MOD_DTTM      = SYSDATE
+ WHERE RC_RSV_NUM = #rcRsvNum#
+</update>
+
+<!-- 렌터카 사용완료 처리 -->
+<update id="RC_RSV_U_04">
+<![CDATA[
+UPDATE TB_RC_RSV
+   SET RSV_STATUS_CD = 'RS30'
+ WHERE RSV_STATUS_CD = 'RS02'
+   AND RENT_START_DT < TO_CHAR(SYSDATE, 'YYYYMMDD')
+]]>
+</update>
+
+<!-- 정산여부, 정산일자 업데이트 -->
+<update id="RC_RSV_U_05">
+UPDATE TB_RC_RSV
+   SET ADJ_YN = 'Y'
+     , ADJ_DT = #sAdjDt#
+ WHERE ADJ_YN = 'N'
+   AND RC_RSV_NUM IN (
+SELECT DTL_RSV_NUM
+  FROM TB_ADJDTLINF
+ WHERE ADJ_DT = #sAdjDt#)
+</update>
+
+<!-- 예약확인처리 -->
+<update id="RC_RSV_U_06">
+UPDATE TB_RC_RSV
+   SET RSV_IDT_YN = 'Y'
+ WHERE RC_RSV_NUM = #prdtRsvNum#
+</update>
+
+<!-- 연계여부처리 -->
+<update id="RC_RSV_U_07">
+UPDATE TB_RC_RSV
+   SET LINK_YN = 'Y'
+   	   , LINK_MAPPING_RSVNUM = #linkMappingRsvnum#
+ WHERE RC_RSV_NUM = #rcRsvNum#
+</update>
+
+<delete id="RC_RSV_D_01">
+DELETE FROM TB_RC_RSV
+ WHERE RSV_NUM       = #rsvNum#
+   AND RSV_STATUS_CD = 'RS01'
+</delete>
+
+<!-- 예약불가건인건 자동 삭제 -->
+<delete id="RC_RSV_D_02">
+<![CDATA[
+DELETE FROM TB_RC_RSV
+ WHERE RSV_NUM IN (SELECT RSV_NUM
+                     FROM TB_RSV
+                    WHERE 1 = (CASE WHEN RSV_STATUS_CD = 'RS00'
+                                    THEN (CASE WHEN REG_DTTM <= SYSDATE - (#waitingTime# / 60 / 24) THEN 1 ELSE 0 END)
+                                    ELSE 0
+                                END))
+   AND RSV_STATUS_CD = 'RS01'
+]]>
+</delete>
+
+<!--  렌터카 이용내역 등록 -->
+<insert id="RC_USEHIST_I_00">
+<![CDATA[
+INSERT INTO TB_RC_USEHIST
+     ( PRDT_NUM
+     , USEHIST_SN
+     , USE_DT
+     , START_TM
+     , END_TM
+     , RC_RSV_NUM
+     , MAPPING_RSV_NUM
+     )
+SELECT #prdtNum#
+     , SEQ_USEHIST_SN.NEXTVAL
+     , USE_DT
+     , (CASE USE_DT WHEN #rentStartDt#
+                    THEN #rentStartTm#
+                    ELSE '0000'
+         END
+       ) AS START_TM
+     , (CASE USE_DT WHEN #rentEndDt#
+                    THEN #rentEndTm#
+                    ELSE '2300'
+         END
+       ) AS END_TM
+     , #rcRsvNum#
+     , #mappingRsvNum#
+  FROM (SELECT TO_CHAR(TO_DATE(#rentStartDt#, 'YYYYMMDD') + (LEVEL -1), 'YYYYMMDD') AS USE_DT
+          FROM DUAL
+       CONNECT BY LEVEL <= ROUND(TO_DATE(#rentEndDt#, 'YYYYMMDD') - TO_DATE(#rentStartDt#, 'YYYYMMDD')) + 1
+       )
+]]>
+</insert>
+
+<delete id="RC_USEHIST_D_00">
+DELETE FROM TB_RC_USEHIST
+ WHERE RC_RSV_NUM = #rcRsvNum#
+</delete>
+
+<delete id="RC_USEHIST_D_01">
+DELETE FROM TB_RC_USEHIST
+ WHERE MAPPING_RSV_NUM = #mappingRsvNum#
+</delete>
+
+</sqlMap>

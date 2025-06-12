@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>탐나오</title>
+</head>
+
+<body>
+	<table style="width: 740px; margin: 0 auto; text-decoration: none; border-collapse: collapse; font-family: 'NanumBarunGothic', 'Dotum', 'Helvetica', 'sans-serif';">
+		<!-- thead -->
+		#parse("mailTemplate/header.vm")
+	
+		<tbody>
+			<tr>
+				<td style="width: 740px; padding-top: 30px; text-align: center;">
+					<img src="${domain}/images/web/mail/top-icon8.png" alt="이용후기">
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;">
+					<p style="font-size: 26px; color: #333435; margin: 0; padding-top: 30px; letter-spacing: -0.3px;">
+						탐나오 상품 이용후기 작성 안내
+					</p>
+					<p style="font-size: 16px; color: #939393; margin: 0; padding-top: 16px; line-height: 22px; letter-spacing: 0;">
+						즐거운 제주여행 되셨습니까?<br>
+						사용하신 상품에 대한 이용후기를 남겨주세요.
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td style="padding-top: 10px;">
+					<a href="${domain}/web/viewLogin.do?rtnUrl=/web/mypage/rsvList.do">
+						<img style=" width: 740px;" src="${domain}/images/web/mail/review-1.png" alt="이용후기 작성하기">
+					</a>
+					<p style="font-size: 14px; font-weight: bold; color: #e94c3f;">
+						<img src="${domain}/images/web/mail2/temp/icon/bullet-warning.png" alt="주의" style="vertical-align: middle; padding-right: 3px;">
+						상품평 후기 이벤트의 경품 및 당첨 인원은 변동될 수 있습니다. 관련 이벤트를 확인해주세요.
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td style="padding-bottom: 60px;">
+					<h5 style="font-size: 25px; margin: 40px 0 15px 0; text-align: left;">특산/기념품 추천상품</h5>
+					<table style="width: 100%; table-layout: fixed;">
+						#foreach($ctgrRcmd in $ctgrRcmdList)
+							#if($foreach.count > 6)
+								#break
+							#end
+
+							#if($foreach.count % 3 == 1)
+								<tr>
+							#end
+
+							#if($foreach.count % 3 == 0)
+								#set($tdWidth = 31)
+							#else
+								#set($tdWidth = 34)
+							#end
+
+							<td style="width: $tdWidth%;">
+								<a href="${domain}/web/sv/detailPrdt.do?prdtNum=$ctgrRcmd.prdtNum" target="_blank">
+									<img src="${domain}$ctgrRcmd.imgPath" alt="$ctgrRcmd.prdtNm" style="display: block; width: 230px; height: 230px;">
+								</a>
+								<div style="width: 230px;">
+									<h5 style="font-size: 16px; margin: 5px 0; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">$ctgrRcmd.prdtNm</h5>
+									<p style="font-size: 14px; margin: 0; color: #939393; line-height: 1.2; height: 2.4em; text-overflow: ellipsis; white-space: normal; overflow: hidden;">$ctgrRcmd.prdtExp</p>
+									<div style="text-align: right; margin: 5px 0;">
+										<p style="margin: 0; font-size: 16px; font-weight: bold; color: #e94c3f; padding-right:8px;">$numberTool.format("integer", $ctgrRcmd.saleAmt)원</p>
+									</div>
+								</div>
+							</td>
+
+							#if($foreach.count % 3 == 0)
+								</tr>
+							#end
+						#end
+
+						#if($ctgrRcmdList.size() % 3 > 0)
+							</tr>
+						#end
+					</table>
+				</td>
+			</tr>
+		</tbody>
+
+		<!-- tfoot -->
+		#parse("mailTemplate/footer.vm")
+	</table>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="apiYj">
+
+<resultMap id="APIYJ_R_04" class="api.vo.APILSVO">
+	<result property="rsvNum"          column="RSV_NUM" />
+	<result property="rsvTelnum"       column="RSV_TELNUM" />
+	<result property="rsvNm"           column="RSV_NM" />
+	<result property="useTelnum"       column="USE_TELNUM" />
+	<result property="useNm"           column="USE_NM" />
+	<result property="buyNum"          column="BUY_NUM" />
+	<result property="spRsvNum"        column="SP_RSV_NUM" />
+	<result property="lsLinkPrdtNum"   column="LS_LINK_PRDT_NUM" />
+	<result property="lsLinkOptNum"    column="LS_LINK_OPT_NUM" />
+	<result property="nmlAmt"          column="NML_AMT" />
+	<result property="saleAmt"         column="SALE_AMT" />
+	<result property="cmssAmt"         column="CMSS_AMT" />
+	<result property="prdtNm"          column="PRDT_NM" />
+	<result property="optNm"           column="OPT_NM" />
+	<result property="leadLsLinkPrdtNum"           column="LEAD_LS_LINK_PRDT_NUM" />
+</resultMap>
+
+<resultMap id="APIYJ_R_05" class="api.vo.APITOURSVO">
+	<result property="rsvNum"          column="RSV_NUM" />
+	<result property="spRsvNum"        column="SP_RSV_NUM" />
+</resultMap>
+
+<!-- YJ-MERCHANDISE LIST-->
+<select id="APIYJ_S_04" resultMap="APIYJ_R_04">
+<!-- APIYJ_S_04 -->
+SELECT
+		B.RSV_NUM,
+		B.RSV_TELNUM,
+		B.RSV_NM,
+		REPLACE(B.USE_TELNUM,'-','') AS USE_TELNUM,
+		B.USE_NM,
+		A.BUY_NUM,
+		A.SP_RSV_NUM,
+		C.LS_LINK_PRDT_NUM,
+		D.LS_LINK_OPT_NUM,
+		C.PRDT_NM,
+		D.OPT_NM,
+		D.NML_AMT,
+		D.SALE_AMT,
+		TRUNC(D.SALE_AMT * ( F.ADJ_APL_PCT / 100), - 1) AS CMSS_AMT,
+		LEAD(LS_LINK_PRDT_NUM) OVER (ORDER BY C.LS_LINK_PRDT_NUM, D.LS_LINK_OPT_NUM) LEAD_LS_LINK_PRDT_NUM
+	FROM TB_SP_RSV AS A
+	JOIN TB_RSV AS B
+	ON A.RSV_NUM = B.RSV_NUM
+	JOIN TB_SP_PRDTINF AS C
+	ON A.PRDT_NUM = C.PRDT_NUM
+	JOIN TB_SP_OPTINF AS D
+	ON A.PRDT_NUM = D.PRDT_NUM AND A.SP_DIV_SN = D.SP_DIV_SN AND A.SP_OPT_SN = D.SP_OPT_SN
+	JOIN TB_CORP AS E
+	ON A.CORP_ID = E.CORP_ID
+	JOIN TB_CMSS AS F
+	ON E.CMSS_NUM = F.CMSS_NUM
+	WHERE 1=1
+	AND B.RSV_NUM = #rsvNum#
+	AND E.LS_LINK_YN = 'J'
+	AND C.LS_LINK_PRDT_NUM IS NOT NULL
+	AND D.LS_LINK_OPT_NUM IS NOT NULL
+	ORDER BY C.LS_LINK_PRDT_NUM, D.LS_LINK_OPT_NUM
+</select>
+
+<!-- YJ-INSERT-PINCODE -->
+<insert id="APIYJ_I_00">
+	INSERT INTO TB_APITOUR_RSV(
+		RSV_NUM,
+		SP_RSV_NUM,
+		PIN_CODE,
+		RSV_STATUS_CD,
+		API_DIV,
+		REG_DTTM
+	) VALUES (
+		#rsvNum#,
+		#spRsvNum#,
+		#pinCode#,
+		#rsvStatusCd#,
+		#apiDiv#,
+		sysdate
+	)
+</insert>
+<!--YJ-SELECT_PINCODE-->
+<select id="APIYJ_S_00" resultClass="String">
+	SELECT
+		PIN_CODE as pinCode
+	FROM TB_APITOUR_RSV
+	WHERE RSV_STATUS_CD = 'RS02'
+	AND RSV_NUM = #rsvNum#
+	AND SP_RSV_NUM = #spRsvNum#
+</select>
+
+<!--YJ-CANCEL_DTL_RSV-->
+<update id="APIYJ_U_00" >
+	UPDATE TB_SP_RSV SET
+		RSV_STATUS_CD = 'RS20'
+	WHERE 1=1
+	AND	SP_RSV_NUM = #spRsvNum#
+</update>
+
+<!--YJ-CANCEL_DTL_RSV-->
+<update id="APIYJ_U_01" >
+	UPDATE TB_APITOUR_RSV SET
+		RSV_STATUS_CD = 'RS20'
+	WHERE RSV_STATUS_CD = 'RS02'
+	AND SP_RSV_NUM = #spRsvNum#
+	AND PIN_CODE = #lsLinkOptPincode#
+</update>
+
+<!--YJ-USE_STATUS-->
+<update id="APIYJ_U_02" >
+	UPDATE TB_APITOUR_RSV SET
+		RSV_STATUS_CD = 'RS30',
+		MOD_DTTM = SYSDATE
+	WHERE RSV_STATUS_CD = 'RS02'
+	AND PIN_CODE = #pinCode#
+</update>
+
+<!--YJ-USE_UNDO_STATUS-->
+<update id="APIYJ_U_03" >
+	UPDATE TB_APITOUR_RSV SET
+		RSV_STATUS_CD = 'RS02',
+		MOD_DTTM = SYSDATE
+	WHERE RSV_STATUS_CD = 'RS30'
+	AND PIN_CODE = #pinCode#
+</update>
+
+<!--Yj-SELECT-RSVNUM -->
+<select id="APIYJ_S_01" resultMap="APIYJ_R_05">
+	SELECT
+		RSV_NUM, SP_RSV_NUM
+	FROM
+		TB_APITOUR_RSV
+	WHERE
+		PIN_CODE = #pinCode#
+</select>
+
+<!--YJ-STATUS_RSV-->
+<update id="APIYJ_U_04" >
+	UPDATE
+		TB_SP_RSV SET
+		RSV_STATUS_CD = #rsvStatusCd#
+		<isEqual property="rsvStatusCd" compareValue="RS30">
+			,USE_NUM = BUY_NUM
+			,USE_DTTM = SYSDATE
+		</isEqual>
+		<isEqual property="rsvStatusCd" compareValue="RS02">
+			,USE_NUM = 0
+			,USE_DTTM = null
+		</isEqual>
+	WHERE (RSV_NUM, SP_RSV_NUM) IN (
+		SELECT A.RSV_NUM, A.SP_RSV_NUM FROM (
+		SELECT RSV_NUM, SP_RSV_NUM, COUNT(*) AS CURRENT_CNT
+		FROM TB_APITOUR_RSV
+		WHERE RSV_NUM = #rsvNum#
+		GROUP BY RSV_NUM, SP_RSV_NUM
+	) AS A JOIN (
+		SELECT RSV_NUM, SP_RSV_NUM, COUNT(*) AS CURRENT_CNT
+		FROM TB_APITOUR_RSV
+		WHERE RSV_STATUS_CD = #rsvStatusCd#
+		AND RSV_NUM = #rsvNum#
+		GROUP BY RSV_NUM, SP_RSV_NUM
+	) AS B
+	ON A.RSV_NUM = B.RSV_NUM AND A.SP_RSV_NUM = B.SP_RSV_NUM AND A.CURRENT_CNT = B.CURRENT_CNT
+	)
+</update>
+
+	<update id="APIYJ_U_05" >
+	UPDATE
+		TB_SP_RSV SET
+		USE_NUM = USE_NUM + 1
+	WHERE
+		SP_RSV_NUM = #spRsvNum#
+</update>
+
+	<update id="APIYJ_U_06" >
+	UPDATE
+		TB_SP_RSV SET
+		USE_NUM = USE_NUM - 1
+	WHERE
+		SP_RSV_NUM = #spRsvNum#
+</update>
+
+</sqlMap>

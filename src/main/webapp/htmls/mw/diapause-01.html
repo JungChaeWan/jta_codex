@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+	
+	<title>탐나오</title>
+	
+	<link rel="stylesheet" href="../../css/mw/common2.css">
+	<link rel="stylesheet" href="../../css/mw/style.css">
+	
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/jquery.cookie.js"></script>
+	<script src="../../js/mw_common.js"></script>
+	<script src="../../js/mw_style.js"></script>
+</head>
+<body>
+<div id="wrap">
+
+<header id="header">
+	<div class="head-wrap">
+		<h1 class="title"></h1>
+		<div class="l-area">
+			<a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+		</div>
+		<div class="r-area">
+			<button type="button" id="frame_sideOpen" class="side-btn" title="사이드메뉴 열기"></button>
+		</div>
+	</div>
+	
+	<aside id="side_menu" class="side-menu">
+		<button type="button" id="frame_sideClose" class="close"><img src="../../images/mw/common/side/close-white.png" alt="닫기"></button>
+		
+		<nav class="top-menu">
+			<a href=""><img src="../../images/mw/common/side/home.png" alt="홈"></a>
+			<a href="javascript:void(0)" id="top_searchOpen">
+				<img src="../../images/mw/common/side/search-white.png" alt="검색">
+			</a>
+			<a href="" class="like">20</a>
+			<a href="" class="cart">5</a>
+		</nav>
+		
+		<div class="menu-area">
+			<ul>
+				<li><a href="air-search.html">항공</a></li>
+			    <li><a href="hotel-list.html">숙박</a></li>
+			    <li><a href="rent-list.html">렌터카</a></li>
+			    <li><a href="social-list.html">관광/레저</a></li>
+			    <li><a href="social-list.html">맛집</a></li>
+			    <li><a href="social-list.html">여행사 상품</a></li>
+			    <li><a href="from-jeju-main.html">from 제주 <img class="icon" src="../../images/mw/common/side/from-jeju.png" alt=""></a>
+			    	<ul class="depth2">
+			    		<li><a href="">농ㆍ수ㆍ축산물</a></li>
+						<li><a href="">가공식품</a></li>
+						<li><a href="">화장품/미용</a></li>
+						<li><a href="">제주기념품</a></li>
+			    	</ul>
+			    </li>
+			    <li><a href="main4-4.html">기획전</a></li>
+			    <li><a href="main4-5.html">이벤트</a></li>
+			</ul>
+			<ul>
+				<li><a href="">MY PAGE</a></li>
+			    <li><a href="">HELP</a></li>
+			    <li><a href="">LOGOUT</a></li>
+			    <li><a href="">SETTING</a></li>
+			</ul>
+		</div>
+	</aside>
+	
+	<div id="top_search" class="search-area">
+		<button type="button" id="top_searchClose" class="close"><img src="../../images/mw/common/side/close-gray.png" alt="닫기"></button>
+		
+		<div class="form-area">
+			<div class="form">
+				<form>
+					<input type="text" placeholder="검색어 입력" class="search">
+					<button type="submit" class="search-btn" title="검색"></button>
+				</form>
+			</div>
+			<div class="keyword">
+				<h2 class="title">HOT KEYWORD</h2>
+				<ul>
+					<li><a href="">수영장 숙소</a></li>
+				    <li><a href="">제주도 맛집</a></li>
+				    <li><a href="">패들보드</a></li>
+				    <li><a href="">제주 선물</a></li>
+				    <li><a href="">연인과 함께 즐기기</a></li>
+				    <li><a href="">흑돼지</a></li>
+				    <li><a href="">감귤</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+
+<main id="main">
+	<!--//change contents-->
+	<section id="subContent">
+		<div class="sub-content">
+			<div class="text-typeA-wrapper">
+		        <p class="big">안녕하세요! <strong>TestID</strong>님</p>
+		        <p class="big">탐나오를 오랫동안 이용하지 않아</p>
+		        <p class="big">회원님의 아이디가 휴면 상태로 전환되었습니다.</p>
+		        <p class="small">탐나오 서비스를 계속 이용하시려면 <strong class="text-red">본인인증</strong>을 통해 휴면을 해제해주세요.</p>
+		    </div>
+			<div class="join-wrap">
+		        <div class="join join1">
+			        <h2>휴면계정 본인인증</h2>
+			        <table>
+			            <colgroup>
+			                <col width="23%">
+			                <col width="*">
+			            </colgroup>
+			            <tbody>
+			                <tr>
+			                    <th><label for="phone">휴대폰</label></th>
+			                    <td class="tel">
+			                        <input type="text" name="hp1" id="hp1" maxlength="3">
+			                        <input type="text" name="hp2" id="hp2" maxlength="4">
+			                        <input type="text" name="hp3" id="hp3" maxlength="4">
+			                        <a href="javascript:fn_SendSms();">인증번호 받기</a>
+			                        <!--추가-->
+			                        <p class="msg" style="display:none;">인증번호를 발송했습니다.<br>인증번호가 오지 않으면 입력하신 정보가 정확한지 확인하여 주세요.</p>
+			                    </td>
+			                </tr>
+			                <tr>
+			                    <th><label for="number">인증번호</label></th>
+			                    <td class="number">
+			                        <input type="text" id="certNumber">
+			                        <a href="javascript:fn_Next2();">인증하기</a>
+			                    </td>
+			                </tr>
+			            </tbody></table>
+			        <p class="txt bt-none">
+			            * 메세지 수신 가능한 휴대폰으로 인증번호를 받으실 수 있습니다.<br>
+			            * 인증번호 전송비용은 탐나오에서 부담합니다.
+			        </p>
+			    </div>
+		    </div> <!-- //join-wrap -->
+	    </div> <!-- //sub-content -->
+    </section>
+	<!--//change contents-->
+</main>
+
+<footer id="footer">
+	
+</footer>
+
+</div> <!-- //wrap -->
+</body>
+</html>

@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->	
+	<link rel="stylesheet" href="../css/web/jquery-ui.css">
+	<link rel="stylesheet" href="../css/web/common.css">
+	<link rel="stylesheet" href="../css/web/style.css">
+    <!-- script -->
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/html_common.js"></script>
+    <script src="../js/html_style.js"></script>
+    <!-- add script -->    
+    <script src="../js/align_tablesorter.js"></script>
+    <script>        
+        
+        $(document).ready(function(){
+            //항공편 정렬
+            //$(".air-line").tablesorter();
+            $(".air-line").tablesorter( {sortList: [[1,0]]} );
+            
+            //항공편 선택시
+            $('.airCH1').click(function(){
+                $(this).parents('.air-line').find('tr').removeClass('active');
+                $(this).parents('tr').addClass('active');
+            });
+        });
+    </script>
+</head>
+<body>
+    <header id="header">
+
+        <div id="topBanner">
+            <div class="Fasten">
+                <a class="img-btn" onclick="show_popup('.comm-fullPopup2');"><img src="../images/web/comm/top_banner.jpg" alt="상단배너"></a>
+                <a class="close"><img id="tbClose" src="../images/web/comm/close.png" alt="닫기"></a>
+
+                <div class="comm-fullPopup2">
+                    <a class="option-close" onclick="close_popup('.comm-fullPopup2');"><img src="../images/web/comm/view_close.png" alt="닫기"></a>
+                    <img src="../images/web/comm/top_banner_view.png" alt="배너 상세">
+                </div>
+            </div>
+        </div>
+
+        <div class="Fasten">
+            <div class="topSearch">
+                <h1 class="logo"><a href=""><img src="../images/web/comm/logo.gif" alt="탐나오"></a></h1>
+                <!-- 검색 -->
+                <p class="searchBox"><input id="search" type="text"><button id="searBT"></button></p>
+                <!-- 서브메뉴 -->
+                <nav id="topMenu">
+                    <a href="">★즐겨찾기</a>
+                    <a href="">로그인</a>
+                    <a href="">회원가입</a>
+                    <a href="">마이페이지</a>
+                    <a href="">고객센터</a>
+                </nav>
+            </div>
+        </div>
+        <!-- main menu -->
+        <nav id="mainMenu">
+            <div class="Fasten">
+                <div class="menuBT"><a id="menuBT"><img src="../images/web/comm/menu.gif" alt="메뉴"></a></div>
+                <div class="subMenu">11<br>11<br>11<br>11<br></div>
+                <ul class="mainMenu">
+                    <li><a class="select" href="air-main.html">항공</a></li>
+                    <li><a href="hotel-list.html">숙박</a></li>
+                    <li><a href="rent-list.html">렌터카</a></li>
+                    <li><a href="">골프</a></li>
+                    <li><a href="">패키지할인상품</a></li>
+                    <li><a href="">관광지입장권</a></li>
+                    <li><a href="">레져/음식/뷰티</a></li>
+                    <li><a href="event-list.html">이벤트</a></li>
+                    <li><a href="">여행경비산출</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- //main menu -->
+    </header>
+
+	<main id="main">
+	    <div class="mapLocation"> <!--index page에서는 삭제-->
+            <div class="Fasten">
+                <span>홈</span> <span class="gt">&gt;</span>
+                <span>실시간 예약</span> <span class="gt">&gt;</span>
+                <span>실시간 숙박</span> <span class="gt">&gt;</span>
+                <span>숙박상세</span>
+            </div>
+        </div>		
+        <!-- quick banner -->
+        <div class="Fasten">
+            <aside id="leftAside">
+                <ul>
+                    <li><a href="http://www.hijeju.or.kr/discount/apply.htm" target="_blank"><img src="../images/web/leftBanner/01.png" alt="제주하이쿠폰"></a></li>
+                    <li><a href="http://www.jejugoldenbus.com/main/" target="_blank"><img src="../images/web/leftBanner/02.png" alt="제주황금시티투어"></a></li>
+                </ul>
+            </aside>
+
+            <aside id="rightAside">
+                <div class="fixed-wrap">
+                    <div class="ctWrap">
+
+                        <!-- 고객센터 -->
+                        <!-- <div class="top"><img src="../images/web/comm/right_quick.png" alt=""></div> -->
+
+                        <!-- 상품 리스트 -->
+                        <div class="product">
+                            <h6 class="title">오늘본상품 <img src="../images/web/comm/arrow.gif" alt="arrow"></h6>
+                            <div class="today-list">
+                                <div id="todayList">
+                                    <ul class="list">
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider05.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider02.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider03.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <!--오늘본 상품없을 시 출력-->
+                                        <!--<p class="side-noContent">오늘 본 상품이 없습니다.</p>-->
+                                    </ul>
+                                </div>
+                                <ul class="itemNav">
+                                    <li>
+                                        <span id="itemPrev"><a href=""><img src="../images/web/comm/list_prev.gif" alt="이전"></a></span>
+                                        <!-- <span id="number">1/1</span> -->
+                                        <span id="itemNext"><a href=""><img src="../images/web/comm/list_next.gif" alt="다음"></a></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="shoppingCart">
+                            <h6>장바구니</h6>
+                            <p>
+                                <img src="../images/web/comm/cart2.gif" alt="장바구니">
+                                <span>9</span>
+                            </p>
+                        </div>
+                        <ul class="menuList">
+                            <!-- <li><a href=""><img src="../images/web/comm/menulist1.gif" alt="맞춤견적">맞춤견적</a></li> -->
+                            <li><a href=""><img src="../images/web/comm/menulist2.gif" alt="자주묻는질문">자주묻는질문</a></li>
+                        </ul>
+                        <!-- <div id="floatingBT"><img src="../images/web/comm/side.gif" alt="side button"></div> -->
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+        <!-- //quick banner -->
+        <div class="subContainer">
+            <div class="subHead"></div>
+            <div class="subContents">
+                <!-- new contents -->
+                <div class="air">
+                    <div class="bgWrap">
+                        <div class="Fasten">
+                            <!--항공조회-->
+                            <div class="product_search">
+                                <div class="infoLeft">
+                                    <h2>실시간 항공 <span>/ 검색된 기간동안 예약가능상품으로 바로 예약 및 결제가능</span></h2>
+                                    <div class="checkList">
+                                        <form action="">
+                                            <ul class="check line2">
+                                                <li class="title">항공 유형</li>
+                                                <li class="list">
+                                                    <input id="air_type0" type="radio" name="air1" value=""><label for="air_type0">왕복</label>
+                                                    <input id="air_type1" type="radio" name="air1" value=""><label for="air_type1">편도</label>
+                                                </li>
+                                            </ul>
+                                            <ul class="check line2 ranking">
+                                                <li class="title">좌석등급</li>
+                                                <li class="list">
+                                                    <input id="air_rating0" type="radio" name="air2" value=""><label for="air_rating0">전체</label>
+                                                    <input id="air_rating1" type="radio" name="air2" value=""><label for="air_rating1">일반석</label>
+                                                    <input id="air_rating2" type="radio" name="air2" value=""><label for="air_rating2">할인석</label>
+                                                    <input id="air_rating3" type="radio" name="air2" value=""><label for="air_rating3">비즈니스석</label>
+                                                </li>
+                                            </ul>
+                                            <ul class="check">
+                                                <li class="title">항공사</li>
+                                                <li class="list">
+                                                    <input id="air_line0" type="radio" name="air3" value=""><label for="air_line0">전체</label>
+                                                    <input id="air_line1" type="radio" name="air3" value=""><label for="air_line1"> <img src="../images/web/air/line1.gif" height="13" alt="대한항공"></label>
+                                                    <input id="air_line2" type="radio" name="air3" value=""><label for="air_line2"> <img src="../images/web/air/line2.gif" height="13" alt="아시아나"></label>
+                                                    <input id="air_line3" type="radio" name="air3" value=""><label for="air_line3"> <img src="../images/web/air/line3.gif" height="13" alt="진에어"></label>
+                                                    <input id="air_line4" type="radio" name="air3" value=""><label for="air_line4"> <img src="../images/web/air/line4.gif" height="13" alt="부산에어"></label>
+                                                    <input id="air_line5" type="radio" name="air3" value=""><label for="air_line5"> <img src="../images/web/air/line5.gif" height="13" alt="이스타"></label>
+                                                    <input id="air_line6" type="radio" name="air3" value=""><label for="air_line6"> <img src="../images/web/air/line6.gif" height="13" alt="티웨이"></label>
+                                                    <input id="air_line7" type="radio" name="air3" value=""><label for="air_line7"> <img src="../images/web/air/line7.gif" height="13" alt="제주항공"></label>
+                                                </li>
+                                            </ul>
+                                            <ul class="check calendar">
+                                                <li class="title">출발일</li>
+                                                <li class="list">
+                                                    <select id="start_region">
+                                                        <option value="">김포</option>
+                                                    </select>
+                                                    <input class="datepicker" type="text">
+                                                </li>
+                                            </ul>
+                                            <ul class="check calendar calendar2">
+                                                <li class="title">도착일</li>
+                                                <li class="list">
+                                                    <select id="end_region">
+                                                        <option value="">제주</option>
+                                                    </select>
+                                                    <input class="datepicker" type="text">
+                                                </li>
+                                            </ul>
+                                            <ul class="check">
+                                                <li class="title">인원선택</li>
+                                                <li class="list">
+                                                    <select class="person">
+                                                        <option value="">성인 1명</option>
+                                                    </select>
+                                                    <select class="person">
+                                                        <option value="">유아 1명</option>
+                                                    </select>
+                                                    <select class="person">
+                                                        <option value="">소아 1명</option>
+                                                    </select>
+                                                </li>
+                                            </ul>
+                                            <ul class="button">
+                                                <li>
+                                                    <input id="product_search" type="image" src="../images/web/button/search.gif" alt="상품검색">
+                                                    <input id="recet" type="image" src="../images/web/button/reset.gif" alt="초기화" onclick="this.form.reset(); return false;">
+                                                </li>
+                                            </ul>
+                                        </form>
+                                    </div> <!-- //checkList -->
+                                </div>
+                                <div class="infoRight">
+                                    <div class="bestInfo">
+                                        <h4 class="title"><img src="../images/web/icon/best.png" alt="best">베스트 인기항공</h4>
+                                    </div>
+                                    <!-- Slides Container -->
+                                    <div class="slideWrap">
+                                        <script src="../js/slideshow_dot.js"></script>
+                                        <script>
+                                            $(function() {
+                                                $("#demo3").webwidget_slideshow_dot({                                                
+                                                    slideshow_window_width: '336',
+                                                    slideshow_window_height: '224',
+                                                    slideshow_title_color: '#fff',
+                                                    slideshow_foreColor: '#3b9dda',
+                                                    directory: '../images/web/air/' //icon image
+                                                });
+                                            });
+                                        </script>
+                                        <div id="demo3" class="webwidget_slideshow_dot">
+                                            <ul>
+                                                <li>
+                                                    <a href="" data-icon="<p class='proName'>아시아나 제주 편도항공</p><p class='price'>19,900<span>원</span></p>">
+                                                        <img src="../images/web/air/slider01.jpg" alt=""/>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" data-icon="<p class='proName'>대한항공 김포 편도항공</p><p class='price'>18,900<span>원</span></p>">
+                                                        <img src="../images/web/air/slider01.jpg" alt=""/>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" data-icon="<p class='proName'>대한항공 김포 편도항공</p><p class='price'>18,900<span>원</span></p>">
+                                                        <img src="../images/web/air/slider01.jpg" alt=""/>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" data-icon="<p class='proName'>대한항공 김포 편도항공</p><p class='price'>18,900<span>원</span></p>">
+                                                        <img src="../images/web/air/slider01.jpg" alt=""/>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" data-icon="<p class='proName'>대한항공 김포 편도항공</p><p class='price'>18,900<span>원</span></p>">
+                                                        <img src="../images/web/air/slider01.jpg" alt=""/>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div style="clear: both"></div>
+                                        </div>
+                                    </div> <!-- //slideWrap -->
+                                </div>
+                            </div> <!-- //product_search -->
+                        </div> <!--//Fasten-->
+                    </div> <!--//bgWrap-->
+                    <div class="Fasten">
+                        <!--검색결과-->
+                        <div class="product_result">
+                            <div class="side-wrap">
+                                <h5 class="listTitle1">검색결과<span class="subText">* 왕복 항공편은 동일한 판매처인 경우에만 예약이 가능합니다.</span></h5>
+                                <select class="side-group" title="예약확인 바로가기">
+                                    <option value="" selected>예약확인 바로가기</option>
+                                    <option value="">제이엘항공</option>
+                                    <option value="">제주닷컴</option>
+                                </select>
+                            </div>
+                            <div class="air-result">
+                                <!--가는편-->
+                                <div class="lArea">
+                                    <h5 class="date"><img src="../images/web/air/go.png" alt="가는항공편"> 2016/06/15 (수) <span>김포 &gt; 제주</span></h5>
+                                    <div class="air-list">
+                                        <div class="loading">
+                                            <ul>
+                                                <li class="title"><span>제이엘항공</span> <span><img src="../images/web/air/sideBar.gif" alt="|"></span></li>
+                                                <li class="air2"><img src="../images/web/air/line2.gif" height="13" alt="아시아나"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                                <li class="air3"><img src="../images/web/air/line3.gif" height="13" alt="진에어"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                                <li class="air6"><img src="../images/web/air/line6.gif" height="13" alt="티웨이"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                            </ul>
+                                            <ul>
+                                                <li class="title"><span>제주닷컴</span> <span><img src="../images/web/air/sideBar.gif" alt="|"></span></li>
+                                                <li class="air1"><img src="../images/web/air/line1.gif" height="13" alt="대한항공"> <img class="load" src="../images/web/air/loading.gif" alt="로딩"></li>
+                                                <li class="air2"><img src="../images/web/air/line2.gif" height="13" alt="아시아나"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                                <li class="air3"><img src="../images/web/air/line3.gif" height="13" alt="진에어"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                                <li class="air4"><img src="../images/web/air/line4.gif" height="13" alt="부산에어"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                                <li class="air5"><img src="../images/web/air/line5.gif" height="13" alt="이스타"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                                <li class="air6"><img src="../images/web/air/line6.gif" height="13" alt="티웨이"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                                <li class="air7"><img src="../images/web/air/line7.gif" height="13" alt="제주항공"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                            </ul>
+                                        </div>
+                                        <div class="list-wrap">
+                                            <div class="table-scroll">
+                                                <table id="goWrap" class="commCol air-line">
+                                                    <thead>
+                                                        <tr class="tr_table_fix_header">
+                                                            <th class="title1">
+                                                                항공편
+                                                                <a class="down"><img src="../images/web/air/down.gif" alt="내림"></a>
+                                                                <a class="up"><img src="../images/web/air/up.gif" alt="올림"></a>
+                                                            </th>
+                                                            <th class="title2">
+                                                                탑승시간
+                                                                <a class="down"><img src="../images/web/air/down.gif" alt="내림"></a>
+                                                                <a class="up"><img src="../images/web/air/up.gif" alt="올림"></a>
+                                                            </th>
+                                                            <th class="title3">
+                                                                잔여석
+                                                                <a class="down"><img src="../images/web/air/down.gif" alt="내림"></a>
+                                                                <a class="up"><img src="../images/web/air/up.gif" alt="올림"></a>
+                                                            </th>
+                                                            <th class="title4">
+                                                                요금
+                                                                <a class="down"><img src="../images/web/air/down.gif" alt="내림"></a>
+                                                                <a class="up"><img src="../images/web/air/up.gif" alt="올림"></a>
+                                                            </th>
+                                                            <th class="title5">선택</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!--검색결과가 없을시-->
+                                                        <!--<tr class="no">
+                                                            <td colspan="5"><q>출발일</q>을 선택하시고 검색해 주세요.</td>
+                                                        </tr>-->
+                                                        <!--//검색결과가 없을시-->
+                                                        <tr class="disabled"> <!--클래스 추가 / input > disabled 추가-->
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line1_big.png" alt="대한항공"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">대한항공</p>
+                                                                    <p class="emph">8903편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">10:15</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">11:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">5석</p>
+                                                                <p class="rating">일반석</p>
+                                                                <div class="tooltip-btn">
+                                                                    <span>공동운항</span>
+                                                                    <p class="info-text busan"></p>
+                                                                    <!--<p class="info-text seoul"></p>-->
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">50.200</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_go1" class="airCH1" type="radio" name="air-go" disabled>
+                                                                <label for="air_go1">제이엘항공</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="disabled"> <!--클래스 추가 / input > disabled 추가-->
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line1_big.png" alt="대한항공"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">대한항공</p>
+                                                                    <p class="emph">8901편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">04:00</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">07:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">3석</p>
+                                                                <p class="rating">일반석</p>
+                                                                <div class="tooltip-btn">
+                                                                    <span>공동운항</span>
+                                                                    <p class="info-text busan"></p>
+                                                                    <!--<p class="info-text seoul"></p>-->
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">67.200</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_go2" class="airCH1" type="radio" name="air-go" disabled>
+                                                                <label for="air_go2">제주닷컴</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line1_big.png" alt="대한항공"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">대한항공</p>
+                                                                    <p class="emph">8902편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">05:00</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">09:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">6석</p>
+                                                                <p class="rating">일반석</p>
+                                                                <div class="tooltip-btn">
+                                                                    <span>공동운항</span>
+                                                                    <!--<p class="info-text busan"></p>-->
+                                                                    <p class="info-text seoul"></p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">77.200</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_go3" class="airCH1" type="radio" name="air-go">
+                                                                <label for="air_go3">제주닷컴</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line2_big.png" alt="아시아나"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">아시아나</p>
+                                                                    <p class="emph">8901편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">06:15</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">07:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">9석</p>
+                                                                <p class="rating">일반석</p>
+                                                                <div class="tooltip-btn">
+                                                                    <span>공동운항</span>
+                                                                    <p class="info-text busan"></p>
+                                                                    <!--<p class="info-text seoul"></p>-->
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">77.000</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_go4" class="airCH1" type="radio" name="air-go">
+                                                                <label for="air_go4">제이엘항공</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line3_big.png" alt="진에어"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">진에어</p>
+                                                                    <p class="emph">8901편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">06:15</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">07:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">9석</p>
+                                                                <p class="rating">일반석</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">105.200</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_go5" class="airCH1" type="radio" name="air-go">
+                                                                <label for="air_go5">제주닷컴</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line4_big.png" alt="부산에어"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">부산에어</p>
+                                                                    <p class="emph">8901편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">06:15</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">07:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">9석</p>
+                                                                <p class="rating">일반석</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">22.200</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_go6" class="airCH1" type="radio" name="air-go">
+                                                                <label for="air_go6">제주닷컴</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line5_big.png" alt="이스타"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">이스타</p>
+                                                                    <p class="emph">8901편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">06:15</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">07:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">9석</p>
+                                                                <p class="rating">일반석</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">150.200</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_go7" class="airCH1" type="radio" name="air-go">
+                                                                <label for="air_go7">제이엘항공</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line6_big.png" alt="티웨이"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">티웨이</p>
+                                                                    <p class="emph">8901편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">06:15</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">07:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">9석</p>
+                                                                <p class="rating">일반석</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">35.000</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_go8" class="airCH1" type="radio" name="air-go">
+                                                                <label for="air_go8">제주닷컴</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line7_big.png" alt="제주항공"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">제주항공</p>
+                                                                    <p class="emph">8901편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">06:15</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">07:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">9석</p>
+                                                                <p class="rating">일반석</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">40.000</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_go9" class="airCH1" type="radio" name="air-go">
+                                                                <label for="air_go9">제주닷컴</label>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div> <!-- //table-scroll -->
+                                        </div>                                        
+                                    </div>
+                                </div>
+                                <!--오는편-->
+                                <div class="rArea">
+                                    <h5 class="date"><img src="../images/web/air/come.png" alt="오는항공편"> 2016/06/16 (목) <span>제주 &gt; 김포</span></h5>
+                                    <div class="air-list">
+                                        <div class="loading">
+                                            <ul>
+                                                <li class="title"><span>제이엘항공</span> <span><img src="../images/web/air/sideBar.gif" alt="|"></span></li>
+                                                <li class="air2"><img src="../images/web/air/line2.gif" height="13" alt="아시아나"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                                <li class="air3"><img src="../images/web/air/line3.gif" height="13" alt="진에어"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                                <li class="air6"><img src="../images/web/air/line6.gif" height="13" alt="티웨이"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                            </ul>
+                                            <ul>
+                                                <li class="title"><span>제주닷컴</span> <span><img src="../images/web/air/sideBar.gif" alt="|"></span></li>
+                                                <li class="air1"><img src="../images/web/air/line1.gif" height="13" alt="대한항공"> <img class="load" src="../images/web/air/loading.gif" alt="로딩"></li>
+                                                <li class="air2"><img src="../images/web/air/line2.gif" height="13" alt="아시아나"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                                <li class="air3"><img src="../images/web/air/line3.gif" height="13" alt="진에어"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                                <li class="air4"><img src="../images/web/air/line4.gif" height="13" alt="부산에어"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                                <li class="air5"><img src="../images/web/air/line5.gif" height="13" alt="이스타"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                                <li class="air6"><img src="../images/web/air/line6.gif" height="13" alt="티웨이"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                                <li class="air7"><img src="../images/web/air/line7.gif" height="13" alt="제주항공"> <img class="load" src="../images/web/air/loading_off.gif" alt="로딩"></li>
+                                            </ul>
+                                        </div>
+                                        <div class="list-wrap">
+                                            <div class="table-scroll">
+                                                <table id="comeWrap" class="commCol air-line">
+                                                    <thead>
+                                                        <tr class="tr_table_fix_header">
+                                                            <th class="title1">
+                                                                항공편
+                                                                <a class="down"><img src="../images/web/air/down.gif" alt="내림"></a>
+                                                                <a class="up"><img src="../images/web/air/up.gif" alt="올림"></a>
+                                                            </th>
+                                                            <th class="title2">
+                                                                탑승시간
+                                                                <a class="down"><img src="../images/web/air/down.gif" alt="내림"></a>
+                                                                <a class="up"><img src="../images/web/air/up.gif" alt="올림"></a>
+                                                            </th>
+                                                            <th class="title3">
+                                                                잔여석
+                                                                <a class="down"><img src="../images/web/air/down.gif" alt="내림"></a>
+                                                                <a class="up"><img src="../images/web/air/up.gif" alt="올림"></a>
+                                                            </th>
+                                                            <th class="title4">
+                                                                요금
+                                                                <a class="down"><img src="../images/web/air/down.gif" alt="내림"></a>
+                                                                <a class="up"><img src="../images/web/air/up.gif" alt="올림"></a>
+                                                            </th>
+                                                            <th class="title5">선택</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!--검색결과가 없을시-->
+                                                        <!--<tr class="no">
+                                                        <td colspan="5"><q>출발일</q>을 선택하시고 검색해 주세요.</td>
+                                                        </tr>-->
+                                                        <!--//검색결과가 없을시-->
+                                                        <tr class="disabled"> <!--클래스 추가 / input > disabled 추가-->
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line1_big.png" alt="대한항공"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">대한항공</p>
+                                                                    <p class="emph">8903편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">10:15</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">11:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">5석</p>
+                                                                <p class="rating">일반석</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">50.200</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_come1" class="airCH1" type="radio" name="air-come" disabled>
+                                                                <label for="air_come1">제이엘항공</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="disabled"> <!--클래스 추가 / input > disabled 추가-->
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line1_big.png" alt="대한항공"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">대한항공</p>
+                                                                    <p class="emph">8901편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">04:00</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">07:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">3석</p>
+                                                                <p class="rating">일반석</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">67.200</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_come2" class="airCH1" type="radio" name="air-come" disabled>
+                                                                <label for="air_come2">제주닷컴</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line1_big.png" alt="대한항공"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">대한항공</p>
+                                                                    <p class="emph">8902편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">05:00</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">09:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">6석</p>
+                                                                <p class="rating">일반석</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">77.200</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_come3" class="airCH1" type="radio" name="air-come">
+                                                                <label for="air_come3">제주닷컴</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line2_big.png" alt="아시아나"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">아시아나</p>
+                                                                    <p class="emph">8901편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">06:15</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">07:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">9석</p>
+                                                                <p class="rating">일반석</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">77.000</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_come4" class="airCH1" type="radio" name="air-come">
+                                                                <label for="air_come4">제이엘항공</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line3_big.png" alt="진에어"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">진에어</p>
+                                                                    <p class="emph">8901편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">06:15</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">07:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">9석</p>
+                                                                <p class="rating">일반석</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">105.200</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_come5" class="airCH1" type="radio" name="air-come">
+                                                                <label for="air_come5">제주닷컴</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line4_big.png" alt="부산에어"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">부산에어</p>
+                                                                    <p class="emph">8901편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">06:15</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">07:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">9석</p>
+                                                                <p class="rating">일반석</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">22.200</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_come6" class="airCH1" type="radio" name="air-come">
+                                                                <label for="air_come6">제주닷컴</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line5_big.png" alt="이스타"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">이스타</p>
+                                                                    <p class="emph">8901편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">06:15</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">07:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">9석</p>
+                                                                <p class="rating">일반석</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">150.200</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_come7" class="airCH1" type="radio" name="air-come">
+                                                                <label for="air_come7">제이엘항공</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line6_big.png" alt="티웨이"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">티웨이</p>
+                                                                    <p class="emph">8901편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">06:15</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">07:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">9석</p>
+                                                                <p class="rating">일반석</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">35.000</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_come8" class="airCH1" type="radio" name="air-come">
+                                                                <label for="air_come8">제주닷컴</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="l-area"><p class="ci"><img src="../images/web/air/line7_big.png" alt="제주항공"></p></div>
+                                                                <div class="r-area">
+                                                                    <p class="name">제주항공</p>
+                                                                    <p class="emph">8901편</p>
+                                                                </div>
+                                                            </td>
+                                                            <td class="time">
+                                                                <p class="sTime">06:15</p>
+                                                                <p class="arrow"><img src="../images/web/air/time_ar.png" alt="arrow"></p>
+                                                                <p class="eTime">07:20</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="seat">9석</p>
+                                                                <p class="rating">일반석</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="hide">$</p>
+                                                                <p class="money">40.000</p>
+                                                            </td>
+                                                            <td class="condition">
+                                                                <input id="air_come9" class="airCH1" type="radio" name="air-come">
+                                                                <label for="air_come9">제주닷컴</label>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div> <!-- //table-scroll -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--//오는편-->
+                            </div> <!--//air-result-->
+                        </div>
+                        <!--선택하신 여정-->
+                        <div class="journey">
+                            <h5 class="listTitle1">선택하신 여정</h5>
+                            <div class="payWrap">
+                                <div class="jourList">
+                                    <div class="go">
+                                        <h4 class="title">가는 항공편ㅣ<span>2015-09-14(월) 김포 > 제주 06:15 <img src="../images/web/air/line2.gif" alt="아시아나"> 아시아나 8901편</span> <span class="guid">＊ 1인 기준 요금입니다.</span></h4>
+                                        <table class="commCol">
+                                            <thead>
+                                                <tr>
+                                                    <th>구분</th>
+                                                    <th>항공운임</th>
+                                                    <th>유류할증료</th>
+                                                    <th>공항이용료</th>
+                                                    <th>총액</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>성인 1명</td>
+                                                    <td>71,000원</td>
+                                                    <td>2,200원</td>
+                                                    <td>4,000원</td>
+                                                    <td>77,200원</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>소아 1명</td>
+                                                    <td>71,000원</td>
+                                                    <td>2,200원</td>
+                                                    <td>4,000원</td>
+                                                    <td>77,200원</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="come">
+                                        <h4 class="title">오는 항공편ㅣ<span>2015-09-14(월) 김포 > 제주 06:15 <img src="../images/web/air/line2.gif" alt="아시아나"> 아시아나 8901편</span></h4>
+                                        <table class="commCol">
+                                            <thead>
+                                                <tr>
+                                                    <th>구분</th>
+                                                    <th>항공운임</th>
+                                                    <th>유류할증료</th>
+                                                    <th>공항이용료</th>
+                                                    <th>총액</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>성인 1명</td>
+                                                    <td>71,000원</td>
+                                                    <td>2,200원</td>
+                                                    <td>4,000원</td>
+                                                    <td>77,200원</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>소아 1명</td>
+                                                    <td>71,000원</td>
+                                                    <td>2,200원</td>
+                                                    <td>4,000원</td>
+                                                    <td>77,200원</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!--결제-->
+                                <div class="payForm">
+                                    <!-- <div class="total-wrap">
+                                        <h4 class="align-center">예상결제금액</h4>
+                                        <p class="info4"><span class="plus">총합계</span> 319,440<span>원</span></p>
+                                        <p class="info5">* 유류할증료/제세공과금 포함</p>
+                                    </div>                                    
+                                    <ul class="air-trip">
+                                        <li>
+                                            <h5 class="air-title"><img src="../images/web/air/jl.jpg" alt="JLAIR">제이엘항공 <a href="">예약</a></h5>
+                                        </li>
+                                    </ul> -->
+
+                                    <!-- new -->
+                                    <ul class="air-price">
+                                        <li>
+                                            <h4 class="title">선택인원 ㅣ</h4>
+                                            <p class="person">성인 1명 / 소아 2명 / 유아 0명</p>
+                                        </li>
+                                        <li>
+                                            <h4 class="title">총 결제금액 ㅣ</h4>
+                                            <p class="total"><span class="price">125,000</span>원 <span class="pay-info">(유료할증료/제세공과금 포함)</span></p>
+                                        </li>
+                                        <li class="buy">
+                                            <h4 class="title">판매처 ㅣ</h4>
+                                            <div class="air-list">
+                                                <!--<p class="logo"><img src="../images/web/air/jl2.jpg" alt="JLAIR"></p>-->
+                                                <p class="logo"><img src="../images/web/air/jejucom.jpg" alt="제주닷컴"></p>
+                                                <p class="bt"><a class="cancel" href="#">다시선택</a><a href="#">예약하기</a></p>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div> <!-- //payForm -->
+                            </div>
+                            <div class="info">
+                                ㆍ<strong class="comm-color1">즉시결제하지 않으시면 예약이 자동취소됩니다.</strong><br>
+                                ㆍ<strong class="comm-color1">예약 후 일정/인원/시간/항공사 변경, 불가하며 취소후 재예약하셔야 합니다.</strong><br>
+                                ㆍ아시아나항공 김포-부산, 부산-제주 구간의 경우 에어부산과 공동운항됩니다. 아시아나항공 마일리지적립은 가능하며 항공편은 에어부산의 항공을 이용합니다.<br>
+                                ㆍ잔여석은 실시간 변동이 있으며, 항공사 사정에 따라 항공스케줄이 변동될 수 있습니다.<br>
+                                ㆍ출·도착 시각은 현지 시각 기준이며 항공기 스케줄은 정부인가 조건으로, 예고 없이 변경 될 수 있습니다.<br>
+                                ㆍ소아 및 유아 할인 적용은 아래와 같이 <strong class="comm-color1">탑승일 기준</strong> 할인 적용 가능 합니다.<br>
+                                ㆍ소아-만 2세(만 24개월) ~만 13세 미만<br>
+                                ㆍ유아-생후 7일 이상 ~ 만 2세(만 24개월)미만<br>
+                                ㆍ<strong class="comm-color1">탑승 수속 시 생년월일 확인 가능한 서류 지참 필수 (등본, 가족관계증명서)</strong><br>
+                                ㆍ유아는 좌석이 제공되지 않으므로 좌석이 필요한 유아는 소아로 예매하여야 하며 소아운임이 적용됩니다.<br>
+                                ㆍ구매 후 탑승시점에 유류할증료가 인상되어도 차액을 징수하지 않으며 인하되어도 환급되지 않습니다.<br>
+                                ㆍ항공권 예약변경은 불가능하며, 예약한 항공권을 취소 후 항공권을 재 구매하셔야 합니다.<br>
+                                ㆍ국내선 항공권 예약취소는 출발 20분전까지 예약확인/결제 메뉴에서 직접 취소가 가능하며, 출발 이후에는 유선을 통하여 취소가 가능합니다.
+                            </div>
+                        </div>
+                        <!--이용안내-->
+                        <!--<div class="commInfo1">
+                            <h5 class="listTitle1">취소/환불 규정</h5>
+                            <div class="commInfo1-text">
+                                <article class="comm-art1">
+                                    <h6>제목 입력</h6>
+                                    <p>
+                                        - 내용 입력<br>
+                                        - 내용 입력<br>
+                                        - 내용 입력                                        
+                                    </p>
+                                </article>                                
+                            </div>
+                        </div>-->
+                    </div><!--//Fasten-->
+                </div> <!-- //air -->
+                <!-- //new contents -->
+            </div> <!-- //subContents -->
+        </div> <!-- //subContainer -->
+	</main>
+	
+	<!--<aside id="rightAside">
+        <div class="ctWrap">            
+            &lt;!&ndash; 상품 리스트 &ndash;&gt;
+            <div class="product">
+                <h6 class="title">오늘본상품 <img src="../images/web/comm/arrow.gif" alt="arrow"></h6>
+                <div class="today-list">
+                    <div id="todayList">
+                        <ul class="list">
+                            <li><a href=""><img class="photo" src="../images/web/comm/product1.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                            <li><a href=""><img class="photo" src="../images/web/comm/product1.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                            <li><a href=""><img class="photo" src="../images/web/comm/product1.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                            &lt;!&ndash;오늘본 상품없을 시 출력&ndash;&gt;
+                            &lt;!&ndash;<p class="side-noContent">오늘 본 상품이 없습니다.</p>&ndash;&gt;
+                        </ul>
+                    </div>
+                    <ul class="itemNav">
+                        <li>
+                            <span id="itemPrev"><a href=""><img src="../images/web/comm/list_prev.gif" alt="이전"></a></span>
+                            &lt;!&ndash; <span id="number">1/1</span> &ndash;&gt;
+                            <span id="itemNext"><a href=""><img src="../images/web/comm/list_next.gif" alt="다음"></a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="shoppingCart">
+                <a href="">
+                    <h6>장바구니</h6>
+                    <p>
+                        <img src="../images/web/comm/cart2.gif" alt="장바구니">
+                        <span>9</span>
+                    </p>
+                </a>
+            </div>
+            <ul class="menuList">
+                <li><a href=""><img src="../images/web/comm/menulist1.gif" alt="맞춤견적">맞춤견적</a></li>
+                <li><a href=""><img src="../images/web/comm/menulist2.gif" alt="자주묻는질문">자주묻는질문</a></li>
+            </ul>
+            <div id="floatingBT"><img src="../images/web/comm/side.gif" alt="side button"></div>
+        </div>
+    </aside>-->
+
+	<footer id="footer">
+	    <div class="footMenu">
+	        <div class="Fasten">
+	            <span><a href="">회사소개</a></span>
+	            <span><a href="">사업제휴</a></span>
+	            <span><a href=""><strong>개인정보취급방침</strong></a></span>
+	            <span><a href="">국내여행표준약관</a></span>
+	            <span><a href="">전자상거래표준약관</a></span>
+	            <span><a href="">이메일무단수집거부</a></span>
+	            <!-- link site -->
+	            <div class="footLink">
+	                <select id="site_family">
+	                    <option value="" selected>패밀리사이트</option>
+	                    <option value="">list1</option>
+	                </select>
+	                <select id="site_regard">
+	                    <option value="" selected>관련사이트</option>
+	                    <option value="">list1</option>
+	                </select>
+	            </div>
+		    </div>
+	    </div>
+	    <div class="Fasten">
+            <div class="copy">
+                690-785 제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층 Tel)064-742-8861 관리자 직통(8774) Fax) 064-742-8865<br>
+                사업자 등록번호 : 616-82-04092 법인 등록번호 : 220121-0000107 통신판매업번호: 제2013-제주연동 0024호<br>
+                고객센터 1577-1233 I 개인정보관리 책임자 최종훈<br>
+                부득이한 사정에 의해 여행일저이 변경되는 경우 여행자의 사전동의를 받습니다.<br>
+                Copyright 2015. 제주특별자치도관광협회 All Rights Reserved.
+            </div>
+	    </div>
+	    <!-- banner zone -->
+	    <div class="footBanner">
+            <div class="Fasten">
+                <ul>
+                    <li><a href=""><img src="../images/web/footBanner/01.jpg" alt="제주관광협회"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/02.jpg" alt="하이제주"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/03.jpg" alt="제주관광공사"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/04.jpg" alt="공정거래위원회"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/05.jpg" alt="한국소비자원"></a></li>
+                    <li><a href=""><img src="../images/web/footBanner/06.jpg" alt="한국여행업협회"></a></li>
+                </ul>
+            </div>
+	    </div>
+	</footer>
+</body>
+</html>

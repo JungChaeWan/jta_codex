@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>2021 빅할인이벤트</title>
+
+    <link rel="stylesheet" href="../../css/mw/common2.css">
+    <link rel="stylesheet" href="../../css/mw/main4.css">
+    <link rel="stylesheet" href="../../css/mw/style.css">
+    <link rel="stylesheet" href="../../css/mw/daterangepicker.css">
+    <link rel="stylesheet" href="../../css/web/number-ticker.css">
+
+    <script src="../../js/jquery-1.11.1.js"></script>
+    <script src="../../js/jquery-ui-1.11.4.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+    <script src="../../js/mw_common.js"></script>
+    <script src="../../js/mw_style.js"></script>
+    <script src="../../js/moment.min.js"></script>
+
+
+</head>
+<body>
+<header id="header">
+    <!-- 모바일 웹만 노출 -->
+    <!-- //모바일 웹만 노출 -->
+    <div class="head-wrap">
+        <h1 class="title">이벤트</h1>
+        <div class="l-area">
+            <a href="javascript:history.back()" title="뒤로가기"></a>
+        </div>
+        <div class="r-area-side">
+            <button type="button" id="frame_sideOpen" class="side-btn" title="사이드메뉴 열기"></button>
+        </div>
+    </div>
+    <aside id="side_menu" class="side-menu">
+        <div class="side-all">
+            <div class="sitemap-header">
+                <!--<button type="button" id="frame_sideClose" class="close"><img src="../../images/mw/common/side/close-white.png" alt="닫기"></button>-->
+                <!-- 로그인 x -->
+                <div class="sitemap-intro">
+                    <button type="button" id="frame_sideClose" class="close"><img src="../../images/mw/common/side/close-white.png" alt="닫기"></button>
+                    <div class="sitemap-login">
+                        <h1 class="sitemap-intro-logo"><a href="/mw/main.do"><img src="../../images/mw/sitemap/white-logo.png" alt="탐나오"></a></h1>
+                        <button type="button" class="s-login-btn" >로그인</button>
+                    </div>
+                </div>
+                <!-- //로그인 x -->
+
+                <!-- 로그인 o -->
+                <!--<ul class="sitemap-intro-login">-->
+                <!--<li><b>홍길동</b>님 환영합니다.</li>-->
+                <!--<li class="r-btn">-->
+                <!--<a class="home" href=""><img src="../../images/mw/sitemap/home.png" alt="홈"></a>-->
+                <!--<a class="mypage" href=""><img src="../../images/mw/sitemap/mypage.png" alt="마이페이지"></a>-->
+                <!--</li>-->
+                <!--</ul>-->
+                <!-- //로그인 o -->
+            </div>
+            <nav class="sitemap-quick-menu">
+                <ul>
+                    <li class="quick-re"><a href="">나의 예약/구매 내역</a></li>
+                    <li class="quick-like"><a href="">찜한 상품</a></li>
+                </ul>
+
+                <!-- <a href="javascript:void(0)" id="top_searchOpen">
+                    <img src="../../images/mw/common/side/search-white.png" alt="검색">
+                </a>
+                <a href="" class="like">20</a>
+                <a href="" class="cart">5</a> -->
+
+            </nav>
+            <div class="sitemap-main-menu">
+                <ul>
+                    <li class="sitemap-rentcar"><a href="rent-list.html">렌터카</a></li>
+                    <li class="sitemap-hotel"><a href="hotel-list.html">숙박</a></li>
+                    <li class="sitemap-air"><a href="air-search.html">항공</a></li>
+                    <li class="sitemap-ship"><a href="">선박</a></li>
+                </ul>
+            </div>
+            <div class="sitemap-menu">
+
+                <div class="leisure">
+                    <a class="leisure title" href="social-list.html">
+                        <img src="../../images/mw/sitemap/leisure.png" alt="나의 혜택정보">관광/레저</a>
+                    <ul class="depth4">
+                        <li><a href="">전시/박물관</a></li>
+                        <li><a href="">테마공원</a></li>
+                        <li><a href="">스포츠/레저</a></li>
+                        <li><a href="">해양관광</a></li>
+                        <li><a href="">공연/쇼</a></li>
+                        <li><a href="">뷰티/테라피</a></li>
+                    </ul>
+                </div>
+                <a class="jeju title" href="social-list.html">
+                    <img src="../../images/mw/sitemap/jeju.png" alt="나의 혜택정보">제주마을체험</a>
+                <a class="food title" href="social-list.html">
+                    <img src="../../images/mw/sitemap/food.png" alt="나의 혜택정보">맛집</a>
+                <div class="agency">
+                    <a class="agency title" href="social-list.html">
+                        <img src="../../images/mw/sitemap/agency.png" alt="나의 혜택정보">여행사상품</a>
+                    <ul class="depth4">
+                        <li><a href="">전체보기</a></li>
+                        <li><a href="">버스/택시관광</a></li>
+                        <li><a href="">렌터카</a></li>
+                        <li><a href="">테마여행</a></li>
+                    </ul>
+                </div>
+                <div class="from-jeju">
+                    <a class="from-jeju title" href="from-jeju-main.html">
+                        <img src="../../images/mw/sitemap/fromjeju.png" alt="나의 혜택정보">from 제주</a>
+                    <ul class="depth4">
+                        <li class="red-text"><a href="">HOT한상품</a></li>
+                        <li><a href="">농/수/축산물</a></li>
+                        <li><a href="">가공식품</a></li>
+                        <li><a href="">화장품/미용</a></li>
+                        <li><a href="">제주기념품</a></li>
+                        <li><a href="">제주유나이티드</a></li>
+                    </ul>
+                </div>
+                <a class="event2 title" href="main4-4.html">
+                    <img src="../../images/mw/sitemap/s-event2.png" alt="나의 혜택정보">기획전</a>
+                <a class="event title" href="main4-5.html">
+                    <img src="../../images/mw/sitemap/s-event.png" alt="나의 혜택정보">이벤트</a>
+                <div class="tamnao">
+                    <a class="tamnao title" href="from-jeju-main.html">
+                        <img src="../../images/mw/sitemap/nao.png" alt="나의 혜택정보">TAMNAO</a>
+                    <ul class="depth4">
+                        <li><a href="">공지사항</a></li>
+                        <li><a href="">회사소개</a></li>
+                        <li><a href="">자주하는 문의</a></li>
+                        <li><a href="">마이페이지</a></li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </aside>
+
+    <div id="top_search" class="search-area">
+        <button type="button" id="top_searchClose" class="close"><img src="../../images/mw/common/side/close-gray.png" alt="닫기"></button>
+
+        <div class="form-area">
+            <form class="form-area">
+                <input type="text" placeholder="검색어를 입력해주세요." class="category-search">
+                <button type="submit" class="icon-search" title="검색"></button>
+            </form>
+
+            <div class="all-search">
+                <div class="condition">
+                    <div class="recent-search">최근검색조건</div>
+                    <ul>
+                        <li class="product">
+                            <img src="../../images/mw/icon/tag_close.gif" alt=""><a href="">김녕미로공원</a></li>
+                        <li class="product"><img src="../../images/mw/icon/tag_close.gif" alt=""><a href="">우도해저투어</a></li>
+                        <li class="product"><img src="../../images/mw/icon/tag_close.gif" alt=""><a href="">아라고나이트</a></li>
+                        <li class="product"><img src="../../images/mw/icon/tag_close.gif" alt=""><a href="">번개과학체험관</a></li>
+                    </ul>
+                    <div class="product-sub"><a href="">모두삭제</a></div>
+                </div>
+                <div class="keyword">
+                    <div class="hot-keyword">HOT KEYWORD</div>
+                    <ul class="all-text">
+                        <li><a href="">#야간관광</a></li>
+                        <li><a href="">#퍼시픽</a></li>
+                        <li><a href="">#김녕미로공원</a></li>
+                        <li><a href="">#제주씨월드</a></li>
+                        <li><a href="">#우도해저투어</a></li>
+                        <li><a href="">#렉시제주</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="subContent">
+    <!-- event-page -->
+    <div class="event-page">
+        <div class="event-mw">
+            <img src="../../images/mw/event/m-event.jpg" class="m-event" alt="이벤트 바로가기">
+            <!--<img src="../../images/mw/event/event-01.jpg" class="event-img" alt="이벤트 바로가기">
+            <div class="rolling-num">
+                <div class="container count">
+                    <div class="number-ticker" data-value="10000"></div>
+                </div>
+                <img src="../../images/mw/event/event-02.jpg" class="event-img" alt="이벤트 바로가기">
+            </div>
+            <a href="" class="go-event-m">
+                <img src="../../images/mw/event/event-03.jpg" class="event-img" alt="이벤트 바로가기">
+            </a>
+            <img src="../../images/mw/event/event-04.jpg" class="event-img" alt="이벤트 바로가기">
+            -->
+        </div>
+        <a href="" class="event-btn-m">제주여행 20% 할인 받기</a>
+    </div>
+    <!-- //event-page -->
+</section>
+
+<script src="../../js/number-ticker.js"></script>
+</body>
+</html>

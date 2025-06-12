@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="apiAligoKakao">
+    <resultMap id="KAKAO_R_01" class="java.util.HashMap">
+        <result property="userId" column="USER_ID"/>
+        <result property="baseDate" column="BASE_DATE"/>
+        <result property="cate" column="CATE"/>
+        <result property="rsvTelnum" column="RSV_TELNUM"/>
+        <result property="rsvNm" column="RSV_NM"/>
+    </resultMap>
+
+    <resultMap id="KAKAO_R_02" class="java.util.HashMap">
+        <result property="corpNm" column="CORP_NM"/>
+        <result property="corpTelnum" column="CORP_TELNUM"/>
+        <result property="prdtNm" column="PRDT_NM"/>
+        <result property="prdtInf" column="PRDT_INF"/>
+        <result property="saleAmt" column="SALE_AMT"/>
+        <result property="rsvTelnum" column="RSV_TELNUM"/>
+        <result property="rsvNm" column="RSV_NM"/>
+    </resultMap>
+
+    <!-- 7일전 사용 완료 한 user 중 7일 이내 로그 없는 user -->
+    <select id="KAKAO_S_01" resultMap="KAKAO_R_01">
+        WITH DTL_RSV AS (
+            SELECT RSV_NUM, RSV_STATUS_CD, TO_CHAR(TO_DATE(USE_DT, 'YYYYMMDD') + USE_NIGHT, 'YYYYMMDD') AS BASE_DATE, 'AD' AS CATE
+            FROM TB_AD_RSV
+            WHERE TO_CHAR(TO_DATE(USE_DT, 'YYYYMMDD') + USE_NIGHT, 'YYYYMMDD') = TO_CHAR(SYSDATE - 7, 'YYYYMMDD') AND RSV_STATUS_CD = 'RS30'
+            UNION ALL
+            SELECT RSV_NUM, RSV_STATUS_CD, RENT_END_DT AS BASE_DATE, 'RC' AS CATE
+            FROM TB_RC_RSV
+            WHERE RENT_END_DT = TO_CHAR(SYSDATE - 7, 'YYYYMMDD') AND RSV_STATUS_CD = 'RS30'
+            UNION ALL
+            SELECT RSV_NUM, RSV_STATUS_CD, TO_CHAR(USE_DTTM, 'YYYYMMDD') AS BASE_DATE, 'SP' AS CATE
+            FROM TB_SP_RSV
+            WHERE USE_DTTM = TO_CHAR(SYSDATE - 7, 'YYYYMMDD') AND RSV_STATUS_CD = 'RS30'
+            UNION ALL
+            SELECT RSV_NUM, RSV_STATUS_CD, TO_CHAR(SYSDATE - 7, 'YYYYMMDD') AS BASE_DATE, 'SV' AS CATE
+            FROM TB_SV_RSV
+            WHERE TO_CHAR(BUY_FIX_DTTM,'YYYYMMDD') = TO_CHAR(SYSDATE - 7, 'YYYYMMDD') AND RSV_STATUS_CD = 'RS30'
+        )
+        SELECT
+            USER_ID,
+            BASE_DATE,
+            CATE,
+            RSV_NM,
+            RSV_TELNUM
+        FROM (
+            SELECT
+                TR.USER_ID,
+                DR.BASE_DATE,
+                DR.CATE,
+                TR.RSV_NM,
+                TR.RSV_TELNUM,
+                ROW_NUMBER() OVER (PARTITION BY TR.USER_ID ORDER BY NULL) AS RN
+            FROM DTL_RSV DR
+            INNER JOIN TB_RSV TR ON DR.RSV_NUM = TR.RSV_NUM
+            INNER JOIN TB_USER TU ON TR.USER_ID = TU.USER_ID
+            WHERE AUTH_NM = 'USER'
+            AND TR.USER_ID != 'GUEST'
+            AND NOT EXISTS (
+                SELECT 1
+                FROM TB_KAKAO_CONFIRM_AFTER_LOG L
+                WHERE L.USER_ID = TR.USER_ID
+                <![CDATA[ AND (TRUNC(SYSDATE) >= L.REG_DTTM  AND TRUNC(SYSDATE) < L.REG_DTTM + 8)]]>
+            )
+        )
+        WHERE RN = 1
+    </select>
+
+    <!--알림톡 유효기간(숙박, 렌트카) 알림 7일 전 발송-->
+    <select id="KAKAO_S_02" resultMap="KAKAO_R_02">
+        SELECT
+            (CASE CATE WHEN 'AD'
+            THEN (SELECT AD_NM FROM TB_AD_DFTINF WHERE CORP_ID = DTL_RSV.CORP_ID)
+            ELSE (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = DTL_RSV.CORP_ID)
+            END) AS CORP_NM
+            , (SELECT RSV_TEL_NUM FROM TB_CORP  WHERE CORP_ID = DTL_RSV.CORP_ID) AS CORP_TELNUM
+            , PRDT_NM
+            , PRDT_INF
+            , TO_CHAR(NVL(SALE_AMT, 0), 'FM999,999,999,999') AS SALE_AMT
+            , TR.RSV_TELNUM
+            , TR.RSV_NM
+        FROM
+        TB_RSV TR
+        INNER JOIN TB_USER TU ON TR.USER_ID = TU.USER_ID
+        INNER JOIN (
+            SELECT RSV_NUM, 'AD' AS CATE, CORP_ID, PRDT_NM, PRDT_INF, SALE_AMT
+            FROM TB_AD_RSV
+            WHERE USE_DT = TO_CHAR(SYSDATE + 7, 'YYYYMMDD')
+            AND RSV_STATUS_CD = 'RS02'
+
+            UNION ALL
+
+            SELECT RSV_NUM, 'RC' AS CATE, CORP_ID, PRDT_NM, PRDT_INF, SALE_AMT
+            FROM TB_RC_RSV
+            WHERE RENT_START_DT = TO_CHAR(SYSDATE + 7, 'YYYYMMDD')
+            AND RSV_STATUS_CD = 'RS02'
+        ) DTL_RSV ON TR.RSV_NUM = DTL_RSV.RSV_NUM
+    </select>
+
+    <!--알림톡 유효기간(관광지, 맛집) 알림 3일 전 발송-->
+    <select id="KAKAO_S_03" resultMap="KAKAO_R_02">
+        SELECT
+            (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = DTL_RSV.CORP_ID) AS CORP_NM
+            , (SELECT RSV_TEL_NUM FROM TB_CORP WHERE CORP_ID = DTL_RSV.CORP_ID) AS CORP_TELNUM
+            , PRDT_NM
+            , PRDT_INF
+            , TO_CHAR(NVL(SALE_AMT, 0), 'FM999,999,999,999') AS SALE_AMT
+            , TR.RSV_TELNUM
+            , TR.RSV_NM
+        FROM TB_RSV TR
+        INNER JOIN TB_USER TU ON TR.USER_ID = TU.USER_ID
+        INNER JOIN (
+            SELECT *
+            FROM (
+                SELECT
+                    TSR.RSV_NUM
+                    , TSR.CORP_ID
+                    , TSR.PRDT_NM
+                    , TSR.PRDT_INF
+                    , TSR.SALE_AMT
+                    , ROW_NUMBER() OVER (PARTITION BY TSR.RSV_NUM ORDER BY TSR.SALE_AMT DESC) AS RN
+                FROM TB_SP_RSV TSR
+                INNER JOIN TB_SP_PRDTINF TSP
+                ON TSR.PRDT_NUM = TSP.PRDT_NUM
+                WHERE TSR.RSV_STATUS_CD = 'RS02'
+                AND TSR.EXPR_END_DT = TO_CHAR(SYSDATE + 3, 'YYYYMMDD')
+                AND (SUBSTRING(TSP.CTGR, 1, 2) IN ('C2','C3') OR (TSP.CORP_ID = 'C160000713' AND TSP.PRDT_NM LIKE '%시티투어%')) /*관광지, 맛집, 시티투어*/
+            )
+            WHERE RN = 1
+        ) DTL_RSV ON TR.RSV_NUM = DTL_RSV.RSV_NUM
+    </select>
+
+    <insert id="KAKAO_I_01">
+    INSERT INTO TB_KAKAO_CONFIRM_AFTER_LOG
+    (SEQ, USER_ID, BASE_DATE, REG_DTTM)
+    VALUES
+    (SEQ_KAKAO_CONFIRM_AFTER_LOG_SN.NEXTVAL,#userId#,#baseDate#,SYSDATE)
+    </insert>
+</sqlMap>

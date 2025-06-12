@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+	
+	<title>탐나오</title>
+	
+	<link rel="stylesheet" href="../../css/mw/common2.css">
+	<link rel="stylesheet" href="../../css/mw/style.css">
+	
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/jquery.cookie.js"></script>
+	<script src="../../js/mw_common.js"></script>
+	<script src="../../js/mw_style.js"></script>
+</head>
+<body>
+<div id="wrap">
+
+<header id="header">
+	<div class="head-wrap">
+		<h1 class="title">이용후기</h1>
+		<div class="l-area">
+			<a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+		</div>
+		<div class="r-area">
+			<button type="button" id="frame_sideOpen" class="side-btn" title="사이드메뉴 열기"></button>
+		</div>
+	</div>
+	
+	<aside id="side_menu" class="side-menu">
+		<button type="button" id="frame_sideClose" class="close"><img src="../../images/mw/common/side/close-white.png" alt="닫기"></button>
+		
+		<nav class="top-menu">
+			<a href=""><img src="../../images/mw/common/side/home.png" alt="홈"></a>
+			<a href="javascript:void(0)" id="top_searchOpen">
+				<img src="../../images/mw/common/side/search-white.png" alt="검색">
+			</a>
+			<a href="" class="like">20</a>
+			<a href="" class="cart">5</a>
+		</nav>
+		
+		<div class="menu-area">
+			<ul>
+				<li><a href="air-search.html">항공</a></li>
+			    <li><a href="hotel-list.html">숙박</a></li>
+			    <li><a href="rent-list.html">렌터카</a></li>
+			    <li><a href="social-list.html">관광/레저</a></li>
+			    <li><a href="social-list.html">맛집</a></li>
+			    <li><a href="social-list.html">여행사 상품</a></li>
+			    <li><a href="from-jeju-main.html">from 제주 <img class="icon" src="../../images/mw/common/side/from-jeju.png" alt=""></a>
+			    	<ul class="depth2">
+			    		<li><a href="">농ㆍ수ㆍ축산물</a></li>
+						<li><a href="">가공식품</a></li>
+						<li><a href="">화장품/미용</a></li>
+						<li><a href="">제주기념품</a></li>
+			    	</ul>
+			    </li>
+			    <li><a href="main4-4.html">기획전</a></li>
+			    <li><a href="main4-5.html">이벤트</a></li>
+			</ul>
+			<ul>
+				<li><a href="">MY PAGE</a></li>
+			    <li><a href="">HELP</a></li>
+			    <li><a href="">LOGOUT</a></li>
+			    <li><a href="">SETTING</a></li>
+			</ul>
+		</div>
+	</aside>
+	
+	<div id="top_search" class="search-area">
+		<button type="button" id="top_searchClose" class="close"><img src="../../images/mw/common/side/close-gray.png" alt="닫기"></button>
+		
+		<div class="form-area">
+			<div class="form">
+				<form>
+					<input type="text" placeholder="검색어 입력" class="search">
+					<button type="submit" class="search-btn" title="검색"></button>
+				</form>
+			</div>
+			<div class="keyword">
+				<h2 class="title">HOT KEYWORD</h2>
+				<ul>
+					<li><a href="">수영장 숙소</a></li>
+				    <li><a href="">제주도 맛집</a></li>
+				    <li><a href="">패들보드</a></li>
+				    <li><a href="">제주 선물</a></li>
+				    <li><a href="">연인과 함께 즐기기</a></li>
+				    <li><a href="">흑돼지</a></li>
+				    <li><a href="">감귤</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+
+<main id="main">
+	<!--//change contents-->
+	<!-- ↓↓↓ 기존코드 동일 ↓↓↓ -->
+	<section id="subContent">
+		<!-- 삭제처리
+		<div class="menu-bar">
+		    <p class="btn-prev"><img src="../../images/mw/common/btn_prev.png" width="20" alt="이전페이지"></p>
+		    <h1>나의 예약/구매 내역</h1>
+		</div> -->
+	    <div class="sub-content">
+		    <div class="board">
+		        <dl class="txt-box">
+		            <dt>이용후기 쓰기</dt>
+		            <dd>주제에 맞지않거나 음란/홍보/비방 등의 글은 사전 동의없이 삭제 가능합니다.</dd>
+		        </dl>
+		        <form name="frm" method="post" onsubmit="return false;" enctype="multipart/form-data">
+		            <table class="write bt-none">
+		                <colgroup>
+		                    <col width="20%">
+		                    <col width="*">
+		                </colgroup>
+		                <tbody>
+		                    <tr>
+		                        <th><label for="product">상품</label></th>
+		                        <td class="cate"><select id="prdtInf" name="prdtInf">
+		                            <option value="">-선택하세요-</option>
+		                            <option value="C001511076,AD00000110,AD170703000002">대국아일린호텔-디럭스</option>
+		                            <option value="C001511076,AD00000109,AD170329000001">대국아일린호텔-스탠다드</option>
+		                            <option value="C001511076,AD00000110,AD170731000002">대국아일린호텔-디럭스</option>
+		                            <option value="C000000020,AD00000035,AD170914000008">씨엘펜션-12평</option>
+		                            <option value="C000000020,AD00000035,AD170914000010">씨엘펜션-12평</option>
+		                            <option value="C000000020,AD00000035,AD170922000002">씨엘펜션-12평</option>
+		                            <option value="C001511076,AD00000110,AD170816000001">대국아일린호텔-디럭스</option>
+		                            <option value="C000000020,AD00000035,AD170914000001">씨엘펜션-12평</option>
+		                            <option value="C000000020,AD00000035,AD170911000002">씨엘펜션-12평</option>
+		                            <option value="C000000020,AD00000035,AD170914000013">씨엘펜션-12평</option>
+		                            <option value="C001511076,AD00000109,AD170329000002">대국아일린호텔-스탠다드</option>
+		                            <option value="C001511076,AD00000109,AD170329000003">대국아일린호텔-스탠다드</option>
+		                            <option value="C001511076,AD00000109,AD170329000004">대국아일린호텔-스탠다드</option>
+		                            <option value="C001511076,AD00000109,AD170329000006">대국아일린호텔-스탠다드</option>
+		                            <option value="C001511076,AD00000109,AD170329000007">대국아일린호텔-스탠다드</option>
+		                            <option value="C001511076,AD00000109,AD170329000008">대국아일린호텔-스탠다드</option>
+		                            <option value="C001511076,AD00000110,AD170704000003">대국아일린호텔-디럭스</option>
+		                            <option value="C001511076,AD00000110,AD170704000004">대국아일린호텔-디럭스</option>
+		                            <option value="C000000020,AD00000035,AD170905000011">씨엘펜션-12평</option>
+		                            <option value="C001511076,AD00000109,AD170412000001">대국아일린호텔-스탠다드</option>
+		                            <option value="C000000020,AD00000035,AD170906000006">씨엘펜션-12평</option>
+		                            <option value="C000000020,AD00000035,AD170911000001">씨엘펜션-12평</option>
+		                            <option value="C001511076,AD00000109,AD170811000001">대국아일린호텔-스탠다드</option>
+		                            <option value="C001511087,AD00000066,AD170910000001">㈜다인리조트-19평</option>
+		                            <option value="C000000020,AD00000035,AD170914000017">씨엘펜션-12평</option>
+		                            <option value="C001511076,AD00000109,AD170811000002">대국아일린호텔-스탠다드</option>
+		                            <option value="C001511076,AD00000109,AD170811000003">대국아일린호텔-스탠다드</option>
+		                            <option value="C000000020,AD00000035,AD170922000007">씨엘펜션-12평</option>
+		                            <option value="C000000020,AD00000035,AD170922000009">씨엘펜션-12평</option>
+		                            <option value="C000000021,AD00000038,AD160719000001">대성펜션-1번카라반</option>
+		                            <option value="C000000020,AD00000035,AD160817000001">씨엘펜션-12평</option>
+		                            <option value="C000000023,AD00000044,AD160817000002">올레펜션-10평</option>
+		                            <option value="C000000020,AD00000035,AD170905000010">씨엘펜션-12평</option>
+		                            <option value="C001511068,RC00000026,RC160816000010">㈜제주평화렌트카-k5</option>
+		                            <option value="C001511082,RC00000025,RC161208000002">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170403000002">㈜케이렌터카-레이</option>
+		                            <option value="C000000027,RC00000019,RC170113000001">서귀포렌트카-그랜드카니발</option>
+		                            <option value="C001511082,RC00000025,RC170703000005">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170703000006">㈜케이렌터카-레이</option>
+		                            <option value="C001511068,RC00000026,RC160816000011">㈜제주평화렌트카-k5</option>
+		                            <option value="C001511068,RC00000026,RC160816000012">㈜제주평화렌트카-k5</option>
+		                            <option value="C000000027,RC00000017,RC161209000002">서귀포렌트카-YF소나타</option>
+		                            <option value="C001511082,RC00000025,RC170531000002">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170922000002">㈜케이렌터카-레이</option>
+		                            <option value="C001511068,RC00000026,RC160816000013">㈜제주평화렌트카-k5</option>
+		                            <option value="C001511082,RC00000025,RC170703000004">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170915000001">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC160816000001">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170522000001">㈜케이렌터카-레이</option>
+		                            <option value="C000000027,RC00000016,RC161209000004">서귀포렌트카-K3</option>
+		                            <option value="C001511082,RC00000025,RC161209000005">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170403000001">㈜케이렌터카-레이</option>
+		                            <option value="C001511068,RC00000026,RC160816000007">㈜제주평화렌트카-k5</option>
+		                            <option value="C001511082,RC00000025,RC170704000001">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC160812000004">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC160812000005">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC160812000006">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC160812000007">㈜케이렌터카-레이</option>
+		                            <option value="C001511068,RC00000026,RC160816000008">㈜제주평화렌트카-k5</option>
+		                            <option value="C001511082,RC00000025,RC160822000002">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170404000001">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170522000003">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170522000004">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC160816000003">㈜케이렌터카-레이</option>
+		                            <option value="C001511096,RC00000031,RC160816000017">한불모터스 ㈜제주지사-푸조 2008</option>
+		                            <option value="C001511082,RC00000025,RC170811000001">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC160816000002">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC160816000004">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC160816000005">㈜케이렌터카-레이</option>
+		                            <option value="C001511068,RC00000026,RC160816000006">㈜제주평화렌트카-k5</option>
+		                            <option value="C001511068,RC00000026,RC160816000009">㈜제주평화렌트카-k5</option>
+		                            <option value="C001511068,RC00000026,RC160816000014">㈜제주평화렌트카-k5</option>
+		                            <option value="C001511068,RC00000026,RC160816000015">㈜제주평화렌트카-k5</option>
+		                            <option value="C001511082,RC00000025,RC161208000004">㈜케이렌터카-레이</option>
+		                            <option value="C000000027,RC00000015,RC161208000005">서귀포렌트카-뉴아반떼MD</option>
+		                            <option value="C000000027,RC00000015,RC170329000002">서귀포렌트카-뉴아반떼MD</option>
+		                            <option value="C000000027,RC00000019,RC170329000003">서귀포렌트카-그랜드카니발</option>
+		                            <option value="C001511082,RC00000025,RC170504000001">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170531000001">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC160812000002">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC160822000001">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170703000003">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170811000002">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170811000003">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170915000002">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170703000001">㈜케이렌터카-레이</option>
+		                            <option value="C001511082,RC00000025,RC170703000002">㈜케이렌터카-레이</option>
+		                            <option value="C010000037,SP00000247,SP160809000003">[2박3일]제주도 낭만버스투어+숙박</option>
+		                            <option value="C010000037,SP00000247,SP160809000004">[2박3일]제주도 낭만버스투어+숙박</option>
+		                            <option value="C010000037,SP00000309,SP160818000001">같이가자 버스투어 1일</option>
+		                            <option value="C001511031,SP00000331,SP160818000003">믿거나말거나박물관</option>
+		                            <option value="C000000043,SP00000322,SP160818000004">문섬체험다이빙</option>
+		                            <option value="C000000043,SP00000322,SP161025000011">문섬체험다이빙</option>
+		                            <option value="C000000043,SP00000322,SP161019000007">문섬체험다이빙</option>
+		                            <option value="C000000043,SP00000322,SP161020000002">문섬체험다이빙</option>
+		                            <option value="C010000037,SP00000310,SP161020000003">같이가자 버스투어 1일</option>
+		                            <option value="C010000061,SP00000289,SP161027000011">농수산 관광지</option>
+		                            <option value="C000000043,SP00000322,SP161019000008">문섬체험다이빙</option>
+		                            <option value="C010000061,SP00000289,SP161027000007">농수산 관광지</option>
+		                            <option value="C010000061,SP00000289,SP161027000008">농수산 관광지</option>
+		                            <option value="C010000067,SV00000002,SV160922000006">dddddqq</option>
+		                            <option value="C010000067,SV00000002,SV161028000018">dddddqq</option>
+		                            <option value="C010000067,SV00000002,SV161031000006">dddddqq</option>
+		                            <option value="C010000067,SV00000002,SV161031000007">dddddqq</option>
+		                            <option value="C010000067,SV00000004,SV161201000003">탐나오 특산품 테스트 상품</option>
+		                            <option value="C010000067,SV00000004,SV170811000001">탐나오 특산품 테스트 상품</option>
+		                            </select></td>
+		                    </tr>
+		                    <tr>
+		                        <th><label for="product">평점</label></th>
+		                        <td class="cate"><span> <a href="javascript:fn_useepilChageLike(1)"><img id="ue_like1" src="../../images/mw/sub_common/h_icon2.png" alt="좋아요"></a> <a href="javascript:fn_useepilChageLike(2)"><img id="ue_like2" src="../../images/mw/sub_common/h_icon2.png" alt="좋아요"></a> <a href="javascript:fn_useepilChageLike(3)"><img id="ue_like3" src="../../images/mw/sub_common/h_icon2.png" alt="좋아요"></a> <a href="javascript:fn_useepilChageLike(4)"><img id="ue_like4" src="../../images/mw/sub_common/h_icon2.png" alt="좋아요"></a> <a href="javascript:fn_useepilChageLike(5)"><img id="ue_like5" src="../../images/mw/sub_common/h_icon2.png" alt="좋아요"></a>
+		                            <input type="hidden" name="gpa" id="gpa" value="0">
+		                            </span></td>
+		                    </tr>
+		                    <tr>
+		                        <th><label for="title">제목</label></th>
+		                        <td class="full"><input type="text" id="title" name="subject"></td>
+		                    </tr>
+		                    <tr>
+		                        <th><label for="con">내용</label></th>
+		                        <td><textarea id="con" cols="45" rows="5" name="contents" maxlength="500"></textarea></td>
+		                    </tr>
+		                    <tr>
+		                        <th>이미지</th>
+		                        <td class="attachments"><p class="file">
+		                            <input type="file" name="img1" accept="image/*">
+		                            </p>
+		                            <p class="file">
+		                                <input type="file" name="img2" accept="image/*">
+		                            </p>
+		                            <p class="file">
+		                                <input type="file" name="img3" accept="image/*">
+		                            </p>
+		                            <p class="file">
+		                                <input type="file" name="img4" accept="image/*">
+		                            </p>
+		                            <p class="file">
+		                                <input type="file" name="img5" accept="image/*">
+		                            </p>
+		                            <p class="label">* 이미지는 5개까지 첨부 가능 합니다.</p></td>
+		                    </tr>
+		                </tbody>
+		            </table>
+		            <p class="btn-list"> <a href="#" onclick="fn_Ins()" class="btn btn1">저장</a> <a href="javascript:history.back();" class="btn btn2">취소</a> </p>
+		        </form>
+		    </div>
+		</div>
+	</section>
+	<!--//change contents-->
+</main>
+
+<footer id="footer">
+	
+</footer>
+
+</div> <!-- //wrap -->
+</body>
+</html>

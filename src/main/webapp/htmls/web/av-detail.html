@@ -1,0 +1,1826 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<meta name="naver-site-verification" content="624918e3ed1f014efd4c2c86813b34a0e0aa2365"/>
+	<meta name="google-site-verification" content="wDsvLTLKE4X0TkTh_Z_hphDNIv1YtWa68bE0UEQ-Tfg" />
+
+	<script type="text/javascript" src="/js/jquery-1.11.1.js" ></script>
+	<script type="text/javascript" src="/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/js/slideshow_dot.js"></script>
+	<script type="text/javascript" src="/js/slider.js"></script>
+	<script type="text/javascript" src="/js/common.js"></script>
+	<script type="text/javascript" src="/js/photoAlbum.js"></script>
+	<script type="text/javascript" src="/js/cookie.js"></script>
+	<script type="text/javascript" src="/js/cycle.js"></script>
+	<script type="text/javascript" src="/js/swiper.js"></script>
+
+	<script type="text/javascript" src="/js/html_style.js"></script>
+	<script type="text/javascript" src="/js/IE9_fix.js"></script>
+
+	<title>Document</title>
+
+	<!-- css -->
+	<link rel="stylesheet" href="../../css/common/jquery-ui.css">
+	<link rel="stylesheet" href="../../css/web/common2.css">
+	<link rel="stylesheet" href="../../css/web/style.css">
+	<link rel="stylesheet" href="../../css/web/ad.css">
+	<link rel="stylesheet" href="../../css/web/av.css">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<script type="text/javascript">
+		/** 레인지 피커 */
+		function rangePicker(){
+			$('.date-container').daterangepicker({
+				<!-- singleDatePicker: true -->
+			}, function (start, end) {
+				/** 항공 날짜설정*/
+				$("input[name=start_date]").val(start.format('YYYY-MM-DD'));
+				$("input[name=end_date]").val(end.format('YYYY-MM-DD'));
+			});
+		}
+
+		var getContextPath = "${pageContext.request.contextPath}";
+
+		$(document).ready(function(){
+			$("#start_region_str").text($("input[name='start_region']:checked").next('label').text() + "(" + $("input[name='start_region']:checked").val() + ")" );
+			$("#end_region_str").text($("input[name='end_region']:checked").next('label').text() + "(" + $("input[name='end_region']:checked").val() + ")");
+			//datepicker
+			$("input[name=start_date]").datepicker({
+				showOn: "both",
+				dateFormat: "yy-mm-dd",
+				minDate: "${SVR_TODAY}",
+				buttonImage: "/images/web/icon/calendar_icon01.gif",
+				buttonImageOnly: true,
+				showOtherMonths: true, 										//빈칸 이전달, 다음달 출력
+				numberOfMonths: [ 1, 2 ],									//여러개월 달력 표시
+				stepMonths: 2,												//좌우 선택시 이동할 개월 수
+				onSelect: function(dateText, inst) {
+					$("input[name=end_date]").datepicker('option', 'minDate', $("input[name=start_date]").val() );
+				}
+			});
+			$("input[name=end_date]").datepicker({
+				showOn: "both",
+				dateFormat: "yy-mm-dd",
+				minDate: "${SVR_TODAY}",
+				buttonImage: "/images/web/icon/calendar_icon01.gif",
+				buttonImageOnly: true,
+				showOtherMonths: true, 										//빈칸 이전달, 다음달 출력
+				numberOfMonths: [ 1, 2 ],									//여러개월 달력 표시
+				stepMonths: 2												//좌우 선택시 이동할 개월 수
+			});
+
+			//Top Slider Item
+			if($('#product_slideItem .swiper-slide').length > 3) {			//4개 이상시 실행
+				var swiper = new Swiper('#product_slideItem', {
+					slidesPerView: 3,
+					paginationClickable: true,
+					spaceBetween: 15,
+					nextButton: '#slideItem_next',
+					prevButton: '#slideItem_prev'
+				});
+			}
+			else {
+				$('#slideItem_arrow').hide();
+			}
+			// 출발지 선택
+			$('input[name=start_region]').change(function() {
+				$("#start_region_str").text($("label[for=" + $(this).attr('id') + "]").text() + "(" + $(this).val() + ")");
+				optionClose($("#air_departure"));
+			});
+
+			// 도착지 선택
+			$('input[name=end_region]').change(function() {
+				$("#end_region_str").text($("label[for=" + $(this).attr('id') + "]").text() + "(" + $(this).val() + ")");
+				optionClose($("#air_arrival"));
+			});
+		});
+	</script>
+</head>
+<body>
+
+<!-- re_header -->
+<div id="_header">
+	<!-- top banner zone-->
+	<div id="top_banner" class="top-banner swiper-container">
+		<ul class="swiper-wrapper">
+			<li class="swiper-slide" style="background-color: rgb(246, 12, 64)">
+				<a href="${result.url}" target="_blank">
+					<div class="bar-tw">
+						<p class="bar-t"><em class="bar-em">회원가입</em>만 해도 혜택이 팡팡!</p>
+					</div>
+					<img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+				</a>
+			</li>
+			<li class="swiper-slide" style="background-color: rgb(246, 12, 64)">
+				<a href="${result.url}" target="_blank">
+					<div class="bar-tw">
+						<p class="bar-t">착한수수료 동참을 지지하는 <em class="bar-em">댓글이벤트</em> 참여하세요!</p>
+					</div>
+					<img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+				</a>
+			</li>
+		</ul>
+		<div class="container">
+			<a href="javascript:void(0)" id="top_close" class="close"><img src="/images/web/comm/btn_close.png" alt="닫기"></a>
+		</div>
+	</div><!--// top banner zone-->
+
+	<div class="re_header">
+		<div class="inner">
+			<div class="header-top">
+				<div class="box__usermenu">
+					<ul class="list__usermenu">
+						<li><b>이은민</b>님 환영합니다.</li>
+						<li class="list-item">
+							<a class="link__usermenu" href="javascript:fn_login();">로그인</a>
+						</li>
+						<li class="list-item">
+							<a class="link__usermenu" href="/web/signUp00.do">회원가입</a>
+						</li>
+						<!-- 로그인 -->
+						<!--
+                        <li class="list-item">
+                            <a class="link__usermenu" href="javascript:fn_logout();">로그아웃</a>
+                        </li>-->
+						<!-- //로그인 -->
+						<li class="list-item">
+							<a class="link__usermenu" href="/web/coustmer/viewCorpPns.do">입점신청</a>
+						</li>
+						<li class="list-item">
+							<a class="link__usermenu" href="/web/bbs/bbsList.do?bbsNum=NOTICE">고객센터</a>
+						</li>
+					</ul>
+				</div>
+				<h1>
+					<a href="/" title="tamnao - 제주여행종합쇼핑몰">
+						<img src="/images/web/r_main/nao_logo2.png" alt="탐나오">
+					</a>
+				</h1>
+				<div class="srh_area">
+					<form id="submitFrm" name="submitFrm">
+						<fieldset>
+							<legend class="for-a11y"> 검색</legend>
+							<div class="top_search" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+								<input name="keyword" title="검색어 입력" class="form_input" value="[기획전] 제주 봄꽃 여행" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+								<button type="submit" title="검색" class="srh_btn" onclick="fn_searBtClick();">
+									<img src="/images/web/r_main/srh_btn.png" alt="검색">
+								</button>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="util_menu">
+					<ui>
+						<li id="unpaidInfo" class="nopay">
+							<a href="javascript:fn_DtlRsv('${unpaidRsvNum}');" class="blinking text-red">
+								<span class="ico count">&nbsp;</span>미결제상품
+								<span class="cnt">0</span>
+							</a>
+						</li>
+						<li class="coupon more">
+							<a href="/web/mypage/pocketList.do">
+								<span class="ico"></span>쿠폰
+								<span class="cnt">0</span>
+							</a>
+						</li>
+						<li class="cart more">
+							<a href="/web/cart.do">
+								<span class="ico">&nbsp;</span>장바구니
+								<span class="cnt">0</span>
+							</a>
+						</li>
+						<li class="mypage more">
+							<a href="/web/mypage/rsvList.do">
+								<span class="ico">&nbsp;</span>마이탐나오
+							</a>
+						</li>
+					</ui>
+				</div>
+			</div>
+		</div>
+
+		<!-- global-navigation -->
+		<div class="gnb2">
+			<div class="inner">
+				<div class="box__service-all">
+					<ul class="menu">
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/av/mainList.do">항공</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/sp/vesselList.do">선박</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/stay/jeju.do">숙소</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/rentcar/car-list.do">렌터카</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C200">관광지/레저 할인쿠폰</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/sv/mainList.do">제주특산/기념품</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C270">제주마을체험</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C300">맛집</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/sp/packageList.do">여행사 상품</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/evnt/prmtPlanList.do">기획전</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/evnt/promotionList.do">이벤트</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //re_header -->
+
+<main id="main">
+
+	<!-- mapLocation -->
+	<div class="mapLocation">
+		<div class="inner">
+			<span>홈</span> <span class="gt">&gt;</span>
+			<span>항공</span>
+		</div>
+	</div>
+	<!-- //mapLocation -->
+	<div class="subContainer" id="avMain">
+		<div class="subHead"></div>
+		<div class="subContents">
+
+			<!-- Change Contents -->
+
+			<!-- air_research_btn -->
+			<section>
+				<div id="sch_focus" class="air_srch_result_bar">
+					<div class="air_width_fixed">
+
+						<!-- default -->
+						<div class="air_research_btn">다른일정검색</div>
+
+						<!-- on 표시 -->
+
+
+						<div class="air_research_btn_off" style="display: none;">다른일정검색</div>
+
+					</div>
+				</div>
+			</section><!-- //air_research_btn -->
+			<section class="search-typeA">
+				<h2 class="sec-caption">항공 검색</h2>
+				<div class="inner">
+					<h3>검색</h3>
+					<!-- 코드중복(include) -->
+					<div id="tabs-1" class="form-area">
+						<form name="air_search_form" action="<c:url value='/web/av/productList.do' />" method="post" onsubmit="return check_air_seach_form();">
+							<ul class="check-area">
+								<li class="lb-ch active">
+									<a href="#" id="air_typeRT" value="RT" class="textY" name="datepick" checked="checked" onclick="airtype_click(this.value);">왕복</a>
+								</li>
+								<li class="lb-ch">
+									<a href="#" id="air_typeOW" value="OW" class="textN" name="datepick" onclick="airtype_click(this.value);">편도</a>
+								</li>
+							</ul>
+							<div class="search-area air">
+								<div class="area zone">
+									<dl>
+										<dt>
+											<div class="rt-icon">
+												<span class="IconSide">출발지</span>
+											</div>
+										</dt>
+										<dd>
+											<div class="value-text"><a href="javascript:void(0)" onclick="optionPopup('#air_departure', this)" id="start_region_str">김포(GMP)</a></div>
+											<div id="air_departure" class="popup-typeA air-zone">
+												<ul class="select-menu col4">
+													<li>
+														<div class="lb-box">
+															<input id="air_test0" name="start_region" type="radio" value="GMP" checked="checked">
+															<label for="air_test0">김포</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test1" name="start_region" type="radio" value="CJU">
+															<label for="air_test1">제주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test2" name="start_region" type="radio" value="PUS">
+															<label for="air_test2">부산</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test3" name="start_region" type="radio" value="TAE">
+															<label for="air_test3">대구</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test4" name="start_region" type="radio" value="KWJ">
+															<label for="air_test4">광주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test5" name="start_region" type="radio" value="CJJ">
+															<label for="air_test5">청주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test6" name="start_region" type="radio" value="MWX">
+															<label for="air_test6">무안</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test7" name="start_region" type="radio" value="RSU">
+															<label for="air_test7">여수</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test8" name="start_region" type="radio" value="USN">
+															<label for="air_test8">울산</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test9" name="start_region" type="radio" value="HIN">
+															<label for="air_test9">진주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test10" name="start_region" type="radio" value="KUV">
+															<label for="air_test10">군산</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test11" name="start_region" type="radio" value="KPO">
+															<label for="air_test11">포항</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test12" name="start_region" type="radio" value="WJU">
+															<label for="air_test12">원주</label>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</dd>
+									</dl>
+									<a href="javascript:void(0)" class="change"><img src="/images/web/air/change.png" alt="변경"></a>
+									<dl>
+										<dt>
+											<div class="rt-icon">
+												<span class="IconSide">도착지</span>
+											</div>
+										</dt>
+										<dd>
+											<div class="value-text"><a href="javascript:void(0)" onclick="optionPopup('#air_arrival', this)" id="end_region_str">제주(CJU)</a></div>
+											<div id="air_arrival" class="popup-typeA air-zone">
+												<ul class="select-menu col4">
+													<li>
+														<div class="lb-box">
+															<input id="air_test13" name="end_region" type="radio" value="GMP">
+															<label for="air_test13">김포</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test14" name="end_region" type="radio" value="CJU" checked="checked">
+															<label for="air_test14">제주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test15" name="end_region" type="radio" value="PUS">
+															<label for="air_test15">부산</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test16" name="end_region" type="radio" value="TAE">
+															<label for="air_test16">대구</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test17" name="end_region" type="radio" value="KWJ">
+															<label for="air_test17">광주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test18" name="end_region" type="radio" value="CJJ">
+															<label for="air_test18">청주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test19" name="end_region" type="radio" value="MWX">
+															<label for="air_test19">무안</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test20" name="end_region" type="radio" value="RSU">
+															<label for="air_test20">여수</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test21" name="end_region" type="radio" value="USN">
+															<label for="air_test21">울산</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test22" name="end_region" type="radio" value="HIN">
+															<label for="air_test22">진주</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test23" name="end_region" type="radio" value="KUV">
+															<label for="air_test23">군산</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test24" name="end_region" type="radio" value="KPO">
+															<label for="air_test24">포항</label>
+														</div>
+													</li>
+													<li>
+														<div class="lb-box">
+															<input id="air_test25" name="end_region" type="radio" value="WJU">
+															<label for="air_test25">원주</label>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</dd>
+									</dl>
+								</div>
+								<div class="area date">
+									<dl>
+										<dt>
+											<div class="date-icon">
+												<span class="IconSide">가는날</span>
+											</div>
+										</dt>
+										<dd>
+											<div class="value-text">
+												<div class="date-container">
+													<span class="date-wrap">
+														<input class="datepicker" type="text" name="start_date" value="2020-07-28" placeholder="가는날 선택" onclick="optionClose('.popup-typeA')">
+													</span>
+												</div>
+											</div>
+										</dd>
+									</dl>
+									<span class="guide"></span>
+									<dl>
+										<dt>
+											<div class="date-icon">
+												<span class="IconSide">오는날</span>
+											</div>
+										</dt>
+										<dd>
+											<div class="value-text">
+												<div class="date-container">
+													<span class="date-wrap">
+														<input class="datepicker" type="text" name="end_date" value="2020-07-28" placeholder="오는날 선택" onclick="optionClose('.popup-typeA')">
+													</span>
+												</div>
+											</div>
+										</dd>
+									</dl>
+								</div>
+								<div class="area count select">
+									<dl>
+										<dt>
+											<div class="cn-icon">
+												<span class="IconSide">좌석 등급 및 인원 선택</span>
+											</div>
+										</dt>
+										<dd>
+											<div class="value-text">
+												<a href="javascript:void(0)" onclick="optionPopup('#air_count', this)" id="seat_person_str">전체 · 성인 1</a>
+											</div>
+											<div id="air_count" class="popup-typeA air-count">
+												<div class="detail-area">
+													<strong class="sub-title">좌석 등급</strong>
+													<select class="full" name="seat_type" id="seat_type" title="등급 선택" onchange="modify_seat_person();">
+														<option value="N@S@B" selected>전체</option>
+														<option value="N">일반석</option>
+														<option value="S">할인석</option>
+														<option value="B">비즈니스석</option>
+													</select>
+												</div>
+												<div class="detail-area counting-area">
+													<div class="counting">
+														<div class="l-area">
+															<strong class="sub-title">성인</strong>
+															<span class="memo">만 13세 이상</span>
+														</div>
+														<div class="r-area">
+															<input type="hidden" name="adult_cnt" value="1" />
+															<button type="button" class="counting-btn" onclick="chg_person('-', 'adult')"><img src="/images/web/main/form/subtraction.png" alt="빼기"></button>
+															<span class="counting-text" id="adult_num">1</span>
+															<button type="button" class="counting-btn" onclick="chg_person('+', 'adult')"><img src="/images/web/main/form/addition.png" alt="더하기"></button>
+														</div>
+													</div>
+													<div class="counting">
+														<div class="l-area">
+															<strong class="sub-title">소아</strong>
+															<span class="memo">만 2세 ~ 13세 미만</span>
+														</div>
+														<div class="r-area">
+															<input type="hidden" name="child_cnt" value="0" />
+															<button type="button" class="counting-btn" onclick="chg_person('-', 'child')"><img src="/images/web/main/form/subtraction.png" alt="빼기"></button>
+															<span class="counting-text" id="child_num">0</span>
+															<button type="button" class="counting-btn" onclick="chg_person('+', 'child')"><img src="/images/web/main/form/addition.png" alt="더하기"></button>
+														</div>
+													</div>
+													<div class="counting">
+														<div class="l-area">
+															<strong class="sub-title">유아</strong>
+															<span class="memo">만 2세(24개월) 미만</span>
+														</div>
+														<div class="r-area">
+															<input type="hidden" name="baby_cnt" value="0" />
+															<button type="button" class="counting-btn" onclick="chg_person('-', 'baby')"><img src="/images/web/main/form/subtraction.png" alt="빼기"></button>
+															<span class="counting-text" id="baby_num">0</span>
+															<button type="button" class="counting-btn" onclick="chg_person('+', 'baby')"><img src="/images/web/main/form/addition.png" alt="더하기"></button>
+														</div>
+													</div>
+												</div>
+												<div class="detail-area info-area">
+													<ul class="list-disc sm">
+														<li>나이는 가는날/오는날 기준으로 적용됩니다.</li>
+														<li>유아 선택 시 성인은 꼭 포함되어야 합니다.</li>
+														<li>유아는 보호자 1인당 1명만 예약이 가능합니다.</li>
+														<li>항공사별로 기준 나이는 상이할 수 있습니다.</li>
+													</ul>
+												</div>
+											</div>
+										</dd>
+									</dl>
+								</div>
+								<div class="area search">
+									<!-- form 사용시 submit 변경 -->
+									<button type="submit" class="btn red">
+										<div class="MagGlass">
+											<span class="TicSec">항공권 검색</span>
+										</div>
+									</button>
+								</div>
+							</div> <!-- //search-area -->
+						</form>
+					</div> <!-- //form-area -->
+					<!-- //코드중복(include) -->
+				</div>
+			</section>
+
+			<!-- 항공요금 검색결과 -->
+			<section>
+				<div class="air air-area">
+					<div class="inner">
+
+							<!-- product_result -->
+							<div class="product_result">
+								<div class="side-wrap">
+									<h5 class="listTitle1">항공요금 검색결과 <br><span class="subText">* 왕복 항공편은 동일한 판매처인 경우에만 예약이 가능합니다.</span></h5>
+									<div class="side-group">
+										<a class="side-link" href="">제이엘항공 실시간 예약확인</a>
+										<a class="side-link" href="">제주닷컴 항공 실시간 예약확인</a>
+									</div>
+								<div class="air-result">
+									<!-- 가는편 -->
+									<div class="lArea">
+										<h5 class="date"><img src="/images/web/air/go.png" alt="가는항공편">
+											<div class="airGo_txt">
+												가는편
+												<div class="route">[ 김포
+													<span><img src="/images/web/air/go_arrow.png" alt=""></span>
+													<span>제주</span> ]
+												</div>
+											</div>
+										</h5>
+										<div class="dm-list-head">
+											<a href="javascript:void(0)" class="dm-fresh btn-text">
+												<span></span>
+												<span>초기화</span>
+											</a>
+											<div class="dm-date">
+												<input type="hidden" class="_domDate1_" value="2020-09-03">
+												<div class="date-arrow">
+													<a href="javascript:void(0)" class="btn-prev">
+														<i class="xi-angle-left-min"></i>
+													</a>
+													<a href="javascript:void(0)" class="btn-next">
+														<i class="xi-angle-right-min"></i>
+													</a>
+												</div>
+
+												<!-- 전 날짜 표시 -->
+												<span style="display: none">
+													2020.09.02
+													<em class="week">수</em>
+												</span><!-- //전 날짜 표시-->
+												<span class="active">
+													2020.09.03
+													<em class="week">목</em>
+												</span>
+
+												<!-- 다음 날짜 표시 -->
+												<span style="display: none">
+													2020.09.04
+													<em class="week">금</em>
+												</span><!-- //다음 날짜 표시 -->
+											</div>
+											<div class="dm-filter">
+												<select name="airline_code" class="airline_code" title="항공사 선택">
+													<option value="ALL" selected>항공사 전체</option>
+													<option value="KE">대한항공</option>
+													<option value="OZ">아시아나</option>
+													<option value="LJ">진에어</option>
+													<option value="BX">에어부산</option>
+													<option value="ZE">이스타항공</option>
+													<option value="TW">티웨이항공</option>
+													<option value="7C">제주항공</option>
+												</select>
+											</div>
+										</div>
+										<div class="air-list">
+											<div class="list-wrap">
+												<div class="table-scroll">
+													<table id="goWrap" class="commCol air-line" >
+														<thead>
+															<tr class="tr_table_fix_header">
+																<th class="title1 header"> 항공사편 <a class="down"><img src="/images/web/air/down.png" alt="내림"></a> <a class="up"><img src="/images/web/air/up.png" alt="올림"></a> </th>
+																<th class="title2 header"> 출발시간 <a class="down"><img src="/images/web/air/down.png" alt="내림"></a> <a class="up"><img src="/images/web/air/up.png" alt="올림"></a> </th>
+																<th class="title3 header"> 도착시간 <a class="down"><img src="/images/web/air/down.png" alt="내림"></a> <a class="up"><img src="/images/web/air/up.png" alt="올림"></a> </th>
+																<th class="title4 header"> 운임종류 <a class="down"><img src="/images/web/air/down.png" alt="내림"></a> <a class="up"><img src="/images/web/air/up.png" alt="올림"></a> </th>
+																<th class="title5 header"> 좌석 <a class="down"><img src="/images/web/air/down.png" alt="내림"></a> <a class="up"><img src="/images/web/air/up.png" alt="올림"></a> </th>
+																<th class="title6 header"> 요금 <a class="down"><img src="/images/web/air/down.png" alt="내림"></a> <a class="up"><img src="/images/web/air/up.png" alt="올림"></a> </th>
+																<th class="title7 header">업체선택</th>
+															</tr>
+														</thead>
+
+														<tbody id="go_flight" >
+															<!--  검색 결과가 없을 시 -->
+															<tr>
+																<div id="init_start_div" class="no-item hide">
+																	<div class="txt2">검색 조건에 해당하는 항공권이 없습니다.</div>
+																</div>
+															</tr><!--  //검색 결과가 없을 시 -->
+
+															<!-- 로딩중 gif 삽입 -->
+															<tr>
+																<div class="loadingAir-wrap">
+																	<img src="/images/mw/sub_common/loading.gif" alt="로딩중">
+																</div>
+															</tr><!-- //로딩중 gif 삽입 -->
+
+															<tr class="disabled">
+																<td>
+																	<div class="l-area">
+																		<p class="ci"><img src="/images/web/air/line1_big.png" alt="대한항공"></p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">대한항공</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating">일반석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_go1" class="airCH1" type="radio" name="air-go" disabled>
+																	<label for="air_go1" class="a-cr" disabled >제이엘항공</label>
+																</td>
+															</tr>
+															<tr class="disabled">
+																<td>
+																	<div class="l-area">
+																		<p class="ci"><img src="/images/web/air/line1_big.png" alt="대한항공"></p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">대한항공</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating">일반석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_go2" class="airCH1" type="radio" name="air-go" disabled>
+																	<label for="air_go2" class="a-cr" disabled>제이엘항공</label>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="l-area">
+																		<p class="ci"><img src="/images/web/air/line1_big.png" alt="대한항공"></p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">대한항공</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating">일반석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_go3" class="airCH1" type="radio" name="air-go">
+																	<label for="air_go3" class="a-cr">제이엘항공</label>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="l-area">
+																		<p class="ci">
+																			<img src="/images/web/air/line2_big.png" alt="아시아나">
+																		</p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">아시아나</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating Special">특가석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_go4" class="airCH1" type="radio" name="air-go">
+																	<label for="air_go4" class="a-cr">제이엘항공</label>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="l-area">
+																		<p class="ci">
+																			<img src="/images/web/air/line3_big.png" alt="진에어">
+																		</p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">진에어</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating Sale">할인석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_go5" class="airCH1" type="radio" name="air-go">
+																	<label for="air_go5">제주닷컴</label>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="l-area">
+																		<p class="ci">
+																			<img src="/images/web/air/line4_big.png" alt="에어부산">
+																		</p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">에어부산</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating Event">이벤트석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_go6" class="airCH1" type="radio" name="air-go">
+																	<label for="air_go6">제주닷컴</label>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="l-area">
+																		<p class="ci">
+																			<img src="/images/web/air/line5_big.png" alt="이스타항공">
+																		</p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">이스타항공</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating business">비즈니스석</p>
+																	<div class="tooltip-btn">
+																		<span>공동운항</span>
+																		<p class="info-text seoul"></p>
+																	</div>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_go7" class="airCH1" type="radio" name="air-go">
+																	<label for="air_go7" class="a-cr">제이엘항공</label>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="l-area">
+																		<p class="ci">
+																			<img src="/images/web/air/line6_big.png" alt="티웨이항공">
+																		</p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">티웨이항공</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating">일반석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_go8" class="airCH1" type="radio" name="air-go">
+																	<label for="air_go8">제주닷컴</label>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="l-area">
+																		<p class="ci">
+																			<img src="/images/web/air/line7_big.png" alt="제주항공">
+																		</p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">제주항공</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating">일반석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_go9" class="airCH1" type="radio" name="air-go">
+																	<label for="air_go9">제주닷컴</label>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div><!-- //가는편 -->
+
+									<!-- 오는편 -->
+
+									<!--  편도로 검색 했을 시 -->
+									<div class="one-search" style="display: none">
+											<div class="ico"></div>
+											<div class="txt1">편도를 선택하셔서 검색되는 항공권이 없습니다.</div>
+											<div class="txt2">도착일을 선택하시고 검색해 주세요.</div>
+									</div><!--  //편도로 검색 했을 시 -->
+
+									<div class="rArea">
+										<h5 class="date"><img src="/images/web/air/go.png" alt="오는항공편">
+											<div class="airGo_txt">
+												오는편
+												<div class="route">[ 제주
+													<span><img src="/images/web/air/go_arrow.png" alt=""></span>
+													<span>김포</span> ]
+												</div>
+											</div>
+										</h5>
+										<div class="dm-list-head">
+											<a href="javascript:void(0)" class="dm-fresh btn-text" id="j0Fresh">
+												<span class="xi-refresh"></span>
+												<span>초기화</span>
+											</a>
+											<div class="dm-date">
+												<input type="hidden" class="_domDate1_" value="2020-09-03">
+												<div class="date-arrow">
+													<a href="javascript:void(0)" class="btn-prev">
+														<i class="xi-angle-left-min"></i>
+													</a>
+													<a href="javascript:void(0)" class="btn-next">
+														<i class="xi-angle-right-min"></i>
+													</a>
+												</div>
+
+												<!-- 전 날짜 표시 -->
+												<span style="display: none">
+													2020.09.02
+													<em class="week">수</em>
+												</span><!-- //전 날짜 표시 -->
+												<span class="active">
+													2020.09.03
+													<em class="week">목</em>
+												</span>
+
+												<!-- 다음 날짜 표시 -->
+												<span style="display: none">
+													2020.09.04
+													<em class="week">금</em>
+												</span><!-- //다음 날짜 표시 -->
+											</div>
+											<div class="dm-filter">
+												<select name="airline_code" class="airline_code" title="항공사 선택">
+													<option value="ALL" selected>항공사 전체</option>
+													<option value="KE">대한항공</option>
+													<option value="OZ">아시아나</option>
+													<option value="LJ">진에어</option>
+													<option value="BX">에어부산</option>
+													<option value="ZE">이스타항공</option>
+													<option value="TW">티웨이항공</option>
+													<option value="7C">제주항공</option>
+												</select>
+											</div>
+										</div>
+										<div class="air-list">
+											<div class="list-wrap">
+												<div class="table-scroll">
+													<table id="comeWrap" class="commCol air-line">
+														<thead>
+														<tr class="tr_table_fix_header">
+															<th class="title1 header"> 항공사편 <a class="down"><img src="/images/web/air/down.png" alt="내림"></a> <a class="up"><img src="/images/web/air/up.png" alt="올림"></a> </th>
+															<th class="title2 header"> 출발시간 <a class="down"><img src="/images/web/air/down.png" alt="내림"></a> <a class="up"><img src="/images/web/air/up.png" alt="올림"></a> </th>
+															<th class="title2 header"> 도착시간 <a class="down"><img src="/images/web/air/down.png" alt="내림"></a> <a class="up"><img src="/images/web/air/up.png" alt="올림"></a> </th>
+															<th class="title2 header"> 운임종류 <a class="down"><img src="/images/web/air/down.png" alt="내림"></a> <a class="up"><img src="/images/web/air/up.png" alt="올림"></a> </th>
+															<th class="title3 header"> 좌석 <a class="down"><img src="/images/web/air/down.png" alt="내림"></a> <a class="up"><img src="/images/web/air/up.png" alt="올림"></a> </th>
+															<th class="title4 header"> 요금 <a class="down"><img src="/images/web/air/down.png" alt="내림"></a> <a class="up"><img src="/images/web/air/up.png" alt="올림"></a> </th>
+															<th class="title5 header">업체선택</th>
+														</tr>
+														</thead>
+														<tbody id="come_flight">
+
+															<!--&lt;!&ndash;  검색 결과가 없을 시 &ndash;&gt;-->
+															<!--<tr>-->
+																<!--<div id="init_end_div" class="no-item" >-->
+																	<!--<div class="txt2">검색 조건에 해당하는 항공권이 없습니다.</div>-->
+																<!--</div>-->
+															<!--</tr>&lt;!&ndash;  //검색 결과가 없을 시 &ndash;&gt;-->
+
+															<!--&lt;!&ndash; 로딩중 gif 삽입 &ndash;&gt;-->
+															<!--<tr>-->
+																<!--<div class="loadingAir-wrap">-->
+																	<!--<img src="/images/mw/sub_common/loading.gif" alt="로딩중">-->
+																<!--</div>-->
+															<!--</tr>&lt;!&ndash; //로딩중 gif 삽입 &ndash;&gt;-->
+
+															<tr class="disabled">
+																<td>
+																	<div class="l-area">
+																		<p class="ci"><img src="/images/web/air/line1_big.png" alt="대한항공"></p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">대한항공</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating">일반석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_come1" class="airCH1" type="radio" name="air-come" disabled>
+																	<label for="air_come1" class="a-cr">제이엘항공</label>
+																</td>
+															</tr>
+															<tr class="disabled">
+																<td>
+																	<div class="l-area">
+																		<p class="ci"><img src="/images/web/air/line1_big.png" alt="대한항공"></p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">대한항공</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating">일반석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_come2" class="airCH1" type="radio" name="come-go" disabled>
+																	<label for="air_come2" class="a-cr">제이엘항공</label>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="l-area">
+																		<p class="ci"><img src="/images/web/air/line1_big.png" alt="대한항공"></p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">대한항공</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating">일반석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_come3" class="airCH1" type="radio" name="air-come">
+																	<label for="air_come3" class="a-cr">제이엘항공</label>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="l-area">
+																		<p class="ci">
+																			<img src="/images/web/air/line2_big.png" alt="아시아나">
+																		</p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">아시아나</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating Special">특가석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_come4" class="airCH1" type="radio" name="air-come">
+																	<label for="air_come4" class="a-cr">제이엘항공</label>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="l-area">
+																		<p class="ci">
+																			<img src="/images/web/air/line3_big.png" alt="진에어">
+																		</p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">진에어</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating Sale">할인석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_come5" class="airCH1" type="radio" name="air-come">
+																	<label for="air_come5">제주닷컴</label>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="l-area">
+																		<p class="ci">
+																			<img src="/images/web/air/line4_big.png" alt="에어부산">
+																		</p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">에어부산</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating event">이벤트석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_come6" class="airCH1" type="radio" name="air-come">
+																	<label for="air_come6">제주닷컴</label>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="l-area">
+																		<p class="ci">
+																			<img src="/images/web/air/line5_big.png" alt="이스타항공">
+																		</p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">이스타항공</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating business">비즈니스석</p>
+																	<div class="tooltip-btn">
+																		<span>공동운항</span>
+																		<p class="info-text seoul"></p>
+																	</div>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_come7" class="airCH1" type="radio" name="air-come">
+																	<label for="air_come7" class="a-cr">제이엘항공</label>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="l-area">
+																		<p class="ci">
+																			<img src="/images/web/air/line6_big.png" alt="티웨이항공">
+																		</p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">티웨이항공</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating">일반석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_come8" class="airCH1" type="radio" name="air-come">
+																	<label for="air_come8">제주닷컴</label>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="l-area">
+																		<p class="ci">
+																			<img src="/images/web/air/line7_big.png" alt="제주항공">
+																		</p>
+																	</div>
+																	<div class="r-area">
+																		<p class="name">제주항공</p>
+																		<p class="emph">8901편</p>
+																	</div>
+																</td>
+																<td class="time">
+																	<p class="sTime">15:45</p>
+																</td>
+																<td class="time">
+																	<p class="eTime">16:55</p>
+																</td>
+																<td>
+																	<p class="rating">일반석</p>
+																</td>
+																<td>
+																	<p class="seat">9석</p>
+																</td>
+																<td>
+																	<p class="hide">$</p>
+																	<p class="money">24,900</p>
+																	<p class="unit">원</p>
+																</td>
+																<td class="condition">
+																	<input id="air_come9" class="airCH1" type="radio" name="air-come">
+																	<label for="air_come9">제주닷컴</label>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div><!-- //오는편 -->
+								</div>
+							</div><!-- //product_result -->
+
+							<!-- 선택한 항공 스케줄 -->
+							<div class="journey">
+								<h5 class="listTitle1">선택한 항공 스케줄</h5>
+								<table class="commCol ui-data-table add1">
+									<caption>
+										선택한 항공 스케줄
+									</caption>
+									<colgroup>
+										<col style="width: 220px;">
+										<col style="width: 197px;">
+										<col style="width: 210px">
+										<col style="width: 210px">
+										<col style="width: 111px">
+										<col style="width: 127px">
+										<col style="width: 118px">
+									</colgroup>
+									<thead>
+										<tr>
+											<th>여정</th>
+											<th>항공편</th>
+											<th>출발일시</th>
+											<th>도착일시</th>
+											<th>좌석구분</th>
+											<th>총요금</th>
+											<th>요청좌석</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+
+											<!-- 출발편을 선택해 주세요(항공편 선택전) -->
+											<td colspan="7" style="display: none;">
+												<span>출발편을 선택해 주세요.</span>
+											</td><!-- //출발편을 선택해 주세요(항공편 선택전) -->
+
+											<td>
+												<span>[출발편]</span>
+												<span>제주</span>
+												<span class="arrow add1">to</span>
+												<span><strong>김포</strong></span>
+											</td>
+											<td>
+												<span>
+													<img src="/images/web/air/line1_big.png" alt="대한항공">
+												</span>
+												<span>대한항공 1115편</span>
+												<div class="tooltip-btn">
+													<span>공동운항</span>
+													<p class="info-text seoul"></p>
+												</div>
+											</td>
+											<td>2020.09.03 (목) 14:00</td>
+											<td>2020.09.03 (목) 15:05</td>
+											<td><span class="fw rating Sale">할인석</span></td>
+											<td><span>47,000원</span></td>
+											<td><span>1석</span></td>
+										</tr>
+										<tr>
+
+											<!-- 출발편을 선택해 주세요(항공편 선택전) -->
+											<td colspan="7">
+												<span>도착편을 선택해 주세요.</span>
+											</td><!-- //도착편을 선택해 주세요(항공편 선택전) -->
+
+											<!--<td>-->
+												<!--<span>[도착편]</span>-->
+												<!--<span>김포</span>-->
+												<!--<span class="arrow add1">to</span>-->
+												<!--<span><strong>제주</strong></span>-->
+											<!--</td>-->
+											<!--<td>-->
+												<!--<span>-->
+													<!--<img src="/images/web/air/line3_big.png" alt="진에어">-->
+												<!--</span>-->
+												<!--<span>진에어 767편</span>-->
+											<!--</td>-->
+											<!--<td>2020.09.03 (목) 14:00</td>-->
+											<!--<td>2020.09.03 (목) 15:05</td>-->
+											<!--<td>-->
+												<!--<span class="fw rating Special">특가석</span>-->
+												<!--<span class="Event" style="display: none;">이벤트석</span>-->
+											<!--</td>-->
+											<!--<td><span>47,000원</span></td>-->
+											<!--<td><span>1석</span></td>-->
+										</tr>
+									</tbody>
+								</table><!-- //선택한 항공 스케줄 -->
+
+								<!-- payForm -->
+								<div class="payWrap">
+
+									<!-- 가는 항공편 / 오는 항공편 -->
+									<div class="jourList">
+										<div class="go">
+											<h4 class="title">
+												가는 항공편
+												<span class="guid">* 1인 기준 요금입니다.</span>
+											</h4>
+											<table class="commCol">
+												<thead>
+													<tr>
+														<th>항목</th>
+														<th>항공운임</th>
+														<th>유류할증료</th>
+														<th>제세공과금</th>
+														<th>발권수수료</th>
+														<th>인원</th>
+														<th>총액운임</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>성인</td>
+														<td>48,000원</td>
+														<td>2,200원</td>
+														<td>4,000원</td>
+														<td class="tc">0원</td>
+														<td>1명</td>
+														<td class="tc">54,200원</td>
+													</tr>
+													<tr>
+														<td>소아</td>
+														<td>0원</td>
+														<td>0원</td>
+														<td>0원</td>
+														<td>0원</td>
+														<td>0명</td>
+														<td>0원</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div class="come" style="display: block;">
+											<h4 class="title">오는 항공편</h4>
+											<table class="commCol">
+												<thead>
+													<tr>
+														<th>항목</th>
+														<th>항공운임</th>
+														<th>유류할증료</th>
+														<th>제세공과금</th>
+														<th>발권수수료</th>
+														<th>인원</th>
+														<th>총액운임</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>성인</td>
+														<td>48,000원</td>
+														<td>2,200원</td>
+														<td>4,000원</td>
+														<td class="tc">0원</td>
+														<td>0명</td>
+														<td class="tc">54,200원</td>
+													</tr>
+													<tr>
+														<td>소아</td>
+														<td>0원</td>
+														<td>0원</td>
+														<td>0원</td>
+														<td>0원</td>
+														<td>0명</td>
+														<td>0원</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div><!-- //가는 항공편 / 오는 항공편 -->
+
+									<!-- 결제 -->
+									<div class="payForm bl">
+										<form name="reserve_step1_form" method="post" target="_blank" action="http://realtime.jlair.net/contents/index.php">
+											<input type="hidden" name="mid" value="01">
+											<input type="hidden" name="job" value="insert">
+											<!-- 제이엘항공에서 구분하기 위해 추가(2016-07-07, By jdongs) -->
+											<input type="hidden" name="agent_id" value="TAMNAO">
+											<input type="hidden" name="step2_go_air_info" value="OZ|GMP|CJU|20171019|1500|20171019|1610|S|5|8977@48000|48000|48000|4000|2200|54200@48000|48000|48000|2000|2200|52200">
+											<input type="hidden" name="step2_come_air_info" value="LJ|CJU|GMP|20171019|2120|20171019|2230|Y|2|0336@65600|65600|65600|4000|2200|71800@60600|60600|60600|2000|2200|64800">
+											<input type="hidden" name="step2_adult_cnt" value="1">
+											<input type="hidden" name="step2_child_cnt" value="0">
+											<input type="hidden" name="step2_baby_cnt" value="0">
+
+											<!-- view -->
+											<ul class="air-price">
+												<li>
+													<h4 class="title">선택인원</h4>
+													<p class="person">성인 1명 ｜ 소아 0명 ｜ 유아 0명</p>
+												</li>
+												<li>
+													<h4 class="title">총 결제금액</h4>
+													<p class="total"><span class="price">126,000</span>원 <span class="pay-info">(유류할증료/제세공과금 포함)</span></p>
+												</li>
+												<li class="buy">
+													<div class="air-list">
+														<p class="logo">
+															<span class="h-color">판매처 ㅣ</span>
+															<img id="airLogoImg" class="" src="/images/web/air/jl2.png" alt=""><!-- jl2.png -->
+														</p>
+														<p class="bt"><a class="cancel" onclick="air_choice_reset(); ">다시선택</a>
+															<a href="#reserve_step2_go" onclick="go_reserve_step2(); return false;">예약하기</a></p>
+													</div>
+												</li>
+											</ul><!-- //view -->
+										</form>
+									</div><!-- //payForm -->
+
+									<!-- 제주닷컴 예약 폼 -->
+									<form name="jejucom_reserve" action="http://www.jeju.com/item/air_list.html">
+										<input type="hidden" name="flight_scity" value="GMP">
+										<!-- 출발공항코드 -->
+										<input type="hidden" name="flight_ecity" value="CJU">
+										<!-- 도착공항코드 -->
+										<input type="hidden" name="flight_sdate" value="2017-10-19">
+										<!-- 첫째구간 일정 YYYY-MM-DD -->
+										<input type="hidden" name="flight_edate" value="2017-10-19">
+										<!-- 둘째구간 일정(편도일땐 필요없음) YYYY-MM-DD -->
+										<input type="hidden" name="boarding_adult" value="1">
+										<!-- 성인 탑승객수 -->
+										<input type="hidden" name="boarding_junior" value="0">
+										<!-- 소아 탑승객수 -->
+										<input type="hidden" name="booarding_baby" value="0">
+										<!-- 유아 탑승객수 -->
+										<input type="hidden" name="isMain" value="1">
+										<!-- 무조건 "1" 값 전달 -->
+										<input type="hidden" name="flight_type" value="2">
+										<!-- 1:편도 or 2:왕복 -->
+										<input type="hidden" name="agt" value="tamnao">
+										<!--제주닷컴에서 부여해준 업체코드 -->
+										<input type="hidden" name="flight_com[]" value="7C">
+										<!-- 항공사코드. 누락되면 전체항공사 검색 -->
+										<input type="hidden" name="id_1" value="">
+										<!-- 첫번째 구간 선택한 스케줄 (avail_list > avail > id) -->
+										<input type="hidden" name="id_2" value="">
+										<!-- 두번째 구간 선택한 스케줄 (avail_list > avail > id) -->
+									</form><!-- //제주닷컴 예약 폼 -->
+
+									<!-- 총가격 계산용 -->
+									<form name="temp_air">
+										<input type="hidden" name="go_adult_total_price" value="54200">
+										<input type="hidden" name="go_child_total_price" value="52200">
+										<input type="hidden" name="come_adult_total_price" value="71800">
+										<input type="hidden" name="come_child_total_price" value="64800">
+									</form><!-- //총가격 계산용 -->
+								</div>
+
+								<!-- 항공 예약시 유의사항 -->
+								<div class="info">
+									<h4 class="tit">항공 예약시 유의사항</h4>
+									<div class="txt">
+										ㆍ <strong class="comm-color1">즉시결제하지 않으시면 예약이 자동취소됩니다.</strong><br>
+										ㆍ <strong class="comm-color1">예약 후 일정/인원/시간/항공사 변경, 불가하며 취소후 재예약하셔야 합니다.</strong><br>
+										ㆍ <strong class="comm-color1">항공사로부터 확정된 결항/지연된 항공권은 사이트상 임의로 취소시 수수료 면제가 불가합니다.</strong><br>
+										ㆍ 아시아나항공 김포-부산, 부산-제주 구간의 경우 에어부산과 공동운항됩니다. 아시아나항공 마일리지적립은 가능하며 항공편은 에어부산의 항공을 이용합니다.<br>
+										ㆍ 잔여석은 실시간 변동이 있으며, 항공사 사정에 따라 항공스케줄이 변동될 수 있습니다.<br>
+										ㆍ 출·도착 시각은 현지 시각 기준이며 항공기 스케줄은 정부인가 조건으로, 예고 없이 변경 될 수 있습니다.<br>
+										ㆍ 소아 및 유아 할인 적용은 아래와 같이 <strong class="comm-color1">탑승일 기준</strong> 할인 적용 가능 합니다.<br>
+										ㆍ 소아-만 2세(만 24개월) ~만 13세 미만<br>
+										ㆍ 유아-생후 7일 이상 ~ 만 2세(만 24개월)미만<br>
+										ㆍ <strong class="comm-color1">탑승 수속 시 생년월일 확인 가능한 서류 지참 필수 (등본, 가족관계증명서)</strong><br>
+										ㆍ 유아는 좌석이 제공되지 않으므로 좌석이 필요한 유아는 소아로 예매하여야 하며 소아운임이 적용됩니다.<br>
+										ㆍ 구매 후 탑승시점에 유류할증료가 인상되어도 차액을 징수하지 않으며 인하되어도 환급되지 않습니다.<br>
+										ㆍ 항공권 예약변경은 불가능하며, 예약한 항공권을 취소 후 항공권을 재 구매하셔야 합니다.<br>
+										ㆍ 국내선 항공권 예약취소는 출발 20분전까지 예약확인/결제 메뉴에서 직접 취소가 가능하며, 출발 이후에는 유선을 통하여 취소가 가능합니다.
+									</div>
+								</div><!-- //항공 예약시 유의사항 -->
+							</div>
+						</div>
+					</div>
+				</div><!-- //항공요금 검색결과 -->
+			</section><!-- //Change Contents -->
+		</div>
+	</div>
+</main>
+
+<div id="_footer" data-container="footer" class="footer_wrap">
+	<div class="service_support">
+		<div class="inner">
+			<div class="top-wrap">
+				<a class="main-cs" href="../../web/coustmer/qaList.do"><img src="../../images/web/main/main_cs.png" alt="맨위로"></a>
+				<a class="go-top" onclick="go_top();"><img src="../../images/web/comm/top.gif" alt="맨위로"></a>
+			</div>
+			<ul>
+				<li>
+					<a href="/web/etc/introduction.do" target="_blank" title="새창 열림">
+						<span>회사소개</span>
+					</a>
+				</li>
+				<li>
+					<a href="/web/etc/buyToS.do" target="_blank" title="새창 열림">
+						<span>이용약관</span>
+					</a>
+				</li>
+				<li>
+					<a href="/web/coustmer/viewCorpPns.do" target="_blank" title="새창 열림">
+						<span>입점/제휴안내</span>
+					</a>
+				</li>
+				<li>
+					<a href="/web/etc/personalData.do" target="_blank" title="새창 열림">
+						<strong>개인정보취급방침</strong>
+					</a>
+				</li>
+				<li>
+					<a href="/web/coustmer/qaList.do" target="_blank" title="새창 열림">
+						<span>고객센터</span>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=6168204092" target="_blank" title="새창 열림">
+						<span>사업자정보확인</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="corp_wrap">
+		<div class="inner">
+			<div class="corp_wrap_row">
+				<div class="corp_info">
+					<dl>
+						<dt>제주특별자치도관광협회</dt>
+						<dd class="corp_info_cs">
+							<p>
+								<em>1522-3454</em>
+								<span>월~금 09:00 - 18:00</span>
+								<span>점심시간 12:00 - 13:00</span>
+							</p>
+						</dd>
+						<dd class="corp_info_tx">
+							<p>
+								<span>대표이사:부동석</span>
+								<span>63309 제주특별자치도 제주시 첨단로 213-65 제주종합비즈니스센터 3층</span>
+								<span>법인 등록번호:220121-0000107</span>
+								<span>사업자 등록번호:616-82-04092</span>
+							</p>
+							<p>
+								<span>통신판매업번호:제2018-제주아라0049호</span>
+								<span>개인정보관리책임자:김철휘</span>
+								<span>E-mail : tamnao@tamnao.com</span>
+								<span>Fax : 064-749-7445</span>
+							</p>
+						</dd>
+						<dd class="corp_info_copy">
+							<p>탐나오는 통신판매중개자로서 거래당사자가 아니므로 개별 판매자가 등록한 상품거래정보 및 거래에 대해서 책임을 지지 않습니다.</p>
+							<p>Copyright 2018. 제주특별자치도관광협회 All Rights Reserved.</p>
+						</dd>
+					</dl>
+				</div>
+				<div class="corp_rgt" >
+					<div class="f_sns">
+						<a href="https://blog.naver.com/jta0119" class="bl" target="_blank">
+							<span class="blind">블로그</span>
+						</a>
+						<a href="https://post.naver.com/jta0119" class="nv" target="_blank">
+							<span class="blind">네이버</span>
+						</a>
+						<a href="https://www.facebook.com/JEJUTAMNAOTRAVEL/" class="fb" target="_blank">
+							<span class="blind">페이스북</span>
+						</a>
+						<a href="https://www.instagram.com/tamnao_jeju/" class="ig" target="_blank">
+							<span class="blind">인스타그램</span>
+						</a>
+						<a href="https://www.youtube.com/channel/UC5Hk3MfM3RFDz5_Xm9BDJZQ" class="ub" target="_blank">
+							<span class="blind">유튜브</span>
+						</a>
+					</div>
+					<div class="f_down">
+						<a href="https://apps.apple.com/kr/app/%ED%83%90%EB%82%98%EC%98%A4-%EC%A0%9C%EC%A3%BC%EC%97%AC%ED%96%89%EC%8A%A4%ED%86%A0%EC%96%B4/id1489404866" target="_blank">
+							<img src="/images/web/r_main/apple.png" alt="애플 앱다운로드">
+							<span>ISO</span>
+						</a>
+						<a href="https://play.google.com/store/apps/details?id=kr.or.hijeju.tamnao" target="_blank">
+							<img src="/images/web/r_main/google.png" alt="구글 앱다운로드">
+							<span>Android</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="mark-zone">
+				<div class="award">
+					<ul>
+						<li><img src="/images/web/mark/gcs.png" alt="gcs"></li>
+						<li><img src="/images/web/mark/maket.png" alt="market"></li>
+						<li><img src="/images/web/mark/int.png" alt="int"></li>
+						<li><img src="/images/web/mark/web.png" alt="web"></li>
+						<li><img src="/images/web/mark/nba.png" alt="nba"></li>
+						<li><img src="/images/web/mark/ieco.png" alt="ieco"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

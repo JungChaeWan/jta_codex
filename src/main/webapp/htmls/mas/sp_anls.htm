@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<script type="text/javascript" src="/js/jquery-1.11.1.js" ></script>
+<script type="text/javascript" src="/js/common.js" ></script>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache; no-store; no-save" />
+<link rel="stylesheet" type="text/css" href="http://todayjeju.net/css/common/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/mas/layout.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common/page_style.css" />
+<title></title>
+</head>
+<body>
+<!--Header 영역-->
+<div id="wrapper">
+    <div id="header_wrapper">
+        <h1><img src="http://todayjeju.net/images/oss/common/logo.gif" alt="모객 관리자 시스템" /></h1>
+        <!--상단 게시물 롤링--> 
+        <!-- <div class="header_alim">
+			<ul>
+				<li><a href="#">공항 부근으로 렌트카 주차장 부지 찾습니다 평수,금액 무관합...</a></li>
+			</ul>
+		</div> --> 
+        <!--//상단 게시물 롤링-->
+        <ul class="lnb_menu">
+            <!-- <li><a href="/" target="_blank">탐나오 바로가기</a></li> -->
+            <li class="home"><a href="/" target="_blank">탐나오 바로가기</a></li>
+            <li class="log"><a href="/mas/masLogout.do">로그아웃</a></li>
+        </ul>
+        <!--상단메뉴-->
+        <h2 class="lay_none">상단메뉴</h2>
+        <ul class="gnb_menu">
+            <!-- <li class="menu01"><a href="#">홈</a>
+				<ul class="gnb_depth" id="menu01" style="display:none">
+				</ul>
+			</li> -->
+            <li class="menu02"><a href="/mas/detailCorp.do">업체정보</a>
+                <ul class="gnb_depth" id="menu02" style="display:none">
+                    <li><a href="/mas/detailCorp.do">기본정보</a></li>
+                    <li><a href="/mas/detailSpAddInfo.do">판매처관리</a></li>
+                </ul>
+            </li>
+            <li class="menu03"><a href="/mas/sp/productList.do">상품관리</a> 
+                <!-- 상품관리 부분은 각 업체코드별로 분기 -->
+                
+                <ul class="gnb_depth" id="menu03" style="display:none">
+                    <li><a href="/mas/sp/productList.do">상품관리</a></li>
+                    <li><a href="/mas/sp/stockList.do">재고관리</a></li>
+                </ul>
+            </li>
+            <li class="menu04"><a href="/mas/prmt/promotionList.do">프로모션</a></li>
+            <li class="menu06"><a href="/mas/sp/rsvList.do">예약관리</a></li>
+            <li class="menu07"><a href="/mas/sp/otoinqList.do">커뮤니티</a>
+                <ul class="gnb_depth" id="menu07" style="display:none">
+                    <li><a href="/mas/sp/otoinqList.do">1:1문의</a></li>
+                    <li><a href="/mas/sp/useepilList.do">상품평조회</a></li>
+                </ul>
+            </li>
+            <li class="menu08"><a href="/mas/detailCorp.do">정산</a></li>
+            <li class="menu09"><a href="/mas/sp/anls01.do">통계</a></li>
+        </ul>
+        <!--//상단메뉴--> 
+    </div>
+    <!--//Header 영역--> 
+    
+    <!--Contents 영역-->
+    <div id="contents_wrapper">
+        <div id="contents_area"> 
+            <!--본문--> 
+            <!--상품 등록-->
+            <div id="contents">
+            	<h4 class="title03">숙소 통계</h4>
+                <div>
+                    <select id="" name="" style="width:60px;">
+                        <option value="">2015</option>
+                    </select>
+                </div>
+                <div class="list margin-top5 margin-btm15">
+				<table class="table01 list_tb">
+					<colgroup>
+						<col width="*" />
+						<col width="14%" />
+						<col width="14%" />
+						<col width="14%" />
+						<col width="14%" />
+						<col width="14%" />
+						<col width="14%" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>월</th>
+							<th>총 예약건수</th>
+							<th>총 판매금액</th>
+							<th>취소건수</th>
+                            <th>총 환불금액</th>
+							<th>총 취소수수료</th>
+							<th>실매출액<br />
+								(취소수수료포함)
+                            </th>
+						</tr>
+					</thead>
+					<tbody>
+							<tr>
+								<td class="align_ct">1월</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+							</tr>
+                            <tr>
+								<td class="align_ct">2월</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+							</tr>
+                            <tr>
+								<td class="align_ct">3월</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+							</tr>
+					</tbody>
+				</table>	
+				</div>
+                
+                <div>
+                    <select id="" name="" style="width:60px;">
+                        <option value="">2015</option>
+                    </select>
+                    
+                    <select id="" name="" style="width:60px;">
+                        <option value="">1월</option>
+                    </select>
+                </div>
+                <div class="list margin-top5">
+				<table class="table01 list_tb">
+					<colgroup>
+						<col width="*" />
+						<col width="14%" />
+						<col width="14%" />
+						<col width="14%" />
+						<col width="14%" />
+						<col width="14%" />
+						<col width="14%" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>일</th>
+							<th>총 예약건수</th>
+							<th>총 판매금액</th>
+							<th>취소건수</th>
+                            <th>총 환불금액</th>
+							<th>총 취소수수료</th>
+							<th>실매출액<br />
+								(취소수수료포함)
+                            </th>
+						</tr>
+					</thead>
+					<tbody>
+							<tr>
+								<td class="align_ct">1일</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+							</tr>
+                            <tr>
+								<td class="align_ct">2일</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+							</tr>
+                            <tr>
+								<td class="align_ct">3일</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+								<td class="align_ct">&nbsp;</td>
+							</tr>
+					</tbody>
+				</table>	
+				</div>
+            </div>
+            <!--//상품등록--> 
+            <!--//본문--> 
+        </div>
+    </div>
+    <!--//Contents 영역--> 
+</div>
+</body>
+</html>

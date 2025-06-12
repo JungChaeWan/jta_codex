@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="prdt">
+
+<resultMap id="PRDT_R_01" class="oss.prdt.vo.PRDTVO">
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="prdtNm" 			column="PRDT_NM" />
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="corpNm" 			column="CORP_NM" />
+	<result property="tradeStatus" 		column="TRADE_STATUS" />
+	<result property="tradeStatusNm" 	column="TRADE_STATUS_NM" />
+	<result property="confRequestDttm" 	column="CONF_REQUEST_DTTM" />
+	<result property="confDttm" 		column="CONF_DTTM" />
+	<result property="corpLinkYn" 		column="CORP_LINK_YN" />
+	<result property="mappingNum" 		column="MAPPING_NUM" />
+</resultMap>
+
+<resultMap id="PRDT_R_06" class="oss.prdt.vo.PRDTVO">
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="corpNm" 			column="CORP_NM" />
+	<result property="confCnt" 			column="CONF_CNT" />
+	<result property="cntAplDt" 		column="CNT_APL_DT" />
+	<result property="amtAplDt" 		column="AMT_APL_DT" />
+	<result property="rsvTelNum" 		column="RSV_TEL_NUM" />
+	<result property="admMobile" 		column="ADM_MOBILE" />
+	<result property="corpAdmEmail" 	column="ADM_EMAIL" />
+</resultMap>
+
+<resultMap id="PRDT_R_08" class="oss.prdt.vo.PRDTVO">
+	<result property="adTotCnt" 			column="AD_TOT_CNT" />
+	<result property="adSaleCnt" 			column="AD_SALE_CNT" />
+	<result property="adSaleCnt2" 			column="AD_SALE_CNT2" />
+</resultMap>
+
+<resultMap id="PRDT_R_09" class="oss.prdt.vo.PRDTVO">
+	<result property="rcTotCnt" 		column="RC_TOT_CNT" />
+	<result property="rcSaleCnt" 		column="RC_SALE_CNT" />
+</resultMap>
+
+<resultMap id="PRDT_R_12" class="oss.prdt.vo.PRDTVO">
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="corpCd" 			column="CORP_CD" />
+	<result property="corpNm" 			column="CORP_NM" />
+	<result property="tradeStatus" 		column="TRADE_STATUS" />
+	<result property="tradeStatusNm" 	column="TRADE_STATUS_NM" />
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="prdtNm" 			column="PRDT_NM" />
+	<result property="tamnacardPrdtYn" 	column="TAMNACARD_PRDT_YN" />
+</resultMap>
+
+<resultMap id="PRDT_R_14" class="oss.prdt.vo.PRDTVO">
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="prdtNm" 			column="PRDT_NM" />
+	<result property="confDttm" 		column="CONF_DTTM" />
+</resultMap>
+
+<!-- OSS 상품 조회 -->
+<select id="PRDT_S_01" resultMap="PRDT_R_01">
+SELECT PRDT_NUM
+     , PRDT_NM
+     , PRDT_CD
+     , CORP_ID
+     , CORP_NM
+     , TRADE_STATUS
+     , TRADE_STATUS_NM
+     , CONF_REQUEST_DTTM
+     , CONF_DTTM
+     , CORP_LINK_YN
+     , MAPPING_NUM
+  FROM (SELECT ROWNUM AS RN
+             , PRDT_NUM
+             , PRDT_NM
+             , PRDT_CD
+             , CORP_ID
+             , CORP_NM
+             , TRADE_STATUS
+             , TRADE_STATUS_NM
+             , CONF_REQUEST_DTTM
+             , CONF_DTTM
+             , CORP_LINK_YN
+             , MAPPING_NUM
+          FROM (SELECT PRDT_NUM
+		             , PRDT_NM
+		             , PRDT_CD
+		             , T_CORP.CORP_ID
+		             , CASE WHEN T_CORP.CORP_NM!=AD_NM THEN T_CORP.CORP_NM || ' / ' || AD_NM ELSE T_CORP.CORP_NM END AS CORP_NM		             
+		             , TRADE_STATUS
+		             , T_CD.CD_NM AS TRADE_STATUS_NM
+		             , NVL(CONF_REQUEST_DTTM, TO_DATE('2015/09/29 01:00:00', 'YYYY/MM/DD HH:MI:SS')) AS CONF_REQUEST_DTTM
+					 , CONF_DTTM
+		             , T_CORP.CORP_LINK_YN
+		             , T_PRDT.MAPPING_NUM
+		          FROM (SELECT PRDT_NUM
+		                     , PRDT_NM
+		                     , CORP_ID
+		                     , TRADE_STATUS
+		                     , CONF_REQUEST_DTTM
+		                     , CONF_DTTM
+		                     , MAPPING_NUM
+		                     , 'AD' AS PRDT_CD
+		                     , (SELECT AD_AREA FROM TB_AD_DFTINF WHERE CORP_ID=TB_AD_PRDTINF.CORP_ID) AS AREA_CD
+		                     , (SELECT AD_NM FROM TB_AD_DFTINF WHERE CORP_ID=TB_AD_PRDTINF.CORP_ID) AS AD_NM
+		                  FROM TB_AD_PRDTINF
+		                    <isEqual property="sDisplayYn" compareValue="Y">
+		                    WHERE TRADE_STATUS='TS03' AND PRINT_YN='Y'
+		                    </isEqual>
+		                    <isEqual property="sDisplayYn" compareValue="N">
+		                    WHERE TRADE_STATUS NOT IN ('TS01', 'TS03') OR PRINT_YN='N'
+		                    </isEqual>
+		                 UNION
+		                SELECT PRDT_NUM
+		                     , PRDT_NM || ' / ' || (SELECT CD_NM FROM TB_CD WHERE CD_NUM=USE_FUEL_DIV) || ' / ' ||
+					             	CASE
+                                      WHEN ISR_DIV='ID00' THEN '자차자율'
+                                      WHEN ISR_DIV='ID10' THEN 
+                                        CASE
+                                          WHEN ISR_TYPE_DIV='GENL' THEN '자차포함(일반자차)'
+                                          WHEN ISR_TYPE_DIV='LUXY' THEN '자차포함(고급자차)'
+                                          ELSE '자차포함'
+                                        END                                                         
+                                      WHEN ISR_DIV='ID20' THEN '자차필수'
+                                    END AS PRDT_NM
+		                     , CORP_ID
+		                     , TRADE_STATUS
+		                     , CONF_REQUEST_DTTM
+		                     , CONF_DTTM
+		                     , MAPPING_NUM
+		                     , 'RC' AS PRDT_CD
+		                     , '' AS AREA_CD
+		                     , '' AS AD_NM
+		                  FROM TB_RC_PRDTINF
+		                    <isEqual property="sDisplayYn" compareValue="Y">
+		                    WHERE TRADE_STATUS='TS03' AND PRINT_YN='Y'
+		                    </isEqual>
+		                    <isEqual property="sDisplayYn" compareValue="N">
+		                    WHERE TRADE_STATUS NOT IN ('TS01', 'TS03') OR PRINT_YN='N'
+		                    </isEqual>
+		                 UNION
+		                SELECT PRDT_NUM
+		                     , PRDT_NM
+		                     , CORP_ID
+		                     , TRADE_STATUS
+		                     , CONF_REQUEST_DTTM
+		                     , CONF_DTTM
+		                     , '' AS MAPPING_NUM
+		                     , 'GL' AS PRDT_CD
+		                     , '' AS AREA_CD
+		                     , '' AS AD_NM
+		                  FROM TB_GL_PRDTINF
+		                    <isEqual property="sDisplayYn" compareValue="Y">
+		                    WHERE TRADE_STATUS='TS03'
+		                    </isEqual>
+		                    <isEqual property="sDisplayYn" compareValue="N">
+		                    WHERE TRADE_STATUS NOT IN ('TS01', 'TS03')
+		                    </isEqual>
+		               ) T_PRDT
+		         INNER JOIN TB_CORP T_CORP
+		            ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+		         <isNotEmpty property="sCorpId">
+				   AND T_CORP.CORP_ID=#sCorpId#
+				 </isNotEmpty>
+		         <isNotEmpty property="sCorpNm">
+				   AND (T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+				   		OR T_CORP.CORP_ID IN (SELECT CORP_ID FROM TB_AD_DFTINF WHERE AD_NM LIKE '%' || #sCorpNm# || '%')
+				     )
+				 </isNotEmpty>
+		         INNER JOIN TB_CD   T_CD
+		            ON T_CD.CD_NUM = T_PRDT.TRADE_STATUS
+		         WHERE T_PRDT.TRADE_STATUS NOT IN ('TS01')
+		         <isNotEmpty property="sPrdtNm">
+				   AND T_PRDT.PRDT_NM LIKE '%'||#sPrdtNm#||'%'
+				 </isNotEmpty>
+				 <isNotEmpty property="sAreaCd">
+				   AND T_PRDT.AREA_CD=#sAreaCd#
+				 </isNotEmpty>
+		         <isNotEmpty property="sTradeStatus">
+				   AND T_PRDT.TRADE_STATUS = #sTradeStatus#
+				 </isNotEmpty>
+		         <isNotEmpty property="sPrdtCd">
+				   AND T_PRDT.PRDT_CD = #sPrdtCd#
+				 </isNotEmpty>
+		         <isNotEmpty property="sConfStartDt">
+				 	<![CDATA[
+				   AND T_PRDT.CONF_DTTM >= TO_DATE(REPLACE(#sConfStartDt#, '-')||'000000', 'YYYYMMDDHH24MISS')
+				   ]]>
+				 </isNotEmpty>
+		         <isNotEmpty property="sConfEndDt">
+				 	<![CDATA[
+				   AND T_PRDT.CONF_DTTM <= TO_DATE(REPLACE(#sConfEndDt#, '-')||'235959', 'YYYYMMDDHH24MISS')
+				   ]]>
+				 </isNotEmpty>
+				 ORDER BY (CASE TRADE_STATUS WHEN 'TS01' THEN 1 WHEN 'TS02' THEN 2 WHEN 'TS03' THEN 3 WHEN 'TS04' THEN 5 WHEN 'TS05' THEN 8 WHEN 'TS06' THEN 4 WHEN 'TS07' THEN 6 WHEN 'TS08' THEN 7 ELSE 8 END )
+				 , CONF_REQUEST_DTTM DESC
+				 )
+       )
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="PRDT_S_02" resultClass="int">
+SELECT COUNT(PRDT_NUM) AS CNT
+  FROM (SELECT PRDT_NUM
+             , PRDT_NM
+             , CORP_ID
+             , TRADE_STATUS
+             , CONF_REQUEST_DTTM
+             , CONF_DTTM
+             , 'AD' AS PRDT_CD
+             , (SELECT AD_AREA FROM TB_AD_DFTINF WHERE CORP_ID=TB_AD_PRDTINF.CORP_ID) AS AREA_CD
+          FROM TB_AD_PRDTINF
+            <isEqual property="sDisplayYn" compareValue="Y">
+            WHERE TRADE_STATUS='TS03' AND PRINT_YN='Y'
+            </isEqual>
+            <isEqual property="sDisplayYn" compareValue="N">
+            WHERE TRADE_STATUS NOT IN ('TS01', 'TS03') OR PRINT_YN='N'
+            </isEqual>
+         UNION
+        SELECT PRDT_NUM
+             , PRDT_NM
+             , CORP_ID
+             , TRADE_STATUS
+             , CONF_REQUEST_DTTM
+             , CONF_DTTM
+             , 'RC' AS PRDT_CD
+             , '' AS AREA_CD
+          FROM TB_RC_PRDTINF
+            <isEqual property="sDisplayYn" compareValue="Y">
+            WHERE TRADE_STATUS='TS03' AND PRINT_YN='Y'
+            </isEqual>
+            <isEqual property="sDisplayYn" compareValue="N">
+            WHERE TRADE_STATUS NOT IN ('TS01', 'TS03') OR PRINT_YN='N'
+            </isEqual>
+         UNION
+        SELECT PRDT_NUM
+             , PRDT_NM
+             , CORP_ID
+             , TRADE_STATUS
+             , CONF_REQUEST_DTTM
+             , CONF_DTTM
+             , 'GL' AS PRDT_CD
+             , '' AS AREA_CD
+          FROM TB_GL_PRDTINF
+            <isEqual property="sDisplayYn" compareValue="Y">
+            WHERE TRADE_STATUS='TS03'
+            </isEqual>
+            <isEqual property="sDisplayYn" compareValue="N">
+            WHERE TRADE_STATUS NOT IN ('TS01', 'TS03')
+            </isEqual>
+       ) T_PRDT
+ INNER JOIN TB_CORP T_CORP
+    ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+ <isNotEmpty property="sCorpId">
+   AND T_CORP.CORP_ID=#sCorpId#
+ </isNotEmpty>
+ <isNotEmpty property="sCorpNm">
+   AND (
+   	  T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+   	  OR T_CORP.CORP_ID IN (SELECT CORP_ID
+        FROM TB_AD_DFTINF
+      WHERE AD_NM LIKE '%' ||#sCorpNm#|| '%')
+   )
+ </isNotEmpty>
+ INNER JOIN TB_CD   T_CD
+    ON T_CD.CD_NUM = T_PRDT.TRADE_STATUS
+ WHERE TRADE_STATUS NOT IN ('TS01')
+ <isNotEmpty property="sPrdtNm">
+   AND T_PRDT.PRDT_NM LIKE '%'||#sPrdtNm#||'%'
+ </isNotEmpty>
+ <isNotEmpty property="sAreaCd">
+   AND T_PRDT.AREA_CD=#sAreaCd#
+ </isNotEmpty>
+ <isNotEmpty property="sTradeStatus">
+   AND T_PRDT.TRADE_STATUS = #sTradeStatus#
+ </isNotEmpty>
+ <isNotEmpty property="sPrdtCd">
+   AND T_PRDT.PRDT_CD = #sPrdtCd#
+ </isNotEmpty>
+<isNotEmpty property="sConfStartDt">
+	<![CDATA[
+			   AND T_PRDT.CONF_DTTM >= TO_DATE(REPLACE(#sConfStartDt#, '-')||'000000', 'YYYYMMDDHH24MISS')
+			   ]]>
+</isNotEmpty>
+<isNotEmpty property="sConfEndDt">
+	<![CDATA[
+			   AND T_PRDT.CONF_DTTM <= TO_DATE(REPLACE(#sConfEndDt#, '-')||'235959', 'YYYYMMDDHH24MISS')
+			   ]]>
+</isNotEmpty>
+</select>
+
+
+<select id="PRDT_S_03" resultClass="int">
+SELECT COUNT(*)
+FROM (
+    SELECT PRDT_NUM
+     FROM TB_AD_PRDTINF
+     WHERE TRADE_STATUS=#tradeStatus#
+    UNION ALL
+    SELECT PRDT_NUM
+     FROM TB_RC_PRDTINF
+     WHERE TRADE_STATUS=#tradeStatus#
+     )
+</select>
+
+
+<select id="PRDT_S_04" resultClass="int">
+SELECT COUNT(PRDT_NUM)
+ FROM TB_SP_PRDTINF
+ WHERE TRADE_STATUS=#tradeStatus#
+</select>
+
+
+<select id="PRDT_S_05" resultClass="int">
+SELECT COUNT(PRDT_NUM)
+ FROM TB_SV_PRDTINF
+ WHERE TRADE_STATUS=#tradeStatus#
+</select>
+
+<!-- 상품수량체크  -->
+<select id="PRDT_S_06" resultMap="PRDT_R_06">
+	SELECT
+		CORP_ID,
+		CORP_NM,
+		CONF_CNT,
+		CNT_APL_DT,
+		AMT_APL_DT,
+		(SELECT RSV_TEL_NUM FROM TB_CORP WHERE CORP_ID = T1.CORP_ID) AS RSV_TEL_NUM,
+		(SELECT ADM_MOBILE FROM TB_CORP WHERE CORP_ID = T1.CORP_ID) AS ADM_MOBILE,
+	    (SELECT ADM_EMAIL FROM TB_CORP WHERE CORP_ID = T1.CORP_ID) AS ADM_EMAIL,
+		RN
+	FROM(
+		SELECT 
+			CORP_ID,			<!-- 업체ID -->		
+			CORP_NM,			<!-- 업체명 -->
+			CONF_CNT,			<!-- 만료상품개수 -->
+			CNT_APL_DT,			<!-- 수량만료날짜 -->
+			AMT_APL_DT,			<!-- 금액만료날짜 -->
+			ROW_NUMBER() OVER(ORDER BY CNT_APL_DT,AMT_APL_DT,CORP_NM) AS RN
+		FROM(			
+			SELECT
+				A.CORP_ID,
+				COUNT(*) CONF_CNT,
+				(SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = A.CORP_ID) AS CORP_NM,
+				'AD' AS CORP_CODE,
+				MIN(C.CNT_APL_DT) AS CNT_APL_DT,
+				MIN(B.AMT_APL_DT) AS AMT_APL_DT
+			FROM
+				TB_AD_PRDTINF AS A
+			<!-- 숙박금액체크 -->	
+			LEFT JOIN
+				(SELECT
+					PRDT_NUM,
+					MAX(APL_DT) AS AMT_APL_DT
+				FROM
+					TB_AD_AMTINF
+				WHERE 1=1
+				GROUP BY PRDT_NUM) AS B
+			ON A.PRDT_NUM = B.PRDT_NUM
+			<!-- 숙박수량체크 -->
+			LEFT JOIN
+				(SELECT
+					PRDT_NUM,
+					MAX(APL_DT) AS CNT_APL_DT
+				FROM
+					TB_AD_CNTINF
+				WHERE 1=1
+				GROUP BY PRDT_NUM) AS C
+			ON A.PRDT_NUM = C.PRDT_NUM
+			WHERE
+				TRADE_STATUS  = 'TS03'
+			AND AMT_APL_DT <![CDATA[>=]]> TO_CHAR(SYSDATE,'YYYYMMDD')
+			AND CNT_APL_DT <![CDATA[>=]]> TO_CHAR(SYSDATE,'YYYYMMDD')
+			<isNotEmpty property="sMonthEnd">
+			AND AMT_APL_DT <![CDATA[<=]]> TO_CHAR(ADD_MONTHS(SYSDATE,#sMonthEnd#),'YYYYMMDD')
+			AND CNT_APL_DT <![CDATA[<=]]> TO_CHAR(ADD_MONTHS(SYSDATE,#sMonthEnd#),'YYYYMMDD')
+			</isNotEmpty>
+			AND A.CORP_ID IN(SELECT CORP_ID FROM TB_CORP WHERE CORP_ID = A.CORP_ID AND TRADE_STATUS_CD = 'TS03'  )
+			GROUP BY CORP_ID 
+			UNION
+			<!-- 렌터카 수량체크 -->
+			SELECT
+				A.CORP_ID,
+				COUNT(*) CONF_CNT,
+				(SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = A.CORP_ID) AS CORP_NM,
+				'RC' AS CORP_CODE,
+				MIN(B.APL_DT) AS APL_DT,
+				'' AS  AMT_APL_DT
+			FROM
+				TB_RC_PRDTINF AS A
+			JOIN
+				(SELECT
+					PRDT_NUM,
+					MAX(APL_DT) AS APL_DT
+				FROM
+					TB_RC_CNTINF
+				WHERE 1=1
+				GROUP BY PRDT_NUM) AS B
+			ON A.PRDT_NUM = B.PRDT_NUM
+			WHERE
+				TRADE_STATUS  = 'TS03'
+			AND APL_DT <![CDATA[>=]]> TO_CHAR(SYSDATE,'YYYYMMDD')
+			<isNotEmpty property="sMonthEnd">
+			AND APL_DT <![CDATA[<=]]> TO_CHAR(ADD_MONTHS(SYSDATE,#sMonthEnd#),'YYYYMMDD')
+			</isNotEmpty>
+			AND A.CORP_ID IN(SELECT CORP_ID FROM TB_CORP WHERE CORP_ID = A.CORP_ID AND TRADE_STATUS_CD = 'TS03'  )
+			GROUP BY CORP_ID)
+		WHERE 1=1 
+		<isNotEmpty property="sCorpNm">
+		AND CORP_NM LIKE '%'|| #sCorpNm#||'%' 
+	 	</isNotEmpty>
+	 	<isNotEmpty property="sPrdtCd">
+		AND CORP_CODE = #sPrdtCd# 
+	 	</isNotEmpty>
+ 	)T1
+ 	WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+	 	
+</select>
+
+<select id="PRDT_S_12" resultMap="PRDT_R_12">
+	SELECT * FROM (
+		SELECT
+			ROWNUM AS RN,
+			CORP_ID,
+			CORP_CD,
+			CORP_NM,
+			TRADE_STATUS,
+			TRADE_STATUS_NM,
+			PRDT_NUM,
+			PRDT_NM,
+			TAMNACARD_PRDT_YN
+		FROM(
+			SELECT
+				ROWNUM AS RN,
+				B.CORP_ID,
+				A.CORP_CD,
+				A.CORP_NM,
+				B.TRADE_STATUS,
+				C. CD_NM AS TRADE_STATUS_NM,
+				B.PRDT_NUM,
+				B.PRDT_NM,
+				B.TAMNACARD_PRDT_YN
+			FROM
+				TB_CORP AS A
+			JOIN(
+				SELECT
+					CORP_ID,
+					PRDT_NUM,
+					TRADE_STATUS,
+					PRDT_NM,
+					TAMNACARD_PRDT_YN
+				FROM TB_AD_PRDTINF
+				UNION ALL
+				SELECT
+					CORP_ID,
+					PRDT_NUM,
+					TRADE_STATUS,
+					PRDT_NM,
+					TAMNACARD_PRDT_YN
+				FROM TB_RC_PRDTINF
+				UNION ALL
+				SELECT
+					CORP_ID,
+					PRDT_NUM,
+					TRADE_STATUS,
+					PRDT_NM,
+					TAMNACARD_PRDT_YN
+				FROM TB_SP_PRDTINF
+				UNION ALL
+				SELECT
+					CORP_ID,
+					PRDT_NUM,
+					TRADE_STATUS,
+					PRDT_NM,
+					TAMNACARD_PRDT_YN
+				FROM TB_SV_PRDTINF
+			) AS B
+			ON A.CORP_ID = B.CORP_ID
+			JOIN TB_CD AS C
+			ON B.TRADE_STATUS = C.CD_NUM
+			WHERE A.CORP_ID = #sCorpId#
+			<isNotEmpty property="sPrdtNm">
+			AND B.PRDT_NM LIKE '%'|| #sPrdtNm#||'%'
+			</isNotEmpty>
+			ORDER BY PRDT_NM,
+			(CASE TRADE_STATUS
+				WHEN 'TS03' THEN 0
+				WHEN 'TS01' THEN 1
+				WHEN 'TS02' THEN 2
+				WHEN 'TS04' THEN 3
+				WHEN 'TS05' THEN 4
+				WHEN 'TS06' THEN 5
+				ELSE 1
+			END)
+		)
+	)
+	WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+
+</select>
+
+<select id="PRDT_S_13" resultClass="int">
+	SELECT
+		COUNT(*)
+	FROM
+		TB_CORP AS A
+	JOIN(
+		SELECT
+			CORP_ID,
+			PRDT_NUM,
+			TRADE_STATUS,
+			PRDT_NM,
+			TAMNACARD_PRDT_YN
+		FROM TB_AD_PRDTINF
+		UNION ALL
+		SELECT
+			CORP_ID,
+			PRDT_NUM,
+			TRADE_STATUS,
+			PRDT_NM,
+			TAMNACARD_PRDT_YN
+		FROM TB_RC_PRDTINF
+		UNION ALL
+		SELECT
+			CORP_ID,
+			PRDT_NUM,
+			TRADE_STATUS,
+			PRDT_NM,
+			TAMNACARD_PRDT_YN
+		FROM TB_SP_PRDTINF
+		UNION ALL
+		SELECT
+			CORP_ID,
+			PRDT_NUM,
+			TRADE_STATUS,
+			PRDT_NM,
+			TAMNACARD_PRDT_YN
+		FROM TB_SV_PRDTINF
+	) AS B
+	ON A.CORP_ID = B.CORP_ID
+	JOIN TB_CD AS C
+	ON B.TRADE_STATUS = C.CD_NUM
+	WHERE A.CORP_ID = #sCorpId#
+	<isNotEmpty property="sPrdtNm">
+	AND B.PRDT_NM LIKE '%'|| #sPrdtNm#||'%'
+	</isNotEmpty>
+</select>
+
+<!-- 상품수량체크 CNT  -->
+<select id="PRDT_S_07" resultClass="int">
+	SELECT
+		COUNT(*)
+	FROM(			
+		SELECT
+			A.CORP_ID,
+			COUNT(*) CONF_CNT,
+			(SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = A.CORP_ID) AS CORP_NM,
+			'AD' AS CORP_CODE,
+			MIN(C.CNT_APL_DT) AS CNT_APL_DT,
+			MIN(B.AMT_APL_DT) AS AMT_APL_DT
+		FROM
+			TB_AD_PRDTINF AS A
+		LEFT JOIN
+			(SELECT
+				PRDT_NUM,
+				MAX(APL_DT) AS AMT_APL_DT
+			FROM
+				TB_AD_AMTINF
+			WHERE 1=1
+			GROUP BY PRDT_NUM) AS B
+		ON A.PRDT_NUM = B.PRDT_NUM
+		LEFT JOIN
+			(SELECT
+				PRDT_NUM,
+				MAX(APL_DT) AS CNT_APL_DT
+			FROM
+				TB_AD_CNTINF
+			WHERE 1=1
+			GROUP BY PRDT_NUM) AS C
+		ON A.PRDT_NUM = C.PRDT_NUM
+		WHERE
+			TRADE_STATUS  = 'TS03'
+		AND AMT_APL_DT <![CDATA[>=]]> TO_CHAR(SYSDATE,'YYYYMMDD')
+		AND CNT_APL_DT <![CDATA[>=]]> TO_CHAR(SYSDATE,'YYYYMMDD')
+		<isNotEmpty property="sMonthEnd">
+		AND AMT_APL_DT <![CDATA[<=]]> TO_CHAR(ADD_MONTHS(SYSDATE,#sMonthEnd#),'YYYYMMDD')
+		AND CNT_APL_DT <![CDATA[<=]]> TO_CHAR(ADD_MONTHS(SYSDATE,#sMonthEnd#),'YYYYMMDD')
+		</isNotEmpty>
+		AND A.CORP_ID IN(SELECT CORP_ID FROM TB_CORP WHERE CORP_ID = A.CORP_ID AND TRADE_STATUS_CD = 'TS03'  )
+		GROUP BY CORP_ID 
+		UNION
+		SELECT
+			A.CORP_ID,
+			COUNT(*) CONF_CNT,
+			(SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = A.CORP_ID) AS CORP_NM,
+			'RC' AS CORP_CODE,
+			MIN(B.APL_DT) AS APL_DT,
+			'' AS  AMT_APL_DT
+		FROM
+			TB_RC_PRDTINF AS A
+		JOIN
+			(SELECT
+				PRDT_NUM,
+				MAX(APL_DT) AS APL_DT
+			FROM
+				TB_RC_CNTINF
+			WHERE 1=1
+			GROUP BY PRDT_NUM) AS B
+		ON A.PRDT_NUM = B.PRDT_NUM
+		WHERE
+			TRADE_STATUS  = 'TS03'
+		AND APL_DT <![CDATA[>=]]> TO_CHAR(SYSDATE,'YYYYMMDD')
+		<isNotEmpty property="sMonthEnd">
+		AND APL_DT <![CDATA[<=]]> TO_CHAR(ADD_MONTHS(SYSDATE,#sMonthEnd#),'YYYYMMDD')
+		</isNotEmpty>
+		AND A.CORP_ID IN(SELECT CORP_ID FROM TB_CORP WHERE CORP_ID = A.CORP_ID AND TRADE_STATUS_CD = 'TS03'  )
+		GROUP BY CORP_ID)
+	WHERE 1=1 
+	<isNotEmpty property="sCorpNm">
+	AND CORP_NM LIKE '%'|| #sCorpNm#||'%' 
+ 	</isNotEmpty>
+	<isNotEmpty property="sPrdtCd">
+	AND CORP_CODE = #sPrdtCd# 
+ 	</isNotEmpty>
+</select>
+
+<select id="PRDT_S_08" resultMap="PRDT_R_08">
+
+	SELECT 
+		(SELECT COUNT(*) FROM TB_CORP WHERE TRADE_STATUS_CD = 'TS03' AND CORP_CD = 'AD') AS AD_TOT_CNT,
+		SUM(T1.AD_SALE_CNT) AS AD_SALE_CNT,
+		SUM(T1.AD_SALE_CNT2) AS AD_SALE_CNT2
+	FROM(		
+		SELECT 
+			COUNT(CASE WHEN AMT_APL_DT >= TO_CHAR(SYSDATE,'YYYYMMDD')  THEN 1 END) AS AD_SALE_CNT,
+			COUNT(CASE WHEN AMT_APL_DT >= TO_CHAR(SYSDATE,'YYYYMMDD')  AND CNT_APL_DT >= TO_CHAR(SYSDATE,'YYYYMMDD')  THEN 1 END) AS AD_SALE_CNT2
+		FROM(			
+			SELECT
+				A.CORP_ID,
+				'AD' AS CORP_CODE,
+				MAX(C.CNT_APL_DT) AS CNT_APL_DT,
+				MAX(B.AMT_APL_DT) AS AMT_APL_DT
+			FROM
+				TB_AD_PRDTINF AS A
+			LEFT JOIN
+				(SELECT
+					PRDT_NUM,
+					MAX(APL_DT) AS AMT_APL_DT
+				FROM
+					TB_AD_AMTINF
+				WHERE 1=1
+				GROUP BY PRDT_NUM) AS B
+			ON A.PRDT_NUM = B.PRDT_NUM
+			LEFT JOIN
+				(SELECT
+					PRDT_NUM,
+					MAX(APL_DT) AS CNT_APL_DT
+				FROM
+					TB_AD_CNTINF
+				WHERE 1=1
+				GROUP BY PRDT_NUM) AS C
+			ON A.PRDT_NUM = C.PRDT_NUM
+			WHERE
+				TRADE_STATUS  = 'TS03'
+			AND A.CORP_ID IN (SELECT CORP_ID FROM TB_CORP WHERE TRADE_STATUS_CD ='TS03')
+			GROUP BY CORP_ID)
+		) T1
+	 	
+</select>
+<select id="PRDT_S_09" resultMap="PRDT_R_09">
+
+	SELECT
+		(SELECT COUNT(*) FROM TB_CORP WHERE TRADE_STATUS_CD = 'TS03' AND CORP_CD = 'RC') AS RC_TOT_CNT,
+		COUNT(*) AS RC_SALE_CNT
+	FROM
+		TB_CORP AS TB1
+	WHERE
+	TRADE_STATUS_CD = 'TS03'
+	AND CORP_ID IN (
+		SELECT
+			CORP_ID
+		FROM(
+			SELECT
+				B.CORP_ID,
+				A.PRDT_NUM,
+				A.APL_DT,
+				TOTAL_CAR_NUM,
+				(CASE WHEN TOTAL_CAR_NUM > 0 THEN 'Y' ELSE 'N' END ) AS LIMIT_YN
+			FROM
+				TB_RC_CNTINF AS A
+			JOIN
+				TB_RC_PRDTINF AS B
+			ON A.PRDT_NUM = B.PRDT_NUM AND B.TRADE_STATUS = 'TS03'
+			INNER JOIN
+				(SELECT PRDT_NUM, MAX(APL_DT) AS APL_DT FROM TB_RC_CNTINF GROUP BY PRDT_NUM) AS C
+			ON A.PRDT_NUM = C.PRDT_NUM AND A.APL_DT = C.APL_DT)
+		WHERE
+		APL_DT >= TO_CHAR(SYSDATE,'YYYYMMDD') OR TOTAL_CAR_NUM != 0
+		GROUP BY CORP_ID)
+</select>
+
+
+<!-- 상품수량체크 CNT  -->
+<select id="PRDT_S_10" resultClass="int">
+	SELECT
+		COUNT(*)
+	FROM(
+		SELECT 	RSV_NUM FROM TB_AD_RSV WHERE RSV_STATUS_CD = 'RS11'
+		UNION ALL
+		SELECT 	RSV_NUM FROM TB_RC_RSV WHERE RSV_STATUS_CD = 'RS11'
+		UNION ALL
+		SELECT 	RSV_NUM FROM TB_SP_RSV WHERE RSV_STATUS_CD = 'RS11'
+		UNION ALL
+		SELECT 	RSV_NUM FROM TB_SV_RSV WHERE RSV_STATUS_CD = 'RS11'
+	) AS T1
+	JOIN TB_LGPAYINF AS T2
+	ON T1.RSV_NUM = T2.LGD_OID AND T2.LGD_CASFLAGY = 'I'
+</select>
+
+<!-- 숙소 만료상품 엑셀저장  -->
+<select id="PRDT_S_11" resultMap="PRDT_R_06">
+	SELECT CORP_ID,
+	CORP_NM,
+	CONF_CNT,
+	CNT_APL_DT,
+	AMT_APL_DT,
+	(SELECT RSV_TEL_NUM FROM TB_CORP WHERE CORP_ID = T1.CORP_ID) AS RSV_TEL_NUM,
+	(SELECT ADM_MOBILE FROM TB_CORP WHERE CORP_ID = T1.CORP_ID)  AS ADM_MOBILE,
+	(SELECT ADM_EMAIL FROM TB_CORP WHERE CORP_ID = T1.CORP_ID) AS ADM_EMAIL,
+	RN
+	FROM (SELECT CORP_ID,
+	CORP_NM,
+	CONF_CNT,
+	CNT_APL_DT,
+	AMT_APL_DT,
+	ROW_NUMBER() OVER(ORDER BY CNT_APL_DT,AMT_APL_DT,CORP_NM) AS RN
+	FROM (SELECT A.CORP_ID,
+	COUNT(*)
+	CONF_CNT,
+	(SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = A.CORP_ID) AS CORP_NM,
+	'AD'                                                    AS CORP_CODE,
+	MIN(C.CNT_APL_DT)                                       AS CNT_APL_DT,
+	MIN(B.AMT_APL_DT)                                       AS AMT_APL_DT
+	FROM TB_AD_PRDTINF AS A
+	LEFT JOIN (SELECT PRDT_NUM, MAX(APL_DT) AS AMT_APL_DT
+	FROM TB_AD_AMTINF
+	GROUP BY PRDT_NUM) AS B
+	ON A.PRDT_NUM = B.PRDT_NUM
+	LEFT JOIN (SELECT PRDT_NUM, MAX(APL_DT) AS CNT_APL_DT
+	FROM TB_AD_CNTINF
+	GROUP BY PRDT_NUM) AS C ON A.PRDT_NUM = C.PRDT_NUM
+	WHERE TRADE_STATUS = 'TS03'
+	AND (AMT_APL_DT <![CDATA[<]]> TO_CHAR(SYSDATE, 'YYYYMMDD') OR CNT_APL_DT <![CDATA[<]]> TO_CHAR(SYSDATE, 'YYYYMMDD'))
+	AND A.CORP_ID IN (SELECT CORP_ID
+	FROM TB_CORP
+	WHERE CORP_ID = A.CORP_ID
+	AND TRADE_STATUS_CD = 'TS03')
+	GROUP BY CORP_ID
+	)
+	WHERE 1 = 1 AND CORP_CODE = 'AD') T1
+	ORDER BY CNT_APL_DT DESC, AMT_APL_DT DESC
+
+</select>
+
+<!-- 판매통계 MERGE -->
+<update id="SALE_ANLS_M_00">
+ MERGE INTO TB_SALE_ANLS ANLS
+ USING (SELECT #prdtNum# AS PRDT_NUM
+             , TO_CHAR(SYSDATE, 'YYYYMMDD') AS BUY_DT
+          FROM DUAL) ANLS2
+    ON (ANLS2.PRDT_NUM = ANLS.PRDT_NUM
+   AND ANLS2.BUY_DT   = ANLS.BUY_DT)
+  WHEN MATCHED THEN
+UPDATE
+   SET BUY_NUM = BUY_NUM + 1
+ WHEN NOT MATCHED THEN
+INSERT
+     ( PRDT_NUM
+     , BUY_DT
+     , BUY_NUM
+     )
+VALUES
+     ( #prdtNum#
+     , TO_CHAR(SYSDATE, 'YYYYMMDD')
+     , 1
+     )
+</update>
+
+<!-- 현재 시간이 00시 31분 이하라면 하루전 예약건 -->
+<update id="SALE_ANLS_U_00">
+<![CDATA[
+UPDATE TB_SALE_ANLS
+   SET BUY_NUM  = BUY_NUM - 1
+ WHERE PRDT_NUM = #prdtNum#
+   AND BUY_DT   = (CASE WHEN SYSDATE < TO_DATE(TO_CHAR(SYSDATE, 'YYYYMMDD')||'0031', 'YYYYMMDDHH24MI')
+                        THEN TO_CHAR(SYSDATE-1, 'YYYYMMDD')
+                        ELSE TO_CHAR(SYSDATE, 'YYYYMMDD')
+                    END)
+]]>
+</update>
+
+<update id="SALE_ANLS_U_01">
+<![CDATA[
+UPDATE TB_SALE_ANLS
+   SET BUY_NUM  = BUY_NUM - 1
+ WHERE PRDT_NUM = (SELECT PRDT_NUM
+                     FROM TB_AD_RSV
+                    WHERE AD_RSV_NUM = #dtlRsvNum#
+                    UNION
+                   SELECT PRDT_NUM
+                     FROM TB_RC_RSV
+                    WHERE RC_RSV_NUM = #dtlRsvNum#
+                    UNION
+                   SELECT PRDT_NUM
+                     FROM TB_GL_RSV
+                    WHERE GL_RSV_NUM = #dtlRsvNum#
+                    UNION
+                   SELECT PRDT_NUM
+                     FROM TB_SP_RSV
+                    WHERE SP_RSV_NUM = #dtlRsvNum#
+                    UNION
+                   SELECT PRDT_NUM
+                     FROM TB_SV_RSV
+                    WHERE SV_RSV_NUM = #dtlRsvNum#
+                  )
+   AND BUY_DT   = (SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD')
+                     FROM TB_AD_RSV   T_AD
+                    INNER JOIN TB_RSV T_RSV
+                       ON T_RSV.RSV_NUM = T_AD.RSV_NUM
+                    WHERE T_AD.AD_RSV_NUM = #dtlRsvNum#
+                    UNION
+                   SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD')
+                     FROM TB_RC_RSV   T_RC
+                    INNER JOIN TB_RSV T_RSV
+                       ON T_RSV.RSV_NUM = T_RC.RSV_NUM
+                    WHERE T_RC.RC_RSV_NUM = #dtlRsvNum#
+                    UNION
+                   SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD')
+                     FROM TB_GL_RSV   T_GL
+                    INNER JOIN TB_RSV T_RSV
+                       ON T_RSV.RSV_NUM = T_GL.RSV_NUM
+                    WHERE T_GL.GL_RSV_NUM = #dtlRsvNum#
+                    UNION
+                   SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD')
+                     FROM TB_SP_RSV   T_SP
+                    INNER JOIN TB_RSV T_RSV
+                       ON T_RSV.RSV_NUM = T_SP.RSV_NUM
+                    WHERE T_SP.SP_RSV_NUM = #dtlRsvNum#
+                    UNION
+                   SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD')
+                     FROM TB_SV_RSV   T_SV
+                    INNER JOIN TB_RSV T_RSV
+                       ON T_RSV.RSV_NUM = T_SV.RSV_NUM
+                    WHERE T_SV.SV_RSV_NUM = #dtlRsvNum#
+                  )
+]]>
+</update>
+
+<update id="PRDT_U_01">
+	UPDATE
+		<isEqual property="sCorpCd" compareValue="AD">
+		TB_AD_PRDTINF
+		</isEqual>
+		<isEqual property="sCorpCd" compareValue="RC">
+		TB_RC_PRDTINF
+		</isEqual>
+		<isEqual property="sCorpCd" compareValue="SP">
+		TB_SP_PRDTINF
+		</isEqual>
+		<isEqual property="sCorpCd" compareValue="SV">
+		TB_SV_PRDTINF
+		</isEqual>
+	SET
+		TAMNACARD_PRDT_YN = #sTamnacardPrdtYn#
+	WHERE
+		PRDT_NUM = #sPrdtNum#
+</update>
+<select id="PRDT_S_14" resultMap="PRDT_R_14">
+	SELECT PRDT_NUM, PRDT_NM, CONF_DTTM FROM TB_SV_PRDTINF WHERE PRDT_NUM = #prdtNum#
+	UNION ALL
+	SELECT PRDT_NUM, PRDT_NM, CONF_DTTM FROM TB_SP_PRDTINF WHERE PRDT_NUM = #prdtNum#
+	UNION ALL
+	SELECT PRDT_NUM, PRDT_NM, CONF_DTTM FROM TB_RC_PRDTINF WHERE PRDT_NUM = #prdtNum#
+	UNION ALL
+	SELECT PRDT_NUM, PRDT_NM, CONF_DTTM FROM TB_AD_PRDTINF WHERE PRDT_NUM = #prdtNum#
+</select>
+</sqlMap>

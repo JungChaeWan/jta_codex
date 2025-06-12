@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="otoinq">
+
+<resultMap id="OTOINQ_R_00" class="oss.otoinq.vo.OTOINQVO">
+	<result property="otoinqNum" 		column="OTOINQ_NUM"/>
+	<result property="corpId" 			column="CORP_ID"/>
+	<result property="prdtNum" 		column="PRDT_NUM"/>
+	<result property="contents" 		column="CONTENTS"/>
+	<result property="writer" 			column="WRITER"/>
+	<result property="email" 			column="EMAIL"/>
+	<result property="frstRegId" 		column="FRST_REG_ID"/>
+	<result property="frstRegDttm" 	column="FRST_REG_DTTM"/>
+	<result property="frstRegIp" 		column="FRST_REG_IP"/>
+	<result property="lastModId" 		column="LAST_MOD_ID"/>
+	<result property="lastModDttm" 	column="LAST_MOD_DTTM"/>
+	<result property="lastModIp" 		column="LAST_MOD_IP"/>
+	<result property="printYn" 		column="PRINT_YN"/>
+	<result property="ansContents" 	column="ANS_CONTENTS"/>
+	<result property="ansWriter" 		column="ANS_WRITER"/>
+	<result property="ansEmail" 		column="ANS_EMAIL"/>
+	<result property="corpNm" 			column="CORP_NM"/>
+	<result property="ansFrstRegId" 	column="ANS_FRST_REG_ID"/>
+	<result property="ansFrstRegDttm" column="ANS_FRST_REG_DTTM"/>
+	<result property="ansFrstRegIp" 	column="ANS_FRST_REG_IP"/>
+	<result property="ansLastModId" 	column="ANS_LAST_MOD_ID"/>
+	<result property="ansLastModDttm" column="ANS_LAST_MOD_DTTM"/>
+	<result property="ansLastModIp" 	column="ANS_LAST_MOD_IP"/>
+	<result property="subject" 		column="SUBJECT"/>
+</resultMap>
+
+<resultMap id="OTOINQ_R_05" class="oss.otoinq.vo.OTOINQ5VO">
+	<result property="corpNm" column="CORP_NM"></result>
+	<result property="prdtNm" column="PRDT_NM"></result>
+</resultMap>
+
+
+<resultMap id="OTOINQ_R_06" class="oss.otoinq.vo.OTOINQVO">
+	<result property="otoinqNum" 		column="OTOINQ_NUM"/>
+	<result property="corpId" 			column="CORP_ID"/>
+	<result property="prdtNum" 		column="PRDT_NUM"/>
+	<result property="contents" 		column="CONTENTS"/>
+	<result property="writer" 			column="WRITER"/>
+	<result property="email" 			column="EMAIL"/>
+	<result property="frstRegId" 		column="FRST_REG_ID"/>
+	<result property="frstRegDttm" 	column="FRST_REG_DTTM"/>
+	<result property="frstRegIp" 		column="FRST_REG_IP"/>
+	<result property="lastModId" 		column="LAST_MOD_ID"/>
+	<result property="lastModDttm" 	column="LAST_MOD_DTTM"/>
+	<result property="lastModIp" 		column="LAST_MOD_IP"/>
+	<result property="printYn" 		column="PRINT_YN"/>
+	<result property="ansContents" 	column="ANS_CONTENTS"/>
+	<result property="ansWriter" 		column="ANS_WRITER"/>
+	<result property="ansEmail" 		column="ANS_EMAIL"/>
+	<result property="corpNm" 			column="CORP_NM"/>
+	<result property="ansFrstRegId" 	column="ANS_FRST_REG_ID"/>
+	<result property="ansFrstRegDttm" column="ANS_FRST_REG_DTTM"/>
+	<result property="ansFrstRegIp" 	column="ANS_FRST_REG_IP"/>
+	<result property="ansLastModId" 	column="ANS_LAST_MOD_ID"/>
+	<result property="ansLastModDttm" column="ANS_LAST_MOD_DTTM"/>
+	<result property="ansLastModIp" 	column="ANS_LAST_MOD_IP"/>
+	<result property="subject" 		column="SUBJECT"/>
+	<result property="corpNm2" 		column="CORP_NM2"/>
+	<result property="prdtNm" 			column="PRDT_NM"/>
+</resultMap>
+
+<select id="OTOINQ_S_00" resultMap="OTOINQ_R_00">
+SELECT OTOINQ_NUM           /*1:1문의 번호*/
+     , CORP_ID              /*업체 아이디*/
+     , PRDT_NUM             /*상품 번호*/
+     , UTL_RAW.CAST_TO_VARCHAR2(CONTENTS) AS CONTENTS             /*내용*/
+     , WRITER               /*작성자*/
+     , EMAIL                /*이메일*/
+     , FRST_REG_ID          /*최초 등록 아이디*/
+     , FRST_REG_DTTM        /*최초 등록 일시*/
+     , FRST_REG_IP          /*최초 등록 아이피*/
+     , LAST_MOD_ID          /*최종 수정 아이디*/
+     , LAST_MOD_DTTM        /*최종 수정 일시*/
+     , LAST_MOD_IP          /*최종 수정 아이피*/
+     , PRINT_YN				/*출력 여부*/
+     , UTL_RAW.CAST_TO_VARCHAR2(ANS_CONTENTS) AS ANS_CONTENTS         /*답변 내용*/
+     , ANS_WRITER           /*답변 작성자*/
+     , ANS_EMAIL            /*답변 이메일*/
+     , CORP_NM              /*업체 명*/
+     , ANS_FRST_REG_ID      /*답변 최초 등록 아이디*/
+     , ANS_FRST_REG_DTTM    /*답변 최초 등록 일시*/
+     , ANS_FRST_REG_IP      /*답변 최초 등록 아이피*/
+     , ANS_LAST_MOD_ID      /*답변 최종 수정 아이디*/
+     , ANS_LAST_MOD_DTTM    /*답변 최종 수정 일시*/
+     , ANS_LAST_MOD_IP      /*답변 최종 수정 아이피*/
+     , SUBJECT				/*제목*/
+FROM TB_OTOINQ
+WHERE 1=1 
+	<isNotEmpty property="otoinqNum">
+	 	<isNotNull property="otoinqNum">
+	   	  	AND OTOINQ_NUM = #otoinqNum#
+	    </isNotNull>
+	</isNotEmpty>
+</select>
+
+
+<select id="OTOINQ_S_01" resultMap="OTOINQ_R_00">
+SELECT OTOINQ_NUM           /*1:1문의 번호*/
+     , CORP_ID              /*업체 아이디*/
+     , PRDT_NUM             /*상품 번호*/
+     , UTL_RAW.CAST_TO_VARCHAR2(CONTENTS) AS CONTENTS             /*내용*/
+     , WRITER               /*작성자*/
+     , EMAIL                /*이메일*/
+     , FRST_REG_ID          /*최초 등록 아이디*/
+     , TO_CHAR(FRST_REG_DTTM, 'YYYY-MM-DD') AS FRST_REG_DTTM        /*최초 등록 일시*/
+     , FRST_REG_IP          /*최초 등록 아이피*/
+     , LAST_MOD_ID          /*최종 수정 아이디*/
+     , TO_CHAR(LAST_MOD_DTTM, 'YYYY-MM-DD') AS LAST_MOD_DTTM        /*최종 수정 일시*/
+     , LAST_MOD_IP          /*최종 수정 아이피*/
+     , PRINT_YN				/*출력 여부*/
+     , UTL_RAW.CAST_TO_VARCHAR2(ANS_CONTENTS) AS ANS_CONTENTS         /*답변 내용*/
+     , ANS_WRITER           /*답변 작성자*/
+     , ANS_EMAIL            /*답변 이메일*/
+     , CORP_NM              /*업체 명*/
+     , ANS_FRST_REG_ID      /*답변 최초 등록 아이디*/
+     , TO_CHAR(ANS_FRST_REG_DTTM, 'YYYY-MM-DD') AS ANS_FRST_REG_DTTM    /*답변 최초 등록 일시*/
+     , ANS_FRST_REG_IP      /*답변 최초 등록 아이피*/
+     , ANS_LAST_MOD_ID      /*답변 최종 수정 아이디*/
+     , TO_CHAR(ANS_LAST_MOD_DTTM, 'YYYY-MM-DD') AS ANS_LAST_MOD_DTTM    /*답변 최종 수정 일시*/
+     , ANS_LAST_MOD_IP      /*답변 최종 수정 아이피*/
+     , SUBJECT				/*제목*/
+FROM ( SELECT ROWNUM AS RN
+            , OTOINQ_NUM           /*1:1문의 번호*/
+		    , CORP_ID              /*업체 아이디*/
+		    , PRDT_NUM             /*상품 번호*/
+		    , CONTENTS             /*내용*/
+		    , WRITER               /*작성자*/
+		    , EMAIL                /*이메일*/
+		    , FRST_REG_ID          /*최초 등록 아이디*/
+		    , FRST_REG_DTTM        /*최초 등록 일시*/
+		    , FRST_REG_IP          /*최초 등록 아이피*/
+		    , LAST_MOD_ID          /*최종 수정 아이디*/
+		    , LAST_MOD_DTTM        /*최종 수정 일시*/
+		    , LAST_MOD_IP          /*최종 수정 아이피*/
+		    , PRINT_YN			   /*출력 여부*/
+		    , ANS_CONTENTS         /*답변 내용*/
+		    , ANS_WRITER           /*답변 작성자*/
+		    , ANS_EMAIL            /*답변 이메일*/
+		    , CORP_NM              /*업체 명*/
+		    , ANS_FRST_REG_ID      /*답변 최초 등록 아이디*/
+		    , ANS_FRST_REG_DTTM    /*답변 최초 등록 일시*/
+		    , ANS_FRST_REG_IP      /*답변 최초 등록 아이피*/
+		    , ANS_LAST_MOD_ID      /*답변 최종 수정 아이디*/
+		    , ANS_LAST_MOD_DTTM    /*답변 최종 수정 일시*/
+		    , ANS_LAST_MOD_IP      /*답변 최종 수정 아이피*/
+		    , SUBJECT				/*제목*/
+        FROM ( SELECT OTOINQ_NUM           /*1:1문의 번호*/
+				    , CORP_ID              /*업체 아이디*/
+				    , PRDT_NUM             /*상품 번호*/
+				    , CONTENTS             /*내용*/
+				    , WRITER               /*작성자*/
+				    , EMAIL                /*이메일*/
+				    , FRST_REG_ID          /*최초 등록 아이디*/
+				    , FRST_REG_DTTM        /*최초 등록 일시*/
+				    , FRST_REG_IP          /*최초 등록 아이피*/
+				    , LAST_MOD_ID          /*최종 수정 아이디*/
+				    , LAST_MOD_DTTM        /*최종 수정 일시*/
+				    , LAST_MOD_IP          /*최종 수정 아이피*/
+				    , ANS_CONTENTS         /*답변 내용*/
+				    , PRINT_YN			   /*출력 여부*/
+				    , ANS_WRITER           /*답변 작성자*/
+				    , ANS_EMAIL            /*답변 이메일*/
+				    , CORP_NM              /*업체 명*/
+				    , ANS_FRST_REG_ID      /*답변 최초 등록 아이디*/
+				    , ANS_FRST_REG_DTTM    /*답변 최초 등록 일시*/
+				    , ANS_FRST_REG_IP      /*답변 최초 등록 아이피*/
+				    , ANS_LAST_MOD_ID      /*답변 최종 수정 아이디*/
+				    , ANS_LAST_MOD_DTTM    /*답변 최종 수정 일시*/
+				    , ANS_LAST_MOD_IP      /*답변 최종 수정 아이피*/
+				    , SUBJECT				/*제목*/
+               FROM TB_OTOINQ
+              WHERE 1=1
+		      	<isNotEmpty property="sCorpId">
+				 	<isNotNull property="sCorpId">
+				   	   AND CORP_ID = #sCorpId#
+				    </isNotNull>
+				</isNotEmpty>
+				<isNotEmpty property="sPrdtNum">
+				 	<isNotNull property="sPrdtNum">
+				 		AND PRDT_NUM =#sPrdtNum#
+				    </isNotNull>
+				</isNotEmpty>
+				<isNotEmpty property="sPrintYn">
+				 	<isNotNull property="sPrintYn">
+				 		AND PRINT_YN =#sPrintYn#
+				    </isNotNull>
+				</isNotEmpty>
+				<isNotEmpty property="sKey">
+			 		<isNotNull property="sKey">
+				 		<isEqual property="sKeyOpt" compareValue="1">
+				   			AND CORP_ID LIKE '%'||#sKey#||'%'
+				 		</isEqual>
+				 		<isEqual property="sKeyOpt" compareValue="2">
+				   			AND PRDT_NUM LIKE '%'||#sKey#||'%'
+				 		</isEqual>
+				 		<isEqual property="sKeyOpt" compareValue="3">
+				   			AND EMAIL LIKE '%'||#sKey#||'%'
+				 		</isEqual>
+				 		<isEqual property="sKeyOpt" compareValue="4">
+				   			AND SUBJECT LIKE '%'||#sKey#||'%'
+				 		</isEqual>
+				 	</isNotNull>
+				 </isNotEmpty>
+		      ORDER BY TO_NUMBER(OTOINQ_NUM) DESC
+              )
+      )
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#) 
+</select>
+
+
+<select id="OTOINQ_S_02" resultClass="int">
+SELECT COUNT(OTOINQ_NUM)
+  FROM TB_OTOINQ
+   WHERE 1=1
+	<isNotEmpty property="sCorpId">
+	 	<isNotNull property="sCorpId">
+	   	   AND CORP_ID = #sCorpId#
+	    </isNotNull>
+	</isNotEmpty>
+	<isNotEmpty property="sPrdtNum">
+	 	<isNotNull property="sPrdtNum">
+	 		AND PRDT_NUM =#sPrdtNum#
+	    </isNotNull>
+	</isNotEmpty>
+	<isNotEmpty property="sPrintYn">
+	 	<isNotNull property="sPrintYn">
+	 		AND PRINT_YN =#sPrintYn#
+	    </isNotNull>
+	</isNotEmpty>
+	<isNotEmpty property="sKey">
+ 		<isNotNull property="sKey">
+	 		<isEqual property="sKeyOpt" compareValue="1">
+	   			AND CORP_ID LIKE '%'||#sKey#||'%'
+	 		</isEqual>
+	 		<isEqual property="sKeyOpt" compareValue="2">
+	   			AND PRDT_NUM LIKE '%'||#sKey#||'%'
+	 		</isEqual>
+	 		<isEqual property="sKeyOpt" compareValue="3">
+	   			AND EMAIL LIKE '%'||#sKey#||'%'
+	 		</isEqual>
+	 		<isEqual property="sKeyOpt" compareValue="4">
+	   			AND SUBJECT LIKE '%'||#sKey#||'%'
+	 		</isEqual>
+	 	</isNotNull>
+	 </isNotEmpty>
+</select>
+
+
+<select id="OTOINQ_S_03" resultMap="OTOINQ_R_00">
+SELECT OTOINQ_NUM           /*1:1문의 번호*/
+     , CORP_ID              /*업체 아이디*/
+     , PRDT_NUM             /*상품 번호*/
+     , UTL_RAW.CAST_TO_VARCHAR2(CONTENTS) AS CONTENTS             /*내용*/
+     , WRITER               /*작성자*/
+     , EMAIL                /*이메일*/
+     , FRST_REG_ID          /*최초 등록 아이디*/
+     , FRST_REG_DTTM        /*최초 등록 일시*/
+     , FRST_REG_IP          /*최초 등록 아이피*/
+     , LAST_MOD_ID          /*최종 수정 아이디*/
+     , LAST_MOD_DTTM        /*최종 수정 일시*/
+     , LAST_MOD_IP          /*최종 수정 아이피*/
+     , PRINT_YN				/*출력 여부*/
+     , UTL_RAW.CAST_TO_VARCHAR2(ANS_CONTENTS) AS ANS_CONTENTS         /*답변 내용*/
+     , ANS_WRITER           /*답변 작성자*/
+     , ANS_EMAIL            /*답변 이메일*/
+     , CORP_NM              /*업체 명*/
+     , ANS_FRST_REG_ID      /*답변 최초 등록 아이디*/
+     , ANS_FRST_REG_DTTM    /*답변 최초 등록 일시*/
+     , ANS_FRST_REG_IP      /*답변 최초 등록 아이피*/
+     , ANS_LAST_MOD_ID      /*답변 최종 수정 아이디*/
+     , ANS_LAST_MOD_DTTM    /*답변 최종 수정 일시*/
+     , ANS_LAST_MOD_IP      /*답변 최종 수정 아이피*/
+     , SUBJECT				/*제목*/
+FROM ( SELECT ROWNUM AS RN
+            , OTOINQ_NUM           /*1:1문의 번호*/
+		    , CORP_ID              /*업체 아이디*/
+		    , PRDT_NUM             /*상품 번호*/
+		    , CONTENTS             /*내용*/
+		    , WRITER               /*작성자*/
+		    , EMAIL                /*이메일*/
+		    , FRST_REG_ID          /*최초 등록 아이디*/
+		    , FRST_REG_DTTM        /*최초 등록 일시*/
+		    , FRST_REG_IP          /*최초 등록 아이피*/
+		    , LAST_MOD_ID          /*최종 수정 아이디*/
+		    , LAST_MOD_DTTM        /*최종 수정 일시*/
+		    , LAST_MOD_IP          /*최종 수정 아이피*/
+		    , PRINT_YN			   /*출력 여부*/
+		    , ANS_CONTENTS         /*답변 내용*/
+		    , ANS_WRITER           /*답변 작성자*/
+		    , ANS_EMAIL            /*답변 이메일*/
+		    , CORP_NM              /*업체 명*/
+		    , ANS_FRST_REG_ID      /*답변 최초 등록 아이디*/
+		    , ANS_FRST_REG_DTTM    /*답변 최초 등록 일시*/
+		    , ANS_FRST_REG_IP      /*답변 최초 등록 아이피*/
+		    , ANS_LAST_MOD_ID      /*답변 최종 수정 아이디*/
+		    , ANS_LAST_MOD_DTTM    /*답변 최종 수정 일시*/
+		    , ANS_LAST_MOD_IP      /*답변 최종 수정 아이피*/
+		    , SUBJECT				/*제목*/
+        FROM ( SELECT OTOINQ_NUM           /*1:1문의 번호*/
+				    , CORP_ID              /*업체 아이디*/
+				    , PRDT_NUM             /*상품 번호*/
+				    , CONTENTS             /*내용*/
+				    , WRITER               /*작성자*/
+				    , EMAIL                /*이메일*/
+				    , FRST_REG_ID          /*최초 등록 아이디*/
+				    , FRST_REG_DTTM        /*최초 등록 일시*/
+				    , FRST_REG_IP          /*최초 등록 아이피*/
+				    , LAST_MOD_ID          /*최종 수정 아이디*/
+				    , LAST_MOD_DTTM        /*최종 수정 일시*/
+				    , LAST_MOD_IP          /*최종 수정 아이피*/
+				    , ANS_CONTENTS         /*답변 내용*/
+				    , PRINT_YN			   /*출력 여부*/
+				    , ANS_WRITER           /*답변 작성자*/
+				    , ANS_EMAIL            /*답변 이메일*/
+				    , CORP_NM              /*업체 명*/
+				    , ANS_FRST_REG_ID      /*답변 최초 등록 아이디*/
+				    , ANS_FRST_REG_DTTM    /*답변 최초 등록 일시*/
+				    , ANS_FRST_REG_IP      /*답변 최초 등록 아이피*/
+				    , ANS_LAST_MOD_ID      /*답변 최종 수정 아이디*/
+				    , ANS_LAST_MOD_DTTM    /*답변 최종 수정 일시*/
+				    , ANS_LAST_MOD_IP      /*답변 최종 수정 아이피*/
+				    , SUBJECT				/*제목*/
+               FROM TB_OTOINQ
+              WHERE PRINT_YN ='Y'
+		      	<isNotEmpty property="sCorpId">
+				 	<isNotNull property="sCorpId">
+				   	   AND CORP_ID = #sCorpId#
+				    </isNotNull>
+				</isNotEmpty>
+				<isNotEmpty property="sPrdtNum">
+				 	<isNotNull property="sPrdtNum">
+				 		AND PRDT_NUM =#sPrdtNum#
+				    </isNotNull>
+				</isNotEmpty>
+				<isNotEmpty property="sWriter">
+				 	<isNotNull property="sWriter">
+				 		AND WRITER =#sWriter#
+				    </isNotNull>
+				</isNotEmpty>
+		      ORDER BY TO_NUMBER(OTOINQ_NUM) DESC
+              )
+      )
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#) 
+</select>
+
+
+<select id="OTOINQ_S_04" resultClass="int">
+SELECT COUNT(OTOINQ_NUM)
+  FROM TB_OTOINQ
+   WHERE PRINT_YN ='Y'
+      	<isNotEmpty property="sCorpId">
+		 	<isNotNull property="sCorpId">
+		   	   AND CORP_ID = #sCorpId#
+		    </isNotNull>
+		</isNotEmpty>
+		<isNotEmpty property="sPrdtNum">
+		 	<isNotNull property="sPrdtNum">
+		 		AND PRDT_NUM =#sPrdtNum#
+		    </isNotNull>
+		</isNotEmpty>
+		<isNotEmpty property="sWriter">
+	 		<isNotNull property="sWriter">
+	 			AND WRITER =#sWriter#
+		    </isNotNull>
+		</isNotEmpty>
+</select>
+
+<select id="OTOINQ_S_05" resultMap="OTOINQ_R_05">
+SELECT CORP_NM
+     , PRDT_NM
+FROM 
+(
+    SELECT CORP_ID, CORP_NM
+    FROM TB_CORP
+    WHERE CORP_ID=#sCorpId#
+) T1
+LEFT JOIN 
+(
+    SELECT CORP_ID, PRDT_NM
+    FROM(SELECT CORP_ID,PRDT_NM
+      FROM TB_AD_PRDTINF
+     WHERE PRDT_NUM=#sPrdtNum#
+     UNION ALL
+     SELECT CORP_ID, PRDT_NM
+      FROM TB_GL_PRDTINF
+     WHERE PRDT_NUM=#sPrdtNum#
+     UNION ALL
+     SELECT CORP_ID, PRDT_NM
+      FROM TB_RC_PRDTINF
+     WHERE PRDT_NUM=#sPrdtNum#
+     UNION ALL
+     SELECT CORP_ID, PRDT_NM
+      FROM TB_SP_PRDTINF
+     WHERE PRDT_NUM=#sPrdtNum#
+     UNION ALL
+     SELECT CORP_ID, PRDT_NM
+      FROM TB_SV_PRDTINF
+     WHERE PRDT_NUM=#sPrdtNum#
+     )
+ ) T2
+ON T1.CORP_ID = T2.CORP_ID
+</select>
+
+
+
+<select id="OTOINQ_S_06" resultMap="OTOINQ_R_06">
+SELECT OTOINQ_NUM           /*1:1문의 번호*/
+     , CORP_ID              /*업체 아이디*/
+     , PRDT_NUM             /*상품 번호*/
+     , UTL_RAW.CAST_TO_VARCHAR2(CONTENTS) AS CONTENTS             /*내용*/
+     , WRITER               /*작성자*/
+     , EMAIL                /*이메일*/
+     , FRST_REG_ID          /*최초 등록 아이디*/
+     , TO_CHAR(FRST_REG_DTTM, 'YYYY-MM-DD') AS FRST_REG_DTTM        /*최초 등록 일시*/
+     , FRST_REG_IP          /*최초 등록 아이피*/
+     , LAST_MOD_ID          /*최종 수정 아이디*/
+     , TO_CHAR(LAST_MOD_DTTM, 'YYYY-MM-DD') AS LAST_MOD_DTTM        /*최종 수정 일시*/
+     , LAST_MOD_IP          /*최종 수정 아이피*/
+     , PRINT_YN				/*출력 여부*/
+     , UTL_RAW.CAST_TO_VARCHAR2(ANS_CONTENTS) AS ANS_CONTENTS         /*답변 내용*/
+     , ANS_WRITER           /*답변 작성자*/
+     , ANS_EMAIL            /*답변 이메일*/
+     , CORP_NM              /*업체 명*/
+     , ANS_FRST_REG_ID      /*답변 최초 등록 아이디*/
+     , TO_CHAR(ANS_FRST_REG_DTTM, 'YYYY-MM-DD') AS ANS_FRST_REG_DTTM    /*답변 최초 등록 일시*/
+     , ANS_FRST_REG_IP      /*답변 최초 등록 아이피*/
+     , ANS_LAST_MOD_ID      /*답변 최종 수정 아이디*/
+     , TO_CHAR(ANS_LAST_MOD_DTTM, 'YYYY-MM-DD') AS ANS_LAST_MOD_DTTM    /*답변 최종 수정 일시*/
+     , ANS_LAST_MOD_IP      /*답변 최종 수정 아이피*/
+     , SUBJECT				/*제목*/
+     , CORP_NM2
+	 , PRDT_NM
+FROM ( SELECT ROWNUM AS RN
+            , OTOINQ_NUM           /*1:1문의 번호*/
+		    , CORP_ID              /*업체 아이디*/
+		    , PRDT_NUM             /*상품 번호*/
+		    , CONTENTS             /*내용*/
+		    , WRITER               /*작성자*/
+		    , EMAIL                /*이메일*/
+		    , FRST_REG_ID          /*최초 등록 아이디*/
+		    , FRST_REG_DTTM        /*최초 등록 일시*/
+		    , FRST_REG_IP          /*최초 등록 아이피*/
+		    , LAST_MOD_ID          /*최종 수정 아이디*/
+		    , LAST_MOD_DTTM        /*최종 수정 일시*/
+		    , LAST_MOD_IP          /*최종 수정 아이피*/
+		    , PRINT_YN			   /*출력 여부*/
+		    , ANS_CONTENTS         /*답변 내용*/
+		    , ANS_WRITER           /*답변 작성자*/
+		    , ANS_EMAIL            /*답변 이메일*/
+		    , CORP_NM              /*업체 명*/
+		    , ANS_FRST_REG_ID      /*답변 최초 등록 아이디*/
+		    , ANS_FRST_REG_DTTM    /*답변 최초 등록 일시*/
+		    , ANS_FRST_REG_IP      /*답변 최초 등록 아이피*/
+		    , ANS_LAST_MOD_ID      /*답변 최종 수정 아이디*/
+		    , ANS_LAST_MOD_DTTM    /*답변 최종 수정 일시*/
+		    , ANS_LAST_MOD_IP      /*답변 최종 수정 아이피*/
+		    , SUBJECT				/*제목*/
+		    , CORP_NM2
+		    , PRDT_NM
+        FROM ( SELECT OTOINQ_NUM           /*1:1문의 번호*/
+				    , CORP_ID             /*업체 아이디*/
+				    , T1.PRDT_NUM          /*상품 번호*/
+				    , CONTENTS             /*내용*/
+				    , WRITER               /*작성자*/
+				    , EMAIL                /*이메일*/
+				    , FRST_REG_ID          /*최초 등록 아이디*/
+				    , FRST_REG_DTTM        /*최초 등록 일시*/
+				    , FRST_REG_IP          /*최초 등록 아이피*/
+				    , LAST_MOD_ID          /*최종 수정 아이디*/
+				    , LAST_MOD_DTTM        /*최종 수정 일시*/
+				    , LAST_MOD_IP          /*최종 수정 아이피*/
+				    , ANS_CONTENTS         /*답변 내용*/
+				    , PRINT_YN			   /*출력 여부*/
+				    , ANS_WRITER           /*답변 작성자*/
+				    , ANS_EMAIL            /*답변 이메일*/
+				    , CORP_NM              /*업체 명*/
+				    , ANS_FRST_REG_ID      /*답변 최초 등록 아이디*/
+				    , ANS_FRST_REG_DTTM    /*답변 최초 등록 일시*/
+				    , ANS_FRST_REG_IP      /*답변 최초 등록 아이피*/
+				    , ANS_LAST_MOD_ID      /*답변 최종 수정 아이디*/
+				    , ANS_LAST_MOD_DTTM    /*답변 최종 수정 일시*/
+				    , ANS_LAST_MOD_IP      /*답변 최종*/
+				    , SUBJECT				/*제목*/
+				    , CORP_NM2
+				    , T2.PRDT_NM
+				FROM 
+				( SELECT OTOINQ_NUM           /*1:1문의 번호*/
+					    , CORP_ID              /*업체 아이디*/
+					    , PRDT_NUM             /*상품 번호*/
+					    , CONTENTS             /*내용*/
+					    , WRITER               /*작성자*/
+					    , EMAIL                /*이메일*/
+					    , FRST_REG_ID          /*최초 등록 아이디*/
+					    , FRST_REG_DTTM        /*최초 등록 일시*/
+					    , FRST_REG_IP          /*최초 등록 아이피*/
+					    , LAST_MOD_ID          /*최종 수정 아이디*/
+					    , LAST_MOD_DTTM        /*최종 수정 일시*/
+					    , LAST_MOD_IP          /*최종 수정 아이피*/
+					    , ANS_CONTENTS         /*답변 내용*/
+					    , PRINT_YN			   /*출력 여부*/
+					    , ANS_WRITER           /*답변 작성자*/
+					    , ANS_EMAIL            /*답변 이메일*/
+					    , CORP_NM              /*업체 명*/
+					    , ANS_FRST_REG_ID      /*답변 최초 등록 아이디*/
+					    , ANS_FRST_REG_DTTM    /*답변 최초 등록 일시*/
+					    , ANS_FRST_REG_IP      /*답변 최초 등록 아이피*/
+					    , ANS_LAST_MOD_ID      /*답변 최종 수정 아이디*/
+					    , ANS_LAST_MOD_DTTM    /*답변 최종 수정 일시*/
+					    , ANS_LAST_MOD_IP      /*답변 최종 수정 아이피*/
+					    , SUBJECT				/*제목*/
+	                    , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID=T_OTO.CORP_ID) AS CORP_NM2
+	               FROM TB_OTOINQ T_OTO
+				) T1
+				LEFT JOIN 
+				/*INNER JOIN*/
+				(
+				   SELECT PRDT_NUM,PRDT_NM
+				    FROM TB_AD_PRDTINF
+				   UNION ALL
+				   SELECT PRDT_NUM, PRDT_NM
+				    FROM TB_GL_PRDTINF
+				   UNION ALL
+				   SELECT PRDT_NUM, PRDT_NM
+				    FROM TB_RC_PRDTINF
+				   UNION ALL
+				   SELECT PRDT_NUM, PRDT_NM
+				    FROM TB_SP_PRDTINF
+				   UNION ALL
+				   SELECT PRDT_NUM, PRDT_NM
+				    FROM TB_SV_PRDTINF
+				) T2
+			 ON T1.PRDT_NUM = T2.PRDT_NUM
+              WHERE 1=1
+		      	<isNotEmpty property="sCorpId">
+				 	<isNotNull property="sCorpId">
+				   	   AND CORP_ID = #sCorpId#
+				    </isNotNull>
+				</isNotEmpty>
+				<isNotEmpty property="sPrdtNum">
+				 	<isNotNull property="sPrdtNum">
+				 		AND PRDT_NUM =#sPrdtNum#
+				    </isNotNull>
+				</isNotEmpty>
+				<isNotEmpty property="sPrintYn">
+				 	<isNotNull property="sPrintYn">
+				 		AND PRINT_YN =#sPrintYn#
+				    </isNotNull>
+				</isNotEmpty>
+				<isNotEmpty property="sKey">
+			 		<isNotNull property="sKey">
+				 		<isEqual property="sKeyOpt" compareValue="1">
+				   			AND CORP_ID LIKE '%'||#sKey#||'%'
+				 		</isEqual>
+				 		<isEqual property="sKeyOpt" compareValue="2">
+				   			AND PRDT_NUM LIKE '%'||#sKey#||'%'
+				 		</isEqual>
+				 		<isEqual property="sKeyOpt" compareValue="3">
+				   			AND EMAIL LIKE '%'||#sKey#||'%'
+				 		</isEqual>
+				 		<isEqual property="sKeyOpt" compareValue="4">
+				   			AND SUBJECT LIKE '%'||#sKey#||'%'
+				 		</isEqual>
+				 		<isEqual property="sKeyOpt" compareValue="5">
+				   			AND CORP_NM2 LIKE '%'||#sKey#||'%'
+				 		</isEqual>
+				 		<isEqual property="sKeyOpt" compareValue="6">
+				   			AND PRDT_NM LIKE '%'||#sKey#||'%'
+				 		</isEqual>
+				 	</isNotNull>
+				 </isNotEmpty>
+		      ORDER BY TO_NUMBER(OTOINQ_NUM) DESC
+              )
+      )
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#) 
+</select>
+
+
+<select id="OTOINQ_S_07" resultClass="int">
+SELECT COUNT(OTOINQ_NUM)
+  FROM ( SELECT OTOINQ_NUM           /*1:1문의 번호*/
+		    , CORP_ID             /*업체 아이디*/
+		    , T1.PRDT_NUM          /*상품 번호*/
+		    , WRITER               /*작성자*/
+		    , EMAIL                /*이메일*/
+		    , PRINT_YN			   /*출력 여부*/
+		    , CORP_NM2
+		    , T2.PRDT_NM
+		FROM 
+		( SELECT OTOINQ_NUM           /*1:1문의 번호*/
+			    , CORP_ID              /*업체 아이디*/
+			    , PRDT_NUM             /*상품 번호*/
+			    , CONTENTS             /*내용*/
+			    , WRITER               /*작성자*/
+			    , EMAIL                /*이메일*/
+			    , FRST_REG_ID          /*최초 등록 아이디*/
+			    , FRST_REG_DTTM        /*최초 등록 일시*/
+			    , FRST_REG_IP          /*최초 등록 아이피*/
+			    , LAST_MOD_ID          /*최종 수정 아이디*/
+			    , LAST_MOD_DTTM        /*최종 수정 일시*/
+			    , LAST_MOD_IP          /*최종 수정 아이피*/
+			    , ANS_CONTENTS         /*답변 내용*/
+			    , PRINT_YN			   /*출력 여부*/
+			    , ANS_WRITER           /*답변 작성자*/
+			    , ANS_EMAIL            /*답변 이메일*/
+			    , CORP_NM              /*업체 명*/
+			    , ANS_FRST_REG_ID      /*답변 최초 등록 아이디*/
+			    , ANS_FRST_REG_DTTM    /*답변 최초 등록 일시*/
+			    , ANS_FRST_REG_IP      /*답변 최초 등록 아이피*/
+			    , ANS_LAST_MOD_ID      /*답변 최종 수정 아이디*/
+			    , ANS_LAST_MOD_DTTM    /*답변 최종 수정 일시*/
+			    , ANS_LAST_MOD_IP      /*답변 최종 수정 아이피*/
+			    , SUBJECT				/*제목*/
+                   , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID=T_OTO.CORP_ID) AS CORP_NM2
+              FROM TB_OTOINQ T_OTO
+		) T1
+		LEFT JOIN 
+		/*INNER JOIN*/
+		(
+		   SELECT PRDT_NUM,PRDT_NM
+		    FROM TB_AD_PRDTINF
+		   UNION ALL
+		   SELECT PRDT_NUM, PRDT_NM
+		    FROM TB_GL_PRDTINF
+		   UNION ALL
+		   SELECT PRDT_NUM, PRDT_NM
+		    FROM TB_RC_PRDTINF
+		   UNION ALL
+		   SELECT PRDT_NUM, PRDT_NM
+		    FROM TB_SP_PRDTINF
+		) T2
+	 ON T1.PRDT_NUM = T2.PRDT_NUM
+            WHERE 1=1
+      	<isNotEmpty property="sCorpId">
+		 	<isNotNull property="sCorpId">
+		   	   AND CORP_ID = #sCorpId#
+		    </isNotNull>
+		</isNotEmpty>
+		<isNotEmpty property="sPrdtNum">
+		 	<isNotNull property="sPrdtNum">
+		 		AND PRDT_NUM =#sPrdtNum#
+		    </isNotNull>
+		</isNotEmpty>
+		<isNotEmpty property="sPrintYn">
+		 	<isNotNull property="sPrintYn">
+		 		AND PRINT_YN =#sPrintYn#
+		    </isNotNull>
+		</isNotEmpty>
+		<isNotEmpty property="sKey">
+	 		<isNotNull property="sKey">
+		 		<isEqual property="sKeyOpt" compareValue="1">
+		   			AND CORP_ID LIKE '%'||#sKey#||'%'
+		 		</isEqual>
+		 		<isEqual property="sKeyOpt" compareValue="2">
+		   			AND PRDT_NUM LIKE '%'||#sKey#||'%'
+		 		</isEqual>
+		 		<isEqual property="sKeyOpt" compareValue="3">
+		   			AND EMAIL LIKE '%'||#sKey#||'%'
+		 		</isEqual>
+		 		<isEqual property="sKeyOpt" compareValue="4">
+		   			AND SUBJECT LIKE '%'||#sKey#||'%'
+		 		</isEqual>
+		 		<isEqual property="sKeyOpt" compareValue="5">
+		   			AND CORP_NM2 LIKE '%'||#sKey#||'%'
+		 		</isEqual>
+		 		<isEqual property="sKeyOpt" compareValue="6">
+		   			AND PRDT_NM LIKE '%'||#sKey#||'%'
+		 		</isEqual>
+		 	</isNotNull>
+		 </isNotEmpty>
+	)
+</select>
+
+<!-- 미답변 1:1 글 수 얻기 -->
+<select id="OTOINQ_S_08" resultClass="int">
+SELECT COUNT(OTOINQ_NUM)
+  FROM TB_OTOINQ
+  WHERE ANS_WRITER IS NULL
+    AND CORP_ID=#corpId#
+    AND PRINT_YN = 'Y'
+</select>
+
+
+
+
+
+<!-- 1:1문의 처음 등록 -->
+<insert id="OTOINQ_I_00">
+INSERT INTO TB_OTOINQ 
+	 ( OTOINQ_NUM           /*1:1문의 번호*/
+     , CORP_ID              /*업체 아이디*/
+     , PRDT_NUM             /*상품 번호*/
+     , CONTENTS             /*내용*/
+     , WRITER               /*작성자*/
+     , EMAIL                /*이메일*/
+     , FRST_REG_ID          /*최초 등록 아이디*/
+     , FRST_REG_DTTM        /*최초 등록 일시*/
+     , FRST_REG_IP          /*최초 등록 아이피*/
+     , LAST_MOD_ID          /*최종 수정 아이디*/
+     , LAST_MOD_DTTM        /*최종 수정 일시*/
+     , LAST_MOD_IP          /*최종 수정 아이피*/
+     , PRINT_YN				/*출력 여부*/
+     , SUBJECT				/*제목*/
+     )
+  VALUES
+  	( (SELECT TO_CHAR(NVL(MAX(TO_NUMBER(OTOINQ_NUM)),0) + 1) FROM TB_OTOINQ)	
+	, #corpId# 		
+	, #prdtNum# 		
+	, UTL_RAW.CAST_TO_RAW(#contents#) 		
+	, #writer# 		
+	, #email# 		
+	, #writer# 		
+	, SYSDATE 		
+	, #frstRegIp# 		
+	, #writer# 		
+	, SYSDATE 		
+	, #frstRegIp# 		
+	, 'Y' 
+	, #subject#
+    ) 	
+</insert>
+
+<!-- 문의 수정 -->
+<update id="OTOINQ_U_00">
+UPDATE TB_OTOINQ
+	SET  CORP_ID=    	  #corpId#     
+		,PRDT_NUM=        #prdtNum#
+		,CONTENTS=        UTL_RAW.CAST_TO_RAW(#contents#)
+		,LAST_MOD_DTTM=   SYSDATE          
+		,LAST_MOD_ID=     #writer#     
+		,LAST_MOD_IP=     #lastModIp#  
+		,SUBJECT=		  #subject#	            		
+WHERE OTOINQ_NUM = #otoinqNum#
+</update>
+
+<!-- 화면표시 변경 -->
+<update id="OTOINQ_U_01">
+UPDATE TB_OTOINQ
+	SET  PRINT_YN=   #printYn#          		
+WHERE OTOINQ_NUM = #otoinqNum#
+</update>
+
+
+<!-- 처음 답변 달때 -->
+<update id="OTOINQ_U_02">
+UPDATE TB_OTOINQ
+	SET   ANS_CONTENTS=		UTL_RAW.CAST_TO_RAW(#ansContents#)
+		, ANS_WRITER=		#ansWriter#
+		, ANS_EMAIL=		#ansEmail#
+		, CORP_NM =			(SELECT CORP_NM FROM TB_CORP WHERE CORP_ID=#corpId#)
+		, ANS_FRST_REG_ID=	#ansWriter#
+		, ANS_FRST_REG_DTTM=SYSDATE
+		, ANS_FRST_REG_IP=	#ansFrstRegIp#
+		, ANS_LAST_MOD_ID=	#ansWriter#
+		, ANS_LAST_MOD_DTTM=SYSDATE
+		, ANS_LAST_MOD_IP=	#ansFrstRegIp#             		
+WHERE OTOINQ_NUM = #otoinqNum#
+</update>
+
+<!-- 답변 달린거 답변 수정 -->
+<update id="OTOINQ_U_03">
+UPDATE TB_OTOINQ
+	SET   ANS_CONTENTS=		UTL_RAW.CAST_TO_RAW(#ansContents#)
+		, ANS_WRITER=		#ansWriter#
+		, ANS_EMAIL=		#ansEmail#
+		, CORP_NM =			(SELECT CORP_NM FROM TB_CORP WHERE CORP_ID=#corpId#)
+		, ANS_LAST_MOD_ID=	#ansWriter#
+		, ANS_LAST_MOD_DTTM=SYSDATE
+		, ANS_LAST_MOD_IP=	#ansLastModIp#             		
+WHERE OTOINQ_NUM = #otoinqNum#
+</update>
+
+<delete id="OTOINQ_D_00">
+DELETE TB_OTOINQ
+ WHERE 1=1 
+   	   AND OTOINQ_NUM = #otoinqNum#
+</delete>
+
+
+
+</sqlMap>

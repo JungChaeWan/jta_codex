@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="bloglink">
+
+<resultMap id="BLOGLINK_R_00" class="web.product.vo.BLOGLINKVO">
+<result property="blogLinkNum" column="BLOG_LINK_NUM"></result>
+<result property="prdtNum" column="PRDT_NUM"></result>
+<result property="corpCd" column="CORP_CD"></result>
+<result property="blogUrl" column="BLOG_URL"></result>
+<result property="blogTitle" column="BLOG_TITLE"></result>
+<result property="blogSitename" column="BLOG_SITENAME"></result>
+<result property="blogDescription" column="BLOG_DESCRIPTION"></result>
+<result property="blogImageLinkYn" column="BLOG_IMAGE_LINK_YN"></result>
+<result property="blogImage" column="BLOG_IMAGE"></result>
+<result property="blogDate" column="BLOG_DATE"></result>
+<result property="regDttm" column="REG_DTTM"></result>
+</resultMap>
+
+
+
+<select id="BLOGLINK_S_00" resultMap="BLOGLINK_R_00">
+SELECT BLOG_LINK_NUM
+     , PRDT_NUM
+     , CORP_CD
+     , BLOG_URL
+     , BLOG_TITLE
+     , BLOG_SITENAME
+     , BLOG_DESCRIPTION
+     , BLOG_IMAGE_LINK_YN
+     , BLOG_IMAGE
+     , BLOG_DATE
+     , REG_DTTM
+FROM TB_BLOG_LINK
+WHERE 1=1
+	<isNotEmpty property="blogLinkNum">
+	 	<isNotNull property="blogLinkNum">
+	   	  	AND BLOG_LINK_NUM = #blogLinkNum#
+	    </isNotNull>
+	</isNotEmpty>
+	<isNotEmpty property="prdtNum">
+	 	<isNotNull property="prdtNum">
+	   	  	AND PRDT_NUM = #prdtNum#
+	    </isNotNull>
+	</isNotEmpty>
+ORDER BY BLOG_DATE DESC
+</select>
+
+
+<select id="BLOGLINK_S_01" resultMap="BLOGLINK_R_00">
+SELECT BLOG_LINK_NUM
+     , PRDT_NUM
+     , CORP_CD
+     , BLOG_URL
+     , BLOG_TITLE
+     , BLOG_SITENAME
+     , BLOG_DESCRIPTION
+     , BLOG_IMAGE_LINK_YN
+     , BLOG_IMAGE
+     , BLOG_DATE
+     , REG_DTTM
+FROM (
+	SELECT BLOG_LINK_NUM
+	     , PRDT_NUM
+	     , CORP_CD
+	     , BLOG_URL
+	     , BLOG_TITLE
+	     , BLOG_SITENAME
+	     , BLOG_DESCRIPTION
+	     , BLOG_IMAGE_LINK_YN
+	     , BLOG_IMAGE
+	     , BLOG_DATE
+	     , REG_DTTM
+	     , ROWNUM AS RN
+	FROM (
+		SELECT BLOG_LINK_NUM
+		     , PRDT_NUM
+		     , CORP_CD
+		     , BLOG_URL
+		     , BLOG_TITLE
+		     , BLOG_SITENAME
+		     , BLOG_DESCRIPTION
+		     , BLOG_IMAGE_LINK_YN
+		     , BLOG_IMAGE
+		     , BLOG_DATE
+		     , REG_DTTM
+		FROM TB_BLOG_LINK
+		WHERE 1=1
+			<isNotEmpty property="sPrdtNum">
+			 	<isNotNull property="sPrdtNum">
+			   	  	AND PRDT_NUM = #sPrdtNum#
+			    </isNotNull>
+			</isNotEmpty>
+		ORDER BY BLOG_DATE DESC
+	)
+)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="BLOGLINK_S_03" resultClass="int">
+SELECT COUNT(BLOG_LINK_NUM)
+FROM TB_BLOG_LINK
+WHERE 1=1
+	<isNotEmpty property="sPrdtNum">
+	 	<isNotNull property="sPrdtNum">
+	   	  	AND PRDT_NUM = #sPrdtNum#
+	    </isNotNull>
+	</isNotEmpty>
+</select>
+
+
+<select id="BLOGLINK_S_02" resultClass="int">
+SELECT COUNT(*) FROM TB_BLOG_LINK
+WHERE  1=1
+	<isNotEmpty property="prdtNum">
+	 	<isNotNull property="prdtNum">
+	   	  	AND PRDT_NUM = #prdtNum#
+	    </isNotNull>
+	</isNotEmpty>
+</select>
+
+
+<select id="BLOGLINK_S_04" resultClass="java.lang.String">
+	SELECT TO_CHAR(NVL(MAX(TO_NUMBER(BLOG_LINK_NUM)),0) + 1) FROM TB_BLOG_LINK
+</select>
+
+
+<insert id="BLOGLINK_I_00">
+INSERT INTO TB_BLOG_LINK
+     ( BLOG_LINK_NUM
+     , PRDT_NUM
+     , CORP_CD
+     , BLOG_URL
+     , BLOG_TITLE
+     , BLOG_SITENAME
+     , BLOG_DESCRIPTION
+     , BLOG_IMAGE_LINK_YN
+     , BLOG_IMAGE
+     , BLOG_DATE
+     , REG_DTTM
+     )
+VALUES
+     ( #blogLinkNum#
+     , #prdtNum#
+     , #corpCd#
+     , #blogUrl#
+     , #blogTitle#
+     , #blogSitename#
+     , #blogDescription#
+     , #blogImageLinkYn#
+     , #blogImage#
+     , #blogDate#
+     , SYSDATE
+    )
+</insert>
+
+
+<update id="BLOGLINK_U_00">
+UPDATE TB_BLOG_LINK
+   SET PRDT_NUM = #prdtNum#
+     , CORP_CD = #corpCd#
+     , BLOG_URL = #blogUrl#
+     , BLOG_TITLE = #blogTitle#
+     , BLOG_SITENAME = #blogSitename#
+     , BLOG_DESCRIPTION = #blogDescription#
+     , BLOG_IMAGE_LINK_YN = #blogImageLinkYn#
+     <isNotEmpty property="blogImage">
+		<isNotNull property="blogImage">
+     		, BLOG_IMAGE = #blogImage#
+     	</isNotNull>
+     </isNotEmpty>
+     , BLOG_DATE = #blogDate#
+ WHERE BLOG_LINK_NUM = #blogLinkNum#
+</update>
+
+<delete id="BLOGLINK_D_00">
+DELETE FROM TB_BLOG_LINK
+ WHERE 1=1
+   AND BLOG_LINK_NUM = #blogLinkNum#
+</delete>
+
+
+</sqlMap>
+
+
+

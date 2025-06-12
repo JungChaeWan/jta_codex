@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>탐나오</title>
+</head>
+
+<body>
+	<table style="width: 740px; margin: 0 auto; text-decoration: none; border-collapse: collapse; font-family: 'NanumBarunGothic', 'Dotum', 'Helvetica', 'sans-serif';">
+		<!-- thead -->
+		#parse("mailTemplate/header2.vm")
+
+		<tbody>
+			<tr>
+				<td style="margin: 0; padding: 0;">
+					<table>
+						<tr>
+							<td style="background-image: url(${domain}/images/web/mail2/temp/typeG/top.png); width: 738px; height: 731px; display: inline-block;">
+								<div style="padding:620px 0 0 30px; text-align: center;">
+									#if($cp.disDiv == "CP01")
+										#set($disAmt = $numberTool.format("integer", $cp.disAmt))
+										#set($disAmt = "${disAmt}원")
+									#elseif($cp.disDiv == "CP02")
+										#set($disAmt = "${cp.disPct}%")
+									#else
+										#set($disAmt = "무료")
+									#end
+
+									<span style="font-size: 40px; font-weight: bold;">$disAmt</span>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td style="margin: 0; padding: 0;">
+								<ul style="background-color:#fff ; font-size: 16px; line-height: 35px; padding: 10px 40px; border: 20px solid #dfe5f1; margin: 0">
+									<li>쿠폰명 : $cp.cpNm</li>
+
+									#set($cpPrdt = "")
+
+									#if($cp.aplprdtDiv == "AP01")
+										#set($prdtCtgrs = $cp.prdtCtgrList.split(","))
+
+										#foreach($prdtCtgr in $prdtCtgrs)
+											#if($prdtCtgr == "AV")
+												#set($cpPrdt = "${cpPrdt}항공")
+											#elseif($prdtCtgr == "AD")
+												#set($cpPrdt = "${cpPrdt}숙박")
+											#elseif($prdtCtgr == "RC")
+												#set($cpPrdt = "${cpPrdt}렌터카")
+											#elseif($prdtCtgr == "SP")
+												#set($cpPrdt = "${cpPrdt}관광지/레저,제주마을체험,맛집,여행사상품")
+											#elseif($prdtCtgr == "SV")
+												#set($cpPrdt = "${cpPrdt}특산/기념품")
+											#end
+
+											#if($foreach.count < $prdtCtgrs.size())
+												#set($cpPrdt = "${cpPrdt} | ")
+											#end
+										#end
+									#else
+										#foreach($prdt in $cpPrdtList)
+											#set($cpPrdt = "${cpPrdt}[${prdt.corpNm}]")
+											#set($cpPrdt = "${cpPrdt} <b>${prdt.prdtNm}</b>")
+
+											#if($prdt.divNm)
+												#set($cpPrdt = "${cpPrdt} - ${prdt.divNm}</b>")
+											#end
+
+											#if($prdt.optNm)
+												#set($cpPrdt = "${cpPrdt} - ${prdt.optNm}</b>")
+											#end
+
+											#if($prdt.prdtUseNum)
+												#set($prdtCd = $prdt.prdtNum.substring(0, 2))
+
+												#if($prdtCd == "AD")
+													#set($unit = "박")
+												#elseif($prdtCd == "RC")
+													#set($unit = "시간")
+												#else
+													#set($unit = "개")
+												#end
+
+												#set($cpPrdt = "${cpPrdt} (${prdt.prdtUseNum}${unit})]")
+											#end
+
+											#if($foreach.count < $cpPrdtList.size())
+												#set($cpPrdt = "${cpPrdt}<br>")
+											#end
+										#end
+									#end
+
+									<li style="line-height: 20px;">대상 : $cpPrdt</li>
+
+									#set($startDt = "${cp.aplStartDt.substring(0, 4)}.${cp.aplStartDt.substring(4, 6)}.${cp.aplStartDt.substring(6, 8)}")
+									#set($endDt = "${cp.aplEndDt.substring(0, 4)}.${cp.aplEndDt.substring(4, 6)}.${cp.aplEndDt.substring(6, 8)}")
+
+									<li>기간 : ${startDt} ~ ${endDt}</li>
+
+									#set($cpCode = $cp.cpCode)
+
+									#if($cpCode)
+										<li>코드 : <span style="color: #e94c3f; font-weight: bold;">$cpCode</span></li>
+									#end
+
+									<li>
+										쿠폰은 '마이페이지 <span style="color: #e94c3f;">▶</span>
+										<a href="${domain}/web/mypage/couponList.do" target="_blank" style="text-decoration: underline; color: #7a72c3;">탐나오쿠폰 내역보기</a>'에서
+
+										#if($cpCode)
+											코드 입력 후 사용하실 수 있습니다.
+										#else
+											확인하실 수 있습니다.
+										#end
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+
+		<!-- tfoot -->
+		#parse("mailTemplate/footer.vm")
+	</table>
+</body>
+</html>

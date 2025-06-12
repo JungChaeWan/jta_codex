@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- add css -->
+	<link rel="stylesheet" href="../../../css/mw/common2.css">
+    <link rel="stylesheet" href="../../../css/mw/daterangepicker.css">
+    <link rel="stylesheet" href="../../../css/mw/ad.css">
+    <link rel="stylesheet" href="../../../css/mw/style.css">
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=71cf66fb54158dacb5fb5b656674ad70"></script>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+	<script src="../../../js/jquery-1.11.1.js"></script>
+	<script src="../../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../../js/jquery.cookie.js"></script>
+	<script src="../../../js/mw_common.js"></script>
+	<script src="../../../js/mw_style.js"></script>
+
+	<script src="../../../js/dimmedB.js"></script>
+	<script src="../../../js/moment.min.js"></script>
+	<script src="../../../js/daterangepicker-ad.js"></script>
+	<script src="../../../js/swiper.js"></script>
+
+	<script type="text/javascript">
+
+        // 인원수 변경 이벤트
+        function chg_person(type, gubun) {
+            var num = 0;
+            if (type == '+') {
+                num = eval($('#' + gubun + 'Num').text()) + 1;
+            } else {
+                num = eval($('#' + gubun + 'Num').text()) - 1;
+            }
+
+            // 최저 인원 수 - 성인 : 1, 소아&유아 : 0
+            if (gubun == 'adult') {
+                if (num < 1) num = 1;
+                else if (num > 30) num = 30;
+            } else {
+                if (num < 0) num = 0;
+                else if (num > 30) num = 30;
+            }
+
+            $('#' + gubun + 'Num').text(num);
+            $('input[name=s' + gubun + 'Cnt]').val(num);
+
+            var sMen = eval($('#adultNum').text()) + eval($('#childNum').text()) + eval($('#babyNum').text());
+            $('#sMen').val(sMen);
+
+        }
+
+		//창 닫기
+        function ad_close_popup(obj) {
+			if (typeof obj == "undefined" || obj == "" || obj == null) {
+				$('#dateRangePickMw').data('daterangepicker').hide();
+			} else {
+				$(obj).hide();
+			}
+            $('#dimmedB').fadeOut(100);
+            $("html, body").removeClass("not_scroll");
+        }
+
+		$(document).ready(function () {
+
+			// scroll 방지
+			$(".mw-map-area").addClass("not_scroll");
+
+			//유형별 숙소 선택
+			$('ul.map-check-inner button').click(function () {
+				$(this).toggleClass('active');
+			})
+
+			//daterangepicker open
+			$('#dateRangePickMw').daterangepicker({}, function (start, end, search) {
+				//입실/퇴실일 설정
+				const sFromDt = start.format('YYYY-MM-DD');
+				const sToDt = end.format('YYYY-MM-DD');
+				$("#sFromDt").val(sFromDt.replace(/-/gi, ""));
+				$("#sToDt").val(sToDt.replace(/-/gi, ""));
+            });
+
+			//dimmedB 처리
+            $("#searchAreaD").on("click", function(e){
+                optionPopup('.daterangepicker', this);
+                $('#dimmedB').show();
+                $("html, body").addClass("not_scroll");
+            });
+
+            $("#room_person_str").on("click", function(e){
+                optionPopup('#hotel_count', this);
+                $('#dimmedB').show();
+                $("html, body").addClass("not_scroll");
+            });
+
+			// daterangepicker 뒤로가기버튼 처리
+			$(".decideBtn").click(function (){
+				ad_close_popup("");
+			});
+
+			// daterangepicker 이전버튼 close
+			$(".date_before").click(function (){
+				ad_close_popup("");
+			});
+
+			// dimmed click lock 처리
+			$("#dateRangePickMw").click(function (){
+				$("#header").addClass("nonClick");
+			});
+
+			//지도 가격-point active 유지
+			$('.IconInner').on('click', function() {
+				$(this).addClass('active');
+			})
+		})
+
+		$(document).on("click", ".nonClick", function () {
+			$('#dateRangePickMw').data('daterangepicker').show();
+		});
+
+	</script>
+</head>
+<body>
+<div id="wrap">
+
+<header id="header">
+	<div class="head-wrap">
+		<h1 class="title">지도검색</h1>
+		<div class="l-area">
+			<a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+		</div>
+	</div>
+</header>
+
+<!-- change contents -->
+<main id="main" class="map-wrap">
+
+    <section class="map-filter">
+        <!-- 날짜 선택(입실일/퇴실일) -->
+        <div id="dateRangePickMw" class="hotel-area">
+            <a id="searchAreaD" class="area take-over">
+                <dl>
+                    <dt>입실일</dt>
+                    <dd>
+                        <div class="value-text">
+                            <div class="date-container">
+                                <div class="dateRangePickMw">
+                                    <input id="startDt" value="0000. 00. 00 (-)" placeholder="입실일 선택" onfocus="this.blur()">
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <div class="align-self-center"></div>
+                <dl>
+                    <dt>퇴실일</dt>
+                    <dd>
+                        <div class="value-text">
+                            <div class="date-container">
+                                <div class="dateRangePickMw">
+                                    <input id="endDt" value="0000. 00. 00 (-)" placeholder="퇴실일 선택" onfocus="this.blur()">
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <div class="align-self-center"></div>
+            </a>
+        </div><!-- //날짜 선택(입실일/퇴실일) -->
+
+        <!-- 인원선택 -->
+        <div class="map-count">
+            <div id="room_person_str">
+                <dl>
+                    <dt>인 원</dt>
+                    <dd class="guests_count">
+                        <div class="personnel">
+                            <span>성인</span>
+                            <span class="count" id="txtAdultCnt">2</span>
+                        </div>
+                        <div class="personnel">
+                            <span>소아</span>
+                            <span class="count" id="txtChildCnt">2</span>
+                        </div>
+                        <div class="personnel">
+                            <span>유아</span>
+                            <span class="count" id="txtBabyCnt">2</span>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div><!-- //인원선택 -->
+
+        <!-- 인원선택 / layer-popup -->
+        <div id="hotel_count" class="popup-typeA hotel-count">
+            <div class="hotel-wrapper">
+                <a class="close-btn" onclick="ad_close_popup('#hotel_count')"></a>
+                <div class="condition_title">
+                    <div class="title">인원 선택</div>
+                </div>
+                <div class="content-area">
+                    <div class="detail-area">
+                        <input type="hidden" name="sRoomNum" id="sRoomNum" value="1">
+                    </div>
+                    <div class="detail-area counting-area">
+                        <div class="counting">
+                            <div class="l-area">
+                                <strong class="sub-title">성인</strong>
+                                <span class="memo">만 13세 이상</span>
+                            </div>
+                            <div class="r-area">
+                                <input type="hidden" name="sAdultCnt" value="2">
+                                <button type="button" class="counting-btn" onclick="chg_person('-', 'Adult')"><img src="/images/mw/hotel/minus.png" alt="빼기"></button>
+                                <span class="counting-text" id="AdultNum">2</span>
+                                <button type="button" class="counting-btn" onclick="chg_person('+', 'Adult')"><img src="/images/mw/hotel/plus.png" alt="더하기"></button>
+                            </div>
+                        </div>
+                        <div class="counting">
+                            <div class="l-area">
+                                <strong class="sub-title">소아</strong>
+                                <span class="memo">만 2 ~ 13세 미만</span>
+                            </div>
+                            <div class="r-area">
+                                <button type="button" class="counting-btn" onclick="chg_person('-', 'Child')"><img src="/images/mw/hotel/minus.png" alt="빼기"></button>
+                                <span class="counting-text" id="ChildNum">0</span>
+                                <button type="button" class="counting-btn" onclick="chg_person('+', 'Child')"><img src="/images/mw/hotel/plus.png" alt="더하기"></button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="sChildCnt" value="0">
+                        <div class="counting">
+                            <div class="l-area">
+                                <strong class="sub-title">유아</strong>
+                                <span class="memo">만 2세(24개월) 미만</span>
+                            </div>
+                            <div class="r-area">
+                                <button type="button" class="counting-btn" onclick="chg_person('-', 'Baby')"><img src="/images/mw/hotel/minus.png" alt="빼기"></button>
+                                <span class="counting-text" id="BabyNum">0</span>
+                                <button type="button" class="counting-btn" onclick="chg_person('+', 'Baby')"><img src="/images/mw/hotel/plus.png" alt="더하기"></button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="sBabyCnt" value="0">
+                    </div>
+                    <div class="detail-area info-area">
+                        <ul class="list-disc sm">
+                            <li>* 업체별로 연령 기준은 다를 수 있습니다.</li>
+                        </ul>
+                    </div>
+                    <div class="fix-cta">
+
+                        <!-- 적용/다음 CTA 수정 -->
+                        <button href="#" class="result-btn decide comm-btn" onclick="ad_close_popup('#hotel_count');">적용</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- //인원선택 / layer-popup -->
+    </section>
+
+    <!-- 유형별 숙소 선택 -->
+	<section class="map-check">
+		<ul class="map-check-inner">
+			<li>
+				<button class="cate" data-tab="tab-1">
+					<svg class="ico1 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25.02 32.38">
+						<g class="category-svg">
+							<path d="M24,0H1A1,1,0,0,0,0,1V31.38a1,1,0,0,0,1,1H9.46a1,1,0,0,0,1-1v-7.3h4.1v7.3a1,1,0,0,0,1,1H24a1,1,0,0,0,1-1V1A1,1,0,0,0,24,0ZM23,30.38H16.56v-7.3a1,1,0,0,0-1-1H9.46a1,1,0,0,0-1,1v7.3H2V2H23Z"/>
+							<polygon points="7.72 5.62 5.03 5.62 5.03 6.62 5.03 7.62 7.72 7.62 7.72 5.62"/>
+							<polygon points="13.86 5.62 11.16 5.62 11.16 6.62 11.16 7.62 13.86 7.62 13.86 5.62"/>
+							<polygon points="19.99 5.62 17.3 5.62 17.3 6.62 17.3 7.62 19.99 7.62 19.99 5.62"/>
+							<polygon points="7.72 10.18 5.03 10.18 5.03 11.18 5.03 12.18 7.72 12.18 7.72 10.18"/>
+							<polygon points="13.86 10.18 11.16 10.18 11.16 11.18 11.16 12.18 13.86 12.18 13.86 10.18"/>
+							<polygon points="19.99 10.18 17.3 10.18 17.3 11.18 17.3 12.18 19.99 12.18 19.99 10.18"/>
+							<polygon points="7.72 14.74 5.03 14.74 5.03 15.74 5.03 16.74 7.72 16.74 7.72 14.74"/>
+							<polygon points="13.86 14.74 11.16 14.74 11.16 15.74 11.16 16.74 13.86 16.74 13.86 14.74"/>
+							<polygon points="19.99 14.74 17.3 14.74 17.3 15.74 17.3 16.74 19.99 16.74 19.99 14.74"/>
+						</g>
+					</svg>
+					호텔
+				</button>
+			</li>
+			<li>
+				<button class="cate" data-tab="tab-2">
+					<svg class="ico2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.28 26.15">
+						<g class="category-svg">
+							<path d="M23.72,26.15H4.56a.7.7,0,0,1-.7-.7V12H.7a.7.7,0,0,1-.43-1.25L13.71.15a.69.69,0,0,1,.86,0L28,10.73a.71.71,0,0,1,.23.78.69.69,0,0,1-.66.47H24.42V25.45A.7.7,0,0,1,23.72,26.15ZM5.26,24.75H23V11.28a.71.71,0,0,1,.7-.7h1.84l-11.42-9-11.42,9H4.56a.71.71,0,0,1,.7.7Z"/>
+							<path d="M5.39,8.29a.7.7,0,0,1-.7-.7V1.72a.7.7,0,0,1,1.4,0V7.59A.7.7,0,0,1,5.39,8.29Z"/>
+							<path d="M16.65,26.15h-5a.7.7,0,0,1-.7-.7V16.54a.7.7,0,0,1,.7-.7h5a.7.7,0,0,1,.7.7v8.91A.7.7,0,0,1,16.65,26.15Zm-4.32-1.4H16V17.24H12.33Z"/>
+						</g>
+					</svg>
+					펜션
+				</button>
+			</li>
+			<li>
+				<button class="cate" data-tab="tab-3">
+					<svg class="ico3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.89 53.76">
+						<g data-name="레이어 2"  class="category-svg">
+							<path d="M42.78,42a9.71,9.71,0,0,1-6.87-2.84,7,7,0,0,0-9.93,0,9.75,9.75,0,0,1-13.75,0,7,7,0,0,0-9.93,0A1.35,1.35,0,0,1,.4,37.24a9.71,9.71,0,0,1,13.74,0,7,7,0,0,0,9.93,0,9.74,9.74,0,0,1,13.75,0,7,7,0,0,0,9.93,0,9.72,9.72,0,0,1,13.75,0,1.35,1.35,0,0,1-1.91,1.91,7,7,0,0,0-9.93,0A9.73,9.73,0,0,1,42.78,42Z"/>
+							<path d="M42.78,53.76a9.71,9.71,0,0,1-6.87-2.84,7,7,0,0,0-9.93,0,9.74,9.74,0,0,1-13.75,0,7,7,0,0,0-9.93,0A1.35,1.35,0,1,1,.4,49a9.71,9.71,0,0,1,13.74,0,7,7,0,0,0,9.93,0,9.74,9.74,0,0,1,13.75,0,7,7,0,0,0,9.93,0A9.72,9.72,0,0,1,61.5,49a1.36,1.36,0,0,1,0,1.91,1.35,1.35,0,0,1-1.91,0,7,7,0,0,0-9.93,0A9.73,9.73,0,0,1,42.78,53.76Z"/>
+							<path d="M35.52,31.63a1.35,1.35,0,0,1-1.35-1.35V4.82a2.12,2.12,0,1,0-4.23,0V8.28a1.35,1.35,0,0,1-2.7,0V4.82a4.82,4.82,0,1,1,9.63,0V30.28A1.34,1.34,0,0,1,35.52,31.63Z"/>
+							<path d="M52.4,31.63a1.34,1.34,0,0,1-1.35-1.35V4.82a2.12,2.12,0,1,0-4.23,0V8.28a1.35,1.35,0,1,1-2.7,0V4.82a4.82,4.82,0,1,1,9.63,0V30.28A1.35,1.35,0,0,1,52.4,31.63Z"/>
+							<path d="M52.4,17.17H35.52a1.35,1.35,0,0,1,0-2.7H52.4a1.35,1.35,0,1,1,0,2.7Z"/>
+							<path d="M52.4,25.06H35.52a1.35,1.35,0,0,1,0-2.7H52.4a1.35,1.35,0,0,1,0,2.7Z"/>
+						</g>
+					</svg>
+					리조트/풀빌라/콘도
+				</button>
+			</li>
+			<li>
+				<button class="cate" data-tab="tab-4">
+					<svg class="ico4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.26 25.87">
+						<g class="category-svg">
+							<path d="M26.06,1.5a4.3,4.3,0,1,1,0,8.59,4.25,4.25,0,0,1-2.43-.76A5.7,5.7,0,0,1,23,10.69a5.8,5.8,0,1,0-1.75-8.06,5.75,5.75,0,0,1,1.17,1A4.27,4.27,0,0,1,26.06,1.5Z"/>
+							<path d="M32.14,11.23a.75.75,0,0,0-1,0,7.35,7.35,0,0,1-5,2A7.79,7.79,0,0,1,24.22,13l.19.21a12,12,0,0,1,1.21,1.5,9,9,0,0,0,5.93-1.88,14.37,14.37,0,0,1,3.21,9.36c0,.17,0,.32,0,.48H28.27c0,.25,0,.49.05.73s0,.34,0,.52,0,.17,0,.25h7.15a.77.77,0,0,0,.75-.74c0-.41,0-.81,0-1.24A15.37,15.37,0,0,0,32.14,11.23Z"/>
+							<path d="M10.19,11.59a5.71,5.71,0,0,0,3.09-.9,6.08,6.08,0,0,1-.65-1.36,4.3,4.3,0,1,1,1.24-5.72,5.49,5.49,0,0,1,1.17-1,5.79,5.79,0,1,0-4.85,9Z"/>
+							<path d="M7.94,23.35c0-.24,0-.47,0-.71H1.51c0-.15,0-.31,0-.48A14.38,14.38,0,0,1,4.7,12.8a8.74,8.74,0,0,0,6,1.88,11.87,11.87,0,0,1,1.25-1.56l.15-.16h0a7.48,7.48,0,0,1-6.89-1.74.75.75,0,0,0-1,0A15.33,15.33,0,0,0,0,22.16c0,.44,0,.86,0,1.29a.75.75,0,0,0,.75.69H7.94c0-.08,0-.16,0-.25S7.93,23.53,7.94,23.35Z"/>
+							<path d="M13.17,13l0,0c.18.15.36.3.55.44C13.51,13.3,13.34,13.16,13.17,13Z"/>
+							<path d="M12.33,7.52a5.72,5.72,0,0,0,.3,1.81,6.08,6.08,0,0,0,.65,1.36,5.78,5.78,0,0,0,9.69,0,5.79,5.79,0,0,0-4.84-9,5.73,5.73,0,0,0-3.09.9,5.49,5.49,0,0,0-1.17,1A5.75,5.75,0,0,0,12.33,7.52Zm5.8-4.29a4.3,4.3,0,1,1-4.3,4.29A4.29,4.29,0,0,1,18.13,3.23Z"/>
+							<path d="M28.32,23.37c0-.24,0-.48-.05-.73a16,16,0,0,0-2.65-8,12,12,0,0,0-1.21-1.5L24.22,13h0a.72.72,0,0,0-1.05,0l-.07.06a7.48,7.48,0,0,1-4.85,1.92h-.31a7.25,7.25,0,0,1-4.24-1.49c-.19-.14-.37-.29-.55-.44l0,0a.75.75,0,0,0-1.06,0h0l-.15.16a11.87,11.87,0,0,0-1.25,1.56,15.93,15.93,0,0,0-2.66,8c0,.24,0,.47,0,.71s0,.36,0,.54,0,.17,0,.25q0,.51,0,1a.75.75,0,0,0,.75.71H27.53a.75.75,0,0,0,.75-.69c0-.35,0-.69,0-1,0-.08,0-.16,0-.25S28.33,23.54,28.32,23.37Zm-1.5,1H9.44c0-.16,0-.32,0-.48s0-.3,0-.48a14.07,14.07,0,0,1,3.21-8.88,8.64,8.64,0,0,0,5.15,1.88,1.8,1.8,0,0,0,.57,0,8.75,8.75,0,0,0,5.24-1.89,14.13,14.13,0,0,1,3.21,8.91c0,.15,0,.3,0,.45S26.83,24.21,26.82,24.37Z"/>
+						</g>
+					</svg>
+					게스트하우스
+				</button>
+			</li>
+			<li>
+				<button class="cate" data-tab="tab-5">
+					<svg class="ico5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.22 26.91">
+						<g class="category-svg">
+							<path d="M18.7,26.91H10.43a.6.6,0,0,1-.6-.6v-4.4H8.05v4.4a.6.6,0,0,1-.6.6H4.52a.6.6,0,0,1-.6-.6V12.2H.6a.58.58,0,0,1-.55-.37.57.57,0,0,1,.13-.65l11-11a.6.6,0,0,1,.84,0l11,11a.6.6,0,0,1-.42,1H19.3V26.31A.6.6,0,0,1,18.7,26.91ZM11,25.71H18.1V11.6a.6.6,0,0,1,.6-.6h2.47L11.61,1.44,2.05,11H4.52a.6.6,0,0,1,.6.6V25.71H6.85v-4.4a.6.6,0,0,1,.6-.6h3a.6.6,0,0,1,.6.6Z"/>
+							<path d="M14.92,24.57H12.74a.6.6,0,0,1-.6-.6V21.31a.6.6,0,0,1,.6-.6h2.18a.6.6,0,0,1,.6.6V24A.6.6,0,0,1,14.92,24.57Zm-1.58-1.2h1V21.91h-1Zm1.58-7.14H12.74a.6.6,0,0,1-.6-.6V13a.6.6,0,0,1,.6-.6h2.18a.6.6,0,0,1,.6.6v2.66A.6.6,0,0,1,14.92,16.23ZM13.34,15h1V13.57h-1Zm-2.86,1.2H8.3a.6.6,0,0,1-.6-.6V13a.6.6,0,0,1,.6-.6h2.18a.6.6,0,0,1,.6.6v2.66A.6.6,0,0,1,10.48,16.23ZM8.9,15h1V13.57h-1Z"/>
+						</g>
+					</svg>
+					독채/단독이용
+				</button>
+			</li>
+		</ul>
+	</section><!-- //유형별 숙소 선택 -->
+
+    <!-- 객실 상세 내용 -->
+	<section class="hotel-list-area" id="hotel_detail">
+		<h2 class="sec-caption">숙박 목록</h2>
+		<div class="hotel-group">
+			<a class="close-btn" onclick="ad_close_popup('#hotel_detail')"></a>
+			<div class="product-area">
+				<a href="">
+					<div class="i-photo">
+						<img src="/images/web/other/no-image.jpg" alt="product" alt="product">
+					</div>
+					<div class="text">
+						<div class="tx_comment"></div>
+						<h2>그라벨호텔 제주</h2>
+						<div class="ad_star">
+								<span class="star-icon">
+									<img src="../../../images/mw/icon/star_on.png" alt="좋아요">
+									<img src="../../../images/mw/icon/star_on.png" alt="좋아요">
+									<img src="../../../images/mw/icon/star_on.png" alt="좋아요">
+									<img src="../../../images/mw/icon/star_on.png" alt="좋아요">
+									<img src="../../../images/mw/icon/star_on.png" alt="좋아요">
+								</span>
+							<span class="star-num">(16)</span>
+						</div>
+						<div class="memo">
+							<img src="../../images/mw/icon/place.png" alt="거리">
+							<span class="guide-memo">제주시내권</span> 공항인근
+						</div>
+						<div class="info">
+
+							<!-- label -->
+							<div class="bxLabel">
+								<span class="main_label pink">당일특가</span>
+								<span class="main_label eventblue">이벤트</span>
+								<span class="main_label pink">할인쿠폰</span>
+								<span class="main_label back-red">연박할인</span>
+								<span class="main_label yellow">탐나는전</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- 가격 -->
+					<div class="map-price">
+						<del>220,000원</del>
+						<em>1박</em>
+						<strong>999,000</strong>
+						<span class="won">원</span>
+					</div>
+				</a>
+			</div>
+		</div> <!-- //hotel-group -->
+	</section> <!-- //객실 상세 내용 -->
+
+    <!-- 지도---mw-map-area -->
+	<div class="mw-map-area">
+		<section class="map-view-area">
+			<h2 class="sec-caption">숙박 지도</h2>
+			<div id="map">
+				<img class="test-map" src="../../../images/mw/other/map_service.jpg" alt="임시맵">
+
+				<!-- 가격노출 point -->
+				<div class="MarkerIcon-content">
+					<div class="MarkerIcon-wrap">
+						<button class="MarkerIcon-btn">
+							<div class="IconBtn">
+								<div class="IconInner">
+									<span>₩137,461</span>
+								</div>
+							</div>
+						</button>
+					</div>
+				</div> <!-- //가격노출 point -->
+			</div> <!-- //map -->
+		</section> <!-- //map-view-area -->
+
+		<script type="text/javascript">
+
+			//동적 지도 ( 움직이는 지도 --- pc랑 동일 )
+			var container = document.getElementById('map');
+			var options = {
+				center: new daum.maps.LatLng(33.371250, 126.588211),
+				//center: new daum.maps.LatLng(33.4888341, 126.49807970000006),
+				level: 9
+			};
+
+			var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+			function createMarkers() {
+
+
+				for (var i = 0; i < adHoPos.length; i++) {
+
+					var imageSrc = "<c:url value='/images/web/icon/map_s01.png'/>";
+					var imageSize = new daum.maps.Size(28, 35);
+					var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+							marker = createMarker(adHoPos[i], markerImage, i, 'HO');
+
+					// 생성된 마커를 숙소 마커 배열에 추가합니다
+					adHoMarkers.push(marker);
+				}
+
+				for (var i = 0; i < adPePos.length; i++) {
+
+					var imageSrc = "<c:url value='/images/web/icon/map_s01.png'/>";
+					var imageSize = new daum.maps.Size(28, 35);
+					var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+							marker = createMarker(adPePos[i], markerImage, i, 'PE');
+
+					// 생성된 마커를 숙소 마커 배열에 추가합니다
+					adPeMarkers.push(marker);
+				}
+
+				for (var i = 0; i < adCoPos.length; i++) {
+
+					var imageSrc = "<c:url value='/images/web/icon/map_s01.png'/>";
+					var imageSize = new daum.maps.Size(28, 35);
+					var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+							marker = createMarker(adCoPos[i], markerImage, i, 'CO');
+
+					// 생성된 마커를 숙소 마커 배열에 추가합니다
+					adCoMarkers.push(marker);
+				}
+
+				for (var i = 0; i < adGePos.length; i++) {
+
+					var imageSrc = "<c:url value='/images/web/icon/map_s01.png'/>";
+					var imageSize = new daum.maps.Size(28, 35);
+					var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+							marker = createMarker(adGePos[i], markerImage, i, 'GE');
+
+					// 생성된 마커를 숙소 마커 배열에 추가합니다
+					adGeMarkers.push(marker);
+				}
+				for (var i = 0; i < tourPos.length; i++) {
+
+					var imageSrc = "<c:url value='/images/web/icon/map_s02.png'/>";
+					var imageSize = new daum.maps.Size(28, 35);
+					var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+							marker = createMarker(tourPos[i], markerImage, i, 'tour');
+
+					// 생성된 마커를 관광지 마커 배열에 추가합니다
+					tourMarkers.push(marker);
+				}
+
+				for (var i = 0; i < sportPos.length; i++) {
+
+					var imageSrc = "<c:url value='/images/web/icon/map_s04.png'/>";
+					var imageSize = new daum.maps.Size(28, 35);
+					var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+							marker = createMarker(sportPos[i], markerImage, i, 'sport');
+
+					// 생성된 마커를 레져 마커 배열에 추가합니다
+					sportMarkers.push(marker);
+				}
+
+				for (var i = 0; i < foodPos.length; i++) {
+
+					var imageSrc = "<c:url value='/images/web/icon/map_s05.png'/>";
+					var imageSize = new daum.maps.Size(28, 35);
+					var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+							marker = createMarker(foodPos[i], markerImage, i, 'food');
+
+					// 생성된 마커를 음식 마커 배열에 추가합니다
+					foodMarkers.push(marker);
+				}
+
+				for (var i = 0; i < beautyPos.length; i++) {
+
+					var imageSrc = "<c:url value='/images/web/icon/map_s06.png'/>";
+					var imageSize = new daum.maps.Size(28, 35);
+					var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+							marker = createMarker(beautyPos[i], markerImage, i, 'beauty');
+
+					// 생성된 마커를 관광지 마커 배열에 추가합니다
+					beautyMarkers.push(marker);
+				}
+
+			}
+
+			function createMarker(position, image, index, type) {
+				var marker = new daum.maps.Marker({
+					position: position,
+					image: image,
+					clickable: true
+				});
+
+				daum.maps.event.addListener(marker, 'click', function() {
+					closeOverlay('All');
+					setOverlay(marker, index, type);
+
+				});
+				return marker;
+			}
+
+			function createOverlay(position, content) {
+				var overlay = new daum.maps.CustomOverlay({
+					content:content,
+					position:position
+				});
+
+				return overlay;
+			}
+
+			function createOverlays() {
+				for (var i = 0; i < adHoPos.length; i++) {
+					var overlay = createOverlay(adHoPos[i], adHoContent[i]);
+					adHoOverlay.push(overlay);
+				}
+
+				for (var i = 0; i < adPePos.length; i++) {
+					var overlay = createOverlay(adPePos[i], adPeContent[i]);
+					adPeOverlay.push(overlay);
+				}
+
+				for (var i = 0; i < adCoPos.length; i++) {
+					var overlay = createOverlay(adCoPos[i], adCoContent[i]);
+					adCoOverlay.push(overlay);
+				}
+
+				for (var i = 0; i < adGePos.length; i++) {
+					var overlay = createOverlay(adGePos[i], adGeContent[i]);
+					adGeOverlay.push(overlay);
+				}
+
+				for (var i = 0; i < tourPos.length; i++) {
+					var overlay = createOverlay(tourPos[i], tourContent[i]);
+					tourOverlay.push(overlay);
+				}
+
+				for (var i = 0; i < sportPos.length; i++) {
+					var overlay = createOverlay(sportPos[i], sportContent[i])
+					sportOverlay.push(overlay);
+				}
+
+				for (var i = 0; i < foodPos.length; i++) {
+					var overlay = createOverlay(foodPos[i], foodContent[i])
+					foodOverlay.push(overlay);
+				}
+
+				for (var i = 0; i < beautyPos.length; i++) {
+					var overlay = createOverlay(beautyPos[i], beautyContent[i])
+					beautyOverlay.push(overlay);
+				}
+			}
+
+			function setOverlay(marker, index, type) {
+				if(type == 'HO') {
+					adHoOverlay[index].setMap(map);
+				} else if(type == 'PE') {
+					adPeOverlay[index].setMap(map);
+				} else if(type == 'CO') {
+					adCoOverlay[index].setMap(map);
+				} else if(type == 'GE') {
+					adGeOverlay[index].setMap(map);
+				} else if(type == 'tour') {
+					tourOverlay[index].setMap(map);
+				} else if(type=='sport') {
+					sportOverlay[index].setMap(map);
+				} else if(type=='food') {
+					foodOverlay[index].setMap(map);
+				} else if(type=='beauty') {
+					beautyOverlay[index].setMap(map);
+				}
+			}
+
+			function closeOverlay(type, index) {
+				if(type == 'HO') {
+					adHoOverlay[index].setMap(null);
+				} else if(type == 'PE') {
+					adPeOverlay[index].setMap(null);
+				} else if(type == 'CO') {
+					adCoOverlay[index].setMap(null);
+				} else if(type == 'GE') {
+					adGeOverlay[index].setMap(null);
+				} else if(type == 'tour') {
+					tourOverlay[index].setMap(null);
+				} else if(type=='sport') {
+					sportOverlay[index].setMap(null);
+				} else if(type=='food') {
+					foodOverlay[index].setMap(null);
+				} else if(type=='beauty') {
+					beautyOverlay[index].setMap(null);
+				} else if(type=='All') {
+					for (var i = 0; i < adHoOverlay.length; i++) {
+						adHoOverlay[i].setMap(null);
+					}
+					for (var i = 0; i < adPeOverlay.length; i++) {
+						adPeOverlay[i].setMap(null);
+					}
+					for (var i = 0; i < adCoOverlay.length; i++) {
+						adCoOverlay[i].setMap(null);
+					}
+					for (var i = 0; i < adGeOverlay.length; i++) {
+						adGeOverlay[i].setMap(null);
+					}
+					for (var i = 0; i < tourOverlay.length; i++) {
+						tourOverlay[i].setMap(null);
+					}
+					for (var i = 0; i < sportOverlay.length; i++) {
+						sportOverlay[i].setMap(null);
+					}
+					for (var i = 0; i < foodOverlay.length; i++) {
+						foodOverlay[i].setMap(null);
+					}
+					for (var i = 0; i < beautyOverlay.length; i++) {
+						beautyOverlay[i].setMap(null);
+					}
+				}
+
+			}
+
+			function setAdMarkers(map) {
+				setAdHoMarkers(map);
+				setAdPeMarkers(map);
+				setAdCoMarkers(map);
+				setAdGeMarkers(map);
+			}
+
+			function setAdHoMarkers(map) {
+				for (var i = 0; i < adHoMarkers.length; i++) {
+					adHoMarkers[i].setMap(map);
+				}
+			}
+
+			function setAdPeMarkers(map) {
+				for (var i = 0; i < adPeMarkers.length; i++) {
+					adPeMarkers[i].setMap(map);
+				}
+			}
+
+			function setAdCoMarkers(map) {
+				for (var i = 0; i < adCoMarkers.length; i++) {
+					adCoMarkers[i].setMap(map);
+				}
+			}
+
+			function setAdGeMarkers(map) {
+				for (var i = 0; i < adGeMarkers.length; i++) {
+					adGeMarkers[i].setMap(map);
+				}
+			}
+
+			function setTourMarkers(map) {
+				for (var i = 0; i < tourMarkers.length; i++) {
+					tourMarkers[i].setMap(map);
+				}
+			}
+			function setSportMarkers(map) {
+				for (var i = 0; i < sportMarkers.length; i++) {
+					sportMarkers[i].setMap(map);
+				}
+			}
+
+			function setFoodMarkers(map) {
+				for (var i = 0; i < foodMarkers.length; i++) {
+					foodMarkers[i].setMap(map);
+				}
+			}
+
+			function setBeautyMarkers(map) {
+				for (var i = 0; i < beautyMarkers.length; i++) {
+					beautyMarkers[i].setMap(map);
+				}
+			}
+
+			function changeMarker(type) {
+				if( type=='ad') {
+					setAdMarkers(map);
+				} else if(type == 'tour') {
+					setTourMarkers(map);
+				} else if(type == 'sport') {
+					setSportMarkers(map);
+				} else if(type == 'food') {
+					setFoodMarkers(map);
+				} else if(type == 'beauty') {
+					setBeautyMarkers(map);
+				} else if(type == 'all') {
+					changeMarker($("#adDiv").val());
+					setTourMarkers(map);
+					setSportMarkers(map);
+					setFoodMarkers(map);
+					setBeautyMarkers(map);
+				} else if(type == 'none') {
+					setAdMarkers(null);
+					setTourMarkers(null);
+					setSportMarkers(null);
+					setFoodMarkers(null);
+					setBeautyMarkers(null);
+				} else if(type == 'HO') {
+					setAdMarkers(null);
+					setAdHoMarkers(map);
+				} else if(type == 'PE') {
+					setAdMarkers(null);
+					setAdPeMarkers(map);
+				} else if(type == 'CO') {
+					setAdMarkers(null);
+					setAdCoMarkers(map);
+				} else if( type == 'GE') {
+					setAdMarkers(null);
+					setAdGeMarkers(map);
+				}
+			}
+
+			function disMarker(type) {
+				if(type == 'ad') {
+					setAdMarkers(null);
+				} else if(type == 'tour') {
+					setTourMarkers(null);
+				} else if(type == 'sport') {
+					setSportMarkers(null);
+				} else if(type == 'food') {
+					setFoodMarkers(null);
+				} else if(type == 'beauty') {
+					setBeautyMarkers(null);
+				}
+			}
+
+		</script>
+	</div> <!-- // 지도---mw-map-area -->
+</main>	<!--//change contents-->
+
+<!-- <footer id="footer"> footer diplay---none </footer> -->
+
+</div>
+<div id="dimmedB"></div>
+</body>
+</html>

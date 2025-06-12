@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="adtm">
+<resultMap id="ADTM_AMT_R_00" class="oss.marketing.vo.ADTMAMTVO">
+	<result property="aplDt"	 		column="APL_DT" />
+	<result property="adtmAmt" 			column="ADTM_AMT" />
+	<result property="adtmAmtAdd1" 			column="ADTM_AMT_ADD1" />
+	<result property="adtmAmtAdd2" 			column="ADTM_AMT_ADD2" />
+	<result property="adtmAmtAdd3" 			column="ADTM_AMT_ADD3" />
+	<result property="adtmAmtAdd4" 			column="ADTM_AMT_ADD4" />
+	<result property="adtmAmtAdd5" 			column="ADTM_AMT_ADD5" />
+</resultMap>
+
+<resultMap id="ADTM_AMT_R_01" class="oss.marketing.vo.ADTMAMTVO">
+	<result property="aplDt"	 		column="APL_DT" />
+	<result property="saleAmt" 			column="SALE_AMT" />
+</resultMap>
+
+<select id="ADTM_AMT_S_00" resultMap="ADTM_AMT_R_00">
+SELECT APL_DT        /*적용 일자, */
+    , NVL(ADTM_AMT,0) AS ADTM_AMT    /*광고비 */
+    , NVL(ADTM_AMT_ADD1,0) AS ADTM_AMT_ADD1
+    , NVL(ADTM_AMT_ADD2,0) AS ADTM_AMT_ADD2
+    , NVL(ADTM_AMT_ADD3,0) AS ADTM_AMT_ADD3
+    , NVL(ADTM_AMT_ADD4,0) AS ADTM_AMT_ADD4
+    , NVL(ADTM_AMT_ADD5,0) AS ADTM_AMT_ADD5
+FROM TB_ADTM_AMT
+WHERE 1=1
+	<isNotEmpty property="sAplDt">
+	 	<isNotNull property="sAplDt">
+	 		AND APL_DT LIKE #sAplDt#||'%'
+	    </isNotNull>
+	</isNotEmpty>
+	ORDER BY APL_DT ASC
+</select>
+
+<select id="ADTM_AMT_S_01" resultMap="ADTM_AMT_R_01">
+WITH T_RSVAMT AS (
+SELECT T_BASE.DT
+     , NVL(SALE_AMT, 0) - NVL(CANCEL_AMT, 0) AS TOTAL_AMT
+     , NVL(SALE_CNT, 0) - NVL(CANCEL_CNT, 0) AS TOTAL_CNT
+  FROM (
+    SELECT #sAplDt#||LPAD(LEVEL, 2, '0') AS DT
+        FROM DUAL
+        <![CDATA[
+      CONNECT BY LEVEL <= TO_CHAR(LAST_DAY(TO_DATE(#sAplDt#, 'YYYYMM')), 'DD')
+        ]]>
+    ) T_BASE
+   LEFT OUTER JOIN(SELECT RSV_DT
+             , SUM(SALE_AMT) AS SALE_AMT
+             , COUNT(SALE_AMT) AS SALE_CNT
+          FROM (SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+                     , T_DTLRSV.SALE_AMT
+                  FROM TB_RSV T_RSV
+                 INNER JOIN TB_AD_RSV T_DTLRSV
+                    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+                 WHERE T_RSV.RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01')
+                 UNION
+                SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+                     , T_DTLRSV.SALE_AMT
+                  FROM TB_RSV T_RSV
+                 INNER JOIN TB_RC_RSV T_DTLRSV
+                    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+                 WHERE T_RSV.RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01')
+                 UNION
+                SELECT TO_CHAR(RSV_DTTM, 'YYYYMMDD') AS RSV_DT
+                     , SALE_AMT
+                  FROM TB_AV_RSV
+                 WHERE RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01')
+                 UNION
+                SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+                     , T_DTLRSV.SALE_AMT
+                  FROM TB_RSV T_RSV
+                 INNER JOIN TB_SP_RSV T_DTLRSV
+                    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+                 INNER JOIN TB_SP_PRDTINF T_SPPRDT
+                    ON T_SPPRDT.PRDT_NUM = T_DTLRSV.PRDT_NUM
+                 WHERE T_RSV.RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01'))
+           GROUP BY RSV_DT
+       ) A
+    ON A.RSV_DT=T_BASE.DT
+  LEFT OUTER JOIN (SELECT RSV_CANCEL_DT
+                        , SUM(CANCEL_AMT) AS CANCEL_AMT
+                        , COUNT(CANCEL_AMT) AS CANCEL_CNT
+                     FROM (SELECT TO_CHAR(T_DTLRSV.CANCEL_CMPL_DTTM , 'YYYYMMDD') AS RSV_CANCEL_DT
+                                , T_DTLRSV.CANCEL_AMT
+                             FROM TB_RSV T_RSV
+                            INNER JOIN TB_AD_RSV T_DTLRSV
+                               ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+                              AND T_DTLRSV.RSV_STATUS_CD IN ('RS20', 'RS32')
+                            UNION
+                           SELECT TO_CHAR(T_DTLRSV.CANCEL_CMPL_DTTM , 'YYYYMMDD') AS RSV_CANCEL_DT
+                                , T_DTLRSV.CANCEL_AMT
+                             FROM TB_RSV T_RSV
+                            INNER JOIN TB_RC_RSV T_DTLRSV
+                               ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+                              AND T_DTLRSV.RSV_STATUS_CD IN ('RS20', 'RS32')
+                            UNION
+                           SELECT TO_CHAR(RSV_DTTM, 'YYYYMMDD') AS RSV_DT
+                                , SALE_AMT
+                             FROM TB_AV_RSV
+                             WHERE RSV_STATUS_CD IN ('RS20', 'RS32')
+                            UNION
+                           SELECT TO_CHAR(T_DTLRSV.CANCEL_CMPL_DTTM , 'YYYYMMDD') AS RSV_CANCEL_DT
+                                , T_DTLRSV.CANCEL_AMT
+                             FROM TB_RSV T_RSV
+                            INNER JOIN TB_SP_RSV T_DTLRSV
+                               ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+                            INNER JOIN TB_SP_PRDTINF T_SPPRDT
+                               ON T_SPPRDT.PRDT_NUM = T_DTLRSV.PRDT_NUM
+                              AND T_DTLRSV.RSV_STATUS_CD IN ('RS20', 'RS32')
+                          )
+                    GROUP BY RSV_CANCEL_DT
+                  ) B
+    ON B.RSV_CANCEL_DT = T_BASE.DT
+)
+SELECT DT AS APL_DT
+     , NVL(TOTAL_AMT, 0) AS SALE_AMT
+  FROM T_RSVAMT
+</select>
+
+<insert id="ADTM_AMT_M_00">
+ MERGE INTO TB_ADTM_AMT AMT1
+ USING (SELECT #aplDt# AS APL_DT
+          FROM DUAL) AMT2
+    ON (AMT2.APL_DT = AMT1.APL_DT)
+  WHEN MATCHED THEN
+UPDATE SET
+       ADTM_AMT = #adtmAmt#
+      ,ADTM_AMT_ADD1 = #adtmAmtAdd1#
+      ,ADTM_AMT_ADD2 = #adtmAmtAdd2#
+      ,ADTM_AMT_ADD3 = #adtmAmtAdd3#
+      ,ADTM_AMT_ADD4 = #adtmAmtAdd4#
+      ,ADTM_AMT_ADD5 = #adtmAmtAdd5#
+  WHEN NOT MATCHED THEN
+INSERT
+     ( APL_DT
+     , ADTM_AMT
+     , ADTM_AMT_ADD1
+     , ADTM_AMT_ADD2
+     , ADTM_AMT_ADD3
+     , ADTM_AMT_ADD4
+     , ADTM_AMT_ADD5
+       )
+VALUES
+     ( #aplDt#
+     , #adtmAmt#
+     , #adtmAmtAdd1#
+     , #adtmAmtAdd2#
+     , #adtmAmtAdd3#
+     , #adtmAmtAdd4#
+     , #adtmAmtAdd5#
+     )
+</insert>
+
+
+
+
+<resultMap id="MAKING_HIST_R_00" class="oss.marketing.vo.MKINGHISTVO">
+<result property="mkingHistNum" column="MKING_HIST_NUM"></result>
+<result property="corpId" column="CORP_ID"></result>
+<result property="prdtNum" column="PRDT_NUM"></result>
+<result property="mkingDt" column="MKING_DT"></result>
+<result property="media" column="MEDIA"></result>
+<result property="adtmPay" column="ADTM_PAY"></result>
+<result property="stdStartDttm" column="STD_START_DTTM"></result>
+<result property="stdEndDttm" column="STD_END_DTTM"></result>
+<result property="memo" column="MEMO"></result>
+<result property="corpNm" column="CORP_NM"></result>
+<result property="prdtNm" column="PRDT_NM"></result>
+
+</resultMap>
+
+<resultMap id="MAKING_HIST_R_01" class="oss.marketing.vo.MKINGHISTVO">
+<result property="mkingHistNum" column="MKING_HIST_NUM"></result>
+<result property="corpId" column="CORP_ID"></result>
+<result property="prdtNum" column="PRDT_NUM"></result>
+<result property="mkingDt" column="MKING_DT"></result>
+<result property="media" column="MEDIA"></result>
+<result property="adtmPay" column="ADTM_PAY"></result>
+<result property="stdStartDttm" column="STD_START_DTTM"></result>
+<result property="stdEndDttm" column="STD_END_DTTM"></result>
+<result property="sealesBf" column="SEALES_BF"></result>
+<result property="seales" column="SEALES"></result>
+<result property="sealesCnt" column="SEALES_CNT"></result>
+<result property="sealesPnt" column="SEALES_PNT"></result>
+<result property="memo" column="MEMO"></result>
+<result property="corpNm" column="CORP_NM"></result>
+<result property="prdtNm" column="PRDT_NM"></result>
+</resultMap>
+
+
+<resultMap id="MAKING_HIST_R_04" class="oss.marketing.vo.MKINGHISTVO">
+<result property="seales" column="SEALES"></result>
+<result property="sealesCnt" column="SEALES_CNT"></result>
+</resultMap>
+
+
+
+<select id="MKING_HIST_S_00" resultMap="MAKING_HIST_R_00">
+SELECT MKING_HIST_NUM
+     , T_MK.CORP_ID
+     , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID=T_MK.CORP_ID ) AS CORP_NM
+     , T_MK.PRDT_NUM
+     , PRDT_NM
+     , MKING_DT
+     , MEDIA
+     , ADTM_PAY
+     , STD_START_DTTM
+     , STD_END_DTTM
+     , MEMO
+FROM TB_MKING_HIST T_MK
+LEFT JOIN (
+		SELECT PRDT_NUM
+		     , PRDT_NM
+             , CORP_ID
+		  FROM TB_AD_PRDTINF
+        UNION
+		SELECT PRDT_NUM
+		     , PRDT_NM
+             , CORP_ID
+		  FROM TB_RC_PRDTINF
+        UNION
+		SELECT PRDT_NUM
+		     , PRDT_NM
+             , CORP_ID
+		  FROM TB_GL_PRDTINF
+        UNION
+		  SELECT PRDT_NUM
+		  		, PRDT_NM
+                , CORP_ID
+		    FROM TB_SP_PRDTINF
+		UNION
+		  SELECT PRDT_NUM
+		  		, PRDT_NM
+                , CORP_ID
+		    FROM TB_SV_PRDTINF
+	) T_PRDT
+    ON T_MK.PRDT_NUM = T_PRDT.PRDT_NUM
+WHERE 1=1
+	<isNotEmpty property="mkingHistNum">
+	 	<isNotNull property="mkingHistNum">
+	 		AND MKING_HIST_NUM = #mkingHistNum#
+	    </isNotNull>
+	</isNotEmpty>
+ORDER BY MKING_DT ASC, CORP_NM
+</select>
+
+<sql id="MKING_HIST_01_WHERE">
+	<isNotEmpty property="sYYYYMM">
+ 		<isNotNull property="sYYYYMM">
+			AND MKING_DT LIKE #sYYYYMM#||'%'
+		</isNotNull>
+	</isNotEmpty>
+</sql>
+
+<select id="MKING_HIST_S_01" resultMap="MAKING_HIST_R_01">
+SELECT MKING_HIST_NUM
+     , T_MK.CORP_ID
+     , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID=T_MK.CORP_ID ) AS CORP_NM
+     , T_MK.PRDT_NUM
+     , PRDT_NM
+     , MKING_DT
+     , MEDIA
+     , ADTM_PAY
+     , STD_START_DTTM
+     , STD_END_DTTM
+     , 0 AS SEALES_BF
+     , 0 AS SEALES
+     , 0 AS SEALES_CNT
+     , 0 AS SEALES_PNT
+     , MEMO
+FROM TB_MKING_HIST T_MK
+LEFT JOIN (
+		SELECT PRDT_NUM
+		     , PRDT_NM
+             , CORP_ID
+		  FROM TB_AD_PRDTINF
+        UNION
+		SELECT PRDT_NUM
+		     , PRDT_NM
+             , CORP_ID
+		  FROM TB_RC_PRDTINF
+        UNION
+		SELECT PRDT_NUM
+		     , PRDT_NM
+             , CORP_ID
+		  FROM TB_GL_PRDTINF
+        UNION
+		  SELECT PRDT_NUM
+		  		, PRDT_NM
+                , CORP_ID
+		    FROM TB_SP_PRDTINF
+		UNION
+		  SELECT PRDT_NUM
+		  		, PRDT_NM
+                , CORP_ID
+		    FROM TB_SV_PRDTINF
+	) T_PRDT
+    ON T_MK.PRDT_NUM = T_PRDT.PRDT_NUM
+WHERE 1=1
+	<include refid="MKING_HIST_01_WHERE" />
+ORDER BY MKING_DT ASC, CORP_NM
+</select>
+
+<select id="MKING_HIST_S_02" resultClass="int">
+SELECT COUNT(*)
+FROM TB_MKING_HIST
+ WHERE 1=1
+ 	<include refid="MKING_HIST_01_WHERE" />
+</select>
+
+
+<select id="MKING_HIST_S_04" resultMap="MAKING_HIST_R_04">
+SELECT NVL(SUM(SALE_AMT),0) AS SEALES
+      ,NVL(COUNT(SALE_AMT),0) AS SEALES_CNT
+FROM(
+    SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+         , 'AD' AS CTGR
+         , T_DTLRSV.CORP_ID
+         , T_DTLRSV.PRDT_NUM
+         , T_DTLRSV.AD_RSV_NUM AS RSV_NUM
+         , T_DTLRSV.RSV_STATUS_CD
+         , T_RSV.USER_ID
+         , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+                 ELSE T_DTLRSV.NML_AMT
+             END
+           ) AS NML_AMT
+         , T_DTLRSV.SALE_AMT
+         , T_DTLRSV.CANCEL_AMT
+         , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+                 ELSE 0
+             END
+           ) AS CMSS_AMT
+      FROM TB_RSV T_RSV
+     INNER JOIN TB_AD_RSV T_DTLRSV
+        ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+     WHERE T_RSV.RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01', 'RS20')
+     UNION ALL
+    SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+         , 'RC' AS CTGR
+         , T_DTLRSV.CORP_ID
+         , T_DTLRSV.PRDT_NUM
+         , T_DTLRSV.RC_RSV_NUM AS RSV_NUM
+         , T_DTLRSV.RSV_STATUS_CD
+         , T_RSV.USER_ID
+         , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+                 ELSE T_DTLRSV.NML_AMT
+             END
+           ) AS NML_AMT
+         , T_DTLRSV.SALE_AMT
+         , T_DTLRSV.CANCEL_AMT
+         , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+                 ELSE 0
+             END
+           ) AS CMSS_AMT
+      FROM TB_RSV T_RSV
+     INNER JOIN TB_RC_RSV T_DTLRSV
+        ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+     WHERE T_RSV.RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01', 'RS20')
+     UNION ALL
+    SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+         , 'SV' AS CTGR
+         , T_DTLRSV.CORP_ID
+         , T_DTLRSV.PRDT_NUM
+         , T_DTLRSV.SV_RSV_NUM AS RSV_NUM
+         , T_DTLRSV.RSV_STATUS_CD
+         , T_RSV.USER_ID
+         , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+                 ELSE T_DTLRSV.NML_AMT
+             END
+           ) AS NML_AMT
+         , T_DTLRSV.SALE_AMT
+         , T_DTLRSV.CANCEL_AMT
+         , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+                 ELSE 0
+             END
+           ) AS CMSS_AMT
+      FROM TB_RSV T_RSV
+     INNER JOIN TB_SV_RSV T_DTLRSV
+        ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+     WHERE T_RSV.RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01', 'RS20')
+     UNION ALL
+    SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYYMMDD') AS RSV_DT
+         , CASE SUBSTR(T_SPPRDT.CTGR,0,2) WHEN 'C1' THEN T_SPPRDT.CTGR
+                                          WHEN 'C4' THEN T_SPPRDT.CTGR
+                                          ELSE SUBSTR(T_SPPRDT.CTGR,0,2)||'00'
+            END AS CTGR
+         , T_DTLRSV.CORP_ID
+         , T_DTLRSV.PRDT_NUM
+         , T_DTLRSV.SP_RSV_NUM AS RSV_NUM
+         , T_DTLRSV.RSV_STATUS_CD
+         , T_RSV.USER_ID
+         , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20', 'RS99') THEN 0
+                 ELSE T_DTLRSV.NML_AMT
+             END
+           ) AS NML_AMT
+         , T_DTLRSV.SALE_AMT
+         , T_DTLRSV.CANCEL_AMT
+         , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+                 ELSE 0
+             END
+           ) AS CMSS_AMT
+      FROM TB_RSV T_RSV
+     INNER JOIN TB_SP_RSV T_DTLRSV
+        ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+     INNER JOIN TB_SP_PRDTINF T_SPPRDT
+        ON T_SPPRDT.PRDT_NUM = T_DTLRSV.PRDT_NUM
+     WHERE T_RSV.RSV_STATUS_CD NOT IN ('RS99', 'RS00', 'RS01', 'RS20')
+)
+WHERE 1=1
+  AND RSV_STATUS_CD != 'RS20'
+  AND RSV_DT BETWEEN #stdStartDttm# AND #stdEndDttm#
+	<isNotEmpty property="corpId">
+ 		<isNotNull property="corpId">
+			AND CORP_ID=#corpId#
+		</isNotNull>
+	</isNotEmpty>
+	<isNotEmpty property="prdtNum">
+ 		<isNotNull property="prdtNum">
+ 			AND PRDT_NUM=#prdtNum#
+ 		</isNotNull>
+ 	</isNotEmpty>
+
+</select>
+
+
+<insert id="MKING_HIST_I_00">
+INSERT INTO TB_MKING_HIST
+	(MKING_HIST_NUM
+     , CORP_ID
+     , PRDT_NUM
+     , MKING_DT
+     , MEDIA
+     , ADTM_PAY
+     , STD_START_DTTM
+     , STD_END_DTTM
+     , MEMO
+     )
+VALUES
+	( (SELECT TO_CHAR(NVL(MAX(TO_NUMBER(MKING_HIST_NUM)),0) + 1) FROM TB_MKING_HIST)
+	, #corpId#
+	, #prdtNum#
+	, #mkingDt#
+    , #media#
+    , #adtmPay#
+    , #stdStartDttm#
+    , #stdEndDttm#
+    , #memo#
+	)
+</insert>
+
+<update id="MKING_HIST_U_00">
+UPDATE TB_MKING_HIST
+  SET  CORP_ID = #corpId#
+     , PRDT_NUM = #prdtNum#
+     , MKING_DT = #mkingDt#
+     , MEDIA = #media#
+     , ADTM_PAY = #adtmPay#
+     , STD_START_DTTM = #stdStartDttm#
+     , STD_END_DTTM = #stdEndDttm#
+     , MEMO = #memo#
+WHERE MKING_HIST_NUM = #mkingHistNum#
+</update>
+
+<update id="MKING_HIST_D_00">
+DELETE TB_MKING_HIST
+WHERE MKING_HIST_NUM = #mkingHistNum#
+</update>
+
+</sqlMap>

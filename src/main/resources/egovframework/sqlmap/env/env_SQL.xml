@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="env">
+
+<resultMap id="DFT_INF_R_00" class="oss.env.vo.DFTINFVO">
+<result property="infId" 		column="INF_ID" />
+<result property="adjAplPct" 	column="ADJ_APL_PCT" />
+<result property="disMaxiPct" 	column="DIS_MAXI_PCT" />
+<result property="userRegCpAmt" column="USER_REG_CP_AMT" />
+<result property="useEpilCpAmt" column="USE_EPIL_CP_AMT" />
+<result property="appRegCpAmt" 	column="APP_REG_CP_AMT" />
+<result property="cpExprDayNum" column="CP_EXPR_DAY_NUM" />
+<result property="adSortStd" 	column="AD_SORT_STD" />
+<result property="rcSortStd" 	column="RC_SORT_STD" />
+<result property="tickSortStd" 	column="TICK_SORT_STD" />
+<result property="foodSortStd" 	column="FOOD_SORT_STD" />
+<result property="packSortStd" 	column="PACK_SORT_STD" />
+<result property="svSortStd" 	column="SV_SORT_STD" />
+<result property="androidVer"   column="ANDROID_VER" />
+<result property="iosVer"       column="IOS_VER" />
+</resultMap>
+
+<select id="DFT_INF_S_00" resultMap="DFT_INF_R_00">
+SELECT INF_ID
+     , ADJ_APL_PCT
+     , DIS_MAXI_PCT
+     , USER_REG_CP_AMT
+     , USE_EPIL_CP_AMT
+     , APP_REG_CP_AMT
+     , CP_EXPR_DAY_NUM
+     , AD_SORT_STD
+     , RC_SORT_STD
+     , TICK_SORT_STD
+     , FOOD_SORT_STD
+     , PACK_SORT_STD
+     , SV_SORT_STD
+     , ANDROID_VER
+     , IOS_VER
+  FROM TB_DFT_INF
+WHERE INF_ID = #infId#
+</select>
+
+<insert id="DFT_INF_I_00">
+INSERT INTO TB_DFT_INF 
+     ( INF_ID
+     , DIS_MAXI_PCT
+     , USER_REG_CP_AMT
+     , USE_EPIL_CP_AMT
+     , APP_REG_CP_AMT
+     , CP_EXPR_DAY_NUM
+     )
+VALUES
+     ( #infId#
+     , #disMaxiPct#
+     , #userRegCpAmt#
+     , #useEpilCpAmt#
+     , #appRegCpAmt#
+     , #cpExprDayNum#
+     )
+</insert>
+
+<update id="DFT_INF_U_00">
+UPDATE TB_DFT_INF 
+   SET DIS_MAXI_PCT = #disMaxiPct#
+     , USER_REG_CP_AMT = #userRegCpAmt#
+     , USE_EPIL_CP_AMT = #useEpilCpAmt#
+     , APP_REG_CP_AMT = #appRegCpAmt#
+     , CP_EXPR_DAY_NUM = #cpExprDayNum#
+ WHERE 1=1
+   AND INF_ID= #infId#
+</update>
+
+<update id="DFT_INF_U_01">
+UPDATE TB_DFT_INF 
+   SET AD_SORT_STD		= #adSortStd#
+     , RC_SORT_STD		= #rcSortStd#
+     , TICK_SORT_STD	= #tickSortStd#
+     , FOOD_SORT_STD	= #foodSortStd#
+     , PACK_SORT_STD	= #packSortStd#
+     , SV_SORT_STD		= #svSortStd#
+ WHERE 1=1
+   AND INF_ID= #infId#
+</update>
+
+<update id="DFT_INF_U_02">
+UPDATE TB_DFT_INF
+SET ANDROID_VER		= #androidVer#
+    , IOS_VER		= #iosVer#
+WHERE 1=1
+    AND INF_ID= #infId#
+</update>
+
+<select id="CT_OUTDAY_S_01" resultClass="int">
+    SELECT COUNT(1)
+    FROM TB_CHANNELTALK_OUTDAY
+    WHERE OUTDAY = #strYYYYMMDD#
+</select>
+
+<insert id="CT_OUTDAY_I_01">
+    INSERT INTO TB_CHANNELTALK_OUTDAY
+    (OUTDAY)
+    VALUES
+    ( #strYYYYMMDD# )
+</insert>
+<insert id="CT_OUTDAY_I_02">
+    INSERT INTO TB_CHANNELTALK_OUTDAY
+    ( OUTDAY)
+    SELECT DT
+    FROM (SELECT TO_CHAR(TO_DATE(#startDt#, 'YYYYMMDD')+LEVEL-1, 'YYYYMMDD') AS DT
+    FROM DUAL
+    CONNECT BY LEVEL &lt;= (TO_DATE(#endDt#, 'YYYYMMDD')-TO_DATE(#startDt#, 'YYYYMMDD')+1)
+    )
+    WHERE DT NOT IN (SELECT OUTDAY
+    FROM TB_CHANNELTALK_OUTDAY
+    WHERE OUTDAY BETWEEN #startDt# AND #endDt#)
+    <dynamic prepend="AND TO_CHAR(TO_DATE(DT, 'YYYYMMDD'), 'D') IN ">
+        <iterate open="(" close=")" conjunction="," property="wdayList">
+            #wdayList[]#
+        </iterate>
+    </dynamic>
+</insert>
+<delete id="CT_OUTDAY_D_01">
+    DELETE FROM TB_CHANNELTALK_OUTDAY
+    WHERE OUTDAY  = #strYYYYMMDD#
+</delete>
+</sqlMap>

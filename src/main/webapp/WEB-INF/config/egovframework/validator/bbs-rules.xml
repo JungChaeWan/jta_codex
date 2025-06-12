@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC 
+    "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN" 
+    "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+<form-validation>
+
+    <formset>
+        <form name="BBSVO">
+        	<field property="bbsNum" depends="required, maxlength">
+        		<arg0 key="게시판ID" />
+        		<arg1 key="10" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				</var>
+				<!-- <arg2 />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9a-zA-Z$]</var-value>
+				</var> -->
+			</field>
+			<field property="bbsNm" depends="required, maxlength">
+                <arg0 key="이름" />
+                <arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+            </field>
+            <field property="admId" depends="required">
+                <arg0 key="관리자ID" />
+            </field>
+            <field property="atcFileExt" depends="maxlength">
+            	<arg0 key="첨부파일 확장자" />
+                <arg1 key="100" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+            </field>
+        </form>
+        
+        <form name="BBSGRPINFVO">
+			<field property="bbsGrpNm" depends="required, maxlength">
+                <arg0 key="이름" />
+                <arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+            </field>
+        </form>
+        
+        <form name="BBSGRPVO">
+			<field property="bbsNum" depends="required, maxlength">
+                <arg0 key="게시판ID" />
+                <arg1 key="10" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				</var>
+            </field>
+        </form>
+    </formset>
+    
+    
+
+</form-validation>

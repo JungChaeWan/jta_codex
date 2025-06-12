@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>장바구니-탐나오</title>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="../../js/air_step1.js"></script>
+
+    <!-- css -->
+    <link rel="stylesheet" href="../../css/common/jquery-ui.css?version=1.2">
+    <link rel="stylesheet" href="../../css/web/common.css?version=1">
+    <link rel="stylesheet" href="../../css/web/style.css?version=1">
+    <link rel="stylesheet" href="../../css/web/rc.css?version=1">
+    <link rel="stylesheet" href="../../css/web/sub.css">
+    <link rel="stylesheet" href="../../css/web/cart_n.css">
+
+    <!-- script -->
+    <script src="../../js/jquery-1.11.1.js"></script>
+    <script src="../../js/jquery-ui.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+    <script src="../../js/swiper.js"></script>
+    <script src="../../js/html_common.js"></script>
+    <script src="../../js/html_style.js"></script>
+<body>
+<!-- re_header -->
+<div id="_header">
+    <!-- top banner zone-->
+    <div id="top_banner" class="top-banner swiper-container">
+        <ul class="swiper-wrapper">
+            <li class="swiper-slide">
+                <a href="${result.url}" target="_blank">
+                    <div class="bar-tw">
+                        <p class="bar-t"><em class="bar-em">회원가입</em>만 해도 혜택이 팡팡!</p>
+                    </div>
+                    <img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+                </a>
+            </li>
+            <li class="swiper-slide">
+                <a href="${result.url}" target="_blank">
+                    <div class="bar-tw">
+                        <p class="bar-t">착한수수료 동참을 지지하는 <em class="bar-em">댓글이벤트</em> 참여하세요!</p>
+                    </div>
+                    <img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+                </a>
+            </li>
+        </ul>
+        <div class="container">
+            <a href="javascript:void(0)" id="top_close" class="close"><img src="/images/web/comm/btn_close.png" alt="닫기"></a>
+        </div>
+    </div><!--// top banner zone-->
+
+    <div class="re_header">
+        <div class="inner">
+            <div class="header-top">
+                <div class="box__usermenu">
+                    <ul class="list__usermenu">
+                        <li><b>이은민</b>님 환영합니다.</li>
+                        <li class="list-item">
+                            <a class="link__usermenu" href="javascript:fn_login();">로그인</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__usermenu" href="/web/signUp00.do">회원가입</a>
+                        </li>
+                        <!-- 로그인 -->
+                        <!--
+                        <li class="list-item">
+                            <a class="link__usermenu" href="javascript:fn_logout();">로그아웃</a>
+                        </li>-->
+                        <!-- //로그인 -->
+                        <li class="list-item">
+                            <a class="link__usermenu" href="/web/coustmer/viewCorpPns.do">입점신청</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__usermenu" href="/web/bbs/bbsList.do?bbsNum=NOTICE">고객센터</a>
+                        </li>
+                    </ul>
+                </div>
+                <h1>
+                    <a href="/" title="tamnao - 제주여행종합쇼핑몰">
+                        <img src="/images/web/r_main/nao_logo2.png" alt="탐나오">
+                    </a>
+                </h1>
+                <div class="srh_area">
+                    <form id="submitFrm" name="submitFrm">
+                        <fieldset>
+                            <legend class="for-a11y"> 검색</legend>
+                            <div class="top_search" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+                                <input name="keyword" title="검색어 입력" class="form_input" value="[기획전] 제주 봄꽃 여행" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+                                <button type="submit" title="검색" class="srh_btn" onclick="fn_searBtClick();">
+                                    <img src="/images/web/r_main/srh_btn.png" alt="검색">
+                                </button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="util_menu">
+                    <ui>
+                        <li id="unpaidInfo" class="nopay">
+                            <a href="javascript:fn_DtlRsv('${unpaidRsvNum}');" class="blinking text-red">
+                                <span class="ico count">&nbsp;</span>미결제상품
+                                <span class="cnt">0</span>
+                            </a>
+                        </li>
+                        <li class="coupon more">
+                            <a href="/web/mypage/pocketList.do">
+                                <span class="ico"></span>쿠폰
+                                <span class="cnt">0</span>
+                            </a>
+                        </li>
+                        <li class="cart more">
+                            <a href="/web/cart.do">
+                                <span class="ico">&nbsp;</span>장바구니
+                                <span class="cnt">0</span>
+                            </a>
+                        </li>
+                        <li class="mypage more">
+                            <a href="/web/mypage/rsvList.do">
+                                <span class="ico">&nbsp;</span>마이탐나오
+                            </a>
+                        </li>
+                    </ui>
+                </div>
+            </div>
+        </div>
+
+        <!-- global-navigation -->
+        <div class="gnb2">
+            <div class="inner">
+                <div class="box__service-all">
+                    <ul class="menu">
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/av/mainList.do">항공</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/sp/vesselList.do">선박</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/stay/jeju.do">숙소</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/rentcar/car-list.do">렌터카</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C200">관광지/레저 할인쿠폰</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/sv/mainList.do">제주특산/기념품</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C270">제주마을체험</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C300">맛집</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/sp/packageList.do">여행사 상품</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/evnt/prmtPlanList.do">기획전</a>
+                        </li>
+                        <li class="list-item">
+                            <a class="link__service" href="https://www.tamnao.com/web/evnt/promotionList.do">이벤트</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- //re_header -->
+
+<main id="main">
+    <div class="mapLocation">
+        <div class="inner">
+            <span>홈</span> <span class="gt">&gt;</span>
+            <span>장바구니</span>
+        </div>
+    </div>
+
+    <!-- //quick banner -->
+    <div class="subContainer">
+        <div class="subHead"></div>
+        <div class="subContents">
+
+            <!-- new contents -->
+            <script>
+                $(document).ready(function() {
+                    //숙박 옵션 열기
+                    $('#optionBT1').click(function () {
+                        show_popup($('.room-option'));
+                    });
+                    //골프 옵션 열기
+                    $('#optionBT2').click(function () {
+                        show_popup($('.golf-option'));
+                    });
+                    //렌터카 옵션 열기
+                    $('#optionBT3').click(function () {
+                        show_popup($('.rent-option'));
+                    });
+                    //패키지 옵션 열기
+                    $('#optionBT4').click(function () {
+                        show_popup($('.pack-option'));
+                    });
+                    //패키지 옵션 열기
+                    $('#optionBT5').click(function () {
+                        show_popup($('.pack-option'));
+                    });
+                    //옵션 닫기
+                    $('.option-close').click(function () {
+                        close_popup($('.option-box'));
+                    });
+
+                    /** 열고닫기  */
+                    $(".store_name span").click(function () {
+                        $(this).closest(".item-list");
+                        let index = $(".item-list").index($(this).closest(".item-list"));
+                        if ($(".item-list:eq(" + index + ")").hasClass("open")) {
+                            $(".item-list:eq(" + index + ")").removeClass("open");
+                            $(".item-list:eq(" + index + ")").attr("attr-value", "0");
+                        } else {
+                            $(".item-list:eq(" + index + ")").addClass("open");
+                            $(".item-list:eq(" + index + ")").attr("attr-value", "1");
+                        };
+                        let itemMenuCd = "";
+                        $("[attr-value]").each(function () {
+                            let compVal = $(this).attr("attr-value");
+                            $(this).attr("attr-value", compVal);
+                            itemMenuCd += compVal;
+                        });
+                        localStorage.setItem("itemMenuCd", itemMenuCd);
+                    });
+
+                    /** 레이어팝업 버튼클릭 위치에 따라 이동이 가능 */
+                    var btn2 = $('.order_btn');
+
+                    btn2.click(function(event){
+                        var y = event.pageY;
+                        var stdHeight;
+
+                        if(y - $("#optionChange").height() > 100) {
+                            stdHeight = 100;
+                        } else {
+                            stdHeight = y - $("#optionChange").height();
+                        }
+                        $(".comm-layer-popup").css("top", y - $("#optionChange").height() - stdHeight + "px");
+                    })
+                });
+            </script>
+
+            <div class="cart">
+                <div class="bgWrap2">
+                    <div class="inner">
+
+                        <!-- 장바구니 -->
+                        <div class="comm_pay">
+                            <!-- order_header -->
+                                <div class="pay-title">
+                                    <div class="order_header">
+                                        <div class="order_title">
+                                            <h1 class="order_header_text cart_wrap_title">장바구니</h1>
+                                            <div class="commList1">
+                                                <div>· 장바구니에 저장된 상품은 비로그인 상태에서 사이트를 닫으면 삭제됩니다.</div>
+                                            </div>
+                                        </div>
+<!--                                        &lt;!&ndash; order_step &ndash;&gt;-->
+<!--                                        <div class="order_step">-->
+<!--                                            <ul class="step">-->
+<!--                                                <li class="active">-->
+<!--                                                    <i class="number">01</i> 장바구니-->
+<!--                                                </li>-->
+<!--                                                <li class="second">-->
+<!--                                                    <i class="number">02</i> 주문서-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <i class="number">03</i> 주문완료-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+<!--                                        </div>&lt;!&ndash; //order_step &ndash;&gt;-->
+                                    </div>
+                                </div>
+
+
+                                <div class="order_select">
+                                    <div class="order_content_wrap">
+                                        <div class="a_order_content">
+
+                                            <!-- 장바구니 목록 있을 시 -->
+                                            <!-- table -->
+                                            <div class="order_cart_wrap" style="display: block">
+                                                <!-- 관광상품 -->
+                                                <div class="cart-section">
+                                                    <h4 class="title">관광상품</h4>
+                                                    <!-- 선택삭제 -->
+                                                    <div class="order_cart_top">
+                                                        <button type="button" class="btn_remove_selected">선택삭제</button>
+                                                    </div><!-- //선택삭제 -->
+                                                </div>
+
+                                                <section id="cartList" class="product-info item-list open" attr-value="1">
+                                                    <div class="order_store">
+                                                        <input type="checkbox" id="all_check">
+                                                        <label class="order_checkbox_part" for="all_check"></label>
+                                                        <ul class="title">
+                                                            <li class="img-domain">이미지</li>
+                                                            <li class="division">구분</li>
+                                                            <li class="info">상품정보</li>
+                                                            <li class="sum">금액</li>
+                                                            <li class="remark">비고</li>
+                                                        </ul>
+                                                        <div class="store_name">
+                                                            <span>
+                                                                <a href=""></a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cartTbody order_cart_list half">
+                                                        <ul>
+                                                            <li class="select">
+                                                                <input type="checkbox" class="ch" name="sv_chk" id="chk${cart.cartSn}" value="${cart.cartSn}" checked="checked">
+                                                                <label class="order_checkbox_part" for="chk${cart.cartSn}"></label>
+                                                                <div class="cart_info_box">
+                                                                    <div class="order_prd_row">
+                                                                        <div class="cart_thumb_box">
+                                                                                        <span class="order_thumb">
+                                                                                            <img src="/images/web/cart/test_img2.png" alt="">
+                                                                                        </span>
+                                                                        </div>
+                                                                        <!-- 구분 -->
+                                                                        <div class="order_prd_price item_qty_wrap">
+                                                                            <dl class="price_box">
+                                                                                <div class="total_price">
+                                                                                    <dt class="skip">구분</dt>
+                                                                                    <dd>
+                                                                                        <i class="division">렌터카</i>
+                                                                                    </dd>
+                                                                                </div>
+                                                                            </dl>
+                                                                        </div> <!-- //구분 -->
+                                                                        <div class="left order_prd">
+                                                                            <div class="product prd_name">
+                                                                                <span href="" class="cProduct">
+                                                                                    [타조렌트카] 올 뉴 K3
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="hidden">
+                                                                            <div class="order_prd_option">
+                                                                                <ul class="infoText">
+                                                                                    <li>휘발유 ｜ 자차포함-고급자차</li>
+                                                                                    <li>2021-02-06 12:00 ~ 2021-02-07 12:00 </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="order_prd_price sub_item_price">
+                                                                            <dl class="price_box">
+                                                                                <div class="total_price">
+                                                                                    <dt class="skip">총금액가</dt>
+                                                                                    <dd>
+                                                                                        <i class="number">28,500 </i> 원
+                                                                                    </dd>
+                                                                                </div>
+                                                                            </dl>
+                                                                        </div>
+                                                                        <div class="order_pick">
+                                                                            <a class="order_btn type2" href="">
+                                                                                <span>즉시구매</span>
+                                                                            </a>
+                                                                        </div>
+                                                                        <button type="button" class="bt_del">
+                                                                            <i class="order_btn_remove ">삭제하기</i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+                                                            <!-- 예약불가 상품 -->
+                                                            <li>
+                                                                <input type="checkbox" name="keep_cart5" id="keep_cart_checkbox5">
+                                                                <label class="order_checkbox_part" for="keep_cart_checkbox5"></label>
+                                                                <div class="cart_info_box">
+                                                                    <div class="order_prd_row">
+
+                                                                        <!-- no-image -->
+                                                                        <div class="cart_thumb_box">
+                                                                                        <span class="order_thumb">
+                                                                                            <img src="/images/web/cart/no-image.png" alt="">
+                                                                                        </span>
+                                                                        </div>
+                                                                        <!-- 구분 -->
+                                                                        <div class="order_prd_price item_qty_wrap">
+                                                                            <dl class="price_box">
+                                                                                <div class="total_price">
+                                                                                    <dt class="skip">구분</dt>
+                                                                                    <dd>
+                                                                                        <i class="division">숙박</i>
+                                                                                    </dd>
+                                                                                </div>
+                                                                            </dl>
+                                                                        </div> <!-- //구분 -->
+                                                                        <div class="left order_prd">
+                                                                            <div class="product prd_name">
+                                                                                <span href="" class="cProduct">
+                                                                                    [해비치호텔앤드리조트] 슈페리어더블빌리지
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="hidden">
+                                                                            <div class="order_prd_option">
+                                                                                <ul class="infoText">
+                                                                                    <li>2021-03부터 1박</li>
+                                                                                    <li>성인2</li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <!-- 예약불가 / 옵션변경 문구 -->
+                                                                        <div class="order_prd_price item_reservation_wrap">
+                                                                            <dl class="price_box">
+                                                                                <div class="total_price">
+                                                                                    <dt class="skip">예약불가</dt>
+                                                                                    <dd>
+                                                                                        <span class="nt impossible">
+                                                                                            <img src="/images/web/cart/info.png" alt="">
+                                                                                            상품정보 변경으로 예약불가입니다 <br>옵션을 다시 선택해주세요
+                                                                                        </span>
+                                                                                    </dd>
+                                                                                </div>
+                                                                            </dl>
+                                                                        </div> <!-- //예약불가 / 옵션변경 문구 -->
+
+                                                                        <div class="order_pick">
+                                                                            <a class="order_btn type2" href="">
+                                                                                <span>즉시구매</span>
+                                                                            </a>
+                                                                            <a href="" class="btn2 room_option optionBT order_btn">
+                                                                                <span>옵션변경</span>
+                                                                            </a>
+                                                                        </div>
+                                                                        <button type="button" class="bt_del">
+                                                                            <i class="order_btn_remove ">삭제하기</i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+                                                            <!-- 기본케이스/관광상품 주문합계 -->
+                                                                <div class="order_cart_total_price">
+                                                                    <div class="sub-price">
+                                                                        <div class="applicable">
+                                                                            <span class="sale">할인</span>
+                                                                            예약페이지에서 적용가능쿠폰 확인
+                                                                        </div>
+                                                                        <div class="order_total_price">
+                                                                            <h5 class="title">관광상품 예약합계</h5>
+                                                                            <div class="price_detail">
+                                                                                <dl>
+                                                                                    <div class="total_price">
+                                                                                        <strong>
+                                                                                            <i id="totalJumunAmt" class="number">115,500,000 </i> 원
+                                                                                        </strong>
+                                                                                    </div>
+                                                                                </dl>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="order_button">
+                                                                        <button class="select btn_order">예약하기</button>
+                                                                    </div>
+                                                                </div>
+                                                        </ul>
+                                                    </div>
+                                                </section>
+
+                                                <div class="order_cart_wrap">
+                                                    <div class="cart-section">
+                                                        <h4 class="title">
+                                                            특산/기념품
+                                                        </h4>
+
+                                                        <!-- 선택삭제 -->
+                                                        <div class="order_cart_top">
+                                                            <button type="button" class="btn_remove_selected">선택삭제</button>
+                                                        </div><!-- //전체선택/선택삭제 -->
+                                                    </div>
+                                                <section id="sv_cartList" class="item-list open" attr-value="1">
+                                                    <div class="order_store">
+                                                        <input type="checkbox" name="keep_cart2" id="keep_cart_checkbox3" value="TRUE">
+                                                        <label class="order_checkbox_part" for="keep_cart_checkbox3"></label>
+                                                            <ul class="title">
+                                                                <li class="img-domain">이미지</li>
+                                                                <li class="division">구분</li>
+                                                                <li class="info">상품정보</li>
+                                                                <li class="sum">금액</li>
+                                                                <li class="shipping_fee">배송비</li>
+                                                                <li class="remark">비고</li>
+                                                            </ul>
+                                                            <div class="store_name">
+                                                                <span>
+                                                                    <a href=""></a>
+                                                                </span>
+                                                            </div>
+                                                    </div>
+                                                    <div class="order_cart_list half">
+                                                        <ul>
+                                                            <li class="select">
+                                                                <input type="checkbox" name="keep_cart6" id="keep_cart_checkbox6">
+                                                                <label class="order_checkbox_part" for="keep_cart_checkbox6"></label>
+                                                                <div class="cart_info_box">
+                                                                    <div class="order_prd_row">
+                                                                        <div class="cart_thumb_box">
+                                                                                        <span class="order_thumb">
+                                                                                            <img src="/images/web/cart/test_img.jpg" alt="">
+                                                                                        </span>
+                                                                        </div>
+                                                                        <!-- 구분 -->
+                                                                        <div class="order_prd_price item_qty_wrap">
+                                                                            <dl class="price_box">
+                                                                                <div class="total_price">
+                                                                                    <dt class="skip">구분</dt>
+                                                                                    <dd>
+                                                                                        <i class="division">특산/기념품</i>
+                                                                                    </dd>
+                                                                                </div>
+                                                                            </dl>
+                                                                        </div> <!-- //구분 -->
+                                                                        <div class="left order_prd">
+                                                                            <div class="product prd_name">
+                                                                                <span href="" class="cProduct">
+                                                                                    [서귀포in정 오끼농원] 햇살품은 제주설향 딸기
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="hidden">
+                                                                            <div class="order_prd_option">
+                                                                                <ul class="infoText">
+                                                                                    <li>보리오메기떡 ｜ 보리 오메기떡 20개</li>
+                                                                                    <li>수량 : 1</li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+
+                                                                            <div class="order_prd_price">
+                                                                                <dl class="price_box">
+                                                                                    <div class="total_price">
+                                                                                        <dt class="skip">총금액가</dt>
+                                                                                        <dd>
+                                                                                            <i class="number">28,500 </i> 원
+                                                                                        </dd>
+                                                                                    </div>
+                                                                                </dl>
+                                                                            </div>
+                                                                            <div class="order_prd_price delivery---table">
+                                                                                <dl class="price_box">
+                                                                                    <div class="total_price">
+                                                                                        <dt class="skip">배송비</dt>
+
+                                                                                        <!-- 배송비 노출(30,000원 이상 시 무료배송) -->
+                                                                                        <dd>
+                                                                                            <span class="shipping_fee">
+                                                                                                <img src="/images/web/cart/plus.png" alt=""> <i>3,000 </i> 원
+                                                                                                <p class="txt---add">
+                                                                                                      <span class="free">배송</span>30,000원 이상 상품 <i>추가 주문시 무료배송</i>
+                                                                                                </p>
+                                                                                            </span>
+                                                                                        </dd><!-- //배송비 노출(30,000원 이상 시 무료배송) -->
+                                                                                    </div>
+                                                                                </dl>
+                                                                            </div>
+                                                                            <div class="order_pick">
+                                                                                <a class="order_btn type2" href="">
+                                                                                    <span>즉시구매</span>
+                                                                                </a>
+                                                                                <a href="" class="btn2 room_option optionBT order_btn">
+                                                                                    <span>옵션변경</span>
+                                                                                </a>
+                                                                            </div>
+                                                                            <button type="button" class="bt_del">
+                                                                                <i class="order_btn_remove ">삭제하기</i>
+                                                                            </button>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <input type="checkbox" name="keep_cart6" id="keep_cart_checkbox7">
+                                                                <label class="order_checkbox_part" for="keep_cart_checkbox7"></label>
+                                                                <div class="cart_info_box">
+                                                                    <div class="order_prd_row">
+                                                                        <div class="cart_thumb_box">
+                                                                                        <span class="order_thumb">
+                                                                                            <img src="../../data/sp/thumb/SP00001022_7.png" alt="">
+                                                                                        </span>
+                                                                        </div>
+                                                                        <!-- 구분 -->
+                                                                        <div class="order_prd_price item_qty_wrap">
+                                                                            <dl class="price_box">
+                                                                                <div class="total_price">
+                                                                                    <dt class="skip">구분</dt>
+                                                                                    <dd>
+                                                                                        <i class="division">특산/기념품</i>
+                                                                                    </dd>
+                                                                                </div>
+                                                                            </dl>
+                                                                        </div> <!-- //구분 -->
+                                                                        <div class="left order_prd">
+                                                                            <div class="product prd_name">
+                                                                                <span href="" class="cProduct">
+                                                                                    [서귀포in정 오끼농원] 햇살품은 제주설향 딸기
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="hidden">
+                                                                            <div class="order_prd_option">
+                                                                                <ul class="infoText">
+                                                                                    <li>보리오메기떡 ｜ 보리 오메기떡 20개</li>
+                                                                                    <li>수량 : 1</li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="order_prd_price">
+                                                                            <dl class="price_box">
+                                                                                <div class="total_price">
+                                                                                    <dt class="skip">총금액가</dt>
+                                                                                    <dd>
+                                                                                        <i class="number">28,500 </i> 원
+                                                                                    </dd>
+                                                                                </div>
+                                                                            </dl>
+                                                                        </div>
+                                                                        <div class="order_prd_price delivery---table">
+                                                                            <dl class="price_box">
+                                                                                <div class="total_price">
+                                                                                    <dt class="skip">배송비</dt>
+
+                                                                                    <!-- 배송비 노출 -->
+                                                                                    <dd>
+                                                                                            <span class="shipping_fee">
+                                                                                                <img src="/images/web/cart/plus.png" alt=""> <i>3,000 </i> 원
+                                                                                            </span>
+                                                                                    </dd><!-- //배송비 노출 -->
+                                                                                </div>
+                                                                            </dl>
+                                                                        </div>
+                                                                        <div class="order_pick">
+                                                                            <a class="order_btn type2" href="">
+                                                                                <span>즉시구매</span>
+                                                                            </a>
+                                                                            <a href="" class="btn2 room_option optionBT order_btn">
+                                                                                <span>옵션변경</span>
+                                                                            </a>
+                                                                        </div>
+                                                                        <button type="button" class="bt_del">
+                                                                            <i class="order_btn_remove ">삭제하기</i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+                                                            <!-- 특산/기념품 묶음배송 -->
+                                                            <div class="bundle_delivery">
+                                                                <li>
+                                                                    <input type="checkbox" name="keep_cart6" id="keep_cart_checkbox8">
+                                                                    <label class="order_checkbox_part" for="keep_cart_checkbox8"></label>
+                                                                    <div class="cart_info_box">
+                                                                            <div class="order_prd_row">
+                                                                                <div class="cart_thumb_box">
+                                                                                    <span class="order_thumb">
+                                                                                        <img src="../../data/sp/thumb/SP00001022_7.png" alt="">
+                                                                                    </span>
+                                                                                </div>
+                                                                                <!-- 구분 -->
+                                                                                <div class="order_prd_price item_qty_wrap">
+                                                                                    <dl class="price_box">
+                                                                                        <div class="total_price">
+                                                                                            <dt class="skip">구분</dt>
+                                                                                            <dd>
+                                                                                                <i class="division">특산/기념품</i>
+                                                                                            </dd>
+                                                                                        </div>
+                                                                                    </dl>
+                                                                                </div> <!-- //구분 -->
+                                                                                <div class="left order_prd">
+                                                                                    <div class="product prd_name">
+                                                                                        <span href="" class="cProduct">
+                                                                                            [서귀포in정 오끼농원] 햇살품은 제주설향 딸기
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <input type="hidden">
+                                                                                    <div class="order_prd_option">
+                                                                                        <ul class="infoText">
+                                                                                            <li>보리오메기떡 ｜ 보리 오메기떡 20개</li>
+                                                                                            <li>수량 : 1</li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="order_prd_price">
+                                                                                    <dl class="price_box">
+                                                                                        <div class="total_price">
+                                                                                            <dt class="skip">총금액가</dt>
+                                                                                            <dd>
+                                                                                                <i class="number">28,500 </i> 원
+                                                                                            </dd>
+                                                                                        </div>
+                                                                                    </dl>
+                                                                                </div>
+                                                                                <div class="order_prd_price delivery---table">
+                                                                                    <dl class="price_box">
+                                                                                        <div class="total_price">
+                                                                                            <dt class="skip">배송비</dt>
+                                                                                            <!-- 배송비 노출 -->
+                                                                                            <dd>
+                                                                                            <span class="bundle_label">
+                                                                                                <i class="label_text">묶음배송</i>
+                                                                                            </span>
+                                                                                            <span class="shipping_fee">
+                                                                                                <img src="/images/web/cart/plus.png" alt=""> <i>3,000 </i> 원
+                                                                                            </span>
+                                                                                            </dd><!-- //배송비 노출 -->
+                                                                                        </div>
+                                                                                    </dl>
+                                                                                </div>
+                                                                                <div class="order_pick">
+                                                                                    <a class="order_btn type2" href="">
+                                                                                        <span>즉시구매</span>
+                                                                                    </a>
+                                                                                    <a href="" class="btn2 room_option optionBT order_btn">
+                                                                                        <span>옵션변경</span>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <button type="button" class="bt_del">
+                                                                                    <i class="order_btn_remove ">삭제하기</i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                </li>
+                                                                <li>
+                                                                    <input type="checkbox" name="keep_cart6" id="keep_cart_checkbox9">
+                                                                    <label class="order_checkbox_part" for="keep_cart_checkbox9"></label>
+                                                                    <div class="cart_info_box">
+                                                                        <div class="order_prd_row">
+                                                                            <div class="cart_thumb_box">
+                                                                                <span class="order_thumb">
+                                                                                    <img src="../../data/sp/thumb/SP00001022_7.png" alt="">
+                                                                                </span>
+                                                                            </div>
+                                                                            <!-- 구분 -->
+                                                                            <div class="order_prd_price item_qty_wrap">
+                                                                                        <dl class="price_box">
+                                                                                            <div class="total_price">
+                                                                                                <dt class="skip">구분</dt>
+                                                                                                <dd>
+                                                                                                    <i class="division">특산/기념품</i>
+                                                                                                </dd>
+                                                                                            </div>
+                                                                                        </dl>
+                                                                                    </div> <!-- //구분 -->
+                                                                                    <div class="left order_prd">
+                                                                                        <div class="product prd_name">
+                                                                                            <span class="cProduct">
+                                                                                                [서귀포in정 오끼농원] 햇살품은 제주설향 딸기
+                                                                                            </span>
+                                                                                        </div>
+                                                                                        <input type="hidden">
+                                                                                        <div class="order_prd_option">
+                                                                                            <ul class="infoText">
+                                                                                                <li>보리오메기떡 ｜ 보리 오메기떡 20개</li>
+                                                                                                <li>수량 : 1</li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+                                                                            <div class="order_prd_price">
+                                                                                <dl class="price_box">
+                                                                                    <div class="total_price">
+                                                                                        <dt class="skip">총금액가</dt>
+                                                                                        <dd>
+                                                                                            <i class="number">28,500 </i> 원
+                                                                                        </dd>
+                                                                                    </div>
+                                                                                </dl>
+                                                                            </div>
+
+                                                                            <!-- 추가.묶음배송 라벨(배송비 상단표시) -->
+                                                                            <div class="order_prd_price delivery---table">
+                                                                                <dl class="price_box">
+                                                                                    <div class="total_price">
+                                                                                        <dt class="skip">묶음배송</dt>
+                                                                                        <dd>
+                                                                                            <span class="bundle_label">
+                                                                                                 <i class="label_text">묶음배송</i>
+                                                                                            </span>
+                                                                                        </dd>
+                                                                                    </div>
+                                                                                </dl>
+                                                                            </div> <!-- //추가.묶음배송 라벨(배송비 상단표시) -->
+                                                                            <div class="order_pick">
+                                                                                        <a class="order_btn type2" href="">
+                                                                                            <span>즉시구매</span>
+                                                                                        </a>
+                                                                                        <a href="" class="btn2 room_option optionBT order_btn">
+                                                                                            <span>옵션변경</span>
+                                                                                        </a>
+                                                                                    </div>
+                                                                            <button type="button" class="bt_del">
+                                                                                <i class="order_btn_remove ">삭제하기</i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </diV>
+                                                                </li>
+                                                            </div>
+                                                            <div class="bundle_delivery">
+                                                                <li>
+                                                                    <input type="checkbox" name="keep_cart6" id="keep_cart_checkbox8">
+                                                                    <label class="order_checkbox_part" for="keep_cart_checkbox8"></label>
+                                                                    <div class="cart_info_box">
+                                                                        <div class="order_prd_row">
+                                                                            <div class="cart_thumb_box">
+                                                                                    <span class="order_thumb">
+                                                                                        <img src="../../data/sp/thumb/SP00001022_7.png" alt="">
+                                                                                    </span>
+                                                                            </div>
+                                                                            <!-- 구분 -->
+                                                                            <div class="order_prd_price item_qty_wrap">
+                                                                                <dl class="price_box">
+                                                                                    <div class="total_price">
+                                                                                        <dt class="skip">구분</dt>
+                                                                                        <dd>
+                                                                                            <i class="division">특산/기념품</i>
+                                                                                        </dd>
+                                                                                    </div>
+                                                                                </dl>
+                                                                            </div> <!-- //구분 -->
+                                                                            <div class="left order_prd">
+                                                                                <div class="product prd_name">
+                                                                                        <span href="" class="cProduct">
+                                                                                            [서귀포in정 오끼농원] 햇살품은 제주설향 딸기
+                                                                                        </span>
+                                                                                </div>
+                                                                                <input type="hidden">
+                                                                                <div class="order_prd_option">
+                                                                                    <ul class="infoText">
+                                                                                        <li>보리오메기떡 ｜ 보리 오메기떡 20개</li>
+                                                                                        <li>수량 : 1</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="order_prd_price">
+                                                                                <dl class="price_box">
+                                                                                    <div class="total_price">
+                                                                                        <dt class="skip">총금액가</dt>
+                                                                                        <dd>
+                                                                                            <i class="number">28,500 </i> 원
+                                                                                        </dd>
+                                                                                    </div>
+                                                                                </dl>
+                                                                            </div>
+                                                                            <div class="order_prd_price delivery---table">
+                                                                                <dl class="price_box">
+                                                                                    <div class="total_price">
+                                                                                        <dt class="skip">배송비</dt>
+                                                                                        <!-- 배송비 노출 -->
+                                                                                        <dd>
+                                                                                            <span class="bundle_label">
+                                                                                                <i class="label_text">묶음배송</i>
+                                                                                            </span>
+                                                                                            <span class="shipping_fee">
+                                                                                                <img src="/images/web/cart/plus.png" alt=""> <i>3,000 </i> 원
+                                                                                            </span>
+                                                                                        </dd><!-- //배송비 노출 -->
+                                                                                    </div>
+                                                                                </dl>
+                                                                            </div>
+                                                                            <div class="order_pick">
+                                                                                <a class="order_btn type2" href="">
+                                                                                    <span>즉시구매</span>
+                                                                                </a>
+                                                                                <a href="" class="btn2 room_option optionBT order_btn">
+                                                                                    <span>옵션변경</span>
+                                                                                </a>
+                                                                            </div>
+                                                                            <button type="button" class="bt_del">
+                                                                                <i class="order_btn_remove ">삭제하기</i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <input type="checkbox" name="keep_cart6" id="keep_cart_checkbox9">
+                                                                    <label class="order_checkbox_part" for="keep_cart_checkbox9"></label>
+                                                                    <div class="cart_info_box">
+                                                                        <div class="order_prd_row">
+                                                                            <div class="cart_thumb_box">
+                                                                                <span class="order_thumb">
+                                                                                    <img src="../../data/sp/thumb/SP00001022_7.png" alt="">
+                                                                                </span>
+                                                                            </div>
+                                                                            <!-- 구분 -->
+                                                                            <div class="order_prd_price item_qty_wrap">
+                                                                                <dl class="price_box">
+                                                                                    <div class="total_price">
+                                                                                        <dt class="skip">구분</dt>
+                                                                                        <dd>
+                                                                                            <i class="division">특산/기념품</i>
+                                                                                        </dd>
+                                                                                    </div>
+                                                                                </dl>
+                                                                            </div> <!-- //구분 -->
+                                                                            <div class="left order_prd">
+                                                                                <div class="product prd_name">
+                                                                                            <span class="cProduct">
+                                                                                                [서귀포in정 오끼농원] 햇살품은 제주설향 딸기
+                                                                                            </span>
+                                                                                </div>
+                                                                                <input type="hidden">
+                                                                                <div class="order_prd_option">
+                                                                                    <ul class="infoText">
+                                                                                        <li>보리오메기떡 ｜ 보리 오메기떡 20개</li>
+                                                                                        <li>수량 : 1</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="order_prd_price">
+                                                                                <dl class="price_box">
+                                                                                    <div class="total_price">
+                                                                                        <dt class="skip">총금액가</dt>
+                                                                                        <dd>
+                                                                                            <i class="number">28,500 </i> 원
+                                                                                        </dd>
+                                                                                    </div>
+                                                                                </dl>
+                                                                            </div>
+
+                                                                            <!-- 추가.묶음배송 라벨(배송비 상단표시) -->
+                                                                            <div class="order_prd_price delivery---table">
+                                                                                <dl class="price_box">
+                                                                                    <div class="total_price">
+                                                                                        <dt class="skip">묶음배송</dt>
+                                                                                        <dd>
+                                                                                            <span class="bundle_label">
+                                                                                                 <i class="label_text">묶음배송</i>
+                                                                                            </span>
+                                                                                        </dd>
+                                                                                    </div>
+                                                                                </dl>
+                                                                            </div> <!-- //추가.묶음배송 라벨(배송비 상단표시) -->
+                                                                            <div class="order_pick">
+                                                                                <a class="order_btn type2" href="">
+                                                                                    <span>즉시구매</span>
+                                                                                </a>
+                                                                                <a href="" class="btn2 room_option optionBT order_btn">
+                                                                                    <span>옵션변경</span>
+                                                                                </a>
+                                                                            </div>
+                                                                            <button type="button" class="bt_del">
+                                                                                <i class="order_btn_remove ">삭제하기</i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </diV>
+                                                                </li>
+                                                            </div>
+                                                            <li>
+                                                                <input type="checkbox" name="keep_cart6" id="keep_cart_checkbox10">
+                                                                <label class="order_checkbox_part" for="keep_cart_checkbox10"></label>
+                                                                <div class="cart_info_box">
+                                                                    <div class="order_prd_row">
+                                                                        <div class="cart_thumb_box">
+                                                                                        <span class="order_thumb">
+                                                                                            <img src="../../data/sp/thumb/SP00001022_7.png" alt="">
+                                                                                        </span>
+                                                                        </div>
+                                                                        <!-- 구분 -->
+                                                                        <div class="order_prd_price item_qty_wrap">
+                                                                            <dl class="price_box">
+                                                                                <div class="total_price">
+                                                                                    <dt class="skip">구분</dt>
+                                                                                    <dd>
+                                                                                        <i class="division">특산/기념품</i>
+                                                                                    </dd>
+                                                                                </div>
+                                                                            </dl>
+                                                                        </div> <!-- //구분 -->
+                                                                        <div class="left order_prd">
+                                                                            <div class="product prd_name">
+                                                                                <span href="" class="cProduct">
+                                                                                    [서귀포in정 오끼농원] 햇살품은 제주설향 딸기
+                                                                                </span>
+                                                                            </div>
+                                                                            <input type="hidden">
+                                                                            <div class="order_prd_option">
+                                                                                <ul class="infoText">
+                                                                                    <li>보리오메기떡 ｜ 보리 오메기떡 20개</li>
+                                                                                    <li>수량 : 1</li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="order_prd_price">
+                                                                            <dl class="price_box">
+                                                                                <div class="total_price">
+                                                                                    <dt class="skip">총금액가</dt>
+                                                                                    <dd>
+                                                                                        <i class="number">28,500 </i> 원
+                                                                                    </dd>
+                                                                                </div>
+                                                                            </dl>
+                                                                        </div>
+                                                                        <div class="order_prd_price delivery---table">
+                                                                            <dl class="price_box">
+                                                                                <div class="total_price">
+                                                                                    <dt class="skip">배송비</dt>
+
+                                                                                    <!-- 배송비 노출 -->
+                                                                                    <dd>
+                                                                                            <span class="shipping_fee">
+                                                                                                <img src="/images/web/cart/plus.png" alt=""> <i>3,000 </i> 원
+                                                                                            </span>
+                                                                                    </dd><!-- //배송비 노출 -->
+                                                                                </div>
+                                                                            </dl>
+                                                                        </div>
+                                                                        <div class="order_pick">
+                                                                            <a class="order_btn type2" href="">
+                                                                                <span>즉시구매</span>
+                                                                            </a>
+                                                                            <a href="" class="btn2 room_option optionBT order_btn">
+                                                                                <span>옵션변경</span>
+                                                                            </a>
+                                                                        </div>
+                                                                        <button type="button" class="bt_del">
+                                                                            <i class="order_btn_remove ">삭제하기</i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <!-- //특산/기념품 묶음배송 -->
+
+
+                                                            <!-- 기본케이스/관광상품 주문합계 -->
+                                                                <div class="order_cart_total_price">
+                                                                    <div class="sub-price">
+                                                                        <div class="applicable">
+                                                                            <span class="sale">할인</span>
+                                                                            구매페이지에서 적용가능쿠폰 확인
+                                                                        </div>
+                                                                        <div class="order_total_price">
+                                                                            <h5 class="title">특산/기념품 구매합계</h5>
+                                                                            <div class="price_detail">
+                                                                                <dl> 상품구매 <strong id="">20,000</strong></dl>원 ＋
+                                                                                <dl> 배송비 <strong>20,000</strong></dl>원 =
+                                                                                <dl>
+                                                                                    <div class="total_price">
+                                                                                        <strong>
+                                                                                            <i id="sv_totalJumunAmt" class="number">115,500,000 </i> 원
+                                                                                        </strong>
+                                                                                    </div>
+                                                                                </dl>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="order_button">
+                                                                        <button class="select btn_order">구매하기</button>
+                                                                    </div>
+                                                                </div>
+                                                        </ul>
+                                                    </div>
+                                                </section>
+                                               </div> <!-- //table -->
+                                                <!-- //장바구니 목록 있을 시 -->
+                                            </div><!-- a_order_content -->
+
+                                            <!-- 장바구니 목록 없을 시 -->
+                                            <div  id="emptyCart" class="cart-section" style="display: none">
+                                                <table class="commCol product-info">
+                                                    <tr>
+                                                        <td class="no-content">
+                                                            <img src="/images/web/cart/mark.png" alt="빈 장바구니">
+                                                            <p>장바구니에 담긴 상품이 없습니다.</p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div> <!-- //장바구니 목록 없을 시 -->
+
+                                        <!-- 옵션변경 -->
+                                        <!-- option-box(숙박) -->
+                                        <div id="optionChange" class="option-wrap" style="display: none">
+                                            <div class="room-option option-box">
+                                                <h4 class="title">옵션변경하기
+                                                    <a href="" class="option-close">
+                                                        <img src="/images/web/cart/close.png" alt="닫기">
+                                                    </a>
+                                                </h4>
+                                                <div class="info-head">
+                                                    <div class="info-title">
+                                                        <input type="hidden" name="prdtNum" id="prdtNum" value="${prdtInfo.prdtNum}" >
+                                                        <p class="photoBox">
+                                                            <img src="../../data/sp/thumb/SP00000127_1.jpg" alt="">
+                                                        </p>
+                                                        <p class="text">
+                                                            <span class="real_time">[해비치호텔앤드리조트]</span>
+                                                            <span class="prd_name">슈페리어더블빌리지</span>
+                                                            <span>2021-03부터 1박 <br>성인 2</span>
+                                                        </p>
+                                                    </div>
+                                                    <!--lodgeCalendar-->
+                                                    <div class="lodgeCalendar">
+                                                        <!-- calendar -->
+                                                        <div class="calendar"  id="adDtlCanendar">
+                                                            <form name="adDtlCalendar" id="adDtlCalendar" method="get" onSubmit="return false;">
+                                                                <input type="hidden" id="corpId" name="corpId" value='<c:out value="${calendarVO.corpId}" />' />
+                                                                <input type="hidden" id="prdtNum" name="prdtNum" value='<c:out value="${calendarVO.prdtNum}" />' />
+                                                                <input type="hidden" id="prdtNm" name="prdtNm" value='<c:out value="${adPrdtInf.prdtNm}" />' />
+                                                                <input type="hidden" id="sFromDt" name="sFromDt" value='<c:out value="${calendarVO.sFromDt}" />' />
+                                                                <input type="hidden" id="iYear" name="iYear" value='<c:out value="${calendarVO.iYear}" />' />
+                                                                <input type="hidden" id="iMonth" name="iMonth" value='<c:out value="${calendarVO.iMonth}" />' />
+                                                                <input type="hidden" id="iNight" name="iNight" value='<c:out value="${calendarVO.iNight}" />' />
+                                                                <input type="hidden" id="iMonthLastDay" name="iMonthLastDay" value='<c:out value="${calendarVO.iMonthLastDay}" />' />
+                                                                <input type="hidden" id="sPrevNext" name="sPrevNext" value='' />
+                                                                <input type="hidden" id="scriptVal" name="scriptVal" value='' />
+                                                                <div class="calendar">
+                                                                    <div class="calHead">
+                                                                            <a href="javascript:updateADCalendarPrevNext('prev');" class="calPrev">
+                                                                                <img src="/images/web/icon/arrow4.gif" alt="이전달">
+                                                                            </a>
+                                                                            <span class="calY1">2021</span>
+                                                                            <span class="select calM1">.4</span>
+                                                                            <a href="javascript:updateADCalendarPrevNext('prev');" class="calNext">
+                                                                                <img src="/images/web/icon/arrow5.gif" alt="이전달">
+                                                                            </a>
+                                                                    </div>
+                                                                    <div class="calBody">
+                                                                        <table>
+                                                                            <thead>
+                                                                                <tr class="cal_title_tr">
+                                                                                    <th scope="col" class="sun">일</th>
+                                                                                    <th scope="col">월</th>
+                                                                                    <th scope="col">화</th>
+                                                                                    <th scope="col">수</th>
+                                                                                    <th scope="col">목</th>
+                                                                                    <th scope="col">금</th>
+                                                                                    <th scope="col" class="sat">토</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <c:if test="${!(empty calendarVO.iWeek)}">
+                                                                                        <c:forEach var="i" begin="1" end="${calendarVO.iWeek-1}">
+                                                                                            <td>
+                                                                                                <p class="date">&nbsp;</p>
+                                                                                            </td>
+                                                                                        </c:forEach>
+                                                                                      </c:if>
+                                                                                       <c:forEach var="data" items="${calList}" varStatus="status" >
+                                                                                        <c:if test="${data.sHolidayYN == 'Y'}">
+                                                                                            <td class="sun">
+                                                                                        </c:if>
+                                                                                        <c:if test="${data.sHolidayYN == 'N'}">
+                                                                                            <c:if test="${data.iWeek == 1}">
+                                                                                                <td class="sun">
+                                                                                            </c:if>
+                                                                                            <c:if test="${data.iWeek == 7}">
+                                                                                                <td class="sat">
+                                                                                            </c:if>
+                                                                                            <c:if test="${!(data.iWeek == 1 || data.iWeek == 7)}">
+                                                                                                <td>
+                                                                                            </c:if>
+                                                                                            <td>
+                                                                                            <td>
+                                                                                        </c:if>
+                                                                                        <p class="date">7</p>
+                                                                                        <p class="icon">
+                                                                                            <c:if test="${data.status=='E'}">
+                                                                                                <img src="/images/web/cart/calInfo1.png" alt="예약">
+                                                                                            </c:if>
+                                                                                            <c:if test="${data.status=='D'}">
+                                                                                                <img src="/images/web/cart/calInfo3.png" alt="미정" style="display: none">
+                                                                                            </c:if>
+                                                                                            <c:if test="${data.status=='M'}">
+                                                                                                <img src="/images/web/cart/calInfo2.png" alt="마감" style="display: none">
+                                                                                            </c:if>
+                                                                                        </p>
+                                                                                        <p class="price">306,870</p>
+                                                                                           <c:if test="${data.iWeek == 7 && data.iDay!=calendarVO.iMonthLastDay}">
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    </c:if>
+                                                                                    <c:set var="lastWeek" value="${data.iWeek}"/>
+
+                                                                                    </c:forEach>
+
+                                                                                    <c:forEach var="i" begin="${lastWeek+1}" end="7">
+                                                                                        <td><p class="date">&nbsp;</p></td>
+                                                                                    </c:forEach>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="calendar-info">
+                                                                    <li><img src="/images/web/cart/calInfo1.png" alt="예약"> 현재 예약 가능한 객실</li>
+                                                                    <li><img src="/images/web/cart/calInfo2.png" alt="마감"> 예약불가</li>
+                                                                    <li><img src="/images/web/cart/calInfo3.png" alt="미정"> 객실 미확정</li>
+                                                                </ul>
+                                                            </form>
+                                                        </div> <!--//calendar-->
+                                                    </div> <!--//lodgeCalendar-->
+                                                </div> <!--//info-head-->
+
+                                                <div class="info-text">
+                                                    <form name="glDtlInput" id="adDtlInput" method="get" onSubmit="return false;">
+                                                        <input type="hidden" id="EndVal" name="EndVal" value='' />
+                                                        <div class="list-cell list-cell2">
+                                                            <ul class="bt_option">
+                                                                <li class="dateWrap">
+                                                                    <div class="area1">투숙일자</div>
+                                                                    <div class="area2">
+                                                                        <input id="adCalDate" class="cal" type="text" readonly value="${fn:substring(searchVO.sFromDt,0,4)}-${fn:substring(searchVO.sFromDt,4,6)}-${fn:substring(searchVO.sFromDt,6,8)}">
+                                                                        <select id="adCalNight" onchange="selectADCalendarNight(this);">
+                                                                            <option value="1" <c:if test="${searchVO.sNights=='1' }">selected="selected"</c:if> >1박2일</option>
+                                                                            <option value="2" <c:if test="${searchVO.sNights=='2' }">selected="selected"</c:if> >2박3일</option>
+                                                                            <option value="3" <c:if test="${searchVO.sNights=='4' }">selected="selected"</c:if> >3박4일</option>
+                                                                            <option value="4" <c:if test="${searchVO.sNights=='4' }">selected="selected"</c:if> >4박5일</option>
+                                                                            <option value="5" <c:if test="${searchVO.sNights=='5' }">selected="selected"</c:if> >5박6일</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="persWrap">
+                                                                    <div class="area1">인원</div>
+                                                                    <div class="area2">
+                                                                        <table>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <select id="adCalMen1" onchange="updateADCalendar_end();">
+                                                                                        <c:forEach var="i" begin="0" end="${prdtVO.maxiMem}">
+                                                                                            <option value="${i}">성인${i}인</option>
+                                                                                        </c:forEach>
+                                                                                    </select>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <c:if test="${webdtl.juniorAbleYn != 'Y'}">
+                                                                                        <select id="adCalMen2" onchange="updateADCalendar_end();" style="display: none;">
+                                                                                            <option value="0">소아0인</option>
+                                                                                        </select>
+                                                                                    </c:if>
+                                                                                    <c:if test="${webdtl.juniorAbleYn == 'Y'}">
+                                                                                        <select id="adCalMen2" onchange="updateADCalendar_end();">
+                                                                                            <c:forEach var="i" begin="0" end="${prdtVO.maxiMem}">
+                                                                                                <option value="${i}">소아${i}인</option>
+                                                                                            </c:forEach>
+                                                                                        </select>
+                                                                                    </c:if>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <c:if test="${webdtl.childAbleYn != 'Y'}">
+                                                                                        <select id="adCalMen3" onchange="updateADCalendar_end();" style="display: none;">
+                                                                                            <option value="0">유아0인</option>
+                                                                                        </select>
+                                                                                    </c:if>
+                                                                                    <c:if test="${webdtl.childAbleYn == 'Y'}">
+                                                                                        <select id="adCalMen3" onchange="updateADCalendar_end();">
+                                                                                            <c:forEach var="i" begin="0" end="${prdtVO.maxiMem}">
+                                                                                                <option value="${i}">유아${i}인</option>
+                                                                                            </c:forEach>
+                                                                                        </select>
+                                                                                    </c:if>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>13세 이상</td>
+                                                                                <td>4 ~ 12세</td>
+                                                                                <td>4세 미만</td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="priceInfo">
+                                                            <p class="title">＊ 추가요금(1일 1인 추가요금)</p>
+                                                            <p class="text">
+                                                                <ul>
+                                                                    <li>- 성인 : ${adAddAmt.adultAddAmt}원</li>
+                                                                    <li>- 소아 : ${adAddAmt.juniorAddAmt}원</li>
+                                                                    <br>
+                                                                    <li>- 유아 : ${adAddAmt.childAddAmt}원</li>
+                                                                </ul>
+                                                            </p>
+                                                        </div>
+                                                        <div class="price-wrap">
+                                                            <p class="info4"><span class="plus">총합계</span> <strong id="adNowPrice">1,000</strong><span>원</span></p>
+                                                        </div>
+                                                        <div class="comm-offMs">
+
+                                                            <!-- 변경완료 -->
+                                                            <p class="bt"  id="adBtnPrdt1">
+                                                                <button>
+                                                                    <span>
+                                                                        변경완료
+                                                                    </span>
+                                                                </button>
+                                                            </p>
+
+                                                            <!-- 마감/미정 -->
+                                                            <p class="not-ms" id="adBtnPrdt2" style="display: none">
+                                                                <button>
+                                                                    <img src="/images/web/cart/exclamation.png" alt="경고">
+                                                                    <span id="adBtnErrInfo">투숙 날짜중에 마감/미정이 있습니다.</span>
+                                                                </button>
+                                                            </p>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div> <!-- //option-box(숙박) -->
+                                        </div> <!--//option-box(숙박)-->
+
+                                        <!-- option-box(특산/기념품) -->
+                                        <div class="pack-option option-box" style="display: block">
+                                            <h4 class="title">옵션변경하기
+                                                <a href="" class="option-close">
+                                                    <img src="/images/web/cart/close.png" alt="닫기">
+                                                </a>
+                                            </h4>
+                                            <div class="info-head">
+                                                <div class="info-title">
+                                                    <p class="photoBox">
+                                                        <img src="../../data/sp/thumb/SP00000127_1.jpg" alt="">
+                                                    </p>
+                                                    <p class="text">
+                                                        <span class="real_time">[서귀포in정 오끼정원]</span>
+                                                        <span class="prd_name">햇살품은 제주설향 딸기</span>
+                                                        <span>보리오메기떡 ｜ 보리 오메기떡 20개 <br>수량 : 1</span>
+                                                    </p>
+
+
+                                                </div>
+                                                <div class="comm-select comm-select1 open">
+                                                    <a class="select-button" title="상품을 선택하세요.">
+                                                        <span>[선택]</span>
+                                                        <span>300g</span>
+                                                        <span class="count"> ｜ 잔여 : 198개</span>
+                                                    </a>
+                                                    <ul class="select-list-option" id="firstOptionList" style="display: none">
+                                                        <li>
+                                                        <a href="">
+                                                            <p class="product">
+                                                                <span>[선택1]</span>
+                                                                <span>300g</span>
+                                                                <span class="count"> ｜ 잔여 : 198개</span>
+                                                            </p>
+                                                            <p class="price">18,000원</p>
+                                                        </a>
+                                                    </li>
+                                                        <li>
+                                                            <a href="">
+                                                                <p class="product">
+                                                                    <span>[선택1]</span>
+                                                                    <span>300g</span>
+                                                                    <span class="count"> ｜ 잔여 : 198개</span>
+                                                                </p>
+                                                                <p class="price">18,000원</p>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <!-- 추가옵션 -->
+                                                <div class="comm-select comm-select2 open">
+                                                    <a class="select-button" title="상품을 선택하세요.">
+                                                        <span>[선택]</span>
+                                                        <span>300g</span>
+                                                        <span class="count"> ｜ 잔여 : 198개</span>
+                                                    </a>
+
+                                                    <!-- 상품 리스트 선택 -->
+                                                    <ul class="select-list-option" id="firstOptionList" style="display: none">
+                                                        <li>
+                                                            <a href="">
+                                                                <p class="product">
+                                                                    <span>[선택1]</span>
+                                                                    <span>300g</span>
+                                                                    <span class="count"> ｜ 잔여 : 198개</span>
+                                                                </p>
+                                                                <p class="price">18,000원</p>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="">
+                                                                <p class="product">
+                                                                    <span>[선택1]</span>
+                                                                    <span>300g</span>
+                                                                    <span class="count"> ｜ 잔여 : 198개</span>
+                                                                </p>
+                                                                <p class="price">18,000원</p>
+                                                            </a>
+                                                        </li>
+                                                    </ul> <!-- //상품 리스트 선택 -->
+                                                </div>
+                                            </div> <!--//info-head-->
+                                            <div class="info-text">
+                                                <div class="list-cell">
+                                                    <div class="price-wrap">
+                                                        <p class="info4"><span class="plus">총합계</span> <strong id="totalProductAmt">0</strong><span>원</span></p>
+                                                    </div>
+                                                    <p class="comm-button2 complete-btn">
+                                                        <a class="color0 style0" href="javascript:fn_addSp();">선택완료</a>
+                                                    </p>
+                                                </div>
+                                            </div> <!-- //info-text -->
+                                        </div> <!--//option-box(특산/기념품)-->
+
+                                        <!--//option-box(렌터카)-->
+                                        <div class="rent-option option-box" style="display: none">
+                                            <h4 class="title">옵션변경하기
+                                                <a href="" class="option-close">
+                                                    <img src="/images/web/cart/close.png" alt="닫기">
+                                                </a>
+                                            </h4>
+                                            <div class="info-head">
+                                                    <div class="info-title">
+                                                        <p class="photoBox">
+                                                            <img src="../../data/sp/thumb/SP00001022_7.png" alt="">
+                                                        </p>
+                                                        <p class="text">
+                                                            <span class="real_time">[타조렌터카]</span>
+                                                            <span class="prd_name">올 뉴 K3</span>
+                                                            <span>휘발유 ｜ 자차포함-고급자차 <br>2021-02-06 12:00 ~ 2021-02-07 12:00</span>
+                                                        </p>
+                                                    </div>
+                                                <!--달력-->
+                                                <div class="calendarWrap">
+                                                    <!--대여선택-->
+                                                    <div class="calendar">
+                                                        <div class="datepicker" id="sFromDtView"></div>
+                                                        <div class="calTime">
+                                                            <span><strong>대여시간</strong></span>
+                                                            <input type="hidden" name="sFromDt" id="sFromDt" value="${cartInfo.fromDt}">
+                                                            <input type="hidden" name="sFromTm" id="sFromTm" value="${cartInfo.fromTm}">
+                                                            <select name="vFromTm" id="vFromTm" onchange="javascript:fn_OnchangeTime()">
+                                                                <c:forEach begin="8" end="20" step="1" var="fromTime">
+                                                                    <c:if test='${fromTime < 10}'>
+                                                                        <c:set var="fromTime_v" value="0${fromTime}00" />
+                                                                        <c:set var="fromTime_t" value="0${fromTime}:00" />
+                                                                    </c:if>
+                                                                    <c:if test='${fromTime > 9}'>
+                                                                        <c:set var="fromTime_v" value="${fromTime}00" />
+                                                                        <c:set var="fromTime_t" value="${fromTime}:00" />
+                                                                    </c:if>
+                                                                    <option value="${fromTime_v}" <c:if test="${cartInfo.fromTm == fromTime_v}">selected="selected"</c:if>>${fromTime_t}</option>
+                                                                </c:forEach>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!--반납선택-->
+                                                    <div class="calendar">
+                                                        <div class="datepicker" id="sToDtView"></div>
+                                                        <div class="calTime">
+                                                            <span><strong>반납시간</strong></span>
+                                                            <input type="hidden" name="sToDt" id="sToDt" value="${cartInfo.toDt}">
+                                                            <input type="hidden" name="sToTm" id="sToTm" value="${cartInfo.toTm}">
+                                                            <select name="vToTm" id="vToTm" onchange="javascript:fn_OnchangeTime()">
+                                                                <c:forEach begin="8" end="20" step="1" var="toTime">
+                                                                    <c:if test='${toTime < 10}'>
+                                                                        <c:set var="toTime_v" value="0${toTime}00" />
+                                                                        <c:set var="toTime_t" value="0${toTime}:00" />
+                                                                    </c:if>
+                                                                    <c:if test='${toTime > 9}'>
+                                                                        <c:set var="toTime_v" value="${toTime}00" />
+                                                                        <c:set var="toTime_t" value="${toTime}:00" />
+                                                                    </c:if>
+                                                                    <option value="${toTime_v}" <c:if test="${cartInfo.toTm == toTime_v}">selected="selected"</c:if>>${toTime_t}</option>
+                                                                </c:forEach>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div> <!--//calendarWrap-->
+                                            </div> <!--//info-head-->
+                                            <div class="info-text">
+                                                <div class="list-cell list-cell3">
+                                                    <p class="info1"><span id="info_sDt"></span> <span id="info_sTm"></span> 부터 <span id="info_eDt"></span> <span id="info_eTm"></span> 까지</p>
+                                                    <p class="info1">대여시간 : <span class="comm-color1"></span></p>
+                                                    <div class="info2">
+                                                        <%-- 선택사항--%>
+                                                        <select id="payOption" onchange="javascript:fn_OptChange(this);" style="display: none;">
+                                                            <option value="0" <c:if test="${cartInfo.insureDiv=='0'}">selected="selected"</c:if>>선택안함</option>
+                                                            <option value="50000" <c:if test="${cartInfo.insureDiv=='50000'}">selected="selected"</c:if>>차량손해면책제도(5만원)</option>
+                                                            <option value="100000" <c:if test="${cartInfo.insureDiv=='100000'}">selected="selected"</c:if>>완전자차(10만원)</option>
+                                                        </select>
+
+                                                        차량보험 :
+                                                        <a class="layer-1"><img height="32" src="<c:url value='/images/web/button/detail.gif'/>" alt="상세보기"></a>
+                                                        <div class="layerP1 rent-detail">
+                                                            <img class="bubble" src="<c:url value='/images/web/icon/bubble2.gif'/>" alt="말풍선" height="7" width="11">
+
+                                                            <div class="scroll-wrap">
+                                                                <h4 class="title">차량손해면책제도 안내</h4>
+                                                                <h5 class="sub-title"><img src="<c:url value='/images/web/travel/sb.gif'/>" alt="말풍선"> 공통 보험 안내</h5>
+                                                                <div class="memoMsg">
+                                                                    <c:out value="${prdtInfo.isrCmGuide}" escapeXml="false"/>
+                                                                </div>
+                                                                <h5 class="sub-title"><img src="<c:url value='/images/web/travel/sb.gif'/>" alt="말풍선"> 차량별 보험 안내</h5>
+                                                                <div class="memoMsg">
+                                                                    <c:out value="${prdtInfo.isrAmtGuide}" escapeXml="false"/>
+                                                                </div>
+                                                            </div>
+                                                            <a><img class="layerP1-close" src="<c:url value='/images/web/icon/close2.gif'/>" alt="닫기"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="carSaleAmt" id="carSaleAmt" />
+                                                <input type="hidden" name="nmlAmt" id="nmlAmt" />
+                                                <input type="hidden" name="insuSaleAmt" id="insuSaleAmt" value="${cartInfo.addAmt}" />
+                                                <input type="hidden" name="totalAmt" id="totalAmt" />
+                                                <div class="priceInfo">
+                                                    <p class="text">
+
+                                                        ＊차량요금 : <span id="vCarSaleAmt" class="comm-color1"></span>원<br>
+                                                        <span style="display: none;">＊자차보험료 : <span id="vInsuSaleAmt" class="comm-color1"></span>원<br></span>
+                                                        (유류할증료 / 제세공과금 포함)
+                                                    </p>
+                                                </div>
+                                                <div class="price-wrap">
+                                                    <p class="info4"><span class="plus">총합계</span> <strong id="vTotalAmt">0</strong><span>원</span></p>
+                                                </div>
+                                                <div id="divAble">
+                                                    <p class="bt">변경완료</p>
+                                                </div>
+                                                <div id="divAbleNone" class="comm-offMs" style="display:none;">
+                                                    <p class="not-ms"><img src="<c:url value='/images/web/icon/warning.png'/>" alt="경고">  <span id="errorMsg">대여일의 범위가 올바르지 않습니다.</span></p>
+                                                </div>
+                                            </div>
+                                        </div> <!--//option-box(렌터카)-->
+
+                                        <!--//option-box(골프)-->
+                                        <div class="golf-option option-box" style="display: none;">
+                                            <h4 class="title">옵션변경하기
+                                                <a href="" class="option-close">
+                                                    <img src="/images/web/cart/close.png" alt="닫기">
+                                                </a>
+                                            </h4>
+                                            <div class="info-head">
+                                                <div class="info-title">
+                                                    <p class="photoBox">
+                                                        <img src="../../data/sp/thumb/SP00001022_7.png" alt="">
+                                                    </p>
+                                                    <p class="text">
+                                                        <span class="real_time">[타조렌터카]</span>
+                                                        <span class="prd_name">올 뉴 K3</span>
+                                                        <span>휘발유 ｜ 자차포함-고급자차 <br>2021-02-06 12:00 ~ 2021-02-07 12:00</span>
+                                                    </p>
+                                                </div>
+                                                <!--달력-->
+                                                <div class="lodgeCalendar">
+                                                    <div class="calendar" id="glDtlCanendar">
+
+                                                    </div> <!--//calendar-->
+                                                </div> <!--//lodgeCalendar-->
+                                            </div> <!--//info-head-->
+                                            <div class="info-text">
+                                                <form name="glDtlInput" id="glDtlInput" method="get" onSubmit="return false;">
+                                                    <input type="hidden" id="EndVal" name="EndVal" value='' />
+
+                                                    <c:forEach var="cnt" begin="6" end="15">
+                                                        <input type="hidden" id="cntDay${cnt}" name="cntDay${cnt}" value='' />
+                                                    </c:forEach>
+
+                                                    <div class="list-cell">
+                                                        <ul class="gf_option">
+                                                            <li class="dateWrap">
+                                                                <div class="area1">사용일</div>
+                                                                <div class="area2">
+                                                                    <input class="cal" type="text" id='glCalDate' name='glCalDate' readonly="readonly" value="${fn:substring(searchVO.sFromDt,0,4)}-${fn:substring(searchVO.sFromDt,4,6)}-${fn:substring(searchVO.sFromDt,6,8)}">
+                                                                </div>
+                                                            </li>
+                                                            <li class="dateWrap">
+                                                                <div class="area1 time-select">시간선택</div>
+                                                                <div class="area2">
+                                                                    <select id="half" onchange="changeGLCalendarTmHalfSel(this)">
+                                                                        <option value="am">오전</option>
+                                                                        <option value="pm">오후</option>
+                                                                    </select>
+                                                                    <select id="hour" onchange="updateGLCalendar_end()">
+                                                                        <option value="">08:00</option>
+                                                                    </select>
+                                                                </div>
+                                                            </li>
+                                                            <li class="persWrap">
+                                                                <div class="area1">인원</div>
+                                                                <div class="area2">
+                                                                    <select id="personnel" onchange="updateGLCalendar_end()">
+                                                                        <c:forEach var="cnt" begin="${prdtVO.miniMem}" end="${prdtVO.maxiMem }">
+                                                                            <option value="${cnt}">성인${cnt}인</option>
+                                                                        </c:forEach>
+                                                                    </select>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="price-wrap">
+                                                        <p class="text" id="glPrdtText">2015/10/20 / 오전 10대 /  4인  1조</p>
+                                                        <p class="info4"><span class="plus">총합계</span> <strong id="glNowPrice">99,999,000</strong><span>원</span></p>
+                                                    </div>
+                                                    <div class="comm-offMs">
+                                                        <p class="bt"  id="glPrdtBtn1">
+                                                            <button>
+                                                                    <span>
+                                                                        변경완료
+                                                                    </span>
+                                                            </button>
+                                                        </p>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div><!--//option-box(골프)-->
+                                    </div><!-- //order_content_wrap -->
+                                </div><!-- //order_select -->
+                        </div><!--//comm_pay-->
+                    </div><!-- //inner -->
+                 </div><!-- //bgWrap2 -->
+            </div><!-- //cart -->
+        </div><!-- //subContents -->
+    </div><!-- //subContainer -->
+</main>
+
+<!--main foot banner (사이트링크)-->
+<div class="main-footBanner">
+    <div class="inner">
+        <div id="foot_organBanner" class="swiper-container">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide">
+                    <a href="http://www.jeju.go.kr/" target="_blank" title="새창">
+                        <img src="../../images/web/main/organ-jejudo.jpg" alt="제주특별자치도">
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="http://www.visitjeju.or.kr/" target="_blank" title="새창">
+                        <img src="../../images/web/main/organ-jta.jpg" alt="제주관광협회">
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="http://www.visitjeju.net/" target="_blank" title="새창">
+                        <img src="../../images/web/main/organ-visit.jpg" alt="VISIT JEJU">
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="http://www.jejusi.go.kr/" target="_blank" title="새창">
+                        <img src="../../images/web/main/organ-jejusi.jpg" alt="제주시">
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="http://www.seogwipo.go.kr/" target="_blank" title="새창">
+                        <img src="../../images/web/main/organ-seogwipo.jpg" alt="서귀포시">
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="http://www.changwonmall.kr/" target="_blank" title="새창">
+                        <img src="../../images/web/main/organ-changwon.jpg" alt="창원몰">
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="http://www.changwonmall.kr/" target="_blank" title="새창">
+                        <img src="../../images/web/main/organ-changwon.jpg" alt="창원몰">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="_footer" data-container="footer" class="footer_wrap">
+    <div class="service_support">
+        <div class="inner">
+            <ul>
+                <li>
+                    <a href="/web/etc/introduction.do" target="_blank" title="새창 열림">
+                        <span>회사소개</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/web/etc/buyToS.do" target="_blank" title="새창 열림">
+                        <span>이용약관</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/web/coustmer/viewCorpPns.do" target="_blank" title="새창 열림">
+                        <span>입점/제휴안내</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/web/etc/personalData.do" target="_blank" title="새창 열림">
+                        <strong>개인정보취급방침</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="/web/coustmer/qaList.do" target="_blank" title="새창 열림">
+                        <span>고객센터</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=6168204092" target="_blank" title="새창 열림">
+                        <span>사업자정보확인</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="corp_wrap">
+        <div class="inner">
+            <div class="corp_wrap_row">
+                <div class="corp_info">
+                    <dl>
+                        <dt>제주특별자치도관광협회</dt>
+                        <dd class="corp_info_cs">
+                            <p>
+                                <em>1522-3454</em>
+                                <span>월~금 09:00 - 18:00</span>
+                                <span>점심시간 12:00 - 13:00</span>
+                            </p>
+                        </dd>
+                        <dd class="corp_info_tx">
+                            <p>
+                                <span>대표이사:부동석</span>
+                                <span>63309 제주특별자치도 제주시 첨단로 213-65 제주종합비즈니스센터 3층</span>
+                                <span>법인 등록번호:220121-0000107</span>
+                                <span>사업자 등록번호:616-82-04092</span>
+                            </p>
+                            <p>
+                                <span>통신판매업번호:제2018-제주아라0049호</span>
+                                <span>개인정보관리책임자:김철휘</span>
+                                <span>E-mail : tamnao@tamnao.com</span>
+                                <span>Fax : 064-749-7445</span>
+                            </p>
+                        </dd>
+                        <dd class="corp_info_copy">
+                            <p>탐나오는 통신판매중개자로서 거래당사자가 아니므로 개별 판매자가 등록한 상품거래정보 및 거래에 대해서 책임을 지지 않습니다.</p>
+                            <p>Copyright 2018. 제주특별자치도관광협회 All Rights Reserved.</p>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="corp_rgt" >
+                    <div class="f_sns">
+                        <a href="https://blog.naver.com/jta0119" class="bl" target="_blank">
+                            <span class="blind">블로그</span>
+                        </a>
+                        <a href="https://post.naver.com/jta0119" class="nv" target="_blank">
+                            <span class="blind">네이버</span>
+                        </a>
+                        <a href="https://www.facebook.com/JEJUTAMNAOTRAVEL/" class="fb" target="_blank">
+                            <span class="blind">페이스북</span>
+                        </a>
+                        <a href="https://www.instagram.com/tamnao_jeju/" class="ig" target="_blank">
+                            <span class="blind">인스타그램</span>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UC5Hk3MfM3RFDz5_Xm9BDJZQ" class="ub" target="_blank">
+                            <span class="blind">유튜브</span>
+                        </a>
+                    </div>
+                    <div class="f_down">
+                        <a href="https://apps.apple.com/kr/app/%ED%83%90%EB%82%98%EC%98%A4-%EC%A0%9C%EC%A3%BC%EC%97%AC%ED%96%89%EC%8A%A4%ED%86%A0%EC%96%B4/id1489404866" target="_blank">
+                            <img src="/images/web/r_main/apple.png" alt="애플 앱다운로드">
+                            <span>ISO</span>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=kr.or.hijeju.tamnao" target="_blank">
+                            <img src="/images/web/r_main/google.png" alt="구글 앱다운로드">
+                            <span>Android</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mark-zone">
+                <div class="award">
+                    <ul>
+                        <li><img src="/images/web/mark/gcs.png" alt="gcs"></li>
+                        <li><img src="/images/web/mark/maket.png" alt="market"></li>
+                        <li><img src="/images/web/mark/int.png" alt="int"></li>
+                        <li><img src="/images/web/mark/web.png" alt="web"></li>
+                        <li><img src="/images/web/mark/nba.png" alt="nba"></li>
+                        <li><img src="/images/web/mark/ieco.png" alt="ieco"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

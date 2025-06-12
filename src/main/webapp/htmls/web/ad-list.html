@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=71cf66fb54158dacb5fb5b656674ad70"></script>
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->	
+    <link rel="stylesheet" href="../../css/common/jquery-ui.css">
+	<link rel="stylesheet" href="../../css/web/common2.css">
+	<link rel="stylesheet" href="../../css/web/style.css">
+	<link rel="stylesheet" href="../../css/web/ad.css">
+    <!-- script -->
+    <script src="../../js/jquery-1.11.1.js"></script>
+
+    <script src="../../js/jquery-ui.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+    <script src="../../js/swiper.js"></script>
+    <script src="../../js/html_common.js"></script>
+    <script src="../../js/html_style.js"></script>
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
+    <!-- add -->
+    <script>
+        // 필터 가격
+		$(function() {
+
+			$("#slider-range").slider({
+				range: true,
+				min: 0,
+				max: 500,
+				values: [0, 500],
+				slide: function(event, ui) {
+					$("#amount2").val( ui.values[0] + "원" + " - " + (ui.values[1]) + "원");
+				}
+			});
+			$( "#amount2" ).text( commaNum($( "#slider-range" ).slider( "values", 0 )) + "원" + " - " + commaNum($( "#slider-range" ).slider( "values", 1 )) + "원" );
+		});
+
+		function fn_ChangeTab(carDiv, obj) {
+			++prevIndex;
+			history.replaceState($("main").html(), "title 1", "?prevIndex="+ prevIndex);
+			$("#sTabCtgr").val(carDiv);
+			$("#top_menu_list>li").removeClass("active");
+			$(obj).parent().addClass("active");
+			$(".tx").removeClass();
+			$(this).addClass("tx");
+
+			fn_SpSearch(1);
+		}
+
+        // 필터 날짜
+        $(document).ready(function(){
+
+            $("#sFromDtView").datepicker({
+                showOn: "both",
+                buttonImage: "/images/web/icon/calendar_icon01.gif",
+                buttonImageOnly: true,
+                showOtherMonths: true, 										//빈칸 이전달, 다음달 출력
+                numberOfMonths: [ 1, 2 ],									//여러개월 달력 표시
+                stepMonths: 2, 												//좌우 선택시 이동할 개월 수
+                dateFormat: "yy-mm-dd",
+                minDate: "${SVR_TODAY}",
+                maxDate: '+12m',
+                onClose : function(selectedDate) {
+                    var fromDt = new Date(selectedDate);
+
+                    $('#sFromDt').val($('#sFromDtView').val().replace(/-/g, ''));
+
+                    fromDt.setDate(fromDt.getDate() + 1);
+                    selectedDate = fromDt.getFullYear() + "-" + (fromDt.getMonth() + 1) + "-" + fromDt.getDate();
+                    $("#sToDtView").datepicker("option", "minDate", selectedDate);
+
+                    var toDt = new Date($("#sToDtView").val());
+
+                    fromDt.setDate(fromDt.getDate() - 1);
+                    var nightNum = (toDt.getTime() - fromDt.getTime()) / (3600 * 1000 * 24);
+                    if (nightNum < 1)
+                        nightNum = 1;
+                    $("#sNights").val(nightNum);
+                }
+            });
+
+            $("#sToDtView").datepicker({
+                showOn: "both",
+                buttonImage: "/images/web/icon/calendar_icon01.gif",
+                buttonImageOnly: true,
+                showOtherMonths: true, 										//빈칸 이전달, 다음달 출력
+                numberOfMonths: [ 1, 2 ],									//여러개월 달력 표시
+                stepMonths: 2, 												//좌우 선택시 이동할 개월 수
+                dateFormat: "yy-mm-dd",
+                minDate: "${SVR_TODAY}",
+                maxDate: '+12m',
+                onClose : function(selectedDate) {
+                    var toDt = new Date(selectedDate);
+                    var fromDt = new Date($("#sFromDtView").val());
+
+                    $('#sToDt').val($('#sToDtView').val().replace(/-/g, ''));
+                    $("#sNights").val((toDt.getTime() - fromDt.getTime()) / (3600 * 1000 * 24));
+                }
+            });
+        });
+
+		function goPrdtList(corpCd, corpId, corpNm) {
+			var parameters = "corpCd=" + corpCd +"&corpId=" + corpId;
+			$.ajax({
+				type:"post",
+				url:"<c:url value='../../web/mapPrdtList.ajax'/>",
+				data:parameters ,
+				success:function(data){
+					$("#div_prdtList").html(data);
+					$("#h_corpNm").html(corpNm);
+				},
+				error:function(request,status,error){
+					//    alert("code:"+request.status+"\n"+"\n"+"error:"+error);
+				}
+			});
+		}
+		$(document).ready(function(){
+			$("#allCheck").click(function () {
+				closeOverlay('All');
+				if($("#allCheck").prop("checked")) {
+					$("input[name=chk]").prop("checked", true);
+					changeMarker('all');
+				} else {
+					$("input[name=chk]").prop("checked", false);
+					changeMarker('none');
+				}
+			});
+
+			$("input[name=chk]").click(function () {
+				closeOverlay('All');
+				if($(this).prop("checked")) {
+					if($(this).val() == 'ad') {
+						changeMarker($("#adDiv").val());
+					} else {
+						changeMarker($(this).val());
+					}
+				} else {
+					disMarker($(this).val());
+				}
+			});
+
+			$("#adDiv").change(function () {
+				if($("#adChk").prop("checked")){
+					closeOverlay('All');
+					changeMarker($(this).val());
+				}
+			});
+		});
+    </script>
+</head>
+<body>
+
+	<!-- re_header -->
+	<div id="_header">
+		<!-- top banner zone-->
+		<div id="top_banner" class="top-banner swiper-container">
+			<ul class="swiper-wrapper">
+				<li class="swiper-slide" style="background-color: rgb(246, 12, 64)">
+					<a href="${result.url}" target="_blank">
+						<div class="bar-tw">
+							<p class="bar-t"><em class="bar-em">회원가입</em>만 해도 혜택이 팡팡!</p>
+						</div>
+						<img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+					</a>
+				</li>
+				<li class="swiper-slide" style="background-color: rgb(246, 12, 64)">
+					<a href="${result.url}" target="_blank">
+						<div class="bar-tw">
+							<p class="bar-t">착한수수료 동참을 지지하는 <em class="bar-em">댓글이벤트</em> 참여하세요!</p>
+						</div>
+						<img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+					</a>
+				</li>
+			</ul>
+			<div class="container">
+				<a href="javascript:void(0)" id="top_close" class="close"><img src="/images/web/comm/btn_close.png" alt="닫기"></a>
+			</div>
+		</div>
+		<!--// top banner zone-->
+
+		<div class="re_header">
+			<div class="inner">
+				<div class="header-top">
+					<div class="box__usermenu">
+						<ul class="list__usermenu">
+							<li><b>이은민</b>님 환영합니다.</li>
+							<li class="list-item">
+								<a class="link__usermenu" href="javascript:fn_login();">로그인</a>
+							</li>
+							<li class="list-item">
+								<a class="link__usermenu" href="/web/signUp00.do">회원가입</a>
+							</li>
+							<!-- 로그인 -->
+							<!--
+							<li class="list-item">
+								<a class="link__usermenu" href="javascript:fn_logout();">로그아웃</a>
+							</li>-->
+							<!-- //로그인 -->
+
+							<li class="list-item">
+								<a class="link__usermenu" href="/web/coustmer/viewCorpPns.do">입점신청</a>
+							</li>
+							<li class="list-item">
+								<a class="link__usermenu" href="/web/bbs/bbsList.do?bbsNum=NOTICE">고객센터</a>
+							</li>
+						</ul>
+					</div>
+					<h1>
+						<a href="/" title="tamnao - 제주여행종합쇼핑몰">
+							<img src="/images/web/r_main/nao_logo2.png" alt="탐나오">
+						</a>
+					</h1>
+					<div class="srh_area">
+						<form id="submitFrm" name="submitFrm">
+							<fieldset>
+								<legend class="for-a11y"> 검색</legend>
+								<div class="top_search" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+									<input name="keyword" title="검색어 입력" class="form_input" value="[기획전] 제주 봄꽃 여행" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+									<button type="submit" title="검색" class="srh_btn" onclick="fn_searBtClick();">
+										<img src="/images/web/r_main/srh_btn.png" alt="검색">
+									</button>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+					<div class="util_menu">
+						<ui>
+							<li id="unpaidInfo" class="nopay">
+								<a href="javascript:fn_DtlRsv('${unpaidRsvNum}');" class="blinking text-red">
+									<span class="ico count">&nbsp;</span>미결제상품
+									<span class="cnt">0</span>
+								</a>
+							</li>
+							<li class="coupon more">
+								<a href="/web/mypage/pocketList.do">
+									<span class="ico"></span>쿠폰
+									<span class="cnt">0</span>
+								</a>
+							</li>
+							<li class="cart more">
+								<a href="/web/cart.do">
+									<span class="ico">&nbsp;</span>장바구니
+									<span class="cnt">0</span>
+								</a>
+							</li>
+							<li class="mypage more">
+								<a href="/web/mypage/rsvList.do">
+									<span class="ico">&nbsp;</span>마이탐나오
+								</a>
+							</li>
+						</ui>
+					</div>
+				</div>
+			</div>
+
+			<!-- global-navigation -->
+			<div class="gnb2">
+				<div class="inner">
+					<div class="box__service-all">
+						<ul class="menu">
+							<li class="list-item">
+								<a class="link__service" href="https://www.tamnao.com/web/av/mainList.do">항공</a>
+							</li>
+							<li class="list-item">
+								<a class="link__service" href="https://www.tamnao.com/web/sp/vesselList.do">선박</a>
+							</li>
+							<li class="list-item">
+								<a class="link__service" href="https://www.tamnao.com/web/stay/jeju.do">숙소</a>
+							</li>
+							<li class="list-item">
+								<a class="link__service" href="https://www.tamnao.com/web/rentcar/car-list.do">렌터카</a>
+							</li>
+							<li class="list-item">
+								<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C200">관광지/레저 할인쿠폰</a>
+							</li>
+							<li class="list-item">
+								<a class="link__service" href="https://www.tamnao.com/web/sv/mainList.do">제주특산/기념품</a>
+							</li>
+							<li class="list-item">
+								<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C270">제주마을체험</a>
+							</li>
+							<li class="list-item">
+								<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C300">맛집</a>
+							</li>
+							<li class="list-item">
+								<a class="link__service" href="https://www.tamnao.com/web/sp/packageList.do">여행사 상품</a>
+							</li>
+							<li class="list-item">
+								<a class="link__service" href="https://www.tamnao.com/web/evnt/prmtPlanList.do">기획전</a>
+							</li>
+							<li class="list-item">
+								<a class="link__service" href="https://www.tamnao.com/web/evnt/promotionList.do">이벤트</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //re_header -->
+
+	<main id="main">
+
+		<div id="subContents" class="sub_wrap">
+			<!-- filter_wrap -->
+		    <div class="filter_wrap">
+				<div class="filter_check">
+					<div class="f_hd">
+						<h2>숙박검색</h2>
+					</div>
+					<div class="f_con">
+						<div class="date_wrap">
+							<div class="date_checkin">
+								<label>체크인</label>
+								<div class="value-text">
+									<div class="date-container">
+										<span class="date-pick">
+											<input type="hidden" name="vNights" id="vNights" value="${searchVO.sNights}">
+											<input class="datepicker" type="text" placeholder="입실일 선택" onclick="optionClose('.popup-typeA')">
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="date_checkout">
+								<label>체크아웃</label>
+								<div class="value-text">
+									<div class="date-container">
+										<span class="date-pick">
+											<input class="datepicker" type="text" placeholder="퇴실일 선택" onclick="optionClose('.popup-typeA')">
+										</span>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="custom_wrap">
+							<label>인원</label>
+							<div class="value-text"><a href="javascript:void(0)" onclick="optionPopup('#hotel_count', this)">1객실, 2 성인</a></div>
+							<div id="hotel_count" class="popup-typeA hotel-count">
+								<div class="detail-area">
+									<strong class="sub-title">객실수</strong>
+									<select class="full" title="객실수 선택">
+										<option value="">객실 1개</option>
+										<option value="">객실 2개</option>
+										<option value="">객실 3개</option>
+										<option value="">객실 4개</option>
+										<option value="">객실 5개</option>
+									</select>
+								</div>
+								<div class="detail-area counting-area">
+									<div class="counting">
+										<div class="l-area">
+											<strong class="sub-title">성인</strong>
+											<span class="memo">만 13세 이상</span>
+										</div>
+										<div class="r-area">
+											<button type="button" class="counting-btn"><img src="../../images/web/main/form/subtraction.png" alt="빼기"></button>
+											<span class="counting-text">1</span>
+											<button type="button" class="counting-btn"><img src="../../images/web/main/form/addition.png" alt="더하기"></button>
+										</div>
+									</div>
+									<div class="counting">
+										<div class="l-area">
+											<strong class="sub-title">소아</strong>
+											<span class="memo">만 2세 ~ 13세 미만</span>
+										</div>
+										<div class="r-area">
+											<button type="button" class="counting-btn"><img src="../../images/web/main/form/subtraction.png" alt="빼기"></button>
+											<span class="counting-text">0</span>
+											<button type="button" class="counting-btn"><img src="../../images/web/main/form/addition.png" alt="더하기"></button>
+										</div>
+									</div>
+									<div class="counting">
+										<div class="l-area">
+											<strong class="sub-title">유아</strong>
+											<span class="memo">만 2세(24개월) 미만</span>
+										</div>
+										<div class="r-area">
+											<button type="button" class="counting-btn"><img src="../../images/web/main/form/subtraction.png" alt="빼기"></button>
+											<span class="counting-text">0</span>
+											<button type="button" class="counting-btn"><img src="../../images/web/main/form/addition.png" alt="더하기"></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="search_btn">
+							<a href="">검색</a>
+						</div>
+					</div>
+				</div>
+				<div class="filter_map">
+					<a href="javascript:void(0)" onclick="layer_popup('#ad_map');" >
+						<p>지도에서 보기</p>
+						<img src="../../images/web/ad/bkg-map-entry.png" alt="지도로 검색">
+					</a>
+				</div>
+
+				<!-- 0304 탐나는전 check point -->
+				<div class="filter_jejupay">
+					<div class="pay-check">
+						<input type="checkbox" name="payCheck" id="payCheck" value="Y" checked="checked">
+						<label for="payCheck">
+							<img src="../../images/web/icon/jeju_pay_icon.png" alt="탐나는전">
+							<span>탐나는전 가맹점보기</span>
+						</label>
+					</div>
+				</div><!-- //0304 탐나는전 check point -->
+				<div class="filter_refine">
+					<section>
+						<h3>지역</h3>
+						<ul>
+							<li>
+								<input type="checkbox" id="region_0" name="region" class="rf_chk" value="2">
+								<label for="region_0" class="label_chk">지역전체</label>
+							</li>
+							<li>
+								<input type="checkbox" id="region_1" name="region" class="rf_chk" value="2">
+								<label for="region_1" class="label_chk">제주시내권</label>
+							</li>
+							<li>
+								<input type="checkbox" id="region_2" name="region" class="rf_chk" value="2">
+								<label for="region_2" class="label_chk">동부권</label>
+							</li>
+							<li>
+								<input type="checkbox" id="region_3" name="region" class="rf_chk" value="2">
+								<label for="region_3" class="label_chk" >서부권</label>
+							</li>
+							<li>
+								<input type="checkbox" id="region_4" name="region" class="rf_chk" value="2">
+								<label for="region_4" class="label_chk" >중문/서귀포</label>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>유형</h3>
+						<ul>
+							<li>
+								<input type="checkbox" id="type_0" name="stay_type" class="rf_chk" value="2">
+								<label for="type_0" class="label_chk" >호텔</label>
+							</li>
+							<li>
+								<input type="checkbox" id="type_1" name="stay_type" class="rf_chk" value="2">
+								<label for="type_1" class="label_chk" >펜션</label>
+							</li>
+							<li>
+								<input type="checkbox" id="type_2" name="stay_type" class="rf_chk" value="2">
+								<label for="type_2" class="label_chk" >리조트/풀빌라/콘도</label>
+							</li>
+							<li>
+								<input type="checkbox" id="type_3" name="stay_type" class="rf_chk" value="2">
+								<label for="type_3" class="label_chk" >게스트하우스</label>
+							</li>
+							<li>
+								<input type="checkbox" id="type_4" name="stay_type" class="rf_chk" value="2">
+								<label for="type_4" class="label_chk">캠핑/카라반</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="price_bar">
+						<h3 class="f_price">가격</h3>
+						<p>
+							<input type="text" id="amount2" readonly style="border:0; color:#f01e58; font-weight:bold;">
+						</p>
+						<div class="area type select stay">
+							<dl class="type1">
+
+								<div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+									<span class="ui-slider-handle ui-state-default ui-corner-all" href="#" ></span>
+									<span class="ui-slider-handle ui-state-default ui-corner-all" href="#" ></span>
+								</div>
+							</dl>
+						</div>
+					</section>
+
+					<section>
+						<h3>주요정보</h3>
+						<ul class="hide_type half">
+							<li>
+								<input type="checkbox" id="info_0" name="reserve[]" class="rf_chk" value="2">
+								<label for="info_0" class="label_chk">수영장</label>
+							</li>
+							<li>
+								<input type="checkbox" id="info_1" name="reserve[]" class="rf_chk" value="2">
+								<label for="info_1" class="label_chk">바비큐</label>
+							</li>
+							<li>
+								<input type="checkbox" id="info_2" name="reserve[]" class="rf_chk" value="2">
+								<label for="info_2" class="label_chk">애완동물</label>
+							</li>
+							<li>
+								<input type="checkbox" id="info_3" name="reserve[]" class="rf_chk" value="2">
+								<label for="info_3" class="label_chk">매점</label>
+							</li>
+							<li>
+								<input type="checkbox" id="info_4" name="reserve[]" class="rf_chk" value="2">
+								<label for="info_4" class="label_chk">스파/사우나</label>
+							</li>
+							<li>
+								<input type="checkbox" id="info_5" name="reserve[]" class="rf_chk" value="2">
+								<label for="info_5" class="label_chk">조식서비스</label>
+							</li>
+							<li>
+								<input type="checkbox" id="info_6" name="reserve[]" class="rf_chk" value="2">
+								<label for="info_6" class="label_chk">금연</label>
+							</li>
+							<li>
+								<input type="checkbox" id="info_7" name="reserve[]" class="rf_chk" value="2">
+								<label for="info_7" class="label_chk">주차장</label>
+							</li>
+							<li>
+								<input type="checkbox" id="info_8" name="reserve[]" class="rf_chk" value="2">
+								<label for="info_8" class="label_chk">전기차 충전소</label>
+							</li>
+						</ul>
+					</section>
+
+				</div>
+
+                <!-- recommend_wrap -->
+				<!--
+                <div class="recommend_wrap">
+                    <div class="RecommendedProperties">고객님을 위한 추천 숙소 - 제주도</div>
+                    <ul>
+                        <li class="recommend_list1">
+                            <a href="#">
+                                <img src="/data/ad/thumb/list_01.jpg" alt="recommend product">
+								<div class="recommend-label">MD 추천</div>
+								<p>우리 크리스마스에 뭐할까?</p>
+								<div class="picShadow"></div>
+                            </a>
+                        </li>
+                        <li class="recommend_list2">
+                            <a href="#">
+                                <img src="/data/ad/thumb/list_02.jpg" alt="recommend product">
+								<div class="recommend-label">MD 추천</div>
+								<p>뜨끈한~ 스파/월풀 호텔~</p>
+								<div class="picShadow"></div>
+                            </a>
+                        </li>
+                        <li class="recommend_list3">
+                            <a href="#">
+								<div class="recommend-label">MD 추천</div>
+                                <img src="/data/ad/thumb/list_03.jpg" alt="recommend product">
+								<p>지금 할인중인 호텔</p>
+								<div class="picShadow"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+				-->
+			</div><!-- // filter_wrap -->
+
+            <!-- list_wrap -->
+			<div class="list_wrap">
+				<div class="stay_best">
+					<h2 class="sbt">지역별 탐나오 추천숙박!</h2>
+					<nav class="stayRegion">
+						<div class="r_list">
+							<span class="r_best active">best상품</span>
+						</div>
+						<div class="r_list">
+							<span class="r_best">당일숙박</span>
+						</div>
+						<div class="r_list">
+							<span class="r_best">연박할인</span>
+						</div>
+					</nav>
+					<div id="detail_slider" class="swiper-container">
+						<ul class="swiper-wrapper">
+							<li class="swiper-slide">
+								<a href="#" class="bt_stay">
+									<div class="btPhoto">
+										<img src="/data/ad/thumb/CADO180017_2.jpg" alt="product">
+									</div>
+									<div class="btInfo">
+										<div class="btTitle">스위트호텔제주</div>
+										<div class="btEvent">블루투스스피커 및 면세점할인권 증정</div>
+										<div class="btPrice">101,200<span class="won">원</span></div>
+									</div>
+								</a>
+							</li>
+						</ul>
+						<div id="slideItem_arrow" class="arrow-box">
+							<div id="slideItem_next" class="swiper-button-next"></div>
+							<div id="slideItem_prev" class="swiper-button-prev"></div>
+						</div>
+					</div>
+				</div>
+				<div class="stay_event">
+					<div class="area_flex">
+						<a href="#" class="">
+							<p class="ba_t">크리스마스 호텔 쿠폰 + 무조건 만원 할인 > </p>
+						</a>
+					</div>
+				</div>
+				<div class="stay_list">
+					<div class="__sort">
+						<div class="sort-filter">
+							<ul>
+								<li class="sortHotel1">
+                                    <button type="button" onclick="" class="sort active">탐나오 추천순</button>
+                                </li>
+								<li class="sortHotel2">
+                                    <button type="button" onclick="" class="sort">판매순</button>
+                                </li>
+								<li class="sortHotel3">
+                                    <button type="button" onclick="" class="sort">가격순</button>
+                                </li>
+								<li class="sortHotel4">
+                                    <button type="button" onclick="" class="sort">최신등록순</button>
+                                </li>
+							</ul>
+                            <div class="sort-search">
+                                <input type="text" class="" placeholder="검색 결과 내 숙소명 검색" autocapitalize="off">
+                                <button type="button" title="검색" class="sort-search-btn"></button>
+                            </div>
+						</div>
+                        <div class="stay-list">
+                            <div>
+                                <a href="./ad-detail.html">
+                                    <div class="i-photo">
+                                        <img src="/data/ad/thumb/C160000320_9.jpg" alt="product">
+                                    </div>
+                                    <div class="inner-info">
+                                        <h3>제주신라호텔</h3>
+                                        <span class="star">
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <span class="star-num">(2)</span>
+                                        </span>
+                                        <div class="loc"><img src="/images/web/icon/icon_location02.png" alt="위치"> 중문/서귀포 </div>
+
+										<!-- 0303 라벨수정 -->
+										<div class="bxLabel">
+											<span class="main_label pink">당일특가</span>
+											<span class="main_label eventblue">이벤트</span>
+											<span class="main_label back-red">연박할인</span>
+											<span class="main_label yellow">탐나는전</span>
+										</div><!-- //0303 라벨수정 -->
+                                        <span class="info_memo">중문관광단지의 중심</span>
+                                    </div>
+                                    <div class="inner-price">
+										<span class="text__comment">2박 이상 예약 가능</span>
+										<em>1박기준</em>
+										<!--<del>99,000</del>-->
+                                        <span class="bxPrice">
+											<span class="per_sale">40<small>%</small></span>
+											<span class="text__price">90,000</span>
+											<span class="text__unit">원</span>
+										</span>
+                                    </div>
+                                </a>
+                            </div>
+							<div>
+								<a href="./ad-detail.html">
+									<div class="i-photo">
+										<img src="/data/ad/thumb/C160000320_9.jpg" alt="product">
+									</div>
+									<div class="inner-info">
+										<h3>제주신라호텔</h3>
+										<span class="star">
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <span class="star-num">(2)</span>
+                                        </span>
+										<div class="loc"><img src="/images/web/icon/icon_location02.png" alt="위치"> 중문/서귀포 </div>
+										<div class="bxLabel">
+											<span class="main_label pink">당일특가</span>
+											<span class="main_label eventblue">이벤트</span>
+											<span class="main_label back-red">연박할인</span>
+											<span class="main_label yellow">탐나는전</span>
+										</div>
+										<span class="info_memo">중문관광단지의 중심</span>
+									</div>
+									<div class="inner-price">
+										<em>1박기준</em>
+										<!--<del>99,000</del>-->
+										<span class="bxPrice">
+											<span class="per_sale">40<small>%</small></span>
+											<span class="text__price">90,000</span>
+											<span class="text__unit">원</span>
+										</span>
+									</div>
+								</a>
+							</div>
+							<div>
+								<a href="./ad-detail.html">
+									<div class="i-photo">
+										<img src="/data/ad/thumb/C160000320_9.jpg" alt="product">
+									</div>
+									<div class="inner-info">
+										<h3>제주신라호텔</h3>
+										<span class="star">
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <span class="star-num">(2)</span>
+                                        </span>
+										<div class="loc"><img src="/images/web/icon/icon_location02.png" alt="위치"> 중문/서귀포 </div>
+										<div class="bxLabel">
+											<span class="main_label pink">당일특가</span>
+											<span class="main_label eventblue">이벤트</span>
+											<span class="main_label back-red">연박할인</span>
+											<span class="main_label yellow">탐나는전</span>
+										</div>
+										<span class="info_memo">중문관광단지의 중심</span>
+									</div>
+									<div class="inner-price">
+										<em>1박기준</em>
+										<!--<del>99,000</del>-->
+										<span class="bxPrice">
+											<span class="per_sale">40<small>%</small></span>
+											<span class="text__price">90,000</span>
+											<span class="text__unit">원</span>
+										</span>
+									</div>
+								</a>
+							</div>
+							<div>
+								<a href="./ad-detail.html">
+									<div class="i-photo">
+										<img src="/data/ad/thumb/C160000320_9.jpg" alt="product">
+									</div>
+									<div class="inner-info">
+										<h3>제주신라호텔</h3>
+										<span class="star">
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <span class="star-num">(2)</span>
+                                        </span>
+										<div class="loc"><img src="/images/web/icon/icon_location02.png" alt="위치"> 중문/서귀포 </div>
+										<div class="bxLabel">
+											<span class="main_label pink">당일특가</span>
+											<span class="main_label eventblue">이벤트</span>
+											<span class="main_label back-red">연박할인</span>
+											<span class="main_label yellow">탐나는전</span>
+										</div>
+										<span class="info_memo">중문관광단지의 중심</span>
+									</div>
+									<div class="inner-price">
+										<em>1박기준</em>
+										<!--<del>99,000</del>-->
+										<span class="bxPrice">
+											<span class="per_sale">40<small>%</small></span>
+											<span class="text__price">90,000</span>
+											<span class="text__unit">원</span>
+										</span>
+									</div>
+								</a>
+							</div>
+
+							<!-- 1201 예약마감 frame -->
+							<div>
+								<a href="./ad-detail.html">
+									<div class="i-photo">
+										<img src="/data/ad/thumb/C160000320_9.jpg" alt="product">
+									</div>
+									<div class="inner-info">
+										<h3>제주신라호텔</h3>
+										<span class="star">
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+                                                <path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+                                            </svg>
+                                            <span class="star-num">(2)</span>
+                                        </span>
+										<div class="loc"><img src="/images/web/icon/icon_location02.png" alt="위치"> 중문/서귀포 </div>
+										<div class="bxLabel">
+											<span class="main_label pink">당일특가</span>
+											<span class="main_label eventblue">이벤트</span>
+											<span class="main_label back-red">연박할인</span>
+											<span class="main_label yellow">탐나는전</span>
+										</div>
+										<span class="info_memo">중문관광단지의 중심</span>
+									</div>
+									<div class="inner-price">
+										<span class="text__deadline">예약마감</span>
+									</div>
+								</a>
+							</div>
+							<!-- //1131 예약마감 frame -->
+                        </div>
+					</div>
+				</div>
+			</div> <!-- // list_wrap -->
+		</div> <!-- //subContents -->
+		<div id="ad_map" class="comm-layer-popup admap">
+			<div class="map_wrap">
+				<div class="maps-head"></div>
+				<div class="maps-body">
+					<div class="map_close">
+						<button type="button" class="close">
+							<!--<img src="../../images/web/btn/map_close.png" alt="닫기">-->
+						</button>
+					</div>
+					<!-- new contents -->
+					<div class="map-service">
+						<!--map form-->
+						<div class="bgWrap">
+							<div class="map-sidePanel">
+								<div class="sidebar-con">
+									<div class="f_con">
+										<div class="date_wrap">
+											<div class="date_checkin">
+												<div class="value-text">
+													<div class="date-container">
+													<span class="date-pick">
+														<!--<input type="hidden" name="vNights" id="vNights" value="${searchVO.sNights}">-->
+														<input class="datepicker" type="text" placeholder="입실일 선택" value="2020-08-20" onclick="optionClose('.popup-typeA')">
+													</span>
+													</div>
+												</div>
+											</div>
+
+											<div class="date_checkout">
+												<div class="value-text">
+													<div class="date-container">
+													<span class="date-pick">
+														<input class="datepicker" type="text" placeholder="퇴실일 선택" value="2020-08-20" onclick="optionClose('.popup-typeA')">
+													</span>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="custom_wrap">
+											<div class="value-text"><a href="javascript:void(0)" onclick="optionPopup('#map_hotel_count', this)">성인 2</a></div>
+											<div id="map_hotel_count" class="popup-typeA hotel-count">
+												<div class="detail-area counting-area">
+													<div class="counting">
+														<div class="l-area">
+															<strong class="sub-title">성인</strong>
+															<span class="memo">만 13세 이상</span>
+														</div>
+														<div class="r-area">
+															<button type="button" class="counting-btn"><img src="../../images/web/main/form/subtraction.png" alt="빼기"></button>
+															<span class="counting-text">1</span>
+															<button type="button" class="counting-btn"><img src="../../images/web/main/form/addition.png" alt="더하기"></button>
+														</div>
+													</div>
+													<div class="counting">
+														<div class="l-area">
+															<strong class="sub-title">소아</strong>
+															<span class="memo">만 2세 ~ 13세 미만</span>
+														</div>
+														<div class="r-area">
+															<button type="button" class="counting-btn"><img src="../../images/web/main/form/subtraction.png" alt="빼기"></button>
+															<span class="counting-text">0</span>
+															<button type="button" class="counting-btn"><img src="../../images/web/main/form/addition.png" alt="더하기"></button>
+														</div>
+													</div>
+													<div class="counting">
+														<div class="l-area">
+															<strong class="sub-title">유아</strong>
+															<span class="memo">만 2세(24개월) 미만</span>
+														</div>
+														<div class="r-area">
+															<button type="button" class="counting-btn"><img src="../../images/web/main/form/subtraction.png" alt="빼기"></button>
+															<span class="counting-text">0</span>
+															<button type="button" class="counting-btn"><img src="../../images/web/main/form/addition.png" alt="더하기"></button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="map_search_btn">
+											<a href="">검색</a>
+										</div>
+									</div>
+									<div class="__sort">
+										<div class="sort-filter">
+											<ul>
+												<li class="sortHotel1">
+													<button type="button" onclick="" class="sort active">탐나오 추천순</button>
+												</li>
+												<li class="sortHotel2">
+													<button type="button" onclick="" class="sort">판매순</button>
+												</li>
+												<li class="sortHotel3">
+													<button type="button" onclick="" class="sort">가격순</button>
+												</li>
+												<li class="sortHotel4">
+													<button type="button" onclick="" class="sort">최신등록순</button>
+												</li>
+											</ul>
+										</div>
+										<div class="stay-list">
+											<div>
+												<a href="./ad-detail.html">
+													<div class="i-photo">
+														<img src="/data/ad/thumb/C160000320_9.jpg" alt="product">
+													</div>
+													<div class="inner-info">
+														<h3>구덕게스트하우스(제주하이킹인)</h3>
+														<span class="star">
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<span class="star-num">(999)</span>
+														</span>
+														<div class="loc"><img src="/images/web/icon/icon_location02.png" alt="위치"> 중문/서귀포 </div>
+														<span class="info_memo">비양도가 한눈에 바라보이는 해안 리조트</span>
+														<div class="bxLabel">
+															<span class="main_label pink">당일특가</span>
+															<span class="main_label eventblue">이벤트</span>
+															<span class="main_label back-red">연박할인</span>
+															<span class="main_label yellow">탐나는전</span>
+														</div>
+														<div class="inner-price">
+															<span class="text__comment">2박 이상 예약 가능</span>
+															<!--<del>99,000</del>-->
+															<span class="bxPrice">
+																<span class="per_sale">40<small>%</small></span>
+																<span class="text__price">9,990,000</span>
+																<span class="text__unit">원</span>
+															</span>
+															<em>1박기준</em>
+														</div>
+													</div>
+												</a>
+												<a href="" class="detail_btn" type="button" target="_blank">자세히보기</a>
+											</div>
+											<div class="active">
+												<a href="./ad-detail.html">
+													<div class="i-photo">
+														<img src="/data/ad/thumb/C160000320_9.jpg" alt="product">
+													</div>
+													<div class="inner-info">
+														<h3>구덕게스트하우스(제주하이킹인)</h3>
+														<span class="star">
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<span class="star-num">(999)</span>
+														</span>
+														<div class="loc"><img src="/images/web/icon/icon_location02.png" alt="위치"> 중문/서귀포 </div>
+														<span class="info_memo">비양도가 한눈에 바라보이는 해안 리조트</span>
+														<div class="bxLabel">
+															<span class="main_label pink">당일특가</span>
+															<span class="main_label eventblue">이벤트</span>
+															<span class="main_label back-red">연박할인</span>
+															<span class="main_label yellow">탐나는전</span>
+														</div>
+														<div class="inner-price">
+															<span class="text__comment">2박 이상 예약 가능</span>
+															<!--<del>99,000</del>-->
+															<span class="bxPrice">
+																<span class="per_sale">40<small>%</small></span>
+																<span class="text__price">9,990,000</span>
+																<span class="text__unit">원</span>
+															</span>
+															<em>1박기준</em>
+														</div>
+													</div>
+												</a>
+												<a href="" class="detail_btn" type="button" target="_blank">자세히보기</a>
+											</div>
+											<div>
+												<a href="./ad-detail.html">
+													<div class="i-photo">
+														<img src="/data/ad/thumb/C160000320_9.jpg" alt="product">
+													</div>
+													<div class="inner-info">
+														<h3>구덕게스트하우스(제주하이킹인)</h3>
+														<span class="star">
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<span class="star-num">(999)</span>
+														</span>
+														<div class="loc"><img src="/images/web/icon/icon_location02.png" alt="위치"> 중문/서귀포 </div>
+														<span class="info_memo">비양도가 한눈에 바라보이는 해안 리조트</span>
+														<div class="bxLabel">
+															<span class="main_label pink">당일특가</span>
+															<span class="main_label eventblue">이벤트</span>
+															<span class="main_label back-red">연박할인</span>
+															<span class="main_label yellow">탐나는전</span>
+														</div>
+														<div class="inner-price">
+															<!--<del>99,000</del>-->
+															<span class="bxPrice">
+																<span class="per_sale">40<small>%</small></span>
+																<span class="text__price">9,990,000</span>
+																<span class="text__unit">원</span>
+															</span>
+															<em>1박기준</em>
+														</div>
+													</div>
+												</a>
+												<a href="" class="detail_btn" type="button" target="_blank">자세히보기</a>
+											</div>
+											<div>
+												<a href="./ad-detail.html">
+													<div class="i-photo">
+														<img src="/data/ad/thumb/C160000320_9.jpg" alt="product">
+													</div>
+													<div class="inner-info">
+														<h3>구덕게스트하우스(제주하이킹인)</h3>
+														<span class="star">
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<span class="star-num">(999)</span>
+														</span>
+														<div class="loc"><img src="/images/web/icon/icon_location02.png" alt="위치"> 중문/서귀포 </div>
+														<span class="info_memo">비양도가 한눈에 바라보이는 해안 리조트</span>
+														<div class="bxLabel">
+															<span class="main_label pink">당일특가</span>
+															<span class="main_label eventblue">이벤트</span>
+															<span class="main_label back-red">연박할인</span>
+															<span class="main_label yellow">탐나는전</span>
+														</div>
+														<div class="inner-price">
+															<!--<del>99,000</del>-->
+															<span class="bxPrice">
+																<span class="per_sale">40<small>%</small></span>
+																<span class="text__price">9,990,000</span>
+																<span class="text__unit">원</span>
+															</span>
+															<em>1박기준</em>
+														</div>
+													</div>
+												</a>
+												<a href="" class="detail_btn" type="button" target="_blank">자세히보기</a>
+											</div>
+											<div>
+												<a href="./ad-detail.html">
+													<div class="i-photo">
+														<img src="/data/ad/thumb/C160000320_9.jpg" alt="product">
+													</div>
+													<div class="inner-info">
+														<h3>구덕게스트하우스(제주하이킹인)</h3>
+														<span class="star">
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<span class="star-num">(999)</span>
+														</span>
+														<div class="loc"><img src="/images/web/icon/icon_location02.png" alt="위치"> 중문/서귀포 </div>
+														<span class="info_memo">비양도가 한눈에 바라보이는 해안 리조트</span>
+														<div class="label-group">
+														</div>
+														<div class="inner-price">
+															<!--<del>99,000</del>-->
+															<span class="bxPrice">
+																<span class="per_sale">40<small>%</small></span>
+																<span class="text__price">9,990,000</span>
+																<span class="text__unit">원</span>
+															</span>
+															<em>1박기준</em>
+														</div>
+													</div>
+												</a>
+												<a href="" class="detail_btn" type="button" target="_blank">자세히보기</a>
+											</div>
+											<div>
+												<a href="./ad-detail.html">
+													<div class="i-photo">
+														<img src="/data/ad/thumb/C160000320_9.jpg" alt="product">
+													</div>
+													<div class="inner-info">
+														<h3>구덕게스트하우스(제주하이킹인)</h3>
+														<span class="star">
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<span class="star-num">(999)</span>
+														</span>
+														<div class="loc"><img src="/images/web/icon/icon_location02.png" alt="위치"> 중문/서귀포 </div>
+														<span class="info_memo">비양도가 한눈에 바라보이는 해안 리조트</span>
+														<div class="label-group">
+														</div>
+														<div class="inner-price">
+															<!--<del>99,000</del>-->
+															<span class="bxPrice">
+																<span class="per_sale">40<small>%</small></span>
+																<span class="text__price">9,990,000</span>
+																<span class="text__unit">원</span>
+															</span>
+															<em>1박기준</em>
+														</div>
+													</div>
+												</a>
+												<a href="" class="detail_btn" type="button" target="_blank">자세히보기</a>
+											</div>
+											<div>
+												<a href="./ad-detail.html">
+													<div class="i-photo">
+														<img src="/data/ad/thumb/C160000320_9.jpg" alt="product">
+													</div>
+													<div class="inner-info">
+														<h3>구덕게스트하우스(제주하이킹인)</h3>
+														<span class="star">
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<span class="star-num">(999)</span>
+														</span>
+														<div class="loc"><img src="/images/web/icon/icon_location02.png" alt="위치"> 중문/서귀포 </div>
+														<span class="info_memo">비양도가 한눈에 바라보이는 해안 리조트</span>
+														<div class="label-group">
+														</div>
+														<div class="inner-price">
+															<!--<del>99,000</del>-->
+															<span class="bxPrice">
+																<span class="per_sale">40<small>%</small></span>
+																<span class="text__price">9,990,000</span>
+																<span class="text__unit">원</span>
+															</span>
+															<em>1박기준</em>
+														</div>
+													</div>
+												</a>
+												<a href="" class="detail_btn" type="button" target="_blank">자세히보기</a>
+											</div>
+											<div>
+												<a href="./ad-detail.html">
+													<div class="i-photo">
+														<img src="/data/ad/thumb/C160000320_9.jpg" alt="product">
+													</div>
+													<div class="inner-info">
+														<h3>구덕게스트하우스(제주하이킹인)</h3>
+														<span class="star">
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height:12px; width:12px; fill:currentColor">
+																<path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path>
+															</svg>
+															<span class="star-num">(999)</span>
+														</span>
+														<div class="loc"><img src="/images/web/icon/icon_location02.png" alt="위치"> 중문/서귀포 </div>
+														<span class="info_memo">비양도가 한눈에 바라보이는 해안 리조트</span>
+														<div class="label-group">
+														</div>
+														<div class="inner-price">
+															<!--<del>99,000</del>-->
+															<span class="bxPrice">
+																<span class="per_sale">40<small>%</small></span>
+																<span class="text__price">9,990,000</span>
+																<span class="text__unit">원</span>
+															</span>
+															<em>1박기준</em>
+														</div>
+													</div>
+												</a>
+												<a href="" class="detail_btn" type="button" target="_blank">자세히보기</a>
+											</div>
+										</div>
+									</div>
+									<a class="go-top" onclick="go_top()" style="display: inline">
+										<img src="/images/web/comm/top.gif" alt="맨위로">
+									</a>
+								</div>
+							</div>
+
+							<div class="map-wrap">
+								<!--검색-->
+								<div class="map-check">
+									<div class="map-check-inner">
+										<label><input type="checkbox" checked><span>전체</span></label>
+										<label><input type="checkbox" checked><span>숙박</span></label>
+										<label><input type="checkbox" checked><span>호텔</span></label>
+										<label><input type="checkbox" checked><span>펜션</span></label>
+										<label><input type="checkbox" checked><span>콘도리조트</span></label>
+										<label><input type="checkbox" checked><span>게스트하우스</span></label>
+									</div>
+								</div>
+
+								<!--map-->
+								<div class="map-box">
+									<div id="map">
+										<img class="test-map" src="../../images/web/other/map_service.jpg" alt="임시맵">
+
+										<div class="point">
+											<div class="MarkerPopup-popup">
+												<a class="MarkerPopup-popup-link" href="" target="_blank">
+													<div class="MarkerPopup-popup-container">
+														<div class="MarkerPic">
+															<figure class="MarkerPopup-popup-media">
+																<img class="MarkerPopup-popup-img unfold" src="/data/ad/thumb/C160000320_9.jpg" alt="">
+															</figure>
+														</div>
+														<div class="MarkerPopup-popup-info">
+															<div class="btTitle">베스트라인 아이진호텔</div>
+															<div class="ratingstar"></div>
+															<div class="btPrice">공항5분거리, 고객만족도우수</div>
+														</div>
+													</div>
+												</a>
+												<!--<div class="btn"><a href="">상품보기</a></div>-->
+											</div>
+											<div class="MarkerIcon-content">
+												<div class="MarkerIcon-wrap">
+													<button class="MarkerIcon-btn">
+														<div class="IconBtn">
+															<div class="IconInner">
+																<span>₩137,461</span>
+															</div>
+														</div>
+													</button>
+												</div>
+											</div>
+										</div>
+
+
+
+									</div>
+								</div> <!--//map-box-->
+								<script type="text/javascript">
+									//동적 지도 ( 움직이는 지도.)
+									var container = document.getElementById('map');
+									var options = {
+										center: new daum.maps.LatLng(33.371250, 126.588211),
+										//center: new daum.maps.LatLng(33.4888341, 126.49807970000006),
+										level: 9
+									};
+
+									var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+									function createMarkers() {
+
+
+										for (var i = 0; i < adHoPos.length; i++) {
+
+											var imageSrc = "<c:url value='/images/web/icon/map_s01.png'/>";
+											var imageSize = new daum.maps.Size(28, 35);
+											var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+													marker = createMarker(adHoPos[i], markerImage, i, 'HO');
+
+											// 생성된 마커를 숙소 마커 배열에 추가합니다
+											adHoMarkers.push(marker);
+										}
+
+										for (var i = 0; i < adPePos.length; i++) {
+
+											var imageSrc = "<c:url value='/images/web/icon/map_s01.png'/>";
+											var imageSize = new daum.maps.Size(28, 35);
+											var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+													marker = createMarker(adPePos[i], markerImage, i, 'PE');
+
+											// 생성된 마커를 숙소 마커 배열에 추가합니다
+											adPeMarkers.push(marker);
+										}
+
+										for (var i = 0; i < adCoPos.length; i++) {
+
+											var imageSrc = "<c:url value='/images/web/icon/map_s01.png'/>";
+											var imageSize = new daum.maps.Size(28, 35);
+											var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+													marker = createMarker(adCoPos[i], markerImage, i, 'CO');
+
+											// 생성된 마커를 숙소 마커 배열에 추가합니다
+											adCoMarkers.push(marker);
+										}
+
+										for (var i = 0; i < adGePos.length; i++) {
+
+											var imageSrc = "<c:url value='/images/web/icon/map_s01.png'/>";
+											var imageSize = new daum.maps.Size(28, 35);
+											var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+													marker = createMarker(adGePos[i], markerImage, i, 'GE');
+
+											// 생성된 마커를 숙소 마커 배열에 추가합니다
+											adGeMarkers.push(marker);
+										}
+										for (var i = 0; i < tourPos.length; i++) {
+
+											var imageSrc = "<c:url value='/images/web/icon/map_s02.png'/>";
+											var imageSize = new daum.maps.Size(28, 35);
+											var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+													marker = createMarker(tourPos[i], markerImage, i, 'tour');
+
+											// 생성된 마커를 관광지 마커 배열에 추가합니다
+											tourMarkers.push(marker);
+										}
+
+										for (var i = 0; i < sportPos.length; i++) {
+
+											var imageSrc = "<c:url value='/images/web/icon/map_s04.png'/>";
+											var imageSize = new daum.maps.Size(28, 35);
+											var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+													marker = createMarker(sportPos[i], markerImage, i, 'sport');
+
+											// 생성된 마커를 레져 마커 배열에 추가합니다
+											sportMarkers.push(marker);
+										}
+
+										for (var i = 0; i < foodPos.length; i++) {
+
+											var imageSrc = "<c:url value='/images/web/icon/map_s05.png'/>";
+											var imageSize = new daum.maps.Size(28, 35);
+											var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+													marker = createMarker(foodPos[i], markerImage, i, 'food');
+
+											// 생성된 마커를 음식 마커 배열에 추가합니다
+											foodMarkers.push(marker);
+										}
+
+										for (var i = 0; i < beautyPos.length; i++) {
+
+											var imageSrc = "<c:url value='/images/web/icon/map_s06.png'/>";
+											var imageSize = new daum.maps.Size(28, 35);
+											var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize),
+													marker = createMarker(beautyPos[i], markerImage, i, 'beauty');
+
+											// 생성된 마커를 관광지 마커 배열에 추가합니다
+											beautyMarkers.push(marker);
+										}
+
+									}
+
+									function createMarker(position, image, index, type) {
+										var marker = new daum.maps.Marker({
+											position: position,
+											image: image,
+											clickable: true
+										});
+
+										daum.maps.event.addListener(marker, 'click', function() {
+											closeOverlay('All');
+											setOverlay(marker, index, type);
+
+										});
+										return marker;
+									}
+
+									function createOverlay(position, content) {
+										var overlay = new daum.maps.CustomOverlay({
+											content:content,
+											position:position
+										});
+
+										return overlay;
+									}
+
+									function createOverlays() {
+										for (var i = 0; i < adHoPos.length; i++) {
+											var overlay = createOverlay(adHoPos[i], adHoContent[i]);
+											adHoOverlay.push(overlay);
+										}
+
+										for (var i = 0; i < adPePos.length; i++) {
+											var overlay = createOverlay(adPePos[i], adPeContent[i]);
+											adPeOverlay.push(overlay);
+										}
+
+										for (var i = 0; i < adCoPos.length; i++) {
+											var overlay = createOverlay(adCoPos[i], adCoContent[i]);
+											adCoOverlay.push(overlay);
+										}
+
+										for (var i = 0; i < adGePos.length; i++) {
+											var overlay = createOverlay(adGePos[i], adGeContent[i]);
+											adGeOverlay.push(overlay);
+										}
+
+										for (var i = 0; i < tourPos.length; i++) {
+											var overlay = createOverlay(tourPos[i], tourContent[i]);
+											tourOverlay.push(overlay);
+										}
+
+										for (var i = 0; i < sportPos.length; i++) {
+											var overlay = createOverlay(sportPos[i], sportContent[i])
+											sportOverlay.push(overlay);
+										}
+
+										for (var i = 0; i < foodPos.length; i++) {
+											var overlay = createOverlay(foodPos[i], foodContent[i])
+											foodOverlay.push(overlay);
+										}
+
+										for (var i = 0; i < beautyPos.length; i++) {
+											var overlay = createOverlay(beautyPos[i], beautyContent[i])
+											beautyOverlay.push(overlay);
+										}
+
+									}
+
+									function setOverlay(marker, index, type) {
+										if(type == 'HO') {
+											adHoOverlay[index].setMap(map);
+										} else if(type == 'PE') {
+											adPeOverlay[index].setMap(map);
+										} else if(type == 'CO') {
+											adCoOverlay[index].setMap(map);
+										} else if(type == 'GE') {
+											adGeOverlay[index].setMap(map);
+										} else if(type == 'tour') {
+											tourOverlay[index].setMap(map);
+										} else if(type=='sport') {
+											sportOverlay[index].setMap(map);
+										} else if(type=='food') {
+											foodOverlay[index].setMap(map);
+										} else if(type=='beauty') {
+											beautyOverlay[index].setMap(map);
+										}
+									}
+
+									function closeOverlay(type, index) {
+										if(type == 'HO') {
+											adHoOverlay[index].setMap(null);
+										} else if(type == 'PE') {
+											adPeOverlay[index].setMap(null);
+										} else if(type == 'CO') {
+											adCoOverlay[index].setMap(null);
+										} else if(type == 'GE') {
+											adGeOverlay[index].setMap(null);
+										} else if(type == 'tour') {
+											tourOverlay[index].setMap(null);
+										} else if(type=='sport') {
+											sportOverlay[index].setMap(null);
+										} else if(type=='food') {
+											foodOverlay[index].setMap(null);
+										} else if(type=='beauty') {
+											beautyOverlay[index].setMap(null);
+										} else if(type=='All') {
+											for (var i = 0; i < adHoOverlay.length; i++) {
+												adHoOverlay[i].setMap(null);
+											}
+											for (var i = 0; i < adPeOverlay.length; i++) {
+												adPeOverlay[i].setMap(null);
+											}
+											for (var i = 0; i < adCoOverlay.length; i++) {
+												adCoOverlay[i].setMap(null);
+											}
+											for (var i = 0; i < adGeOverlay.length; i++) {
+												adGeOverlay[i].setMap(null);
+											}
+											for (var i = 0; i < tourOverlay.length; i++) {
+												tourOverlay[i].setMap(null);
+											}
+											for (var i = 0; i < sportOverlay.length; i++) {
+												sportOverlay[i].setMap(null);
+											}
+											for (var i = 0; i < foodOverlay.length; i++) {
+												foodOverlay[i].setMap(null);
+											}
+											for (var i = 0; i < beautyOverlay.length; i++) {
+												beautyOverlay[i].setMap(null);
+											}
+										}
+
+									}
+
+									function setAdMarkers(map) {
+										setAdHoMarkers(map);
+										setAdPeMarkers(map);
+										setAdCoMarkers(map);
+										setAdGeMarkers(map);
+									}
+
+									function setAdHoMarkers(map) {
+										for (var i = 0; i < adHoMarkers.length; i++) {
+											adHoMarkers[i].setMap(map);
+										}
+									}
+
+									function setAdPeMarkers(map) {
+										for (var i = 0; i < adPeMarkers.length; i++) {
+											adPeMarkers[i].setMap(map);
+										}
+									}
+
+									function setAdCoMarkers(map) {
+										for (var i = 0; i < adCoMarkers.length; i++) {
+											adCoMarkers[i].setMap(map);
+										}
+									}
+
+									function setAdGeMarkers(map) {
+										for (var i = 0; i < adGeMarkers.length; i++) {
+											adGeMarkers[i].setMap(map);
+										}
+									}
+
+									function setTourMarkers(map) {
+										for (var i = 0; i < tourMarkers.length; i++) {
+											tourMarkers[i].setMap(map);
+										}
+									}
+									function setSportMarkers(map) {
+										for (var i = 0; i < sportMarkers.length; i++) {
+											sportMarkers[i].setMap(map);
+										}
+									}
+
+									function setFoodMarkers(map) {
+										for (var i = 0; i < foodMarkers.length; i++) {
+											foodMarkers[i].setMap(map);
+										}
+									}
+
+									function setBeautyMarkers(map) {
+										for (var i = 0; i < beautyMarkers.length; i++) {
+											beautyMarkers[i].setMap(map);
+										}
+									}
+
+									function changeMarker(type) {
+										if( type=='ad') {
+											setAdMarkers(map);
+										} else if(type == 'tour') {
+											setTourMarkers(map);
+										} else if(type == 'sport') {
+											setSportMarkers(map);
+										} else if(type == 'food') {
+											setFoodMarkers(map);
+										} else if(type == 'beauty') {
+											setBeautyMarkers(map);
+										} else if(type == 'all') {
+											changeMarker($("#adDiv").val());
+											setTourMarkers(map);
+											setSportMarkers(map);
+											setFoodMarkers(map);
+											setBeautyMarkers(map);
+										} else if(type == 'none') {
+											setAdMarkers(null);
+											setTourMarkers(null);
+											setSportMarkers(null);
+											setFoodMarkers(null);
+											setBeautyMarkers(null);
+										} else if(type == 'HO') {
+											setAdMarkers(null);
+											setAdHoMarkers(map);
+										} else if(type == 'PE') {
+											setAdMarkers(null);
+											setAdPeMarkers(map);
+										} else if(type == 'CO') {
+											setAdMarkers(null);
+											setAdCoMarkers(map);
+										} else if( type == 'GE') {
+											setAdMarkers(null);
+											setAdGeMarkers(map);
+										}
+									}
+
+									function disMarker(type) {
+										if(type == 'ad') {
+											setAdMarkers(null);
+										} else if(type == 'tour') {
+											setTourMarkers(null);
+										} else if(type == 'sport') {
+											setSportMarkers(null);
+										} else if(type == 'food') {
+											setFoodMarkers(null);
+										} else if(type == 'beauty') {
+											setBeautyMarkers(null);
+										}
+									}
+
+
+									/*
+                                    var iwContent = '<div style="padding:5px;">콤바인리조트</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                                    iwPosition = new daum.maps.LatLng(${corpVO.lat}, ${corpVO.lon}), //인포윈도우 표시 위치입니다
+                                    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+                                    // 인포윈도우를 생성하고 지도에 표시합니다
+                                    var infowindow = new daum.maps.InfoWindow({
+                                        map: map, // 인포윈도우가 표시될 지도
+                                        position : iwPosition,
+                                        content : iwContent,
+                                        removable : iwRemoveable
+                                    });
+                                    */
+
+								</script>
+							</div> <!--//map-wrap-->
+						</div> <!--//bgWrap-->
+
+					</div> <!-- //map-service -->
+					<!-- //new contents -->
+
+				</div> <!-- //subContents -->
+			</div> <!-- //subContainer -->
+		</div>
+	</main>
+
+	<footer id="footer">
+        <div class="Fasten">
+            <div class="top-wrap">
+                <a class="go-top" onclick="go_top();"><img src="../../images/web/comm/top.gif" alt="맨위로"></a>
+            </div>
+        </div>	    
+	    
+	    <div class="foot-menu">
+	    	<div class="Fasten">
+	    		<nav>
+	    			<a href="">회사소개</a>
+	    			<a href="">입점/제휴안내</a>
+	    			<a href=""><strong>개인정보취급방침</strong></a>
+	    			<a href="">이용약관</a>
+	    			<a href="">고객센터</a>
+	    		</nav>
+	    		
+	    		<div class="sns-area">
+	    			<h4 class="title">공식 SNS</h4>
+	    			<ul>
+	    				<li>
+	    					<a href=""><img src="../../images/web/comm/sns/instagram2.png" alt="인스타그램"></a>
+	    				</li>
+	    				<li>
+	    					<a href=""><img src="../../images/web/comm/sns/facebook2.png" alt="페이스북"></a>
+	    				</li>
+	    				<li>
+	    					<a href=""><img src="../../images/web/comm/sns/naver-blog2.png" alt="네이버 블로그"></a>
+	    				</li>
+	    				<li>
+	    					<a href=""><img src="../../images/web/comm/sns/kakao-story2.png" alt="카카오스토리"></a>
+	    				</li>
+	    			</ul>
+	    		</div>
+	    	</div>
+	    </div>
+	    
+	    <div class="copyright">
+		    <div class="Fasten">
+	            <div class="copy">
+	            	<div class="group">
+		                <p>상호명 : 제주특별자치도관광협회 &nbsp;&nbsp;&nbsp;&nbsp;대표이사 : 김영진 &nbsp;&nbsp;&nbsp;&nbsp;법인 등록번호 : 220121-0000107</p>      
+						<p>사업자 등록번호 : 616-82-04092 &nbsp;&nbsp;&nbsp;&nbsp;통신판매업번호: 제2013-제주연동 0024호</p>
+						<p>사업장 주소지 : 63122 제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층
+							<a href="http://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=6168204092" target="_blank" class="company-confirm" >사업자 정보확인</a>
+						</p>
+					</div>
+					<div class="group">
+						<p>개인정보관리책임자 : 김승원 &nbsp;&nbsp;&nbsp;&nbsp;E-mail : tamnao@tamnao.com &nbsp;&nbsp;&nbsp;&nbsp;팩스 : 064-742-8865</p>      
+						<p>고객센터 : 1522-3454 &nbsp;&nbsp;&nbsp;&nbsp;평일 09:00/18:00  점심시간 12:00/13:00 &nbsp;&nbsp;&nbsp;&nbsp;토요일, 일요일, 공휴일 휴무</p>
+						<p>Copyright 2016. 제주특별자치도관광협회 All Rights Reserved.</p>
+					</div>
+	            </div>
+	            <div class="mark-zone">
+			        <img src="../../images/web/mark/ieco.jpg" alt="ieco">
+			        <img src="../../images/web/mark/gcs.jpg" alt="gcs">
+			    </div>
+		    </div>
+	    </div>
+	</footer>
+</body>
+</html>

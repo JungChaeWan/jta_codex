@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+	
+	<title>탐나오</title>
+	
+	<link rel="stylesheet" href="../../css/mw/common2.css">
+	<link rel="stylesheet" href="../../css/mw/style.css?ver=20171012">
+	
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/jquery.cookie.js"></script>
+	<script src="../../js/mw_common.js"></script>
+	<script src="../../js/mw_style.js"></script>
+</head>
+<body>
+<div id="wrap">
+<header id="header">
+	<div class="head-wrap">
+		<h1 class="title">고객센터</h1>
+		<div class="l-area">
+			<a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+		</div>
+		<div class="r-area">
+			<button type="button" id="frame_sideOpen" class="side-btn" title="사이드메뉴 열기"></button>
+		</div>
+	</div>
+	
+	<aside id="side_menu" class="side-menu">
+		<button type="button" id="frame_sideClose" class="close"><img src="../../images/mw/common/side/close-white.png" alt="닫기"></button>
+		
+		<nav class="top-menu">
+			<a href=""><img src="../../images/mw/common/side/home.png" alt="홈"></a>
+			<a href="javascript:void(0)" id="top_searchOpen">
+				<img src="../../images/mw/common/side/search-white.png" alt="검색">
+			</a>
+			<a href="" class="like">20</a>
+			<a href="" class="cart">5</a>
+		</nav>
+
+		<div class="menu-area">
+			<ul>
+				<li><a href="air-search.html">항공</a></li>
+			    <li><a href="hotel-list.html">숙박</a></li>
+			    <li><a href="rent-list.html">렌터카</a></li>
+			    <li><a href="social-list.html">관광/레저</a></li>
+			    <li><a href="social-list.html">맛집</a></li>
+			    <li><a href="social-list.html">여행사 상품</a></li>
+			    <li><a href="from-jeju-main.html">from 제주 <img class="icon" src="../../images/mw/common/side/from-jeju.png" alt=""></a>
+			    	<ul class="depth2">
+			    		<li><a href="">농ㆍ수ㆍ축산물</a></li>
+						<li><a href="">가공식품</a></li>
+						<li><a href="">화장품/미용</a></li>
+						<li><a href="">제주기념품</a></li>
+			    	</ul>
+			    </li>
+			    <li><a href="main4-4.html">기획전</a></li>
+			    <li><a href="main4-5.html">이벤트</a></li>
+			</ul>
+			<ul>
+				<li><a href="">MY PAGE</a></li>
+			    <li><a href="">HELP</a></li>
+			    <li><a href="">LOGOUT</a></li>
+			    <li><a href="">SETTING</a></li>
+			</ul>
+		</div>
+	</aside>
+	
+	<div id="top_search" class="search-area">
+		<button type="button" id="top_searchClose" class="close"><img src="../../images/mw/common/side/close-gray.png" alt="닫기"></button>
+		
+		<div class="form-area">
+			<div class="form">
+				<form>
+					<input type="text" placeholder="검색어 입력" class="search">
+					<button type="submit" class="search-btn" title="검색"></button>
+				</form>
+			</div>
+			<div class="keyword">
+				<h2 class="title">HOT KEYWORD</h2>
+				<ul>
+					<li><a href="">수영장 숙소</a></li>
+				    <li><a href="">제주도 맛집</a></li>
+				    <li><a href="">패들보드</a></li>
+				    <li><a href="">제주 선물</a></li>
+				    <li><a href="">연인과 함께 즐기기</a></li>
+				    <li><a href="">흑돼지</a></li>
+				    <li><a href="">감귤</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+
+<main id="main">
+	<!--//change contents-->
+	<!-- ↓↓↓ 기존코드 동일 ↓↓↓ -->
+	<section id="subContent">
+	    <div class="sub-content">
+
+			<!-- 0718 채널(상담톡) 오픈 -->
+			<div class="operation_guide">
+				<div class="operation_guide_phone cont" aria-label="전화이용">
+					<a href="">
+						<div class="service-icon">
+							<img src="../../images/mw/faq/customer-call.png" alt="전화">
+						</div>
+						<div class="service-txt">
+							1544-6240 <br><span>전화상담</span>
+						</div>
+					</a>
+				</div>
+				<div class="operation_guide_chat cont" aria-label="채널톡이용">
+					<a href="">
+						<div class="service-icon">
+							<img src="../../images/mw/faq/customer-talk.png" alt="상담톡">
+						</div>
+						<div class="service-txt">
+							1:1 채팅상담 <br><span>채널톡 상담</span>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="info_list">
+				* 평일 09~18시 (점심시간 12~13시)<span class="closed">주말/공휴일 휴무</span>
+			</div><!-- //0718 채널(상담톡) 오픈 -->
+
+		    <div class="board"> 
+		        <ul class="category">
+		            <li><a href="javascript:fn_ChangeList(1)" id="btnList1" class="active">실시간 항공</a></li>
+		            <li><a href="javascript:fn_ChangeList(2)" id="btnList2">실시간 숙박</a></li>
+		            <li><a href="javascript:fn_ChangeList(3)" id="btnList3">실시간 렌터카</a></li>
+		            <!-- <li><a href="javascript:fn_ChangeList(4)" id="btnList4">실시간 골프</a></li> -->
+		            <li><a href="javascript:fn_ChangeList(4)" id="btnList4">패키지 할인상품</a></li>
+		            <li><a href="javascript:fn_ChangeList(5)" id="btnList5">관광지/레저</a></li>
+		            <li><a href="javascript:fn_ChangeList(6)" id="btnList6">음식/뷰티</a></li>
+		            <li><a href="javascript:fn_ChangeList(7)" id="btnList7">탐나오 쿠폰</a></li>
+		            <li><a href="javascript:fn_ChangeList(8)" id="btnList8">제주특산/기념품</a></li>
+		            <li><a href="javascript:fn_ChangeList(9)" id="btnList9">L.POINT</a></li>
+		            <!-- <li><a href="javascript:fn_ChangeList(9)" id="btnList9">예약변경 및 취소</a></li> -->
+		        </ul>
+		
+		        <!-- 항공 -->
+		        <div class="question-list" id="list1">
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 예약정보 입력시 성별 및 생년월일 입력을 잘못했습니다. </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 국내 항공권은 성별 및 생년월일을 잘못 입력해도 실제로 탑승할때 탑승자 이름과 신분증의 이름이 일치하면 탑승이 가능합니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 할인석과 일반석이 차이는 무엇입니까? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 국내선에서 제공하는 할인석은 좌석 점유율에 따라서 할인율이 변동됩니다. 일반석과 할인석은 요금차이만 있을뿐 다른 제약사항은 없습니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 예약번호를 잊어버렸습니다. </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 마이페이지 &gt; 나의구매내역에 들어가시면 [항공예약확인]으로 예약확인을 하실 수 있습니다.<br>
+		                    예약확인시 성명과 핸드폰 번호를 입력하시면 확인하실 수 있습니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 항공예약시 결제를 반드시 해야하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 항공 예약 후 즉시 결제를 하시거나 발권시한내에 결제를 해주셔야 정상적으로 이용하실 수 있으며, 결제를 안하신 경우는 자동 취소됩니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 예약가능 좌석수가 9명까지만 보입니다. 그 이상을 예약할려면 어떻게 하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 항공좌석은 한번에 최대 9명까지만 조회, 예약가능 하십니다. 9명 이상 예약은 인원을 나눠서 여러번 예약하셔야 합니다. 그리고 소아는 반드시 성인과 함께 예약을 하셔야 합니다. 소아 단독예약은 안 됩니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 세금계산서 발행이 가능한가요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 여행사는 세법상 항공권에 대한 세금계산서를 발행하지 못합니다.<br>
+		                    여행사는 항공사를 대신해 항공권 판매를 대행하는 것으로 고객님들께 제공하고 수수료를 받기 때문입니다.<br>
+		                    그리고 항공권의 경우 세금계산서 교무의무가 면제되므로 항공사에서도 세금계산서를 발행하지 않습니다. 대신, 항공권은 영수증으로 갈음되어 증빙서류로 활용할 수 있습니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 기상악화로 인한 취소는 어떻게 처리 되나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 천재지변, 기상악화등에 의한 취소나 항공사 사정으로 인한 운항취소 및 운항지연으로 인한  예약취소의 경우 취소수수료가 부과되지 않습니다.<br>
+		                    단 항공결항통보없이 고객의 임의로 인한 취소는 수수료가 적용되며, 결항통보전까진 공항에서 대기를 하셔야합니다. <br>
+		                    결항통보는 반드시 출발전 해당 항공사로 확인을 바라며, 결항통보 전 이동교통수단에 대한 교통비는 개별부담입니다.<br>
+		                    왕복 항공권일때 이용하는 항공사가 다를 경우 결항되지 않은 편에 대해서 취소시 취소수수료가 부과됩니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 일정변경과 인원변경은 어떻게 하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 일정변경을 원하실 경우 취소후 재구매를 해야합니다.<br>
+		                    단, 항공좌석이 마감될 수 있으므로 먼저 좌석이 있는지 스케줄 조회를 확인하셔야 합니다.<br>
+		                    인원이 추가되었을경우에는 인터넷 실시간항공권에서 추가로 예약바랍니다. 인원이 줄어들었을 경우에는 취소 후 재구매를 하셔야 합니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 취소수수료는 어떻게 됩니까? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 취소수수료는 항공사마다 규정이 다릅니다.<br>
+		                    <br>
+		                    ㄱ. 대한항공<br>
+		                    1) 구매 익일~ 탑승수속 마감시점(항공편 출발 20분 전)까지 편도 1,000원 수수료부과 (성인/소아동일)<br>
+		                    2) 탑승수속 마감시점(항공편 출발 20분전)까지 예약취소없이 탑승하지 않을경우 편도 9,000원 수수료부과 (성인/소아동일)<br>
+		                    <br>
+		                    ㄴ. 아시아나항공<br>
+		                    1) 구매 익일~ 탑승수속 마감시점(항공편 출발 20분 전)까지 정상운임 결제후 취소시 2,000원/ 10%~50 할인적용 받은건 편도 5,000원/ 50% 이상 할인 받은 건 편도 8,000원 수수료부과 (성인/소아동일) <br>
+		                    2) 탑승수속 마감시점(항공편 출발 20분전)까지 예약취소없이 탑승하지 않을경우 편도 8,000원 수수료부과 (성인/소아동일)<br>
+		                    <br>
+		                    ㄷ. 티웨이항공<br>
+		                    1) 예매당일 취소수수료 무료<br>
+		                    * 2015년 3월 28일까지 구매시 적용 수수료<br>
+		                    - 출발 3일 전 ~ 출발 전：5,000원(성인/소아동일)<br>
+		                    - 출발 이후 ： 10,000원(성인/소아동일)<br>
+		                    * 2015년 3월 29일부터 구매시 적용 수수료<br>
+		                    - 출발 7일 전 ~ 출발 2일 전： 2,000원 (성인/소아동일)<br>
+		                    - 출발 1일 전 ~ 당일 출발 전： 5,000원 (성인/소아동일)<br>
+		                    - 출발 이후： 10,000원 (성인/소아동일)<br>
+		                    <br>
+		                    ㄹ. 진에어<br>
+		                    1) 구매다음날 ~ 31일전 : 인당 편도 1,000원<br>
+		                    2) 출발 30일 전 ~ 8일 전 : 인당 편도 2,000원<br>
+		                    3) 출발 7일 전 ~ 2일 전 : 인당 편도 3,000원<br>
+		                    4) 출발 1일 전 ~ 출발시간 : 인당 편도 8,000원<br>
+		                    5) 출발시각 이후(NO-SHOW) : 인당 편도 12,000원<br>
+		                    <br>
+		                    ㅁ. 제주항공<br>
+		                    1) 구매다음날 ~ 31일 전 : 인당 편도 1,000원<br>
+		                    2) 출발 30일 전 ~ 15일 전 : 인당 편도 2,000원<br>
+		                    3) 출발 14일 전 ~ 하루 전 : 인당 편도 3,000원<br>
+		                    4) 출발당일 및 이후(NO-SHOW) : 인당 편도 10,000원<br>
+		                    <br>
+		                    ㅂ. 에어부산<br>
+		                    1) 구매 다음날~ 출발 1일 전 : 2,000원<br>
+		                    2) 출발당일~출발 20분전 : 3,000원<br>
+		                    3) 출발 20분전 이후: 8,000원 </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 실시간 항공 결제 완료 후 취소는 어떻게 하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 마이페이지&gt; 항공예약확인 페이지에 들어가신 후 예약내역을 누르시면 상세예약 내역이 나옵니다. 상세페이지에서 결제취소를 누르시면 결제가 자동 취소됩니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 환불기간 및 방법 확인바랍니다. </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 실시간항공의 경우 카드결제 이므로 결제취소 후 영업일 기준 약 7일 ~ 10일 사이에 해당 카드사로 부터 자동 환불이 됩니다.<br>
+		                    카드환불이 늦어질 경우 카드사로 직접 문의 바랍니다. </span> </dd>
+		            </dl>
+		        </div>
+		
+		        <!-- 숙박 -->
+		        <div class="question-list" id="list2" style="display: none;">
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 숙박예약한 후 숙박업체로 예약확인 전화를 해야하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 탐나오 숙박예약은 실시간 예약으로 예약과 동시에 결제를 하셔야 하며, 결제가 정상적으로 이루어지면 숙소에 별도 전화를 안하셔도 예약이 확정됩니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 취소하고 싶은데 환불규정은 어떻게 되나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 탐나오는 오픈마켓으로 숙소업체마다 취소수수료 규정이 다릅니다. 숙소 상세페이지에 안내되어 있는 숙소별 취소수수료 규정을 숙지하시고 예약하시기 바랍니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 예약변경 및 취소는 어떻게 하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 숙소의 예약변경은 변경되는 날짜에 대한 예약가능여부에 따라서 달라질 수 있으므로 예약변경은 직접 할수 없으며, 취소 후 재구매를 하셔야 합니다.<br>
+		                    예약취소는 마이페이지 &gt; 나의구매내역 &gt; 예약상세보기에서 취소요청을 하시면 해당숙소에서 취소처리를 하며, 결제된 금액은 자동 취소됩니다. 이때 취소수수료 규정에 따라서 취수수수료를 제외한 금액만큼 결제취소가 됩니다.<br>
+		                    결제자동취소가 안되는 경우는 별도로 안내해드리며 고객님의 환불계좌로 환불처리 됩니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 예약변경, 취소 등 예약관련 문의는 어디로 하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 탐나오는 오픈마켓으로 예약취소 및 변경관련 문의는 숙소로 직접하셔야 합니다. </span> </dd>
+		            </dl>
+		        </div>
+		
+		        <!-- 렌터카 -->
+		        <div class="question-list" id="list3" style="display: none;">
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 렌터카 예약한 후 렌터카 업체로 예약 확인 전화를 해야하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 탐나오 렌터카예약은 실시간 예약으로 예약과 동시에 결제를 하셔야 하며, 결제가 정상적으로 이루어지면 렌터카회사에서 별도 전화를 안하셔도 예약이 확정됩니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 취소하고 싶은데 환불규정은 어떻게 되나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 탐나오는 오픈마켓으로 렌터카업체마다 취소수수료 규정이 다릅니다. 차량 상세페이지에 안내되어 있는 렌터카 회사별 취소수수료 규정을 숙지하시고 예약하시기 바랍니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 예약변경 및 취소는 어떻게 하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 렌터카 예약의 예약변경은 변경되는 날짜에 대한 예약가능여부에 따라서 달라질 수 있으므로 예약변경은 직접 할수 없으며, 취소 후 재구매를 하셔야 합니다.<br>
+		                    예약취소는 마이페이지 &gt; 나의구매내역 &gt; 예약상세보기에서 취소요청을 하시면 해당렌터카업체에서 취소처리를 하며, 결제된 금액은 자동 취소됩니다. 이때 취소수수료 규정에 따라서 취수수수료를 제외한 금액만큼 결제취소가 됩니다.
+		                    결제자동취소가 안되는 경우는 별도로 안내해드리며 고객님의 환불계좌로 환불처리 됩니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 면허증 분실시 어떻게 하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 렌터카를 이용하는데에 면허증은 필수입니다.<br>
+		                    만일 부득이하게 면허증을 분실하셨을 경우에는 가까운 경찰서에 가셔서 어떤 용도로 이용하는지 말씀하시고 "경력증명서' 를 발급받으시거나, 인터넷 http://www.dla.go.kr/(운전면허 관리단)에서 경력증명서 발급받으시면 됩니다.<br>
+		                    발급받은 경력증명서를 렌터카 계약서 작성시 제시해 주시면 운전면허증이 없이도 계약이 가능합니다.<br>
+		                    제주에 오기전 미리발급받고 오시는것이 좋습니다.<br>
+		                    *ps 혹, 사전에 준비를 못하셨을 경우, 제주공항 자치경찰서에서 발급이 가능합니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 불포함 내역에 자차보험이 있는데 자차보험은 무엇이고, 요금은 얼마인가요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 기본적으로 렌터카 예약시 대인/대물/자손보험은 가입되어 있으나 자차보험은 고객님의 선택사항이며 , 결제는 현장에서 렌트카 인수시 직접 결제하면 됩니다.<br>
+		                    자차보험이란 자기차에 대한 보험이라는 뜻입니다.<br>
+		                    내실수로 내 차가 부서졌을 경우에 보험처리를 하여 수리비를 보험사로부터 받는것인데, 보통 상대방 부주의로 사고가 났다해도 쌍방과실이 적용되니 가입해두는 것이 좋습니다.<br>
+		                    렌터카 회사마다 보험료는, 차량 상세페이지에 안내하고 있는 보험안내를 참고하시면 됩니다.<br>
+		                    선택사항으로 차량인수시 가입여부 결정 후 계약서를 작성하시면 됩니다. </span> </dd>
+		            </dl>
+		        </div>
+		
+		        <!-- 할인상품 -->
+		        <div class="question-list" id="list4" style="display: none;">
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 패키지 할인상품 구매는 어떻게 해야하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 패키지 할인상품은 구매단위가 1매단위로 구매할 수 있도록 되어있습니다. 1인 요금기준으로 판매되는 경우와 2인 이상 상품으로 구성된 상품이 있음으로 사전에 숙지후 구매하셔야 합니다.<br>
+		                    1인 요금기준으로 판매되는 상품인 경우는 여행인원 수에 맞추어 수량을 구매해주셔야 됩니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 패키지할인상품 구매 후 사용방법은 어떻게 되나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 패키지 할인상품은 비실시간 상품으로 구매가 이루어지면 해당 판매여행사에서 고객님께 구매내역을 확인하고, 구매내역에 따라서 예약상담을 한후 예약이 확정됩니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 구매한 상품의 취소 및 변경은 어떻게 하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 구매한 상품의 취소는 마이페이지&gt;나의구매내역&gt;상품 상세보기에서 취소요청을 하시면 해당 판매여행사에서 취소처리를 해드립니다.
+		                    구매 후 판매여행사와 전화 통화시 취소요청을 하셔도 판매여행사에서 직접 취소처리도 가능합니다.
+		                    구매한 상품의 예약변경은 안되며 취소 후 재구매를 하셔야 합니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 예약변경, 취소 등 예약관련 문의는 어디로 하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 탐나오는 오픈마켓으로 예약변경, 취소 등 예약관련 문의는 해당 판매여행사로 직접하셔야 합니다. </span> </dd>
+		            </dl>
+		        </div>
+		
+		        <!-- 입장권 -->
+		        <div class="question-list" id="list5" style="display: none;">
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 관광지/레저 입장권 구매는 어떻게 해야하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 관광지/레저 입장권은 구매단위가 1매단위로 구매할 수 있도록 되어있습니다. 1인 요금기준으로 상품을 구성하여 판매되고 있음으로 여행인원수에 맞추어 수량을 구매해주여야 합니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 관광지/레저 입장권 구매 후 사용방법은 어떻게 되나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 1. 탐나오에서 판매되는 관광지/레저 입장권은 관광지가 직접 판매하는 관광지와 쿠폰대행업체가 판매하는 관광지 2가지 형태가 존재합니다.
+		                    2가지 경우의 사용방법이 다를 수 있으니 상품 상세페이지에 사용방법을 반드시 숙지하시어 이용에 차질이 없도록 부탁드립니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 구매한 상품의 취소 및 변경은 어떻게 하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 구매한 상품의 취소는 마이페이지&gt;나의구매내역&gt;상품 상세보기에서 취소요청을 하시면 해당 판매 판매처에서 취소처리를 해드립니다.<br>
+		                    구매한 상품의 예약변경은 안되며 취소 후 재구매를 하셔야 합니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 예약변경, 취소 등 예약관련 문의는 어디로 하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 탐나오는 오픈마켓으로 예약변경, 취소 등 예약관련 문의는 해당 관광지 또는 쿠폰판매처로 직접하셔야 합니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 사용하지 못한 입장권 환불은 어떻게 해야하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 여행일정 중 이용못한 관광지/레저 입장권은 대부분 관광지에서 환불을 해주고 있습니다만 상품 상세페이지에 제공하고 있는 취소/환불 규정을 숙지하시기 바랍니다. 관광지에 따라서 취소수수료가 발생할 수 있습니다.<br>
+		                    단, 상품내용에 명시한 유효기간이 지난 입장권은 환불되지 않습니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 관광지 현장에서 바로 구매해도 사용이 가능한가요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 관광지 특성에 따라서 현장에서 구매후 바로사용이 안되는 관광지들이 있습니다. 상품 소개페이지에서 구매후 사용가능한 시간을 명시하고 있으니 확인 후 사용하시고 구매바랍니다. </span> </dd>
+		            </dl>
+		        </div>
+		
+		        <!-- 음식/뷰티 -->
+		        <div class="question-list" id="list6" style="display: none;">
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 음식/뷰티 이용권 구매는 어떻게 해야하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 음식/뷰티 이용권는 구매단위가 1매단위로 구매할 수 있도록 되어있습니다. 1인 요금기준으로 상품을 구성하여 판매되고 있음으로 여행인원수에 맞추어 수량을 구매해주여야 합니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 음식/뷰티 이용권 구매 후 사용방법은 어떻게 되나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 1. 탐나오에서 판매되는 음식/뷰티 이용권는 업체가 직접 판매하는 이용권과 쿠폰대행업체가 판매하는 이용권 2가지 형태가 존재합니다.<br>
+		                    2가지 경우의 사용방법이 다를 수 있으니 상품 상세페이지에 사용방법을 반드시 숙지하시어 이용에 차질이 없도록 부탁드립니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 구매한 상품의 취소 및 변경은 어떻게 하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 구매한 상품의 취소는 마이페이지&gt;나의구매내역&gt;상품 상세보기에서 취소요청을 하시면 해당 판매 판매처에서 취소처리를 해드립니다.<br>
+		                    구매한 상품의 예약변경은 안되며 취소 후 재구매를 하셔야 합니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 예약변경, 취소 등 예약관련 문의는 어디로 하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 탐나오는 오픈마켓으로 예약변경, 취소 등 예약관련 문의는 해당 업체 또는 쿠폰판매처로 직접하셔야 합니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 사용하지 못한 이용권 환불은 어떻게 해야하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 여행일정 중 이용못한 이용권는 대부분 업체에서 환불을 해주고 있습니다만 상품 상세페이지에 제공하고 있는 취소/환불 규정을 숙지하시기 바랍니다. 업체에 따라서 취소수수료가 발생할 수 있습니다.
+		                    단, 상품내용에 명시한 유효기간이 지난 이용권은 환불되지 않습니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 이용권을 현장에서 바로 구매해도 사용이 가능한가요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 업체 특성에 따라서 현장에서 구매후 바로사용이 안되는 이용권들이 있습니다. 상품 소개페이지에서 구매후 사용가능한 시간을 명시하고 있으니 확인 후 사용하시고 구매바랍니다. </span> </dd>
+		            </dl>
+		        </div>
+		
+		        <!-- 탐나오 쿠폰 -->
+		        <div class="question-list" id="list7" style="display: none;">
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 탐나오 쿠폰은 어떻게 발행받을 수 있나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 최초 회원가입시 3,000원 적립, 상품 이용후 이용후기를 남겨주시면 2,000원 적립, 모바일 어플리케이션 설치 후 최초 로그인시 3,000원이 적립됩니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 탐나오 쿠폰 사용방법은 어떻게 되나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 탐나오 쿠폰은 현금으로 환불되지 않으며, 상품 예약시 적립된 금액만큼 결제금액에서 할인을 받으실 수 있습니다. 단, 결제금액의 2% 이내에서 사용하실 수 있습니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 상품 예약시 탐나오 쿠폰 사용불가라고 나오는 경우가 있는데 사용 불가인 이유는? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 탐나오 쿠폰 사용은 상품가격의 2%이내에서 사용하실 수 있도록 제한이 되어있습니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 구매한 상품을 취소한 경우 쿠폰 환불은 어떻게 되나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 구매한 상품을 취소한 경우 탐나오 쿠폰도 함께 환원을 시켜드립니다. </span> </dd>
+		            </dl>
+		        </div>
+		
+		        <!-- 제주특산/기념품 -->
+		        <div class="question-list" id="list8" style="display: none;">
+		            <h3 class="title">배송관련</h3>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 배송중인 상품의 위치를 알고 싶어요. </span> </dt>
+		                <dd> <span><em>A</em></span> <span> [마이페이지 &gt; 나의예약/구매 내역]에서 구매내역 상세로 들어가신 후 [배송조회] 버튼을 클릭하시면 확인하실 수 있습니다.<br>
+		                    택배 운송장 번호가 등록된 후 배송중 상태가 되면 SMS를 발송해 드립니다. </span> </dd>
+		                <dt> <span><em>Q</em></span> <span> 이미 주문을 했는데 배송지를 변경하고 싶어요. </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 배송지 변경은 [마이페이지 &gt; 나의예약/구매 내역]에서 구매내역 상세로 들어가신 후 [배송지변경] 버튼을 클릭하여 변경할 수 있습니다.
+		                    단, 배송지 변경은 상품이 발송되기 전 “결제완료”상태에서만 변경할 수 있으며, 상품이 발송된 이후에는 [배송지변경] 버튼이 사라집니다.<br>
+		                    * 배송중인 상태에서는 배송지 변경 불가* </span> </dd>
+		                <dt> <span><em>Q</em></span> <span> 주문한 상품의 배송조회가 안 돼요. </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 대형상품이나 특수제작한 상품의 경우 일반 택배사를 이용하지 않을 수 있기 때문에 배송조회가 불가할 수 있습니다.<br>
+		                    정확한 배송현황은 해당 상품의 판매자에게 문의하면 확인하실 수 있습니다. </span> </dd>
+		                <dt> <span><em>Q</em></span> <span> 여러 상품을 구매했는데 일부만 배송되었어요. </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 상품에 따라 서로 다른 판매처에서 배송되며, 같은 판매처라도 주문 수량이 많은 경우 여러 박스로 분리되어 개별 발송될 수 있습니다. </span> </dd>
+		                <dt> <span><em>Q</em></span> <span> 여러가지 상품 주문 시, 묶음배송이 가능한가요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 배송상품은 상품별로 각각 배송되고 있어 묶음 배송이 불가합니다.<br>
+		                    ※ 동일한 상품일지라도 구매번호가 다른 상품 역시 묶음배송으로 배송되지 않습니다.<br>
+		                    ※ 다만, 같은 업체에서 같은 배송비정책을 통해 판매되고 있는 상품은 묶음상품으로 배송되어 집니다. </span> </dd>
+		                <dt> <span><em>Q</em></span> <span> 배송비는 얼마인가요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 배송비는 판매처 및 상품에 따라 각각 다르게 부과되며, 상품의 종류(부피, 무게)와 판매자와 택배사간의 계약조건 등에 따라 다르게 책정됩니다.
+		                    구매를 원하시는 상품의 배송비는 상품 설명 내 배송비에서 확인 가능합니다. </span> </dd>
+		                <dt> <span><em>Q</em></span> <span> 배송비는 상품별로 각각 적용되나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 네. 탐나오의 배송비는 상품별로 각각 부과되며, 배송금액 역시 판매자나 상품에 따라 다르게 책정됩니다.<br>
+		                    ※ 여러 상품을 같이 구매하더라도 배송비는 상품별로 각각 부과 됩니다.<br>
+		                    ※ 동일한 상품이더라도 판매자에 따라 상품 금액과 배송비가 다르게 책정될 수 있음을 양지하여 주시기 바랍니다. </span> </dd>
+		            </dl>
+		            <h3 class="title">반품/교환/환불</h3>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> 판매자 정보는 어디서 확인하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 판매자 정보는 구매하신 상품페이지 내 판매처 정보에서 확인하실 수 있습니다. </span> </dd>
+		                <dt> <span><em>Q</em></span> <span> 상품을 교환하고 싶어요. 어떻게 해야 하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 교환은 배송완료 후 7일 이내 가능하며, 해당 상품의 판매자에게 직접 문의하시면 확인 가능합니다. </span> </dd>
+		                <dt> <span><em>Q</em></span> <span> 주문한 상품을 취소하고 싶은데 어떻게 해야 하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 배송 상태에 따라<br>
+		                    1) “결제완료” 상태인 경우 [취소]버튼을 클릭하여 배송전 취소가 가능<br>
+		                    2) “배송중”~”배송완료”인 경우 배송완료 7일 이내 반품접수가 가능<br>
+		                    반품접수는 해당 상품의 판매자에게 직접 문의하시면 확인 가능합니다. </span> </dd>
+		                <dt> <span><em>Q</em></span> <span> 반품이나 교환은 어느 택배사를 이용하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 반품 혹은 교환 시 이용해야 할 택배사는 판매처에 따라 다릅니다. 해당 상품의 판매처에 직접 문의하시면 안내 받으실 수 있습니다. </span> </dd>
+		                <dt> <span><em>Q</em></span> <span> 여러 상품을 한꺼번에 주문했는데, 부분취소가 가능한가요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> [마이페이지 &gt; 나의 예약/구매 내역]에서 부분취소가 가능합니다. 단, 상품단위 혹은 묶음상품 단위로만 취소할 수 있습니다. </span> </dd>
+		            </dl>
+		        </div>
+		
+		        <!-- L.POINT -->
+		        <div class="question-list" id="list9" style="display: none;">
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> L.POINT 서비스란? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> L.POINT는 롯데멤버스에서 운영하는 온라인 통합 멤버십 서비스로, 탐나오 상품 결제 시 L.POINT 적립과 L.POINT 사용 중 하나를 선택해 이용하실 수 있습니다. L.POINT 적립을 이용하실 경우 상품 구매 시 결제 금액의 0.5%가 L.POINT로 적립되며, L.POINT 사용을 이용하실 경우 10P 단위로 최대 100%까지 사용하실 수 있습니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> L.POINT 카드는 어떻게 발급하나요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> L.POINT 홈페이지 또는 모바일 앱에 가입하시면 간단한 본인인증 후 L.POINT 적립/사용이 가능한 온라인/모바일카드가 자동으로 발급됩니다. 실물카드 발급을 원하시면 L.POINT 홈페이지의 카드&gt;카드 안내/신청 메뉴를 통해 신청 가능합니다. 신청하신 카드는 우편을 통해 2주 안에 입력하신 주소지에서 수령하실 수 있습니다. </span> </dd>
+		            </dl>
+		            <dl>
+		                <dt> <span><em>Q</em></span> <span> L.POINT 비밀번호는 무엇인가요? </span> </dt>
+		                <dd> <span><em>A</em></span> <span> 'L.POINT 비밀번호'는 온라인에서 포인트를 사용하기 위해 설정된 비밀번호로, 영문 및 숫자를 조합한 6~8자리입니다. L.POINT Web/App 로그인 시 입력하는 비밀번호(숫자, 영문, 특수문자를 조합한 8~15자리)와는 별도의 비밀번호이며, L.POINT Web/App에서 언제든 간단하게 등록 및 재설정하실 수 있습니다. 5회 이상 L.POINT 비밀번호 입력 오류 시 새로운 비밀번호를 등록하셔야 합니다.<br>
+		                    <br>
+		                    L.POINT 비밀번호 등록방법은 다음과 같습니다.<br>
+		                    <br>
+		                    ▣ L.POINT Web<br>
+		                    홈페이지(https://www.lpoint.com) 로그인 &gt; 상단 '포인트' &gt; '포인트 비밀번호' &gt; '포인트 비밀번호 설정'<br>
+		                    <br>
+		                    ▣ L.POINT App<br>
+		                    App 로그인 &gt; 상단 우측 탭(≡) 터치 &gt; 하단 '이용안내' &gt; '포인트 비밀번호 설정' </span> </dd>
+		            </dl>
+		        </div>
+		    </div>
+		</div>
+	</section>
+	<!--//change contents-->
+</main>
+
+<footer id="footer">
+	
+</footer>
+
+</div> <!-- //wrap -->
+</body>
+</html>

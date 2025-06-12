@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="allim">
+
+	<!-- 10001 인증번호 확인 -->
+	<insert id="ALLIM_I_10001">
+		INSERT INTO TSMS_AGENT_MESSAGE 
+		     ( SERVICE_SEQNO
+		     , SEND_MESSAGE
+		     , SUBJECT
+		     , BACKUP_MESSAGE
+		     , BACKUP_PROCESS_CODE
+		     , MESSAGE_TYPE
+		     , CONTENTS_TYPE
+		     , RECEIVE_MOBILE_NO
+		     , CALLBACK_NO
+		     , JOB_TYPE
+		     , SEND_RESERVE_DATE
+		     , TEMPLATE_CODE
+		     , REGISTER_DATE
+		     , REGISTER_BY
+		     , IMG_ATTACH_FLAG
+			 ) 
+	    VALUES 
+	         ( 1810021981
+	         , CONCAT('[탐나오] 인증번호 [', #param1#, ']를 화면에 입력해주세요.')
+	         , '인증번호 확인'
+	         , CONCAT('[탐나오] 인증번호 [', #param1#, ']를 화면에 입력해주세요.')
+	         , '001'
+	         , '002'
+	         , '004'
+	         , #telNum#
+	         , #callBackNo#
+	         , 'R00'
+	         , NOW()
+	         , '10001'
+	         , NOW()
+	         , 'SYSTEM'
+	         , 'N'
+	         )
+	</insert>
+	
+	<!-- 10003 발송완료(특산품) -->
+	<insert id="ALLIM_I_10003">
+		INSERT INTO TSMS_AGENT_MESSAGE 
+		     ( SERVICE_SEQNO
+		     , SEND_MESSAGE
+		     , SUBJECT
+		     , BACKUP_MESSAGE
+		     , BACKUP_PROCESS_CODE
+		     , MESSAGE_TYPE
+		     , CONTENTS_TYPE
+		     , RECEIVE_MOBILE_NO
+		     , CALLBACK_NO
+		     , JOB_TYPE
+		     , SEND_RESERVE_DATE
+		     , TEMPLATE_CODE
+		     , REGISTER_DATE
+		     , REGISTER_BY
+		     , IMG_ATTACH_FLAG
+			 ) 
+	    VALUES 
+	         ( 1810021981
+	         , CONCAT('[탐나오] ', #param1#, ' 상품이 발송 완료되었습니다.', '\n\n■ 택배사 : ', #param2#, '\n■ 운송장번호 : ', #param3#, '\n\n상세 내역은 마이페이지에서 확인해주세요.')
+	         , '발송완료(특산품)'
+	         , CONCAT('[탐나오] ', #param1#, ' 상품이 발송 완료되었습니다.', '\n\n■ 택배사 : ', #param2#, '\n■ 운송장번호 : ', #param3#, '\n\n상세 내역은 마이페이지에서 확인해주세요.')
+	         , '001'
+	         , '002'
+	         , '004'
+	         , #telNum#
+	         , #callBackNo#
+	         , 'R00'
+	         , NOW()
+	         , '10003'
+	         , NOW()
+	         , 'SYSTEM'
+	         , 'N'
+	         )
+	</insert>
+	
+	<!-- 10005 구매완료(특산품) -->
+	<insert id="ALLIM_I_10005">
+		INSERT INTO TSMS_AGENT_MESSAGE 
+		     ( SERVICE_SEQNO
+		     , SEND_MESSAGE
+		     , SUBJECT
+		     , BACKUP_MESSAGE
+		     , BACKUP_PROCESS_CODE
+		     , MESSAGE_TYPE
+		     , CONTENTS_TYPE
+		     , RECEIVE_MOBILE_NO
+		     , CALLBACK_NO
+		     , JOB_TYPE
+		     , SEND_RESERVE_DATE
+		     , TEMPLATE_CODE
+		     , REGISTER_DATE
+		     , REGISTER_BY
+		     , IMG_ATTACH_FLAG
+			 ) 
+	    VALUES 
+	         ( 1810021981
+	         , CONCAT('[탐나오] ', #param1#, ' 구매가 완료되었습니다.', '\n\n■ 구매내역\n- ', #param2#, '\n- 수량 : ', #param3#, '\n- 가격 : ', #param3#, '원\n\n※ 구매 확정 후, 상품 후기를 작성해주세요.')
+	         , '발송완료(특산품)'
+	         , CONCAT('[탐나오] ', #param1#, ' 구매가 완료되었습니다.', '\n\n■ 구매내역\n- ', #param2#, '\n- 수량 : ', #param3#, '\n- 가격 : ', #param3#, '원\n\n※ 구매 확정 후, 상품 후기를 작성해주세요.')
+	         , '001'
+	         , '002'
+	         , '004'
+	         , #telNum#
+	         , #callBackNo#
+	         , 'R00'
+	         , NOW()
+	         , '10005'
+	         , NOW()
+	         , 'SYSTEM'
+	         , 'N'
+	         )
+	</insert>
+	
+</sqlMap>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="cart">
+
+	<resultMap id="CART_R_00" class="web.product.vo.CARTVO2">
+	<result property="userId" 			column="USER_ID"/>
+	<result property="cartSn" 			column="CART_SN"/>
+	<result property="prdtNum" 			column="PRDT_NUM"/>
+	<result property="prdtNm" 			column="PRDT_NM"/>
+	<result property="corpId" 			column="CORP_ID"/>
+	<result property="corpNm" 			column="CORP_NM"/>
+	<result property="prdtDivNm" 		column="PRDT_DIV_NM"/>
+	<result property="startDt" 			column="START_DT"/>
+	<result property="night" 			column="NIGHT"/>
+	<result property="adultCnt" 		column="ADULT_CNT"/>
+	<result property="juniorCnt" 		column="JUNIOR_CNT"/>
+	<result property="childCnt" 		column="CHILD_CNT"/>
+	<result property="adAddAmt" 		column="AD_ADD_AMT"/>
+	<result property="endDt" 			column="END_DT"/>
+	<result property="totalAmt" 		column="TOTAL_AMT"/>
+	<result property="nmlAmt" 			column="NML_AMT"/>
+	<result property="startTm" 			column="START_TM"/>
+	<result property="endTm" 			column="END_TM"/>
+	<result property="isrDiv" 			column="ISR_DIV"/>
+	<result property="cnt" 				column="CNT"/>
+	<result property="optSn" 			column="OPT_SN"/>
+	<result property="divSn" 			column="DIV_SN"/>
+	<result property="addOptNm" 		column="ADD_OPT_NM"/>
+	<result property="addOptAmt" 		column="ADD_OPT_AMT"/>
+	<result property="directRecvYn" 	column="DIRECT_RECV_YN"/>
+	<result property="regDttm" 			column="REG_DTTM"/>
+	<result property="imgPath" 			column="IMG_PATH"/>
+	</resultMap>
+
+	<!-- 장바구니 조회 -->
+	<select id="CART_S_01" resultMap="CART_R_00">
+		SELECT USER_ID          /*사용자 아이디*/
+		     , CART_SN          /*장바구니 순번*/
+		     , PRDT_NUM         /*상품 번호*/
+		     , PRDT_NM          /*상품 명*/
+		     , CORP_ID          /*업체 아이디*/
+		     , CORP_NM          /*업체 명*/
+		     , PRDT_DIV_NM      /*상품 구분 명*/
+		     , START_DT         /*시작 일자*/
+		     , NIGHT            /*박수*/
+		     , ADULT_CNT        /*성인 수량*/
+		     , JUNIOR_CNT       /*소인 수량*/
+		     , CHILD_CNT        /*유아 수량*/
+		     , AD_ADD_AMT       /*숙박 추가 금액*/
+		     , END_DT           /*종료 일자*/
+		     , TOTAL_AMT        /*총 금액*/
+		     , NML_AMT          /*정상 금액*/
+		     , START_TM         /*시작 시간*/
+		     , END_TM           /*종료 시간*/
+		     , ISR_DIV          /*보험 구분*/
+		     , CNT              /*수량*/
+		     , OPT_SN           /*옵션 순번*/
+		     , DIV_SN           /*구분 순번*/
+		     , ADD_OPT_NM       /*추가 옵션 명*/
+		     , ADD_OPT_AMT      /*추가 옵션 금액*/
+		     , DIRECT_RECV_YN   /*직접 수령 여부*/
+		     , REG_DTTM         /*등록 일시*/
+			 , IMG_PATH         /*이미지 경로*/
+		  FROM TB_CART
+		 WHERE USER_ID = #userId#
+	</select>
+
+	<!-- 장바구니 등록 -->
+    <insert id="CART_I_00">
+    INSERT INTO TB_CART (
+        USER_ID
+        , CART_SN
+        , PRDT_NUM
+        , PRDT_NM
+        , CORP_ID
+        , CORP_NM
+        , PRDT_DIV_NM
+        , START_DT
+        , NIGHT
+        , ADULT_CNT
+        , JUNIOR_CNT
+        , CHILD_CNT
+        , AD_ADD_AMT
+        , END_DT
+        , TOTAL_AMT
+        , NML_AMT
+        , START_TM
+        , END_TM
+        , ISR_DIV
+        , CNT
+        , OPT_SN
+        , DIV_SN
+        , ADD_OPT_NM
+        , ADD_OPT_AMT
+        , DIRECT_RECV_YN
+        , REG_DTTM
+        , IMG_PATH
+    ) VALUES (
+        #userId#
+        , #cartSn#
+        , #prdtNum#
+        , #prdtNm#
+        , #corpId#
+        , #corpNm#
+        , #prdtDivNm#
+        , #startDt#
+        , #night#
+        , #adultCnt#
+        , #juniorCnt#
+        , #childCnt#
+        , #adAddAmt#
+        , #endDt#
+        , #totalAmt#
+        , #nmlAmt#
+        , #startTm#
+        , #endTm#
+        , #isrDiv#
+        , #cnt#
+        , #optSn#
+        , #divSn#
+        , #addOptNm#
+        , #addOptAmt#
+        , #directRecvYn#
+        , SYSDATE
+        , #imgPath#
+    )
+    </insert>
+
+	<insert id="CART_I_01" parameterClass="java.util.List">
+		INSERT INTO TB_CART
+		     ( USER_ID
+		     , CART_SN
+		     , PRDT_NUM
+		     , PRDT_NM
+		     , CORP_ID
+		     , CORP_NM
+		     , PRDT_DIV_NM
+		     , START_DT
+		     , NIGHT
+		     , ADULT_CNT
+		     , JUNIOR_CNT
+		     , CHILD_CNT
+		     , AD_ADD_AMT
+		     , END_DT
+		     , TOTAL_AMT
+		     , NML_AMT
+		     , START_TM
+		     , END_TM
+		     , ISR_DIV
+		     , CNT
+		     , OPT_SN
+		     , DIV_SN
+		     , ADD_OPT_NM
+		     , ADD_OPT_AMT
+		     , DIRECT_RECV_YN
+		     , REG_DTTM
+			 , IMG_PATH
+		     )
+		<iterate conjunction="UNION ALL">
+		SELECT #[].userId#
+		     , #[].cartSn#
+		     , #[].prdtNum#
+		     , #[].prdtNm#
+		     , #[].corpId#
+		     , #[].corpNm#
+		     , #[].prdtDivNm#
+		     , #[].startDt#
+		     , #[].night#
+		     , #[].adultCnt#
+		     , #[].juniorCnt#
+		     , #[].childCnt#
+		     , #[].adAddAmt#
+		     , #[].endDt#
+		     , #[].totalAmt#
+		     , #[].nmlAmt#
+		     , #[].startTm#
+		     , #[].endTm#
+		     , #[].isrDiv#
+		     , #[].cnt#
+		     , #[].optSn#
+		     , #[].divSn#
+		     , #[].addOptNm#
+		     , #[].addOptAmt#
+		     , #[].directRecvYn#
+		     , SYSDATE
+			 , #[].imgPath#
+		  FROM DUAL
+		</iterate>
+	</insert>
+
+	<!-- 장바구니 삭제 -->
+	<delete id="CART_D_01">
+		DELETE FROM TB_CART
+		 WHERE USER_ID = #userId#
+	</delete>
+	
+
+</sqlMap>

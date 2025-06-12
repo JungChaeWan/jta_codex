@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="apiTlBooking">
+
+    <resultMap id="APITLBooking_R_00" class="api.vo.APITLBookingVO">
+        <result property="dataId"                       column="DATA_ID" />
+        <result property="rsvNum"                       column="RSV_NUM" />
+        <result property="adRsvNum"                     column="AD_RSV_NUM" />
+        <result property="corpTelNum"                   column="RSV_TEL_NUM" />
+        <result property="corpNm"                       column="CORP_NM" />
+        <result property="corpId"                       column="CORP_ID" />
+        <result property="rsvNm"                        column="RSV_NM" />
+        <result property="rsvTelnum"                    column="RSV_TELNUM" />
+        <result property="rsvEmail"                     column="RSV_EMAIL" />
+        <result property="useDt"                        column="USE_DT" />
+        <result property="useNm"                        column="USE_NM" />
+        <result property="useTelnum"                    column="USE_TELNUM" />
+        <result property="useEmail"                     column="USE_EMAIL" />
+        <result property="useNight"                     column="USE_NIGHT" />
+        <result property="adNum"                        column="AD_NUM" />
+        <result property="adultNum"                     column="ADULT_NUM" />
+        <result property="juniorNum"                    column="JUNIOR_NUM" />
+        <result property="childNum"                     column="CHILD_NUM" />
+        <result property="nmlAmt"                       column="NML_AMT" />
+        <result property="saleAmt"                      column="SALE_AMT" />
+        <result property="nmlAmtNet"                    column="NML_AMT_NET" />
+        <result property="saleAmtNet"                   column="SALE_AMT_NET" />
+        <result property="prdtNum"                      column="PRDT_NUM" />
+        <result property="prdtNm"                       column="PRDT_NM" />
+        <result property="usePoint"                     column="USE_POINT" />
+        <result property="juniorAgeStdApicode"          column="JUNIOR_AGE_STD_APICODE" />
+        <result property="childAgeStdApicode"           column="CHILD_AGE_STD_APICODE" />
+        <result property="childAgeStdApicode"           column="CHILD_AGE_STD_APICODE" />
+        <result property="tllRsvLink"                   column="TLL_RSV_LINK" />
+
+    </resultMap>
+
+    <resultMap id="APITLBooking_R_02" class="web.order.vo.AD_RSV_DAYPRICEVO">
+        <result property="rsvNum"           column="RSV_NUM" />
+        <result property="saleAmt"          column="SALE_AMT" />
+        <result property="saleAmtNet"       column="SALE_AMT_NET" />
+        <result property="adultAddAmt"      column="ADULT_ADD_AMT" />
+        <result property="juniorAddAmt"     column="JUNIOR_ADD_AMT" />
+        <result property="childAddAmt"      column="CHILD_ADD_AMT" />
+        <result property="totAmt"           column="TOT_AMT" />
+        <result property="totAmtNet"        column="TOT_AMT_NET" />
+        <result property="regDttm"          column="REG_DTTM" />
+    </resultMap>
+
+    <resultMap id="APITLBooking_R_03" class="web.mypage.vo.USER_CPVO">
+        <result property="userId" 		column="USER_ID" />
+        <result property="cpNum" 		column="CP_NUM" />
+        <result property="cpDiv" 		column="CP_DIV" />
+        <result property="disAmt" 		column="DIS_AMT" />
+        <result property="regDttm" 		column="REG_DTTM" />
+        <result property="useDttm" 		column="USE_DTTM" />
+        <result property="exprStartDt" 	column="EXPR_START_DT" />
+        <result property="exprEndDt" 	column="EXPR_END_DT" />
+        <result property="useYn" 		column="USE_YN" />
+        <result property="cpId" 		column="CP_ID" />
+        <result property="buyMiniAmt" 	column="BUY_MINI_AMT" />
+        <result property="useRsvNum" 	column="USE_RSV_NUM" />
+        <result property="cpNm" 		column="CP_NM" />
+    </resultMap>
+
+    <resultMap id="APITLBooking_R_04" class="api.vo.APITLBookingLogVO">
+        <result property="rsvXml" 		column="RSV_XML" />
+        <result property="systemDate" 	column="SYSTEMDATE" />
+        <result property="rsvNum"       column="RSV_NUM" />
+        <result property="dataId"       column="DATA_ID" />
+        <result property="prdtNum"       column="PRDT_NUM" />
+        <result property="useDt"       column="USE_DT" />
+        <result property="useNight"       column="USE_NIGHT" />
+        <result property="corpId"       column="CORP_ID" />
+    </resultMap>
+
+    <!--예약 건 룸별 발송-->
+    <select  id="APITLBooking_S_00" resultMap="APITLBooking_R_00">
+        SELECT DATA_ID + ROWNUM AS DATA_ID
+            , RSV_NUM
+            , AD_RSV_NUM
+            , RSV_TEL_NUM
+            , CORP_NM
+            , CORP_ID
+            , RSV_NM
+            , RSV_TELNUM
+            , RSV_EMAIL
+            , USE_DT
+            , USE_NM
+            , USE_TELNUM
+            , USE_EMAIL
+            , USE_DT
+            , USE_NIGHT
+            , AD_NUM
+            , ADULT_NUM
+            , JUNIOR_NUM
+            , CHILD_NUM
+            , NML_AMT
+            , SALE_AMT
+            , NML_AMT_NET
+            , SALE_AMT_NET
+            , PRDT_NUM
+            , PRDT_NM
+            , USE_POINT
+            , JUNIOR_AGE_STD_APICODE
+            , CHILD_AGE_STD_APICODE
+            , TLL_RSV_LINK
+        FROM (
+            SELECT TR.RSV_NUM /*1. 그룹예약번호 */
+                , TC.RSV_TEL_NUM /*0. 시설사 전화번호  */
+                , TC.CORP_NM /*1. 숙박시설명  */
+                , TC.CORP_ID /*1. 숙박시설 코드  */
+                , TAR.AD_RSV_NUM /*1. 예약번호 */
+                , TR.RSV_NM /*1. 예약자명  */
+                , TR.RSV_TELNUM /*0. 예약자 전화번호  */
+                , TR.RSV_EMAIL /*0. 예약자 이메일  */
+                , TR.USE_NM /*1. 숙박자명  */
+                , TR.USE_TELNUM /*0. 숙박자 전화번호  */
+                , TR.USE_EMAIL /*0. 숙박자 이메일  */
+                , TAR.USE_DT
+                , TAR.USE_NIGHT
+                , TAR.ADULT_NUM + TAR.JUNIOR_NUM + TAR.CHILD_NUM AS AD_NUM
+                , TAR.ADULT_NUM
+                , TAR.JUNIOR_NUM
+                , TAR.CHILD_NUM
+                , TARD.NML_AMT /*판매가 총요금*/
+                , TARD.NML_AMT - TAR.DIS_AMT AS SALE_AMT /*판매가 숙박자청구액*/
+                , TARD.NML_AMT_NET /*입금가 총요금*/
+                , TARD.NML_AMT_NET - TAR.DIS_AMT AS SALE_AMT_NET /*입금가 숙박자청구액*/
+                , TAR.PRDT_NUM /*1. 객실 코드 RoomTypeCode */
+                , TAR.PRDT_NM /*1. 객실 이름 RoomTypeName */
+                , NVL((SELECT USE_POINT
+                        FROM TB_LPOINT_USE_INF
+                        WHERE LP_DTL_RSV_NUM = TAR.AD_RSV_NUM
+                        AND CANCEL_YN = 'N'),0)  AS USE_POINT /* LPOINT 사용내역 */
+                , (
+                    SELECT TO_CHAR(SYSDATE, 'YYYYMMDD') || '0' || LPAD(NVL(MAX(SUBSTRING (DATA_ID,10,17)),0),8,'0')
+                    FROM  TB_APITL_RSV
+                    WHERE SYSTEMDATE = TO_CHAR(SYSDATE, 'YYYY-MM-DD') AND SEQ_NUM = '0'
+                  ) AS DATA_ID
+                , TAD.JUNIOR_AGE_STD_APICODE
+                , TAD.CHILD_AGE_STD_APICODE
+                , TAD.TLL_RSV_LINK
+            FROM TB_RSV TR
+            INNER JOIN TB_AD_RSV TAR ON TR.RSV_NUM = TAR.RSV_NUM
+            INNER JOIN (
+               SELECT S_TARD.AD_RSV_NUM
+                    , SUM(TOT_AMT) AS NML_AMT
+                    , SUM(SALE_TO_DEPOSIT(TOT_AMT, S_TAR.CORP_ID )) AS NML_AMT_NET
+               FROM TB_AD_RSV_DAYPRICE S_TARD
+               INNER JOIN TB_AD_RSV S_TAR ON S_TARD.AD_RSV_NUM = S_TAR.AD_RSV_NUM
+               GROUP BY S_TARD.AD_RSV_NUM
+            ) TARD
+            ON TAR.AD_RSV_NUM  = TARD.AD_RSV_NUM
+            INNER JOIN TB_CORP TC on TAR.CORP_ID = TC.CORP_ID
+            LEFT JOIN TB_AD_DFTINF TAD ON TC.CORP_ID = TAD.CORP_ID
+            WHERE TR.RSV_NUM = #rsvNum#
+            AND TC.AD_APILINK_NM = 'TLL'
+        ) XA
+
+    </select>
+
+    <!-- TL린칸 예약 시 저장 -->
+    <insert id="APITLBooking_I_00">
+        INSERT INTO TB_APITL_RSV
+        (   DATA_ID
+            , RSV_NUM
+            , AD_RSV_NUM
+            , SEQ_NUM
+            , RSV_XML
+            , RETURN_XML
+            , RSV_RESULT
+            , FAULT_REASON
+            , SYSTEMDATE
+        ) VALUES
+        (
+              #dataId#
+            , #rsvNum#
+            , #adRsvNum#
+            , #seqNum#
+            , #rsvXml#
+            , #returnXml#
+            , #rsvResult#
+            , #faultReason#
+            , #systemDate#
+        )
+    </insert>
+
+    <!-- 예약 시 일자별 숙박요금 필요 컬럼 select -->
+    <select id="APITLBooking_S_02" resultMap="APITLBooking_R_02">
+        SELECT TARD.RSV_NUM
+            ,TARD.SALE_AMT
+            ,DEPOSIT_AMT AS SALE_AMT_NET
+            ,ADULT_ADD_AMT
+            ,JUNIOR_ADD_AMT
+            ,CHILD_ADD_AMT
+            ,TOT_AMT
+            ,SALE_TO_DEPOSIT(TARD.TOT_AMT, TAR.CORP_ID) AS TOT_AMT_NET
+            ,REG_DTTM
+        FROM TB_AD_RSV_DAYPRICE TARD
+        INNER JOIN TB_AD_RSV TAR ON TARD.AD_RSV_NUM = TAR.AD_RSV_NUM
+        WHERE TARD.AD_RSV_NUM = #adRsvNum#
+        AND APL_DT = #aplDt#
+    </select>
+
+    <!-- 쿠폰 사용 내역 select -->
+    <select id="APITLBooking_S_03" resultMap="APITLBooking_R_03">
+        SELECT
+        USER_ID
+        , CP_NUM
+        , CP_DIV
+        , TAR.DIS_AMT
+        , REG_DTTM
+        , USE_DTTM
+        , EXPR_START_DT
+        , EXPR_END_DT
+        , USE_YN
+        , CP_ID
+        , BUY_MINI_AMT
+        , USE_RSV_NUM
+        , CP_NM
+        FROM TB_USER_CP TUC
+        LEFT JOIN TB_AD_RSV TAR
+        ON TUC.USE_RSV_NUM = TAR.AD_RSV_NUM
+        WHERE USE_RSV_NUM  = #adRsvNum#
+    </select>
+
+    <!-- 숙소 연동 상태 rsvNum으로 확인 -->
+    <select id="APITLBooking_S_04" resultClass="String">
+        SELECT AD_APILINK_NM
+        FROM TB_CORP
+        WHERE CORP_ID = (
+            SELECT CORP_ID FROM TB_AD_RSV WHERE RSV_NUM=#rsvNum# AND ROWNUM = 1
+        )
+    </select>
+
+    <!-- 사용 Lpoint 조회 -TLL 연동 예약 전송 시 쿠폰 사용내역 만들때 사용 -->
+    <select id="APITLBooking_S_05" resultClass="int">
+        SELECT NVL(MAX(USE_POINT),0) AS USE_POINT
+        FROM TB_LPOINT_USE_INF
+        WHERE LP_DTL_RSV_NUM = #adRsvNum#
+        AND CANCEL_YN ='N'
+    </select>
+
+    <!-- 취소 전송을 위해 RSV_XML GET. RSV_XML을 불러와 취소전문 생성  -->
+    <select id="APITLBooking_S_06" resultMap="APITLBooking_R_04">
+        SELECT RSV_XML
+        , SYSTEMDATE
+        , TAPI.RSV_NUM
+        , DATA_ID
+        , TAPI.AD_RSV_NUM
+        , TAR.PRDT_NUM
+        , TAR.USE_DT
+        , TAR.USE_NIGHT
+        , TAR.CORP_ID
+        FROM TB_APITL_RSV TAPI
+        INNER JOIN TB_AD_RSV TAR on TAPI.AD_RSV_NUM = TAR.AD_RSV_NUM
+        WHERE TAPI.AD_RSV_NUM = #adRsvNum#
+        AND SEQ_NUM='0'
+        AND RSV_RESULT = 'Y'
+        AND ROWNUM = 1
+        ORDER BY REG_DTTM DESC
+    </select>
+
+    <!-- 취소 전송 시 DataId 생성 YYYYMMDD + 100000000 부터 일련번호 -->
+    <select id="APITLBooking_S_07" resultClass="String">
+        SELECT TO_CHAR(SYSDATE, 'YYYYMMDD') || '1' || LPAD(NVL(MAX(SUBSTRING (DATA_ID,10,17)),0),8,'0') + 1 AS DATA_ID
+        FROM  TB_APITL_RSV
+        WHERE SYSTEMDATE = TO_CHAR(SYSDATE, 'YYYY-MM-DD') AND SEQ_NUM = '1'
+    </select>
+
+    <select id="APITLBooking_S_08" resultClass="String">
+        SELECT AD_APILINK_NM
+        FROM TB_AD_RSV TAR
+        INNER JOIN TB_CORP TC ON TAR.CORP_ID = TC.CORP_ID
+        WHERE AD_RSV_NUM = #adRsvNum#
+    </select>
+
+    <!--예약 업데이트-->
+    <update id="APITLBooking_U_00">
+    UPDATE TB_RSV
+    SET RSV_STATUS_CD = 'RS02'
+    WHERE  RSV_NUM = #rsvNum#
+    </update>
+    <update id="APITLBooking_U_01">
+        UPDATE TB_AD_RSV
+        SET RSV_STATUS_CD = 'RS02'
+        WHERE  AD_RSV_NUM = #adRsvNum#
+    </update>
+
+    <!--취소 업데이트-->
+    <update id="APITLBooking_U_02">
+        UPDATE TB_RSV
+        SET RSV_STATUS_CD = 'RS20'
+        WHERE  RSV_NUM = #rsvNum#
+    </update>
+    <update id="APITLBooking_U_03">
+        UPDATE TB_AD_RSV
+        SET RSV_STATUS_CD = 'RS20'
+        WHERE AD_RSV_NUM = #adRsvNum#
+    </update>
+
+    <!-- 예약번호에 대한 예약상태코드 변경 -->
+    <update id="APITLBooking_U_04">
+        UPDATE TB_AD_RSV
+        SET RSV_STATUS_CD = 'RS01'
+        WHERE AD_RSV_NUM = #adRsvNum#
+
+    </update>
+</sqlMap>

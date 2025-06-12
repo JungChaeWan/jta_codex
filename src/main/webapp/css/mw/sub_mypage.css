@@ -1,0 +1,514 @@
+@charset "utf-8";
+
+/* 마이페이지 */
+#subContent table {margin-bottom:2px;}
+#subContent .join-form {background-color:#fff; border:1px solid #b5b5b6;}
+#subContent .join-form td {padding:10px; border:1px solid #b5b5b6; border-width:1px 0 1px 0;}
+#subContent .join-form th {text-align:left;}
+#subContent .payArea td {
+	position: relative;
+	top: 0;
+	bottom: 0;
+	padding: 8px;
+	border:1px solid #ddd;
+    color: #333;
+	background-color:#fff;
+    font-size: 0.75rem;
+    text-align: left;
+	line-height: 15px;
+}
+#subContent .payArea td.remark {
+	display: flex;
+	align-items: center;
+	padding: 15px;
+    border: none;
+	color: #e8202e;
+	font-size: 0.9rem;
+	font-family: "Roboto";
+	font-weight: bold;
+}
+#subContent table td.result {color:#FE434C;}
+#subContent table td.result a {float:right; display:inline-block; width:30px; height:15px; line-height:15px; border-radius:2px; background:#E2E2E2; color:#000; text-align:center;}
+#subContent .payArea .remark a.btn {
+	width: 85px;
+	height: 38px;
+	padding: 0 5px;
+	margin: 0 2px;
+	border-radius: 4px;
+	background-color: #e8202e;
+	font-weight: normal;
+	line-height: 38px;
+}
+#subContent .payArea .remark a.btn.btn2 {
+	margin-left: 15px;
+	background-color: #000;
+}
+
+
+/* 결제하기 - 레이어팝업 */
+#point_search .head, #point_saving .head {
+	z-index: 99;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 50px;
+	padding: 0;
+	border: none;
+	background: #fff;
+}
+.comm-layer-popup.faq-popup .main {
+	z-index: 2;
+	position: absolute;
+	top: 30px;
+	right: 0;
+	left: 0;
+	bottom: 30px;
+	margin: 0 auto;
+	padding: 0 20px 80px;
+	overflow-y: auto;
+}
+
+
+/* 취소요청하기 - 레이어팝업 */
+#cancelPopup {
+	z-index: 1000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow-y: scroll;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background: #fff;
+}
+#cancelPopup .content-wrap {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	border: none;
+	border-radius: 5px;
+	font-family: "Roboto";
+}
+#cancelPopup .head {
+	z-index: 99;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 50px;
+	padding: 0;
+	border: none;
+	background: #fff;
+}
+#cancelPopup .head .title {
+	overflow: hidden;
+	color: #323232;
+	font-size: 1rem;
+	font-weight: bold;
+	text-align: center;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+#cancelPopup .main {padding: 20px 20px 80px;}
+#cancelPopup .main .list-disc {padding: 0;}
+#cancelPopup .main .list-disc button {
+	width: 100%;
+	margin: 0 auto;
+	height: 58px;
+	margin-top: 16px;
+	border-radius: 12px;
+	background-color: #e8020e;
+	font-size: 1.0rem;
+	font-weight: normal;
+	line-height: 58px;
+}
+
+
+/* 1:1문의내역 */
+.counsel-list {}
+.counsel-list p.txt {padding-bottom:10px;}
+/*수정*/.counsel-list dl {/*margin-bottom:2px;*/ border:1px solid #CCC;}
+/*수정*/.counsel-list dl dt {overflow: hidden; width:100%; padding:15px 6px; background:#FFF; /*border-bottom:1px solid #CCC;*/ font-weight:normal;}
+/*수정*/#subContent .counsel-list dl dt span .btn {width: auto; padding: 0 12px;}
+.counsel-list dl dt em {display:block; width:20px; height:20px; line-height:20px; background:#5D5D5D; border-radius:10px; color:#FFF; font-size:14px; font-weight:bold; text-align:center;}
+.counsel-list dl dt span:first-child {float:left; width:10%;}
+.counsel-list dl dt span:last-child {float:right; width:90%;}
+/*수정*/.counsel-list dl dd {overflow: hidden; width:100%; padding:10px; background:#F3F3F3; border-top:1px solid #FFF;}
+.counsel-list dl dd em {display:block; width:20px; height:20px; line-height:20px; background:#FD434E; border-radius:10px; color:#FFF; font-size:14px; font-weight:bold; text-align:center;}
+.counsel-list dl dd span:first-child {float:left; width:10%;}
+.counsel-list dl dd span:last-child {float:right; width:90%;}
+.counsel-list dl dd span:last-child strong {display:block; padding-bottom:5px; color:#000; font-weight:normal;}
+
+.mypage p.txt1 { padding:10px 0; color:#000;}
+.coupon-all-line .coupon-img{height: 90px;}
+.coupon-img {padding:0px; background:#FFF; border: none; margin: 0 auto; height: 92px;}
+.coupon-img img {width:100%;}
+
+.review-list {clear: both; width:100%;}
+/*수정*/.review-list > dl {clear: both; width:100%; padding:15px; background:#FFF; margin-bottom:2px; border:1px solid #CCC;}
+.review-list > dl > dt {/*float:left;*/ width:100%;}
+.review-list > dl > dt strong {/*float:left;*/ width:70%; color:#000;}
+.review-list > dl > dt span {float:left; width:47px; text-align:right; font-weight:normal;}
+.review-list > dl > dt em {clear:both; font-weight:normal;}
+.review-list > dl > dd {color:#444;}
+.review-list > dl > dd .btn-reply {}
+.review-list > dl > dd dl dt {padding:7px 0;}
+.review-list > dl > dd dl dd em {font-weight:normal; color:#000;}
+
+/* --------------------------------------------------------- add ------------------------------------------------------------------ */
+/* 이용후기 내역보기 */
+.review-list ul.re_comment {border-top: 1px solid #ded9d9; padding: 8px 0;}
+.review-list ul.re_comment:first-child {border-top: none;}
+.review-list ul.re_comment > li {display: table-cell; vertical-align: middle;}
+.review-list ul.re_comment > .ic2 {padding-left: 10px; position: relative; top: -4px;}
+.review-list ul.re_comment .ic2 img {width: 10px;}
+.review-list ul.re_comment > .re {font-size: 13px; line-height: 18px; padding-left: 10px; text-align: left;}
+
+.write-btn {clear: both; text-align: center; padding-top: 8px;}
+.write-btn .btn2 {background: #059bd3 !important; color: #fff !important; border: 1px solid #0881af !important;}
+
+/* 테이블 조정 */
+.mypage > table {margin-top: 10px;}
+.mypage > table:first-child {margin-top: 0px;}
+.mypage table th {width: 25%;}
+.mypage table td {word-break: break-all;}
+.mypage table td.number {font-size: 14px; line-height: 25px !important;}
+.mypage table td.number .date {font-size: 12px; line-height: 12px; color: #5f5f60;}
+.mypage table ul.product-list {padding: 8px 0 8px 13px;}
+.mypage table ul.product-list li {margin-top: 10px; border-top: 1px solid #e1e3e4; padding-top: 10px; position: relative;}
+.mypage table ul.product-list li:first-child {margin-top: 0; border-top: none; padding-top: 0;}
+.mypage table ul.product-list li .product {font-size: 13px; font-weight: 700; line-height: 18px;}
+.mypage table ul.product-list li .infoText {}
+.mypage table ul.product-list li .info {margin-top: 6px; color: #5f5f60;}
+.mypage table ul.product-list li .ticket-info {color: #e8202e; font-size: 12px; margin-top: 4px;}
+
+.mypage ul.use-msg li {border-top: 1px solid #e1e3e4; margin-top: 8px; padding-top: 8px;}
+.mypage ul.use-msg li:first-child {border-top: 1px solid #e1e3e4 !important; margin-top: 8px !important; padding-top: 8px !important;}
+.mypage ul.use-msg li .date {font-size: 11px; color: #5f5f60;}
+.mypage ul.use-msg li .memo {font-size: 12px; color: #5f5f60; line-height: 16px; margin-top: 2px;}
+
+.mypage table .detail {
+	background:#353435; color:#FFF; line-height: 25px; min-width: 70px;
+	text-align: center; float: right; border-radius: 2px; font-size: .77rem; margin-right:5px;
+}
+
+/* 나의예약/구매내역 상세페이지 */
+.mypage .payArea {margin-top: 15px;}
+.mypage .payArea:first-child {margin-top: 0px;}
+.mypage .payArea h4 {font-size: 14px; font-weight: 700; margin-bottom: 5px; padding-left: 5px;}
+.mypage .payArea td.total {font-size: 13px;}
+.mypage .payArea td.total strong {color: #FE434C;}
+.mypage .payArea td.bt {text-align: center;}
+.mypage .payArea td.remark {text-align: center;}
+.mypage .payArea td.remark .tb_num {margin: 10px 0 5px; font-size: 12px;}
+.mypage .payArea td.remark .tb_num a {text-decoration: underline; color: #23a3e2;}
+.mypage .payArea td.remark .tb_num a span {text-decoration: underline; display: inline-block; vertical-align: middle; color: #23a3e2;}
+.mypage .payArea .cancel {padding: 6px;}
+.mypage .payArea .check {line-height: 24px;}
+.mypage .payArea .title-bt {position: relative;}
+.mypage .payArea .title-bt h4 {margin-bottom: 10px;}
+.mypage .payArea .title-bt .btn {position: absolute; right: 0; top: -5px; width: 85px !important; font-size: 12px !important; line-height: 26px !important; height: auto !important;}
+.mypage td.price-wrap .total {border-top: 1px solid #e1e3e4; margin-top: 5px; padding-top: 5px;}
+.mypage td.price-wrap .text {display: inline-block; width: 38%; text-align: right;}
+.mypage td.price-wrap .price {display: inline-block; width: 50%; text-align: right;}
+.mypage table tfoot td {text-align: right; font-weight: 700; padding: 10px !important; font-size: 14px;}
+.mypage table p.memo {margin-top: 5px;}
+
+
+/* 예약(구매)취소-레이어팝업 */
+.cancelPopup h5.sub-title {
+	padding : 20px 0 15px;
+	margin: 0;
+	font-size: 0.9rem;
+}
+.cancelPopup h5.sub-article {
+	color: #6e6e6e;
+	font-size: 0.85rem;
+	font-weight: normal;
+	line-height: 1.5;
+}
+.cancelPopup h5.sub-article > b {color: #000;}
+.cancelPopup h5.sub-article > b + p {margin-top: 10px;}
+.cancelPopup h5.sub-article p:nth-of-type(3) {margin-top: 10px;}
+.cancelPopup h5.product {
+	padding: 20px 27px 0 20px;
+	color: #e8202e;
+	font-size: 0.95rem;
+	font-weight: bold;
+	line-height: 1.5;
+}
+.cancelPopup h5.product > span {color: #000;}
+.cancelPopup h5.product + p {
+	padding: 15px 20px 20px;
+	color: #000;
+}
+.cancelPopup h5.sub-title img {vertical-align:middle;}
+.cancelPopup .productInfo {
+	padding: 0;
+	margin-bottom: 20px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	background: #fff;
+	font-size: 13px;
+	letter-spacing: -0.5px;
+	line-height: 18px;
+}
+.cancelPopup .cancelGuide {
+	overflow-y: auto;
+	height: 80px;
+	padding: 4px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	background: #fff;
+	font-size: 13px;
+	line-height: 18px;
+}
+.cancelPopup .cancelRsn {
+	padding: 0 10px;
+	margin-bottom: 20px;
+	font-size: 0.85rem;
+}
+
+
+/* 해당 상품 사용-레이어팝업 */
+#usePopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: "Roboto";
+    background: #fff;
+}
+#useApprForm {padding: 20px 20px 80px;}
+#usePopup .pw-form .head {
+	z-index: 99;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    padding: 14px 0;
+    border-bottom: 1px solid #f2f2f2;
+    background: #fff;
+}
+#usePopup .pw-form p {
+	margin-top: 10px;
+	font-size: 0.85rem;
+}
+#usePopup .pw-form .sub_text {color: #e8202e;}
+#usePopup .pw-form .pw input {
+    width: 100%;
+    height: 50px;
+    padding-left: 20px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: "Roboto";
+    text-align: left;
+    line-height: 50px;
+}
+.pop-seller_ticket .pw-form .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	clear: both;
+	width: 100%;
+	margin-top: 30px;
+	text-align: center;
+	line-height: 25px;
+}
+.pop-seller_ticket .pw-form .button .btn  {
+	display: inline-block;
+	width: inherit;
+	height: 50px;
+	padding: 0;
+	margin-right: 10px;
+	border: none;
+	border-radius: 10px;
+	color: #fff;
+	background: #e8202e;
+	font-size: 0.95rem;
+	font-weight: bold;
+	font-family: "Roboto";
+	line-height: 50px;
+}
+.pop-seller_ticket .pw-form .button .btn.btn2 {
+	margin: 0 auto;
+	color: #fff;
+	background-color: #000;
+}
+
+
+/* 탐나오쿠폰내역 */
+/*.t-coupon ul.list li {margin-top: 8px;}*/
+.t-coupon ul.list li:first-child {margin-top: 0;}
+
+/* 탐나오쿠폰 사용조건 2016-07-15 추가 */
+.t-coupon .coupon-info {margin-top: .4rem; font-size: 11px; color: #5f5f60;}
+.t-coupon .coupon-info strong {color: #e8202e;}
+
+/* 비밀번호변경 */
+table.pw-ct {margin-top: 10px;}
+table.pw-ct th {width: 40%;}
+
+/* button 추가 */
+.menu-bar .air-link {position: absolute; right: 5px; top: 6px;}
+.menu-bar .air-link a {
+    display:inline-block; font-size: 12px; line-height: 24px; border: 1px solid #b73238; background: #cb363d; padding: 0 10px;
+    color: #333; border-radius: 3px; color: #fff;
+}
+
+/* 환불계좌정보 */
+.mypage .passbook-wrap h4 {font-size: 14px; font-weight: 700; margin-bottom: 5px; padding-left: 5px;}
+.mypage select.bank {width: 100%;}
+.mypage input.passbook {width: 100%;}
+.mypage .comm-agree1 {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.mypage .comm-agree1 > label {word-spacing: -1px;}
+.mypage .passbook-wrap input[type="checkbox"] {margin: 0 2px 0 0 !important;}
+.comm-sideBT2 {
+    display: block; vertical-align: middle; margin-top: 8px; text-align: center;
+    background: #fff; border: 1px solid #e8202e; color: #e8202e; font-size: 12px; padding: 0px 15px; line-height: 28px;
+}
+
+/* 찜한상품 */
+.txt-box {background:#FFF; border:1px solid #CCC; padding:10px; margin:10px 0; color:#000;}
+
+.mypage .txt-box {padding:10px; background:#FFF;}
+.mypage .check-all {height:30px; line-height:30px; padding-left:10px; color:#000; font-size:14px;}
+.mypage dl.check-goods {border:1px solid #CCC; color:#000;}
+.mypage dl.check-goods dt {height:25px; line-height:25px; font-size:14px; padding:0 10px; font-weight:normal}
+.mypage dl.check-goods dt strong {color:#FE434C; font-weight:normal;}
+.mypage dl.check-goods dt em {float:right;}
+.mypage dl.check-goods dd {padding:10px; background:#FFF; border-top:1px solid #CCC; border-bottom:1px solid #CCC;}
+.mypage dl.check-goods dd a {display:inline-block; padding:0 10px; height:20px; line-height:20px; background:#F4F4F4; color:#000; border:1px solid #CCC; border-radius:2px; margin: 4px 0 2px;}
+.mypage dl.check-goods dd a.pr-link {display: block; padding: 0; margin: 0; height: auto; line-height: 18px; background: transparent; color: #000; border: none; border-radius: 0;}
+.mypage dl.check-goods dd a img {margin-top:-2px;}
+.mypage dl.check-goods dd:last-child {border-bottom:0 none;}
+.mypage dl.price {float:left; width:100%; height:30px; margin:10px 0; padding:0 10px; border:1px solid #CCC; font-size:14px;}
+.mypage dl.price dt {float:left; line-height:27px; font-weight:normal; color:#000;}
+.mypage dl.price dd {float:right; line-height:28px; font-weight:bold; color:#FE434C;}
+
+.mypage dl.check-goods {border:1px solid #CCC; color:#000; border-top: none;}
+.mypage dl.check-goods:first-child {border-top: 1px solid #CCC;}
+.mypage dl.check-goods dt input {display: inline-block; vertical-align: middle;}
+.mypage dl.check-goods dt label {display: inline-block; vertical-align: middle; width: 90% !important; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.mypage dl.check-goods dd {position: relative;}
+.item-price {position: absolute; right: 22px; bottom: 17px; font-weight: 700;}
+.item-not {position: absolute; right: 10px; bottom: 10px; font-weight: 700; color: #FE434C; font-size: 13px;}
+
+.btn-lrWrap {display: table; width: 100%; margin-top: 15px;}
+.btn-lrWrap .l-area,
+.btn-lrWrap .r-area {display: table-cell; width: 50%;}
+.btn-lrWrap .r-area {text-align: right;}
+
+.pr-infoWrap {display: table; width: 100%; margin-top: 5px;}
+.pr-infoWrap .l-area,
+.pr-infoWrap .r-area {display: table-cell; width: 50%;}
+.pr-infoWrap .l-area {font-weight: 700;}
+.pr-infoWrap .r-area {text-align: right;}
+.pr-infoWrap .r-area span.text {color: #FE434C; font-weight: bold;}
+.pr-infoWrap .r-area a.cart-btn {height: 25px; line-height: 25px;}
+
+/* 찜한상품 비었을때 */
+.cart-none {clear: both; text-align: center; padding: 50px 0 !important;}
+/*.cart-none img {width: 33px;}*/
+/*.cart-none p {margin-top: 4px;}*/
+
+/* select box layer용 (2016-07-20) */
+.layer-select {top: 7px;}
+
+/* 주의사항 */
+.comm-infoText {background: #fff; border: 1px solid #ccc; padding: 10px;}
+.comm-infoText li {margin-top: 8px; line-height: 18px; font-size: 12px; background: url("../../images/mw/list/list1.gif") no-repeat left 8px; padding-left: 8px}
+.comm-infoText li:first-child {margin-top: 0;}
+.comm-infoText .point {color: #FE434C;}
+
+/* 나의 예약 > 4월 이벤트 */
+.my-event {clear: both; margin: 10px 0 10px; background: url("../../images/mw/event/event_fieldBG.jpg") repeat; overflow: hidden;}
+.my-event .pd-wrap {padding: 3px;}
+
+.my-event .ranking {
+	background: url("../../images/mw/event/my_event.jpg") no-repeat center top #fff; position: relative;
+	background-size: 294px 56px;
+}
+.my-event .ranking .photo img {width: 100%;}
+.my-event .ranking ul {text-align: center; padding-top: 55px; padding-bottom: 10px;}
+.my-event .ranking ul li {
+	display: inline-block; width: 60px; height: 80px;
+	background: url("../../images/mw/event/king_off.png") no-repeat center top;
+	background-size: 60px 60px;
+	text-align: center; font-size: 13px; line-height: 145px; color: #999999; font-weight: bold;
+	margin-left: 10px; 
+}
+.my-event .ranking ul li:first-child {margin-left: 0;}
+.my-event .ranking ul li.active {
+	background-image: url("../../images/mw/event/king_on.png");
+	color: #000000;
+}
+
+.my-event .btn-wrap {position: absolute; z-index: 2; top: 8px; right: 4px;}
+
+/* 개인정보수정 */
+/*#subContent table td {border: 1px solid #CCC; padding: 4px 10px;}*/
+#subContent table img {vertical-align: middle; width: 16px; margin-top: -2px;}
+#subContent .btn-list .btn1 {margin-bottom: 0px;}
+#subContent .board .btn-list .btn {
+    width: 45%;
+    height: 50px;
+    padding: 0;
+    margin: 10px 2px;
+	border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    font-family: "Roboto";
+    line-height: 50px;
+	background-color: #e8202e;
+}
+#subContent .board .btn-list .btn2 {
+	color:#fff;
+	background-color: #000;
+}
+
+.join-form .add .address2 {margin-top: 4px;}
+.pop-seller {width: 100%; height: 100%; top: 0px; margin: 0px; padding: 0;}
+.pop-seller .phone-check {padding: 20px 20px 80px;}
+.phone-check table td.number input {border: 1px solid #CCC; height: 40px; line-height: 40px; font-size: 0.85rem; padding-left: 12px;}
+
+.phoneCheckLayer {
+	position: fixed; width: 100%; top: 42%; top: calc(50% - 110px); left: 0; padding: 0; margin: 0;
+	background: #FFF; color: #000; z-index: 100; display: none; 
+}
+.phoneCheckLayer .btn-close {position:absolute; top:15px; right:18px;}
+.phoneCheckLayer .btn-close img {width: 22px;}
+.phoneCheckLayer > div {display: table-cell; vertical-align: top;}
+.phoneCheckLayer div.photo {width: 95px;}
+.phoneCheckLayer div.photo img {width: 100%;}
+.phoneCheckLayer div.text {padding-left: 10px;}
+.phoneCheckLayer div.text h6 {font-size: 15px; font-weight: 700; margin-bottom: 10px; padding-right: 25px;}
+.phoneCheckLayer div.text .memo {margin-top: 5px;}
+.phoneCheckLayer {width: 100%; height: 100%; top: 0px; margin: 0px; padding: 0;}
+.phoneCheckLayer .phone-check {padding: 20px 20px 80px;}
+
+#subContent .join-form td.add input {height:40px;}
+#subContent .join-form td.add .comm-btn {height:40px; line-height: 40px;}
+
+/* iPhone 6 Plus / Font Size */
+@media screen and (min-width: 360px) and (max-width: 415px){
+
+	.coupon-all-line .coupon-img{height: 92px;}
+
+}
+
+@media screen and (min-width: 415px) {
+
+	.coupon-all-line .coupon-img{height: 107px;}
+}

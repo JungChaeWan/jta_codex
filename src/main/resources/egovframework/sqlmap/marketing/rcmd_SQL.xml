@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="rcmd">
+
+<resultMap id="RCMD_R_00" class="oss.marketing.vo.ADMRCMDVO">
+    <result property="rcmdNum" 				column="RCMD_NUM" />
+    <result property="subject" 				column="SUBJECT" />
+    <result property="corpGubun"			column="CORP_GUBUN" />
+    <result property="corpNm" 			    column="CORP_NM" />
+    <result property="regDttm" 				column="REG_DTTM" />
+    <result property="viewYn" 				column="VIEW_YN" />
+</resultMap>
+
+<resultMap id="RCMD_R_01" class="oss.marketing.vo.ADMRCMDVO">
+    <result property="rcmdNum" 				column="RCMD_NUM" />
+    <result property="corpId"				column="CORP_ID" />
+    <result property="corpCd"				column="CORP_CD" />
+    <result property="corpGubun"			column="CORP_GUBUN" />
+    <result property="subject" 				column="SUBJECT" />
+    <result property="listImgPath" 			column="LIST_IMG_PATH" />
+    <result property="listImgFileNm" 		column="LIST_IMG_FILE_NM" />
+    <result property="dtlImgPath" 			column="DTL_IMG_PATH" />
+    <result property="dtlImgFileNm" 		column="DTL_IMG_FILE_NM" />
+    <result property="dtlMobileImgPath" 	column="DTL_MOBILE_IMG_PATH" />
+    <result property="dtlMobileImgFileNm"	column="DTL_MOBILE_IMG_FILE_NM" />
+    <result property="bannerImgPath"	 	column="BANNER_IMG_PATH" />
+    <result property="bannerImgFileNm"		column="BANNER_IMG_FILE_NM" />
+    <result property="regDttm" 				column="REG_DTTM" />
+    <result property="viewYn" 				column="VIEW_YN" />
+</resultMap>
+
+<resultMap id="RCMD_R_04" class="oss.marketing.vo.ADMRCMDVO">
+    <result property="rcmdNum" 				column="RCMD_NUM" />
+    <result property="corpNm" 				column="CORP_NM" />
+    <result property="subject" 				column="SUBJECT" />
+    <result property="listImgPath" 			column="LIST_IMG_PATH" />
+    <result property="regDttm" 				column="REG_DTTM" />
+</resultMap>
+
+<resultMap id="RCMD_R_05" class="oss.marketing.vo.ADMRCMDVO">
+    <result property="rcmdNum" 		        column="RCMD_NUM" />
+    <result property="dtlImgPath" 	        column="DTL_IMG_PATH" />
+    <result property="dtlMobileImgPath" 	column="DTL_MOBILE_IMG_PATH" />
+    <result property="corpId" 		        column="CORP_ID" />
+    <result property="corpNm" 		        column="CORP_NM" />
+    <result property="corpCd"		        column="CORP_CD" />
+    <result property="corpModCd"	        column="CORP_MOD_CD" />
+    <result property="lon"	 		        column="LON" />
+    <result property="lat"	 		        column="LAT" />
+    <result property="roadNmAddr" 	        column="ROAD_NM_ADDR" />
+    <result property="dtlAddr" 		        column="DTL_ADDR" />
+</resultMap>
+
+<resultMap id="RCMD_R_06" class="oss.marketing.vo.ADMRCMDVO">
+    <result property="prdtNum" 		column="PRDT_NUM" />
+    <result property="listImgPath"	column="LIST_IMG_PATH" />
+    <result property="prdtNm" 		column="PRDT_NM" />
+    <result property="prdtExp" 		column="PRDT_EXP" />
+    <result property="saleAmt" 		column="SALE_AMT" />
+    <result property="nmlAmt"	 	column="NML_AMT" />
+    <result property="disPer"		column="DIS_PER" />
+</resultMap>
+
+<resultMap id="RCMD_R_07" class="oss.marketing.vo.ADMRCMDVO">
+    <result property="rcmdNum" 			column="RCMD_NUM" />
+    <result property="corpId" 		    column="CORP_ID" />
+    <result property="corpNm"		    column="CORP_NM" />
+    <result property="subject" 		    column="SUBJECT" />
+    <result property="listImgPath"	    column="LIST_IMG_PATH" />
+    <result property="bannerImgPath"    column="BANNER_IMG_PATH" />
+</resultMap>
+
+<resultMap id="RCMD_R_10" class="oss.marketing.vo.ADMRCMDVO">
+    <result property="rcmdNum"			column="RCMD_NUM" />
+    <result property="subject"			column="SUBJECT" />
+    <result property="corpId"			column="CORP_ID" />
+    <result property="corpNm"			column="CORP_NM" />
+</resultMap>
+
+<select id="RCMD_S_00" resultMap="RCMD_R_00">
+SELECT RCMD_NUM
+  , SUBJECT
+  , CORP_GUBUN
+  , CORP_NM
+  , REG_DTTM
+  , VIEW_YN
+FROM (SELECT ROWNUM AS RN
+          , RCMD_NUM
+          , SUBJECT
+          , CORP_GUBUN
+          , CORP_NM
+          , REG_DTTM
+          , VIEW_YN
+        FROM (SELECT A.RCMD_NUM
+                  , A.SUBJECT
+                  , C.CD_NM AS CORP_GUBUN
+                  , B.CORP_NM
+                  , A.REG_DTTM
+                  , A.VIEW_YN
+                FROM TB_ADM_RCMD A
+                    INNER JOIN TB_CORP B
+                    ON  B.CORP_ID = A.CORP_ID
+                    INNER JOIN TB_CD C
+                    ON  C.CD_NUM = B.CORP_CD
+                        AND C.HRK_CD_NUM = 'CORP'
+                ORDER BY A.RCMD_NUM DESC))
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="RCMD_S_01" resultClass="int">
+SELECT COUNT(*) AS CNT
+  FROM TB_ADM_RCMD T_RCMD
+ INNER JOIN TB_CORP T_CORP
+    ON T_CORP.CORP_ID = T_RCMD.CORP_ID
+<isNotEmpty property="subject">
+ WHERE SUBJECT LIKE '%' || #subject# || '%'
+   		<isNotEqual property="corpGubun" compareValue="ALL">
+   			<isEqual property="corpGubun" compareValue="RC">
+   AND CORP_CD=SUBSTR(#corpGubun#, 0, 2)
+             </isEqual>
+             <isEqual property="corpGubun" compareValue="AD">
+   AND CORP_CD=SUBSTR(#corpGubun#, 0, 2)
+             </isEqual>
+    		 <isEqual property="corpGubun" compareValue="SPC">
+   AND CORP_SUB_CD='TICK'
+    		 </isEqual>
+    		 <isEqual property="corpGubun" compareValue="SPF">
+   AND CORP_SUB_CD='FOOD'
+    		 </isEqual>
+   		</isNotEqual>
+</isNotEmpty>
+</select>
+
+<select id="RCMD_S_02" resultClass="String">
+SELECT 'AR'||LPAD(NVL(MAX(SUBSTR(RCMD_NUM,3)),0) + 1, 8,'0')
+  FROM TB_ADM_RCMD
+</select>
+
+<select id="RCMD_S_03" resultMap="RCMD_R_01">
+SELECT RCMD_NUM
+	, T_RCMT.CORP_ID
+	, CD_NUM AS CORP_CD
+	, CD_NM AS CORP_GUBUN
+	, SUBJECT
+	, LIST_IMG_PATH
+	, LIST_IMG_FILE_NM
+	, DTL_IMG_PATH
+	, DTL_IMG_FILE_NM
+	, DTL_MOBILE_IMG_PATH
+	, DTL_MOBILE_IMG_FILE_NM
+	, BANNER_IMG_PATH
+	, BANNER_IMG_FILE_NM
+	, TO_CHAR(REG_DTTM, 'YYYY-MM-DD HH24:MI') AS REG_DTTM
+	, T_RCMT.VIEW_YN
+	FROM TB_ADM_RCMD T_RCMT
+               LEFT OUTER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID=T_RCMT.CORP_ID
+               LEFT OUTER JOIN TB_CD T_CD ON T_CD.CD_NUM=T_CORP.CORP_MOD_CD AND HRK_CD_NUM='COMP'
+      WHERE RCMD_NUM=#rcmdNum#
+</select>
+
+<select id="RCMD_S_04" resultMap="RCMD_R_04">
+SELECT RCMD_NUM
+  , CORP_NM
+  , SUBJECT
+  , LIST_IMG_PATH
+  , REG_DTTM
+FROM (SELECT ROWNUM AS RN
+          , RCMD_NUM
+          , CORP_NM
+          , SUBJECT
+          , LIST_IMG_PATH
+          , REG_DTTM
+        FROM (SELECT RCMD_NUM
+                  , CORP_NM
+                  , SUBJECT
+                  , LIST_IMG_PATH
+                  , TO_CHAR (REG_DTTM, 'YYYY-MM-DD') AS REG_DTTM
+                FROM TB_ADM_RCMD T_RCMD
+                    INNER JOIN TB_CORP T_CORP
+                    ON  T_CORP.CORP_ID = T_RCMD.CORP_ID
+                        AND T_CORP.TRADE_STATUS_CD = 'TS03'
+                WHERE T_RCMD.VIEW_YN = 'Y'
+                ORDER BY RCMD_NUM DESC))
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="RCMD_S_05" resultMap="RCMD_R_05">
+SELECT T_RCMD.RCMD_NUM
+    , T_RCMD.DTL_IMG_PATH
+    , T_RCMD.DTL_MOBILE_IMG_PATH
+    , T_CORP.CORP_ID AS CORP_ID
+    , T_CORP.CORP_NM
+    , T_CORP.CORP_CD
+    , T_CORP.CORP_MOD_CD
+    , T_CORP.LON
+    , T_CORP.LAT
+    , T_CORP.ROAD_NM_ADDR
+    , T_CORP.DTL_ADDR
+FROM TB_ADM_RCMD T_RCMD
+    INNER JOIN TB_CORP T_CORP
+    ON T_CORP.CORP_ID = T_RCMD.CORP_ID
+WHERE RCMD_NUM = #rcmdNum#
+</select>
+
+<select id="RCMD_S_06" resultMap="RCMD_R_06">
+  <isEqual property="corpModCd" compareValue="CADO">
+SELECT T_PRDT.PRDT_NUM
+		, SAVE_PATH || SAVE_FILE_NM AS LIST_IMG_PATH
+        , PRDT_NM
+        , PRDT_EXP
+        , SALE_AMT
+        , NML_AMT
+        , DECODE(NML_AMT, 0, 0, ROUND((1 - SALE_AMT/ NML_AMT) * 100)) AS DIS_PER
+    FROM TB_AD_PRDTINF T_PRDT
+    INNER JOIN TB_AD_AMTINF T_AMT ON T_AMT.PRDT_NUM=T_PRDT.PRDT_NUM
+        AND APL_DT=TO_CHAR(SYSDATE, 'YYYYMMDD')
+    INNER JOIN TB_CM_IMG T_IMG ON T_IMG.LINK_NUM=T_PRDT.CORP_ID
+       AND IMG_SN='1'
+    WHERE CORP_ID=#corpId#
+        AND TRADE_STATUS='TS03'
+        AND PRINT_YN='Y'
+  </isEqual>
+
+  <isEqual property="corpModCd" compareValue="CRCO">
+    <![CDATA[
+  SELECT PRDT_NUM /*상품번호*/,
+   PRDT_NM /*상품명*/,
+   CAR_KIND || ' / ' || CAR_FUEL || ' / ' || MAXI_NUM || '인승' AS PRDT_EXP /* 차량 설명 */,
+   NML_AMT /*정상가*/,
+   DIS_PER /*할인율*/,
+   SALE_AMT /*할인가*/,
+   SAVE_PATH || SAVE_FILE_NM AS LIST_IMG_PATH /* 차량 이미지 */
+      FROM (
+        SELECT V_PRDT.PRDT_NUM /*상품번호*/,
+           T_DIV.PRDT_NM /*상품명*/,
+           V_PRDT.CORP_NM /*렌터카명*/,
+           V_PRDT.SALE_TM /*기준시간*/,
+           V_PRDT.CAR_KIND /* 차종 */,
+           (SELECT CD_NM FROM TB_CD WHERE CD_NUM=T_DIV.USE_FUEL_DIV) AS CAR_FUEL /* 연료 */,
+           T_DIV.MAXI_NUM /* 인원 */,
+           (V_PRDT.NML_AMT1 + V_PRDT.NML_AMT2) AS NML_AMT /*정상가*/,
+           V_PRDT.DIS_PER /*할인율*/,
+           V_PRDT.ABLE_YN /*사용가능여부*/,
+           (CASE V_PRDT.ADD_USE_DIS_PER_APL_YN
+                 WHEN 'Y' THEN TRUNC(((V_PRDT.NML_AMT1 + V_PRDT.NML_AMT2) * (100 - V_PRDT.DIS_PER) / 100), -2)
+                 ELSE TRUNC((V_PRDT.NML_AMT1 * (100 - V_PRDT.DIS_PER) / 100), -2) + V_PRDT.NML_AMT2
+               END ) AS SALE_AMT /*할인가*/,
+           T_DIV.CAR_IMG AS SAVE_PATH ,
+           '' AS SAVE_FILE_NM
+               FROM (SELECT T_PRDT.PRDT_NUM /*상품번호*/,
+                       T_PRDT.PRDT_NM /*상품명*/,
+                       T_PRDT.CONF_DTTM /*승인 일시*/,
+                       T_PRDT.RC_CARDIV_NUM /*차종 코드*/,
+                       T_DFT.RC_NM AS CORP_NM /*렌터카 명*/,
+                       (SELECT CD_NM FROM TB_CD WHERE CD_NUM=T_PRDT.CAR_DIV) AS CAR_KIND /* 차종 */,
+                       (SELECT CD_NM FROM TB_CD WHERE CD_NUM=T_PRDT.USE_FUEL_DIV) AS CAR_FUEL /* 연료 */,
+                       T_PRDT.MAXI_NUM /* 인원 */,
+                       SALE_TM /*기준시간*/,
+                       (TRUNC(T_DFT.SALE_TM / 24) * T_AMT.TM24_AMT + TRUNC(MOD(T_DFT.SALE_TM, 24) / 12) * T_AMT.TM12_AMT + TRUNC(MOD(MOD(T_DFT.SALE_TM, 24), 12) / 6) * T_AMT.TM6_AMT) AS NML_AMT1 /*기본금액*/,
+                       T_DFT.ADD_USE_APL_TM ,
+                       CASE
+                         WHEN MOD(MOD(MOD(T_DFT.SALE_TM, 24), 12), 6) > T_DFT.ADD_USE_APL_TM THEN T_DFT.ADD_USE_APL_TM * T_AMT.TM1_ADD_AMT
+                         ELSE MOD(MOD(MOD(T_DFT.SALE_TM, 24), 12), 6) * T_AMT.TM1_ADD_AMT
+                       END AS NML_AMT2 /*추가금액*/,
+                       T_DFT.WKD_DIS_PER_APL_YN /*주말 할인율 적용 여부*/,
+                       T_DFT.WKD_DIS_PER_APL_WEEK /*주말 할인율 적용 요일*/ /*사용기간 할인율 적용시간과 비교*/,
+                       (CASE
+                          WHEN 24 < TO_NUMBER(T_DFT.DIS_PER_APL_TM) THEN 0 /*주말할인율 적용여부*/
+                          ELSE (
+                            CASE T_DFT.WKD_DIS_PER_APL_YN
+                              WHEN 'Y' /*입력된 예약 시작일에 대한 요일 체크*/
+                                THEN (
+                                  CASE
+                                    WHEN INSTR(WKD_DIS_PER_APL_WEEK, TO_CHAR(SYSDATE + 1, 'D') - 1) > 0 THEN T_DISPER.WKD_DIS_PER
+                                    ELSE T_DISPER.WDAY_DIS_PER
+                                  END )
+                              ELSE T_DISPER.WDAY_DIS_PER
+                         END )
+                       END) AS DIS_PER ,
+                       (
+                         CASE
+                           WHEN 24 < TO_NUMBER(T_DFT.RSV_ABLE_MINI_TM) THEN 'N' /*당일예약불가 체크*/
+                           ELSE (
+                             CASE
+                               WHEN (T_DFT.DAY_RSV_UNABLE_YN = 'Y' )
+                                 THEN (
+                                   CASE
+                                     WHEN TO_CHAR(SYSDATE + 1, 'HH24') < DAY_RSV_UNABLE_TM THEN T_ABLE.ABLE_YN
+                                     ELSE 'N'
+                                   END) /*예약 최대시간 체크*/
+                                 ELSE (
+                                   CASE
+                                     WHEN RSV_MAXI_TM_APL_YN = 'Y'
+                                       THEN (
+                                         CASE
+                                           WHEN 24 > RSV_MAXI_TM THEN 'N'
+                                           ELSE T_ABLE.ABLE_YN
+                                         END )
+                                       ELSE T_ABLE.ABLE_YN
+                                 END )
+                             END )
+                      END) AS ABLE_YN ,
+                      T_DFT.ADD_USE_DIS_PER_APL_YN /*추가이용할인율적용여부*/
+                        FROM TB_RC_PRDTINF T_PRDT
+                          INNER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID = T_PRDT.CORP_ID
+                              AND T_CORP.CORP_CD = 'RC'
+                              AND T_CORP.CORP_ID = #corpId#
+                              AND T_CORP.TRADE_STATUS_CD = 'TS03' /*렌터카회사-조회조건*/
+                          INNER JOIN (SELECT PRDT_NUM , DECODE(SUM(DISABLE_CNT), 0 , 'Y', 'N') AS ABLE_YN
+                               FROM (SELECT T_ABLE.PRDT_NUM /*상품번호*/,
+                                        DT /*예약일*/,
+                                        DTTM /*체크시간*/,
+                                        CASE
+                                          WHEN TOTAL_CAR_NUM - NVL(USE_CNT, 0) < 1 THEN 1
+                                          ELSE 0
+                                        END AS DISABLE_CNT /*불가능여부(1이면 불가능)*/
+                                          FROM (SELECT PRDT_NUM /*상품번호*/,
+                                                   DT /*예약일*/,
+                                                   TOTAL_CAR_NUM /*차량보유대수*/ /*(예약일자별 * 상품별)의 차량보유대수*/
+                                                      FROM (SELECT T_PRDT.PRDT_NUM ,
+                                                                DT ,
+                                                                NVL(TOTAL_CAR_NUM, 0) AS TOTAL_CAR_NUM ,
+                                                                RANK() OVER(PARTITION BY T_PRDT.PRDT_NUM, DT
+                                                                    ORDER BY (DT - APL_DT)) AS RK
+                                                                        FROM (SELECT PRDT_NUM ,
+                                                               DT
+                                                          FROM (SELECT TO_CHAR(SYSDATE + LEVEL, 'YYYYMMDD') AS DT
+                                                                  FROM DUAL CONNECT BY LEVEL <= 2 ),
+                                                               TB_RC_PRDTINF ) T_PRDT LEFT OUTER JOIN TB_RC_CNTINF T_CNTINF ON T_CNTINF.PRDT_NUM = T_PRDT.PRDT_NUM
+                                                   AND T_CNTINF.APL_DT <= T_PRDT.DT
+                                                 WHERE 1=1 )
+                                         WHERE RK = 1 ) T_ABLE /*예약현황 체크 조인*/
+                                         LEFT OUTER JOIN (SELECT PRDT_NUM /*예약상품번호*/, DTTM /*사용일시*/, COUNT(*) AS USE_CNT /*사용건수*/
+                                          FROM (SELECT PRDT_NUM ,
+                                                       DTTM
+                                                  FROM (SELECT *
+                                                          FROM TB_RC_USEHIST
+                                                         WHERE USE_DT BETWEEN TO_CHAR(SYSDATE + 1, 'YYYYMMDD') AND TO_CHAR(SYSDATE + 2, 'YYYYMMDD')) T_USEHIST
+                                                         INNER JOIN (SELECT TO_DATE(TO_CHAR(SYSDATE + 1, 'YYYYMMDD')||'1200', 'YYYYMMDDHH24MI') + ((LEVEL -1) / 24) AS DTTM FROM DUAL CONNECT BY LEVEL <= 24 ) T_DTTM
+                                                         ON T_DTTM.DTTM BETWEEN TO_DATE(USE_DT||START_TM, 'YYYYMMDDHH24MI') AND TO_DATE(USE_DT||END_TM, 'YYYYMMDDHH24MI') )
+                                         GROUP BY PRDT_NUM , DTTM ) AS T_USEABLE ON T_USEABLE.PRDT_NUM = T_ABLE.PRDT_NUM
+                                   AND TO_CHAR(T_USEABLE.DTTM, 'YYYYMMDD') = T_ABLE.DT )
+                         GROUP BY PRDT_NUM ) T_ABLE ON T_ABLE.PRDT_NUM = T_PRDT.PRDT_NUM /*AND T_ABLE.ABLE_YN = 'Y'*/ /*기본정보+기준시간*/INNER JOIN (SELECT
+                                                       CASE ADD_USE_ABLE_TM
+                                                         WHEN '1' THEN (
+                                                                       CASE
+                                                                         WHEN ADD_USE_MAXI_TM >= T24_MOD THEN T24_CNT * 24 + ADD_TIME
+                                                                         ELSE (
+                                                                                       CASE
+                                                                                         WHEN T12_CNT > 0 THEN DECODE(ADD_TIME, 0, DECODE(T6_CNT, 0, T24_CNT * 24 + 12, T24_CNT * 24 + 24), T24_CNT * 24 + 24)
+                                                                                         WHEN T6_CNT > 0 THEN DECODE(ADD_TIME, 0, T24_CNT * 24 + 6, T24_CNT * 24 + 12)
+                                                                                         ELSE T24_CNT * 24 + 6
+                                                                                       END )
+                                                                       END ) /*24시간 기준 시간계산*/
+                                                         ELSE (
+                                                                       CASE
+                                                                         WHEN T12_CNT > 0 THEN (
+                                                                                       CASE
+                                                                                         WHEN ADD_USE_MAXI_TM >= ADD_TIME THEN T24_CNT * 24 + 12 + ADD_TIME
+                                                                                         ELSE (T24_CNT + 1) * 24
+                                                                                       END )
+                                                                         WHEN T6_CNT > 0 THEN (
+                                                                                       CASE
+                                                                                         WHEN ADD_USE_MAXI_TM >= ADD_TIME THEN T24_CNT * 24 + 6 + ADD_TIME
+                                                                                         ELSE T24_CNT * 24 + 12
+                                                                                       END )
+                                                                         ELSE (
+                                                                                       CASE
+                                                                                         WHEN ADD_USE_MAXI_TM >= ADD_TIME THEN T24_CNT * 24 + ADD_TIME
+                                                                                         ELSE T24_CNT * 24 + 6
+                                                                                       END )
+                                                                       END ) /*기준시간 기준 시간계산*/
+                                                       END AS SALE_TM , CORP_ID , RC_NM , WKD_DIS_PER_APL_YN , WKD_DIS_PER_APL_WEEK , ADD_USE_ABLE_TM , ADD_USE_APL_TM , RSV_ABLE_MINI_TM , DIS_PER_APL_TM , RSV_TM , ADD_USE_DIS_PER_APL_YN , DAY_RSV_UNABLE_YN , DAY_RSV_UNABLE_TM , RSV_MAXI_TM_APL_YN , RSV_MAXI_TM
+                          FROM TB_RC_DFTINF , (SELECT 24 AS RSV_TM , 1 AS T24_CNT , 0 AS T24_MOD , 0 AS T12_CNT , 0 AS T6_CNT , 0 AS ADD_TIME FROM DUAL) /*입력된 날짜에 대한 필요 변수*/) T_DFT
+                          ON T_DFT.CORP_ID = T_CORP.CORP_ID /*요금*/INNER JOIN (SELECT PRDT_NUM , APL_DT , TM6_AMT , TM12_AMT , TM24_AMT , TM1_ADD_AMT , RANK() OVER(PARTITION BY PRDT_NUM
+                                 ORDER BY (TO_CHAR(SYSDATE + 1, 'YYYYMMDD') - APL_DT)) AS RK
+                          FROM TB_RC_AMTINF
+                         WHERE APL_DT <= TO_CHAR(SYSDATE + 1, 'YYYYMMDD') ) T_AMT ON T_AMT.RK = 1
+                   AND T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM /*할인율*/
+                   INNER JOIN (SELECT PRDT_NUM , DIS_PER_NUM , APL_START_DT , APL_END_DT , WDAY_DIS_PER , WKD_DIS_PER , RANK() OVER(PARTITION BY PRDT_NUM
+                                 ORDER BY DIS_PER_NUM DESC) AS RK
+                          FROM TB_RC_DISPERINF
+                         WHERE APL_START_DT <= TO_CHAR(SYSDATE + 1, 'YYYYMMDD')
+                           AND APL_END_DT >= TO_CHAR(SYSDATE + 1 , 'YYYYMMDD') ) T_DISPER ON T_DISPER.PRDT_NUM = T_PRDT.PRDT_NUM
+                   AND T_DISPER.RK = 1
+                 WHERE 1=1
+                   AND T_PRDT.TRADE_STATUS = 'TS03' /*차량구분검색조건*/ /*차량구분검색조건(탭)*/ /*단건조회용*/ /* 차량명(검색) */) AS V_PRDT
+                   /*LEFT OUTER JOIN TB_CM_IMG T_IMG ON T_IMG.LINK_NUM = V_PRDT.PRDT_NUM*/
+                   INNER JOIN TB_RC_CARDIV T_DIV ON T_DIV.RC_CARDIV_NUM=V_PRDT.RC_CARDIV_NUM AND USE_YN='Y'           
+         ORDER BY V_PRDT.ABLE_YN DESC,
+               V_PRDT.DIS_PER DESC ,
+               ((V_PRDT.NML_AMT1 + V_PRDT.NML_AMT2) * (100 - V_PRDT.DIS_PER) / 100) ASC )
+     ]]>
+  </isEqual>
+
+  <isNotEqual property="corpModCd" compareValue="CADO">
+    <isNotEqual property="corpModCd" compareValue="CRCO">
+      <isNotEqual property="corpModCd" compareValue="CSVO">
+  SELECT T_PRDT.PRDT_NUM
+        , SAVE_PATH || SAVE_FILE_NM AS LIST_IMG_PATH
+        , PRDT_NM
+        , PRDT_INF AS PRDT_EXP
+        , SALE_AMT
+        , NML_AMT
+        , DECODE(NML_AMT, 0, 0, ROUND((1 - SALE_AMT/ NML_AMT) * 100)) AS DIS_PER
+        FROM TB_SP_PRDTINF T_PRDT
+          INNER JOIN TB_SP_OPTINF T_OPT ON T_OPT.PRDT_NUM=T_PRDT.PRDT_NUM
+            AND SP_OPT_SN='1' AND SP_DIV_SN='1'
+          INNER JOIN TB_CM_IMG T_IMG ON T_IMG.LINK_NUM=T_PRDT.PRDT_NUM
+            AND IMG_SN='1'
+    WHERE CORP_ID=#corpId#
+        AND TRADE_STATUS='TS03'
+        AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN SALE_START_DT AND SALE_END_DT
+      ORDER BY PRDT_NM
+      </isNotEqual>
+    </isNotEqual>
+  </isNotEqual>
+  
+
+  <isEqual property="corpModCd" compareValue="CSVO">
+  SELECT T_PRDT.PRDT_NUM
+        , SAVE_PATH || SAVE_FILE_NM AS LIST_IMG_PATH
+        , PRDT_NM
+        , PRDT_INF AS PRDT_EXP
+        , SALE_AMT
+        , NML_AMT
+        , DECODE(NML_AMT, 0, 0, ROUND((1 - SALE_AMT/ NML_AMT) * 100)) AS DIS_PER
+        FROM TB_SV_PRDTINF T_PRDT
+          INNER JOIN TB_SV_OPTINF T_OPT ON T_OPT.PRDT_NUM=T_PRDT.PRDT_NUM
+            AND SV_OPT_SN='1'
+          INNER JOIN TB_CM_IMG T_IMG ON T_IMG.LINK_NUM=T_PRDT.PRDT_NUM
+            AND IMG_SN='1'
+    WHERE CORP_ID=#corpId#
+        AND TRADE_STATUS='TS03'
+        AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN SALE_START_DT AND SALE_END_DT
+      ORDER BY PRDT_NM
+  </isEqual>
+</select>
+
+<select id="RCMD_S_07" resultMap="RCMD_R_07">
+SELECT RCMD_NUM
+		, CORP_ID
+        , CORP_NM
+        , SUBJECT
+        , LIST_IMG_PATH
+        , BANNER_IMG_PATH
+    FROM (
+        SELECT ROWNUM AS RN
+        		, RCMD_NUM
+                , T_RCMD.CORP_ID AS CORP_ID
+                , CORP_NM
+                , SUBJECT
+                , T_RCMD.LIST_IMG_PATH
+                , T_RCMD.BANNER_IMG_PATH
+            FROM TB_ADM_RCMD T_RCMD
+                LEFT OUTER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID=T_RCMD.CORP_ID
+            WHERE (CORP_MOD_CD=#corpModCd#
+              <isEqual property="corpModCd" compareValue="CRCO">
+             	OR CORP_MOD_CD='CSPC'
+              </isEqual>
+              <isEqual property="corpModCd" compareValue="CSPU">
+             	OR CORP_MOD_CD='CSPL' OR CORP_MOD_CD='CSPB' OR CORP_MOD_CD='CSPE'
+              </isEqual>
+              )
+              AND VIEW_YN = 'Y'
+            ORDER BY REG_DTTM DESC
+    )
+    WHERE RN BETWEEN 1 AND 6
+</select>
+
+<select id="RCMD_S_08" resultClass="int">
+SELECT COUNT(*) AS CNT
+  FROM TB_ADM_RCMD T_RCMD
+ INNER JOIN TB_CORP T_CORP
+    ON T_CORP.CORP_ID = T_RCMD.CORP_ID
+ WHERE T_RCMD.VIEW_YN = 'Y'
+<isNotEmpty property="subject">
+   AND SUBJECT LIKE '%' || #subject# || '%'
+   		<isNotEqual property="corpGubun" compareValue="ALL">
+   			<isEqual property="corpGubun" compareValue="RC">
+   AND CORP_CD=SUBSTR(#corpGubun#, 0, 2)
+             </isEqual>
+             <isEqual property="corpGubun" compareValue="AD">
+   AND CORP_CD=SUBSTR(#corpGubun#, 0, 2)
+             </isEqual>
+    		 <isEqual property="corpGubun" compareValue="SPC">
+   AND CORP_SUB_CD='TICK'
+    		 </isEqual>
+    		 <isEqual property="corpGubun" compareValue="SPF">
+   AND CORP_SUB_CD='FOOD'
+    		 </isEqual>
+   		</isNotEqual>
+</isNotEmpty>
+</select>
+
+<select id="RCMD_S_09" resultMap="RCMD_R_07">
+SELECT 
+	RCMD_NUM , 
+	CORP_ID,
+	 CORP_NM	,
+	 SUBJECT,
+	 LIST_IMG_PATH,
+	 BANNER_IMG_PATH     
+FROM(         
+	SELECT 
+		ROW_NUMBER() OVER(ORDER BY DBMS_RANDOM.RANDOM ) AS RN,           
+		RCMD_NUM,
+		T_RCMD.CORP_ID AS CORP_ID,
+		CORP_NM,     
+		SUBJECT,           
+		T_RCMD.LIST_IMG_PATH,
+		T_RCMD.BANNER_IMG_PATH
+	FROM 
+		TB_ADM_RCMD AS T_RCMD                 
+	LEFT OUTER JOIN 
+		TB_CORP AS T_CORP 
+	ON T_CORP.CORP_ID = T_RCMD.CORP_ID
+            WHERE (CORP_MOD_CD=#corpModCd#
+            	<isEqual property="corpModCd" compareValue="CSPU">
+             	OR CORP_MOD_CD='CSPL' OR CORP_MOD_CD='CSPB' OR CORP_MOD_CD='CSPE'
+                </isEqual>
+              )
+              AND VIEW_YN = 'Y'
+            ORDER BY DBMS_RANDOM.RANDOM
+    )
+    WHERE RN BETWEEN 1 AND 4
+</select>
+
+<select id="RCMD_S_10" resultMap="RCMD_R_10">
+SELECT RCMD_NUM ,
+	   CORP_ID ,
+       CORP_NM ,
+       SUBJECT
+  FROM (SELECT ROWNUM AS RN ,
+           RCMD_NUM ,
+           CORP_ID ,
+           CORP_NM ,
+           SUBJECT
+      FROM (SELECT RCMD_NUM ,
+               T_CORP.CORP_ID ,
+               T_CORP.CORP_NM ,
+               SUBJECT
+          FROM TB_ADM_RCMD T_RCMT
+            LEFT OUTER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID = T_RCMT.CORP_ID
+          WHERE 1=1
+          	<isEqual property="prdtNum" compareValue="corpNm">
+			 AND T_CORP.CORP_NM LIKE '%' || #prdtNm# || '%'
+			</isEqual>
+			<isEqual property="prdtNum" compareValue="subject">
+			 AND SUBJECT LIKE '%' || #prdtNm# || '%'
+			</isEqual>
+         ORDER BY REG_DTTM DESC )
+      )
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="RCMD_S_11" resultClass="int">
+SELECT COUNT(*) AS CNT
+  FROM TB_ADM_RCMD T_RCMD
+ INNER JOIN TB_CORP T_CORP
+    ON T_CORP.CORP_ID = T_RCMD.CORP_ID
+ WHERE 1=1
+	<isEqual property="prdtNum" compareValue="corpNm">
+	 AND T_CORP.CORP_NM LIKE '%' || #prdtNm# || '%'
+	</isEqual>
+	<isEqual property="prdtNum" compareValue="subject">
+	 AND SUBJECT LIKE '%' || #prdtNm# || '%'
+	</isEqual>
+</select>
+
+<insert id="RCMD_I_00">
+INSERT INTO TB_ADM_RCMD
+     ( RCMD_NUM
+     , CORP_ID
+     , SUBJECT
+     , LIST_IMG_PATH
+     , LIST_IMG_FILE_NM
+     , DTL_IMG_PATH
+     , DTL_IMG_FILE_NM
+     , DTL_MOBILE_IMG_PATH
+     , DTL_MOBILE_IMG_FILE_NM
+     , BANNER_IMG_PATH
+     , BANNER_IMG_FILE_NM
+     , REG_DTTM
+     , REG_ID
+     , VIEW_YN
+     )
+VALUES
+     ( #rcmdNum#
+     , #corpId#
+     , #subject#
+     , #listImgPath#
+     , #listImgFileNm#
+     , #dtlImgPath#
+     , #dtlImgFileNm#
+     , #dtlMobileImgPath#
+     , #dtlMobileImgFileNm#
+     , #bannerImgPath#
+     , #bannerImgFileNm#
+     , SYSDATE
+     , #regId#
+     , 'Y'
+     )
+</insert>
+
+<update id="RCMD_U_00">
+UPDATE TB_ADM_RCMD SET
+	CORP_ID=#corpId#
+	, SUBJECT=#subject#
+	<isNotEmpty property="listImgFileNm">
+	, LIST_IMG_PATH=#listImgPath#
+    , LIST_IMG_FILE_NM=#listImgFileNm#
+    </isNotEmpty>
+    <isNotEmpty property="dtlImgFileNm">
+    , DTL_IMG_PATH=#dtlImgPath#
+    , DTL_IMG_FILE_NM=#dtlImgFileNm#
+    </isNotEmpty>
+    <isNotEmpty property="dtlMobileImgFileNm">
+    , DTL_MOBILE_IMG_PATH=#dtlMobileImgPath#
+    , DTL_MOBILE_IMG_FILE_NM=#dtlMobileImgFileNm#
+    </isNotEmpty>
+    <isNotEmpty property="bannerImgFileNm">
+    , BANNER_IMG_PATH=#bannerImgPath#
+    , BANNER_IMG_FILE_NM=#bannerImgFileNm#
+    </isNotEmpty>
+    , VIEW_YN = #viewYn#
+    WHERE RCMD_NUM=#rcmdNum#
+</update>
+
+<delete id="RCMD_D_00">
+DELETE FROM TB_ADM_RCMD
+	WHERE RCMD_NUM=#rcmdNum#
+</delete>
+
+</sqlMap>

@@ -1,0 +1,438 @@
+@charset "utf-8";
+
+
+/* - wrap - */
+.list_wrap {font-family: "Roboto";}
+
+
+/* - caption-typeB - */
+.align-area .caption-typeB .text-red:before {
+    position: relative;
+    top: 5px;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 4px;
+    background: url("../../../images/web/rent/clock.png") no-repeat;
+    content: "";
+}
+
+
+/* - filter-select - */
+.__sort .sort-filter li {
+    width: 75px;
+    height: 35px;
+    margin: 0 2px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    text-align: center;
+    line-height: 0;
+}
+.__sort .sort-filter li button {
+    display: inline-block;
+    width: 77px;
+    height: 37px;
+    padding: 10px;
+    color: #757575;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-family: "Roboto";
+}
+.__sort .sort.active {
+    position: relative;
+    right: 1px;
+    bottom: 1px;
+    padding: 10px;
+    color: #DE1724;
+    border: 1px solid #DE1724;
+    background: none;
+    background-color: #fff;
+}
+.area.type.select label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+.area.type.select select {
+    width: 190px;
+    height: 40px;
+    padding: 0 20px;
+    color: #000;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-family: "Roboto";
+    line-height: 39px;
+}
+.sort-search input {
+    height: 39px;
+    padding: 0 0 0 20px;
+    border-radius: 12px 0 0 12px;
+    border-right: 0;
+}
+.sort-search input:focus {border-right: 0;}
+.__sort .sort-filter .sort-search {
+    height: 40px;
+    line-height: 0;
+}
+.__sort .sort-filter .sort-search-btn {
+    width: 60px;
+    height: 39px;
+    border-radius: 0 12px 12px 0;
+    border-left: 0;
+}
+
+
+/* - item-list - */
+.rent-list-area2 {margin-bottom: 30px;}
+/*.rent-list-area2 .rent-group:first-child {margin-top: 0;}*/
+.rent-list-area2 .rent-group {
+    display: flex;
+    width: 100%;
+    margin-top: 30px;
+}
+
+
+/* - item-list__left - */
+.rent-group .top-info {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: 2px solid #f1f1f1;
+    border-radius: 15px;
+    background-color: #fff;
+}
+.rent-group .top-info .info-tie {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 398px;
+    z-index: -1;
+}
+.rent-group .top-info .photo {
+    width: 235px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.rent-group .top-info .photo img {
+    width: 160px;
+    padding: 0;
+}
+.rent-group .top-info .photo img.logo-play {
+    display: inline-block;
+    position: relative;
+    width: auto;
+}
+.rent-group .top-info .photo img.logo-play.maker {
+    height: auto;
+    right: 75px;
+}
+.rent-group .top-info .text {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    color: #000;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.rent-group .top-info .text .align-left {padding: 0 15px;}
+.rent-group .top-info .text .align-right {margin-top: 20px;}
+.rent-group .top-info .title {
+    display: flex;
+    justify-content: left;
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 1.15rem;
+    letter-spacing: -1.5px;
+}
+.rent-list-area .align-left .sub-memo ul {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 1px;
+    margin-top: 5px;
+    border: none;
+    color: #7f7f7f;
+}
+.rent-list-area .align-left .sub-memo ul li {
+    display: flex;
+    align-items: center;
+    margin-right: 6px;
+    border-bottom: 0;
+    color: #757575;
+    font-weight: bold;
+}
+.rent-list-area .align-left .sub-memo ul li img {margin-right: 2px;}
+.rent-group .top-info .text .align-right .memo:before {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    background: url("../../../images/web/rent/hour_check.png") no-repeat;
+    content: "";
+}
+.rent-group .top-info .text .align-right .memo {
+    color: #697496;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+.rent-group .top-info .info {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.rent-group .top-info .info .red-sticker {
+    padding: 2px 4px;
+    margin-right: 8px;
+    color: #fff;
+    border: 1px solid #DE1724;
+    border-radius: 24px;
+    background-color: #DE1724;
+    font-size: 0.6rem;
+}
+.rent-group .top-info .info .price {
+    color: #000;
+    font-size: 1.3rem;
+}
+
+
+/* - 최저가 예약_CTA - */
+.reservation-btn-group {
+    display: block;
+    width: 100%;
+}
+.reservation-btn-group .lowest-price {
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    border-radius: 0 0 15px 15px;
+    background-color: #106DF9;
+    font-size: 1.0rem;
+    font-family: "Roboto";
+    font-weight: bold;
+    line-height: 48px;
+    letter-spacing: -0.5px;
+}
+
+
+/* - item-list__right - */
+.rent-group .list {
+    display: grid;
+    grid-template-rows: auto;
+    margin-left: -10px;
+}
+.rent-list-area2 ul {
+    display: grid;
+    height: 100%;
+    margin-top: 0;
+    border-top: none;
+    border: 2px solid #f1f1f1;
+    border-radius: 0 15px 15px 0;
+    box-sizing: border-box;
+}
+.rent-list-area2 ul li {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f1f1f1;
+}
+.rent-list-area2 ul li:hover {background-color: #f6f6f6;}
+.rent-list-area2 ul li:last-of-type {border-bottom: none;}
+.rent-list-area2 ul li .link-area {
+    padding: 0;
+    height: 100%;
+}
+.rent-list-area2 ul li .link-area a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.rent-list-area2 .name {
+    padding: 0;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.rent-list-area2 .name p {
+    overflow: hidden;
+    width: 165px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.product-info .rent-cover {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+.rent-list-area2 .text {
+    display: inline-block;
+    width: 15px;
+    margin-right: 2px;
+}
+.rent-list-area2 .text {
+    width: 75px;
+    text-align: left;
+    color: #000;
+}
+.rent-list-area2 .text.advanced:before,
+.rent-list-area2 .text.common:before {
+    position: relative;
+    top: 3px;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 2px;
+    content: "";
+}
+.rent-list-area2 .text.advanced:before {
+    background: url("../../../images/web/rent/advanced.png") no-repeat;
+}
+.rent-list-area2 .text.common:before {
+    background: url("../../../images/web/rent/common.png") no-repeat;
+}
+.product-info .rent-cover > div {
+    color: #757575;
+    font-size: 0.8rem;
+}
+.product-info .rent-cover > div.text {
+    color: #000;
+    font-weight: bold;
+}
+.product-info .rent-cover > div.text.advanced {color: #DE1724;}
+.product-info .rent-cover > div.text.common {color: #106DF9;}
+.product-info .rent-cover .career:before {
+    display: inline-block;
+    width: 2px;
+    height: 10px;
+    margin-right: 10px;
+    background-color: #dddd;
+    content: "";
+}
+.product-info .rent-option {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.product-info  .rent-option > div {
+    height: 20px;
+    padding: 0 9px;
+    color: #fff;
+    border-radius: 24px;
+    background-color: #697496;
+    font-size: 0.8rem;
+    line-height: 21px;
+}
+
+
+/* - option-view - */
+.rent-list-area2 .link-area .rc-tx {
+    width: auto;
+    margin-left: 31px;
+}
+.rent-list-area2 ul li .link-area a > div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+    padding: 30px 0;
+}
+.rent-list-area2 ul li .link-area a > div.price-info {
+    flex-basis: 115px;
+    margin: 0 30px;
+}
+.rc-tx .car_op ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+}
+.rent-list-area2 .car_op ul li {
+    width: 75px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    color: #757575;
+    border: 1px solid #757575;
+    border-radius: 40px;
+    line-height: 22px;
+}
+.rent-list-area2 .car_op ul li.on {
+    color: #106DF9;
+    border: 1px solid #106DF9;
+    font-weight: bold;
+}
+
+
+/* - price - */
+.rent-list-area2 .price-info {
+    display: flex;
+    align-items: end;
+    text-align: right;
+}
+.rent-list-area2 .price-info .bxLabel {line-height: 0;}
+.rent-list-area2 .price-info .main_label.yellow {
+    padding: 0 6px;
+    border-radius: 24px;
+}
+.rent-list-area2 .price-info .main_label.back-red {
+    padding: 0 6px;
+    border-radius: 24px;
+}
+.rent-list-area2 .price-info .main_label.pink {
+    padding: 0 6px;
+    border-radius: 24px;
+}
+.rent-list-area2 .price-info .price {
+    margin-top: 3px;
+    color: #000;
+    font-size: 1.3rem;
+}
+
+
+/* - btn-more - */
+.paging-wrap {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 58px;
+    margin: 0;
+    margin-top: -13px;
+    border: 2px solid #f1f1f1;
+    border-top: none;
+    border-radius: 0 0 15px 0;
+    background-color: #fff;
+}
+.paging-wrap .mobile {
+    flex-basis: 200px;
+    height: 40px;
+    color: #333;
+    border: none;
+    background: transparent;
+    font-size: 0.85rem;
+    font-family: "Roboto";
+    font-weight: bold;
+    line-height: 40px;
+}
+.paging-wrap .add_arrow {
+    display: inline-block;
+    width: 12px;
+    height: 8px;
+    transition: all 0.1s ease-out;
+}
+.list-item-more {
+    overflow: hidden;
+    overflow-wrap: break-word;
+}

@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="point">
+    <resultMap id="POINT_CP_R_00" class="oss.point.vo.POINT_CPVO">
+        <result property="partnerCode"          column="PARTNER_CODE" />
+        <result property="partnerNm"            column="PARTNER_NM" />
+        <result property="cpNm"	                column="CP_NM" />
+        <result property="aplStartDt" 	        column="APL_START_DT" />
+        <result property="aplEndDt" 	        column="APL_END_DT" />
+        <result property="useStartDt" 	        column="USE_START_DT" />
+        <result property="useEndDt" 	        column="USE_END_DT" />
+        <result property="directPointYn" 	    column="DIRECT_POINT_YN" />
+        <result property="privateYn" 	        column="PRIVATE_YN" />
+        <result property="outsideSupportDiv" 	column="OUTSIDE_SUPPORT_DIV" />
+        <result property="cpComments" 	        column="CP_COMMENTS" />
+        <result property="cpCnt" 	            column="CP_CNT" />
+        <result property="cpRegCnt" 	        column="CP_REG_CNT" />
+        <result property="regId" 	            column="REG_ID" />
+        <result property="regDttm" 	            column="REG_DTTM" />
+        <result property="corpFilterYn" 	    column="CORP_FILTER_YN" />
+        <result property="corpPointLimitYn" 	column="CORP_POINT_LIMIT_YN" />
+        <result property="partnerBudget" 	    column="PARTNER_BUDGET" />
+        <result property="partnerLogow" 	    column="PARTNER_LOGOW" />
+        <result property="partnerLogom" 	    column="PARTNER_LOGOM" />
+        <result property="bannerThumb" 	        column="BANNER_THUMB" />
+        <result property="eventCouponYn"        column="EVENT_COUPON_YN" />
+    </resultMap>
+
+    <resultMap id="POINT_CP_R_01" class="oss.point.vo.POINT_CPNUMVO">
+        <result property="cpNum"                column="CP_NUM" />
+        <result property="partnerCode"	        column="PARTNER_CODE" />
+        <result property="groupCode" 	        column="GROUP_CODE" />
+        <result property="cpPoint" 	            column="CP_POINT" />
+        <result property="useYn" 	            column="USE_YN" />
+        <result property="userId" 	            column="USER_ID" />
+        <result property="cpRegDttm" 	        column="CP_REG_DTTM" />
+        <result property="useRegDttm" 	        column="USE_REG_DTTM" />
+    </resultMap>
+
+    <resultMap id="POINT_CP_R_02" class="oss.point.vo.POINTVO">
+        <result property="partnerCode"          column="PARTNER_CODE" />
+        <result property="partnerNm"            column="PARTNER_NM" />
+        <result property="plusPoint"            column="PLUS_POINT" />
+        <result property="minusPoint"	        column="MINUS_POINT" />
+        <result property="ablePoint" 	        column="ABLE_POINT" />
+    </resultMap>
+
+    <resultMap id="POINT_CP_R_03" class="oss.point.vo.POINT_CP_RSVVO">
+        <result property="rsvNum"               column="RSV_NUM" />
+        <result property="dtlRsvNum"	        column="DTL_RSV_NUM" />
+        <result property="saleAmt" 	            column="SALE_AMT" />
+        <result property="corpId" 	            column="CORP_ID" />
+    </resultMap>
+
+    <resultMap id="POINT_CP_R_04" class="oss.point.vo.POINTVO">
+        <result property="partnerCode" 	        column="PARTNER_CODE" />
+        <result property="usePoint"	            column="USE_POINT" />
+        <result property="rsvNum"               column="RSV_NUM" />
+        <result property="dtlRsvNum"	        column="DTL_RSV_NUM" />
+        <result property="userId" 	            column="USER_ID" />
+    </resultMap>
+
+    <resultMap id="POINT_CP_R_05" class="oss.point.vo.POINT_CORPVO">
+        <result property="corpId" 			column="CORP_ID" />
+        <result property="corpNm" 			column="CORP_NM" />
+        <result property="corpCd" 			column="CORP_CD" />
+        <result property="corpModCd"		column="CORP_MOD_CD" />
+        <result property="corpCdNm" 		column="CORP_CD_NM" />
+        <result property="corpSubCd" 		column="CORP_SUB_CD" />
+        <result property="tradeStatusCd" 	column="TRADE_STATUS_CD" />
+        <result property="coRegNum" 		column="CO_REG_NUM" />
+        <result property="ceoNm" 			column="CEO_NM" />
+        <result property="ceoTelNum" 		column="CEO_TEL_NUM" />
+        <result property="rsvTelNum" 		column="RSV_TEL_NUM" />
+        <result property="corpEmail" 		column="CORP_EMAIL" />
+        <result property="lon" 				column="LON" />
+        <result property="lat" 				column="LAT" />
+        <result property="roadNmAddr" 		column="ROAD_NM_ADDR" />
+        <result property="dtlAddr" 			column="DTL_ADDR" />
+        <result property="hmpgAddr" 		column="HMPG_ADDR" />
+        <result property="corpLinkYn" 		column="CORP_LINK_YN" />
+        <result property="confDt" 			column="CONF_DT" />
+        <result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+        <result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+        <result property="hijejuMappingNum" column="HIJEJU_MAPPING_NUM" />
+        <result property="asctMemYn" 		column="ASCT_MEM_YN" />
+        <result property="cmssNum" 			column="CMSS_NUM" />
+        <result property="posUseYn"			column="POS_USE_YN" />
+        <result property="corpAliasNm"		column="CORP_ALIAS_NM" />
+        <result property="visitMappingYn"	column="VISIT_MAPPING_YN" />
+        <result property="tamnacardMngYn"	column="TAMNACARD_MNG_YN" />
+        <result property="regYn"	        column="REG_YN" />
+        <result property="regDttm"	        column="REG_DTTM" />
+        <result property="limitPoint"	    column="LIMIT_POINT" />
+    </resultMap>
+
+    <resultMap id="POINT_CP_R_06" class="oss.point.vo.POINTVO">
+        <result property="seq" 			    column="SEQ" />
+        <result property="types" 			column="TYPES" />
+        <result property="cpNum" 			column="CP_NUM" />
+        <result property="rsvNum"		    column="RSV_NUM" />
+        <result property="dtlRsvNum" 		column="DTL_RSV_NUM" />
+        <result property="admPointRegId"    column="ADM_POINT_REG_ID" />
+        <result property="plusMinus" 	    column="PLUS_MINUS" />
+        <result property="point" 		    column="POINT" />
+        <result property="contents" 		column="CONTENTS" />
+        <result property="userId" 		    column="USER_ID" />
+        <result property="regDttm" 		    column="REG_DTTM" />
+        <result property="corpId" 		    column="CORP_ID" />
+        <result property="corpNm" 		    column="CORP_NM" />
+        <result property="prdtNm" 		    column="PRDT_NM" />
+    </resultMap>
+
+    <insert id="POINT_CP_I_00">
+        INSERT INTO TB_POINT_CPNUM (
+            CP_NUM
+            ,PARTNER_CODE
+            ,GROUP_CODE
+            ,CP_POINT
+            ,USE_YN
+            ,USER_ID
+        )
+        VALUES (
+            #cpNum#
+           , #partnerCode#
+           , #groupCode#
+           , #cpPoint#
+           , 'N'
+           , ''
+        )
+    </insert>
+
+    <insert id="POINT_CP_I_01">
+        INSERT INTO TB_POINT_CP
+            ( PARTNER_CODE
+            , PARTNER_NM
+            , CP_NM
+            , APL_START_DT
+            , APL_END_DT
+            , USE_START_DT
+            , USE_END_DT
+            , DIRECT_POINT_YN
+            , PRIVATE_YN
+            , OUTSIDE_SUPPORT_DIV
+            , CP_COMMENTS
+            , REG_ID
+            , CORP_FILTER_YN
+            , CORP_POINT_LIMIT_YN
+            , PARTNER_BUDGET
+            , PARTNER_LOGOW
+            , PARTNER_LOGOM
+            , BANNER_THUMB
+            , EVENT_COUPON_YN
+            )
+        VALUES ( #partnerCode#
+               , #partnerNm#
+               , #cpNm#
+               , #aplStartDt#
+               , #aplEndDt#
+               , #useStartDt#
+               , #useEndDt#
+               , #directPointYn#
+               , #privateYn#
+               , #outsideSupportDiv#
+               , #cpComments#
+               , #regId#
+               , #corpFilterYn#
+               , #corpPointLimitYn#
+               , #partnerBudget#
+               , #partnerLogow#
+               , #partnerLogom#
+               , #bannerThumb#
+               , #eventCouponYn#
+               )
+    </insert>
+
+    <!-- 쿠폰 리스트-->
+    <select id="POINT_CP_S_00" resultMap="POINT_CP_R_00">
+        SELECT PARTNER_CODE
+             , PARTNER_NM
+             , CP_NM
+             , APL_START_DT
+             , APL_END_DT
+             , USE_START_DT
+             , USE_END_DT
+             , DIRECT_POINT_YN
+             , PRIVATE_YN
+             , OUTSIDE_SUPPORT_DIV
+             , CP_COMMENTS
+             , REG_ID
+             , REG_DTTM
+             , CP_CNT
+             , CP_REG_CNT
+             , CORP_FILTER_YN
+             , CORP_POINT_LIMIT_YN
+             , PARTNER_BUDGET
+             , PARTNER_LOGOW
+             , PARTNER_LOGOM
+             , BANNER_THUMB
+             , EVENT_COUPON_YN
+        FROM (
+                 SELECT ROWNUM AS RN
+                      , PARTNER_CODE
+                      , PARTNER_NM
+                      , CP_NM
+                      , APL_START_DT
+                      , APL_END_DT
+                      , USE_START_DT
+                      , USE_END_DT
+                      , DIRECT_POINT_YN
+                      , PRIVATE_YN
+                      , OUTSIDE_SUPPORT_DIV
+                      , CP_COMMENTS
+                      , REG_ID
+                      , REG_DTTM
+                      , NVL(CP_CNT,0) AS CP_CNT
+                      , NVL(CP_REG_CNT,0) AS CP_REG_CNT
+                      , CORP_FILTER_YN
+                      , CORP_POINT_LIMIT_YN
+                      , PARTNER_BUDGET
+                      , PARTNER_LOGOW
+                      , PARTNER_LOGOM
+                      , BANNER_THUMB
+                      , EVENT_COUPON_YN
+                 FROM (
+                          SELECT PARTNER_CODE
+                               , PARTNER_NM
+                               , CP_NM
+                               , APL_START_DT
+                               , APL_END_DT
+                               , USE_START_DT
+                               , USE_END_DT
+                               , DIRECT_POINT_YN
+                               , PRIVATE_YN
+                               , OUTSIDE_SUPPORT_DIV
+                               , CP_COMMENTS
+                               , REG_ID
+                               , REG_DTTM
+                               , (SELECT SUM(NVL(CP_POINT,0))  FROM TB_POINT_CPNUM WHERE PARTNER_CODE = TPC.PARTNER_CODE) AS CP_CNT
+                               , (SELECT SUM(NVL(POINT,0)) FROM TB_POINT WHERE PARTNER_CODE = TPC.PARTNER_CODE AND TYPES = 'COUPON' ) AS CP_REG_CNT
+                               , NVL(CORP_FILTER_YN,'N') AS CORP_FILTER_YN
+                               , NVL(CORP_POINT_LIMIT_YN,'N') AS CORP_POINT_LIMIT_YN
+                               , PARTNER_BUDGET
+                               , PARTNER_LOGOW
+                               , PARTNER_LOGOM
+                               , BANNER_THUMB
+                               , EVENT_COUPON_YN
+                          FROM TB_POINT_CP TPC
+                          WHERE 1 = 1
+                          ORDER BY REG_DTTM DESC
+                      ))
+        WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+    </select>
+
+    <select id="POINT_CP_S_01" resultClass="int">
+        SELECT COUNT(1)
+        FROM TB_POINT_CP
+        WHERE 1=1
+    </select>
+
+    <select id="POINT_CP_S_02" resultMap="POINT_CP_R_01">
+        SELECT CP_NUM
+             , PARTNER_CODE
+             , GROUP_CODE
+             , CP_POINT
+             , USE_YN
+             , USER_ID
+             , CP_REG_DTTM
+             , USE_REG_DTTM
+        FROM (
+                 SELECT ROWNUM AS RN
+                      , CP_NUM
+                      , PARTNER_CODE
+                      , GROUP_CODE
+                      , CP_POINT
+                      , USE_YN
+                      , USER_ID
+                      , CP_REG_DTTM
+                      , USE_REG_DTTM
+                 FROM (
+                          SELECT CP_NUM
+                               , PARTNER_CODE
+                               , GROUP_CODE
+                               , CP_POINT
+                               , USE_YN
+                               , USER_ID
+                               , CP_REG_DTTM
+                               , USE_REG_DTTM
+                          FROM TB_POINT_CPNUM
+                          WHERE PARTNER_CODE = #partnerCode#
+                          ORDER BY GROUP_CODE, CP_REG_DTTM))
+        WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+    </select>
+
+    <select id="POINT_CP_S_03" resultClass="int">
+        SELECT COUNT(1)
+        FROM TB_POINT_CPNUM
+        WHERE PARTNER_CODE = #partnerCode#
+    </select>
+
+    <!--    해당 파트너코드 쿠폰인지 확인, ID당 파트너코드 한개 인지 체크, 유효기간 체크-->
+    <select id="POINT_CP_S_04" resultClass="String">
+        SELECT
+            CASE WHEN 1 != (SELECT COUNT(1) FROM TB_POINT_CPNUM WHERE PARTNER_CODE = #partnerCode# AND CP_NUM = #cpNum#) THEN 'CP_NONE'
+                WHEN 0 !=
+                     (SELECT COUNT(1)
+                     FROM    TB_POINT_CPNUM
+                     WHERE   PARTNER_CODE = #partnerCode#
+                     AND     CP_NUM      = #cpNum#
+                     AND     USE_YN      = 'Y'
+                     )
+                 THEN 'CP_USE'
+                 WHEN 0 != (SELECT COUNT(1) FROM TB_POINT_CPNUM WHERE PARTNER_CODE = #partnerCode# AND USER_ID = #userId#) THEN 'CP_USE'
+                 WHEN 1 != (SELECT COUNT(1)  FROM TB_POINT_CP WHERE PARTNER_CODE = #partnerCode# AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN APL_START_DT AND APL_END_DT) THEN 'APL_NONE' ELSE 'Y'
+                END AS RTN_STRING
+        FROM DUAL
+    </select>
+
+    <!--해당 파트너(협력사) 포인트 조회  -->
+    <select id="POINT_CP_S_05" resultMap="POINT_CP_R_02">
+        SELECT '' AS PARTNER_CODE
+             , '' AS PARTNER_NM
+             ,NVL(SUM(P), 0) AS PLUS_POINT
+             ,NVL(SUM(M), 0) AS MINUS_POINT
+             ,NVL(SUM(P), 0) - NVL(SUM(M), 0) AS ABLE_POINT
+        FROM (
+                 SELECT CASE WHEN PLUS_MINUS = 'P' THEN SUM(POINT) END AS P
+                      , CASE WHEN PLUS_MINUS = 'M' THEN SUM(POINT) END AS M
+                 FROM TB_POINT TP
+                 WHERE TP.USER_ID = #userId#
+                   AND TP.PARTNER_CODE = #partnerCode#
+                 GROUP BY PLUS_MINUS
+             )
+    </select>
+
+    <!-- 파트너(협력사) 포인트 조회 (리스트) -->
+    <select id="POINT_CP_S_15" resultMap="POINT_CP_R_02">
+    SELECT TPC.PARTNER_CODE
+         , TPC.PARTNER_NM
+         , NVL(SUM(CASE WHEN TP.PLUS_MINUS = 'P' THEN TP.POINT END), 0) AS PLUS_POINT
+         , NVL(SUM(CASE WHEN TP.PLUS_MINUS = 'M' THEN TP.POINT END), 0) AS MINUS_POINT
+         , NVL(SUM(CASE WHEN TP.PLUS_MINUS = 'P' THEN TP.POINT END), 0) - NVL(SUM(CASE WHEN TP.PLUS_MINUS = 'M' THEN TP.POINT END), 0) AS ABLE_POINT
+    FROM TB_POINT_CP TPC
+             LEFT JOIN TB_POINT TP
+                       ON TPC.PARTNER_CODE = TP.PARTNER_CODE AND TP.USER_ID = #userId#
+    WHERE APL_START_DT <![CDATA[<=]]> TO_CHAR(SYSDATE,'YYYYMMDD') AND APL_END_DT <![CDATA[>=]]> TO_CHAR(SYSDATE,'YYYYMMDD')
+    GROUP BY TPC.PARTNER_CODE, TPC.PARTNER_NM
+
+    </select>
+
+    <select id="POINT_CP_S_06" resultMap="POINT_CP_R_00">
+        SELECT PARTNER_CODE
+             , PARTNER_NM
+             , CP_NM
+             , APL_START_DT
+             , APL_END_DT
+             , USE_START_DT
+             , USE_END_DT
+             , DIRECT_POINT_YN
+             , PRIVATE_YN
+             , OUTSIDE_SUPPORT_DIV
+             , CP_COMMENTS
+             , REG_ID
+             , REG_DTTM
+             , 0 AS CP_CNT
+             , 0 AS CP_REG_CNT
+             , CORP_FILTER_YN
+             , CORP_POINT_LIMIT_YN
+             , PARTNER_BUDGET
+             , PARTNER_LOGOW
+             , PARTNER_LOGOM
+             , BANNER_THUMB
+             , EVENT_COUPON_YN
+        FROM TB_POINT_CP TPC
+        WHERE PARTNER_CODE = #partnerCode#
+    </select>
+
+    <!--쿠폰등록 - 포인트 적립/사용처리-->
+    <insert id="POINT_CP_I_02">
+        INSERT INTO TB_POINT (SEQ, PARTNER_CODE, TYPES, CP_NUM, CORP_ID, RSV_NUM, DTL_RSV_NUM, ADM_POINT_REG_ID, PAY_AMT, PLUS_MINUS, POINT, CONTENTS, USER_ID)
+        <isNotEmpty property="cpNum">
+        SELECT SEQ_POINT_SN.NEXTVAL, PARTNER_CODE, #types#, CP_NUM, '', #rsvNum#, #dtlRsvNum#, #admPointRegId#, #payAmt#,  #plusMinus#, CP_POINT, #contents#,  #userId#
+        FROM TB_POINT_CPNUM
+        WHERE CP_NUM =  #cpNum#
+        </isNotEmpty>
+        <isEmpty property="cpNum">
+            VALUES (SEQ_POINT_SN.NEXTVAL, #partnerCode#, #types#, '', #corpId#, #rsvNum#, #dtlRsvNum#, #admPointRegId#, #payAmt#,  #plusMinus#, #point#, #contents#,  #userId#)
+        </isEmpty>
+    </insert>
+
+    <!--쿠폰등록 - 쿠폰사용처리-->
+    <update id="POINT_CP_U_01">
+        UPDATE TB_POINT_CPNUM
+        SET USE_YN = 'Y'
+        , USER_ID = #userId#
+        , USE_REG_DTTM = SYSDATE
+        WHERE 	CP_NUM  = #cpNum#
+    </update>
+
+    <select id="POINT_CP_S_07" resultMap="POINT_CP_R_03">
+    SELECT RSV_NUM, AD_RSV_NUM AS DTL_RSV_NUM, SALE_AMT, CORP_ID
+    FROM TB_AD_RSV
+    WHERE RSV_NUM = #rsvNum#
+    UNION
+    SELECT RSV_NUM, RC_RSV_NUM AS DTL_RSV_NUM, SALE_AMT, CORP_ID
+    FROM TB_RC_RSV
+    WHERE RSV_NUM = #rsvNum#
+    UNION
+    SELECT RSV_NUM, SV_RSV_NUM AS DTL_RSV_NUM, SALE_AMT, CORP_ID
+    FROM TB_SV_RSV
+    WHERE RSV_NUM = #rsvNum#
+    UNION
+    SELECT RSV_NUM, SP_RSV_NUM AS DTL_RSV_NUM, SALE_AMT, CORP_ID
+    FROM TB_SP_RSV
+    WHERE RSV_NUM = #rsvNum#
+    </select>
+
+    <select id="POINT_CP_S_08"  resultMap="POINT_CP_R_04">
+        SELECT  PARTNER_CODE
+               , NVL(POINT,0) AS USE_POINT
+               , RSV_NUM
+               , DTL_RSV_NUM
+               , USER_ID
+        FROM TB_POINT
+        WHERE TYPES = #types#
+            AND RSV_NUM = #rsvNum#
+            AND DTL_RSV_NUM = #dtlRsvNum#
+    </select>
+    <update id="POINT_CP_M_00">
+        MERGE INTO TB_POINT_CORP TPC
+            USING DUAL
+            ON (TPC.PARTNER_CODE = #partnerCode# AND TPC.CORP_ID = #corpId#)
+            WHEN MATCHED THEN
+                UPDATE
+                    SET REG_YN = #regYn#
+                    ,   REG_DTTM = SYSDATE
+            WHEN NOT MATCHED THEN
+                INSERT
+                    (   SEQ
+                        , PARTNER_CODE
+                        , CORP_ID
+                        , REG_YN
+                        , REG_DTTM
+                    )
+                    VALUES
+                    (   SEQ_POINT_CORP_SN.NEXTVAL
+                        , #partnerCode#
+                        , #corpId#
+                        , #regYn#
+                        , SYSDATE
+                    )
+    </update>
+
+    <select id="POINT_CP_S_09" resultMap="POINT_CP_R_05">
+        SELECT CORP_ID /*업체 아이디*/
+            , CORP_NM /*업체 명*/
+            , CORP_CD /*업체 코드*/
+            , CORP_MOD_CD /*업체 수정 코드*/
+            , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = CORP_MOD_CD) AS CORP_CD_NM
+            , CORP_SUB_CD /*업체 서브 코드*/
+            , TRADE_STATUS_CD /*거래 상태 코드*/
+            , CO_REG_NUM /*사업자등록 번호*/
+            , CEO_NM /*대표자 명*/
+            , CEO_TEL_NUM /*대표자 전화 번호*/
+            , RSV_TEL_NUM /*예약 전화 번호*/
+            , CORP_EMAIL /*업체 이메일*/
+            , LON /*경도*/
+            , LAT /*위도*/
+            , ROAD_NM_ADDR /*도로명 주소*/
+            , DTL_ADDR /*상세 주소*/
+            , HMPG_ADDR /*홈페이지 주소*/
+            , CORP_LINK_YN /*업체 연계 여부*/
+            , CONF_DT /*승인 일자*/
+            , FRST_REG_DTTM /*최초 등록 일시*/
+            , LAST_MOD_DTTM /*최종 수정 일시*/
+            , HIJEJU_MAPPING_NUM
+            , ASCT_MEM_YN /*협회 회원 여부 */
+            , CMSS_NUM /*수수료 번호*/
+            , POS_USE_YN /*POS 사용 여부*/
+            , CORP_ALIAS_NM /*업체별칭*/
+            , VISIT_MAPPING_YN /* VISIT 제주연계 여부 */
+            , TAMNACARD_MNG_YN /* 탐나는전가맹점여부*/
+            , PARTNER_CODE /* 파트너코드*/
+            , REG_YN /* 포인트업체 등록 여부*/
+            , REG_DTTM  /* 포인트 업체 등록일*/
+            , LIMIT_POINT /* 포인트 상한*/
+        FROM (
+            SELECT ROWNUM AS RN
+                , CORP_ID /*업체 아이디*/
+                , CASE WHEN CORP_NM != AD_NM THEN CORP_NM || ' / ' || AD_NM ELSE CORP_NM END AS CORP_NM /*업체 명*/
+                , CORP_CD /*업체 코드*/
+                , CORP_MOD_CD /*업체 수정 코드*/
+                , CORP_SUB_CD /*업체 서브 코드*/
+                , TRADE_STATUS_CD /*거래 상태 코드*/
+                , CO_REG_NUM /*사업자등록 번호*/
+                , CEO_NM /*대표자 명*/
+                , CEO_TEL_NUM /*대표자 전화 번호*/
+                , RSV_TEL_NUM /*예약 전화 번호*/
+                , CORP_EMAIL /*업체 이메일*/
+                , LON /*경도*/
+                , LAT /*위도*/
+                , ROAD_NM_ADDR /*도로명 주소*/
+                , DTL_ADDR /*상세 주소*/
+                , HMPG_ADDR /*홈페이지 주소*/
+                , CORP_LINK_YN /*업체 연계 여부*/
+                , CONF_DT /*승인 일자*/
+                , FRST_REG_DTTM /*최초 등록 일시*/
+                , LAST_MOD_DTTM /*최종 수정 일시*/
+                , HIJEJU_MAPPING_NUM
+                , ASCT_MEM_YN /*협회 회원 여부 */
+                , CMSS_NUM /*수수료 번호*/
+                , POS_USE_YN /*POS 사용 여부*/
+                , CORP_ALIAS_NM /*업체별칭*/
+                , VISIT_MAPPING_YN /* VISIT 제주연계 여부 */
+                , TAMNACARD_MNG_YN /* 탐나는전가맹점여부*/
+                , PARTNER_CODE
+                , REG_YN
+                , LIMIT_POINT
+                , REG_DTTM
+            FROM (
+                SELECT T_CORP.CORP_ID /*업체 아이디*/
+                    , CORP_NM /*업체 명*/
+                    , CORP_CD /*업체 코드*/
+                    , CORP_MOD_CD /*업체 수정 코드*/
+                    , CORP_SUB_CD /*업체 서브 코드*/
+                    , TRADE_STATUS_CD /*거래 상태 코드*/
+                    , CO_REG_NUM /*사업자등록 번호*/
+                    , CEO_NM /*대표자 명*/
+                    , CEO_TEL_NUM /*대표자 전화 번호*/
+                    , RSV_TEL_NUM /*예약 전화 번호*/
+                    , CORP_EMAIL /*업체 이메일*/
+                    , LON /*경도*/
+                    , LAT /*위도*/
+                    , ROAD_NM_ADDR /*도로명 주소*/
+                    , DTL_ADDR /*상세 주소*/
+                    , HMPG_ADDR /*홈페이지 주소*/
+                    , CASE AD_APILINK_NM WHEN 'TLL' THEN 'TL린칸' END || CASE API_RENT_DIV WHEN 'R' THEN '리본' WHEN 'I' THEN '인스' WHEN 'G' THEN '그림' END AS CORP_LINK_YN/*연동업체*/
+                    , CONF_DT /*승인 일자*/
+                    , FRST_REG_DTTM /*최초 등록 일시*/
+                    , LAST_MOD_DTTM /*최종 수정 일시*/
+                    , HIJEJU_MAPPING_NUM
+                    , ASCT_MEM_YN /*협회 회원 여부 */
+                    , CMSS_NUM /*수수료 번호*/
+                    , POS_USE_YN /*POS 사용 여부*/
+                    , CASE WHEN CORP_CD = 'AD' THEN (SELECT AD_NM FROM TB_AD_DFTINF WHERE CORP_ID = T_CORP.CORP_ID) ELSE '' END AS AD_NM
+                    , (SELECT CORP_ALIAS_NM FROM TB_PRMT_CORP WHERE CORP_ID = T_CORP.CORP_ID) AS CORP_ALIAS_NM
+                    , (CASE WHEN VISIT_MAPPING_ID IS NOT NULL THEN 'Y' ELSE 'N' END) VISIT_MAPPING_YN
+                    , TAMNACARD_MNG_YN
+                    , TPC.PARTNER_CODE
+                    , NVL(TPC.REG_YN, 'N') AS REG_YN
+                    , NVL(TPC.LIMIT_POINT,0) AS LIMIT_POINT
+                    , TPC.REG_DTTM
+                FROM TB_CORP T_CORP
+                LEFT JOIN TB_POINT_CORP TPC
+                ON T_CORP.CORP_ID = TPC.CORP_ID AND TPC.PARTNER_CODE = #partnerCode#
+                WHERE TRADE_STATUS_CD = 'TS03'
+                <isNotEmpty property="sCorpNm">
+                    AND (CORP_NM LIKE '%' || #sCorpNm# || '%'
+                    OR T_CORP.CORP_ID IN (SELECT CORP_ID FROM TB_AD_DFTINF WHERE AD_NM LIKE '%' || #sCorpNm# || '%'))
+                </isNotEmpty>
+                <isNotEmpty property="sCorpId">
+                    AND T_CORP.CORP_ID LIKE '%' || #sCorpId# || '%'
+                </isNotEmpty>
+                <isNotEmpty property="sCorpCd">
+                    AND CORP_MOD_CD = #sCorpCd#
+                </isNotEmpty>
+                <isNotEmpty property="sCorpCd2">
+                    AND CORP_CD = #sCorpCd2#
+                </isNotEmpty>
+                <isNotEmpty property="sCorpSubCd">
+                    AND CORP_SUB_CD = #sCorpSubCd#
+                </isNotEmpty>
+                <isNotEmpty property="sAsctMemYn">
+                    AND ASCT_MEM_YN = #sAsctMemYn#
+                </isNotEmpty>
+                <isNotEmpty property="sSuperbCorpYn">
+                    AND SUPERB_CORP_YN = #sSuperbCorpYn#
+                </isNotEmpty>
+                <isNotEmpty property="sSpCtgr">
+                    AND T_CORP.CORP_ID IN (SELECT CORP_ID FROM TB_SP_PRDTINF WHERE TRADE_STATUS = 'TS03' AND CTGR = #sSpCtgr#)
+                </isNotEmpty>
+                <isNotEmpty property="sCorpLinkYn">
+                    AND CORP_LINK_YN = #sCorpLinkYn#
+                </isNotEmpty>
+                <isNotEmpty property="sFileNum">
+                    <isEqual property="sFileYn" compareValue="N">
+                        AND T_CORP.CORP_ID NOT IN
+                    </isEqual>
+                    <isEqual property="sFileYn" compareValue="Y">
+                        AND T_CORP.CORP_ID IN
+                    </isEqual>
+                    <iterate property="sFileNum" open="(" close=")" conjunction="INTERSECT">
+                        SELECT REQUEST_NUM FROM TB_CORP_PNS_REQUEST_FILE WHERE FILE_NUM = #sFileNum[]#
+                    </iterate>
+                </isNotEmpty>
+                <isNotEmpty property="sVisitMappingYn">
+                    <isEqual property="sVisitMappingYn" compareValue="N">
+                        AND VISIT_MAPPING_ID IS NULL
+                    </isEqual>
+                    <isEqual property="sVisitMappingYn" compareValue="Y">
+                        AND VISIT_MAPPING_ID IS NOT NULL
+                    </isEqual>
+                </isNotEmpty>
+                <isNotEmpty property="sTamnacardMngYn">
+                    AND TAMNACARD_MNG_YN = #sTamnacardMngYn#
+                </isNotEmpty>
+                <isNotEmpty property="sCorpLinkApi">
+                    AND (AD_APILINK_NM = #sCorpLinkApi# OR API_RENT_DIV = #sCorpLinkApi#)
+                </isNotEmpty>
+                ORDER BY NVL(REG_YN,'N') DESC, NVL(LIMIT_POINT, 0) DESC, FRST_REG_DTTM DESC
+                )
+            )
+        WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+    </select>
+    <select id="POINT_CP_S_10" resultClass="int">
+        SELECT COUNT(CORP_ID) AS CNT
+        FROM TB_CORP
+        WHERE TRADE_STATUS_CD = 'TS03'
+        <isNotEmpty property="sCorpNm">
+            AND CORP_NM LIKE '%' || #sCorpNm# || '%'
+        </isNotEmpty>
+        <isNotEmpty property="sCorpId">
+            AND CORP_ID LIKE '%' || #sCorpId# || '%'
+        </isNotEmpty>
+        <isNotEmpty property="sCoRegNum">
+            AND REPLACE(CO_REG_NUM, '-', '') = #sCoRegNum#
+        </isNotEmpty>
+        <isNotEmpty property="sCorpCd">
+            AND CORP_MOD_CD = #sCorpCd#
+        </isNotEmpty>
+        <isNotEmpty property="sCorpSubCd">
+            AND CORP_SUB_CD = #sCorpSubCd#
+        </isNotEmpty>
+        <isNotEmpty property="sAsctMemYn">
+            AND ASCT_MEM_YN = #sAsctMemYn#
+        </isNotEmpty>
+        <isNotEmpty property="sSuperbCorpYn">
+            AND SUPERB_CORP_YN = #sSuperbCorpYn#
+        </isNotEmpty>
+        <isNotEmpty property="sSpCtgr">
+            AND CORP_ID IN (SELECT CORP_ID FROM TB_SP_PRDTINF WHERE CTGR = #sSpCtgr# AND TRADE_STATUS='TS03')
+        </isNotEmpty>
+        <isNotEmpty property="sCorpLinkYn">
+            AND CORP_LINK_YN = #sCorpLinkYn#
+        </isNotEmpty>
+        <isNotEmpty property="sFileNum">
+            <isEqual property="sFileYn" compareValue="N">
+                AND CORP_ID NOT IN
+            </isEqual>
+            <isEqual property="sFileYn" compareValue="Y">
+                AND CORP_ID IN
+            </isEqual>
+            <iterate property="sFileNum" open="(" close=")" conjunction="INTERSECT">
+                SELECT REQUEST_NUM FROM TB_CORP_PNS_REQUEST_FILE WHERE FILE_NUM = #sFileNum[]#
+            </iterate>
+        </isNotEmpty>
+        <isNotEmpty property="sVisitMappingYn">
+            <isEqual property="sVisitMappingYn" compareValue="N">
+                AND VISIT_MAPPING_ID IS NULL
+            </isEqual>
+            <isEqual property="sVisitMappingYn" compareValue="Y">
+                AND VISIT_MAPPING_ID IS NOT NULL
+            </isEqual>
+        </isNotEmpty>
+        <isNotEmpty property="sTamnacardMngYn">
+            AND TAMNACARD_MNG_YN = #sTamnacardMngYn#
+        </isNotEmpty>
+        <isNotEmpty property="sCorpLinkApi">
+            AND (AD_APILINK_NM = #sCorpLinkApi# OR API_RENT_DIV =  #sCorpLinkApi#)
+        </isNotEmpty>
+    </select>
+
+    <!--파트너OSS -  업체관리 - 한도Point설정-->
+    <update id="POINT_CP_M_01">
+        MERGE INTO TB_POINT_CORP TPC
+            USING DUAL
+            ON (TPC.PARTNER_CODE = #partnerCode# AND TPC.CORP_ID = #corpId#)
+            WHEN MATCHED THEN
+                UPDATE
+                    SET LIMIT_POINT = #limitPoint#
+                    ,   REG_DTTM = SYSDATE
+            WHEN NOT MATCHED THEN
+                INSERT
+                    (   SEQ
+                        , PARTNER_CODE
+                        , CORP_ID
+                        , LIMIT_POINT
+                        , REG_DTTM
+                        )
+                    VALUES
+                    (   SEQ_POINT_CORP_SN.NEXTVAL
+                    , #partnerCode#
+                    , #corpId#
+                    , #limitPoint#
+                    , SYSDATE
+                    )
+    </update>
+
+    <select id="POINT_CP_S_11" resultClass="int">
+        SELECT COUNT(1) FROM TB_POINT_CP WHERE PARTNER_CODE = #partnerCode#
+    </select>
+
+    <update id="POINT_CP_U_04">
+        UPDATE TB_POINT_CP
+        SET  PARTNER_NM = #partnerNm#
+          , CP_NM = #cpNm#
+          , APL_START_DT = #aplStartDt#
+          , APL_END_DT = #aplEndDt#
+          , USE_START_DT = #useStartDt#
+          , USE_END_DT = #useEndDt#
+          , DIRECT_POINT_YN = #directPointYn#
+          , PRIVATE_YN = #privateYn#
+          , OUTSIDE_SUPPORT_DIV = #outsideSupportDiv#
+          , CP_COMMENTS = #cpComments#
+          , REG_ID = #regId#
+          , CORP_FILTER_YN = #corpFilterYn#
+          , CORP_POINT_LIMIT_YN = #corpPointLimitYn#
+          , PARTNER_BUDGET = #partnerBudget#
+          , EVENT_COUPON_YN = #eventCouponYn#
+        <isNotEmpty property="partnerLogow">
+          , PARTNER_LOGOW =  #partnerLogow#
+        </isNotEmpty>
+        <isNotEmpty property="partnerLogom">
+          , PARTNER_LOGOM =  #partnerLogom#
+        </isNotEmpty>
+        <isNotEmpty property="bannerThumb">
+          , BANNER_THUMB =  #bannerThumb#
+        </isNotEmpty>
+        WHERE 	PARTNER_CODE  = #partnerCode#
+    </update>
+
+    <select id="POINT_CP_S_12" resultClass="int">
+        SELECT COUNT(SUM(1)) FROM TB_POINT_CPNUM WHERE PARTNER_CODE = #partnerCode#
+        GROUP BY GROUP_CODE
+    </select>
+
+    <!--구매 가능 여부 체크 (업체)-->
+    <select id="POINT_CP_S_13" resultClass="String">
+        SELECT  NVL(MAX(REG_YN),'N') FROM TB_POINT_CORP WHERE PARTNER_CODE = #partnerCode# AND CORP_ID = #corpId#
+    </select>
+
+    <!--구매 가능 여부 체크 (한도포인트)-->
+    <select id="POINT_CP_S_14" resultClass="String">
+        SELECT CASE WHEN (
+                             SELECT NVL(SUM(CASE WHEN PLUS_MINUS = 'M' THEN POINT END), 0) - NVL(SUM(CASE WHEN PLUS_MINUS = 'P' AND TYPES = 'CANCEL' THEN POINT END), 0)
+                             FROM TB_POINT
+                             WHERE PARTNER_CODE = #partnerCode#
+                               AND CORP_ID = #corpId#
+                         )
+                            <isNotEmpty property="totalProductAmt">
+                                + #totalProductAmt#
+                            </isNotEmpty>
+                             >= (
+                             SELECT NVL(SUM(LIMIT_POINT), 0)
+                             FROM TB_POINT_CORP WHERE CORP_ID = #corpId#)
+            THEN 'N' ELSE 'Y' END AS RTN_STRING
+        FROM DUAL
+    </select>
+
+    <!--구매 가능 여부 체크 (사업 예산액)-->
+    <select id="POINT_CP_S_18" resultClass="String">
+        SELECT CASE WHEN (
+                            SELECT NVL(SUM(CASE WHEN PLUS_MINUS = 'M' THEN POINT END), 0) - NVL(SUM(CASE WHEN PLUS_MINUS = 'P' AND TYPES = 'CANCEL' THEN POINT END), 0)
+                            FROM TB_POINT
+                            WHERE PARTNER_CODE = #partnerCode#
+                        )
+                        <isNotEmpty property="totalProductAmt">
+                            + #totalProductAmt#
+                        </isNotEmpty>
+                        >= (
+                        SELECT NVL(SUM(PARTNER_BUDGET), 0)
+                        FROM TB_POINT_CP WHERE PARTNER_CODE = #partnerCode#)
+
+        THEN 'N' ELSE 'Y' END AS RTN_STRING
+        FROM DUAL
+    </select>
+
+    <!-- 포인트 발급/사용 이력 -->
+    <select id="POINT_CP_S_16" resultMap="POINT_CP_R_06">
+        SELECT TP.SEQ
+             , TP.TYPES
+             , TP.CP_NUM
+             , TP.RSV_NUM
+             , TP.DTL_RSV_NUM
+             , TP.ADM_POINT_REG_ID
+             , TP.PLUS_MINUS
+             , TP.POINT
+             , TP.CONTENTS
+             , TP.USER_ID
+             , TP.REG_DTTM
+             , TP.CORP_ID
+             , TC.CORP_NM
+             , COALESCE(TAD.PRDT_NM, TSP.PRDT_NM, TRC.PRDT_NM, TSV.PRDT_NM) AS PRDT_NM
+        FROM TB_POINT TP
+                 LEFT JOIN TB_CORP TC ON TP.CORP_ID = TC.CORP_ID
+                 LEFT JOIN TB_AD_RSV TAD ON TP.DTL_RSV_NUM = TAD.AD_RSV_NUM
+                 LEFT JOIN TB_SP_RSV TSP ON TP.DTL_RSV_NUM = TSP.SP_RSV_NUM
+                 LEFT JOIN TB_RC_RSV TRC ON TP.DTL_RSV_NUM = TRC.RC_RSV_NUM
+                 LEFT JOIN TB_SV_RSV TSV ON TP.DTL_RSV_NUM = TSV.SV_RSV_NUM
+        WHERE USER_ID = #userId#
+          AND PARTNER_CODE = #partnerCode#
+        ORDER BY SEQ DESC
+    </select>
+
+    <!-- 속도 이슈로 delete 후 insert-->
+    <delete id="POINT_CP_D_00">
+        DELETE FROM TB_POINT_CORP WHERE CORP_ID IN (SELECT CORP_ID FROM TB_CORP WHERE CORP_CD = #corpCd#)
+    </delete>
+
+    <!--업체제한 전체 선택/해제  -->
+    <insert id="POINT_CP_I_03">
+        INSERT INTO TB_POINT_CORP (SEQ, PARTNER_CODE, CORP_ID,REG_YN )
+        SELECT SEQ_POINT_CORP_SN.NEXTVAL, #partnerCode#, CORP_ID, #regYn#
+        FROM TB_CORP
+        WHERE CORP_CD = #corpCd#
+    </insert>
+
+    <!--포인트 결제 후 2시간 이내 결제건 중 오류가 있으면 alram 처리-->
+    <select id="POINT_CP_S_17" resultClass="int">
+        SELECT COUNT(1)
+        FROM TB_RSV TR
+        INNER JOIN (
+            SELECT PARTNER_CODE, SUM(POINT) AS POINT, RSV_NUM FROM TB_POINT
+            WHERE TYPES = 'USE' AND PLUS_MINUS = 'M' AND NVL(CONTENTS,'NONE') != 'CMSS_AMT' AND RSV_NUM IS NOT NULL
+            GROUP BY PARTNER_CODE, RSV_NUM
+        ) TP
+        ON TR.PARTNER_CODE = TP.PARTNER_CODE AND TR.RSV_NUM = TP.RSV_NUM
+        WHERE TR.RSV_STATUS_CD != 'RS99' AND NVL(TR.USE_POINT,0) > 0
+        AND TO_CHAR(TR.REG_DTTM,'YYYYMMDDHH24mi') > TO_CHAR(SYSDATE-2/24, 'YYYYMMDDHH24mi')
+        AND NVL(TR.USE_POINT,0) != NVL(POINT, 0)
+    </select>
+</sqlMap>

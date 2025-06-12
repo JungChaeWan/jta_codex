@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="홍원기">
+
+	<title>UI Style Guide</title>
+
+	<!-- css -->
+	<link rel="stylesheet" href="/css/comm/jquery-ui.css">
+	<link rel="stylesheet" href="/css/web/common.css">
+	<link rel="stylesheet" href="/css/web/style.css">
+	<link rel="stylesheet" href="/css/comm/code_style.css"> <!--소스코드테마-->
+	<style>
+		* {/*font-family:'Nanum Gothic','돋움', 'Dotum', sans-serif;*/}
+		body {background: #f2f2f2;}
+
+		/*.container {width: 1280px; margin: 0 auto;}*/
+		.container {width: 100%;}
+
+		/* header */
+		header .top {background: #222; padding: 0 20px;}
+		header .top .container {display: table;}
+		header .top .logo, header .top .right {display: table-cell; vertical-align: middle;}
+		header .top .logo {font-size: 16px;}
+		header .top .logo a {font-family: "Noto Sans KR", sans-serif; color: #fff; display: inline-block; padding: 12px 0;}
+		header .top .logo a:hover {color: #58c0f0;}
+		header .top .right {text-align: right; font-size: 12px; color: #fff;}
+		header .top .right a {color: #fff; font-size: 13px;}
+		header .top .right a:hover {color: #58c0f0;}
+		header .main-menu {background: #fff; border-bottom: 1px solid #e1e3e4; box-shadow: 2px 0px 4px #ccc;}
+		header .main-menu .container {text-align: center;}
+		header .main-menu .title {color: #222; font-size: 24px; padding: 18px 0;}
+		
+		/* main */
+		main {margin: 20px;}
+		main .container {display: table; border-spacing: 0; border-collapse: collapse;}
+		main .left-menu, main .contents {display: table-cell; vertical-align: top; background: #fff; border: 1px solid #e1e3e4;}
+		main .left-menu {width: 250px; overflow-y: auto;}
+		main .left-menu .title {font-size: 24px; font-family: "Noto Sans KR", sans-serif; color: #222; border-bottom: 1px solid #e1e3e4; padding-bottom: 10px; margin-bottom: 10px; white-space: nowrap;}
+		main .left-menu .list-wrap > li > a {display: block; padding: 8px 0; font-size: 14px; color: #222;}
+		main .left-menu .list-wrap > li.active > a {color: #58c0f0; font-weight: 700;}
+		main .left-menu .list-wrap li a:hover {color: #58c0f0;}
+		main .left-menu .list-wrap li a.active {color: #58c0f0; font-weight: 700;}
+		main .left-menu ul.depth2 {padding-left: 14px; margin: -2px 0 8px;}
+		main .left-menu ul.depth2 li.active a {color: #58c0f0; font-weight: 700;}
+		main .left-menu ul.depth2 li a {display: block; font-size: 13px; color: #5f5f60; padding: 3px 0;}
+		main .inside {padding: 30px 30px 80px;}
+		
+		main .contents section > .title {font-size: 24px; font-family: "Noto Sans KR", sans-serif; color: #222; border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 10px;}
+		main .contents .sub-title {font-size: 16px; color: #5f5f60; margin-bottom: 10px;}
+		main .contents .preview {font-size: 14px; border: 1px solid #e1e3e4; padding: 15px;}
+		main .contents .ex {font-size: 13px; /*background: #f2f2f2; border: 1px solid #e1e3e4; border-top: none; padding: 15px;*/}
+		main .contents .ex pre {margin: 0; padding: 0;}
+		main .contents .ex pre code {margin: 0; padding: 0;}
+		main .contents .inside > section {margin-top: 50px;}
+		main .contents .inside > section:first-child {margin-top: 0px;}
+		
+		/* 상단으로 가기 */
+		.go-top {position: fixed; bottom: 30px; right: 60px; z-index: 99; display: none;}
+		.go-top a {display: block; font-size: 13px; font-weight: 700; color: #333; width: 20px; height: 20px; padding: 10px; background: #f2f2f2; border: 1px solid #e1e3e4; border-radius: 5px;}
+	</style>
+
+	<!-- script -->
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/dongja/html_style.js"></script>
+	<script src="http://kissl3oyhong.cafe24.com/js/run_prettify.js"></script> <!--소스코드출력-->
+	
+	<!--script add-->
+	<script>
+		$(document).ready(function() {
+console.log("삭제");
+			//datepicker 임시용
+			$( ".datepicker" ).datepicker({
+				showOn: "both",
+				buttonImage: "../../images/comm/jquery/calendar.gif",
+				buttonImageOnly: true
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<header>
+		<!--logo-->
+		<section class="top">
+			<div class="container">
+				<h1 class="logo"><a href="#">스타일 가이드</a></h1>
+				<nav class="right">
+					<a href="==list.html">» Page Guide</a>
+				</nav>
+			</div>
+		</section>
+
+		<!--menu-->
+		<nav class="main-menu">
+			<div class="container"><h2 class="title">UI Style Guide</h2></div>
+		</nav>
+	</header>
+
+	<main>
+		<div class="container">
+			<!--left menu-->
+			<aside id="left_menu" class="left-menu">
+				<div class="inside">
+					<h3 class="title">Quick List</h3>
+					<ul class="list-wrap" id="scroll_spy">
+						<li>
+							<a href="#typography">타이포그래피</a>
+							<ul class="depth2">
+								<li><a href="#typography_title">제목</a></li>
+								<li><a href="#typography_type">문단</a></li>
+								<li><a href="#typography_caption">캡션</a></li>
+								<li><a href="#typography_helper">헬퍼</a></li>
+								<li><a href="#typography_align">정렬</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#color">컬러</a>
+							<ul class="depth2">
+								<li><a href="#color_font">폰트</a></li>
+							</ul>
+						</li>
+                        <li>
+                            <a href="#list_style">리스트 스타일</a>
+                            <ul class="depth2">
+                                <li><a href="#list_option">Example</a></li>
+                            </ul>
+                        </li>
+						<li>
+							<a href="#button">Button</a>
+							<ul class="depth2">
+								<li><a href="#button_option">Example</a></li>
+								<li><a href="#button_size">버튼 크기</a></li>
+								<li><a href="#button_disabled">비활성화</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#table">Table</a>
+							<ul class="depth2">
+								<li><a href="#table_option">Example</a></li>
+							</ul>
+						</li>
+                        <li>
+                            <a href="#paging">페이징</a>
+                            <ul class="depth2">
+                                <li><a href="#paging_option">Example</a></li>
+                            </ul>
+                        </li>
+						<li>
+							<a href="#form_control">폼</a>
+							<ul class="depth2">
+								<li><a href="#form_option">Example</a></li>
+								<li><a href="#form_size">폼 크기</a></li>
+								<li><a href="#form_label">label</a></li>
+								<li><a href="#form_disabled">비활성화</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#label">라벨</a>
+							<ul class="depth2">
+								<li><a href="#label_option">Example</a></li>
+								<li><a href="#label_size">라벨 크기</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#popup">팝업</a>
+							<ul class="depth2">
+								<li><a href="#popup_layer">레이어 팝업</a></li>
+								<li><a href="#popup_window">윈도우 팝업</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#navi">네비게이션</a>
+							<ul class="depth2">
+								<li><a href="#navi_tab">탭패널</a></li>
+								<li><a href="#navi_tab2">탭패널 웹접근성</a></li>
+								<li><a href="#navi_menu">탭메뉴</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#no_item">No Item</a>
+							<ul class="depth2">
+								<li><a href="#no_content">Not Content</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#accordion">Accordion</a>
+							<ul class="depth2">
+								<li><a href="#accordion_option">Example</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#icon">Icon</a>
+							<ul class="depth2">
+								<li><a href="#icon_option">Example</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#photo">Photo</a>
+							<ul class="depth2">
+								<li><a href="#photo_grid">Grid</a></li>
+                                <li><a href="#photo_option">Effect</a></li>
+                                <li><a href="#photo_figure">Figure</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#diagram">다이어그램</a>
+							<ul class="depth2">
+								<li><a href="#diagram_option">Example</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#terms">약관</a>
+							<ul class="depth2">
+								<li><a href="#terms_option">Example</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</aside>
+
+			<!--contents-->
+			<div id="contents" class="contents">
+				<div class="inside">
+					<section id="typography">
+						<h3 class="title">타이포그래피</h3>
+						<article>
+							<h4 id="typography_title" class="sub-title">제목</h4>
+							<div class="preview">
+								<div class="title-type1-area">
+                                	<h2 class="title-type1">인기있수다</h2>
+                                	<span class="title-type1-memo">지금 이 시간 가장 핫한 상품</span>
+                                </div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<div class="title-type1-area">
+		<h2 class="title-type1">인기있수다</h2>
+		<span class="title-type1-memo">지금 이 시간 가장 핫한 상품</span>
+	</div>
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="typography_type" class="sub-title">문단</h4>
+							<div class="preview">
+                                <div class="type-body1">
+                                    <p>직함을 가지고 부유하게 살았던 사람들은 담뱃대를 들고 앞서거나, 초롱을 들고 앞서도록 하면서 시동을 부렸듯이 그렇게 데리고 살았던 것이 동자(童子)였다.
+                                        이렇듯 생전에 도움을 받고 살았던 동자를 죽어서도 데리고 살 수 있도록 갖추어 주었던 것이 산[묘]의 ‘동자석’인 것이다.
+                                        신분제도가 엄격하였던 과거에만 하더라도 무덤의 동자석은 망인의 직함에 따라 설치할 수 있고 없었던 것이었다고 한다.
+                                        하층민은 생전에 동자를 두고 살 수 없었듯이 죽어서도 동자석을 둘 수 없었던 것으로 보인다.</p>
+
+                                    <p>동자석은 삼척(三尺) 이내로 만드는 편이다. 숙련공들이 만들어 조형성이 뛰어난 육지부의 문인석(文人石)과 달리 비숙련의 토착민들이 필요에 의해 만들다 보니 조형적인 세련미는 떨어지는 편이다.
+                                        주로 방형(方形)의 사각기둥을 재료로 하여 음각(陰刻)을 위주로 만들었는데, 동자석은 크게 두부와 흉부로 나누어 살필 수 있다.
+                                        두부(頭部)는 머리와 얼굴을 표현한 부분으로 전면의 경우 얼굴과 입 부분은 음각 실선으로 처리하였으며, 후면은 댕기를 표현한 것과 표현하지 않은 삭발형의 모습으로 처리하고 있다.
+                                        이 표현법에 의해 민머리 삭발 동자석, 댕기머리 동자석 등으로 구분되는데, 이것이 바로 제주동자석이 갖는 특징 중의 하나다.
+                                        이는 다른 지방의 경우 기능공이 만들어 다양한 표현이 가능했던 반면, 제주도의 경우 비숙련의 토착민들이 만들다 보니 표현 방법에 제한이 있었던 것으로 보인다.</p>
+                                        
+                                    <p class="float-left"><span class="photo"><img src="../../images/dongja/sub/character/01.jpg" alt="꼬마 동자석 캐릭터"></span>
+                                        작고 귀여운 동자석 캐릭터에 맞춰 현대 트랜드와 점목시킨 귀여운 꼬마 동자석, 사람들 소원을 담아 쌓아올리는 돌탑을 모티브로 하여 동자석 캐릭터로 만들었다, 캐릭터의 머리위에 장식은 동자석이 갖고 있는 망자에 대한 기원을 의미하는 본질을 담아내고 잇다. 또한 동자석 본연의 이미지를 현대적 감각에 맞게 재구성하여 우리 주변에서 흔히 볼 수 있는 쾌할하고 순수한 이미지의. 어린 꼬마같은 친근감을 부각시켰다.</p>
+                                </div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+    <div class="type-body1">
+        <p>단락1</p>
+        <p>단락2</p>
+        <p class="float-left">
+            <span class="photo"><img src="" alt=""></span>
+            단락3
+        </p>
+        <p class="float-right">
+            <span class="photo"><img src="" alt=""></span>
+            단락4
+        </p>
+    </div>
+									</xmp></pre>
+							</div>
+						</article>
+                        <article class="margin-top20">
+                            <h4 id="typography_caption" class="sub-title">캡션</h4>
+                            <div class="preview">
+                                <div class="caption-writer">
+                                    집필자 : 오창명 (제주대학교 학술연구 교수)
+                                </div>
+                            </div>
+                            <div class="ex">
+                                <pre class="prettyprint linenums:1">
+									<xmp>
+    <div class="caption-writer">Text</div>
+									</xmp></pre>
+                            </div>
+                        </article>
+						<article class="margin-top20">
+							<h4 id="typography_helper" class="sub-title">헬퍼</h4>
+							<div class="preview">
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="typography_align" class="sub-title">정렬</h4>
+							<div class="preview">
+								<div class="text-left">텍스트 좌측 정렬</div>
+								<div class="text-center">텍스트 중앙 정렬</div>
+								<div class="text-right">텍스트 우측 정렬</div>
+								<div class="text-justify">텍스트 양쪽 정렬</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<!--class add-->
+	<div class="text-left">텍스트 좌측 정렬</div>
+	<div class="text-center">텍스트 중앙 정렬</div>
+	<div class="text-right">텍스트 우측 정렬</div>
+	<div class="text-justify">텍스트 양쪽 정렬</div>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="color">
+						<h3 class="title">컬러</h3>
+						<article>
+							<h4 id="color_font" class="sub-title">폰트</h4>
+							<div class="preview">
+								<span class="text-black">text-black &nbsp;</span>
+								<span class="text-gray">text-gray &nbsp;</span>
+								<span class="text-red">text-red &nbsp;</span>
+								<span class="text-pink">text-pink &nbsp;</span>
+								<span class="text-blue">text-blue &nbsp;</span>
+								<span class="text-green">text-green &nbsp;</span>
+								<span class="text-yellow">text-yellow &nbsp;</span>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<!--class add-->									
+	<span class="text-black">text-black</span>
+	<span class="text-gray">text-gray</span>
+	<span class="text-red">text-red</span>
+	<span class="text-pink">text-pink</span>
+	<span class="text-blue">text-blue</span>
+	<span class="text-green">text-green</span>
+	<span class="text-yellow">text-yellow</span>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+                    <section id="list_style">
+                        <h3 class="title">List Style</h3>
+                        <article>
+                            <h4 id="list_option" class="sub-title">Example</h4>
+                            <div class="preview">
+                                <ul class="list-disc">
+                                    <li class="danger">리스트 스타일 리스트 스타일 리스트 스타일</li>
+                                    <li>리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일</li>
+                                    <li>리스트 스타일 리스트 스타일
+                                    	<ul>
+                                    		<li>리스트 스타일 리스트 스타일</li>
+                                    	</ul>
+                                    </li>
+                                </ul>
+                                
+                                <br>
+                                
+                                <h4 class="title3">사업시행주체</h4>
+                                <ul class="list-disc2">
+                                    <li class="danger">리스트 스타일 리스트 스타일 리스트 스타일</li>
+                                    <li>리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일
+                                    	<ul>
+                                    		<li>리스트 스타일 리스트 스타일</li>
+                                    		<li>리스트 스타일 리스트 스타일
+                                    			<ul>
+											        <li>직업군인(군무원 제외), 새터민은 근무지(거주지)가 어촌지역인 경우, 이주기한 및 거주기간을 제한하지 않음(제대 만 5년까지 인정)</li>
+											        <li>리스트 스타일 리스트 스타일</li>
+											    </ul>
+                                    		</li>
+                                    	</ul>
+                                    </li>
+                                    <li>리스트 스타일 리스트 스타일
+                                    	<ol>
+                                    		<li>리스트 스타일 리스트 스타일</li>
+                                    		<li>리스트 스타일 리스트 스타일</li>
+                                    	</ol>
+                                    </li>
+                                    <li>리스트 스타일 리스트 스타일
+                                    	<dl>
+                                            <dt>리스트 스타일 리스트 스타일</dt>
+                                            <dd>리스트 스타일 리스트 스타일 리스트 스타일 리스트 스타일리스트 스타일 리스트 스타일리스트 스타일 리스트 스타일</dd>
+										</dl>
+                                    </li>
+                                </ul>
+                                
+                                <br>
+
+                                <ul class="list-decimal">
+                                    <li class="danger">Text text text</li>
+                                    <li>Text text text
+                                        <ol>
+                                            <li>List Sample Text1</li>
+                                            <li>List Sample Text2</li>
+                                        </ol>
+                                    </li>
+                                    <li>Text text text</li>
+                                </ul>
+                            </div>
+                            <div class="ex">
+                                <pre class="prettyprint linenums:1">
+									<xmp>
+    <ul class="list-disc">
+        <li class="danger">Text</li>
+        <li>Text
+        	<ul>
+        		<li>Text</li>
+        	</ul>
+        </li>
+    </ul>
+    
+    <ul class="list-disc2">
+        <li>Text
+        	<ul> <!-- hyphen형 -->
+        		<li>Text
+        			<ul>
+        				<li>Text</li>
+        			</ul>
+        		</li>
+        	</ul>
+        	
+        	<ol> <!-- 숫자형 -->
+        		<li>Text</li>
+        	</ol>
+        	
+        	<dl> <!-- 제목/내용 형 -->
+        		<dt>Title</dt>
+        		<dd>Memo</dd>
+        	</dl>
+        </li>
+    </ul>
+    
+    <ul class="list-decimal">
+        <li>Text
+            <ol>
+                <li>Text</li>
+            </ol>
+        </li>
+    </ul>
+									</xmp></pre>
+                            </div>
+                        </article>
+                    </section>
+					
+					<section id="button">
+						<h3 class="title">Button</h3>
+						<article>
+							<h4 id="button_option" class="sub-title">버튼 옵션</h4>
+							<div class="preview">
+								<div class="btn-wrap">
+									<button type="button" class="btn">DEFAULT</button>
+                                    <button type="button" class="btn white">WHITE</button>
+                                    <button type="button" class="btn white2">WHITE2</button>
+									<button type="button" class="btn gray">GRAY</button>
+									<button type="button" class="btn black">BLACK</button>
+                                    <button type="button" class="btn blue">BLUE</button>
+                                    <button type="button" class="btn blue arrow">BLUE</button>
+									<button type="button" class="btn red">RED</button>
+									<button type="button" class="btn pink">PINK</button>
+								</div>
+								
+								<div class="btn-wrap2">
+									<div class="l-area"><button type="button" class="btn white">Delete Selections</button></div>
+									<div class="r-area"><button type="button" class="btn">Delete All</button></div>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<div class="btn-wrap">
+		<!-- a 태그 class 동일사용 / form 전송시 type → submit 변경 -->
+		<button type="button" class="btn">Cancel</button>
+		<button type="button" class="btn red">Confirm</button>
+		<button type="button" class="btn white">Reserve</button>
+	</div>
+	
+	<!-- 좌측/우측 정렬 -->
+	<div class="btn-wrap2">
+		<div class="l-area"><button type="button" class="btn white">Delete Selections</button></div>
+		<div class="r-area"><button type="button" class="btn">Delete All</button></div>
+	</div>
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="button_size" class="sub-title">버튼 크기</h4>
+							<div class="preview">
+								<div>
+                                    <button type="button" class="btn sm">DEFAULT</button>
+								</div>
+								<div>
+                                    <button type="button" class="btn big">DEFAULT</button>
+                                    <button type="button" class="btn big arrow">DEFAULT</button>
+                                    <button type="button" class="btn big blue down">DEFAULT</button>
+                                    <button type="button" class="btn big blue down"><img class="icon" src="../../images/dongja/btn/check.png" alt=""> DEFAULT</button>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	
+	<button type="button" class="btn sm">Cancel</button> <!--sm 클래스 추가-->
+	<button type="button" class="btn big">Cancel</button> <!--big 클래스 추가-->
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="button_disabled" class="sub-title">비활성화</h4>
+							<div class="preview">
+								<button type="button" class="btn disabled">목록</button>
+								<button type="button" class="btn black disabled">인쇄</button>
+								<button type="button" class="btn blue disabled">검색</button>
+								<button type="button" class="btn red disabled">검색</button>
+								<button type="button" class="btn green disabled">검색</button>
+								<a href="#" class="btn disabled">a 링크</a>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<!--disabled 클래스 추가-->
+	<button type="button" class="btn disabled">목록</button> 	<!--스크립트에서 자동 disabled="disabled" 생성-->
+	<a href="#" class="btn disabled">목록</a> 					<!--스크립트에서 자동 return false 실행-->
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="table">
+						<h3 class="title">Table</h3>
+						<article>
+							<h4 id="table_option" class="sub-title">테이블 옵션</h4>
+							<div class="preview">
+								<table class="table-col center">
+									<caption>캡션 제목</caption>
+									<colgroup>
+										<col style="width: 14%">
+										<col>
+										<col>
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+                                            <th class="backslash">
+                                                <div class="top">Right</div>
+                                                Left
+                                            </th>
+											<th>제목2</th>
+											<th>제목3</th>
+											<th>제목4</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>내용2</td>
+											<td>내용3</td>
+											<td>내용4</td>
+										</tr>
+										<tr>
+											<td><img src="../../images/dongja/icon/temp/red_check.png" alt="체크"></td>
+											<td><img src="../../images/dongja/icon/temp/blue_check.png" alt="체크"></td>
+											<td><img src="../../images/dongja/icon/temp/black_location.png" alt="약도"> <img src="../../images/dongja/icon/temp/red_location.png" alt="약도"> <img src="../../images/dongja/icon/temp/blue_location.png" alt="약도"></td>
+											<td><button type="button" class="btn blue sm">수정</button><button type="button" class="btn red sm">삭제</button></td>
+										</tr>
+										<tr>
+											<td><input type="radio" name="test"></td>
+											<td>내용2</td>
+											<td>내용3</td>
+											<td>내용4</td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<td colspan="4">합계 : <strong class="text-red">00</strong></td>
+										</tr>
+									</tfoot>
+								</table>
+								
+								<br>
+								
+								<table class="table-row">
+									<caption>캡션 제목</caption>
+									<colgroup>
+										<col style="width: 14%">
+										<col>
+									</colgroup>
+									<tbody>
+                                        <tr>
+                                            <th>메</th>
+                                            <td>
+                                                <ul class="list-decimal">
+                                                    <li>큰 메 : 길이 30cm, 굵기 26cm 정도의 쇠로 된 무거운 망치를 가리킨다.
+                                                        큰 돌을 크게 토막낼 때와 성글게 다듬을 때 사용하였는데, 공동의 협력 작업일 경우 석수(石手)의 경력이 얼마 되지 않는 초보자(初步者)들이 주로 사용하였다.
+                                                    </li>
+                                                    <li>작은 메 : 남ㅇㅇ이 소장한 작은 메는 3개가 있었다. 길이는 25cm, 손잡이 굵기는 3.5cm, 날의 길이는 10.5cm, 망치의 두께는 5cm,
+                                                        손잡이가 긴 메의 경우 손잡이 길이는 42cm, 날의 길이는 9cm, 두께는 3cm 정도였다.
+                                                        그 다음의 것은 손잡이까지의 길이가 18cm, 망치의 길이 7.5cm, 굵기가 3cm 내외다.
+                                                        길이 19cm 정도의 공구(工具)로 돌을 깰 때 사용한다. ‘겐노’, ‘망치’라고도 불렸는데, 크게 토막진 재료를 적당한 모양이 되도록 쉽게 다듬어 갈 때 앞 단계에서 주로 사용하였다.
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+    <!--테이블 여백-->
+    <div class="table-margin">
+        테이블 삽입
+    </div>
+    
+    <!--col table-->
+    <table class="table-col center"> <!-- td 한방에 센터 정렬시 "center" 클래스 추가 -->
+        <caption>왕릉의 석물로에 대해 안내해 드립니다.</caption>
+        <colgroup>
+            <col style="width: 15%">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">제목1</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>내용</td> <!--Default-->
+                <td class="left">내용</td> <!--텍스트 좌측 정렬시-->
+                <td class="center">내용</td> <!--텍스트 중앙 정렬시-->
+                <td class="right">내용</td> <!--텍스트 우측 정렬시-->
+            </tr>
+        </tbody>
+        <tfoot> <!--html5에 따른 순서 변경-->
+            <tr>
+                <td>합계 : <strong class="text-red">00</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+    
+    <!--row table-->
+    <table class="table-row"> <!-- not-border 추가시 border-top 삭제 -->
+        <caption>캡션 제목</caption>
+        <colgroup>
+            <col style="width: 14%">
+            <col>
+        </colgroup>
+        <tbody>
+            <tr>
+                <th scope="row">제목</th>
+                <td>내용</td>
+            </tr>
+        </tbody>
+    </table>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+                    <section id="paging">
+                        <h3 class="title">페이징</h3>
+                        <article>
+                            <h4 id="paging_option" class="sub-title">Example</h4>
+                            <div class="preview">
+                                <div class="paging-wrap">
+                                    <ul>
+                                        <li class="first"><a href=""><img src="../../images/dongja/paging/first.png" alt="맨처음"></a></li>
+                                        <li class="prev"><a href=""><img src="../../images/dongja/paging/prev.png" alt="이전"></a></li>
+                                        <li><a href="">1</a></li>
+                                        <li><a href="">2</a></li>
+                                        <li><a href="">3</a></li>
+                                        <li><a href="">4</a></li>
+                                        <li class="active">5</li>
+                                        <li><a href="">6</a></li>
+                                        <li><a href="">7</a></li>
+                                        <li><a href="">8</a></li>
+                                        <li><a href="">9</a></li>
+                                        <li><a href="">10</a></li>
+                                        <li class="next"><a href=""><img src="../../images/dongja/paging/next.png" alt="다음"></a></li>
+                                        <li class="last"><a href=""><img src="../../images/dongja/paging/last.png" alt="마지막"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="ex">
+                                <pre class="prettyprint linenums:1">
+									<xmp>
+	<div class="paging-wrap">
+		<ul>
+			<li class="first"><a href=""><img src="../../images/dongja/paging/first.png" alt="맨처음"></a></li>
+			<li class="prev"><a href=""><img src="../../images/dongja/paging/prev.png" alt="이전"></a></li>
+			<li><a href="">1</a></li>
+			<li><a href="">2</a></li>
+			<li><a href="">3</a></li>
+			<li><a href="">4</a></li>
+			<li class="active">5</li>
+			<li><a href="">6</a></li>
+			<li><a href="">7</a></li>
+			<li><a href="">8</a></li>
+			<li><a href="">9</a></li>
+			<li><a href="">10</a></li>
+			<li class="next"><a href=""><img src="../../images/dongja/paging/next.png" alt="다음"></a></li>
+			<li class="last"><a href=""><img src="../../images/dongja/paging/last.png" alt="마지막"></a></li>
+		</ul>
+	</div>
+									</xmp></pre>
+                            </div>
+                        </article>
+                    </section>
+					
+					<section id="form_control">
+						<h3 class="title">폼</h3>
+						<article>
+							<h4 id="form_option" class="sub-title">Example</h4>
+							<div class="preview">
+								<input type="tel" placeholder="010">
+								<input type="text" placeholder="제목을 입력하세요">
+								<input type="password" placeholder="비밀번호를 입력하세요">
+								<select>
+									<option value="">옵션1</option>
+									<option value="">옵션2</option>
+								</select>
+								<input type="file" accept="image/*">
+								
+								<div class="margin-top10">
+									<textarea cols="30" rows="5" placeholder="내용입력"></textarea>
+									<textarea cols="50" rows="5" placeholder="내용입력"></textarea>
+								</div>
+								
+								<br><br>
+								
+                                <div class="email-form">
+                                    <input type="text" title="이메일 아이디">
+                                    <span class="guide">@</span>
+                                    <input type="text" title="이메일 주소">
+                                    <select title="E-mail 호스트 주소를 선택합니다.">
+                                        <option value="etc">직접입력</option>
+                                        <option value="naver.com">네이버</option>
+                                        <option value="hanmail.net">한메일</option>
+                                        <option value="nate.com">네이트</option>
+                                        <option value="lycos.co.kr">라이코스</option>
+                                        <option value="hotmail.com">핫메일</option>
+                                        <option value="yahoo.co.kr">야후</option>
+                                        <option value="netian.com">네띠앙</option>
+                                        <option value="freechal.com">프리챌</option>
+                                        <option value="empal.com">엠팔</option>
+                                        <option value="dreamwiz.com">드림위즈</option>
+                                        <option value="hanafos.com">하나포스</option>
+                                        <option value="korea.com">코리아닷컴</option>
+                                        <option value="chollian.net">천리안</option>
+                                        <option value="hanmir.com">한미르</option>
+                                        <option value="hitel.net">하이텔</option>
+                                    </select>
+                                    <button type="button" class="btn">중복확인</button>
+                                </div>
+								
+								<br><br>
+								
+                                <div class="addr-form">
+                                    <div>
+                                        <input class="num" type="text" title="우편번호">
+                                        <button type="button" class="btn">주소검색</button>
+                                    </div>
+                                    <div>
+                                        <input class="addr1" type="text" title="기본주소">
+                                        <input class="addr2" type="text" title="상세주소">
+                                    </div>
+                                </div>
+								
+								<div class="date-container">
+									<span class="date-wrap"><input class="datepicker" type="text"></span>
+									<span class="date-guide">~</span>
+									<span class="date-wrap"><input class="datepicker" type="text"></span>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<input type="tel" placeholder="010">
+	<input type="text" placeholder="제목을 입력하세요">
+	<input type="password" placeholder="비밀번호를 입력하세요">
+	<select>
+		<option value="">옵션1</option>
+		<option value="">옵션2</option>
+	</select>
+	<input type="file" accept="image/*">
+	<textarea cols="30" rows="5" placeholder="내용입력"></textarea>
+	
+    <!--이메일폼-->
+    <div class="email-form">
+        <input type="text" title="이메일 아이디">
+        <span class="guide">@</span>
+        <input type="text" title="이메일 주소">
+        <select title="E-mail 호스트 주소를 선택합니다.">
+            <option value="etc">직접입력</option>
+            <option value="naver.com">네이버</option>
+            <option value="hanmail.net">한메일</option>
+            <option value="nate.com">네이트</option>
+            <option value="lycos.co.kr">라이코스</option>
+            <option value="hotmail.com">핫메일</option>
+            <option value="yahoo.co.kr">야후</option>
+            <option value="netian.com">네띠앙</option>
+            <option value="freechal.com">프리챌</option>
+            <option value="empal.com">엠팔</option>
+            <option value="dreamwiz.com">드림위즈</option>
+            <option value="hanafos.com">하나포스</option>
+            <option value="korea.com">코리아닷컴</option>
+            <option value="chollian.net">천리안</option>
+            <option value="hanmir.com">한미르</option>
+            <option value="hitel.net">하이텔</option>
+        </select>
+        <button type="button" class="btn">중복확인</button>
+    </div>
+	
+    <!--주소 입력폼-->
+    <div class="addr-form">
+        <div>
+            <input class="num" type="text" title="우편번호">
+            <button type="button" class="btn">주소검색</button>
+        </div>
+        <div>
+            <input class="addr1" type="text" title="기본주소">
+            <input class="addr2" type="text" title="상세주소">
+        </div>
+    </div>
+	
+	<!--datepicker-->
+	<div class="date-container">
+		<span class="date-wrap"><input class="datepicker" type="text"></span>
+		<span class="date-guide">~</span>
+		<span class="date-wrap"><input class="datepicker" type="text"></span>
+	</div>								
+	<script>
+		//datepicker 임시용
+		$( ".datepicker" ).datepicker({
+			showOn: "both",
+			buttonImage: "../../images/comm/jquery/calendar.gif",
+			buttonImageOnly: true
+		});
+	</script>
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="form_size" class="sub-title">폼 크기</h4>
+							<div class="preview">
+								<input class="width100" type="text" placeholder="class width100">
+								<select class="width100">
+									<option value="">내용1</option>
+									<option value="">내용2</option>
+								</select>
+								<input size="35" type="text" placeholder="size 수치 조절">
+								<input class="wide" type="text" placeholder="wide 클래스 추가">
+								<input class="small" type="text" placeholder="small 클래스 추가">
+								<p>
+									<input class="col3" type="tel" placeholder="010">
+									<input class="col3" type="tel" placeholder="1234">
+									<input class="col3" type="tel" placeholder="5678">
+								</p>
+								
+								<br>
+								
+								<div class="int-box">
+									<div class="side-btn">
+										<label><input class="width100" type="text" placeholder="아이디"></label>
+										<button type="button" class="btn">중복확인</button>
+									</div>
+								</div>
+								
+								<br>
+								
+								<div class="int-box row">
+									<label><input class="width100" type="text" placeholder="아이디"></label>
+									<label><input class="width100" type="password" placeholder="비밀번호 확인"></label>
+									<label><input class="width100" type="password" placeholder="비밀번호 확인"></label>
+								</div>
+								
+								<div class="margin-top10">
+									<textarea class="width100" rows="5" placeholder="내용입력"></textarea>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<input class="width100" type="text" placeholder="class width100">
+	<select class="width100">
+		<option value="">내용1</option>
+		<option value="">내용2</option>
+	</select>
+	<input size="50" type="text" placeholder="size 수치 조절">
+	<input class="wide" type="text" placeholder="wide 클래스 추가">
+	<input class="small" type="text" placeholder="small 클래스 추가">
+	<p>
+		<input class="col3" type="tel" placeholder="class col3">
+		<input class="col3" type="tel" placeholder="class col3">
+		<input class="col3" type="tel" placeholder="class col3">
+	</p>
+	
+	<div class="int-box">
+		<div class="side-btn">
+			<label><input class="width100" type="text" placeholder="아이디"></label>
+			<button type="button" class="btn">중복확인</button>
+		</div>
+	</div>
+	
+	<div class="int-box row">
+		<!--개수에 따라 자동 조정-->
+		<label><input class="width100" type="text" placeholder="아이디"></label>
+		<label><input class="width100" type="password" placeholder="비밀번호 확인"></label>
+		<label><input class="width100" type="password" placeholder="비밀번호 확인"></label>
+	</div>
+	
+	<textarea class="width100" rows="5" placeholder="내용입력"></textarea>
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="form_label" class="sub-title">label</h4>
+							<div class="preview">
+								<label><input type="checkbox"><span>동의함</span></label>
+								<label><input type="checkbox"><span>동의안함</span></label>
+								<label><input type="radio" name="sex"><span>남성</span></label>
+								<label><input type="radio" name="sex"><span>여성</span></label>
+								
+								<div class="form-label">
+									<input id="check1" type="checkbox"><label for="check1">동의함</label>
+									<input id="check2" type="checkbox"><label for="check2">동의안함</label>
+									<input id="radio1" type="radio" name="sex2"><label for="radio1">남성</label>
+									<input id="radio2" type="radio" name="sex2"><label for="radio2">여성</label>
+								</div>
+								<br>
+								<div class="lb-ch">
+									<input id="ch1" type="checkbox">
+									<label for="ch1"></label>
+									<span class="text">Checkbox1</span>
+								</div>
+								<div class="lb-ch">
+									<input id="ch2" type="checkbox">
+                                    <label for="ch2"></label>
+                                    <span class="text">Checkbox2</span>
+								</div>
+								
+								<br><br>
+								
+								<div class="lb-ch">
+									<input id="wan_all" name="wannago" type="radio">
+									<label for="wan_all"></label>
+                                    <span class="text">Radio1</span>
+								</div>
+								<div class="lb-ch">
+									<input id="wan_me" name="wannago" type="radio">
+									<label for="wan_me"></label>
+                                    <span class="text">Radio2</span>
+								</div>
+								
+                                <br><br>
+                               
+                                <div class="lb-ch-wrap">
+                                    <div class="lb-ch2">
+                                        <input id="ra1" name="sex" type="radio">
+                                        <label for="ra1">남성</label>
+                                    </div>
+                                    <div class="lb-ch2">
+                                        <input id="ra2" name="sex" type="radio">
+                                        <label for="ra2">여성</label>
+                                    </div>
+                                </div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<!--default-->
+	<label><input type="checkbox"><span>동의함</span></label>
+	<label><input type="checkbox"><span>동의안함</span></label>
+	<label><input type="radio" name="sex"><span>남성</span></label>
+	<label><input type="radio" name="sex"><span>여성</span></label>
+								
+	<!--label for id-->
+	<div class="form-label"> <!--form-label 클래스 추가-->
+		<input id="check1" type="checkbox"><label for="check1">동의함</label>
+		<input id="check2" type="checkbox"><label for="check2">동의안함</label>
+		<input id="radio1" type="radio" name="sex2"><label for="radio1">남성</label>
+		<input id="radio2" type="radio" name="sex2"><label for="radio2">여성</label>
+	</div>
+	
+	<!--input checkbox design-->
+	<div class="lb-ch">
+		<input id="ch1" type="checkbox">
+		<label for="ch1"></label>
+		<span class="text">Name</span>
+	</div>
+	
+	<!--input radio design-->
+	<div class="lb-ch">
+		<input id="ra1" name="name" type="radio">
+		<label for="ra1"></label>
+		<span class="text">Name</span>
+	</div>
+	
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="form_disabled" class="sub-title">비활성화</h4>
+							<div class="preview">
+								<input type="text">
+								<input class="disabled" type="text">
+								<input class="disabled" type="password">
+								<select class="disabled">
+									<option value="">옵션1</option>
+									<option value="">옵션2</option>
+								</select>
+								<textarea class="width100 disabled" rows="5" placeholder="내용입력"></textarea>
+								
+								<div class="margin-top10">
+									<label><input class="disabled" type="checkbox"><span>동의함</span></label>
+									<label><input class="disabled" type="radio"><span>남성</span></label>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<!--disabled 클래스 추가 / 스크립트에서 자동 disabled="disabled" 생성 -->
+	<input class="disabled" type="text">
+	<input class="disabled" type="checkbox">
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="label">
+						<h3 class="title">라벨</h3>
+						<article>
+							<h4 id="label_option" class="sub-title">Example</h4>
+							<div class="preview">
+								<span class="label">라벨</span>
+								<span class="label black">라벨</span>
+								<span class="label blue">라벨</span>
+								<span class="label red">라벨</span>
+								<span class="label green">라벨</span>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<span class="label">라벨</span>
+	<span class="label black">라벨</span>
+	<span class="label blue">라벨</span>
+	<span class="label red">라벨</span>
+	<span class="label green">라벨</span>
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="label_size" class="sub-title">라벨 크기</h4>
+							<div class="preview">
+								<h1>검색결과 <span class="label black big">라벨</span></h1><br>
+								<h3>검색결과 <span class="label black">라벨</span></h3><br>
+								<h6>검색결과 <span class="label black sm">라벨</span></h6>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<h1>검색결과 <span class="label big">라벨</span></h1>	<!-- big -->
+	<h3>검색결과 <span class="label">라벨</span></h3>		<!-- default -->
+	<h6>검색결과 <span class="label sm">라벨</span></h6>	<!-- small -->
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="popup">
+						<h3 class="title">팝업</h3>
+						<article>
+							<h4 id="popup_layer" class="sub-title">레이어 팝업</h4>
+							<div class="preview">
+								<div>
+									<a class="btn" href="javascript:layer_popup('#targetID')">default</a>
+									<button type="button" class="btn" onclick="layer_popup('#targetID2');">small</button>
+									<button type="button" class="btn" onclick="layer_popup('#targetID3');">big</button>
+									<button type="button" class="btn" onclick="layer_popup('#targetID4');">scroll</button>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<button type="button" class="btn" onclick="layer_popup('#targetID');">타겟 ID 지정</button>
+	
+	<!--팝업콘텐츠 (타겟 ID동일)-->
+	<div id="targetID" class="layer-popup">
+		<div class="content-wrap"> <!--클래스 추가 → sm : 작은팝업, big : 큰팝업-->
+			<div class="content">
+				<div class="head">
+					<h3 class="title">타이틀 제목</h3>
+					<button type="button" class="close"><img src="../../images/dongja/btn/close.png" alt="닫기"></button>
+				</div>
+				
+				<div class="main">
+					<div class="scroll" style="height: 150px"> <!--scroll 시에만 class 사용 (높이지정가능) / 불필요시 클래스 및 div삭제-->
+						내용입력... 안에서는 div 맘껏 사용가능
+					</div>
+				</div>
+				
+				<div class="foot">
+					<button type="button" class="close btn">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div> <!--//layer-popup-->
+
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="popup_window" class="sub-title">윈도우 팝업</h4>
+							<div class="preview">
+								<div>
+									<button type="button" class="btn" onclick="win_popup('popup.html', 'popup-name', 500, 400)">popup</button>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<!--파일명, 팝업창 이름, 가로, 세로 필히 입력-->
+	<button type="button" class="btn" onclick="win_popup('popup.html', 'popup-name', 500, 400)">popup</button>
+									</xmp></pre>
+							</div>
+						</article>
+
+						<!--popup content-->
+						<div id="targetID" class="layer-popup">
+							<div class="content-wrap">
+								<div class="content">
+									<div class="head">
+										<h3 class="title">타이틀 제목</h3>
+										<button type="button" class="close"><img src="../../images/dongja/btn/close.png" alt="닫기"></button>
+									</div>
+
+									<div class="main">
+										내용입력... 안에서는 div 맘껏 사용가능<br>
+										내용입력... 안에서는 div 맘껏 사용가능
+									</div>
+									
+									<div class="foot">
+										<button type="button" class="close btn">닫기</button>
+									</div>
+								</div>
+							</div>
+						</div> <!--//layer-popup-->
+						
+						<div id="targetID2" class="layer-popup">
+							<div class="content-wrap sm">
+								<div class="content">
+									<div class="head">
+										<h3 class="title">타이틀 제목 입력</h3>
+										<button type="button" class="close"><img src="../../images/dongja/btn/close.png" alt="닫기"></button>
+									</div>
+
+									<div class="main">
+										내용입력... 안에서는 div 맘껏 사용가능<br>
+										내용입력... 안에서는 div 맘껏 사용가능
+									</div>
+									
+									<div class="foot">
+										<button type="button" class="close btn">닫기</button>
+									</div>
+								</div>
+							</div>
+						</div> <!--//layer-popup-->
+						
+						<div id="targetID3" class="layer-popup">
+							<div class="content-wrap big">
+								<div class="content">
+									<div class="head">
+										<h3 class="title">타이틀 제목 입력</h3>
+										<button type="button" class="close"><img src="../../images/dongja/btn/close.png" alt="닫기"></button>
+									</div>
+
+									<div class="main">
+										내용입력... 안에서는 div 맘껏 사용가능<br>
+										내용입력... 안에서는 div 맘껏 사용가능
+									</div>
+
+									<div class="foot">
+										<button type="button" class="close btn">닫기</button>
+									</div>
+								</div>
+							</div>
+						</div> <!--//layer-popup-->
+						
+						<div id="targetID4" class="layer-popup">
+							<div class="content-wrap">
+								<div class="content">
+									<div class="head">
+										<h3 class="title">타이틀 제목 입력</h3>
+										<button type="button" class="close"><img src="../../images/dongja/btn/close.png" alt="닫기"></button>
+									</div>
+
+									<div class="main">
+										<div class="scroll" style="height: 150px">
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+											내용입력... 안에서는 div 맘껏 사용가능<br>내용입력... 안에서는 div 맘껏 사용가능<br>
+										</div>
+									</div>
+									
+									<div class="foot">
+										<button type="button" class="close btn">닫기</button>
+									</div>
+								</div>
+							</div>
+						</div> <!--//layer-popup-->
+					</section>
+					
+					<section id="navi">
+						<h3 class="title">네비게이션</h3>
+						<article>
+							<h4 id="navi_tab" class="sub-title">탭패널</h4>
+							<div class="preview">
+								<div id="tabs" class="nav-tabs1">
+									<div class="menu-wrap">
+										<ul class="nav-menu">
+											<li><a href="#tabs-1">Menu list1</a></li>
+											<li><a href="#tabs-2">Menu list2 <span>(<strong>0</strong>)</span></a></li>
+											<li><a href="#tabs-3">Menu list3 <span>(<strong>99</strong>)</span></a></li>
+										</ul>
+									</div>
+
+									<div id="tabs-1" class="tabPanel">
+										<div class="pd-wrap">1</div>
+									</div> <!-- //tabs-1 -->
+
+									<div id="tabs-2" class="tabPanel">
+										<div class="pd-wrap">2</div>
+									</div> <!-- //tabs-2 -->
+
+									<div id="tabs-3" class="tabPanel">
+										<div class="pd-wrap">3</div>
+									</div> <!-- //tabs-3 -->
+
+									<script>
+										//tabPanel({container: "#tabs"});
+										tabPanel({
+											container: "#tabs",
+											firstItem: "#tabs-3",
+											active: 2
+										});
+									</script>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<div id="tabs" class="nav-tabs1">
+		<div class="menu-wrap">
+			<ul class="nav-menu">
+				<li><a href="#tabs-1">Menu list1</a></li>
+				<li><a href="#tabs-2">Menu list2 <span>(<strong>0</strong>)</span></a></li>
+				<li><a href="#tabs-3">Menu list3 <span>(<strong>99</strong>)</span></a></li>
+			</ul>
+		</div>
+		
+		<div id="tabs-1" class="tabPanel">
+			<div class="pd-wrap">1</div>
+		</div> <!-- //tabs-1 -->
+		<div id="tabs-2" class="tabPanel">
+			<div class="pd-wrap">2</div>
+		</div> <!-- //tabs-2 -->
+		<div id="tabs-3" class="tabPanel">
+			<div class="pd-wrap">3</div>
+		</div> <!-- //tabs-3 -->
+		
+		<script>
+			tabPanel({
+				container: "#tabs",		//해당 ID
+				firstItem: "#tabs-3",	//show item
+				active: 2				//해당 menu add class
+			});
+		</script>
+	</div>
+									</xmp></pre>
+							</div>
+						</article>
+						
+						<article class="margin-top20">
+							<h4 id="navi_tab2" class="sub-title">탭패널 웹접근성</h4>
+							<div class="preview">
+								
+								<div id="tab_wrap" class="tab-wrap">
+									<ul class="tab-list">
+										<li>
+											<a class="tab-menu" href="#">Menu list1</a>
+											<div class="tab-contents">
+												<div class="tab-ct">
+													<ul>
+														<li><a href="">title output1</a></li>
+														<li><a href="">title output1</a></li>
+													</ul>
+												</div>
+												<div class="tab-btn">
+													<a href="http://naver.com">더보기1</a>
+												</div>
+											</div>
+										</li>
+										<li>
+											<a class="tab-menu" href="#">Menu list2</a>
+											<div class="tab-contents">
+												<div class="tab-ct">
+													<ul>
+														<li><a href="">title output2</a></li>
+														<li><a href="">title output2</a></li>
+													</ul>
+												</div>
+												<div class="tab-btn">
+													<a href="http://daum.net">더보기2</a>
+												</div>
+											</div>
+										</li>
+										<li>
+											<a class="tab-menu" href="#">Menu list3</a>
+											<div class="tab-contents">
+												<div class="tab-ct">
+													<ul>
+														<li><a href="">title output3</a></li>
+														<li><a href="">title output3</a></li>
+													</ul>
+												</div>
+												<div class="tab-btn">
+													<a href="http://nate.com">더보기3</a>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<script>
+									//tabPanel2({container: "#tab_wrap"});
+									tabPanel2({
+										container: "#tab_wrap",
+										active: 2
+									});
+								</script>
+								
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<div id="tab_wrap" class="tab-wrap">
+		<ul class="tab-list">
+			<li>
+				<a class="tab-menu" href="#">Menu list1</a>
+				<div class="tab-contents">
+					<div class="tab-ct">
+						<ul>
+							<li><a href="">title output1</a></li>
+						</ul>
+					</div>
+					<div class="tab-btn">
+						<a href="">더보기</a>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a class="tab-menu" href="#">Menu list2</a>
+				<div class="tab-contents">
+					<div class="tab-ct">
+						<ul>
+							<li><a href="">title output2</a></li>
+						</ul>
+					</div>
+					<div class="tab-btn">
+						<a href="http://daum.net">더보기2</a>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a class="tab-menu" href="#">Menu list3</a>
+				<div class="tab-contents">
+					<div class="tab-ct">
+						<ul>
+							<li><a href="">title output3</a></li>
+						</ul>
+					</div>
+					<div class="tab-btn">
+						<a href="http://nate.com">더보기3</a>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<script>
+		tabPanel2({
+			container: "#tab_wrap",		//해당 ID
+			active: 2					//show item  삭제시 default(0)
+		});
+	</script>
+									</xmp></pre>
+							</div>
+						</article>
+						
+						<article class="margin-top20">
+							<h4 id="navi_menu" class="sub-title">탭메뉴</h4>
+							<div class="preview">
+								<div class="nav-tabs1">
+									<div class="menu-wrap">
+										<ul class="nav-menu">
+											<li class="active"><a href="">Menu list1</a></li>
+											<li><a href="">Menu list2 <span>(<strong>0</strong>)</span></a></li>
+											<li><a href="">Menu list3 <span>(<strong>99</strong>)</span></a></li>
+										</ul>
+									</div>
+									<div class="tabPanel show">
+										<div class="pd-wrap">1</div>
+									</div>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<div class="nav-tabs1">
+		<div class="menu-wrap">
+			<ul class="nav-menu">
+				<li class="active"><a href="">Menu list1</a></li>
+				<li><a href="">Menu list2 <span>(<strong>0</strong>)</span></a></li>
+				<li><a href="">Menu list3 <span>(<strong>99</strong>)</span></a></li>
+			</ul>
+		</div>
+		<div class="tabPanel show">
+			<div class="pd-wrap">1</div>
+		</div>
+	</div>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="no_item">
+						<h3 class="title">No Item</h3>
+						<article>
+							<h4 id="no_content" class="sub-title">Not Content</h4>
+							<div class="preview">
+								<div class="not-content">
+									<p class="icon"><img src="../../images/dongja/other/no_item.png" alt="warning"></p>
+									<p class="text">No Contents</p>
+								</div>
+								<div class="not-content2"><img src="../../images/dongja/other/no_item2.png" alt="콘텐츠 준비중입니다"></div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<div class="not-content">
+		<p class="icon"><img src="../../images/dongja/other/no_item.png" alt="warning"></p>
+		<p class="text">No Contents</p>
+	</div>
+	
+	<div class="not-content2"><img src="../../images/dongja/other/no_item2.png" alt="콘텐츠 준비중입니다"></div>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="accordion">
+						<h3 class="title">Accordion</h3>
+						<article>
+							<h4 id="accordion_option" class="sub-title">Example</h4>
+							<div class="preview">
+								<dl id="accordion" class="accordion">
+									<dt><a href="#" class="open">How do I edit my review?</a></dt>
+									<dd>memo1</dd>
+									<dt><a href="#" class="open">How do I edit my review?</a></dt>
+									<dd>memo2</dd>
+								</dl>
+								<script>accordion('#accordion');</script>
+								
+                                <br><br>
+								
+                                <div id="rule_accordion" class="rule-accordion">
+                                    <dl>
+                                        <dt>How do I edit my review?</dt>
+                                        <dd>memo1</dd>
+                                        <dt>How do I edit my review?</dt>
+                                        <dd>memo2</dd>
+                                    </dl>
+                                </div>
+                                <script>rule_accordion('#rule_accordion');</script>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+    <!--default-->
+    <dl id="accordion" class="accordion">
+        <dt><a href="#" class="open">Title</a></dt>
+        <dd>memo</dd>
+    </dl>
+    <script>accordion('#accordion');</script>
+                                
+    <!--약관-->
+    <div id="rule_accordion" class="rule-accordion">
+        <dl>
+            <dt>Title</dt>
+            <dd>memo</dd>
+        </dl>
+    </div>
+    <script>rule_accordion('#rule_accordion');</script>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="icon">
+						<h3 class="title">Icon</h3>
+						<article>
+							<h4 id="icon_option" class="sub-title">Example</h4>
+							<div class="preview">
+								<div>
+									<img src="../../images/dongja/icon/temp/black_check.png" alt="check">
+									<img src="../../images/dongja/icon/temp/black_close.png" alt="close">
+									<img src="../../images/dongja/icon/temp/black_location.png" alt="location">
+									<img src="../../images/dongja/icon/temp/black_edit.png" alt="edit">
+									<img src="../../images/dongja/icon/temp/black_del.png" alt="del">
+									<img src="../../images/dongja/icon/temp/black_search.png" alt="search">
+									<img src="../../images/dongja/icon/temp/black_search2.png" alt="search add">
+									<img src="../../images/dongja/icon/temp/black_search3.png" alt="search remove">
+									<img src="../../images/dongja/icon/temp/black_print.png" alt="print">
+									<img src="../../images/dongja/icon/temp/black_setting.png" alt="setting">
+									<img src="../../images/dongja/icon/temp/black_add.png" alt="add">
+									<img src="../../images/dongja/icon/temp/black_remove.png" alt="remove">
+									<img src="../../images/dongja/icon/temp/black_warning.png" alt="warning">
+									<img src="../../images/dongja/icon/temp/black_info.png" alt="info">
+									<img src="../../images/dongja/icon/temp/black_del2.png" alt="del">
+									<img src="../../images/dongja/icon/temp/black_link.png" alt="link">
+									<img src="../../images/dongja/icon/temp/black_mail.png" alt="mail">
+									<img src="../../images/dongja/icon/temp/black_picture.png" alt="picture">
+									<img src="../../images/dongja/icon/temp/black_star.png" alt="star">
+									<img src="../../images/dongja/icon/temp/black_heart.png" alt="heart">
+									<img src="../../images/dongja/icon/temp/black_heart2.png" alt="heart">
+									<img src="../../images/dongja/icon/temp/black_like.png" alt="like">
+									<img src="../../images/dongja/icon/temp/black_reload.png" alt="reload">
+									<img src="../../images/dongja/icon/temp/black_login.png" alt="login">
+									<img src="../../images/dongja/icon/temp/black_logout.png" alt="logout">
+								</div>
+								<div>
+									<img src="../../images/dongja/icon/temp/red_check.png" alt="check">
+									<img src="../../images/dongja/icon/temp/red_close.png" alt="close">
+									<img src="../../images/dongja/icon/temp/red_location.png" alt="location">
+									<img src="../../images/dongja/icon/temp/red_edit.png" alt="edit">
+									<img src="../../images/dongja/icon/temp/red_del.png" alt="del">
+									<img src="../../images/dongja/icon/temp/red_search.png" alt="search">
+									<img src="../../images/dongja/icon/temp/red_search2.png" alt="search add">
+									<img src="../../images/dongja/icon/temp/red_search3.png" alt="search remove">
+									<img src="../../images/dongja/icon/temp/red_print.png" alt="print">
+									<img src="../../images/dongja/icon/temp/red_setting.png" alt="setting">
+									<img src="../../images/dongja/icon/temp/red_add.png" alt="add">
+									<img src="../../images/dongja/icon/temp/red_remove.png" alt="remove">
+									<img src="../../images/dongja/icon/temp/red_warning.png" alt="warning">
+									<img src="../../images/dongja/icon/temp/red_info.png" alt="info">
+									<img src="../../images/dongja/icon/temp/red_del2.png" alt="del">
+									<img src="../../images/dongja/icon/temp/red_link.png" alt="link">
+									<img src="../../images/dongja/icon/temp/red_mail.png" alt="mail">
+									<img src="../../images/dongja/icon/temp/red_picture.png" alt="picture">
+									<img src="../../images/dongja/icon/temp/red_star.png" alt="star">
+									<img src="../../images/dongja/icon/temp/red_heart.png" alt="heart">
+									<img src="../../images/dongja/icon/temp/red_heart2.png" alt="heart">
+									<img src="../../images/dongja/icon/temp/red_like.png" alt="like">
+									<img src="../../images/dongja/icon/temp/red_reload.png" alt="reload">
+									<img src="../../images/dongja/icon/temp/red_login.png" alt="login">
+									<img src="../../images/dongja/icon/temp/red_logout.png" alt="logout">
+								</div>
+								<div>
+									<img src="../../images/dongja/icon/temp/blue_check.png" alt="check">
+									<img src="../../images/dongja/icon/temp/blue_close.png" alt="close">
+									<img src="../../images/dongja/icon/temp/blue_location.png" alt="location">
+									<img src="../../images/dongja/icon/temp/blue_edit.png" alt="edit">
+									<img src="../../images/dongja/icon/temp/blue_del.png" alt="del">
+									<img src="../../images/dongja/icon/temp/blue_search.png" alt="search">
+									<img src="../../images/dongja/icon/temp/blue_search2.png" alt="search add">
+									<img src="../../images/dongja/icon/temp/blue_search3.png" alt="search remove">
+									<img src="../../images/dongja/icon/temp/blue_print.png" alt="print">
+									<img src="../../images/dongja/icon/temp/blue_setting.png" alt="setting">
+									<img src="../../images/dongja/icon/temp/blue_add.png" alt="add">
+									<img src="../../images/dongja/icon/temp/blue_remove.png" alt="remove">
+									<img src="../../images/dongja/icon/temp/blue_warning.png" alt="warning">
+									<img src="../../images/dongja/icon/temp/blue_info.png" alt="info">
+									<img src="../../images/dongja/icon/temp/blue_del2.png" alt="del">
+									<img src="../../images/dongja/icon/temp/blue_link.png" alt="link">
+									<img src="../../images/dongja/icon/temp/blue_mail.png" alt="mail">
+									<img src="../../images/dongja/icon/temp/blue_picture.png" alt="picture">
+									<img src="../../images/dongja/icon/temp/blue_star.png" alt="star">
+									<img src="../../images/dongja/icon/temp/blue_heart.png" alt="heart">
+									<img src="../../images/dongja/icon/temp/blue_heart2.png" alt="heart">
+									<img src="../../images/dongja/icon/temp/blue_like.png" alt="like">
+									<img src="../../images/dongja/icon/temp/blue_reload.png" alt="reload">
+									<img src="../../images/dongja/icon/temp/blue_login.png" alt="login">
+									<img src="../../images/dongja/icon/temp/blue_logout.png" alt="logout">
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<img src="../../images/dongja/icon/temp/black_check.png" alt="check">		<!--black-->
+	<img src="../../images/dongja/icon/temp/red_check.png" alt="check"> 		<!--red-->
+	<img src="../../images/dongja/icon/temp/blue_check.png" alt="check">		<!--blue-->
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="photo">
+						<h3 class="title">Photo</h3>
+                        <article>
+                            <h4 id="photo_grid" class="sub-title">Grid</h4>
+                            <div class="preview">
+                                <div class="photo-col1" style="max-width: 1000px">
+                                    <img src="../../images/dongja/sub/distribution/map.jpg" alt="제주시 조사 분묘">
+                                </div>
+                                <div class="photo-col2" style="max-width: 1000px">
+                                    <img src="../../images/dongja/sub/dongja/grave1.jpg" alt="제주 분묘 전경1">
+                                    <img src="../../images/dongja/sub/dongja/grave2.jpg" alt="제주 분묘 전경2">
+                                </div>
+                                <div class="photo-col3" style="max-width: 1000px">
+                                    <img src="../../images/dongja/sub/dongja/dongja1.jpg" alt="동자석1">
+                                    <img src="../../images/dongja/sub/dongja/dongja2.jpg" alt="석물">
+                                    <img src="../../images/dongja/sub/dongja/dongja3.jpg" alt="동자석2">
+                                </div>
+                                
+                                <div class="list-photo-col2" style="max-width: 1000px">
+                                    <ul>
+                                        <li>
+                                            <figure class="bottom-caption2">
+                                                <img src="../../images/dongja/sub/plan/plan1_1.jpg" alt="조선 왕릉의 석물 배치도">
+                                                <figcaption>
+                                                    <dl>
+                                                        <dt>조선 왕릉의 석물 배치도</dt>
+                                                        <dd>
+                                                            <p>이 배치도는 국립민속박물관 죽은자, 또한 산자의 공간</p>
+                                                            <p>무덤: 조선시대 묘제 자료집(2007)에서 그림을 가져와서 필자가 재구성 재편집함</p>
+                                                        </dd>
+                                                    </dl>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                        <li>
+                                            <figure class="bottom-caption2">
+                                                <img src="../../images/dongja/sub/plan/plan1_2.jpg" alt="조선시대 왕릉의 석물 배치도">
+                                                <figcaption>
+                                                    <dl>
+                                                        <dt>조선시대 왕릉의 석물 배치도</dt>
+                                                        <dd>
+                                                            <p>이 배치도는 국립민속박물관 죽은자, 또한 산자의 공간</p>
+                                                            <p>무덤: 조선시대 묘제 자료집(2007)에서 그림을 가져와서 필자가 재편집함</p>
+                                                        </dd>
+                                                    </dl>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                        <li>
+                                            <figure class="bottom-caption2">
+                                                <img src="../../images/dongja/sub/plan/plan1_3.jpg" alt="1721년 묘소석물배열도">
+                                                <figcaption>
+                                                    <p>1721년 제청급석물조성시등록(祭廳及石物造成時謄錄) 』의 묘소석물배열도(墓所石物排列圖)</p>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                        <li>
+                                            <figure class="bottom-caption2">
+                                                <img src="../../images/dongja/sub/plan/plan1_4.jpg" alt="침원상설지도">
+                                                <figcaption>
+                                                    <p>『 효종등록(孝宗謄錄) 』의 『 침원상설지도(寢園象設之圖) 』</p>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                    </ul>
+                                </div> <!--//list-photo-col2-->
+                            </div>
+                            <div class="ex">
+                                <pre class="prettyprint linenums:1">
+									<xmp>
+    <!-- Image Item 1개 -->
+    <div class="photo-col1">
+        <img src="" alt="">
+    </div>
+    
+    <!-- Image Item 2개 -->
+    <div class="photo-col2">
+        <img src="" alt="">
+        <img src="" alt="">
+    </div>
+    
+    <!-- Image Item 3개 -->
+    <div class="photo-col3">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+    </div>
+    
+    <!-- 리스트 스타일 -->
+    <div class="list-photo-col2">
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+									</xmp></pre>
+                            </div>
+                        </article>
+                        <article class="margin-top20">
+							<h4 id="photo_option" class="sub-title">Effect</h4>
+							<div class="preview">
+								<img src="../../images/dongja/other/sample01.jpg" alt="">
+								<img class="del" src="../../images/dongja/other/sample01.jpg" alt="">
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<!--del 클래스 추가-->
+	<img class="del" src="../../images/dongja/other/sample01.jpg" alt="">
+									</xmp></pre>
+							</div>
+						</article>
+                        <article class="margin-top20">
+                            <h4 id="photo_figure" class="sub-title">Figure</h4>
+                            <div class="preview">
+                                <figure class="bottom-caption" style="max-width: 500px">
+                                    <img src="../../images/dongja/sub/dongja/produced.jpg" alt="">
+                                    <figcaption>석상제작 도구들 (서귀 안덕면)</figcaption>
+                                </figure>
+                                
+                                <div class="list-photo-col1 single" style="max-width: 500px;">
+                                    <figure class="bottom-caption2">
+                                        <img src="../../images/dongja/sub/plan/plan1_2.jpg" alt="조선시대 왕릉의 석물 배치도">
+                                        <figcaption>
+                                            <dl>
+                                                <dt>조선시대 왕릉의 석물 배치도</dt>
+                                                <dd>
+                                                    <p>이 배치도는 국립민속박물관 죽은자, 또한 산자의 공간</p>
+                                                    <p>무덤: 조선시대 묘제 자료집(2007)에서 그림을 가져와서 필자가 재편집함</p>
+                                                </dd>
+                                            </dl>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="ex">
+                                <pre class="prettyprint linenums:1">
+									<xmp>
+    <figure class="bottom-caption">
+        <img src="" alt="">
+        <figcaption>이미지 캡션</figcaption>
+    </figure>
+                                
+    <figure class="bottom-caption2">
+        <img src="" alt="">
+        <figcaption>
+            <dl>
+                <dt></dt>
+                <dd></dd>
+            </dl>
+            <!-- OR -->
+            <p></p>
+        </figcaption>
+    </figure>
+									</xmp></pre>
+                            </div>
+                        </article>
+					</section>
+					
+					<section id="diagram">
+						<h3 class="title">diagram</h3>
+						<article>
+							<h4 id="diagram_option" class="sub-title">Example</h4>
+							<div class="preview">
+							</div> <!--//preview-->
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+									
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					<section id="terms">
+						<h3 class="title">약관</h3>
+						<article>
+							<h4 id="terms_option" class="sub-title">Example</h4>
+							<div class="preview">
+                               
+                                <div class="comm-rule">
+                                    <p>탐나오가 취급하는 모든 개인정보는 관련 법령에 근거하여 수집 · 보유 및 처리되고 있습니다. 「개인정보보호법」은 이러한 개인정보의 취급에 대한 일반적 규범을 제시하고 있으며 , 탐나오는 이러한 법령의 규정에 따라 수집 · 보유 및 처리하는 개인정보를 공공업무의 적절한 수행과 이용자의 권익을 보호하기 위해 적법하고 적정하게 취급할 것입니다.</p>
+                                    
+                                    <h4 class="title">제1장 총칙</h4>
+                                    <dl>
+                                        <dt>제1조 (목적)</dt>
+                                        <dd class="auto-br">제1조(목적) 이 약관은 제주특별자치도관광협회(이하 "도"라 합니다) 인터넷 관련서비스를 이용함에 있어 제주특별자치도관광협회와 이용자의 이용조건·절차 및 책임사항 등에 관한 사항을 규정함을 목적으로 합니다.
+
+                                            제2조(약관의 범위 및 변경) 이 약관 외에 통신망을 통하여 이용자에게 공지되는 내용은 약관의 일부로서 유효하고, 약관의 내용에 변경이 있을 경우에는 전산망 내에 공지사항을 이용하여 공지합니다.
+
+                                            제3조(취급의 준칙) 이 서비스는 전기통신공사업법 및 관계법령에 규정하는 사항을 제외하고는 이 약관에 의하여 취급합니다.
+                                            
+                                        </dd>
+                                        <dd>
+                                            제1조(목적) 이 약관은 제주특별자치도관광협회(이하 "도"라 합니다) 인터넷 관련서비스를 이용함에 있어 제주특별자치도관광협회와 이용자의 이용조건·절차 및 책임사항 등에 관한 사항을 규정함을 목적으로 합니다.<br>
+                                            
+                                            제2조(약관의 범위 및 변경) 이 약관 외에 통신망을 통하여 이용자에게 공지되는 내용은 약관의 일부로서 유효하고, 약관의 내용에 변경이 있을 경우에는 전산망 내에 공지사항을 이용하여 공지합니다.<br>
+                                            
+                                            제3조(취급의 준칙) 이 서비스는 전기통신공사업법 및 관계법령에 규정하는 사항을 제외하고는 이 약관에 의하여 취급합니다.
+                                        </dd>
+                                        
+                                        <dt>제16조(임원의 해임)</dt>
+                                        <dd>
+                                            <p>임원은 다음 각 호에 해당할 경우 이사회의 의결(회장ㆍ감사 제외)을 거쳐 해임할 수 있다.</p>
+                                            <ul class="list-disc">
+                                                <li>제9조의 규정에 의한 의무를 이행하지 아니하였을 때</li>
+                                                <li>본회의 명예를 현저히 실추시켰을 때</li>
+                                            </ul>
+                                            <ul class="list-decimal">
+                                                <li>제9조의 규정에 의한 의무를 이행하지 아니하였을 때
+                                                    <ol>
+                                                        <li>광고성 정보 수신자의 수신거부 또는 수신동의의 철회를 회피·방해하는 조치</li>
+                                                        <li>숫자·부호 또는 문자를 조합하여 전화번호·전자우편주소 등 수신자의 연락처를 자동으로 만들어 내는 조치</li>
+                                                    </ol>
+                                                </li>
+                                                <li>본회의 명예를 현저히 실추시켰을 때</li>
+                                            </ul>
+                                        </dd>
+                                    </dl>
+                                    
+                                    <h4 class="title">제2장 서비스 이용계약</h4>
+                                </div>
+                                
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+    <div class="comm-rule">
+        <p>총칙전 내용 있을 시</p>
+        
+        <h4 class="title">제1장 총칙</h4> <!-- 페이지별 h요소 따라 변경 (클래스는 동일) / 불필요한경우 삭제 후 dt로 제목 대체 -->
+        <dl>
+            <dt>제1조 (목적)</dt>
+            <dd class="auto-br">제1조(목적)...        <!--auto-br 클래스 추가 후 엔터시 자동 <br>효과 적용 / 첫줄은 엔터치지말고 바로 시작-->
+               
+                제2조(약관의...
+                
+                제3조(취급의...
+
+            </dd>
+            
+            <dd> <!--default-->
+                제1조(목적)...<br>
+                제2조(약관의...<br>
+                제3조(취급의..
+            </dd>
+            
+            <dt>제16조(임원의 해임)</dt>
+            <dd>
+                <p>임원은...</p>
+                <ul class="list-disc">
+                    <li>제9조의...
+                        <ol>
+                            <li>광고성...</li>
+                            <li>숫자...</li>
+                        </ol>
+                    </li>
+                </ul>
+                <ul class="list-decimal">
+                    <li>제9조의..</li>
+                </ul>
+            </dd>
+        </dl>
+        
+        <h4 class="title">제2장 서비스 이용계약</h4>
+    </div>
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+				</div>
+			</div> <!--//contents-->
+		</div> <!--//container-->
+	</main>
+
+	<footer>
+		<div class="go-top"><a id="go_top" href="">Top</a></div>
+	</footer>
+	
+	<script>
+		var didScroll;	//스크롤 감지
+		
+		
+		//스크롤스파이
+		var lastId,
+			topMenu = $("#scroll_spy"),
+			//topMenuHeight = topMenu.outerHeight()+15,
+			topMenuHeight = 32,
+			// All list items
+			menuItems = topMenu.find("a"),
+			// Anchors corresponding to menu items
+			scrollItems = menuItems.map(function(){
+				var item = $($(this).attr("href"));
+				if (item.length) { return item; }
+			});
+		
+		menuItems.click(function(e){
+			var href = $(this).attr("href"),
+				offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
+			$('html, body').stop().animate({
+				scrollTop: offsetTop
+			}, 300);
+			e.preventDefault();
+		});
+		
+		//top button
+		$('#go_top').on('click', function(){
+			$( 'html, body' ).animate( { scrollTop : 0 }, 400 );
+			return false;
+		});
+		
+		
+		$(window).scroll(function() {
+			didScroll = true; 			//스크롤 이벤트 부하에 따른 setInterval 사용
+		});
+		
+		setInterval(function() {
+			if(didScroll) {
+				/*hasScrolled();*/
+				scroll_leftMenu();		//left menu
+				scroll_topButton();		//top button
+				scroll_spy();			//scroll spy
+				scroll_endBottom();		//end botton
+				
+				didScroll = false;
+			}
+		}, 250);
+		
+		function hasScrolled() {
+			
+		}
+		
+		//left menu
+		function scroll_leftMenu() {
+			var scrollHeight = $(window).scrollTop();
+			
+			if(scrollHeight > 190){
+				$("#left_menu").css({
+					'position': 'fixed',
+					'top': '0px',
+					'bottom': '0px',
+					'left': '20px'
+				});
+				$('#contents').css({
+					'padding-left': '250px'
+				});
+			}
+			else {
+				$("#left_menu").css({
+					'position': 'static',
+					'top': 'auto',
+					'bottom': 'auto',
+					'left': 'auto'
+				});
+				$('#contents').css({
+					'padding-left': '0'
+				});
+			}
+		}
+		
+		//top button
+		function scroll_topButton() {
+			var scrollHeight = $(window).scrollTop();
+			
+			if(scrollHeight > 500) {
+				$('.go-top').fadeIn('500');
+			}
+			else {
+				$('.go-top').fadeOut('100');
+			}
+		}
+		
+		//스크롤 스파이
+		function scroll_spy() {
+			// Get container scroll position
+			var fromTop = $(this).scrollTop()+topMenuHeight;
+
+			// Get id of current scroll item
+			var cur = scrollItems.map(function(){
+				if ($(this).offset().top < fromTop)
+					return this;
+			});
+			// Get the id of the current element
+			cur = cur[cur.length-1];
+			var id = cur && cur.length ? cur[0].id : "";
+
+			if (lastId !== id) {
+				lastId = id;
+				// Set/remove active class
+				menuItems
+					.parent().removeClass("active")
+					.end().filter("[href='#"+id+"']").parent().addClass("active");
+			}
+		}
+		
+		//스크롤이 맨아래 위치했을때
+		function scroll_endBottom() {
+			if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+				alert('맨아래 페이지 입니다.');
+			}
+		}
+		
+		//특정 div 하단에 위치했을때
+		$(".layer-popup .scroll").scroll( function() {
+			var elem = $(".layer-popup .scroll");
+
+			if ( elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight()) {
+				//alert("End of Yellow");
+			}
+		});
+	</script>
+</body>
+</html>

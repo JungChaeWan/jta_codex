@@ -1,0 +1,749 @@
+@charset "utf-8";
+
+
+/* 1230 나의예약/구매내역 - 리뉴얼  */
+#subContent {
+	z-index: auto;
+}
+#header .head-wrap {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 3;
+}
+#subContent .sub-content {padding: 0;}
+#subContent .info-wrap.top {
+	margin-top: 0px;
+	margin-bottom: 20px;
+	padding: 20px;
+	border: none;
+	background: #f5f5f5;
+	font-family: "Roboto";
+}
+#subContent .info-wrap.top .affiliate-info-text {
+	display: flex;
+	justify-content: flex-start;
+	gap: 20px;
+}
+#subContent .info-wrap.top h6 {
+	margin: 10px 0 2px 0;
+	border-bottom: none;
+	font-size: 0.85rem;
+	font-weight: 100;
+	font-family: "Roboto";
+	letter-spacing: -0.5px;
+	line-height: 21px;
+	text-align: center;
+	background-color: #fff;
+	min-height: 56px;
+	padding: 18px 0 0;
+	border-radius: 12px 12px 0 0;
+}
+#subContent .info-wrap.top h6 > span {font-weight: bold;}
+#subContent .info-wrap.top .banner_image {
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+	justify-content: space-around;
+	gap: 10px;
+}
+#subContent .info-wrap.top .banner_image img {
+	height: 70px;
+}
+#subContent .info-wrap.top .banner_image .admin-id {
+	position: relative;
+	bottom: 14px;
+	width: 200px;
+	white-space: normal;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	text-align: left;
+}
+#subContent .info-wrap.top .center-btn {display: flex;}
+#subContent .info-wrap.top a.btn {
+	width: 100%;
+	height: 60px;
+	margin-left: 2px;
+	border-radius: 0 0 12px 0;
+	background-color: #fff;
+	line-height: 60px;
+}
+#subContent .info-wrap.top a.btn.btn0 {
+	margin-left: 0;
+	border-radius: 0 0 0 12px;
+}
+#subContent .info-wrap.top a.btn.btn0 img{width: 66px;}
+#subContent .info-wrap.top a.btn.btn1 img {width: 75px;}
+#subContent a.btn img, #subContent button.btn img {margin: 0;}
+
+
+/* 구매후기 프로모션 배너  */
+.review_content__banner{
+	margin: 0 20px 20px;
+}
+
+
+/* 구매 히스토리  */
+.user-dashboard .box-search {
+	display: flex;
+	position: relative;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 43px;
+	padding: 15px 20px;
+	margin: 0 auto;
+	font-size: 0.85rem;
+	font-weight: bold;
+	border-radius: 12px;
+	background-color: #f3f3f3;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+.user-dashboard .box-search .justify-start {
+	display: inline-flex;
+	justify-content: flex-start;
+	line-height: 12px;
+	padding-left: 0;
+}
+.user-dashboard .txt-history-area {
+	display: inline-block;
+	color: #212121;
+	font-weight: bold;
+	letter-spacing: -.5px;
+}
+.box-search .justify-end .btn-detail {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 0.8rem;
+}
+.box-search .justify-end .btn-detail:after {
+	display: block;
+	content: "";
+	width: 20px;
+	height: 40px;
+	background: url("../../images/mw/icon/filter-icon.png") no-repeat;
+	background-size: 20px;
+	background-position: 0px;
+}
+.user-dashboard .category-filter {
+	display: block;
+	width: 130px;
+	height: 38px;
+	margin: 18px 0 20px;
+	border-radius: 50px;
+	background-color: #333333;
+	line-height: 38px;
+}
+.user-dashboard .category-filter .filter-button {
+	display: inline-flex;
+	justify-content: space-between;
+	width: 100%;
+	padding: 10px 18px;
+	background-color: transparent;
+	color: #fff;
+	font-size: 0.85rem;
+}
+.user-dashboard .category-filter .filter-button:after {
+	position: relative;
+	top: 3px;
+	display: block;
+	content: "";
+	width: 7px;
+	height: 7px;
+	border-top: 2px solid #fff;
+	border-right: 2px solid #fff;
+	transform: rotate(135deg);
+}
+.user-dashboard .purchase-date {
+	position: relative;
+	margin: 30px 0 0;
+	padding: 0;
+	font-size: 1.2rem;
+	font-weight: bold;
+	font-family: "Roboto";
+	text-align: left;
+	line-height: 1.1;
+}
+
+
+/* 구매 내역 목록  */
+#subContent .sub-content .user-dashboard {
+	padding: 0 20px;
+	font-family:"Roboto";
+}
+.user-dashboard .purchase_list {
+	min-height: 220px;
+	padding: 20px 0;
+	border-bottom: 1px solid #ddd;
+}
+.user-dashboard .purchase_list .purchase_item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: #000;
+	font-size: 0.85rem;
+	margin-bottom: 5px;
+}
+.user-dashboard .purchase_list .purchase_item .statusInfo6 {
+	display: flex;
+    align-items: center;
+	background-color: #fff;
+	gap: 5px;
+}
+.user-dashboard .purchase_list .purchase_item .info-buoy {
+	color: #e8202e;
+	font-size: 0.95rem;
+	font-weight: bold;
+}
+.user-dashboard .purchase_list .purchase_item .info_img {
+	display: block;
+	width: 20px;
+	height: 20px;
+	padding: 2px;
+}
+.user-dashboard .purchase_list .purchase_item .number {
+	padding: 4px 15px;
+	border-radius: 40px;
+	background-color: #f3f3f3;
+	color: #575757;
+	font-size: 0.68rem;
+}
+.user-dashboard .purchase_item_details {
+	display: grid;
+	grid-template-columns: 120px auto;
+	align-items: self-start;
+	padding: 10px 0;
+}
+.purchase_item_details .purchase_item_image_inner {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+}
+.purchase_item_details .purchase_item_image_inner img {
+	width: 100%;
+	border-radius: 8px;
+}
+.purchase_item_info {
+	font-weight: bold;
+}
+.purchase_item_info .product,
+.purchase_item_info .infoText {
+	color: #000;
+	letter-spacing: 0;
+	line-height: 1.5;
+	word-break: break-all;
+	word-wrap: break-word;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+.purchase_item_details .product-wrap .product {
+	width: 100%;
+	margin: 0 0 10px;
+	font-size: 0.85rem;
+}
+.purchase_item_details .purchase_item_info .infoText {
+	display: block;
+	margin: 10px 0;
+	color: #666;
+	font-size: 0.8rem;
+}
+.product-wrap .item-newprice {
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+
+/* 구매 항목 액션 버튼  */
+.purchase_item_actions {
+	margin-top: 12px;
+}
+.purchase_item_buttons {
+	display: flex;
+	justify-content: space-around;
+	gap: 10px;
+	width: 100%;
+}
+.purchase_item_buttons .purchase_item_button {
+	display: inline-flex;
+	justify-content: center;
+	gap: 3px;
+	width: 100%;
+	height: 40px;
+	padding: 0 10px;
+	border: 1px solid #b9b9b9;
+	border-radius: 6px;
+	color: #000;
+	font-size: 0.8rem;
+	font-weight: bold;
+	line-height: 41px;
+}
+.purchase_item_buttons .purchase_item_button.item_reorder_btn {
+	background-color: #f3f3f3;
+}
+.purchase_item_buttons .purchase_item_button.item_review_btn {
+	border: 1px solid #e8202e;
+	color: #e8202e;
+}
+.purchase_item_buttons .item_review_btn:before {
+	display: none;
+	content: "";
+	width: 20px;
+	height: 40px;
+	background: url("../../images/mw/sub/review_btn.png") no-repeat;
+	background-size: 15px;
+	background-position: 0px;
+	color: #000;
+}
+.tracking_result #goodsflow_app_banner {
+	position: fixed;
+	bottom: 63px;
+}
+
+/* 구매 목록 더보기 버튼 스타일  */
+.load-more-btn {
+	display: flex;
+	align-items: center;
+	height: 60px;
+	margin: 0 auto;
+    color: #000;
+	background-color: #fff;
+	font-size: 0.95rem;
+	font-weight: bold;
+	letter-spacing: -0.5px;
+}
+
+
+/* 구매 코멘트 스타일  */
+.done_info_box_d {
+	position: fixed;
+	top: 88%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+    display: none;
+    z-index: 100;
+	width: 85%;
+    padding: 20px 0 20px 24px;
+    border-radius: 15px;
+	background-color: #000;
+	font-family: "Roboto";
+	text-align: center;
+	opacity: 0.9;
+	overflow: hidden;
+}
+.done_info_box_d .info_artcle {
+	float: left;
+	color: #d8d8d8;
+	font-size: 0.85rem;
+}
+.done_info_box_d .info_artcle > span {
+    color: #fff;
+	font-weight: bold;
+	line-height: 24px;
+}
+
+
+/* 구매 히스토리 필터 모달 팝업 스타일  */
+.history-filter-modal {
+	position: fixed;
+	top: 300px;
+    z-index: 99;
+	height: 96%;
+	border-radius: 20px !important;
+}
+.history-filter-modal .content-area {
+    position: absolute;
+	top: 35px;
+    padding: 0;
+	max-height: calc(100vh - 170px);
+	overflow-x: hidden;
+}
+.history-filter-modal .list-group {
+    padding: 15px 0;
+    border-top: none;
+}
+#history_filter_modal .select-menu li {
+    width: calc(27% - 15px);
+    margin: 0;
+}
+#history_filter_modal .lb-box label {
+    font-size: 0.82rem;
+    padding-left: 0;
+    line-height: 32px;
+}
+#history_filter_modal .select-menu {
+    display: flex;
+    justify-content: space-between;
+}
+.lb-box input[type="radio"]:checked + label {
+	border-color: #333333;
+	border-radius: 12px;
+	background-color: #333333;
+	color: #fff;
+	line-height: 32px;
+}
+.lb-box input[type="radio"] + label,
+.lb-box input[type="checkbox"] + label {
+	border: 1px solid #eeeeee;
+	border-radius: 12px;
+	background-color: #f8f8f8;
+	color: #000;
+	font-size: 0.80rem;
+	font-weight: bold;
+	line-height: 32px;
+}
+.content-area .search-area.filter {
+    margin: -6px 20px 45px;
+}
+.content-area .date-picker-wrapper {
+    display: flex;
+    justify-content: space-around;
+    height: 55px;
+    margin: 10px 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    line-height: 55px;
+}
+.date-picker-wrapper .area .value-text {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    height: 55px;
+    padding-left: 20px;
+	-webkit-appearance: none; /* 크롬, 사파리에서의 기본 스타일 제거 */
+	appearance: none; /* 다른 브라우저에서의 기본 스타일 제거 */
+}
+#history_filter_modal .date-picker-wrapper .value-text input[type="text"] {
+    z-index: -1;
+    height: auto;
+    border: none;
+    color: #6e6e6e;
+    font-size: 0.95rem;
+    font-weight: bold;
+	background-color: transparent
+}
+.date-picker-wrapper .value-text input[type="text"]:focus {
+	border: none !important;
+	outline: none ;
+}
+.date-picker-wrapper .value-text img.ui-datepicker-trigger {
+    display: block;
+    width: 18px;
+}
+#history_filter_modal .quick_search .searchIcon input[type="text"] {
+    height: 55px;
+    padding-left: 25px;
+    color: #000;
+    border-radius: 15px;
+    font-size: 1.0rem;
+    font-weight: bold;
+    line-height: 55px;
+}
+.quick_search .searchIcon:after {
+    position: absolute;
+    top: 132px;
+    right: 28px;
+    transform: translateX(-25%);
+    content: "";
+    width: 30px;
+    height: 30px;
+    background: url("../../images/mw/icon/mypage/search-icon.png") no-repeat 50%;
+    background-size: 19px;
+}
+#history_filter_modal .side-wrap {
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+.side-wrap .box_terms-all .form_checkbox {
+    position: absolute;
+    top: 18px;
+    left: 16px;
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 0 none;
+    background-position: 0 -25px;
+}
+.side-wrap .sprite_join-default + label {
+	display: inline-block;
+	padding-left: 22px;
+	background: url('../../images/mw/sub/before_check-box_02.png') left/21px no-repeat;
+	line-height: 22px;
+	cursor: pointer;
+}
+.side-wrap .sprite_join-default:checked + label {
+	background: url('../../images/mw/sub/before_check-box-on_02.png') left/21px no-repeat;
+}
+#history_filter_modal .side-wrap .box_terms-all label.text_all-agree {
+	display: block;
+	margin: 23px 5px 10px;
+	padding: 0 16px 0 30px;
+	color: #000;
+	font-size: 1rem;
+	font-weight: normal;
+	line-height: 23px;
+	cursor: pointer;
+}
+#history_filter_modal .sprite_join-default + label:before {
+	display: none;
+}
+#history_filter_modal .sprite_join-default:checked + label:before {
+	display: none;
+}
+#history_filter_modal .fix-cta {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 91%;
+    height: 70px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+#history_filter_modal .fix-cta .result-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 98%;
+    height: 58px;
+    color: #fff;
+    border-radius: 12px;
+    background-color: #333333;
+    font-size: 1.0rem;
+    line-height: 58px;
+    overflow: hidden;
+}
+#history_filter_modal .fix-cta .result-btn.close {
+    color: #333;
+    border: 1px solid #333;
+    background-color: #fff;
+}
+
+
+/* 모달 팝업 - 데이트피커 스타일  */
+#ui-datepicker-div {
+	position: fixed;
+	top: 50% !important;
+	left: 55% !important;
+	bottom: 50%;
+	width: 90%;
+	height: 400px;
+	background: #fff;
+	margin-top: -200px;
+	margin-left: -50%;
+	padding: 0 ;
+	border: none;
+	border-radius: 20px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+	overflow: hidden;
+}
+.ui-datepicker .ui-datepicker-prev {
+    float: left;
+	position: relative;
+    top: 10px;
+    left: 10px;
+    width: 24px;
+    height: 24px;
+}
+.ui-datepicker .ui-datepicker-next {
+	float: right;
+	position: relative;
+	top: 10px;
+	left: -26px;
+}
+.ui-icon-circle-triangle-e {background: url("../../images/mw/icon/mypage/right_arrow.png") no-repeat center !important;}
+.ui-icon-circle-triangle-w {background: url("../../images/mw/icon/mypage/left_arrow.png") no-repeat center !important;}
+.ui-datepicker .ui-datepicker-title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 40px;
+	margin-right: 40px;
+	line-height: 40px;
+}
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+	width: 40px;
+	height: 40px;
+	background-size: 20px !important;
+}
+#ui-datepicker-div select {
+	background-size: 10px 7px;
+}
+#ui-datepicker-div select:focus {
+	border: none;
+	outline: none;
+}
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year {
+	width: auto;
+	margin: 0 -5px;
+	padding: 0px 35px;
+	color: #000;
+	font-size: 1rem;
+}
+.ui-datepicker th {
+	height: 40px;
+	line-height: 40px;
+}
+.ui-datepicker-calendar tbody tr td a {
+	position: relative;
+	left: 0;
+	width: 20px;
+	height: 20px;
+	margin: 0 auto;
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+	position: relative;
+	left: 0;
+	width: 20px;
+	height: 20px;
+	margin: 0 auto;
+	line-height: 20px;
+}
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+	width: 20px;
+	height: 20px;
+	left: 0;
+	right: 0;
+	line-height: 20px;
+	font-weight: normal;
+}
+.ui-datepicker a.ui-state-default:hover {
+	width: 20px;
+	height: 20px;
+	left: 0;
+	line-height: 20px;
+}
+
+
+/* 구매 카테고리 필터 모달 팝업 스타일  */
+#category_filter_modal {
+	position: fixed;
+	top: 255px;
+	z-index: 99;
+	height: 96%;
+	border-radius: 20px !important;
+}
+.category-filter-modal .content-area {
+	position: absolute;
+	top: 20px;
+	max-height: calc(100vh - 170px);
+	padding: 0;
+	overflow-x: hidden;
+}
+.content-area .top .close-btn {
+	position: fixed;
+	right: 0;
+	margin: 0 25px 0 0;
+	padding: 10px;
+	background: url("../../images/mw/rent/close-btn.png") no-repeat 0px;
+	background-size: 20px;
+}
+.content-area .top .condition_title {
+	width: 100%;
+	font-size: 1.2rem;
+	text-align: center;
+	letter-spacing: -.5px
+}
+.category-filter-modal .select-menu li {
+	width: 100%;
+	margin: 0;
+}
+.category-filter-modal .sub-content label {
+	font-size: 0.9rem;
+	padding-left: 0;
+	line-height: 32px;
+}
+#category_filter_modal .category-lb-box input[type="radio"]:checked + label {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: #e8202e;
+	font-size: 1.05rem;
+	height: 55px;
+	line-height: 55px;
+}
+#category_filter_modal .category-lb-box input[type="radio"] + label {
+	display: block;
+	height: 55px;
+	line-height: 55px;
+	font-size: 1.05rem;
+	cursor: pointer;
+}
+#category_filter_modal .top {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	z-index: 99;
+	width: 100%;
+	height: 50px;
+	background-color: #fff;
+	line-height: 50px;
+}
+#category_filter_modal .list-group {
+	height: auto;
+	padding: 60px 0 120px;
+}
+#category_filter_modal .select-menu {
+	padding: 0 25px;
+}
+.list-group .category-lb-box input[type="radio"] {
+	display: none;
+}
+.list-group .category-lb-box .radio-btn {
+	width: 25px;
+	height: 25px;
+	background-image: url('../../images/mw/sub/unchecked-image.png');
+	background-size: cover;
+	cursor: pointer;
+}
+input[type="radio"]:checked + label .radio-btn {
+	background-image: url('../../images/mw/sub/checked-image.png');
+}
+
+
+/* dimmed background black 처리 */
+#dimmed{
+    display: none;
+    z-index: 30;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .8;
+    overflow: auto;
+}
+.lock-bg {
+    z-index: 97;
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: none;
+}
+.not_scroll {
+    overflow: hidden;
+    height: 100%;
+    min-height: 100%;
+    touch-action: none;
+}

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="adAnls">
+
+<resultMap id="AD_ANLS_R_00" class="mas.anls.vo.ANLSVO">
+<result property="prdtNum" 		column="PRDT_NUM"/>
+<result property="prdtNm" 		column="PRDT_NM"/>
+<result property="rsvCnt" 		column="RSV_CNT"/>
+<result property="rsvCntPer" 	column="RSV_CNT_PER"/>
+<result property="sumAmt" 		column="SUM_AMT"/>
+<result property="sumAmtPer" 	column="SUM_AMT_PER"/>
+</resultMap>
+
+<resultMap id="AD_ANLS_R_01" class="mas.anls.vo.ANLSVO">
+<result property="rsvCnt" 		column="RSV_CNT"/>
+<result property="dt" 			column="DT"/>
+<result property="cancelCnt" 	column="CANCEL_CNT"/>
+<result property="cancelAmt" 	column="CANCEL_AMT"/>
+<result property="nmlAmt" 		column="NML_AMT"/>
+<result property="cmssAmt" 		column="CMSS_AMT"/>
+</resultMap>
+
+<!-- 날짜 누적 통계 -->
+<select id="AD_ANLS_S_00" resultMap="AD_ANLS_R_00">
+WITH ANSL AS (
+SELECT T_PRDT.PRDT_NUM
+     , T_PRDT.PRDT_NM
+     , COUNT(T_RSV.AD_RSV_NUM)      AS RSV_CNT
+     , NVL(SUM(T_RSV.NML_AMT), 0)   AS SUM_AMT
+  FROM TB_CORP              T_CORP
+ INNER JOIN TB_AD_PRDTINF   T_PRDT
+    ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+  LEFT OUTER JOIN TB_AD_RSV       T_RSV
+    ON T_RSV.PRDT_NUM = T_PRDT.PRDT_NUM
+   AND T_RSV.RSV_STATUS_CD IN ('RS02')
+   AND T_RSV.USE_DT BETWEEN #sFromDt# AND #sToDt#
+ WHERE T_CORP.CORP_ID = #sCorpId#
+ GROUP BY T_PRDT.PRDT_NUM
+     , T_PRDT.PRDT_NM)
+SELECT PRDT_NUM
+     , PRDT_NM
+     , (CASE (SELECT MAX(RSV_CNT) FROM ANSL) WHEN 0
+                                             THEN 0
+                                             ELSE TRUNC(RSV_CNT / (SELECT MAX(RSV_CNT) FROM ANSL), 2) * 100 
+         END) AS RSV_CNT_PER
+     , RSV_CNT
+     , (CASE (SELECT MAX(SUM_AMT) FROM ANSL) WHEN 0
+                                             THEN 0
+                                             ELSE TRUNC(SUM_AMT / (SELECT MAX(SUM_AMT) FROM ANSL), 2) * 100
+         END
+       ) AS SUM_AMT_PER
+     , SUM_AMT
+     , '' AS CANCEL_AMT
+  FROM ANSL
+</select>
+
+<select id="AD_ANLS_S_01" resultMap="AD_ANLS_R_01">
+WITH T_RSV AS (
+SELECT TO_CHAR(TO_DATE(USE_DT, 'YYYY-MM-DD'), 'YYYY-MM-DD') AS RSV_DT
+     , AD_RSV_NUM AS RSV_NUM
+     , RSV_STATUS_CD
+     , (CASE WHEN RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN RSV_STATUS_CD IN ('RS20') THEN CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_AD_RSV
+ WHERE CORP_ID = #sCorpId#
+   AND RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+)
+SELECT T_DT.DT
+     , T_GRP.RSV_CNT
+     , T_GRP.CANCEL_CNT
+     , T_GRP.NML_AMT
+     , T_GRP.CMSS_AMT
+     , '' AS CANCEL_AMT
+  FROM (SELECT #sFromYear#||'-'||LPAD(LEVEL, 2, '0') AS DT
+          FROM DUAL
+        <![CDATA[
+        CONNECT BY LEVEL < ]]> (CASE WHEN TO_CHAR(SYSDATE, 'YYYY') = #sFromYear#
+                                 THEN TO_CHAR(SYSDATE, 'MM') + 1
+                                 ELSE 13
+                             END
+                           )
+       ) T_DT
+  LEFT OUTER JOIN (SELECT SUBSTR(T_RSV.RSV_DT,0,7) AS RSV_DT
+                        , COUNT(RSV_NUM) AS RSV_CNT
+                        , SUM(DECODE(RSV_STATUS_CD, 'RS20', 1, 0)) AS CANCEL_CNT
+                        , NVL(SUM(NML_AMT), 0) AS NML_AMT
+                        , NVL(SUM(CMSS_AMT), 0) AS CMSS_AMT
+                     FROM T_RSV
+                    WHERE SUBSTR(RSV_DT,0,4) = #sFromYear#
+                    GROUP BY SUBSTR(T_RSV.RSV_DT,0,7)
+                   ) T_GRP
+    ON T_GRP.RSV_DT = T_DT.DT
+ ORDER BY T_DT.DT ASC
+</select>
+
+<select id="AD_ANLS_S_02" resultMap="AD_ANLS_R_01">
+WITH T_RSV AS (
+SELECT TO_CHAR(TO_DATE(USE_DT, 'YYYY-MM-DD'), 'YYYY-MM-DD') AS RSV_DT
+     , AD_RSV_NUM AS RSV_NUM
+     , RSV_STATUS_CD
+     , (CASE WHEN RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN RSV_STATUS_CD IN ('RS20') THEN CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_AD_RSV
+ WHERE CORP_ID = #sCorpId#
+   AND USE_DT BETWEEN #sFromYear#||#sFromMonth#||'01' AND #sFromYear#||#sFromMonth#||'31'
+   AND RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+)
+SELECT T_DT.DT
+     , COUNT(T_RSV.RSV_NUM) AS RSV_CNT
+     , SUM(DECODE(T_RSV.RSV_STATUS_CD, 'RS20', 1, 0)) AS CANCEL_CNT
+     , NVL(SUM(T_RSV.NML_AMT), 0) AS NML_AMT
+     , NVL(SUM(T_RSV.CMSS_AMT), 0) AS CMSS_AMT
+     , '' AS CANCEL_AMT
+  FROM (SELECT #sFromYear#||'-'||LPAD(#sFromMonth#, 2, '0')||'-'||LPAD(LEVEL, 2, '0') AS DT
+          FROM DUAL
+        <![CDATA[
+        CONNECT BY LEVEL < ]]> (CASE WHEN TO_CHAR(SYSDATE, 'YYYYMM') = #sFromYear#||#sFromMonth#
+                                     THEN TO_CHAR(SYSDATE, 'DD') + 1
+                                     ELSE TO_CHAR(LAST_DAY(TO_DATE(#sFromYear#||#sFromMonth#, 'YYYYMM')), 'DD') + 1
+                                 END
+                                )
+       ) T_DT
+  LEFT OUTER JOIN T_RSV
+    ON T_RSV.RSV_DT = T_DT.DT
+ GROUP BY T_DT.DT
+ ORDER BY T_DT.DT ASC
+</select>
+
+<!-- 예약일자별 통계 -->
+<select id="AD_ANLS_S_03" resultMap="AD_ANLS_R_01">
+WITH T_RSV AS (
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYY-MM-DD') AS RSV_DT
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.AD_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_AD_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ WHERE T_DTLRSV.CORP_ID = #sCorpId#
+   AND T_DTLRSV.RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+)
+SELECT T_DT.DT
+     , NVL(T_GRP.RSV_CNT, 0) 	AS RSV_CNT
+     , NVL(T_GRP.CANCEL_CNT, 0) AS CANCEL_CNT
+     , NVL(T_GRP.NML_AMT, 0) 	AS NML_AMT
+     , NVL(T_GRP.CMSS_AMT, 0) 	AS CMSS_AMT
+     , '' AS CANCEL_AMT
+  FROM (SELECT #sFromYear#||'-'||LPAD(LEVEL, 2, '0') AS DT
+          FROM DUAL
+        <![CDATA[
+        CONNECT BY LEVEL < ]]> (CASE WHEN TO_CHAR(SYSDATE, 'YYYY') = #sFromYear#
+                                 THEN TO_CHAR(SYSDATE, 'MM') + 1
+                                 ELSE 13
+                             END
+                           )
+       ) T_DT
+  LEFT OUTER JOIN (SELECT SUBSTR(T_RSV.RSV_DT,0,7) AS RSV_DT
+                        , COUNT(RSV_NUM) AS RSV_CNT
+                        , SUM(DECODE(RSV_STATUS_CD, 'RS20', 1, 0)) AS CANCEL_CNT
+                        , NVL(SUM(NML_AMT), 0) AS NML_AMT
+                        , NVL(SUM(CMSS_AMT), 0) AS CMSS_AMT
+                     FROM T_RSV
+                    WHERE SUBSTR(RSV_DT,0,4) = #sFromYear#
+                    GROUP BY SUBSTR(T_RSV.RSV_DT,0,7)
+                   ) T_GRP
+    ON T_GRP.RSV_DT = T_DT.DT
+ ORDER BY T_DT.DT ASC
+</select>
+
+<select id="AD_ANLS_S_04" resultMap="AD_ANLS_R_01">
+WITH T_RSV AS (
+SELECT TO_CHAR(T_RSV.REG_DTTM, 'YYYY-MM-DD') AS RSV_DT
+     , T_DTLRSV.CORP_ID
+     , T_DTLRSV.AD_RSV_NUM AS RSV_NUM
+     , T_DTLRSV.RSV_STATUS_CD
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS00', 'RS01', 'RS20') THEN 0
+             ELSE T_DTLRSV.NML_AMT
+         END
+       ) AS NML_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CMSS_AMT
+             ELSE 0
+         END
+       ) AS CMSS_AMT
+     , (CASE WHEN T_DTLRSV.RSV_STATUS_CD IN ('RS20') THEN T_DTLRSV.CANCEL_AMT
+             ELSE 0
+         END
+       ) AS CANCEL_AMT
+  FROM TB_RSV T_RSV
+ INNER JOIN TB_AD_RSV T_DTLRSV
+    ON T_DTLRSV.RSV_NUM = T_RSV.RSV_NUM
+ WHERE T_DTLRSV.CORP_ID = #sCorpId#
+   AND T_DTLRSV.RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+)
+SELECT T_DT.DT
+     , NVL(T_GRP.RSV_CNT, 0) 	AS RSV_CNT
+     , NVL(T_GRP.CANCEL_CNT, 0) AS CANCEL_CNT
+     , NVL(T_GRP.CANCEL_AMT, 0) AS CANCEL_AMT
+     , NVL(T_GRP.NML_AMT, 0) 	AS NML_AMT
+     , NVL(T_GRP.CMSS_AMT, 0) 	AS CMSS_AMT
+  FROM (SELECT #sFromYear#||'-'||LPAD(#sFromMonth#, 2, '0')||'-'||LPAD(LEVEL, 2, '0') AS DT
+          FROM DUAL
+        <![CDATA[
+        CONNECT BY LEVEL < ]]> (CASE WHEN TO_CHAR(SYSDATE, 'YYYYMM') = #sFromYear#||#sFromMonth#
+                                     THEN TO_CHAR(SYSDATE, 'DD') + 1
+                                     ELSE TO_CHAR(LAST_DAY(TO_DATE(#sFromYear#||#sFromMonth#, 'YYYYMM')), 'DD') + 1
+                                 END
+                                )
+       ) T_DT
+  LEFT OUTER JOIN (SELECT T_RSV.RSV_DT
+                        , COUNT(RSV_NUM) AS RSV_CNT
+                        , SUM(DECODE(RSV_STATUS_CD, 'RS20', 1, 0)) AS CANCEL_CNT
+                        , SUM(DECODE(RSV_STATUS_CD, 'RS20', CANCEL_AMT, 0)) AS CANCEL_AMT
+                        , NVL(SUM(NML_AMT), 0) AS NML_AMT
+                        , NVL(SUM(CMSS_AMT), 0) AS CMSS_AMT
+                     FROM T_RSV
+                    WHERE SUBSTR(RSV_DT,0,7) = #sFromYear#||'-'||LPAD(#sFromMonth#, 2, '0')
+                    GROUP BY T_RSV.RSV_DT
+                  ) T_GRP
+    ON T_GRP.RSV_DT = T_DT.DT
+ ORDER BY T_DT.DT ASC
+</select>
+
+</sqlMap>

@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="b2bCtrt">
+
+<resultMap id="B2B_CTRT_R_00" class="mas.b2b.vo.B2B_CTRTVO">
+<result property="ctrtNum" 				column="CTRT_NUM" />
+<result property="saleCorpId" 			column="SALE_CORP_ID" />
+<result property="saleAgcCorpId" 		column="SALE_AGC_CORP_ID" />
+<result property="statusCd" 			column="STATUS_CD" />
+<result property="requestCorpId" 		column="REQUEST_CORP_ID" />
+<result property="tgtCorpId" 			column="TGT_CORP_ID" />
+<result property="requestDttm" 			column="REQUEST_DTTM" />
+<result property="requestRsn" 			column="REQUEST_RSN" />
+<result property="rstrDttm" 			column="RSTR_DTTM" />
+<result property="rstrRsn" 				column="RSTR_RSN" />
+<result property="confDttm" 			column="CONF_DTTM" />
+<result property="cancelRequestDttm" 	column="CANCEL_REQUEST_DTTM" />
+<result property="cancelRsn" 			column="CANCEL_RSN" />
+<result property="cancelDttm" 			column="CANCEL_DTTM" />
+<result property="frstRegDttm" 			column="FRST_REG_DTTM" />
+<result property="frstRegId" 			column="FRST_REG_ID" />
+<result property="lastModDttm" 			column="LAST_MOD_DTTM" />
+<result property="lastModId" 			column="LAST_MOD_ID" />
+</resultMap>
+
+<resultMap id="B2B_CTRT_R_01" class="mas.b2b.vo.B2B_CTRTVO">
+<result property="corpId" 				column="CORP_ID" />
+<result property="corpNm" 				column="CORP_NM" />
+<result property="corpCd" 				column="CORP_CD" />
+<result property="corpCdNm" 			column="CORP_CD_NM" />
+<result property="statusCd" 			column="STATUS_CD" />
+<result property="ceoNm" 				column="CEO_NM" />
+<result property="admNm" 				column="ADM_NM" />
+<result property="rsvTelNum" 			column="RSV_TEL_NUM" />
+</resultMap>
+
+<resultMap id="B2B_CTRT_R_03" class="mas.b2b.vo.B2B_CTRTVO">
+<result property="corpId" 				column="CORP_ID" />
+<result property="corpNm" 				column="CORP_NM" />
+<result property="corpCd" 				column="CORP_CD" />
+<result property="corpCdNm" 			column="CORP_CD_NM" />
+<result property="ceoNm" 				column="CEO_NM" />
+<result property="admNm" 				column="ADM_NM" />
+<result property="rsvTelNum" 			column="RSV_TEL_NUM" />
+<result property="ctrtNum" 				column="CTRT_NUM" />
+<result property="saleCorpId" 			column="SALE_CORP_ID" />
+<result property="saleAgcCorpId" 		column="SALE_AGC_CORP_ID" />
+<result property="statusCd" 			column="STATUS_CD" />
+<result property="requestCorpId" 		column="REQUEST_CORP_ID" />
+<result property="tgtCorpId" 			column="TGT_CORP_ID" />
+<result property="requestDttm" 			column="REQUEST_DTTM" />
+<result property="requestRsn" 			column="REQUEST_RSN" />
+<result property="rstrDttm" 			column="RSTR_DTTM" />
+<result property="rstrRsn" 				column="RSTR_RSN" />
+<result property="confDttm" 			column="CONF_DTTM" />
+<result property="cancelRequestDttm" 	column="CANCEL_REQUEST_DTTM" />
+<result property="cancelRsn" 			column="CANCEL_RSN" />
+<result property="cancelDttm" 			column="CANCEL_DTTM" />
+</resultMap>
+
+<resultMap id="B2B_CTRT_R_05" class="mas.b2b.vo.B2B_CTRTVO">
+<result property="ctrtNum" 				column="CTRT_NUM" />
+<result property="saleCorpId" 			column="SALE_CORP_ID" />
+<result property="saleAgcCorpId" 		column="SALE_AGC_CORP_ID" />
+<result property="statusCd" 			column="STATUS_CD" />
+<result property="requestCorpId" 		column="REQUEST_CORP_ID" />
+<result property="requestCorpNm" 		column="REQUEST_CORP_NM" />
+<result property="tgtCorpId" 			column="TGT_CORP_ID" />
+<result property="tgtCorpNm" 			column="TGT_CORP_NM" />
+<result property="requestDttm" 			column="REQUEST_DTTM" />
+<result property="requestRsn" 			column="REQUEST_RSN" />
+<result property="rstrDttm" 			column="RSTR_DTTM" />
+<result property="rstrRsn" 				column="RSTR_RSN" />
+<result property="confDttm" 			column="CONF_DTTM" />
+<result property="cancelRequestDttm" 	column="CANCEL_REQUEST_DTTM" />
+<result property="cancelRsn" 			column="CANCEL_RSN" />
+<result property="cancelDttm" 			column="CANCEL_DTTM" />
+<result property="frstRegDttm" 			column="FRST_REG_DTTM" />
+<result property="frstRegId" 			column="FRST_REG_ID" />
+<result property="lastModDttm" 			column="LAST_MOD_DTTM" />
+<result property="lastModId" 			column="LAST_MOD_ID" />
+</resultMap>
+
+<select id="B2B_CTRT_S_00">
+SELECT CTRT_NUM             /*계약 번호*/
+     , SALE_CORP_ID         /*판매 업체 아이디*/
+     , SALE_AGC_CORP_ID     /*판매 대행 업체 아이디*/
+     , STATUS_CD            /*상태 코드*/
+     , REQUEST_CORP_ID      /*요청 업체 아이디*/
+     , TGT_CORP_ID          /*대상 업체 아이디*/
+     , REQUEST_DTTM         /*요청 일시*/
+     , REQUEST_RSN          /*요청 사유*/
+     , RSTR_DTTM            /*반려 일시*/
+     , RSTR_RSN             /*반려 사유*/
+     , CONF_DTTM            /*승인 일시*/
+     , CANCEL_REQUEST_DTTM  /*취소 요청 일시*/
+     , CANCEL_RSN           /*취소 사유*/
+     , CANCEL_DTTM          /*취소 일시*/
+     , FRST_REG_DTTM        /*최초 등록 일시*/
+     , FRST_REG_ID          /*최초 등록 아이디*/
+     , LAST_MOD_DTTM        /*최종 수정 일시*/
+     , LAST_MOD_ID          /*최종 수정 아이디*/
+  FROM TB_B2B_CTRT
+</select>
+
+<!-- 계약가능업체 조회 -->
+<select id="B2B_CTRT_S_01" resultMap="B2B_CTRT_R_01">
+SELECT CORP_ID
+     , CORP_NM
+     , CORP_CD
+     , CORP_CD_NM
+     , STATUS_CD
+     , CEO_NM
+     , ADM_NM
+     , RSV_TEL_NUM
+  FROM (SELECT RN
+             , CORP_ID
+             , CORP_NM
+             , CORP_CD
+             , CORP_CD_NM
+             , CEO_NM
+             , ADM_NM             
+             , RSV_TEL_NUM
+             , STATUS_CD
+          FROM (SELECT ROWNUM AS RN
+                     , T_CORP.CORP_ID
+                     , T_CORP.CORP_NM
+                     , T_CORP.CORP_CD
+                     , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = T_CORP.CORP_CD) AS CORP_CD_NM
+                     , T_CORP.CEO_NM
+                     , T_CORP.ADM_NM             
+                     , T_CORP.RSV_TEL_NUM
+                     , NVL(T_CTRT.STATUS_CD, 'CT01') AS STATUS_CD
+                  FROM TB_CORP T_CORP
+                 INNER JOIN TB_B2B_CORPCONF T_CONF
+                    ON T_CONF.CORP_ID = T_CORP.CORP_ID
+                   AND T_CONF.STATUS_CD = 'TS03'
+                  LEFT OUTER JOIN TB_B2B_CTRT T_CTRT
+                  <isNotEqual property="sOwnCorpCd" compareValue="SP">
+                    ON T_CTRT.SALE_AGC_CORP_ID = T_CORP.CORP_ID
+                   AND T_CTRT.SALE_CORP_ID = #sOwnCorpId#
+                   </isNotEqual>
+                   <isEqual property="sOwnCorpCd" compareValue="SP">
+                    ON T_CTRT.SALE_CORP_ID = T_CORP.CORP_ID
+                   AND T_CTRT.SALE_AGC_CORP_ID = #sOwnCorpId#
+                   </isEqual>
+                 WHERE 1=1
+                   AND T_CORP.TRADE_STATUS_CD = 'TS03'
+                   AND T_CORP.B2B_USE_YN = 'Y'
+                   <![CDATA[
+                   AND T_CORP.CORP_ID <> #sOwnCorpId#
+                   ]]>
+                   <isNotEqual property="sOwnCorpCd" compareValue="SP">
+                   AND T_CORP.CORP_CD = 'SP'
+                   </isNotEqual>
+                   <isEqual property="sOwnCorpCd" compareValue="SP">
+                   AND T_CORP.CORP_CD IN ('AD', 'RC', 'GL')
+                   </isEqual>
+                   <isNotEmpty property="sCorpNm">
+                       <isNotNull property="sCorpNm">
+                   AND T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+                       </isNotNull>
+                   </isNotEmpty>
+                   <isNotEmpty property="sCorpCd">
+                       <isNotNull property="sCorpCd">
+                   AND T_CORP.CORP_CD = #sCorpCd#
+                       </isNotNull>
+                   </isNotEmpty>
+               )
+         WHERE STATUS_CD NOT IN ('CT02')
+         <isEqual property="sStatusCd" compareValue="Y">
+           AND STATUS_CD = 'CT01'
+         </isEqual>
+         <isEqual property="sStatusCd" compareValue="N">
+         <![CDATA[
+           AND STATUS_CD <> 'CT01'
+         ]]>
+         </isEqual>
+       )
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="B2B_CTRT_S_02" resultClass="int">
+SELECT COUNT(CORP_ID) AS CNT
+  FROM (SELECT RN
+             , CORP_ID
+             , CORP_NM
+             , CORP_CD
+             , CORP_CD_NM
+             , CEO_NM
+             , ADM_NM             
+             , RSV_TEL_NUM
+             , STATUS_CD
+          FROM (SELECT ROWNUM AS RN
+                     , T_CORP.CORP_ID
+                     , T_CORP.CORP_NM
+                     , T_CORP.CORP_CD
+                     , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = T_CORP.CORP_CD) AS CORP_CD_NM
+                     , T_CORP.CEO_NM
+                     , T_CORP.ADM_NM             
+                     , T_CORP.RSV_TEL_NUM
+                     , NVL(T_CTRT.STATUS_CD, 'CT01') AS STATUS_CD
+                  FROM TB_CORP T_CORP
+                 INNER JOIN TB_B2B_CORPCONF T_CONF
+                    ON T_CONF.CORP_ID = T_CORP.CORP_ID
+                   AND T_CONF.STATUS_CD = 'TS03'
+                  LEFT OUTER JOIN TB_B2B_CTRT T_CTRT
+                  <isNotEqual property="sOwnCorpCd" compareValue="SP">
+                    ON T_CTRT.SALE_AGC_CORP_ID = T_CORP.CORP_ID
+                   AND T_CTRT.SALE_CORP_ID = #sOwnCorpId#
+                   </isNotEqual>
+                   <isEqual property="sOwnCorpCd" compareValue="SP">
+                    ON T_CTRT.SALE_CORP_ID = T_CORP.CORP_ID
+                   AND T_CTRT.SALE_AGC_CORP_ID = #sOwnCorpId#
+                   </isEqual>
+                 WHERE 1=1
+                   AND T_CORP.TRADE_STATUS_CD = 'TS03'
+                   AND T_CORP.B2B_USE_YN = 'Y'
+                   <![CDATA[
+                   AND T_CORP.CORP_ID <> #sOwnCorpId#
+                   ]]>
+                   <isNotEqual property="sOwnCorpCd" compareValue="SP">
+                   AND T_CORP.CORP_CD = 'SP'
+                   </isNotEqual>
+                   <isEqual property="sOwnCorpCd" compareValue="SP">
+                   AND T_CORP.CORP_CD IN ('AD', 'RC', 'GL')
+                   </isEqual>
+                   <isNotEmpty property="sCorpNm">
+                       <isNotNull property="sCorpNm">
+                   AND T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+                       </isNotNull>
+                   </isNotEmpty>
+                   <isNotEmpty property="sCorpCd">
+                       <isNotNull property="sCorpCd">
+                   AND T_CORP.CORP_CD = #sCorpCd#
+                       </isNotNull>
+                   </isNotEmpty>
+               )
+         WHERE STATUS_CD NOT IN ('CT02')
+         <isEqual property="sStatusCd" compareValue="Y">
+           AND STATUS_CD = 'CT01'
+         </isEqual>
+         <isEqual property="sStatusCd" compareValue="N">
+         <![CDATA[
+           AND STATUS_CD <> 'CT01'
+         ]]>
+         </isEqual>
+       )
+</select>
+
+<!-- 보낸 계약 업체 -->
+<select id="B2B_CTRT_S_03" resultMap="B2B_CTRT_R_03">
+SELECT CORP_ID
+     , CORP_NM
+     , CORP_CD
+     , CORP_CD_NM
+     , STATUS_CD
+     , CEO_NM
+     , ADM_NM
+     , RSV_TEL_NUM
+     , CTRT_NUM
+     , SALE_CORP_ID
+     , SALE_AGC_CORP_ID
+     , REQUEST_CORP_ID
+     , TGT_CORP_ID 
+     , REQUEST_DTTM
+     , REQUEST_RSN
+     , RSTR_DTTM
+     , RSTR_RSN
+     , CONF_DTTM
+     , CANCEL_REQUEST_DTTM
+     , CANCEL_RSN
+     , CANCEL_DTTM 
+  FROM (SELECT ROWNUM AS RN
+             , T_CORP.CORP_ID
+             , T_CORP.CORP_NM
+             , T_CORP.CORP_CD
+             , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = T_CORP.CORP_CD) AS CORP_CD_NM
+             , T_CORP.CEO_NM
+             , T_CORP.ADM_NM             
+             , T_CORP.RSV_TEL_NUM
+             , NVL(T_CTRT.STATUS_CD, 'CT01') AS STATUS_CD
+             , T_CTRT.CTRT_NUM
+             , T_CTRT.SALE_CORP_ID
+             , T_CTRT.SALE_AGC_CORP_ID
+             , T_CTRT.REQUEST_CORP_ID
+             , T_CTRT.TGT_CORP_ID 
+             , T_CTRT.REQUEST_DTTM
+             , T_CTRT.REQUEST_RSN
+             , T_CTRT.RSTR_DTTM
+             , T_CTRT.RSTR_RSN
+             , T_CTRT.CONF_DTTM
+             , T_CTRT.CANCEL_REQUEST_DTTM
+             , T_CTRT.CANCEL_RSN
+             , T_CTRT.CANCEL_DTTM 
+          FROM TB_CORP T_CORP
+         INNER JOIN TB_B2B_CORPCONF T_CONF
+            ON T_CONF.CORP_ID = T_CORP.CORP_ID
+           AND T_CONF.STATUS_CD = 'TS03'
+         INNER JOIN TB_B2B_CTRT T_CTRT
+            ON T_CTRT.TGT_CORP_ID = T_CORP.CORP_ID
+           AND T_CTRT.REQUEST_CORP_ID = #sOwnCorpId#
+         WHERE 1=1
+           AND T_CORP.TRADE_STATUS_CD  = 'TS03'
+           <isNotEmpty property="sCorpNm">
+	           <isNotNull property="sCorpNm">
+	       AND T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+	           </isNotNull>
+	       </isNotEmpty>
+	       <isNotEmpty property="sStatusCd">
+	           <isNotNull property="sStatusCd">
+	       AND T_CTRT.STATUS_CD = #sStatusCd#
+	           </isNotNull>
+	       </isNotEmpty>
+        )
+  WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="B2B_CTRT_S_04" resultClass="int">
+SELECT COUNT(T_CORP.CORP_ID) AS CNT 
+  FROM TB_CORP T_CORP
+ INNER JOIN TB_B2B_CORPCONF T_CONF
+    ON T_CONF.CORP_ID = T_CORP.CORP_ID
+   AND T_CONF.STATUS_CD = 'TS03'
+ INNER JOIN TB_B2B_CTRT T_CTRT
+    ON T_CTRT.TGT_CORP_ID = T_CORP.CORP_ID
+   AND T_CTRT.REQUEST_CORP_ID = #sOwnCorpId#
+ WHERE 1=1
+   AND T_CORP.TRADE_STATUS_CD  = 'TS03'
+   <isNotEmpty property="sCorpNm">
+       <isNotNull property="sCorpNm">
+   AND T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+       </isNotNull>
+   </isNotEmpty>
+   <isNotEmpty property="sStatusCd">
+       <isNotNull property="sStatusCd">
+   AND T_CTRT.STATUS_CD = #sStatusCd#
+       </isNotNull>
+   </isNotEmpty>
+</select>
+
+<select id="B2B_CTRT_S_05" resultMap="B2B_CTRT_R_05">
+SELECT CTRT_NUM             /*계약 번호*/
+     , SALE_CORP_ID         /*판매 업체 아이디*/
+     , SALE_AGC_CORP_ID     /*판매 대행 업체 아이디*/
+     , STATUS_CD            /*상태 코드*/
+     , REQUEST_CORP_ID      /*요청 업체 아이디*/
+     , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = T_CTRT.REQUEST_CORP_ID) AS REQUEST_CORP_NM
+     , TGT_CORP_ID          /*대상 업체 아이디*/
+     , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = T_CTRT.TGT_CORP_ID) AS TGT_CORP_NM
+     , REQUEST_DTTM         /*요청 일시*/
+     , REQUEST_RSN          /*요청 사유*/
+     , RSTR_DTTM            /*반려 일시*/
+     , RSTR_RSN             /*반려 사유*/
+     , CONF_DTTM            /*승인 일시*/
+     , CANCEL_REQUEST_DTTM  /*취소 요청 일시*/
+     , CANCEL_RSN           /*취소 사유*/
+     , CANCEL_DTTM          /*취소 일시*/
+     , FRST_REG_DTTM        /*최초 등록 일시*/
+     , FRST_REG_ID          /*최초 등록 아이디*/
+     , LAST_MOD_DTTM        /*최종 수정 일시*/
+     , LAST_MOD_ID          /*최종 수정 아이디*/
+  FROM TB_B2B_CTRT T_CTRT
+ WHERE CTRT_NUM = #ctrtNum#
+</select>
+
+<!-- 받은 요청 -->
+<select id="B2B_CTRT_S_06" resultMap="B2B_CTRT_R_03">
+SELECT CORP_ID
+     , CORP_NM
+     , CORP_CD
+     , CORP_CD_NM
+     , STATUS_CD
+     , CEO_NM
+     , ADM_NM
+     , RSV_TEL_NUM
+     , CTRT_NUM
+     , SALE_CORP_ID
+     , SALE_AGC_CORP_ID
+     , REQUEST_CORP_ID
+     , TGT_CORP_ID 
+     , REQUEST_DTTM
+     , REQUEST_RSN
+     , RSTR_DTTM
+     , RSTR_RSN
+     , CONF_DTTM
+     , CANCEL_REQUEST_DTTM
+     , CANCEL_RSN
+     , CANCEL_DTTM 
+  FROM (SELECT ROWNUM AS RN
+             , T_CORP.CORP_ID
+             , T_CORP.CORP_NM
+             , T_CORP.CORP_CD
+             , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = T_CORP.CORP_CD) AS CORP_CD_NM
+             , T_CORP.CEO_NM
+             , T_CORP.ADM_NM             
+             , T_CORP.RSV_TEL_NUM
+             , NVL(T_CTRT.STATUS_CD, 'CT01') AS STATUS_CD
+             , T_CTRT.CTRT_NUM
+             , T_CTRT.SALE_CORP_ID
+             , T_CTRT.SALE_AGC_CORP_ID
+             , T_CTRT.REQUEST_CORP_ID
+             , T_CTRT.TGT_CORP_ID 
+             , T_CTRT.REQUEST_DTTM
+             , T_CTRT.REQUEST_RSN
+             , T_CTRT.RSTR_DTTM
+             , T_CTRT.RSTR_RSN
+             , T_CTRT.CONF_DTTM
+             , T_CTRT.CANCEL_REQUEST_DTTM
+             , T_CTRT.CANCEL_RSN
+             , T_CTRT.CANCEL_DTTM 
+          FROM TB_CORP T_CORP
+         INNER JOIN TB_B2B_CORPCONF T_CONF
+            ON T_CONF.CORP_ID = T_CORP.CORP_ID
+           AND T_CONF.STATUS_CD = 'TS03'
+         INNER JOIN TB_B2B_CTRT T_CTRT
+            ON T_CTRT.REQUEST_CORP_ID = T_CORP.CORP_ID
+           AND T_CTRT.TGT_CORP_ID = #sOwnCorpId#
+         WHERE 1=1
+           AND T_CORP.TRADE_STATUS_CD  = 'TS03'
+           <isNotEmpty property="sCorpNm">
+	           <isNotNull property="sCorpNm">
+	       AND T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+	           </isNotNull>
+	       </isNotEmpty>
+	       <isNotEmpty property="sStatusCd">
+	           <isNotNull property="sStatusCd">
+	       AND T_CTRT.STATUS_CD = #sStatusCd#
+	           </isNotNull>
+	       </isNotEmpty>
+        )
+  WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="B2B_CTRT_S_07" resultClass="int">
+SELECT COUNT(T_CORP.CORP_ID) AS CNT 
+  FROM TB_CORP T_CORP
+ INNER JOIN TB_B2B_CORPCONF T_CONF
+    ON T_CONF.CORP_ID = T_CORP.CORP_ID
+   AND T_CONF.STATUS_CD = 'TS03'
+ INNER JOIN TB_B2B_CTRT T_CTRT
+    ON T_CTRT.REQUEST_CORP_ID = T_CORP.CORP_ID
+   AND T_CTRT.TGT_CORP_ID = #sOwnCorpId#
+ WHERE 1=1
+   AND T_CORP.TRADE_STATUS_CD  = 'TS03'
+   <isNotEmpty property="sCorpNm">
+       <isNotNull property="sCorpNm">
+   AND T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+       </isNotNull>
+   </isNotEmpty>
+   <isNotEmpty property="sStatusCd">
+       <isNotNull property="sStatusCd">
+   AND T_CTRT.STATUS_CD = #sStatusCd#
+       </isNotNull>
+   </isNotEmpty>
+</select>
+
+<select id="B2B_CTRT_S_08" resultMap="B2B_CTRT_R_03">
+SELECT CORP_ID
+     , CORP_NM
+     , CORP_CD
+     , CORP_CD_NM
+     , STATUS_CD
+     , CEO_NM
+     , ADM_NM
+     , RSV_TEL_NUM
+     , CTRT_NUM
+     , SALE_CORP_ID
+     , SALE_AGC_CORP_ID
+     , REQUEST_CORP_ID
+     , TGT_CORP_ID 
+     , REQUEST_DTTM
+     , REQUEST_RSN
+     , RSTR_DTTM
+     , RSTR_RSN
+     , CONF_DTTM
+     , CANCEL_REQUEST_DTTM
+     , CANCEL_RSN
+     , CANCEL_DTTM 
+  FROM (SELECT ROWNUM AS RN
+             , T_CORP.CORP_ID
+             , T_CORP.CORP_NM
+             , T_CORP.CORP_CD
+             , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = T_CORP.CORP_CD) AS CORP_CD_NM
+             , T_CORP.CEO_NM
+             , T_CORP.ADM_NM             
+             , T_CORP.RSV_TEL_NUM
+             , NVL(T_CTRT.STATUS_CD, 'CT01') AS STATUS_CD
+             , T_CTRT.CTRT_NUM
+             , T_CTRT.SALE_CORP_ID
+             , T_CTRT.SALE_AGC_CORP_ID
+             , T_CTRT.REQUEST_CORP_ID
+             , T_CTRT.TGT_CORP_ID 
+             , T_CTRT.REQUEST_DTTM
+             , T_CTRT.REQUEST_RSN
+             , T_CTRT.RSTR_DTTM
+             , T_CTRT.RSTR_RSN
+             , T_CTRT.CONF_DTTM
+             , T_CTRT.CANCEL_REQUEST_DTTM
+             , T_CTRT.CANCEL_RSN
+             , T_CTRT.CANCEL_DTTM 
+          FROM TB_CORP T_CORP
+         INNER JOIN TB_B2B_CORPCONF T_CONF
+            ON T_CONF.CORP_ID = T_CORP.CORP_ID
+           AND T_CONF.STATUS_CD = 'TS03'
+         INNER JOIN TB_B2B_CTRT T_CTRT
+         <isNotEqual property="sOwnCorpCd" compareValue="SP">
+            ON T_CTRT.SALE_AGC_CORP_ID = T_CORP.CORP_ID
+           AND T_CTRT.SALE_CORP_ID = #sOwnCorpId#
+         </isNotEqual>
+         <isEqual property="sOwnCorpCd" compareValue="SP">
+            ON T_CTRT.SALE_CORP_ID = T_CORP.CORP_ID
+           AND T_CTRT.SALE_AGC_CORP_ID = #sOwnCorpId#
+         </isEqual>
+           AND T_CTRT.STATUS_CD IN ('CT03', 'CT05', 'CT06')
+         WHERE 1=1
+           AND T_CORP.TRADE_STATUS_CD  = 'TS03'
+           <isNotEmpty property="sCorpNm">
+	           <isNotNull property="sCorpNm">
+	       AND T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+	           </isNotNull>
+	       </isNotEmpty>
+	       <isNotEmpty property="sStatusCd">
+	           <isNotNull property="sStatusCd">
+	       AND T_CTRT.STATUS_CD = #sStatusCd#
+	           </isNotNull>
+	       </isNotEmpty>
+        )
+  WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="B2B_CTRT_S_09" resultClass="int">
+SELECT COUNT(T_CORP.CORP_ID) AS CNT 
+  FROM TB_CORP T_CORP
+ INNER JOIN TB_B2B_CORPCONF T_CONF
+    ON T_CONF.CORP_ID = T_CORP.CORP_ID
+   AND T_CONF.STATUS_CD = 'TS03'
+ INNER JOIN TB_B2B_CTRT T_CTRT
+ <isNotEqual property="sOwnCorpCd" compareValue="SP">
+    ON T_CTRT.SALE_AGC_CORP_ID = T_CORP.CORP_ID
+   AND T_CTRT.SALE_CORP_ID = #sOwnCorpId#
+ </isNotEqual>
+ <isEqual property="sOwnCorpCd" compareValue="SP">
+    ON T_CTRT.SALE_CORP_ID = T_CORP.CORP_ID
+   AND T_CTRT.SALE_AGC_CORP_ID = #sOwnCorpId#
+ </isEqual>
+   AND T_CTRT.STATUS_CD IN ('CT03', 'CT05', 'CT06')
+ WHERE 1=1
+   AND T_CORP.TRADE_STATUS_CD  = 'TS03'
+   <isNotEmpty property="sCorpNm">
+       <isNotNull property="sCorpNm">
+   AND T_CORP.CORP_NM LIKE '%'||#sCorpNm#||'%'
+       </isNotNull>
+   </isNotEmpty>
+   <isNotEmpty property="sStatusCd">
+       <isNotNull property="sStatusCd">
+   AND T_CTRT.STATUS_CD = #sStatusCd#
+       </isNotNull>
+   </isNotEmpty>
+</select>
+
+<select id="B2B_CTRT_S_10" resultMap="B2B_CTRT_R_05">
+SELECT CTRT_NUM             /*계약 번호*/
+     , SALE_CORP_ID         /*판매 업체 아이디*/
+     , SALE_AGC_CORP_ID     /*판매 대행 업체 아이디*/
+     , STATUS_CD            /*상태 코드*/
+     , REQUEST_CORP_ID      /*요청 업체 아이디*/
+     , REQUEST_CORP_NM
+     , TGT_CORP_ID          /*대상 업체 아이디*/
+     , TGT_CORP_NM
+     , REQUEST_DTTM         /*요청 일시*/
+     , REQUEST_RSN          /*요청 사유*/
+     , RSTR_DTTM            /*반려 일시*/
+     , RSTR_RSN             /*반려 사유*/
+     , CONF_DTTM            /*승인 일시*/
+     , CANCEL_REQUEST_DTTM  /*취소 요청 일시*/
+     , CANCEL_RSN           /*취소 사유*/
+     , CANCEL_DTTM          /*취소 일시*/
+     , FRST_REG_DTTM        /*최초 등록 일시*/
+     , FRST_REG_ID          /*최초 등록 아이디*/
+     , LAST_MOD_DTTM        /*최종 수정 일시*/
+     , LAST_MOD_ID          /*최종 수정 아이디*/
+  FROM (SELECT ROWNUM AS RN
+		     , CTRT_NUM             /*계약 번호*/
+		     , SALE_CORP_ID         /*판매 업체 아이디*/
+		     , SALE_AGC_CORP_ID     /*판매 대행 업체 아이디*/
+		     , STATUS_CD            /*상태 코드*/
+		     , REQUEST_CORP_ID      /*요청 업체 아이디*/
+		     , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = T_CTRT.REQUEST_CORP_ID) AS REQUEST_CORP_NM
+		     , TGT_CORP_ID          /*대상 업체 아이디*/
+		     , (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = T_CTRT.TGT_CORP_ID) AS TGT_CORP_NM
+		     , REQUEST_DTTM         /*요청 일시*/
+		     , REQUEST_RSN          /*요청 사유*/
+		     , RSTR_DTTM            /*반려 일시*/
+		     , RSTR_RSN             /*반려 사유*/
+		     , CONF_DTTM            /*승인 일시*/
+		     , CANCEL_REQUEST_DTTM  /*취소 요청 일시*/
+		     , CANCEL_RSN           /*취소 사유*/
+		     , CANCEL_DTTM          /*취소 일시*/
+		     , FRST_REG_DTTM        /*최초 등록 일시*/
+		     , FRST_REG_ID          /*최초 등록 아이디*/
+		     , LAST_MOD_DTTM        /*최종 수정 일시*/
+		     , LAST_MOD_ID          /*최종 수정 아이디*/
+		  FROM TB_B2B_CTRT T_CTRT
+		 WHERE 1=1
+       )
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="B2B_CTRT_S_11" resultClass="int">
+SELECT COUNT(CTRT_NUM)
+  FROM TB_B2B_CTRT
+ WHERE 1=1
+</select>
+
+<insert id="B2B_CTRT_I_01">
+<selectKey keyProperty="ctrtNum" resultClass="String">
+SELECT 'CTRT'||LPAD(NVL(MAX(SUBSTR(CTRT_NUM,5)),0) + 1, 6,'0') AS CTRT_NUM
+  FROM TB_B2B_CTRT
+</selectKey>
+INSERT INTO TB_B2B_CTRT
+     ( CTRT_NUM
+     , SALE_CORP_ID
+     , SALE_AGC_CORP_ID
+     , STATUS_CD
+     , REQUEST_CORP_ID
+     , TGT_CORP_ID
+     , REQUEST_DTTM
+     , REQUEST_RSN
+     , FRST_REG_DTTM
+     , FRST_REG_ID
+     , LAST_MOD_DTTM
+     , LAST_MOD_ID
+     )
+VALUES
+     ( #ctrtNum#
+     , #saleCorpId#
+     , #saleAgcCorpId#
+     , #statusCd#
+     , #requestCorpId#
+     , #tgtCorpId#
+     , SYSDATE
+     , #requestRsn#
+     , SYSDATE
+     , #frstRegId#
+     , SYSDATE
+     , #frstRegId#
+     )
+</insert>
+
+<!-- 계약 승인 -->
+<update id="B2B_CTRT_U_01">
+UPDATE TB_B2B_CTRT
+   SET STATUS_CD     = #statusCd#
+     , CONF_DTTM     = SYSDATE
+     , LAST_MOD_DTTM = SYSDATE
+     , LAST_MOD_ID   = #lastModId#
+ WHERE CTRT_NUM = #ctrtNum#
+</update>
+
+<!-- 계약 반려 -->
+<update id="B2B_CTRT_U_02">
+UPDATE TB_B2B_CTRT
+   SET STATUS_CD     = #statusCd#
+     , RSTR_DTTM     = SYSDATE
+     , RSTR_RSN      = #rstrRsn#
+     , LAST_MOD_DTTM = SYSDATE
+     , LAST_MOD_ID   = #lastModId#
+ WHERE CTRT_NUM = #ctrtNum#
+</update>
+
+<!-- 계약 취소 요청 -->
+<update id="B2B_CTRT_U_03">
+UPDATE TB_B2B_CTRT
+   SET STATUS_CD     		= #statusCd#
+     , CANCEL_REQUEST_DTTM  = SYSDATE
+     , CANCEL_RSN      		= #cancelRsn#
+     , LAST_MOD_DTTM 		= SYSDATE
+     , LAST_MOD_ID   		= #lastModId#
+ WHERE CTRT_NUM = #ctrtNum#
+</update>
+
+<delete id="B2B_CTRT_D_00">
+DELETE TB_B2B_CTRT
+ WHERE CTRT_NUM = #ctrtNum#
+</delete>
+
+</sqlMap>

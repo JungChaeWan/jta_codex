@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC 
+    "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN" 
+    "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+<form-validation>
+
+    <formset>
+        <form name="RC_DFTINFVO">
+        	<field property="rcNm" depends="required, maxlength">
+        		<arg0 key="렌터카명" />
+        		<arg1 key="40" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>40</var-value>
+				</var>
+				<!-- <arg2 />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9a-zA-Z$]</var-value>
+				</var> -->
+			</field>
+			<field property="rcSimpleExp" depends="maxlength">
+                <arg0 key="200" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>200</var-value>
+				</var>
+            </field>
+			<field property="addUseAbleTm" depends="maxlength">
+				<arg0 key="추가이용가능시간" />
+                <arg1 key="4" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
+				</var>
+            </field>
+			<field property="addUseMaxiTm" depends="integer, maxlength">
+                <arg0 key="추가이용최대시간" />
+                <arg1 key="4" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
+				</var>
+            </field>
+			<field property="addUseAplTm" depends="integer, maxlength">
+                <arg0 key="추가이용적용시간" />
+                <arg1 key="4" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
+				</var>
+            </field>
+			<field property="rsvAbleMiniTm" depends="required, integer, maxlength">
+                <arg0 key="예약가능최소시간" />
+                <arg1 key="4" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
+				</var>
+            </field>
+            <field property="disPerAplTm" depends="required, integer, maxlength">
+                <arg0 key="할인적용최소시간" />
+                <arg1 key="4" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
+				</var>
+            </field>
+            <field property="shutRunTm" depends="required">
+        		<arg0 key="셔틀이용안내-운행시간" />
+        	</field>
+            <field property="shutRunInter" depends="required, maxlength">
+        		<arg0 key="셔틀이용안내-운행간격" />
+        		<arg1 key="10" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				</var>
+        	</field>
+        	<field property="shutCostTm" depends="required">
+        		<arg0 key="셔틀이용안내-소요시간" />
+        	</field>
+        	
+        	<field property="tkovRoadNmAddr" depends="required">
+        		<arg0 key="반납/인수 위치 주소" />
+        	</field>
+        	<field property="tkovLon" depends="required">
+        		<arg0 key="반납/인수 위치 위도" />
+        	</field>
+        	<field property="tkovLat" depends="required">
+        		<arg0 key="반납/인수 위치 경도" />
+        	</field>
+        </form>
+        
+        <form name="RC_PRDTINFVO">
+        	<field property="prdtNm" depends="required, maxlength">
+        		<arg0 key="상품명" />
+        		<arg1 key="20" resource="false" />
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>20</var-value>
+        		</var>
+        	</field>
+        	<field property="prdtExp" depends="maxlength">
+        		<arg0 key="상품설명" resource="false" />
+        		<arg1 key="80" resource="false" />
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>80</var-value>
+        		</var>
+        	</field>
+        	<field property="modelYear" depends="required">
+        		<arg0 key="연식" />
+        	</field>
+        	<!-- <field property="maxiNum" depends="required, integer, maxlength">
+        		<arg0 key="정원" />
+        		<arg1 key="2" />        		
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>2</var-value>
+        		</var>
+        	</field> -->
+        	<field property="rntQlfctAge" depends="required, integer, maxlength">
+        		<arg0 key="대여 조건 나이" />
+        		<arg1 key="2" />        		
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>2</var-value>
+        		</var>
+        	</field>
+        	<field property="rntQlfctCareer" depends="required, integer, maxlength">
+        		<arg0 key="대여 조건 운전경력" />
+        		<arg1 key="2" />        		
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>2</var-value>
+        		</var>
+        	</field>
+        	<field property="rntQlfctLicense" depends="required, integer, maxlength">
+        		<arg0 key="대여 조건 면허종류" />
+        		<arg1 key="2" />
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>1</var-value>
+        		</var>
+        	</field>
+        	<field property="generalIsrAge" depends="integer, maxlength">
+        		<arg0 key="일반자차 나이" />
+        		<arg1 key="2" />
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>2</var-value>
+        		</var>
+        	</field>
+        	<field property="generalIsrCareer" depends="integer, maxlength">
+        		<arg0 key="일반자차 운전경력" />
+        		<arg1 key="2" />
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>2</var-value>
+        		</var>
+        	</field>
+        	<field property="luxyIsrAge" depends="integer, maxlength">
+        		<arg0 key="고급자차 나이" />
+        		<arg1 key="2" />
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>2</var-value>
+        		</var>
+        	</field>
+        	<field property="luxyIsrCareer" depends="integer, maxlength">
+        		<arg0 key="고급자차 운전경력" />
+        		<arg1 key="2" />
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>2</var-value>
+        		</var>
+        	</field>
+        </form>
+        
+        <form name="RC_AMTINFVO">
+        	<field property="viewAplDt" depends="required">
+        		<arg0 key="적용일자" />
+        	</field>
+        	<field property="tm6Amt" depends="required, integer, maxlength">
+        		<arg0 key="6시간 금액" />
+        		<arg1 key="6시간 금액" />
+        		<arg2 key="11" resource="false" />
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>11</var-value>
+        		</var>
+        	</field>
+        	<field property="tm12Amt" depends="required, integer, maxlength">
+        		<arg0 key="12시간 금액" />
+        		<arg1 key="12시간 금액" />
+        		<arg2 key="11" resource="false" />
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>11</var-value>
+        		</var>
+        	</field>
+        	<field property="tm24Amt" depends="required, integer, maxlength">
+        		<arg0 key="24시간 금액" />
+        		<arg1 key="24시간 금액" />
+        		<arg2 key="11" resource="false" />
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>11</var-value>
+        		</var>
+        	</field>
+        	<field property="tm1AddAmt" depends="required, integer, maxlength">
+        		<arg0 key="1시간 추가 금액" />
+        		<arg1 key="1시간 추가 금액" />
+        		<arg2 key="11" resource="false" />
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>11</var-value>
+        		</var>
+        	</field>
+        </form>
+        
+        <form name="RC_DISPERINFVO">
+        	<field property="viewAplStartDt" depends="required">
+        		<arg0 key="적용시작일" />
+        	</field>
+        	<field property="viewAplEndDt" depends="required">
+        		<arg0 key="적용종료일" />
+        	</field>
+        	<field property="wdayDisPer" depends="required, integer">
+        		<arg0 key="평일할인율" />
+        		<arg1 key="평일할인율" />
+        	</field>
+        	<field property="wkdDisPer" depends="required, integer">
+        		<arg0 key="주말할인율" />
+        		<arg1 key="주말할인율" />
+        	</field>
+        </form>
+        
+        <form name="RC_CNTINFVO">
+        	<field property="viewAplDt" depends="required">
+        		<arg0 key="적용일자" />
+        	</field>
+        	<field property="totalCarNum" depends="required, integer, maxlength">
+        		<arg0 key="차량대수" />
+        		<arg1 key="차량대수" />
+        		<arg2 key="11" resource="false" />
+        		<var>
+        			<var-name>maxlength</var-name>
+        			<var-value>11</var-value>
+        		</var>
+        	</field>
+        </form>
+    </formset>
+
+</form-validation>

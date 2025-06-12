@@ -1,0 +1,121 @@
+@charset "utf-8";
+
+/* 이벤트 페이지 공통 css */
+
+#subContent h2 {border:0 none; padding-left:0;}
+
+/*edit*/#subContent .event-list {position:relative; float:left; width:100%; }
+/*edit*/#subContent .event-list ul li {position:relative; margin-top: 10px; background: #fff;}
+/*edit*/#subContent .event-list ul li:first-child {margin-top: 10px;}
+#subContent .event-list ul li .tag {z-index:100; position:absolute; top:0; left:0; width:57px; height:52px; padding-top:30px; background:url(../../images/mw/sub_common/label_2.png) no-repeat; background-size:57px 52px; font-size:12px; text-align:center; color:#FFF;}
+#subContent .event-list ul li .event-image {border:1px solid #CCC; min-height: 150px; position: relative;}
+#subContent .event-list ul li .event-image img {width:100%;}
+#subContent .event-list ul li .info {position:relative; border-right:1px solid #CCC; border-bottom:1px solid #CCC; border-left:1px solid #CCC; padding: 10px;}
+#subContent .event-list ul li a {display:block; color:#000; font-size:12px; line-height:18px;}
+#subContent .event-list ul li a strong {font-weight:bold; font-size: 14px;}
+#subContent .event-list .btn-prev {z-index:100; position:absolute; top:50%; left:10px; margin-top:-12px;}
+#subContent .event-list .btn-next {z-index:100; position:absolute; top:50%; right:10px; margin-top:-12px;}
+
+#subContent .event-view img {width:100%;}
+
+
+/* 목록 > d-day (디데이) */
+.event-image .d-day {
+	position: absolute; width: 79px; height: 62px; right: 0; bottom: 0; z-index: 2;
+	background: url("../../images/mw/event/dday_list.png") no-repeat center;
+}
+.event-image .d-day span {
+	display: block; font-size: 18px; line-height: 21px; font-weight: bold; color: #fff; text-align: center;
+	padding: 30px 0 0 7px; letter-spacing: 6px;
+	text-shadow: 1px 1px 1px #222;
+}
+
+/* 상세 > d-day (디데이) */
+.pr-img {position: relative;}
+.pr-img .d-day  {
+	/*
+	position: absolute; width: 80px; height: 75px; right: 5px; top: 5px; z-index: 2;
+	background: url("../../images/mw/event/dday_detail.png") no-repeat center;
+	background-size: 80px 75px;
+	*/
+	position: absolute; top: 0; right: 18px; z-index: 2;
+	background: #e8202e; font-size: 16px; color: #fff; line-height: 40px;
+	padding: 0 5px; min-width: 40px; text-align: center;
+}
+.pr-img .d-day span {
+	/*
+	display: block; font-size: 18px; line-height: 24px; font-weight: bold; color: #fff; text-align: center;
+	padding: 42px 0 0 11px; letter-spacing: 7px;
+	text-shadow: 1px 1px 1px #222;
+	*/
+	color: #ffffff;
+}
+
+.event-list .pr-img {display: inline-block; width:100%;}
+
+
+
+/* --------------------------------------------------------- add ------------------------------------------------------------------ */
+/* 이벤트 상세 */
+.event-list li {border-top: 1px solid #e1e3e4; margin-top: 8px; position: relative;
+	width: 100%;}
+.event-list li:first-child {border-top: none; margin-top: 0;}
+.event-list li .pr-img img {width: 100%; vertical-align: top;}
+
+.event-quick {padding: 10px; display: table; width: 100%; border: 1px solid #e1e3e4; background: #fff; border-right: none;}
+.event-quick > span {display: table-cell; vertical-align: middle;}
+.event-quick span.text {font-size: 13px; line-height: 18px;}
+.event-quick span.button {width: 100px; text-align: right;}
+.event-quick span.button > a {
+	display:inline-block; color: #fff; background: #a6a2a2; padding:0 5px; min-width: 90px; line-height: 30px; font-size: 12px; text-align: center; font-weight: 700;
+	border: 1px solid #E5252E; border-radius: 2px;
+}
+.event-quick span.button > a.btn1 {background: #fe434c;}
+
+
+/* 이벤트 상품바로가기 */
+.event .oss-quick {clear: both; text-align: center; padding-top: 10px; padding-bottom: 10px;}
+.event .oss-quick .btn {width: 95px !important;}
+
+
+/* 이벤트 댓글 */
+.event-review {clear: both; padding-top: 10px;}
+.event-review ul.comment-list {background: #fff; border: 1px solid #ccc;}
+.event-review ul.comment-list li {margin: 0; padding: 10px; border-top: 1px solid #e1e3e4;}
+.event-review ul.comment-list li:first-child {border-top: none;}
+.event-review ul.comment-list li .user-info {}
+.event-review ul.comment-list li .user-info .user {font-size: 12px; margin-right: 10px; color: #2e2c2c; font-weight: 700;}
+.event-review ul.comment-list li .user-info .date {font-size: 11px;}
+.event-review ul.comment-list li .user-info .cm-del {display: inline-block; background: #969495; border: 1px solid #7e7c7d; color: #fff; font-size: 12px; padding: 2px 4px;}
+.event-review ul.comment-list li .memo {margin-top: 4px; font-size: 12px; line-height: 20px;}
+
+#subContent .event-review .regi {margin-bottom: 3px;}
+#subContent .event-review .regi textarea {
+	display: inline-block; vertical-align: middle; border: 1px solid #cccbd0;
+	width: 72%; width: calc(99% - 84px); min-height: 80px; height: 80px; margin: 0;
+}
+#subContent .event-review .regi .cm-btn {
+	display: inline-block; vertical-align: middle; 
+	width: 80px; height: 80px; line-height: 80px; background: #969495; border: 1px solid #7e7c7d;
+	font-size: 13px; color: #fff; text-align: center;
+}
+
+
+
+/* 첨부파일 추가 */
+.view-file {background: #fff; border: 1px solid #d7d6d4; padding: 10px; margin: 8px 0 20px; clear: both;}
+.view-file dl dt {font-size: 13px; font-weight: bold; color: #222; border-bottom: 1px solid #e1e3e4; margin-bottom: 8px; padding-bottom: 8px;}
+.view-file ul li {font-size: 12px; line-height: 20px; border-bottom: 1px solid #e1e3e4; padding: 8px 0;}
+.view-file ul li:first-child {margin-top: 0;}
+.view-file ul li .icon {display: inline-block; vertical-align: middle; margin-right: 4px;}
+.view-file ul li a {color: #5f5f60;}
+.view-file ul li a:hover {text-decoration: underline; color: #333;}
+
+
+
+#subContent .sub-content {/*background: #EDEDED;*/}
+
+
+
+
+

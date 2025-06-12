@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="bisHi">
+
+<resultMap id="BISHI_R_00" class="oss.bis.vo.BISVO">
+<result property="totalRsvAmt" column="TOTAL_RSV_AMT" />
+</resultMap>
+
+<resultMap id="BISHI_R_01" class="oss.bis.vo.BISVO">
+<result property="prdtGubun" column="PRDT_GUBUN" />
+<result property="rsvWeekGubun" column="RSV_WEEK_GUBUN" />
+<result property="rsvCnt" column="RSV_CNT" />
+</resultMap>
+
+<resultMap id="BISHI_R_02" class="oss.bis.vo.BISVO">
+<result property="prdtGubun" column="PRDT_GUBUN" />
+<result property="prdtNm" column="PRDT_NM" />
+<result property="rsvCnt" column="RSV_CNT" />
+<result property="rsvCntPer" column="RSV_CNT_PER" />
+</resultMap>
+
+<resultMap id="BISHI_R_03" class="oss.bis.vo.BISVO">
+<result property="prdtGubun" column="PRDT_GUBUN" />
+<result property="rsvCnt" column="RSV_CNT" />
+<result property="accountCnt" column="ACCOUNT_CNT" />
+<result property="saleAmt" column="SALE_AMT" />
+<result property="disAmt" column="DIS_AMT" />
+<result property="cancelReqAmt" column="CANCEL_REQ_AMT" />
+<result property="refundReqAmt" column="REFUND_REQ_AMT" />
+</resultMap>
+
+<!-- 관광지 입장권의 매출금액 -->
+<select id="BISHI_S_00" resultMap="BISHI_R_00">
+SELECT SUM(TOTAL_SALE_AMT) AS TOTAL_RSV_AMT
+    FROM TB_RSV T_RSV
+        LEFT OUTER JOIN TB_RSVPRDTINF T_RSVINF ON T_RSVINF.RSV_NUM=T_RSV.RSV_NUM
+	WHERE T_RSV.sale_corp_id='tamnao' 
+		AND T_RSV.RSV_STATUS_CD IN ('RS0010', 'RS0020') 
+		AND CP_DIV='PRE' 
+		AND T_RSV.AGENT_CORP_ID='JTA'
+    	AND TO_CHAR(T_RSV.FRST_REG_DTTM, 'YYYY-MM-DD') BETWEEN #sStartDt# AND #sEndDt#
+    	<isNotEmpty property="sCorpNm">
+			<isNotNull property="sCorpNm">
+    	AND PRDT_NM LIKE '%' || #sCorpNm# || '%'
+    		</isNotNull>
+    	</isNotEmpty>
+</select>
+
+<!-- 예약 시간 건수 통계 (요일 & 시간별) -->
+<select id="BISHI_S_01" resultMap="BISHI_R_01">
+WITH T_RSV_TIME AS (SELECT BASE.RSV_WEEK_GUBUN,
+               BASE.RSV_HOUR,
+               NVL(RSV_CNT, 0) AS RSV_CNT
+          FROM (SELECT RSV_WEEK_GUBUN,
+                       RSV_HOUR
+                  FROM (SELECT TO_CHAR(TO_DATE('2016-05-'||LPAD(LEVEL, 2, '0'), 'YYYY-MM-DD'), 'D') AS RSV_WEEK_GUBUN
+                  			<![CDATA[
+                          FROM DUAL CONNECT BY LEVEL < 8),
+                          	]]>
+                       (SELECT LPAD(LEVEL-1, 2, '0') AS RSV_HOUR
+                       		<![CDATA[
+                          FROM DUAL CONNECT BY LEVEL < 25) ) BASE
+                          	]]> 
+                          LEFT OUTER JOIN (
+                          
+                         SELECT RSV_WEEK_GUBUN, RSV_HOUR, COUNT(SALE_AMT) AS RSV_CNT
+                          FROM (SELECT TO_CHAR(T_RSV.FRST_REG_DTTM, 'YYYY-MM-DD') AS RSV_DT ,
+                                       TO_CHAR(T_RSV.FRST_REG_DTTM , 'D') AS RSV_WEEK_GUBUN ,
+                                       TO_CHAR(T_RSV.FRST_REG_DTTM , 'HH24') AS RSV_HOUR,
+                                       TOTAL_SALE_AMT AS SALE_AMT
+                                    FROM TB_RSV T_RSV
+                                        LEFT OUTER JOIN TB_RSVPRDTINF T_RSVINF ON T_RSVINF.RSV_NUM=T_RSV.RSV_NUM
+                                    WHERE T_RSV.sale_corp_id='tamnao' 
+                                        AND T_RSV.RSV_STATUS_CD IN ('RS0010', 'RS0020')
+                                        AND CP_DIV='PRE' 
+                                        AND T_RSV.AGENT_CORP_ID='JTA'
+                                        AND TO_CHAR(T_RSV.FRST_REG_DTTM, 'YYYY-MM-DD') BETWEEN #sStartDt# AND #sEndDt#
+                                        <isNotEmpty property="sCorpNm">
+											<isNotNull property="sCorpNm">
+									    AND PRDT_NM LIKE '%' || #sCorpNm# || '%'
+									    	</isNotNull>
+									    </isNotEmpty>
+                                        )
+                         GROUP BY RSV_WEEK_GUBUN, RSV_HOUR                  
+                 
+                 ) RSV ON RSV.RSV_WEEK_GUBUN=BASE.RSV_WEEK_GUBUN
+           AND RSV.RSV_HOUR=BASE.RSV_HOUR
+         ORDER BY RSV_WEEK_GUBUN,
+               RSV_HOUR )
+<![CDATA[               
+SELECT '00:00~02:00' AS PRDT_GUBUN,
+       RSV_WEEK_GUBUN,
+       SUM(RSV_CNT) AS RSV_CNT
+  FROM T_RSV_TIME
+ WHERE RSV_HOUR >= '00'
+   AND RSV_HOUR < '02'
+ GROUP BY RSV_WEEK_GUBUN
+ UNION
+SELECT '02:00~04:00' AS PRDT_GUBUN,
+       RSV_WEEK_GUBUN,
+       SUM(RSV_CNT) AS RSV_CNT
+  FROM T_RSV_TIME
+ WHERE RSV_HOUR >= '02'
+   AND RSV_HOUR < '04'
+ GROUP BY RSV_WEEK_GUBUN
+ UNION
+SELECT '04:00~06:00' AS PRDT_GUBUN,
+       RSV_WEEK_GUBUN,
+       SUM(RSV_CNT) AS RSV_CNT
+  FROM T_RSV_TIME
+ WHERE RSV_HOUR >= '04'
+   AND RSV_HOUR < '06'
+ GROUP BY RSV_WEEK_GUBUN
+ UNION
+SELECT '06:00~08:00' AS PRDT_GUBUN,
+       RSV_WEEK_GUBUN,
+       SUM(RSV_CNT) AS RSV_CNT
+  FROM T_RSV_TIME
+ WHERE RSV_HOUR >= '06'
+   AND RSV_HOUR < '08'
+ GROUP BY RSV_WEEK_GUBUN
+ UNION
+SELECT '08:00~10:00' AS PRDT_GUBUN,
+       RSV_WEEK_GUBUN,
+       SUM(RSV_CNT) AS RSV_CNT
+  FROM T_RSV_TIME
+ WHERE RSV_HOUR >= '08'
+   AND RSV_HOUR < '10'
+ GROUP BY RSV_WEEK_GUBUN
+ UNION
+SELECT '10:00~12:00' AS PRDT_GUBUN,
+       RSV_WEEK_GUBUN,
+       SUM(RSV_CNT) AS RSV_CNT
+  FROM T_RSV_TIME
+ WHERE RSV_HOUR >= '10'
+   AND RSV_HOUR < '12'
+ GROUP BY RSV_WEEK_GUBUN
+ UNION
+SELECT '12:00~14:00' AS PRDT_GUBUN,
+       RSV_WEEK_GUBUN,
+       SUM(RSV_CNT) AS RSV_CNT
+  FROM T_RSV_TIME
+ WHERE RSV_HOUR >= '12'
+   AND RSV_HOUR < '14'
+ GROUP BY RSV_WEEK_GUBUN
+ UNION
+SELECT '14:00~16:00' AS PRDT_GUBUN,
+       RSV_WEEK_GUBUN,
+       SUM(RSV_CNT) AS RSV_CNT
+  FROM T_RSV_TIME
+ WHERE RSV_HOUR >= '14'
+   AND RSV_HOUR < '16'
+ GROUP BY RSV_WEEK_GUBUN
+ UNION
+SELECT '16:00~18:00' AS PRDT_GUBUN,
+       RSV_WEEK_GUBUN,
+       SUM(RSV_CNT) AS RSV_CNT
+  FROM T_RSV_TIME
+ WHERE RSV_HOUR >= '16'
+   AND RSV_HOUR < '18'
+ GROUP BY RSV_WEEK_GUBUN
+ UNION
+SELECT '18:00~20:00' AS PRDT_GUBUN,
+       RSV_WEEK_GUBUN,
+       SUM(RSV_CNT) AS RSV_CNT
+  FROM T_RSV_TIME
+ WHERE RSV_HOUR >= '18'
+   AND RSV_HOUR < '20'
+ GROUP BY RSV_WEEK_GUBUN
+ UNION
+SELECT '20:00~22:00' AS PRDT_GUBUN,
+       RSV_WEEK_GUBUN,
+       SUM(RSV_CNT) AS RSV_CNT
+  FROM T_RSV_TIME
+ WHERE RSV_HOUR >= '20'
+   AND RSV_HOUR < '22'
+ GROUP BY RSV_WEEK_GUBUN
+ UNION
+SELECT '22:00~00:00' AS PRDT_GUBUN,
+       RSV_WEEK_GUBUN,
+       SUM(RSV_CNT) AS RSV_CNT
+  FROM T_RSV_TIME
+ WHERE RSV_HOUR >= '22'
+ GROUP BY RSV_WEEK_GUBUN 
+ ]]>
+</select>
+
+<!-- 관광지 구매 개수(그래프) -->
+<select id="BISHI_S_02" resultMap="BISHI_R_02">
+WITH T_TOTAL_CNT AS (SELECT COUNT(SALE_AMT) AS CNT
+          FROM (SELECT TO_CHAR(T_RSV.FRST_REG_DTTM, 'YYYY-MM-DD') AS RSV_DT ,
+                   TOTAL_SALE_AMT AS SALE_AMT
+                FROM TB_RSV T_RSV
+                    LEFT OUTER JOIN TB_RSVPRDTINF T_RSVINF ON T_RSVINF.RSV_NUM=T_RSV.RSV_NUM
+                WHERE T_RSV.sale_corp_id='tamnao' 
+                    AND T_RSV.RSV_STATUS_CD = 'RS0010' 
+                    AND CP_DIV='PRE' 
+                    AND T_RSV.AGENT_CORP_ID='JTA'
+                    AND TO_CHAR(T_RSV.FRST_REG_DTTM, 'YYYY-MM-DD') BETWEEN #sStartDt# AND #sEndDt#
+                    <isNotEmpty property="sCorpNm">
+						<isNotNull property="sCorpNm">
+				    AND PRDT_NM LIKE '%' || #sCorpNm# || '%'
+				    	</isNotNull>
+				    </isNotEmpty>)),
+       T_BUY_NUM AS (SELECT BUY_NUM,
+               COUNT(SALE_AMT) AS RSV_CNT
+          FROM (SELECT TO_CHAR(T_RSV.FRST_REG_DTTM, 'YYYY-MM-DD') AS RSV_DT ,
+                   TOTAL_SALE_AMT AS SALE_AMT,
+                   (ADULT_SALE_MEM + YOUTH_SALE_MEM + CHILD_SALE_MEM) AS BUY_NUM
+                FROM TB_RSV T_RSV
+                    LEFT OUTER JOIN TB_RSVPRDTINF T_RSVINF ON T_RSVINF.RSV_NUM=T_RSV.RSV_NUM
+                WHERE T_RSV.sale_corp_id='tamnao' 
+                    AND T_RSV.RSV_STATUS_CD = 'RS0010' 
+                    AND CP_DIV='PRE' 
+                    AND T_RSV.AGENT_CORP_ID='JTA'
+                    AND TO_CHAR(T_RSV.FRST_REG_DTTM, 'YYYY-MM-DD') BETWEEN #sStartDt# AND #sEndDt#
+                    <isNotEmpty property="sCorpNm">
+						<isNotNull property="sCorpNm">
+				    AND PRDT_NM LIKE '%' || #sCorpNm# || '%'
+				    	</isNotNull>
+				    </isNotEmpty>)
+         GROUP BY BUY_NUM )
+         
+<![CDATA[
+SELECT BUY_NUM AS PRDT_GUBUN ,
+       BUY_NUM || '개' AS PRDT_NM ,
+       RSV_CNT ,
+       DECODE(CNT, 0, 0, ROUND(RSV_CNT/CNT * 100, 1)) AS RSV_CNT_PER
+  FROM T_TOTAL_CNT,
+       (SELECT '' || BASE.BUY_NUM AS BUY_NUM ,
+               NVL(RSV_CNT, 0) AS RSV_CNT
+          FROM (SELECT LEVEL AS BUY_NUM
+                  FROM DUAL CONNECT BY LEVEL < 6 ) BASE LEFT OUTER JOIN (SELECT BUY_NUM , RSV_CNT
+                  FROM T_BUY_NUM
+                 WHERE BUY_NUM < 6 ) RSV ON RSV.BUY_NUM=BASE.BUY_NUM )
+ UNION
+SELECT BUY_NUM AS PRDT_GUBUN ,
+       '6개 이상' AS PRDT_NM ,
+       RSV_CNT ,
+       DECODE(CNT, 0, 0, ROUND(RSV_CNT/CNT * 100, 1)) AS RSV_CNT_PER
+  FROM T_TOTAL_CNT,
+       (SELECT '6OVER' AS BUY_NUM ,
+               NVL(SUM(RSV_CNT), 0) AS RSV_CNT
+          FROM T_BUY_NUM
+         WHERE BUY_NUM >=6 ) 
+]]>
+</select>
+
+<!-- 일일현황 -->
+<select id="BISHI_S_03" resultMap="BISHI_R_03">
+SELECT '하이제주' AS PRDT_GUBUN,
+	   NVL(COUNT(T_RSVINF.RSV_NUM), 0) AS RSV_CNT ,
+       NVL(COUNT(T_RSVINF.RSV_NUM), 0) AS ACCOUNT_CNT ,
+       NVL(SUM(TOTAL_SALE_AMT), 0) AS SALE_AMT,
+       0 AS DIS_AMT,
+       0 AS CANCEL_REQ_AMT,
+       0 AS REFUND_REQ_AMT
+    FROM TB_RSV T_RSV
+        LEFT OUTER JOIN TB_RSVPRDTINF T_RSVINF ON T_RSVINF.RSV_NUM=T_RSV.RSV_NUM
+    WHERE T_RSV.sale_corp_id='tamnao' 
+        AND T_RSV.RSV_STATUS_CD IN ('RS0010', 'RS0020')
+        AND CP_DIV='PRE' 
+        AND T_RSV.AGENT_CORP_ID='JTA'
+        AND TO_CHAR(T_RSV.FRST_REG_DTTM, 'YYYY-MM-DD') = #sStartDt#
+</select>
+
+</sqlMap>

@@ -1,0 +1,2099 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="corp">
+
+<resultMap id="CORP_R_00" class="oss.corp.vo.CORPVO">
+    <result property="corpId" 			column="CORP_ID" />
+    <result property="corpNm" 			column="CORP_NM" />
+    <result property="corpCd" 			column="CORP_CD" />
+    <result property="corpModCd"		column="CORP_MOD_CD" />
+    <result property="corpCdNm" 		column="CORP_CD_NM" />
+    <result property="corpSubCd" 		column="CORP_SUB_CD" />
+    <result property="tradeStatusCd" 	column="TRADE_STATUS_CD" />
+    <result property="coRegNum" 		column="CO_REG_NUM" />
+    <result property="ceoNm" 			column="CEO_NM" />
+    <result property="ceoTelNum" 		column="CEO_TEL_NUM" />
+    <result property="rsvTelNum" 		column="RSV_TEL_NUM" />
+    <result property="corpEmail" 		column="CORP_EMAIL" />
+    <result property="lon" 				column="LON" />
+    <result property="lat" 				column="LAT" />
+    <result property="roadNmAddr" 		column="ROAD_NM_ADDR" />
+    <result property="dtlAddr" 			column="DTL_ADDR" />
+    <result property="hmpgAddr" 		column="HMPG_ADDR" />
+    <result property="corpLinkYn" 		column="CORP_LINK_YN" />
+    <result property="confDt" 			column="CONF_DT" />
+    <result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+    <result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+    <result property="hijejuMappingNum" column="HIJEJU_MAPPING_NUM" />
+    <result property="asctMemYn" 		column="ASCT_MEM_YN" />
+    <result property="cmssNum" 			column="CMSS_NUM" />
+    <result property="posUseYn"			column="POS_USE_YN" />
+    <result property="corpAliasNm"		column="CORP_ALIAS_NM" />
+    <result property="visitMappingYn"	column="VISIT_MAPPING_YN" />
+    <result property="tamnacardMngYn"	column="TAMNACARD_MNG_YN" />
+</resultMap>
+
+<resultMap id="CORP_R_03" class="oss.corp.vo.CORPVO">
+    <result property="corpId" 			column="CORP_ID" />
+    <result property="tradeStatusCd" 	column="TRADE_STATUS_CD" />
+    <result property="corpCd" 			column="CORP_CD" />
+    <result property="corpModCd"		column="CORP_MOD_CD" />
+    <result property="corpSubCd" 		column="CORP_SUB_CD" />
+    <result property="corpNm" 			column="CORP_NM" />
+    <result property="shopNm" 			column="SHOP_NM" />
+    <result property="coRegNum" 		column="CO_REG_NUM" />
+    <result property="corpType" 		column="CORP_TYPE" />
+    <result property="corpEmail" 		column="CORP_EMAIL" />
+    <result property="rsvTelNum" 		column="RSV_TEL_NUM" />
+    <result property="faxNum" 			column="FAX_NUM" />
+    <result property="hmpgAddr" 		column="HMPG_ADDR" />
+    <result property="adtmImg"	 		column="ADTM_IMG" />
+    <result property="adtmSimpleExp"	column="ADTM_SIMPLE_EXP" />
+    <result property="branchNm" 		column="BRANCH_NM" />
+    <result property="roadNmAddr" 		column="ROAD_NM_ADDR" />
+    <result property="dtlAddr" 			column="DTL_ADDR" />
+    <result property="lon" 				column="LON" />
+    <result property="lat" 				column="LAT" />
+    <result property="ceoNm" 			column="CEO_NM" />
+    <result property="ceoBth" 			column="CEO_BTH" />
+    <result property="ceoTelNum" 		column="CEO_TEL_NUM" />
+    <result property="bsncon" 			column="BSNCON" />
+    <result property="bsntyp" 			column="BSNTYP" />
+    <result property="bankNm" 			column="BANK_NM" />
+    <result property="accNum" 			column="ACC_NUM" />
+    <result property="depositor" 		column="DEPOSITOR" />
+    <result property="admNm" 			column="ADM_NM" />
+    <result property="admDep" 			column="ADM_DEP" />
+    <result property="admOfcpos" 		column="ADM_OFCPOS" />
+    <result property="admMobile" 		column="ADM_MOBILE" />
+    <result property="admTelnum" 		column="ADM_TELNUM" />
+    <result property="admEmail" 		column="ADM_EMAIL" />
+    <result property="corpLinkYn" 		column="CORP_LINK_YN" />
+    <result property="corpLinkIsrYn"	column="CORP_LINK_ISR_YN" />
+    <result property="confDt" 			column="CONF_DT" />
+    <result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+    <result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+    <result property="managerId" 		column="MANAGER_ID" />
+    <result property="managerNm" 		column="MANAGER_NM" />
+    <result property="managerEmail" 	column="MANAGER_EMAIL" />
+    <result property="hijejuMappingNum" column="HIJEJU_MAPPING_NUM" />
+    <result property="asctMemYn" 		column="ASCT_MEM_YN" />
+    <result property="cmssNum" 			column="CMSS_NUM" />
+    <result property="b2bUseYn" 		column="B2B_USE_YN" />
+    <result property="b2bCmssNum" 		column="B2B_CMSS_NUM" />
+    <result property="posUseYn" 		column="POS_USE_YN" />
+    <result property="superbCorpYn" 	column="SUPERB_CORP_YN" />
+    <result property="linkPrdtUseYn" 	column="LINK_PRDT_USE_YN" />
+    <result property="visitMappingId" 	column="VISIT_MAPPING_ID" />
+    <result property="visitMappingNm" 	column="VISIT_MAPPING_NM" />
+    <result property="linkMappingNum" 	column="LINK_MAPPING_NUM" />
+    <result property="lsLinkYn"      	column="LS_LINK_YN" />
+	<result property="admMobile2" 		column="ADM_MOBILE2" />
+	<result property="admEmail2" 		column="ADM_EMAIL2" />
+    <result property="adApiLinkNm" 		column="AD_APILINK_NM" />
+    <result property="apiRentDiv" 		column="API_RENT_DIV" />
+    <result property="corpComment" 		column="CORP_COMMENT" />
+    <result property="admMobile3" 		column="ADM_MOBILE3" />
+</resultMap>
+
+<resultMap id="CORP_R_05" class="oss.corp.vo.CORPVO">
+    <result property="corpId" 			column="CORP_ID" />
+    <result property="shopNm" 			column="SHOP_NM" />
+    <result property="adtmImg" 		    column="ADTM_IMG" />
+    <result property="adtmUrl" 		    column="ADTM_URL" />
+    <result property="adtmSimpleExp" 	column="ADTM_SIMPLE_EXP" />
+    <result property="rsvTelNum" 		column="RSV_TEL_NUM" />
+</resultMap>
+
+<resultMap id="CORP_R_06" class="oss.corp.vo.CORPVO">
+    <result property="corpId" 		column="CORP_ID" />
+    <result property="corpNm" 		column="CORP_NM" />
+    <result property="roadNmAddr" 	column="ROAD_NM_ADDR" />
+    <result property="dtlAddr" 		column="DTL_ADDR" />
+    <result property="lat" 			column="LAT" />
+    <result property="lon" 			column="LON" />
+</resultMap>
+
+
+<resultMap id="CORP_R_07" class="oss.corp.vo.CORPVO">
+    <result property="corpId" 			column="CORP_ID" />
+    <result property="corpNm" 			column="CORP_NM" />
+    <result property="corpCd" 			column="CORP_CD" />
+    <result property="corpModCd"		column="CORP_MOD_CD" />
+    <result property="tradeStatusCd" 	column="TRADE_STATUS_CD" />
+    <result property="coRegNum" 		column="CO_REG_NUM" />
+    <result property="ceoNm" 			column="CEO_NM" />
+    <result property="ceoTelNum" 		column="CEO_TEL_NUM" />
+    <result property="rsvTelNum" 		column="RSV_TEL_NUM" />
+    <result property="corpEmail" 		column="CORP_EMAIL" />
+    <result property="lon" 				column="LON" />
+    <result property="lat" 				column="LAT" />
+    <result property="roadNmAddr" 		column="ROAD_NM_ADDR" />
+    <result property="dtlAddr" 			column="DTL_ADDR" />
+    <result property="hmpgAddr" 		column="HMPG_ADDR" />
+    <result property="corpLinkYn" 		column="CORP_LINK_YN" />
+    <result property="confDt" 			column="CONF_DT" />
+    <result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+    <result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+    <result property="admNm" 		    column="ADM_NM" />
+    <result property="admDep" 		    column="ADM_DEP" />
+    <result property="admOfcpos" 		column="ADM_OFCPOS" />
+    <result property="admMobile" 		column="ADM_MOBILE" />
+    <result property="admTelnum" 		column="ADM_TELNUM" />
+    <result property="admEmail" 		column="ADM_EMAIL" />
+</resultMap>
+
+
+<resultMap id="CORP_R_10" class="oss.corp.vo.CORPVO">
+    <result property="corpId" 			    column="CORP_ID" />
+    <result property="corpNm" 			    column="CORP_NM" />
+    <result property="corpCd" 			    column="CORP_CD" />
+    <result property="corpModCd"		    column="CORP_MOD_CD" />
+    <result property="corpCdNm" 		    column="CORP_CD_NM" />
+    <result property="corpSubCd"		    column="CORP_SUB_CD" />
+    <result property="tradeStatusCd" 	    column="TRADE_STATUS_CD" />
+    <result property="coRegNum" 		    column="CO_REG_NUM" />
+    <result property="ceoNm" 			    column="CEO_NM" />
+    <result property="ceoTelNum" 		    column="CEO_TEL_NUM" />
+    <result property="rsvTelNum" 		    column="RSV_TEL_NUM" />
+    <result property="faxNum"    		    column="FAX_NUM" />
+    <result property="corpEmail" 		    column="CORP_EMAIL" />
+    <result property="lon" 				    column="LON" />
+    <result property="lat" 				    column="LAT" />
+    <result property="roadNmAddr" 		    column="ROAD_NM_ADDR" />
+    <result property="dtlAddr" 			    column="DTL_ADDR" />
+    <result property="hmpgAddr" 		    column="HMPG_ADDR" />
+    <result property="corpLinkYn" 		    column="CORP_LINK_YN" />
+    <result property="confDt" 			    column="CONF_DT" />
+    <result property="frstRegDttm" 		    column="FRST_REG_DTTM" />
+    <result property="lastModDttm" 		    column="LAST_MOD_DTTM" />
+    <result property="hijejuMappingNum" 	column="HIJEJU_MAPPING_NUM" />
+    <result property="asctMemYn" 		    column="ASCT_MEM_YN" />
+    <result property="branchNm" 		    column="BRANCH_NM" />
+    <result property="bankNm" 			    column="BANK_NM" />
+    <result property="accNum" 			    column="ACC_NUM" />
+    <result property="depositor" 		    column="DEPOSITOR" />
+    <result property="admNm" 			    column="ADM_NM" />
+    <result property="admDep" 			    column="ADM_DEP" />
+    <result property="admOfcpos" 		    column="ADM_OFCPOS" />
+    <result property="admMobile" 		    column="ADM_MOBILE" />
+    <result property="admTelnum" 		    column="ADM_TELNUM" />
+    <result property="admEmail" 		    column="ADM_EMAIL" />
+    <result property="visitMappingYn" 		column="VISIT_MAPPING_YN" />
+    <result property="tamnacardMngYn" 		column="TAMNACARD_MNG_YN" />
+</resultMap>
+
+<resultMap id="CORP_R_11" class="oss.corp.vo.CORPVO">
+    <result property="corpCd" 		    column="CORP_CD" />
+    <result property="corpId" 		    column="CORP_ID" />
+    <result property="tradeStatusCd" 	column="TRADE_STATUS_CD" />
+</resultMap>
+
+<resultMap id="CORPADM_R_00" class="oss.corp.vo.CORPADMVO">
+    <result property="corpId"   column="CORP_ID" />
+    <result property="userId"   column="USER_ID" />
+</resultMap>
+
+<resultMap id="CORPADM_R_01" class="oss.corp.vo.CORPADMVO">
+	<result property="corpId"   column="CORP_ID" />
+	<result property="userId"   column="USER_ID" />
+	<result property="userNm"   column="USER_NM" />
+</resultMap>
+
+<resultMap id="CORPADM_R_02" class="oss.corp.vo.CORPADMVO">
+	<result property="corpId" 	column="CORP_ID" />
+	<result property="userId" 	column="USER_ID" />
+	<result property="userNm" 	column="USER_NM" />
+	<result property="email"	column="EMAIL" />
+	<result property="telNum" 	column="TEL_NUM" />
+</resultMap>
+
+<resultMap id="DLV_CORP_R_00" class="mas.corp.vo.DLVCORPVO">
+	<result property="dlvCorpCd"	column="DLV_CORP_CD" />
+	<result property="dlvCorpNm"	column="DLV_CORP_NM" />
+	<result property="rtmYn" 		column="RTM_YN" />
+	<result property="rtmUrl" 		column="RTM_URL" />
+	<result property="webUrl" 		column="WEB_URL" />
+	<result property="mobileUrl" 	column="MOBILE_URL" />
+	<result property="escrowDlvCd" 	column="ESCROW_DLV_CD" />
+	<result property="goodsflowDlvCd" 	column="GOODSFLOW_DLV_CD" />
+</resultMap>
+
+<resultMap id="DLV_CORP_R_02" class="mas.corp.vo.DLVCORPVO">
+	<result property="dlvCorpCd"	    column="DLV_CORP_CD" />
+	<result property="dlvCorpNm"	    column="DLV_CORP_NM" />
+	<result property="escrowDlvCd"	    column="ESCROW_DLV_CD" />
+	<result property="goodsflowDlvCd"	column="GOODSFLOW_DLV_CD" />
+	<result property="rtmYn" 		    column="RTM_YN" />
+	<result property="rtmUrl" 		    column="RTM_URL" />
+	<result property="webUrl" 		    column="WEB_URL" />
+	<result property="mobileUrl" 	    column="MOBILE_URL" />
+	<result property="checkYn" 		    column="CHECK_YN" />
+</resultMap>
+
+<resultMap id="CORP_LEVEL_R_00" class="oss.corp.vo.CORPLEVELVO">
+    <result property="totalCnt"			column="TOTAL_CNT" />
+    <result property="rk"	 			column="RK" />
+    <result property="corpId" 			column="CORP_ID" />
+    <result property="corpCd" 			column="CORP_CD" />
+    <result property="corpNm" 			column="CORP_NM" />
+    <result property="corpLevel" 		column="CORP_LEVEL" />
+    <result property="rsvCnt" 			column="RSV_CNT" />
+    <result property="rsvPct" 			column="RSV_PCT" />
+    <result property="rsvLevel" 		column="RSV_LEVEL" />
+    <result property="cancelCnt" 		column="CANCEL_CNT" />
+    <result property="cancelPct" 		column="CANCEL_PCT" />
+    <result property="cancelLevel" 		column="CANCEL_LEVEL" />
+    <result property="gpa"				column="GPA" />
+    <result property="useepilCnt" 		column="USEEPIL_CNT" />
+    <result property="useepilRegpct"	column="USEEPIL_REGPCT" />
+    <result property="useepilLevel"		column="USEEPIL_LEVEL" />
+    <result property="snsPublicnum"		column="SNS_PUBLICNUM" />
+    <result property="duplBuyCnt"		column="DUPL_BUY_CNT" />
+    <result property="duplBuyPct" 		column="DUPL_BUY_PCT" />
+    <result property="duplBuyLevel"		column="DUPL_BUY_LEVEL" />
+    <result property="complainLevel"	column="COMPLAIN_LEVEL" />
+    <result property="joinLevel"		column="JOIN_LEVEL" />
+    <result property="amtLevel"			column="AMT_LEVEL" />
+</resultMap>
+
+<resultMap id="CORP_LEVEL_R_01" class="oss.corp.vo.CORPLEVELVO">
+    <result property="corpId" 			column="CORP_ID" />
+    <result property="corpNm" 			column="CORP_NM" />
+    <result property="complainLevel"	column="COMPLAIN_LEVEL" />
+    <result property="joinLevel"		column="JOIN_LEVEL" />
+    <result property="amtLevel"			column="AMT_LEVEL" />
+</resultMap>
+
+<resultMap id="CORP_RCMD_R_00" class="oss.corp.vo.CORPRCMDVO">
+    <result property="corpId" 		column="CORP_ID" />
+    <result property="rcmdDiv" 		column="RCMD_DIV" />
+    <result property="printSn"		column="PRINT_SN" />
+    <result property="corpNm"		column="CORP_NM" />
+    <result property="rsvTelNum"	column="RSV_TEL_NUM" />
+</resultMap>
+
+<select id="CORP_S_00" resultMap="CORP_R_00">
+SELECT CORP_ID          /*업체 아이디*/
+     , CORP_NM          /*업체 명*/
+     , CORP_CD          /*업체 코드*/
+     , CORP_MOD_CD      /*업체 수정 코드*/
+     , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = CORP_CD) AS CORP_CD_NM
+     , CORP_SUB_CD      /*업체 서브 코드*/
+     , TRADE_STATUS_CD  /*거래 상태 코드*/
+     , CO_REG_NUM       /*사업자등록 번호*/
+     , CEO_NM           /*대표자 명*/
+     , CEO_TEL_NUM      /*대표자 전화 번호*/
+     , RSV_TEL_NUM      /*예약 전화 번호*/
+     , CORP_EMAIL       /*업체 이메일*/
+     , LON              /*경도*/
+     , LAT              /*위도*/
+     , ROAD_NM_ADDR     /*도로명 주소*/
+     , DTL_ADDR         /*상세 주소*/
+     , HMPG_ADDR        /*홈페이지 주소*/
+     , CORP_LINK_YN     /*업체 연계 여부*/
+     , CONF_DT          /*승인 일자*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , HIJEJU_MAPPING_NUM
+     , ASCT_MEM_YN		/*협회 회원 여부 */
+     , CMSS_NUM         /*수수료 번호*/
+     , POS_USE_YN       /*POS 사용 여부*/
+     , '' AS CORP_ALIAS_NM /*업체별명*/
+     , (CASE WHEN VISIT_MAPPING_ID IS NOT NULL THEN 'Y' ELSE 'N' END) VISIT_MAPPING_YN
+     , TAMNACARD_MNG_YN /* 탐나는전가맹점여부*/
+  FROM TB_CORP
+ WHERE CORP_ID = #corpId#
+</select>
+
+<select id="CORP_S_01" resultMap="CORP_R_00">
+SELECT CORP_ID /*업체 아이디*/
+    , CORP_NM /*업체 명*/
+    , CORP_CD /*업체 코드*/
+    , CORP_MOD_CD /*업체 수정 코드*/
+    , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = CORP_MOD_CD) AS CORP_CD_NM
+    , CORP_SUB_CD /*업체 서브 코드*/
+    , TRADE_STATUS_CD /*거래 상태 코드*/
+    , CO_REG_NUM /*사업자등록 번호*/
+    , CEO_NM /*대표자 명*/
+    , CEO_TEL_NUM /*대표자 전화 번호*/
+    , RSV_TEL_NUM /*예약 전화 번호*/
+    , CORP_EMAIL /*업체 이메일*/
+    , LON /*경도*/
+    , LAT /*위도*/
+    , ROAD_NM_ADDR /*도로명 주소*/
+    , DTL_ADDR /*상세 주소*/
+    , HMPG_ADDR /*홈페이지 주소*/
+    , CORP_LINK_YN /*업체 연계 여부*/
+    , CONF_DT /*승인 일자*/
+    , FRST_REG_DTTM /*최초 등록 일시*/
+    , LAST_MOD_DTTM /*최종 수정 일시*/
+    , HIJEJU_MAPPING_NUM
+    , ASCT_MEM_YN /*협회 회원 여부 */
+    , CMSS_NUM /*수수료 번호*/
+    , POS_USE_YN /*POS 사용 여부*/
+    , CORP_ALIAS_NM /*업체별칭*/
+    , VISIT_MAPPING_YN /* VISIT 제주연계 여부 */
+    , TAMNACARD_MNG_YN /* 탐나는전가맹점여부*/
+FROM (SELECT ROWNUM AS RN
+        , CORP_ID /*업체 아이디*/
+        , CASE
+            WHEN CORP_NM != AD_NM
+            THEN CORP_NM || ' / ' || AD_NM
+            ELSE CORP_NM
+        END AS CORP_NM /*업체 명*/
+        , CORP_CD /*업체 코드*/
+        , CORP_MOD_CD /*업체 수정 코드*/
+        , CORP_SUB_CD /*업체 서브 코드*/
+        , TRADE_STATUS_CD /*거래 상태 코드*/
+        , CO_REG_NUM /*사업자등록 번호*/
+        , CEO_NM /*대표자 명*/
+        , CEO_TEL_NUM /*대표자 전화 번호*/
+        , RSV_TEL_NUM /*예약 전화 번호*/
+        , CORP_EMAIL /*업체 이메일*/
+        , LON /*경도*/
+        , LAT /*위도*/
+        , ROAD_NM_ADDR /*도로명 주소*/
+        , DTL_ADDR /*상세 주소*/
+        , HMPG_ADDR /*홈페이지 주소*/
+        , CORP_LINK_YN /*업체 연계 여부*/
+        , CONF_DT /*승인 일자*/
+        , FRST_REG_DTTM /*최초 등록 일시*/
+        , LAST_MOD_DTTM /*최종 수정 일시*/
+        , HIJEJU_MAPPING_NUM
+        , ASCT_MEM_YN /*협회 회원 여부 */
+        , CMSS_NUM /*수수료 번호*/
+        , POS_USE_YN /*POS 사용 여부*/
+        , CORP_ALIAS_NM /*업체별칭*/
+        , VISIT_MAPPING_YN /* VISIT 제주연계 여부 */
+        , TAMNACARD_MNG_YN /* 탐나는전가맹점여부*/
+    FROM (SELECT CORP_ID /*업체 아이디*/
+            , CORP_NM /*업체 명*/
+            , CORP_CD /*업체 코드*/
+            , CORP_MOD_CD /*업체 수정 코드*/
+            , CORP_SUB_CD /*업체 서브 코드*/
+            , TRADE_STATUS_CD /*거래 상태 코드*/
+            , CO_REG_NUM /*사업자등록 번호*/
+            , CEO_NM /*대표자 명*/
+            , CEO_TEL_NUM /*대표자 전화 번호*/
+            , RSV_TEL_NUM /*예약 전화 번호*/
+            , CORP_EMAIL /*업체 이메일*/
+            , LON /*경도*/
+            , LAT /*위도*/
+            , ROAD_NM_ADDR /*도로명 주소*/
+            , DTL_ADDR /*상세 주소*/
+            , HMPG_ADDR /*홈페이지 주소*/
+            , CASE AD_APILINK_NM WHEN 'TLL' THEN 'TL린칸' END ||
+                CASE API_RENT_DIV WHEN 'R' THEN '리본' WHEN 'I' THEN '인스' WHEN 'G' THEN '그림' END AS CORP_LINK_YN/*연동업체*/
+            , CONF_DT /*승인 일자*/
+            , FRST_REG_DTTM /*최초 등록 일시*/
+            , LAST_MOD_DTTM /*최종 수정 일시*/
+            , HIJEJU_MAPPING_NUM
+            , ASCT_MEM_YN /*협회 회원 여부 */
+            , CMSS_NUM /*수수료 번호*/
+            , POS_USE_YN /*POS 사용 여부*/
+            , CASE
+                WHEN CORP_CD = 'AD'
+                THEN (SELECT AD_NM FROM TB_AD_DFTINF WHERE CORP_ID = T_CORP.CORP_ID)
+                ELSE ''
+            END AS AD_NM
+            , (SELECT CORP_ALIAS_NM FROM TB_PRMT_CORP WHERE CORP_ID = T_CORP.CORP_ID) AS CORP_ALIAS_NM
+            , (CASE WHEN VISIT_MAPPING_ID IS NOT NULL THEN 'Y' ELSE 'N' END) VISIT_MAPPING_YN
+            , TAMNACARD_MNG_YN
+        FROM TB_CORP AS T_CORP
+        WHERE 1=1
+            <isNotEmpty property="sCorpNm">
+                AND (CORP_NM LIKE '%' || #sCorpNm# || '%'
+                    OR CORP_ID IN (SELECT CORP_ID FROM TB_AD_DFTINF WHERE AD_NM LIKE '%' || #sCorpNm# || '%'))
+            </isNotEmpty>
+            <isNotEmpty property="sCorpId">
+                AND CORP_ID LIKE '%' || #sCorpId# || '%'
+            </isNotEmpty>
+            <isNotEmpty property="sCorpCd">
+                AND CORP_MOD_CD = #sCorpCd#
+            </isNotEmpty>
+            <isNotEmpty property="sCorpCd2">
+                AND CORP_CD = #sCorpCd2#
+            </isNotEmpty>            
+            <isNotEmpty property="sCorpSubCd">
+                AND CORP_SUB_CD = #sCorpSubCd#
+            </isNotEmpty>
+            <isNotEmpty property="sAsctMemYn">
+                AND ASCT_MEM_YN = #sAsctMemYn#
+            </isNotEmpty>
+            <isNotEmpty property="sTradeStatusCd">
+                AND TRADE_STATUS_CD = #sTradeStatusCd#
+            </isNotEmpty>
+            <isNotEmpty property="sSuperbCorpYn">
+                AND SUPERB_CORP_YN = #sSuperbCorpYn#
+            </isNotEmpty>
+            <isNotEmpty property="sSpCtgr">
+                AND CORP_ID IN (SELECT CORP_ID FROM TB_SP_PRDTINF WHERE TRADE_STATUS = 'TS03' AND CTGR = #sSpCtgr#)
+            </isNotEmpty>
+            <isNotEmpty property="sCorpLinkYn">
+                AND CORP_LINK_YN = #sCorpLinkYn#
+            </isNotEmpty>
+            <isNotEmpty property="sFileNum">
+                <isEqual property="sFileYn" compareValue="N">
+                    AND CORP_ID NOT IN
+                </isEqual>
+                <isEqual property="sFileYn" compareValue="Y">
+                    AND CORP_ID IN
+                </isEqual>
+                <iterate property="sFileNum" open="(" close=")" conjunction="INTERSECT">
+                    SELECT REQUEST_NUM FROM TB_CORP_PNS_REQUEST_FILE WHERE FILE_NUM = #sFileNum[]#
+                </iterate>
+            </isNotEmpty>
+            <isNotEmpty property="sVisitMappingYn">
+                <isEqual property="sVisitMappingYn" compareValue="N">
+                    AND VISIT_MAPPING_ID IS NULL
+                </isEqual>
+                <isEqual property="sVisitMappingYn" compareValue="Y">
+                    AND VISIT_MAPPING_ID IS NOT NULL
+                </isEqual>
+            </isNotEmpty>
+            <isNotEmpty property="sTamnacardMngYn">
+                    AND TAMNACARD_MNG_YN = #sTamnacardMngYn#
+            </isNotEmpty>
+            <isNotEmpty property="sCorpLinkApi">
+                AND (AD_APILINK_NM = #sCorpLinkApi# OR API_RENT_DIV =  #sCorpLinkApi#)
+            </isNotEmpty>
+        ORDER BY FRST_REG_DTTM DESC
+    )
+)
+WHERE RN BETWEEN TO_NUMBER(#firstIndex#) + 1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="CORP_S_02" resultClass="int">
+SELECT COUNT(CORP_ID) AS CNT
+FROM TB_CORP
+WHERE 1=1
+    <isNotEmpty property="sCorpNm">
+        AND CORP_NM LIKE '%' || #sCorpNm# || '%'
+    </isNotEmpty>
+    <isNotEmpty property="sCorpId">
+        AND CORP_ID LIKE '%' || #sCorpId# || '%'
+    </isNotEmpty>
+    <isNotEmpty property="sCoRegNum">
+        AND REPLACE(CO_REG_NUM, '-', '') = #sCoRegNum#
+    </isNotEmpty>
+    <isNotEmpty property="sCorpCd">
+        AND CORP_MOD_CD = #sCorpCd#
+    </isNotEmpty>
+    <isNotEmpty property="sCorpSubCd">
+        AND CORP_SUB_CD = #sCorpSubCd#
+    </isNotEmpty>
+    <isNotEmpty property="sTradeStatusCd">
+        AND TRADE_STATUS_CD = #sTradeStatusCd#
+    </isNotEmpty>
+    <isNotEmpty property="sAsctMemYn">
+        AND ASCT_MEM_YN = #sAsctMemYn#
+    </isNotEmpty>
+    <isNotEmpty property="sSuperbCorpYn">
+        AND SUPERB_CORP_YN = #sSuperbCorpYn#
+    </isNotEmpty>
+    <isNotEmpty property="sSpCtgr">
+        AND CORP_ID IN (SELECT CORP_ID FROM TB_SP_PRDTINF WHERE CTGR = #sSpCtgr# AND TRADE_STATUS='TS03')
+    </isNotEmpty>
+    <isNotEmpty property="sCorpLinkYn">
+        AND CORP_LINK_YN = #sCorpLinkYn#
+    </isNotEmpty>
+    <isNotEmpty property="sFileNum">
+        <isEqual property="sFileYn" compareValue="N">
+            AND CORP_ID NOT IN
+        </isEqual>
+        <isEqual property="sFileYn" compareValue="Y">
+            AND CORP_ID IN
+        </isEqual>
+        <iterate property="sFileNum" open="(" close=")" conjunction="INTERSECT">
+            SELECT REQUEST_NUM FROM TB_CORP_PNS_REQUEST_FILE WHERE FILE_NUM = #sFileNum[]#
+        </iterate>
+    </isNotEmpty>
+    <isNotEmpty property="sVisitMappingYn">
+        <isEqual property="sVisitMappingYn" compareValue="N">
+            AND VISIT_MAPPING_ID IS NULL
+        </isEqual>
+        <isEqual property="sVisitMappingYn" compareValue="Y">
+            AND VISIT_MAPPING_ID IS NOT NULL
+        </isEqual>
+    </isNotEmpty>
+    <isNotEmpty property="sTamnacardMngYn">
+            AND TAMNACARD_MNG_YN = #sTamnacardMngYn#
+    </isNotEmpty>
+    <isNotEmpty property="sCorpLinkApi">
+        AND (AD_APILINK_NM = #sCorpLinkApi# OR API_RENT_DIV =  #sCorpLinkApi#)
+    </isNotEmpty>
+</select>
+
+<!-- 업체 상세정보 조회 -->
+<select id="CORP_S_03" resultMap="CORP_R_03">
+SELECT T_CORP.CORP_ID			/*업체 아이디*/
+     , T_CORP.TRADE_STATUS_CD	/*거래 상태 코드*/
+     , T_CORP.CORP_CD			/*업체 코드*/
+     , T_CORP.CORP_MOD_CD		/*업체 수정 코드*/
+     , T_CORP.CORP_SUB_CD 		/* 업체 서브코드 */
+     , T_CORP.CORP_NM			/*업체 명*/
+     , T_CORP.SHOP_NM			/*상호명*/
+     , T_CORP.CO_REG_NUM		/*사업자등록 번호*/
+     , T_CORP.CORP_TYPE			/*업체 유형*/
+     , T_CORP.CORP_EMAIL			/*업체 이메일*/
+     , T_CORP.RSV_TEL_NUM		/*예약 전화 번호*/
+     , T_CORP.FAX_NUM			/*팩스 번호*/
+     , T_CORP.HMPG_ADDR        /*홈페이지 주소*/
+     , T_CORP.ADTM_IMG       	/*광고 이미지*/
+     , T_CORP.ADTM_SIMPLE_EXP	/*광고 간략 설명*/
+     , T_CORP.BRANCH_NM		/*분과 명*/
+     , T_CORP.ROAD_NM_ADDR	/*도로명 주소*/
+     , T_CORP.DTL_ADDR			/*상세 주소*/
+     , T_CORP.LON					/*경도*/
+     , T_CORP.LAT					/*위도*/
+     , T_CORP.CEO_NM				/*대표자 명*/
+     , T_CORP.CEO_BTH				/*대표자 생년월일*/
+     , T_CORP.CEO_TEL_NUM		/*대표자 전화 번호*/
+     , T_CORP.BSNCON				/*업종*/
+     , T_CORP.BSNTYP				/*업태*/
+     , T_CORP.BANK_NM			/*은행명*/
+     , T_CORP.ACC_NUM			/*계좌번호*/
+     , T_CORP.DEPOSITOR			/*예금주*/
+     , T_CORP.ADM_NM			/*관리자(담당자) 명*/
+     , T_CORP.ADM_DEP			/*관리자(담당자) 부서*/
+     , T_CORP.ADM_OFCPOS		/*관리자(담당자) 직위*/
+     , T_CORP.ADM_MOBILE		/*관리자(담당자) 핸드폰번호*/
+     , T_CORP.ADM_TELNUM		/*관리자(담당자) 직통번호*/
+     , T_CORP.ADM_EMAIL			/*관리자(담당자) 이메일*/
+     , T_CORP.CORP_LINK_YN		/*실시간 렌터카 수량연계 여부*/
+     , T_CORP.CORP_LINK_ISR_YN		/*실시간 렌터카 금액보험연계 여부*/
+     , T_CORP.CONF_DT				/*승인 일자*/
+     , T_CORP.FRST_REG_DTTM	/*최초 등록 일시*/
+     , T_CORP.LAST_MOD_DTTM	/*최종 수정 일시*/
+     , T_MANAGER.USER_ID AS MANAGER_ID
+     , T_MANAGER.USER_NM AS MANAGER_NM
+     , T_MANAGER.EMAIL   AS MANAGER_EMAIL
+     , T_CORP.HIJEJU_MAPPING_NUM	/*hiJeju Mapping 번호 */
+     , T_CORP.ASCT_MEM_YN		/*협회 회원 여부*/
+     , T_CORP.CMSS_NUM			/*수수료 번호*/
+     , T_CORP.B2B_USE_YN		/*B2B 사용 여부*/
+     , T_CORP.B2B_CMSS_NUM		/*B2B 수수료 번호*/
+     , T_CORP.POS_USE_YN		/*포스 사용 여부*/
+     , T_CORP.SUPERB_CORP_YN	/* 우수관광사업체 */
+     , T_CORP.LINK_PRDT_USE_YN	/* LINK 상품 사용 여부 */
+     , T_CORP.VISIT_MAPPING_ID	/* visit 제주 연계 ID */
+     , T_CORP.VISIT_MAPPING_NM	/* visit 제주 연계 상호 */
+     , T_CORP.LINK_MAPPING_NUM	/* 연계 매핑 번호 */
+	 , T_CORP.LS_LINK_YN	/* 연계 매핑 번호 */
+	 , T_CORP.ADM_MOBILE2 /*관리자(담당자) 핸드폰번호2 */
+	 , T_CORP.ADM_EMAIL2 /*관리자(담당자) 이메일2 */
+     , T_CORP.AD_APILINK_NM
+     , T_CORP.API_RENT_DIV
+     , UTL_RAW.CAST_TO_VARCHAR2(T_CORP.CORP_COMMENT) AS CORP_COMMENT /* 업체 comment */
+     , T_CORP.ADM_MOBILE3 /*관리자(담당자) 핸드폰번호3 */
+  FROM TB_CORP T_CORP
+  LEFT OUTER JOIN (SELECT T_CORPADM.CORP_ID
+                        , T_CORPADM.USER_ID
+                        , T_USER.USER_NM
+                        , T_USER.EMAIL
+                     FROM TB_CORPADM   T_CORPADM
+                    INNER JOIN TB_USER T_USER
+                       ON T_USER.USER_ID    = T_CORPADM.USER_ID
+                    <isNotEmpty property="corpId">
+                    WHERE T_CORPADM.CORP_ID = #corpId#
+                    </isNotEmpty>
+                  ) T_MANAGER
+    ON T_MANAGER.CORP_ID = T_CORP.CORP_ID
+ WHERE 1=1
+   <isNotEmpty property="corpId">
+   AND T_CORP.CORP_ID = #corpId#
+   </isNotEmpty>
+   <isNotEmpty property="visitMappingId">
+   AND T_CORP.VISIT_MAPPING_ID = #visitMappingId#
+   </isNotEmpty>
+</select>
+
+<select id="CORP_S_04" resultMap="CORP_R_00">
+SELECT CORP_ID          /*업체 아이디*/
+     , REPLACE(REPLACE(CORP_NM, '(주)', ''), '㈜', '') AS CORP_NM
+     , CORP_CD          /*업체 코드*/
+     , CORP_MOD_CD      /*업체 수정 코드*/
+     , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = CORP_CD) AS CORP_CD_NM
+     , CORP_SUB_CD      /*업체 서브 코드*/
+     , TRADE_STATUS_CD  /*거래 상태 코드*/
+     , CO_REG_NUM       /*사업자등록 번호*/
+     , CEO_NM           /*대표자 명*/
+     , CEO_TEL_NUM      /*대표자 전화 번호*/
+     , RSV_TEL_NUM      /*예약 전화 번호*/
+     , CORP_EMAIL       /*업체 이메일*/
+     , LON              /*경도*/
+     , LAT              /*위도*/
+     , ROAD_NM_ADDR     /*도로명 주소*/
+     , DTL_ADDR         /*상세 주소*/
+     , HMPG_ADDR        /*홈페이지 주소*/
+     , CORP_LINK_YN     /*업체 연계 여부*/
+     , CONF_DT          /*승인 일자*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , HIJEJU_MAPPING_NUM
+     , ASCT_MEM_YN		/*협회 회원 여부 */
+     , CMSS_NUM         /*수수료 번호*/
+     , POS_USE_YN       /*POS 사용 여부*/
+     , '' AS CORP_ALIAS_NM /*업체별명*/
+     , (CASE WHEN VISIT_MAPPING_ID IS NOT NULL THEN 'Y' ELSE 'N' END) VISIT_MAPPING_YN
+     , TAMNACARD_MNG_YN /* 탐나는전가맹점여부*/
+  FROM TB_CORP
+ WHERE 1=1
+   <isNotEmpty property="corpCd">
+   AND CORP_CD     	   = #corpCd#
+   </isNotEmpty>
+   <isNotEmpty property="corpModCd">
+   AND CORP_MOD_CD     = #corpModCd#
+   </isNotEmpty>
+   AND TRADE_STATUS_CD = #tradeStatusCd#
+ ORDER BY CORP_NM ASC
+</select>
+
+<select id="CORP_S_05" resultMap="CORP_R_05">
+SELECT CORP_ID          /*업체 아이디*/
+     , SHOP_NM
+     , ADTM_IMG
+     , ADTM_URL
+     , ADTM_SIMPLE_EXP
+     , RSV_TEL_NUM
+  FROM TB_CORP
+ WHERE CORP_ID         = #corpId#
+ ORDER BY CORP_NM ASC
+</select>
+
+<select id="CORP_S_06" resultMap="CORP_R_06">
+SELECT ROWNUM AS RN
+		 , CORP_ID
+		 , CORP_NM
+		 , NVL(ROAD_NM_ADDR, ' ') ROAD_NM_ADDR
+		 , NVL(DTL_ADDR, ' ') DTL_ADDR
+		 , DIST
+		 , LAT
+		 , LON
+  FROM ( SELECT CORP_ID
+					 , CORP_NM
+					 , ROAD_NM_ADDR
+					 , DTL_ADDR
+					 , TO_NUMBER(ROUND(6371000 * ACOS(SIN(RADIANS (LAT) ) * SIN(RADIANS (#lat#) ) +
+										 	COS(RADIANS (LAT) ) * COS(RADIANS (#lat#) ) * COS(RADIANS (LON - #lon#) ) ) )) AS DIST
+					 , LAT
+					 , LON
+			   FROM TB_CORP
+			  WHERE CORP_CD = #corpCd#
+			      AND TRADE_STATUS_CD = #tradeStatusCd#
+			      <isNotEmpty property="corpSubCd">
+			      AND CORP_SUB_CD = #corpSubCd#
+			      </isNotEmpty>
+			      AND LAT IS NOT NULL
+			      AND LON IS NOT NULL
+			      AND ROAD_NM_ADDR IS NOT NULL
+			  ORDER BY DIST
+		) WHERE DIST<![CDATA[ <=]]> #sDist#
+		    AND DIST <![CDATA[ > ]]> 0
+</select>
+
+
+<select id="CORP_S_07" resultMap="CORP_R_07">
+SELECT CORP_ID          /*업체 아이디*/
+     , CORP_NM          /*업체 명*/
+     , CORP_CD          /*업체 코드*/
+     , CORP_MOD_CD      /*업체 코드*/
+     , TRADE_STATUS_CD  /*거래 상태 코드*/
+     , CO_REG_NUM       /*사업자등록 번호*/
+     , CEO_NM           /*대표자 명*/
+     , CEO_TEL_NUM      /*대표자 전화 번호*/
+     , RSV_TEL_NUM      /*예약 전화 번호*/
+     , CORP_EMAIL       /*업체 이메일*/
+     , LON              /*경도*/
+     , LAT              /*위도*/
+     , ROAD_NM_ADDR     /*도로명 주소*/
+     , DTL_ADDR         /*상세 주소*/
+     , HMPG_ADDR        /*홈페이지 주소*/
+     , CORP_LINK_YN     /*업체 연계 여부*/
+     , CONF_DT          /*승인 일자*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , ADM_NM
+     , ADM_DEP
+     , ADM_OFCPOS
+     , ADM_MOBILE
+     , ADM_TELNUM
+     , ADM_EMAIL
+  FROM TB_CORP
+ WHERE 1=1
+ <isNotEmpty property="tradeStatusCd">
+   AND TRADE_STATUS_CD= #tradeStatusCd#
+ </isNotEmpty>
+ <isNotEmpty property="corpCd">
+   AND CORP_CD= #corpCd#
+ </isNotEmpty>
+ <isNotEmpty property="corpModCd">
+   AND CORP_MOD_CD= #corpModCd#
+ </isNotEmpty>
+ 
+ 
+</select>
+
+<select id="CORP_S_08" resultMap="CORP_R_07">
+SELECT CORP_ID          /*업체 아이디*/
+     , CORP_NM          /*업체 명*/
+     , CORP_CD          /*업체 코드*/
+     , CORP_MOD_CD      /*업체 수정 코드*/
+     , TRADE_STATUS_CD  /*거래 상태 코드*/
+     , CO_REG_NUM       /*사업자등록 번호*/
+     , CEO_NM           /*대표자 명*/
+     , CEO_TEL_NUM      /*대표자 전화 번호*/
+     , RSV_TEL_NUM      /*예약 전화 번호*/
+     , CORP_EMAIL       /*업체 이메일*/
+     , LON              /*경도*/
+     , LAT              /*위도*/
+     , ROAD_NM_ADDR     /*도로명 주소*/
+     , DTL_ADDR         /*상세 주소*/
+     , HMPG_ADDR        /*홈페이지 주소*/
+     , CORP_LINK_YN     /*업체 연계 여부*/
+     , CONF_DT          /*승인 일자*/
+     , FRST_REG_DTTM    /*최초 등록 일시*/
+     , LAST_MOD_DTTM    /*최종 수정 일시*/
+     , ADM_NM
+     , ADM_DEP
+     , ADM_OFCPOS
+     , ADM_MOBILE
+     , ADM_TELNUM
+     , ADM_EMAIL
+  FROM (SELECT ROWNUM AS RN
+             , CORP_ID          /*업체 아이디*/
+             , CORP_NM          /*업체 명*/
+             , CORP_CD          /*업체 코드*/
+             , CORP_MOD_CD      /*업체 수정 코드*/
+             , TRADE_STATUS_CD  /*거래 상태 코드*/
+             , CO_REG_NUM       /*사업자등록 번호*/
+             , CEO_NM           /*대표자 명*/
+             , CEO_TEL_NUM      /*대표자 전화 번호*/
+             , RSV_TEL_NUM      /*예약 전화 번호*/
+             , CORP_EMAIL       /*업체 이메일*/
+             , LON              /*경도*/
+             , LAT              /*위도*/
+             , ROAD_NM_ADDR     /*도로명 주소*/
+             , DTL_ADDR         /*상세 주소*/
+             , HMPG_ADDR        /*홈페이지 주소*/
+             , CORP_LINK_YN     /*업체 연계 여부*/
+             , CONF_DT          /*승인 일자*/
+             , FRST_REG_DTTM    /*최초 등록 일시*/
+             , LAST_MOD_DTTM    /*최종 수정 일시*/
+             , ADM_NM
+		     , ADM_DEP
+		     , ADM_OFCPOS
+		     , ADM_MOBILE
+		     , ADM_TELNUM
+		     , ADM_EMAIL
+          FROM TB_CORP
+         WHERE 1=1
+         <isNotEmpty property="sKey">
+		 		<isEqual property="sKeyOpt" compareValue="1">
+		           AND CORP_NM LIKE '%'||#sKey#||'%'
+		        </isEqual>
+		        <isEqual property="sKeyOpt" compareValue="2">
+		           AND CORP_ID LIKE '%'||#sKey#||'%'
+		        </isEqual>
+         </isNotEmpty>
+       )
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="CORP_S_09" resultClass="int">
+SELECT COUNT(CORP_ID) AS CNT
+  FROM TB_CORP
+ WHERE 1=1
+ <isNotEmpty property="sKey">
+ 		<isEqual property="sKeyOpt" compareValue="1">
+           AND CORP_NM LIKE '%'||#sKey#||'%'
+        </isEqual>
+        <isEqual property="sKeyOpt" compareValue="2">
+           AND CORP_ID LIKE '%'||#sKey#||'%'
+        </isEqual>
+ </isNotEmpty>
+</select>
+
+<!-- 업체 엑셀 저장 -->
+<select id="CORP_S_10" resultMap="CORP_R_10">
+SELECT ROWNUM AS RN
+    , CORP_ID          /*업체 아이디*/
+    , CORP_NM          /*업체 명*/
+    , CORP_CD          /*업체 코드*/
+    , CORP_MOD_CD      /*업체 수정 코드*/
+    , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = CORP_MOD_CD) AS CORP_CD_NM
+    , CORP_SUB_CD      /*업체 서브 코드*/
+    , TRADE_STATUS_CD  /*거래 상태 코드*/
+    , CO_REG_NUM       /*사업자등록 번호*/
+    , CEO_NM           /*대표자 명*/
+    , CEO_TEL_NUM      /*대표자 전화 번호*/
+    , RSV_TEL_NUM      /*예약 전화 번호*/
+    , FAX_NUM          /*팩스번호*/
+    , CORP_EMAIL       /*업체 이메일*/
+    , LON              /*경도*/
+    , LAT              /*위도*/
+    , ROAD_NM_ADDR     /*도로명 주소*/
+    , DTL_ADDR         /*상세 주소*/
+    , HMPG_ADDR        /*홈페이지 주소*/
+    , CASE AD_APILINK_NM WHEN 'TLL' THEN 'TL린칸' END ||
+        CASE API_RENT_DIV WHEN 'R' THEN '리본' WHEN 'I' THEN '인스' WHEN 'G' THEN '그림' END AS CORP_LINK_YN /*연동업체*/
+    , CONF_DT          /*승인 일자*/
+    , FRST_REG_DTTM    /*최초 등록 일시*/
+    , LAST_MOD_DTTM    /*최종 수정 일시*/
+    , HIJEJU_MAPPING_NUM
+    , ASCT_MEM_YN		/*협회 회원 여부 */
+    , BRANCH_NM
+    , BANK_NM
+    , ACC_NUM
+    , DEPOSITOR
+    , ADM_NM
+    , ADM_DEP
+    , ADM_OFCPOS
+    , ADM_MOBILE
+    , ADM_TELNUM
+    , ADM_EMAIL
+    , (CASE WHEN VISIT_MAPPING_ID IS NOT NULL THEN 'Y' ELSE 'N' END) VISIT_MAPPING_YN
+    , TAMNACARD_MNG_YN
+FROM TB_CORP
+WHERE 1=1
+    <isNotEmpty property="sCorpNm">
+        AND CORP_NM LIKE '%' || #sCorpNm# || '%'
+    </isNotEmpty>
+    <isNotEmpty property="sCorpId">
+        AND CORP_ID LIKE '%' || #sCorpId# || '%'
+    </isNotEmpty>
+    <isNotEmpty property="sCoRegNum">
+        AND REPLACE(CO_REG_NUM, '-', '') = #sCoRegNum#
+    </isNotEmpty>
+    <isNotEmpty property="sCorpCd">
+        AND CORP_MOD_CD = #sCorpCd#
+    </isNotEmpty>
+    <isNotEmpty property="sCorpSubCd">
+        AND CORP_SUB_CD = #sCorpSubCd#
+    </isNotEmpty>
+    <isNotEmpty property="sTradeStatusCd">
+        AND TRADE_STATUS_CD = #sTradeStatusCd#
+    </isNotEmpty>
+    <isNotEmpty property="sAsctMemYn">
+        AND ASCT_MEM_YN = #sAsctMemYn#
+    </isNotEmpty>
+    <isNotEmpty property="sSuperbCorpYn">
+        AND SUPERB_CORP_YN = #sSuperbCorpYn#
+    </isNotEmpty>
+    <isNotEmpty property="sSpCtgr">
+        AND CORP_ID IN (SELECT CORP_ID FROM TB_SP_PRDTINF WHERE CTGR = #sSpCtgr# AND TRADE_STATUS='TS03')
+    </isNotEmpty>
+    <isNotEmpty property="sCorpLinkYn">
+        AND CORP_LINK_YN = #sCorpLinkYn#
+    </isNotEmpty>
+    <isNotEmpty property="sFileNum">
+        <isEqual property="sFileYn" compareValue="N">
+            AND CORP_ID NOT IN
+        </isEqual>
+        <isEqual property="sFileYn" compareValue="Y">
+            AND CORP_ID IN
+        </isEqual>
+        <iterate property="sFileNum" open="(" close=")" conjunction="INTERSECT">
+            SELECT REQUEST_NUM FROM TB_CORP_PNS_REQUEST_FILE WHERE FILE_NUM = #sFileNum[]#
+        </iterate>
+    </isNotEmpty>
+    <isNotEmpty property="sTamnacardMngYn">
+        AND TAMNACARD_MNG_YN = #sTamnacardMngYn#
+    </isNotEmpty>
+    <isNotEmpty property="sCorpLinkApi">
+        AND (AD_APILINK_NM = #sCorpLinkApi# OR API_RENT_DIV =  #sCorpLinkApi#)
+    </isNotEmpty>
+ORDER BY FRST_REG_DTTM DESC
+</select>
+
+    <!--비짓제주 업체-->
+<select id="CORP_S_11" resultMap="CORP_R_11">
+    SELECT CORP_CD, CORP_ID, TRADE_STATUS_CD FROM TB_CORP WHERE VISIT_MAPPING_ID = #visitMappingId# AND ROWNUM = 1
+</select>
+
+
+<insert id="CORP_I_00">
+<selectKey keyProperty="corpId" resultClass="String">
+SELECT #corpModCd# || TO_CHAR(SYSDATE, 'YY') || LPAD(TO_CHAR(NVL(MAX(TO_NUMBER(SUBSTR(CORP_ID,7))),0) + 1), 4,'0') AS CORP_ID
+  FROM TB_CORP
+  WHERE SUBSTR(CORP_ID,1, 4) = #corpModCd#
+    AND SUBSTR(CORP_ID,5, 2) = TO_CHAR(SYSDATE, 'YY')    
+</selectKey>
+INSERT INTO TB_CORP
+     ( CORP_ID
+     , TRADE_STATUS_CD
+     , CORP_LINK_YN
+     , CORP_NM
+     , CORP_CD
+     , CORP_MOD_CD      /*업체 수정 코드*/
+     , CO_REG_NUM
+     , CORP_TYPE
+     , RSV_TEL_NUM
+     , FAX_NUM
+     , HMPG_ADDR
+     , BRANCH_NM
+     , BSNCON
+     , BSNTYP
+     , CORP_EMAIL
+     , BANK_NM
+     , ACC_NUM
+     , DEPOSITOR
+     , ROAD_NM_ADDR
+     , DTL_ADDR
+     , LAT
+     , LON
+     , CEO_NM
+     , CEO_BTH
+     , CEO_TEL_NUM
+     , ADM_NM
+     , ADM_EMAIL
+     , ADM_MOBILE
+     , ADM_TELNUM
+     , ADM_DEP
+     , ADM_OFCPOS
+     , CONF_DT
+     , FRST_REG_DTTM
+     , LAST_MOD_DTTM
+     , CORP_SUB_CD
+     , HIJEJU_MAPPING_NUM
+     , ASCT_MEM_YN
+     , CMSS_NUM
+     , B2B_CMSS_NUM
+     , POS_USE_YN
+     , SUPERB_CORP_YN
+     , LINK_PRDT_USE_YN
+     , AD_APILINK_NM
+     , CORP_COMMENT
+     )
+VALUES
+     ( #corpId#
+     , #tradeStatusCd#
+     , #corpLinkYn#
+     , #corpNm#
+     , #corpCd#
+     , #corpModCd#
+     , #coRegNum#
+     , #corpType#
+     , #rsvTelNum#
+     , #faxNum#
+     , #hmpgAddr#
+     , #branchNm#
+     , #bsncon#
+     , #bsntyp#
+     , #corpEmail#
+     , #bankNm#
+     , #accNum#
+     , #depositor#
+     , #roadNmAddr#
+     , #dtlAddr#
+     , #lat#
+     , #lon#
+     , #ceoNm#
+     , #ceoBth#
+     , #ceoTelNum#
+     , #admNm#
+     , #admEmail#
+     , #admMobile#
+     , #admTelnum#
+     , #admDep#
+     , #admOfcpos#
+     , TO_CHAR(SYSDATE, 'YYYYMMDD')
+     , SYSDATE
+     , SYSDATE
+     , #corpSubCd#
+     , #hijejuMappingNum#
+     , NVL2(#branchNm#, 'Y','N')
+     , #cmssNum#
+     , #b2bCmssNum#
+     , #posUseYn#
+     , #superbCorpYn#
+     , #linkPrdtUseYn#
+     , #adApiLinkNm#
+     , UTL_RAW.CAST_TO_RAW(#corpComment#)
+     )
+</insert>
+
+<insert id="CORP_I_01">
+<selectKey keyProperty="corpId" resultClass="String">
+<!-- SELECT 'C'||LPAD(TO_CHAR(NVL(MAX(TO_NUMBER(SUBSTR(CORP_ID,2))),0) + 1), 9,'0') AS CORP_ID
+  FROM TB_CORP -->
+SELECT #corpModCd# || TO_CHAR(SYSDATE, 'YY') || LPAD(TO_CHAR(NVL(MAX(TO_NUMBER(SUBSTR(CORP_ID,7))),0) + 1), 4,'0') AS CORP_ID
+  FROM TB_CORP
+  WHERE SUBSTR(CORP_ID,1, 4) = #corpModCd#
+    AND SUBSTR(CORP_ID,5, 2) = TO_CHAR(SYSDATE, 'YY')   
+</selectKey>
+	INSERT INTO TB_CORP
+	( CORP_ID
+     , CORP_CD
+     , CORP_MOD_CD
+     , TRADE_STATUS_CD
+     , CO_REG_NUM
+     , CEO_TEL_NUM
+     , RSV_TEL_NUM
+     , CORP_EMAIL
+     , LON
+     , LAT
+     , HMPG_ADDR
+     , CORP_LINK_YN
+     , CONF_DT
+     , CORP_NM
+     , CEO_NM
+	 , ROAD_NM_ADDR
+	 , DTL_ADDR
+     , SHOP_NM
+     , CORP_TYPE
+     , FAX_NUM
+     , ASCT_MEM_YN
+     , BRANCH_NM
+     , CEO_BTH
+	 , BSNCON
+	 , BSNTYP
+     , BANK_NM
+     , ACC_NUM
+	 , DEPOSITOR
+	 , ADM_NM
+     , ADM_DEP
+     , ADM_OFCPOS
+     , ADM_MOBILE
+     , ADM_TELNUM
+     , ADM_EMAIL
+     , FRST_REG_DTTM
+     , LAST_MOD_DTTM
+     , HIJEJU_MAPPING_NUM
+     , CORP_SUB_CD
+     , CMSS_NUM
+     , B2B_CMSS_NUM
+     , SUPERB_CORP_YN
+     )
+ 	SELECT
+     		  #corpId#
+      		 , #corpCd#
+      		 , #corpModCd#
+		     , 'TS03'
+		     , CO_REG_NUM
+		     , CEO_TEL_NUM
+		     , RSV_TEL_NUM
+		     , CORP_EMAIL
+		     , #lon#
+		     , #lat#
+		     , HMPG_ADDR
+		     , 'N'
+		     , TO_CHAR(SYSDATE, 'YYYYMMDD')
+		     , CORP_NM
+		     , CEO_NM
+			 , #roadNmAddr#
+			 , #dtlAddr#
+		     , SHOP_NM
+		     , CORP_TYPE
+		     , FAX_NUM
+		     , NVL2(BRANCH_NM, 'Y','N')
+		     , BRANCH_NM
+		     , CEO_BTH
+			 , BSNCON
+			 , BSNTYP
+		     , BANK_NM
+		     , ACC_NUM
+			 , DEPOSITOR
+			 , ADM_NM
+		     , ADM_DEP
+		     , ADM_OFCPOS
+		     , ADM_MOBILE
+		     , ADM_TELNUM
+		     , ADM_EMAIL
+		     , SYSDATE
+		     , SYSDATE
+		     , #hijejuMappingNum#
+		     , #corpSubCd#
+		     , #cmssNum#
+		     , #b2bCmssNum#
+		     , #superbCorpYn#
+	FROM TB_CORP_PNS_REQUEST
+	WHERE REQUEST_NUM = #requestNum#
+</insert>
+
+<update id="CORP_U_00">
+UPDATE TB_CORP
+   SET CORP_NM         = #corpNm#
+     , CORP_CD         = #corpCd#
+     , CORP_MOD_CD     = #corpModCd#
+     , TRADE_STATUS_CD = #tradeStatusCd#
+     , CO_REG_NUM      = #coRegNum#
+     , CEO_NM          = #ceoNm#
+     , CEO_TEL_NUM     = #ceoTelNum#
+     , RSV_TEL_NUM     = #rsvTelNum#
+     , CORP_EMAIL      = #corpEmail#
+     , LON             = #lon#
+     , LAT             = #lat#
+     , ROAD_NM_ADDR    = #roadNmAddr#
+     , DTL_ADDR        = #dtlAddr#
+     , HMPG_ADDR       = #hmpgAddr#
+     , CORP_LINK_YN    = #corpLinkYn#
+     , CONF_DT         = #confDt#
+     , LAST_MOD_DTTM   = SYSDATE
+ WHERE CORP_ID         = #corpId#
+</update>
+
+<!-- 업체 기본정보 수정 -->
+<update id="CORP_U_01">
+UPDATE TB_CORP
+   SET CORP_NM = #corpNm#
+   	 , CORP_CD         = #corpCd#
+     , CORP_MOD_CD     = #corpModCd#
+     , TRADE_STATUS_CD = #tradeStatusCd#
+     , CORP_LINK_YN    = #corpLinkYn#
+     , CORP_LINK_ISR_YN    = #corpLinkIsrYn#
+     , CO_REG_NUM = #coRegNum#
+     , CORP_TYPE = #corpType#
+     , RSV_TEL_NUM = #rsvTelNum#
+     , FAX_NUM = #faxNum#
+     , HMPG_ADDR = #hmpgAddr#
+     , BRANCH_NM = #branchNm#
+     , BSNCON = #bsncon#
+     , BSNTYP = #bsntyp#
+     , CORP_EMAIL = #corpEmail#
+     , BANK_NM = #bankNm#
+     , ACC_NUM = #accNum#
+     , DEPOSITOR = #depositor#
+     , ROAD_NM_ADDR = #roadNmAddr#
+     , DTL_ADDR = #dtlAddr#
+     , LON = #lon#
+     , LAT = #lat#
+     , CEO_NM = #ceoNm#
+     , CEO_BTH = #ceoBth#
+     , CEO_TEL_NUM     = #ceoTelNum#
+     , ADM_NM = #admNm#
+     , ADM_EMAIL = #admEmail#
+     , ADM_MOBILE = #admMobile#
+     , ADM_TELNUM = #admTelnum#
+     , ADM_DEP = #admDep#
+     , ADM_OFCPOS = #admOfcpos#
+     , LAST_MOD_DTTM = SYSDATE
+     , HIJEJU_MAPPING_NUM = #hijejuMappingNum#
+     , ASCT_MEM_YN = NVL2(#branchNm#, 'Y', 'N')
+     , CMSS_NUM = #cmssNum#
+     , B2B_CMSS_NUM = #b2bCmssNum#
+     , POS_USE_YN = #posUseYn#
+     , SUPERB_CORP_YN = #superbCorpYn#
+     , LINK_PRDT_USE_YN = #linkPrdtUseYn#
+     , CORP_SUB_CD = #corpSubCd#
+     , VISIT_MAPPING_ID = #visitMappingId#
+     , VISIT_MAPPING_NM = #visitMappingNm#
+     , LINK_MAPPING_NUM = #linkMappingNum#
+     , AD_APILINK_NM = #adApiLinkNm#
+     , API_RENT_DIV = #apiRentDiv#
+     , CORP_COMMENT = UTL_RAW.CAST_TO_RAW(#corpComment#)
+ WHERE CORP_ID = #corpId#
+</update>
+
+<update id="CORP_U_02">
+UPDATE TB_CORP
+   SET SHOP_NM = #shopNm#
+     , ADTM_IMG       = #adtmImg#
+     , ADTM_URL          = #adtmUrl#
+     , ADTM_SIMPLE_EXP     = #adtmSimpleExp#
+     , RSV_TEL_NUM     = #rsvTelNum#
+     , LAST_MOD_DTTM   = SYSDATE
+ WHERE CORP_ID         = #corpId#
+</update>
+
+<!-- 업체관리자 업체 기본정보 수정 -->
+<update id="CORP_U_03">
+UPDATE TB_CORP
+   SET SHOP_NM = #shopNm#
+     , CORP_NM = #corpNm#
+     , CO_REG_NUM = #coRegNum#
+     , CORP_TYPE = #corpType#
+     , CORP_EMAIL = #corpEmail#
+     , RSV_TEL_NUM = #rsvTelNum#
+     , FAX_NUM = #faxNum#
+     , HMPG_ADDR = #hmpgAddr#
+     , BRANCH_NM = #branchNm#
+     , ROAD_NM_ADDR = #roadNmAddr#
+     , DTL_ADDR = #dtlAddr#
+     , LON = #lon#
+     , LAT = #lat#
+     , CEO_NM = #ceoNm#
+     , CEO_BTH = #ceoBth#
+     , CEO_TEL_NUM = #ceoTelNum#
+     , BSNCON = #bsncon#
+     , BSNTYP = #bsntyp#
+     , BANK_NM = #bankNm#
+     , ACC_NUM = #accNum#
+     , DEPOSITOR = #depositor#
+     , ADM_NM = #admNm#
+     , ADM_DEP = #admDep#
+     , ADM_OFCPOS = #admOfcpos#
+     , ADM_MOBILE = #admMobile#
+     , ADM_MOBILE2 = #admMobile2#
+     , ADM_MOBILE3 = #admMobile3#
+     , ADM_TELNUM = #admTelnum#
+     , ADM_EMAIL = #admEmail#
+     , ADM_EMAIL2 = #admEmail2#
+     , LAST_MOD_DTTM   = SYSDATE
+     , ASCT_MEM_YN = NVL2(#branchNm#, 'Y', 'N')
+ WHERE CORP_ID         = #corpId#
+</update>
+
+<!-- 하이제주 매핑 해제 -->
+<update id="CORP_U_04">
+UPDATE TB_CORP
+   SET HIJEJU_MAPPING_NUM = NULL
+ WHERE CORP_ID            = #corpId#
+</update>
+
+<!-- B2B 사용여부 처리 -->
+<update id="CORP_U_05">
+UPDATE TB_CORP
+   SET B2B_USE_YN = #b2bUseYn#
+ WHERE CORP_ID = #corpId#
+</update>
+
+<!-- Visit제주 매핑 해제 -->
+<update id="CORP_U_06">
+UPDATE TB_CORP
+   SET VISIT_MAPPING_ID = NULL
+     , VISIT_MAPPING_NM = NULL
+ WHERE CORP_ID            = #corpId#
+</update>
+
+<select id="CORPADM_S_00">
+SELECT CORP_ID  /*업체 아이디*/
+     , USER_ID  /*사용자 아이디*/
+  FROM TB_CORPADM
+</select>
+
+<select id="CORPADM_S_01">
+SELECT T_CORPADM.CORP_ID  /*업체 아이디*/
+     , T_CORPADM.USER_ID  /*사용자 아이디*/
+     , T_USER.USER_NM     /*사용자 명*/
+  FROM TB_CORPADM   T_CORPADM
+ INNER JOIN TB_USER T_USER
+    ON T_USER.USER_ID = T_CORPADM.USER_ID
+ WHERE T_CORPADM.CORP_ID = #corpId#
+</select>
+
+<select id="CORPADM_S_02" resultMap="CORPADM_R_02">
+SELECT T_CORPADM.CORP_ID  /*업체 아이디*/
+     , T_CORPADM.USER_ID  /*사용자 아이디*/
+     , T_USER.USER_NM     /*사용자 명*/
+     , T_USER.EMAIL       /*이메일*/
+     , T_USER.TEL_NUM     /*전화번호*/
+  FROM TB_CORPADM   T_CORPADM
+ INNER JOIN TB_USER T_USER
+    ON T_USER.USER_ID = T_CORPADM.USER_ID
+ WHERE T_CORPADM.CORP_ID =  #corpId#
+</select>
+
+<insert id="CORPADM_I_00">
+INSERT INTO TB_CORPADM
+     ( CORP_ID
+     , USER_ID
+     )
+VALUES
+     ( #corpId#
+     , #userId#
+     )
+</insert>
+
+<!-- 업체관리자 Merge -->
+<update id="CORPADM_M_00">
+ MERGE INTO TB_CORPADM CORPADM1
+ USING (SELECT #corpId# AS CORP_ID
+          FROM DUAL) CORPADM2
+    ON (CORPADM2.CORP_ID = CORPADM1.CORP_ID)
+  WHEN MATCHED THEN
+UPDATE SET
+       USER_ID = #userId#
+  WHEN NOT MATCHED THEN
+INSERT
+     ( CORP_ID
+     , USER_ID
+       )
+VALUES
+     ( #corpId#
+     , #userId#
+     )
+</update>
+
+<delete id="CORPADM_D_00">
+DELETE FROM TB_CORPADM
+ WHERE CORP_ID = #corpId#
+</delete>
+
+
+<select id="DLV_CORP_S_00" resultMap="DLV_CORP_R_00">
+SELECT T_D.DLV_CORP_CD
+	 , T_D.DLV_CORP_NM
+	 , T_D.RTM_YN
+	 , T_D.RTM_URL
+	 , T_D.WEB_URL
+	 , T_D.MOBILE_URL
+     , T_D.ESCROW_DLV_CD
+	 , T_D.GOODSFLOW_DLV_CD
+  FROM TB_DLVCORP T_D
+ INNER JOIN TB_DLVMNG T_DM
+    ON T_D.DLV_CORP_CD = T_DM.DLV_CORP_CD
+   AND T_DM.CORP_ID = #corpId#
+</select>
+
+<select id="DLV_CORP_S_01" resultMap="DLV_CORP_R_00">
+SELECT T_D.DLV_CORP_CD
+	 , T_D.DLV_CORP_NM
+	 , T_D.RTM_YN
+	 , T_D.RTM_URL
+	 , T_D.WEB_URL
+	 , T_D.MOBILE_URL
+	 , T_D.ESCROW_DLV_CD
+     , T_D.GOODSFLOW_DLV_CD
+  FROM TB_DLVCORP T_D
+ INNER JOIN TB_SV_RSV T_RSV
+    ON T_D.DLV_CORP_CD = T_RSV.DLV_CORP_CD
+   AND T_RSV.SV_RSV_NUM = #rsvNum#
+</select>
+
+<select id="DLV_CORP_S_02" resultMap="DLV_CORP_R_02">
+SELECT T_D.DLV_CORP_CD
+	 , T_D.DLV_CORP_NM
+     , T_D.ESCROW_DLV_CD
+ 	 , T_D.GOODSFLOW_DLV_CD
+	 , T_D.RTM_YN
+	 , T_D.RTM_URL
+	 , T_D.WEB_URL
+	 , T_D.MOBILE_URL
+	 , CASE WHEN T_DM.DLV_CORP_CD is not null THEN 'Y'
+	   ELSE 'N'
+	   END AS CHECK_YN
+  FROM TB_DLVCORP T_D
+  LEFT OUTER JOIN TB_DLVMNG T_DM
+    ON T_D.DLV_CORP_CD = T_DM.DLV_CORP_CD
+   AND T_DM.CORP_ID = #corpId#
+ WHERE T_D.USE_YN = 'Y'
+</select>
+
+<delete id="DLV_MNG_D_00">
+DELETE
+  FROM TB_DLVMNG
+ WHERE CORP_ID = #corpId#
+</delete>
+
+
+<insert id="DLV_MNG_I_00">
+INSERT INTO TB_DLVMNG
+	 ( CORP_ID
+	  , DLV_CORP_CD
+	 )
+SELECT #corpId#
+	 , DLV_CORP_CD
+  FROM TB_DLVCORP
+ WHERE 1=1
+   AND DLV_CORP_CD IN
+   <iterate open="(" close=")" conjunction="," property="dlvCorpCds">
+		#dlvCorpCds[]#
+	</iterate>
+</insert>
+
+<select id="CORP_LEVEL_S_00" resultMap="CORP_LEVEL_R_00">
+SELECT TOTAL_CNT
+   , RK
+   , CORP_ID
+   , CORP_CD
+   , CASE WHEN CORP_NM!=AD_NM THEN CORP_NM || ' / ' || AD_NM ELSE CORP_NM END AS CORP_NM
+   , CORP_LEVEL
+   , RSV_CNT
+   , RSV_PCT
+   , RSV_LEVEL
+   , CANCEL_CNT
+   , CANCEL_PCT
+   , CANCEL_LEVEL
+   , GPA
+   , USEEPIL_CNT
+   , USEEPIL_REGPCT
+   , USEEPIL_LEVEL
+   , SNS_PUBLICNUM
+   , DUPL_BUY_CNT
+   , DUPL_BUY_PCT
+   , DUPL_BUY_LEVEL
+   , COMPLAIN_LEVEL
+   , JOIN_LEVEL
+   , AMT_LEVEL
+ FROM (
+    SELECT ROWNUM AS RN
+		   , COUNT(*) OVER() AS TOTAL_CNT
+		   , RK
+		   , S.CORP_ID
+		   , CORP_CD
+		   , CORP_NM
+		   , CORP_LEVEL
+		   , RSV_CNT
+		   , RSV_PCT
+		   , RSV_LEVEL
+		   , CANCEL_CNT
+		   , CANCEL_PCT
+		   , CANCEL_LEVEL
+		   , GPA
+		   , USEEPIL_CNT
+		   , USEEPIL_REGPCT
+		   , USEEPIL_LEVEL
+		   , SNS_PUBLICNUM
+		   , DUPL_BUY_CNT
+		   , DUPL_BUY_PCT
+		   , DUPL_BUY_LEVEL
+		   , COMPLAIN_LEVEL
+		   , JOIN_LEVEL
+		   , AMT_LEVEL
+		   <isEqual property="sCategory" compareValue="AD">
+	       , (SELECT AD_NM FROM TB_AD_DFTINF WHERE CORP_ID=S.CORP_ID) AS AD_NM
+	        </isEqual>
+	       <isNotEqual property="sCategory" compareValue="AD">
+	       , '' AS AD_NM
+	       </isNotEqual>
+		 FROM (
+			SELECT CORP_ID
+			   , CORP_CD
+			   , CORP_NM
+			   , (CORP_LEVEL - NVL(COMPLAIN_LEVEL, 0) + NVL(JOIN_LEVEL, 0) + NVL(AMT_LEVEL, 0)) AS CORP_LEVEL
+			   , RSV_CNT
+			   , RSV_PCT
+			   , RSV_LEVEL
+			   , CANCEL_CNT
+			   , CANCEL_PCT
+			   , CANCEL_LEVEL
+			   , GPA
+			   , USEEPIL_CNT
+			   , USEEPIL_REGPCT
+			   , USEEPIL_LEVEL
+			   , SNS_PUBLICNUM
+			   , DUPL_BUY_CNT
+			   , DUPL_BUY_PCT
+			   , DUPL_BUY_LEVEL
+			   , COMPLAIN_LEVEL
+			   , JOIN_LEVEL
+			   , AMT_LEVEL
+			 FROM TB_CORP_LEVEL
+			   WHERE CORP_CD=SUBSTR(#sCategory#, 0, 2)
+			     <isEqual property="sCategory" compareValue="SPC">
+			     AND CORP_ID IN (
+			     	SELECT CORP_ID
+		              FROM TB_SP_PRDTINF
+		              	WHERE CTGR IN (
+		              		SELECT CD_NUM
+			                  FROM TB_CD
+			                 WHERE HRK_CD_NUM = 'C200'
+		              	)
+			     )
+			     </isEqual>
+			     <isEqual property="sCategory" compareValue="SPF">
+			     AND CORP_ID IN (
+			     	SELECT CORP_ID
+		              FROM TB_SP_PRDTINF
+		              	WHERE CTGR IN (
+		              		SELECT CD_NUM
+			                  FROM TB_CD
+			                 WHERE HRK_CD_NUM = 'C300'
+		              	)
+			     )
+			     </isEqual>
+			     <isEqual property="sCategory" compareValue="SPT">
+			     AND CORP_ID IN (
+			     	SELECT CORP_ID
+		              FROM TB_SP_PRDTINF
+		              	WHERE CTGR IN (
+		              		SELECT CD_NUM
+			                  FROM TB_CD
+			                 WHERE HRK_CD_NUM = 'C100'
+		              	)
+			     )
+			     </isEqual>
+
+			   	 <isNotEmpty property="sCorpNm">
+		           AND (CORP_NM LIKE '%' || #sCorpNm# || '%'
+		               <isEqual property="sCategory" compareValue="AD">
+		               OR CORP_ID IN (SELECT CORP_ID FROM TB_AD_DFTINF WHERE AD_NM LIKE '%' || #sCorpNm# || '%')
+		               </isEqual>
+		             )
+		         </isNotEmpty>
+		         <isNotEqual property="sCategory" compareValue="RC">
+		           <isNotEmpty property="sType">
+		           AND CORP_ID IN (
+		           		<isEqual property="sCategory" compareValue="AD">
+				        SELECT CORP_ID FROM TB_AD_DFTINF WHERE AD_DIV=#sType#
+				        </isEqual>
+				        <isEqual property="sCategory" compareValue="SV">
+				        SELECT CORP_ID FROM TB_SV_PRDTINF WHERE CTGR=#sType#
+				          <isNotEmpty property="sGubun">
+		            	  AND SUB_CTGR=#sGubun#
+		            	  </isNotEmpty>
+				        </isEqual>
+				        <isNotEqual property="sCategory" compareValue="AD">
+					      <isNotEqual property="sCategory" compareValue="SV">
+				        SELECT CORP_ID FROM TB_SP_PRDTINF WHERE CTGR=#sType#
+				      	  </isNotEqual>
+				      	</isNotEqual>
+		           )
+		           </isNotEmpty>
+		         </isNotEqual>
+		     ORDER BY CORP_LEVEL DESC, CORP_ID
+		) S
+		INNER JOIN (
+                SELECT CORP_ID
+                    , ROW_NUMBER() OVER(PARTITION BY CORP_CD ORDER BY CORP_LEVEL - NVL(COMPLAIN_LEVEL, 0) + NVL(JOIN_LEVEL, 0) + NVL(AMT_LEVEL, 0) DESC, CORP_ID) AS RK
+                    FROM TB_CORP_LEVEL
+                    WHERE 1=1
+                    <isEqual property="sCategory" compareValue="SPC">
+				     AND CORP_ID IN (
+				     	SELECT CORP_ID
+			              FROM TB_SP_PRDTINF
+			              	WHERE CTGR IN (
+			              		SELECT CD_NUM
+				                  FROM TB_CD
+				                 WHERE HRK_CD_NUM = 'C200'
+			              	)
+				     )
+				     </isEqual>
+				     <isEqual property="sCategory" compareValue="SPF">
+				     AND CORP_ID IN (
+				     	SELECT CORP_ID
+			              FROM TB_SP_PRDTINF
+			              	WHERE CTGR IN (
+			              		SELECT CD_NUM
+				                  FROM TB_CD
+				                 WHERE HRK_CD_NUM = 'C300'
+			              	)
+				     )
+				     </isEqual>
+				     <isEqual property="sCategory" compareValue="SPT">
+				     AND CORP_ID IN (
+				     	SELECT CORP_ID
+			              FROM TB_SP_PRDTINF
+			              	WHERE CTGR IN (
+			              		SELECT CD_NUM
+				                  FROM TB_CD
+				                 WHERE HRK_CD_NUM = 'C100'
+			              	)
+				     )
+				     </isEqual>
+
+			         <isNotEqual property="sCategory" compareValue="RC">
+			           <isNotEmpty property="sType">
+			           AND CORP_ID IN (
+			           		<isEqual property="sCategory" compareValue="AD">
+					        SELECT CORP_ID FROM TB_AD_DFTINF WHERE AD_DIV=#sType#
+					        </isEqual>
+					        <isEqual property="sCategory" compareValue="SV">
+					        SELECT CORP_ID FROM TB_SV_PRDTINF WHERE CTGR=#sType#
+					          <isNotEmpty property="sGubun">
+			            	  AND SUB_CTGR=#sGubun#
+			            	  </isNotEmpty>
+					        </isEqual>
+					        <isNotEqual property="sCategory" compareValue="AD">
+						      <isNotEqual property="sCategory" compareValue="SV">
+					        SELECT CORP_ID FROM TB_SP_PRDTINF WHERE CTGR=#sType#
+					      	  </isNotEqual>
+					      	</isNotEqual>
+			           )
+			           </isNotEmpty>
+			         </isNotEqual>
+
+            ) T_LEVEL ON T_LEVEL.CORP_ID=S.CORP_ID
+ )
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="CORP_LEVEL_S_01" resultMap="CORP_LEVEL_R_01">
+	SELECT CORP_ID
+	   , CORP_NM
+	   , COMPLAIN_LEVEL
+	   , JOIN_LEVEL
+	   , AMT_LEVEL
+	 FROM TB_CORP_LEVEL
+	   WHERE CORP_ID=#corpId#
+</select>
+
+<update id="CORP_LEVEL_U_00">
+UPDATE TB_CORP_LEVEL SET
+	COMPLAIN_LEVEL = #complainLevel#
+	, JOIN_LEVEL = #joinLevel#
+	, AMT_LEVEL = #amtLevel#
+  WHERE CORP_ID=#corpId#
+</update>
+
+<update id="CORP_LEVEL_M_00">
+<![CDATA[
+MERGE INTO TB_CORP_LEVEL T_CL
+ USING (
+SELECT CORP_ID
+   , CORP_CD
+   , CORP_NM
+   , ROUND((RSV_LEVEL + CANCEL_LEVEL + (GPA_AVG * 2) + SNS_LEVEL + USEEPIL_LEVEL + DUPL_LEVEL) / 6, 2) AS CORP_LEVEL
+   , RSV_CNT
+   , RSV_RATE
+   , RSV_LEVEL
+   , CANCEL_CNT
+   , CANCEL_RATE
+   , CANCEL_LEVEL
+   , GPA_AVG
+   , USEEPIL_CNT
+   , USEEPIL_RATE
+   , USEEPIL_LEVEL
+   , SNS_CNT
+   , SNS_LEVEL
+   , DUPL_CNT
+   , DUPL_RATE
+   , DUPL_LEVEL
+   , ROUND(RSV_LEVEL + CANCEL_LEVEL + (GPA_AVG * 2) + SNS_LEVEL + USEEPIL_LEVEL + DUPL_LEVEL, 2) AS CORP_LEVEL_VAL
+   , RANK() OVER(PARTITION BY CORP_CD ORDER BY ROUND((RSV_LEVEL + CANCEL_LEVEL + (GPA_AVG * 2) + SNS_LEVEL + USEEPIL_LEVEL + DUPL_LEVEL) / 6, 2) DESC) AS LEVEL_RK
+ FROM (
+        SELECT TOTAL_RSV_CNT,
+               TOTAL_CANCEL_CNT,
+               CORP_ID,
+               CORP_CD,
+               CORP_NM,
+               PRDT_NUM,
+               RSV_CNT,
+               CANCEL_CNT,
+               GPA_AVG,
+               USEEPIL_CNT,
+               SNS_CNT,
+               CASE WHEN SNS_CNT>=9 THEN 10 ELSE SNS_CNT+1 END AS SNS_LEVEL,
+               DUPL_CNT
+               , RSV_RATE
+               , CASE
+                   WHEN RSV_RATE >= 8 THEN 10
+                   WHEN RSV_RATE >= 4 AND RSV_RATE < 8 THEN 9
+                   WHEN RSV_RATE >= 3 AND RSV_RATE < 4 THEN 8
+                   WHEN RSV_RATE >= 2 AND RSV_RATE < 3 THEN 7
+                   WHEN RSV_RATE >= 1.5 AND RSV_RATE < 2 THEN 6
+                   WHEN RSV_RATE >= 1 AND RSV_RATE < 1.5 THEN 5
+                   WHEN RSV_RATE >= 0.5 AND RSV_RATE < 1 THEN 4
+                   WHEN RSV_RATE >= 0.3 AND RSV_RATE < 0.5 THEN 3
+                   WHEN RSV_RATE > 0 AND RSV_RATE < 0.3 THEN 2
+                   ELSE 1
+                 END AS RSV_LEVEL
+               , CANCEL_RATE
+               , CASE
+                   WHEN CANCEL_RATE >= 5 THEN 1
+                   WHEN CANCEL_RATE >= 2 AND RSV_RATE < 5 THEN 2
+                   WHEN CANCEL_RATE >= 1 AND RSV_RATE < 2 THEN 3
+                   WHEN CANCEL_RATE >= 0.7 AND RSV_RATE < 1 THEN 4
+                   WHEN CANCEL_RATE >= 0.5 AND RSV_RATE < 0.7 THEN 5
+                   WHEN CANCEL_RATE >= 0.3 AND RSV_RATE < 0.5 THEN 6
+                   WHEN CANCEL_RATE >= 0.2 AND RSV_RATE < 0.3 THEN 7
+                   WHEN CANCEL_RATE >= 0.1 AND RSV_RATE < 0.2 THEN 8
+                   WHEN CANCEL_RATE > 0 AND RSV_RATE < 0.1 THEN 9
+                   ELSE 10
+                 END AS CANCEL_LEVEL
+               , USEEPIL_RATE
+               , CASE
+                   WHEN USEEPIL_RATE >= 20 THEN 10
+                   WHEN USEEPIL_RATE >= 10 THEN 9
+                   WHEN USEEPIL_RATE >= 8 THEN 8
+                   WHEN USEEPIL_RATE >= 6 THEN 7
+                   WHEN USEEPIL_RATE >= 5 THEN 6
+                   WHEN USEEPIL_RATE >= 4 THEN 5
+                   WHEN USEEPIL_RATE >= 3 THEN 4
+                   WHEN USEEPIL_RATE >= 2 THEN 3
+                   WHEN USEEPIL_RATE >= 1 THEN 2
+                   ELSE 1
+                 END AS USEEPIL_LEVEL
+               , DUPL_RATE
+               , CASE
+                   WHEN DUPL_RATE >= 40 THEN 10
+                   WHEN DUPL_RATE >= 30 THEN 9
+                   WHEN DUPL_RATE >= 20 THEN 8
+                   WHEN DUPL_RATE >= 15 THEN 7
+                   WHEN DUPL_RATE >= 10 THEN 6
+                   WHEN DUPL_RATE >= 5 THEN 5
+                   WHEN DUPL_RATE >= 4 THEN 4
+                   WHEN DUPL_RATE >= 3 THEN 3
+                   WHEN DUPL_RATE >= 2 THEN 2
+                   ELSE 1
+                 END AS DUPL_LEVEL
+            FROM (
+                SELECT TOTAL_RSV_CNT,
+                       TOTAL_CANCEL_CNT,
+                       CORP_ID,
+                       CORP_CD,
+                       CORP_NM,
+                       PRDT_NUM,
+                       RSV_CNT,
+                       CANCEL_CNT,
+                       GPA_AVG,
+                       USEEPIL_CNT,
+                       SNS_CNT,
+                       DUPL_CNT
+                       , CASE
+                            WHEN CORP_CD = 'AD' OR CORP_CD = 'RC' THEN ROUND(DECODE(PRDT_NUM, 0, 0, RSV_CNT/PRDT_NUM*100), 2)
+                            WHEN CORP_CD = 'SP' OR CORP_CD = 'SV' THEN ROUND(DECODE(TOTAL_RSV_CNT, 0, 0, RSV_CNT/TOTAL_RSV_CNT*100), 2)
+                            ELSE 0
+                         END AS RSV_RATE
+                       , CASE
+                            WHEN CORP_CD = 'AD' OR CORP_CD = 'RC' THEN ROUND(DECODE(PRDT_NUM, 0, 0, CANCEL_CNT/PRDT_NUM*100), 2)
+                            WHEN CORP_CD = 'SP' OR CORP_CD = 'SV' THEN ROUND(DECODE(TOTAL_CANCEL_CNT, 0, 0, CANCEL_CNT/TOTAL_CANCEL_CNT*100), 2)
+                            ELSE 0
+                         END AS CANCEL_RATE
+                       , ROUND(DECODE(RSV_CNT, 0, 0, USEEPIL_CNT/RSV_CNT*100), 2) AS USEEPIL_RATE
+                       , ROUND(DECODE(RSV_CNT, 0, 0, DUPL_CNT/RSV_CNT*100), 2) AS DUPL_RATE
+                    FROM (
+                        SELECT SUM(RSV_CNT) OVER(PARTITION BY CORP_CD) AS TOTAL_RSV_CNT,
+                               SUM(CANCEL_CNT) OVER(PARTITION BY CORP_CD) AS TOTAL_CANCEL_CNT,
+                               T_CORP.CORP_ID,
+                               T_CORP.CORP_CD,
+                               T_CORP.CORP_NM,
+                               NVL(PRDT_NUM, 0) AS PRDT_NUM,
+                               NVL(T_RSV.RSV_CNT, 0) AS RSV_CNT,
+                               NVL(T_CANCEL.CANCEL_CNT, 0) AS CANCEL_CNT,
+                               NVL(T_GPA.GPA_AVG, 0) AS GPA_AVG,
+                               NVL(T_USEEPIL.USEEPIL_CNT, 0) AS USEEPIL_CNT,
+                               NVL(T_SNS.SNS_CNT, 0) AS SNS_CNT,
+                               NVL(T_DUPL.DUPL_CNT, 0) AS DUPL_CNT
+                                    FROM TB_CORP T_CORP
+                            LEFT OUTER JOIN (
+                                (SELECT T_CORP.CORP_ID
+                                    , SUM(TOTAL_ROOM_NUM) AS PRDT_NUM
+                                    FROM TB_CORP T_CORP
+                                        INNER JOIN TB_AD_PRDTINF T_PRDT ON T_PRDT.CORP_ID=T_CORP.CORP_ID
+                                        INNER JOIN TB_AD_CNTINF T_CNT ON T_CNT.PRDT_NUM=T_PRDT.PRDT_NUM
+                                     WHERE APL_DT BETWEEN TO_CHAR(SYSDATE-91, 'YYYYMMDD') AND TO_CHAR(SYSDATE-1, 'YYYYMMDD')
+                                     GROUP BY T_CORP.CORP_ID
+                                )
+                              UNION ALL
+                                (SELECT CORP_ID
+                                     , SUM(TOTAL_CAR_NUM) AS PRDT_NUM
+                                  FROM (SELECT T_PRDT.CORP_ID
+                                             , T_PRDT.PRDT_NUM
+                                             , DT
+                                             , NVL(TOTAL_CAR_NUM, 0) AS TOTAL_CAR_NUM
+                                             , RANK() OVER(PARTITION BY T_PRDT.PRDT_NUM, DT ORDER BY (DT - APL_DT)) AS RK
+                                          FROM (SELECT PRDT_NUM
+                                                     , CORP_ID
+                                                     , DT
+                                                  FROM (SELECT TO_CHAR(SYSDATE - 91 + (LEVEL-1), 'YYYYMMDD') AS DT
+                                                          FROM DUAL
+                                                       CONNECT BY LEVEL <= 91
+                                                       ), TB_RC_PRDTINF
+                                               ) T_PRDT
+                                          LEFT OUTER JOIN TB_RC_CNTINF T_CNTINF
+                                            ON T_CNTINF.PRDT_NUM = T_PRDT.PRDT_NUM
+                                           AND T_CNTINF.APL_DT <= T_PRDT.DT
+                                         WHERE 1=1
+                                        )
+                                  WHERE RK = 1
+                                  GROUP BY CORP_ID
+                                )
+                            ) T_PRDT ON T_PRDT.CORP_ID=T_CORP.CORP_ID
+                            LEFT OUTER JOIN (
+                                (SELECT CORP_ID, COUNT(*) AS RSV_CNT FROM TB_AD_RSV
+                                    WHERE RSV_STATUS_CD IN ('RS02', 'RS12', 'RS30', 'RS32')
+                                        AND RSV_NUM IN (SELECT RSV_NUM FROM (
+                                            SELECT RSV_NUM FROM TB_RSV
+                                                WHERE TO_DATE(REG_DTTM) BETWEEN TO_DATE(TO_CHAR(SYSDATE-91, 'YYYY-MM-DD'), 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(SYSDATE-1, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+                                            )
+                                        )
+                                    GROUP BY CORP_ID)
+                                UNION
+                                (SELECT CORP_ID, COUNT(*) AS RSV_CNT FROM TB_RC_RSV
+                                    WHERE RSV_STATUS_CD IN ('RS02', 'RS12', 'RS30', 'RS32')
+                                        AND RSV_NUM IN (SELECT RSV_NUM FROM (
+                                            SELECT RSV_NUM FROM TB_RSV
+                                                WHERE TO_DATE(REG_DTTM) BETWEEN TO_DATE(TO_CHAR(SYSDATE-91, 'YYYY-MM-DD'), 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(SYSDATE-1, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+                                            ))
+                                    GROUP BY CORP_ID)
+                                UNION
+                                (SELECT CORP_ID, COUNT(*) AS RSV_CNT FROM TB_SP_RSV
+                                    WHERE RSV_STATUS_CD IN ('RS02', 'RS12', 'RS30', 'RS32')
+                                        AND RSV_NUM IN (SELECT RSV_NUM FROM (
+                                            SELECT RSV_NUM FROM TB_RSV
+                                                WHERE TO_DATE(REG_DTTM) BETWEEN TO_DATE(TO_CHAR(SYSDATE-91, 'YYYY-MM-DD'), 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(SYSDATE-1, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+                                            ))
+
+                                    GROUP BY CORP_ID)
+                                UNION
+                                (SELECT CORP_ID, COUNT(*) AS RSV_CNT FROM TB_SV_RSV
+                                    WHERE RSV_STATUS_CD IN ('RS02', 'RS12', 'RS30', 'RS32')
+                                        AND RSV_NUM IN (SELECT RSV_NUM FROM (
+                                            SELECT RSV_NUM FROM TB_RSV
+                                                WHERE TO_DATE(REG_DTTM) BETWEEN TO_DATE(TO_CHAR(SYSDATE-91, 'YYYY-MM-DD'), 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(SYSDATE-1, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+                                            ))
+                                    GROUP BY CORP_ID)
+                            ) T_RSV ON T_RSV.CORP_ID=T_CORP.CORP_ID
+                            LEFT OUTER JOIN (
+                                (SELECT CORP_ID, COUNT(*) AS CANCEL_CNT FROM TB_AD_RSV
+                                    WHERE RSV_STATUS_CD IN ('RS13', 'RS20')
+                                        AND RSV_NUM IN (SELECT RSV_NUM FROM (
+                                            SELECT RSV_NUM FROM TB_RSV
+                                                WHERE TO_DATE(REG_DTTM) BETWEEN TO_DATE(TO_CHAR(SYSDATE-91, 'YYYY-MM-DD'), 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(SYSDATE-1, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+                                            ))
+                                    GROUP BY CORP_ID)
+                                UNION
+                                (SELECT CORP_ID, COUNT(*) AS CANCEL_CNT FROM TB_RC_RSV
+                                    WHERE RSV_STATUS_CD IN ('RS13', 'RS20')
+                                        AND RSV_NUM IN (SELECT RSV_NUM FROM (
+                                            SELECT RSV_NUM FROM TB_RSV
+                                                WHERE TO_DATE(REG_DTTM) BETWEEN TO_DATE(TO_CHAR(SYSDATE-91, 'YYYY-MM-DD'), 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(SYSDATE-1, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+                                            ))
+                                    GROUP BY CORP_ID)
+                                UNION
+                                (SELECT CORP_ID, COUNT(*) AS CANCEL_CNT FROM TB_SP_RSV
+                                    WHERE RSV_STATUS_CD IN ('RS13', 'RS20')
+                                        AND RSV_NUM IN (SELECT RSV_NUM FROM (
+                                            SELECT RSV_NUM FROM TB_RSV
+                                                WHERE TO_DATE(REG_DTTM) BETWEEN TO_DATE(TO_CHAR(SYSDATE-91, 'YYYY-MM-DD'), 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(SYSDATE-1, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+                                            ))
+
+                                    GROUP BY CORP_ID)
+                                UNION
+                                (SELECT CORP_ID, COUNT(*) AS CANCEL_CNT FROM TB_SV_RSV
+                                    WHERE RSV_STATUS_CD IN ('RS13', 'RS20')
+                                        AND RSV_NUM IN (SELECT RSV_NUM FROM (
+                                            SELECT RSV_NUM FROM TB_RSV
+                                                WHERE TO_DATE(REG_DTTM) BETWEEN TO_DATE(TO_CHAR(SYSDATE-91, 'YYYY-MM-DD'), 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(SYSDATE-1, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+                                            ))
+                                    GROUP BY CORP_ID)
+                            ) T_CANCEL ON T_CANCEL.CORP_ID=T_CORP.CORP_ID
+                            LEFT OUTER JOIN (
+                                (SELECT LINK_NUM AS CORP_ID, SUM(GPA_AVG)/COUNT(GPA_AVG) AS GPA_AVG FROM TB_GPA_ANLS
+                                    WHERE LINK_NUM IN (SELECT CORP_ID FROM TB_CORP WHERE CORP_CD='AD')
+                                    GROUP BY LINK_NUM)
+                                UNION
+                                (SELECT CORP_ID, ROUND(SUM(GPA_AVG)/COUNT(GPA_AVG), 1) AS GPA_AVG FROM TB_GPA_ANLS T_GA
+                                    LEFT OUTER JOIN TB_RC_PRDTINF T_RC ON T_RC.PRDT_NUM=T_GA.LINK_NUM
+                                    WHERE LINK_NUM IN (SELECT PRDT_NUM FROM TB_RC_PRDTINF)
+                                    GROUP BY CORP_ID)
+                                UNION
+                                (SELECT CORP_ID, ROUND(SUM(GPA_AVG)/COUNT(GPA_AVG), 1) AS GPA_AVG FROM TB_GPA_ANLS T_GA
+                                    LEFT OUTER JOIN TB_GL_PRDTINF T_GL ON T_GL.PRDT_NUM=T_GA.LINK_NUM
+                                    WHERE LINK_NUM IN (SELECT PRDT_NUM FROM TB_GL_PRDTINF)
+                                    GROUP BY CORP_ID)
+                                UNION
+                                (SELECT CORP_ID, ROUND(SUM(GPA_AVG)/COUNT(GPA_AVG), 1) AS GPA_AVG FROM TB_GPA_ANLS T_GA
+                                    LEFT OUTER JOIN TB_SP_PRDTINF T_SP ON T_SP.PRDT_NUM=T_GA.LINK_NUM
+
+                                    WHERE LINK_NUM IN (SELECT PRDT_NUM FROM TB_SP_PRDTINF)
+                                    GROUP BY CORP_ID)
+                                UNION
+                                (SELECT CORP_ID, ROUND(SUM(GPA_AVG)/COUNT(GPA_AVG), 1) AS GPA_AVG FROM TB_GPA_ANLS T_GA
+                                    LEFT OUTER JOIN TB_SV_PRDTINF T_SV ON T_SV.PRDT_NUM=T_GA.LINK_NUM
+                                    WHERE LINK_NUM IN (SELECT PRDT_NUM FROM TB_SV_PRDTINF)
+                                    GROUP BY CORP_ID)
+                            ) T_GPA ON T_GPA.CORP_ID=T_CORP.CORP_ID
+                            LEFT OUTER JOIN (
+                                SELECT CORP_ID, COUNT(*) AS USEEPIL_CNT FROM TB_USEEPIL
+                                    WHERE TO_DATE(FRST_REG_DTTM) BETWEEN TO_DATE(TO_CHAR(SYSDATE-91, 'YYYY-MM-DD'), 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(SYSDATE-1, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+                                    GROUP BY CORP_ID
+                            ) T_USEEPIL ON T_USEEPIL.CORP_ID=T_CORP.CORP_ID
+                            LEFT OUTER JOIN (
+                                (SELECT LINK_NUM AS CORP_ID, SUM(SNS_PUBLIC_NUM) AS SNS_CNT FROM TB_PRDT_INQ
+                                    WHERE LINK_NUM IN (SELECT CORP_ID FROM TB_CORP WHERE CORP_CD='AD')
+                                         AND INQ_DT BETWEEN TO_CHAR(SYSDATE-91, 'YYYYMMDD') AND TO_CHAR(SYSDATE-1, 'YYYYMMDD')
+                                    GROUP BY LINK_NUM)
+                                UNION
+                                (SELECT CORP_ID, SUM(SNS_PUBLIC_NUM) AS SNS_CNT FROM TB_PRDT_INQ T_PI
+                                    LEFT OUTER JOIN TB_RC_PRDTINF T_RC ON T_RC.PRDT_NUM=T_PI.LINK_NUM
+                                    WHERE LINK_NUM IN (SELECT PRDT_NUM FROM TB_RC_PRDTINF)
+                                        AND INQ_DT BETWEEN TO_CHAR(SYSDATE-91, 'YYYYMMDD') AND TO_CHAR(SYSDATE-1, 'YYYYMMDD')
+                                    GROUP BY CORP_ID)
+                                UNION
+                                (SELECT CORP_ID, SUM(SNS_PUBLIC_NUM) AS SNS_CNT FROM TB_PRDT_INQ T_PI
+                                    LEFT OUTER JOIN TB_GL_PRDTINF T_GL ON T_GL.PRDT_NUM=T_PI.LINK_NUM
+                                    WHERE LINK_NUM IN (SELECT PRDT_NUM FROM TB_GL_PRDTINF)
+                                        AND INQ_DT BETWEEN TO_CHAR(SYSDATE-91, 'YYYYMMDD') AND TO_CHAR(SYSDATE-1, 'YYYYMMDD')
+                                    GROUP BY CORP_ID)
+                                UNION
+                                (SELECT CORP_ID, SUM(SNS_PUBLIC_NUM) AS SNS_CNT FROM TB_PRDT_INQ T_PI
+                                    LEFT OUTER JOIN TB_SP_PRDTINF T_SP ON T_SP.PRDT_NUM=T_PI.LINK_NUM
+
+                                    WHERE LINK_NUM IN (SELECT PRDT_NUM FROM TB_SP_PRDTINF)
+                                        AND INQ_DT BETWEEN TO_CHAR(SYSDATE-91, 'YYYYMMDD') AND TO_CHAR(SYSDATE-1, 'YYYYMMDD')
+                                    GROUP BY CORP_ID)
+                                UNION
+                                (SELECT CORP_ID, SUM(SNS_PUBLIC_NUM) AS SNS_CNT FROM TB_PRDT_INQ T_PI
+                                    LEFT OUTER JOIN TB_SV_PRDTINF T_SV ON T_SV.PRDT_NUM=T_PI.LINK_NUM
+                                    WHERE LINK_NUM IN (SELECT PRDT_NUM FROM TB_SV_PRDTINF)
+                                        AND INQ_DT BETWEEN TO_CHAR(SYSDATE-91, 'YYYYMMDD') AND TO_CHAR(SYSDATE-1, 'YYYYMMDD')
+                                    GROUP BY CORP_ID)
+                            ) T_SNS ON T_SNS.CORP_ID=T_CORP.CORP_ID
+                            LEFT OUTER JOIN (
+                                (SELECT CORP_ID, SUM(RSV_CNT) AS DUPL_CNT FROM
+                                    (SELECT CORP_ID, USER_ID, COUNT(*)-1 AS RSV_CNT FROM TB_AD_RSV T_AD_RSV
+                                        LEFT OUTER JOIN TB_RSV T_RSV ON T_RSV.RSV_NUM=T_AD_RSV.RSV_NUM
+                                        WHERE USER_ID!='GUEST' AND T_AD_RSV.RSV_STATUS_CD IN ('RS02', 'RS12', 'RS30', 'RS32')
+                                            AND T_RSV.RSV_NUM IN (SELECT RSV_NUM FROM (
+                                            SELECT RSV_NUM FROM TB_RSV
+                                                WHERE TO_DATE(REG_DTTM) BETWEEN TO_DATE(TO_CHAR(SYSDATE-91, 'YYYY-MM-DD'), 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(SYSDATE-1, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+                                            ))
+                                        GROUP BY CORP_ID, USER_ID
+                                        HAVING COUNT(*)-1 > 0
+                                    )
+                                GROUP BY CORP_ID)
+                                UNION
+                                (SELECT CORP_ID, SUM(RSV_CNT) AS DUPL_CNT FROM
+                                    (SELECT CORP_ID, USER_ID, COUNT(*)-1 AS RSV_CNT FROM TB_RC_RSV T_RC_RSV
+                                        LEFT OUTER JOIN TB_RSV T_RSV ON T_RSV.RSV_NUM=T_RC_RSV.RSV_NUM
+                                        WHERE USER_ID!='GUEST' AND T_RC_RSV.RSV_STATUS_CD IN ('RS02', 'RS12', 'RS30', 'RS32')
+                                            AND T_RSV.RSV_NUM IN (SELECT RSV_NUM FROM (
+                                            SELECT RSV_NUM FROM TB_RSV
+                                                WHERE TO_DATE(REG_DTTM) BETWEEN TO_DATE(TO_CHAR(SYSDATE-91, 'YYYY-MM-DD'), 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(SYSDATE-1, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+                                            ))
+                                        GROUP BY CORP_ID, USER_ID
+                                        HAVING COUNT(*)-1 > 0
+                                    )
+                                GROUP BY CORP_ID)
+                                UNION
+                                (SELECT CORP_ID, SUM(RSV_CNT) AS DUPL_CNT FROM
+                                    (SELECT CORP_ID, USER_ID, COUNT(*)-1 AS RSV_CNT FROM TB_SP_RSV T_SP_RSV
+                                        LEFT OUTER JOIN TB_RSV T_RSV ON T_RSV.RSV_NUM=T_SP_RSV.RSV_NUM
+                                        WHERE USER_ID!='GUEST' AND T_SP_RSV.RSV_STATUS_CD IN ('RS02', 'RS12', 'RS30', 'RS32')
+                                            AND T_RSV.RSV_NUM IN (SELECT RSV_NUM FROM (
+                                            SELECT RSV_NUM FROM TB_RSV
+                                                WHERE TO_DATE(REG_DTTM) BETWEEN TO_DATE(TO_CHAR(SYSDATE-91, 'YYYY-MM-DD'), 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(SYSDATE-1, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+                                            ))
+
+                                        GROUP BY CORP_ID, USER_ID
+                                        HAVING COUNT(*)-1 > 0
+                                    )
+                                GROUP BY CORP_ID)
+                                UNION
+                                (SELECT CORP_ID, SUM(RSV_CNT) AS DUPL_CNT FROM
+                                    (SELECT CORP_ID, USER_ID, COUNT(*)-1 AS RSV_CNT FROM TB_SV_RSV T_SV_RSV
+                                        LEFT OUTER JOIN TB_RSV T_RSV ON T_RSV.RSV_NUM=T_SV_RSV.RSV_NUM
+                                        WHERE USER_ID!='GUEST' AND T_SV_RSV.RSV_STATUS_CD IN ('RS02', 'RS12', 'RS30', 'RS32')
+                                            AND T_RSV.RSV_NUM IN (SELECT RSV_NUM FROM (
+                                            SELECT RSV_NUM FROM TB_RSV
+                                                WHERE TO_DATE(REG_DTTM) BETWEEN TO_DATE(TO_CHAR(SYSDATE-91, 'YYYY-MM-DD'), 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(SYSDATE-1, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+                                            ))
+                                        GROUP BY CORP_ID, USER_ID
+                                        HAVING COUNT(*)-1 > 0
+                                    )
+                                GROUP BY CORP_ID)
+                            ) T_DUPL ON T_DUPL.CORP_ID=T_CORP.CORP_ID
+                            WHERE TRADE_STATUS_CD NOT IN ('TS01', 'TS02')
+                            ORDER BY RSV_CNT  DESC
+                    )
+              )
+         )
+     )T_L
+    ON (T_L.CORP_ID = T_CL.CORP_ID)
+  WHEN MATCHED THEN
+UPDATE SET
+       T_CL.CORP_CD      = T_L.CORP_CD
+       , T_CL.CORP_NM    = T_L.CORP_NM
+       , T_CL.CORP_LEVEL = T_L.CORP_LEVEL
+       , T_CL.RSV_CNT    = T_L.RSV_CNT
+       , T_CL.RSV_PCT    = T_L.RSV_RATE
+       , T_CL.RSV_LEVEL  = T_L.RSV_LEVEL
+       , T_CL.CANCEL_CNT = T_L.CANCEL_CNT
+       , T_CL.CANCEL_PCT = T_L.CANCEL_RATE
+       , T_CL.CANCEL_LEVEL= T_L.CANCEL_LEVEL
+       , T_CL.GPA        = T_L.GPA_AVG
+       , T_CL.USEEPIL_CNT= T_L.USEEPIL_CNT
+       , T_CL.USEEPIL_REGPCT= T_L.USEEPIL_RATE
+       , T_CL.USEEPIL_LEVEL= T_L.USEEPIL_LEVEL
+       , T_CL.SNS_PUBLICNUM= T_L.SNS_CNT
+       , T_CL.SNS_PUBLIC_LEVEL= T_L.SNS_LEVEL
+       , T_CL.DUPL_BUY_CNT = T_L.DUPL_CNT
+       , T_CL.DUPL_BUY_PCT = T_L.DUPL_RATE
+       , T_CL.DUPL_BUY_LEVEL= T_L.DUPL_LEVEL
+  WHEN NOT MATCHED THEN
+INSERT
+     ( T_CL.CORP_ID
+       , T_CL.CORP_CD
+       , T_CL.CORP_NM
+       , T_CL.CORP_LEVEL
+       , T_CL.RSV_CNT
+       , T_CL.RSV_PCT
+       , T_CL.RSV_LEVEL
+       , T_CL.CANCEL_CNT
+       , T_CL.CANCEL_PCT
+       , T_CL.CANCEL_LEVEL
+       , T_CL.GPA
+       , T_CL.USEEPIL_CNT
+       , T_CL.USEEPIL_REGPCT
+       , T_CL.USEEPIL_LEVEL
+       , T_CL.SNS_PUBLICNUM
+       , T_CL.SNS_PUBLIC_LEVEL
+       , T_CL.DUPL_BUY_CNT
+       , T_CL.DUPL_BUY_PCT
+       , T_CL.DUPL_BUY_LEVEL
+       )
+VALUES
+     ( T_L.CORP_ID
+       , T_L.CORP_CD
+       , T_L.CORP_NM
+       , T_L.CORP_LEVEL
+       , T_L.RSV_CNT
+       , T_L.RSV_RATE
+       , T_L.RSV_LEVEL
+       , T_L.CANCEL_CNT
+       , T_L.CANCEL_RATE
+       , T_L.CANCEL_LEVEL
+       , T_L.GPA_AVG
+       , T_L.USEEPIL_CNT
+       , T_L.USEEPIL_RATE
+       , T_L.USEEPIL_LEVEL
+       , T_L.SNS_CNT
+       , T_L.SNS_LEVEL
+       , T_L.DUPL_CNT
+       , T_L.DUPL_RATE
+       , T_L.DUPL_LEVEL
+     )
+]]>
+</update>
+
+
+<select id="CORP_RCMD_S_00" resultMap="CORP_RCMD_R_00">
+  SELECT T_RCMD.CORP_ID
+        , RCMD_DIV
+        , PRINT_SN
+        , SHOP_NM AS CORP_NM
+        , RSV_TEL_NUM
+      FROM TB_CORP_RCMD T_RCMD
+        INNER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID=T_RCMD.CORP_ID
+        <isNotEmpty property="rcmdDiv">
+      WHERE RCMD_DIV=#rcmdDiv#
+      	</isNotEmpty>
+      ORDER BY PRINT_SN
+</select>
+
+<insert id="CORP_RCMD_I_00">
+INSERT INTO TB_CORP_RCMD
+( CORP_ID
+, RCMD_DIV
+, PRINT_SN
+)
+VALUES(
+  #corpId#
+, #rcmdDiv#
+, #printSn#
+)
+</insert>
+
+<delete id="CORP_RCMD_D_00">
+DELETE FROM TB_CORP_RCMD
+</delete>
+
+<update id="CORP_U_07">
+UPDATE TB_CORP SET
+TAMNACARD_MNG_YN = #tamnacardType#
+WHERE
+CORP_ID = #corpId#
+</update>
+
+<update id="CORP_U_08">
+    <isEqual property="corpCd" compareValue="AD">
+        UPDATE TB_AD_PRDTINF
+    </isEqual>
+    <isEqual property="corpCd" compareValue="RC">
+        UPDATE TB_RC_PRDTINF
+    </isEqual>
+    <isEqual property="corpCd" compareValue="SV">
+        UPDATE TB_SV_PRDTINF
+    </isEqual>
+    <isEqual property="corpCd" compareValue="SP">
+        UPDATE TB_SP_PRDTINF
+    </isEqual>
+    SET TRADE_STATUS = 'TS05'
+    WHERE CORP_ID = #corpId#
+</update>
+</sqlMap>

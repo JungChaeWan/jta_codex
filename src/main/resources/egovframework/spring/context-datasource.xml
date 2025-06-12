@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/jdbc  http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd">
+
+	<!-- <jdbc:embedded-database id="dataSource" type="HSQL">
+		<jdbc:script location= "classpath:/db/sampledb.sql"/>
+	</jdbc:embedded-database> -->
+
+    <bean id="egov.propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:/egovframework/egovProps/globals.properties</value>
+                <value>classpath:/db.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- DB -->
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <property name="driverClassName" value="${Globals.DriverClassName}"/>
+		<property name="jdbcUrl" value="${Globals.Url}" />
+		<property name="username" value="${Globals.UserName}"/>
+		<property name="password" value="${Globals.Password}"/>
+    </bean>
+
+    <!-- 운영 DB -->
+    <!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.tmax.tibero.jdbc.TbDriver"/>
+        <property name="jdbcUrl" value="jdbc:tibero:thin:@210.105.88.5:8629:TOUR"/>
+        <property name="username" value="MARKETDB"/>
+        <property name="password" value="$marketdb2015"/>
+    </bean> -->
+
+
+    <!--<bean id="dataSource2" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.tmax.tibero.jdbc.TbDriver"/>
+        <property name="jdbcUrl" value="jdbc:tibero:thin:@210.105.88.5:8629:TOUR"/>
+        <property name="username" value="tibero1"/>
+        <property name="password" value="tibero1"/>
+    </bean>-->
+
+    <bean id="dataSource_mts" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.tmax.tibero.jdbc.TbDriver"/>
+        <property name="jdbcUrl" value="jdbc:tibero:thin:@210.105.88.5:8629:TOUR"/>
+        <property name="username" value="COUPONDB"/>
+        <property name="password" value="$coupondb2016"/>
+    </bean>
+
+     <bean id="dataSource_mail" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://210.105.88.9:3306/tm" />
+        <property name="username" value="tamnao"/>
+        <property name="password" value="#xkaskdh2015"/>
+    </bean>
+
+     <!-- SMS DataSource -->     
+	<!-- <bean id="dataSource_sms" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql://103.60.124.76:3306/TAMNAOSMS" />
+		<property name="username" value="tamnao"/>
+		<property name="password" value="#xkaskdh2015"/>
+	</bean> -->
+	<bean id="dataSource_sms" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql://210.105.88.17:3306/TAMNAOSMS" />
+		<property name="username" value="tamnao"/>
+		<property name="password" value="#xkaskdh2015"/>
+	</bean>
+	
+	<!-- 알림톡 -->
+	<bean id="dataSource_allim" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql://210.105.88.17:3306/TAMNAOMPUSH" />
+		<property name="username" value="tamnao"/>
+		<property name="password" value="#xkaskdh2015"/>
+	</bean>
+
+	<!-- SMS 임시 -->
+	<!-- <bean id="dataSource_sms" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql://61.111.6.76:3306/NEW114SMS" />
+		<property name="username" value="hnbi"/>
+		<property name="password" value="#hnbi225"/>
+	</bean> -->
+
+    <!-- Mysql
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/example" />
+        <property name="username" value="user"/>
+        <property name="password" value="password"/>
+    </bean>
+    -->
+
+    <!-- oracle
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="jdbcUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:example" />
+        <property name="username" value="user"/>
+        <property name="password" value="password"/>
+    </bean>
+    -->
+
+</beans>

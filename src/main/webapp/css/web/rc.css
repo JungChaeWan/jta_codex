@@ -1,0 +1,2845 @@
+@charset "utf-8";
+
+/*  버튼타입일 경우 폰트가 Arial로 잡혀있어, PC기본폰트 NotoSans로 강제적용
+    확인 후 현재라인 삭제
+*/
+/* font */
+button {
+    font-family: NotoSans;
+}
+
+/* -- rc list -- */
+/* contents max width */
+#content {
+    overflow:hidden;
+}
+.sub_wrap {
+    width: 1200px;
+    min-height:2090px;
+    margin: 0 auto;
+}
+
+/* - filter wrap - */
+.filter_wrap {
+    position:relative;
+    top:17px;
+    display:inline-block;
+    width:265px;
+    margin:0 30px 0 0;
+    float:left;
+    z-index: 1;
+}
+.filter_wrap .filter_check {
+    padding:0 15px 1px;
+    background-color:#f6f6f6;
+    /*border:1px solid rgba(0,0,0,0.08);*/
+    border-radius: 4px;
+}
+.filter_wrap .filter_check h2 {
+    font-size:1.25em;
+    padding:14px 0;
+}
+.filter_wrap .filter_check label {
+    display:block;
+    padding-bottom:3px;
+    font-weight: bold;
+}
+.filter_wrap .f_con .date_wrap .date-container {
+    display:block;
+    width:100%;
+}
+.filter_wrap .f_con .date_wrap .date-container .date-pick {
+    display: inline-block;
+    float: left;
+    width: 61%;
+    margin-right: 3px;
+}
+.filter_wrap .f_con .date_wrap .date-container .time-area {
+    display: table-cell;
+    width: 34%;
+    font-size: 13px;
+}
+.filter_wrap .f_con .date_wrap .date-container .time-area select {
+    height: 40px;
+}
+.filter_wrap .f_con .date_wrap .date_checkin {
+    width:100%;
+    display:inline-block;
+    overflow: hidden;
+}
+.filter_wrap .f_con .date_wrap .date_checkout {
+    width:100%;
+    display:inline-block;
+    overflow: hidden;
+}
+.filter_wrap .f_con .date_wrap input[type="text"] {
+    width:100%;
+    height:40px;
+    line-height:40px;
+    padding-left:13px;
+    font-size:13px;
+    cursor: pointer;
+}
+.filter_wrap .value-text .date-pick img.ui-datepicker-trigger {
+    display: none;
+}
+.filter_wrap .f_con .value-text a {
+    display: block;
+    padding-left:15px;
+    color: #333333;
+}
+.filter_wrap button.search_btn {
+    display: block;
+    width: 100%;
+    color:#fff;
+    height:2.7rem;
+    line-height:2.7rem;
+    margin:15px 0 18px;
+    text-align:center;
+    background-color: #DE1724;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight:600;
+}
+
+/* filter_btn */
+.filter_wrap .filter_btn {
+    position:relative;
+    margin-top:5px;
+    overflow:hidden;
+}
+.filter_wrap .filter_btn a {
+    display: block;
+    height:45px;
+    line-height: 45px;
+    padding-left: 16px;
+    color: #171717;
+    border: 1px solid #171717;
+    border-radius: 2px  ;
+    font-size: 17px;
+    font-family: "NotoSans";
+    /*letter-spacing: -.5px;*/
+}
+.filter_wrap .filter_btn a:hover {
+    background-color: #171717;
+    color: #fff;
+    font-weight: 600;
+}
+.filter_wrap .filter_btn a:after {
+    position: relative;
+    display: inline-block;
+    float: right;
+    right: 16px;
+    width: 13px;
+    height: 16px;
+    margin: 16px 0 0 4px;
+    background-position: 0;
+    vertical-align: top;
+    content: "";
+}
+.filter_wrap .filter_btn a.carSeatArea {margin: 5px;}
+.filter_wrap .filter_btn p {
+    position:absolute;
+    top:48px;
+    left:15px;
+    padding:0 7px;
+    border-radius: 3px;
+    background-color:#050505;
+    z-index: 1;
+}
+
+
+/* filter_refine */
+.filter_refine {
+    border:1px solid #ebebeb;
+    border-radius: 2px;
+    margin-top:5px;
+    padding: 7px 0 25px;
+}
+.filter_refine .filter_header button {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border: none;
+    float: right;
+    top: 7px;
+    right: 14px;
+    font-size: 15px;
+    /*letter-spacing: -.3px;*/
+    color: #292929;
+    background-color: #fff;
+}
+.filter_refine .filter_header button::before {
+    content: '';
+    display: inline-block;
+    background-image: url("../../images/web/ad/reset.png");
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: 0 0;
+    vertical-align: middle;
+    width: 15px;
+    height: 18px;
+    margin-right: 2px;
+}
+.filter_refine .section-box {
+    padding: 23px 0 0 0;
+    margin: 0 0 0 24px;
+    border-bottom:none;
+}
+.filter_refine .section-box .category-tit {
+    position:relative;
+    display: block;
+    margin-bottom:13px;
+    color:rgba(0,0,0,0.87);
+    font-size: 17px;
+    /*letter-spacing:-.3px;*/
+    font-weight: bold;
+    cursor: pointer;
+}
+.filter_refine .section-box .insurance_wrap {
+    position: relative;
+    right: 19px;
+    bottom: 37px;
+}
+.filter_refine .section-box ul li {
+    margin-bottom:5px;
+}
+.filter_refine .section-box ul li .sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+input[type=checkbox].rf_chk {
+    position:absolute;
+    z-index: -1000;
+    left:-1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width:1px;
+    height:1px;
+    margin:-1px;
+    padding:0;
+    border:0;
+}
+input[type=checkbox].rf_chk + label.label_chk{
+    display: inline-block;
+    padding: 0 0 0 32px;
+    height:18px;
+    line-height:17px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    color:rgba(0,0,0,0.56);
+    font-size:14px;
+    /*letter-spacing: -.7px;*/
+    vertical-align: top;
+    cursor: pointer;
+    font-family: "NotoSans";
+}
+label.label_chk {
+    background-image: url("../../images/web/ad/square.png");
+    background-size:18px auto;
+}
+input[type=checkbox].rf_chk:checked + label.label_chk{
+    background-position:0 -18px;
+}
+.filter_refine .price_bar {height:80px;}
+.filter_refine .section-box .f_price {
+    display: inline-block;
+    margin-bottom: 25px;
+}
+.filter_refine .price_bar .stay .ui-widget-content {
+    position:relative;
+    top:5px;
+    right:0;
+    border:0;
+    width:173px;
+    min-width:173px;
+    margin-left:10px;
+    background:#ccc;
+}
+.ui-state-active {
+    position: relative;
+    line-height: 10px;
+    width:10px;
+    height:10px;
+}
+.filter_refine .price_bar .stay .ui-widget-header {
+    background: #f61346;
+}
+.filter_refine .price_bar .stay .ui-slider-horizontal {
+    height:.21em;
+}
+.filter_refine .price_bar .stay .ui-slider-horizontal .ui-slider-handle {
+    top:-.5em;
+    border-radius: 50%;
+}
+.filter_refine .price_bar .stay .ui-slider .ui-slider-handle {
+    width: .44em;
+    height:.44em;
+}
+.filter_refine .section-box p {
+    display: inline-block;
+    width:200px;
+    line-height:20px;
+    vertical-align: top;
+}
+.filter_refine .section-box p input[type=text] {
+    width:200px;
+    height:20px;
+    line-height:20px;
+}
+.filter_refine .section-box .half {overflow: hidden;}
+.filter_refine .section-box .half li {
+    float:left;
+    width:50%;
+}
+
+
+/* sort filter */
+.__sort {
+    position: relative;
+}
+.__sort .sort-filter ul {
+    display: inline-block;
+}
+.__sort .sort-filter li {
+    position:relative;
+    display:inline-block;
+    margin:0 10px;
+}
+.__sort .sort-filter li button {
+    overflow: visible;
+    border:0;
+    background-color:transparent;
+    cursor: pointer;
+    font-size:15px;
+    color:#757575;
+}
+.__sort .sort.active {
+    font-weight: 700;
+    color:#000000;
+    background: url("../../images/web/ad/checking.jpg") 0 50% no-repeat;
+    background-size:14px auto;
+    padding-left:18px;
+}
+.__sort .sort-filter .sort-search {
+    /*position: absolute;*/
+    right: 0;
+    display: inline-block;
+}
+.__sort .sort-filter input[type=text] {
+    float: left;
+}
+.__sort .sort-filter .sort-search-btn {
+    width:32px;
+    height:32px;
+    border:1px solid #ccc;
+    background: url("../../images/web/ad/find.png") 50% 50% no-repeat;
+    background-size:21px;
+}
+.__sort .sort-filter .select {
+    display: inline-block;
+    margin-right: 5px;
+}
+.sort-right {
+    float: right;
+}
+
+
+
+.rent-list-area ul {
+    margin-top: 23px;
+}
+.list_wrap {
+    display: inline-block;
+    width: 880px;
+    margin-left: 25px;
+}
+.caption-typeB {
+    margin: 10px 0 20px;
+}
+
+
+.rent-list-area2 .name strong {
+    font-size: 20px;
+}
+.rent-list-area2 .photo img {
+    width: 100%;
+}
+.rent-list-area2 .car_memo {
+    color: #404040;
+}
+.rent-list-area2 .car_op {
+    display: block;
+}
+.rent-list-area2 .car_op ul,
+.rent-list-area2 .car_memo ul {
+    border: none;
+    margin: 0;
+}
+.rent-list-area2 .car_memo ul li,
+.rent-list-area2 .car_op ul li{
+    border: none;
+    display: inline-block;
+}
+.rent-list-area2 .link-area .rc-tx {
+    width: 22%;
+}
+.rent-list-area2 .link-area .inner-price {
+    position: relative;
+    width: 17%;
+    font-size: 27px;
+    color: #111236;
+    font-weight: 800;
+    font-family: "Roboto";
+    text-align: right;
+    padding-top: 100px;
+}
+.rent-list-area2 .link-area .inner-price .commt {
+    display: block;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    color: #888;
+}
+.rent-list-area2 .link-area .inner-price .text__price {
+    display: table-cell;
+    font-family: "Roboto";
+    font-weight: 600;
+}
+.rent-list-area2 .link-area .inner-price .text__unit {
+    font-size: 19px;
+    font-weight: normal;
+    font-family: "NotoSans";
+}
+.rent-list-area2 .car_op ul li {
+    float: left;
+    width: 38%;
+    height: 20px;
+    margin: 4px 7px 0 0;
+    padding: 0 1px;
+    border: 1px solid #c9c9c9;
+    border-radius: 2px;
+    color: #a0a0a0;
+    text-align: center;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: -.7px;
+}
+.rent-list-area2 .car_op ul li:nth-child(2n+0) {
+    margin-right: 0;
+}
+.rent-list-area2 .car_op ul li.on {
+    color:#000;
+    border:1px solid #000;
+}
+.rent-list-area2 .label-groupA {
+    position: absolute;
+    right: 0;
+    top: 74px;
+    display: inline-block;
+    width: 145px;
+}
+.rent-list-area2 .bxLabel .main_label {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+}
+.rent-list-area2 ul li .link-area {padding: 15px 25px 17px 20px;}
+.rent-list-area2 ul li {border-bottom: 1px solid #dfdfdf;}
+.rent-list-area2 .photo {width: 195px;}
+.rent-list-area2 .name {padding: 0 7px 0 40px;}
+.rent-list-area2 .car_memo ul li {
+    border-right: 1px solid #ccc;
+    padding: 0 5px;
+    height: 13px;
+    line-height: 13px;
+}
+
+.rent-list-area2 .car_memo ul li:first-child {
+    padding-left: 0;
+    font-weight: 800;
+    color: #f61346;
+}
+.rent-list-area2 .car_memo ul li:last-child {
+    border-right: none;
+}
+.rent-list-area2 .car_old {
+    display: block;
+}
+.rent-list-area2 .car_old ul {
+    border-top: 0;
+    margin-top: 20px;
+}
+.rent-list-area2 .car_old li {
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    border-bottom: 0;
+    padding: 0 10px;
+    color: #000;
+    background-color: #eee;
+    border-radius: 12px;
+}
+.main_label.red {
+    border: 1px solid #f43142;
+    color: #f43142;
+    background-color: rgba(244, 49, 66, 0.04);
+}
+.main_label.blue {
+    background-color: rgba(100, 35, 255, 0.04);
+    border: 1px solid rgba(100, 35, 255);
+    color: #6423ff;
+}
+#insurance_info.comm-layer-popup .content-wrap {
+    width: 55em;
+    text-align: center;
+    padding: 20px;
+}
+.comm-layer-popup .content-wrap .content {
+    position: relative;
+}
+.comm-layer-popup .content-wrap .close {
+    position: absolute;
+    right: 10px;
+}
+#insurance_info.comm-layer-popup .content-wrap .close img {
+    height: 27px;
+}
+
+
+/* loading layer-popup */
+.modal-spinner {
+    z-index: 1004;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.popBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+.loading-popup {
+    display: inline-block;
+    margin: 0 auto;
+}
+.loading-popup .spinner-con {
+    position: absolute;
+    top: 40%;
+    left: 43%;
+    padding: 43px 15px 22px 15px;
+    overflow: hidden;
+    border-radius: 0.5em;
+    background-color: #fff;
+    text-align: center;
+}
+.spinner-con:before {
+    position: absolute;
+    top: 52%;
+    left: 43%;
+    width: 43px;
+    height: 43px;
+    margin-top: -72px;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-top-color: #e8202e;
+    border-bottom-color: #e8202e;
+    box-sizing: border-box;
+    animation: spinner 1.5s ease infinite;
+    z-index: 999;
+    content: "";
+}
+.spinner-txt {
+    display: block;
+    width: 244px;
+    margin: 39px 0 9px 0;
+    font-size: 0.9rem;
+    font-family: "Roboto";
+}
+.spinner-sub-txt:before {
+    display: inline-block;
+    width: 8px;
+    height: 4px;
+    margin: 0 4px 4px 0;
+    border: 2px solid #e8202e;
+    border-top: 0;
+    border-right: 0;
+    transform: rotate(-45deg);
+    content: "";
+}
+.spinner-sub-txt {
+    color: rgba(0,0,0,0.56);
+    font-size: 0.8rem;
+    font-weight: bold;
+    font-family: "Roboto";
+    line-height: 27px;
+}
+.spinner-sub-txt span {letter-spacing: -1px;}
+
+
+/* code #3 */
+@keyframes spinner {
+    from {transform: rotate(0deg); }
+    to {transform: rotate(360deg);}
+}
+@keyframes loading03 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(.8);
+    }
+}
+
+
+/* share */
+.share {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+}
+.btnShare .share_btn {
+    /*position: absolute;*/
+    top: 0;
+    right: 0;
+    text-align: right;
+    margin-bottom: 5px;
+}
+.btnShare .share_btn a {
+    font-size: 14px;
+    color: #1b1b1b;
+    text-decoration: underline;
+}
+.btnShare .share_btn a:hover {
+    font-weight: bold;
+}
+.btnShare .share_btn a::before {
+    content: '';
+    display: inline-block;
+    background-image: url("../../images/web/btn/share.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 0 0 ;
+    vertical-align: middle;
+    width: 16px;
+    height: 18px;
+    margin-right: 4px;
+}
+.share-popup .content-wrap {
+    width: 30em;
+}
+.share-popup .content {
+    padding: 30px;
+}
+.share-popup .title {
+    font-size: 24px;
+    line-height: 1.25em;
+    color: rgb(72, 72, 72);
+    text-align: center;
+}
+.share-popup .sns-area {
+    text-align: center;
+    margin-top: 25px;
+}
+.share-popup .sns-area a {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 14px;
+    border: 1px solid #000;
+    border-radius: 50%;
+}
+.share-popup .close {
+    position: relative;
+    top: 0;
+    right: 0;
+    border: none;
+    float: right;
+    padding: 18px;
+}
+.share-popup .close img {
+    width: 27px;
+}
+
+/* 카테고리 메뉴 */
+.filter_refine .item-list > ul {
+    display: none;
+}
+.filter_refine .item-list.open > ul {
+    display: block;
+}
+.align-right {
+    float: right;
+}
+.filter_refine .item-list > .category-tit:after {
+    position: absolute;
+    right: 23px;
+    top: 8px;
+    z-index: 5;
+    display: block;
+    height: 10px;
+    width: 2px;
+    background: #222;
+    content: "";
+    -webkit-transition: all 0.1s ease-out;
+    -moz-transition: all 0.1s ease-out;
+    -ms-transition: all 0.1s ease-out;
+    -o-transition: all 0.1s ease-out;
+    transition: all 0.1s ease-out;
+}
+.filter_refine .item-list > .category-tit:before {
+    position: absolute;
+    right: 19px;
+    top: 12px;
+    display: block;
+    width: 10px;
+    height: 2px;
+    background: #222;
+    content: "";
+    -webkit-transition: all 0.1s ease-out;
+    -moz-transition: all 0.1s ease-out;
+    -ms-transition: all 0.1s ease-out;
+    -o-transition: all 0.1s ease-out;
+    transition: all 0.1s ease-out;
+}
+.filter_refine .item-list.open > .category-tit:after,
+.filter_refine .item-list.open > .category-tit:before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+
+/* -- rc detail -- */
+.Fasten {
+    width: 1200px;
+    margin: 0 auto;
+}
+.subContents .detail {
+    border: 1px solid #ebebeb;
+}
+
+/* main info */
+.subContents .new-detail .detail .detailL {
+    width: 380px;
+}
+.rent2 .detail-slider .swiper-slide {
+    background-color: #f3f3f3;
+}
+.detail-slider .bottom-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+}
+.detail-slider .bottom-info p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    color: #666;
+    font-size: 0.67rem;
+    font-family: "Roboto";
+    text-align: center;
+    letter-spacing: -0.8px;
+}
+.detail-slider .bottom-info ul {
+    display: table;
+    width: 100%;
+}
+.detail-slider .bottom-info ul li {
+    width: 0;
+}
+.detail-slider .bottom-info ul li img {
+    height: 25px;
+    margin-right: 10px;
+}
+.subContents .new-detail .detail .detailR {
+    width: 400px;
+    padding: 30px 40px 0 25px;
+}
+.detailR .detail-info {
+    padding: 0;
+}
+.detailR .title-box .title {
+    display: inline-block;
+    font-size: 26px;
+}
+.grade-area {
+    float: right;
+    margin-top: 0;
+}
+.rc-detail-area ._info-title,
+.rc-info-title {
+    padding: 20px 0;
+    font-size: 22px;
+    font-family: "NotoSans B";
+}
+.rc-detail-area {
+    position: relative;
+}
+.rc-detail-info {
+    position: relative;
+    width: 800px;
+    display: inline-block;
+    margin-top: 22px;
+}
+.rc-detail-info .nav-tabs2 .tabPanel {
+    display: block;
+    width: 800px;
+    padding: 0;
+    margin-bottom: 80px;
+}
+.rc-detail-info > section {margin-top: 62px;}
+.rent-info {margin-top: 30px;}
+.rent-info .title {
+    position: relative;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.rent-info .tableRent {
+    font-family: "NotoSans";
+    width: 100%;
+    border-collapse: collapse;
+}
+.rent-info .tableRent tr th {
+    width: 30%;
+    background-color: #f7f7f7;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+.rent-info .tableRent tr td {
+    font-size: 13px;
+    text-align: center;
+}
+.rent-info .tableRent tr th,
+.rent-info .tableRent tr td {
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 5px;
+    border-left: none;
+}
+.rent-info .tableRent tr th:last-child,
+.rent-info .tableRent tr td:last-child {
+    border-right: none;
+}
+.rent-info .table-memo {
+    font-size: 13px;
+    color: #DE1724;
+    float: right;
+    margin-top: 4px;
+}
+.rent-info .block {
+    display: flex;
+    align-items: center;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+}
+.rent-info .block dt {
+    display: inline-block;
+    font-size: 17px;
+}
+.rent-info .block dd {
+    display: inline-block;
+    font-size: 14px;
+    padding-left: 10px;
+}
+.rent-info .block dd .text-red {display: inline-flex;}
+.rent-info .block #checkIsrDivGen {display: inline-block;}
+.detailR .purchasing-info .point-area {
+    margin-top: 30px;
+}
+.grade-area .score-area,
+.detailR .purchase-btn-group .grade-area .label-groupA {
+    float: right;
+}
+.grade-area .label-groupA {
+    display: inline-block;
+    margin-right: 11px;
+    margin-left: 0;
+    line-height: 10px;
+    vertical-align: middle;
+}
+.detailR .detail-info .group {
+    margin-top: 40px;
+}
+.detailR .btnPack {
+    display: table-cell;
+}
+.detailR .btnPack .insurance_btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.btnPack {display: table-cell;}
+.btnPack .insurance_btn {
+    position: absolute;
+    right: 0;
+}
+.btnPack .insurance_btn a {
+    font-size: 14px;
+    color: #1b1b1b;
+    text-decoration: underline;
+}
+.btnPack .insurance_btn a::before {
+    content: '';
+    display: inline-block;
+    background-image: url("../../images/web/rent/info.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 0 0 ;
+    vertical-align: middle;
+    width: 16px;
+    height: 18px;
+    margin-right: 4px;
+}
+
+
+/* rc main_label */
+.bxLabel {
+    float: right;
+    position: relative;
+    top: 40px;
+}
+.rc_list .bxLabel {
+    float: initial;
+    position: initial;
+    line-height: 40px;
+}
+.bxLabel .main_label {
+    margin: 1px;
+    border-radius: 2px;
+    font-size: 10px;
+}
+.bxLabel .main_label:first-child {margin-right: 0;}
+.main_label {
+    display: inline-block;
+    height: 15px;
+    vertical-align: middle;
+    font-family: "Roboto";
+    font-weight: 800;
+    line-height: 15px;
+    background: #fff;
+    min-width: 30px;
+    text-align: center;
+}
+.main_label.pink {
+    padding: 0 3px;
+    border: 1px solid #f61346;
+    color: #f61346;
+    background-color: rgba(244, 49, 66, 0.04);
+}
+.main_label.eventblue {
+    padding: 0 3px;
+    border: 1px solid rgba(100, 35, 255);
+    color: #6423ff;
+    background-color: rgba(100, 35, 255, 0.04);
+}
+.main_label.purple {
+    padding: 0 3px;
+    border:1px solid #402aff;
+    background-color:#402aff;
+    color: #fff;
+}
+.main_label.back-red {
+    padding: 0 3px;
+    border: 1px solid #DE1724;
+    color: #fff;
+    background-color: #DE1724;
+}
+.main_label.yellow {
+    padding: 0 3px;
+    border:1px solid #ffcc00;
+    color: #000;
+    background-color:#ffcc00;
+}
+
+
+/* 렌트카 - 라벨추가 */
+.rent2.new-detail .grade-area .bxLabel {
+    float: right;
+    position: initial;
+    display: initial;
+    width: 100%;
+    text-align: right;
+}
+.grade-area .bxLabel .main_label {float: initial;}
+.grade-area .bxLabel .main_label:first-child {margin-right: 0}
+
+
+/* detail-area */
+.rc-detail-con section {
+    margin:40px 0;
+}
+
+
+/* section - event */
+.rc-detail-area .rc-event {
+    display: inline-block;
+    position: relative;
+    font-size: .8em;
+    margin-top: 30px;
+}
+.rc-detail-area .rc-event:first-child {margin-top: 50px;}
+.rc-detail-area .rc-event .evnt_label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: "Roboto";
+    font-size: 1.4em;
+    color: #000;
+    padding: 17px 0 0 8px;
+}
+.rc-detail-area .rc-event .evnt_label span{color: #c62022;}
+.rc-detail-area .rc-event .evnt_tx{
+    border: 4px solid #e8e8e8;
+    border-radius: 18px;
+    width:590px;
+    padding: 16px 23px;
+    margin: 10px 0 0 150px;
+}
+.rc-detail-area .evnt_tx .evnt_title {
+    display: inline-block;
+    font-size: 1.5em;
+}
+.rc-detail-area .evnt_tx .evnt_date {
+    float: right;
+    color: #757575;
+    padding-top:8px;
+}
+.rc-detail-area .evnt_tx .evnt_memo {
+    padding-top:5px;
+    white-space:pre-line;
+}
+
+/* section - 보험요금안내 */
+.insurance_info {
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 5px;
+    padding: 20px;
+    font-family: "NotoSans";
+}
+.insurance_info > div {
+    display: inline-block;
+}
+.insurance_info .insure_type {
+    font-size: 20px;
+    font-weight: bold;
+}
+.insurance_info .insure_memo {
+    padding-left: 10px;
+    color: #e8202e;
+    font-size: 15px;
+}
+.rc_insurance .inline-group {
+    margin: 30px 0;
+}
+.rc_insurance .inline-group .type {
+    display: inline-block;
+    width: 48%;
+    height: auto;
+    font-size: 14px;
+    font-family: "NotoSans";
+}
+.rc_insurance .inline-group .type table {
+    border-collapse: collapse;
+}
+.rc_insurance .inline-group .type h2 {
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+.rc_insurance .inline-group .type:first-child {
+    margin-right: 10px;
+}
+.rc_insurance .inline-group .type tr {
+}
+.rc_insurance .inline-group .type tr th,
+.rc_insurance .inline-group .type tr td {
+    border: 1px solid rgba(0,0,0,0.08);
+}
+.rc_insurance .inline-group .type tr th {
+    background-color: #f7f7f7;
+    width: 110px;
+    font-size: 13px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px;
+    border-left: none;
+}
+.rc_insurance .inline-group .type tr td {
+    padding: 5px 20px;
+    box-sizing: border-box;
+    border-right: none;
+}
+.rc_insurance .memo-title {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: top;
+}
+.rc_insurance .memo-con {
+    /*width: 710px;*/
+    font-size: 15px;
+    padding-top: 9px;
+}
+.rc-info-con ._inDetail {
+    /*width: 90%;*/
+    line-height: 25px;
+    overflow: hidden;
+    font-family: "NotoSans";
+    font-weight: 400;
+    font-size: 1em;
+    color: rgb(72, 72, 72);
+    background-color: rgb(250,250,250);
+    overflow-wrap: break-word;
+    padding: 20px 39px;
+}
+.rc-info-con .grayspace {
+    background-color: rgb(250,250,250);
+    padding:10px;
+    display: none;
+}
+.rc-info-con .show-more {
+    display: none;
+    background-color: rgb(250,250,250);
+    font-size: 14px;
+    color: #DE1724;
+    padding: 0 20px 9px;
+    cursor: pointer;
+}
+
+
+
+/* 구매하기 */
+.rc_purchase {
+    position: absolute;
+    display: inline-block;
+    margin-left: 60px;
+}
+.rc-filter-area {
+    position: relative;
+    float: right;
+    /*right: calc((100% - 74rem)/2);*/
+    width: 28%;
+    min-width: 18rem;
+    max-width: 18rem;
+    margin-top: 74px;
+    padding: 1rem 1.125rem;
+    transition: transform .1s;
+    background-color: #fff;
+    pointer-events: auto;
+    border-radius: .375rem;
+    border: 1px solid #e4e4e4;
+    z-index: 1;
+}
+.rc-filter-area .date_wrap .date-container .date-pick {
+    display: inline-block;
+    float: left;
+    width: 61%;
+    margin-right: 3px;
+}
+.rc-filter-area .date_wrap input[type="text"] {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 13px;
+    font-size: 13px;
+    cursor: pointer;
+}
+.rc-filter-area .date_wrap input[type="text"]:focus {
+    border: 1px solid #000;
+    outline: 0;
+}
+.rc-filter-area .date_wrap .date-container .time-area {
+    display: table-cell;
+    width: 34%;
+    font-size: 13px;
+}
+.rc-filter-area .date_wrap .date-container .time-area select {height: 40px;}
+.rc-filter-area .date_wrap .date-container .time-area select:focus {
+    border: 1px solid #000;
+    outline: 0;
+}
+.rc-filter-area .search_btn {
+    height: 2.7rem;
+    line-height: 2.7rem;
+    text-align: center;
+    background-color: #037C6E;
+    border-radius: 3px;
+    font-weight: 600;
+    margin: 13px 0;
+}
+.rc-filter-area .search_btn a {
+    display: block;
+    color: #fff;
+}
+.rc-filter-area .filter_check .f_con {
+    padding-bottom: 7px;
+    border-bottom: 1px solid #ededed;
+}
+.rc-filter-area .total-area {
+    text-align: right;
+    /*border-top: 1px solid #cacaca;*/
+    padding: 12px 2px;
+}
+.rc-filter-area .total-area .text {
+    display: block;
+    font-size: 1rem;
+    margin-top: 3px;
+    color: #DE1724;
+    font-weight: 800;
+}
+.rc-filter-area .total-area .money {
+    font-size: .99rem;
+    font-family: "NotoSans";
+}
+.rc-filter-area .total-area .money strong {
+    font-size: 1.66rem;
+    font-weight: 700;
+    font-family: "Roboto";
+}
+.rc-filter-area .total-area A {
+    color: #ffffff;
+    background-color: #0f0f0f;
+    padding:2px 7px 2px 7px;
+}
+.rc-filter-area .purchasing-info .purchase-btn-group .comm-btn.gray {
+    width: 38%;
+    height: 55px;
+    line-height: 51px;
+    font-size: 1.0rem;
+    font-weight: bold;
+}
+.rc-filter-area .purchasing-info .purchase-btn-group .comm-btn.gray.width100 {width: 100%;}
+.rc-filter-area .purchasing-info .purchase-btn-group .comm-btn.red {
+    width: 59%;
+    height: 55px;
+    background-color: #DE1724;
+    font-size: 1.0rem;
+    line-height: 51px;
+}
+
+
+/* section - option */
+.rc-detail-area ._info-title,
+.rc-info-title {
+    padding:20px 0;
+    font-size:22px;
+    font-family: "NotoSans B";
+    /*margin-top: 60px;*/
+}
+.rc-detail-info .sub-section {
+    width:100%;
+    display: inline-block;
+    zoom:1;
+}
+.rc-detail-info .sub-section .line_seperator {
+    border-top:1px solid #e8e8e8;
+    width:100%;
+    padding-bottom:20px;
+    margin:0;
+}
+.rc-detail-info .sub-section .text-info-typeA {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.rc-detail-info .sub-section-left {
+    width:220px;
+    float:left;
+}
+.rc-detail-info .sub-section-left .sub-section-header {
+    width:100%;
+    font-size: 18px;
+    font-weight:200;
+    margin-bottom:10px;
+    margin-top:0;
+}
+.rc-detail-info .sub-section-right {
+    margin-left:280px;
+}
+.rc-detail-info .sub-section-right .collapsed p {
+    font-size:14px;
+    margin-bottom:20px;
+}
+.rc-detail-info .sub-section-right .text-info-typeA ul li {
+    width: 22%;
+    float: left;
+    height: 20px;
+    margin: 0 9px 6px 0;
+    padding: 2px 2px;
+    border: 1px solid #757575;
+    border-radius: 2px;
+    color: #757575;
+    text-align: center;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: -.7px;
+}
+.rc-detail-info .sub-section-right .text-info-typeA ul li.on {
+    color: #DE1724;
+    border: 1px solid #DE1724;
+}
+.rc-detail-info .sub-section-right .collapsed .FavFeatures__List p {
+    font-size: 13px;
+}
+.rc-detail-info .sub-section-right .FavFeatures__List {
+    width:91%;
+}
+.rc-detail-info .sub-section-right .FavFeatures__List li {
+    width:16%;
+    display: inline-block;
+    text-align: center;
+}
+.rc-detail-info .sub-section-right .FavFeatures__List li img {
+    width:40px;
+}
+.sub-section-right .show-more {
+    margin-bottom: 10px;
+}
+.show-more a {
+    font-size:14px;
+    color:#e8202e;
+    margin:20px 0 30px;
+    text-align: left;
+    cursor: pointer;
+}
+.sub-section-right .showAll p {
+    font-size:14px;
+}
+
+/* section - option(전기차 옵) */
+.rent-app .icon {
+    width: 130px;
+}
+.rent-app .icon img {
+    width: 100px;
+}
+.rent-app .icon,
+.rent-app .text {
+    display: table-cell;
+    vertical-align: middle;
+}
+.rent-app .text {
+    display: table-cell;
+    vertical-align: middle;
+}
+.rent-app .text .app {
+    margin-top: 10px;
+}
+.rent-app .text .app span {
+    font-size: 16px;
+    color: #666;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 30px;
+}
+.rent-app .text .app img {
+    height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    position: relative;
+    top:-2px;
+}
+dl.typeC {
+    margin-bottom: 10px;
+}
+dl.typeC dd a {
+    color: #999;
+}
+dl.typeC dt {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 24px;
+    color: #333;
+    padding-bottom: 5px;
+}
+
+
+.rc_map {
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+}
+.map-area {
+    width: 550px;
+}
+.map-area.rent {
+    display: inline-block;
+    background: #f2f2f2;
+    /*border: 1px solid #e1e3e4;*/
+    width: 60%;
+    height: 450px;
+    top: 0;
+    bottom: 0;
+}
+.map-text-info {
+    position: absolute;
+    display: inline-block;
+    width: 34%;
+    height: 408px;
+    padding: 20px;
+    border: 1px solid #e1e3e4;
+    font-family: "NotoSans";
+}
+.map-text-info h3 {
+    font-size: 25px;
+    margin: 15px 0 25px;
+}
+.map-text-info dl {
+    margin-top: 15px;
+}
+.map-text-info dl.half {
+    display: inline-block;
+    width: 49%;
+}
+.map-text-info dt {
+    font-size: 13px;
+    color: #b9b9b9;
+    font-weight: normal;
+}
+.map-text-info .rc_bus dt {
+    background-color: #DE1724;
+    color: #fff;
+    padding: 0 5px;
+}
+.map-text-info dd {
+    font-size: 14px;
+    margin-top: 5px;
+}
+.map-text-info .rc_bus dd {
+    width: 200px;
+    font-size: 15px;
+    color: #000;
+}
+.map-text-info dl:nth-child(2) dd {
+    width: 265px;
+}
+.map-text-info .rc_bus {
+    border-bottom: 2px dotted #ebebeb;
+    padding-bottom: 16px;
+}
+
+
+/* section - QnA */
+.rc-detail-con section._review {
+    margin-top: 0;
+}
+.rc_qna {
+    border:1px solid #ccc;
+    padding:20px 30px;
+}
+.prod-inquiry-list__emphasis li {
+    line-height: 20px;
+    font-size:13px;
+    font-family: "NotoSans";
+}
+.prod-inquiry-item {
+    border-top:0 none;
+    position:relative;
+}
+.prod-inquiry-item__label {
+    position:absolute;
+    top:20px;
+    left:1em;
+    font-style: normal;
+    display: inline-block;
+    padding:4px;
+    font-size:11px;
+    color:#fff;
+    background-color:#757575;
+}
+.prod-inquiry-item .prod-inquiry-item__wrap {
+    padding:20px 10px 20px 3.5em;
+}
+.prod-inquiry-item .prod-inquiry-item__wrap .prod-inquiry-item__author {
+    display: block;
+    font-size:12px;
+}
+.prod-inquiry-item .prod-inquiry-item__wrap .prod-inquiry-item__content {
+    margin-top:10px;
+    font-size:13px;
+}
+.prod-inquiry-item .prod-inquiry-item__wrap .prod-inquiry-item__time {
+    position: absolute;
+    top:20px;
+    right:15px;
+    color:#303030;
+    font-size:12px;
+}
+.prod-inquiry-item .prod-inquiry-item__reply {
+    position: relative;
+    background-color:#fafafa;
+    border-top:1px solid #ddd;
+}
+.prod-inquiry-item .prod-inquiry-item__reply .ic {
+    position: absolute;
+    top:13px;
+    left:1em;
+    display: inline-block;
+}
+.prod-inquiry-item .prod-inquiry-item__reply .ic img {
+    width:14px;
+    height:14px;
+}
+.prod-inquiry-item .prod-inquiry-item__reply__wrap {
+    padding:20px 10px 20px 5em;
+}
+.prod-inquiry-item .prod-inquiry-item__reply__author {
+    display: block;
+    font-size:13px;
+}
+.prod-inquiry-item .prod-inquiry-item__reply__content {
+    font-size:13px;
+    margin-top:10px;
+}
+.prod-inquiry-item .prod-inquiry-item__reply__time {
+    position:absolute;
+    top:20px;
+    right:15px;
+    color: #303030;
+    font-size:12px;
+}
+.prod-inquiry-item .prod-inquiry-item__reply__label {
+    position:absolute;
+    top:20px;
+    left:3.3em;
+    display: inline-block;
+    font-style: normal;
+    padding:4px;
+    font-size:11px;
+    /*letter-spacing: 1px;*/
+    color:#fff;
+    background-color:#346aff;
+}
+.rc_qna .pageNum {
+    margin-top:35px;
+    text-align: center;
+}
+.rc_qna .pageNum_prev {
+    width:31px;
+    height:31px;
+    display: inline-block;
+    vertical-align: middle;
+    padding:0;
+    margin-right:5px;
+    border:none;
+    outline: none;
+    cursor: auto;
+}
+.rc_qna .pageNum_next {
+    width:31px;
+    height:31px;
+    border:none;
+    outline: none;
+    display: inline-block;
+    vertical-align: middle;
+    padding:0;
+    margin-left:5px;
+    cursor: auto;
+}
+.rc_qna .pageNum_num {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0;
+    outline: none; border:none; width:31px; height:31px;
+    text-align: center; font-size:12px; color:#555; font-weight:bold; background-color:#fff;
+}
+.rc_qna .pageNum_num.active {
+    line-height:29px;
+    border:1px solid #346aff;
+    color:#345aff;
+}
+
+
+/* rc-recommend */
+.recommend-group .product-slide-item .swiper-button-prev,
+.recommend-group .product-slide-item .swiper-button-next {
+    top: calc(100% - 215px);
+}
+.recommend-group {
+    margin-top: 60px;
+}
+#rc-Recommend {
+    width:1200px;
+    overflow: hidden;
+    color:#2e2e2e;
+}
+#rc-Recommend ul li {
+    width:250px;
+    display: inline-block;
+    /*margin-left:50px;*/
+}
+.recommend_list {
+    display: inline-block;
+    color:#2e2e2e;
+    margin:1.1rem 1rem 0 0;
+}
+.recommendText {
+    width:250px;
+    margin-top:5px;
+    padding:0 10px;
+}
+.recommendText .rcTitle {
+    font-size: 18px;
+    /*letter-spacing: -.3px;*/
+    color:#2e2e2e;
+    font-family: "NotoSans M";
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.recommendText .rcSub {
+    width:250px;
+    line-height:18px;
+    font-size:14px;
+    color:#979797;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: "NotoSans";
+}
+.recommendText .rcPrice {
+    margin-top:5px;
+    font-size:21px;
+    font-weight:700;
+    /*letter-spacing: -.5px;*/
+    text-align: right;
+    color:#2e2e2e;
+    font-family: "Roboto";
+}
+.recommendText .rcPrice span {
+    font-size:15px;
+    font-weight:400;
+}
+.recommendPhoto {
+    width:250px;
+    height:250px;
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #dfdfdf;
+    padding: 10px;
+}
+.recommendPhoto img {
+    position: relative;
+    width:100%;
+}
+#product_slideItem .swiper-slide {
+    display: inline-block;
+    vertical-align: top;
+    width:280px;
+    margin-right:13px;
+}
+.rc-filter-area .f_con .ui-datepicker-trigger {
+    display: none;
+}
+.filter_jejupay {
+    overflow: hidden;
+    position: relative;
+    margin-top: 5px;
+}
+.filter_jejupay .pay-check {
+    display: block;
+    height: 45px;
+    padding-left: 11px;
+    border: 1px solid #ffcc00;
+    color: #171717;
+    background-color: #ffcc00;
+    font-family: "Roboto";
+    font-size: 17px;
+    text-align: left;
+    line-height: 47px;
+}
+.filter_jejupay .pay-check span {font-weight: 800;}
+.filter_jejupay .pay-check input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+.filter_jejupay .pay-check input[type="checkbox"] + label {
+    display: inline-block;
+    position: relative;
+    padding-left: 54px;
+    line-height: 31px;
+    cursor: pointer;
+}
+.filter_jejupay .pay-check input[type="checkbox"]:checked + label:before {
+    top: 4px;
+    left: 14px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+}
+.filter_jejupay .pay-check input[type="checkbox"]:checked + label:before {
+    color: #000;
+    font-size: 1.0rem;
+    content: "\2714";
+}
+.filter_jejupay .pay-check input[type="checkbox"] + label:before {
+    position: absolute;
+    top: 4px;
+    left: 14px;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #000;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #fff;
+    line-height: 15px;
+    text-align: center;
+    content: '';
+}
+.filter_jejupay .pay-check img {
+    position: relative;
+    bottom: 2px;
+    width: auto;
+    height: auto;
+    padding-right: 5px;
+}
+
+
+/* 할인쿠폰 보기(filter_coupon-view) */
+.filter_coupon-view {
+    overflow: hidden;
+    position: relative;
+    margin-top: 5px;
+}
+.filter_coupon-view .coupon-toggle {
+    display: block;
+    height: 45px;
+    padding-left: 11px;
+    border: 1px solid #202020;
+    color: #fff;
+    background-color: #202020;
+    font-family: "Roboto";
+    font-size: 17px;
+    text-align: left;
+    line-height: 47px;
+}
+.filter_coupon-view .coupon-toggle span {font-weight: 800;}
+.filter_coupon-view .coupon-toggle input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+.filter_coupon-view .coupon-toggle input[type="checkbox"] + label {
+    display: inline-block;
+    position: relative;
+    padding-left: 54px;
+    line-height: 31px;
+    cursor: pointer;
+}
+.filter_coupon-view .coupon-toggle input[type="checkbox"]:checked + label:before {
+    top: 4px;
+    left: 14px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+}
+.filter_coupon-view .coupon-toggle input[type="checkbox"]:checked + label:before {
+    color: #000;
+    font-size: 1.0rem;
+    content: "\2714";
+}
+.filter_coupon-view .coupon-toggle input[type="checkbox"] + label:before {
+    position: absolute;
+    top: 4px;
+    left: 14px;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #000;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #fff;
+    line-height: 15px;
+    text-align: center;
+    content: '';
+}
+.filter_coupon-view .coupon-toggle img {
+    position: relative;
+    bottom: 2px;
+    width: auto;
+    height: auto;
+    padding-right: 5px;
+}
+
+
+/* 자차보험 안내 레이어팝업 */
+.comm-layer-popup_fixed .content-wrap {
+    position: fixed;
+    width: 45%;
+    height: 800px;
+    padding: 20px;
+    margin-top: -400px;
+    margin-left: -22.5%;
+    text-align: center;
+}
+.comm-layer-popup_fixed .content-wrap .content {position: relative;}
+.comm-layer-popup_fixed .content-wrap .close {
+    position: absolute;
+    right: 10px;
+}
+.comm-layer-popup_fixed .content-wrap .close img {height: 27px;}
+.car_insurance .info-head {
+    padding: 19px 0 30px 0;
+    color: #394352;
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+}
+.car_insurance .info-head span { color:#828387;}
+.car_insurance .free-wrap { width:100%; }
+.car_insurance table {
+    width:100%;
+    border-spacing:0;
+    border-collapse:collapse;
+    font-family: "Roboto M"
+}
+.car_insurance table th {
+    padding: 10px;
+    color: #fff;
+    background-color: #f61346;
+}
+.car_insurance table td:first-child {
+    padding: 10px 20px;
+    background-color:#f1f4f9;
+    border-left: none;
+}
+.car_insurance table td:last-child {border-right: none;}
+.car_insurance table td {
+    height: 44px;
+    padding: 10px 20px;
+    border:1px solid #ced0cf;
+}
+.car_insurance table .aside_tit {font-weight: bold;}
+.car_insurance .event-note {
+    padding: 40px 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    font-family: "Roboto";
+    text-align: left;
+}
+.car_insurance .event-note ul li {
+    padding:2px 2px 2px 10px;
+    margin:5px 0 0px 15px;
+    font-size:10.8pt;
+}
+.car_insurance .event-note ul li span {padding-right:5px;}
+.car_insurance .event-note ul li .tit {font-weight: bold;}
+.free-wrap .character img {
+    z-index: 1;
+    position: absolute;
+    top: 679px;
+    right: 15px;
+}
+.car_insurance .event-note ul li:last-child {
+    padding-left:24px;
+    color: #3d3d3d;
+}
+
+
+/* 구매 전 확인 필수 레이어팝업 */
+#purchase_popup .content-wrap {
+    display: block;
+    width: 900px;
+    height: 780px;
+    padding: 0;
+    margin-top: -390px;
+    margin-left: -450px;
+    font-family: "Roboto";
+}
+#purchase_popup .content-wrap .content {position: initial;}
+.comm-layer-popup_fixed .head {
+    height: 63px;
+    padding: 0 20px;
+    border-radius: 0;
+    background-color: #3d8afa;
+    line-height: 66px;
+}
+.comm-layer-popup_fixed .head .title {
+    padding-right: 0;
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: normal;
+}
+.comm-layer-popup_fixed .content-wrap .close {
+    position: absolute;
+    right: 25px;
+}
+.comm-layer-popup_fixed .content-wrap .close img {height: 100%;}
+#purchase_popup .main {
+    width: 844px;
+    height: 570px;
+}
+.comm-layer-popup_fixed .list-disc {padding: 0;}
+#purchase_popup .list-disc.type-B li {
+    list-style: none;
+    position: relative;
+    margin: 10px 0 5px;
+    color: #6e6e6e;
+    font-size: 0.9rem;
+    line-height: 29px;
+}
+#purchase_popup .list-disc.type-B li:first-of-type {margin: 0 0 5px;}
+.comm-layer-popup_fixed .list-disc.type-B li .title {
+    margin: 20px 0 5px 0;
+    color: #627084;
+    font-size: 0.9rem;
+}
+.comm-layer-popup_fixed .list-disc.type-B li > div {
+    font-size: 0.85rem;
+    line-height: 22px;
+}
+.comm-layer-popup_fixed .list-disc.type-B li > div > p {
+    display: inline-block;
+    line-height: 25px;
+}
+.comm-layer-popup_fixed .list-disc.type-B li > div > p + div {
+    display: inline-block;
+    color: #e8202e;
+    font-weight: bold;
+}
+.comm-layer-popup_fixed .type-body3 {
+    display: block;
+    padding: 20px;
+    margin-top: 20px;
+    color: #6e6e6e;
+    border: 1px solid #ededed;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    font-size: 0.9rem;
+}
+.comm-layer-popup_fixed .type-body3 p {
+    color: #6e6e6e;
+    text-align: left;
+}
+.comm-layer-popup_fixed .type-body3 p:first-child {margin-top: 0}
+.comm-layer-popup_fixed .type-body3 p:last-child {color: #000;}
+#purchase_popup .purchase-btn-group {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    bottom: 25px;
+    margin: 0;
+    border-top: 0;
+    text-align: center;
+}
+.comm-layer-popup_fixed .purchase-btn-group .comm-btn {
+    width: 140px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #000;
+    font-size: 1.05rem;
+    height: 55px;
+    line-height: 55px;
+    font-family: "Roboto";
+    font-weight: normal;
+}
+
+
+/* -- scrollbar css -- */
+#purchase_popup .main::-webkit-scrollbar {width: 3px;}
+#purchase_popup .main::-webkit-scrollbar-thumb {background-color: #abaaaa;}
+#purchase_popup .main::-webkit-scrollbar-track {background-color: #d3d3d3;}
+
+
+/* -- 1101 현대캐피탈 추가 -- */
+.rc-detail-area .hd-capital {
+    padding: 20px 30px;
+    color: #fff;
+    border-radius: 12px;
+    background-color: #2696f4;
+    font-family: "Roboto";
+}
+.rc-detail-area .hd-capital h2 {
+    color: #fff;
+    font-size: 1.0rem;
+}
+.rc-detail-area .hd-capital li {line-height: 1.8;}
+.rc-detail-area .hd-capital .ev-select {
+    display: flex;
+    justify-content: end;
+}
+.ev-select input[type="radio"]:checked + label:before {background-position: 0 -15px;}
+.ev-select input[type="radio"] + label:before {
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    padding-right: 10px;
+    background: url("../../images/web/rent/square.png") no-repeat;
+    background-size: 15px auto;
+    content: "";
+}
+.ev-select input[type="radio"] {
+    position: absolute;
+    left: -1000px;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    clip: rect(0 0 0 0);
+}
+.rc-detail-area .hd-capital .ev-select label {
+    margin: 15px 10px 0 15px;
+    color: #95eaff;
+    border-radius: 80px;
+    font-size: 0.9rem;
+}
+.ev-select input[type="radio"].application + label {color: #fff;}
+.ev-select input[type="radio"] + label {
+    display: block;
+    height: 30px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-family: "Roboto";
+    letter-spacing: -.9px;
+    cursor: pointer;
+}
+.rc-detail-area .hd-capital .hd-article-wrap {padding-top: 15px;}
+.rc-detail-area .hd-capital ul li {
+    display: inline-block;
+    font-size: 0.9rem;
+}
+.rc-detail-area .hd-capital .application-wrap {
+    position: relative;
+    width: 725px;
+    height: 740px;
+    margin-top: -370px;
+    margin-left: -362.5px;
+    border-radius: 8px;
+    background: #fff;
+}
+
+
+/* -- 현대 캐피탈 EV 충전카드 이용안내 -- */
+#application_popup .content-wrap {
+    width: 562px;
+    height: 600px;
+    padding: 0;
+    margin-top: -300px;
+    margin-left: -281px;
+    font-family: "Roboto";
+}
+#application_popup .main {font-weight: bold;}
+.comm-layer-popup_fixed .main {
+    overflow: auto;
+    padding: 25px;
+    color: #627084;
+    font-size: 0.95rem;
+    text-align: left;
+    line-height: 30px;
+}
+#application_popup .list-disc.type-B li:first-of-type {margin-top: 5px;}
+#application_popup .list-disc.type-B li:last-of-type {margin: 15px 0;}
+#application_popup .list-disc.type-B li {
+    padding-left: 0;
+    margin: 15px 0 5px;
+    color: #6e6e6e;
+    background: none;
+    font-size: 0.9rem;
+    font-weight: normal;
+    line-height: 1.5;
+}
+#application_popup .purchase-btn-group {
+    display: flex;
+    justify-content: center;
+    padding-top: 0;
+}
+
+
+/* 렌터카 초기랜딩페이지 - 인트로 */
+/* key-visual */
+/* line-banner */
+#lineBanner {
+    background-color: #e4eff5;
+    display: block;
+}
+.line-banner {
+    padding: 10px 15px;
+    margin: 0;
+    color: #000;
+    font-family: "Roboto";
+    text-align: left;
+
+}
+.line-banner.day-special {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 1200px;
+    height: 35px;
+    margin: 0 auto;
+    line-height: 35px;
+}
+.line-banner .promo-label {
+    width: 55px;
+    height: 18px;
+    line-height: 19px;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    border-radius: 28px;
+}
+.line-banner em {
+    width: auto;
+    padding: 5px 0;
+    font-size: 0.8rem;
+    font-weight: bold;
+    line-height: 1.5;
+}
+.key-visual {
+    width: 1200px;
+    margin: 0 auto;
+}
+.banner_grid-wrapper {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 30px;
+    justify-content: space-evenly;
+}
+.banner-main-title .banner-heading-title {
+    color: #333;
+    font-size: 1.65rem;
+    font-weight: normal;
+    font-family: "Notosans L";
+    line-height: 38px;
+    letter-spacing: -0.05rem;
+}
+.banner-main-title .banner-heading-title > span {
+    display: block;
+    color: #e8202e;
+    font-weight: 600;
+    letter-spacing: 0.05px;
+}
+.banner_image {
+    display: flex;
+    justify-content: flex-end;
+}
+.banner_text .banner-text {
+    position: relative;
+    padding-top: 15px;
+    color: #666666;
+    font-size: 1.0rem;
+    font-family: "Notosans L";
+}
+
+
+/* index-box-search .렌터카 예약네비게이션 */
+.index-box-search {
+    position: relative;
+    width: 100%;
+}
+.web-search-area {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.web-search-area .form-area {height: 217px;}
+.index-box-search .tit-area {
+    height: 0;
+    padding-top: 20px;
+    margin: 0 0 45px 35px;
+    color: #1c1c1c;
+    font-size: 1.2rem;
+    font-family: "NotoSans M";
+}
+.index-box-search .search-area {height: 190px;}
+.index-box-search .search-area.rent {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 30px;
+}
+.index-box-search .search-area.rent .back-bg {
+    display: flex;
+    align-items: center;
+    height: 127px;
+    border-radius: 12px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.index-box-search .search-area.rent .back-bg .date--left {
+    display: flex;
+    align-items: baseline;
+    margin-left: 25px;
+    line-height: 0;
+}
+
+.index-box-search .search-area .area .value-text {
+    position: absolute;
+    font-size: 14px;
+}
+.index-box-search .search-area .time-picker .value-text input {
+    width: 85px;
+    padding: 0 6px;
+    color: #000;
+    font-family: "Roboto";
+    cursor: pointer;
+}
+.index-box-search .search-area .time-picker .value-text input:focus {
+    border: none;
+    outline: 0;
+}
+.index-box-search .search-area.rent .back-bg .align-self-center {
+    padding: 5px;
+    border: 1px solid #DE1724;
+    border-radius: 50px;
+    text-align: center;
+}
+.align-self-center .box_text {
+    position: relative;
+    bottom: 4px;
+    width: 117px;
+}
+.align-self-center .txt-rent-period > span {
+    display: block;
+    color: #DE1724;
+    font-size: 0.9rem;
+    line-height: 16px;
+}
+.index-box-search .search-area.rent .back-bg .date--right {
+    display: flex;
+    align-items: baseline;
+    margin-left: 24px;
+}
+.web-search-area .search-area .area > dl {
+    position: relative;
+    display: inline-block;
+    height: 0;
+}
+.form-area .search-area.rent .area dl > dt {
+    position: absolute;
+    top: -30px;
+    padding: 0 20px;
+    color: #000000;
+    font-size: 0.8rem;
+    font-family: Roboto;
+}
+.form-area .search-area .area dl dt .cn-icon {
+    width: 70px;
+    height: 15px;
+    background: url("../../images/web/rent/cn-icon.png") no-repeat;
+    line-height: 15px;
+}
+.form-area .search-area .area dl dt .date-icon {
+    width: 60px;
+    height: 12px;
+    background: url("../../images/web/air/date-icon.png") no-repeat;
+    line-height: 12px;
+}
+.form-area .search-area .area dl dt .IconSide {float: right;}
+.form-area .search-area .area dl dd {min-width: 130px;}
+.index-box-search .search-area .area .value-text input {
+    position: relative;
+    bottom: 3px;
+    font-weight: bold;
+}
+.index-box-search .search-area .area .value-text input,
+.index-box-search .search-area .area .value-text select {
+    width: 140px;
+    height: auto;
+    padding: 0 22px;
+    color: #000;
+    border: none;
+    font-size: 1.1rem;
+    font-family: "Roboto";
+    line-height: 0;
+    cursor: pointer;
+}
+
+
+/* select-back-bg .보험선택 */
+.index-box-search .search-area.rent .select-back-bg {
+    display: inline-flex;
+    align-items: center;
+}
+.form-area .search-area .area.select .btnPack .insurance_btn {
+    position: absolute;
+    top: 53px;
+    right: 237px;
+}
+.form-area .search-area .area.select .btnPack .insurance_btn a {
+    color: #000;
+    font-size: 0.8rem;
+    font-family: "NotoSans R";
+    text-decoration: underline;
+}
+.detailR .btnPack .insurance_btn a::before {
+    position: relative;
+    bottom: 1px;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+    background-image: url("../../images/web/rent/info.png");
+    vertical-align: middle;
+    content: '';
+}
+.form-area .search-area .area.select dl dd{
+    display: flex;
+    flex-wrap: wrap;
+}
+.web-search-area .search-area .area.select > dl {
+    position: relative;
+    bottom: 48px;
+    width: 300px;
+}
+.area.select .btn-category {
+    flex: 0 46.6%;
+    padding: 4px 5px;
+}
+.area.select .btn-category input {
+    display: none;
+    position: absolute;
+}
+.area.select .btn-category input:checked+label {
+    color: #DE1724;
+    border-color: #DE1724;
+    background-color: #fff;
+}
+.area.select .btn-category label {
+    position: relative;
+    bottom: 3px;
+    display: block;
+    height: 45px;
+    border: 1px solid #fff;
+    border-radius: 12px;
+    background: #fff;
+    font-size: 13px;
+    text-align: center;
+    line-height: 45px;
+    box-sizing: border-box;
+    font-family: "Roboto";
+    cursor: pointer;
+}
+
+
+/* 최저가 검색 --- btn */
+.web-search-area .search-area .area.search {
+    position: relative;
+    top: 30px;
+}
+.web-search-area .search-area .area.search .btn.red {
+    display: inline-block;
+    width: 180px;
+    height: 98px;
+    color: #fff;
+    border-radius: 12px;
+    background-color: #e8202e;
+    line-height: 97px;
+}
+.search-area .search .btn .MagGlass {
+    position: relative;
+    left: 36px;
+    background: url("../../images/web/air/MagGlass.png") no-repeat;
+    background-position: 3px 4px;
+}
+.search-area .search .btn.red .TicSec {
+    padding-left: 30px;
+    font-size: 0.95rem;
+    font-family: "NotoSans R";
+}
+
+
+/* time-picker */
+.form-area .search-area .time-picker dl dd{
+    display: flex;
+    align-items: center;
+    margin-left: 2px;
+}
+.form-area .search-area .time-picker .hour-icon {
+    position: relative;
+    top: 1px;
+    width: 13px;
+    height: 15px;
+    background: url("../../images/web/rent/hour.png") no-repeat;
+}
+.index-box-search .search-area .time-picker .value-text {display: flex;}
+.index-box-search .search-area .date--right .time-picker .value-text input {padding: 0 25px 0 8px;}
+
+
+/* story-panels-new */
+.content__banner {width: 100%;}
+.content__banner-inner {
+    min-width: 1980px;
+    height: 160px;
+    padding-bottom: 140px;
+    margin-left: -80px;
+    text-align: center;
+    background: url("../../images/web/rent/rent-sub-visual.webp") no-repeat;
+    background-position: center;
+}
+.content__banner-inner .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 75px;
+}
+.row .hidden-box {
+    flex: 0 0 41%;
+    max-width: 41%;
+}
+.row .section-box {
+    flex: 0 0 55%;
+    max-width: 55%;
+}
+.section-box .ico1 {
+    position: relative;
+    top: 112px;
+    flex: 0 0 20%;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 15px;
+}
+.about-reason img {margin-top: 7px;}
+.about-reason .txt1 {
+    margin-top: 8px;
+    color: #fff;
+    font-family: "Roboto";
+    line-height: 28px;
+}
+.about-reason .txt1 .txt1-1 {font-size: 1rem;}
+.about-reason .txt1 .txt1-2 {
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+.section-box span {
+    position: relative;
+    top: 143px;
+    height: 71px;
+    border-right: 1px solid #fff;
+}
+
+
+/* rent-category-best */
+.rent-category-best h2 {
+    display: inline-block;
+    padding: 58px 0 30px;
+    font-size: 26px;
+}
+.rent-category-best h2 .title {font-weight: 200;}
+.swiper-slide-duplicate {
+    overflow: hidden;
+    flex-direction: column;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+.suggestion {
+    width: 292px;
+    height: 192px;
+    text-align: left;
+}
+.suggestion:last-of-type {margin-right: 0;}
+.suggestion.num1 {background: url("../../images/web/rent/suggestion_1.png") no-repeat;}
+.suggestion.num2 {background: url("../../images/web/rent/suggestion_2.png") no-repeat;}
+.suggestion.num3 {background: url("../../images/web/rent/suggestion_3.png") no-repeat;}
+.suggestion.num4 {background: url("../../images/web/rent/suggestion_4.png") no-repeat;}
+.suggestion.num5 {background: url("../../images/web/rent/suggestion_5.png") no-repeat;}
+.suggestion.num6 {background: url("../../images/web/rent/suggestion_6.png") no-repeat;}
+.suggestion.num7 {background: url("../../images/web/rent/suggestion_7.png") no-repeat;}
+.suggestion.num8 {background: url("../../images/web/rent/suggestion_8.png") no-repeat;}
+.suggestion.num9 {background: url("../../images/web/rent/suggestion_9.png") no-repeat;}
+.suggestion.num10 {background: url("../../images/web/rent/suggestion_10.png") no-repeat;}
+.suggestion .car-info {
+    padding: 27px;
+    font-family: "Roboto";
+}
+.suggestion .car-info .car-name {
+    display: block;
+    width: 100%;
+    color: #202020;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+.suggestion .car-info .info {
+    color: #6e6e6e;
+    font-size: 0.85rem;
+    line-height: 2;
+    letter-spacing: -0.5px;
+}
+
+
+/* slideItem_arrow */
+.swiper-button-prev, .swiper-button-next {
+    z-index: 4;
+    top: calc(50% - 20px);
+}
+.swiper-button-prev {
+    left: -1px;
+    width: 40px;
+    height: 40px;
+    background-image: url("../../images/web/r_main/page_prev.png");
+    background-size: 40px;
+}
+.swiper-button-next {
+    right: 8px;
+    width: 40px;
+    height: 40px;
+    background-image: url("../../images/web/r_main/page_next.png");
+    background-size: 40px;
+}
+
+
+/* customer-service */
+.customer-service {margin-top: 65px;}
+.customer-service .inner_interval {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+}
+.customer-service dl {
+    width: 580px;
+    margin-right: 30px;
+}
+.inner_interval .car-option {
+    position: relative;
+    height: 285px;
+}
+.inner_interval .car-option .img {
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px 12px 0 0;
+}
+.inner_interval .car-option .service-desc {
+    padding: 20px;
+    color: #6e6e6e;
+    border: 1px solid #ddd;
+    background: #fff;
+    text-align: left;
+    font-family: "Roboto";
+    border-radius: 0 0 12px 12px;
+}
+.service-desc .title {
+    display: block;
+    margin-bottom: 8px;
+    color: #455873;
+    font-size: 1.05rem;
+    font-weight: bold;
+}
+.service-desc .sub-title {
+    display: block;
+    font-size: 0.85rem;
+    line-height: 20px;
+    vertical-align: top;
+    color: #6e6e6e;
+    text-align: left;
+    height: 43px;
+}
+.service-desc img.shortcuts {
+    float: right;
+    position: relative;
+    bottom: 37px;
+    padding: 10px 0;
+}
+.car-option .service-desc.jejupay{
+    background-color: #ffcc00;
+    height: 177px;
+    border: none;
+    border-radius: 12px;
+}
+.car-option .img.jejupay {
+    float: left;
+    width: 130px;
+    padding: 34px 32px 26px 122px;
+}
+.car-option .service-desc.jejupay .title {color: #000;}
+.car-option .service-desc.jejupay .sub-title {color: #000;}
+.service-desc.jejupay .title, .service-desc.jejupay .sub-title {
+    position: relative;
+    top: 53px;
+}
+
+/*스켈레톤 처리 김재성*/
+.skeleton_loading {
+    border-radius: 12px;
+    background: linear-gradient(120deg, #f8f8f8 30%, #e8e8e8 38%, #e8e8e8 40%, #f8f8f8 48%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: load 5s;
+}
+@keyframes load {
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+
+/* 좋은 렌터카 상품을 찾는 방법 */
+.rent-recommand-choice {
+    background-color: #f8f8f8;
+    font-family: "Roboto";
+}
+.rent-recommand-choice .inner {padding: 30px 0 67px;}
+.rent-recommand-choice h2{
+    padding: 30px 0;
+    font-size: 26px;
+    font-weight: normal;
+    font-family: "Notosans";
+}
+.rent-recommand-choice dt{
+    height: 70px;
+    color: #455873;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    font-family: "Notosans";
+}
+.rent-recommand-choice dd{
+    color: #6e6e6e;
+    font-size: 0.9rem;
+}
+.inner-paragraph {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin: 0 auto;
+}
+.inner-paragraph .paragraph--grid {
+    display: flex;
+    gap: 20px;
+    height: 150px;
+    padding: 25px 30px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #fff;
+}
+.paragraph--grid > img {
+    position: relative;
+    top: 9px;
+}
+.paragraph--grid .paragraph-ico1 {
+    width: 41px;
+    height: 37px;
+}
+.paragraph--grid .paragraph-ico2 {
+    width: 33px;
+    height: 33px;
+}
+.paragraph--grid .paragraph-ico3 {
+    width: 31px;
+    height: 30px;
+}
+.paragraph--grid .paragraph-ico4 {
+    width: 39px;
+    height: 41px;
+}
+.paragraph--grid .paragraph-ico5 {
+     width: 47px;
+     height: 38px;
+ }
+.paragraph--grid .paragraph-ico6 {
+    width: 33px;
+    height: 37px;
+}
+
+
+/* FAQ */
+.faq-accordion h2 {
+    padding: 59px 0 31px;
+    font-size: 26px;
+    font-weight: normal;
+    font-family: "Notosans";
+}
+.tabPanel {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    margin-bottom: 60px;
+}
+.tabPanel .guide-divide {width: 50%;}
+.guide-divide:nth-of-type(2) .default-accordion .tbOption li.memoWrap {border-right: none;}
+.default-accordion {
+    border-top: 2px solid #000;
+    border-bottom: none;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    font-family: "Roboto";
+}
+.default-accordion dt {
+    border-bottom: 1px solid #e4e4e5;
+    cursor: pointer;
+}
+.default-accordion dd {
+    display: none;
+    padding: 18px 19px;
+    color: #6e6e6e;
+    border-bottom: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+.default-accordion .tbOption {
+    display: table;
+    width: 100%;
+}
+.default-accordion .tbOption > li {
+    display: table-cell;
+    padding: 18px 14px;
+    vertical-align: middle;
+}
+.default-accordion .tbOption li.number {
+    width: 10%;
+    border-right: 1px solid #f3f3f3;
+    vertical-align: middle;
+}
+.default-accordion .tbOption li.memoWrap {
+    border-right: 1px solid #f3f3f3;
+    text-align: left;
+}
+.default-accordion .memoWrap.open .memo:before {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -mz-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    content: "";
+    position: relative;
+    top: 3px;
+}
+.default-accordion .memoWrap .memo:before {
+    display: inline-block;
+    position: relative;
+    top: -2px;
+    left: 95%;
+    width: 10px;
+    height: 10px;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    box-sizing: border-box;
+    transform: rotate(-45deg);
+    -webkit-transition: all 0.1s ease-out;
+    transition: all 0.1s ease-out;
+    content: "";
+}
+.default-accordion .memo {
+    padding-left: 30px;
+    background: url("../../images/web/mypage/question.png") no-repeat left 3px bottom 4px;
+    line-height: 23px;
+}
+.default-accordion .answer {
+    background-image: url("../../images/web/mypage/re.png");
+    background-position: 0 4px;
+    padding-left: 35px;
+}
+.default-accordion .arrow {
+    position: relative;
+    top: 10px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #000;
+    border-left: 2px solid #000;
+    transform: rotate(45deg);
+}
+
+
+/* 렌트카 seo 디스크립션 영역추가 */
+.rental-car-overview-section {
+    margin: 67px 0 0;
+    background: url("/images/web/rent/auto-bg.webp") no-repeat;
+    background-position: center;
+}
+.rental-car-overview-section .car-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 243px;
+    font-family: "Roboto";
+    font-size: 0;
+}
+.rental-car-overview-section .info-logo {
+    display: flex;
+    justify-content: center;
+    flex-basis: 100px;
+    align-items: center;
+
+}
+.rental-car-overview-section .info-article {
+    display: flex;
+    flex-direction: column;
+}
+.rental-car-overview-section .info-article p {
+    padding: 5px 0;
+    color: #2e2c2c;
+    font-size: 0.8rem;
+}
+.rental-car-overview-section .info-article p span {font-weight: bold;}
+
+
+/* Responsive adjustments */
+@media (max-width: 1500px) {
+
+
+    /* 자차보험 안내 */
+    #insurance_info.comm-layer-popup_fixed .content-wrap {
+        width: auto;
+        height: 600px;
+        margin-top: -300px;
+    }
+    .car_insurance .info-head {
+        font-size: 2rem;
+        padding: 0 0 15px;
+    }
+    .car_insurance table td {
+        height: 20px;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+    .car_insurance .event-note {
+        padding: 20px;
+        margin: 15px 0;
+    }
+    .free-wrap .character img {
+        display: none;
+    }
+
+
+    /* 렌트카 구매하기 */
+    #purchase_popup .content-wrap {
+        height: 600px;
+        margin-top: -300px;
+    }
+
+    #purchase_popup .main {
+        height: 486px;
+        overflow-y: scroll;
+    }
+
+    #purchase_popup .purchase-btn-group {
+        position: relative;
+        bottom: 0;
+    }
+}

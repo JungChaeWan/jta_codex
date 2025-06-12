@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+	<title>탐나오</title>
+
+	<link rel="stylesheet" href="../../css/mw/common2.css">
+	<link rel="stylesheet" href="../../css/mw/style.css">
+
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/jquery.cookie.js"></script>
+	<script src="../../js/mw_common.js"></script>
+	<script src="../../js/mw_style.js"></script>
+	<!-- add script -->
+	<script src="../../js/swiper.js"></script>
+	<script>
+		$(document).ready(function() {
+			//Top Banner Slider
+    		if($('#detail_slider .swiper-slide').length > 1) {
+    			var swiper = new Swiper('#detail_slider', {
+    		        pagination: '#detail_paging',
+    		        paginationType: 'fraction'
+    		    });
+    		}
+
+    		//주변 관광/레저
+    		if($('#promotion_product .swiper-slide').length > 1) {
+    			var swiper = new Swiper('#promotion_product', {
+    	            slidesPerView: 'auto',
+    	            paginationClickable: true,
+    	            spaceBetween: 15
+    		    });
+    		}
+
+    		//Tab Menu (상품설명, 사용조건 등)
+    		targetTabMenu('#scroll_tabs');
+		});
+	</script>
+</head>
+<body>
+<div id="wrap">
+
+<!-- 2025 html code update -->
+<header id="header">
+	<div class="head-wrap" >
+		<h1 class="title"></h1>
+		<div class="l-area">
+			<a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+		</div>
+		<div class="r-area-side">
+			<button type="button" id="frame_sideOpen" class="side-btn" title="사이드메뉴 열기"></button>
+		</div>
+	</div>
+</header>
+
+<main id="main">
+	<!--//change contents-->
+	<div class="mw-detail-area">
+		<section class="detail-product-area">
+			<h2 class="sec-caption">상품 정보</h2>
+			<div class="detail-slider">
+				<div id="detail_slider" class="swiper-container">
+			        <div class="swiper-wrapper">
+			            <div class="swiper-slide"><img src="../../images/web/other/product_05.jpg" alt="특산품1"></div>
+			            <div class="swiper-slide"><img src="../../images/web/other/product_01.jpg" alt="특산품2"></div>
+			            <div class="swiper-slide"><img src="../../images/web/other/product_02.jpg" alt="특산품3"></div>
+			        </div>
+			        <div id="detail_paging" class="swiper-pagination"></div>
+			    </div>
+			</div> <!-- //detail-slider -->
+			<div class="product-info">
+				<div class="title-area">
+					<div class="memo"></div>
+					<div class="title">[산지직송] 이어도포크 초신선 제주흑돼지</div>
+					<div class="grade-area">
+						<div class="score-area">
+							<span class="score" id="ind_grade">평점 <strong class="text-red">3</strong>/5</span>
+							<span class="icon" id="useepil_uiTopHearts">
+								<img src="/images/mw/icon/star_on.png" alt="좋아요">
+								<img src="/images/mw/icon/star_on.png" alt="좋아요">
+								<img src="/images/mw/icon/star_on.png" alt="좋아요">
+								<img src="/images/mw/icon/star_on.png" alt="좋아요">
+								<img src="/images/mw/icon/star_on.png" alt="좋아요">
+							</span>
+						</div>
+						<div class="label-groupA">
+
+							<!--  0302 label 색상 변경 -->
+							<span class="comm-label purple">이벤트</span>
+							<span class="comm-label green">할인쿠폰</span>
+							<span class="comm-label back-purple">공모전수상작</span>
+							<span class="comm-label back-red">우수관광사업체</span>
+							<span class="comm-label back-red">JQ인증</span>
+							<span class="comm-label yellow">탐나는전</span>
+							<!--  //0302 label 색상 변경 -->
+						</div>
+					</div>
+				</div>
+				<div class="price-area">
+					<div class="price">
+						<strong>25,900원~</strong>
+						<del>26,000원</del>
+					</div>
+				</div>
+				<div class="memo-area">
+					<div class="origin-info">
+						<span class="inline"><span class="info-bold">생산자 </span>농업회사법인(주)혼디축산</span>
+						<span class="inline"><span class="info-bold">제조원 </span>제주산</span>
+					</div>
+					<div class="fee-info">
+						<p><span class="info-bold">배송비</span>
+							4,000원
+							(50,000원 이상 구매시 무료)
+						</p>
+					</div>
+					<div class="map-info-area" style="display:none;">
+						<div class="map-area" id="sighMap">
+						</div>
+					</div>
+				</div>
+			</div> <!-- //product-info -->
+			<div class="point-area">
+				<div class="col2-area line">
+					<div class="row">
+						<span class="col1">L.POINT적립금</span>
+						<span class="col2" id="lpointSavePoint">0원</span>
+					</div>
+				</div>
+			</div>
+		</section> <!-- //detail-product-area -->
+
+		<section class="map-info-area">
+			<h2 class="title-type4">위치 정보</h2>
+			<div class="map-area">
+				<!-- 기존코드 동일 -->
+			</div>
+			<div class="caption-typeA">주소 : 제주특별자치도 서귀포시 뭐시기뭐시기무시기</div>
+		</section> <!-- //map-info-area -->
+
+		<div class="nav-tabs2">
+			<div class="menu-wrap">
+				<ul id="scroll_tabs" class="nav-menu">
+					<li class="active"><a href="#tabs-info">상품설명</a></li>
+					<li><a href="#tabs-cancel">취소/환불</a></li>
+					<li><a href="#tabs-review">이용후기</a></li>
+					<li><a href="#tabs-counsel">1:1문의</a></li>
+				</ul>
+			</div>
+		    <div id="tabs-info" class="tabPanel">
+		        <div class="image-groupA">
+		        	<div class="type-body1 side-padding">
+						내용출력.. 내용출력.. 내용출력..
+					</div>
+		        	<div class="photo">
+		        		<img src="../../images/mw/other/product-detail.jpg" alt="상품상세">
+		        	</div>
+		        	<div class="typography-single side-padding">
+			        	<dl>
+							<dt class="title-type3">취급주의사항</dt>
+							<dd class="type-body1">
+								내용출력.. 내용출력.. 내용출력..
+							</dd>
+						</dl>
+					</div>
+		        </div>
+		    </div> <!-- //tabs-info -->
+
+		    <div id="tabs-cancel" class="tabPanel">
+		        <div class="text-groupA">
+					<dl>
+						<dt class="title-type3">배송안내</dt>
+						<dd class="type-body1">
+							내용출력.. 내용출력.. 내용출력..
+						</dd>
+					</dl>
+					<dl>
+						<dt class="title-type3">취소안내</dt>
+						<dd class="type-body1">
+							내용출력.. 내용출력.. 내용출력..
+						</dd>
+					</dl>
+					<dl>
+						<dt class="title-type3">교환/반품안내</dt>
+						<dd class="type-body1">
+							내용출력.. 내용출력.. 내용출력..
+						</dd>
+					</dl>
+				</div> <!-- //text-groupA -->
+		    </div> <!-- //tabs-cancel -->
+
+		    <!-- 이용후기 -->
+		    <div id="tabs-review" class="tabPanel">
+		    	<div class="text-groupA">
+			        <!-- 기존코드 동일 -->
+			        <div id="review" class="tab-con con-review">
+					    <div class="con-box review-form">
+					        <dl>
+					            <dt>상품에 대한 이용후기를 작성해주세요.</dt>
+					            <dd>상품평은 구매한 고객님마 작성이 가능하십니다.<br>
+					                상품 문의는 1:1문의 게시판, 취소 및 환불은 마이페이지를 이용해주세요</dd>
+					        </dl>
+					        <p><a href="#" class="btn btn-submit">이용후기 작성</a></p>
+					    </div>
+					    <div class="review-list">
+					        <!--변경-->
+					        <dl>
+					            <dt>
+					                <strong>제목출력 제목출력제목출력</strong>
+					                <span class="like">
+					                    <img src="../../images/mw/sub_common/h_icon.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <em>1/5</em>
+					                </span>
+					                <div class="bottom">
+					                    <p class="user"><span class="user-id">tes*****</span> <span class="date">2015-11-25 14:19:16</span></p>
+					                </div>
+					            </dt>
+					            <dd class="memo-wrap">
+
+					                <!-- 사진등록 추가 -->
+					                <div class="review-photo-list">
+					                    <ul>
+					                        <li><img src="../../images/mw/sub_common/p_img.png" alt="review"></li>
+					                        <li><img src="../../images/mw/sub_common/p_img.png" alt="review"></li>
+					                    </ul>
+					                    <div class="memo">내용출력 내용출력 내용출력 내용출력 내용출력 내용출력 내용출력 내용출력 내용출력</div>
+					                </div>
+
+					                <!-- 수정버튼 -->
+					                <!--글쓴 사람만 나오게 -->
+					                <p class="editBT">
+					                    <a href="" class="btn btn-reply">수정</a>
+					                    <a href="" class="btn btn-reply">삭제</a>
+					                </p>
+
+					                <!--답글-->
+					                <ul class="comment-wrap">
+					                    <li>
+					                        <div class="comment-user"><span class="comment-id">tes*****</span> <span class="comment-date">2015-12-01 17:56:43</span></div>
+					                        <div class="comment-memo">
+					                            답글출력 답글출력답글출력답글출력 답글출력
+					                            <!-- 답글수정 버튼 -->
+					                            <p class="editBT">
+					                                <a href="" class="btn btn-reply">수정</a>
+					                                <a href="" class="btn btn-reply">삭제</a>
+					                            </p>
+					                            <!--답글폼-->
+					                            <form class="int-write" action="" method="post">
+					                                <textarea name="textarea" cols="45" rows="5" class="focus-value" placeholder="내용 입력"></textarea>
+					                                <p><a href="#" class="btn btn-submit">등록</a></p>
+					                            </form>
+					                        </div>
+					                    </li>
+					                    <li>
+					                        <div class="comment-user"><span class="comment-id">tes*****</span> <span class="comment-date">2015-12-01 17:56:43</span></div>
+					                        <div class="comment-memo">
+					                            답글출력 답글출력답글출력답글출력 답글출력 답글출력 답글출력답글출력답글출력 답글출력
+					                            <!-- 답글수정 버튼 -->
+					                        </div>
+					                    </li>
+					                    <li>
+					                        <div class="comment-user"><span class="comment-id">tes*****</span> <span class="comment-date">2015-12-01 17:56:43</span></div>
+					                        <div class="comment-memo">
+					                            답글출력 답글출력답글출력답글출력 답글출력 답글출력 답글출력답글출력답글출력 답글출력
+					                            <!-- 답글수정 버튼 -->
+					                        </div>
+					                    </li>
+					                    <!-- 답글버튼 -->
+					                    <p class="comment-write">
+					                        <a href="" class="btn btn-reply">답글달기</a>
+					                        <!-- <a href="#" class="btn btn-reply">답글보기 <img src="../../images/mw/sub_common/re_arrow.png" width="7" alt=""></a> -->
+					                    </p>
+					                </ul>
+					            </dd>
+					        </dl>
+					        <dl>
+					            <dt>
+					                <strong>제목출력 제목출력제목출력</strong>
+					                <span class="like">
+					                    <img src="../../images/mw/sub_common/h_icon.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <img src="../../images/mw/sub_common/h_icon2.png" alt="좋아요">
+					                    <em>1/5</em>
+					                </span>
+					                <div class="bottom">
+					                    <p class="user"><span class="user-id">tes*****</span> <span class="date">2015-11-25 14:19:16</span></p>
+					                </div>
+					            </dt>
+					            <dd class="memo-wrap">
+
+					                <!-- 사진등록 추가 -->
+					                <div class="photo-comment">
+					                    <div class="area-photo">
+					                        <div class="photo-wrap">
+					                            <p class="photo" onclick="review_photo();"><img src="../../images/mw/sub_common/p_img.png" alt="review"></p>
+					                        </div>
+					                    </div>
+					                    <div class="area-text">
+					                        <p class="memo">내용출력 내용출력내용출력 내용출력내용출력내용출력내용출력 내용출력내용출력</p>
+					                    </div>
+					                </div>
+
+					                <!--답글-->
+					                <ul class="comment-wrap">
+					                    <li>
+					                        <div class="comment-user"><span class="comment-id">tes*****</span> <span class="comment-date">2015-12-01 17:56:43</span></div>
+					                        <div class="comment-memo">
+					                            답글출력 답글출력답글출력답글출력 답글출력
+					                            <!-- 답글수정 버튼 -->
+					                            <p class="editBT">
+					                                <a href="" class="btn btn-reply">수정</a>
+					                                <a href="" class="btn btn-reply">삭제</a>
+					                            </p>
+					                            <!--답글폼-->
+					                            <form class="int-write" action="" method="post">
+					                                <textarea name="textarea" cols="45" rows="5" class="focus-value" placeholder="내용 입력"></textarea>
+					                                <p><a href="#" class="btn btn-submit">등록</a></p>
+					                            </form>
+					                        </div>
+					                    </li>
+					                    <li>
+					                        <div class="comment-user"><span class="comment-id">tes*****</span> <span class="comment-date">2015-12-01 17:56:43</span></div>
+					                        <div class="comment-memo">
+					                            답글출력 답글출력답글출력답글출력 답글출력 답글출력 답글출력답글출력답글출력 답글출력
+					                            <!-- 답글수정 버튼 -->
+					                        </div>
+					                    </li>
+					                    <li>
+					                        <div class="comment-user"><span class="comment-id">tes*****</span> <span class="comment-date">2015-12-01 17:56:43</span></div>
+					                        <div class="comment-memo">
+					                            답글출력 답글출력답글출력답글출력 답글출력 답글출력 답글출력답글출력답글출력 답글출력
+					                            <!-- 답글수정 버튼 -->
+					                        </div>
+					                    </li>
+					                    <!-- 답글버튼 -->
+					                    <p class="comment-write">
+					                        <a href="" class="btn btn-reply">답글달기</a>
+					                        <!-- <a href="#" class="btn btn-reply">답글보기 <img src="../../images/mw/sub_common/re_arrow.png" width="7" alt=""></a> -->
+					                    </p>
+					                </ul>
+					            </dd>
+					        </dl>
+					        <!--//변경-->
+					    </div> <!-- //review-list -->
+
+					    <div class="paging-wrap">
+						    <a href="" class="mobile">더보기 15/20</a>
+						</div>
+					</div> <!-- //#review -->
+				</div>
+		    </div> <!-- //tabs-review -->
+
+		    <!-- 1:1문의 -->
+		    <div id="tabs-counsel" class="tabPanel">
+		        <div class="text-groupA">
+		        	<!-- 기존코드 동일 -->
+		        	<div id="counsel" class="tab-con con-counsel">
+					    <div class="con-box counsel-form">
+					        <dl>
+					            <dt>상품에 대한 궁금한 점 남겨주시면 답변드립니다.</dt>
+					            <dd>구매한 상품의 취소/환불은 마이페이지를 이용해 주세요.<br>
+					                상품과 관계없는 광고, 욕설, 비방 등의 글은 사전 예고 없이 삭제처리 됩니다.</dd>
+					        </dl>
+					        <form action="" method="post">
+					            <input type="text" value="" class="title-int" placeholder="제목을 입력해 주세요">
+					            <textarea name="textarea" id="textarea" cols="45" rows="5" class="focus-value" placeholder="궁금한 점을 남겨주세요"></textarea>
+					            <p><a href="#" class="btn btn-submit">등록</a></p>
+					        </form>
+					    </div>
+					    <div class="counsel-list">
+					        <dl>
+					            <dt class="area">
+					                <div class="icon"><em>Q</em></div>
+					                <div class="text">
+					                    <p class="user"><span class="user-id">tes*****</span> <span class="user-date">2015-09-18 14:15:07</span></p>
+					                    <p class="title">제목 출력 제목 출력제목 출력제목 출력제목 출력제목 출력 제목 출력 제목 출력</p>
+					                    <p class="memo">항공취소 수수료는 어떻게 되나요?</p>
+					                    <!--수정-->
+					                    <p class="editBT">
+					                        <a href="" class="btn btn-reply">수정</a>
+					                        <a href="" class="btn btn-reply">삭제</a>
+					                    </p>
+					                </div>
+					            </dt>
+					            <dd class="area">
+					                <div class="icon"><em>A</em></div>
+					                <div class="text">
+					                    <p class="user"><span class="user-id">tes*****</span> <span class="user-date">2015-09-18 14:15:07</span></p>
+					                    <p class="title">제목 출력 제목 출력제목 출력제목 출력제목 출력제목 출력 제목 출력 제목 출력</p>
+					                    <p class="memo">항공취소 수수료는 어떻게 되나요?</p>
+					                </div>
+					            </dd>
+					        </dl>
+					    </div> <!-- //counsel-list -->
+
+					    <div class="paging-wrap">
+						    <a href="" class="mobile">더보기 15/20</a>
+						</div>
+					</div> <!-- //counsel -->
+		        </div>
+		    </div> <!-- //tabs-counsel -->
+		</div>
+
+		<div class="text-groupA">
+			<dl>
+				<dt class="title-type3">판매처 정보</dt>
+				<dd class="float">
+					<div class="l-area icon">
+						<img class="speciality" src="../../images/mw/icon/speciality-detail.jpg" alt="우수관광사업체">
+						<img class="store" src="../../images/mw/other/etc-logo.jpg" alt="판매처">
+					</div>
+					<div class="r-area">
+						<div class="type-body1">
+							상호 : 제주씨월드<br>
+							전화번호 : 064-784-2333<br>
+							소개 : 제주 대표 체험관광 명소, 제주씨월드 입니다.
+						</div>
+					</div>
+				</dd>
+			</dl>
+		</div> <!-- //text-groupA -->
+
+		<section class="recommend-product">
+			<h2 class="sec-caption">추천 상품</h2>
+
+			<div class="recommend-group">
+				<div class="title-side-area">
+					<div class="l-area">
+						<h3 class="title-type2">묶음 배송 가능한 상품</h3>
+					</div>
+					<div class="r-area text">
+						<a href="">전체보기</a>
+					</div>
+				</div>
+
+				<div class="promotion-content">
+		            <div id="promotion_product" class="swiper-container">
+		                <ul class="swiper-wrapper">
+		                    <li class="swiper-slide">
+		                        <div class="photo">
+		                            <a href="">
+		                                <img class="product" src="../../images/web/other/product_01.jpg" alt="product">
+		                            </a>
+		                        </div>
+		                        <div class="text">
+								    <div class="title">제목이 길어지는 경우 제목이 길어지는 경우</div>
+								    <div class="info">
+								        <dl>
+								            <dt class="text-red">탐나오가</dt>
+								            <dd>
+								                <div class="price">
+								                    <del>999,000원</del>
+								                    <strong>999,000원~</strong>
+								                </div>
+								            </dd>
+								        </dl>
+								        <div class="like">
+								            <a href="javascript:void(0)">
+								                <img src="../../images/mw/icon/product_like_on.png" alt="찜하기">
+								            </a>
+								        </div>
+								    </div>
+								</div>
+		                    </li>
+		                    <li class="swiper-slide">
+		                        <div class="photo">
+		                            <a href="">
+		                                <img class="product" src="../../images/web/other/product_01.jpg" alt="product">
+		                            </a>
+		                        </div>
+		                        <div class="text">
+								    <div class="title">예촌민박</div>
+								    <div class="info">
+								        <dl>
+								            <dt class="text-red">탐나오가</dt>
+								            <dd>
+								                <div class="price">
+								                    <del>110,000원</del>
+								                    <strong>49,000원~</strong>
+								                </div>
+								            </dd>
+								        </dl>
+								        <div class="like">
+								            <a href="javascript:void(0)">
+								                <img src="../../images/mw/icon/product_like_off.png" alt="찜하기">
+								            </a>
+								        </div>
+								    </div>
+								</div>
+		                    </li>
+		                    <li class="swiper-slide">
+		                        <div class="photo">
+		                            <a href="">
+		                                <img class="product" src="../../images/web/other/product_01.jpg" alt="product">
+		                            </a>
+		                        </div>
+		                        <div class="text">
+								    <div class="title">예촌민박</div>
+								    <div class="info">
+								        <dl>
+								            <dt class="text-red">탐나오가</dt>
+								            <dd>
+								                <div class="price">
+								                    <del>110,000원</del>
+								                    <strong>49,000원~</strong>
+								                </div>
+								            </dd>
+								        </dl>
+								        <div class="like">
+								            <a href="javascript:void(0)">
+								                <img src="../../images/mw/icon/product_like_off.png" alt="찜하기">
+								            </a>
+								        </div>
+								    </div>
+								</div>
+		                    </li>
+		                </ul>
+		            </div>
+		        </div>
+			</div> <!-- //recommend-group -->
+		</section> <!-- //recommend-product -->
+
+		<!-- 구매하기 -->
+		<div class="purchase-area">
+			<div class="basic">
+				<div class="icon-area">
+					<a href="javascript:void(0)" onclick="itemSingleShow('#sns_popup');">
+						<img src="../../images/mw/icon/sns.png" alt="sns">
+					</a>
+					<a href="javascript:void(0)">
+						<img src="../../images/mw/icon/product_like2_off.png" alt="찜하기">
+					</a>
+				</div>
+				<div class="text-area">
+					<button type="button" class="purchase-btn" onclick="itemSingleShow('#purchase_popup');">구매하기</button>
+				</div>
+			</div>
+
+			<div id="purchase_popup" class="purchase-popup pack" style="display: none;">
+				<button type="button" class="close" onclick="itemSingleHide('#purchase_popup');">
+					<img src="../../images/mw/icon/close/popup-close.png" alt="닫기">
+				</button>
+
+				<div class="scroll-area">
+					<div class="purchase-option">
+						<div class="select-area">
+							<select class="width100" title="상품선택">
+								<option selected>상품을 선택하세요</option>
+								<option value="">[선택1] 제주초콜릿 3종박스</option>
+								<option value="">[선택2] 제주초콜릿 5종박스</option>
+							</select>
+							<select class="width100" title="옵션선택">
+								<option selected>옵션을 선택하세요</option>
+								<option value="">[선택1] 3종 박스 (총)36개입 | 잔여 195개</option>
+								<option value="">[선택2] 5종 박스 (총)50개입 | 잔여 99개</option>
+							</select>
+							<div class="parcel">
+								<select class="width100" title="택배수령선택">
+									<option value="" selected>일반 택배</option>
+									<option value="">직접 찾아가서 받기</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="selected-option">
+							<div class="selected-group">
+								<div class="text-area">
+									<p>제주초콜릿 3종박스</p> <!-- 상품선택명 -->
+									<p>3종박스 (총36개입)</p> <!-- 옵션선택명 -->
+								</div>
+								<div class="counting-area">
+									<div class="item-count-area">
+								    	<button type="button" class="counting-btn"><img src="../../images/mw/icon/subtraction2.png" alt="빼기"></button>
+								    	<span class="counting-text">1</span>
+								    	<button type="button" class="counting-btn"><img src="../../images/mw/icon/addition2.png" alt="더하기"></button>
+									</div>
+									<div class="price">120,000원</div>
+									<button type="button" class="del"><img src="../../images/mw/icon/del/option.png" alt="삭제"></button>
+								</div>
+							</div>
+
+							<div class="selected-group">
+								<div class="text-area">
+									<p>제주초콜릿 3종박스 제주초콜릿 3종박스</p> <!-- 상품선택명 -->
+									<p>3종박스 (총36개입) 3종박스 (총36개입)</p> <!-- 옵션선택명 -->
+								</div>
+								<div class="counting-area">
+									<div class="item-count-area">
+								    	<button type="button" class="counting-btn"><img src="../../images/mw/icon/subtraction2.png" alt="빼기"></button>
+								    	<span class="counting-text">1</span>
+								    	<button type="button" class="counting-btn"><img src="../../images/mw/icon/addition2.png" alt="더하기"></button>
+									</div>
+									<div class="price">120,000원</div>
+									<button type="button" class="del"><img src="../../images/mw/icon/del/option.png" alt="삭제"></button>
+								</div>
+							</div>
+						</div> <!-- //selected-option -->
+
+						<div class="total-area">
+							<div class="text">배송비 5,000원(50,000원 이상 무료)</div>
+							<div class="total-price">총 999,000원</div>
+						</div>
+					</div> <!-- //purchase-option -->
+				</div> <!-- //scroll-area -->
+
+				<div class="bottom-area">
+					<div class="purchase-btn-group">
+						<button type="button" class="comm-btn gray width40">장바구니</button>
+						<button type="button" class="comm-btn red width60">바로구매</button>
+					</div>
+				</div>
+			</div>
+		</div> <!-- //purchase-area -->
+
+		<!-- SNS 링크 -->
+		<div id="sns_popup" class="sns-popup">
+		    <button type="button" class="close" onclick="itemSingleHide('#sns_popup');"><img src="../../images/mw/icon/close/white.png" alt="닫기"></button>
+		    <div class="sns-area">
+		        <ul>
+		            <li>
+		                <a href="">
+		                    <img src="../../images/mw/icon/sns/kakaotalk.png" alt="카카오톡">
+		                    <span>카카오톡</span>
+		                </a>
+		            </li>
+		            <li>
+		                <a href="">
+		                    <img src="../../images/mw/icon/sns/facebook.png" alt="페이스북">
+		                    <span>페이스북</span>
+		                </a>
+		            </li>
+		            <li>
+		                <a href="">
+		                    <img src="../../images/mw/icon/sns/kakaostory.png" alt="카카오 스토리">
+		                    <span>카카오 스토리</span>
+		                </a>
+		            </li>
+		            <li>
+		                <a href="">
+		                    <img src="../../images/mw/icon/sns/band.png" alt="네이버밴드">
+		                    <span>네이버 밴드</span>
+		                </a>
+		            </li>
+		            <li>
+		                <a href="">
+		                    <img src="../../images/mw/icon/sns/line.png" alt="라인">
+		                    <span>라인</span>
+		                </a>
+		            </li>
+		            <li>
+		                <a href="">
+		                    <img src="../../images/mw/icon/sns/url.png" alt="URL 복사">
+		                    <span>URL 복사</span>
+		                </a>
+		            </li>
+		        </ul>
+		    </div>
+		</div> <!-- //sns-popup -->
+	</div> <!-- //mw-detail-area -->
+	<!--//change contents-->
+</main><!-- 2025 html code update -->
+
+<footer id="footer">
+
+</footer>
+
+</div> <!-- //wrap -->
+</body>
+</html>

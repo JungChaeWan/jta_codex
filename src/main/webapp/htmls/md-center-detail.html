@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->	
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="../css/web/common.css">
+	<link rel="stylesheet" href="../css/web/style.css">
+    <!-- script -->
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/jquery-ui.js"></script>    
+    <script src="../js/html_common.js"></script>
+    <script src="../js/html_style.js"></script>
+</head>
+<body>
+    <header id="header">
+
+        <div id="topBanner">
+            <div class="Fasten">
+                <a class="img-btn" onclick="show_popup('.comm-fullPopup2');"><img src="../images/web/comm/top_banner.jpg" alt="상단배너"></a>
+                <a class="close"><img id="tbClose" src="../images/web/comm/close.png" alt="닫기"></a>
+
+                <div class="comm-fullPopup2">
+                    <a class="option-close" onclick="close_popup('.comm-fullPopup2');"><img src="../images/web/comm/view_close.png" alt="닫기"></a>
+                    <img src="../images/web/comm/top_banner_view.png" alt="배너 상세">
+                </div>
+            </div>
+        </div>
+
+        <div class="Fasten">
+            <div class="topSearch">
+                <h1 class="logo"><a href=""><img src="../images/web/comm/logo.gif" alt="탐나오"></a></h1>
+                <!-- 검색 -->
+                <p class="searchBox"><input id="search" type="text"><button id="searBT"></button></p>
+                <!-- 서브메뉴 -->
+                <nav id="topMenu">
+                    <a href="">★즐겨찾기</a>
+                    <a href="">로그인</a>
+                    <a href="">회원가입</a>
+                    <a href="">마이페이지</a>
+                    <a href="">고객센터</a>
+                </nav>
+            </div>
+        </div>
+        <!-- main menu -->
+        <nav id="mainMenu">
+            <div class="Fasten">
+                <div class="menuBT"><a id="menuBT"><img src="../images/web/comm/menu.gif" alt="메뉴"></a></div>
+                <div class="subMenu">11<br>11<br>11<br>11<br></div>
+                <ul class="mainMenu">
+                    <li><a href="air-main.html">항공</a></li>
+                    <li><a href="hotel-list.html">숙박</a></li>
+                    <li><a href="rent-list.html">렌터카</a></li>
+                    <li><a href="">관광지할인쿠폰</a></li>
+                    <li><a href="">레져/음식/뷰티</a></li>
+                    <li><a href="">카텔</a></li>
+                    <li><a href="">골프패키지</a></li>
+                    <li><a href="">버스/택시관광</a></li>
+                    <li><a href="">제주특산품</a></li>
+                    <li><a href="">특가이벤트</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- //main menu -->
+    </header>
+
+	<main id="main">
+	    <div class="mapLocation"> <!--index page에서는 삭제-->
+            <div class="Fasten">
+                <span>홈</span> <span class="gt">&gt;</span>
+                <span>실시간 예약</span> <span class="gt">&gt;</span>
+                <span>실시간 숙박</span> <span class="gt">&gt;</span>
+                <span>숙박상세</span>
+            </div>
+        </div>
+        <!-- quick banner -->
+        <div class="Fasten">
+            <aside id="leftAside">
+                <ul>
+                    <li><a href="http://www.hijeju.or.kr/discount/apply.htm" target="_blank"><img src="../images/web/leftBanner/01.png" alt="제주하이쿠폰"></a></li>
+                    <li><a href="http://www.jejugoldenbus.com/main/" target="_blank"><img src="../images/web/leftBanner/02.png" alt="제주황금시티투어"></a></li>
+                </ul>
+            </aside>
+
+            <aside id="rightAside">
+                <div class="fixed-wrap">
+                    <div class="ctWrap">
+
+                        <!-- 지역별 상품보기 -->
+                        <div class="product map">
+                            <h6 class="title">지역별 상품보기</h6>
+                            <div class="ct-box">
+                                <a href=""><img src="../images/web/comm/map_service.jpg" alt="지역별상품보기"></a>
+                            </div>
+                        </div>
+
+                        <!-- 상품 리스트 -->
+                        <div class="product">
+                            <h6 class="title">오늘본상품 <img src="../images/web/comm/arrow.gif" alt="arrow"></h6>
+                            <div class="today-list">
+                                <div id="todayList">
+                                    <ul class="list">
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider05.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider02.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <li><a href=""><img class="photo" src="../images/web/main/slider03.jpg" alt=""><span class="name">제주완전정복</span></a></li>
+                                        <!--오늘본 상품없을 시 출력-->
+                                        <!--<p class="side-noContent">오늘 본 상품이 없습니다.</p>-->
+                                    </ul>
+                                </div>
+                                <ul class="itemNav">
+                                    <li>
+                                        <span id="itemPrev"><a href=""><img src="../images/web/comm/list_prev.gif" alt="이전"></a></span>
+                                        <!-- <span id="number">1/1</span> -->
+                                        <span id="itemNext"><a href=""><img src="../images/web/comm/list_next.gif" alt="다음"></a></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="shoppingCart">
+                            <h6>장바구니</h6>
+                            <p>
+                                <img src="../images/web/comm/cart2.gif" alt="장바구니">
+                                <span>9</span>
+                            </p>
+                        </div>
+                        <ul class="menuList">
+                            <li><a href=""><img src="../images/web/comm/menulist2.gif" alt="자주묻는질문">자주묻는질문</a></li>
+                            <li><a href=""><img src="../images/web/comm/menulist3.gif" alt="여행경비산출">여행경비산출</a></li>
+                        </ul>
+                        
+                        <!-- 여행경비산출 -->
+                        <!-- <div class="product tItem">
+                            <h6 class="title">여행경비산출</h6>
+                            <div class="ct-box">
+                                <a href=""><img src="../images/web/comm/map_service.jpg" alt="지역별상품보기"></a>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <!-- //quick banner -->
+        <div class="subContainer">
+            <div class="subHead"></div>
+            <div class="subContents">
+                <!-- new contents -->
+                <div class="service-center sideON">
+                    <div class="bgWrap2">
+                        <div class="Fasten">
+                            <div class="tbWrap">
+                                <aside id="sub-leftMenu" class="smON">
+                                    <h4 class="title">고객센터</h4>
+                                    <div class="pdWrap">
+							            <ul class="depth1">
+							                <li>
+							                    <a href="/web/coustmer/qaList.do">자주하는 문의(FAQ)</a>
+							                </li>
+							                <li>
+							                    <a href="/web/coustmer/useepilList.do">이용후기</a>
+							                </li>
+							
+							                <li>
+							                    <a href="/web/coustmer/viewInsertCorpPns.do">입점/제휴안내</a>
+							                </li>
+							                <li>
+							                    <a href="/web/bbs/bbsList.do?bbsNum=NOTICE">공지사항</a>
+							                </li>
+							                <li>
+							                    <a href="">MD 숙소탐방</a>
+							                </li>
+							            </ul>
+							            <div class="serviceCenter">
+							                <h5>고객센터</h5>
+							                <p class="tel">1522-3454</p>
+							                <p class="timeWrap">
+							                    <span class="icon"><img src="../images/web/mypage/clock.gif" alt="시계"></span>
+							                    <span class="time">평일 09:00~18:00<br>점심 12:00~13:00<br>토,일 및 공휴일 휴무</span>
+							                </p>
+							            </div>
+							        </div>
+                                </aside>
+                                <div class="rContents smON">
+                                    <h3 class="mainTitle">MD’s Pick</h3>
+                                    <div class="commBoard-wrap">
+                                        <div class="board-view md-view"> <!-- class add -->
+                                        
+                                            <!-- 콘텐츠 -->
+                                            <div class="view-content">                                                
+                                                MD 편집기 내용 출력<br>
+									            MD 편집기 내용 출력<br>
+									            MD 편집기 내용 출력<br>
+                                            </div>
+                                            
+                                            <div class="md-map">
+                                            	<div class="map"><img src="../images/web/other/map.jpg" alt="임시" /></div>
+                                            	<div class="map-info">
+                                            		<p class="title">블랙샌스호텔</p>
+                                            		<p class="memo">제주특별자치도 제주시 삼양2동 2140-1</p>
+                                            	</div>
+                                            </div>
+                                            
+                                            
+                                            <div class="detail">
+				                                <div class="detailL">
+				                                    <span class="nt ntTopL">
+				                                        <img src="../images/web/icon/event.gif" alt="event">
+				                                        <img src="../images/web/icon/hot.gif" alt="핫딜">
+				                                        <img src="../images/web/icon/dday.gif" alt="당일특가">
+				                                    </span>
+				                                    <!--phto gallery-->
+				                                    <div class="custom-container gallery-view1">
+				                                        <div class="mid">
+				                                            <img src="../images/web/lodge/album/01.jpg" alt="1">
+				                                        </div>                                        
+				                                        <div class="carousel">
+				                                            <ul>
+				                                                <li class="select"><img src="../images/web/lodge/album/01.jpg"></li>
+				                                                <li><img src="../images/web/lodge/album/02.jpg"></li>
+				                                                <li><img src="../images/web/lodge/album/03.jpg"></li>
+				                                                <li><img src="../images/web/lodge/album/04.jpg"></li>
+				                                                <li><img src="../images/web/lodge/album/05.jpg"></li>
+				                                                <li><img src="../images/web/lodge/album/06.jpg"></li>
+				                                                <li><img src="../images/web/lodge/album/07.jpg"></li>
+				                                                <li><img src="../images/web/lodge/album/08.jpg"></li>
+				                                                <li><img src="../images/web/lodge/album/09.jpg"></li>
+				                                                <li><img src="../images/web/lodge/album/10.jpg"></li>
+				                                            </ul>
+				                                        </div>
+				                                        <a href="#" class="prev arrow"></a>
+				                                        <a href="#" class="next arrow"></a>
+				                                        <div class="clear"></div>
+				                                        
+				                                        <!--숙박정보-->
+				                                        <div class="icon-imInfo">
+				                                            <ul>
+				                                                <li>
+				                                                    <p class="icon"><img src="../images/web/icon/info/AA01_on.png" alt="수영장"></p>
+				                                                    <p class="text">수영장</p>
+				                                                </li>
+				                                                <li>
+				                                                    <p class="icon"><img src="../images/web/icon/info/AA02_on.png" alt="바비큐"></p>
+				                                                    <p class="text">바비큐</p>
+				                                                </li>
+				                                                <li>
+				                                                    <p class="icon"><img src="../images/web/icon/info/AA03_on.png" alt="애완동물"></p>
+				                                                    <p class="text">애완동물</p>
+				                                                </li>
+				                                                <li class="off">
+				                                                    <p class="icon"><img src="../images/web/icon/info/AA04_off.png" alt="매점"></p>
+				                                                    <p class="text">매점</p>
+				                                                </li>
+				                                                <li class="off">
+				                                                    <p class="icon"><img src="../images/web/icon/info/AA05_off.png" alt="스파/사우나"></p>
+				                                                    <p class="text">스파/사우나</p>
+				                                                </li>
+				                                                <li class="off">
+				                                                    <p class="icon"><img src="../images/web/icon/info/AA06_off.png" alt="조식서비스"></p>
+				                                                    <p class="text">조식서비스</p>
+				                                                </li>
+				                                            </ul>
+				                                        </div>
+				                                    </div>
+				                                    <script src="../js/slider.js"></script>
+				                                    <script>
+				                                        $(".gallery-view1 .carousel").jCarouselLite({
+				                                            btnNext: ".gallery-view1 .next",
+				                                            btnPrev: ".gallery-view1 .prev",
+				                                            speed: 300,
+				                                            visible: 5,
+				                                            circular: false
+				                                        });
+				                                        $(".gallery-view1 .carousel img").click(function() { //이미지 변경
+				                                            $(".gallery-view1 .mid img").attr("src", $(this).attr("src"));
+				                                        });
+				                                        $('.gallery-view1 .carousel li').click(function(){ //class 추가
+				                                            $('.gallery-view1 .carousel li').removeClass('select');
+				                                            $(this).addClass('select');
+				                                        });
+				                                    </script>
+				                                    <!--//phto gallery-->
+				                                </div>
+				                                <div class="detailR">
+				                                    <div class="pdWrap">
+				                                        <h2 class="title">신라호텔 <span class="subText">- 제주시권</span>
+				                                            <span class="sns">
+				                                                <a href=""><img src="../images/web/icon/sns1.gif" onmouseover="this.src='../images/web/icon/sns1_on.gif';" onmouseout="this.src='../images/web/icon/sns1.gif';" alt="페이스북"></a>
+				                                                <a href=""><img src="../images/web/icon/sns2.gif" onmouseover="this.src='../images/web/icon/sns2_on.gif';" onmouseout="this.src='../images/web/icon/sns2.gif';" alt="밴드"></a>
+				                                                <a href=""><img src="../images/web/icon/sns3.gif" onmouseover="this.src='../images/web/icon/sns3_on.gif';" onmouseout="this.src='../images/web/icon/sns3.gif';" alt="카카오스토리"></a>
+				                                            </span>
+				                                        </h2>
+				                                        <ul class="evaluation">
+				                                            <li>
+				                                                <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+				                                                <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+				                                                <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+				                                                <span><img src="../images/web/icon/heart.gif" alt="하트"></span>
+				                                                <span id="ind_grade">평점 <strong>4.8건/5건</strong></span>
+				                                            </li>
+				                                            <li>
+				                                                <span><img src="../images/web/icon/comment2.gif" alt="리뷰"></span>
+				                                                <span id="ind_review">이용후기 <strong>19건</strong></span>
+				                                            </li>
+				                                        </ul>
+				                                        <ul class="itemInfo">
+				                                            <li><span class="infoTitle">분류</span><span class="infoText">제주/특1급</span></li>
+				                                            <li><span class="infoTitle">주소</span><span class="infoText">제주 서귀포시 색달동 3039-3 <a id="map" href=""><img src="../images/web/icon/plus.gif" width="15" height="15" alt="위치보기"></a><br>제주특별자치도 서귀포시 중문관광로71번길 7</span></li>
+				                                            <li><span class="infoTitle">홈페이지</span><span class="infoText"><a href="">http://www.shilla.net/jeju</a></span></li>
+				                                            <li><span class="infoTitle">체인인/아웃</span><span class="infoText">14:00 / 12:00</span></li>
+				                                            <li><span class="infoTitle">전화번호</span><span class="infoText">064-723-1234</span></li>
+				                                            <li class="subItem">
+				                                                <img class="tip" src="../images/web/icon/tip.png" alt="tip">
+				                                                <p>
+				                                                    - 조식(뷔페) 추가 : 대인 19,000원(만 14세~) / 소인 13,000원 / 유아 7,000원<br>
+				                                                    - 객실 인원추가 : 1인 추가시 25,000원 (침구포함)<br>
+				                                                    - 인원추가요금 및 조식추가 요금은 현장결제를 원칙으로 합니다.(사전입금 불가)
+				                                                </p>
+				                                            </li>
+				                                        </ul>
+				                                    </div>
+				                                </div>
+				                            </div> <!--//detail-->
+				                            
+				                            <div class="product-btn">
+				                            	<a href="">
+				                            		<img src="../images/web/icon/md_search.png" alt="" /> 상품보기
+			                            		</a>
+			                            	</div>
+                                            
+                                            
+                                        </div> <!--//board-view-->
+                                    </div> <!--//commBoard-wrap-->                                    
+                                </div> <!--//rContents-->
+                            </div> <!--//tbWrap-->
+                        </div> <!--//Fasten-->
+                    </div> <!--//bgWrap2-->
+                </div> <!-- //notice2 -->
+                <!-- //new contents -->
+            </div> <!-- //subContents -->
+        </div> <!-- //subContainer -->
+	</main>
+
+	<footer id="footer">
+        <div class="Fasten">
+            <div class="top-wrap">
+                <a class="go-top" onclick="go_top();"><img src="../images/web/comm/top.gif" alt="맨위로"></a>
+            </div>
+        </div>
+
+        <div class="footMenu">
+            <div class="Fasten">
+                <span><a href="">회사소개</a></span>
+                <span><a href="">사업제휴</a></span>
+                <span><a href=""><strong>개인정보취급방침</strong></a></span>
+                <span><a href="">국내여행표준약관</a></span>
+                <span><a href="">전자상거래표준약관</a></span>
+                <span><a href="">이메일무단수집거부</a></span>
+                <!-- link site -->
+                <div class="footLink">
+                    <select id="site_family">
+                        <option value="" selected>패밀리사이트</option>
+                        <option value="">list1</option>
+                    </select>
+                    <select id="site_regard">
+                        <option value="" selected>관련사이트</option>
+                        <option value="">list1</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="Fasten">
+            <div class="copy">
+                제주특별자치도관광협회 | 대표 : 김영진 | 사업자 등록번호 : 616-82-04092 | 법인 등록번호 : 220121-0000107 | 통신판매업번호: 제2013-제주연동 0024호<br>
+                63122 제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층 | Tel)064-742-8861 | Fax) 064-742-8865<br>                
+                고객센터 : 1522-3454 I 개인정보관리책임자 : 김기현<br>                
+                Copyright 2016. 제주특별자치도관광협회 All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

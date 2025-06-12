@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+	<title>탐나오</title>
+
+	<link rel="stylesheet" href="../../css/mw/common2.css">
+	<link rel="stylesheet" href="../../css/mw/main4.css">
+	<link rel="stylesheet" href="../../css/mw/frame.css">
+	<link rel="stylesheet" href="../../css/mw/sub.css">
+
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/jquery.cookie.js"></script>
+	<script src="../../js/mw_common.js"></script>
+	<script src="../../js/mw_style.js"></script>
+	<!-- add script -->
+	<script src="../../js/swiper.js"></script>
+	<script>
+		$(document).ready(function() {
+			$( ".datepicker" ).datepicker({
+    			showOn: "both",
+    			buttonImage: "/images/comm/jquery/calendar.gif",
+    			buttonImageOnly: true,
+    			showOtherMonths: true, 										//빈칸 이전달, 다음달 출력
+    		});
+
+			//실시간 검색 탭패널
+    		tabPanel2({
+                container: "#product_search",
+				firstItem: "#tabs-1"
+            });
+
+			//Main Top Banner Slider
+    		if($('#main_top_slider .swiper-slide').length > 1) {
+    			var swiper = new Swiper('#main_top_slider', {
+    		        pagination: '#main_top_navi',
+    		        paginationClickable: true,
+    		        autoplay: 5000,
+    		        loop: true
+    		    });
+    		}
+
+    		//추천 숙박
+    		if($('#promotion_hotel .swiper-slide').length > 1) {
+    			var swiper = new Swiper('#promotion_hotel', {
+    	            slidesPerView: 'auto',
+    	            paginationClickable: true,
+    	            spaceBetween: 15
+    		    });
+    		}
+
+    		//추천 렌터카
+    		if($('#promotion_rent .swiper-slide').length > 1) {
+    			var swiper = new Swiper('#promotion_rent', {
+    	            slidesPerView: 'auto',
+    	            paginationClickable: true,
+    	            spaceBetween: 15
+    		    });
+    		}
+		});
+	</script>
+</head>
+<body class="searchbody">
+<div id="wrap">
+	<div class="search-area">
+		<button type="button" id="top_searchClose" class="close">닫기</button>
+
+			<from class="form-area">
+					<input type="text" placeholder="검색어를 입력해주세요." class="category-search">
+		     		<img class="icon-search" src="../../images/mw/icon/search/search.gif" alt="">
+			</from>
+			<div class="all-search">
+				<div class="condition">
+					<div class="recent-search">최근검색조건</div>
+					<ul>
+						<li class="product">
+						<img src="../../images/mw/icon/tag_close.gif" alt=""><a href="">김녕미로공원</a></li>
+						<li class="product"><img src="../../images/mw/icon/tag_close.gif" alt=""><a href="">우도해저투어</a></li>
+						<li class="product"><img src="../../images/mw/icon/tag_close.gif" alt=""><a href="">아라고나이트</a></li>
+						<li class="product"><img src="../../images/mw/icon/tag_close.gif" alt=""><a href="">번개과학체험관</a></li>
+						<li class="product"><img src="../../images/mw/icon/tag_close.gif" alt=""><a href="">카시트/유모차</a></li>
+						<li class="product"><img src="../../images/mw/icon/tag_close.gif" alt=""><a href="">서귀포잠수함</a></li>
+						<li class="product"><img src="../../images/mw/icon/tag_close.gif" alt=""><a href="">하효감귤체험</a></li>
+						<li class="product"><img src="../../images/mw/icon/tag_close.gif" alt=""><a href="">제주 리마인드 촬영</a></li>
+					</ul>
+					<div class="product-sub"><a href="">모두삭제</a></div>
+				</div>
+
+				<div class="keyword">
+					<div class="hot-keyword">HOT KEYWORD</div>
+						<ul class="all-text">
+							<li><a href="">#야간관광</a></li>
+							<li><a href="">#퍼시픽</a></li>
+							<li><a href="">#김녕미로공원</a></li>
+							<li><a href="">#제주씨월드</a></li>
+							<li><a href="">#우도해저투어</a></li>
+							<li><a href="">#렉시제주</a></li>
+						</ul>
+				</div>
+			</div>
+		</div>
+	</div> <!-- //wrap -->
+
+
+</body>
+</html>

@@ -1,0 +1,1012 @@
+@charset "utf-8";
+
+/* 회원센터 */
+
+
+/* 로그인 */
+.membership-section {
+	display: flex;
+	justify-content: flex-end;
+	gap: 40px;
+	width: 100%;
+	margin-bottom: 25px;
+}
+.membership-section .member-title {
+	width: 70%;
+}
+#subContent .member-title h2.login-head {
+	display: inline;
+	font-size: 1.45rem;
+	font-weight: 400;
+	line-height: 31px;
+}
+.member-title .login_service {
+	color: #686868;
+	margin-top: 10px;
+	font-size: 0.8rem;
+	line-height: 1.6;
+}
+.login .keyboard {padding-bottom:20px; text-align:right;}
+.login-body #subContent .sub-content {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+}
+#subContent .sub-content{width: 100%;}
+#subContent .mw-event {width:100%;}
+#subContent .login input[type="text"],
+#subContent .login input[type="password"],
+#subContent .login input[type="tel"],
+#subContent .login input[type="number"] {
+	display: inline-block;
+	box-sizing: border-box;
+	width: 100%;
+	height: 56px;
+	line-height: 55px;
+	margin: 0;
+	padding-left: 20px;
+    border-color: #ddd;
+    border-radius: 15px;
+	font-size: 0.84rem;
+	letter-spacing: -0.88px;
+}
+#subContent .login input#email {
+	border-bottom: none;
+	border-radius: 15px 15px 0 0;
+	padding-left: 50px;
+	color: #000;
+}
+#subContent .login input#pwd {
+	padding-left: 50px;
+	border-radius: 0 0 15px 15px;
+	color: #000;
+}
+#subContent .login .form-value:has(#email):before {
+	position: absolute;
+	display: block;
+	width: 40px;
+	height: 40px;
+	background: url("../../images/mw/sns/login/id_login_icon.png") no-repeat;
+	background-size: 21px;
+	background-position: 17px 18px;
+	content: "";
+}
+#subContent .login .form-value:has(#pwd):before {
+	position: absolute;
+	display: block;
+	width: 40px;
+	height: 40px;
+	background: url("../../images/mw/sns/login/pwd_login_icon.png") no-repeat;
+	background-size: 22px;
+	background-position: 16px 16px;
+	content: "";
+}
+#subContent .login img.id_clean_icon {
+	position: absolute;
+	top: 0;
+	left: 100%;
+	transform: translate(-35px, 23px);
+	width: 11px;
+}
+#subContent .login img.pwd_clean_icon {
+	position: absolute;
+	top: 0;
+	left: 100%;
+	transform: translate(-35px, 23px);
+	width: 11px;
+}
+#subContent .login input#userNm {
+	border-bottom: none;
+	border-radius: 15px 15px 0 0;
+	color: #000;
+}
+#subContent .login input#telNum {
+	border-radius: 0 0 15px 15px;
+	color: #000;
+}
+.login .form-pw {margin-top:-1px;}
+.login .form-value {
+	margin: auto;
+	color:#666;
+}
+.login .form-value label {position:absolute; top:0; left:10px; line-height:40px;}
+#subContent .sub-content input#agree1 {margin-right:4px;}
+#subContent .sub-content label {font-size: 0.9rem;}
+#subContent .sub-content label.product {padding-left: 0;}
+#subContent .sub-content label.all_check_tx {padding-left: 6px;}
+
+
+/* 공고 페이지 */
+.fileArea-wrap {
+	display: block;
+	padding: 0 20px;
+	margin: 20px auto 0;
+	font-family: "Roboto";
+}
+.fileArea-wrap #fileArea {
+    padding: 25px 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+#fileArea .area-txt {
+	display: flex;
+	gap: 15px;
+	flex-direction: column;
+	width: 100%;
+	margin: 0 0 30px;
+}
+#fileArea .area-txt label {
+	color: #000;
+	font-size: 1rem;
+	font-weight: bold;
+	letter-spacing: -0.2px;
+}
+#fileArea .area-txt input {
+	height: 60px;
+	padding: 0 20px;
+	color: #000;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	font-size: 1.1rem;
+}
+#fileArea .radio-button-group .area-txt {
+	display: flex;
+	flex-direction: row;
+}
+#fileArea .area-txt.radio-button-group {
+	display: flex;
+	flex-direction: column;
+	color: #000;
+	font-size: 1rem;
+	font-weight: bold;
+	letter-spacing: -0.2px;
+}
+
+
+/* 라디오버튼 디자인 */
+.radio-button-group .gova-type-options {
+	display: flex;
+	gap: 10px;
+	justify-content: space-between;
+}
+.radio-button-group input[type="radio"] {
+	display: none;
+}
+#fileArea .area-txt.radio-button-group label {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 50px;
+	color: #106DF9;
+	border: 2px solid #106DF9;
+	border-radius: 50px;
+	background-color: #fff;
+	font-size: 0.9rem;
+	line-height: 51px;
+	cursor: pointer;
+}
+/* 선택된 상태의 라벨 스타일 */
+#fileArea .area-txt.radio-button-group input[type="radio"]:checked + label {
+	color: white;
+	background-color: #106DF9;
+}
+
+
+/* 첨부파일 */
+#fileList  {
+	color: #000;
+	font-size: 1rem;
+	font-weight: bold;
+}
+#fileList > img {
+	position: relative;
+	top: 4px;
+	width: 14px;
+	margin: 0 2px 1px 15px;
+}
+#fileList .file-row {
+	display: flex;
+	justify-content: space-between;
+    align-items: center;
+	padding: 8px;
+	margin-top: 10px;
+	border: 1px solid #ddd;
+    border-radius: 10px;
+	background-color: #fff;
+}
+#fileList .file-row:first-of-type {
+	margin-top: 15px;
+}
+#fileList .file-row input  {
+    width: 90%;
+    font-size: 0.9rem;
+	font-weight: normal;
+    font-family: "Roboto";
+	cursor: pointer;
+	border: 0;
+}
+#fileArea .file-row button {
+	display: flex;
+    background-color: transparent;
+}
+#fileArea .file-row button img {
+	width: 20px;
+}
+#fileList .file-row input:focus,
+#fileList .file-row input:active {
+	border: 0;
+	outline: 0;
+}
+#fileList .file-row input[type ="file" i]:focus,
+#fileList .file-row input[type ="file" i]:active {
+	border: 0;
+	outline: 0;
+}
+#fileList .file-row input[type ="file" i]::-webkit-file-upload-button {
+	width: 100px;
+	height: 40px;
+	margin-right: 10px;
+	color: #757575;
+    font-size: 0.9rem;
+	cursor: pointer;
+    line-height: 38px;
+}
+#fileArea .add-file-btn {
+    width: 100%;
+    height: 60px;
+	color: #000;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+	font-size: 0.9rem;
+	font-weight: bold;
+    line-height: 40px;
+    margin: 10px 0 0;
+}
+.file-actions__upload {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 56px;
+	margin: 0 auto;
+	color: #fff;
+	border: 1px solid #ddd;
+    border-radius: 8px;
+	background-color: #000;
+	font-size: 1.02rem;
+    font-weight: bold;
+	line-height: 52px;
+    margin-top: 20px;
+}
+#result {
+	display: block;
+	font-family: "Roboto";
+	text-align: center;;
+	line-height: 25px;
+	font-size: 0.9rem;
+	font-weight: bold;
+	color: #000;
+	letter-spacing: -0.5px;
+}
+#result img {
+	width: 75px;
+	display: block;
+	margin: 0 auto;
+	font-weight: bold;
+	margin-bottom: 18px;
+}
+
+
+/* 환불계좌관리 */
+#subContent .sub-content .payArea input#agree1 {
+	display: none;
+	position: absolute;
+	top: 18px;
+	left: 16px;
+	width: 20px;
+	height: 20px;
+	border: 0 none;
+	background-position: 0 -25px;
+	-webkit-appearance: none;
+}
+#subContent .sub-content .payArea label {
+	display: flex;
+	align-items: center;
+	font-size: 0.85rem;
+	padding: 20px 10px 20px;
+	color: #333;
+	font-weight: 400;
+	line-height: 18px;
+	cursor: pointer;
+	font-family: "Roboto";
+}
+#subContent .sub-content .payArea .form_checkbox {
+	display: none;
+	position: absolute;
+	top: 18px;
+	left: 16px;
+	width: 20px;
+	height: 20px;
+	border: 0 none;
+	background-position: 0 -25px;
+	-webkit-appearance: none;
+}
+#subContent .sub-content .payArea sprite_join-default {
+	display: none;
+	overflow: hidden;
+	display: inline-block;
+	font-size: 0;
+}
+#subContent .sub-content .payArea sprite_join-default + label {
+	display: inline-block;
+	cursor: pointer;
+	line-height: 22px;
+	padding-left: 22px;
+	background: url('../../images/mw/sub/before_check-box.png') left/18px no-repeat;
+}
+#subContent .sub-content .payArea .link_terms-view {
+	position: relative;
+	right: 0;
+	top: 0;
+	padding: 0 15px;
+	height: 33px;
+	color: #898989;
+	background-color: #fff;
+	font-size: 0.8rem;
+	line-height: 33px;
+	text-align: center;
+	font-weight: 400;
+}
+#subContent .sub-content .payArea .link_terms-view img {
+	display: block;
+	position: absolute;
+	top: 12px;
+	right: 0;
+	width: 8px;
+	height: 8px;
+	margin: 0;
+	padding: 0;
+}
+
+
+.user-y .login .login-check{float: left;}
+.user-y .login .login-check:first-child{float: left;}
+/* .login .find-join {float:left; width:100%; padding:10px 0 15px 0; font-weight:bold;} */
+
+.event-banner img {width:100%;}
+
+/* 로그인 비회원 추가에 따른 작성(2016-05-13) */
+.login .user-check label {display: inline-block; margin-left: 2px; margin-right: 10px; padding: 10px 0 6px;}
+
+
+.login .user-n .form-value:first-child {margin-top: 0;}
+#subContent .login .user-n .form-value a.btn6 {
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	padding: 15px 0;
+	margin: 20px 0 10px;
+	font-size: 1.05rem;
+	font-weight: bold;
+	border-radius: 12px;
+}
+.login .user-n .form-value input.number {float:left; width: calc(100% - 77px); margin-right: 5px;}
+.login .user-n .form-value a.btn6 {height: 40px; line-height: 40px; width: 60px; float: right;}
+.login .user-n2 {margin-bottom: 23px;}
+.login ul.info {
+	padding: 11px 15px;
+	margin: 7px 0 3px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	background: #fff;
+}
+.login ul.info li {
+    font-size: 13px; line-height: 20px; background: url("../../images/web/list/01.gif") no-repeat left 9px; padding-left: 10px; margin: 5px 0;
+}
+.login ul.info li strong {color: #fe434c; font-weight: 700;}
+.login .user-n ul.info {margin-top: 8px;}
+
+/* 비회원 로그인 */
+#subContent .join2 .ad-check {font-size:.3rem; color:#272727; padding:5px 0;}
+
+/* 간편로그인(가입) 버튼 */
+.login .login-sns-wrapper a {
+	margin: 0 15px;
+}
+.login .login-sns-wrapper a > p {
+	width: 100%;
+	margin-top: 0;
+	color: #fff;
+	font-size: 0.85rem;
+	font-weight: bold;
+	text-align: center;
+	line-height: 45px;
+	border-radius: 50%;
+	width: 55px;
+	height: 55px;
+}
+.login .login-sns-wrapper a > p.btnKakao {
+	color: #000;
+	background: url("/images/mw/sns/login/kakao_logo.png") no-repeat;
+	background-color: #faeb00;
+	background-size:30px;
+	background-position: 13px;
+}
+.login .login-sns-wrapper a > p.btnNaver {
+	background:url("/images/mw/sns/login/naver_logo.png") no-repeat;
+	background-color: #1EC800;
+	background-size: 25px;
+	background-position: 15px;
+}
+.login .login-sns-wrapper a > p.btnApple {
+	display:none;
+	background: url("/images/mw/sns/login/apple_logo.png") no-repeat;
+	background-color: #000;
+	background-size: 29px;
+	background-position: 13px 11px;
+}
+.btnJoin {width: 100%; margin-top: 10px; line-height: 66px; background-color: #000000; text-align: center;
+	font-size: 1.1rem; font-weight: bold; color: #FFFFFF;}
+
+/* 회원가입 */
+#subContent .tamnao-welcome {
+    padding: 30px 0 10px;
+    color: #353435;
+    text-align: left;
+    font-size: 1.45rem;
+    font-weight: 400;
+    background-color: #fff;
+    font-family: "Roboto";
+    width: 90%;
+    line-height: 31px;
+    margin: 0 auto;
+}
+#subContent .join table td.full input {
+	display: block;
+    height: 55px;
+    margin: 5px 0;
+    padding-left: 15px;
+    line-height: 56px;
+    box-sizing: border-box;
+    color: #000;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+}
+#subContent .join table td.full input.pwd-search {
+    height: 55px;
+    border-radius: 12px;
+    line-height: 54px;
+    font-size: 0.85rem;
+    margin: 6px 0;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+}
+#subContent .join table td.full input#userNm,
+#subContent .join table td.full input#certNumber1,
+#subContent .join table td.full input#certNumber2 {
+    height: 55px;
+    font-size: 28px;
+    line-height: 56px;
+    font-size: 0.85rem;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding-left: 15px;
+    background-color: #f3f3f3;
+    color: #000;
+}
+#subContent .join table td.full input#userNm {
+    margin-top: 25px;
+}
+#subContent .join #telNum {
+    width: 70%;
+    height: 55px;
+    line-height: 56px;
+    font-size: 0.85rem;
+    float: left;
+    padding-left: 15px;
+    margin: 5px 0;
+	color: #000;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+}
+#subContent .btn-list .btn1 {
+	height: 20px;
+	padding: 15px 0;
+	font-size: 1.05rem;
+	line-height: 20px;
+	margin-top:5px;
+	font-weight: bold;
+}
+#subContent .join .tel{width: 100%;}
+
+
+/* 회원/비회원 select */
+#subContent .user-check {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 12px;
+	width: 30%;
+}
+#subContent .login .user-check label {
+	height: 40px;
+	margin: 0;
+	padding: 0;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    font-size: .9rem;
+	text-align: center;
+	line-height: 42px;
+}
+#subContent .user-check input[type="checkbox"] {
+	position: absolute;
+	clip: rect(0, 0, 0, 0);
+}
+#subContent .user-check input[type="checkbox"] + label:before {
+	position: absolute;
+	top: 11px;
+	left: 0;
+	width: 18px;
+	height: 18px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	background: #fff;
+	text-align: center;
+	line-height: 18px;
+	content: "";
+}
+#subContent .user-check input[type="checkbox"]:checked + label:before {
+	top: 11px;
+	left: 0;
+	width: 18px;
+	height: 18px;
+	color: #fff;
+	border: 1px solid #f61346;
+	background-color: #f61346;
+	font-size: 0.9rem;
+	content: "\2713";
+}
+#subContent .join table td.email select {
+	width: 70%;
+    height: 55px;
+    line-height: 55px;
+    color: #000;
+    background-color:#fff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+	background-size:14px;
+    background-position: 94% 23px;
+    font-size:0.85rem;
+    margin: 5px 0;
+    padding-left: 15px;
+}
+#subContent .join table td.email select:focus {
+    border: 1px solid #000;
+    outline: none;
+    box-shadow: none;
+}
+#subContent .join .email a {
+	width: 27%;
+    height: 55px;
+    line-height: 55px;
+    border-radius: 12px;
+    background-color: #000;
+    color: #fff;
+    float: right;
+	font-size: 0.85rem;
+    text-align: center;
+    margin: 5px 0;
+}
+#subContent .join table td.full input.pwd-search2 {
+    display: block;
+    width: 100%;
+    height: 55px;
+    margin: 5px 0 10px;
+    line-height: 56px;
+    border-radius: 12px;
+    padding-left: 15px;
+    vertical-align: middle;
+    font-size: 0.85rem;
+    border: 1px solid #ccc;
+	color: #000;
+}
+#subContent .join-agree .btn-bottom-text { padding:8px 0; font-size: .3rem; }
+#subContent .join-agree .terms{
+	height:200px; padding:14px; overflow: scroll; color: #8b8b8b; border: 2px solid #b5b5b7; background-color: #f4f4f4;
+	font-size:.66rem; font-weight: normal; }
+#subContent .join-agree .ad-check { font-size:.3rem; color:#272727; margin:6px 0; }
+#subContent .join-agree .ad-check span,
+#subContent .join2 .ad-check span {color:#8b8b8b; padding-left:2px; }
+
+/*#subContent .join .full-1 span {line-height: 63px; padding-left: 20px; font-size: 1rem; font-weight: bold;}*/
+#subContent .join-agree table th {
+	padding: 8px;
+	border: 1px solid #ddd;
+	color: #000;
+	font-size: 0.75rem;
+	line-height: 1.25rem;
+	font-weight: normal;
+	vertical-align: middle;
+}
+#subContent .join-agree table td {border: 1px solid #cccccc; font-size: 0.8rem;}
+#subContent .join-agree .comm-rule table td {
+	position: relative;
+	top: 0;
+	bottom: 0;
+	padding: 8px;
+	border: 1px solid #ddd;
+	color: #333;
+	font-size: 0.75rem;
+	line-height: 15px;
+	text-align: left;
+}
+#subContent .btn-bottom-text{font-size: 24px;  color: #8b8b8b; padding: 11px 0 65px;}
+#subContent .btn-bottom-text span.text-bold{ color: #4d4d4d;}
+#subContent .btn-bottom-text span.text-decoration-red a{ color: #e8202e; border-bottom: 1px solid #e8202e;}
+#subContent .btn-bottom-text span.text-decoration-black1 a,
+#subContent .btn-bottom-text span.text-decoration-black2 a{ color: #4d4d4d; border-bottom: 1px solid #4d4d4d;}
+
+join-end ul {position:relative; top:10px; }
+
+/* 회원가입완료 */
+.join-wrap {
+	position:relative;
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+.join-wrap .character img {
+	position: relative;
+	right: 20px;
+	width: 180px;
+}
+.join-wrap .character {
+	width:100%;
+	margin: 40px 0 30px;
+	text-align:center;
+}
+.join-end {
+    position:relative;
+    font-family: "Rotobo";
+	text-align: left;
+}
+.join-end img {width: 300px;}
+.join-end ul {position:relative;}
+.join-end li {margin-bottom:5px;}
+.join-end li {margin-bottom:5px;}
+.join-end .title {
+	font-size: 1.45rem;
+	font-weight: 400;
+	color: #353435;
+	letter-spacing: -1px;
+	line-height: 31px;
+}
+.join-end .title span.complate {font-weight:600;}
+.join-end .memo {
+	font-size: 0.8rem;
+	margin-top: 10px;
+	color: #686868;
+	line-height: 1.6;
+}
+.join-end .memo span.id {font-weight: bold;}
+.join-banner-mobile {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin: 28px 0 20px;
+}
+.join-banner-mobile img {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+}
+#subContent .btn-list2 {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+    margin-top:20px;
+    font-size:0.85rem;
+    font-family: "Roboto";
+    font-weight: bold;
+}
+#subContent .btn-list2 .btn-home,
+#subContent .btn-list2 .btn-login {height:40px; line-height: 40px; float: left;}
+#subContent .btn-list2 .btn-home { margin-right:5px; border-width: 1px;}
+.join-wrap .btn-list2 .btn2 {color:#353435; width:45%; height:50px; line-height:50px; display:inline-block;}
+
+
+/* 회원가입 */
+.join-end ul.sns-buttons-wrapper {
+	display: flex;
+	flex-direction: column;
+	font-family: "Roboto";
+	margin-top: 30px;
+}
+.join-end .sns-buttons-wrapper li {
+	display: flex;
+	width: 100%;
+	height: 50px;
+    margin-bottom: 12px;
+	border-radius: 12px;
+}
+.join-end .sns-buttons-wrapper li P {
+	display: flex;
+	justify-content: center;
+}
+.join-end .sns-buttons-wrapper li a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	gap: 10px;
+}
+.join-end .sns-buttons-wrapper .btnKakao {
+	background-color: #faeb00;
+}
+.join-end .sns-buttons-wrapper .btnKakao p {
+	color: #371c1d;
+}
+.join-end .sns-buttons-wrapper .btnEmail p {
+	color: #000;
+}
+.join-end .sns-buttons-wrapper .btnKakao img {
+	width: 23px;
+	height: 23px;
+}
+.join-end .sns-buttons-wrapper .btnNaver img {
+	width: 20px;
+	height: 20px;
+}
+.join-end .sns-buttons-wrapper .btnApple img {
+	width: 23px;
+	height: 23px;
+}
+.join-end .sns-buttons-wrapper .btnNaver {
+	background-color: #1EC800;
+}
+.join-end .sns-buttons-wrapper .btnApple {
+	background-color: #000;
+}
+.join-end .sns-buttons-wrapper .btnEmail {
+	border: 1px solid #000;
+	background-color: #fff;
+}
+
+
+
+
+
+.join-end .sns-buttons-wrapper li p {
+	color: #fff;
+	font-size: 0.85rem;
+	font-weight: bold;
+	text-align: center;
+	line-height: 45px;
+}
+
+
+
+	/* 탈퇴 */
+#subContent a.btn-p {width:auto; padding:0 10px;background:#FE434C; border:1px solid #E5252E; color:#FFF;}
+
+#subContent .mb10 {margin-bottom:10px;}
+#subContent .con-box-b {float:left; width:100%; padding:15px; background:#FFF; border:1px solid #CCC;}
+#subContent .con-box em, #subContent em.blue {color:#0048FE;}
+#subContent .con-box-b p {padding-bottom:10px;}
+#subContent .con-box ul li {}
+
+#subContent h2 {clear:both; letter-spacing:-1px; margin-bottom: 0;}
+#subContent .join4 h2 {display:none;}
+#subContent h2.b-none {border:0 none; padding-left:0; margin-top:0; line-height:20px;}
+#subContent .btn-right {text-align:right;}
+#subContent .form1-1 {/*float:left; width:45%;*/ clear: both; overflow: hidden; border-top:1px solid #CCC; padding-top:10px; margin-top:10px;}
+#subContent .form1-1 label {float:left; width:30%; text-align:center; line-height:25px;}
+#subContent .form1-1 input {float:left; width:70%; background:#EDEDED; color:#000;}
+#subContent .form1-2 {/*float:left; width:55%;*/ clear: both; overflow: hidden; border-top:1px solid #CCC; padding-top:10px; margin-top:10px;}
+#subContent .form1-2 label {float:left; width:30%; text-align:center; line-height:25px;}
+#subContent .form1-2 input {float:left; width:70%}
+
+#subContent .txt-t {border-top:1px solid #CCC; padding-top:10px; min-height:150px;}
+
+.pop-cancel {display:none; z-index:100; position:absolute; top:50%; left:0; width:100%; padding:20px; margin:-50px 10px 0 0; background:#FFF; color:#000;}
+.pop-cancel p {padding-bottom:10px; text-align:center;}
+.pop-cancel p strong {font-size:15px;}
+.pop-cancel p:last-child {padding-bottom:0;}
+.pop-cancel a.btn {display:inline-block; width:80px; height:25px; padding:0; line-height:25px; border-radius:2px; font-size:13px; font-weight:bold; text-align:center;}
+.pop-cancel a.btn1 {background:#FE434C; border:1px solid #E5252E; color:#FFF;}
+.pop-cancel a.btn2 {background:#FFF; border:1px solid #CCC; color:#777;}
+
+
+/* --------------------------------------------------------- add ------------------------------------------------------------------ */
+/* 타이틀 제목 */
+#subContent h2 {border-bottom: none;}
+
+
+/* 휴대폰인증 메세지 */
+.join .msg {margin-top: 7px; line-height: 18px; display:inline-block;}
+
+/* 정보입력 > 주소 */
+.join-form .add .add-int {width: 50% !important;}
+.join-form .add .sel {display: block; margin-top: 5px;}
+.join-form .add .sel label {margin-left: 4px; margin-right: 8px;}
+.join-form .add .address1 {width: 100%;}
+.join-form .add .address2 {width: 100%; margin-top: 5px;}
+
+/* 정보입력 > 수신동의 */
+.join-form .agree label {line-height: 24px;}
+
+/* 아이디찾기완료 */
+.join .info {font-size: 15px; font-weight: 700; text-align: center; margin: 20px 0 15px;}
+.join .memoWrap {border-top: 1px solid #e1e3e4; padding: 25px 0;}
+.join .confMemo {text-align: center; font-size: 14px;}
+.join .confMemo strong {color: #fe434c;}
+.join .caution {font-size: 12px; margin: 10px 0 15px; word-spacing: -1px; color: #5f5f60;}
+.join table.tb-pw2 th {width: 37% !important;}
+.join .bgWrap table.tb-pw2 td input {font-size:0.875rem;
+	height: 40px;  border-collapse: collapse;}
+
+/*레이어 팝업 > 휴대폰인증*/
+.join3 .btn {width: 80px !important; margin-left: 5px;}
+.pop-seller {top: 40%;}
+.phone-check h2 {font-size: 16px; font-weight: 700;}
+.phone-check .agree1 {margin-top: 8px; margin-bottom: 5px;}
+.phone-check .agree1 input, .phone-check .agree1 label {vertical-align: middle; margin: 0;}
+.phone-check .agree1 input {margin-left: 2px; margin-right: 2px;}
+.phone-check .agree1 label {margin-right: 5px;}
+.phone-check table {width: 100%; font-size: 12px; border-top: 1px solid #ccc; border-collapse:collapse;}
+.phone-check table th {padding:5px 10px; background:#F6F6F6; border:1px solid #CCC; color:#000; text-align:center; font-weight:normal; vertical-align:middle;}
+.phone-check table td {padding:5px; background:#FFF; border:1px solid #CCC; color:#333; vertical-align:middle; line-height: 16px;}
+.phone-check table td.tel input {width: 29%;}
+.phone-check table td.tel .btn {display: block; margin-top: 5px;}
+.phone-check table td.number input {width: 46%;}
+.phone-check table td input {height: 28px;}
+
+.phone-check .btn-list {clear:both; padding:15px 0; line-height:25px; text-align:center;}
+.phone-check a.btn, #subContent button.btn {display:inline-block; width:105px; height:28px; padding:0; line-height:28px; border-radius:2px; font-size:13px; font-weight:bold; text-align:center;}
+.phone-check a.btn img, #subContent button.btn img {vertical-align:middle; margin-top:-2px;}
+.phone-check a.btn1 {background:#FE434C; border:1px solid #E5252E; color:#FFF;}
+.phone-check a.btn2 {background:#FFF; border:1px solid #CCC; color:#777;}
+.phone-check a.btn3 {background:#707070; border:0 none; color:#FFF;}
+.phone-check a.btn4, #subContent button.btn4 {width:70px; background:#FE434C; border:1px solid #E5252E; color:#FFF;}
+.phone-check a.btn5 {background:#F2F0F1; border:1px solid #CCC; color:#777;}
+.phone-check a.btn6 {width:70px; height:26px; line-height:26px; background:#ABABAB; border:1px solid #979797; color:#FFF;}
+
+
+/* 회원탈퇴사유 2016-06-10 */
+.con-box {border: 1px solid #ccc;}
+.con-box .text-wrap .info {font-size: 13px; font-weight: 700; margin-bottom: 14px; line-height: 18px;}
+.con-box .text-wrap .info strong {color: #e8202e;}
+.con-box .text-wrap p.label {display: block; text-align: left; padding: 0; font-weight: 400; font-size: 12px; color: #444;}
+.con-box .text-wrap p.label label {padding: 7px 0; margin: 0;}
+.con-box .text-wrap p.label .reason {width: 70%; width: calc(100% - 75px);}
+
+/* ----------------------------------------------- 아이디 비밀번호 찾기 ------------------------------------------------------*/
+#subContent .join .find-txt{
+    margin: 50px 0 10px 0;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #686868;
+}
+#subContent .join table td em {
+    float: left;
+    font-size: 0.75rem;
+    margin-top: 0px;
+    line-height: 25px;
+    font-weight: bold;
+    color: #e8202e;
+}
+#subContent .join table td.full input#sUserNm1,
+#subContent .join table td.full input#sUserNm2 {
+    box-sizing: border-box;
+    width:100%;
+    height: 55px;
+    line-height: 55px;
+    color: #000;
+    vertical-align: middle;
+    font-size: 0.85rem;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+    border-radius: 12px;
+}
+#subContent .join .tel a{
+    font-size: 0.85rem;
+    width: 27%;
+    height: 55px;
+    line-height: 55px;
+    border-radius: 12px;
+    margin: 5px 0;
+    width: 27%;
+}
+#subContent .join .full a{font-size: .77rem; line-height: 40px; width: 25%; height: 40px;}
+#subContent .join table td.full input#certNumber2 {
+    box-sizing: border-box;
+    width:100%;
+    margin: 5px 0;
+    padding-left: 15px;
+    height: 55px;
+    line-height: 55px;
+    font-size: 0.85rem;
+    color: #000;
+    vertical-align: middle;
+    background-color: #f3f3f3;
+}
+#subContent .join #certNumber {width:74%; margin: 0 auto; height:40px; line-height:40px; font-size: .77rem; color: #8b8b8b; float: left; padding-left:12px;}
+#subContent table input[type="text"], #subContent table select{font-size: .85rem; height: 40px; line-height:40px;  padding-left: 12px; }
+#subContent table input[type="text"], #subContent table select.rfAc{font-size: .85rem; height: 40px; line-height:40px;  padding-left: 12px; border: 1px solid #b5b5b6; }
+#subContent .join #telNum2 {
+    width: 70%;
+    height: 55px;
+    font-size: .85rem;
+    padding-left: 12px;
+    line-height: 55px;
+    border-radius: 12px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+	color: #000;
+}
+/* ----------------------------------------------- //휴대폰인증 ------------------------------------------------------*/
+.join1 .number a{
+	padding:0; font-size: .8rem; margin:0; height:40px; line-height: 40px;
+	background-color:#353435; color:#fff; float:right; border-radius:3px; width:25%; text-align:center;}
+
+/* ------------------------------------ responsive media query -------------------------------------- */
+
+
+/* Phone Mini (iPhone 4, 5, 5s, SE) / Font Size */
+@media screen and (min-width: 320px) and (max-width: 360px) {
+
+
+	/* -------------------------------------- 휴면계좌 본인인증 -----------------------------------*/
+	.join .number a {padding: 20px 0; font-size: 2rem; margin-top: 15px; height:20px; line-height: 20px;}
+
+
+	/* ------------------------------------------- 기획전 -----------------------------------*/
+	#subContent .mw-event {width:100%; padding:0; }
+
+}
+
+
+
+@media screen and (min-width: 360px)and (max-width: 415px) {
+
+
+	/* -------------------------------------- 휴면계좌 본인인증 -----------------------------------*/
+	.join .number a {padding: 20px 0; font-size: 1.3rem; margin-top: 18px; height:28px; line-height: 28px;}
+
+	#subContent .join #certNumber { width: 75.5%; height: 55px; line-height:55px; padding-left: 15px; font-size: .88rem; }
+	#subContent .join .full a { width: 23%; height: 55px; line-height: 55px; font-size: .88rem;}
+	#subContent .join-agree .btn-bottom-text{ line-height: 23px; padding-bottom:15px; font-size: .83rem; }
+	#subContent .join-agree .terms{ height: 200px; line-height: 23px; padding: 14px; font-size: 0.76rem;}
+	#subContent .join-agree .ad-check {font-size:.8rem; }
+
+	/*보류*/
+	#subContent .sub-content-join .join table td.full input.pwed-search2 {margin:0;}
+
+
+	.join1 .number a {font-size:.8rem; padding:0; margin:0; height:45px; line-height:45px;}
+	#subContent .join1 #certNumber {width:73%; height:45px;}
+}
+
+
+
+/* iPhone 6 Plus / Font Size */
+@media screen and (min-width: 415.1px){
+
+	#subContent .sub-content{width: 100%;}
+	.wrap-form {border-collapse: collapse;}
+	.join .number a{padding: 30px 0; font-size: 1.6rem; margin-top: 20px; height:30px; line-height: 30px;}
+	.join1 .number a{
+		padding:0; font-size: .8rem; margin:0; height:50px; line-height: 50px; width:25%; }
+
+	#subContent .join1 #certNumber {width:73%; height:50px;}
+	#subContent .join1 table .tel a {height:50px; line-height:50px; width:24%;}
+	#subContent .join1 table td.tel input {height:50px; line-height:50px;}
+	#subContent .join1 td.number input {height:50px; line-height:50px;}
+
+	}

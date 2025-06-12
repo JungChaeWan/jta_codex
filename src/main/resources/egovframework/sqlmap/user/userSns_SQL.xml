@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="userSns">
+
+<resultMap id="USERSNS_R_01" class="oss.user.vo.USERVO">
+    <result property="userId" 		column="USER_ID" />
+    <result property="snsDiv" 		column="SNS_DIV" />
+    <result property="loginKey"		column="LOGIN_KEY" />
+    <result property="token"		column="TOKEN" />
+</resultMap>
+
+<resultMap id="USERSNS_R_02" class="oss.user.vo.USERVO">
+    <result property="userId" 			column="USER_ID" />
+    <result property="authNm" 			column="AUTH_NM" />
+    <result property="userNm" 			column="USER_NM" />
+    <result property="email" 			column="EMAIL" />
+    <result property="telNum" 			column="TEL_NUM" />
+    <result property="pwd" 				column="PWD" />
+    <result property="postNum" 			column="POST_NUM" />
+    <result property="roadNmAddr" 		column="ROAD_NM_ADDR" />
+    <result property="dtlAddr" 			column="DTL_ADDR" />
+    <result property="emailRcvAgrYn" 	column="EMAIL_RCV_AGR_YN" />
+    <result property="smsRcvAgrYn" 		column="SMS_RCV_AGR_YN" />
+    <result property="qutYn" 			column="QUT_YN" />
+    <result property="lastLoginDttm" 	column="LAST_LOGIN_DTTM" />
+    <result property="lastLoginIp" 		column="LAST_LOGIN_IP" />
+    <result property="frstRegDttm" 		column="FRST_REG_DTTM" />
+    <result property="lastModDttm" 		column="LAST_MOD_DTTM" />
+    <result property="corpAdmYn" 		column="CORP_ADM_YN" />
+    <result property="badUserYn" 		column="BAD_USER_YN" />
+    <result property="badUserRsn" 		column="BAD_USER_RSN" />
+    <result property="sex" 				column="SEX" />
+    <result property="bth" 				column="BTH" />
+    <result property="snsDiv"	 		column="SNS_DIV" />
+    <result property="restYn"	 		column="REST_YN" />
+</resultMap>
+
+<select id="USERSNS_S_01" resultMap="USERSNS_R_01">
+SELECT USER_ID
+    , SNS_DIV
+    , LOGIN_KEY
+    , TOKEN
+FROM TB_USERSNS
+WHERE 1=1
+    <isNotEmpty property="userId">
+        AND USER_ID = #userId#
+    </isNotEmpty>
+    <isNotEmpty property="snsDiv">
+        AND SNS_DIV = #snsDiv#
+    </isNotEmpty>
+    <isNotEmpty property="loginKey">
+        AND LOGIN_KEY = #loginKey#
+    </isNotEmpty>
+</select>
+
+<!-- SNS 회원 정보 -->
+<select id="USERSNS_S_02" resultMap="USERSNS_R_02">
+SELECT T_USER.USER_ID          /*사용자 아이디*/
+    , T_USER.AUTH_NM          /*권한 명*/
+    , T_USER.USER_NM          /*사용자 명*/
+    , T_USER.EMAIL            /*이메일*/
+    , T_USER.TEL_NUM          /*전화 번호*/
+    , T_USER.PWD              /*패스워드*/
+    , T_USER.POST_NUM         /*우편번호*/
+    , T_USER.ROAD_NM_ADDR     /*도로명 주소*/
+    , T_USER.DTL_ADDR         /*상세 주소*/
+    , T_USER.EMAIL_RCV_AGR_YN /*이메일 수신 동의 여부*/
+    , T_USER.SMS_RCV_AGR_YN   /*SMS 수신 동의 여부*/
+    , T_USER.QUT_YN           /*탈퇴 여부*/
+    , T_USER.LAST_LOGIN_DTTM  /*최종 로그인 일시*/
+    , T_USER.LAST_LOGIN_IP    /*최종 로그인 아이피*/
+    , T_USER.FRST_REG_DTTM    /*최초 등록 일시*/
+    , T_USER.LAST_MOD_DTTM    /*최종 수정 일시*/
+    , (CASE
+        WHEN (SELECT COUNT(USER_ID) FROM TB_CORPADM WHERE USER_ID = T_USER.USER_ID) > 0 THEN 'Y'
+        ELSE 'N'
+    END) AS CORP_ADM_YN
+    , T_USER.BAD_USER_YN
+    , T_USER.BAD_USER_RSN
+    , T_USER.SEX
+    , T_USER.BTH
+    , (CASE
+        WHEN (SELECT COUNT(USER_ID) FROM TB_USERSNS WHERE USER_ID = T_USER.USER_ID) = 3 THEN 'N::K::A'
+        WHEN (SELECT COUNT(USER_ID) FROM TB_USERSNS WHERE USER_ID = T_USER.USER_ID) = 2 THEN 'N::K'
+        ELSE (SELECT SNS_DIV FROM TB_USERSNS WHERE USER_ID = T_USER.USER_ID)
+    END) AS SNS_DIV
+    , T_USER.REST_YN            /*휴면계좌 여부*/
+FROM TB_USER T_USER
+    INNER JOIN TB_USERSNS T_SNS
+    ON T_USER.USER_ID = T_SNS.USER_ID
+WHERE T_SNS.SNS_DIV = #snsDiv#
+    AND T_SNS.LOGIN_KEY = #loginKey#
+    AND T_USER.QUT_YN = 'N'
+</select>
+
+<insert id="USERSNS_I_01">
+INSERT INTO TB_USERSNS
+     ( USER_ID
+     , SNS_DIV
+     , LOGIN_KEY
+     , TOKEN
+     , CONF_DTTM
+     , REG_DTTM
+     )
+VALUES
+     ( #userId#
+     , #snsDiv#
+     , #loginKey#
+     , #token#
+     , SYSDATE
+     , SYSDATE
+     )
+</insert>
+
+<update id="USERSNS_U_01">
+UPDATE TB_USERSNS
+SET TOKEN = #token#
+    , CONF_DTTM = SYSDATE
+WHERE SNS_DIV = #snsDiv#
+    AND LOGIN_KEY = #loginKey#
+</update>
+
+<delete id="USERSNS_D_01">
+DELETE FROM TB_USERSNS
+WHERE USER_ID = #userId#
+    <isNotEmpty property="snsDiv">
+        AND SNS_DIV = #snsDiv#
+    </isNotEmpty>
+</delete>
+
+
+
+</sqlMap>

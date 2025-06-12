@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>제주 농부의 장 - 탐나오</title>
+
+    <link rel="stylesheet" href="../../../css/mw/common2.css">
+    <link rel="stylesheet" href="../../../css/mw/style.css">
+    <link rel="stylesheet" href="../../../css/mw/ac.css">
+
+    <script src="../../../js/jquery-1.11.1.js"></script>
+    <script src="../../../js/mw_layout.js"></script>
+    <script src="../../../js/jquery-ui-1.11.4.js"></script>
+    <script src="../../../js/jquery.cookie.js"></script>
+    <script src="../../../js/mw_common.js"></script>
+    <script src="../../../js/mw_style.js"></script>
+
+    <!-- add script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="../../../js/swiper.js"></script>
+
+    <script type="text/javascript">
+
+        // Hide Header on on scroll down
+        var lastScrollTop = 0;
+        var delta = 5;
+        var navbarHeight = $('.head-wrap').outerHeight();
+
+        $(window).scroll(function (event) {
+            var st = $(this).scrollTop();
+
+            if (Math.abs(lastScrollTop - st) <= delta)
+                return;
+
+            if (st > lastScrollTop && st > navbarHeight) {
+                // Scroll Down
+                $('.head-wrap').removeClass('nav-down').addClass('nav-up');
+            } else {
+                // Scroll Up
+                if (st + $(window).height() < $(document).height()) {
+                    $('.head-wrap').removeClass('nav-up').addClass('nav-down');
+                }
+            }
+            lastScrollTop = st;
+        });
+
+        $(document).ready(function () {
+
+            /**6차산업인증 소개 슬라이드*/
+            if ($('#ac_top_slider .swiper-slide').length > 1) {
+                new Swiper('#ac_top_slider', {
+                    pagination: '#infoSlider',
+                    paginationClickable: true,
+                    /*			autoplay: 5000,*/
+                    loop: true
+                });
+            }
+
+            doSwiper();
+
+            // Hide Header on on scroll down
+            var didScroll;
+            var lastScrollTop = 0;
+            var delta = 5;
+            var navbarHeight = $('.head-wrap').outerHeight();
+
+            $(window).scroll(function (event) {
+                didScroll = true;
+            });
+
+            setInterval(function () {
+                if (didScroll) {
+                    hasScrolled();
+                    didScroll = false;
+                }
+            }, 250);
+
+            function hasScrolled() {
+                var st = $(this).scrollTop();
+
+                // Make sure they scroll more than delta
+                if (Math.abs(lastScrollTop - st) <= delta)
+                    return;
+
+                // If they scrolled down and are past the navbar, add class .nav-up.
+                // This is necessary so you never see what is "behind" the navbar.
+                if (st > lastScrollTop && st > navbarHeight) {
+                    // Scroll Down
+                    $('.head-wrap').removeClass('nav-down').addClass('nav-up');
+                } else {
+                    // Scroll Up
+                    if (st + $(window).height() < $(document).height()) {
+                        $('.head-wrap').removeClass('nav-up').addClass('nav-down');
+                    }
+                }
+                lastScrollTop = st;
+            }
+
+            // 화면 사이즈별 슬라이드 설정
+            var screenWidth = 360;
+            var slideCnt = 2;
+            var swiper1 = null;
+
+            function doSwiper() {
+                screenWidth = $(window).width();
+
+                if (screenWidth < 720) {
+                    slideCnt = 2;
+                } else {
+                    slideCnt = 3;
+                }
+
+                /**카테고리별 추천상품*/
+                if ($('#pop_Slider1 .swiper-slide').length > 1) {
+                    if (swiper1 != null) {
+                        swiper1.destroy();
+                    }
+                    swiper1 = new Swiper('#pop_Slider1', {
+                        spaceBetween: 20,
+                        slidesPerView: slideCnt,
+                        paginationClickable: true,
+                        loop: true
+                    });
+                }
+            }
+
+
+            //테마추천상품 active 효과
+            $(".list-tag li a").click(function () {
+                if (!($(this).hasClass("active"))) {
+                    $(".list-tag li a.active").removeClass("active");
+                    $(this).addClass("active");
+                }
+            });
+
+            // 화면 사이즈 변경 이벤트
+            $(window).resize(function () {
+                var screenWidth2 = $(window).width();
+
+                if (screenWidth2 >= 720) {
+                    if (screenWidth < 720) {
+                        doSwiper();
+                    }
+                } else {
+                    if (screenWidth >= 720) {
+                        doSwiper();
+                    }
+                }
+                $(".bx-wrapper").css("max-width", screenWidth2);
+            });
+        })
+
+        //창 닫기
+        function itemSingleHide(obj) {
+            if (typeof obj == "undefined" || obj == "" || obj == null) {
+            } else {
+                $(obj).hide();
+            }
+            $("html, body").removeClass("not_scroll");
+        }
+
+        //스크롤 방지
+        function layer_popup2(obj) {
+            if($(obj).is(":hidden")) {
+                $(obj).show();
+                $('body').addClass('not_scroll');
+            } else {
+                $(obj).hide();
+            }
+        }
+
+    </script>
+</head>
+<body class="main">
+<div id="ac-sub">
+
+    <!-- header -->
+    <header id="header">
+        <div class="m-ac head-wrap">
+            <div class="title-wrap">
+                <h1 class="title">제주 농부의 장</h1>
+                <div class="l-area">
+                    <a href="" class="home" title="홈으로가기">
+                        <img src="/images/mw/common/home.png" alt="홈으로가기">
+                    </a>
+                </div>
+                <div class="r-area-side">
+                    <button type="button" id="frame_sideOpen" class="side-btn" title="사이드메뉴 열기"></button>
+                </div>
+            </div>
+        </div>
+    </header><!-- //header -->
+
+    <!-- key-visual -->
+    <section class="ac-panels-new">
+        <div class="main-list">
+            <div class="main-top-slider">
+                <div id="main_top_slider" class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide" style="background-color: #c6f3ef">
+                            <div class="Fasten">
+                                <a href=""><img src="../../../images/mw/from/banner/ac_banner_1.jpg" alt="기획전"></a>
+                            </div>
+                        </li>
+                        <li class="swiper-slide" style="background-color: #c6f3ef">
+                            <div class="Fasten">
+                                <a href=""><img src="../../../images/mw/from/banner/ac_banner_2.jpg" alt="이벤트"></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section><!-- //key-visual -->
+
+    <!-- 카테고리 메뉴 -->
+    <section class="menu-typeA">
+        <nav class="ac_scroll-menu">
+            <div class="category-menu">
+                <div class="row_view">
+                    <a class="active" href="">
+                        <img src="../../../images/mw/agriculture/snack.png" alt="간식·음료">
+                        <div>간식·음료</div>
+                    </a>
+                    <a href="">
+                        <img src="../../../images/mw/agriculture/tea.png" alt="차·식초">
+                        <div>차·식초</div>
+                    </a>
+                    <a href="">
+                        <img src="../../../images/mw/agriculture/fruit.png" alt="원물·과일">
+                        <div>원물·과일</p></div>
+                    </a>
+                    <a href="">
+                        <img src="../../../images/mw/agriculture/tradition.png" alt="전통·발효식품·반찬">
+                        <div>전통·발효식품<p>반찬</p></div>
+                    </a>
+                </div>
+                <div class="row_view">
+                    <a href="">
+                        <img src="../../../images/mw/agriculture/cereals.png" alt="곡류·원물가공식품">
+                        <div>곡류<p>원물가공식품</p></div>
+                    </a>
+                    <a href="">
+                        <img src="../../../images/mw/agriculture/jam.png" alt="잼·꿀·당류가공식품">
+                        <div>잼·꿀<p>당류가공식품</p></div>
+                    </a>
+                    <a href="">
+                        <img src="../../../images/mw/agriculture/livestock.png" alt="유제품·육가공·축산식품">
+                        <div>유제품·육가공<p>축산식품</p></div>
+                    </a>
+                    <a href="">
+                        <img src="../../../images/mw/agriculture/life.png" alt="생활용품·화장품·천연염색">
+                        <div>생활용품·화장품<p>천연염색</p></div>
+                    </a>
+                </div>
+                <div class="row_view">
+                    <a href="">
+                        <img src="../../../images/mw/agriculture/experience.png" alt="체험·관광">
+                        <div>체험·관광</div>
+                    </a>
+                    <a href="">
+                        <img src="../../../images/mw/agriculture/kit.png" alt="체험키트꾸러미">
+                        <div>제주키트<p>꾸러미</p></div>
+                    </a>
+                    <a href="">
+                        <img src="../../../images/mw/agriculture/all.png" alt="전체보기">
+                        <div>전체보기</div>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </section><!-- //카테고리 메뉴 -->
+
+    <!-- agriculture_info -->
+    <section class="info-panels-new">
+        <div class="framing--introd">
+            <h2>제주농부의 <span>정성과 진심</span>만 담습니다.</h2>
+            <div id="ac_top_slider" class="category-menu swiper-container">
+                <ul class="certification swiper-wrapper">
+
+                    <li class="variant-card swiper-slide certification-2" onclick="layer_popup2('#certification_2');">
+                        <div class="content">
+                            <img src="../../../images/mw/agriculture/certification_2.png" alt="착한여행">
+                            <h5>제주농촌융복합산업지원센터</h5>
+                            <span>농촌관광 활성화 지원 / 인프라 정비</span>
+                        </div>
+                    </li>
+
+                    <li class="variant-card swiper-slide certification-1" onclick="layer_popup2('#certification_1');">
+                        <div class="content">
+                            <img src="../../../images/mw/agriculture/certification_1.png" alt="제주여행">
+                            <h5>6차산업이란?</h5>
+                            <span>농촌융복합산업(6차산업)</span>
+                        </div>
+                    </li>
+
+                    <li class="variant-card swiper-slide certification-3" onclick="layer_popup2('#certification_3');">
+                        <div class="content">
+                            <img src="../../../images/mw/agriculture/certification_3.png" alt="숙소예약">
+                            <h5>농촌융복합사업자인증제</h5>
+                            <span>인증 자격요건 / 신청방법 / 인증절차</span>
+                        </div>
+                    </li>
+
+                </ul>
+                <div id="infoSlider" class="swiper-pagination"></div>
+            </div>
+
+            <!-- content // certification_1 -->
+            <div id="certification_1" class="comm-layer-popup full-layer-popup">
+                <div class="content-wrap">
+                    <div class="content">
+                        <div class="head">
+                            <h3 class="title">
+                                6차산업이란?
+                            </h3>
+                            <button type="button" class="close">
+                                <img src="/images/mw/icon/close/dark-gray.png" alt="닫기" onclick="itemSingleHide('.full-layer-popup');">
+                            </button>
+                        </div>
+                        <div class="detail-header">
+                            <img src="../../../images/mw/agriculture/certification_1.jpg" alt="6차산업이란?">
+                        </div>
+                        <p class="btn-site">
+                            <a href="http://www.xn--6-ql4f73knwc95ai5j.com/m" class="btn-detail">
+                                페이지 바로가기
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div><!-- content // -->
+
+            <!-- content // certification_2 -->
+            <div id="certification_2" class="comm-layer-popup full-layer-popup">
+                <div class="content-wrap">
+                    <div class="content">
+                        <div class="head">
+                            <h3 class="title">
+                                제주농촌융복합산업지원센터
+                            </h3>
+                            <button type="button" class="close">
+                                <img src="/images/mw/icon/close/dark-gray.png" alt="닫기" onclick="itemSingleHide('.full-layer-popup');">
+                            </button>
+                        </div>
+                        <div class="detail-header">
+                            <img src="../../../images/mw/agriculture/certification_2.jpg" alt="6차산업지원센터">
+                        </div>
+                    </div>
+                </div>
+            </div><!-- content // -->
+
+            <!-- content // certification_3 -->
+            <div id="certification_3" class="comm-layer-popup full-layer-popup">
+                <div class="content-wrap">
+                    <div class="content">
+                        <div class="head">
+                            <h3 class="title">
+                                농촌융복합사업자인증제
+                            </h3>
+                            <button type="button" class="close">
+                                <img src="/images/mw/icon/close/dark-gray.png" alt="닫기" onclick="itemSingleHide('.full-layer-popup');">
+                            </button>
+                        </div>
+                        <div class="detail-header">
+                            <img src="../../../images/mw/agriculture/certification_3.jpg" alt="6차산업인증제란?">
+                        </div>
+                    </div>
+                </div>
+            </div><!-- content // -->
+        </div><!-- framing--introd // -->
+    </section><!-- //hotel-info -->
+
+    <!-- promotion/best -->
+    <section class="sv-List mw-list-area">
+        <div class="according">
+            <div class="sv-list">
+                <div class="con-header">
+                    <p class="con-title"><span>이시간 남들보다 </span>똑똑한 쇼핑</p>
+                </div>
+                <div id="pop_Slider1" class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <div class="main-photo">
+                                    <img src="../../images/mw/from/product/jeju-product1-03.png" alt="기획전" onerror="this.src='/images/web/other/no-image.jpg'">
+                                </div>
+                                <div class="main-text">
+                                    <div class="j-info">★특1급 호텔 셰프의 프리미엄 뷔페</div>
+                                    <div class="j-title">메종글래드호텔 삼다정 뷔페</div>
+                                    <div class="main-price">9000<span class="won">원~</span></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <div class="main-photo">
+                                    <img src="../../images/mw/from/product/jeju-product1-03.png" alt="기획전" onerror="this.src='/images/web/other/no-image.jpg'">
+                                </div>
+                                <div class="main-text">
+                                    <div class="j-info">★특1급 호텔 셰프의 프리미엄 뷔페</div>
+                                    <div class="j-title">메종글래드호텔 삼다정 뷔페</div>
+                                    <div class="main-price">9000<span class="won">원~</span></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <div class="main-photo">
+                                    <img src="../../images/mw/from/product/jeju-product1-03.png" alt="기획전" onerror="this.src='/images/web/other/no-image.jpg'">
+                                </div>
+                                <div class="main-text">
+                                    <div class="j-info">★특1급 호텔 셰프의 프리미엄 뷔페</div>
+                                    <div class="j-title">메종글래드호텔 삼다정 뷔페</div>
+                                    <div class="main-price">9000<span class="won">원~</span></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <div class="main-photo">
+                                    <img src="../../images/mw/from/product/jeju-product1-03.png" alt="기획전" onerror="this.src='/images/web/other/no-image.jpg'">
+                                </div>
+                                <div class="main-text">
+                                    <div class="j-info">★특1급 호텔 셰프의 프리미엄 뷔페</div>
+                                    <div class="j-title">메종글래드호텔 삼다정 뷔페</div>
+                                    <div class="main-price">9000<span class="won">원~</span></div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section><!--//promotion/best -->
+
+    <!-- line-banner -->
+    <section class="beyondfarm">
+        <div class="content__banner-inner">
+            <img class="middle_banner" src="../../../images/mw/agriculture/beyond.png" alt="6차산업인증 비욘드팜">
+            <div class="txt">
+                <div class="line"></div>
+                대한민국정부가 인정한 농촌융복합산업 사업자가 만든 제품에 표기하는 브랜드 표시로
+                비욘드팜이 붙은 제품은 <p>각 지역의 신선한 농촌산물을 활용해서 그 원물의 특성을 가장 잘 아는
+                농업인이 정성들여 만들어낸 제품</p>
+            </div>
+        </div>
+    </section><!-- //line-banner -->
+
+    <!-- popularity trip -->
+    <section class="theme-push">
+        <div class="con-header">
+            <p class="theme-con-title">
+                <span>인기트립</span>
+            </p>
+        </div>
+        <ul class="popularity--trip">
+            <li class="">
+                <a href="">
+                    <img src="../../../images/mw/agriculture/life_banner.jpg" alt="생활">
+                    <div class="article">
+                        <div class="txt_box">
+                            <h3>생 활</h3>
+                            <p>#화장품 #마유 #염색</p>
+                        </div>
+                        <div class="discount-rate">
+                            최대 ~30%
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="">
+                    <img src="../../../images/mw/agriculture/experience_banner.jpg" alt="체험">
+                    <div class="article">
+                        <div class="txt_box">
+                            <h3>체 험</h3>
+                            <p>#가공제품 #체험키트 #체험프로그램</p>
+                        </div>
+                        <div class="discount-rate">
+                            최대 ~40%
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </section><!-- //popularity trip -->
+
+    <!-- theme product -->
+    <section class="theme-product_wrap">
+        <div class="con-header">
+            <p class="theme-con-title"><span><em>테마</em>추천상품</span></p>
+            <p class="con-sub-title">청정지역 제주가 생산한 기념품까지 받아볼 수 있는 직배송</p>
+        </div>
+        <div class="menu-typeA">
+            <!-- theme_scroll-menu -->
+            <nav class="theme_scroll-menu">
+                <div class="category-menu">
+                    <ul class="list-tag">
+                        <li class="prd-tab">
+                            <a href="#tabs-1" class="active">
+                                <div>#유제품·육가공·축산식품</div>
+                            </a>
+                        </li>
+                        <li class="prd-tab">
+                            <a href="#tabs-2">
+                                <div>#차·식초</div>
+                            </a>
+                        </li>
+                        <li class="prd-tab">
+                            <a href="#tabs-3">
+                                <div>#원물·과일</div>
+                            </a>
+                        </li>
+                        <li class="prd-tab">
+                            <a href="#tabs-4">
+                                <div>#간식·음료</p></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <span class="side-bg"></span>
+                <span class="side-bg"></span>
+            </nav><!-- //theme_scroll-menu -->
+        </div>
+
+        <!-- keyword_thumb ornament -->
+        <div id="div_productAjax" class="keyword_thumb ornament">
+            <li id="pageInfoCnt" totalcnt="40" totalpagecnt="4">
+                <a href="/mw/sv/detailPrdt.do?prdtNum=SV00000160">
+                    <div class="social-photo">
+                        <div class="bxLabel">
+                            <span class="main_label yellow">탐나는전</span>
+                        </div>
+                        <img src="/data/sv/thumb/SV00000160_2.jpg" alt="고씨네수산 제주옥돔/크기별" onerror="this.src='/images/web/other/no-image.jpg'">
+                    </div>
+                    <div class="text">
+                        <div class="prd_name">제주 산지 직송! 무료배송</div>
+                        <div class="title">고씨네수산 제주옥돔/크기별</div>
+                        <div class="info">
+                            <dl>
+                                <dd>
+                                    <div class="price">
+                                        <strong>57,000<span class="won">원</span></strong>
+                                        <del>65,000원</del>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a href="/mw/sv/detailPrdt.do?prdtNum=SV00000900">
+                    <div class="social-photo">
+                        <div class="bxLabel"></div>
+                        <img src="/data/sv/thumb/SV00000900_1.jpg" alt="애월 해풍 반건조 고등어" onerror="this.src='/images/web/other/no-image.jpg'">
+                    </div>
+                    <div class="text">
+                        <div class="prd_name">제주도 애월의 해풍으로 만들었습니다.</div>
+                        <div class="title">애월 해풍 반건조 고등어</div>
+                        <div class="info">
+                            <dl>
+                                <dd>
+                                    <div class="price">
+                                        <strong>32,500<span class="won">원</span></strong>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a href="/mw/sv/detailPrdt.do?prdtNum=SV00000762">
+                    <div class="social-photo">
+                        <div class="bxLabel">
+                            <span class="main_label yellow">탐나는전</span>
+                        </div>
+                        <img src="/data/sv/thumb/SV00000762_1.jpg" alt="차롱 흑오겹살(1kg)+참옥돔(대)+참조기(특대)" onerror="this.src='/images/web/other/no-image.jpg'">
+                    </div>
+                    <div class="text">
+                        <div class="prd_name"></div>
+                        <div class="title">차롱 흑오겹살(1kg)+참옥돔(대)+참조기(특대)</div>
+                        <div class="info">
+                            <dl>
+                                <dd>
+                                    <div class="price">
+                                        <strong>120,000<span class="won">원</span></strong>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a href="/mw/sv/detailPrdt.do?prdtNum=SV00001774">
+                    <div class="social-photo">
+                        <div class="bxLabel">
+                            <span class="main_label yellow">탐나는전</span>
+                        </div>
+                        <img src="/data/sv/thumb/SV00001774_1.jpg" alt="청정해 제주 성게알 500g (냉동)" onerror="this.src='/images/web/other/no-image.jpg'">
+                    </div>
+                    <div class="text">
+                        <div class="prd_name"></div>
+                        <div class="title">청정해 제주 성게알 500g (냉동)</div>
+                        <div class="info">
+                            <dl>
+                                <dd>
+                                    <div class="price">
+                                        <strong>96,000<span class="won">원</span></strong>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </div>
+    </section><!-- //theme product -->
+
+    <footer id="footer"></footer>
+</div> <!-- //wrap -->
+</body>
+</html>

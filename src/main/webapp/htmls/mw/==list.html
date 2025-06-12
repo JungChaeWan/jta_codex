@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>	
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="홍원기">
+
+	<title>Site Map</title>
+
+	<!-- css -->
+	<link rel="stylesheet" href="../../css/mw/comm_default.css">
+	<style>
+        body {background: #f2f2f2; font-family: "Nanum Gothic", "돋움", "Dotum", "맑은고딕", sans-serif; font-weight: 400;}
+		
+		.container {width: 100%;}
+		
+		header .top {background: #222; padding: 0 20px;}
+		header .top .container {display: table;}
+		header .top .logo, header .top .right {display: table-cell; vertical-align: middle;}
+		header .top .logo {font-size: 16px;}
+		header .top .logo a {font-family: "Noto Sans KR", sans-serif; color: #fff; display: inline-block; padding: 12px 0;}
+		header .top .logo a:hover {color: #58c0f0;}
+		header .top .right {text-align: right; font-size: 12px; color: #fff;}
+		header .top .right strong {color: #58c0f0; font-size: 13px;}
+		header .top .right span {display: inline-block; color: #fff;}
+		header .top .right span.line {color: #999; margin: 0 10px;}
+		header .top .right a {display: inline-block; color: #fff;}
+		header .top .right a:hover {color: #58c0f0;}
+		header .main-menu {background: #fff; border-bottom: 1px solid #e1e3e4; box-shadow: 2px 0px 4px #ccc;}
+		header .main-menu .container {text-align: center;}
+		header .main-menu .title {color: #222; font-size: 24px; padding: 18px 0;}
+		
+		main {margin: 20px;}
+		main h2 {font-size: 16px;}
+		main .list-wrap .list {display: inline-block; vertical-align: top; background: #fff; border: 1px solid #e1e3e4; padding: 20px 15px; min-width: 200px; margin-bottom: 10px;}
+		main .list h3 {font-size: 18px; font-family: "Noto Sans KR", sans-serif; color: #222; margin-bottom: 10px;}
+		main ul.depth1 {margin: 10px; padding: 10px;}
+		main ul.depth1 > li {list-style: circle;}
+		main ul.depth1 > li a,
+		main ul.depth1 > li strong {font-size: 14px; color: #3f3f3f; padding: 4px 0; display: block;}
+		main ul.depth1 > li strong {font-weight: normal;}
+		main ul.depth1 > li a:hover {color: #58c0f0; font-weight: bold;}
+		main ul.depth2 {margin-bottom: 5px;}
+		main ul.depth2 li a {font-size: 13px; color: #5f5f60; padding: 3px 0;}
+		main ul.depth2 li a::before {content: "-"; display: inline-block; margin-right: 5px;}
+
+        main a.text-black {color: #161213 !important;}
+        main a.text-gray {color: #8b8b8b !important;}
+        main a.text-red {color: #eb3b3e !important;}
+        main a.text-pink {color: #e5555e !important;}
+        main a.text-blue {color: #0069a3 !important;}
+        main a.text-green {color: #019a2e !important;}
+        main a.text-yellow {color: #fbbb01 !important;}
+
+		footer h3 {margin-bottom: 10px; font-size: 18px; font-family: "Noto Sans KR", sans-serif;}
+		footer .warning-info {background: #fff; padding: 30px; font-size: 14px; color: #333; border: 1px solid #e1e3e4;}
+		footer .warning-info h4 {margin-top: 20px;}
+		footer .warning-info h4::before {content: "["}
+		footer .warning-info h4::after {content: "]"}
+		footer .warning-info p {margin: 5px 0; font-size: 13px; line-height: 18px;}
+		footer .warning-info p::before {content: "-"; display: inline-block; margin-right: 5px;}
+	</style>
+
+	<!-- script -->
+	<script src="/js/jquery-1.11.1.js"></script>
+	<script>
+		$(document).ready(function(){
+			var page_count = $('li a').length;
+			$('#count').text(page_count);
+		})
+	</script>
+</head>
+<body>
+	<header>
+		<!--logo-->
+		<section class="top">
+			<div class="container">
+                <h1 class="logo"><a href="#">탐나오</a></h1>
+				<nav class="right">
+					<span>작업페이지 : <strong id="count"></strong>page</span>
+					<span class="line">|</span>
+					<a href="=common.html">» Style Guide</a>
+				</nav>
+			</div>
+		</section>
+		
+		<!--main menu-->
+		<nav class="main-menu">
+			<div class="container"><h2 class="title">Page Guide</h2></div>
+		</nav>
+	</header>
+	
+	<main>
+		<section class="list-wrap">
+			<div class="listWrap">
+				<div class="list">
+					<h2>INFORMATION</h2>
+					<ul class="depth1">
+						<li><a href="=common.html" target="_blank" class="text-blue">UI Style Guide</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<h2>Frame</h2>
+					<ul class="depth1">
+						<!-- <li><a href="javascript:void(0)" onclick="win_popup('frame-main.html', 'popup-name', 360, 640)">메인 프레임</a></li> -->
+						<li><del><a href="frame-main.html" target="_blank" style="color: #ff0000">메인 프레임</a></del></li>
+						<li><del><a href="frame-sub.html" target="_blank" style="color: #ff0000">서브 프레임</a></del></li>
+						<!-- <li><a href="frame-sub2.html" target="_blank">서브 프레임 - 특산품</a></li> -->
+						<li><a href="test-mypage1.html" target="_blank">기존 콘텐츠형</a></li>
+					</ul>
+				</div>
+				
+				<div class="list">
+					<h2>Main</h2>
+					<ul class="depth1">
+						<li><del><a href="main4-1.html" target="_blank" style="color: #ff0000">메인</a></del></li>
+					</ul>
+				</div>
+				
+				<div class="list">
+		            <h2>항공</h2>
+		            <ul class="depth1">
+		                <li><del><a href="air-search.html" target="_blank" style="color: #ff0000">검색</a></del></li>
+		                <li><del><a href="air-list.html" target="_blank" style="color: #ff0000">검색결과 - 가는편</a></del></li>
+		                <li><del><a href="air-list2.html" target="_blank" style="color: #ff0000">검색결과 - 오는편</a></del></li>
+		                <li><del><a href="air-pay-pack.html" target="_blank" style="color: #ff0000">선택여정 - 묶음결제</a></del></li>
+		                <!-- <li><a href="air-pay-single.html" target="_blank">선택여정 - 개별결제(삭제처리)</a></li> -->
+		            </ul>
+		        </div>
+				
+		        <div class="list">
+		            <h2>숙박</h2>
+		            <ul class="depth1">
+		                <li><del><a href="hotel-search.html" target="_blank" style="color: #ff0000">검색</a></del></li>
+		                <li><del><a href="hotel-search2.html" target="_blank" style="color: #ff0000">검색 - 상세 > 수정 시</a></del></li>
+		                <li><del><a href="hotel-list.html" target="_blank" style="color: #ff0000">목록</a></del></li>
+		                <li><a href="hotel-map.html" target="_blank">지도검색</a></li>
+		                <li><del><a href="hotel-detail.html" target="_blank" style="color: #ff0000">상세</a></del></li>
+		            </ul>
+		        </div>
+		        
+		        <div class="list">
+		            <h2>렌터카</h2>
+		            <ul class="depth1">
+		                <li><del><a href="rent-search.html" target="_blank" style="color: #ff0000">검색</a></del></li>
+		                <li><del><a href="rent-search2.html" target="_blank" style="color: #ff0000">검색 - 상세 > 수정 시</a></del></li>
+		                <li><del><a href="rent-list.html" target="_blank" style="color: #ff0000">목록</a></del></li>
+		                <li><a href="rent-list-seat.html" target="_blank">목록 - 유모차/카시트</a></li>
+		                <li><del><a href="rent-detail.html" target="_blank" style="color: #ff0000">상세</a></del></li>
+		                <li><del><a href="rent-detail-all.html" target="_blank" style="color: #ff0000">상세 - 업체 전체보기</a></del></li>
+		            </ul>
+		        </div>
+		        
+		        <div class="list">
+		            <h2>관광지/레저</h2>
+		            <ul class="depth1">
+		                <li><del><a href="social-list.html" target="_blank" style="color: #ff0000">목록</a></del></li>
+		                <li><u><a href="social-detail.html" target="_blank" style="color: #ff0000">상세</a></u></li>
+		            </ul>
+		        </div>
+		        
+		        <div class="list">
+		            <h2>맛집</h2>
+		            <ul class="depth1">
+		                <li><del><a href="food-list.html" target="_blank" style="color: #ff0000">목록</a></del></li>
+		                <li><del><a href="social-detail.html" target="_blank" style="color: #ff0000">상세</a></del></li>
+		            </ul>
+		        </div>
+		        
+		        <div class="list">
+		            <h2>여행사 상품</h2>
+		            <ul class="depth1">
+		                <li><del><a href="travel-list.html" target="_blank" style="color: #ff0000">목록</a></del></li>
+		                <li><del><a href="social-detail.html" target="_blank" style="color: #ff0000">상세</a></del></li>
+		            </ul>
+		        </div>
+		        
+		        <div class="list">
+		            <h2>from 제주 (특산품)</h2>
+		            <ul class="depth1">
+		            	<li><del><a href="from-jeju-main.html" target="_blank" style="color: #ff0000">메인</a></del></li>
+		            	<li><del><a href="from-jeju-main-list.html" target="_blank" style="color: #ff0000">메인 - 전체보기</a></del></li>
+		                <li><del><a href="from-jeju-list.html" target="_blank" style="color: #ff0000">목록</a></del></li>
+		                <li><u><a href="from-jeju-detail.html" target="_blank" style="color: #ff0000">상세</a></u></li>
+		                <li><del><a href="from-jeju-detail-all.html" target="_blank" style="color: #ff0000">상세 - 업체 전체보기</a></li>
+		            </ul>
+		        </div>
+		        
+		        <div class="list">
+		            <h2>기획전</h2>
+		            <ul class="depth1">
+		                <li><del><a href="special-product.html" target="_blank" style="color: #ff0000">상품기획전</a></del></li>
+		                <li><del><a href="special-mdspick.html" target="_blank" style="color: #ff0000">MD's Pick</a></del></li>
+		            </ul>
+		        </div>
+		        
+		        <div class="list">
+		            <h2>이벤트</h2>
+		            <ul class="depth1">
+		                <li><del><a href="event-list.html" target="_blank" style="color: #ff0000">목록</a></del></li>
+		                <li><del><a href="sub_event2.html" target="_blank" style="color: #ff0000">상세 (기존이벤트 상세 페이지 활용)</a></del></li>
+		            </ul>
+		        </div>
+		        
+		        <div class="list">
+		            <h2>마이페이지</h2>
+		            <ul class="depth1">
+		            	<li><del><a href="mypage-main.html" target="_blank" style="color: #ff0000">메인</a></del></li>
+		            	<li><del><a href="mypage-like.html" target="_blank" style="color: #ff0000">찜한상품</a></del></li>
+		            </ul>
+		        </div>
+		        
+		        <div class="list">
+		            <h2>회원</h2>
+		            <ul class="depth1">
+		            	<li><a href="login.html" target="_blank">로그인</a></li>
+		            	<li><a href="my-certification.html" target="_blank">본인인증</a></li>
+		            	<li><a href="diapause-01.html" target="_blank">휴면고객 - 본인인증</a></li>
+		            </ul>
+		        </div>
+			</div> <!-- //listWrap -->
+		</section>
+	</main>
+	
+	<footer>
+		<div class="warning-info">
+			<h3>Memo</h3>
+            <p></p>
+		</div>
+	</footer>
+	
+</body>
+</html>

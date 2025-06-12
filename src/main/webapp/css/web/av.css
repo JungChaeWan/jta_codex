@@ -1,0 +1,1322 @@
+@charset "utf-8";
+
+/* -- * -- */
+
+.subContainer .subContents {
+    min-height: 1700px;
+}
+
+
+/* -- mapLocation -- */
+
+.popup-typeA.air-zone {
+    z-index: 9999999;
+}
+.popup-typeA {
+    z-index: 1;
+}
+
+
+/* -- air navigation / bg -- */
+
+.subContents .search-typeA {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    background-color: #3c92f9;
+    background: url("../../images/web/air/air_visual.jpg") no-repeat;
+    background-position: center;
+}
+.subContents .search-typeA:after {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2000px;
+    margin-left: -1000px;
+    content: "";
+}
+.search-typeA .inner {
+    margin-top: 25px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.search-typeA .inner h3 {
+    line-height: 0;
+    visibility: hidden;
+}
+.search-typeA .inner .form-area {
+    height: 190px;
+}
+
+
+/* -- air navigation / check-area -- */
+.search-typeA ul.check-area {
+    width: 200px;
+    height: 35px;
+    padding-top: 25px;
+    margin: 0 0 50px 30px;
+    border-bottom: 1px solid #999999;
+    font-family: "Roboto";
+}
+ul.check-area li.lb-ch {
+    float: left;
+    position: relative;
+    top: 2px;
+    margin: 0;
+}
+ul.check-area li.active a {
+    height: 31px;
+    margin: 0;
+    border-bottom: 4px solid #e8202e;
+    color: #1c1c1c;
+    font-weight: normal;
+    font-size: 0.95rem;
+}
+.lb-ch .textY,
+.lb-ch .textN {
+    display: inline-block;
+    width: 100px;
+    color: #afafaf;
+    margin-left: 0;
+    font-weight: normal;
+    font-size:  0.95rem;
+    vertical-align: middle;
+    text-align: center;
+    height: 31px;
+}
+/* 은민추가 */
+input[type=checkbox].textY,
+input[type=checkbox].textN {
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+input[type=checkbox].textY + label.label_av,
+input[type=checkbox].textN + label.label_av {
+    display: block;
+    width: 100px;
+    height: 41px;
+    color: #afafaf;
+    font-size: 0.95rem;
+    letter-spacing: -1px;
+    text-align: center;
+    cursor: pointer;
+}
+ul.check-area li.active label.label_av {
+    height: 31px;
+    border-bottom: 4px solid #e8202e;
+    color: #1c1c1c;
+    font-size: 0.95rem;
+}
+
+/* -- air navigation / search-area -- */
+
+.search-typeA .search-area {
+    padding: 0px 30px;
+}
+.search-typeA > .inner {
+    position: relative;
+}
+.form-area .search-area .area:first-child {
+    width: 300px;
+}
+.form-area .search-area .zone dl {
+    width: 135px;
+}
+.form-area .search-area.air .area dl dt {
+    margin-left: 20px;
+    color: #000000;
+    font-family: NotoSans R;
+    font-size: 0.8rem;
+}
+.form-area .search-area .area dl dt .rt-icon {
+    width: 56px;
+    height: 14px;
+    background: url("../../images/web/air/rt-icon.png") no-repeat;
+    line-height: 14px;
+}
+.form-area .search-area .area dl dt .date-icon {
+    width: 56px;
+    height: 12px;
+    background: url("../../images/web/air/date-icon.png") no-repeat;
+    line-height: 12px;
+}
+.form-area .search-area .area dl dt .cn-icon {
+    width: 71px;
+    height: 15px;
+    background: url("../../images/web/air/cn-icon.png") no-repeat;
+    line-height: 15px;
+}
+.form-area .search-area .area {
+    width: 330px;
+    margin-left: 8px;
+    border-radius: 5px;
+    background-color: #f2f6f9;
+}
+.form-area .search-area .area .change {
+    vertical-align: initial;
+}
+.form-area .search-area .area dl dt .IconSide {
+    float: right;
+}
+.form-area .search-area .area dl dd {
+    width: 100%;
+    height: 55px;
+}
+.search-typeA .air .date dl {
+    width: 161px;
+}
+.map--btn_default {
+    position: relative;
+    display: inline-block;
+    min-width: 70px;
+    height: 27px;
+    margin: 0 4px;
+    color: #fff;
+    border-radius: 5px;
+    background: #333;
+    font-size: 0.85rem;
+    text-align: center;
+    line-height: 27px;
+    cursor: pointer;
+}
+.form-area .air-count .map--btn {
+    top: 14px;
+    left: 193px;
+    vertical-align: bottom;
+}
+
+
+/* -- 항공 Slide -- */
+
+.inner .air-col3-item {
+    margin-top: 68px;
+}
+.air-col3-item ul li {
+    width: 33%;
+}
+.air-col3-item div.icon {
+    height: 55px;
+    margin-bottom: 16px;
+    line-height: 55px;
+}
+.air-col3-item dl{
+    padding: 0 0 58px;
+    border: 1px solid #fff;
+}
+.inner .air-col3-item dl dt {
+    color: #455873;
+    font-size: 1.15rem;
+}
+.inner .air-col3-item dl dd {
+    color: #627084;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+.virtic .won {text-decoration: line-through;}
+.virtic .arrow {
+    position: relative;
+    bottom: 1px;
+    padding: 3px;
+    font-size: 0.4rem;
+}
+
+
+/* -- air info -- */
+.search-typeA .value-text .date-wrap .datepicker {
+    background-color: #f2f6f9;
+    font-family: "NotoSans R";
+    height: 55px;
+}
+.search-area .area.select {width: 305px;}
+.search-area .popup-typeA.air-count .detail-area {line-height: 2;}
+.popup-typeA .counting-area .counting {margin: 15px 0;}
+.popup-typeA .counting-area .counting:first-child {margin-top: 0;}
+.search-typeA .search-area .search .btn.red {
+    width: 170px;
+    height: 55px;
+    padding: 0 17px;
+    border-radius: 5px;
+    background-color: #e8202e;
+}
+.search-area .search .btn .MagGlass {
+    position: relative;
+    left: 13px;
+    display: block;
+    width: 140px;
+    height: 18px;
+    background: url("../../images/web/air/MagGlass.png") no-repeat;
+    line-height: 15px;
+}
+.search-area .area .value-text a {
+    position: relative;
+    right: 0;
+    width: 100%;
+    height: 55px;
+    margin : 0;
+    font-family: "NotoSans R";
+    line-height: 55px;
+}
+.search-typeA .search-area .area .value-text a.active {
+    border: none;
+}
+.search-area .area:last-child {
+    width: 170px;
+}
+.search-area .search .btn.red span.TicSec {
+    font-family: "NotoSans R";
+    font-size: 0.95rem;
+}
+.product-slide-area {
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* -- av-intro__banner -- */
+
+.content__banner-inner {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* -- customerCenter -- */
+.customerCenter {
+    padding: 0;
+    margin-top: 20px;
+    height: 230px;
+}
+.customerCenter .inner {
+    display: flex;
+    justify-content: space-between;
+}
+.customerCenter dl {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 150px;
+    width: 345px;
+    margin: 0 10px;
+    padding: 20px;
+    border: 1px solid #d3d1d0;
+    border-radius: 10px;
+    font-family: "Roboto";
+}
+.customerCenter dl:first-child {
+    margin-left: 0;
+}
+.customerCenter dl:last-child {
+    margin-right: 0;
+    background-color: #106DF9;
+    color: #fff;
+    height: 152px;
+    border: none;
+}
+.customerCenter dl .explan {
+    font-size: 0.86rem;
+    text-align: center;
+    color: #627084;
+    line-height: 1.5;
+}
+.customerCenter dl dt {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+    height: 46px;
+}
+.customerCenter dl dt img.jlair-icon {
+    position: relative;
+    bottom: 4px;
+}
+.customerCenter dl dt img.jeju-icon {
+    position: relative;
+    bottom: 3px;
+}
+.customerCenter dl dt span.tit {
+    position: relative;
+    bottom: 3px;
+    display: inline;
+    color: #455873;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: -0.2px;
+}
+.customerCenter dl .jl-texNum {
+    float: left;
+    padding-right: 18px;
+    border-right: 1px solid #d3d1d0;
+    height: 40px;
+    text-align: center;
+}
+.customerCenter dl dd .texNum {
+    display: inline;
+    position: relative;
+    top: 4px;
+    left: 5px;
+    color: #106DF9;
+    font-size: 1.3rem;
+    font-family: "NotoSans M";
+    letter-spacing: -0.5px;
+    text-align: center;
+}
+.customerCenter dl dd div{font-size: 0.9rem;}
+.customerCenter dl dd .texTim {
+    display: inline-block;
+    padding: 0 0 0 17px;
+    color: #000;
+}
+.customerCenter dl dd .texTim > span {display: block;}
+.customerCenter dl dd .explan {
+    width: 336px;
+    color: #6e6e6e;
+    font-size: 0.86rem;
+}
+
+
+/* -- FAQ -- */
+.customerCenter dl dt span {
+    font-size: 1.3rem;
+    letter-spacing: -0.25px;
+}
+.customerCenter dl dd {
+    display: flex;
+    position: relative;
+    bottom: 6px;
+    justify-content: center;
+}
+.customerCenter dl.faqWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+}
+.customerCenter dl.faqWrap dt {
+    display: flex;
+    justify-content: space-between;
+}
+.customerCenter dl.faqWrap dd {
+    display: block;
+    justify-content: center;
+}
+.customerCenter inner dl dd {
+    text-align: center;
+}
+.customerCenter dl dt span a.shortCuts {
+    float: right;
+    position: relative;
+    color: #fff;
+    font-size: 0.8rem;
+}
+.customerCenter dl dt span.faqTit > span {
+    bottom: 0;
+    display: inline;
+    font-weight: bold;
+}
+.customerCenter dl dd ul.faqTit {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.customerCenter dl dd ul.faqTit .faqList {
+    display: inline;
+    float: left;
+    width: 98px;
+    height: 98px;
+}
+.customerCenter dl dd ul.faqTit .faqList:first-child {
+    margin-left: 0;
+}
+.customerCenter dl dd ul.faqTit li .faqTxt{
+    position: relative;
+    top: 32px;
+    left: 16px;
+}
+.customerCenter dl dd ul.faqTit li.n1 span.faqTxt:first-of-type{
+    position: relative;
+    left: 23px;
+}
+.customerCenter dl dd ul.faqTit .n1 {
+    background: url("../../images/web/air/faq1-bg.png") no-repeat;
+}
+.customerCenter dl dd ul.faqTit .n2 {
+    background: url("../../images/web/air/faq2-bg.png") no-repeat;
+}
+.customerCenter dl dd ul.faqTit .n3 {
+    background: url("../../images/web/air/faq3-bg.png") no-repeat;
+}
+.customerCenter dl dd ul li a {
+    display: block;
+}
+.customerCenter dl dd ul.faqTit a.content {
+    width: 98px;
+    height: 98px;
+    color: #455873;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+.customerCenter .faqEtc {
+    position: relative;
+    top: 32px;
+    left: 80px;
+    color: #627084;
+    font-size: 0.85rem;
+}
+
+
+/* -- 항공 seo 디스크립션 영역추가 -- */
+.air-plane-overview-section {
+    margin: 20px 0 50px;
+    display: flex;
+}
+.air-plane-overview-section .av-info {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: auto;
+    font-family: "Roboto";
+    font-size: 0;
+    border: 1px solid #d3d1d0;
+    background-color: #f8f9fa;
+    padding: 25px 0;
+    border-radius: 10px;
+}
+.air-plane-overview-section .info-logo {
+    display: flex;
+    justify-content: center;
+    flex-basis: 100px;
+    align-items: center;
+}
+.air-plane-overview-section .info-article {
+    display: flex;
+    flex-direction: column;
+}
+.air-plane-overview-section .info-article p {
+    padding: 5px 0;
+    color: #2e2c2c;
+    font-size: 0.8rem;
+}
+.air-plane-overview-section .info-article p span {
+    font-weight: bold;
+}
+
+
+/* -- Product list -- */
+.u-goods-sec {
+    height: 320px;
+    margin-top: 80px;
+    padding: 0;
+    background : #f4f8ff;
+}
+.u-goods-sec .title-type3 {
+    padding: 75px 0 40px;
+    color: #333;
+    font-size: 1.45rem;
+}
+.u-goods-sec ul {
+    width: 1200px;
+    font-size: 0;
+    text-align: center;
+}
+ul.tab-theme li {
+    display: inline-block;
+    margin: 0 5px 0px;
+    border: 1px solid #ededed;
+    border-radius: 20px;
+    background-color : #fff;
+}
+.tab-theme a {
+    display: block;
+    padding: 7px 30px;
+    border-radius: 20px;
+}
+.u-goods-sec ul li a.tag {
+    color: #455873;
+    font-size: 0.9rem;
+}
+.u-goods-sec ul li a.on{
+    color: #fff;
+    background: #e8202e;
+}
+.category-area {
+    margin-top: 40px;
+}
+.item-area .list-item {
+    display: inline-block;
+    width: 228px;
+    height: 155px;
+    margin-right: 15px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+.item-area li.list-item:nth-of-type(5n) {
+    margin-right: 0;
+}
+.item-area li.list-item:nth-last-child(-n+5) {
+    margin-top: 60px;
+}
+.item-area .box__image {
+    overflow: hidden;
+    width: 228px;
+    height: 185px;
+    border-radius: 8px;
+    font-size: 15px;
+}
+.item-area .box__image img {
+    position: relative;
+    top: -35px;
+    width: 228px;
+}
+.item-area .box__information {
+    width: 208px;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+.box__information .bxTitle {
+    width: 200px;
+    color: #222;
+    font-size: 16px;
+    font-family: "NotoSans M";
+    letter-spacing: -.3px;
+    text-align: left;
+}
+.box__information .bxEvent {
+    overflow: hidden;
+    color: #777;
+    font-size: 14px;
+    text-align: left;
+    line-height: 20px;
+    word-break: break-all;
+    vertical-align: top;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.box__information .bxPrice {
+    margin-top: 10px;
+    color: #222;
+    font-family: "Roboto";
+    font-size: 15px;
+    text-align: left;
+}
+.box__information .text__price {
+    font-weight: 700;
+    font-size: 22px;
+}
+.box__information .text__unit {
+    margin-left: -2px;
+    font-size: 15px;
+    font-family: "NotoSans";
+}
+
+
+/* --layer popup -- */
+.comm-layer-popup_fixed .content-wrap {
+    display: block;
+    width: 100%;
+    height: 50%;
+    margin-top: -25%;
+    margin-left: -50%;
+    border: none;
+}
+#faq_info_2.comm-layer-popup_fixed .content-wrap {
+    height: 100%;
+    margin-top: -60%;
+}
+.comm-layer-popup_fixed .detail-header {
+    height: 70px;
+    padding: 0 20px;
+    background-color: #3d8afa;
+    font-family: "NotoSans R";
+    line-height: 70px;
+}
+.header-text .qtxt {
+    margin-left: 3px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+.header-text .btnCl {
+    float: right;
+    height: 70px;
+    line-height: 70px;
+}
+.header-text .btnCl .close img {
+    position: relative;
+    bottom: 1px;
+    width: 100%;
+}
+.content .btxt1, .content .btxt3 {
+    width: 562px;
+    padding: 25px;
+    font-size: 0.95rem;
+    color: #627084;
+    line-height: 25px;
+}
+.content .btxt2 {
+    overflow: auto;
+    width: 562px;
+    height: 650px;
+    padding: 25px;
+    font-size: 0.95rem;
+    color: #627084;
+    line-height: 25px;
+}
+.content .faqSee .headtxt {
+    margin: 20px 0 5px 0;
+    font-size: 1.0rem;
+    color: #627084;
+}
+.content .faqSee .bodytxt {
+    color: #6e6e6e;
+    font-size: 0.9rem;
+}
+.content .faqSee .aSize {
+    font-size: 1.0rem;
+    font-weight: bold;
+}
+
+
+/* -- air_research_btn -- */
+.air_srch_result_bar {
+    height: 60px;
+    background: #F7F8F9;
+}
+.air_width_fixed {
+    width: 1200px;
+    margin: 0 auto;
+}
+.air_research_btn {
+    float: right;
+    width: 210px;
+    padding: 21px 0;
+    font-size: 13px;
+    color: #fff;
+    background: url("../../images/web/air/air_research_btn.png") no-repeat;
+    background-color: #3d8afa;
+    background-position: 29px 18px;
+    text-align: center;
+    cursor: pointer;
+}
+.air_research_btn_off {
+    float: right;
+    width: 210px;
+    padding: 21px 0;
+    font-size: 13px;
+    color: #fff;
+    background: url("../../images/web/air/air_research_btn_off.png") no-repeat;
+    background-color: #3d8afa;
+    background-position: 29px 18px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+/* -- 항공요금 검색결과 Title -- */
+
+.air-area {
+    padding: 0;
+}
+.subContents .listTitle1 {
+    height: 24px;
+    margin: 60px 0 0 0;
+    border-left: 3px solid #e8202e;
+    font-size: 1.2rem;
+    font-family: "NotoSans R";
+    background: none;
+    line-height: 24px;
+}
+.subContents .listTitle1 span.subText {
+    margin: 0;
+}
+
+
+/* -- reservation btn -- */
+.subContents .side-wrap .side-group {
+    position: relative;
+    top: 0;
+    display: flex;
+    margin-top: 40px;
+    justify-content: flex-start;
+}
+.subContents .side-wrap .dm-filter .side-group {
+    position: absolute;
+    top: 0;
+    margin-top: 0;
+    width: 117px;
+    height: 46px;
+    padding: 0 15px;
+    line-height: 44px;
+    font-family: "Roboto";
+    font-weight: bold;
+    color: #000;
+    font-size: 0.85rem;
+}
+.side-group .side-link {
+    padding: 12px;
+    font-size: 0.85rem;
+    color: #fff;
+    font-family: "Roboto";
+    font-weight: bold;
+    border-radius: 100px;
+    background-color: #3d8afa;
+    width: 180px;
+    text-align: center;
+    font-weight: normal;
+    height: 21px;
+}
+.side-group .side-link:last-child {
+    background-color: #28292b;
+    color: #fff;
+    margin-left: 10px;
+}
+.side-group .side-link:first-child {
+    margin-right: 12px;
+}
+
+
+/* -- 검색결과 -- */
+
+.subContents .air .air-result {
+    margin-top: 50px;
+    border: none;
+}
+.subContents .air .air-result > div {
+    width: 579px;
+}
+.subContents .air .air-result .lArea {
+    width: 579px;
+    margin-right: 40px;
+}
+.subContents .air .air-result .lArea h5.date,
+.subContents .air .air-result .rArea h5.date {
+    width: 580px;
+    padding: 0 0 36px 0;
+    font-size: 1.2rem;
+    background: #fff;
+    text-align: center;
+    line-height: 10px;
+}
+.subContents .air .air-result h5.date img {
+    margin: 0;
+}
+.subContents .air .air-result .airGo_txt {
+    display: inline;
+    position: relative;
+    top: 2px;
+    margin-left: 5px;
+    color: #000;
+}
+.subContents .air .air-result .airGo_txt .route {
+    display: inline;
+    font-family: "NotoSans L";
+}
+.subContents .air .air-result h5.date span {
+    margin-left: 10px;
+    color: #e8202e;
+}
+[class^=xi-] {
+    display: inline-block;
+}
+.dm-list-head {
+    position: relative;
+    top: 0;
+    width: 577px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+.dm-list-head .dm-fresh {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    margin: 26px 0 0 20px;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+.dm-list-head .btn-text {
+    width: 14px;
+    height: 11px;
+    background: url("../../images/web/air/refresh.png") no-repeat;
+    color: #2b9af3;
+    line-height: 11px;
+    white-space: nowrap;
+    text-indent: 110%;
+}
+.dm-list-head .dm-fresh:hover{
+    color: #286ca9;
+}
+.dm-list-head .btn-text:hover{
+    background: url("../../images/web/air/refresh-hover.png") no-repeat;
+}
+.dm-list-head .dm-date {
+    position: relative;
+    width: 222px;
+    margin: 0 auto;
+    padding: 25px 0;
+    font-size: 20px;
+}
+.dm-list-head .dm-date a {
+    position: absolute;
+    width: 27px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    box-sizing: border-box;
+    line-height: 28px;
+}
+.dm-list-head .dm-date a.btn-prev {
+    top: 25px;
+    left: 0;
+}
+.dm-list-head .dm-date a.btn-next {
+    top: 25px;
+    right: 0;
+}
+.xi-angle-left-min:before {
+    position: absolute;
+    top:59%;
+    right:7px;
+    width:6px;
+    height:6px;
+    margin-top:-7px;
+    border-top:1px solid #333;
+    border-right:1px solid #333;
+    content:"";
+    transform: rotate(225deg);
+}
+.xi-angle-right-min:before {
+    position: absolute;
+    top:59%;
+    right:10px;
+    width:6px;
+    height:6px;
+    margin-top:-7px;
+    border-top:1px solid #333;
+    border-right:1px solid #333;
+    content:"";
+    transform: rotate(45deg);
+}
+.dm-list-head .dm-date span {
+    font-family: Roboto;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+.dm-list-head .dm-date span em.week {
+    margin-left: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-style: normal;
+    vertical-align: 1px;
+}
+.dm-list-head .dm-filter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 25px 20px 0 0;
+}
+.dm-list-head .dm-filter > select {
+    position: relative;
+    bottom: 5px;
+    width: 120px;
+    height: 40px;
+    background: url("../../images/web/icon/basic/select.png") no-repeat right 14px center #fff;
+}
+.subContents .air .air-result .lArea .list-wrap {
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+.subContents .air .air-result .air-list .list-wrap {
+    height: 600px;
+    padding-top: 44px;
+}
+.subContents .air .air-result .air-list .list-wrap .table-scroll {
+    height: 600px;
+    margin-right: 2px;
+}
+.subContents .air .air-result .air-list .list-wrap table thead tr {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+}
+.air-list .list-wrap table tbody tr:hover {
+    cursor: pointer;
+    background: #F7F8F9;
+}
+.subContents .air .air-result .air-list .air-line thead th:nth-child(1) {
+    width: 120px;
+}
+.subContents .air .air-result .air-list .air-line thead th:nth-child(n+2):nth-child(-n+6) {
+    width: 95px;
+}
+.subContents .air .air-result .air-list .air-line thead th:nth-child(7) {
+    width: 140px;
+}
+.table-scroll .loadingAir-wrap {
+    display: block;
+    position: absolute;
+    top: 390px;
+    left: 23px;
+    width: 564px;
+    text-align: center;
+}
+.table-scroll table.commCol > thead > tr > th {
+    height: 50px;
+    border: none;
+    font-family: "NotoSans L";
+    font-size: 0.83rem;
+    font-weight: normal;
+    background-color: #e8202e;
+    color: #fff;
+}
+.air-result .air-list .air-line th.headerSortUp{
+	background-color: #f33660;
+}
+
+.air-result .air-list .air-line th.headerSortDown {background: #e8202e;}
+.table-scroll table.commCol > tbody > tr > td {
+    border-left : none;
+}
+tr.tr_table_fix_header img {margin-left: 4px;}
+.subContents .air .air-result .air-list .air-line tbody td:nth-child(1) {
+    width: 85px;
+}
+.subContents .air .air-result .air-list .air-line tbody td:nth-child(n+2):nth-child(-n+4) {
+    width: 74px;
+}
+.subContents .air .air-result .air-list .air-line tbody td:nth-child(5) {
+    width: 76px;
+}
+.subContents .air .air-result .air-list .air-line tbody td:nth-child(6) {
+    width: 75px;
+}
+.subContents .air .air-result .air-list .air-line td .l-area {
+    display: inline;
+}
+.subContents .air .air-result .air-list .air-line td p.name {
+    margin-bottom: 0;
+}
+.subContents .air .air-result .air-list .air-line td p.emph {
+    color: #636363;
+    line-height: 1.5;
+}
+.subContents .air .air-result .air-list .air-line td.time p {
+    font-weight: 700;
+    color: #333333;
+}
+.subContents .air .air-result .air-list .air-line td p.rating {
+    font-family: "NotoSans M";
+}
+.rating.Sale {
+    color: #e8202e;
+}
+.rating.Special {
+    color: #009f84;
+}
+.rating.Event {
+    color: #39beef;
+}
+.rating.business {
+    color: #f7b301;
+}
+.subContents .air .air-result .air-list .air-line td p.money {
+    display: inline;
+    font-size: 0.92rem;
+    color: #3d8afa;
+}
+.subContents .air .air-result .air-list .air-line .condition {
+    padding-left: 17px;
+    text-align: left;
+}
+.subContents .air .air-result .air-list #goWrap tr.active td {
+    background: #f5f3f3;
+}
+.subContents .air .air-result .air-list #comeWrap tr.active td {
+    background: #f5f3f3;
+}
+.subContents .air .air-result .air-list .air-line td.condition label {
+    display: inline;
+    cursor: pointer;
+}
+td p.unit {
+    display: inline-block;
+}
+td.condition label.a-cr {
+    color: #286ca9;
+}
+
+
+/* -- scrollbar css -- */
+.table-scroll::-webkit-scrollbar,
+.content .btxt2::-webkit-scrollbar {width: 9px;}
+.table-scroll::-webkit-scrollbar-thumb,
+.content .btxt2::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background-color: #abaaaa; /*스크롤바의 색상*/
+}
+.table-scroll::-webkit-scrollbar-track,
+.content .btxt2::-webkit-scrollbar-track {background-color: #d3d3d3; /*스크롤바 트랙 색상*/}
+
+
+/* -- 검색 결과 없을 시 -- */
+.one-search {
+    float: right;
+    display: block;
+    width: 579px;
+    height: 723px;
+    margin-top: 61px;
+    border: 1px solid #e8202e;
+    text-align: center;
+}
+.one-search .ico {
+    display: inline-block;
+    width: 202px;
+    height: 70px;
+    margin-top: 293px;
+    background: url("../../images/web/air/list-noneIco.png") no-repeat 0 0;
+}
+.one-search .txt1 {
+    margin-top: 18px;
+    color: #e8202e;
+    font-family: "NotoSans";
+    font-size: 1.05rem;
+    letter-spacing: -0.02rem;
+}
+.one-search .txt2 {
+    margin-top: 3px;
+    color: #656565;
+    font-size: 0.87rem;
+}
+
+
+/* -- 선택한 항공 스케줄 -- */
+
+.commCol.ui-data-table {
+    margin-top: 30px;
+    border: 1px solid #272727;
+    border-collapse: separate;
+}
+.commCol.ui-data-table th {
+    height: 55px;
+    border-top: none;
+    border-left: 1px solid #dbdbdb;
+    font-family: "NotoSans";
+    font-size: 0.85rem;
+    font-weight: normal;
+    color: #fff;
+    background: #494949;
+    text-align: center;
+}
+.commCol.ui-data-table td {
+    position: relative;
+    padding: 12px 10px;
+    border: none;
+    border-top: 1px solid #e4e4e4;
+    border-left: 1px solid #e4e4e4;
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 22px;
+}
+.commCol.ui-data-table tr:first-child td {
+    border-top: none;
+}
+.commCol.ui-data-table .arrow {
+    display: inline-block;
+    width: 10px;
+    background: url("../../images/web/air/go_arrow.png") no-repeat;
+    text-indent: -9999px;
+}
+.commCol.ui-data-table .arrow.add1 {
+    position: relative;
+    top: 10px;
+    margin: 0 4px;
+}
+.commCol.ui-data-table .fw {
+    font-family: "NotoSans M";
+}
+
+
+/* -- 가는 항공편/오는 항공편 -- */
+
+.subContents .air .journey .payWrap {
+    margin-top: 60px;
+    border: none;
+}
+.subContents .air .journey .payWrap > div {
+    width: 790px;
+    height: 440px;
+    vertical-align: top;
+}
+.subContents .air .journey .jourList {
+    padding: 0;
+}
+.subContents .air .journey .jourList .title {
+    margin-bottom: 15px;
+    font-family: "NotoSans R";
+    font-weight: 600;
+    color: #2e2c2c;
+    letter-spacing: -0.05rem;
+}
+.subContents .air .journey .jourList table th {
+    width: 14%;
+    height: 50px;
+    border-top: 2px solid #888888;
+    border-right: 1px solid #e5e5e5;
+    font-size: 0.83rem;
+    background: #fafafa;
+    color: #333333;
+}
+.subContents .air .journey .jourList table th:first-child {
+    border-left: 1px solid #e5e5e5;
+}
+.subContents .air .journey .jourList table td {
+    height: 58px;
+    border-right: 1px solid #e5e5e5;
+}
+.subContents .air .journey .jourList table td:first-child {
+    border-left:  1px solid #e5e5e5;
+}
+.jourList table td.tc {
+    color: #e8202e;
+}
+.subContents .air .journey .jourList .come {
+    margin-top: 30px;
+}
+
+
+/* -- 결제 -- */
+
+.subContents .air .journey .payWrap > div.payForm {
+    display: block;
+    position: relative;
+    top: 36px;
+    width: 381px;
+    height: 265px;
+    margin-left: 30px;
+    padding: 0;
+    background: #fff;
+}
+.air .payForm.bl {
+    border-top: 2px solid #888888;
+}
+.air .payForm ul.air-price{
+    border: 1px solid #e5e5e5;
+    border-top: none;
+}
+.air .payForm ul.air-price li {
+    margin-top: 0;
+    padding: 35px 25px;
+    border: none;
+    color: #fff;
+}
+.air .payForm ul.air-price li:first-child {
+    width: 331px;
+    margin: 0 auto;
+    padding: 35px 0 35px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+.air .payForm ul.air-price li .title {
+    display: inline;
+    margin-bottom: 15px;
+    font-family: "Roboto";
+    font-size: 1rem;
+    color: #2e2c2c;
+}
+.air .payForm ul.air-price li .person {
+    margin-top: 10px;
+    font-family: "Roboto";
+    font-size: 0.9rem;
+    font-weight: 900;
+    color: #3f3f3f;
+}
+.air .payForm ul.air-price li .total *{
+    color: #e8202e;
+}
+.air .payForm ul.air-price li .total {
+    margin-top: 10px;
+    color: #e8202e;
+}
+.air .payForm ul.air-price li .total .pay-info {
+    font-size: 0.8rem;
+    color: #2e2c2c;
+}
+.air .payForm ul.air-price li .total .price {
+    position: relative;
+    top: 2px;
+    margin-right: 3px;
+    color: #e8202e;
+    font-size: 2rem;
+}
+.air .payForm ul.air-price li.buy {
+    padding: 0;
+}
+.air .payForm ul.air-price li.buy .air-list .logo {
+    height: 78px;
+    background: #fafafa;
+    line-height: 66px;
+}
+li.buy .air-list .logo .h-color {
+    position: relative;
+    top: 5px;
+    margin-right: 5px;
+    color: #000;
+}
+.air .payForm ul.air-price li.buy .air-list .bt a {
+    background: #e8202e;
+    line-height: 60px;
+}
+.air .payForm ul.air-price li.buy .air-list .bt a.cancel {
+    background: #222222;
+}
+
+
+/* -- 항공 예약시 유의사항 -- */
+.subContents .air .journey .info {
+    margin: 75px 0;
+    padding: 35px;
+    border: 1px solid #dcdcdc;
+    font-family: "Roboto M";
+    font-size: 0.79rem;
+    line-height: 33px;
+}
+.info .tit {
+    margin-bottom: 25px;
+    padding-left: 30px;
+    font-family: "Roboto";
+    font-size: 1.02rem;
+    background: url("../../images/web/air/check-icon.png") no-repeat 0 0;
+    color: #3f3f3f;
+    line-height: 22px;
+}
+.info .comm-color1 {
+    color: #e8202e;
+}
+.info .txt, .info .comm-color1 {
+    letter-spacing: -0.8px;
+}
+/*스켈레톤 처리 김재성*/
+.skeleton_loading {
+    background: linear-gradient(120deg, #f8f8f8 30%, #e8e8e8 38%, #e8e8e8 40%, #f8f8f8 48%);
+    border-radius: 10px;
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: load 5s;
+}
+@keyframes load {
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1500px) {
+
+    /* 항공예약 자주하는 문의 FAQ */
+    #collection-agreement.comm-layer-popup_fixed .content-wrap {height: 530px;}
+    #faq_info_2.comm-layer-popup_fixed .content-wrap {margin-top: -50%;}
+
+}

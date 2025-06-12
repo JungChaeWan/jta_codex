@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+	<title>탐나오</title>
+
+	<link rel="stylesheet" href="../../css/mw/common2.css">
+	<link rel="stylesheet" href="../../css/mw/style.css">
+	<!-- 2019.02.26 김재성 (데이터레인지피커 CSS추가 ) -->
+	<link rel="stylesheet" href="../../css/mw/daterangepicker.css">
+
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui-1.11.4.js"></script>
+	<script src="../../js/jquery.cookie.js"></script>
+	<script src="../../js/mw_common.js"></script>
+	<script src="../../js/mw_style.js"></script>
+	<!-- 2019.02.26 김재성 (데이터레인지피커 관련 라이브러리 추가 ) -->
+	<script src="../../js/moment.min.js"></script>
+	<!-- 2019.02.26 김재성 (데이터레인지피커 스크립트추가 ) -->
+	<script src="../../js/daterangepicker.js"></script>
+
+	<!-- add script -->
+
+	<script>
+		$(document).ready(function() {
+			<!-- 2019.02.26 김재성 (데이터피커 초기화) -->
+			$('.dateRangePickMw').daterangepicker({
+				<!-- 2019.02.26 김재성 (싱글차트일 경우 아래라인 주석해제 ) -->
+				<!-- singleDatePicker: true -->
+			}, function(start, end) {
+				<!-- 2019.02.26 김재성 (INPUT 태그 ID 에 startDt,endDt를 부여하면 값 부여 ) -->
+				$("#startDt").val(start.format('YYYY-MM-DD'));
+				<!-- 2019.02.26 김재성 (싱글차트일 경우 아래라인 주석 / INPUT 태그 startDt 하나의 id만 부여 ) -->
+				$("#endDt").val(end.format('YYYY-MM-DD'));
+			});
+		});
+	</script>
+</head>
+<body>
+<div id="wrap">
+	<header id="header">
+		<div class="head-wrap">
+			<h1 class="title">차량검색 결과</h1>
+			<div class="l-area">
+				<a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+			</div>
+		</div>
+	</header>
+	<main id="main">
+		<!--//change contents-->
+		<div class="mw-rent-header">
+			<div class="mw-rent-date">
+				<dl>
+					<dt>대여일</dt>
+					<dd>
+						<div class="dateRangePickMw">
+							<input placeholder="대여일 선택" onfocus="this.blur()" id="startDt" value="2019.01.01">
+							<img src="../../images/mw/icon/form/r-h-btn.png" alt="변경">
+						</div>
+						<div>
+							<select class="full" title="시간선택">
+									<option value="0800" selected>09:00</option>
+									<option value="0900">09:00</option>
+									<option value="1000">10:00</option>
+									<option value="1100">11:00</option>
+									<option value="1200">12:00</option>
+									<option value="1300">13:00</option>
+									<option value="1400">14:00</option>
+									<option value="1500">15:00</option>
+									<option value="1600">16:00</option>
+									<option value="1700">17:00</option>
+									<option value="1800">18:00</option>
+									<option value="1900">19:00</option>
+									<option value="2000">20:00</option>
+							</select>
+						</div>
+					</dd>
+				</dl>
+				<dl>
+					<dt>반납일</dt>
+					<dd>
+						<div class="dateRangePickMw">
+							<input placeholder="대여일 선택" onfocus="this.blur()" id="endDt" value="2019.01.02">
+						</div>
+						<div>
+							<select class="full" title="시간선택">
+									<option value="0800" selected>09:00</option>
+									<option value="0900">09:00</option>
+									<option value="1000">10:00</option>
+									<option value="1100">11:00</option>
+									<option value="1200">12:00</option>
+									<option value="1300">13:00</option>
+									<option value="1400">14:00</option>
+									<option value="1500">15:00</option>
+									<option value="1600">16:00</option>
+									<option value="1700">17:00</option>
+									<option value="1800">18:00</option>
+									<option value="1900">19:00</option>
+									<option value="2000">20:00</option>
+							</select>
+						</div>
+					</dd>
+				</dl>
+			</div>
+			<div class="mw-rent-etc">
+				<a class="mw-rent-insurance" href="javascript:void(0)" onclick="optionPopup('#rent_zone', this)">
+				<img src="../../images/mw/rent/rent-btn.png" alt="보험">보험 유형</a>
+				<div id="rent_zone" class="popup-typeA rent-zone">
+					<div class="title-area">
+						<h3 class="title">보험 선택</h3>
+						<button type="button" class="close"><img src="../../images/mw/icon/close/dark-gray.png" alt="닫기"></button>
+					</div>
+					<div class="content-area">
+						<ul class="select-menu col3">
+							<li>
+								<div class="lb-box">
+									<input id="rent_test0" name="test_type" type="radio" checked>
+									<label for="rent_test0">전체</label>
+								</div>
+							</li>
+							<li>
+								<div class="lb-box">
+									<input id="rent_test1" name="test_type" type="radio">
+									<label for="rent_test1">자차 미포함</label>
+								</div>
+							</li>
+							<li>
+								<div class="lb-box">
+									<input id="rent_test2" name="test_type" type="radio">
+									<label for="rent_test2">일반자차포함</label>
+								</div>
+							</li>
+							<li>
+								<div class="lb-box">
+									<input id="rent_test3" name="test_type" type="radio">
+									<label for="rent_test3">고급자차포함</label>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<a class="mw-rent-type" href="javascript:void(0)" onclick="optionPopup('#rent_zone', this)">
+				<img src="../../images/mw/rent/rent-btn.png" alt="렌터카 유형">렌터카 유형</a>
+				<div id="rent_zone" class="popup-typeA rent-zone">
+					<div class="title-area">
+						<h3 class="title">유형 선택</h3>
+						<button type="button" class="close"><img src="../../images/mw/icon/close/dark-gray.png" alt="닫기"></button>
+					</div>
+					<div class="content-area">
+						<ul class="select-menu col3">
+							<li>
+								<div class="lb-box">
+									<input id="rent_test0" name="test_type" type="radio" checked>
+									<label for="rent_test0">전체</label>
+								</div>
+							</li>
+							<li>
+								<div class="lb-box">
+									<input id="rent_test1" name="test_type" type="radio">
+									<label for="rent_test1">소형</label>
+								</div>
+							</li>
+							<li>
+								<div class="lb-box">
+									<input id="rent_test2" name="test_type" type="radio">
+									<label for="rent_test2">중형</label>
+								</div>
+							</li>
+							<li>
+								<div class="lb-box">
+									<input id="rent_test3" name="test_type" type="radio">
+									<label for="rent_test3">고급</label>
+								</div>
+							</li>
+							<li>
+								<div class="lb-box">
+									<input id="rent_test4" name="test_type" type="radio">
+									<label for="rent_test4">SUV/승합</label>
+								</div>
+							</li>
+							<li>
+								<div class="lb-box">
+									<input id="rent_test5" name="test_type" type="radio">
+									<label for="rent_test5">수입</label>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mw-list-area">
+			<section class="search-typeA">
+				<div class="form">
+					<div class="option">
+						<form>
+							<button type="button" class="rent-f-btn" onclick="optionPopup('#rent_option', this)">필터</button>
+							<button type="button" class="sort-f-btn" onclick="optionPopup('#rent_sort', this)">정렬</button>
+							<div id="rent_option" class="popup-typeA rent-option">
+								<div class="title-area">
+									<h3 class="title">필터</h3>
+									<button type="button" class="left-btn" onclick="optionClose('#rent_option')">취소</button>
+									<button type="button" class="right-btn">적용</button>
+								</div>
+								<div class="content-area">
+									<div class="form">
+										<form>
+											<input type="text" class="search-rent" placeholder="차명을 검색해 주세요">
+											<button type="button" class="search-btn-rent" title="검색">검색</button>
+										</form>
+									</div>
+									<div class="list-group">
+											<strong class="sub-title">렌터카 유형</strong>
+											<ul class="select-menu col3">
+												<li>
+													<div class="lb-box">
+														<input id="rent_test0" name="test_type" type="radio" checked>
+														<label for="rent_test0">전체</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="rent_test1" name="test_type" type="radio">
+														<label for="rent_test1">소형</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="rent_test2" name="test_type" type="radio">
+														<label for="rent_test2">중형</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="rent_test3" name="test_type" type="radio">
+														<label for="rent_test3">고급</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="rent_test4" name="test_type" type="radio">
+														<label for="rent_test4">SUV/승합</label>
+													</div>
+												</li>
+												<li>
+													<div class="lb-box">
+														<input id="rent_test5" name="test_type" type="radio">
+														<label for="rent_test5">수입</label>
+													</div>
+												</li>
+										  </ul>
+									</div>
+									<div class="list-group">
+										<strong class="sub-title">제조사</strong>
+										<ul class="select-menu col3">
+											<li>
+												<div class="lb-box">
+													<input id="rent_test11" name="test_brand" type="radio" checked>
+													<label for="rent_test11">전체</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test12" name="test_brand" type="radio">
+													<label for="rent_test12">현대</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test13" name="test_brand" type="radio">
+													<label for="rent_test13">기아</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test14" name="test_brand" type="radio">
+													<label for="rent_test14">르노삼성</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test15" name="test_brand" type="radio">
+													<label for="rent_test15">쌍용</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test16" name="test_brand" type="radio">
+													<label for="rent_test16">쉐보레</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test17" name="test_brand" type="radio">
+													<label for="rent_test17">수입</label>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="list-group">
+										<strong class="sub-title">사용연료</strong>
+										<ul class="select-menu col4">
+											<li>
+												<div class="lb-box">
+													<input id="rent_test21" name="test_oil" type="radio" checked>
+													<label for="rent_test21">전체</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test22" name="test_oil" type="radio">
+													<label for="rent_test22">휘발유</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test23" name="test_oil" type="radio">
+													<label for="rent_test23">경유</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test24" name="test_oil" type="radio">
+													<label for="rent_test24">LPG</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test25" name="test_oil" type="radio">
+													<label for="rent_test25">전기</label>
+												</div>
+											</li>
+											<li class="inline">
+												<div class="lb-box">
+													<input id="rent_test26" name="test_oil" type="radio">
+													<label for="rent_test26">전기충전무료</label>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="list-group">
+										<strong class="sub-title">연식</strong>
+										<ul class="select-menu col3">
+											<li>
+												<div class="lb-box">
+													<input id="rent_test31" name="test_year" type="radio" checked>
+													<label for="rent_test31">전체</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test32" name="test_year" type="radio">
+													<label for="rent_test32">2012~14년</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test33" name="test_year" type="radio">
+													<label for="rent_test33">2014~16년</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test34" name="test_year" type="radio">
+													<label for="rent_test34">2016~17년</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test35" name="test_year" type="radio">
+													<label for="rent_test35">2017~18년</label>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="list-group">
+										<strong class="sub-title">옵션</strong>
+										<ul class="select-menu col3">
+											<li>
+												<div class="lb-box">
+													<input id="rent_test41" name="" type="checkbox">
+													<label for="rent_test41">금연차량</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test42" name="" type="checkbox">
+													<label for="rent_test42">네비게이션</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test43" name="" type="checkbox">
+													<label for="rent_test43">후방센서</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test44" name="" type="checkbox">
+													<label for="rent_test44">후방카메라</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test45" name="" type="checkbox">
+													<label for="rent_test45">블랙박스</label>
+												</div>
+											</li>
+											<li>
+												<div class="lb-box">
+													<input id="rent_test46" name="" type="checkbox">
+													<label for="rent_test46">카시트</label>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<form>
+						<!-- <input type="text" class="search" placeholder="차명을 검색해 주세요"> -->
+						<button type="button" class="search-btn" title="검색">검색</button>
+					</form>
+				</div>
+			</section>
+
+			<section class="rent-list-area">
+				<h2 class="sec-caption">렌터카 목록</h2>
+				<div class="rent-group">
+					<div class="top-info">
+						<div class="photo"><img src="../../images/web/other/product_06.jpg" alt="렌터카"></div>
+						<div class="text">
+								<h2 class="title">2017 i30</h2>
+								<div class="info">
+										<div class="red-sticker">최저가</div>
+										<p class="price">99,000원<span class="memo">24시간</span></p>
+								</div>
+								<div class="sub-memo">현대<small>ㅣ</small>중형<small>ㅣ</small>휘발유</div>
+						</div>
+					</div>
+
+					<!-- 0218 list / 연령, 라벨(탐나는전) 추가 -->
+					<div class="list">
+						<ul>
+							<div class="bottom">
+								<a href="">
+									예약 가능한 업체 보기
+									<span class="text-red">4</span>
+									<strong>전체보기</strong>
+								</a>
+							</div>
+							<li>
+								<div class="link-area">
+									<a href="rent-detail.html">
+										<div class="name">
+											<p>대진렌터카</p>
+											<!-- 라벨 추가-->
+											<!-- 0307 label class 변경 -->
+											<div class="bxLabel">
+												<span class="main_label eventblue">이벤트</span>
+												<span class="main_label pink">할인쿠폰</span>
+												<span class="main_label yellow">탐나는전</span>
+											</div><!-- //0307 label class 변경 -->
+										</div>
+										<div class="rent-option">
+											<div class="since">2016~2017</div>
+											<div class="text">대여료</div>
+										</div>
+										<div class="age">만26세이상</div>
+										<div class="price">9,999,000원</div>
+										<span class="arrow"></span>
+									</a>
+								</div>
+								<div class="like">
+									<a href="javascript:void(0)">
+										<img src="../../images/mw/icon/product_like_on.png" alt="찜하기">
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="link-area">
+									<a href="rent-detail.html">
+										<div class="name">
+											<p>씨유렌터카</p>
+										</div>
+										<div class="rent-option">
+											<div class="since">2016~2017</div>
+											<div class="text">대여료+자차보험</div>
+										</div>
+										<div class="age">만26세이상</div>
+										<div class="price">9,999,000원</div>
+										<span class="arrow"></span>
+									</a>
+								</div>
+								<div class="like">
+									<a href="javascript:void(0)">
+										<img src="../../images/mw/icon/product_like_off.png" alt="찜하기">
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="link-area">
+									<a href="rent-detail.html">
+										<div class="name">
+											<!-- 라벨 추가-->
+											<p>씨유렌터카</p>
+											<!-- 0307 label class 변경 -->
+											<div class="bxLabel">
+												<span class="main_label eventblue">이벤트</span>
+												<span class="main_label pink">할인쿠폰</span>
+												<span class="main_label yellow">탐나는전</span>
+											</div><!-- //0307 label class 변경 -->
+										</div>
+										<div class="rent-option">
+											<div class="since">2016~2017</div>
+											<div class="text">대여료</div>
+										</div>
+										<div class="age">만26세이상</div>
+										<div class="price">9,999,000원</div>
+										<span class="arrow"></span>
+									</a>
+								</div>
+							</li>
+						</ul>
+					</div> <!-- //list-->
+				</div> <!-- //rent-group -->
+
+				<div class="rent-group">
+					<div class="top-info">
+						<div class="photo"><img src="../../images/web/other/no-image.jpg" alt="렌터카"></div>
+						<div class="text">
+								<h2 class="title">2017 i30</h2>
+							<div class="info">
+								<div class="red-sticker">최저가</div>
+								<p class="price">99,000원<span class="memo">24시간</span></p>
+							</div>
+							<div class="sub-memo">현대<small>ㅣ</small>중형<small>ㅣ</small>휘발유</div>
+						</div>
+					</div>
+					<div class="list">
+						<ul>
+							<div class="bottom">
+								<a href="">
+									예약 가능한 업체 보기
+									<span class="text-red">4</span>
+									<strong>전체보기</strong>
+								</a>
+							</div>
+							<li>
+								<div class="link-area">
+									<a href="rent-detail.html">
+										<div class="name">
+											<p>대진렌터카</p>
+											<!-- 0307 label class 변경 -->
+											<div class="bxLabel">
+												<span class="main_label eventblue">이벤트</span>
+												<span class="main_label pink">할인쿠폰</span>
+												<span class="main_label yellow">탐나는전</span>
+											</div><!-- //0307 label class 변경 -->
+										</div>
+										<div class="rent-option">
+											<div class="since">2016~2017</div>
+											<div class="text">대여료</div>
+										</div>
+										<div class="age">만26세이상</div>
+										<div class="price">9,999,000원</div>
+										<span class="arrow"></span>
+									</a>
+								</div>
+								<div class="like">
+									<a href="javascript:void(0)">
+										<img src="../../images/mw/icon/product_like_on.png" alt="찜하기">
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="link-area">
+									<a href="rent-detail.html">
+										<div class="name">
+											<p>씨유렌터카</p>
+										</div>
+										<div class="rent-option">
+											<div class="since">2016~2017</div>
+											<div class="text">대여료+자차보험</div>
+										</div>
+										<div class="age">만26세이상</div>
+										<div class="price">9,999,000원</div>
+										<span class="arrow"></span>
+									</a>
+								</div>
+								<div class="like">
+									<a href="javascript:void(0)">
+										<img src="../../images/mw/icon/product_like_off.png" alt="찜하기">
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="link-area">
+									<a href="rent-detail.html">
+										<div class="name">
+											<p>고고씽렌터카</p>
+										</div>
+										<div class="rent-option">
+											<div class="since">2016~2017</div>
+											<div class="text">대여료+자차보험</div>
+										</div>
+										<div class="age">만26세이상</div>
+										<div class="price">9,999,000원</div>
+										<span class="arrow"></span>
+									</a>
+								</div>
+								<div class="like">
+									<a href="javascript:void(0)">
+										<img src="../../images/mw/icon/product_like_off.png" alt="찜하기">
+									</a>
+								</div>
+							</li>
+						</ul>
+					</div> <!-- 0218 list / 연령, 라벨(탐나는전) 추가 -->
+				</div> <!-- //rent-group -->
+			</section> <!-- //rent-list-area -->
+			<div class="paging-wrap">
+				<a href="" class="mobile">더보기 15/20</a>
+			</div>
+		</div> <!--//mw-list-area-->
+		<!--//change contents-->
+	</main>
+	<footer id="footer"></footer>
+</div> <!-- //wrap -->
+</body>
+</html>

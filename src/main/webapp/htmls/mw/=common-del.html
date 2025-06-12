@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="홍원기">
+
+	<title>UI Style Guide</title>
+
+	<!-- css -->
+	<link rel="stylesheet" href="/css/mw/common2.css">
+	<link rel="stylesheet" href="/css/comm/code_style.css"> <!--소스코드테마-->
+	<style>
+		* {/*font-family:'Nanum Gothic','돋움', 'Dotum', sans-serif;*/}
+		body {background: #f2f2f2; overflow-x: hidden;}
+
+		/*.container {width: 1280px; margin: 0 auto;}*/
+		.container {width: 100%;}
+
+		/* header */
+		header .top {background: #222; padding: 0 20px;}
+		header .top .container {display: table;}
+		header .top .logo, header .top .right {display: table-cell; vertical-align: middle;}
+		header .top .logo {font-size: 16px;}
+		header .top .logo a {font-family: "Noto Sans KR", sans-serif; color: #fff; display: inline-block; padding: 12px 0;}
+		header .top .logo a:hover {color: #58c0f0;}
+		header .top .right {text-align: right; font-size: 12px; color: #fff;}
+		header .top .right a {color: #fff; font-size: 13px;}
+		header .top .right a:hover {color: #58c0f0;}
+		header .main-menu {background: #fff; border-bottom: 1px solid #e1e3e4; box-shadow: 2px 0px 4px #ccc;}
+		header .main-menu .container {text-align: center;}
+		header .main-menu .title {color: #222; font-size: 24px; padding: 18px 0;}
+		
+		/* main */
+		main {margin: 20px;}
+		main .container {display: table; border-spacing: 0; border-collapse: collapse;}
+		main .left-menu, main .contents {display: table-cell; vertical-align: top; background: #fff; border: 1px solid #e1e3e4;}
+		main .left-menu {width: 250px; overflow-y: auto;}
+		main .left-menu .title {font-size: 24px; font-family: "Noto Sans KR", sans-serif; color: #222; border-bottom: 1px solid #e1e3e4; padding-bottom: 10px; margin-bottom: 10px; white-space: nowrap;}
+		main .left-menu .list-wrap > li > a {display: block; padding: 8px 0; font-size: 14px; color: #222;}
+		main .left-menu .list-wrap > li.active > a {color: #58c0f0; font-weight: 700;}
+		main .left-menu .list-wrap li a:hover {color: #58c0f0;}
+		main .left-menu .list-wrap li a.active {color: #58c0f0; font-weight: 700;}
+		main .left-menu ul.depth2 {padding-left: 14px; margin: -2px 0 8px;}
+		main .left-menu ul.depth2 li.active a {color: #58c0f0; font-weight: 700;}
+		main .left-menu ul.depth2 li a {display: block; font-size: 13px; color: #5f5f60; padding: 3px 0;}
+		main .inside {padding: 30px 30px 80px;}
+		
+		main .contents section > .title {font-size: 24px; font-family: "Noto Sans KR", sans-serif; color: #222; border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 10px;}
+		main .contents .sub-title {font-size: 16px; color: #5f5f60; margin-bottom: 10px;}
+		main .contents .preview {font-size: 14px; border: 1px solid #e1e3e4; padding: 15px;}
+		main .contents .ex {font-size: 13px; /*background: #f2f2f2; border: 1px solid #e1e3e4; border-top: none; padding: 15px;*/}
+		main .contents .ex pre {margin: 0; padding: 0 0 0 15px;}
+		main .contents .ex pre code {margin: 0; padding: 0;}
+		main .contents .inside > section {margin-top: 50px;}
+		main .contents .inside > section:first-child {margin-top: 0px;}
+		
+		/* Icon Preview */
+		.icon-preview {background: #f2f2f2; padding: 10px 20px;}
+		.icon-preview img {display: inline-block; vertical-align: middle; margin: 2px 4px;}
+		
+		/* 상단으로 가기 */
+		.go-top {position: fixed; bottom: 30px; right: 60px; z-index: 99; display: none;}
+		.go-top a {display: block; font-size: 13px; font-weight: 700; color: #333; width: 20px; height: 20px; padding: 10px; background: #f2f2f2; border: 1px solid #e1e3e4; border-radius: 5px;}
+	</style>
+
+	<!-- script -->
+	<script src="/js/jquery-1.11.1.js"></script>
+	<script src="/js/jquery-ui-1.11.4.js"></script>
+	<script src="/js/mw_common.js"></script>
+	<script src="http://kissl3oyhong.cafe24.com/js/run_prettify.js"></script> <!--소스코드출력-->
+	
+	<!--script add-->
+	<script>
+		$(document).ready(function() {
+
+			//datepicker 임시용
+			$( ".datepicker" ).datepicker({
+				showOn: "both",
+				buttonImage: "/images/comm/jquery/calendar.gif",
+				buttonImageOnly: true
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<header>
+		<!--logo-->
+		<section class="top">
+			<div class="container">
+				<h1 class="logo"><a href="#">스타일 가이드</a></h1>
+				<nav class="right">
+					<a href="==list.html">» Page Guide</a>
+				</nav>
+			</div>
+		</section>
+
+		<!--menu-->
+		<nav class="main-menu">
+			<div class="container"><h2 class="title">UI Style Guide</h2></div>
+		</nav>
+	</header>
+
+	<main>
+		<div class="container">
+			<!--left menu-->
+			<aside id="left_menu" class="left-menu">
+				<div class="inside">
+					<h3 class="title">Quick List</h3>
+					<ul class="list-wrap" id="scroll_spy">
+						<li>
+							<a href="#typography">타이포그래피</a>
+							<ul class="depth2">
+								<li><a href="#typography_title">제목</a></li>
+								<li><a href="#typography_type">문단</a></li>
+								<li><a href="#typography_caption">캡션</a></li>
+								<li><a href="#typography_helper">헬퍼</a></li>
+								<li><a href="#typography_align">정렬</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#color">컬러</a>
+							<ul class="depth2">
+								<li><a href="#color_font">폰트</a></li>
+							</ul>
+						</li>
+                        <li>
+                            <a href="#list_style">리스트 스타일</a>
+                            <ul class="depth2">
+                                <li><a href="#list_option">Example</a></li>
+                            </ul>
+                        </li>
+						<li>
+							<a href="#button">Button</a>
+							<ul class="depth2">
+								<li><a href="#button_option">Example</a></li>
+								<li><a href="#button_size">버튼 크기</a></li>
+								<li><a href="#button_area">버튼 Area</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#table">Table</a>
+							<ul class="depth2">
+								<li><a href="#table_option">Example</a></li>
+							</ul>
+						</li>
+                        <li>
+                            <a href="#paging">페이징</a>
+                            <ul class="depth2">
+                                <li><a href="#paging_option">Example</a></li>
+                            </ul>
+                        </li>
+						<li>
+							<a href="#form_control">폼</a>
+							<ul class="depth2">
+								<li><a href="#form_option">Example</a></li>
+								<li><a href="#form_size">폼 크기</a></li>
+								<li><a href="#form_label">label</a></li>
+								<li><a href="#form_disabled">비활성화</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#label">라벨</a>
+							<ul class="depth2">
+								<li><a href="#label_option">Example</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#popup">팝업</a>
+							<ul class="depth2">
+								<li><a href="#popup_layer">레이어 팝업</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#navi">네비게이션</a>
+							<ul class="depth2">
+								<li><a href="#navi_tab">탭패널</a></li>
+								<li><a href="#navi_menu">탭메뉴</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#no_item">No Item</a>
+							<ul class="depth2">
+								<li><a href="#no_content">Not Content</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#icon">Icon</a>
+							<ul class="depth2">
+								<li><a href="#icon_option">Example</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#photo">Photo</a>
+							<ul class="depth2">
+                                <li><a href="#photo_option">Effect</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</aside>
+
+			<!--contents-->
+			<div id="contents" class="contents">
+				<div class="inside">
+					
+					
+					
+					
+					
+					
+                    
+					
+					<section id="form_control">
+						<h3 class="title">폼</h3>
+						<article>
+							<h4 id="form_option" class="sub-title">Example</h4>
+							<div class="preview">
+								<input type="tel" placeholder="010">
+								<input type="text" placeholder="제목을 입력하세요">
+								<input type="password" placeholder="비밀번호를 입력하세요">
+								<select>
+									<option value="">옵션1</option>
+									<option value="">옵션2</option>
+								</select>
+								<input type="file" accept="image/*">
+								
+								<div class="margin-top10">
+									<textarea cols="30" rows="5" placeholder="내용입력"></textarea>
+									<textarea cols="50" rows="5" placeholder="내용입력"></textarea>
+								</div>
+								
+								<br><br>
+								
+                                <div class="email-form">
+                                    <input type="text" title="이메일 아이디">
+                                    <span class="guide">@</span>
+                                    <input type="text" title="이메일 주소">
+                                    <select title="E-mail 호스트 주소를 선택합니다.">
+                                        <option value="etc">직접입력</option>
+                                        <option value="naver.com">네이버</option>
+                                        <option value="hanmail.net">한메일</option>
+                                        <option value="nate.com">네이트</option>
+                                        <option value="lycos.co.kr">라이코스</option>
+                                        <option value="hotmail.com">핫메일</option>
+                                        <option value="yahoo.co.kr">야후</option>
+                                        <option value="netian.com">네띠앙</option>
+                                        <option value="freechal.com">프리챌</option>
+                                        <option value="empal.com">엠팔</option>
+                                        <option value="dreamwiz.com">드림위즈</option>
+                                        <option value="hanafos.com">하나포스</option>
+                                        <option value="korea.com">코리아닷컴</option>
+                                        <option value="chollian.net">천리안</option>
+                                        <option value="hanmir.com">한미르</option>
+                                        <option value="hitel.net">하이텔</option>
+                                    </select>
+                                    <button type="button" class="btn">중복확인</button>
+                                </div>
+								
+								<br><br>
+								
+                                <div class="addr-form">
+                                    <div>
+                                        <input class="num" type="text" title="우편번호">
+                                        <button type="button" class="btn">주소검색</button>
+                                    </div>
+                                    <div>
+                                        <input class="addr1" type="text" title="기본주소">
+                                        <input class="addr2" type="text" title="상세주소">
+                                    </div>
+                                </div>
+								
+								<div class="date-container">
+									<span class="date-wrap"><input class="datepicker" type="text"></span>
+									<span class="date-guide">~</span>
+									<span class="date-wrap"><input class="datepicker" type="text"></span>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<input type="tel" placeholder="010">
+	<input type="text" placeholder="제목을 입력하세요">
+	<input type="password" placeholder="비밀번호를 입력하세요">
+	<select>
+		<option value="">옵션1</option>
+		<option value="">옵션2</option>
+	</select>
+	<input type="file" accept="image/*">
+	<textarea cols="30" rows="5" placeholder="내용입력"></textarea>
+	
+    <!--이메일폼-->
+    <div class="email-form">
+        <input type="text" title="이메일 아이디">
+        <span class="guide">@</span>
+        <input type="text" title="이메일 주소">
+        <select title="E-mail 호스트 주소를 선택합니다.">
+            <option value="etc">직접입력</option>
+            <option value="naver.com">네이버</option>
+            <option value="hanmail.net">한메일</option>
+            <option value="nate.com">네이트</option>
+            <option value="lycos.co.kr">라이코스</option>
+            <option value="hotmail.com">핫메일</option>
+            <option value="yahoo.co.kr">야후</option>
+            <option value="netian.com">네띠앙</option>
+            <option value="freechal.com">프리챌</option>
+            <option value="empal.com">엠팔</option>
+            <option value="dreamwiz.com">드림위즈</option>
+            <option value="hanafos.com">하나포스</option>
+            <option value="korea.com">코리아닷컴</option>
+            <option value="chollian.net">천리안</option>
+            <option value="hanmir.com">한미르</option>
+            <option value="hitel.net">하이텔</option>
+        </select>
+        <button type="button" class="btn">중복확인</button>
+    </div>
+	
+    <!--주소 입력폼-->
+    <div class="addr-form">
+        <div>
+            <input class="num" type="text" title="우편번호">
+            <button type="button" class="btn">주소검색</button>
+        </div>
+        <div>
+            <input class="addr1" type="text" title="기본주소">
+            <input class="addr2" type="text" title="상세주소">
+        </div>
+    </div>
+	
+	<!--datepicker-->
+	<div class="date-container">
+		<span class="date-wrap"><input class="datepicker" type="text"></span>
+		<span class="date-guide">~</span>
+		<span class="date-wrap"><input class="datepicker" type="text"></span>
+	</div>								
+	<script>
+		//datepicker 임시용
+		$( ".datepicker" ).datepicker({
+			showOn: "both",
+			buttonImage: "/images/comm/jquery/calendar.gif",
+			buttonImageOnly: true
+		});
+	</script>
+									</xmp></pre>
+							</div>
+						</article>
+						<article class="margin-top20">
+							<h4 id="form_size" class="sub-title">폼 크기</h4>
+							<div class="preview">
+								<input class="width100" type="text" placeholder="class width100">
+								<select class="width100">
+									<option value="">내용1</option>
+									<option value="">내용2</option>
+								</select>
+								<input size="35" type="text" placeholder="size 수치 조절">
+								<input class="wide" type="text" placeholder="wide 클래스 추가">
+								<input class="small" type="text" placeholder="small 클래스 추가">
+								<p>
+									<input class="col3" type="tel" placeholder="010">
+									<input class="col3" type="tel" placeholder="1234">
+									<input class="col3" type="tel" placeholder="5678">
+								</p>
+								
+								<br>
+								
+								<div class="int-box">
+									<div class="side-btn">
+										<label><input class="width100" type="text" placeholder="아이디"></label>
+										<button type="button" class="btn">중복확인</button>
+									</div>
+								</div>
+								
+								<br>
+								
+								<div class="int-box row">
+									<label><input class="width100" type="text" placeholder="아이디"></label>
+									<label><input class="width100" type="password" placeholder="비밀번호 확인"></label>
+									<label><input class="width100" type="password" placeholder="비밀번호 확인"></label>
+								</div>
+								
+								<div class="margin-top10">
+									<textarea class="width100" rows="5" placeholder="내용입력"></textarea>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<input class="width100" type="text" placeholder="class width100">
+	<select class="width100">
+		<option value="">내용1</option>
+		<option value="">내용2</option>
+	</select>
+	<input size="50" type="text" placeholder="size 수치 조절">
+	<input class="wide" type="text" placeholder="wide 클래스 추가">
+	<input class="small" type="text" placeholder="small 클래스 추가">
+	<p>
+		<input class="col3" type="tel" placeholder="class col3">
+		<input class="col3" type="tel" placeholder="class col3">
+		<input class="col3" type="tel" placeholder="class col3">
+	</p>
+	
+	<div class="int-box">
+		<div class="side-btn">
+			<label><input class="width100" type="text" placeholder="아이디"></label>
+			<button type="button" class="btn">중복확인</button>
+		</div>
+	</div>
+	
+	<div class="int-box row">
+		<!--개수에 따라 자동 조정-->
+		<label><input class="width100" type="text" placeholder="아이디"></label>
+		<label><input class="width100" type="password" placeholder="비밀번호 확인"></label>
+		<label><input class="width100" type="password" placeholder="비밀번호 확인"></label>
+	</div>
+	
+	<textarea class="width100" rows="5" placeholder="내용입력"></textarea>
+									</xmp></pre>
+							</div>
+						</article>
+						
+						<article class="margin-top20">
+							<h4 id="form_disabled" class="sub-title">비활성화</h4>
+							<div class="preview">
+								<input type="text">
+								<input class="disabled" type="text">
+								<input class="disabled" type="password">
+								<select class="disabled">
+									<option value="">옵션1</option>
+									<option value="">옵션2</option>
+								</select>
+								<textarea class="width100 disabled" rows="5" placeholder="내용입력"></textarea>
+								
+								<div class="margin-top10">
+									<label><input class="disabled" type="checkbox"><span>동의함</span></label>
+									<label><input class="disabled" type="radio"><span>남성</span></label>
+								</div>
+							</div>
+							<div class="ex">
+								<pre class="prettyprint linenums:1">
+									<xmp>
+	<!--disabled 클래스 추가 / 스크립트에서 자동 disabled="disabled" 생성 -->
+	<input class="disabled" type="text">
+	<input class="disabled" type="checkbox">
+									</xmp></pre>
+							</div>
+						</article>
+					</section>
+					
+					
+					
+					
+					
+					
+				</div>
+			</div> <!--//contents-->
+		</div> <!--//container-->
+	</main>
+
+	<footer>
+		<div class="go-top"><a id="go_top" href="">Top</a></div>
+	</footer>
+	
+	<script>
+		var didScroll;	//스크롤 감지
+		
+		
+		//스크롤스파이
+		var lastId,
+			topMenu = $("#scroll_spy"),
+			//topMenuHeight = topMenu.outerHeight()+15,
+			topMenuHeight = 32,
+			// All list items
+			menuItems = topMenu.find("a"),
+			// Anchors corresponding to menu items
+			scrollItems = menuItems.map(function(){
+				var item = $($(this).attr("href"));
+				if (item.length) { return item; }
+			});
+		
+		menuItems.click(function(e){
+			var href = $(this).attr("href"),
+				offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
+			$('html, body').stop().animate({
+				scrollTop: offsetTop
+			}, 300);
+			e.preventDefault();
+		});
+		
+		//top button
+		$('#go_top').on('click', function(){
+			$( 'html, body' ).animate( { scrollTop : 0 }, 400 );
+			return false;
+		});
+		
+		
+		$(window).scroll(function() {
+			didScroll = true; 			//스크롤 이벤트 부하에 따른 setInterval 사용
+		});
+		
+		setInterval(function() {
+			if(didScroll) {
+				/*hasScrolled();*/
+				scroll_leftMenu();		//left menu
+				scroll_topButton();		//top button
+				scroll_spy();			//scroll spy
+				scroll_endBottom();		//end botton
+				
+				didScroll = false;
+			}
+		}, 250);
+		
+		function hasScrolled() {
+			
+		}
+		
+		//left menu
+		function scroll_leftMenu() {
+			var scrollHeight = $(window).scrollTop();
+			
+			if(scrollHeight > 190){
+				$("#left_menu").css({
+					'position': 'fixed',
+					'top': '0px',
+					'bottom': '0px',
+					'left': '20px'
+				});
+				$('#contents').css({
+					'padding-left': '250px'
+				});
+			}
+			else {
+				$("#left_menu").css({
+					'position': 'static',
+					'top': 'auto',
+					'bottom': 'auto',
+					'left': 'auto'
+				});
+				$('#contents').css({
+					'padding-left': '0'
+				});
+			}
+		}
+		
+		//top button
+		function scroll_topButton() {
+			var scrollHeight = $(window).scrollTop();
+			
+			if(scrollHeight > 500) {
+				$('.go-top').fadeIn('500');
+			}
+			else {
+				$('.go-top').fadeOut('100');
+			}
+		}
+		
+		//스크롤 스파이
+		function scroll_spy() {
+			// Get container scroll position
+			var fromTop = $(this).scrollTop()+topMenuHeight;
+
+			// Get id of current scroll item
+			var cur = scrollItems.map(function(){
+				if ($(this).offset().top < fromTop)
+					return this;
+			});
+			// Get the id of the current element
+			cur = cur[cur.length-1];
+			var id = cur && cur.length ? cur[0].id : "";
+
+			if (lastId !== id) {
+				lastId = id;
+				// Set/remove active class
+				menuItems
+					.parent().removeClass("active")
+					.end().filter("[href='#"+id+"']").parent().addClass("active");
+			}
+		}
+		
+		//스크롤이 맨아래 위치했을때
+		function scroll_endBottom() {
+			if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+				alert('맨아래 페이지 입니다.');
+			}
+		}
+		
+		//특정 div 하단에 위치했을때
+		$(".layer-popup .scroll").scroll( function() {
+			var elem = $(".layer-popup .scroll");
+
+			if ( elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight()) {
+				//alert("End of Yellow");
+			}
+		});
+	</script>
+</body>
+</html>

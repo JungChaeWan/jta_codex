@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- css -->	
+    <link rel="stylesheet" href="../css/common/jquery-ui.css">
+	<link rel="stylesheet" href="../css/web/common2.css">
+	<link rel="stylesheet" href="../css/web/style.css">
+    <!-- script -->
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
+    <script src="../js/swiper.js"></script>
+    <script src="../js/html_common.js"></script>
+    <script src="../js/html_style.js"></script>
+    
+    <!-- add -->
+    <script src="../js/slider.js"></script>
+    <script>
+		$(document).ready(function() {
+    		$( ".datepicker" ).datepicker({
+    			showOn: "both",
+    			buttonImage: "../images/web/icon/calendar_icon01.gif",
+    			buttonImageOnly: true,
+    			showOtherMonths: true, 										//빈칸 이전달, 다음달 출력
+    			numberOfMonths: [ 1, 2 ],									//여러개월 달력 표시
+    			stepMonths: 2 												//좌우 선택시 이동할 개월 수
+    		});
+    	});
+    </script>    
+</head>
+<body>
+	<header id="header">
+		<!--New top banner zone-->
+        <div id="top_banner" class="top-banner swiper-container">
+	        <ul class="swiper-wrapper">
+	            <li class="swiper-slide" style="background-color: #c6c0dc">
+	            	<a href="#"><img src="http://www.tamnao.com/data/banner/2017-08/ban_20170802030831_0.jpg" alt="상단배너1"></a>
+	            </li>
+	            <li class="swiper-slide" style="background-color: #fff3be">
+	            	<a href="#"><img src="../images/web/comm/top_banner.jpg" alt="상단배너2"></a>
+	            </li>
+	        </ul>
+	        <div class="container">
+	        	<a href="javascript:void(0)" id="top_close" class="close">
+	        		<img src="../images/web/comm/close.png" alt="닫기">
+	        	</a>
+	        </div>
+	    </div>
+        <!--//New top banner zone-->
+        
+        <div class="top-menu">
+        	<div class="Fasten">
+        		<nav>
+        			<ul>
+        				<li>
+        					<a href="">로그인</a>
+        				</li>
+        				<li>
+        					<a href="">회원가입</a>
+        				</li>
+        				<li>
+        					<a href="">
+        						<img src="../images/web/comm/top/like.png" alt="" class="icon">
+        						찜하기<span class="count">(5)</span>
+        					</a>
+        				</li>
+        				<li>
+        					<a href="">
+        						<img src="../images/web/comm/top/cart.png" alt="" class="icon">
+        						장바구니<span class="count">(5)</span>
+        					</a>
+        				</li>
+        				<li>
+        					<a href="">마이페이지</a>
+        				</li>
+        			</ul>
+        		</nav>
+        	</div>
+        </div>
+
+		<div class="Fasten">
+			<div class="topSearch new2017">
+			    <h1 class="logo"><a href=""><img src="../images/web/comm/logo.gif" alt="탐나오"></a></h1>
+			    <!-- 검색 -->
+			    <div class="searchBox">
+			    	<input id="search" type="text">
+			    	<button id="searBT" title="검색"></button>
+			    	<div class="keyword">
+				        <a href="">#핫 패들보드</a>
+				        <a href="">#저렴한숙박</a>
+				        <a href="">#최고의사랑 그 빅볼</a>
+				        <a href="">#나홀로여행</a>
+				    </div>
+			    </div>
+			    
+			    <!-- 배너광고 -->
+			    <div class="right-banner">
+			    	<ul>
+			    		<li>
+			    			<a href="">
+			    				<img src="../images/web/banner/top/jeju-coupon.jpg" alt="제주관광지 쿠폰">
+			    			</a>
+			    		</li>
+			    	</ul>
+			    </div>
+			</div>
+        </div>
+        
+        <!-- main menu -->
+        <nav id="mainMenu">
+            <div class="Fasten">
+                <div class="menuBT"><a id="menuBT"><img src="../images/web/comm/menu.gif" alt="메뉴"></a></div>
+                <div class="subMenu">11<br>11<br>11<br>11<br></div>
+                <ul class="mainMenu">
+                    <li><a class="select" href="air-main.html">항공</a></li>
+                    <li><a href="hotel-list.html">숙박</a></li>
+                    <li><a href="rent-list.html">렌터카</a></li>
+                    <li><a href="social-list.html">관광/레저</a></li>
+                    <li><a href="food-list.html">맛집</a></li>
+                    <li><a href="travel-list.html">여행사 상품</a></li>
+                    <li><a href="from-jeju-main.html">from 제주</a></li>
+                    <li><a href="special-product.html">기획전</a></li>
+                    <!-- <li class="img"><a href=""><img src="../images/web/comm/specialty.gif" alt="제주특산기념품"></a></li> -->
+                    <li><a href="event-list.html">이벤트</a></li>                    
+                </ul>
+            </div>
+        </nav>
+        <!-- //main menu -->
+	</header>
+
+	<main id="main">
+        <div class="mapLocation">
+		    <div class="Fasten">
+		        <span>홈</span> <span class="gt">&gt;</span>
+		        <span>렌터카 가격비교</span>
+		    </div>
+		</div>
+		
+		<div class="subContainer">
+		    <div class="subHead"></div>
+		    <div class="subContents">
+		
+		        <!-- Change Contents -->
+		        <!-- 검색바 -->
+		        <section class="search-typeA">
+		        	<h2 class="sec-caption">렌터카 검색</h2>
+		        	<div class="Fasten">
+			        	<!-- 코드중복(include) -->
+						<div class="form-area">
+						    <div class="search-area rent">
+						        <div class="area date">
+						            <dl>
+						                <dt>대여일</dt>
+						                <dd>
+						                    <div class="value-text">
+						                        <div class="date-time-area">
+						                            <div class="date-container">
+						                                <span class="date-wrap">
+						                                    <input class="datepicker" type="text" placeholder="대여일 선택" onclick="optionClose('.popup-typeA')">
+						                                </span>
+						                            </div>
+						                            <div class="time-area">
+						                                <select class="full" title="시간선택">
+						                                    <option value="0800" selected>08:00</option>
+						                                    <option value="0900">09:00</option>
+						                                    <option value="1000">10:00</option>
+						                                    <option value="1100">11:00</option>
+						                                    <option value="1200">12:00</option>
+						                                    <option value="1300">13:00</option>
+						                                    <option value="1400">14:00</option>
+						                                    <option value="1500">15:00</option>
+						                                    <option value="1600">16:00</option>
+						                                    <option value="1700">17:00</option>
+						                                    <option value="1800">18:00</option>
+						                                    <option value="1900">19:00</option>
+						                                    <option value="2000">20:00</option>
+						                                </select>
+						                            </div>
+						                        </div>
+						                    </div>
+						                </dd>
+						            </dl>
+						            <span class="guide"></span>
+						            <dl>
+						                <dt>반납일</dt>
+						                <dd>
+						                    <div class="value-text">
+						                        <div class="date-time-area">
+						                            <div class="date-container">
+						                                <span class="date-wrap">
+						                                    <input class="datepicker" type="text" placeholder="반납일 선택" onclick="optionClose('.popup-typeA')">
+						                                </span>
+						                            </div>
+						                            <div class="time-area">
+						                                <select class="full" title="시간선택">
+						                                    <option value="0800" selected>08:00</option>
+						                                    <option value="0900">09:00</option>
+						                                    <option value="1000">10:00</option>
+						                                    <option value="1100">11:00</option>
+						                                    <option value="1200">12:00</option>
+						                                    <option value="1300">13:00</option>
+						                                    <option value="1400">14:00</option>
+						                                    <option value="1500">15:00</option>
+						                                    <option value="1600">16:00</option>
+						                                    <option value="1700">17:00</option>
+						                                    <option value="1800">18:00</option>
+						                                    <option value="1900">19:00</option>
+						                                    <option value="2000">20:00</option>
+						                                </select>
+						                            </div>
+						                        </div>
+						                    </div>
+						                </dd>
+						            </dl>
+						        </div>
+						        <div class="area type select">
+						            <dl>
+						                <dt>렌터카 유형</dt>
+						                <dd>
+						                    <div class="value-text lock"><a href="javascript:void(0)">전체</a></div>
+						                </dd>
+						            </dl>
+						        </div>
+						        <div class="area name">
+						            <dl>
+						                <dt>차 이름</dt>
+						                <dd>
+						                    <div class="value-text">
+						                        <input type="text" class="full disabled" placeholder="차명을 입력해 주세요" disabled>
+						                    </div>
+						                </dd>
+						            </dl>
+						        </div>
+						        <div class="area search">
+						            <!-- form 사용시 submit 변경 -->
+						            <button type="button" class="btn red">재검색</button>
+						        </div>
+						    </div> <!-- //search-area -->
+						</div> <!-- //form-area -->
+						<!-- //코드중복(include) -->
+					</div>
+		        </section> <!-- //search-typeA -->
+		        
+		        <div class="rent2 new-detail"> <!-- add Class (new-detail) -->
+				    <div class="bgWrap2">
+				        <div class="Fasten">
+				            <!-- 차량정보 -->
+				            <div class="detail">
+				                <div class="detailL">
+				                    <div class="detail-slider rent">
+									    <div class="title-box">
+									        <h3 class="title">K3</h3>
+									    </div>
+									    <div id="detail_slider" class="swiper-container">
+									        <div class="swiper-wrapper">
+									            <div class="swiper-slide">
+									                <img src="../images/mw/other/rent-01.png" alt="차종">
+									            </div>   
+									        </div>
+									    </div>
+									    <div class="bottom-info">
+									        <ul>
+									            <li>
+									                <img src="../images/mw/rent/info/kind.png" alt="">
+									                <span>중형</span>
+									            </li>
+									            <li>
+									                <img src="../images/mw/rent/info/people.png" alt="">
+									                <span>5명</span>
+									            </li>
+									            <li>
+									                <img src="../images/mw/rent/info/oil.png" alt="">
+									                <span>LPG</span>
+									            </li>
+									        </ul>
+									    </div>
+									</div> <!-- //detail-slider -->
+				                </div>
+				                <div class="detailR">
+				                    <div class="pdWrap">
+				                    	<div class="title-box">
+				                    		<div class="title">씨유렌터카</div>
+				                    		<div class="grade-area">
+											    <div class="score-area">
+											        <span class="score">평점 <strong class="text-red">3</strong>/5</span>
+											        <span class="icon">
+											            <img src="../images/web/icon/star_on.png" alt="좋아요">
+											            <img src="../images/web/icon/star_on.png" alt="좋아요">
+											            <img src="../images/web/icon/star_on.png" alt="좋아요">
+											            <img src="../images/web/icon/star_off.png" alt="좋아요">
+											            <img src="../images/web/icon/star_off.png" alt="좋아요">
+											        </span>
+											    </div>
+											    <div class="label-groupA">
+											        <span class="comm-label blue">이벤트</span>
+											    </div>
+											    <div class="icon-group">
+											    	<button type="button" onclick="itemSingleShow('#sns_popup');">
+											    		<img src="../images/web/icon/sns.png" alt="sns">
+											    	</button>
+											    	<button type="button">
+											    		<img src="../images/web/icon/product_like_off2.png" alt="찜하기">
+											    		<!-- <img src="../images/web/icon/product_like_on2.png" alt="찜하기"> -->
+											    	</button>
+											    </div>
+											</div>
+											<div id="sns_popup" class="sns-popup">
+												<button type="button" class="close" onclick="itemSingleHide('#sns_popup');">
+													<img src="../images/web/icon/close/white.png" alt="닫기">
+												</button>
+											
+												<div class="sns-area">
+												    <a href=""><img src="../images/web/icon/sns/facebook.png" alt="페이스북"></a>
+												    <a href=""><img src="../images/web/icon/sns/kakaostory.png" alt="카카오스토리"></a>
+												    <a href=""><img src="../images/web/icon/sns/band.png" alt="밴드"></a>
+												</div>
+											</div>
+				                    	</div> <!-- //title-box -->
+				                    	
+				                    	<div class="detail-info">
+				                    		<div class="group">
+				                    			<div class="title"><strong>대여기준</strong></div>
+											    <dl class="inline">
+											        <dt>나이 : </dt>
+											        <dd>만 21세 이상</dd>
+											    </dl>
+											    <dl class="inline">
+											        <dt>운전경력 : </dt>
+											        <dd>1년 이상</dd>
+											    </dl>
+											    <dl class="inline block">
+											        <dt>면허종류 : </dt>
+											        <dd>2종보통 이상 외국인 만 21세 이상 국제면허증 소지자</dd>
+											    </dl>
+											</div>
+											<div class="group">
+												<div class="question-area">
+												    <div class="title">자차보험 여부
+												        <button type="button" class="question" onclick="layer_popup('#question_memo');">
+												            <img src="../images/web/icon/question.png" alt="질문">
+												        </button>
+												    </div>
+												
+												    <div id="question_memo" class="comm-layer-popup">
+												        <div class="content-wrap">
+												            <div class="content">
+												                <div class="head">
+												                    <h3 class="title">자차보험 여부</h3>
+												                    <button type="button" class="close"><img src="../images/web/btn/close.png" alt="닫기"></button>
+												                </div>
+												
+												                <div class="main">
+											                    	<dl class="info-textA">
+											                    		<dt>종합보험(렌터카 회사 기본보장)</dt>
+											                    		<dd>제주도 내 모든 렌터카업체는 운전자의 안전을 위해 법으로 ‘종합보험’에 가입되어 있지만
+																			보상범위가 대인/대물/자손에 한정되어 있어 ‘자차’(대여차량)는 운전자 개인이 해결해야함.
+											                    		</dd>
+											                    	</dl>
+											                    	<dl class="info-textA">
+											                    		<dt>자차보험(대여차량 손해면책 제도)</dt>
+											                    		<dd>자차(대여차량)의 사고/파손을 대비한 차량손해 면책보험으로 대여 시
+											                    			상품조건에 따라 가입여부를 선택할 수 있습니다.
+											                    		</dd>
+											                    	</dl>
+												                </div>            
+												            </div>
+												        </div>
+												    </div> <!--//layer-popup-->
+												</div>
+												<dl class="block">
+											        <dt>자차자율 상품</dt>
+											        <dd>본 상품은 <strong class="text-red">인수현장에서 자차보험</strong>을
+											        	<strong class="text-red">자율적</strong>으로 <strong class="text-red">선택</strong>하여 이용하는 상품
+											        </dd>
+											    </dl>
+											</div>
+				                    	</div>
+				                    	
+				                    	<div class="purchasing-info">
+					                    	<div class="total-area">
+					                    		<!-- 기본형 -->
+					                    		<div class="tybe-A">
+					                    			<span class="text">17시간 대여료+자차 포함</span>
+					                    			<span class="money"><strong>999,000</strong>원</span>
+					                    		</div>
+					                    		<div class="caption-typeC">
+											    	<strong class="text-red">아직 날짜를 선택하지 않았습니다.</strong>
+											    	날짜 선택 시 금액이 달라질 수 있습니다.
+											    </div>
+					                    		<!-- //기본형 -->
+					                    		
+					                    		<!-- 할인쿠폰형 -->
+						                    	<!-- <div class="tybe-B">
+						                    		<dl class="cost">
+						                    			<dt>
+						                    				<span class="block">17시간</span>
+						                    				<span class="block">대여료+자차 포함</span>
+						                    			</dt>
+						                    			<dd>50,000원</dd>
+						                    		</dl>
+						                    		<span class="text">-</span>
+						                    		<dl class="sale">
+						                    			<dt class="text-red">특별할인</dt>
+						                    			<dd class="text-red">5,000원</dd>
+						                    		</dl>
+						                    		<dl class="total">
+						                    			<dt>총 상품금액</dt>
+						                    			<dd><strong class="text-red">45,000원</strong></dd>
+						                    		</dl>
+						                    	</div> -->
+						                    	<!-- //할인쿠폰형 -->
+					                    	</div>
+					                    	
+					                    	<div class="point-area">
+					                    		<div class="row">
+					                    			<span class="col1 text-red">사용가능한쿠폰</span>
+					                    			<span class="col2">
+					                    				<span class="block" title="타이틀 속성 값 동일 출력">타이틀 속성 값 동일 출력 타이틀 속성 값 동일 출력</span>
+					                    				<span class="block" title="쿠폰명">쿠폰명 쿠폰명</span>
+					                    			</span>
+					                    			<span class="col3">
+					                    				<span class="block">99,000원</span>
+					                    				<span class="block">10%</span>
+					                    			</span>
+					                    		</div>
+					                    		<div class="row">
+					                    			<span class="col1">L.POINT 적립금</span>
+					                    			<span class="col2">99,000원</span>
+					                    			<span class="col3"></span>
+					                    		</div>
+					                    		<div class="row">
+					                    			<span class="col1">무이자할부</span>
+					                    			<span class="col2">최대 10개월</span>
+					                    			<span class="col3">
+					                    				<a href="javascript:void(0)" onclick="layer_popup('#installment_info');">자세히보기</a>
+					                    			</span>
+					                    		</div>
+					                    	</div>
+					                    	
+					                    	<!--팝업콘텐츠 (타겟 ID동일)-->
+											<div id="installment_info" class="comm-layer-popup">
+											    <div class="content-wrap">
+											        <div class="content">
+											            <div class="head">
+											                <h3 class="title">무이자 할부 안내</h3>
+											                <button type="button" class="close"><img src="../images/web/btn/close.png" alt="닫기"></button>
+											            </div>
+											
+											            <div class="main">
+											            	<div class="img-box">
+											                	<img src="../images/web/other/installment-info.jpg" alt="카드사할부안내">
+											                </div>
+											            </div>
+											        </div>
+											    </div>
+											</div> <!--//layer-popup-->
+					                    	
+					                    	<div class="purchase-btn-group">
+												<button type="button" class="comm-btn gray width40">장바구니</button>
+												<button type="button" class="comm-btn red width60" onclick="layer_popup('#purchase_popup');">바로구매</button>
+											</div>
+											
+											<!--팝업콘텐츠 (타겟 ID동일)-->
+											<div id="purchase_popup" class="comm-layer-popup tybe-black">
+											    <div class="content-wrap">
+											        <div class="content">
+											            <div class="head">
+											                <h3 class="title">구매 전 확인 필수</h3>
+											                <button type="button" class="close"><img src="../images/web/icon/close/white.png" alt="닫기"></button>
+											            </div>
+											
+											            <div class="main">
+											            	<div>
+												                <ul class="list-disc type-B">
+																    <li>
+																        <strong class="title">대여기간</strong>
+																        <div>2017년 9월 10일 10시 ~ 2017년 9월 15일 17시</div>
+																    </li>
+																    <li>
+																        <strong class="title">총 대여시간</strong>
+																        <div>34시간</div>
+																    </li>
+																    <li>
+																        <strong class="title">자차보험</strong>
+																        <div>
+																            <p>자차필수 상품</p>
+																            <p>(<span class="text-yellow">인수현장</span>에서 <span class="text-yellow">자차보험</span>를 <span class="text-yellow">꼭 결제</span>해야 하는 상품)</p>
+																            <p>자차보험료는 1일 기준</p>
+																        </div>
+																    </li>
+																    <li>
+																        <strong class="title">취소/환불</strong>
+																        <div>24시간 이전 취소 시 전액환불 / 당일환불 불가</div>
+																    </li>
+																</ul>
+																<div class="type-body3">
+																    <p>08:00~20:00 외 차량 대여 / 반납은 일부 업체만 
+																        가능하며, 추가요금이 발생하거나 완전자차 보험가입이 
+																        필요할 수 있습니다.</p>
+																    <p>기타 문의사항은 해당업체로 연락바랍니다.</p>
+																    <p>XX렌터카 : 064-741-8760</p>
+																</div>
+															</div>
+															<div class="purchase-btn-group">
+																<button type="button" class="comm-btn red width60">확인</button>
+															</div>
+											            </div> <!-- //main -->
+											        </div>
+											    </div>
+											</div> <!--//layer-popup-->
+											
+											<!-- 예약마감, 범위 오류시 -->
+											<!-- <div class="purchase-btn-group">
+												<span class="comm-btn not-ms width100">대여일의 범위가 올바르지 않습니다.</span>
+											</div> -->
+										</div> <!-- //purchasing-info -->
+				                    </div>
+				                </div>
+				            </div>
+				            
+				            <!-- 탭 정보 (이용안내, 취소/환불규정 등등) -->
+				            <div id="tabs" class="nav-tabs2">
+				                <ul class="menuList">
+				                    <li class="active"><a href="#tabs-1">상품설명</a></li>
+				                    <li><a href="#tabs-2">취소/환불</a></li>
+				                    <li><a href="#tabs-5">이용후기</a></li>
+				                    <li><a href="#tabs-6">1:1문의</a></li>
+				                </ul>
+				                
+				                <!--상품설명-->
+				                <div id="tabs-1" class="tabPanel">
+				                	<div class="type-bodyA">
+				                		<dl class="typeA">
+									        <dt>보험요금 안내</dt>
+									        <dd>
+									        	<dl class="typeD">
+									        		<dt>자차자율 : </dt>
+									        		<dd>
+									        			본 상품은 <strong class="text-red">인수현장에서 자차보험</strong>을
+											        	<strong class="text-red">자율적</strong>으로 <strong class="text-red">선택</strong>하여 이용하는 상품
+									        		</dd>
+									            </dl>
+									        	<div class="inline-group">
+							                		<dl class="typeC">
+												        <dt>일반자차</dt>
+												        <dd>
+												        	<div>
+												        		<strong>요금</strong> :
+												        		1일 20,000원
+												        	</div>
+															<div>
+																<strong>나이</strong> :
+																만 21세 이상
+															</div>
+															<div>
+																<strong>운전경력</strong> :
+																1년 이상
+															</div>
+												        </dd>
+												    </dl>
+												    <dl class="typeC">
+												        <dt>완전자차</dt>
+												        <dd>
+												        	<div>
+												        		<strong>요금</strong> :
+												        		1일 25,000원
+												        	</div>
+															<div>
+																<strong>나이</strong> :
+																만 26세 이상
+															</div>
+															<div>
+																<strong>운전경력</strong> :
+																1년 이상
+															</div>
+												        </dd>
+												    </dl>
+											    </div>
+											    <dl class="typeD">
+									        		<dt>보상한도 : </dt>
+									        		<dd>40,000원</dd>
+									            </dl>
+									            <dl class="typeD">
+									        		<dt>고객부담금 : </dt>
+									        		<dd>수리비 20%(10~50만원) + 휴차보상료</dd>
+									            </dl>
+									        </dd>
+									    </dl>
+				                		<div class="inline-group">
+					                		<dl class="typeA">
+										        <dt>연식</dt>
+										        <dd>2015~2016년</dd>
+										    </dl>
+										    <dl class="typeA">
+										        <dt>변속기</dt>
+										        <dd>오토</dd>
+										    </dl>
+									    </div>
+					                	<dl class="typeA">
+									        <dt>차량옵션</dt>
+									        <dd>
+									            <div class="text-info-typeA">
+									                <ul>
+									                    <li class="off">금연</li>
+									                    <li class="off">열선시트</li>
+									                    <li class="off">AUX</li>
+									                    <li class="on">후방카메라</li>
+									                    <li class="off">가죽시트</li>
+									                    <li class="on">USB</li>
+									                    <li class="off">네비게이션</li>
+									                    <li class="off">썬루프</li>
+									                    <li class="off">전기충전무료</li>
+									                    <li class="off">리모콘키</li>
+									                    <li class="on">블루투스</li>
+									                    <li class="off">카시트/유모차(유료)</li>
+									                </ul>
+									            </div>
+									        </dd>
+									    </dl>
+									    <dl class="typeA">
+									        <dt>셔틀버스</dt>
+									        <dd>
+									            제주공항 도착 게이트 5번 건너편 (구)렌트카하우스
+									            <strong class="text-red">1구역 8번</strong>
+									            
+									            <div class="typeB">
+											        <dl>
+											            <dt>운행간격 : </dt>
+											            <dd>20분~30분</dd>
+											        </dl>
+											        <dl>
+											            <dt>소요시간 : </dt>
+											            <dd>10분~15분</dd>
+											        </dl>
+											    </div>
+									        </dd>
+									    </dl>
+									    <dl class="typeA">
+									        <dt>차량 인수/반납 위치</dt>
+									        <dd>
+									            <div class="map-area rent">
+									                <!-- 기존코드 동일 -->
+									            </div>
+									            <div class="map-text-info">
+									                <p>상호 : 씨유렌트카</p>
+									                <p>주소 : 제주시 아연로 33</p>
+									                <p>전화번호 : 064-784-2333</p>
+									            </div>
+									        </dd>
+									    </dl>
+									    <dl class="typeA">
+									        <dt>전기차 충전소 안내</dt>
+									        <dd>
+									        	<dl class="typeC">
+									        		<dt>환경부 전기차 충전소 홈페이지</dt>
+									        		<dd>
+									        			<a href="http://www.ev.or.kr/portalmonitor" target="_blank" class="link">http://www.ev.or.kr/portalmonitor</a>
+									        		</dd>
+									            </dl>
+									            <dl class="typeC">
+									            	<dt>모바일 앱 스토어</dt>
+									            	<dd>
+									            		<div class="rent-app">
+										            		<div class="icon">
+										                    	<img src="../images/mw/rent/app-electric.png" alt="제주충전소앱">
+											                </div>
+											                <div class="text">
+											                    <p>‘제주 전기차 충전소’ 검색해 보세요.</p>
+											                    <div class="app">
+											                        <a href="" target="_blank" title="새창">
+											                            <span><img src="../images/mw/rent/app-google.png" alt=""> 안드로이드</span>
+											                        </a>
+											                        <a href="" target="_blank" title="새창">
+											                            <span><img src="../images/mw/rent/app-ios.png" alt=""> iOS</span>
+											                        </a>
+											                    </div>
+											                </div>
+										                </div>
+									            	</dd>
+									            </dl>
+									        </dd>
+									    </dl>
+								    </div>
+				                </div> <!-- //tabs-1 -->
+				                
+				                <!--환불규정-->
+				                <div id="tabs-2" class="tabPanel">
+				                    <div class="type-bodyA">
+				                    	<dl class="typeA">
+									        <dt>취소/환불</dt>
+									        <dd>
+									            예약 전 일 16:00 까지 100% 까지 환불 가능<br>
+									            전 일 16:00시 부터 당일 환불 절대불가.<br>
+									            유효기간 내 사용<br>
+									        </dd>
+									    </dl>
+				                    </div>
+				                </div> <!-- //tabs-2 -->
+				                
+				                <!--이용후기-->
+				                <div id="tabs-5" class="tabPanel">
+				                	<div class="type-bodyA">
+				                		<dl class="typeA">
+									        <dt>이용후기</dt>
+									        <dd>
+									        	<div class="top-wrap">
+											        <p>상품평은 구매한 고객님만 작성이 가능하십니다.</p>
+											        <p>상품 문의는 1:1문의 게시판, 취소 및 환불은 마이페이지를 이용해 주세요.</p>
+											        <a href="/web/coustmer/viewInsertUseepil.do?corpId=C001512146&amp;prdtnum=RC00000125" class="comm-btn gray">이용후기 작성</a>
+											    </div>
+											    
+											    <!-- 기존코드 포맷에서 수정 -->
+											    <div class="review-list">
+												    <ul>
+												        <li class="commentWrap">
+												            <div class="area-l">
+												            	<div class="title-area">
+												            		<h5 class="title">좋았어요^^</h5>
+												                	<p class="user-info">
+												                		<span class="heart">
+												                			<img src="../images/web/icon/star_on.png" alt="좋아요">
+												                			<img src="../images/web/icon/star_off.png" alt="좋아요">
+												                			<img src="../images/web/icon/star_off.png" alt="좋아요">
+												                			<img src="../images/web/icon/star_off.png" alt="좋아요">
+												                			<img src="../images/web/icon/star_off.png" alt="좋아요">	
+												                		</span>
+												                		<span>mih*****</span>
+												                		<span class="date">| 2017-09-12 18:44:52</span>
+												                	</p>
+												                </div>
+												                
+												                <!-- 오픈형 개럴리 추가(20170821) -->
+			                                                    <div id="review_gallery1" class="review-gallery-area"> <!-- ID값 변경 / 갤러리 없을 시 삭제 -->
+				                                                    <div class="photo-area">
+				                                                        <div class="mid">
+				                                                            <img src="../images/web/lodge/album/01.jpg" alt="1">
+				                                                        </div>                                        
+				                                                        <div class="carousel">
+				                                                            <ul>
+				                                                                <li class="select"><img src="../images/web/lodge/album/01.jpg" alt=""></li>
+				                                                                <li><img src="../images/web/lodge/album/02.jpg" alt=""></li>
+				                                                                <li><img src="../images/web/lodge/album/03.jpg" alt=""></li>
+				                                                                <li><img src="../images/web/lodge/album/01.jpg" alt=""></li>
+				                                                                <li><img src="../images/web/lodge/album/02.jpg" alt=""></li>
+				                                                            </ul>
+				                                                        </div>
+				                                                        <div class="clear"></div>
+				                                                    </div>
+				                                                    <script>
+				                                                        $('#review_gallery1 .carousel').jCarouselLite({
+				                                                            visible: 5,
+				                                                            circular: false
+				                                                        });
+				                                                        $('#review_gallery1 .carousel li').click(function() {
+				                                                        	$('#review_gallery1 .mid img').attr("src", $(this).find('img').attr("src"));
+				                                                            $('#review_gallery1 .carousel li').removeClass('select');
+				                                                            $(this).addClass('select');
+				                                                        });
+				                                                    </script>
+				                                                </div>
+				                                                <!-- //오픈형 개럴리 추가(20170821) -->
+												
+												                <!-- 사진등록 추가  -->
+												                <div class="photo-comment">
+												                    <div class="area-text">
+												                        <p class="memo"> 주인분 친철하시고. 깨끗하고.좋았습니다^^ <span class="comment-count">(0)</span> </p>
+												                    </div>
+												                </div>
+												                <!--//photo-comment--> 
+												
+												                <!--답글폼--> 
+												
+												                <!--답글--> 
+												
+												            </div>
+												        </li>
+												        <li class="commentWrap">
+												            <div class="area-l">
+												            	<div class="title-area">
+												            		<h5 class="title">너무 좋아요</h5>
+												            		<p class="user-info">
+												                		<span class="heart">
+												                			<img src="../images/web/icon/star_on.png" alt="좋아요">
+												                			<img src="../images/web/icon/star_off.png" alt="좋아요">
+												                			<img src="../images/web/icon/star_off.png" alt="좋아요">
+												                			<img src="../images/web/icon/star_off.png" alt="좋아요">
+												                			<img src="../images/web/icon/star_off.png" alt="좋아요">	
+												                		</span>
+												                		<span>mih*****</span>
+												                		<span class="date">| 2017-09-12 18:44:52</span>
+												                	</p>
+												            	</div>
+												                	
+												
+												                <!-- 사진등록 추가  -->
+												                <div class="photo-comment">
+												                    <div class="area-text">
+												                        <p class="memo">
+												                        	가격이 싸서 혹시 이상한데일줄 알고 걱정도 했는데 생각외로 방도 엄청 넓고 깨끗하고 주인 아주머니도 너무 친절하셨고
+												                        	위치도 너무 좋았어요 바로앞에 오성 토속 음식점 있고 믿거나 말거나 박물관, 박물관이 살아있다도 있구요 컴퓨터도
+												                        	한대 있는데 컴퓨터가 너무 오래되서 제대로 작동은 안되네요 다음에도  이용하고 싶습니다^^
+												                        	
+												                        	<!-- 로그인 한 사람만 --> 
+																	        <a class="comment-int">
+																	        	<span class="comment" onclick="fn_useepilCmtSH('641');">답글달기 <img src="../images/web/icon/arrow6.gif" alt="arrow"></span>
+																	        </a>
+																	        	
+																	        <span class="comment-count">(0)</span>
+												                        </p>
+												                    </div>
+												                </div>
+												                <!--//photo-comment--> 
+												
+												                <!--답글폼--> 
+												
+												                <!--답글-->
+												
+												                <div class="re_comment">
+												                    <div class="ic ic2"><img src="../images/web/icon/re2.png" alt="re"></div>
+												                    <div class="re"> 좋은느낌으로 이용해주셔서 감사드립니다 <br>
+												                        항상 고객편에서 불편함이없도록 최선을다하는 블루힐이되겠읍니다
+												                        &nbsp;&nbsp; </div>
+												                </div>
+												            </div>
+												        </li>
+												        <li class="commentWrap">
+												            <div class="area-l">
+												            	<div class="title-area">
+												            		<h5 class="title">좋아요..친절하시고여...</h5>
+												                	<p class="user-info">
+												                		<span class="heart">
+												                			<img src="../images/web/icon/star_on.png" alt="좋아요">
+												                			<img src="../images/web/icon/star_off.png" alt="좋아요">
+												                			<img src="../images/web/icon/star_off.png" alt="좋아요">
+												                			<img src="../images/web/icon/star_off.png" alt="좋아요">
+												                			<img src="../images/web/icon/star_off.png" alt="좋아요">	
+												                		</span>
+												                		<span>kol*****</span>
+												                		<span class="date">| 2016-07-29 11:55:24 </span>
+												                	</p>
+												                </div>
+												
+												                <!-- 사진등록 추가  -->
+												                <div class="photo-comment">
+												                    <div class="area-text">
+												                        <p class="memo"> 전반적으로 깔끔하고 편했습니다. <br>
+																	        저렴한 가격으로 편안하게 이용해서 기분 좋습니다. <br>
+																	        단, 샤워실이 넘 협소해서 아쉬었습니다. <br>
+																	        직원분들도 친절하시구요 ㅎㅎ
+																	        <span class="comment-count">(0)</span>        
+																	    </p>
+												                    </div>
+												                </div>
+												                <!--//photo-comment--> 
+												
+												                <!--답글폼--> 
+												
+												                <!--답글--> 
+												
+												            </div>
+												        </li>
+												    </ul>
+												    <div class="pageNumber">
+												        <p class="list_pageing"> <strong>1</strong> </p>
+												    </div>
+												</div>
+									        </dd>
+									    </dl>
+				                	</div>
+				                </div> <!-- //tabs-5 -->
+				                
+				                <!--1:1문의-->
+				                <div id="tabs-6" class="tabPanel">
+				                    <div class="type-bodyA">
+				                		<dl class="typeA">
+									        <dt>1:1문의</dt>
+									        <dd>
+									        	 <div class="top-wrap">
+											        <p>1:1 문의는 로그인 후 서비스를 이용하실 수 있습니다.</p>
+													<p>구매한 상품의 취소/환불은 마이페이지를 이용해 주세요.</p>
+													<p>상품과 관계없는 광고, 욕설, 비방 등의 글은 사전 예고 없이 삭제처리 됩니다.</p>
+											    </div>
+											    
+											    <!-- 기존코드 동일 -->
+											    <div class="review-regi">
+												    <form name="otoinqFrm" id="otoinqFrm" method="post" onsubmit="return false;">
+												        <input type="hidden" id="pageIndex" name="pageIndex" value="1">
+												        <input type="hidden" name="corpId" id="corpId" value="C001512146">
+												        <input type="hidden" name="prdtNum" id="prdtNum" value="RC00000123">
+												        <input type="hidden" name="corpCd" id="corpCd" value="RC">
+												        <input type="hidden" name="subject" id="subject" value="">
+												        <input type="hidden" name="contents" id="contents" value="">
+												        <input type="hidden" name="otoinqNum" id="otoinqNum" value="">
+												    </form>
+												    <div class="regi">
+												        <div class="int">
+												            <ul>
+												                <li class="left">
+												                    <input id="oto_subject" class="int-title" type="text" placeholder="제목을 입력해 주세요.">
+												                    <textarea id="oto_contents" class="review-t" placeholder="문의 내용을 입력해 주세요. [500자 제한]"></textarea>
+												                </li>
+												                <li class="right">
+												                    <input type="image" src="../images/web/button/regi.gif" alt="등록" onclick="fn_otoinqInsert();">
+												                </li>
+												            </ul>
+												        </div>
+												    </div>
+												</div>
+											    <div class="review-list">
+											        <ul>
+											            <li class="commentWrap">
+											                <div class="area-l">
+											                    <p class="user-info"> <span>gml*****</span> <span class="date">| 2017-09-20 07:18:28</span> </p>
+											                    <h5 class="title">보험 금액 문의 </h5>
+											                    <p class="memo"> 9/23 13시 ~ 9/25 13시 <br>
+											                        완전자차보험 금액 문의 드립니다~ 
+											                        <!-- 
+											<span class="comment-count">[1]</span>
+											--> 
+											                    </p>
+											                    <div class="re_comment">
+											                        <div class="ic"><img src="../images/web/icon/re.gif" alt="re"></div>
+											                        <div class="re">
+											                            <p class="user-info user-info2"> <span>㈜씨유렌트카</span> <span class="date">| 2017-09-20 08:21:50</span> </p>
+											                            <p class="memo"> 안녕하세요 씨유렌트카입니다. 064-742-7900 문의주시면 상세하게 안내도와드리겠습니다. 감사합니다. </p>
+											                        </div>
+											                    </div>
+											                </div>
+											            </li>
+											            <li class="commentWrap">
+											                <div class="area-l">
+											                    <p class="user-info"> <span>kka*****</span> <span class="date">| 2017-09-02 02:12:23</span> </p>
+											                    <h5 class="title">대여죠건문의입니다. </h5>
+											                    <p class="memo"> 9월5일 20시에서 9월8일 11시 총 63시간 이용예정인데 완전자차보험 명확한 금액을 알고싶습니다~ 
+											                        <!-- 
+											<span class="comment-count">[1]</span>
+											--> 
+											                    </p>
+											                    <div class="re_comment">
+											                        <div class="ic"><img src="../images/web/icon/re.gif" alt="re"></div>
+											                        <div class="re">
+											                            <p class="user-info user-info2"> <span>㈜씨유렌트카</span> <span class="date">| 2017-09-02 08:35:23</span> </p>
+											                            <p class="memo"> 안녕하세요 씨유렌트카입니다. 064-742-7900 문의주시면 상세하게 안내도와드리겠습니다. 감사합니다. </p>
+											                        </div>
+											                    </div>
+											                </div>
+											            </li>
+											            <li class="commentWrap">
+											                <div class="area-l">
+											                    <p class="user-info"> <span>ppi*****</span> <span class="date">| 2016-05-24 11:32:27</span> </p>
+											                    <h5 class="title">대여조건 문의드립니다~ </h5>
+											                    <p class="memo"> 대여조건은 만21세이상만 되면 빌릴 수 있나요? 면허증 딴지는 11개월 됐습니다~ 
+											                        <!-- 
+											<span class="comment-count">[1]</span>
+											--> 
+											                    </p>
+											                    <div class="re_comment">
+											                        <div class="ic"><img src="../images/web/icon/re.gif" alt="re"></div>
+											                        <div class="re">
+											                            <p class="user-info user-info2"> <span>㈜씨유렌트카</span> <span class="date">| 2016-05-24 16:22:50</span> </p>
+											                            <p class="memo"> 안녕하세요 씨유렌트카입니다. 만21세이상 운전경력 1년 이상되어야 차량이용이 가능합니다. 감사합니다. </p>
+											                        </div>
+											                    </div>
+											                </div>
+											            </li>
+											            <li class="commentWrap">
+											                <div class="area-l">
+											                    <p class="user-info"> <span>mar*****</span> <span class="date">| 2016-05-24 09:44:31</span> </p>
+											                    <h5 class="title">차량 인수 및 반납 관련 문의 드립니다 </h5>
+											                    <p class="memo"> 안녕하세요^^ <br>
+											                        홈페이지 상에는 인수 및 반납을 공항에서 하는 걸로 되어 있는데 맞나요?? 
+											                        <!-- 
+											<span class="comment-count">[1]</span>
+											--> 
+											                    </p>
+											                    <div class="re_comment">
+											                        <div class="ic"><img src="../images/web/icon/re.gif" alt="re"></div>
+											                        <div class="re">
+											                            <p class="user-info user-info2"> <span>㈜씨유렌트카</span> <span class="date">| 2016-05-24 16:22:58</span> </p>
+											                            <p class="memo"> 안녕하세요 씨유렌트카입니다. 저희는 셔틀로 차량인수 반납이 진행되고 있습니다.감사합니다. </p>
+											                        </div>
+											                    </div>
+											                </div>
+											            </li>
+											            <li class="commentWrap">
+											                <div class="area-l">
+											                    <p class="user-info"> <span>yuh*****</span> <span class="date">| 2016-05-16 22:49:00</span> </p>
+											                    <h5 class="title">가격문의 </h5>
+											                    <p class="memo"> 대여기간 : 2016-07-03 13시 ~ 2016-07-05 18시 <br>
+											                        대여시간 : 53시간 <br>
+											                        34500원결제하면 일반자차보험 , 완전자차보험 할 경우 총 금액 알고싶어용 
+											                        <!-- 
+											<span class="comment-count">[1]</span>
+											--> 
+											                    </p>
+											                    <div class="re_comment">
+											                        <div class="ic"><img src="../images/web/icon/re.gif" alt="re"></div>
+											                        <div class="re">
+											                            <p class="user-info user-info2"> <span>㈜씨유렌트카</span> <span class="date">| 2016-05-20 14:43:14</span> </p>
+											                            <p class="memo"> 안녕하세요 씨유렌트카입니다. 일반자차 하루 12.000원 완전자차 하루 20.000원 입니다. 일정동안 일반자차는 36.000원 완전자차는 60.000원 입니다. </p>
+											                        </div>
+											                    </div>
+											                </div>
+											            </li>
+											            <li class="commentWrap">
+											                <div class="area-l">
+											                    <p class="user-info"> <span>mid*****</span> <span class="date">| 2016-05-12 09:17:53</span> </p>
+											                    <h5 class="title">완전자차비용이 궁금합니다 </h5>
+											                    <p class="memo"> 7월 14일16시~19일09시 렌트예정입니다 
+											                        <!-- 
+											<span class="comment-count">[1]</span>
+											--> 
+											                    </p>
+											                    <div class="re_comment">
+											                        <div class="ic"><img src="../images/web/icon/re.gif" alt="re"></div>
+											                        <div class="re">
+											                            <p class="user-info user-info2"> <span>㈜씨유렌트카</span> <span class="date">| 2016-05-16 12:01:33</span> </p>
+											                            <p class="memo"> 안녕하세요 씨유렌트카입니다. 완전자차하루요금은 20.000원 입니다. 6일 보험이 적용되어 120.000원이 적용됩니다. 감사합니다. </p>
+											                        </div>
+											                    </div>
+											                </div>
+											            </li>
+											        </ul>
+											        <div class="pageNumber">
+											            <p class="list_pageing"> <strong>1</strong> </p>
+											        </div>
+											    </div>
+									        </dd>
+									    </dl>
+				                	</div>
+				                </div> <!-- //tabs-6 -->                           
+				            </div> <!--//tabs-->
+				        	
+				        	<div class="recommend-wrap">
+					        	<section class="recommend-product">
+								    <h2 class="sec-caption">추천 상품</h2>
+								
+								    <div class="recommend-group">
+								        <div class="title-side-area">
+								            <div class="l-area">
+								                <h3 class="title-type4">추천 렌터카</h3>
+								            </div>
+								            <div class="r-area text">
+								                <a href="rent-detail-all.html">씨유렌터카 전체보기</a>
+								            </div>
+								        </div>
+								
+								        <div class="promotion-content">
+								            <div class="swiper-container">
+								                <ul class="swiper-wrapper">
+								                    <li class="swiper-slide">
+								                        <div class="photo">
+								                            <a href="">
+								                                <img class="product" src="../images/mw/other/rent-01.png" alt="product">
+								                            </a>
+								                        </div>
+								                        <div class="text">
+								                            <div class="title">K5</div>
+								                            <div class="info">
+								                                <dl>
+								                                    <dt class="text-red">탐나오가</dt>
+								                                    <dd>
+								                                        <div class="price">
+								                                            <del>999,000원</del>
+								                                            <strong>999,000원</strong>
+								                                        </div>
+								                                    </dd>
+								                                </dl>
+								                                <div class="like">
+								                                    <a href="javascript:void(0)">
+								                                        <img src="../images/web/icon/product_like_on.png" alt="찜하기">
+								                                    </a>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </li>
+								                    <li class="swiper-slide">
+								                        <div class="photo">
+								                            <a href="">
+								                                <img class="product" src="../images/web/other/product_01.jpg" alt="product">
+								                            </a>
+								                        </div>
+								                        <div class="text">
+								                            <div class="title">예촌민박</div>
+								                            <div class="info">
+								                                <dl>
+								                                    <dt class="text-red">탐나오가</dt>
+								                                    <dd>
+								                                        <div class="price">
+								                                            <del>110,000원</del>
+								                                            <strong>49,000원</strong>
+								                                        </div>
+								                                    </dd>
+								                                </dl>
+								                                <div class="like">
+								                                    <a href="javascript:void(0)">
+								                                        <img src="../images/web/icon/product_like_off.png" alt="찜하기">
+								                                    </a>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </li>
+								                    <li class="swiper-slide">
+								                        <div class="photo">
+								                            <a href="">
+								                                <img class="product" src="../images/web/other/product_01.jpg" alt="product">
+								                            </a>
+								                        </div>
+								                        <div class="text">
+								                            <div class="title">예촌민박</div>
+								                            <div class="info">
+								                                <dl>
+								                                    <dt class="text-red">탐나오가</dt>
+								                                    <dd>
+								                                        <div class="price">
+								                                            <del>110,000원</del>
+								                                            <strong>49,000원</strong>
+								                                        </div>
+								                                    </dd>
+								                                </dl>
+								                                <div class="like">
+								                                    <a href="javascript:void(0)">
+								                                        <img src="../images/web/icon/product_like_off.png" alt="찜하기">
+								                                    </a>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </li>
+								                    <li class="swiper-slide">
+								                        <div class="photo">
+								                            <a href="">
+								                                <img class="product" src="../images/web/other/product_01.jpg" alt="product">
+								                            </a>
+								                        </div>
+								                        <div class="text">
+								                            <div class="title">예촌민박</div>
+								                            <div class="info">
+								                                <dl>
+								                                    <dt class="text-red">탐나오가</dt>
+								                                    <dd>
+								                                        <div class="price">
+								                                            <del>110,000원</del>
+								                                            <strong>49,000원</strong>
+								                                        </div>
+								                                    </dd>
+								                                </dl>
+								                                <div class="like">
+								                                    <a href="javascript:void(0)">
+								                                        <img src="../images/web/icon/product_like_off.png" alt="찜하기">
+								                                    </a>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </li>
+								                </ul>
+								            </div>
+								        </div>
+								    </div> <!-- //recommend-group -->
+								</section> <!-- //recommend-product -->
+								
+								<section class="recommend-product">
+								    <h2 class="sec-caption">추천 상품</h2>
+								
+								    <div class="recommend-group">
+								        <div class="title-side-area">
+								            <div class="l-area">
+								                <h3 class="title-type4">유모차/카시트</h3>
+								            </div>
+								            <div class="r-area text">
+								                <a href="rent-list-seat.html">전체보기</a>
+								            </div>
+								        </div>
+								
+								        <div class="promotion-content">
+								            <div class="swiper-container">
+								                <ul class="swiper-wrapper">
+								                    <li class="swiper-slide">
+								                        <div class="photo">
+								                            <a href="">
+								                                <img class="product" src="../images/mw/other/carseat.jpg" alt="product">
+								                            </a>
+								                        </div>
+								                        <div class="text">
+								                            <div class="title">K5</div>
+								                            <div class="info">
+								                                <dl>
+								                                    <dt class="text-red">탐나오가</dt>
+								                                    <dd>
+								                                        <div class="price">
+								                                            <del>999,000원</del>
+								                                            <strong>999,000원</strong>
+								                                        </div>
+								                                    </dd>
+								                                </dl>
+								                                <div class="like">
+								                                    <a href="javascript:void(0)">
+								                                        <img src="../images/web/icon/product_like_on.png" alt="찜하기">
+								                                    </a>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </li>
+								                    <li class="swiper-slide">
+								                        <div class="photo">
+								                            <a href="">
+								                                <img class="product" src="../images/web/other/product_01.jpg" alt="product">
+								                            </a>
+								                        </div>
+								                        <div class="text">
+								                            <div class="title">예촌민박</div>
+								                            <div class="info">
+								                                <dl>
+								                                    <dt class="text-red">탐나오가</dt>
+								                                    <dd>
+								                                        <div class="price">
+								                                            <del>110,000원</del>
+								                                            <strong>49,000원</strong>
+								                                        </div>
+								                                    </dd>
+								                                </dl>
+								                                <div class="like">
+								                                    <a href="javascript:void(0)">
+								                                        <img src="../images/web/icon/product_like_off.png" alt="찜하기">
+								                                    </a>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </li>
+								                    <li class="swiper-slide">
+								                        <div class="photo">
+								                            <a href="">
+								                                <img class="product" src="../images/web/other/product_01.jpg" alt="product">
+								                            </a>
+								                        </div>
+								                        <div class="text">
+								                            <div class="title">예촌민박</div>
+								                            <div class="info">
+								                                <dl>
+								                                    <dt class="text-red">탐나오가</dt>
+								                                    <dd>
+								                                        <div class="price">
+								                                            <del>110,000원</del>
+								                                            <strong>49,000원</strong>
+								                                        </div>
+								                                    </dd>
+								                                </dl>
+								                                <div class="like">
+								                                    <a href="javascript:void(0)">
+								                                        <img src="../images/web/icon/product_like_off.png" alt="찜하기">
+								                                    </a>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </li>
+								                    <li class="swiper-slide">
+								                        <div class="photo">
+								                            <a href="">
+								                                <img class="product" src="../images/web/other/product_01.jpg" alt="product">
+								                            </a>
+								                        </div>
+								                        <div class="text">
+								                            <div class="title">예촌민박</div>
+								                            <div class="info">
+								                                <dl>
+								                                    <dt class="text-red">탐나오가</dt>
+								                                    <dd>
+								                                        <div class="price">
+								                                            <del>110,000원</del>
+								                                            <strong>49,000원</strong>
+								                                        </div>
+								                                    </dd>
+								                                </dl>
+								                                <div class="like">
+								                                    <a href="javascript:void(0)">
+								                                        <img src="../images/web/icon/product_like_off.png" alt="찜하기">
+								                                    </a>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </li>
+								                </ul>
+								            </div>
+								        </div>
+								    </div> <!-- //recommend-group -->
+								</section> <!-- //recommend-product -->
+				        	</div> <!-- //recommend-wrap -->
+				        </div> <!--//Fasten-->
+				    </div> <!--//bgWrap-->
+				</div> <!-- //new-detail -->
+		        <!-- //Change Contents -->
+		
+		    </div> <!-- //subContents -->
+		</div> <!-- //subContainer -->
+	</main>
+
+	<footer id="footer">
+        <div class="Fasten">
+            <div class="top-wrap">
+                <a class="go-top" onclick="go_top();"><img src="../images/web/comm/top.gif" alt="맨위로"></a>
+            </div>
+        </div>	    
+	    
+	    <div class="foot-menu">
+	    	<div class="Fasten">
+	    		<nav>
+	    			<a href="">회사소개</a>
+	    			<a href="">입점/제휴안내</a>
+	    			<a href=""><strong>개인정보취급방침</strong></a>
+	    			<a href="">이용약관</a>
+	    			<a href="">고객센터</a>
+	    		</nav>
+	    		
+	    		<div class="sns-area">
+	    			<h4 class="title">공식 SNS</h4>
+	    			<ul>
+	    				<li>
+	    					<a href=""><img src="../images/web/comm/sns/instagram2.png" alt="인스타그램"></a>
+	    				</li>
+	    				<li>
+	    					<a href=""><img src="../images/web/comm/sns/facebook2.png" alt="페이스북"></a>
+	    				</li>
+	    				<li>
+	    					<a href=""><img src="../images/web/comm/sns/naver-blog2.png" alt="네이버 블로그"></a>
+	    				</li>
+	    				<li>
+	    					<a href=""><img src="../images/web/comm/sns/kakao-story2.png" alt="카카오스토리"></a>
+	    				</li>
+	    			</ul>
+	    		</div>
+	    	</div>
+	    </div>
+	    
+	    <div class="copyright">
+		    <div class="Fasten">
+	            <div class="copy">
+	            	<div class="group">
+		                <p>상호명 : 제주특별자치도관광협회 &nbsp;&nbsp;&nbsp;&nbsp;대표이사 : 김영진 &nbsp;&nbsp;&nbsp;&nbsp;법인 등록번호 : 220121-0000107</p>      
+						<p>사업자 등록번호 : 616-82-04092 &nbsp;&nbsp;&nbsp;&nbsp;통신판매업번호: 제2013-제주연동 0024호</p>
+						<p>사업장 주소지 : 63122 제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층
+							<a href="http://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=6168204092" target="_blank" class="company-confirm" >사업자 정보확인</a>
+						</p>
+					</div>
+					<div class="group">
+						<p>개인정보관리책임자 : 김승원 &nbsp;&nbsp;&nbsp;&nbsp;E-mail : tamnao@tamnao.com &nbsp;&nbsp;&nbsp;&nbsp;팩스 : 064-742-8865</p>      
+						<p>고객센터 : 1522-3454 &nbsp;&nbsp;&nbsp;&nbsp;평일 09:00/18:00  점심시간 12:00/13:00 &nbsp;&nbsp;&nbsp;&nbsp;토요일, 일요일, 공휴일 휴무</p>
+						<p>Copyright 2016. 제주특별자치도관광협회 All Rights Reserved.</p>
+					</div>
+	            </div>
+	            <div class="mark-zone">
+			        <img src="../images/web/mark/ieco.jpg" alt="ieco">
+			        <img src="../images/web/mark/gcs.jpg" alt="gcs">
+			    </div>
+		    </div>
+	    </div>
+	</footer>
+</body>
+</html>

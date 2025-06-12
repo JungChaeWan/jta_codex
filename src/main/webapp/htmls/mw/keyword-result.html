@@ -1,0 +1,221 @@
+<?php header("Content-Type:text/html;charset=utf-8"); ?>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>제주마켓</title>
+	<link href="../../css/mw/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../css/mw/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../css/mw/common.css" rel="stylesheet">
+	<link href="../../css/mw/sub.css" rel="stylesheet">
+</head>
+<body>
+<div id="wrap">
+
+<!-- 헤더 s -->
+<header>
+	<h1><a href="main.html"><img src="../../images/mw/common/logo.png" width="106" alt="제주마켓"></a></h1>
+	<p class="gnb-view"><img src="../../images/mw/common/icon_menu.png" width="25" alt="메뉴보기"></p>
+	<p class="search-view"><img src="../../images/mw/common/icon_search.png" width="22" alt="검색"></p>
+	<p class="cart-view"><a href="sub_cart.html"><img src="../../images/mw/common/icon_cart.png" width="30" alt="장바구니"></a></p>
+
+	<div class="search">
+		<fieldset>
+			<div class="form-value">
+				<label for="q">검색어 입력</label>
+				<input type="text" id="q">
+			</div>
+			<input type="submit" value="검색">
+			<a href="#" class="btn-close"><img src="../../images/mw/sub_common/delete.png" width="10" alt="닫기"></a>
+		</fieldset>
+	</div>
+</header>
+<!-- 헤더 e -->
+
+<!-- 메뉴 s -->
+<nav id="gnbnavi" class="hide">
+	<p class="menu-top">
+		로그인 해주세요 <a href="login.html">로그인</a>
+	</p>
+	<ul class="menu-top">
+		<li><a href=""><img src="../../images/mw/common/icon_01.png" width="19" alt=""> 구매/예약내역</a></li>
+		<li><a href=""><img src="../../images/mw/common/icon_02.png" width="19" alt=""> 내 주변 업소</a></li>
+	</ul>
+	<div class="sub-menu">
+		<h2 class="sr-only">전체메뉴</h2>
+		<ul>
+			<li><a href="#"><img src="../../images/mw/common/icon_03.png" width="19" alt=""> 실시간예약</a>
+				<ul>
+					<li><a href="sub_air1.html">항공</a></li>
+					<li><a href="sub_hotel1.html">숙박</a></li>
+					<li><a href="sub_rent1.html">렌트카</a></li>
+					<li><a href="sub_golf1.html">골프</a></li>
+				</ul>
+			</li>
+			<li><a href="#"><img src="../../images/mw/common/icon_04.png" width="19" alt=""> 당일특가</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_05.png" width="19" alt=""> 패키지 할인상품</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_06.png" width="19" alt=""> 관광지 입장권</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_07.png" width="19" alt=""> 음식/레저/뷰티</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_08.png" width="19" alt=""> 여행경비산출</a></li>
+			<li><a href="#"><img src="../../images/mw/common/icon_09.png" width="19" alt=""> 이벤트</a></li>
+			<li><a href="sub_mypage1.html"><img src="../../images/mw/common/icon_10.png" width="19" alt=""> 마이페이지</a></li>
+			<li><a href="sub_center1.html"><img src="../../images/mw/common/icon_11.png" width="19" alt=""> 고객센터</a></li>
+		</ul>
+	</div>
+	<div class="app-util">
+		<dl>
+			<dt>정보 알림 받기</dt>
+			<dd><a href=""><img src="../../images/mw/common/on.png" width="42" alt="ON"></a></dd>
+			<dt>자동로그인</dt>
+			<dd><a href=""><img src="../../images/mw/common/off.png" width="42" alt="OFF"></a></dd>
+		</dl>
+		<p>Ver 1.0.0</p>
+	</div>
+</nav>
+
+<p id="btnHideGnb" class="hide"><img src="../../images/mw/common/close.png" width="10" alt="메뉴닫기"></p>
+<!-- 메뉴 e -->
+
+
+<!-- 콘텐츠 s -->
+<h2 class="sr-only">서브콘텐츠</h2>
+<section id="subContent">
+
+	<div class="menu-bar">
+		<p class="btn-prev"><img src="../../images/mw/common/btn_prev.png" width="20" alt="이전페이지"></p>
+		<h1>검색결과</h1>
+	</div>
+	<div class="sub-content">
+		
+		<!--검색결과 없을 시-->
+		<!--<div class="item-noContent">
+			<p class="icon"><img src="../../images/mw/sub_common/warning.png" alt="경고"></p>
+			<p class="text">죄송합니다.<br><strong class="comm-color1">"제주여행"</strong>에 대한 검색결과가 없습니다.</p>
+		</div>-->
+		
+		<!--검색결과 존재할 시-->
+		<div class="on-ct">
+			<h3 class="search-result">
+				<strong class="comm-color1">"제주여행"</strong>에 대한 <strong class="count">635</strong>건의 검색결과입니다.
+			</h3>
+			
+			<div class="search-item keyword-result">
+				<div class="item-wrap">
+					<h4 class="comm-title1">숙박</h4>
+					<div class="goods-list">
+				        <a href="/mw/ad/detailPrdt.do?sPrdtNum=AD00001282">
+				            <div class="goods-image goods-image1">
+				                <p class="tag-wrap"></p>
+				                <ul class="view">
+				                    <li><img src="http://www.tamnao.com/data/ad/thumb/C160000554_4.jpg" alt=""></li>
+				                </ul>
+				                <p class="comm-like">
+				                    <span class="like0"></span>
+				                    <em>0/5</em>
+				                </p>
+				            </div>
+				            <p class="info">
+				                <span class="txt">
+				                    <span class="city">[중문/서귀포] <strong>한라앤탐펜션</strong></span>
+				                    <em>중문/서귀포</em>
+				                </span>
+				                <span class="price">
+				                    <em>0%</em><br>
+				                    <del>80,000원</del> 
+				                    <img src="../../images/mw/sub_common/price_arrow.png" width="8" alt=""> 
+				                    <strong>80,000</strong>원~
+				                </span>
+				            </p>
+				        </a>
+				    </div>
+				    <div class="goods-list">
+				        <a href="/mw/ad/detailPrdt.do?sPrdtNum=AD00001311">
+				            <div class="goods-image goods-image1">
+				                <p class="tag-wrap">
+				                </p>
+				                <ul class="view">
+				                    <li><img src="http://www.tamnao.com/data/ad/thumb/C160000557_5.jpg" alt=""></li>
+				                </ul>
+				                <p class="comm-like">
+				                    <span class="like0"></span>
+				                    <em>0/5</em>
+				                </p>
+				            </div>
+				            <p class="info">
+				                <span class="txt">
+				                    <span class="city">[중문/서귀포] <strong>예촌민박</strong></span>
+				                    <em>중문/서귀포</em>
+				                </span>
+				                <span class="price">
+				                    <em>38%</em><br>
+				                    <del>80,000원</del> 
+				                    <img src="../../images/mw/sub_common/price_arrow.png" width="8" alt=""> 
+				                    <strong>50,000</strong>원~
+				                </span>
+				            </p>
+				        </a>
+				    </div>
+			    </div> <!-- //item-wrap -->
+			    
+			    <div class="item-wrap">
+					<h4 class="comm-title1">관광지/레저</h4>
+					<div class="goods-list">
+				        <a href="/mw/sp/detailPrdt.do?prdtNum=SP00000851&amp;prdtDiv=FREE">
+				            <div class="goods-image goods-image1">
+				                <p class="tag-wrap">
+				                    <img src="../../images/mw/sub_common/event.gif" alt="이벤트">
+				                    <img src="../../images/mw/sub_common/sale.png" alt="할인쿠폰">
+				                </p>
+				                <ul class="view">
+				                    <li><img src="http://www.tamnao.com/data/sp/thumb/SP00000851_3.jpg" alt=""></li>
+				                </ul>
+				                <div class="bottom-info">     
+				                    <span class="date">2017-07-28 ~ 2018-07-27</span>
+				                </div>
+				            </div>
+				            <p class="info">
+				                <span class="txt">
+				                    <strong>[감귤푸드] 오끼416 갤러리 카페</strong>
+				                    <em>5% 할인쿠폰</em>
+				                    <span class="heart">
+				                        <img src="../../images/mw/sub_common/heart.png" alt="평점">
+				                        <span class="ind_grade"><strong>0</strong>/5</span>
+				                    </span>
+				                </span>
+				                <span class="price"></span>
+				            </p>
+				        </a>
+				    </div>
+			    </div> <!-- //item-wrap -->
+			</div> <!--//keyword-result-->
+		</div> <!--//on-ct-->
+	
+	</div>
+</section>
+<!-- 콘텐츠 e -->
+
+<!-- 푸터 s -->
+<footer>
+    <ul class="list-unstyled">
+		<li><a href="">이용약관</a></li>
+		<li><a href="">개인정보처리방침</a></li>
+		<li><a href="">여행약관</a></li>
+	</ul>
+	<address>
+		상호명:제주특별자치도관광협회&nbsp; 대표:김영진&nbsp; 사업자등록번호:616-82-04092<br>
+		주소:제주특별자치도 제주시 선덕로 23 제주웰컴센터 4층<br>
+		통신판매업번호: 제2013-제주연동 0024호<br>
+		고객센터:1577-1233 | 개인정보관리책임자:최종훈
+	</address>
+    <p>COPYRIGHT &copy; 제주특별자치도관광협회. ALL RIGHTS RESERVED</p>
+</footer>
+<!-- 푸터 e -->
+</div>
+<div id="cover"></div>
+<script src="../../js/jquery-1.11.1.js"></script>
+<script src="../../js/mw_layout.js"></script>
+</body>
+</html>

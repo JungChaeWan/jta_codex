@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="userCp">
+
+<resultMap id="USER_CP_R_00" class="web.mypage.vo.USER_CPVO">
+<result property="userId" 		column="USER_ID" />
+<result property="cpNum" 		column="CP_NUM" />
+<result property="cpDiv" 		column="CP_DIV" />
+<result property="disAmt" 		column="DIS_AMT" />
+<result property="regDttm" 		column="REG_DTTM" />
+<result property="useDttm" 		column="USE_DTTM" />
+<result property="exprStartDt" 	column="EXPR_START_DT" />
+<result property="exprEndDt" 	column="EXPR_END_DT" />
+<result property="useYn" 		column="USE_YN" />
+<result property="cpId" 		column="CP_ID" />
+<result property="buyMiniAmt" 	column="BUY_MINI_AMT" />
+<result property="useRsvNum" 	column="USE_RSV_NUM" />
+<result property="cpNm" 		column="CP_NM" />
+</resultMap>
+
+<resultMap id="USER_CP_R_01" class="web.mypage.vo.USER_CPVO">
+<result property="cpNum" 		column="CP_NUM" />
+<result property="cpDiv"		column="CP_DIV" />
+<result property="disAmt" 		column="DIS_AMT" />
+<result property="buyMiniAmt"	column="BUY_MINI_AMT" />
+<result property="exprStartDt" 	column="EXPR_START_DT" />
+<result property="exprEndDt" 	column="EXPR_END_DT" />
+<result property="cpNm" 		column="CP_NM" />
+<result property="prdtCtgrList" column="PRDT_CTGR_LIST" />
+<result property="disDiv"		column="DIS_DIV" />
+<result property="disPct"		column="DIS_PCT" />
+<result property="aplprdtDiv"	column="APLPRDT_DIV" />
+<result property="prdtNum"	 	column="PRDT_NUM" />
+<result property="prdtUseNum" 	column="PRDT_USE_NUM" />
+<result property="optSn" 		column="OPT_SN" />
+<result property="optDivSn" 	column="OPT_DIV_SN" />
+<result property="limitType" 	column="LIMIT_TYPE" />
+<result property="limitCnt" 	column="LIMIT_CNT" />
+<result property="useCnt" 	    column="USE_CNT" />
+</resultMap>
+
+<resultMap id="USER_CP_R_02" class="web.mypage.vo.USER_CPVO">
+<result property="cpId" 		column="CP_ID" />
+<result property="cpNum" 		column="CP_NUM" />
+<result property="cpDiv"		column="CP_DIV" />
+<result property="disAmt" 		column="DIS_AMT" />
+<result property="buyMiniAmt"	column="BUY_MINI_AMT" />
+<result property="exprStartDt" 	column="EXPR_START_DT" />
+<result property="exprEndDt" 	column="EXPR_END_DT" />
+<result property="cpNm" 		column="CP_NM" />
+<result property="userId" 		column="USER_ID" />
+</resultMap>
+
+<resultMap id="WEB_USER_CP_R_00" class="web.mypage.vo.USER_CPVO">
+	<result property="cpNum" 		column="CP_NUM" />
+    <result property="cpDiv" 		column="CP_DIV" />
+    <result property="cpNm" 		column="CP_NM" />
+    <result property="disAmt" 		column="DIS_AMT" />
+    <result property="buyMiniAmt"	column="BUY_MINI_AMT" />
+	<result property="exprStartDt" 	column="EXPR_START_DT" />
+	<result property="exprEndDt" 	column="EXPR_END_DT" />
+    <result property="cpId" 	    column="CP_ID" />
+	<result property="useYn" 		column="USE_YN" />
+	<result property="useDttm"		column="USE_DTTM" />
+	<result property="disDiv" 		column="DIS_DIV" />
+    <result property="disPct" 		column="DIS_PCT" />
+    <result property="aplprdtDiv" 	column="APLPRDT_DIV" />
+    <result property="prdtCtgrList"	column="PRDT_CTGR_LIST" />
+    <result property="cpCode"	    column="CP_CODE" />
+    <result property="limitType"	column="LIMIT_TYPE" />
+    <result property="limitCnt"	    column="LIMIT_CNT" />
+    <result property="useCnt"	    column="USE_CNT" />
+    <result property="issueCnt"		column="ISSUE_CNT" />
+    <result property="limitAmt"		column="LIMIT_AMT" />
+</resultMap>
+
+<resultMap id="USER_CP_R_04" class="oss.user.vo.USERVO">
+	<result property="userId" column="USER_ID" />
+	<result property="userNm" column="USER_NM" />
+	<result property="telNum" column="TEL_NUM" />
+    <result property="email" column="EMAIL" />
+</resultMap>
+
+<resultMap id="USER_CP_R_09" class="web.mypage.vo.USER_CPVO">
+	<result property="disDiv"      column="DIS_DIV" />
+	<result property="disPct"      column="DIS_PCT" />
+	<result property="disAmt"      column="DIS_AMT" />
+    <result property="limitAmt"    column="LIMIT_AMT" />
+    <result property="cpNm"    column="CP_NM" />
+</resultMap>
+
+<select id="USER_CP_S_00" resultMap="USER_CP_R_00">
+SELECT USER_ID
+     , CP_NUM
+     , CP_DIV
+     , DIS_AMT
+     , REG_DTTM
+     , USE_DTTM
+     , EXPR_START_DT
+     , EXPR_END_DT
+     , USE_YN
+     , CP_ID
+     , BUY_MINI_AMT
+     , USE_RSV_NUM
+     , CP_NM
+FROM TB_USER_CP
+WHERE 1=1
+</select>
+
+<select id="USER_CP_S_01" resultMap="USER_CP_R_01">
+SELECT *
+FROM (
+    SELECT T_UCP.CP_NUM
+        , T_UCP.CP_DIV
+        , T_UCP.CP_NM
+        , T_UCP.DIS_AMT
+        , T_UCP.BUY_MINI_AMT
+        , T_UCP.EXPR_START_DT
+        , T_UCP.EXPR_END_DT
+        , T_UCP.CP_ID
+        , T_UCP.DIS_DIV
+        , T_UCP.DIS_PCT
+        , T_UCP.APLPRDT_DIV
+        , T_C.PRDT_CTGR_LIST
+        , T_C.LIMIT_TYPE
+        , T_C.LIMIT_CNT
+        , NULL PRDT_NUM
+        , NULL PRDT_USE_NUM
+        , NULL OPT_SN
+        , NULL OPT_DIV_SN
+        , (SELECT COUNT(CP_NUM) FROM TB_USER_CP WHERE CP_ID = T_UCP.CP_ID AND USE_YN = 'Y') AS USE_CNT
+    FROM TB_USER_CP T_UCP
+        INNER JOIN TB_CP T_C ON  T_C.CP_ID = T_UCP.CP_ID
+            AND T_C.STATUS_CD = 'ST02'
+            AND T_C.APLPRDT_DIV = 'AP01'
+            AND T_C.PRDT_CTGR_LIST LIKE '%'||SUBSTRING (#prdtNum#, 0, 2) ||'%'
+    WHERE USER_ID = #userId#
+        AND T_UCP.USE_YN = 'N'
+        AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN T_UCP.EXPR_START_DT AND T_UCP.EXPR_END_DT
+
+    UNION
+
+    SELECT T_UCP.CP_NUM
+        , T_UCP.CP_DIV
+        , T_UCP.CP_NM
+        , T_UCP.DIS_AMT
+        , T_UCP.BUY_MINI_AMT
+        , T_UCP.EXPR_START_DT
+        , T_UCP.EXPR_END_DT
+        , T_UCP.CP_ID
+        , T_UCP.DIS_DIV
+        , T_UCP.DIS_PCT
+        , T_UCP.APLPRDT_DIV
+        , T_C.PRDT_CTGR_LIST
+        , T_C.LIMIT_TYPE
+        , T_C.LIMIT_CNT
+        , T_CPT.PRDT_NUM
+        , T_CPT.PRDT_USE_NUM
+        , T_CPT.OPT_SN
+        , T_CPT.OPT_DIV_SN
+        , (SELECT COUNT(CP_NUM) FROM TB_USER_CP WHERE CP_ID = T_UCP.CP_ID AND USE_YN = 'Y') AS USE_CNT
+    FROM TB_USER_CP T_UCP
+        INNER JOIN TB_CP T_C ON  T_C.CP_ID = T_UCP.CP_ID
+            AND T_C.STATUS_CD = 'ST02'
+            AND T_C.APLPRDT_DIV = 'AP02'
+        INNER JOIN TB_CP_PRDT T_CPT ON  T_CPT.CP_ID = T_UCP.CP_ID
+            AND T_CPT.PRDT_NUM = #prdtNum#
+    WHERE USER_ID = #userId#
+        AND T_UCP.USE_YN = 'N'
+        AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN T_UCP.EXPR_START_DT AND T_UCP.EXPR_END_DT
+)
+</select>
+
+<select id="USER_CP_S_02" resultMap="USER_CP_R_02">
+SELECT
+       CP_ID
+     , CP_NUM
+     , CP_NM
+     , CP_DIV
+     , DIS_AMT
+     , BUY_MINI_AMT
+     , EXPR_START_DT
+     , EXPR_END_DT
+     , T_UCP.USER_ID
+  FROM TB_USER T_USER
+ INNER JOIN TB_USER_CP T_UCP
+    ON T_UCP.USER_ID = T_USER.USER_ID
+   AND T_UCP.USE_YN  = 'Y'
+   AND T_UCP.USE_RSV_NUM = #prdtRsvNum#
+</select>
+
+<select id="USER_CP_S_03" resultClass="int">
+SELECT COUNT(CP_NUM) FROM TB_USER_CP
+WHERE USER_ID = #userId#
+  AND CP_DIV='UAPP'
+</select>
+
+<select id="USER_CP_S_04" resultMap="USER_CP_R_04">
+SELECT T_UCP.USER_ID
+  , T_USER.USER_NM
+  , T_USER.TEL_NUM
+  , T_USER.EMAIL
+FROM TB_USER_CP T_UCP
+    INNER JOIN TB_USER T_USER
+    ON  T_UCP.USER_ID = T_USER.USER_ID
+        AND T_USER.QUT_YN = 'N'
+WHERE T_UCP.CP_ID = #cpId#
+</select>
+
+<select id="USER_CP_S_05" resultClass="int">
+SELECT COUNT(CP_NUM)
+FROM TB_USER_CP
+WHERE USER_ID = #userId#
+    AND CP_DIV = #cpDiv#
+    AND USE_YN = 'N'
+    AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN EXPR_START_DT AND EXPR_END_DT
+</select>
+
+<!-- 사용자 아이디, 쿠폰 아이디로 조회 -->
+<select id="USER_CP_S_06" resultMap="USER_CP_R_00">
+SELECT USER_ID
+     , CP_NUM
+     , CP_DIV
+     , DIS_AMT
+     , REG_DTTM
+     , USE_DTTM
+     , EXPR_START_DT
+     , EXPR_END_DT
+     , USE_YN
+     , CP_ID
+     , BUY_MINI_AMT
+     , USE_RSV_NUM
+     , CP_NM
+  FROM TB_USER_CP
+ WHERE CP_ID   = #cpId#
+   AND USER_ID = #userId#
+</select>
+
+<!-- 사용된 쿠폰인지 체크 -->
+<select id="USER_CP_S_07" resultClass="int">
+SELECT
+    COUNT(*)
+FROM TB_USER_CP
+WHERE CP_NUM   = #cpNum#
+AND USE_YN = 'Y'
+</select>
+
+<!-- 사용자 아이디, 쿠폰 아이디로 발급갯수 -->
+<select id="USER_CP_S_08" resultClass="int">
+SELECT COUNT(1)
+  FROM TB_USER_CP
+ WHERE CP_ID   = #cpId#
+   AND USER_ID = #userId#
+</select>
+
+<select id="USER_CP_S_09" resultMap="USER_CP_R_09">
+SELECT
+	DIS_DIV, DIS_PCT, DIS_AMT,LIMIT_AMT,CP_NM
+FROM TB_USER_CP
+WHERE
+	CP_NUM   = #cpNum#
+AND TO_CHAR(SYSDATE,'YYYYMMDD') BETWEEN EXPR_START_DT AND EXPR_END_DT
+</select>
+
+
+<select id="USER_CP_S_10" resultClass="common.LowerHashMap">
+SELECT RSV_NUM || ' ' || (SELECT CORP_NM FROM TB_CORP WHERE CORP_ID = T1.CORP_ID) AS USED_CP
+    FROM (
+    SELECT RSV_NUM,CORP_ID,PRDT_NUM FROM TB_AD_RSV WHERE AD_RSV_NUM IN (
+    SELECT
+        USE_RSV_NUM
+    FROM TB_USER_CP
+    WHERE 1=1
+    AND USER_ID = #userId#
+    AND CP_ID IN (SELECT CP_ID FROM TB_CP WHERE R_CP_ID = #cpId#)
+    )
+    UNION ALL
+    SELECT RSV_NUM,CORP_ID,PRDT_NUM FROM TB_RC_RSV WHERE RC_RSV_NUM IN (
+    SELECT
+        USE_RSV_NUM
+    FROM TB_USER_CP
+    WHERE 1=1
+    AND USER_ID = #userId#
+    AND CP_ID IN (SELECT CP_ID FROM TB_CP WHERE R_CP_ID = #cpId#)
+    )
+    UNION ALL
+    SELECT RSV_NUM,CORP_ID,PRDT_NUM FROM TB_SP_RSV WHERE SP_RSV_NUM IN (
+    SELECT
+        USE_RSV_NUM
+    FROM TB_USER_CP
+    WHERE 1=1
+    AND USER_ID = #userId#
+    AND CP_ID IN (SELECT CP_ID FROM TB_CP WHERE R_CP_ID = #cpId#)
+    )
+    UNION ALL
+    SELECT RSV_NUM,CORP_ID,PRDT_NUM FROM TB_SV_RSV WHERE SV_RSV_NUM IN (
+    SELECT
+        USE_RSV_NUM
+    FROM TB_USER_CP
+    WHERE 1=1
+    AND USER_ID = #userId#
+    AND CP_ID IN (SELECT CP_ID FROM TB_CP WHERE R_CP_ID = #cpId#)
+    )
+) AS T1
+</select>
+
+<insert id="USER_CP_I_00">
+<selectKey keyProperty="cpNum" resultClass="String">
+    SELECT
+        /*+INDEX_DESC(TB_USER_CP IDX_USER_CP_PK )*/
+        'CP' ||LPAD(NVL(SUBSTR(CP_NUM,3),0) + 1, 8,'0') AS CP_NUM
+    FROM   TB_USER_CP
+    WHERE ROWNUM = 1
+</selectKey>
+INSERT INTO TB_USER_CP 
+     ( USER_ID
+     , CP_NUM
+     , CP_DIV
+     , DIS_AMT
+     , REG_DTTM
+     , EXPR_START_DT
+     , EXPR_END_DT
+     , USE_YN
+     , CP_ID
+     , BUY_MINI_AMT
+     , USE_RSV_NUM
+     , CP_NM
+     , DIS_DIV
+     , DIS_PCT
+     , APLPRDT_DIV
+     , LIMIT_AMT
+     )
+VALUES
+     ( #userId#
+     , #cpNum#
+     , #cpDiv#
+     , #disAmt#
+     , SYSDATE
+     , #exprStartDt#
+     , #exprEndDt#
+     , 'N'
+     , #cpId#
+     , #buyMiniAmt#
+     , ''
+     , #cpNm#
+     , #disDiv#
+     , #disPct#
+     , #aplprdtDiv#
+     , #limitAmt#
+     )
+</insert>
+
+<!--쿠폰생성-->
+<insert id="USER_CP_I_01">
+INSERT INTO TB_USER_CP 
+     ( USER_ID
+     , CP_NUM
+     , CP_DIV
+     , DIS_AMT
+     , REG_DTTM
+     , EXPR_START_DT
+     , EXPR_END_DT
+     , USE_YN
+     , CP_ID
+     , BUY_MINI_AMT
+     , USE_RSV_NUM
+     , CP_NM
+     , DIS_DIV
+     , DIS_PCT
+     , APLPRDT_DIV
+     , LIMIT_AMT
+     )
+SELECT
+      T_USER.USER_ID
+     , 'CP'||LPAD(s1.CP_NUM + ROWNUM, 8,'0')
+     , #cpDiv#
+     , #disAmt#
+     , SYSDATE
+     , #exprStartDt#
+     , #exprEndDt#
+     , #useYn#
+     , #cpId#
+     , #buyMiniAmt#
+     , ''
+     , #cpNm#
+     , #disDiv#
+     , #disPct#
+     , #aplprdtDiv#
+     , #limitAmt#
+ FROM TB_CP T_CP
+INNER JOIN TB_USER T_USER
+   ON USER_ID IN
+   <iterate open="(" close=")" conjunction="," property="userIds">
+		#userIds[]#
+	</iterate>
+INNER JOIN (SELECT NVL(MAX(SUBSTR(CP_NUM,3)),0) AS CP_NUM
+          FROM TB_USER_CP ) s1
+    ON S1.CP_NUM IS NOT NULL
+WHERE T_CP.CP_ID = #cpId#
+</insert>
+
+<!--추가쿠폰생성-->
+<insert id="USER_CP_I_02">
+INSERT INTO TB_USER_CP(
+    CP_NUM,USER_ID,CP_DIV,CP_NM,DIS_AMT,BUY_MINI_AMT,REG_DTTM,EXPR_START_DT,EXPR_END_DT,CP_ID,USE_YN,DIS_DIV,DIS_PCT,APLPRDT_DIV,LIMIT_AMT
+)
+    SELECT
+    'CP'||LPAD((SELECT NVL(MAX(SUBSTR(CP_NUM,3)),0) AS CP_NUM
+              FROM TB_USER_CP ) + ROWNUM, 8,'0'),
+    #userId#,
+    T1.CP_DIV,
+    T1.CP_NM,
+    T1.DIS_AMT,
+    T1.BUY_MINI_AMT,
+    SYSDATE,
+    T1.APL_START_DT,
+    T1.APL_END_DT,
+    #cpId#,
+    'N',
+    T1.DIS_DIV,
+    T1.DIS_PCT,
+    T1.APLPRDT_DIV,
+    T1.LIMIT_AMT
+    FROM TB_CP AS T1
+WHERE CP_ID = #cpId#
+</insert>
+
+<!-- 예약시 쿠폰 사용 처리 -->
+<update id="USER_CP_U_00">
+UPDATE TB_USER_CP 
+   SET USE_DTTM    = SYSDATE
+     , USE_YN      = 'Y'
+     , USE_RSV_NUM = #useRsvNum#
+ WHERE CP_NUM = #cpNum#
+</update>
+
+<!-- 예약취소시 쿠폰 반환 처리 
+	2018.09.11 최영철 기간이 지난 쿠폰은 반환처리 X -->
+<update id="USER_CP_U_01">
+UPDATE TB_USER_CP
+   SET USE_YN      = 'N'
+     , USE_DTTM    = ''
+     , USE_RSV_NUM = ''
+ WHERE USE_RSV_NUM = #useRsvNum#
+ <![CDATA[
+   AND EXPR_END_DT >= TO_CHAR(SYSDATE, 'YYYYMMDD')
+ ]]>
+</update>
+
+<!-- 자동취소시 쿠폰 반환 처리 -->
+<update id="USER_CP_U_02">
+<![CDATA[
+UPDATE TB_USER_CP
+   SET USE_YN      = 'N'
+     , USE_DTTM    = ''
+     , USE_RSV_NUM = ''
+WHERE USE_RSV_NUM IN (
+    SELECT
+           R.USE_RSV_NUM
+    FROM (
+         SELECT RC_RSV_NUM AS USE_RSV_NUM, RSV_NUM
+         FROM TB_RC_RSV
+         WHERE RSV_STATUS_CD = 'RS00'
+         UNION
+         SELECT AD_RSV_NUM AS USE_RSV_NUM, RSV_NUM
+         FROM TB_AD_RSV
+         WHERE RSV_STATUS_CD = 'RS00'
+         UNION
+         SELECT SP_RSV_NUM AS USE_RSV_NUM, RSV_NUM
+         FROM TB_SP_RSV
+         WHERE RSV_STATUS_CD = 'RS00'
+         UNION
+         SELECT SV_RSV_NUM AS USE_RSV_NUM, RSV_NUM
+         FROM TB_SV_RSV
+         WHERE RSV_STATUS_CD = 'RS00'
+         ) R
+    INNER JOIN TB_RSV T ON R.RSV_NUM = T.RSV_NUM
+    WHERE T.RSV_STATUS_CD = 'RS00'
+      AND T.REG_DTTM <= SYSDATE - (#waitingTime# / 60 / 24)
+    )
+]]>
+</update>
+
+<update id="USER_CP_U_03">
+UPDATE TB_USER_CP
+   SET USE_YN = #useYn#
+ WHERE CP_NUM = #cpNum#
+</update>
+
+<delete id="USER_CP_D_00">
+DELETE 
+  FROM TB_USER_CP
+ WHERE CP_ID = #cpId#
+  
+</delete>
+
+<delete id="USER_CP_D_01">
+DELETE
+    FROM
+TB_USER_CP
+WHERE USER_ID = #userId#
+AND CP_ID IN (SELECT CP_ID FROM TB_CP WHERE R_CP_ID = #cpId#)
+AND USE_YN = 'N'
+</delete>
+
+<select id="WEB_USER_CP_S_00" resultMap="WEB_USER_CP_R_00">
+SELECT CP_NUM
+    , CP_DIV
+    , CP_NM
+    , DIS_AMT
+    , BUY_MINI_AMT
+    , EXPR_START_DT
+    , EXPR_END_DT
+    , T1.CP_ID
+    , USE_YN
+    , USE_DTTM
+    , DIS_DIV
+    , DIS_PCT
+    , APLPRDT_DIV
+    , PRDT_CTGR_LIST
+    , CP_CODE
+    , LIMIT_TYPE
+    , LIMIT_CNT
+    , LIMIT_AMT
+    , T2.USE_CNT
+    , T3.ISSUE_CNT
+FROM (
+    SELECT 'ALL' AS CP_NUM
+      , CP_DIV
+      , CP_NM
+      , DIS_AMT
+      , BUY_MINI_AMT
+      , APL_START_DT AS EXPR_START_DT
+      , APL_END_DT AS EXPR_END_DT
+      , CP_ID
+      , NULL USE_YN
+      , NULL USE_DTTM
+      , DIS_DIV
+      , DIS_PCT
+      , APLPRDT_DIV
+      , PRDT_CTGR_LIST
+      , CP_CODE
+      , LIMIT_TYPE
+      , LIMIT_CNT
+      , LIMIT_AMT
+    FROM TB_CP
+    WHERE STATUS_CD = 'ST02'
+        AND TGT_DIV = 'ALL'
+        AND CP_DIV = 'AEVT'
+        AND SYSDATE BETWEEN TO_DATE(APL_START_DT || '000000' , 'YYYYMMDDHH24MISS') AND TO_DATE(APL_END_DT || '000000' , 'YYYYMMDDHH24MISS')+1
+        AND NOT EXISTS(SELECT * FROM TB_USER_CP WHERE CP_ID = TB_CP.CP_ID AND USER_ID = #userId#)
+
+    UNION
+
+    SELECT T_UCP.CP_NUM
+      , T_UCP.CP_DIV
+      , T_UCP.CP_NM
+      , T_UCP.DIS_AMT
+      , T_UCP.BUY_MINI_AMT
+      , T_UCP.EXPR_START_DT
+      , T_UCP.EXPR_END_DT
+      , T_UCP.CP_ID
+      , T_UCP.USE_YN
+      , T_UCP.USE_DTTM
+      , T_UCP.DIS_DIV
+      , T_UCP.DIS_PCT
+      , T_UCP.APLPRDT_DIV
+      , T_CP.PRDT_CTGR_LIST
+      , T_CP.CP_CODE
+      , T_CP.LIMIT_TYPE
+      , T_CP.LIMIT_CNT
+      , T_UCP.LIMIT_AMT
+    FROM TB_USER_CP T_UCP
+        INNER JOIN TB_CP T_CP
+        ON  T_UCP.CP_ID = T_CP.CP_ID
+            AND T_CP.STATUS_CD = 'ST02'
+    WHERE USER_ID = #userId#
+        AND (USE_YN = 'N' OR USE_YN IS NULL)
+        AND SYSDATE BETWEEN TO_DATE(EXPR_START_DT || '000000' , 'YYYYMMDDHH24MISS') AND TO_DATE(EXPR_END_DT || '000000' , 'YYYYMMDDHH24MISS')+1
+
+) AS T1
+LEFT JOIN (
+          SELECT CP_ID, COUNT(1) AS USE_CNT FROM TB_USER_CP WHERE USE_YN = 'Y'
+          GROUP BY CP_ID
+          ) T2 ON T1.CP_ID = T2.CP_ID
+LEFT JOIN (
+          SELECT CP_ID, COUNT(1) AS ISSUE_CNT
+          FROM TB_USER_CP
+          GROUP BY CP_ID
+          ) T3 ON T1.CP_ID = T3.CP_ID
+ORDER BY USE_YN ASC NULLS FIRST,
+    EXPR_END_DT ASC,
+    DIS_AMT ASC,
+    DIS_PCT ASC
+</select>
+</sqlMap>

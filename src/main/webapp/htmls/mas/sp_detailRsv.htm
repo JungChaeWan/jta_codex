@@ -1,0 +1,363 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<script type="text/javascript" src="/js/jquery-1.11.1.js" ></script>
+<script type="text/javascript" src="/js/common.js" ></script>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache; no-store; no-save" />
+<link rel="stylesheet" type="text/css" href="http://todayjeju.net/css/common/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/mas/layout.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common/page_style.css" />
+<title></title>
+<script type="text/javascript">
+
+/**
+ * 취소처리
+ */
+function fn_CancelRsvView(){
+	show_popup($("#lay_popup"));
+	return;
+}
+
+/**
+ * 취소요청 처리
+ */
+function fn_CancelRsvReq(){
+	if(confirm("취소 하시겠습니까?")){
+		if(isNull($("#cmssAmt").val())){
+			alert("수수료 금액이 입력되지 않았습니다.");
+			$("#cmssAmt").focus();
+			return;
+		}
+		// 입력 최대 금액 체크
+		if(parseInt($("#cmssAmt").val()) > parseInt("253100")){
+			alert("상품 금액보다 수수료금액이 더 많습니다.");
+			$("#cmssAmt").focus();
+			return;
+		}
+		var parameters = "rsvNum=RV151214000009&rcRsvNum=SP151214000004&payDiv=&cmssAmt=" + $("#cmssAmt").val();
+		$.ajax({
+			type:"post", 
+			dataType:"json",
+			async:false,
+			url:"/mas/sp/cancelRsv.ajax",
+			data:parameters ,
+			success:function(data){
+				if(data.cancelDiv == "1"){
+					if(data.success == "Y"){
+						alert("자동취소가 정상적으로 처리 되었습니다.");
+						document.frm.action = "/mas/sp/detailRsv.do";
+						document.frm.submit();
+					}else{
+						alert(data.payResult.payRstInf);
+					}
+				}else{
+					alert("환불요청이 정상적으로 처리 되었습니다.");
+					document.frm.action = "/mas/sp/detailRsv.do";
+					document.frm.submit();
+				}
+			}
+		});
+	}
+}
+
+/**
+ * 목록
+ */
+function fn_List(){
+	document.frm.action = "/mas/sp/rsvList.do";
+	document.frm.submit();
+}
+</script>
+</head>
+<body>
+<div class="blackBg"></div>
+<div id="wrapper"> 
+    <script type="text/javascript">
+var getContextPath = "";
+
+function show_popup(obj){
+	if($(obj).is(":hidden")){
+		$(obj).show();
+		$('div.blackBg').fadeIn(100); // 검은 불투명 배경
+	}else{
+		$(obj).hide();
+		$('div.blackBg').fadeOut(100);
+	}
+}
+
+function close_popup(obj){
+	$(obj).hide();
+	$('div.blackBg').fadeOut(100);
+}
+
+$(document).ready(function(){
+	$(".gnb_menu>li").hover(
+		function(){
+			$(this).children("ul").show();
+		},
+		function(){
+			$(this).children("ul").hide();
+		}
+	);
+	
+	if("rsv" == "corp"){
+		$(".menu02").addClass("on");
+	}
+	if("rsv" == "product"){
+		$(".menu03").addClass("on");
+	}
+	if("rsv" == "promotion"){
+		$(".menu04").addClass("on");
+	}
+	if("rsv" == "realtime"){
+		$(".menu05").addClass("on");
+	}	
+	if("rsv" == "rsv"){
+		$(".menu06").addClass("on");
+	}
+	if("rsv" == "useepil"){
+		$(".menu07").addClass("on");
+	}
+	if("rsv" == "ansl"){
+		$(".menu09").addClass("on");
+	}
+});
+
+</script> 
+    
+    <!--Header 영역-->
+    <div id="header_wrapper">
+        <h1><img src="http://todayjeju.net/images/oss/common/logo.gif" alt="모객 관리자 시스템" /></h1>
+        <!--상단 게시물 롤링--> 
+        <!-- <div class="header_alim">
+			<ul>
+				<li><a href="#">공항 부근으로 렌트카 주차장 부지 찾습니다 평수,금액 무관합...</a></li>
+			</ul>
+		</div> --> 
+        <!--//상단 게시물 롤링-->
+        <ul class="lnb_menu">
+            <!-- <li><a href="/" target="_blank">탐나오 바로가기</a></li> -->
+            <li class="home"><a href="/" target="_blank">탐나오 바로가기</a></li>
+            <li class="log"><a href="/mas/masLogout.do">로그아웃</a></li>
+        </ul>
+        <!--상단메뉴-->
+        <h2 class="lay_none">상단메뉴</h2>
+        <ul class="gnb_menu">
+            <!-- <li class="menu01"><a href="#">홈</a>
+				<ul class="gnb_depth" id="menu01" style="display:none">
+				</ul>
+			</li> -->
+            <li class="menu02"><a href="/mas/detailCorp.do">업체정보</a>
+                <ul class="gnb_depth" id="menu02" style="display:none">
+                    <li><a href="/mas/detailCorp.do">기본정보</a></li>
+                    <li><a href="/mas/detailSpAddInfo.do">판매처관리</a></li>
+                </ul>
+            </li>
+            <li class="menu03"><a href="/mas/sp/productList.do">상품관리</a> 
+                <!-- 상품관리 부분은 각 업체코드별로 분기 -->
+                
+                <ul class="gnb_depth" id="menu03" style="display:none">
+                    <li><a href="/mas/sp/productList.do">상품관리</a></li>
+                    <li><a href="/mas/sp/stockList.do">재고관리</a></li>
+                </ul>
+            </li>
+            <li class="menu04"><a href="/mas/prmt/promotionList.do">프로모션</a></li>
+            <li class="menu06"><a href="/mas/sp/rsvList.do">예약관리</a></li>
+            <li class="menu07"><a href="/mas/sp/otoinqList.do">커뮤니티</a>
+                <ul class="gnb_depth" id="menu07" style="display:none">
+                    <li><a href="/mas/sp/otoinqList.do">1:1문의</a></li>
+                    <li><a href="/mas/sp/useepilList.do">상품평조회</a></li>
+                </ul>
+            </li>
+            <li class="menu08"><a href="/mas/detailCorp.do">정산</a></li>
+            <li class="menu09"><a href="/mas/sp/anls01.do">통계</a></li>
+        </ul>
+        <!--//상단메뉴--> 
+    </div>
+    <!--//Header 영역--> 
+    
+    <!--Contents 영역-->
+    <div id="contents_wrapper">
+        <div id="contents_area"> 
+            <!--본문--> 
+            <!--상품 등록-->
+            <div id="contents">
+                <form name="frm" method="post">
+                    <input type="hidden" name="pageIndex" id="pageIndex" value="1" />
+                    <input type="hidden" name="sPrdtNm" id="sPrdtNm" value="" />
+                    <input type="hidden" name="sRsvNm" id="sRsvNm" value="" />
+                    <input type="hidden" name="spRsvNum" id="spRsvNum" value="SP151214000004" />
+                </form>
+                <h4 class="title03">예약정보</h4>
+                <table border="1" class="table02">
+                    <colgroup>
+                    <col width="200" />
+                    <col width="*" />
+                    <col width="200" />
+                    <col width="*" />
+                    </colgroup>
+                    <tr>
+                        <th scope="row">예약번호</th>
+                        <td> RV151214000009 </td>
+                        <th scope="row">예약상태</th>
+                        <td> 예약 </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">예약자명</th>
+                        <td>임수진</td>
+                        <th scope="row">사용자명</th>
+                        <td>임수진</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">예약자 Email</th>
+                        <td>sp@sp.com</td>
+                        <th scope="row">사용자 Email</th>
+                        <td>sp@sp.com</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">예약자 전화번호</th>
+                        <td>010-1111-1111</td>
+                        <th scope="row">사용자 전화번호</th>
+                        <td>010-1111-1111</td>
+                    </tr>
+                </table>
+                <h4 class="title03 margin-top45">상품정보</h4>
+                <table border="1" class="table02">
+                    <colgroup>
+                    <col width="200" />
+                    <col width="*" />
+                    <col width="200" />
+                    <col width="*" />
+                    </colgroup>
+                    <tr>
+                        <th scope="row">상품명</th>
+                        <td colspan="3"> [2박3일] 왕복항공권 + Y리조트 + K5 </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">상품정보</th>
+                        <td colspan="3">2박 3일 패키지 2015-12-17|목요일 출발 | 수량 : 1</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">구매수</th>
+                        <td> 1 </td>
+                        <th scope="row"> 적용 일자 </th>
+                        <td> 2015-12-17 </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">상품금액</th>
+                        <td> 253,100원 </td>
+                        <th scope="row">판매금액</th>
+                        <td> 253,100원 </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">할인금액</th>
+                        <td> 0원 </td>
+                        <th scope="row">취소금액</th>
+                        <td> 0원 </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">수수료금액</th>
+                        <td> 0원 </td>
+                        <th scope="row">예약일시</th>
+                        <td> 2015-12-14 10:59:13 </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">정산여부</th>
+                        <td> N </td>
+                        <th scope="row">정산일자</th>
+                        <td></td>
+                    </tr>
+                </table>
+                <ul class="btn_rt01 margin-btm45">
+                    <li class="btn_sty03"> <a href="javascript:fn_CancelRsvView()">취소처리</a> </li>
+                    <li class="btn_sty04"> <a href="javascript:fn_List()">목록</a> </li>
+                </ul>
+                
+                <div style="clear:both;">
+                	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td valign="top" style="width:55%;">
+                                <table border="1" class="table02">
+                                    <colgroup>
+                                    <col width="145" />
+                                    <col width="*" />
+                                    </colgroup>
+                                    <tr>
+                                        <th scope="row">상품이용내역<br />(고객 확인용)</th>
+                                        <td class="align_lt">
+                                        	<ul class="list_info01">
+                                            	<li><strong>2015/01/15 15 : 30</strong>  아시아나 김포출발 09:00 제주출발 19:30 / Y리조트 25평형 2박 /  SM5 54시간 내용변경 및 확정 <p class="btn_rt02"><span><a href="#"><img src="../../images/oss/btn/modify_btn03.gif" alt="수정" /></a></span> <span><a href="#"><img src="../../images/oss/btn/delete_btn05.gif" alt="삭제" /></a></span></p></li>
+                                            	<li><strong>2015/01/15 15 : 30</strong>  아시아나 김포출발 09:00 제주출발 19:30 / Y리조트 25평형 2박 /  SM5 54시간 내용변경 및 확정 <p class="btn_rt02"><span><a href="#"><img src="../../images/oss/btn/modify_btn03.gif" alt="수정" /></a></span> <span><a href="#"><img src="../../images/oss/btn/delete_btn05.gif" alt="삭제" /></a></span></p></li>
+                                            	<li><strong>2015/01/15 15 : 30</strong>  아시아나 김포출발 09:00 제주출발 19:30 / Y리조트 25평형 2박 /  SM5 54시간 내용변경 및 확정 <p class="btn_rt02"><span><a href="#"><img src="../../images/oss/btn/modify_btn03.gif" alt="수정" /></a></span> <span><a href="#"><img src="../../images/oss/btn/delete_btn05.gif" alt="삭제" /></a></span></p></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">이용내역<br />작성하기</th>
+                                        <td class="align_lt02">
+                                            <textarea name="" id="" cols="15" rows="4" style="width:78%; vertical-align:middle;"></textarea>
+                                            <span class="btn_sty11" style="width:18%;"><input type="button" name="" value="등록" /></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="2%">&nbsp;</td>
+                            <td valign="top" style="width:43%;">
+                                <table border="1" class="table01">
+                                    <tr>
+                                        <th scope="row" class="align_ct01">입점업체 관리자 메모</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="align_lt02">
+                                            <textarea name="" id="" cols="15" rows="6" style="width:80%; vertical-align:middle;"></textarea>
+                                            <span class="btn_sty12" style="width:16%;"><input type="button" name="" value="저장" /></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                </table>
+                </div>
+            </div>
+            <!--//상품등록--> 
+            <!--//본문--> 
+        </div>
+    </div>
+    <!--//Contents 영역--> 
+</div>
+<div id="lay_popup" class="lay_popup lay_ct" style="display:none;"> <!--왼쪽정렬:lay_lt, 오른쪽정렬:lay_rt, 가운데정렬:lay_ct--> 
+    <span class="popup_close"><a href="javascript:;" onclick="close_popup($('#lay_popup'))" title="창닫기"> <img src="http://todayjeju.net/images/oss/btn/close_btn03.gif" alt="" /></a> </span>
+    <ul class="form_area">
+        <li>
+            <table border="1" class="table02" id="cntLay">
+                <caption class="tb01_title">
+                취소처리
+                </caption>
+                <colgroup>
+                <col width="170" />
+                <col width="*" />
+                </colgroup>
+                <tr>
+                    <th>상품금액</th>
+                    <td> 253,100 </td>
+                </tr>
+                <tr>
+                    <th>할인금액</th>
+                    <td> 0 </td>
+                </tr>
+                <tr>
+                    <th>결제금액</th>
+                    <td> 253,100 </td>
+                </tr>
+                <tr>
+                    <th>수수료금액</th>
+                    <td><input type="text" name="cmssAmt" id="cmssAmt" maxlength="11" onkeydown="javascript:fn_checkNumber();" /></td>
+                </tr>
+            </table>
+        </li>
+    </ul>
+    <div class="btn_rt01"> <span class="btn_sty03" id="btnResist"><a href="javascript:fn_CancelRsvReq()">취소요청</a></span> </div>
+</div>
+</body>
+</html>

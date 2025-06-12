@@ -1,0 +1,1845 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="sp_web">
+
+<resultMap id="WEB_SP_PRDTINF_R_00" class="web.product.vo.WEB_SPPRDTVO">
+	<result property="prdtNum" column="PRDT_NUM" />
+	<result property="corpId" column="CORP_ID" />
+	<result property="ctgr" column="CTGR" />
+	<result property="prdtDiv" column="PRDT_DIV" />
+	<result property="prdtNm" column="PRDT_NM" />
+	<result property="prdtInf" column="PRDT_INF" />
+	<result property="spDivSn" column="SP_DIV_SN" />
+	<result property="spOptSn" column="SP_OPT_SN" />
+	<result property="saleAmt" column="SALE_AMT" />
+	<result property="nmlAmt" column="NML_AMT" />
+	<result property="saleNum" column="SALE_NUM" />
+	<result property="savePath" column="SAVE_PATH" />
+	<result property="saveFileNm" column="SAVE_FILE_NM" />
+	<result property="superbCorpYn" column="SUPERB_CORP_YN" />
+	<result property="gpaAvg" column="GPA_AVG" />
+	<result property="eventCnt" column="EVENT_CNT" />
+	<result property="couponCnt" column="COUPON_CNT" />
+	<result property="exprStartDt" column="EXPR_START_DT" />
+	<result property="exprEndDt" column="EXPR_END_DT" />
+	<result property="useAbleTm" column="USE_ABLE_TM" />
+	<result property="exprDaynumYn" column="EXPR_DAYNUM_YN" />
+	<result property="exprDaynum" column="EXPR_DAYNUM" />
+	<result property="prdtDivNm" column="PRDT_DIV_NM" />
+	<result property="optNm" column="OPT_NM" />
+	<result property="advRvYn" column="ADV_RV_YN" />
+	<result property="tamnacardYn" column="TAMNACARD_YN" />
+	<result property="lsLinkYn" column="LS_LINK_YN" />
+	<result property="apiImgThumb" column="API_IMG_THUMB" />
+</resultMap>
+
+<resultMap id="WEB_SP_PRDTINF_R_01" class="web.product.vo.WEB_SPPRDTVO">
+	<result property="ctgr" column="CTGR" />
+	<result property="ctgrNm" column="CTGR_NM" />
+	<result property="prdtCount" column="PRDT_COUNT" />
+</resultMap>
+
+<resultMap id="WEB_SP_PRDTINF_R_02" class="web.product.vo.WEB_DTLPRDTVO">
+	<result property="prdtNum" column="PRDT_NUM" />
+	<result property="corpId" column="CORP_ID" />
+	<result property="corpNm" column="CORP_NM" />
+	<result property="shopNm" column="SHOP_NM" />
+	<result property="rsvTelNum" column="RSV_TEL_NUM" />
+	<result property="adtmImg" column="ADTM_IMG" />
+	<result property="adtmUrl" column="ADTM_URL" />
+	<result property="adtmSimpleExp" column="ADTM_SIMPLE_EXP" />
+	<result property="lon" column="LON" />
+	<result property="lat" column="LAT" />
+	<result property="ctgr" column="CTGR" />
+	<result property="prdtDiv" column="PRDT_DIV" />
+	<result property="prdtNm" column="PRDT_NM" />
+	<result property="nmlAmt" column="NML_AMT" />
+	<result property="saleAmt" column="SALE_AMT" />
+	<result property="prdtInf" column="PRDT_INF" />
+	<result property="useQlfct" column="USE_QLFCT" />
+	<result property="saleNum" column="SALE_NUM" />
+	<result property="saleStartDt" column="SALE_START_DT" />
+	<result property="saleEndDt" column="SALE_END_DT" />
+	<result property="exprStartDt" column="EXPR_START_DT" />
+	<result property="exprEndDt" column="EXPR_END_DT" />
+	<result property="cancelGuide" column="CANCEL_GUIDE" />
+	<result property="eventCnt" column="EVENT_CNT" />
+	<result property="couponCnt" column="COUPON_CNT" />
+  	<result property="useAbleTm" column="USE_ABLE_TM" />
+  	<result property="exprDaynumYn" column="EXPR_DAYNUM_YN" />
+  	<result property="exprDaynum" column="EXPR_DAYNUM" />
+  	<result property="superbCorpYn" column="SUPERB_CORP_YN" />
+  	<result property="linkPrdtYn" column="LINK_PRDT_YN" />
+  	<result property="linkUrl" column="LINK_URL" />
+  	<result property="frstRegDttm" column="FRST_REG_DTTM" />
+  	<result property="lastModDttm" column="LAST_MOD_DTTM" />
+  	<result property="adMov" column="AD_MOV" />
+  	<result property="area" column="AREA" />
+  	<result property="areaNm" column="AREA_NM" />
+  	<result property="visitMappingId" column="VISIT_MAPPING_ID" />
+	<result property="tamnacardYn" 		column="TAMNACARD_YN" />
+	<result property="lsLinkYn" 		column="LS_LINK_YN" />
+	<result property="apiImgThumb" 		column="API_IMG_THUMB" />
+	<result property="apiImgDetail" 		column="API_IMG_DETAIL" />
+</resultMap>
+
+<resultMap id="WEB_SP_PRDTINF_R_03" class="web.product.vo.WEB_DTLPRDTVO">
+    <result property="prdtNum" 			column="PRDT_NUM" />
+    <result property="corpId" 			column="CORP_ID" />
+    <result property="lon" 				column="LON" />
+	<result property="lat" 				column="LAT" />
+	<result property="ctgr" 			column="CTGR" />
+	<result property="prdtDiv" 			column="PRDT_DIV" />
+	<result property="prdtNm" 			column="PRDT_NM" />
+	<result property="prdtInf" 			column="PRDT_INF" />
+	<result property="useQlfct" 		column="USE_QLFCT" />
+	<result property="disInf" 			column="DIS_INF" />
+	<result property="saleEndDt" 		column="SALE_END_DT" />
+	<result property="saleNum" 			column="SALE_NUM" />
+	<result property="exprStartDt" 		column="EXPR_START_DT" />
+	<result property="exprEndDt" 		column="EXPR_END_DT" />
+	<result property="adMov" 			column="AD_MOV" />
+	<result property="area" 			column="AREA" />
+	<result property="areaNm" 			column="AREA_NM" />
+	<result property="superbCorpYn" 	column="SUPERB_CORP_YN" />
+	<result property="adtmImg" 			column="ADTM_IMG" />
+	<result property="shopNm" 			column="SHOP_NM" />
+	<result property="rsvTelNum" 		column="RSV_TEL_NUM" />
+	<result property="adtmSimpleExp" 	column="ADTM_SIMPLE_EXP" />
+</resultMap>
+
+ <resultMap id="WEB_SP_PRDTINF_R_04" class="web.product.vo.WEB_DTLPRDTVO">
+    <result property="prdtNum" column="PRDT_NUM" />
+    <result property="prdtNm" column="PRDT_NM" />
+    <result property="prdtDiv" column="PRDT_DIV" />
+	<result property="ctgr" column="CTGR" />
+	<result property="ctgrNm" column="CTGR_NM" />
+	<result property="prdtDivNm" column="PRDT_DIV_NM" />
+	<result property="optNm" column="OPT_NM" />
+	<result property="saleAmt" column="SALE_AMT" />
+	<result property="nmlAmt" column="NML_AMT" />
+	<result property="aplDt" column="APL_DT" />
+	<result property="stockNum" column="STOCK_NUM" />
+	<result property="ddlYn" column="DDL_YN" />
+	<result property="savePath" column="SAVE_PATH" />
+	<result property="saveFileNm" column="SAVE_FILE_NM" />
+	<result property="exprEndDt" column="EXPR_END_DT" />
+	<result property="exprStartDt" column="EXPR_START_DT" />
+	<result property="saleStartDt" column="SALE_START_DT" />
+	<result property="saleEndDt" column="SALE_END_DT" />
+	<result property="exprDaynumYn" column="EXPR_DAYNUM_YN" />
+	<result property="exprDaynum" column="EXPR_DAYNUM" />
+	<result property="useAbleTm" column="USE_ABLE_TM" />
+	<result property="corpId" column="CORP_ID" />
+	<result property="tamnacardYn" column="TAMNACARD_YN" />
+	<result property="apiImgThumb" column="API_IMG_THUMB" />
+</resultMap>
+
+
+<resultMap id="WEB_SP_PRDTINF_R_08" class="web.product.vo.WEB_SPPRDTVO">
+	<result property="prdtNum" column="PRDT_NUM" />
+	<result property="ctgr" column="CTGR" />
+	<result property="prdtDiv" column="PRDT_DIV" />
+	<result property="prdtNm" column="PRDT_NM" />
+	<result property="prdtInf" column="PRDT_INF" />
+	<result property="spDivSn" column="SP_DIV_SN" />
+	<result property="spOptSn" column="SP_OPT_SN" />
+	<result property="saleAmt" column="SALE_AMT" />
+	<result property="nmlAmt" column="NML_AMT" />
+	<result property="savePath" column="SAVE_PATH" />
+	<result property="saveFileNm" column="SAVE_FILE_NM" />
+	<result property="printSn" column="PRINT_SN" />
+</resultMap>
+
+<resultMap id="WEB_SP_PRDTINF_R_09" class="web.product.vo.WEB_SPPRDTVO">
+	<result property="prdtNum" 		column="PRDT_NUM" />
+	<result property="ctgr" 		column="CTGR" />
+	<result property="prdtDiv" 		column="PRDT_DIV" />
+	<result property="prdtNm" 		column="PRDT_NM" />
+	<result property="spDivSn" 		column="SP_DIV_SN" />
+	<result property="spOptSn" 		column="SP_OPT_SN" />
+	<result property="saleAmt" 		column="SALE_AMT" />
+	<result property="nmlAmt" 		column="NML_AMT" />
+	<result property="disPer" 		column="DIS_PER" />
+	<result property="savePath" 	column="SAVE_PATH" />
+	<result property="saveFileNm" 	column="SAVE_FILE_NM" />
+	<result property="gpaAvg" 		column="GPA_AVG" />
+	<result property="prmtContents"	column="PRMT_CONTENTS" />
+	<result property="lsLinkYn"		column="LS_LINK_YN" />
+</resultMap>
+
+<resultMap id="WEB_SP_PRDTINF_R_10" class="web.product.vo.WEB_DTLPRDTVO">
+	<result property="corpNm" 		column="CORP_NM" />
+	<result property="corpId" 		column="CORP_ID" />
+	<result property="lon" 			column="LON" />
+	<result property="lat" 			column="LAT" />
+	<result property="roadNmAddr" 	column="ROAD_NM_ADDR" />
+	<result property="dtlAddr" 		column="DTL_ADDR" />
+	<result property="ctgr" 		column="CTGR" />
+</resultMap>
+
+<resultMap id="WEB_SP_DIVINF_R_00" class="mas.sp.vo.SP_DIVINFVO">
+	<result property="spDivSn" column="SP_DIV_SN" />
+	<result property="prdtDivNm" column="PRDT_DIV_NM" />
+</resultMap>
+
+<resultMap id="WEB_SP_OPTINF_R_00" class="mas.sp.vo.SP_OPTINFVO">
+  	<result property="spDivSn" column="SP_DIV_SN" />
+	<result property="spOptSn" column="SP_OPT_SN" />
+	<result property="optNm" column="OPT_NM" />
+	<result property="aplDt" column="APL_DT" />
+	<result property="saleAmt" column="SALE_AMT" />
+	<result property="aplDt" column="APL_DT" />
+	<result property="stockNum" column="STOCK_NUM" />
+	<result property="ddlYn" column="DDL_YN" />
+	<result property="prdtDivNm" column="PRDT_DIV_NM" />
+	<result property="nmlAmt" 	column="NML_AMT" />
+</resultMap>
+
+<resultMap id="WEB_SP_PRDTINF_S_13" class="web.order.vo.MRTNVO">
+  	<result property="chkTshirtsAble" column="CHK_TSHIRTS_ABLE" />
+	<result property="totTshirtsCnt" column="TOT_TSHIRTS_CNT" />
+</resultMap>
+
+<resultMap id="WEB_SP_PRDTINF_S_14" class="web.order.vo.MRTNVO">
+  	<result property="chkTshirtsAble" column="CHK_TSHIRTS_ABLE" />
+</resultMap>
+	
+<select id="WEB_SP_PRDTINF_S_00" resultMap="WEB_SP_PRDTINF_R_00">
+SELECT PRDT_NUM
+	, CORP_ID
+	, CTGR
+	, PRDT_DIV
+	, PRDT_NM
+	, PRDT_INF
+	, SP_DIV_SN
+	, SP_OPT_SN
+	, SALE_AMT
+	, NML_AMT
+	, SALE_NUM
+	, SAVE_PATH
+	, SAVE_FILE_NM
+	, SUPERB_CORP_YN
+	, GPA_AVG
+	, (SELECT NVL(COUNT(T_PRMT.PRMT_NUM), 0)
+		FROM TB_PRMT T_PRMT
+			INNER JOIN TB_PRMT_PRDT T_PRM_PRD ON T_PRMT.PRMT_NUM = T_PRM_PRD.PRMT_NUM
+		WHERE T_PRMT.STATUS_CD = 'TS03'
+			AND T_PRMT.PRMT_DIV = 'EVNT'
+			AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN T_PRMT.START_DT AND T_PRMT.END_DT
+			AND T_PRMT.CORP_ID = R1.CORP_ID
+			AND T_PRM_PRD.PRDT_NUM = R1.PRDT_NUM) AS EVENT_CNT
+	, (SELECT NVL(COUNT(T_CP_PRD.PRDT_NUM), 0)
+	  	FROM TB_CP_PRDT T_CP_PRD
+			INNER JOIN TB_CP T_CP ON T_CP.CP_ID = T_CP_PRD.CP_ID
+				AND T_CP.STATUS_CD = 'ST02'
+				AND T_CP.TGT_DIV = 'ALL'
+				AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN T_CP.APL_START_DT AND T_CP.APL_END_DT
+		WHERE T_CP_PRD.PRDT_NUM = R1.PRDT_NUM) AS COUPON_CNT
+	, EXPR_START_DT
+	, EXPR_END_DT
+	, USE_ABLE_TM
+	, EXPR_DAYNUM_YN
+	, EXPR_DAYNUM
+	, PRDT_DIV_NM
+	, OPT_NM
+	, ADV_RV_YN
+	, TAMNACARD_YN
+	, API_IMG_THUMB
+	, LS_LINK_YN
+FROM (SELECT ROWNUM AS RN
+		, PRDT_NUM
+		, CORP_ID
+		, CTGR
+		, PRDT_DIV
+		, PRDT_NM
+		, PRDT_INF
+		, SP_DIV_SN
+		, SP_OPT_SN
+		, SALE_AMT
+		, NML_AMT
+		, CONF_DTTM
+		<isEqual property="orderCd" compareValue="DIST">
+			, DIST
+		</isEqual>
+		, SALE_NUM
+		, GPA_AVG
+		, EXPR_START_DT
+		, EXPR_END_DT
+		, USE_ABLE_TM
+		, EXPR_DAYNUM_YN
+		, EXPR_DAYNUM
+		, PRDT_DIV_NM
+		, OPT_NM
+		, (CASE WHEN LS_LINK_YN != 'Y' THEN SAVE_PATH ELSE API_IMG_THUMB END) AS SAVE_PATH
+		, (CASE WHEN LS_LINK_YN != 'Y' THEN SAVE_FILE_NM ELSE NULL END) AS SAVE_FILE_NM
+		, SUPERB_CORP_YN
+		<isEqual property="orderCd" compareValue="GPA">
+			, CORP_LEVEL
+		</isEqual>
+		, ADV_RV_YN
+		, TAMNACARD_YN
+		, API_IMG_THUMB
+		, LS_LINK_YN
+	FROM (SELECT PRDT_NUM
+			, CORP_ID
+			, PRDT_DIV
+			, CTGR
+			, PRDT_NM
+			, PRDT_INF
+			, SP_DIV_SN
+			, SP_OPT_SN
+			, SALE_AMT
+			, NML_AMT
+			, CONF_DTTM
+			<isEqual property="orderCd" compareValue="DIST">
+				, DIST
+			</isEqual>
+			, SALE_NUM
+			, GPA_AVG
+			, EXPR_START_DT
+			, EXPR_END_DT
+			, USE_ABLE_TM
+			, EXPR_DAYNUM_YN
+			, EXPR_DAYNUM
+			, PRDT_DIV_NM
+			, OPT_NM
+			, SAVE_PATH
+			, SAVE_FILE_NM
+			, SUPERB_CORP_YN
+			<isEqual property="orderCd" compareValue="GPA">
+				, CORP_LEVEL
+			</isEqual>
+			, ADV_RV_YN
+			, TAMNACARD_YN
+	   		, API_IMG_THUMB
+			, LS_LINK_YN
+   		FROM (SELECT S.PRDT_NUM
+				, S.CORP_ID
+				, S.CTGR
+				, S.PRDT_DIV
+				, S.PRDT_NM
+				, S.PRDT_INF
+				, S.SP_DIV_SN
+				, S.SP_OPT_SN
+				, S.SALE_AMT
+				, S.NML_AMT
+				, S.CONF_DTTM
+				<isEqual property="orderCd" compareValue="DIST">
+					, (SELECT ROUND(6371000 * ACOS(SIN(RADIANS(LAT)) * SIN(RADIANS(#sLAT#)) +
+							COS(RADIANS(LAT)) * COS(RADIANS(#sLAT#)) * COS(RADIANS(LON - #sLON#))))
+						FROM TB_CORP
+						WHERE CORP_ID = S.CORP_ID) DIST
+				</isEqual>
+				, CASE
+					WHEN S.PRDT_DIV = 'FREE'
+					THEN 0
+					ELSE (SELECT SUM(SALE_NUM)
+							FROM TB_SP_OPTINF a
+							WHERE a.PRDT_NUM = S.PRDT_NUM
+								AND a.PRINT_YN = 'Y')
+				END AS SALE_NUM
+				, NVL(GPA.GPA_AVG, 0) GPA_AVG
+				, S.EXPR_START_DT
+				, S.EXPR_END_DT
+				, S.USE_ABLE_TM
+				, S.EXPR_DAYNUM_YN
+				, S.EXPR_DAYNUM
+				, S.PRDT_DIV_NM
+				, S.OPT_NM
+				, SAVE_PATH
+				, SAVE_FILE_NM
+				, SUPERB_CORP_YN
+				, S.ADV_RV_YN
+				<isEqual property="orderCd" compareValue="GPA">
+					, (SELECT CORP_LEVEL - NVL(COMPLAIN_LEVEL,0) + NVL(JOIN_LEVEL,0) + NVL(AMT_LEVEL,0)
+						FROM TB_CORP_LEVEL
+						WHERE CORP_CD = 'SP'
+							AND CORP_ID = S.CORP_ID
+					) AS CORP_LEVEL
+				</isEqual>
+				, TAMNACARD_YN
+   				, API_IMG_THUMB
+				, LS_LINK_YN
+			FROM (SELECT T_PRDT.PRDT_NUM
+					, T_PRDT.CTGR
+					, T_PRDT.CORP_ID
+					, T_PRDT.PRDT_DIV
+					, T_PRDT.PRDT_NM
+					, T_PRDT.PRDT_INF
+					, T_OPT.SP_DIV_SN
+					, T_OPT.SP_OPT_SN
+					, T_OPT.SALE_AMT
+					, T_OPT.NML_AMT
+					, T_PRDT.CONF_DTTM
+					, T_OPT.SALE_NUM
+					, T_PRDT.EXPR_START_DT
+					, T_PRDT.EXPR_END_DT
+					, T_PRDT.USE_ABLE_TM
+					, T_PRDT.EXPR_DAYNUM_YN
+					, T_PRDT.EXPR_DAYNUM
+					, T_DIV.PRDT_DIV_NM
+					, T_OPT.OPT_NM
+					, SUPERB_CORP_YN
+					, ROW_NUMBER( ) OVER (PARTITION BY T_PRDT.PRDT_NUM ORDER BY T_DIV.VIEW_SN ASC, T_OPT.VIEW_SN ASC) RK
+					, T_PRDT.ADV_RV_YN
+					, CASE WHEN T_CORP.TAMNACARD_MNG_YN = 'C' OR (T_CORP.TAMNACARD_MNG_YN = 'P' AND T_PRDT.TAMNACARD_PRDT_YN = 'Y') THEN 'Y' ELSE 'N' END AS TAMNACARD_YN
+			        , T_PRDT.API_IMG_THUMB
+			        , T_CORP.LS_LINK_YN
+				FROM TB_SP_PRDTINF T_PRDT
+					INNER JOIN TB_SP_DIVINF T_DIV
+					ON T_DIV.PRDT_NUM = T_PRDT.PRDT_NUM
+					INNER JOIN TB_SP_OPTINF T_OPT
+					ON T_OPT.PRDT_NUM = T_PRDT.PRDT_NUM
+						AND T_OPT.SP_DIV_SN = T_DIV.SP_DIV_SN
+						AND T_OPT.PRINT_YN = 'Y'
+					INNER JOIN TB_CORP T_CORP
+					ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+						AND T_CORP.TRADE_STATUS_CD = 'TS03'
+				WHERE T_PRDT.TRADE_STATUS = 'TS03'
+					AND T_OPT.DDL_YN = 'N'
+					AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN T_PRDT.SALE_START_DT AND T_PRDT.SALE_END_DT
+					AND (T_PRDT.PRDT_DIV = 'TOUR' AND TO_CHAR(SYSDATE, 'YYYYMMDD') <![CDATA[<=]]>  T_OPT.APL_DT OR T_PRDT.PRDT_DIV = 'COUP')
+					<isEqual property="sTeMainYn" compareValue="Y">
+						AND T_PRDT.LINK_PRDT_YN = 'N'
+					</isEqual>
+					<isNotEmpty property="sCorpId">
+						AND T_PRDT.CORP_ID = #sCorpId#
+					</isNotEmpty>
+					<isNotEmpty property="sPrdtDiv">
+						AND T_PRDT.PRDT_DIV = #sPrdtDiv#
+					</isNotEmpty>
+					<isEqual property="sCtgrDepth" compareValue="1">
+						AND ( CTGR LIKE SUBSTR(#sCtgr# , 0, 2) || '%'
+						<isEqual property="sCtgr" compareValue="C100">
+							OR CTGR LIKE SUBSTR('C400' , 0, 2) || '%'
+						</isEqual>
+						)
+					</isEqual>
+					<isEqual property="sCtgrDepth" compareValue="2">
+						AND CTGR = #sCtgr#
+					</isEqual>
+					<isNotEmpty property="sTabCtgr">
+					  <isEqual property="sTabCtgr" compareValue="C120">
+						AND CTGR IN ('C120', 'C130')
+					  </isEqual>
+					  <isNotEqual property="sTabCtgr" compareValue="C120">
+						AND CTGR = #sTabCtgr#
+					  </isNotEqual>
+					</isNotEmpty>
+					<isEqual property="sPrice" compareValue="end5">
+						<![CDATA[
+						AND T_OPT.SALE_AMT <= 50000
+						]]>
+					</isEqual>
+					<isEqual property="sPrice" compareValue="5to10">
+						<![CDATA[
+						AND T_OPT.SALE_AMT >= 50000 AND T_OPT.SALE_AMT <=100000
+						]]>
+					</isEqual>
+					<isEqual property="sPrice" compareValue="start10">
+						<![CDATA[
+						AND T_OPT.SALE_AMT >= 100000
+						]]>
+					</isEqual>
+					<isEqual property="sPrice" compareValue="start20">
+						<![CDATA[
+						AND T_OPT.SALE_AMT >= 200000
+						]]>
+					</isEqual>
+					<isNotEmpty property="sPrdtNm">
+						AND REPLACE(UPPER(T_PRDT.PRDT_NM), ' ', '') LIKE '%'||REPLACE(UPPER(#sPrdtNm#), ' ', '')||'%' /*이름*/
+					</isNotEmpty>
+					<isNotEmpty property="searchWord">
+						AND ((REPLACE(UPPER(T_PRDT.PRDT_NM), ' ', '') LIKE '%'||REPLACE(UPPER(#searchWord#), ' ', '')||'%')
+							OR (T_PRDT.PRDT_NUM IN (SELECT LINK_NUM
+													FROM TB_CM_SRCHWORD
+													WHERE SRCH_WORD = #searchWord#))
+						)
+					</isNotEmpty>
+					<isNotEmpty property="prdtNumList">
+						AND T_PRDT.PRDT_NUM IN
+						<iterate property="prdtNumList"  open="(" close=")" conjunction=",">
+							#prdtNumList[]#
+						</iterate>
+					</isNotEmpty>
+					<isNotEmpty property="rsvPrdtNumList">
+						AND T_PRDT.PRDT_NUM NOT IN
+						<iterate property="rsvPrdtNumList"  open="(" close=")" conjunction=",">
+							#rsvPrdtNumList[]#
+						</iterate>
+					</isNotEmpty>
+					<isNotEmpty property="sSpAdar">
+						AND TRIM(T_PRDT.AREA) = TRIM(#sSpAdar#)
+					</isNotEmpty>
+					<isNotEmpty property="spAdarList">
+						AND TRIM(T_PRDT.AREA) IN 
+						<iterate property="spAdarList"  open="(" close=")" conjunction=",">
+							#spAdarList[]#
+						</iterate>				
+					</isNotEmpty>					
+					<!--<isNotEqual property="sCtgrDiv" compareValue="C100">
+						UNION ALL
+
+						SELECT PRDT_NUM
+							, CTGR
+							, T_PRDT.CORP_ID
+							, PRDT_DIV
+							, PRDT_NM
+							, PRDT_INF
+							, 0 SP_DIV_SN
+							, 0 sp_OPT_SN
+							, 0 SALE_AMT
+							, 0 NUM_AMT
+							, CONF_DTTM
+							, 0 SALE_NUM
+							, EXPR_START_DT
+							, EXPR_END_DT
+							, USE_ABLE_TM
+							, EXPR_DAYNUM_YN
+							, EXPR_DAYNUM
+							, NULL AS PRDT_DIV_NM
+							, NULL AS OPT_NM
+							, SUPERB_CORP_YN
+							, 1 RK
+							, T_PRDT.ADV_RV_YN
+							, CASE WHEN T_CORP.TAMNACARD_MNG_YN = 'C' OR (T_CORP.TAMNACARD_MNG_YN = 'P' AND T_PRDT.TAMNACARD_PRDT_YN = 'Y') THEN 'Y' ELSE 'N' END AS TAMNACARD_YN
+							, T_PRDT.API_IMG_THUMB
+							, T_CORP.LS_LINK_YN
+						FROM TB_SP_PRDTINF T_PRDT
+							INNER JOIN TB_CORP T_CORP
+							ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+								AND T_CORP.TRADE_STATUS_CD = 'TS03'
+						WHERE TRADE_STATUS = 'TS03'
+							AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN SALE_START_DT AND SALE_END_DT
+							AND PRDT_DIV = 'FREE'
+							<isEqual property="sCtgrDepth" compareValue="1">
+								AND CTGR LIKE SUBSTR(#sCtgr# , 0, 2) || '%'
+							</isEqual>
+							<isEqual property="sCtgrDepth" compareValue="2">
+								AND CTGR = #sCtgr#
+							</isEqual>
+							<isNotEmpty property="sTabCtgr">
+							  <isEqual property="sTabCtgr" compareValue="C120">
+								AND CTGR IN ('C120', 'C130')
+							  </isEqual>
+							  <isNotEqual property="sTabCtgr" compareValue="C120">
+								AND CTGR = #sTabCtgr#
+							  </isNotEqual>
+							</isNotEmpty>
+							<isNotEmpty property="sCorpId">
+								AND T_CORP.CORP_ID = #sCorpId#
+							</isNotEmpty>
+							<isNotEmpty property="sPrdtNm">
+								AND REPLACE(UPPER(T_PRDT.PRDT_NM), ' ', '') LIKE '%'||REPLACE(UPPER(#sPrdtNm#), ' ', '')||'%' /*이름*/
+							</isNotEmpty>
+							<isNotEmpty property="searchWord">
+								AND ((REPLACE(UPPER(T_PRDT.PRDT_NM), ' ', '') LIKE '%'||REPLACE(UPPER(#searchWord#), ' ', '')||'%')
+									OR (T_PRDT.PRDT_NUM IN (SELECT LINK_NUM
+															FROM TB_CM_SRCHWORD
+															WHERE SRCH_WORD = #searchWord#))
+								)
+							</isNotEmpty>
+							<isNotEmpty property="prdtNumList">
+								AND T_PRDT.PRDT_NUM IN
+								<iterate property="prdtNumList"  open="(" close=")" conjunction=",">
+									#prdtNumList[]#
+								</iterate>
+							</isNotEmpty>
+							<isNotEmpty property="rsvPrdtNumList">
+								AND T_PRDT.PRDT_NUM NOT IN
+								<iterate property="rsvPrdtNumList"  open="(" close=")" conjunction=",">
+									#rsvPrdtNumList[]#
+								</iterate>
+							</isNotEmpty>
+							<isNotEmpty property="sSpAdar">
+								AND TRIM(T_PRDT.AREA) = TRIM(#sSpAdar#)
+							</isNotEmpty>
+							<isNotEmpty property="spAdarList">
+								AND TRIM(T_PRDT.AREA) IN 
+								<iterate property="spAdarList"  open="(" close=")" conjunction=",">
+									#spAdarList[]#
+								</iterate>				
+							</isNotEmpty>							
+					</isNotEqual>-->
+			) S
+				LEFT OUTER JOIN TB_GPA_ANLS GPA
+				ON S.PRDT_NUM = GPA.LINK_NUM
+				LEFT OUTER JOIN TB_CM_IMG T_IMG
+				ON T_IMG.LINK_NUM = S.PRDT_NUM
+					AND T_IMG.IMG_SN = 1
+			WHERE RK = 1
+			<isEmpty property="orderCd">
+				ORDER BY SALE_NUM DESC, CONF_DTTM ASC
+			</isEmpty>
+			<isEqual property="orderCd" compareValue="SALE">
+				ORDER BY SALE_NUM DESC, CONF_DTTM ASC
+			</isEqual>
+			<isEqual property="orderCd" compareValue="PRICE">
+				ORDER BY SALE_AMT ASC
+			</isEqual>
+			<isEqual property="orderCd" compareValue="NEW">
+				ORDER BY CONF_DTTM DESC
+			</isEqual>
+			<isEqual property="orderCd" compareValue="GPA">
+				ORDER BY CORP_LEVEL DESC, CORP_ID
+			</isEqual>
+			<isEqual property="orderCd" compareValue="DIST">
+				ORDER BY DIST
+			</isEqual>
+			<isEqual property="orderCd" compareValue="RANDOM">
+				ORDER BY DBMS_RANDOM.VALUE
+			</isEqual>
+		) t1
+		<isEmpty property="orderCd">
+			ORDER BY SALE_NUM DESC, CONF_DTTM ASC
+		</isEmpty>
+		<isEqual property="orderCd" compareValue="SALE">
+			ORDER BY SALE_NUM DESC, CONF_DTTM ASC
+		</isEqual>
+		<isEqual property="orderCd" compareValue="PRICE">
+			ORDER BY SALE_AMT ASC
+		</isEqual>
+		<isEqual property="orderCd" compareValue="NEW">
+			ORDER BY CONF_DTTM DESC
+		</isEqual>
+		<isEqual property="orderCd" compareValue="GPA">
+			ORDER BY CORP_LEVEL DESC, CORP_ID
+		</isEqual>
+		<isEqual property="orderCd" compareValue="DIST">
+			ORDER BY DIST
+		</isEqual>
+		<isEqual property="orderCd" compareValue="RANDOM">
+			ORDER BY DBMS_RANDOM.VALUE
+		</isEqual>
+	)
+) R1
+</select>
+
+<select id="WEB_SP_PRDTINF_S_01" resultClass="int">
+SELECT COUNT(*)
+FROM (SELECT ROWNUM AS RN
+		, PRDT_NUM
+		, CORP_ID
+		, CTGR
+		, PRDT_DIV
+		, PRDT_NM
+		, PRDT_INF
+		, SP_DIV_SN
+		, SP_OPT_SN
+		, SALE_AMT
+		, NML_AMT
+		, CONF_DTTM
+		<isEqual property="orderCd" compareValue="DIST">
+			, DIST
+		</isEqual>
+
+		, EXPR_START_DT
+		, EXPR_END_DT
+		, USE_ABLE_TM
+		, EXPR_DAYNUM_YN
+		, EXPR_DAYNUM
+		, PRDT_DIV_NM
+		, OPT_NM
+
+		<isEqual property="orderCd" compareValue="GPA">
+			, CORP_LEVEL
+		</isEqual>
+	FROM (SELECT PRDT_NUM
+			, CORP_ID
+			, PRDT_DIV
+			, CTGR
+			, PRDT_NM
+			, PRDT_INF
+			, SP_DIV_SN
+			, SP_OPT_SN
+			, SALE_AMT
+			, NML_AMT
+			, CONF_DTTM
+			<isEqual property="orderCd" compareValue="DIST">
+				, DIST
+			</isEqual>
+			, EXPR_START_DT
+			, EXPR_END_DT
+			, USE_ABLE_TM
+			, EXPR_DAYNUM_YN
+			, EXPR_DAYNUM
+			, PRDT_DIV_NM
+			, OPT_NM
+			<isEqual property="orderCd" compareValue="GPA">
+				, CORP_LEVEL
+			</isEqual>
+		FROM (SELECT S.PRDT_NUM
+				, S.CORP_ID
+				, S.CTGR
+				, S.PRDT_DIV
+				, S.PRDT_NM
+				, S.PRDT_INF
+				, S.SP_DIV_SN
+				, S.SP_OPT_SN
+				, S.SALE_AMT
+				, S.NML_AMT
+				, S.CONF_DTTM
+				<isEqual property="orderCd" compareValue="DIST">
+				, (SELECT ROUND(6371000 * ACOS(SIN(RADIANS(LAT)) * SIN(RADIANS(#sLAT#)) +
+						COS(RADIANS(LAT)) * COS(RADIANS(#sLAT#)) * COS(RADIANS(LON - #sLON#))))
+					FROM TB_CORP
+					WHERE CORP_ID = S.CORP_ID) DIST
+				</isEqual>
+
+				, S.EXPR_START_DT
+				, S.EXPR_END_DT
+				, S.USE_ABLE_TM
+				, S.EXPR_DAYNUM_YN
+				, S.EXPR_DAYNUM
+				, S.PRDT_DIV_NM
+				, S.OPT_NM
+				<isEqual property="orderCd" compareValue="GPA">
+					, (SELECT CORP_LEVEL - NVL(COMPLAIN_LEVEL,0) + NVL(JOIN_LEVEL,0) + NVL(AMT_LEVEL,0)
+						FROM TB_CORP_LEVEL
+						WHERE CORP_CD = 'SP'
+							AND CORP_ID = S.CORP_ID
+					) AS CORP_LEVEL
+			   </isEqual>
+			FROM (SELECT T_PRDT.PRDT_NUM
+					, T_PRDT.CTGR
+					, T_PRDT.CORP_ID
+					, T_PRDT.PRDT_DIV
+					, T_PRDT.PRDT_NM
+					, T_PRDT.PRDT_INF
+					, T_OPT.SP_DIV_SN
+					, T_OPT.SP_OPT_SN
+					, T_OPT.SALE_AMT
+					, T_OPT.NML_AMT
+					, T_PRDT.CONF_DTTM
+					, T_OPT.SALE_NUM
+					, T_PRDT.EXPR_START_DT
+					, T_PRDT.EXPR_END_DT
+					, T_PRDT.USE_ABLE_TM
+					, T_PRDT.EXPR_DAYNUM_YN
+					, T_PRDT.EXPR_DAYNUM
+					, T_DIV.PRDT_DIV_NM
+					, T_OPT.OPT_NM
+					, ROW_NUMBER( ) OVER (PARTITION BY T_PRDT.PRDT_NUM ORDER BY T_PRDT.PRDT_NUM ASC) AS RK
+				FROM TB_SP_PRDTINF T_PRDT
+					INNER JOIN TB_SP_DIVINF T_DIV
+					ON T_DIV.PRDT_NUM = T_PRDT.PRDT_NUM
+					INNER JOIN TB_SP_OPTINF T_OPT
+					ON T_OPT.PRDT_NUM = T_PRDT.PRDT_NUM
+						AND T_OPT.SP_DIV_SN = T_DIV.SP_DIV_SN
+						AND T_OPT.PRINT_YN = 'Y'
+						AND T_OPT.DDL_YN = 'N'
+					INNER JOIN TB_CORP T_CORP
+					ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+						AND T_CORP.TRADE_STATUS_CD = 'TS03'
+				WHERE T_PRDT.TRADE_STATUS = 'TS03'
+					AND SYSDATE BETWEEN TO_DATE(T_PRDT.SALE_START_DT,'YYYYMMDD') AND TO_DATE(T_PRDT.SALE_END_DT,'YYYYMMDD') +1
+					AND (T_PRDT.PRDT_DIV = 'TOUR' AND TO_CHAR(SYSDATE, 'YYYYMMDD') <![CDATA[<=]]>  T_OPT.APL_DT OR T_PRDT.PRDT_DIV = 'COUP')
+					<isEqual property="sTeMainYn" compareValue="Y">
+						AND T_PRDT.LINK_PRDT_YN = 'N'
+					</isEqual>
+					<isNotEmpty property="sCorpId">
+						AND T_PRDT.CORP_ID = #sCorpId#
+					</isNotEmpty>
+					<isNotEmpty property="sPrdtDiv">
+						AND T_PRDT.PRDT_DIV = #sPrdtDiv#
+					</isNotEmpty>
+					<isEqual property="sCtgrDepth" compareValue="1">
+						AND ( CTGR LIKE SUBSTR(#sCtgr# , 0, 2) || '%'
+						<isEqual property="sCtgr" compareValue="C100">
+							OR CTGR LIKE SUBSTR('C400' , 0, 2) || '%'
+						</isEqual>
+						)
+					</isEqual>
+					<isEqual property="sCtgrDepth" compareValue="2">
+						AND CTGR = #sCtgr#
+					</isEqual>
+					<isNotEmpty property="sTabCtgr">
+					  <isEqual property="sTabCtgr" compareValue="C120">
+						AND CTGR IN ('C120', 'C130')
+					  </isEqual>
+					  <isNotEqual property="sTabCtgr" compareValue="C120">
+						AND CTGR = #sTabCtgr#
+					  </isNotEqual>
+					</isNotEmpty>
+					<isEqual property="sPrice" compareValue="end5">
+						<![CDATA[
+						AND T_OPT.SALE_AMT <= 50000
+						]]>
+					</isEqual>
+					<isEqual property="sPrice" compareValue="5to10">
+						<![CDATA[
+						AND T_OPT.SALE_AMT >= 50000 AND T_OPT.SALE_AMT <=100000
+						]]>
+					</isEqual>
+					<isEqual property="sPrice" compareValue="start10">
+						<![CDATA[
+						AND T_OPT.SALE_AMT >= 100000
+						]]>
+					</isEqual>
+					<isEqual property="sPrice" compareValue="start20">
+						<![CDATA[
+						AND T_OPT.SALE_AMT >= 200000
+						]]>
+					</isEqual>
+					<isNotEmpty property="sPrdtNm">
+						AND REPLACE(UPPER(T_PRDT.PRDT_NM), ' ', '') LIKE '%'||REPLACE(UPPER(#sPrdtNm#), ' ', '')||'%' /*이름*/
+					</isNotEmpty>
+					<isNotEmpty property="searchWord">
+						AND ((REPLACE(UPPER(T_PRDT.PRDT_NM), ' ', '') LIKE '%'||REPLACE(UPPER(#searchWord#), ' ', '')||'%')
+							OR (T_PRDT.PRDT_NUM IN (SELECT LINK_NUM
+													FROM TB_CM_SRCHWORD
+													WHERE SRCH_WORD = #searchWord#))
+						)
+					</isNotEmpty>
+					<isNotEmpty property="prdtNumList">
+						AND T_PRDT.PRDT_NUM IN
+						<iterate property="prdtNumList"  open="(" close=")" conjunction=",">
+							 #prdtNumList[]#
+						</iterate>
+					</isNotEmpty>
+					<isNotEmpty property="rsvPrdtNumList">
+						AND T_PRDT.PRDT_NUM NOT IN
+						<iterate property="rsvPrdtNumList"  open="(" close=")" conjunction=",">
+							 #rsvPrdtNumList[]#
+						</iterate>
+					</isNotEmpty>
+					<isNotEmpty property="sSpAdar">
+						AND TRIM(T_PRDT.AREA) = TRIM(#sSpAdar#)
+					</isNotEmpty>
+					<isNotEmpty property="spAdarList">
+						AND TRIM(T_PRDT.AREA) IN 
+						<iterate property="spAdarList"  open="(" close=")" conjunction=",">
+							#spAdarList[]#
+						</iterate>				
+					</isNotEmpty>					
+					<isNotEqual property="sCtgrDiv" compareValue="C100">
+						UNION ALL
+
+						SELECT PRDT_NUM
+							, CTGR
+							, T_PRDT.CORP_ID
+							, PRDT_DIV
+							, PRDT_NM
+							, PRDT_INF
+							, 0 SP_DIV_SN
+							, 0 sp_OPT_SN
+							, 0 SALE_AMT
+							, 0 NUM_AMT
+							, CONF_DTTM
+							, 0 SALE_NUM
+							, EXPR_START_DT
+							, EXPR_END_DT
+							, USE_ABLE_TM
+							, EXPR_DAYNUM_YN
+							, EXPR_DAYNUM
+							, NULL AS PRDT_DIV_NM
+							, NULL AS OPT_NM
+							, 1 RK
+						FROM TB_SP_PRDTINF T_PRDT
+							INNER JOIN TB_CORP T_CORP
+							ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+								AND T_CORP.TRADE_STATUS_CD = 'TS03'
+						WHERE TRADE_STATUS = 'TS03'
+							AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN T_PRDT.SALE_START_DT AND T_PRDT.SALE_END_DT
+							AND PRDT_DIV = 'FREE'
+							<isEqual property="sCtgrDepth" compareValue="1">
+								AND CTGR LIKE SUBSTR(#sCtgr# , 0, 2) || '%'
+							</isEqual>
+							<isEqual property="sCtgrDepth" compareValue="2">
+								AND CTGR = #sCtgr#
+							</isEqual>
+							<isNotEmpty property="sTabCtgr">
+							  <isEqual property="sTabCtgr" compareValue="C120">
+								AND CTGR IN ('C120', 'C130')
+							  </isEqual>
+							  <isNotEqual property="sTabCtgr" compareValue="C120">
+								AND CTGR = #sTabCtgr#
+							  </isNotEqual>
+							</isNotEmpty>
+							<isNotEmpty property="sCorpId">
+								AND T_CORP.CORP_ID = #sCorpId#
+							</isNotEmpty>
+							<isNotEmpty property="sPrdtNm">
+								AND REPLACE(UPPER(T_PRDT.PRDT_NM), ' ', '') LIKE '%'||REPLACE(UPPER(#sPrdtNm#), ' ', '')||'%' /*이름*/
+							</isNotEmpty>
+							<isNotEmpty property="searchWord">
+								AND ((REPLACE(UPPER(T_PRDT.PRDT_NM), ' ', '') LIKE '%'||REPLACE(UPPER(#searchWord#), ' ', '')||'%')
+									OR (T_PRDT.PRDT_NUM IN (SELECT LINK_NUM
+															FROM TB_CM_SRCHWORD
+															WHERE SRCH_WORD = #searchWord#))
+								)
+							</isNotEmpty>
+							<isNotEmpty property="prdtNumList">
+								AND T_PRDT.PRDT_NUM IN
+								<iterate property="prdtNumList"  open="(" close=")" conjunction=",">
+									#prdtNumList[]#
+								</iterate>
+							</isNotEmpty>
+							<isNotEmpty property="rsvPrdtNumList">
+								AND T_PRDT.PRDT_NUM NOT IN
+								<iterate property="rsvPrdtNumList"  open="(" close=")" conjunction=",">
+									#rsvPrdtNumList[]#
+								</iterate>
+							</isNotEmpty>
+							<isNotEmpty property="sSpAdar">
+								AND TRIM(T_PRDT.AREA) = TRIM(#sSpAdar#)
+							</isNotEmpty>
+							<isNotEmpty property="spAdarList">
+								AND TRIM(T_PRDT.AREA) IN 
+								<iterate property="spAdarList"  open="(" close=")" conjunction=",">
+									#spAdarList[]#
+								</iterate>				
+							</isNotEmpty>							
+						</isNotEqual>
+			) S
+			WHERE RK = 1
+		) t1
+	)
+) R1
+</select>
+
+<select id="WEB_SP_PRDTINF_S_02" resultMap="WEB_SP_PRDTINF_R_01">
+ SELECT CD_NUM AS CTGR
+ 		  , CD_NM AS CTGR_NM
+ 		  , NVL(PRDT_COUNT, 0) PRDT_COUNT
+   FROM TB_CD S1
+   LEFT OUTER JOIN ( SELECT COUNT(PRDT_NUM) PRDT_COUNT
+   					   , CTGR
+            	FROM ( SELECT T_PRDT.PRDT_NUM
+            					   	, T_PRDT.CTGR
+                     		FROM TB_SP_OPTINF T_OPT
+                     INNER JOIN TB_SP_PRDTINF T_PRDT
+                     		    ON T_OPT.PRDT_NUM = T_PRDT.PRDT_NUM
+                     		   AND T_OPT.PRINT_YN = 'Y'
+                     INNER JOIN TB_CORP T_CORP
+      			  				ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+      			  			  AND T_CORP.TRADE_STATUS_CD = 'TS03'
+                   		   WHERE 1=1
+                   		      AND T_PRDT.TRADE_STATUS = 'TS03'
+         					  AND T_OPT.DDL_YN = 'N'
+         					  AND T_PRDT.SALE_END_DT >= TO_CHAR(SYSDATE, 'YYYYMMDD')
+         					  <isEqual property="sTeMainYn" compareValue="Y">
+         					  AND T_PRDT.LINK_PRDT_YN = 'N'
+         					  </isEqual>
+                      		  <isEqual property="sCtgrDepth" compareValue="1">
+                      		    <isNotEqual property="sCtgrDiv" compareValue="C100">
+                      		  AND CTGR LIKE SUBSTR(#sCtgr# , 0, 2) || '%'
+                      		    </isNotEqual>
+                      		    <isEqual property="sCtgrDiv" compareValue="C100">
+                      		  AND SUBSTR(CTGR, 0, 2) IN ('C1', 'C4')
+                      		    </isEqual>
+                      		  </isEqual>
+                      		<isEqual property="sCtgrDepth" compareValue="2">
+                      		AND CTGR = #sCtgr#
+                      		</isEqual>
+                      		  <isEqual property="sPrice" compareValue="end5">
+				      		<![CDATA[
+				      		AND T_OPT.SALE_AMT <= 50000
+				      		]]>
+				      		</isEqual>
+				      		<isEqual property="sPrice" compareValue="5to10">
+				      		<![CDATA[
+				      		AND T_OPT.SALE_AMT >= 50000 AND T_OPT.SALE_AMT <=100000
+				      		]]>
+				      		</isEqual>
+				      		<isEqual property="sPrice" compareValue="start10">
+				      		<![CDATA[
+				      		AND T_OPT.SALE_AMT >= 100000
+				      		]]>
+				      		</isEqual>
+				      		<isEqual property="sPrice" compareValue="start20">
+				      		<![CDATA[
+				      		AND T_OPT.SALE_AMT >= 200000
+				      		]]>
+				      		</isEqual>
+				      		<isNotEmpty property="sAplDt">
+				      		AND TO_DATE(T_OPT.APL_DT, 'YYYY/MM/DD') = TO_CHAR(#sAplDt#, 'YYYYMMDD')
+				      		</isNotEmpty>
+				      		<isEmpty property="sAplDt">
+				           		AND ((T_PRDT.PRDT_DIV = 'TOUR' AND T_OPT.APL_DT IS NOT NULL AND T_OPT.APL_DT<![CDATA[ >= ]]>TO_CHAR(SYSDATE, 'YYYYMMDD')) OR T_PRDT.PRDT_DIV = 'COUP')
+				           	</isEmpty>
+				      		<isNotEmpty property="sPrdtDiv">
+				            AND T_PRDT.PRDT_DIV = #sPrdtDiv#
+				            </isNotEmpty>
+
+				            <isNotEmpty property="searchWord">
+                            		AND ((REPLACE(UPPER(T_PRDT.PRDT_NM), ' ', '') LIKE  '%'||REPLACE(UPPER(#searchWord#), ' ', '')||'%') OR
+                            		     (T_PRDT.PRDT_NUM IN (SELECT LINK_NUM
+													 		    FROM TB_CM_SRCHWORD
+													 		   WHERE SRCH_WORD = #searchWord#)
+                            		    ))
+                           	</isNotEmpty>
+            				GROUP BY T_PRDT.PRDT_NUM ,
+                                    T_PRDT.CTGR
+
+							<isEmpty property="searchWord">
+					      		<isNotEqual property="sCtgrDiv" compareValue="C100">
+		                      		UNION ALL
+									SELECT PRDT_NUM
+											 , CTGR
+									  FROM TB_SP_PRDTINF T_PRDT
+							  INNER JOIN TB_CORP T_CORP
+	      			  				 	 ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+	      			  			  	 	AND T_CORP.TRADE_STATUS_CD = 'TS03'
+									 WHERE 1=1
+									   AND TRADE_STATUS = 'TS03'
+									   AND SALE_END_DT >= TO_DATE(SYSDATE, 'YYYY/MM/DD')
+									   AND PRDT_DIV = 'FREE'
+									   <isEqual property="sCtgrDepth" compareValue="1">
+			                      		AND CTGR LIKE SUBSTR(#sCtgr# , 0, 2) || '%'
+			                      		</isEqual>
+			                      		<isEqual property="sCtgrDepth" compareValue="2">
+					           			AND CTGR = #sCtgr#
+					           			</isEqual>
+									   <isNotEmpty property="sTabCtgr">
+			                      		AND CTGR = #sTabCtgr#
+			                      		</isNotEmpty>
+			                      		<isNotEmpty property="sPrdtDiv">
+							            AND T_PRDT.PRDT_DIV = #sPrdtDiv#
+							            </isNotEmpty>
+            	    				GROUP BY T_PRDT.PRDT_NUM ,T_PRDT.CTGR
+		                      	</isNotEqual>
+	                      	</isEmpty>
+				      	 )
+	   GROUP BY CTGR) S2
+		ON S1.CD_NUM = S2.CTGR
+  WHERE 1=1
+    <isNotEqual property="sCtgrDiv" compareValue="C100">
+    AND S1.HRK_CD_NUM = #sCtgrDiv#
+    </isNotEqual>
+    <isEqual property="sCtgrDiv" compareValue="C100">
+    AND S1.HRK_CD_NUM IN ('C100', 'C400')
+    </isEqual>
+    AND S1.USE_YN = 'Y'
+  ORDER BY VIEW_SN
+</select>
+
+<select id="WEB_SP_PRDTINF_S_03" resultMap="WEB_SP_PRDTINF_R_02">
+SELECT PRDT_NUM
+	, S.CORP_ID
+	, T_CORP.CORP_NM
+	, T_CORP.SHOP_NM
+	, T_CORP.RSV_TEL_NUM
+	, T_CORP.ADTM_IMG
+	, T_CORP.ADTM_URL
+	, T_CORP.ADTM_SIMPLE_EXP
+	, T_CORP.VISIT_MAPPING_ID
+	, S.LON AS LON
+	, S.LAT AS LAT
+	, DECODE (T_CORP.LINK_PRDT_USE_YN, 'Y', S.LINK_PRDT_YN, 'N') AS LINK_PRDT_YN
+	, S.LINK_URL
+	, CTGR
+	, PRDT_DIV
+	, PRDT_NM
+	, NML_AMT
+	, SALE_AMT
+	, PRDT_INF
+	, USE_QLFCT
+	, (SELECT SUM (NVL (SALE_NUM, 0)) FROM TB_SP_OPTINF WHERE PRDT_NUM = S.PRDT_NUM AND PRINT_YN = 'Y') AS SALE_NUM
+	, SALE_START_DT
+	, SALE_END_DT
+	, EXPR_START_DT
+	, EXPR_END_DT
+	, CANCEL_GUIDE
+	, (SELECT NVL (COUNT (T_PRMT.PRMT_NUM), 0)
+		FROM TB_PRMT T_PRMT
+	  		INNER JOIN TB_PRMT_PRDT T_PRMT_PRDT ON T_PRMT.PRMT_NUM = T_PRMT_PRDT.PRMT_NUM
+		WHERE STATUS_CD = 'TS03'
+			AND PRMT_DIV = 'EVNT'
+			AND TO_DATE(SYSDATE, 'YYYY/MM/DD') BETWEEN T_PRMT.START_DT AND T_PRMT.END_DT
+			AND T_PRMT.CORP_ID = S.CORP_ID
+			AND T_PRMT_PRDT.PRDT_NUM = S.PRDT_NUM) AS EVENT_CNT
+	, (SELECT NVL(COUNT(T_CP_PRD.PRDT_NUM), 0)
+	  	FROM TB_CP_PRDT T_CP_PRD
+			INNER JOIN TB_CP T_CP ON T_CP.CP_ID = T_CP_PRD.CP_ID
+				AND T_CP.STATUS_CD = 'ST02'
+				AND T_CP.TGT_DIV = 'ALL'
+				AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN T_CP.APL_START_DT AND T_CP.APL_END_DT
+	  	WHERE T_CP_PRD.PRDT_NUM = S.PRDT_NUM) AS COUPON_CNT
+	, USE_ABLE_TM
+	, EXPR_DAYNUM_YN
+	, EXPR_DAYNUM
+	, T_CORP.SUPERB_CORP_YN
+	, T_CORP.LINK_PRDT_USE_YN
+	, S.FRST_REG_DTTM
+	, S.LAST_MOD_DTTM
+	, AD_MOV
+	, AREA
+	, (SELECT CD_NM FROM TB_CD WHERE HRK_CD_NUM = 'ADAR' AND CD_NUM = TRIM (AREA)) AS AREA_NM
+	, CASE WHEN T_CORP.TAMNACARD_MNG_YN = 'C' OR (T_CORP.TAMNACARD_MNG_YN = 'P' AND S.TAMNACARD_PRDT_YN = 'Y') THEN 'Y' ELSE 'N' END AS TAMNACARD_YN
+    , LS_LINK_YN
+	, API_IMG_THUMB
+	, API_IMG_DETAIL
+FROM (SELECT T_PRDT.PRDT_NUM
+		, T_PRDT.CORP_ID
+		, T_PRDT.CTGR
+		, T_PRDT.PRDT_DIV
+		, T_PRDT.PRDT_NM
+		, T_OPT.NML_AMT
+		, T_OPT.SALE_AMT
+		, T_PRDT.PRDT_INF
+		, T_PRDT.USE_QLFCT
+		, T_PRDT.SALE_START_DT
+		, T_PRDT.SALE_END_DT
+		, T_PRDT.EXPR_START_DT
+		, T_PRDT.EXPR_END_DT
+		, T_PRDT.CANCEL_GUIDE
+		, T_PRDT.USE_ABLE_TM
+		, T_PRDT.EXPR_DAYNUM_YN
+		, T_PRDT.EXPR_DAYNUM
+		, T_PRDT.LON
+		, T_PRDT.LAT
+		, T_PRDT.LINK_PRDT_YN
+		, T_PRDT.LINK_URL
+		, T_PRDT.FRST_REG_DTTM
+		, T_PRDT.LAST_MOD_DTTM
+		, CASE
+				WHEN T_PRDT.PRDT_DIV = 'TOUR' THEN  ROW_NUMBER() OVER (PARTITION BY T_PRDT.PRDT_NUM ORDER BY T_OPT.SALE_AMT ASC, T_OPT.SP_DIV_SN ASC, T_OPT.SP_OPT_SN ASC)
+			  	WHEN T_PRDT.PRDT_DIV != 'TOUR' THEN ROW_NUMBER() OVER (PARTITION BY T_PRDT.PRDT_NUM ORDER BY T_DIV.VIEW_SN ASC, T_OPT.VIEW_SN ASC, T_OPT.SP_DIV_SN ASC, T_OPT.SP_OPT_SN ASC )
+		   END AS RK
+		, AD_MOV
+		, AREA
+		, TAMNACARD_PRDT_YN
+		, T_PRDT.API_IMG_THUMB
+		, T_PRDT.API_IMG_DETAIL
+	FROM TB_SP_PRDTINF T_PRDT
+		INNER JOIN TB_SP_DIVINF T_DIV ON T_DIV.PRDT_NUM = T_PRDT.PRDT_NUM
+		INNER JOIN TB_SP_OPTINF T_OPT ON T_OPT.PRDT_NUM = T_PRDT.PRDT_NUM
+			AND T_OPT.SP_DIV_SN = T_DIV.SP_DIV_SN
+			AND T_OPT.PRINT_YN = 'Y'
+	WHERE 1=1
+		<isNotEqual property="previewYn" compareValue="Y">
+			AND T_PRDT.TRADE_STATUS = 'TS03'
+		  	AND TO_DATE(SYSDATE, 'YYYY/MM/DD') BETWEEN T_PRDT.SALE_START_DT AND T_PRDT.SALE_END_DT
+		</isNotEqual>
+		AND T_PRDT.PRDT_NUM = #prdtNum#
+	) S
+	INNER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID = S.CORP_ID
+		<isNotEqual property="previewYn" compareValue="Y">
+			AND T_CORP.TRADE_STATUS_CD = 'TS03'
+		</isNotEqual>
+WHERE RK = 1
+</select>
+
+<!--  Free(할인쿠폰) 상품 상세. -->
+<select id="WEB_SP_PRDTINF_S_04" resultMap="WEB_SP_PRDTINF_R_03">
+SELECT PRDT_NUM
+	, T_PRDT.CORP_ID
+	, T_PRDT.LON
+	, T_PRDT.LAT
+	, CTGR
+	, PRDT_DIV
+	, PRDT_NM
+	, PRDT_INF
+	, USE_QLFCT
+	, NVL(DIS_INF, ' ') DIS_INF
+	, SALE_END_DT
+	, NVL((SELECT SUM(NVL(BUY_NUM, 0)) FROM TB_SALE_ANLS WHERE PRDT_NUM = T_PRDT.PRDT_NUM), 0) SALE_NUM
+	, EXPR_START_DT
+	, EXPR_END_DT
+	, AD_MOV
+	, AREA
+	, (SELECT CD_NM FROM TB_CD WHERE HRK_CD_NUM='ADAR' AND CD_NUM = TRIM(AREA)) AS AREA_NM
+	, T_CORP.SHOP_NM
+	, T_CORP.RSV_TEL_NUM
+	, T_CORP.ADTM_SIMPLE_EXP
+	, T_CORP.ADTM_IMG
+	, T_CORP.SUPERB_CORP_YN
+FROM TB_SP_PRDTINF T_PRDT
+	INNER JOIN TB_CORP T_CORP ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+		<isNotEqual property="previewYn" compareValue="Y">
+			AND T_CORP.TRADE_STATUS_CD = 'TS03'
+		</isNotEqual>
+WHERE 1=1
+  	<isNotEqual property="previewYn" compareValue="Y">
+		AND T_PRDT.TRADE_STATUS = 'TS03'
+		AND T_PRDT.SALE_END_DT >= TO_DATE(SYSDATE, 'YYYY/MM/DD')
+    </isNotEqual>
+    AND T_PRDT.PRDT_NUM = #prdtNum#
+</select>
+
+<select id="WEB_SP_PRDTINF_S_05" resultMap="WEB_SP_PRDTINF_R_04">
+ SELECT T_PRDT.PRDT_NUM
+ 		  , T_PRDT.PRDT_NM
+ 		  , T_PRDT.PRDT_DIV
+      	  , CONCAT(SUBSTR(T_PRDT.CTGR, 0,2),'00') AS CTGR
+ 		  , (SELECT CD_NM FROM TB_CD WHERE CD_NUM = CONCAT(SUBSTR(T_PRDT.CTGR, 0,2),'00')) CTGR_NM
+ 		  , T_DIV.PRDT_DIV_NM
+ 		  , T_OPT.OPT_NM
+ 		  , T_OPT.SALE_AMT
+ 		  , T_OPT.NML_AMT
+ 		  , T_OPT.APL_DT
+ 		  , (T_OPT.OPT_PRDT_NUM - SALE_NUM) STOCK_NUM
+ 		  , T_OPT.DDL_YN
+ 		  , T_IMG.SAVE_PATH
+		  , T_IMG.SAVE_FILE_NM
+		  , T_PRDT.EXPR_START_DT
+		  , T_PRDT.EXPR_END_DT
+		  , T_PRDT.SALE_START_DT
+		  , T_PRDT.SALE_END_DT
+		  , T_PRDT.EXPR_DAYNUM_YN
+		  , T_PRDT.EXPR_DAYNUM
+		  , T_PRDT.USE_ABLE_TM
+		  , T_PRDT.API_IMG_THUMB
+		  , T_CORP.CORP_ID
+		  , CASE WHEN T_CORP.TAMNACARD_MNG_YN = 'C' OR (T_CORP.TAMNACARD_MNG_YN = 'P' AND T_PRDT.TAMNACARD_PRDT_YN = 'Y') THEN 'Y' ELSE 'N' END AS TAMNACARD_YN
+ FROM TB_SP_PRDTINF T_PRDT
+   INNER JOIN TB_SP_DIVINF T_DIV
+   		ON T_PRDT.PRDT_NUM= T_DIV.PRDT_NUM
+    	AND T_DIV.SP_DIV_SN = #spDivSn#
+   INNER JOIN TB_SP_OPTINF T_OPT
+   		ON T_PRDT.PRDT_NUM = T_OPT.PRDT_NUM
+	    AND T_DIV.SP_DIV_SN = T_OPT.SP_DIV_SN
+    	AND T_OPT.SP_OPT_SN = #spOptSn#
+    	AND T_OPT.DDL_YN = 'N'
+    	AND T_OPT.PRINT_YN = 'Y'
+    INNER JOIN TB_CORP T_CORP
+    			ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+    		  AND T_CORP.TRADE_STATUS_CD = 'TS03'
+   	LEFT OUTER JOIN TB_CM_IMG T_IMG
+		    ON T_IMG.LINK_NUM = T_PRDT.PRDT_NUM
+		   AND T_IMG.IMG_SN   = 1
+  WHERE 1=1
+  	AND T_PRDT.TRADE_STATUS = 'TS03'
+    AND T_PRDT.PRDT_NUM = #prdtNum#
+    AND T_PRDT.SALE_END_DT >= TO_DATE(SYSDATE, 'YYYY/MM/DD')
+</select>
+
+
+
+<select id="WEB_SP_DIVINF_S_00" resultMap="WEB_SP_DIVINF_R_00">
+SELECT SP_DIV_SN
+     , PRDT_DIV_NM
+FROM (
+	SELECT T_DIV.SP_DIV_SN
+		, T_DIV.PRDT_DIV_NM
+		, T_DIV.VIEW_SN
+		, COUNT(SP_OPT_SN) OPT_CNT
+	 FROM TB_SP_DIVINF T_DIV
+	 INNER JOIN TB_SP_OPTINF T_OPT
+	    ON T_DIV.SP_DIV_SN = T_OPT.SP_DIV_SN
+	   AND T_DIV.PRDT_NUM = T_OPT.PRDT_NUM
+	   AND T_OPT.PRINT_YN = 'Y'
+	WHERE T_DIV.PRDT_NUM = #prdtNum#
+	GROUP BY T_DIV.SP_DIV_SN, T_DIV.PRDT_DIV_NM, T_DIV.VIEW_SN
+	)
+ WHERE OPT_CNT > 0
+ORDER BY  VIEW_SN
+</select>
+
+<select id="WEB_SP_OPTINF_S_00" resultMap="WEB_SP_OPTINF_R_00">
+SELECT SP_DIV_SN
+  		, SP_OPT_SN
+  		, OPT_NM
+  		, APL_DT
+  		, SALE_AMT
+  		, APL_DT
+  		, (OPT_PRDT_NUM - NVL(SALE_NUM,0)) STOCK_NUM
+  		, DDL_YN
+  		, (SELECT PRDT_DIV_NM
+  			 FROM TB_SP_DIVINF D
+  			WHERE D.PRDT_NUM = O.PRDT_NUM
+  			  AND D.SP_DIV_SN = O.SP_DIV_SN) PRDT_DIV_NM
+  		, NML_AMT
+ FROM TB_SP_OPTINF O
+WHERE PRDT_NUM = #prdtNum#
+   AND SP_DIV_SN = #spDivSn#
+   AND PRINT_YN = 'Y'
+   <isNotEmpty property="aplDt">
+   AND APL_DT = #aplDt#
+   </isNotEmpty>
+   <isNotEmpty property="ddlYn">
+   AND DDL_YN = #ddlYn#
+   </isNotEmpty>
+ORDER BY VIEW_SN
+</select>
+
+<select id="WEB_SP_PRDTINF_S_06" resultClass="int">
+SELECT COUNT(T_PRDT.PRDT_NUM)
+   FROM TB_SP_PRDTINF T_PRDT
+INNER JOIN TB_SP_OPTINF T_OPT
+		  ON T_OPT.PRDT_NUM = T_PRDT.PRDT_NUM
+		 AND T_OPT.PRINT_YN = 'Y'
+INNER JOIN TB_CORP T_CORP
+  			ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+  		  AND T_CORP.TRADE_STATUS_CD = 'TS03'
+ WHERE 1=1
+    AND T_PRDT.TRADE_STATUS = 'TS03'
+    AND T_OPT.DDL_YN = 'N'
+    AND T_PRDT.SALE_END_DT<![CDATA[ >= ]]> TO_DATE(SYSDATE, 'YYYY/MM/DD')
+    AND T_OPT.OPT_PRDT_NUM<![CDATA[ > ]]>T_OPT.SALE_NUM
+    AND T_OPT.OPT_PRDT_NUM - T_OPT.SALE_NUM<![CDATA[ >= ]]> #qty#
+    AND ((APL_DT IS NOT NULL AND APL_DT<![CDATA[ >= ]]>TO_DATE(SYSDATE, 'YYYY/MM/DD')) OR APL_DT IS NULL)
+    AND T_PRDT.PRDT_NUM = #prdtNum#
+    AND T_OPT.SP_OPT_SN = #spOptSn#
+    AND T_OPT.SP_DIV_SN = #spDivSn#
+</select>
+
+<!-- 협회 프로모션용 -->
+<select id="WEB_SP_PRDTINF_S_08" resultMap="WEB_SP_PRDTINF_R_08">
+SELECT PRDT_NUM
+    , CTGR
+    , PRDT_DIV
+    , PRDT_NM
+    , PRDT_INF
+    , SP_DIV_SN
+    , SP_OPT_SN
+    , NML_AMT
+    , SALE_AMT
+    , SAVE_PATH
+    , SAVE_FILE_NM
+    , PRINT_SN
+FROM (SELECT PRM_PRD.PRDT_NUM
+            , SP_PRD.CTGR
+            , SP_PRD.PRDT_DIV
+            , SP_PRD.PRDT_NM
+            , SP_PRD.PRDT_INF
+            , SP_OPT.SP_DIV_SN
+            , SP_OPT.SP_OPT_SN
+            , SP_OPT.NML_AMT
+            , SP_OPT.SALE_AMT
+            , CM_IMG.SAVE_PATH
+            , CASE WHEN SP_PRD.API_IMG_THUMB IS NOT NULL THEN API_IMG_THUMB ELSE (CM_IMG.SAVE_PATH
+              || 'thumb/'
+              || CM_IMG.SAVE_FILE_NM) END AS SAVE_FILE_NM
+            , PRM_PRD.PRINT_SN
+            , ROW_NUMBER() OVER (PARTITION BY PRM_PRD.PRDT_NUM ORDER BY SALE_AMT ASC) AS RK
+        FROM TB_PRMT_PRDT AS PRM_PRD
+            INNER JOIN TB_SP_PRDTINF AS SP_PRD ON SP_PRD.PRDT_NUM = PRM_PRD.PRDT_NUM
+            	AND SP_PRD.TRADE_STATUS = 'TS03'
+            	AND TO_CHAR (SYSDATE, 'YYYYMMDD') BETWEEN SP_PRD.SALE_START_DT AND SP_PRD.SALE_END_DT
+            INNER JOIN TB_CORP CORP     	   ON CORP.CORP_ID = SP_PRD.CORP_ID
+            	AND CORP.TRADE_STATUS_CD = 'TS03'
+            INNER JOIN TB_SP_OPTINF AS SP_OPT  ON SP_OPT.PRDT_NUM = PRM_PRD.PRDT_NUM
+            	AND DDL_YN = 'N'
+            	AND SP_OPT.PRINT_YN = 'Y'
+            LEFT JOIN TB_CM_IMG AS CM_IMG     ON CM_IMG.LINK_NUM = PRM_PRD.PRDT_NUM
+            	AND CM_IMG.IMG_SN = 1
+        WHERE PRM_PRD.PRMT_NUM = #sPrmtNum#)
+WHERE RK = 1
+</select>
+
+<!-- 패키지 용 베스트 상품 조회 -->
+<select id="WEB_SP_PRDTINF_S_09" resultMap="WEB_SP_PRDTINF_R_09">
+<![CDATA[
+SELECT PRDT_NUM
+     , CTGR
+     , PRDT_DIV
+     , PRDT_NM
+     , SP_DIV_SN
+     , SP_OPT_SN
+     , SALE_AMT
+     , NML_AMT
+     , DIS_PER
+     , SAVE_PATH
+     , SAVE_FILE_NM
+     , GPA_AVG
+     , '' AS PRMT_CONTENTS
+	 , '' AS LS_LINK_YN
+  FROM (SELECT ROWNUM AS RN
+             , ROW_NUMBER() OVER(PARTITION BY CTGR ORDER BY DBMS_RANDOM.VALUE) AS RN2
+             , PRDT_NUM
+             , PRDT_DIV
+             , CTGR
+             , PRDT_NM
+             , PRDT_INF AS SIMPLE_EXP
+             , SP_DIV_SN
+             , SP_OPT_SN
+             , SALE_AMT
+             , NML_AMT
+             , DIS_PER
+             , CONF_DTTM
+             , SALE_NUM
+             , NVL(GPA.GPA_AVG, 0) GPA_AVG
+             , (CASE CTGR WHEN 'C170' THEN 1
+                          WHEN 'C160' THEN 2
+                          WHEN 'C130' THEN 3
+                          WHEN 'C120' THEN 4
+                          WHEN 'C140' THEN 5
+                          ELSE 99
+                 END) AS CTGR_ORDER
+          FROM (SELECT T_PRDT.PRDT_NUM
+                     , T_PRDT.CTGR
+                     , T_PRDT.CORP_ID
+                     , T_PRDT.PRDT_DIV
+                     , T_PRDT.PRDT_NM
+                     , NVL(T_PRDT.PRDT_INF, ' ') AS PRDT_INF
+                     , T_OPT.SP_DIV_SN
+                     , T_OPT.SP_OPT_SN
+                     , T_OPT.SALE_AMT
+                     , T_OPT.NML_AMT
+                     , CASE WHEN T_OPT.NML_AMT != 0 THEN 100 - (TRUNC(T_OPT.SALE_AMT / T_OPT.NML_AMT, 2) * 100) ELSE 0 END AS DIS_PER
+                     , T_PRDT.CONF_DTTM
+                     , T_OPT.SALE_NUM
+                     , ROW_NUMBER( ) OVER (PARTITION BY T_PRDT.PRDT_NUM ORDER BY T_OPT.SALE_AMT ASC, T_OPT.SP_DIV_SN ASC, T_OPT.SP_OPT_SN ASC ) AS RK
+                  FROM TB_SP_PRDTINF T_PRDT
+                 INNER JOIN TB_SP_OPTINF T_OPT
+                    ON T_OPT.PRDT_NUM = T_PRDT.PRDT_NUM
+                   AND T_OPT.DDL_YN = 'N'
+                   AND T_OPT.APL_DT >= TO_CHAR(SYSDATE, 'YYYYMMDD')
+                   AND T_OPT.PRINT_YN = 'Y'
+                 WHERE 1=1
+                   AND T_PRDT.TRADE_STATUS = 'TS03'
+                   /*AND T_PRDT.SALE_START_DT <= TO_CHAR(SYSDATE, 'YYYYMMDD')*/
+                   AND T_PRDT.SALE_END_DT >= TO_CHAR(SYSDATE, 'YYYYMMDD')
+                   AND T_PRDT.PRDT_DIV = 'TOUR'
+                   AND (SELECT TRADE_STATUS_CD FROM TB_CORP WHERE CORP_ID=T_PRDT.CORP_ID)='TS03'
+               ) S
+          LEFT OUTER JOIN TB_GPA_ANLS GPA
+            ON S.PRDT_NUM = GPA.LINK_NUM
+	     WHERE RK = 1
+	 ) R1
+  LEFT OUTER JOIN TB_CM_IMG R2
+	ON R1.PRDT_NUM = R2.LINK_NUM
+   AND R2.IMG_SN = 1
+ WHERE RN2 = 1
+ ORDER BY CTGR_ORDER ASC
+]]>
+</select>
+
+<!-- 지도 상품 -->
+<select id="WEB_SP_PRDTINF_S_10" resultMap="WEB_SP_PRDTINF_R_10">
+SELECT CORP_NM
+	 , CORP_ID
+ 	 , LON
+ 	 , LAT
+ 	 , ROAD_NM_ADDR
+ 	 , DTL_ADDR
+ 	 , CTGR
+  FROM (SELECT T_PRDT.PRDT_NM AS CORP_NM
+  		     , T_PRDT.PRDT_NUM AS CORP_ID
+  			 , T_PRDT.LON
+  			 , T_PRDT.LAT
+			 , T_PRDT.ROAD_NM_ADDR
+			 , T_PRDT.DTL_ADDR
+			 , T_PRDT.CTGR
+			 , CASE WHEN T_PRDT.PRDT_DIV = 'TOUR'
+			 	    THEN  ROW_NUMBER( ) OVER (PARTITION BY T_PRDT.PRDT_NUM ORDER BY T_OPT.SALE_AMT ASC, T_OPT.SP_DIV_SN ASC, T_OPT.SP_OPT_SN ASC )
+		   		  	WHEN T_PRDT.PRDT_DIV != 'TOUR'
+		   		    THEN ROW_NUMBER( ) OVER (PARTITION BY T_PRDT.PRDT_NUM ORDER BY  T_DIV.VIEW_SN ASC, T_OPT.VIEW_SN ASC )
+		   		END AS RK
+	      FROM TB_SP_PRDTINF T_PRDT
+         INNER JOIN TB_SP_DIVINF T_DIV
+ 	 	    ON T_DIV.PRDT_NUM = T_PRDT.PRDT_NUM
+         INNER JOIN TB_SP_OPTINF T_OPT
+		 	ON T_OPT.PRDT_NUM = T_PRDT.PRDT_NUM
+		   AND T_OPT.SP_DIV_SN = T_DIV.SP_DIV_SN
+		   AND T_OPT.PRINT_YN = 'Y'
+         INNER JOIN TB_CORP T_CORP
+ 		    ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+ 		   AND T_CORP.TRADE_STATUS_CD = 'TS03'
+ 		 WHERE 1=1
+           AND T_PRDT.TRADE_STATUS = 'TS03'
+           AND T_OPT.DDL_YN = 'N'
+           AND T_PRDT.LON IS NOT NULL
+           AND T_PRDT.LAT IS NOT NULL
+           AND T_PRDT.SALE_END_DT >= TO_CHAR(SYSDATE, 'YYYYMMDD')
+           <isNotEmpty property="sCorpId">
+           AND T_PRDT.CORP_ID = #sCorpId#
+           </isNotEmpty>
+           <isNotEmpty property="sPrdtDiv">
+		   AND T_PRDT.PRDT_DIV = #sPrdtDiv#
+		   </isNotEmpty>
+           <isEqual property="sCtgrDepth" compareValue="1">
+           AND CTGR LIKE SUBSTR(#sCtgr# , 0, 2) || '%'
+           </isEqual>
+           <isEqual property="sCtgrDepth" compareValue="2">
+           AND CTGR = #sCtgr#
+           </isEqual>
+           <isNotEmpty property="sTabCtgr">
+           AND CTGR = #sTabCtgr#
+           </isNotEmpty>
+           <isEmpty property="sAplDt">
+	       AND ((T_OPT.APL_DT IS NOT NULL AND T_OPT.APL_DT<![CDATA[ >= ]]>TO_CHAR(SYSDATE, 'YYYYMMDD')) OR T_OPT.APL_DT IS NULL)
+	       </isEmpty>
+	       <isNotEmpty property="ctgrList">
+		            AND CTGR IN
+		         <iterate property="ctgrList"  open="(" close=")" conjunction=",">
+					 #ctgrList[]#
+				</iterate>
+			</isNotEmpty>
+        ) WHERE RK = 1
+        GROUP BY CORP_NM, CORP_ID, LAT, LON, ROAD_NM_ADDR, DTL_ADDR, CTGR
+</select>
+
+
+<!-- 패키지 용 베스트 상품 조회 - 관리자 설정 -->
+<select id="WEB_SP_PRDTINF_S_11" resultMap="WEB_SP_PRDTINF_R_09">
+	SELECT PRDT_NUM
+			, CTGR
+			, PRDT_DIV
+			, PRDT_NM
+			, SP_DIV_SN
+			, SP_OPT_SN
+			, SALE_AMT
+			, NML_AMT
+            , CASE WHEN NML_AMT != 0 THEN 100 - (TRUNC(SALE_AMT / NML_AMT, 2) * 100) ELSE 0 END AS DIS_PER
+			, (CASE WHEN LS_LINK_YN != 'Y' THEN SAVE_PATH ELSE API_IMG_THUMB END) AS SAVE_PATH
+			, (CASE WHEN LS_LINK_YN != 'Y' THEN SAVE_FILE_NM ELSE NULL END) AS SAVE_FILE_NM
+			, LS_LINK_YN
+			, GPA_AVG
+			, PRMT_CONTENTS
+	 FROM (
+	SELECT V4_PRDT.PRDT_NUM
+			, CTGR
+			, PRDT_DIV
+			, PRDT_NM
+			, PRDT_INF
+			, SP_DIV_SN
+			, SP_OPT_SN
+			, SALE_AMT
+			, NML_AMT
+			, CONF_DTTM
+			, SALE_NUM
+			, GPA_AVG
+			, EXPR_START_DT
+			, EXPR_END_DT
+			, USE_ABLE_TM
+			, EXPR_DAYNUM_YN
+			, EXPR_DAYNUM
+			, PRDT_DIV_NM
+			, OPT_NM
+			, PRMT_CONTENTS
+			, PRINT_SN
+			, API_IMG_THUMB
+			, LS_LINK_YN
+	  FROM( SELECT ROWNUM AS RN
+	  					, PRDT_NUM
+	  					, PRDT_DIV
+	  					, CTGR
+	  					, PRDT_NM
+	  					, PRDT_INF
+	  					, SP_DIV_SN
+	  					, SP_OPT_SN
+	  					, SALE_AMT
+	  					, NML_AMT
+	  					, CONF_DTTM
+	  					, SALE_NUM
+	  					, GPA_AVG
+	  					, EXPR_START_DT
+						, EXPR_END_DT
+						, USE_ABLE_TM
+						, EXPR_DAYNUM_YN
+						, EXPR_DAYNUM
+						, PRDT_DIV_NM
+						, OPT_NM
+						, PRMT_CONTENTS
+						, PRINT_SN
+	  					, API_IMG_THUMB
+						, LS_LINK_YN
+	   FROM ( SELECT S.PRDT_NUM
+	   						, S.CTGR
+	   						, S.PRDT_DIV
+	   						, S.PRDT_NM
+	   						, S.PRDT_INF
+	   						, S.SP_DIV_SN
+	   						, S.SP_OPT_SN
+	   						, S.SALE_AMT
+	   						, S.NML_AMT
+	   						, S.CONF_DTTM
+	   						, CASE WHEN S.PRDT_DIV = 'FREE' THEN 0
+                                    ELSE ( SELECT SUM(SALE_NUM)
+				                      		  FROM TB_SP_OPTINF a
+				                     		WHERE a.PRDT_NUM = S.PRDT_NUM
+				                     		  AND a.PRINT_YN = 'Y')
+	                     	  END AS SALE_NUM
+	                     	, NVL(GPA.GPA_AVG, 0) GPA_AVG
+	                     	, S.EXPR_START_DT
+							, S.EXPR_END_DT
+							, S.USE_ABLE_TM
+							, S.EXPR_DAYNUM_YN
+							, S.EXPR_DAYNUM
+							, S.PRDT_DIV_NM
+							, S.OPT_NM
+							, PRMT_CONTENTS
+							, PRINT_SN
+	   						, API_IMG_THUMB
+							, LS_LINK_YN
+	            	FROM ( SELECT T_PRDT.PRDT_NUM
+	            						, T_PRDT.CTGR
+	            						, T_PRDT.CORP_ID
+	            						, T_PRDT.PRDT_DIV
+	            						, T_PRDT.PRDT_NM
+	            						, T_PRDT.PRDT_INF
+	            						, T_OPT.SP_DIV_SN
+	            						, T_OPT.SP_OPT_SN
+	            						, T_OPT.SALE_AMT
+	            						, T_OPT.NML_AMT
+	            						, T_PRDT.CONF_DTTM
+	            						, T_OPT.SALE_NUM
+	            						, T_PRDT.EXPR_START_DT
+	            						, T_PRDT.EXPR_END_DT
+	            						, T_PRDT.USE_ABLE_TM
+	            						, T_PRDT.EXPR_DAYNUM_YN
+	            						, T_PRDT.EXPR_DAYNUM
+	            						, T_DIV.PRDT_DIV_NM
+	            						, T_OPT.OPT_NM
+	            						, CASE WHEN T_PRDT.PRDT_DIV = 'TOUR'
+	            								 	 THEN  ROW_NUMBER( ) OVER (PARTITION BY T_PRDT.PRDT_NUM ORDER BY T_OPT.SALE_AMT ASC, T_OPT.SP_DIV_SN ASC, T_OPT.SP_OPT_SN ASC )
+	            						   		  WHEN T_PRDT.PRDT_DIV != 'TOUR'
+	            						   		     THEN ROW_NUMBER( ) OVER (PARTITION BY T_PRDT.PRDT_NUM ORDER BY  T_DIV.VIEW_SN ASC, T_OPT.VIEW_SN ASC )
+	            						   END AS RK
+										, PRMT_CONTENTS
+										, PRINT_SN
+	            						, T_PRDT.API_IMG_THUMB
+                                        , T_CORP.LS_LINK_YN
+	                    	   FROM TB_SP_PRDTINF T_PRDT
+	                   INNER JOIN TB_SP_DIVINF T_DIV
+      			  	 			  ON T_DIV.PRDT_NUM = T_PRDT.PRDT_NUM
+					   INNER JOIN (
+							SELECT BESTPRDT_NUM
+							, CORP_CD
+							, CORP_SUB_CD
+							, PRDT_NUM
+							, PRINT_SN
+							, PRINT_YN
+							, REG_DTTM
+							, PRMT_CONTENTS
+							FROM TB_BESTPRDT
+							WHERE PRINT_YN='Y'
+							AND CORP_CD='SP'
+							AND CORP_SUB_CD=#sCtgr#
+					   ) T_BP
+					   ON T_BP.PRDT_NUM = T_DIV.PRDT_NUM
+	                   INNER JOIN TB_SP_OPTINF T_OPT
+	                   			  ON T_OPT.PRDT_NUM = T_PRDT.PRDT_NUM
+	                   			  AND T_OPT.SP_DIV_SN = T_DIV.SP_DIV_SN
+	                   			  AND T_OPT.PRINT_YN = 'Y'
+	                   INNER JOIN TB_CORP T_CORP
+      			  				  ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+      			  				AND T_CORP.TRADE_STATUS_CD = 'TS03'
+	                    	 WHERE 1=1
+	                    	    AND T_PRDT.TRADE_STATUS = 'TS03'
+	                            AND (T_OPT.DDL_YN = 'N' OR T_OPT.DDL_YN IS NULL)
+	                            AND T_PRDT.SALE_END_DT >= TO_DATE(SYSDATE, 'YYYY/MM/DD')
+                             ) S
+	                     	 LEFT OUTER JOIN TB_GPA_ANLS GPA
+	                     	 	ON S.PRDT_NUM= GPA.LINK_NUM
+	             WHERE RK = 1
+               ) t1
+	 	)AS V4_PRDT
+	 ) R1
+	 LEFT OUTER JOIN TB_CM_IMG R2
+	    	   	ON R1.PRDT_NUM = R2.LINK_NUM
+	          AND R2.IMG_SN = 1
+	 ORDER BY PRINT_SN
+</select>
+
+
+<select id="WEB_SP_PRDTINF_S_12" resultMap="WEB_SP_PRDTINF_R_00">
+	SELECT PRDT_NUM
+			, CTGR
+			, CORP_ID
+			, PRDT_DIV
+			, PRDT_NM
+			, PRDT_INF
+			, SP_DIV_SN
+			, SP_OPT_SN
+			, SALE_AMT
+			, NML_AMT
+			, SALE_NUM
+			, SAVE_PATH
+			, SAVE_FILE_NM
+			, '' AS SUPERB_CORP_YN
+			, GPA_AVG
+			<!-- , (SELECT NVL(COUNT(T_PRMT.PRMT_NUM), 0)
+				FROM TB_PRMT T_PRMT
+		INNER JOIN TB_PRMT_PRDT T_PRMT_PRDT
+					ON T_PRMT.PRMT_NUM = T_PRMT_PRDT.PRMT_NUM
+				WHERE T_PRMT_PRDT.PRDT_NUM = R1.PRDT_NUM
+					AND STATUS_CD = 'TS03'
+					AND T_PRMT.START_DT <![CDATA[ <= ]]> TO_DATE(SYSDATE, 'YYYY/MM/DD')
+					AND T_PRMT.END_DT >= TO_DATE(SYSDATE, 'YYYY/MM/DD')
+			) EVENT_CNT -->
+			, 0 EVENT_CNT
+			, 0 COUPON_CNT
+			, EXPR_START_DT
+			, EXPR_END_DT
+			, USE_ABLE_TM
+			, EXPR_DAYNUM_YN
+			, EXPR_DAYNUM
+			, PRDT_DIV_NM
+			, OPT_NM
+			, ADV_RV_YN
+			, TAMNACARD_YN
+	        , '' AS LS_LINK_YN
+			, '' AS API_IMG_THUMB
+	 FROM (
+	SELECT V4_PRDT.PRDT_NUM
+			, V4_PRDT.CTGR
+			, CORP_ID
+			, PRDT_DIV
+			, PRDT_NM
+			, PRDT_INF
+			, SP_DIV_SN
+			, SP_OPT_SN
+			, SALE_AMT
+			, NML_AMT
+			, CONF_DTTM
+			, SALE_NUM
+			, GPA_AVG
+			, EXPR_START_DT
+			, EXPR_END_DT
+			, USE_ABLE_TM
+			, EXPR_DAYNUM_YN
+			, EXPR_DAYNUM
+			, PRDT_DIV_NM
+			, OPT_NM
+			, PRINT_SN
+			, ADV_RV_YN
+			, TAMNACARD_YN
+	  FROM( SELECT ROWNUM AS RN
+	  					, PRDT_NUM
+	  					, PRDT_DIV
+	  					, CTGR
+	  					, CORP_ID
+	  					, PRDT_NM
+	  					, PRDT_INF
+	  					, SP_DIV_SN
+	  					, SP_OPT_SN
+	  					, SALE_AMT
+	  					, NML_AMT
+	  					, CONF_DTTM
+	  					, SALE_NUM
+	  					, GPA_AVG
+	  					, EXPR_START_DT
+						, EXPR_END_DT
+						, USE_ABLE_TM
+						, EXPR_DAYNUM_YN
+						, EXPR_DAYNUM
+						, PRDT_DIV_NM
+						, OPT_NM
+						, ADV_RV_YN
+						, TAMNACARD_YN
+	   FROM ( SELECT S.PRDT_NUM
+	   						, S.CTGR
+	   						, S.CORP_ID
+	   						, S.PRDT_DIV
+	   						, S.PRDT_NM
+	   						, S.PRDT_INF
+	   						, S.SP_DIV_SN
+	   						, S.SP_OPT_SN
+	   						, S.SALE_AMT
+	   						, S.NML_AMT
+	   						, S.CONF_DTTM
+	   						, CASE WHEN S.PRDT_DIV = 'FREE' THEN 0
+                                    ELSE ( SELECT SUM(SALE_NUM)
+				                      		  FROM TB_SP_OPTINF a
+				                     		WHERE a.PRDT_NUM = S.PRDT_NUM
+				                     		  AND a.PRINT_YN = 'Y')
+	                     	  END AS SALE_NUM
+	                     	, NVL(GPA.GPA_AVG, 0) GPA_AVG
+	                     	, S.EXPR_START_DT
+							, S.EXPR_END_DT
+							, S.USE_ABLE_TM
+							, S.EXPR_DAYNUM_YN
+							, S.EXPR_DAYNUM
+							, S.PRDT_DIV_NM
+							, S.OPT_NM
+							, S.ADV_RV_YN
+	   						, TAMNACARD_YN
+	            	FROM ( SELECT T_PRDT.PRDT_NUM
+	            						, T_PRDT.CTGR
+	            						, T_PRDT.CORP_ID
+	            						, T_PRDT.PRDT_DIV
+	            						, T_PRDT.PRDT_NM
+	            						, T_PRDT.PRDT_INF
+	            						, T_OPT.SP_DIV_SN
+	            						, T_OPT.SP_OPT_SN
+	            						, T_OPT.SALE_AMT
+	            						, T_OPT.NML_AMT
+	            						, T_PRDT.CONF_DTTM
+	            						, T_OPT.SALE_NUM
+	            						, T_PRDT.EXPR_START_DT
+	            						, T_PRDT.EXPR_END_DT
+	            						, T_PRDT.USE_ABLE_TM
+	            						, T_PRDT.EXPR_DAYNUM_YN
+	            						, T_PRDT.EXPR_DAYNUM
+	            						, T_DIV.PRDT_DIV_NM
+	            						, T_OPT.OPT_NM
+	            						, CASE WHEN T_PRDT.PRDT_DIV = 'TOUR'
+	            								 	 THEN  ROW_NUMBER( ) OVER (PARTITION BY T_PRDT.PRDT_NUM ORDER BY T_OPT.SALE_AMT ASC, T_OPT.SP_DIV_SN ASC, T_OPT.SP_OPT_SN ASC )
+	            						   		  WHEN T_PRDT.PRDT_DIV != 'TOUR'
+	            						   		     THEN ROW_NUMBER( ) OVER (PARTITION BY T_PRDT.PRDT_NUM ORDER BY  T_DIV.VIEW_SN ASC, T_OPT.VIEW_SN ASC )
+	            						   END AS RK
+	            						, T_PRDT.ADV_RV_YN
+										, CASE WHEN T_CORP.TAMNACARD_MNG_YN = 'C' OR (T_CORP.TAMNACARD_MNG_YN = 'P' AND T_PRDT.TAMNACARD_PRDT_YN = 'Y') THEN 'Y' ELSE 'N' END AS TAMNACARD_YN
+	                    	   FROM TB_SP_PRDTINF T_PRDT
+	                   LEFT OUTER JOIN TB_SP_DIVINF T_DIV
+      			  	 			  ON T_DIV.PRDT_NUM = T_PRDT.PRDT_NUM
+	                   LEFT OUTER JOIN TB_SP_OPTINF T_OPT
+	                   			  ON T_OPT.PRDT_NUM = T_PRDT.PRDT_NUM
+	                   			  AND T_OPT.SP_DIV_SN = T_DIV.SP_DIV_SN
+	                   			  AND T_OPT.PRINT_YN = 'Y'
+	                   LEFT OUTER JOIN TB_CORP T_CORP
+      			  				  ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+      			  				AND T_CORP.TRADE_STATUS_CD = 'TS03'
+	                    	 WHERE 1=1
+	                    	    AND T_PRDT.TRADE_STATUS = 'TS03'
+	                            AND (T_OPT.DDL_YN = 'N' OR T_OPT.DDL_YN IS NULL)
+	                            AND T_PRDT.SALE_END_DT >= TO_DATE(SYSDATE, 'YYYY/MM/DD')
+                             ) S
+	                     	 LEFT OUTER JOIN TB_GPA_ANLS GPA
+	                     	 	ON S.PRDT_NUM= GPA.LINK_NUM
+	             WHERE RK = 1
+               ) t1
+	 	)AS V4_PRDT
+         INNER JOIN  TB_KWA_PRDT T_PRMT
+         ON T_PRMT.PRDT_NUM = V4_PRDT.PRDT_NUM
+         WHERE T_PRMT.KWA_NUM=#kwaNum#
+         	<isNotEmpty property="ctgr">
+           			AND T_PRMT.CTGR=#ctgr#
+           	</isNotEmpty>
+	 ) R1
+	 LEFT OUTER JOIN TB_CM_IMG R2
+	    	   	ON R1.PRDT_NUM = R2.LINK_NUM
+	          AND R2.IMG_SN = 1
+	 ORDER BY PRINT_SN
+
+</select>
+
+<select id="WEB_SP_PRDTINF_S_13" resultMap="WEB_SP_PRDTINF_S_13">
+	SELECT CASE WHEN TXS_CNT+TS_CNT+TM_CNT+TL_CNT+TXL_CNT+T2XL_CNT+T3XL_CNT > 0 THEN 'Y'
+				ELSE 'N' END AS CHK_TSHIRTS_ABLE
+		 , (TXS_CNT+TS_CNT+TM_CNT+TL_CNT+TXL_CNT+T2XL_CNT+T3XL_CNT) AS TOT_TSHIRTS_CNT
+	  FROM TB_MRTN_TSHIRTS
+	 WHERE CORP_ID = #corpId#
+	   AND PRDT_NUM = #prdtNum#
+</select>
+
+<select id="WEB_SP_PRDTINF_S_14" resultMap="WEB_SP_PRDTINF_S_14">
+	SELECT CASE WHEN TXS_CNT <![CDATA[<]]> TO_NUMBER(#txsUseCnt#) THEN 'N'
+                WHEN TS_CNT <![CDATA[<]]> TO_NUMBER(#tsUseCnt#) THEN 'N'
+                WHEN TM_CNT <![CDATA[<]]> TO_NUMBER(#tmUseCnt#)THEN 'N'
+                WHEN TL_CNT <![CDATA[<]]> TO_NUMBER(#tlUseCnt#) THEN 'N'
+                WHEN TXL_CNT <![CDATA[<]]> TO_NUMBER(#txlUseCnt#) THEN 'N'
+                WHEN T2XL_CNT <![CDATA[<]]> TO_NUMBER(#t2xlUseCnt#) THEN 'N'
+                WHEN T3XL_CNT <![CDATA[<]]> TO_NUMBER(#t3xlUseCnt#) THEN 'N'
+ 				ELSE 'Y' END AS CHK_TSHIRTS_ABLE
+	  FROM TB_MRTN_TSHIRTS
+	 WHERE CORP_ID = #corpId#
+	   AND PRDT_NUM = #prdtNum#
+</select>
+
+<select id="WEB_SP_PRDTINF_S_15" resultClass="String">
+	SELECT LISTAGG(APCT_NM, ',') WITHIN GROUP (ORDER BY APCT_NM) AS APCT_NM
+	FROM (
+	SELECT M_USER.APCT_NM AS APCT_NM
+		 , CONCAT(FN_DEC(M_USER.BIRTH), FN_DEC(M_USER.LRRN)) AS RRN
+	FROM TB_MRTN_USER M_USER
+	INNER JOIN TB_RSV T_RSV ON M_USER.RSV_NUM = T_RSV.RSV_NUM
+	INNER JOIN TB_SP_RSV T_SP ON M_USER.RSV_NUM = T_SP.RSV_NUM AND M_USER.SP_RSV_NUM = T_SP.SP_RSV_NUM
+	AND T_RSV.RSV_STATUS_CD = 'RS02'
+	AND T_SP.RSV_STATUS_CD = 'RS02'
+	AND M_USER.PRDT_NUM = #prdtNum#
+	) 
+	<dynamic prepend="WHERE RRN IN ">
+	 	<iterate open="(" close=")" conjunction="," property="sRrnList">
+	 		#sRrnList[]#
+	 	</iterate>
+ 	</dynamic>
+</select>
+
+</sqlMap>

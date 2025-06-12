@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xmlns:oxm="http://www.springframework.org/schema/oxm"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+                http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.1.xsd">
+
+    <context:component-scan base-package="oss, mas, egovframework, web, api, mw, apiCn">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="webBindingInitializer">
+            <bean class="egovframework.cmmn.web.EgovBindingInitializer"/>
+        </property>
+        <property name="messageConverters">
+        <list> 
+			<ref bean="jsonConverter" /> 
+		</list> 
+</property> 
+    </bean>
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+        <property name="interceptors">
+            <list>
+                <ref bean="localeChangeInterceptor" />
+            </list>
+        </property>
+    </bean>
+	
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+    <!-- 쿠키를 이용한 Locale 이용시 <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"/> -->
+    <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+        <property name="paramName" value="language" />
+    </bean>
+
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="common/egovError"/>
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.springframework.dao.DataAccessException">common/egovError</prop>
+                <prop key="org.springframework.transaction.TransactionException">common/egovError</prop>
+                <prop key="egovframework.rte.fdl.cmmn.exception.EgovBizException">common/egovError</prop>
+                <prop key="org.springframework.security.AccessDeniedException">common/egovError</prop>
+<!--                 <prop key="org.springframework.dao.DataAccessException">common/dataAccessFailure</prop>
+                <prop key="org.springframework.transaction.TransactionException">common/transactionFailure</prop>
+                <prop key="egovframework.rte.fdl.cmmn.exception.EgovBizException">common/egovError</prop>
+                <prop key="org.springframework.security.AccessDeniedException">common/egovError</prop> -->
+            </props>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="2"
+	    p:viewClass="org.springframework.web.servlet.view.JstlView"
+	    p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"/>
+	    
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" id="viewResolver" p:order="0" />
+    
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver" p:order="1">
+    	<property name="contentNegotiationManager">
+    		<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+    			<property name="mediaTypes">
+    				<value>xm=application/xml;charset=UTF-8</value>
+    			</property>
+    		</bean>
+    	</property>
+	</bean>
+	
+	<bean name="cgr/egovCategoryRegister" class="org.springframework.web.servlet.view.xml.MarshallingView" id="xmlView">
+		<property name="marshaller" ref="marshaller" />
+	</bean>
+	
+	<oxm:jaxb2-marshaller id="marshaller">
+	    <oxm:class-to-be-bound name="apiCn.vo.ILSVO" />
+	</oxm:jaxb2-marshaller>
+
+	<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" id="jsonView">
+		<property name="contentType" value="application/json;charset=UTF-8"></property>
+	</bean>
+	
+	<bean id="jsonConverter"  class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"> 
+		<property name="supportedMediaTypes"> 
+			<list>	
+				<value>application/json;charset=UTF-8</value> 
+				<value>text/plain;charset=UTF-8</value> 
+			</list> 
+		</property> 
+		<!-- <property name="supportedMediaTypes" value="application/json" /> --> 
+	</bean>
+	
+	<!--  excel View -->
+    <bean id="ossSvPrdtExcelView" class="oss.sv.service.OssSvPrdtExcelView" />
+    <bean id="masSvRsvExcelView" class="mas.rsv.service.MasSvRsvExcelView" />
+
+    <!-- For Pagination Tag -->
+    <bean id="imageRenderer" class="oss.cmm.web.EgovImgPaginationRenderer"/>
+    <bean id="imageRenderer2" class="oss.cmm.web.WebImgPaginationRenderer"/>
+    <bean id="imageRenderer3" class="oss.cmm.web.MasMwImgPaginationRenderer"/>
+
+    <bean id="paginationManager" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
+        <property name="rendererType">
+            <map>
+                <entry key="image" value-ref="imageRenderer"/>
+                 <entry key="web" value-ref="imageRenderer2"/>
+                 <entry key="masMw" value-ref="imageRenderer3"/>
+            </map>
+        </property>
+    </bean>
+   
+	<!-- /For Pagination Tag -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	    <property name="alwaysUseFullPath" value="true">
+	</property></bean>
+
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+	    <property name="alwaysUseFullPath" value="true">
+	</property></bean>
+
+    <mvc:view-controller path="/common/validator.do" view-name="common/validator"/>
+
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/**/*.do"/>
+    		<mvc:exclude-mapping path="/main_new.do"/>
+    		<bean class="egovframework.cmmn.interceptor.WebDefaultInterceptor" ></bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <!-- 협회 로그인 체크 인터셉터 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/oss/**/*.do"/>
+    		<!-- <mvc:mapping path="/oss/*.ajax"/> -->
+    		<mvc:exclude-mapping path="/oss/intro.do"/>
+    		<mvc:exclude-mapping path="/oss/actionOssLogin.do"/>
+    		<bean class="egovframework.cmmn.interceptor.OssAuthInterceptor" ></bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/oss/**/*.ajax"/>
+    		<bean class="egovframework.cmmn.interceptor.OssAjaxAuthInterceptor"></bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <!-- 상점관리자 로그인 체크 인터셉터 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/mas/**/*.do"/>
+    		<mvc:exclude-mapping path="/mas/intro.do"/>
+    		<mvc:exclude-mapping path="/mas/actionMasLogin.do"/>
+    		<bean class="egovframework.cmmn.interceptor.MasAuthInterceptor"></bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/mas/**/*.ajax"/>
+    		<bean class="egovframework.cmmn.interceptor.MasAjaxAuthInterceptor"></bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <!-- 숙박업체 체크 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/mas/ad/**"/>
+    		<bean class="egovframework.cmmn.interceptor.MasAdAuthInterceptor">
+    		</bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <!-- 렌터카 업체 체크 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/mas/rc/**"/>
+    		<bean class="egovframework.cmmn.interceptor.MasRcAuthInterceptor">
+    		</bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+
+    <!-- 소셩상품 업체 체크 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/mas/sp/**"/>
+    		<bean class="egovframework.cmmn.interceptor.MasSpAuthInterceptor">
+    		</bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <!-- 사용자 로그인이 필요한 URL 체크 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<!-- <mvc:mapping path="/web/order01.do"/> -->
+    		<!-- <mvc:mapping path="/web/order02.do"/> -->
+    		<mvc:mapping path="/web/mypage/*.do"/>
+    		<mvc:mapping path="/web/coustmer/viewInsertCorpPns.do"/>
+    		<mvc:mapping path="/web/coustmer/completeCorpPns.do"/>
+
+    		<mvc:exclude-mapping path="/web/mypage/rsvList.do"/>
+    		<mvc:exclude-mapping path="/web/mypage/detailRsv.do"/>
+
+    		<bean class="egovframework.cmmn.interceptor.WebAuthInterceptor">
+    		</bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <!-- 결제시 사용자/비회원 로그인이 필요한 URL 체크 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/web/order01.do"/>
+    		<mvc:mapping path="/web/order02.do"/>
+    		<bean class="egovframework.cmmn.interceptor.WebAuthPayInterceptor">
+    		</bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <!-- 사용자/비회원 로그인이 필요한 URL 체크 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/web/mypage/rsvList.do"/>
+    		<mvc:mapping path="/web/mypage/detailRsv.do"/>
+    		<bean class="egovframework.cmmn.interceptor.WebAuthGuestInterceptor">
+    		</bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <!-- 모바일 사용자 로그인이 필요한 URL 체크 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<!-- <mvc:mapping path="/mw/order01.do"/> -->
+    		<!-- <mvc:mapping path="/mw/order02.do"/> -->
+    		<mvc:mapping path="/mw/mypage/*.do"/>
+    		<mvc:mapping path="/mw/coustmer/viewInsertCorpPns.do"/>
+    		<mvc:mapping path="/mw/coustmer/completeCorpPns.do"/>
+    		
+    		<mvc:exclude-mapping path="/mw/mypage/rsvList.do"/>
+    		<mvc:exclude-mapping path="/mw/mypage/detailRsv.do"/>
+    		
+    		<bean class="egovframework.cmmn.interceptor.MwAuthInterceptor">
+    		</bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <!-- 모바일 결제시 사용자/비회원 로그인이 필요한 URL 체크 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/mw/order01.do"/>
+    		<mvc:mapping path="/mw/order02.do"/>
+    		<bean class="egovframework.cmmn.interceptor.MwAuthPayInterceptor">
+    		</bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <!-- 모바일 사용자/비회원 로그인이 필요한 URL 체크 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/mw/mypage/rsvList.do"/>
+    		<mvc:mapping path="/mw/mypage/detailRsv.do"/>
+    		<bean class="egovframework.cmmn.interceptor.MwAuthGuestInterceptor">
+    		</bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    
+    <!-- 사용자 로그인이 필요한 AJAX URL 체크 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/web/mypage/saveInterestProduct.ajax"/>
+    		<mvc:mapping path="/web/mypage/selectAccNum.ajax"/>
+    		<mvc:mapping path="/web/mypage/mergeAccNum.ajax"/>
+    		<mvc:mapping path="/web/mypage/addPocket.ajax"/>
+    		<mvc:mapping path="/web/mypage/deletePocket.ajax"/>
+    		<mvc:mapping path="/web/coustmer/insertCorpPns.ajax"/>
+    		<bean class="egovframework.cmmn.interceptor.WebAjaxAuthInterceptor">
+    		</bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <!-- 모바일 로그인이 필요한 AJAX URL 체크 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/mw/mypage/saveInterestProduct.ajax"/>
+    		<bean class="egovframework.cmmn.interceptor.MwAjaxAuthInterceptor">
+    		</bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <!-- API Center 인증 체크 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/apiCn/**/*.do"/>
+    		<mvc:exclude-mapping path="/apiCn/intro.do"/>
+    		<mvc:exclude-mapping path="/apiCn/actionApiCnLogin.do"/>
+    		<bean class="egovframework.cmmn.interceptor.ApiCnAuthInterceptor" ></bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/apiCn/**/*.ajax"/>
+    		<bean class="egovframework.cmmn.interceptor.ApiCnAjaxAuthInterceptor"></bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <!-- B2B 로그인이 필요한 AJAX URL 체크 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/mas/b2b/*.do"/>
+    		<mvc:exclude-mapping path="/mas/b2b/intro.do"/>
+    		<mvc:exclude-mapping path="/mas/b2b/term.do"/>
+    		<mvc:exclude-mapping path="/mas/b2b/b2bReq.do"/>
+    		<bean class="egovframework.cmmn.interceptor.MasB2BAuthInterceptor">
+    		</bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+     <!-- 모바일 관리자 로그인이 필요한 URL 체크 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/mw/mas/**"/>
+    		<mvc:exclude-mapping path="/mw/mas/head.do"/>
+    		<mvc:exclude-mapping path="/mw/mas/intro.do"/>
+    		<mvc:exclude-mapping path="/mw/mas/actionMasLogin.do"/>
+    		<bean class="egovframework.cmmn.interceptor.MasMwAuthInterceptor">
+    		</bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+</beans>

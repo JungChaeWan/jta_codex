@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>탐나오</title>
+</head>
+
+<body>
+    <table style="width: 740px; margin: 0 auto; text-decoration: none; border-collapse: collapse; font-family: 'NanumBarunGothic', 'Dotum', 'Helvetica', 'sans-serif';">
+        <!-- thead -->
+        #parse("mailTemplate/header.vm")
+
+        <tbody>
+            <tr>
+                <td style="width: 740px; padding-top: 30px; text-align: center;">
+                    <img src="${domain}/images/web/mail/icon3-2.png" alt="취소요청">
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">
+                    <p style="font-size: 26px; color: #333435; margin: 0; padding-top: 30px; letter-spacing: -0.3px;">
+                        탐나오 구매상품 취소처리 요청
+                    </p>
+                    <p style="font-size: 16px; color: #939393; margin: 0; padding-top: 16px; line-height: 22px; letter-spacing: 0; border-bottom: 1px dashed #c2c2c2; padding-bottom: 35px;">
+                        취소요청이 정상적으로 접수됐습니다.<br>
+                        빠른 처리 후 결제수단 별로 처리 결과를 안내드리겠습니다.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5 style="font-size: 14px; margin: 20px 0 10px;">구매 정보</h5>
+                    <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
+                        <colgroup>
+                            <col width="20%" />
+                            <col width="80%" />
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th style="background: #f4f4f4; padding: 10px 5px; border: 1px solid #dcdcdc;">구매번호</th>
+                            <td style="padding: 15px 15px; color:#e94c3f; border: 1px solid #dcdcdc; letter-spacing: -0.3px; font-weight: bold;">$rsvInfo.rsvNum</td>
+                        </tr>
+                        <tr>
+                            <th style="background: #f4f4f4; padding: 10px 5px; border: 1px solid #dcdcdc;">구매일시</th>
+                            <td style="padding: 15px 15px; border: 1px solid #dcdcdc;">$rsvInfo.regDttm</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5 style="font-size: 14px; margin: 20px 0 10px;">상품 정보</h5>
+                    <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
+                        <colgroup>
+                            <col style="width: 20%;">
+                            <col>
+                            <col style="width: 15%;">
+                        </colgroup>
+                        <thead>
+                        <tr style="background: #f4f4f4;">
+                            <th style="border: 1px solid #dcdcdc; padding: 10px 5px;">구분</th>
+                            <th style="border: 1px solid #dcdcdc;">내용</th>
+                            <th style="border: 1px solid #dcdcdc;">금액</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            #foreach($order in $orderList)
+                                <tr style="border: 1px solid #dcdcdc;">
+                                    <td style="text-align: center;">$order.prdtCdNm</td>
+                                    <td style="padding: 15px; border: 1px solid #dcdcdc;">
+                                        <ul style="margin: 0; padding: 0; list-style: none;">
+                                            <li style="padding:6px 0;">
+                                                <h5 style="font-size:12px; margin: 0;">[${order.corpNm}] <span style="color: #FE434C;">$order.prdtNm</span></h5>
+                                                <p style="margin: 5px 0 0 0;">$order.prdtInf</p>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td style="text-align: center; border: 1px solid #dcdcdc;"><strong>$numberTool.format("integer", $order.nmlAmt)원</strong></td>
+                                </tr>
+                            #end
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5 style="font-size: 14px; margin: 20px 0 10px;">구매자 정보</h5>
+                    <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
+                        <colgroup>
+                            <col width="20%">
+                            <col width="30%">
+                            <col width="20%">
+                            <col width="30%">
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th style="background: #f4f4f4; padding: 10px 5px; border: 1px solid #dcdcdc;">이름</th>
+                            <td colspan="3" style="padding: 15px; border: 1px solid #dcdcdc;">$rsvInfo.rsvNm</td>
+                        </tr>
+                        <tr>
+                            <th style="background: #f4f4f4; padding: 10px 5px; border: 1px solid #dcdcdc;">전화번호</th>
+                            <td colspan="3" style="padding: 15px; border: 1px solid #dcdcdc;">$rsvInfo.rsvTelnum</td>
+                        </tr>
+                        <tr>
+                            <th style="background: #f4f4f4; padding: 10px 5px; border: 1px solid #dcdcdc;">이메일</th>
+                            <td colspan="3" style="padding: 15px; border: 1px solid #dcdcdc;">$rsvInfo.rsvEmail</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5 style="font-size: 14px; margin: 20px 0 10px;">배송 정보</h5>
+                    <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
+                        <colgroup>
+                            <col width="20%">
+                            <col width="30%">
+                            <col width="20%">
+                            <col width="30%">
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th style="background: #f4f4f4; padding: 10px 5px; border: 1px solid #dcdcdc;">이름</th>
+                            <td colspan="3" style="padding: 15px; border: 1px solid #dcdcdc;">$rsvInfo.useNm</td>
+                        </tr>
+                        <tr>
+                            <th style="background: #f4f4f4; padding: 10px 5px; border: 1px solid #dcdcdc;">전화번호</th>
+                            <td colspan="3" style="padding: 15px; border: 1px solid #dcdcdc;">$rsvInfo.useTelnum</td>
+                        </tr>
+                        <tr>
+                            <th style="background: #f4f4f4; padding: 10px 5px; border: 1px solid #dcdcdc;">주소</th>
+                            <td colspan="3" style="padding: 15px; border: 1px solid #dcdcdc;">($rsvInfo.postNum) $rsvInfo.roadNmAddr $rsvInfo.dtlAddr</td>
+                        </tr>
+                        <tr>
+                            <th style="background: #f4f4f4; padding: 10px 5px; border: 1px solid #dcdcdc;">배송 요청사항</th>
+                            <td colspan="3" style="padding: 15px; border: 1px solid #dcdcdc;">$rsvInfo.dlvRequestInf</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 40px 0; text-align: center;">
+                    <a href="${domain}/web/mypage/rsvList.do" target="_blank"><img src="${domain}/images/web/mail/reservation-1.png" alt="구매확인 바로가기"></a>
+                </td>
+            </tr>
+        </tbody>
+
+        <!-- tfoot -->
+        #parse("mailTemplate/footer.vm")
+    </table>
+</body>
+</html>

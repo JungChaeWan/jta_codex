@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC 
+    "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN" 
+    "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+<form-validation>
+
+    <formset>
+        <form name="SV_PRDTINFVO">
+        	<field property="prdtNm" depends="required, maxlength">
+        		<arg0 key="상품명" />
+        		<arg1 key="30" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+			<field property="ctgr" depends="required">
+                <arg0 key="카테고리"/>
+            </field>
+            <field property="prdc" depends="maxlength">
+				<arg0 key="생산자"/>
+				<arg1 key="30" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+			<field property="org" depends="maxlength">
+				<arg0 key="원산지"/>
+				<arg1 key="1300" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>1300</var-value>
+				</var>
+			</field>
+			<field property="prdtInf" depends="maxlength">
+				<arg0 key="상품정보"/>
+				<arg1 key="66" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>66</var-value>
+				</var>
+			</field>
+			<field property="saleStartDt" depends="required">
+                <arg0 key="판매시작일자"/>
+            </field>
+			<field property="saleEndDt" depends="required">
+				<arg0 key="판매종료일자" />
+            </field>
+        </form>
+        
+        <form name="SV_OPTINFVO">
+        	<field property="optNm" depends="required, maxlength">
+        		<arg0 key="옵션명" />
+        		<arg1 key="90" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>90</var-value>
+				</var>
+			</field>
+			<field property="nmlAmt" depends="required, integer">
+        		<arg0 key="정상금액" />
+			</field>
+			<field property="saleAmt" depends="required, integer">
+        		<arg0 key="판매금액" />
+			</field>
+			<field property="optPrdtNum" depends="required, integer">
+        		<arg0 key="상품수" />
+			</field>
+        </form>
+        
+        <form name="SV_DIVINFVO">
+        	<field property="prdtDivNm" depends="maxlength">
+        		<arg0 key="상품구분명" />
+        		<arg1 key="30" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+			<field property="viewSn" depends="required, integer">
+        		<arg0 key="노출순번" />
+			</field>
+        </form>
+        
+        <form name="SV_ADDOPTINFVO">
+        	<field property="addOptNm" depends="maxlength">
+        		<arg0 key="추가옵션명" />
+        		<arg1 key="30" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+			<field property="addOptAmt" depends="required, integer">
+        		<arg0 key="추가금액" />
+			</field>
+			<field property="viewSn" depends="required, integer">
+        		<arg0 key="노출순번" />
+			</field>
+        </form>
+        
+        <form name="SVCRTNVO">
+        	<field property="crtnNm" depends="required, maxlength">
+        		<arg0 key="큐레이션명" />
+        		<arg1 key="30" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+			<field property="simpleExp" depends="required">
+        		<arg0 key="간략 설명" />
+			</field>
+        </form>
+    </formset>
+
+</form-validation>

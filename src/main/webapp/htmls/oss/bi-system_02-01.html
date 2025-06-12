@@ -1,0 +1,432 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>모객 관리자시스템</title>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<meta http-equiv="imagetoolbar" content="false" />
+<link rel="stylesheet" type="text/css" href="../../css/common/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/oss/layout.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common/page_style.css" />
+<link rel="stylesheet" type="text/css" href="/css/common/jquery-ui.css" />
+
+<script type="text/javascript" src="/js/jquery-1.11.1.js" ></script>
+<script type="text/javascript" src="/js/jquery-ui.js"></script>
+<script>
+$(document).ready(function() {
+	$("#sStartDt").datepicker({
+		dateFormat : "yy-mm-dd"
+	});
+	$("#sEndDt").datepicker({
+		dateFormat : "yy-mm-dd"
+	});
+});
+</script>
+</head>
+<body>
+<div id="wrapper"> 
+    
+    <!--Header 영역-->
+    <div id="header_wrapper">
+        <h1><img src="../../images/oss/common/logo.gif" alt="모객 관리자 시스템" /></h1>
+        <ul class="lnb_menu">
+			<li class="home"><a href="/" target="_blank">탐나오바로가기</a></li>&gt;
+			<!-- <li class="home"><a href="/">홈으로</a></li> -->
+			<li><a href="/web/viewLogin.do?rtnUrl=/web/mypage/viewChangePw.do" target="_blank">비밀번호변경</a></li>
+			<li class="log"><a href="/oss/ossLogout.do">로그아웃</a></li>
+		</ul>
+        <!--상단메뉴-->
+        <h2 class="lay_none">상단메뉴</h2>
+        <ul class="gnb_menu">
+			<li class="menu01 on"><a href="/oss/home.do">홈</a>
+				<!-- <ul class="gnb_depth" id="menu01" style="display:none">
+				</ul> -->
+			</li>
+			<li class="menu02"><a href="/oss/siteManage.do">환경설정</a>
+				<ul class="gnb_depth" id="menu02" style="display: none;">
+					<li><a href="/oss/siteManage.do">운영설정</a></li>
+					<li><a href="/oss/codeList.do">코드관리</a></li>
+					<li><a href="/oss/cmssList.do">수수료관리</a></li>
+					<li><a href="/oss/bbsList.do">게시판관리</a></li>
+                    <li><a href="/oss/bbsGrpList.do">게시판그룹관리</a></li>
+				</ul>
+			</li>
+			<li class="menu03"><a href="/oss/userList.do">고객관리</a>
+				<ul class="gnb_depth" id="menu03" style="display: none;">
+					<li><a href="/oss/userList.do">사용자관리</a></li>
+                    <li><a href="/oss/dropUserList.do">탈퇴사용자관리</a></li>
+				</ul>
+			</li>
+			<li class="menu11"><a href="/oss/corpList.do">업체/제휴관리</a>
+                <ul class="gnb_depth" id="menu11" style="display: none;">
+                	<li><a href="/oss/corpList.do">입점업체관리</a></li>
+                	<li><a href="/oss/corpPnsReqList.do">입점신청관리</a></li>
+                	<li><a href="/oss/nbbs/bbsList.do?bbsNum=MASNOTI">업체공지사항</a></li>
+                	<li><a href="/oss/nbbs/bbsList.do?bbsNum=MASQA">업체 Q&amp;A 게시판</a></li>                 
+                </ul>
+            </li>
+            <li class="menu05"><a href="/oss/prdtList.do">상품관리</a>
+                <ul class="gnb_depth" id="menu05" style="display: none;">
+                    <li><a href="/oss/prdtList.do">상품관리</a></li>
+                    <li><a href="/oss/socialProductList.do">소셜상품관리</a></li>
+                    <li><a href="/oss/couponList.do">탐나오쿠폰</a></li>
+                    <li><a href="/oss/promotionList.do">프로모션승인관리</a></li>                    
+                </ul>
+            </li>
+            <li class="menu06"><a href="/oss/otoinqList.do">커뮤니티</a>
+                <ul class="gnb_depth" id="menu06" style="display: none;">
+                	<li><a href="/oss/otoinqList.do">1:1문의</a></li>
+                    <li><a href="/oss/useepilList.do">상품평관리</a></li>                    
+                    <li><a href="/oss/nbbs/bbsList.do?bbsNum=NOTICE">공지사항</a></li>
+                </ul>
+            </li>            
+            <li class="menu07"><a href="/oss/rsvList.do">예약관리</a>
+            	<ul class="gnb_depth" id="menu07" style="display: none;">
+					<li><a href="/oss/rsvList.do">예약관리</a></li>
+					<li><a href="/oss/rsvAtPrdtList.do">상품별예약관리</a></li>
+					<li><a href="/oss/refundRsvList.do">환불요청예약관리</a></li>
+				</ul>
+            </li>
+            <li class="menu10"><a href="/oss/eventList.do">마케팅</a>
+            	<ul class="gnb_depth" id="menu10" style="display: none;">
+            		<li><a href="/oss/eventList.do">프로모션</a></li>
+					<li><a href="/oss/smsForm.do">문자 전송</a></li>
+					<li><a href="/oss/emailForm.do">E-Mail 전송</a></li>
+					<li><a href="/oss/pushForm.do">Push 전송</a></li>
+				</ul>
+            </li>
+            <li class="menu09"><a href="/oss/adjList.do">정산</a>
+            	<ul class="gnb_depth" id="menu09" style="display: none;">
+					<li><a href="/oss/adjList.do">정산관리</a></li>
+				</ul>
+            </li>
+            <li class="menu08"><a href="/oss/anls06.do">통계</a>
+            	<ul class="gnb_depth" id="menu08" style="display: none;">
+					<li><a href="/oss/anls06.do">매출통계</a></li>
+					<li><a href="/oss/anls05.do">고객통계</a></li>
+					<li><a href="/oss/anls03.do">일별현황</a></li>
+				</ul>
+            </li>
+            <li class="menu04"><a href="/oss/nbbs/bbsList.do?bbsNum=FNREQ">지원</a>
+            	<ul class="gnb_depth" id="menu04" style="display: none;">
+					<li><a href="/oss/nbbs/bbsList.do?bbsNum=FNREQ">기능개선요청</a></li>
+				</ul>
+            </li>
+            <li class="menu-bi"><a href="#">BI시스템</a>
+                <ul class="gnb_depth" id="menu11" style="display:none">
+                    <li><a href="#">고객이용 통계</a></li>
+                    <li><a href="#">입점업체 통계</a></li>
+                    <li><a href="#">판매 통계</a></li>
+                    <li><a href="#">광고수익률 통계</a></li>
+                    <li><a href="#">정산 통계</a></li>
+                </ul>
+            </li>
+		</ul>
+        <!--//상단메뉴--> 
+    </div>
+    <!--//Header 영역--> 
+    <!--Contents 영역-->
+    <div id="contents_wrapper">
+        <div id="side_area"> 
+            <!--사이드메뉴-->
+            <div class="side_menu">
+                <h3>BI시스템</h3>
+                <ul>
+                    <li><a href="#">고객이용 통계</a></li>
+                    <li class="on"><a href="#">입점업체 통계</a></li>
+                    <li><a href="#">판매 통계</a></li>
+                    <li><a href="#">광고수익률 통계</a></li>
+                    <li><a href="#">정산 통계</a></li>
+                </ul>
+            </div>
+            <!--//사이드메뉴--> 
+            <!--접속정보-->
+            <div class="side_log"> 
+                <!--닫혀있을 때-->
+                <div class="close_lay lay_none"> <strong>접속정보</strong><span class="btn"><a href="#"><img src="../../images/oss/btn/open_btn01.gif" alt="열기" /></a></span> </div>
+                <!--//닫혀있을 때--> 
+                <!--열려있을 때-->
+                <div class="open_lay">
+                    <dl>
+                        <dt>Email :</dt>
+                        <dd>admin@admin.com</dd>
+                        <dt>성명 :</dt>
+                        <dd>관리자</dd>
+                        <dt>아이피 :</dt>
+                        <dd>0:0:0:0:0:0:0:1</dd>
+                    </dl>
+                    <!-- <p class="btn"><a href="#"><img src="images/btn/close_btn01.gif" alt="닫기" /></a></p> -->
+                </div>
+                <!--//열려있을 때--> 
+            </div>
+            <!--//접속정보--> 
+            <!--사이트바로가기-->
+            <ul class="side_go_link">
+                <li>
+                    <select name="g_link_url" class="full" onchange="MM_openNewWindow(this.value);">
+                        <option value="">== 사이트 바로가기 ==</option>
+                        <option value="">바로가기 사이트 추가</option>
+                    </select>
+                </li>
+            </ul>
+            <!--//사이트바로가기--> 
+        </div>
+        <div id="contents_area">
+            <div id="contents">
+                
+                <!-- change contents -->
+                <!-- 3Depth menu -->
+                <div id="menu_depth3">
+					<ul>
+						<li class="on"><a class="menu_depth3" href="bi-system_02-01.html">전체</a></li>
+						<li><a class="menu_depth3" href="bi-system_02-02.html">숙소</a></li>
+						<li><a class="menu_depth3" href="bi-system_02-03.html">렌터카</a></li>
+						<li><a class="menu_depth3" href="bi-system_02-04.html">관광지</a></li>
+						<li><a class="menu_depth3" href="bi-system_02-05.html">패키지</a></li>
+					</ul>
+				</div>
+				
+				<!-- 검색옵션 -->
+				<div class="search_box">
+			        <div class="search_form">
+			            <div class="tb_form">
+			                <table width="100%" border="0">
+			                    <colgroup>
+			                        <col style="widht: 100px" />
+			                        <col />
+			                    </colgroup>
+			                    <tbody>
+			                        <tr>
+			                            <th scope="row">기간</th>
+			                            <td class="date-wrap">
+			                            	<button type="button">오늘</button>
+			                            	<button type="button">7일</button>
+			                            	<button type="button">15일</button>
+			                            	<button type="button">1개월</button>
+			                            	<button type="button">3개월</button>
+			                            	<button type="button">6개월</button>
+			                            	
+			                                <input type="text" id="sStartDt" class="input_text4 center" name="sStartDt" title="검색시작일" /> ~ 
+	               							<input type="text" id="sEndDt" class="input_text4 center" name="sEndDt"  title="검색종료일" />
+			                            </td>
+			                        </tr>
+			                        <tr>
+			                            <th scope="row">업체명</th>
+			                            <td>
+			                                <input type="text" placeholder="업체명을 입력해주세요." style="width: 245px" />
+			                            </td>
+			                        </tr>
+			                    </tbody>
+			                </table>
+			            </div>
+			            <span class="btn"><input type="image" src="/images/oss/btn/search_btn01.gif" alt="검색" onclick="javascript:fn_Search('1')" /></span>
+			        </div>
+			    </div>
+			    
+			    <!-- 검색결과 -->
+			    <h4 class="title08">업체 전체</h4>
+			    <div class="search-value">
+			    	<ul>
+			    		<li>
+			    			<h5 class="title">예약</h5>
+			    			<p class="count"><span>99,999</span> <small>건</small></p>
+	    				</li>
+	    				<li>
+			    			<h5 class="title">평점</h5>
+			    			<p class="count"><span>4.1</span> <small>점</small></p>
+	    				</li>
+	    				<li>
+			    			<h5 class="title">1:1 문의</h5>
+			    			<p class="count"><span>99,999</span> <small>건</small></p>
+	    				</li>
+	    				<li>
+			    			<h5 class="title">View(click)</h5>
+			    			<p class="count"><span>99,999</span> <small>건</small></p>
+	    				</li>
+	    				<li>
+			    			<h5 class="title">예약취소</h5>
+			    			<p class="count"><span>99,999</span> <small>건</small></p>
+	    				</li>
+	    				<li>
+			    			<h5 class="title">이용후기</h5>
+			    			<p class="count"><span>99,999</span> <small>건</small></p>
+	    				</li>
+	    				<li>
+			    			<h5 class="title">SNS 공유</h5>
+			    			<p class="count"><span>99,999</span> <small>건</small></p>
+	    				</li>
+	    				<li>
+			    			<h5 class="title">재구매</h5>
+			    			<p class="count"><span>99,999</span> <small>건</small></p>
+	    				</li>
+			    	</ul>
+			    </div>
+				
+				<table class="table01 center">
+			        <colgroup>
+			            <col style="width: 6%">
+			            <col>
+			            <col style="width: 9%">
+			            <col style="width: 9%">
+			            <col style="width: 9%">
+			            <col style="width: 9%">
+			            <col style="width: 9%">
+			            <col style="width: 9%">
+			            <col style="width: 9%">
+			            <col style="width: 9%">
+			        </colgroup>
+			        <thead>
+			            <tr>
+			                <th class="sort">No.</th>
+			                <th class="sort">업체명 <span class="sign">▼</span></th>
+			                <th class="sort">예약 <span class="sign">▲</span></th>
+			                <th class="sort">예약 취소 <span class="sign">▲</span></th>
+			                <th class="sort">평점 <span class="sign">▲</span></th>
+			                <th class="sort">이용후기 <span class="sign">▲</span></th>
+			                <th class="sort">1:1 문의 <span class="sign">▲</span></th>
+			                <th class="sort">SNS 공유 <span class="sign">▲</span></th>
+			                <th class="sort">View <span class="sign">▲</span></th>
+			                <th class="sort">재구매 <span class="sign">▲</span></th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			            <!-- <tr>
+			                <td>1</td>
+			                <td>썬라이즈호텔</td>
+			                <td>236 건</td>
+			                <td>72 건</td>
+			                <td>4.1 점</td>
+			                <td>52 건</td>
+			                <td>52 건</td>
+			                <td>752 건</td>
+			                <td>11,321 건</td>
+			                <td>32 건</td>
+			            </tr>
+			            <tr>
+			                <td>2</td>
+			                <td>제주에어포트호텔</td>
+			                <td>236 건</td>
+			                <td>72 건</td>
+			                <td>4.1 점</td>
+			                <td>52 건</td>
+			                <td>52 건</td>
+			                <td>752 건</td>
+			                <td>11,321 건</td>
+			                <td>32 건</td>
+			            </tr>
+			            <tr>
+			                <td>3</td>
+			                <td>번개과학체험관 입장권</td>
+			                <td>236 건</td>
+			                <td>72 건</td>
+			                <td>4.1 점</td>
+			                <td>52 건</td>
+			                <td>52 건</td>
+			                <td>752 건</td>
+			                <td>11,321 건</td>
+			                <td>32 건</td>
+			            </tr>
+			            <tr>
+			                <td>4</td>
+			                <td>번개과학체험관 입장권</td>
+			                <td>236 건</td>
+			                <td>72 건</td>
+			                <td>4.1 점</td>
+			                <td>52 건</td>
+			                <td>52 건</td>
+			                <td>752 건</td>
+			                <td>11,321 건</td>
+			                <td>32 건</td>
+			            </tr>
+			            <tr>
+			                <td>5</td>
+			                <td>번개과학체험관 입장권</td>
+			                <td>236 건</td>
+			                <td>72 건</td>
+			                <td>4.1 점</td>
+			                <td>52 건</td>
+			                <td>52 건</td>
+			                <td>752 건</td>
+			                <td>11,321 건</td>
+			                <td>32 건</td>
+			            </tr>
+			            <tr>
+			                <td>6</td>
+			                <td>번개과학체험관 입장권</td>
+			                <td>236 건</td>
+			                <td>72 건</td>
+			                <td>4.1 점</td>
+			                <td>52 건</td>
+			                <td>52 건</td>
+			                <td>752 건</td>
+			                <td>11,321 건</td>
+			                <td>32 건</td>
+			            </tr>
+			            <tr>
+			                <td>7</td>
+			                <td>번개과학체험관 입장권</td>
+			                <td>236 건</td>
+			                <td>72 건</td>
+			                <td>4.1 점</td>
+			                <td>52 건</td>
+			                <td>52 건</td>
+			                <td>752 건</td>
+			                <td>11,321 건</td>
+			                <td>32 건</td>
+			            </tr>
+			            <tr>
+			                <td>8</td>
+			                <td>번개과학체험관 입장권</td>
+			                <td>236 건</td>
+			                <td>72 건</td>
+			                <td>4.1 점</td>
+			                <td>52 건</td>
+			                <td>52 건</td>
+			                <td>752 건</td>
+			                <td>11,321 건</td>
+			                <td>32 건</td>
+			            </tr>
+			            <tr>
+			                <td>9</td>
+			                <td>번개과학체험관 입장권</td>
+			                <td>236 건</td>
+			                <td>72 건</td>
+			                <td>4.1 점</td>
+			                <td>52 건</td>
+			                <td>52 건</td>
+			                <td>752 건</td>
+			                <td>11,321 건</td>
+			                <td>32 건</td>
+			            </tr>
+			            <tr>
+			                <td>10</td>
+			                <td>번개과학체험관 입장권</td>
+			                <td>236 건</td>
+			                <td>72 건</td>
+			                <td>4.1 점</td>
+			                <td>52 건</td>
+			                <td>52 건</td>
+			                <td>752 건</td>
+			                <td>11,321 건</td>
+			                <td>32 건</td>
+			            </tr> -->
+			            <tr>
+			                <td colspan="10">
+			                	<div class="not-content">검색된 결과과 없습니다.</div>
+			                </td>
+			            </tr>
+			        </tbody>
+			    </table>
+			    
+			    <p class="list_pageing">
+			        <span class="btn"><a href="#" onclick="fn_Search(1); return false;"><img src="/images/oss/btn/first_btn01.gif" alt="처음페이지"></a>&nbsp;<a href="#" onclick="fn_Search(1); return false;"><img src="/images/oss/btn/prev_btn01.gif" alt="이전페이지"></a></span>&nbsp;<strong>1</strong>&nbsp;<span><a href="#" onclick="fn_Search(2); return false;">2</a></span>&nbsp;<span><a href="#" onclick="fn_Search(3); return false;">3</a></span>&nbsp;<span><a href="#" onclick="fn_Search(4); return false;">4</a></span>&nbsp;<span><a href="#" onclick="fn_Search(5); return false;">5</a></span>&nbsp;<span><a href="#" onclick="fn_Search(6); return false;">6</a></span>&nbsp;<span><a href="#" onclick="fn_Search(7); return false;">7</a></span>&nbsp;<span><a href="#" onclick="fn_Search(8); return false;">8</a></span>&nbsp;<span><a href="#" onclick="fn_Search(9); return false;">9</a></span>&nbsp;<span><a href="#" onclick="fn_Search(10); return false;">10</a></span>&nbsp;<span class="btn"><a href="#" onclick="fn_Search(11); return false;"><img src="/images/oss/btn/next_btn01.gif" alt="다음페이지"></a>&nbsp;<a href="#" onclick="fn_Search(22); return false;"><img src="/images/oss/btn/last_btn01.gif" alt="마지막페이지"></a></span>&nbsp;
+			    </p>
+                <!-- //change contents -->
+                
+            </div>
+        </div>
+    </div>
+    <!--//Contents 영역-->
+    
+</div>
+</body>
+</html>

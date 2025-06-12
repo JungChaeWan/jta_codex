@@ -1,0 +1,487 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>모객 관리자시스템</title>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<meta http-equiv="imagetoolbar" content="false" />
+<link rel="stylesheet" type="text/css" href="/css/common/common.css" />
+<link rel="stylesheet" type="text/css" href="/css/oss/layout.css" />
+<link rel="stylesheet" type="text/css" href="/css/common/page_style.css" />
+<link rel="stylesheet" type="text/css" href="/css/common/jquery-ui.css" />
+
+<script type="text/javascript" src="/js/jquery-1.11.1.js" ></script>
+<script type="text/javascript" src="/js/jquery-ui.js"></script>
+<script>
+function day_width() {
+	var obj  = '#ad_article li',										//대상 container
+		item = '.day-wrap',												//가로 스크롤 대상
+		wid = $('#ad_article').width();									//가로 스크롤 대상 body scroll x 
+	
+	$('#ad_article').css('width', wid-2);								//2는 border px
+	
+	$(obj).each(function( index ) {
+		var dayWidth = 0;												//초기화
+		
+		$(obj).eq(index).find(item + ' dl').map(function(){
+			dayWidth = dayWidth + $(this).outerWidth(true);
+		});	
+		
+		$(obj).eq(index).find(item).css('width', (dayWidth+20));
+	});
+}
+
+$(document).ready(function() {
+	$("#sStartDt").datepicker({
+		dateFormat : "yy-mm-dd"
+	});
+	$("#sEndDt").datepicker({
+		dateFormat : "yy-mm-dd"
+	});
+	
+	//날짜 가로 스크롤 실행
+	day_width();
+});
+</script>
+
+</head>
+<body>
+<div id="wrapper"> 
+    
+    <!--Header 영역-->
+    <div id="header_wrapper">
+        <h1><img src="../../images/oss/common/logo.gif" alt="모객 관리자 시스템" /></h1>
+        <ul class="lnb_menu">
+			<li class="home"><a href="/" target="_blank">탐나오바로가기</a></li>&gt;
+			<!-- <li class="home"><a href="/">홈으로</a></li> -->
+			<li><a href="/web/viewLogin.do?rtnUrl=/web/mypage/viewChangePw.do" target="_blank">비밀번호변경</a></li>
+			<li class="log"><a href="/oss/ossLogout.do">로그아웃</a></li>
+		</ul>
+        <!--상단메뉴-->
+        <h2 class="lay_none">상단메뉴</h2>
+        <ul class="gnb_menu">
+			<li class="menu01 on"><a href="/oss/home.do">홈</a>
+				<!-- <ul class="gnb_depth" id="menu01" style="display:none">
+				</ul> -->
+			</li>
+			<li class="menu02"><a href="/oss/siteManage.do">환경설정</a>
+				<ul class="gnb_depth" id="menu02" style="display: none;">
+					<li><a href="/oss/siteManage.do">운영설정</a></li>
+					<li><a href="/oss/codeList.do">코드관리</a></li>
+					<li><a href="/oss/cmssList.do">수수료관리</a></li>
+					<li><a href="/oss/bbsList.do">게시판관리</a></li>
+                    <li><a href="/oss/bbsGrpList.do">게시판그룹관리</a></li>
+				</ul>
+			</li>
+			<li class="menu03"><a href="/oss/userList.do">고객관리</a>
+				<ul class="gnb_depth" id="menu03" style="display: none;">
+					<li><a href="/oss/userList.do">사용자관리</a></li>
+                    <li><a href="/oss/dropUserList.do">탈퇴사용자관리</a></li>
+				</ul>
+			</li>
+			<li class="menu11"><a href="/oss/corpList.do">업체/제휴관리</a>
+                <ul class="gnb_depth" id="menu11" style="display: none;">
+                	<li><a href="/oss/corpList.do">입점업체관리</a></li>
+                	<li><a href="/oss/corpPnsReqList.do">입점신청관리</a></li>
+                	<li><a href="/oss/nbbs/bbsList.do?bbsNum=MASNOTI">업체공지사항</a></li>
+                	<li><a href="/oss/nbbs/bbsList.do?bbsNum=MASQA">업체 Q&amp;A 게시판</a></li>                 
+                </ul>
+            </li>
+            <li class="menu05"><a href="/oss/prdtList.do">상품관리</a>
+                <ul class="gnb_depth" id="menu05" style="display: none;">
+                    <li><a href="/oss/prdtList.do">상품관리</a></li>
+                    <li><a href="/oss/socialProductList.do">소셜상품관리</a></li>
+                    <li><a href="/oss/couponList.do">탐나오쿠폰</a></li>
+                    <li><a href="/oss/promotionList.do">프로모션승인관리</a></li>                    
+                </ul>
+            </li>
+            <li class="menu06"><a href="/oss/otoinqList.do">커뮤니티</a>
+                <ul class="gnb_depth" id="menu06" style="display: none;">
+                	<li><a href="/oss/otoinqList.do">1:1문의</a></li>
+                    <li><a href="/oss/useepilList.do">상품평관리</a></li>                    
+                    <li><a href="/oss/nbbs/bbsList.do?bbsNum=NOTICE">공지사항</a></li>
+                </ul>
+            </li>            
+            <li class="menu07"><a href="/oss/rsvList.do">예약관리</a>
+            	<ul class="gnb_depth" id="menu07" style="display: none;">
+					<li><a href="/oss/rsvList.do">예약관리</a></li>
+					<li><a href="/oss/rsvAtPrdtList.do">상품별예약관리</a></li>
+					<li><a href="/oss/refundRsvList.do">환불요청예약관리</a></li>
+				</ul>
+            </li>
+            <li class="menu10"><a href="/oss/eventList.do">마케팅</a>
+            	<ul class="gnb_depth" id="menu10" style="display: none;">
+            		<li><a href="/oss/eventList.do">프로모션</a></li>
+					<li><a href="/oss/smsForm.do">문자 전송</a></li>
+					<li><a href="/oss/emailForm.do">E-Mail 전송</a></li>
+					<li><a href="/oss/pushForm.do">Push 전송</a></li>
+				</ul>
+            </li>
+            <li class="menu09"><a href="/oss/adjList.do">정산</a>
+            	<ul class="gnb_depth" id="menu09" style="display: none;">
+					<li><a href="/oss/adjList.do">정산관리</a></li>
+				</ul>
+            </li>
+            <li class="menu08"><a href="/oss/anls06.do">통계</a>
+            	<ul class="gnb_depth" id="menu08" style="display: none;">
+					<li><a href="/oss/anls06.do">매출통계</a></li>
+					<li><a href="/oss/anls05.do">고객통계</a></li>
+					<li><a href="/oss/anls03.do">일별현황</a></li>
+				</ul>
+            </li>
+            <li class="menu04"><a href="/oss/nbbs/bbsList.do?bbsNum=FNREQ">지원</a>
+            	<ul class="gnb_depth" id="menu04" style="display: none;">
+					<li><a href="/oss/nbbs/bbsList.do?bbsNum=FNREQ">기능개선요청</a></li>
+				</ul>
+            </li>
+            <li class="menu-bi"><a href="#">BI시스템</a>
+                <ul class="gnb_depth" id="menu11" style="display:none">
+                    <li><a href="#">고객이용 통계</a></li>
+                    <li><a href="#">입점업체 통계</a></li>
+                    <li><a href="#">판매 통계</a></li>
+                    <li><a href="#">광고수익률 통계</a></li>
+                    <li><a href="#">정산 통계</a></li>
+                </ul>
+            </li>
+		</ul>
+        <!--//상단메뉴--> 
+    </div>
+    <!--//Header 영역--> 
+    <!--Contents 영역-->
+    <div id="contents_wrapper">
+        <div id="contents_area">
+            <div id="contents">
+                
+                <!-- change contents -->
+                <div class="search_box">
+			        <div class="search_form">
+			            <div class="tb_form">
+			                <table width="100%" border="0">
+			                    <colgroup>
+			                        <col style="widht: 100px" />
+			                        <col />
+			                        <col style="widht: 100px" />
+			                        <col />
+			                    </colgroup>
+			                    <tbody>
+			                    	<tr>
+							            <th scope="row">인원선택</th>
+							            <td>
+									        <select title="성인선택">
+									        	<option value="">성인 1인</option>
+									        	<option value="">성인 2인</option>
+									        </select>
+									        <select title="소아선택">
+									        	<option value="">소아 1인</option>
+									        	<option value="">소아 2인</option>
+									        </select>
+									        <select title="유아선택">
+									        	<option value="">유아 1인</option>
+									        	<option value="">유아 2인</option>
+									        </select>
+									    </td>
+									    <th scope="row">일정선택</th>
+			                            <td class="date-wrap">
+			                            	<input type="text" id="sStartDt" class="input_text4 center" name="sStartDt" title="검색시작일" /> ~ 
+	               							<input type="text" id="sEndDt" class="input_text4 center" name="sEndDt"  title="검색종료일" />
+			                            </td>
+							        </tr>
+			                    </tbody>
+			                </table>
+			            </div>
+			            <span class="btn"><input type="image" src="/images/oss/btn/search_btn01.gif" alt="검색" onclick="javascript:fn_Search('1')" /></span>
+			        </div>
+			    </div>
+                
+                <div class="ad-detail">
+					<div class="ad-container">
+			        	<ul id="ad_article" class="ad-article">
+			        		<li>
+			        			<div class="head">
+			        				<p class="title">가든(2/2인)</p>
+		        					<p class="memo">원룸형(더블1/욕실겸주방)</p>
+			        			</div>
+			        			<div class="body">
+			        				<div class="day-wrap">
+				        				<dl>
+				        					<dt>07(화)</dt>
+				        					<dd>
+				        						<div class="row">50,000 (3)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>08(수)</dt>
+				        					<dd>
+				        						<div class="row">500,000 (99)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>09(목)</dt>
+				        					<dd class="not"></dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>10(금)</dt>
+				        					<dd class="not"></dd>
+				        				</dl>
+				        				<dl class="sat">
+				        					<dt>11(토)</dt>
+				        					<dd>
+				        						<div class="row">5,000 (1)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl class="sun">
+				        					<dt>12(일)</dt>
+				        					<dd>
+				        						<div class="row">500 (3)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>13(월)</dt>
+				        					<dd>
+				        						<div class="row">5,000,000 (99)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+			        				</div>
+			        			</div>
+			        		</li>
+			        		<li>
+			        			<div class="head">
+			        				<p class="title">아이올로스 (2/4인)</p>
+		        					<p class="memo">싱글배드 2개</p>
+			        			</div>
+			        			<div class="body">
+			        				<div class="day-wrap">
+				        				<dl>
+				        					<dt>07(화)</dt>
+				        					<dd>
+				        						<div class="row">50,000 (3)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>08(수)</dt>
+				        					<dd>
+				        						<div class="row">500,000 (99)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>09(목)</dt>
+				        					<dd class="not"></dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>10(금)</dt>
+				        					<dd class="not"></dd>
+				        				</dl>
+				        				<dl class="sat">
+				        					<dt>11(토)</dt>
+				        					<dd>
+				        						<div class="row">5,000 (1)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl class="sun">
+				        					<dt>12(일)</dt>
+				        					<dd>
+				        						<div class="row">500 (3)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>13(월)</dt>
+				        					<dd>
+				        						<div class="row">5,000,000 (99)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>14(화)</dt>
+				        					<dd>
+				        						<div class="row">50,000 (3)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>15(수)</dt>
+				        					<dd>
+				        						<div class="row">500,000 (99)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>16(목)</dt>
+				        					<dd class="not"></dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>17(금)</dt>
+				        					<dd class="not"></dd>
+				        				</dl>
+				        				<dl class="sat">
+				        					<dt>18(토)</dt>
+				        					<dd>
+				        						<div class="row">5,000 (1)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl class="sun">
+				        					<dt>19(일)</dt>
+				        					<dd>
+				        						<div class="row">500 (3)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>20(월)</dt>
+				        					<dd>
+				        						<div class="row">5,000,000 (3)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>21(화)</dt>
+				        					<dd>
+				        						<div class="row">50,000 (3)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>22(수)</dt>
+				        					<dd>
+				        						<div class="row">500,000 (99)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>23(목)</dt>
+				        					<dd class="not"></dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>24(금)</dt>
+				        					<dd class="not"></dd>
+				        				</dl>
+				        				<dl class="sat">
+				        					<dt>25(토)</dt>
+				        					<dd>
+				        						<div class="row">5,000 (1)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl class="sun">
+				        					<dt>26(일)</dt>
+				        					<dd>
+				        						<div class="row">500 (3)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>27(월)</dt>
+				        					<dd>
+				        						<div class="row">5,000,000 (3)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>28(화)</dt>
+				        					<dd>
+				        						<div class="row">50,000 (3)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+				        				<dl>
+				        					<dt>29(수)</dt>
+				        					<dd>
+				        						<div class="row">500,000 (99)</div>
+				        						<div class="row"><a href="#" class="btn sm">선택</a></div>
+				        					</dd>
+				        				</dl>
+			        				</div>
+			        			</div>
+			        		</li>
+			        	</ul>
+		        	</div>
+				    
+				    <div class="list margin-top40">
+				        <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table01">
+				        	<colgroup>
+				        		<col width="5%" />
+				        		<col width="10%" />
+				        		<col />
+				        		<col width="8%" />
+				        		<col width="15%" />
+				        		<col width="8%" />
+				        		<col width="26%" />
+				        		<col width="8%" />
+				        	</colgroup>
+				            <thead>
+				                <tr>
+				                    <th>삭제</th>
+				                    <th>숙박일</th>
+				                    <th>객실명</th>
+				                    <th>기준</th>
+				                    <th>신청인원</th>
+				                    <th>숙박료</th>
+				                    <th>인원추가</th>
+				                    <th>합계</th>
+				                </tr>
+				            </thead>
+				            <tbody>
+				            	<!-- 객실 없을 경우 -->
+				            	<tr>
+				            		<td colspan="8" class="align_ct" style="padding: 30px 0">선택된 객실이 없습니다.</td>
+				            	</tr>
+				            	<!-- //객실 없을 경우 -->
+				                <tr>
+				                    <td class="align_ct"><a href="#" class="btn sm">X</a></td>
+				                    <td class="align_ct">2016-08-05 (수)</td>
+				                    <td class="align_ct">호노니</td>
+				                    <td class="align_ct">4/8</td>
+				                    <td class="align_ct">성인:2 / 소아:1 / 유아:1</td>
+				                    <td class="align_ct">9,999,000</td>
+				                    <td class="align_ct">성인 1 : 999,000 / 소아 1 : 999,000 / 유아 1 : 999,000원</td>
+			                    	<td class="align_ct">9,999,000</td>
+				                </tr>
+				                <tr>
+				                    <td class="align_ct"><a href="#" class="btn sm">X</a></td>
+				                    <td class="align_ct">2016-08-05 (수)</td>
+				                    <td class="align_ct">호노니</td>
+				                    <td class="align_ct">4/8</td>
+				                    <td class="align_ct">성인:2 / 소아:1 / 유아:1</td>
+				                    <td class="align_ct">110,000</td>
+				                    <td class="align_ct">소아 1 : 10,000 / 유아 1 : 10,000원</td>
+			                    	<td class="align_ct">120,000</td>
+				                </tr>
+				            </tbody>
+				            <tfoot>
+				            	<tr>
+				            		<td colspan="8" class="align_rt">
+				            			<div class="total-wrap">
+				            				<span>객실금액 : <strong>520,000</strong>원 /</span>
+				            				<span>인원추가 : <strong>50,000</strong>원 /</span>
+				            				<span class="total">총합계 : <strong>570,000</strong>원</span>
+				            			</div>						            			
+				            		</td>
+				            	</tr>
+				            </tfoot>
+				        </table>
+				    </div> <!--//list-->
+			    </div>
+			    
+			    <div class="btn-wrap2">
+			    	<a href="" class="btn">업체 상세보기</a>
+			    	<a href="" class="btn red">전체삭제</a>
+			    	<a href="" class="btn blue">예약하기</a>
+			    </div>
+                <!-- //change contents -->
+                
+            </div>
+        </div>
+    </div>
+    <!--//Contents 영역-->
+    
+</div>
+</body>
+</html>

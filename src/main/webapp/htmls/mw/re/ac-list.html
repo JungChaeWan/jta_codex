@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>제주 농부의 장 - 탐나오</title>
+
+    <link rel="stylesheet" href="../../../css/mw/common2.css">
+    <link rel="stylesheet" href="../../../css/mw/style.css">
+    <link rel="stylesheet" href="../../../css/mw/ac.css">
+
+    <script src="../../../js/jquery-1.11.1.js"></script>
+    <script src="../../../js/jquery-ui.js"></script>
+    <script src="../../../js/jquery.cookie.js"></script>
+    <script src="../../../js/mw_common.js"></script>
+    <script src="../../../js/mw_style.js"></script>
+
+    <!-- add script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../../js/swiper.js"></script>
+
+    <script>
+
+        //상단 Top Banner Close
+        function topBanner() {
+            var obj = '#top_banner';											//target
+            var cookieName = 'topBanner';										//쿠키이름
+
+            var itemSize = $('#top_banner ul li').size();
+
+            if(itemSize > 0) {
+                if(("localStorage" in window) && window.localStorage != null) {
+                    var prevTime = localStorage.getItem(cookieName);
+                    var currentTime = new Date().getTime();
+                    var expirationDuration = 24 * 60 * 60 * 1000;		// 24h
+
+                    var notAccepted = (prevTime == undefined);
+                    var prevAcceptedExpired = (prevTime != undefined) && ((currentTime - prevTime) > expirationDuration);
+
+                    if(notAccepted || prevAcceptedExpired) {
+                        $(obj).show();
+                    }
+                } else {
+                    $(obj).hide();
+                }
+
+                $("#top_close").click(function() {
+                    $(obj).hide();
+
+                    if(("localStorage" in window) && window.localStorage != null) {
+                        var currentTime = new Date().getTime();
+                        localStorage.setItem(cookieName, currentTime);
+                    }
+                    /*$("#main").css("margin-top", $(".top_fix").height() + "px" );*/
+                    return false;
+                });
+            }
+
+            if(itemSize > 1) {
+                topBannerSlider();
+            }
+            /*$("#main").css("margin-top", $(".top_fix").height() + "px" );*/
+
+        }
+
+        function topBannerSlider() {
+            new Swiper('#top_banner', {
+                paginationClickable: true,
+                direction: 'vertical',
+                autoplay: 5000,
+                loop: true
+            });
+        }
+
+
+    $(document).ready(function(){
+        doSwiper();
+    });
+
+    // Hide Header on on scroll down
+    var didScroll;
+    var lastScrollTop = 0;
+    var delta = 5;
+    var navbarHeight = $('.head-wrap').outerHeight();
+
+    $(window).scroll(function(event){
+        didScroll = true;
+    });
+
+    setInterval(function() {
+        if (didScroll) {
+            hasScrolled();
+            didScroll = false;
+        }
+    }, 250);
+
+    function hasScrolled() {
+        var st = $(this).scrollTop();
+
+        // Make sure they scroll more than delta
+        if(Math.abs(lastScrollTop - st) <= delta)
+            return;
+
+        // If they scrolled down and are past the navbar, add class .nav-up.
+        // This is necessary so you never see what is "behind" the navbar.
+        if (st > lastScrollTop && st > navbarHeight){
+            // Scroll Down
+            $('.head-wrap').removeClass('nav-down').addClass('nav-up');
+        } else {
+            // Scroll Up
+            if(st + $(window).height() < $(document).height()) {
+                $('.head-wrap').removeClass('nav-up').addClass('nav-down');
+            }
+        }
+        lastScrollTop = st;
+    }
+
+    // 화면 사이즈별 슬라이드 설정
+    var screenWidth = 360;
+    var slideCnt = 2;
+    var swiper1 = null;
+    var swiper6 = null;
+    var swiper4 = null;
+    var swiper5 = null;
+    var swiper3 = null;
+
+    function doSwiper() {
+        screenWidth = $(window).width();
+
+        if (screenWidth < 720) {
+            slideCnt = 2;
+        } else {
+            slideCnt = 3;
+        }
+
+    }
+
+    // 화면 사이즈 변경 이벤트
+    $(window).resize(function(){
+        var screenWidth2 = $(window).width();
+
+        if(screenWidth2 >= 720) {
+            if(screenWidth < 720) {
+                doSwiper();
+            }
+        } else {
+            if(screenWidth >= 720) {
+                doSwiper();
+            }
+        }
+        $(".bx-wrapper").css("max-width", screenWidth2);
+    });
+
+    </script>
+</head>
+<body>
+<div id="wrap">
+
+    <!-- header -->
+    <header id="header">
+        <div class="head-wrap">
+            <div class="title-wrap">
+                <h1 class="title">제주 농부의 장</h1>
+                <div class="l-area">
+                    <a href="javascript:history.back()" class="back" title="뒤로가기"></a>
+                </div>
+                <div class="r-area-side">
+                    <button type="button" id="frame_sideOpen" class="side-btn" title="사이드메뉴 열기"></button>
+                </div>
+            </div>
+            <div class="menu-typeA">
+                <h2 class="sec-caption">메뉴 선택</h2>
+                <nav id="scroll_menuA" class="scroll-menuA">
+                    <div class="scroll-area">
+                        <ul>
+                            <li class="active"><a href="">전체</a></li>
+                            <li><a href="">간식·음료</a></li>
+                            <li><a href="">차·식초</a></li>
+                            <li><a href="">원물·과일</a></li>
+                            <li><a href="">전통·발효식품·반찬</a></li>
+                            <li><a href="">곡류·원물가공식품</a></li>
+                            <li><a href="">잼·꿀·조청·당류가공식품</a></li>
+                            <li><a href="">유제품·육가공·축산식품</a></li>
+                            <li><a href="">생활용품·화장품·천연염색</a></li>
+                            <li><a href="">체험·관광</a></li>
+                            <li><a href="">제주키트꾸러미</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header><!-- //header -->
+
+    <main id="main">
+        <div class="mw-list-area">
+
+            <!-- 탐나는전 check point -->
+            <div class="pay-check">
+                <input type="checkbox" name="payCheck" id="payCheck" value="Y" checked="checked">
+                <label for="payCheck">
+                    <img src="../../../images/mw/icon/form/jejupay_icon.png" alt="탐나는전">
+                </label>
+            </div><!-- 탐나는전 check point -->
+
+            <!-- agriculture change -->
+            <section class="social-list-area">
+                <div class="option-area">
+                    <select>
+                        <option value="SALE">판매순</option>
+                        <option value="PRICE">가격순</option>
+                        <option value="NEW" selected>최신상품순</option>
+                        <option value="GPA">탐나오 추천순</option>
+                    </select>
+                </div>
+                <div class="mw-list">
+                    <h2 class="sec-caption">소셜상품 목록</h2>
+                    <ul>
+                        <li>
+                            <div class="social-photo">
+                                <!-- label  -->
+                                <div class="bxLabel">
+                                    <span class="main_label eventblue">이벤트</span>
+                                    <span class="main_label pink">할인쿠폰</span>
+                                    <span class="main_label back-purple">공모전수상작</span>
+                                    <span class="main_label back-red">우수관광사업체</span>
+                                    <span class="main_label back-red">JQ인증</span>
+                                    <span class="main_label yellow">탐나는전</span>
+                                </div><!-- //label  -->
+
+                                <img src="../../../images/web/other/product_02.jpg" alt="소셜">
+                            </div>
+                            <div class="text">
+                                <div class="title">제목이 길어지는 경우 제목이 길어지는 경우</div>
+                                <div class="info">
+                                    <dl>
+                                        <dd>
+                                            <div class="price">
+                                                <strong>999,000원</strong>
+                                                <del>999,000원</del>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="social-photo">
+                                <!-- label  -->
+                                <div class="bxLabel">
+                                    <span class="main_label eventblue">이벤트</span>
+                                    <span class="main_label pink">할인쿠폰</span>
+                                    <span class="main_label back-purple">공모전수상작</span>
+                                    <span class="main_label back-red">우수관광사업체</span>
+                                    <span class="main_label back-red">JQ인증</span>
+                                    <span class="main_label yellow">탐나는전</span>
+                                </div><!-- //label  -->
+
+                                <img src="../../../images/web/other/product_02.jpg" alt="소셜">
+                            </div>
+                            <div class="text">
+                                <div class="title">패들보드&스노쿨링-(국제리더스클럽)</div>
+                                <div class="info">
+                                    <dl>
+                                        <dd>
+                                            <div class="price">
+                                                <strong>999,000원</strong>
+                                                <del>999,000원</del>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="social-photo">
+                                <!-- label  -->
+                                <div class="bxLabel">
+                                    <span class="main_label eventblue">이벤트</span>
+                                    <span class="main_label pink">할인쿠폰</span>
+                                    <span class="main_label back-purple">공모전수상작</span>
+                                    <span class="main_label back-red">우수관광사업체</span>
+                                    <span class="main_label back-red">JQ인증</span>
+                                    <span class="main_label yellow">탐나는전</span>
+                                </div><!-- //label  -->
+                                <img src="../../../images/web/other/product_02.jpg" alt="소셜">
+                            </div>
+                            <div class="text">
+                                <div class="title">패들보드&스노쿨링-(국제리더스클럽)</div>
+                                <div class="info">
+                                    <dl>
+                                        <dd>
+                                            <div class="price">
+                                                <strong>999,000원</strong>
+                                                <del>999,000원</del>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="social-photo">
+                                <!-- label  -->
+                                <div class="bxLabel">
+                                    <span class="main_label eventblue">이벤트</span>
+                                    <span class="main_label pink">할인쿠폰</span>
+                                    <span class="main_label back-purple">공모전수상작</span>
+                                    <span class="main_label back-red">우수관광사업체</span>
+                                    <span class="main_label back-red">JQ인증</span>
+                                    <span class="main_label yellow">탐나는전</span>
+                                </div><!-- //label  -->
+                                <img src="../../../images/web/other/product_02.jpg" alt="소셜">
+                            </div>
+                            <div class="text">
+                                <div class="title">패들보드&스노쿨링-(국제리더스클럽)</div>
+                                <div class="info">
+                                    <dl>
+                                        <dd>
+                                            <div class="price">
+                                                <strong>999,000원</strong>
+                                                <del>999,000원</del>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section> <!-- //agriculture change -->
+
+            <div class="paging-wrap" id="moreBtn">
+                <a href="javascript:void(0)" class="mobile" id="moreBtnLink">더보기 <span id="curPage">1</span>/<span id="totPage">1</span></a>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer"></footer>
+</div> <!-- //wrap -->
+</body>
+</html>

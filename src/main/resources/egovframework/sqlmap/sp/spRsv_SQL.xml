@@ -1,0 +1,1286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="spRsv">
+
+<resultMap id="SP_RSV_R_00" class="web.order.vo.SP_RSVVO">
+	<result property="spRsvNum" 		column="SP_RSV_NUM" />
+	<result property="rsvNum" 			column="RSV_NUM" />
+	<result property="rsvStatusCd" 		column="RSV_STATUS_CD" />
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="prdtNm" 			column="PRDT_NM" />
+	<result property="spDivSn" 			column="SP_DIV_SN" />
+	<result property="spOptSn" 			column="SP_OPT_SN" />
+	<result property="prdtInf" 			column="PRDT_INF" />
+	<result property="buyNum" 			column="BUY_NUM" />
+	<result property="nmlAmt" 			column="NML_AMT" />
+	<result property="saleAmt" 			column="SALE_AMT" />
+	<result property="disAmt" 			column="DIS_AMT" />
+	<result property="cancelAmt" 		column="CANCEL_AMT" />
+	<result property="modDttm" 			column="MOD_DTTM" />
+	<result property="adjYn" 			column="ADJ_YN" />
+	<result property="adjDt" 			column="ADJ_DT" />
+	<result property="cmssAmt" 			column="CMSS_AMT" />
+	<result property="useDttm" 			column="USE_DTTM" />
+	<result property="divNm" 			column="DIV_NM" />
+	<result property="optNm" 			column="OPT_NM" />
+	<result property="prdtDiv" 			column="PRDT_DIV" />
+	<result property="disCancelAmt"		column="DIS_CANCEL_AMT" />
+	<result property="aplDt"			column="APL_DT" />
+	<result property="exprEndDt"		column="EXPR_END_DT" />
+	<result property="admMemo" 			column="ADM_MEMO" />
+	<result property="exprStartDt" 		column="EXPR_START_DT" />
+	<result property="useAbleDttm" 		column="USE_ABLE_DTTM" />
+</resultMap>
+
+<resultMap id="SP_RSV_R_01" class="web.order.vo.SP_RSVVO">
+	<result property="rsvNum" 		column="RSV_NUM" />
+	<result property="rsvNm" 		column="RSV_NM" />
+	<result property="rsvTelnum" 	column="RSV_TELNUM" />
+	<result property="useNm" 		column="USE_NM" />
+	<result property="useTelnum" 	column="USE_TELNUM" />
+	<result property="regDttm" 		column="REG_DTTM" />
+	<result property="spRsvNum" 	column="SP_RSV_NUM" />
+	<result property="rsvStatusCd" 	column="RSV_STATUS_CD" />
+	<result property="corpId" 		column="CORP_ID" />
+	<result property="prdtNum" 		column="PRDT_NUM" />
+	<result property="prdtNm" 		column="PRDT_NM" />
+	<result property="divNm" 		column="DIV_NM" />
+	<result property="optNm" 		column="OPT_NM" />
+	<result property="aplDt" 		column="APL_DT" />
+	<result property="saleAmt" 		column="SALE_AMT" />
+	<result property="cmssAmt" 		column="CMSS_AMT" />
+	<result property="useDttm" 		column="USE_DTTM" />
+	<result property="modDttm" 		column="MOD_DTTM" />
+	<result property="buyNum" 		column="BUY_NUM" />
+	<result property="rsvIdtYn" 	column="RSV_IDT_YN" />
+	<result property="adjAmt"	 	column="ADJ_AMT" />
+	<result property="nmlAmt"	 	column="NML_AMT" />
+	<result property="adjYn"	 	column="ADJ_YN" />
+	<result property="adjDt"	 	column="ADJ_DT" />
+	<result property="realAdjAmt"	column="REAL_ADJ_AMT" />
+	<result property="payDiv"	column="PAY_DIV" />
+</resultMap>
+
+<resultMap id="SP_RSV_R_03" class="web.order.vo.SP_RSVVO">
+	<result property="rsvNm" 				column="RSV_NM" />
+	<result property="userId" 				column="USER_ID" />
+	<result property="rsvTelnum" 			column="RSV_TELNUM" />
+	<result property="rsvEmail" 			column="RSV_EMAIL" />
+	<result property="useNm" 				column="USE_NM" />
+	<result property="useTelnum" 			column="USE_TELNUM" />
+	<result property="useEmail" 			column="USE_EMAIL" />
+	<result property="payDiv" 				column="PAY_DIV" />
+	<result property="spRsvNum" 			column="SP_RSV_NUM" />
+	<result property="spDivSn" 				column="SP_DIV_SN" />
+	<result property="spOptSn" 				column="SP_OPT_SN" />
+	<result property="rsvNum" 				column="RSV_NUM" />
+	<result property="rsvStatusCd" 			column="RSV_STATUS_CD" />
+	<result property="corpId" 				column="CORP_ID" />
+	<result property="prdtNum" 				column="PRDT_NUM" />
+	<result property="prdtNm" 				column="PRDT_NM" />
+	<result property="prdtInf" 				column="PRDT_INF" />
+	<result property="buyNum" 				column="BUY_NUM" />
+	<result property="nmlAmt" 				column="NML_AMT" />
+	<result property="saleAmt" 				column="SALE_AMT" />
+	<result property="disAmt" 				column="DIS_AMT" />
+	<result property="cancelAmt" 			column="CANCEL_AMT" />
+	<result property="adjYn" 				column="ADJ_YN" />
+	<result property="adjDt" 				column="ADJ_DT" />
+	<result property="cmssAmt" 				column="CMSS_AMT" />
+	<result property="useDttm" 				column="USE_DTTM" />
+	<result property="divNm" 				column="DIV_NM" />
+	<result property="optNm" 				column="OPT_NM" />
+	<result property="prdtDiv" 				column="PRDT_DIV" />
+	<result property="aplDt"				column="APL_DT" />
+	<result property="exprEndDt"			column="EXPR_END_DT" />
+	<result property="regDttm" 				column="REG_DTTM" />
+	<result property="modDttm" 				column="MOD_DTTM" />
+	<result property="admMemo" 				column="ADM_MEMO" />
+	<result property="exprStartDt" 			column="EXPR_START_DT" />
+	<result property="useAbleDttm" 			column="USE_ABLE_DTTM" />
+	<result property="cancelInf" 			column="CANCEL_INF" />
+	<result property="rsvIdtYn" 			column="RSV_IDT_YN" />
+	<result property="cancelRequestDttm" 	column="CANCEL_REQUEST_DTTM" />
+	<result property="refundRequestDttm" 	column="REFUND_REQUEST_DTTM" />
+	<result property="cancelCmplDttm" 		column="CANCEL_CMPL_DTTM" />
+	<result property="cancelRsn" 			column="CANCEL_RSN" />
+	<result property="adjAmt"	 			column="ADJ_AMT" />
+	<result property="adjStatusCd"			column="ADJ_STATUS_CD" />
+	<result property="adjItdDt"				column="ADJ_ITD_DT" />
+	<result property="adjCmplDt"			column="ADJ_CMPL_DT" />
+	<result property="lpointUsePoint"		column="LPOINT_USE_POINT" />
+	<result property="lpointSavePoint"		column="LPOINT_SAVE_POINT" />
+	<result property="cancelAbltimeYn"		column="CANCEL_ABLTIME_YN" />
+	<result property="lsLinkOptPincode"		column="LS_LINK_OPT_PINCODE" />
+	<result property="lsLinkYn"				column="LS_LINK_YN" />
+	<result property="useNum"		        column="USE_NUM" />
+	<result property="refundBankCode"       column="REFUND_BANK_CODE" />
+	<result property="refundAccNum"		    column="REFUND_ACC_NUM" />
+	<result property="refundDepositor"		column="REFUND_DEPOSITOR" />
+	<result property="tamnacardRefId"		column="TAMNACARD_REF_ID" />
+	<result property="usePoint"				column="USE_POINT" />
+	<result property="corpDisAmt"			column="CORP_DIS_AMT" />
+</resultMap>
+
+<resultMap id="SP_RSV_R_04" class="web.order.vo.SP_RSVVO">
+	<result property="spRsvNum" 		column="SP_RSV_NUM" />
+	<result property="rsvNum" 			column="RSV_NUM" />
+	<result property="rsvStatusCd" 		column="RSV_STATUS_CD" />
+	<result property="corpId" 			column="CORP_ID" />
+	<result property="prdtNum" 			column="PRDT_NUM" />
+	<result property="prdtNm" 			column="PRDT_NM" />
+	<result property="spDivSn" 			column="SP_DIV_SN" />
+	<result property="spOptSn" 			column="SP_OPT_SN" />
+	<result property="prdtInf" 			column="PRDT_INF" />
+	<result property="buyNum" 			column="BUY_NUM" />
+	<result property="nmlAmt" 			column="NML_AMT" />
+	<result property="saleAmt" 			column="SALE_AMT" />
+	<result property="disAmt" 			column="DIS_AMT" />
+	<result property="cancelAmt" 		column="CANCEL_AMT" />
+	<result property="modDttm" 			column="MOD_DTTM" />
+	<result property="adjYn" 			column="ADJ_YN" />
+	<result property="adjDt" 			column="ADJ_DT" />
+	<result property="cmssAmt" 			column="CMSS_AMT" />
+	<result property="useDttm" 			column="USE_DTTM" />
+	<result property="divNm" 			column="DIV_NM" />
+	<result property="optNm" 			column="OPT_NM" />
+	<result property="prdtDiv" 			column="PRDT_DIV" />
+	<result property="disCancelAmt"		column="DIS_CANCEL_AMT" />
+	<result property="aplDt"			column="APL_DT" />
+	<result property="exprEndDt"		column="EXPR_END_DT" />
+	<result property="admMemo" 			column="ADM_MEMO" />
+	<result property="exprStartDt" 		column="EXPR_START_DT" />
+	<result property="useAbleDttm" 		column="USE_ABLE_DTTM" />
+	<result property="userId" 			column="USER_ID" />
+	<result property="rsvEmail" 		column="RSV_EMAIL" />
+	<result property="emailRcvAgrYn"	column="EMAIL_RCV_AGR_YN" />
+</resultMap>
+
+<resultMap id="SP_RSV_R_06" class="web.order.vo.SP_RSVVO">
+	<result property="rsvNum" 				column="RSV_NUM" />
+	<result property="spRsvNum" 			column="SP_RSV_NUM" />
+	<result property="prdtNm" 				column="PRDT_NM" />
+	<result property="prdtInf" 				column="PRDT_INF" />
+	<result property="prdtDiv" 				column="PRDT_DIV" />
+	<result property="rsvStatusCd" 			column="RSV_STATUS_CD" />
+	<result property="saleAmt" 				column="SALE_AMT" />
+	<result property="disAmt" 				column="DIS_AMT" />
+	<result property="useDttm" 				column="USE_DTTM" />
+	<result property="useAbleDttm" 			column="USE_ABLE_DTTM" />
+	<result property="buyNum" 				column="BUY_NUM" />
+	<result property="exprStartDt" 			column="EXPR_START_DT" />
+	<result property="exprEndDt"			column="EXPR_END_DT" />
+	<result property="corpNm" 				column="CORP_NM" />
+	<result property="rsvTelnum" 			column="RSV_TEL_NUM" />
+	<result property="posUseYn" 			column="POS_USE_YN" />
+	<result property="regDttm" 				column="REG_DTTM" />
+</resultMap>
+
+<resultMap id="SP_RSVHIST_R_00" class="mas.rsv.vo.SP_RSVHISTVO">
+	<result property="spRsvNum" column="SP_RSV_NUM" />
+	<result property="usehistSn" column="USEHIST_SN" />
+	<result property="usehist" column="USEHIST" />
+	<result property="regId" column="REG_ID" />
+	<result property="regIp" column="REG_IP" />
+	<result property="regDttm" column="REG_DTTM" />
+</resultMap>
+
+<resultMap id="SP_RSV_I_02" class="web.order.vo.MRTNVO">
+	<result property="mrtnNum" 			    column="MRTN_NUM" />
+    <result property="rsvNum" 			    column="RSV_NUM" />
+    <result property="spRsvNum" 			column="SP_RSV_NUM" />
+    <result property="corpId" 		    	column="CORP_ID" />
+    <result property="prdtNum" 		    	column="PRDT_NUM" />
+    <result property="apctNm" 		    	column="APCT_NM" />
+    <result property="birth" 		    	column="BIRTH" />
+    <result property="lrrn" 		    	column="LRRN" />
+    <result property="apctTelnum" 		    column="APCT_TELNUM" />
+    <result property="ageRange" 		    column="AGE_RANGE" />
+    <result property="gender"	 		    column="GENDER" />
+    <result property="bloodType"	 		column="BLOOD_TYPE" />
+    <result property="region"		 		column="REGION" />
+    <result property="fullAddr"		 		column="FULL_ADDR" />
+    <result property="apctEmail"		 	column="APCT_EMAIL" />
+    <result property="course"		 		column="COURSE" />
+    <result property="tshirts"		 		column="TSHIRTS" />
+    <result property="groupNm"		 		column="GROUP_NM" />
+    <result property="regDttm"		 		column="REG_DTTM" />
+</resultMap>
+
+<resultMap id="SP_RSV_S_09" class="web.order.vo.MRTNVO">
+	<result property="corpId" 			    column="CORP_ID" />
+    <result property="prdtNum" 			    column="PRDT_NUM" />
+    <result property="txsCnt" 		    	column="TXS_CNT" />
+    <result property="tsCnt" 		    	column="TS_CNT" />
+    <result property="tmCnt" 		    	column="TM_CNT" />
+    <result property="tlCnt" 		    	column="TL_CNT" />
+    <result property="txlCnt" 		    	column="TXL_CNT" />
+    <result property="t2xlCnt" 		    	column="T2XL_CNT" />
+    <result property="t3xlCnt" 		    	column="T3XL_CNT" />
+</resultMap>
+
+<select id="SP_RSV_S_00" resultMap="SP_RSV_R_00">
+SELECT SP_RSV_NUM       /*소셜상품 예약 번호*/
+	, RSV_NUM          /*예약 번호*/
+	, RSV_STATUS_CD    /*예약 상태 코드*/
+	, CORP_ID          /*업체 아이디*/
+	, PRDT_NUM         /*상품 번호*/
+	, PRDT_NM          /*상품 명*/
+	, SP_DIV_SN        /*소셜상품 구분 순번*/
+	, SP_OPT_SN        /*소셜상품 옵션 순번*/
+	, PRDT_INF         /*상품 정보*/
+	, BUY_NUM          /*구매 수*/
+	, NML_AMT          /*정상 금액*/
+	, SALE_AMT         /*판매 금액*/
+	, DIS_AMT          /*할인 금액*/
+	, CANCEL_AMT       /*취소 금액*/
+	, MOD_DTTM         /*수정 일시*/
+	, ADJ_YN           /*정산 여부*/
+	, ADJ_DT           /*정산 일자*/
+	, CMSS_AMT         /*수수료 금액*/
+	, USE_DTTM         /*사용 일시*/
+	, DIV_NM			/*구분 명*/
+	, OPT_NM			/*옵션 명*/
+	, PRDT_DIV			/*상품 구분*/
+	, DIS_CANCEL_AMT	/*할인 취소 금액*/
+	, APL_DT			/*적용 일자*/
+	, EXPR_END_DT		/*유효 종료 일자*/
+	, UTL_RAW.CAST_TO_VARCHAR2(ADM_MEMO) AS ADM_MEMO
+	, EXPR_START_DT
+	, USE_ABLE_DTTM
+FROM TB_SP_RSV
+WHERE 1=1
+	<isNotEmpty property="spRsvNum">
+		AND SP_RSV_NUM = #spRsvNum#
+	</isNotEmpty>
+	<isNotEmpty property="rsvNum">
+		AND RSV_NUM = #rsvNum#
+	</isNotEmpty>
+	<isNotEmpty property="corpId">
+		AND CORP_ID = #corpId#
+	</isNotEmpty>
+	<isNotEmpty property="spDivSn">
+		AND SP_DIV_SN = #spDivSn#
+	</isNotEmpty>
+	<isNotEmpty property="spOptSn">
+		AND SP_OPT_SN = #spOptSn#
+	</isNotEmpty>
+	<isNotEmpty property="prdtNum">
+		AND PRDT_NUM = #prdtNum#
+	</isNotEmpty>
+</select>
+
+<select id="SP_RSV_S_01" resultMap="SP_RSV_R_01">
+SELECT RSV_NUM
+		 , RSV_NM
+		 , RSV_TELNUM
+		 , USE_NM
+		 , USE_TELNUM
+	     , REG_DTTM
+         , SP_RSV_NUM       /*쇼셜 예약 번호*/
+	     , RSV_STATUS_CD    /*예약 상태 코드*/
+	     , CORP_ID          /*업체 아이디*/
+	     , PRDT_NUM         /*상품 번호*/
+	     , PRDT_NM          /*상품 명*/
+	     , DIV_NM          	/*구분자 명*/
+	     , OPT_NM          	/*옵션 명*/
+	     , APL_DT          	/*적용일자*/
+	     , NML_AMT
+	     , SALE_AMT         /*판매 금액*/
+	     , CMSS_AMT         /*수수료 금액*/
+	     , USE_DTTM			/* 사용일시*/
+	     , MOD_DTTM         /*수정 일시*/
+	     , BUY_NUM			/* 구매수 */
+	     , RSV_IDT_YN		/*예약 확인 여부*/
+	     , ADJ_AMT			/*예상정산액*/
+		 , '' AS ADJ_YN
+         , '' AS ADJ_DT
+         , '' AS REAL_ADJ_AMT
+		 , '' AS PAY_DIV
+  FROM ( SELECT ROWNUM AS RN
+ 					 , RSV_NUM
+				 , RSV_NM
+				 , RSV_TELNUM
+				 , USE_NM
+				 , USE_TELNUM
+	  			 , REG_DTTM
+		         , SP_RSV_NUM       /*쇼셜 예약 번호*/
+			     , RSV_STATUS_CD    /*예약 상태 코드*/
+			     , CORP_ID          /*업체 아이디*/
+			     , PRDT_NUM         /*상품 번호*/
+			     , PRDT_NM          /*상품 명*/
+			     , DIV_NM          	/*구분자 명*/
+			     , OPT_NM         	/*옵션 명*/
+			     , APL_DT          	/*적용일자*/
+                 , NML_AMT
+			     , SALE_AMT         /*판매 금액*/
+			     , CMSS_AMT         /*수수료 금액*/
+			     , USE_DTTM			/* 사용일시*/
+			     , MOD_DTTM         /*수정 일시*/
+			     , BUY_NUM 			/* 구매수 */
+			     , RSV_IDT_YN		/*예약 확인 여부*/			     
+			     , CASE WHEN RSV_STATUS_CD IN ('RS02','RS30', 'RS31') THEN ((NML_AMT- (SELECT NVL(SUM(CORP_DIS_AMT),0) FROM TB_USER_CP AS A JOIN TB_CP AS B ON A.CP_ID = B.CP_ID WHERE USE_RSV_NUM = SP_RSV_NUM)) - (FLOOR(CMSS_RATE * (NML_AMT / 100) / 10) * 10))  - (SELECT NVL(SUM(CORP_DIS_AMT),0) FROM TB_USER_CP AS A JOIN TB_CP AS B ON A.CP_ID = B.CP_ID WHERE USE_RSV_NUM = SP_RSV_NUM)
+                    ELSE CMSS_AMT - (FLOOR(CMSS_RATE * (CMSS_AMT / 100) / 10) * 10)
+	                END AS ADJ_AMT 	/* 예상정산액 */
+			  FROM (SELECT
+			               T_RSV.RSV_NM
+			   			 , T_RSV.RSV_TELNUM
+			   			 , T_RSV.USE_NM
+			   			 , T_RSV.USE_TELNUM
+						 , T_RSV.REG_DTTM
+			             , T_SPRSV.SP_RSV_NUM       /*쇼셜 예약 번호*/
+			             , T_SPRSV.RSV_NUM       /* 예약 번호*/
+					     , T_SPRSV.RSV_STATUS_CD    /*예약 상태 코드*/
+					     , T_SPRSV.CORP_ID          /*업체 아이디*/
+					     , T_SPRSV.PRDT_NUM         /*상품 번호*/
+					     , T_SPRSV.PRDT_NM          /*상품 명*/
+					     , T_SPRSV.DIV_NM          /*구분자 명*/
+					     , T_SPRSV.OPT_NM          /*옵션 명*/
+					     , T_SPRSV.APL_DT          /*적용일자*/
+					     , T_SPRSV.NML_AMT          /*정상 금액*/
+					     , T_SPRSV.SALE_AMT         /*판매 금액*/
+					     , T_SPRSV.DIS_AMT          /*할인 금액*/
+	   					 , T_SPRSV.CMSS_AMT         /*취소수수료금액*/
+					     , T_SPRSV.USE_DTTM			/* 사용일시*/
+					     , T_SPRSV.MOD_DTTM         /*수정 일시*/
+					     , T_SPRSV.BUY_NUM 		/* 구매수 */
+					     , T_SPRSV.RSV_IDT_YN       /*예약 확인 여부*/
+					     , (SELECT ADJ_APL_PCT
+			       		 	 FROM TB_CMSS
+			       		    	WHERE CMSS_NUM=T_CORP.CMSS_NUM) AS CMSS_RATE	/*정산 적용률*/
+			       		 , CASE
+                            WHEN T_SPRSV.RSV_STATUS_CD = 'RS10' THEN 0 ELSE 1
+                       	   END AS ORDER_NO
+					  FROM TB_RSV 			T_RSV
+					 INNER JOIN TB_SP_RSV 	T_SPRSV
+					    ON T_SPRSV.RSV_NUM = T_RSV.RSV_NUM
+					 INNER JOIN TB_CORP T_CORP
+				 		ON T_CORP.CORP_ID=T_SPRSV.CORP_ID
+					 WHERE T_SPRSV.CORP_ID = #sCorpId#
+					   AND T_SPRSV.RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+					 <isNotEmpty property="sPrdtNm">
+					   AND T_SPRSV.PRDT_NM LIKE '%'||#sPrdtNm#||'%'
+					 </isNotEmpty>
+					 <isNotEmpty property="sRsvNm">
+					   AND T_RSV.RSV_NM LIKE '%'||#sRsvNm#||'%'
+					 </isNotEmpty>
+					 <isNotEmpty property="sOptNm">
+					   AND T_SPRSV.DIV_NM || ' ' || T_SPRSV.OPT_NM LIKE '%'||#sOptNm#||'%'
+					 </isNotEmpty>
+					 <isNotEmpty property="sRsvTelnum">
+					   AND T_RSV.RSV_TELNUM LIKE '%'||#sRsvTelnum#||'%'
+					 </isNotEmpty>
+					 <isNotEmpty property="sRsvStatusCd">
+					   AND T_SPRSV.RSV_STATUS_CD = #sRsvStatusCd#
+					 </isNotEmpty>
+					 <isNotEmpty property="sStartDt">
+				    	<![CDATA[
+				   		AND T_RSV.REG_DTTM >= TO_DATE(REPLACE(#sStartDt#, '-')||'000000', 'YYYYMMDDHH24MISS')
+				    	]]>
+				 	 </isNotEmpty>
+					 <isNotEmpty property="sEndDt">
+				    	<![CDATA[
+				   		AND T_RSV.REG_DTTM <= TO_DATE(REPLACE(#sEndDt#, '-')||'235959', 'YYYYMMDDHH24MISS')
+				    	]]>
+				 	 </isNotEmpty>
+					 <isNotEmpty property="sUsedStartDt">
+				    	<![CDATA[
+				   		AND T_SPRSV.USE_DTTM >= TO_DATE(REPLACE(#sUsedStartDt#, '-')||'000000', 'YYYYMMDDHH24MISS')
+				    	]]>
+				 	 </isNotEmpty>
+					 <isNotEmpty property="sUsedEndDt">
+				    	<![CDATA[
+				   		AND T_SPRSV.USE_DTTM <= TO_DATE(REPLACE(#sUsedEndDt#, '-')||'235959', 'YYYYMMDDHH24MISS')
+				    	]]>
+				 	 </isNotEmpty>
+					 <isNotEmpty property="sAplDt">
+				    	<![CDATA[
+				   		AND T_SPRSV.APL_DT = REPLACE(#sAplDt#,'-','')
+				    	]]>
+				 	 </isNotEmpty>
+					<isNotEmpty property="sRsvNum">
+						AND T_RSV.RSV_NUM = #sRsvNum#
+					</isNotEmpty>
+					 ORDER BY ORDER_NO, REG_DTTM DESC
+					 )
+		)
+ WHERE RN BETWEEN TO_NUMBER(#firstIndex#)+1 AND TO_NUMBER(#lastIndex#)
+</select>
+
+<select id="SP_RSV_S_02" resultClass="int">
+SELECT /*+ INDEX_FFS(T_SPRSV IDX_SP_RSV_01) */
+       COUNT(SP_RSV_NUM) AS CNT
+  FROM TB_RSV 			T_RSV
+ INNER JOIN TB_SP_RSV 	T_SPRSV
+    ON T_SPRSV.RSV_NUM = T_RSV.RSV_NUM
+ WHERE CORP_ID = #sCorpId#
+   AND T_SPRSV.RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+ <isNotEmpty property="sPrdtNm">
+    AND T_SPRSV.PRDT_NM LIKE '%'||#sPrdtNm#||'%'
+ </isNotEmpty>
+ <isNotEmpty property="sRsvNm">
+    AND T_RSV.RSV_NM LIKE '%'||#sRsvNm#||'%'
+ </isNotEmpty>
+ <isNotEmpty property="sOptNm">
+	AND T_SPRSV.DIV_NM || ' ' || T_SPRSV.OPT_NM LIKE '%'||#sOptNm#||'%'
+ </isNotEmpty>
+ <isNotEmpty property="sRsvTelnum">
+   AND T_RSV.RSV_TELNUM LIKE '%'||#sRsvTelnum#||'%'
+ </isNotEmpty>
+ <isNotEmpty property="sRsvStatusCd">
+   AND T_SPRSV.RSV_STATUS_CD = #sRsvStatusCd#
+ </isNotEmpty>
+ <isNotEmpty property="sStartDt">
+    <![CDATA[
+   AND T_RSV.REG_DTTM >= TO_DATE(REPLACE(#sStartDt#, '-')||'000000', 'YYYYMMDDHH24MISS')
+    ]]>
+ </isNotEmpty>
+<isNotEmpty property="sEndDt">
+    <![CDATA[
+   AND T_RSV.REG_DTTM <= TO_DATE(REPLACE(#sEndDt#, '-')||'235959', 'YYYYMMDDHH24MISS')
+    ]]>
+ </isNotEmpty>
+<isNotEmpty property="sUsedStartDt">
+	<![CDATA[
+	AND T_SPRSV.USE_DTTM >= TO_DATE(REPLACE(#sUsedStartDt#, '-')||'000000', 'YYYYMMDDHH24MISS')
+	]]>
+	</isNotEmpty>
+	<isNotEmpty property="sUsedEndDt">
+	<![CDATA[
+	AND T_SPRSV.USE_DTTM <= TO_DATE(REPLACE(#sUsedEndDt#,'-')||'235959', 'YYYYMMDDHH24MISS')
+	]]>
+</isNotEmpty>
+<isNotEmpty property="sAplDt">
+	<![CDATA[
+	AND T_SPRSV.APL_DT = REPLACE(#sAplDt#,'-','')
+	]]>
+</isNotEmpty>
+<isNotEmpty property="sRsvNum">
+	AND T_RSV.RSV_NUM = #sRsvNum#
+</isNotEmpty>
+</select>
+
+<select id="SP_RSV_S_03" resultMap="SP_RSV_R_03" >
+SELECT T_RSV.RSV_NM
+	 , T_RSV.USER_ID
+     , T_RSV.RSV_TELNUM
+     , T_RSV.RSV_EMAIL
+     , T_RSV.USE_NM
+     , T_RSV.USE_TELNUM
+     , T_RSV.USE_EMAIL
+     , T_RSV.PAY_DIV
+     , T_RSV.REG_DTTM
+     , T_RSV.LPOINT_USE_POINT   /*L.Point 사용 포인트*/
+     , T_RSV.LPOINT_SAVE_POINT  /*L.Point 적립 포인트*/
+	 , T_RSV.REFUND_ACC_NUM
+	 , T_RSV.REFUND_DEPOSITOR
+	 , T_RSV.REFUND_BANK_CODE
+     , T_SPRSV.SP_RSV_NUM       /*쇼셜 예약 번호*/
+     , T_SPRSV.RSV_NUM          /*예약 번호*/
+     , T_SPRSV.RSV_STATUS_CD    /*예약 상태 코드*/
+     , T_SPRSV.CORP_ID          /*업체 아이디*/
+     , T_SPRSV.SP_DIV_SN
+     , T_SPRSV.SP_OPT_SN
+     , T_SPRSV.PRDT_NUM         /*상품 번호*/
+     , T_SPRSV.PRDT_NM          /*상품 명*/
+     , T_SPRSV.PRDT_INF         /*상품 정보*/
+     , T_SPRSV.DIV_NM          /*구분자 명*/
+     , T_SPRSV.OPT_NM          /*옵션 명*/
+     , T_SPRSV.APL_DT          /*적용일자*/
+     , T_SPRSV.BUY_NUM          /*구매 수*/
+     , T_SPRSV.NML_AMT          /*정상 금액*/
+     , T_SPRSV.SALE_AMT         /*판매 금액*/
+     , T_SPRSV.DIS_AMT          /*할인 금액*/
+     , T_SPRSV.CANCEL_AMT       /*취소 금액*/
+     , T_SPRSV.MOD_DTTM         /*수정 일시*/
+     , T_SPRSV.ADJ_YN           /*정산 여부*/
+     , T_SPRSV.ADJ_DT           /*정산 일자*/
+     , T_SPRSV.CMSS_AMT         /*수수료 금액*/
+     , T_SPRSV.USE_DTTM         /*사용 일시*/
+     , T_SPRSV.PRDT_DIV			/*상품 구분*/
+     , T_SPRSV.EXPR_END_DT		/*유효 종료 일자*/
+     , UTL_RAW.CAST_TO_VARCHAR2(T_SPRSV.ADM_MEMO) ADM_MEMO		/*관리자 메모*/
+     , T_SPRSV.EXPR_START_DT
+     , T_SPRSV.USE_ABLE_DTTM
+     , T_SPRSV.CANCEL_INF
+     , T_SPRSV.RSV_IDT_YN		/*예약 확인 여부*/
+     , T_SPRSV.CANCEL_REQUEST_DTTM	/*취소 요청 일시*/
+     , T_SPRSV.REFUND_REQUEST_DTTM	/*환불 요청 일시*/
+     , T_SPRSV.CANCEL_CMPL_DTTM		/*취소 완료 일시*/
+     , T_SPRSV.CANCEL_RSN			/*취소 사유*/
+	 , NVL(T_SPRSV.USE_NUM,0) AS USE_NUM /* 사용 개수*/
+     , (SELECT NVL(SUM(CORP_DIS_AMT),0) FROM TB_USER_CP AS A JOIN TB_CP AS B ON A.CP_ID = B.CP_ID WHERE USE_RSV_NUM = #spRsvNum#) AS CORP_DIS_AMT
+     , CASE WHEN T_SPRSV.RSV_STATUS_CD IN ('RS02','RS30', 'RS31') THEN (T_SPRSV.NML_AMT - (FLOOR(
+     		(SELECT ADJ_APL_PCT
+	  		  FROM TB_CMSS
+	  		    WHERE CMSS_NUM=T_CORP.CMSS_NUM) * ((T_SPRSV.NML_AMT-(SELECT NVL(SUM(CORP_DIS_AMT),0) FROM TB_USER_CP AS A JOIN TB_CP AS B ON A.CP_ID = B.CP_ID WHERE USE_RSV_NUM = #spRsvNum#)) / 100) / 10) * 10)) - (SELECT NVL(SUM(CORP_DIS_AMT),0) FROM TB_USER_CP AS A JOIN TB_CP AS B ON A.CP_ID = B.CP_ID WHERE USE_RSV_NUM = #spRsvNum#)
+	       ELSE CMSS_AMT - (FLOOR(
+	       	(SELECT ADJ_APL_PCT
+	  		  FROM TB_CMSS
+	  		    WHERE CMSS_NUM=T_CORP.CMSS_NUM) * (T_SPRSV.CMSS_AMT / 100) / 10) * 10)
+	       END AS ADJ_AMT /* 예상정산액 */
+	 , NVL(T_ADJ.ADJ_STATUS_CD, '') AS ADJ_STATUS_CD 	/*정산 상태 코드*/
+     , NVL(T_ADJ.ADJ_ITD_DT, '') AS ADJ_ITD_DT 			/*정산 예정 일자*/
+     , NVL(T_ADJ.ADJ_CMPL_DT, '') AS ADJ_CMPL_DT 		/*정산 완료 일자*/
+	 , CASE WHEN (SYSDATE - T_RSV.REG_DTTM) * 24 <![CDATA[<=]]> 48 THEN 'Y' ELSE 'N' END CANCEL_ABLTIME_YN /*예약상태 일 때 취소 가능시간 48시간이내 */
+	 , T_SPRSV.LS_LINK_OPT_PINCODE /* LS컴퍼니 연동 아이템 PINCODE*/
+	 , T_CORP.LS_LINK_YN
+	 , T_RSV.TAMNACARD_REF_ID
+	 , T_RSV.USE_POINT
+  FROM TB_RSV 			T_RSV
+ INNER JOIN TB_SP_RSV 	T_SPRSV
+    ON T_SPRSV.RSV_NUM = T_RSV.RSV_NUM
+ INNER JOIN TB_CORP T_CORP
+ 	ON T_CORP.CORP_ID=T_SPRSV.CORP_ID
+ LEFT OUTER JOIN (
+      SELECT DISTINCT T_DTL.CORP_ID, ADJ_STATUS_CD, ADJ_ITD_DT, ADJ_CMPL_DT FROM TB_ADJ T_ADJ
+           INNER JOIN TB_ADJDTLINF T_DTL 
+               ON T_DTL.ADJ_DT=T_ADJ.ADJ_DT AND T_DTL.CORP_ID=T_ADJ.CORP_ID
+             WHERE DTL_RSV_NUM=#spRsvNum#
+ ) T_ADJ ON T_ADJ.CORP_ID=T_CORP.CORP_ID
+ WHERE T_SPRSV.SP_RSV_NUM = #spRsvNum#
+ 	<isNotEmpty property="sCorpId">
+   AND T_SPRSV.CORP_ID = #sCorpId#
+    </isNotEmpty>
+</select>
+
+<select id="SP_RSV_S_04" resultMap="SP_RSV_R_04">
+<![CDATA[
+SELECT SP_RSV_NUM       /*소셜상품 예약 번호*/
+     , T_SP.RSV_NUM          /*예약 번호*/
+     , T_SP.RSV_STATUS_CD    /*예약 상태 코드*/
+     , CORP_ID          /*업체 아이디*/
+     , PRDT_NUM         /*상품 번호*/
+     , PRDT_NM          /*상품 명*/
+     , SP_DIV_SN        /*소셜상품 구분 순번*/
+     , SP_OPT_SN        /*소셜상품 옵션 순번*/
+     , PRDT_INF         /*상품 정보*/
+     , BUY_NUM          /*구매 수*/
+     , NML_AMT          /*정상 금액*/
+     , SALE_AMT         /*판매 금액*/
+     , DIS_AMT          /*할인 금액*/
+     , CANCEL_AMT       /*취소 금액*/
+     , T_SP.MOD_DTTM         /*수정 일시*/
+     , ADJ_YN           /*정산 여부*/
+     , ADJ_DT           /*정산 일자*/
+     , CMSS_AMT         /*수수료 금액*/
+     , USE_DTTM         /*사용 일시*/
+     , DIV_NM			/*구분 명*/
+     , OPT_NM			/*옵션 명*/
+     , PRDT_DIV			/*상품 구분*/
+     , DIS_CANCEL_AMT	/*할인 취소 금액*/
+     , APL_DT			/*적용 일자*/
+     , EXPR_END_DT		/*유효 종료 일자*/
+     , UTL_RAW.CAST_TO_VARCHAR2(ADM_MEMO) AS ADM_MEMO
+     , EXPR_START_DT
+     , USE_ABLE_DTTM
+	 , T_RSV.USER_ID
+	 , RSV_EMAIL
+	 , NVL(EMAIL_RCV_AGR_YN, 'N') AS EMAIL_RCV_AGR_YN
+  FROM TB_SP_RSV T_SP
+  	INNER JOIN TB_RSV T_RSV
+		ON T_RSV.RSV_NUM = T_SP.RSV_NUM
+    LEFT OUTER JOIN TB_USER T_USER
+		ON T_USER.USER_ID = T_RSV.USER_ID
+ WHERE T_RSV.RSV_STATUS_CD = 'RS00'  AND T_RSV.REG_DTTM <= SYSDATE - (#waitingTime# / 60 / 24) AND T_RSV.REG_DTTM >= SYSDATE - 7
+]]>
+</select>
+
+<!-- 입점업체 엑셀 다운로드용 조회 -->
+<select id="SP_RSV_S_05" resultMap="SP_RSV_R_01">
+	SELECT  RSV_NUM
+		 , RSV_NM
+		 , RSV_TELNUM
+		 , USE_NM
+		 , USE_TELNUM
+		 , TO_CHAR(REG_DTTM,'YYYY-MM-DD') AS REG_DTTM
+         , SP_RSV_NUM       /*쇼셜 예약 번호*/
+	     , RSV_STATUS_CD    /*예약 상태 코드*/
+	     , CORP_ID          /*업체 아이디*/
+	     , PRDT_NUM         /*상품 번호*/
+	     , PRDT_NM          /*상품 명*/
+	     , DIV_NM          	/*구분자 명*/
+	     , OPT_NM         	/*옵션 명*/
+	     , APL_DT          	/*적용일자*/
+		 , NML_AMT
+	     , SALE_AMT         /*판매 금액*/
+	     , CMSS_AMT         /*수수료 금액*/
+	     , TO_CHAR(USE_DTTM,'YYYY-MM-DD') AS USE_DTTM /* 사용일시*/
+	     , MOD_DTTM         /*수정 일시*/
+	     , BUY_NUM 			/* 구매수 */
+	     , RSV_IDT_YN		/*예약 확인 여부*/
+	     , CASE WHEN RSV_STATUS_CD IN ('RS30', 'RS31') THEN SALE_AMT - (FLOOR(CMSS_RATE * (SALE_AMT / 100) / 10) * 10)
+                  ELSE CMSS_AMT - (FLOOR(CMSS_RATE * (CMSS_AMT / 100) / 10) * 10)
+               END AS ADJ_AMT 	/* 예상정산액 */
+	     , ADJ_YN
+         , ADJ_DT
+		 , (CASE WHEN RSV_STATUS_CD = 'RS30' THEN NML_AMT - (SUPPORT_DIS_AMT + SUPPORTED_POINT_AMT + SALE_CMSS)
+			 WHEN RSV_STATUS_CD= 'RS20' THEN CMSS_AMT - SALE_CMSS END) AS REAL_ADJ_AMT
+		 , PAY_DIV
+	  FROM (SELECT T_RSV.RSV_NM
+	   			 , T_RSV.RSV_TELNUM
+	   			 , T_RSV.USE_NM
+	   			 , T_RSV.USE_TELNUM
+		         , T_RSV.REG_DTTM
+	             , T_SPRSV.SP_RSV_NUM       /*쇼셜 예약 번호*/
+	             , T_SPRSV.RSV_NUM       /* 예약 번호*/
+			     , T_SPRSV.RSV_STATUS_CD    /*예약 상태 코드*/
+			     , T_SPRSV.CORP_ID          /*업체 아이디*/
+			     , T_SPRSV.PRDT_NUM         /*상품 번호*/
+			     , T_SPRSV.PRDT_NM          /*상품 명*/
+			     , T_SPRSV.DIV_NM          /*구분자 명*/
+			     , T_SPRSV.OPT_NM          /*옵션 명*/
+			     , T_SPRSV.APL_DT          /*적용일자*/
+	             , T_SPRSV.NML_AMT
+			     , T_SPRSV.SALE_AMT         /*판매 금액*/
+			     , T_SPRSV.CMSS_AMT         /*수수료 금액*/
+			     , T_SPRSV.USE_DTTM			/* 사용일시*/
+			     , T_SPRSV.MOD_DTTM         /*수정 일시*/
+			     , T_SPRSV.BUY_NUM 		/* 구매수 */
+			     , T_SPRSV.RSV_IDT_YN       /*예약 확인 여부*/
+			 	 , (SELECT ADJ_APL_PCT
+					 FROM TB_CMSS
+						WHERE CMSS_NUM=T_CORP.CMSS_NUM) AS CMSS_RATE	/*정산 적용률*/
+				 , CASE
+						  WHEN T_SPRSV.RSV_STATUS_CD = 'RS10' THEN 0 ELSE 1
+						   END AS ORDER_NO
+				 , T_SPRSV.ADJ_YN
+				 , T_ADJDTL.ADJ_DT
+				 , (CASE WHEN T_ADJDTL.CMSS_AMT > 0 THEN T_ADJDTL.CMSS_AMT-T_ADJDTL.SUPPORT_DIS_AMT-SUPPORTED_POINT_AMT-T_ADJDTL.SALE_CMSS
+						  ELSE T_ADJDTL.SALE_AMT-T_ADJDTL.SUPPORT_DIS_AMT-SUPPORTED_POINT_AMT-T_ADJDTL.SALE_CMSS
+					  END) AS REAL_ADJ_AMT /* 업체정산 대상금액 */
+				 , T_RSV.PAY_DIV
+				 , TRUNC(SUPPORT_DIS_AMT * (T_ADJDTL.ADJ_APL_PCT / 100), -1) AS SUPPORT_DIS_AMT
+				 , T_ADJDTL.SALE_CMSS
+	             , TRUNC(SUPPORTED_POINT_AMT * (T_ADJDTL.ADJ_APL_PCT / 100), -1) AS SUPPORTED_POINT_AMT
+			  FROM TB_RSV 			T_RSV
+			 INNER JOIN TB_SP_RSV 	T_SPRSV
+			    ON T_SPRSV.RSV_NUM = T_RSV.RSV_NUM
+			 INNER JOIN TB_CORP T_CORP
+		 		ON T_CORP.CORP_ID=T_SPRSV.CORP_ID
+			  LEFT JOIN TB_ADJDTLINF T_ADJDTL
+		 	    ON 	T_SPRSV.SP_RSV_NUM = T_ADJDTL.DTL_RSV_NUM
+			 WHERE T_SPRSV.CORP_ID = #sCorpId#
+			   AND T_SPRSV.RSV_STATUS_CD NOT IN ('RS00', 'RS01', 'RS99')
+			 <isNotEmpty property="sPrdtNm">
+			   AND T_SPRSV.PRDT_NM LIKE '%'||#sPrdtNm#||'%'
+			 </isNotEmpty>
+			 <isNotEmpty property="sRsvNm">
+			   AND T_RSV.RSV_NM LIKE '%'||#sRsvNm#||'%'
+			 </isNotEmpty>
+			 <isNotEmpty property="sRsvTelnum">
+			   AND T_RSV.RSV_TELNUM LIKE '%'||#sRsvTelnum#||'%'
+			 </isNotEmpty>
+			 <isNotEmpty property="sRsvStatusCd">
+			   AND T_SPRSV.RSV_STATUS_CD = #sRsvStatusCd#
+			 </isNotEmpty>
+			 <isNotEmpty property="sStartDt">
+		    	<![CDATA[
+		   		AND T_RSV.REG_DTTM >= TO_DATE(REPLACE(#sStartDt#, '-')||'000000', 'YYYYMMDDHH24MISS')
+		    	]]>
+		 	 </isNotEmpty>
+			 <isNotEmpty property="sEndDt">
+		    	<![CDATA[
+		   		AND T_RSV.REG_DTTM <= TO_DATE(REPLACE(#sEndDt#, '-')||'235959', 'YYYYMMDDHH24MISS')
+		    	]]>
+		 	 </isNotEmpty>
+			 <isNotEmpty property="sUsedStartDt">
+				<![CDATA[
+				AND T_SPRSV.USE_DTTM >= TO_DATE(REPLACE(#sUsedStartDt#, '-')||'000000', 'YYYYMMDDHH24MISS')
+				]]>
+			 </isNotEmpty>
+			 <isNotEmpty property="sUsedEndDt">
+				<![CDATA[
+				AND T_SPRSV.USE_DTTM <= TO_DATE(REPLACE(#sUsedEndDt#, '-')||'235959', 'YYYYMMDDHH24MISS')
+				]]>
+			 </isNotEmpty>
+			 <isNotEmpty property="sAplDt">
+				<![CDATA[
+				AND T_SPRSV.APL_DT = REPLACE(#sAplDt#,'-','')
+				]]>
+			</isNotEmpty>
+			 ORDER BY ORDER_NO, REG_DTTM DESC
+			 )
+</select>
+
+<!-- QR페이지 예약 조회 -->
+<select id="SP_RSV_S_06" resultMap="SP_RSV_R_06">
+SELECT
+        T_SPRSV.RSV_NUM ,		/* 예약 번호*/
+        SP_RSV_NUM ,			/* 쇼셜 예약 번호*/
+        PRDT_NM ,				/* 상품 명*/
+        PRDT_INF ,				/* 상품 정보*/
+        PRDT_DIV,				/* 상품 구분*/
+        T_SPRSV.RSV_STATUS_CD , /* 예약 처리 코드 */
+        SALE_AMT ,				/* 판매 금액 */
+        DIS_AMT ,				/* 할인 금액 */
+        USE_DTTM ,				/* 사용 일시 */
+        USE_ABLE_DTTM,			/* 이용 가능 일시 */
+        BUY_NUM,				/* 구매수 */
+        EXPR_START_DT ,			/* 유효기간 시작일 */
+        EXPR_END_DT,			/* 유효기간 종료일 */
+        CORP_NM,				/* 판매처 명 */
+        RSV_TEL_NUM,			/* 판매처 연락처 */
+        POS_USE_YN,				/* POS 사용 여부 */
+        TO_CHAR(REG_DTTM, 'YYYY-MM-DD HH24:MI:SS') AS REG_DTTM	/* 예약 일시 */
+   FROM TB_SP_RSV T_SPRSV
+     INNER JOIN TB_RSV T_RSV ON T_RSV.RSV_NUM=T_SPRSV.RSV_NUM
+     INNER JOIN TB_CORP T_CORP ON T_CORP.CORP_ID=T_SPRSV.CORP_ID
+  WHERE T_SPRSV.RSV_NUM = #rsvNum#
+     AND T_SPRSV.PRDT_DIV='COUP'
+     AND T_SPRSV.RSV_STATUS_CD IN ('RS02', 'RS12', 'RS30', 'RS31')
+</select>
+
+<select id="SP_RSV_S_07" resultClass="int">
+SELECT COUNT(*) AS CNT
+  FROM TB_SP_RSV
+ WHERE PRDT_NUM = #sPrdtNum#
+</select>
+
+<!-- 문자 발송용-->
+<select id="SP_RSV_S_08" resultMap="SP_RSV_R_00">
+	SELECT MAX(SP_RSV_NUM) AS SP_RSV_NUM        /*소셜상품 예약 번호*/
+		, RSV_NUM          /*예약 번호*/
+		, RSV_STATUS_CD    /*예약 상태 코드*/
+		, CORP_ID          /*업체 아이디*/
+		, PRDT_NUM         /*상품 번호*/
+		, PRDT_NM          /*상품 명*/
+		, SP_DIV_SN        /*소셜상품 구분 순번*/
+		, MIN(SP_OPT_SN) AS SP_OPT_SN        /*소셜상품 옵션 순번*/
+		, CASE WHEN COUNT(*) > 1 THEN WM_CONCAT(   '('|| PRDT_INF ||')') ELSE WM_CONCAT(PRDT_INF ) END  AS PRDT_INF         /*상품 정보*/
+		, SUM(BUY_NUM) AS BUY_NUM          /*구매 수*/
+		, SUM(NML_AMT) AS NML_AMT          /*정상 금액*/
+		, SUM(SALE_AMT) AS SALE_AMT        /*판매 금액*/
+		, SUM(DIS_AMT) AS DIS_AMT          /*할인 금액*/
+		, SUM(CANCEL_AMT) AS CANCEL_AMT       /*취소 금액*/
+		, MAX(MOD_DTTM)  AS MOD_DTTM       /*수정 일시*/
+		, MAX(ADJ_YN) AS ADJ_YN           /*정산 여부*/
+		, MAX(ADJ_DT) AS ADJ_DT           /*정산 일자*/
+		, MAX(CMSS_AMT) AS CMSS_AMT         /*수수료 금액*/
+		, MAX(USE_DTTM) AS USE_DTTM         /*사용 일시*/
+		, MAX(DIV_NM) AS DIV_NM		/*구분 명*/
+		, MAX(OPT_NM)	AS OPT_NM		/*옵션 명*/
+		, MAX(PRDT_DIV) AS PRDT_DIV			/*상품 구분*/
+		, SUM(DIS_CANCEL_AMT) AS DIS_CANCEL_AMT	/*할인 취소 금액*/
+		, MAX(APL_DT) AS APL_DT			/*적용 일자*/
+		, MAX(EXPR_END_DT) AS EXPR_END_DT		/*유효 종료 일자*/
+		, MAX(UTL_RAW.CAST_TO_VARCHAR2(ADM_MEMO)) AS ADM_MEMO
+		, MAX(EXPR_START_DT) AS EXPR_START_DT
+		, MAX(USE_ABLE_DTTM) AS USE_ABLE_DTTM
+	FROM TB_SP_RSV
+	WHERE 1=1
+ <isNotEmpty property="spRsvNum">
+	   AND SP_RSV_NUM = #spRsvNum#
+ </isNotEmpty>
+ <isNotEmpty property="rsvNum">
+	   AND RSV_NUM = #rsvNum#
+ </isNotEmpty>
+ <isNotEmpty property="corpId">
+	   AND CORP_ID = #corpId#
+ </isNotEmpty>
+ <isNotEmpty property="spDivSn">
+	   AND SP_DIV_SN = #spDivSn#
+ </isNotEmpty>
+<!-- <isNotEmpty property="spOptSn">
+	   AND SP_OPT_SN = #spOptSn#
+ </isNotEmpty>-->
+ <isNotEmpty property="prdtNum">
+	   AND PRDT_NUM = #prdtNum#
+ </isNotEmpty>
+	GROUP BY RSV_NUM,RSV_STATUS_CD,CORP_ID,PRDT_NUM,PRDT_NM,SP_DIV_SN
+</select>
+
+
+
+<insert id="SP_RSV_I_00">
+INSERT INTO TB_SP_RSV
+     ( SP_RSV_NUM       /*소셜상품 예약 번호*/
+     , RSV_NUM          /*예약 번호*/
+     , RSV_STATUS_CD    /*예약 상태 코드*/
+     , CORP_ID          /*업체 아이디*/
+     , PRDT_NUM         /*상품 번호*/
+     , PRDT_NM          /*상품 명*/
+     , SP_DIV_SN        /*소셜상품 구분 순번*/
+     , SP_OPT_SN        /*소셜상품 옵션 순번*/
+     , PRDT_INF         /*상품 정보*/
+     , BUY_NUM          /*구매 수*/
+     , NML_AMT          /*정상 금액*/
+     , SALE_AMT         /*판매 금액*/
+     , DIS_AMT          /*할인 금액*/
+     , CANCEL_AMT       /*취소 금액*/
+     , MOD_DTTM         /*수정 일시*/
+     , ADJ_YN           /*정산 여부*/
+     , ADJ_DT           /*정산 일자*/
+     , CMSS_AMT         /*수수료 금액*/
+     , USE_DTTM         /*사용 일시*/
+     , DIV_NM			/*구분 명*/
+     , OPT_NM			/*옵션 명*/
+     , PRDT_DIV			/*상품 구분*/
+     , DIS_CANCEL_AMT	/*할인 취소 금액*/
+     , APL_DT			/*적용 일자*/
+     , EXPR_END_DT		/*유효 종료 일자*/
+     )
+VALUES
+     ( #spRsvNum#
+     , #rsvNum#
+     , #rsvStatusCd#
+     , #corpId#
+     , #prdtNum#
+     , #prdtNm#
+     , #spDivSn#
+     , #spOptSn#
+     , #prdtInf#
+     , #buyNum#
+     , #nmlAmt#
+     , #saleAmt#
+     , #disAmt#
+     , #cancelAmt#
+     , #modDttm#
+     , #adjYn#
+     , #adjDt#
+     , #cmssAmt#
+     , #useDttm#
+     , #divNm#
+     , #optNm#
+     , #prdtDiv#
+     , #disCancelAmt#
+     , #aplDt#
+     , #exprEndDt#
+     )
+</insert>
+
+<insert id="SP_RSV_I_01">
+<selectKey keyProperty="spRsvNum" resultClass="String">
+SELECT 'SP'||TO_CHAR(SYSDATE, 'YYMMDD')||LPAD(TO_CHAR(NVL(MAX(TO_NUMBER(SUBSTR(SP_RSV_NUM,9))),0) + 1), 6,'0') AS SP_RSV_NUM
+  FROM TB_SP_RSV
+ WHERE SP_RSV_NUM LIKE 'SP'||TO_CHAR(SYSDATE, 'YYMMDD') || '%'
+</selectKey>
+INSERT INTO TB_SP_RSV
+     ( SP_RSV_NUM       /*소셜상품 예약 번호*/
+     , RSV_NUM          /*예약 번호*/
+     , RSV_STATUS_CD    /*예약 상태 코드*/
+     , CORP_ID          /*업체 아이디*/
+     , PRDT_NUM         /*상품 번호*/
+     , PRDT_NM          /*상품 명*/
+     , DIV_NM			/*구분 명*/
+     , OPT_NM			/*옵션 명*/
+     , SP_DIV_SN        /*소셜상품 구분 순번*/
+     , SP_OPT_SN        /*소셜상품 옵션 순번*/
+     , PRDT_INF         /*상품 정보*/
+     , BUY_NUM          /*구매 수*/
+     , NML_AMT          /*정상 금액*/
+     , SALE_AMT         /*판매 금액*/
+     , DIS_AMT          /*할인 금액*/
+     , CANCEL_AMT       /*취소 금액*/
+     , MOD_DTTM         /*수정 일시*/
+     , ADJ_YN           /*정산 여부*/
+     , ADJ_DT           /*정산 일자*/
+     , CMSS_AMT         /*수수료 금액*/
+     , USE_DTTM         /*사용 일시*/
+     , PRDT_DIV			/*상품 구분*/
+     , DIS_CANCEL_AMT	/*할인 취소 금액*/
+     , APL_DT			/*적용 일자*/
+     , EXPR_END_DT		/*유효 종료 일자*/
+     , EXPR_START_DT	/* 유효시작 일자 */
+     , USE_ABLE_DTTM	/* 이용 가능 시간 */
+     , ADJ_APL_PCT      /*정산 적용 비율*/
+     , ADD_OPT_AMT		/*  추가옵션 금액 */
+     , ADD_OPT_NM 		/* 추가옵션명 */
+     )
+VALUES
+     ( #spRsvNum#
+     , #rsvNum#
+     , #rsvStatusCd#
+     , #corpId#
+     , #prdtNum#
+     , #prdtNm#
+     , #divNm#
+     , #optNm#
+     , #spDivSn#
+     , #spOptSn#
+     , #prdtInf#
+     , #buyNum#
+     , #nmlAmt#
+     , #saleAmt#
+     , #disAmt#
+     , 0
+     , SYSDATE
+     , 'N'
+     , ''
+     , 0
+     , #aplDt#
+     , #prdtDiv#
+     , #disCancelAmt#
+     , #aplDt#
+     , #exprEndDt#
+     , #exprStartDt#
+     , TO_DATE(#useAbleDttm#, 'YYYY-MM-dd HH24:MI:SS')
+     , (SELECT ADJ_APL_PCT
+		  FROM TB_CMSS
+		 WHERE CMSS_NUM = (SELECT CMSS_NUM FROM TB_CORP WHERE CORP_ID = #corpId#)
+       )
+	 , #addOptAmt#
+     , #addOptNm#
+     )
+</insert>
+
+<update id="SP_RSV_U_00">
+UPDATE TB_SP_RSV
+   SET RSV_NUM          = #rsvNum#
+     , RSV_STATUS_CD    = #rsvStatusCd#
+     , CORP_ID          = #corpId#
+     , PRDT_NUM         = #prdtNum#
+     , PRDT_NM          = #prdtNm#
+     , SP_DIV_SN        = #spDivSn#
+     , SP_OPT_SN        = #spOptSn#
+     , PRDT_INF         = #prdtInf#
+     , BUY_NUM          = #buyNum#
+     , NML_AMT          = #nmlAmt#
+     , SALE_AMT         = #saleAmt#
+     , DIS_AMT          = #disAmt#
+     , CANCEL_AMT       = #cancelAmt#
+     , MOD_DTTM         = #modDttm#
+     , ADJ_YN           = #adjYn#
+     , ADJ_DT           = #adjDt#
+     , CMSS_AMT         = #cmssAmt#
+     , USE_DTTM         = #useDttm#
+     , DIV_NM			= #divNm#
+     , OPT_NM			= #optNm#
+     , PRDT_DIV			= #prdtDiv#
+     , DIS_CANCEL_AMT	= #disCancelAmt#
+     , APL_DT			= #aplDt#
+     , EXPR_END_DT		= #exprEndDt#
+ WHERE SP_RSV_NUM       = #spRsvNum#
+</update>
+
+<!-- 예약번호에 대한 예약상태코드 변경 -->
+<update id="SP_RSV_U_01">
+UPDATE TB_SP_RSV
+   SET RSV_STATUS_CD = #rsvStatusCd#
+ <isEqual property="rsvStatusCd" compareValue="RS02">
+ 	 , CMSS_AMT			   = 0
+ 	 , CANCEL_AMT		   = 0
+ 	 , CANCEL_INF		   = NULL
+ 	 , CANCEL_RSN          = NULL 	 
+     , CANCEL_REQUEST_DTTM = NULL
+     , CANCEL_CMPL_DTTM    = NULL
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS10">
+     , CANCEL_REQUEST_DTTM = SYSDATE
+     , CANCEL_RSN          = #cancelRsn#
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS11">
+     , CANCEL_REQUEST_DTTM = (CASE WHEN CANCEL_REQUEST_DTTM IS NULL THEN SYSDATE
+                                   ELSE CANCEL_REQUEST_DTTM
+                               END)
+     , REFUND_REQUEST_DTTM = SYSDATE
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS12">
+     , CANCEL_REQUEST_DTTM = (CASE WHEN CANCEL_REQUEST_DTTM IS NULL THEN SYSDATE
+                                   ELSE CANCEL_REQUEST_DTTM
+                               END)
+     , REFUND_REQUEST_DTTM = SYSDATE
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS20">
+     , CANCEL_REQUEST_DTTM = (CASE WHEN CANCEL_REQUEST_DTTM IS NULL THEN SYSDATE
+                                   ELSE CANCEL_REQUEST_DTTM
+                               END)
+     , CANCEL_CMPL_DTTM = SYSDATE
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS32">
+     , CANCEL_CMPL_DTTM = SYSDATE
+ </isEqual>
+ WHERE 1=1
+ <isNotEmpty property="rsvNum">
+   AND RSV_NUM = #rsvNum#
+ </isNotEmpty>
+ <isNotEmpty property="prdtRsvNum">
+   AND SP_RSV_NUM = #prdtRsvNum#
+ </isNotEmpty>
+ <isEqual property="rsvStatusCd" compareValue="RS10">
+   AND RSV_STATUS_CD = 'RS02'
+ </isEqual>
+</update>
+
+<!-- 취소 시 업데이트처리 -->
+<update id="SP_RSV_U_02">
+UPDATE TB_SP_RSV
+   SET RSV_STATUS_CD = #rsvStatusCd#
+     , CANCEL_AMT    = #cancelAmt#
+     , CMSS_AMT      = #cmssAmt#
+     , DIS_CANCEL_AMT = #disCancelAmt#
+     , CANCEL_INF = #cancelInf#
+     , MOD_DTTM      = SYSDATE
+<isEqual property="rsvStatusCd" compareValue="RS10">
+     , CANCEL_REQUEST_DTTM = SYSDATE
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS11">
+     , CANCEL_REQUEST_DTTM = (CASE WHEN CANCEL_REQUEST_DTTM IS NULL THEN SYSDATE
+                                   ELSE CANCEL_REQUEST_DTTM
+                               END)
+     , REFUND_REQUEST_DTTM = SYSDATE
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS12">
+     , CANCEL_REQUEST_DTTM = (CASE WHEN CANCEL_REQUEST_DTTM IS NULL THEN SYSDATE
+                                   ELSE CANCEL_REQUEST_DTTM
+                               END)
+     , REFUND_REQUEST_DTTM = SYSDATE
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS20">
+     , CANCEL_REQUEST_DTTM = (CASE WHEN CANCEL_REQUEST_DTTM IS NULL THEN SYSDATE
+                                   ELSE CANCEL_REQUEST_DTTM
+                               END)
+     , CANCEL_CMPL_DTTM = SYSDATE
+ </isEqual>
+ <isEqual property="rsvStatusCd" compareValue="RS32">
+     , CANCEL_CMPL_DTTM = SYSDATE
+ </isEqual>
+ WHERE 1=1
+   AND RSV_NUM    = #rsvNum#
+   AND SP_RSV_NUM = #spRsvNum#
+</update>
+
+<update id="SP_RSV_U_03">
+	UPDATE TB_SP_RSV
+		  SET ADM_MEMO = UTL_RAW.CAST_TO_RAW(#admMemo#)
+		 	 , MOD_DTTM      = SYSDATE
+	 WHERE SP_RSV_NUM = #spRsvNum#
+	    AND CORP_ID = #corpId#
+</update>
+
+<update id="SP_RSV_U_04">
+UPDATE TB_SP_RSV
+		  SET USE_DTTM = SYSDATE
+		  	 , USE_NUM       = #useNum#
+		 	 , MOD_DTTM      = SYSDATE
+		 	 , RSV_STATUS_CD = #rsvStatusCd#
+	 WHERE SP_RSV_NUM = #spRsvNum#
+	    AND CORP_ID = #corpId#
+</update>
+
+<!-- 예약대기중인 건 자동취소 처리 -->
+<update id="SP_RSV_U_05">
+UPDATE TB_SP_RSV
+   SET RSV_STATUS_CD = 'RS99'
+     , MOD_DTTM      = SYSDATE
+ WHERE SP_RSV_NUM = #spRsvNum#
+</update>
+
+<!-- 사용완료 처리 -->
+<update id="SP_RSV_U_06">
+<![CDATA[
+UPDATE TB_SP_RSV
+   SET RSV_STATUS_CD = 'RS30'
+     , USE_DTTM = NVL(USE_DTTM, SYSDATE)
+ WHERE RSV_STATUS_CD = 'RS02'
+   AND APL_DT < TO_CHAR(SYSDATE, 'YYYYMMDD')
+]]>
+</update>
+
+<!-- 기간만료 처리 -->
+<update id="SP_RSV_U_07">
+<![CDATA[
+UPDATE TB_SP_RSV
+   SET RSV_STATUS_CD = 'RS31'
+     , USE_DTTM = NVL(USE_DTTM, SYSDATE)
+ WHERE RSV_STATUS_CD = 'RS02'
+   AND EXPR_END_DT < TO_CHAR(SYSDATE, 'YYYYMMDD')
+]]>
+</update>
+
+<!-- 정산여부, 정산일자 업데이트 -->
+<update id="SP_RSV_U_08">
+UPDATE TB_SP_RSV
+   SET ADJ_YN = 'Y'
+     , ADJ_DT = #sAdjDt#
+ WHERE ADJ_YN = 'N'
+   AND SP_RSV_NUM IN (
+SELECT DTL_RSV_NUM
+  FROM TB_ADJDTLINF
+ WHERE ADJ_DT = #sAdjDt#)
+</update>
+
+<!-- 예약확인처리 -->
+<update id="SP_RSV_U_09">
+UPDATE TB_SP_RSV
+   SET RSV_IDT_YN = 'Y'
+ WHERE SP_RSV_NUM = #prdtRsvNum#
+</update>
+
+<delete id="SP_RSV_D_01">
+DELETE FROM TB_SP_RSV
+ WHERE RSV_NUM       = #rsvNum#
+   AND RSV_STATUS_CD = 'RS01'
+</delete>
+
+<!-- 예약불가건인건 자동 삭제 -->
+<delete id="SP_RSV_D_02">
+<![CDATA[
+DELETE FROM TB_SP_RSV
+ WHERE RSV_NUM IN (SELECT RSV_NUM
+                     FROM TB_RSV
+                    WHERE 1 = (CASE WHEN RSV_STATUS_CD = 'RS00'
+                                    THEN (CASE WHEN REG_DTTM <= SYSDATE - (#waitingTime# / 60 / 24) THEN 1 ELSE 0 END)
+                                    ELSE 0
+                                END))
+   AND RSV_STATUS_CD = 'RS01'
+]]>
+</delete>
+
+<select id="SP_RSVHIST_S_00" resultMap="SP_RSVHIST_R_00">
+SELECT SP_RSV_NUM
+		 , USEHIST_SN
+		 , UTL_RAW.CAST_TO_VARCHAR2(USEHIST) USEHIST		/*관리자 메모*/
+		 , REG_ID
+		 , REG_IP
+		 , REG_DTTM
+  FROM TB_SP_RSVHIST
+ WHERE SP_RSV_NUM = #spRsvNum#
+ ORDER BY REG_DTTM DESC
+</select>
+
+<insert id="SP_RSVHIST_I_00">
+<selectKey keyProperty="usehistSn" resultClass="int">
+SELECT NVL(MAX(USEHIST_SN), 0) + 1
+  FROM TB_SP_RSVHIST
+ WHERE SP_RSV_NUM = #spRsvNum#
+</selectKey>
+INSERT INTO TB_SP_RSVHIST
+		( SP_RSV_NUM
+		 , USEHIST_SN
+		 , USEHIST
+		 , REG_ID
+		 , REG_IP
+		 , REG_DTTM
+		 )
+	VALUES (
+		 #spRsvNum#
+		, #usehistSn#
+		, UTL_RAW.CAST_TO_RAW(#usehist#)
+		, #regId#
+		, #regIp#
+		, SYSDATE
+	)
+</insert>
+
+	<insert id="SP_RSV_I_02">
+		<selectKey keyProperty="mrtnNum" resultClass="String">
+			SELECT #prdtNum#||LPAD(COUNT(1)+1, 4, '0') AS MRTN_NUM
+			  FROM TB_MRTN_USER
+			</selectKey>
+			INSERT INTO TB_MRTN_USER
+			     ( MRTN_NUM
+			     , RSV_NUM
+			     , SP_RSV_NUM
+			     , CORP_ID
+			     , PRDT_NUM
+			     , APCT_NM
+			     , BIRTH
+				 , LRRN
+				 , APCT_TELNUM
+				 , AGE_RANGE
+				 , GENDER
+				 , BLOOD_TYPE
+				 , REGION
+				 , FULL_ADDR
+				 , APCT_EMAIL
+				 , COURSE
+				 , TSHIRTS
+				 , GROUP_NM
+				 , REG_DTTM
+				 )
+			VALUES
+				(
+				   #mrtnNum#
+				 , #rsvNum#
+				 , #spRsvNum#
+				 , #corpId#
+				 , #prdtNum#
+				 , #apctNm#
+				 , FN_ENC(#birth#)
+				 , FN_ENC(#lrrn#)
+				 , #apctTelnum#
+				 , #ageRange#
+				 , #gender#
+				 , #bloodType#
+				 , #region#
+				 , #fullAddr#
+				 , #apctEmail#
+				 , #course#
+				 , #tshirts#
+				 , #groupNm#
+				 , SYSDATE
+				)
+	</insert>
+	
+	<select id="SP_RSV_S_09" resultMap="SP_RSV_S_09">
+		SELECT CORP_ID
+			 , PRDT_NUM
+			 , TXS_CNT
+			 , TS_CNT
+			 , TM_CNT
+			 , TL_CNT
+			 , TXL_CNT
+			 , T2XL_CNT
+			 , T3XL_CNT
+		  FROM TB_MRTN_TSHIRTS
+		 WHERE 1=1
+		   AND CORP_ID = #corpId#
+		   AND PRDT_NUM = #prdtNum#
+	</select>
+	
+	<update id="SP_RSV_U_10">
+		UPDATE TB_MRTN_TSHIRTS
+		   SET TXS_CNT = TXS_CNT - TO_NUMBER(#txsUseCnt#)
+			 , TS_CNT = TS_CNT - TO_NUMBER(#tsUseCnt#)
+			 , TM_CNT = TM_CNT - TO_NUMBER(#tmUseCnt#)
+			 , TL_CNT = TL_CNT - TO_NUMBER(#tlUseCnt#)
+			 , TXL_CNT = TXL_CNT - TO_NUMBER(#txlUseCnt#)
+			 , T2XL_CNT = T2XL_CNT - TO_NUMBER(#t2xlUseCnt#)
+			 , T3XL_CNT = T3XL_CNT - TO_NUMBER(#t3xlUseCnt#)
+		 WHERE CORP_ID = #corpId#
+		   AND PRDT_NUM = #prdtNum#  
+	</update>
+	
+	<update id="SP_RSV_U_11">
+		UPDATE TB_MRTN_TSHIRTS
+		   SET TXS_CNT = TXS_CNT + TO_NUMBER(#txsUseCnt#)
+			 , TS_CNT = TS_CNT + TO_NUMBER(#tsUseCnt#)
+			 , TM_CNT = TM_CNT + TO_NUMBER(#tmUseCnt#)
+			 , TL_CNT = TL_CNT + TO_NUMBER(#tlUseCnt#)
+			 , TXL_CNT = TXL_CNT + TO_NUMBER(#txlUseCnt#)
+			 , T2XL_CNT = T2XL_CNT + TO_NUMBER(#t2xlUseCnt#)
+			 , T3XL_CNT = T3XL_CNT + TO_NUMBER(#t3xlUseCnt#)
+		 WHERE CORP_ID = #corpId#
+		   AND PRDT_NUM = #prdtNum#  
+	</update>
+	
+	<select id="SP_RSV_S_10" resultMap="SP_RSV_I_02">
+		SELECT MRTN_NUM
+		     , RSV_NUM
+		     , SP_RSV_NUM
+		     , CORP_ID
+		     , PRDT_NUM
+		     , APCT_NM
+		     , FN_DEC(BIRTH) AS BIRTH
+			 , FN_DEC(LRRN) AS LRRN
+			 , APCT_TELNUM
+			 , AGE_RANGE
+			 , GENDER
+			 , BLOOD_TYPE
+			 , REGION
+			 , FULL_ADDR
+			 , APCT_EMAIL
+			 , COURSE
+			 , TSHIRTS
+			 , GROUP_NM
+			 , REG_DTTM
+	      FROM TB_MRTN_USER
+		 WHERE RSV_NUM = #rsvNum#
+		   AND SP_RSV_NUM = #spRsvNum#
+		   AND CORP_ID = #corpId#
+		   AND PRDT_NUM = #prdtNum# 
+	</select>
+</sqlMap>

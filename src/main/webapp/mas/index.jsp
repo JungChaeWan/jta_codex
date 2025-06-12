@@ -1,0 +1,1 @@
+<jsp:forward page="/mas/detailCorp.do"/>

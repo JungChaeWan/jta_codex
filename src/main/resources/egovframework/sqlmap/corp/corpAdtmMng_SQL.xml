@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="corpAdtmMng">
+
+<resultMap id="CORP_ADTMMNG_R_00" class="oss.corp.vo.CORPADTMMNGVO">
+<result property="corpId" 			column="CORP_ID"/>
+<result property="corpRptImgPath" 	column="CORP_RPT_IMG_PATH"/>
+<result property="corpRptImgFileNm" column="CORP_RPT_IMG_FILE_NM"/>
+<result property="corpRptExp" 		column="CORP_RPT_EXP"/>
+</resultMap>
+
+<select id="CORP_ADTMMNG_S_00" resultMap="CORP_ADTMMNG_R_00">
+SELECT CORP_ID              /*업체 아이디*/
+     , CORP_RPT_IMG_PATH    /*업체 대표 이미지 경로*/
+     , CORP_RPT_IMG_FILE_NM /*업체 대표 이미지 파일 명*/
+     , CORP_RPT_EXP         /*업체 대표 설명*/
+  FROM TB_CORP_ADTMMNG
+ WHERE CORP_ID = #corpId#
+</select>
+
+<insert id="CORP_ADTMMNG_I_00">
+INSERT INTO TB_CORP_ADTMMNG
+     ( CORP_ID              /*업체 아이디*/
+     , CORP_RPT_IMG_PATH    /*업체 대표 이미지 경로*/
+     , CORP_RPT_IMG_FILE_NM /*업체 대표 이미지 파일 명*/
+     , CORP_RPT_EXP         /*업체 대표 설명*/
+     )
+VALUES
+     ( #corpId#
+     , #corpRptImgPath#
+     , #corpRptImgFileNm#
+     , #corpRptExp#
+     )
+</insert>
+
+
+
+<update id="CORP_ADTMMNG_M_00">
+ MERGE INTO TB_CORP_ADTMMNG T_ADTMMNG
+ USING (SELECT #corpId# AS CORP_ID
+          FROM DUAL
+       ) D
+    ON (D.CORP_ID = T_ADTMMNG.CORP_ID)
+  WHEN MATCHED THEN
+UPDATE
+   SET CORP_RPT_EXP = #corpRptExp#
+     , CORP_RPT_IMG_PATH = #corpRptImgPath#
+     , CORP_RPT_IMG_FILE_NM = #corpRptImgFileNm#
+  WHEN NOT MATCHED THEN
+INSERT
+     ( CORP_ID
+     , CORP_RPT_IMG_PATH
+     , CORP_RPT_IMG_FILE_NM
+     , CORP_RPT_EXP)
+VALUES
+     ( #corpId#
+     , #corpRptImgPath#
+     , #corpRptImgFileNm#
+     , #corpRptExp#
+     )
+</update>
+</sqlMap>

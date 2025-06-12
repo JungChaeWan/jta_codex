@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- main add -->
+	<!--<script src="../../js/cycle.js"></script>-->
+	<!--<script src="../../js/freewall.js"></script>-->
+	<!--<script src="../../js/multiple-select.js"></script>-->
+	<script src="../../js/air_step1.js"></script>
+
+	<!-- css -->
+	<link rel="stylesheet" href="../../css/common/jquery-ui.css?version=1.2">
+	<link rel="stylesheet" href="../../css/web/common.css?version=1">
+	<link rel="stylesheet" href="../../css/web/style.css?version=1">
+	<link rel="stylesheet" href="../../css/web/rc.css?version=1">
+	<link rel="stylesheet" href="../../css/web/sub.css">
+	<link rel="stylesheet" href="../../css/common/multiple-select.css">
+	<link rel="canonical" href="https://www.tamnao.com">
+	<link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.tamnao.com/mw">
+
+	<!-- script -->
+	<script src="../../js/jquery-1.11.1.js"></script>
+	<script src="../../js/jquery-ui.js"></script>
+	<script src="../../js/jquery.cookie.js"></script>
+	<script src="../../js/swiper.js"></script>
+	<script src="../../js/html_common.js"></script>
+	<script src="../../js/html_style.js"></script>
+
+	<script type="text/javascript">
+		function fn_Login() {
+			if ($("#email").val() == "") {
+				alert("<spring:message code='errors.required2' arguments='이메일'/>");
+				$("#email").focus();
+				return;
+			}
+			if ($("#pwd").val() == "") {
+				alert("<spring:message code='errors.required2' arguments='비밀번호'/>");
+				$("#pwd").focus();
+				return;
+			}
+			$("#pwd").val(SHA256($("#pwd").val()));
+			document.frm.action = "<c:url value='/web/actionLogin.do'/>";
+			document.frm.submit();
+		}
+
+		function fn_ShowLogin(idx) {
+			if (idx == 1) {
+				$("#user-n").hide();
+				$("#user-2").hide();
+				$("#memN").hide();
+				$("#user-y").show();
+				$("#user-1").show();
+				$("#memY").show();
+				$("#divSns").show();
+				$(".tabList").removeClass("on");
+			} else {
+				$("#user-y").hide();
+				$("#user-1").hide();
+				$("#memY").hide();
+				$("#user-n").show();
+				$("#user-2").show();
+				$("#memN").show();
+				$("#divSns").hide();
+				$(".tabList").addClass("on");
+			}
+		}
+
+		function show_popup(obj) {
+			if($(obj).is(":hidden")) {
+				$(obj).show();
+				$("body").after("<div class='lock-bg'></div>"); // 검은 불투명 배경
+			} else {
+				$(obj).hide();
+				$(".lock-bg").remove();
+			}
+		}
+
+		function fn_InsAccNum(){
+			$(".refund2").show();
+		}
+
+		function fn_UdtAccNum(){
+			var parameters = "";
+
+			$.ajax({
+				type:"post",
+				dataType:"json",
+				url: "<c:url value='/web/mypage/selectAccNum.ajax'/>",
+				data: parameters,
+				success:function(data) {
+					$("#depositorNm").val(data.refundAccInf.depositorNm);
+					$("#bankNm").val(data.refundAccInf.bankNm);
+					$("#accNum").val(data.refundAccInf.accNum);
+
+					$(".refund2").show();
+				},
+				error : fn_AjaxError
+			});
+		}
+
+		if ("${mode}" != "user") {
+			$("#memY").attr("checked", true);
+		}
+
+		$(document).ready(function () {
+			$("#moreBtnLink").click(function () {
+				varBtn++;
+				moreBtnFunc();
+			});
+
+			$("#sFromDtView").datepicker({
+				showOn: "both",
+				buttonImage: "/images/web/icon/calendar_icon01.gif",
+				buttonImageOnly: true,
+				showOtherMonths: true, 										//빈칸 이전달, 다음달 출력
+				numberOfMonths: [1, 2],									//여러개월 달력 표시
+				stepMonths: 2, 												//좌우 선택시 이동할 개월 수
+				dateFormat: "yy-mm-dd",
+				minDate: "${SVR_TODAY}",
+				maxDate: "${AFTER_DAY}",
+				onClose: function (selectedDate) {
+					$("#sToDtView").val(fn_NexDay(selectedDate)).datepicker("option", "minDate", selectedDate);
+				}
+			});
+
+			$("#sToDtView").datepicker({
+				showOn: "both",
+				buttonImage: "/images/web/icon/calendar_icon01.gif",
+				buttonImageOnly: true,
+				showOtherMonths: true, 										//빈칸 이전달, 다음달 출력
+				numberOfMonths: [1, 2],									//여러개월 달력 표시
+				stepMonths: 2, 												//좌우 선택시 이동할 개월 수
+				dateFormat: "yy-mm-dd",
+				minDate: "${SVR_TODAY}",
+				maxDate: "${AFTER_DAY}",
+				onClose: function (selectedDate) {
+				}
+			});
+
+			/** 정렬*/
+			$('button[name=sOrderCd]').click(function () {
+				$("button[name=sOrderCd]").removeClass("active");
+				$("button[name=sOrderCd]:button[value=" + $(this).val() + "]").addClass("active");
+				$('#orderCd').val($(this).val());
+				sort();
+			});
+
+			/** 판매처*/
+			$('select[name=sCorpId]').change(function () {
+				filter0();
+				filterFunc();
+				sort();
+			});
+			$(".item-list h3").click(function () {
+				$(this).closest(".item-list");
+				let index = $(".item-list").index($(this).closest(".item-list"));
+				if ($(".item-list:eq(" + index + ")").hasClass("open")) {
+					$(".item-list:eq(" + index + ")").removeClass("open");
+				} else {
+					$(".item-list:eq(" + index + ")").addClass("open");
+				};
+			});
+		});
+	</script>
+</head>
+<body>
+<!-- re_header -->
+<div id="_header">
+	<!-- top banner zone-->
+	<div id="top_banner" class="top-banner swiper-container">
+		<ul class="swiper-wrapper">
+			<li class="swiper-slide">
+				<a href="${result.url}" target="_blank">
+					<div class="bar-tw">
+						<p class="bar-t"><em class="bar-em">회원가입</em>만 해도 혜택이 팡팡!</p>
+					</div>
+					<img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+				</a>
+			</li>
+			<li class="swiper-slide">
+				<a href="${result.url}" target="_blank">
+					<div class="bar-tw">
+						<p class="bar-t">착한수수료 동참을 지지하는 <em class="bar-em">댓글이벤트</em> 참여하세요!</p>
+					</div>
+					<img src="${result.imgPath}${result.imgFileNm}" alt="${result.bannerNm}" style="display: none">
+				</a>
+			</li>
+		</ul>
+		<div class="container">
+			<a href="javascript:void(0)" id="top_close" class="close"><img src="/images/web/comm/btn_close.png" alt="닫기"></a>
+		</div>
+	</div><!--// top banner zone-->
+
+	<div class="re_header">
+		<div class="inner">
+			<div class="header-top">
+				<div class="box__usermenu">
+					<ul class="list__usermenu">
+						<li><b>이은민</b>님 환영합니다.</li>
+						<li class="list-item">
+							<a class="link__usermenu" href="javascript:fn_login();">로그인</a>
+						</li>
+						<li class="list-item">
+							<a class="link__usermenu" href="/web/signUp00.do">회원가입</a>
+						</li>
+						<!-- 로그인 -->
+						<!--
+                        <li class="list-item">
+                            <a class="link__usermenu" href="javascript:fn_logout();">로그아웃</a>
+                        </li>-->
+						<!-- //로그인 -->
+						<li class="list-item">
+							<a class="link__usermenu" href="/web/coustmer/viewCorpPns.do">입점신청</a>
+						</li>
+						<li class="list-item">
+							<a class="link__usermenu" href="/web/bbs/bbsList.do?bbsNum=NOTICE">고객센터</a>
+						</li>
+					</ul>
+				</div>
+				<h1>
+					<a href="/" title="tamnao - 제주여행종합쇼핑몰">
+						<img src="/images/web/r_main/nao_logo2.png" alt="탐나오">
+					</a>
+				</h1>
+				<div class="srh_area">
+					<form id="submitFrm" name="submitFrm">
+						<fieldset>
+							<legend class="for-a11y"> 검색</legend>
+							<div class="top_search" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+								<input name="keyword" title="검색어 입력" class="form_input" value="[기획전] 제주 봄꽃 여행" data-recommend-link="https://www.tamnao.com/web/evnt/detailPromotion.do">
+								<button type="submit" title="검색" class="srh_btn" onclick="fn_searBtClick();">
+									<img src="/images/web/r_main/srh_btn.png" alt="검색">
+								</button>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="util_menu">
+					<ui>
+						<li id="unpaidInfo" class="nopay">
+							<a href="javascript:fn_DtlRsv('${unpaidRsvNum}');" class="blinking text-red">
+								<span class="ico count">&nbsp;</span>미결제상품
+								<span class="cnt">0</span>
+							</a>
+						</li>
+						<li class="coupon more">
+							<a href="/web/mypage/pocketList.do">
+								<span class="ico"></span>쿠폰
+								<span class="cnt">0</span>
+							</a>
+						</li>
+						<li class="cart more" >
+							<a href="/web/cart.do">
+								<span class="ico">&nbsp;</span>장바구니
+								<span class="cnt">0</span>
+							</a>
+						</li>
+						<li class="mypage more">
+							<a href="/web/mypage/rsvList.do">
+								<span class="ico">&nbsp;</span>마이탐나오
+							</a>
+						</li>
+					</ui>
+				</div>
+			</div>
+		</div>
+
+		<!-- global-navigation -->
+		<div class="gnb2">
+			<div class="inner">
+				<div class="box__service-all">
+					<ul class="menu">
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/av/mainList.do">항공</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/sp/vesselList.do">선박</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/stay/jeju.do">숙소</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/rentcar/car-list.do">렌터카</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C200">관광지/레저 할인쿠폰</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/sv/mainList.do">제주특산/기념품</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C270">제주마을체험</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/tour/jeju.do?sCtgr=C300">맛집</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/sp/packageList.do">여행사 상품</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/evnt/prmtPlanList.do">기획전</a>
+						</li>
+						<li class="list-item">
+							<a class="link__service" href="https://www.tamnao.com/web/evnt/promotionList.do">이벤트</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><!-- //re_header -->
+
+<!-- mypage (개인정보수정) -->
+<main id="main">
+	<div class="mapLocation">
+		<div class="inner">
+			<span>홈</span>
+			<span class="gt">&gt;</span>
+			<span>마이탐나오</span>
+			<span class="gt">&gt;</span>
+			<span>나의 정보</span>
+			<span class="gt">&gt;</span>
+			<span>환불계좌관리</span>
+		</div>
+	</div>
+	<div class="subContainer">
+		<div class="subHead"></div>
+		<div class="subContents">
+
+			<!-- new contents (마이페이지) -->
+			<div class="mypage sideON">
+				<div class="bgWrap2">
+					<div class="inner">
+						<div class="tbWrap">
+
+							<!-- aside nav -->
+							<aside id="sub-leftMenu" class="smON">
+								<h4 class="title">
+									<a href="" class="title-text">마이페이지</a>
+								</h4>
+								<div class="pdWrap">
+									<section>
+										<h3>나의 예약/구매 내역</h3>
+									</section>
+									<section class="item-list open">
+										<h3>나의 혜택정보</h3>
+										<ul class="depth1 half">
+											<li><a href="">탐나오쿠폰 내역보기</a></li>
+											<li><a href="">할인쿠폰 보관함</a></li>
+										</ul>
+									</section>
+									<section class="item-list open">
+										<h3>나의 게시글 모음</h3>
+										<ul class="depth1 half">
+											<li><a href="">1:1 문의내역</a></li>
+											<li><a href="">이용후기 내역</a></li>
+										</ul>
+									</section>
+									<section class="item-list open">
+										<h3>나의 정보</h3>
+										<ul class="depth1 half">
+											<li><a href="">개인정보수정</a></li>
+											<li><a href="">환불계좌관리</a></li>
+											<li><a href="">비밀번호 변경</a></li>
+											<li><a href="">회원탈퇴</a></li>
+										</ul>
+									</section>
+								</div>
+							</aside> <!-- aside nav -->
+
+							<!-- 환불계좌관리 -->
+							<div class="rContents smON">
+								<h3 class="mainTitle">환불계좌관리</h3>
+								<article class="payArea refund">
+									<h4 class="comm-title2">무통장 환불계좌</h4>
+									<table class="commRow">
+										<colgroup>
+											<col width="20%" />
+											<col />
+										</colgroup>
+										<tbody>
+										<tr>
+											<th class="handl--size">환불계좌</th>
+
+											<!-- 등록된 계좌가 없을시 -->
+											<td style="display: none">
+												<span class="refund-account">등록된 계좌정보가 없습니다. 환불 받으실 계좌번호를 입력해주세요.</span>
+												<a href="javascript:fn_InsAccNum();" class="comm-sideBT2">입력하기</a>
+											</td><!-- //등록된 계좌가 없을시 -->
+											<td>
+												<c:if test="${not empty refundAccInf}">
+		                                                	<span class="refund-account">
+                                                                <c:forEach items="${cdRfac}" var="code" varStatus="status">
+                                                                    <c:if test="${code.cdNum eq refundAccInf.bankCode}">
+                                                                        ${code.cdNm} /
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                                <c:out value="${refundAccInf.accNum}"/> (예금주 : <c:out value="${refundAccInf.depositorNm}"/>)
+                                                            </span>
+													<a href="javascript:fn_InsAccNum();" class="comm-sideBT2">계좌변경</a>
+												</c:if>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</article>
+
+								<!-- 환불계좌 입력 -->
+								<article class="payArea refund2" style="display: none">
+									<h4 class="comm-title2">무통장 환불계좌 입력</h4>
+									<table class="commRow">
+										<colgroup>
+											<col width="20%" />
+											<col />
+										</colgroup>
+										<tbody>
+										<tr>
+											<th class="handl--size">은행</th>
+											<td>
+												<select class="bank">
+													<option value="" selected>은행을 선택하세요</option>
+													<option value="">기업은행</option>
+													<option value="">국민은행</option>
+													<option value="">외환은행</option>
+													<option value="">수협은행</option>
+													<option value="">농협은행</option>
+													<option value="">우리은행</option>
+													<option value="">SC제일은행</option>
+													<option value="">신한은행</option>
+													<option value="">부산은행</option>
+													<option value="">광주은행</option>
+													<option value="">우체국</option>
+													<option value="">하나은행</option>
+													<option value="">경남은행</option>
+													<option value="">농협은행(단위조합)</option>
+													<option value="">대구은행</option>
+													<option value="">산업은행</option>
+													<option value="">새마을금고</option>
+													<option value="">신협은행</option>
+													<option value="">씨티은행</option>
+													<option value="">전북은행</option>
+													<option value="">제주은행</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<th class="handl--size">계좌번호</th>
+											<td>
+												<input type="text" name="accNum" id="accNum" class="passbook" maxlength="20" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="숫자만 가능합니다.">
+											</td>
+										</tr>
+										<tr>
+											<th class="handl--size">예금주</th>
+											<td><input type="text" name="depositorNm" id="depositorNm" class="passbook" maxlength="30" placeholder="예금주가 정확해야 합니다."></td>
+										</tr>
+										</tbody>
+									</table>
+									<div class="comm-agree1 auto-cancel">
+										<input id="agree1" type="checkbox">
+										<label for="agree1" class="box-dec">입력한 정보를 환불계좌로 수집/설정하는데 동의합니다.</label>
+									</div>
+									<div class="comm-button2">
+										<a class="color1" href="javascript:fn_Commit();">확인</a>
+										<a class="color0" href="javascript:fn_CloseAccNum();">취소</a>
+									</div>
+								</article>
+							</div><!-- //환불계좌관리 -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<!--main foot banner (사이트링크)-->
+<div class="main-footBanner">
+	<div class="inner">
+		<div id="foot_organBanner" class="swiper-container">
+			<ul class="swiper-wrapper">
+				<li class="swiper-slide">
+					<a href="http://www.jeju.go.kr/" target="_blank" title="새창">
+						<img src="../../images/web/main/organ-jejudo.jpg" alt="제주특별자치도">
+					</a>
+				</li>
+				<li class="swiper-slide">
+					<a href="http://www.visitjeju.or.kr/" target="_blank" title="새창">
+						<img src="../../images/web/main/organ-jta.jpg" alt="제주관광협회">
+					</a>
+				</li>
+				<li class="swiper-slide">
+					<a href="http://www.visitjeju.net/" target="_blank" title="새창">
+						<img src="../../images/web/main/organ-visit.jpg" alt="VISIT JEJU">
+					</a>
+				</li>
+				<li class="swiper-slide">
+					<a href="http://www.jejusi.go.kr/" target="_blank" title="새창">
+						<img src="../../images/web/main/organ-jejusi.jpg" alt="제주시">
+					</a>
+				</li>
+				<li class="swiper-slide">
+					<a href="http://www.seogwipo.go.kr/" target="_blank" title="새창">
+						<img src="../../images/web/main/organ-seogwipo.jpg" alt="서귀포시">
+					</a>
+				</li>
+				<li class="swiper-slide">
+					<a href="http://www.changwonmall.kr/" target="_blank" title="새창">
+						<img src="../../images/web/main/organ-changwon.jpg" alt="창원몰">
+					</a>
+				</li>
+				<li class="swiper-slide">
+					<a href="http://www.changwonmall.kr/" target="_blank" title="새창">
+						<img src="../../images/web/main/organ-changwon.jpg" alt="창원몰">
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="_footer" data-container="footer" class="footer_wrap">
+	<div class="service_support">
+		<div class="inner">
+			<ul>
+				<li>
+					<a href="/web/etc/introduction.do" target="_blank" title="새창 열림">
+						<span>회사소개</span>
+					</a>
+				</li>
+				<li>
+					<a href="/web/etc/buyToS.do" target="_blank" title="새창 열림">
+						<span>이용약관</span>
+					</a>
+				</li>
+				<li>
+					<a href="/web/coustmer/viewCorpPns.do" target="_blank" title="새창 열림">
+						<span>입점/제휴안내</span>
+					</a>
+				</li>
+				<li>
+					<a href="/web/etc/personalData.do" target="_blank" title="새창 열림">
+						<strong>개인정보취급방침</strong>
+					</a>
+				</li>
+				<li>
+					<a href="/web/coustmer/qaList.do" target="_blank" title="새창 열림">
+						<span>고객센터</span>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=6168204092" target="_blank" title="새창 열림">
+						<span>사업자정보확인</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="corp_wrap">
+		<div class="inner">
+			<div class="corp_wrap_row">
+				<div class="corp_info">
+					<dl>
+						<dt>제주특별자치도관광협회</dt>
+						<dd class="corp_info_cs">
+							<p>
+								<em>1522-3454</em>
+								<span>월~금 09:00 - 18:00</span>
+								<span>점심시간 12:00 - 13:00</span>
+							</p>
+						</dd>
+						<dd class="corp_info_tx">
+							<p>
+								<span>대표이사:부동석</span>
+								<span>63309 제주특별자치도 제주시 첨단로 213-65 제주종합비즈니스센터 3층</span>
+								<span>법인 등록번호:220121-0000107</span>
+								<span>사업자 등록번호:616-82-04092</span>
+							</p>
+							<p>
+								<span>통신판매업번호:제2018-제주아라0049호</span>
+								<span>개인정보관리책임자:김철휘</span>
+								<span>E-mail : tamnao@tamnao.com</span>
+								<span>Fax : 064-749-7445</span>
+							</p>
+						</dd>
+						<dd class="corp_info_copy">
+							<p>탐나오는 통신판매중개자로서 거래당사자가 아니므로 개별 판매자가 등록한 상품거래정보 및 거래에 대해서 책임을 지지 않습니다.</p>
+							<p>Copyright 2018. 제주특별자치도관광협회 All Rights Reserved.</p>
+						</dd>
+					</dl>
+				</div>
+				<div class="corp_rgt" >
+					<div class="f_sns">
+						<a href="https://blog.naver.com/jta0119" class="bl" target="_blank">
+							<span class="blind">블로그</span>
+						</a>
+						<a href="https://post.naver.com/jta0119" class="nv" target="_blank">
+							<span class="blind">네이버</span>
+						</a>
+						<a href="https://www.facebook.com/JEJUTAMNAOTRAVEL/" class="fb" target="_blank">
+							<span class="blind">페이스북</span>
+						</a>
+						<a href="https://www.instagram.com/tamnao_jeju/" class="ig" target="_blank">
+							<span class="blind">인스타그램</span>
+						</a>
+						<a href="https://www.youtube.com/channel/UC5Hk3MfM3RFDz5_Xm9BDJZQ" class="ub" target="_blank">
+							<span class="blind">유튜브</span>
+						</a>
+					</div>
+					<div class="f_down">
+						<a href="https://apps.apple.com/kr/app/%ED%83%90%EB%82%98%EC%98%A4-%EC%A0%9C%EC%A3%BC%EC%97%AC%ED%96%89%EC%8A%A4%ED%86%A0%EC%96%B4/id1489404866" target="_blank">
+							<img src="/images/web/r_main/apple.png" alt="애플 앱다운로드">
+							<span>ISO</span>
+						</a>
+						<a href="https://play.google.com/store/apps/details?id=kr.or.hijeju.tamnao" target="_blank">
+							<img src="/images/web/r_main/google.png" alt="구글 앱다운로드">
+							<span>Android</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="mark-zone">
+				<div class="award">
+					<ul>
+						<li><img src="/images/web/mark/gcs.png" alt="gcs"></li>
+						<li><img src="/images/web/mark/maket.png" alt="market"></li>
+						<li><img src="/images/web/mark/int.png" alt="int"></li>
+						<li><img src="/images/web/mark/web.png" alt="web"></li>
+						<li><img src="/images/web/mark/nba.png" alt="nba"></li>
+						<li><img src="/images/web/mark/ieco.png" alt="ieco"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+
+
+
+
+
+
+
+
+<head>
+
+<script type="text/javascript" src="http://todayjeju.net:8080/js/jquery-1.11.1.js" ></script>
+<script type="text/javascript" src="http://todayjeju.net:8080/js/common.js" ></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache; no-store; no-save" />
+<link rel="stylesheet" type="text/css" href="../../css/common/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/mas/layout.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common/page_style.css" />
+
+<title></title>
+
+<script type="text/javascript">
+
+
+</script>
+</head>
+<body>
+<div id="wrapper"> 
+	
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+var getContextPath = "";
+
+function show_popup(obj){
+	if($(obj).is(":hidden")){
+		$(obj).show();
+		$('div.blackBg').fadeIn(100); // 검은 불투명 배경
+	}else{
+		$(obj).hide();
+		$('div.blackBg').fadeOut(100);
+	}
+}
+
+function close_popup(obj){
+	$(obj).hide();
+	$('div.blackBg').fadeOut(100);
+}
+
+$(document).ready(function(){
+	$(".gnb_menu>li").hover(
+		function(){
+			$(this).children("ul").show();
+		},
+		function(){
+			$(this).children("ul").hide();
+		}
+	);
+	
+	if("corp" == "corp"){
+		$(".menu02").addClass("on");
+	}
+	if("corp" == "product"){
+		$(".menu03").addClass("on");
+	}
+	if("corp" == "realtime"){
+		$(".menu04").addClass("on");
+	}
+	if("corp" == "useepil"){
+		$(".menu05").addClass("on");
+	}
+	
+});
+
+</script>
+
+	<!--Header 영역-->
+	<div id="header_wrapper">
+		<h1><img src="http://todayjeju.net:8080/images/oss/common/logo.gif" alt="모객 관리자 시스템" /></h1>
+		<!--상단 게시물 롤링-->
+		<!-- <div class="header_alim">
+			<ul>
+				<li><a href="#">공항 부근으로 렌트카 주차장 부지 찾습니다 평수,금액 무관합...</a></li>
+			</ul>
+		</div> -->
+		<!--//상단 게시물 롤링-->
+		<ul class="lnb_menu">
+			<!-- <li><a href="#" target="_blank">중개업소바로가기</a></li> -->
+			<li class="home"><a href="/">홈으로</a></li>
+			<li class="log"><a href="/mas/masLogout.do">로그아웃</a></li>
+		</ul>
+		<!--상단메뉴-->
+		<h2 class="lay_none">상단메뉴</h2>
+		<ul class="gnb_menu">
+			<li class="menu01"><a href="#">홈</a>
+				<!-- <ul class="gnb_depth" id="menu01" style="display:none">
+				</ul> -->
+			</li>
+			<li class="menu02"><a href="/mas/detailCorp.do">업체정보</a>
+				<ul class="gnb_depth" id="menu02" style="display:none">
+					<li><a href="/mas/detailCorp.do">기본정보</a></li>
+					
+						
+						
+							<li><a href="/mas/rc/rentCarInfo.do">판매정책</a></li>
+						
+						
+					
+				</ul>
+			</li>
+			<li class="menu03"><a href="/mas/rc/productList.do">상품관리</a>
+				<ul class="gnb_depth" id="menu03" style="display:none">
+					<!-- 상품관리 부분은 각 업체코드별로 분기 -->
+					
+						
+						
+							<li><a href="/mas/rc/productList.do">상품관리</a></li>
+						
+						
+						
+					
+				</ul>
+			</li>
+			
+				<li class="menu04"><a href="/mas/rc/realTimeList.do">RealTime관리</a>
+					<ul class="gnb_depth" id="menu04" style="display:none">
+						<!-- 상품관리 부분은 각 업체코드별로 분기 -->
+						
+							
+							
+								<li><a href="/mas/rc/realTimeList.do">RealTime관리</a></li>
+							
+						
+					</ul>
+				</li>
+				
+			<li class="menu05"><a href="/mas/rc/otoinqList.do">커뮤니티</a>
+				<ul class="gnb_depth" id="menu05" style="display:none">
+					<li><a href="/mas/rc/otoinqList.do">1:1문의</a></li>
+					<li><a href="/mas/rc/useepilList.do">상품평조회</a></li>
+				</ul>
+			</li>
+			
+			<li class="menu06"><a href="/mas/detailCorp.do">예약관리</a></li>
+			<li class="menu07"><a href="/mas/detailCorp.do">매출/정산</a></li>
+			<li class="menu08"><a href="/mas/detailCorp.do">통계</a></li>
+			<li class="menu09"><a href="/mas/detailCorp.do">프로모션</a></li>
+			
+			
+			
+		</ul>
+		<!--//상단메뉴-->
+	</div>
+	<!--//Header 영역--> 
+	
+
+	<!--Contents 영역-->
+	<div id="contents_wrapper">
+		<div id="contents_area"> 
+			<!--본문-->
+			<!--상품 등록-->
+			<form name="corp" method="post">
+			<div id="contents">
+				<h4 class="title03">업체 기본정보</h4>
+				
+				<table border="1" class="table02">
+					<colgroup>
+                        <col width="200" />
+                        <col width="*" />
+                        <col width="200" />
+                        <col width="*" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th scope="row">업체아이디<span class="font02">*</span></th> <!--th width="200"-->
+                            <td style=" ">
+                                <input type="hidden" id="corpId" name="corpId" value='C000000006' />
+                                C000000006</td>
+                            <th>연계여부</th>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>업체명</th>
+                            <td>두번째 렌터카</td>
+                            <th>업체구분</th>
+                            <td>
+                                
+                                렌트카
+                                
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>사업자등록번호</th>
+                            <td></td>
+                            <th>대표자명</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>대표전화번호</th>
+                            <td>010-1234-1234</td>
+                            <th>예약전화번호</th>
+                            <td>064-999-9999</td>
+                        </tr>
+                        <tr>
+                            <th>업체이메일</th>
+                            <td></td>
+                            <th>홈페이지주소</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>업체주소</th>
+                            <td colspan="3">
+                                제주특별자치도 제주시 공항로 2<br />
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>위도/경도</th>
+                            <td colspan="3">
+                                33.5063344 / 126.49526130000004 
+                            </td>
+    
+                        </tr>
+                    </tbody>
+				</table>
+				<ul class="btn_rt01">
+					<li class="btn_sty04">
+						<a href="javascript:fn_UdtCorp()">수정</a>
+					</li>
+				</ul>
+			</div>
+			</form>
+			<!--//상품등록--> 
+			<!--//본문--> 
+		</div>
+	</div>
+	<!--//Contents 영역--> 
+</div>
+</body>
+</html>

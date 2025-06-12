@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="mypage">
+<resultMap id="WEB_ITR_PRDT_R_00" class="web.mypage.vo.ITR_PRDTSVO">
+	<result property="prdtNum" column="PRDT_NUM" />
+	<result property="prdtNm" column="PRDT_NM" />
+	<result property="disInf" column="DIS_INF" />
+	<result property="exprStartDt" column="EXPR_START_DT" />
+	<result property="exprEndDt" column="EXPR_END_DT" />
+</resultMap>
+
+<resultMap id="POCKET_R_00" class="web.mypage.vo.POCKETVO">
+	<result property="itrPrdtSn"	column="ITR_PRDT_SN" />
+	<result property="prdtDiv"		column="PRDT_DIV" />
+	<result property="prdtDivNm"	column="PRDT_DIV_NM" />
+	<result property="prdtNum"	 	column="PRDT_NUM" />
+	<result property="prdtNm"	 	column="PRDT_NM" />	
+	<result property="prdtInf"	 	column="PRDT_INF" />
+	<result property="imgPath"	 	column="IMG_PATH" />
+	<result property="etcExp"	 	column="ETC_EXP" />	
+	<result property="nmlAmt"	 	column="NML_AMT" />
+	<result property="saleAmt"	 	column="SALE_AMT" />
+</resultMap>
+
+<resultMap id="POCKET_R_01" class="web.mypage.vo.POCKETVO">
+	<result property="prdtNum"	 	column="PRDT_NUM" />
+	<result property="prdtDiv"		column="PRDT_DIV" />
+	<result property="corpId"	 	column="CORP_ID" />
+</resultMap>
+
+<resultMap id="SURVEY_R_00" class="web.mypage.vo.USER_SURVEYVO">
+    <result property="id"	 	column="ID" />
+    <result property="title"		column="TITLE" />
+    <result property="description"	 	column="DESCRIPTION" />
+</resultMap>
+
+<resultMap id="RSVFILE_R_00" class="web.mypage.vo.RSVFILEVO">
+    <result property="seq"	 	        column="SEQ" />
+    <result property="rsvNum"		    column="RSV_NUM" />
+    <result property="dtlRsvNum"	 	column="DTL_RSV_NUM" />
+    <result property="savePath"	 	    column="SAVE_PATH" />
+    <result property="realFileNm"	 	column="REAL_FILE_NM" />
+    <result property="saveFileNm"	 	column="SAVE_FILE_NM" />
+</resultMap>
+
+<insert id="WEB_ITR_PRDT_I_00" >
+INSERT INTO TB_ITR_PRDT
+	( USER_ID
+	, ITR_PRDT_NUM
+	, REG_DTTM
+	)
+VALUES
+	( #userId#
+	, #itrPrdtNum#
+	, SYSDATE
+	)
+</insert>
+
+<select id="WEB_ITR_PRDT_S_00" resultClass="Integer" >
+SELECT COUNT(USER_ID) cnt
+ FROM TB_ITR_PRDT
+WHERE 1=1
+AND USER_ID = #userId#
+AND ITR_PRDT_NUM = #itrPrdtNum#
+</select>
+
+<select id="WEB_ITR_PRDT_S_01" resultMap="WEB_ITR_PRDT_R_00" >
+SELECT ITR_PRDT.ITR_PRDT_NUM AS PRDT_NUM
+    , T_PRDT.PRDT_NM
+    , T_PRDT.DIS_INF
+    , T_PRDT.EXPR_START_DT
+    , T_PRDT.EXPR_END_DT
+FROM TB_ITR_PRDT ITR_PRDT
+    INNER JOIN TB_SP_PRDTINF T_PRDT ON ITR_PRDT.ITR_PRDT_NUM = T_PRDT.PRDT_NUM
+WHERE 1 = 1
+    AND ITR_PRDT.USER_ID = #userId#
+    AND T_PRDT.PRDT_DIV = #prdtDiv#
+    AND T_PRDT.EXPR_END_DT >= TO_CHAR(SYSDATE, 'YYYYMMDD')
+</select>
+
+<select id="WEB_ITR_PRDT_S_02" resultClass="Integer" >
+SELECT COUNT(T_PRDT.PRDT_NUM)
+FROM TB_ITR_PRDT ITR_PRDT
+    INNER JOIN TB_SP_PRDTINF T_PRDT ON ITR_PRDT.ITR_PRDT_NUM = T_PRDT.PRDT_NUM
+WHERE 1 = 1
+    AND ITR_PRDT.USER_ID = #userId#
+    AND T_PRDT.PRDT_DIV = #prdtDiv#
+    AND T_PRDT.EXPR_END_DT >= TO_CHAR(SYSDATE, 'YYYYMMDD')
+</select>
+
+<delete id="WEB_ITR_PRDT_D_00">
+DELETE TB_ITR_PRDT
+WHERE USER_ID = #userId#
+   AND ITR_PRDT_NUM = #itrPrdtNum#
+</delete>
+
+
+<insert id="POCKET_I_00">
+INSERT INTO TB_POCKET
+	 ( USER_ID
+	 , ITR_PRDT_SN
+	 , PRDT_NUM
+	 , PRDT_NM
+	 , PRDT_INF
+	 , CORP_ID
+	 , CORP_NM
+	 , PRDT_DIV
+	 , AD_USE_DT
+	 , AD_USE_NIGHT
+	 , AD_ADULT_NUM
+	 , AD_JUNIOR_NUM
+	 , AD_CHILD_NUM
+	 , RENT_START_DT
+	 , RENT_START_TM
+	 , RENT_END_DT
+	 , RENT_END_TM
+	 , GL_USE_DT
+	 , GL_USE_TM
+	 , GL_USE_MEM
+	 , SP_DIV
+	 , SP_DIV_SN
+	 , SP_OPT_SN
+	 , SP_BUY_NUM
+	 , REG_DTTM
+	 , SP_ADD_OPT_SN
+	 , SV_DIV_SN
+	 , SV_OPT_SN
+	 , SV_BUY_NUM
+	 , SV_ADD_OPT_SN
+	 , DIRECT_RECV_YN
+	 )
+VALUES
+	 ( #userId#
+	 , (SELECT NVL(MAX(ITR_PRDT_SN),0) + 1 FROM TB_POCKET)
+	 , #prdtNum#
+	 , #prdtNm#
+	 , #prdtInf#
+	 , #corpId#
+	 , #corpNm#
+	 , #prdtDiv#
+	 , #adUseDt#
+	 , #adUseNight#
+	 , #adAdultNum#
+	 , #adJuniorNum#
+	 , #adChildNum#
+	 , #rentStartDt#
+	 , #rentStartTm#
+	 , #rentEndDt#
+	 , #rentEndTm#
+	 , #glUseDt#
+	 , #glUseTm#
+	 , #glUseMem#
+	 , #spDiv#
+	 , #spDivSn#
+	 , #spOptSn#
+	 , #spBuyNum#
+	 , SYSDATE
+	 , #spAddOptSn#
+	 , #svDivSn#
+	 , #svOptSn#
+	 , #svBuyNum#
+	 , #svAddOptSn#
+	 , #directRecvYn#
+	 )
+</insert>
+<select id="POCKET_S_00" resultMap="POCKET_R_00">
+    SELECT
+        ITR_PRDT_SN
+        , PRDT_DIV
+        , PRDT_DIV_NM
+        , T_POCK.PRDT_NUM
+        , T_PRDT.PRDT_NM
+        , T_POCK.PRDT_INF
+        , IMG_PATH
+        , ETC_EXP 
+        , NML_AMT
+        , SALE_AMT
+    FROM(
+        SELECT
+            *
+        FROM TB_POCKET T_POC
+        WHERE USER_ID = #userId# AND PRDT_DIV IS NOT NULL
+    )T_POCK
+    JOIN(
+        SELECT
+            T_PRD.PRDT_NUM
+            , '렌터카' AS PRDT_DIV_NM
+            , T_DIV.PRDT_NM
+            , PRDT_EXP AS PRDT_INF
+            , CAR_IMG AS IMG_PATH
+            , (SELECT CD_NM FROM TB_CD WHERE CD_NUM=T_PRD.ISR_DIV) AS ETC_EXP 
+            , T_AMT.NML_AMT AS NML_AMT
+            , T_AMT.SALE_AMT AS SALE_AMT
+        FROM TB_RC_PRDTINF T_PRD
+        JOIN TB_RC_CARDIV T_DIV
+        ON T_DIV.RC_CARDIV_NUM=T_PRD.RC_CARDIV_NUM AND USE_YN='Y'
+        JOIN(
+            SELECT
+                V_PRDT.PRDT_NUM
+                , V_PRDT.TM24_AMT AS NML_AMT
+                , TRUNC((V_PRDT.TM24_AMT * (100 - V_PRDT.DIS_PER) / 100), -2) AS SALE_AMT
+            FROM(
+                SELECT
+                    T_PRDT.PRDT_NUM
+                    , T_AMT.TM24_AMT
+                    , (CASE WHEN TO_NUMBER(T_DFT.DIS_PER_APL_TM) > 24
+                            THEN 0
+                            /*주말할인율 적용여부*/
+                            ELSE( CASE T_DFT.WKD_DIS_PER_APL_YN WHEN 'Y'
+                            /*입력된 예약 시작일에 대한 요일 체크*/
+                            THEN (CASE WHEN INSTR(T_DFT.WKD_DIS_PER_APL_WEEK, TO_CHAR(SYSDATE, 'D') - 1) > 0
+                            THEN T_DISPER.WKD_DIS_PER
+                            ELSE T_DISPER.WDAY_DIS_PER
+                            END)
+                            ELSE T_DISPER.WDAY_DIS_PER
+                            END)
+                            END) AS DIS_PER
+                    FROM TB_RC_PRDTINF T_PRDT
+                    INNER JOIN TB_RC_DFTINF T_DFT
+                    ON T_DFT.CORP_ID = T_PRDT.CORP_ID
+                    /*요금*/
+                    INNER JOIN(
+                        SELECT
+                            PRDT_NUM
+                            , TM24_AMT
+                            , RANK() OVER(PARTITION BY PRDT_NUM ORDER BY (TO_CHAR(SYSDATE+1, 'YYYYMMDD') - APL_DT)) AS RK
+                        FROM TB_RC_AMTINF
+                    ) T_AMT
+                    ON T_AMT.RK = 1 AND T_AMT.PRDT_NUM = T_PRDT.PRDT_NUM
+                    /*할인율*/
+                    JOIN(
+                        SELECT
+                            PRDT_NUM
+                            , WDAY_DIS_PER
+                            , WKD_DIS_PER
+                            , RANK() OVER(PARTITION BY PRDT_NUM ORDER BY DIS_PER_NUM DESC) AS RK
+                        FROM TB_RC_DISPERINF
+                        <![CDATA[
+                        WHERE APL_START_DT <= TO_CHAR(SYSDATE+1, 'YYYYMMDD')
+                        ]]>
+                        AND APL_END_DT   >= TO_CHAR(SYSDATE+1, 'YYYYMMDD')
+                    ) T_DISPER
+                    ON T_DISPER.PRDT_NUM = T_PRDT.PRDT_NUM AND T_DISPER.RK = 1
+                    WHERE T_PRDT.TRADE_STATUS = 'TS03'
+                    ) V_PRDT
+                ) T_AMT ON T_AMT.PRDT_NUM = T_PRD.PRDT_NUM
+       UNION ALL
+         SELECT PRDT_NUM
+            , PRDT_DIV_NM
+            , PRDT_NM
+            , PRDT_INF
+            , IMG_PATH
+            , ETC_EXP 
+            , NML_AMT
+            , SALE_AMT
+            FROM (
+                 SELECT T_PRD.PRDT_NUM
+                    , ( SELECT CD_NM FROM TB_CD
+                        WHERE CD_NUM=CONCAT(SUBSTR(T_PRD.CTGR, 0,2),'00')
+                     ) AS PRDT_DIV_NM
+                    , PRDT_NM
+                    , SUB_EXP AS PRDT_INF
+                    , SAVE_PATH || 'thumb/' || SAVE_FILE_NM AS IMG_PATH
+                    , '' AS ETC_EXP 
+                    , NVL(T_OPT.NML_AMT, 0) AS NML_AMT
+                    , NVL(T_OPT.SALE_AMT, 0) AS SALE_AMT
+                    , CASE WHEN T_PRD.PRDT_DIV = 'TOUR'
+                                 THEN  ROW_NUMBER( ) OVER (PARTITION BY T_PRD.PRDT_NUM ORDER BY T_OPT.SALE_AMT ASC, T_OPT.SP_DIV_SN ASC, T_OPT.SP_OPT_SN ASC )
+                              WHEN T_PRD.PRDT_DIV != 'TOUR'
+                                 THEN ROW_NUMBER( ) OVER (PARTITION BY T_PRD.PRDT_NUM ORDER BY T_DIV.VIEW_SN ASC, T_OPT.VIEW_SN ASC, T_OPT.SP_DIV_SN ASC, T_OPT.SP_OPT_SN ASC )
+                       END AS RK
+                      FROM TB_SP_PRDTINF T_PRD            
+                        LEFT OUTER JOIN TB_CM_IMG T_IMG ON T_IMG.LINK_NUM = T_PRD.PRDT_NUM
+                           AND T_IMG.IMG_SN   = 1
+                        INNER JOIN TB_SP_DIVINF T_DIV
+                              ON T_DIV.PRDT_NUM = T_PRD.PRDT_NUM
+                        LEFT OUTER JOIN TB_SP_OPTINF T_OPT ON T_OPT.PRDT_NUM = T_PRD.PRDT_NUM
+                           AND T_OPT.SP_DIV_SN = T_DIV.SP_DIV_SN
+                           AND T_OPT.PRINT_YN = 'Y'
+               )
+               WHERE RK=1
+       UNION ALL
+         SELECT T_PRD.PRDT_NUM
+            , '제주특산/기념품' AS PRDT_DIV_NM
+            , PRDT_NM
+            , PRDT_INF AS PRDT_INF
+            , SAVE_PATH || 'thumb/' || SAVE_FILE_NM AS IMG_PATH
+            , '' AS ETC_EXP            
+            , NVL(T_OPT.NML_AMT, 0) AS NML_AMT
+            , NVL(T_OPT.SALE_AMT, 0) AS SALE_AMT
+              FROM TB_SV_PRDTINF T_PRD                
+	            INNER JOIN TB_SV_OPTINF T_OPT ON T_OPT.PRDT_NUM = T_PRD.PRDT_NUM
+	               AND T_OPT.SV_DIV_SN = 1
+                   AND T_OPT.SV_OPT_SN = 1
+                LEFT OUTER JOIN TB_CM_IMG T_IMG ON T_IMG.LINK_NUM = T_PRD.PRDT_NUM
+                   AND T_IMG.IMG_SN   = 1
+    ) T_PRDT ON T_PRDT.PRDT_NUM=T_POCK.PRDT_NUM
+    UNION ALL
+    SELECT
+        ITR_PRDT_SN
+        , PRDT_DIV
+        , PRDT_DIV_NM
+        , B.PRDT_NUM
+        , B.PRDT_NM
+        , B.PRDT_INF
+        , IMG_PATH
+        , ETC_EXP
+        , NML_AMT
+        , SALE_AMT
+    FROM(
+        SELECT
+            *
+        FROM TB_POCKET T_POC
+        WHERE USER_ID=#userId#
+        AND PRDT_DIV IS NOT NULL
+    ) T_POCK
+    INNER JOIN(
+        SELECT
+            T_CORP.CORP_ID
+            ,T_PRD.PRDT_NUM
+            , '숙박' AS PRDT_DIV_NM
+            , CORP_NM AS PRDT_NM
+            , PRDT_EXP AS PRDT_INF
+            , SAVE_PATH || 'thumb/' || SAVE_FILE_NM AS IMG_PATH
+            , (SELECT CD_NM FROM TB_CD WHERE CD_NUM=T_DFT.AD_AREA) AS ETC_EXP
+            , NVL(T_AMT.NML_AMT, 0) AS NML_AMT
+            , NVL((CASE WHEN (APL_DT=TO_CHAR(SYSDATE,'YYYYMMDD') AND DAYPRICE_YN ='Y') THEN DAYPRICE_AMT ELSE SALE_AMT END), 0) AS SALE_AMT
+            , RANK() OVER(PARTITION BY T_PRD.CORP_ID ORDER BY NML_AMT,T_PRD.PRDT_NUM) AS RK
+        FROM TB_AD_PRDTINF T_PRD
+        INNER JOIN TB_CORP T_CORP
+        ON T_CORP.CORP_ID=T_PRD.CORP_ID
+        INNER JOIN TB_AD_DFTINF T_DFT
+        ON T_DFT.CORP_ID=T_PRD.CORP_ID
+        INNER JOIN TB_AD_AMTINF T_AMT
+        ON T_AMT.PRDT_NUM = T_PRD.PRDT_NUM AND T_AMT.APL_DT = TO_CHAR(SYSDATE, 'YYYYMMDD')
+        LEFT OUTER JOIN TB_CM_IMG T_IMG
+        ON T_IMG.LINK_NUM = T_CORP.CORP_ID AND T_IMG.IMG_SN   = 1
+    )AS B
+    ON T_POCK.CORP_ID = B.CORP_ID
+    WHERE RK = 1
+    ORDER BY ITR_PRDT_SN
+</select>
+
+<select id="POCKET_S_01" resultMap="POCKET_R_01">
+SELECT PRDT_DIV
+		, CORP_ID
+		, PRDT_NUM 
+	 FROM TB_POCKET
+	WHERE USER_ID=#userId#
+	  <isNotEmpty property="prdtDiv">
+	  	AND PRDT_DIV = #prdtDiv#
+	  </isNotEmpty>
+	  <isNotEmpty property="corpId">
+	  	AND CORP_ID = #corpId#
+	  </isNotEmpty>
+	  <isNotEmpty property="prdtNum">
+	  	AND PRDT_NUM = #prdtNum#
+	  </isNotEmpty>
+</select>
+
+
+<delete id="POCKET_D_00">
+DELETE FROM TB_POCKET
+	<dynamic prepend="WHERE ITR_PRDT_SN IN">
+		<iterate open="(" close=")" conjunction=",">
+			#[]#
+		</iterate>
+	</dynamic>
+</delete>
+
+<select id="COUPON_S_00" resultClass="int">
+    SELECT
+        COUNT(*)
+    FROM
+        TB_USER_CP AS A
+    JOIN TB_CP AS B
+    ON A.CP_ID = B.CP_ID
+    WHERE 1=1
+    AND TO_CHAR(SYSDATE,'YYYYMMDD') BETWEEN EXPR_START_DT AND EXPR_END_DT
+    AND USE_YN = 'N'
+    AND USER_ID = #userId#
+    AND STATUS_CD = 'ST02'
+</select>
+
+<select id="EVNT_PRDT_RCV_S_00" resultClass="int">
+SELECT COUNT(*) AS CNT FROM TB_EVNT_PRDT_RCV
+	WHERE USER_ID=#userId#
+	 AND USER_NM=#userNm#
+	 AND TELNUM=#telNum#
+</select>
+
+<insert id="EVNT_PRDT_RCV_I_00">
+INSERT INTO TB_EVNT_PRDT_RCV (
+	EVNT_PRDT_SN
+	, USER_ID
+	, USER_NM
+	, TELNUM
+	, EVNT_CD
+	, EVNT_NUM
+	, RCV_DTTM
+)
+VALUES (
+	(SELECT NVL(MAX(EVNT_PRDT_SN),0) + 1 FROM TB_EVNT_PRDT_RCV )
+	, #userId#
+	, #userNm#
+	, #telnum#
+	, #evntCd#
+	, #evntNum#
+	, SYSDATE
+)
+</insert>
+
+<select id="SURVEY_S_00" resultMap="SURVEY_R_00">
+    SELECT
+        A.ID,
+        B.TITLE,
+        B.DESCRIPTION
+    FROM TBC_SURVEY AS A
+    JOIN TBC_SURVEY_SECTION AS B
+    ON A.ID = B.SURVEY_ID
+    WHERE TO_CHAR(SYSDATE, 'YYYY-MM-DD') BETWEEN START_AT AND END_AT AND DELETE_FLAG != 'Y'
+</select>
+
+<insert id="RSVFILE_I_00">
+    INSERT INTO TB_RSV_FILE
+    ( SEQ
+    , CATEGORY          /*저장 카테고리*/
+    , RSV_NUM
+    , DTL_RSV_NUM
+    , SAVE_PATH         /*저장 경로*/
+    , REAL_FILE_NM      /*실제 파일 명*/
+    , SAVE_FILE_NM      /*저장 파일 명*/
+    )
+    VALUES
+    ( SEQ_RSVFILE_SN.NEXTVAL
+    , #category#
+    , #rsvNum#
+    , #dtlRsvNum#
+    , #savePath#
+    , #realFileNm#
+    , #saveFileNm#
+    )
+</insert>
+<!--RSV_NUM 기준-->
+<select id="RSVFILE_S_00" resultMap="RSVFILE_R_00">
+    SELECT SEQ
+    , RSV_NUM
+    , DTL_RSV_NUM
+    , SAVE_PATH
+    , REAL_FILE_NM
+    , SAVE_FILE_NM
+    FROM TB_RSV_FILE
+    WHERE CATEGORY=#category#
+    AND RSV_NUM = #rsvNum#
+</select>
+<!--DTL_RSV_NUM(개별 예약) 기준-->
+<select id="RSVFILE_S_01" resultMap="RSVFILE_R_00">
+    SELECT SEQ
+         , RSV_NUM
+         , DTL_RSV_NUM
+         , SAVE_PATH
+         , REAL_FILE_NM
+         , SAVE_FILE_NM
+    FROM TB_RSV_FILE
+    WHERE CATEGORY=#category#
+      AND DTL_RSV_NUM = #dtlRsvNum#
+</select>
+<delete id="RSVFILE_D_00">
+    DELETE FROM TB_RSV_FILE
+    WHERE seq=#seq#
+</delete>
+</sqlMap>

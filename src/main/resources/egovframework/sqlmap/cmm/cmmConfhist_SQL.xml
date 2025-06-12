@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="cmmConfhist">
+
+<resultMap id="CM_CONFHIST_R_01" class="oss.cmm.vo.CM_CONFHISTVO">
+    <result property="linkNum"          column="LINK_NUM" />
+    <result property="prdtNm"           column="PRDT_NM" />
+    <result property="corpNm"           column="CORP_NM" />
+    <result property="tradeStatus"      column="TRADE_STATUS" />
+    <result property="msg"              column="MSG" />
+    <result property="corpId"           column="CORP_ID" />
+    <result property="superbSvYn"       column="SUPERB_SV_YN" />
+    <result property="jqYn"             column="JQ_YN" />
+    <result property="sixCertiCate"     column="SIX_CERTI_CATE" />
+</resultMap>
+
+<insert id="CM_CONFHIST_I_00">
+INSERT INTO TB_CM_CONFHIST 
+     ( LINK_NUM
+     , HIST_NUM
+     , TRADE_STATUS
+	 , MSG 
+     , REG_DTTM
+     , REG_ID
+     , REG_IP
+     )
+VALUES
+     ( #linkNum#
+     , #histNum#
+     , #tradeStatus#
+     , UTL_RAW.CAST_TO_RAW(#msg#)
+     , SYSDATE
+     , #regId#
+     , #regIp#
+     )
+</insert>
+
+<select id="CM_CONFHIST_S_00" resultClass="java.lang.String">
+SELECT NVL(MAX(TO_NUMBER(HIST_NUM)),0) + 1 AS HIST_NUM
+          FROM TB_CM_CONFHIST
+         WHERE LINK_NUM = #linkNum#       
+</select>
+
+<select id="CM_CONFHIST_S_01" resultMap="CM_CONFHIST_R_01">
+SELECT LINK_NUM
+    , PRDT_NM
+    , CORP_NM
+    , TRADE_STATUS
+    , SUPERB_SV_YN
+    , JQ_YN
+    , (SELECT UTL_RAW.CAST_TO_VARCHAR2 (MSG) MSG
+        FROM (SELECT LINK_NUM
+                , MAX (TO_NUMBER (HIST_NUM)) HIST_NUM
+            FROM TB_CM_CONFHIST
+            WHERE LINK_NUM = #linkNum#
+            GROUP BY LINK_NUM) A
+            INNER JOIN TB_CM_CONFHIST B
+            ON  A.LINK_NUM = B.LINK_NUM
+            AND A.HIST_NUM = B.HIST_NUM) MSG
+    , CORP_ID
+    , SIX_CERTI_CATE
+FROM (SELECT T_PRDT.PRDT_NUM LINK_NUM
+    , T_PRDT.PRDT_NM
+    , T_CORP.CORP_NM
+    , T_PRDT.TRADE_STATUS
+    , T_CORP.CORP_ID
+    <isEqual property="prdtCd" compareValue="SP">
+        , '' AS SUPERB_SV_YN
+        , '' AS JQ_YN
+        , T_PRDT.SIX_CERTI_CATE
+        FROM TB_SP_PRDTINF T_PRDT
+    </isEqual>
+    <isEqual property="prdtCd" compareValue="RC">
+        , '' AS SUPERB_SV_YN
+        , '' AS JQ_YN
+        , '' AS SIX_CERTI_CATE
+        FROM TB_RC_PRDTINF T_PRDT
+    </isEqual>
+    <isEqual property="prdtCd" compareValue="AD">
+        , '' AS SUPERB_SV_YN
+        , '' AS JQ_YN
+        , '' AS SIX_CERTI_CATE
+        FROM TB_AD_PRDTINF T_PRDT
+    </isEqual>
+    <isEqual property="prdtCd" compareValue="SV">
+        , T_PRDT.SUPERB_SV_YN
+        , T_PRDT.JQ_YN
+        , T_PRDT.SIX_CERTI_CATE
+        FROM TB_SV_PRDTINF T_PRDT
+    </isEqual>
+    INNER JOIN TB_CORP T_CORP
+    ON T_PRDT.CORP_ID = T_CORP.CORP_ID
+    WHERE T_PRDT.PRDT_NUM = #linkNum#)
+</select>
+
+<select id="CM_CONFHIST_S_02" resultClass="string">
+SELECT UTL_RAW.CAST_TO_VARCHAR2 (MSG) MSG
+       FROM ( SELECT LINK_NUM,
+                     MAX(TO_NUMBER(HIST_NUM) ) HIST_NUM
+                FROM TB_CM_CONFHIST
+               WHERE LINK_NUM = #linkNum#
+               GROUP BY LINK_NUM) A 
+INNER JOIN TB_CM_CONFHIST B 
+	  ON A.LINK_NUM = B.LINK_NUM
+  AND A.HIST_NUM = B.HIST_NUM
+</select>
+</sqlMap>
