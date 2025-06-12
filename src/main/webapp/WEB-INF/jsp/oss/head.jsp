@@ -3,6 +3,7 @@
 <%@ taglib prefix="ui" 		uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="fn" 		uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="spring" 	uri="http://www.springframework.org/tags"%>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript">

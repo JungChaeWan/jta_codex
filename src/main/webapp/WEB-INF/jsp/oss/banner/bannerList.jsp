@@ -79,7 +79,7 @@ function fn_ViewPic(imgPath, bannerPos){
 
 </head>
 <body>
-<div id="wrapper">
+<div id="wrapper" class="container-fluid">
 	<jsp:include page="/oss/head.do?menu=site" />
 	<!--Contents 영역-->
 	<div id="contents_wrapper">
@@ -103,7 +103,7 @@ function fn_ViewPic(imgPath, bannerPos){
 										<tr>
 											<th scope="row">배너/팝업 섹션</th>
 											<td colspan="5">
-												<select name="location" onchange="fn_Search();">
+                                                                               <select name="location" class="form-select w-auto d-inline-block" onchange="fn_Search();">
 													<c:forEach var="bnCd" items="${bnCdList}">
 														<option value="${bnCd.cdNum}" <c:if test="${bnCd.cdNum eq BANNERVO.location}">selected="true"</c:if>><c:out value="${bnCd.cdNm} (${bnCd.cdNum})" /></option>
 													</c:forEach>
@@ -121,7 +121,8 @@ function fn_ViewPic(imgPath, bannerPos){
 						[총 <strong>${fn:length(resultList)}</strong>건]
 						<c:if test="${BANNERVO.location == 'BN04'}"><span class="font01 font_red"> ※ 모바일 메인 팝업은 1개만 열리도록 설정해주세요.</span></c:if>
 					</p>
-					<table width="100%" border="1" cellspacing="0" cellpadding="0" class="table01 list_tb">
+                                        <div class="table-responsive">
+                                        <table class="table table-striped table-bordered">
 						<thead>
 							<tr>
 								<th>번호</th>
@@ -171,18 +172,19 @@ function fn_ViewPic(imgPath, bannerPos){
 										<c:if test="${result.printYn != 'Y' }">미사용</c:if>
 									</td>
 									<td class="align_ct">
-										<div class="btn_sty06"><span><a href="javascript:fn_Udt('${result.bannerNum}')">수정</a></span></div>
-										<div class="btn_sty09"><span><a href="javascript:fn_Del('${result.bannerNum}')">삭제</a></span></div>
+                                                                               <button type="button" class="btn btn-sm btn-primary me-1" onclick="fn_Udt('${result.bannerNum}')">수정</button>
+                                                                               <button type="button" class="btn btn-sm btn-danger" onclick="fn_Del('${result.bannerNum}')">삭제</button>
 									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
+                                        </div>
 				</form>
 
-				<ul class="btn_rt01">
-					<li class="btn_sty01"><a href="javascript:fn_Ins();">등록</a></li>
-				</ul>
+                                <ul class="btn_rt01">
+                                        <li><button type="button" class="btn btn-primary" onclick="fn_Ins();">등록</button></li>
+                                </ul>
 			</div>
 		</div>
 	</div>
