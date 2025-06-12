@@ -157,6 +157,20 @@ $(document).ready(function(){
 });
 
 </script>
+<script type="text/javascript">
+// Bootstrap 및 반응형 처리를 위한 공통 스크립트
+$(function(){
+    if($("meta[name='viewport']").length === 0){
+        $('<meta name="viewport" content="width=device-width, initial-scale=1">').prependTo('head');
+    }
+
+    // 테이블, 셀렉트 박스, 입력폼에 부트스트랩 클래스 적용
+    $('table').addClass('table table-striped table-bordered');
+    $('select').addClass('form-select');
+    $('input[type="text"], input[type="password"], input[type="number"], textarea').addClass('form-control');
+    $('input[type="radio"], input[type="checkbox"]').addClass('form-check-input');
+});
+</script>
 
 <!--Header 영역-->
 <nav id="header_wrapper" class="navbar navbar-expand-lg navbar-dark bg-dark">
