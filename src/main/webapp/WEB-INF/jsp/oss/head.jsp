@@ -3,6 +3,7 @@
 <%@ taglib prefix="ui" 		uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="fn" 		uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="spring" 	uri="http://www.springframework.org/tags"%>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript">
 /** http -> https 변환*/
@@ -158,19 +159,14 @@ $(document).ready(function(){
 </script>
 
 <!--Header 영역-->
-<div id="header_wrapper">
-	<h1><img src="<c:url value='/images/oss/common/logo.gif'/>" alt="탐나오 통합운영지원 시스템" /></h1>
-	<ul class="lnb_menu">
-		<li><b>${userNm}</b>님 접속 </li>
-		<li id="waitingTime"><a href="/" target="_blank">남은시간</a></li>
-		<li class="home"><a href="/" target="_blank">탐나오바로가기</a></li>
-		<!-- <li class="home"><a href="/">홈으로</a></li> -->
-		<li><a href="<c:url value='/web/viewLogin.do?rtnUrl=/web/mypage/viewChangePw.do'/>" target="_blank">비밀번호변경</a></li>
-		<li class="log"><a href="<c:url value='/oss/ossLogout.do'/>">로그아웃</a></li>
-	</ul>
-	<!--상단메뉴-->
-	<h2 class="lay_none">상단메뉴</h2>
-	<ul class="gnb_menu">
+<nav id="header_wrapper" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="<c:url value='/images/oss/common/logo.gif'/>" alt="탐나오 통합운영지원 시스템" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="adminNavbar">
+            <ul class="navbar-nav me-auto gnb_menu">
 		<li class="menu01"><a href="<c:url value='/oss/home.do' />">홈</a>
 			<!-- <ul class="gnb_depth" id="menu01" style="display:none">
 			</ul> -->
@@ -290,8 +286,16 @@ $(document).ready(function(){
 				<li><a href="<c:url value='/oss/pointRsvErrList.do'/>">포인트 결제 오류</a></li>
 			</ul>
 		</li>
-	</ul>
-	<!--//상단메뉴-->
-</div>
+            </ul>
+            <ul class="navbar-nav ms-auto lnb_menu">
+                <li class="nav-item"><b>${userNm}</b>님 접속 </li>
+                <li class="nav-item" id="waitingTime"><a class="nav-link" href="/" target="_blank">남은시간</a></li>
+                <li class="nav-item home"><a class="nav-link" href="/" target="_blank">탐나오바로가기</a></li>
+                <li class="nav-item"><a class="nav-link" href="<c:url value='/web/viewLogin.do?rtnUrl=/web/mypage/viewChangePw.do'/>" target="_blank">비밀번호변경</a></li>
+                <li class="nav-item log"><a class="nav-link" href="<c:url value='/oss/ossLogout.do'/>">로그아웃</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <!--//Header 영역-->
 
