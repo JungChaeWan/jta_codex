@@ -38,12 +38,24 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/web/daterangepicker-rc-pc.css?version=${nowDate}'/>">
 
 <link rel="canonical" href="https://www.tamnao.com/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.tamnao.com/mw">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/AppleSDGothicNeo/AppleSDGothicNeo.css" type="text/css"/>
 <script defer src="<c:url value='/js/select2.min.js'/>"></script>
 <%--수정필요--%>
 <style>
     #product_theme .swiper-slide {margin-right: 37px;}
+    @media (max-width: 768px) {
+        .main-top-slider .main_visual_btn,
+        .quick-area,
+        .quick-area .product-search-area .nav-tabs1 {
+            width: 100%;
+        }
+        .content__banner-inner {
+            margin-left: 0;
+            min-width: auto;
+        }
+    }
 </style>
 </head>
 <body>
