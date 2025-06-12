@@ -59,7 +59,7 @@ $(document).ready(function(){
 
 </head>
 <body>
-<div id="wrapper">
+<div id="wrapper" class="container-fluid">
 	<jsp:include page="/oss/head.do?menu=maketing" flush="false"></jsp:include>
 	<!--Contents 영역-->
 	<div id="contents_wrapper">
@@ -94,15 +94,15 @@ $(document).ready(function(){
 				             					<tr>
 				               						<th scope="row">상품권명</th>
         											<td>
-        												<input type="text" id="sVcNm" class="input_text13" name="sVcNm" value="${searchVO.sVcNm}" title="코드명을 입력하세요." />
+                                                                               <input type="text" id="sVcNm" class="form-control" name="sVcNm" value="${searchVO.sVcNm}" title="코드명을 입력하세요." />
         											</td>
 				               					</tr>
 				     						</tbody>
 				               			</table>
 				               		</div>
-				               		<span class="btn">
-										<input type="image" src="<c:url value='/images/oss/btn/search_btn01.gif'/>" alt="검색" onclick="javascript:fn_Search('1')" />
-									</span>
+                                                        <span class="btn">
+                                                                               <button type="button" class="btn btn-primary" onclick="fn_Search('1');">검색</button>
+                                                                        </span>
 			              	</div>
 			            </div>
 						<!--검색-->
@@ -115,8 +115,8 @@ $(document).ready(function(){
 						<p class="search_list_ps title-btn">[총 <strong>${totalCnt}</strong>건]
 							<!-- <span class="side-wrap"><a class="btn_sty04" href="javascript:fn_ExcelDown();">엑셀다운로드</a></span> -->
 						</p>
-						<div class="list">
-						<table width="100%" border="1" cellspacing="0" cellpadding="0" class="table01 list_tb">
+                                                <div class="table-responsive">
+                                                <table class="table table-striped table-bordered">
 							<thead>
 								<tr>
 									<th>순번</th>
@@ -156,11 +156,9 @@ $(document).ready(function(){
 							<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="fn_Search" />
 						</p>
 					</form>
-					<ul class="btn_rt01">
-						<li class="btn_sty04">
-							<a href="javascript:fn_InsJoin()">등록</a>
-						</li>
-					</ul>
+                                        <ul class="btn_rt01">
+                                                <li><button type="button" class="btn btn-primary" onclick="fn_InsJoin()">등록</button></li>
+                                        </ul>
 				</div>
 			</div>
 		</div>

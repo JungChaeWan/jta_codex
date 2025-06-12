@@ -145,7 +145,7 @@ function fn_PointAdj() {
 </script>
 </head>
 <body>
-<div id="wrapper">
+<div id="wrapper" class="container-fluid">
 	<jsp:include page="/oss/head.do?menu=adj" />
 	<!--Contents 영역-->
 	<div id="contents_wrapper">
@@ -164,26 +164,15 @@ function fn_PointAdj() {
 
 					<div>
 						정산 지급일
-						<input type="text" name="sStartDt" id="sStartDt" class="input_text5 center" title="검색시작일" value="${searchVO.sStartDt}" />
-						&nbsp;~&nbsp;<input type="text" name="sEndDt" id="sEndDt" class="input_text5 center" title="검색종료일" value="${searchVO.sEndDt}" />
+                                            <input type="text" name="sStartDt" id="sStartDt" class="form-control d-inline-block w-auto text-center" title="검색시작일" value="${searchVO.sStartDt}" />
+                                            ~
+                                            <input type="text" name="sEndDt" id="sEndDt" class="form-control d-inline-block w-auto text-center" title="검색종료일" value="${searchVO.sEndDt}" />
 
-						<div class="btn_sty04"><a href="javascript:void(0)" onclick="fn_Search();">검색</a></div>
+                                            <button type="button" class="btn btn-primary ms-2" onclick="fn_Search();">검색</button>
 					</div>
                 </form>
-                <div class="list margin-top5 margin-btm35">
-					<table class="table01 list_tb">
-						<colgroup>
-							<col width="10%" />
-							<col width="10%" />
-							<col width="10%" />
-							<col width="10%" />
-							<col width="10%" />
-							<col width="10%" />
-							<col width="10%" />
-							<col width="10%" />
-							<col width="10%" />
-							<col width="10%" />
-						</colgroup>
+                <div class="table-responsive margin-top5 margin-btm35">
+                                        <table class="table table-striped table-bordered">
 						<thead>
 							<tr>
 								<th>정산추출일자</th>
@@ -247,34 +236,22 @@ function fn_PointAdj() {
 
 				<div>
 					정산 지급월
-					<select name="sFromYear" id="sYear">
+                                        <select name="sFromYear" id="sYear" class="form-select d-inline-block w-auto me-1">
 						<c:forEach var="vYear" begin="2016" end="${fn:substring(searchVO.sEndDt, 0, 4)}" step="1">
 							<option value="${vYear}" <c:if test="${vYear eq searchVO.sFromYear}">selected="selected"</c:if>>${vYear}년</option>
 						</c:forEach>
-					</select>
+                                        </select>
 
-					<select name="sFromMonth" id="sMonth">
+                                        <select name="sFromMonth" id="sMonth" class="form-select d-inline-block w-auto me-1">
 						<c:forEach var="vMonth" begin="1" end="12" step="1">
 							<option value="${vMonth}" <c:if test="${vMonth eq searchVO.sFromMonth}">selected="selected"</c:if>>${vMonth}월</option>
 						</c:forEach>
-					</select>
-					<div class="btn_sty04"><a href="javascript:void(0)" onclick="fn_Search2();">검색</a></div>
+                                        </select>
+                                        <button type="button" class="btn btn-primary ms-1" onclick="fn_Search2();">검색</button>
 				</div>
 
-				<div class="list margin-top5 margin-btm15">
-					<table class="table01 list_tb">
-						<colgroup>
-							<col width="20%" />
-
-							<col width="10%" />
-							<col width="10%" />
-							<col width="10%" />
-							<col width="10%" />
-							<col width="10%" />
-							<col width="10%" />
-							<col width="10%" />
-							<col width="10%" />
-						</colgroup>
+                                <div class="table-responsive margin-top5 margin-btm15">
+                                        <table class="table table-striped table-bordered">
 						<thead>
 							<tr>
 								<th>정산지급월</th>
@@ -309,22 +286,23 @@ function fn_PointAdj() {
 							</c:forEach>
 						</tbody>
 					</table>
-					<div class="btn_rt01">
-						<div class="btn_sty04"><a href="javascript:void(0)" onclick="fn_PointAdj();">포인트정산</a></div>
-						<div class="btn_sty04"><a href="javascript:void(0)" onclick="fn_CouponAdj();">쿠폰정산</a></div>
-						<div class="btn_sty04"><a href="javascript:void(0)" onclick="fn_ExcelDown();">엑셀다운로드(업체별)</a></div>
-					</div>
+                                        <div class="btn_rt01">
+                                                <button type="button" class="btn btn-secondary me-1" onclick="fn_PointAdj();">포인트정산</button>
+                                                <button type="button" class="btn btn-secondary me-1" onclick="fn_CouponAdj();">쿠폰정산</button>
+                                                <button type="button" class="btn btn-outline-secondary" onclick="fn_ExcelDown();">엑셀다운로드(업체별)</button>
+                                        </div>
 				</div>
 
 				<div style="border-bottom: solid 3px #8c8b89;margin-top: 40px;margin-bottom: 10px"> </div>
 					<h4 class="title03">탐나는전 정산</h4>
-				<div  style="margin-top:55px">
-					거래일시
-					<input type="text" name="sTradeStartDt" id="sTradeStartDt" class="input_text5 center" title="검색시작일" value="${searchVO.sStartDt}" />
-					&nbsp;~&nbsp;<input type="text" name="sTradeEndDt" id="sTradeEndDt" class="input_text5 center" title="검색종료일" value="${searchVO.sEndDt}" />
+                                <div  style="margin-top:55px">
+                                        거래일시
+                                        <input type="text" name="sTradeStartDt" id="sTradeStartDt" class="form-control d-inline-block w-auto text-center" title="검색시작일" value="${searchVO.sStartDt}" />
+                                        ~
+                                        <input type="text" name="sTradeEndDt" id="sTradeEndDt" class="form-control d-inline-block w-auto text-center" title="검색종료일" value="${searchVO.sEndDt}" />
 
-					<div class="btn_sty04"><a href="javascript:void(0)" onclick="fn_ExcelTamnacardDown();">엑셀다운로드</a></div>
-				</div>
+                                        <button type="button" class="btn btn-outline-secondary ms-2" onclick="fn_ExcelTamnacardDown();">엑셀다운로드</button>
+                                </div>
 
 			</div>
 		</div>
