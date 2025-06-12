@@ -37,11 +37,13 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/web/skeleton.css?version=${nowDate}'/>" >
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/web/daterangepicker-rc-pc.css?version=${nowDate}'/>">
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
 <link rel="canonical" href="https://www.tamnao.com/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.tamnao.com/mw">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/AppleSDGothicNeo/AppleSDGothicNeo.css" type="text/css"/>
 <script defer src="<c:url value='/js/select2.min.js'/>"></script>
-<%--수정필요--%>
 <style>
     #product_theme .swiper-slide {margin-right: 37px;}
 </style>
@@ -1393,47 +1395,32 @@
     <!-- 특산기념품 -->
     <div class="categoryProductSection">
         <div class="conBg">
-            <div class="inner">
+            <div class="container py-4">
                 <h2>특산/기념품</h2>
                 <span class="con_more"><a href="/web/goods/jeju.do">특산/기념품상품 더 보기 ></a></span>
-                <div class="product-area" id="SVctgr">
-                    <div id="product_slider" class="swiper-container swiper-container-horizontal">
-                        <ul class="swiper-wrapper">
-                            <template v-for="post in posts">
-                                <li class="swiper-slide">
-                                    <a :href="'/web/sv/detailPrdt.do?sSearchYn=Y&prdtNum=' + post.prdtNum">
-                                        <div  class="box__image">
-                                            <%--<span class="main_label_JQ">JQ인증</span>--%>
-                                            <img :src="post.imgPath" width="224" height="224" loading="lazy" alt="상품이미지">
-                                        </div>
-                                        <div class="box__information">
-                                            <strong class="bx_label _red">{{post.etcExp}}</strong>
-                                            <div class="bxTitle">{{post.prdtNm}}</div>
-                                            <%-- if --%>
-                                            <div class="bxEvent" v-if="post.prdtExp !== null">
-                                                {{post.prdtExp}}
-                                            </div>
-                                            <div class="bxEvent" v-else >
-                                                &nbsp;
-                                            </div>
-                                            <%-- //if--%>
-                                            <div class="bxPrice">
-                                                <span class="text__price">{{post.saleAmt|currency}}</span><span class="text__unit">원</span>
-                                            </div>
-                                            <div class="bxLabel">
-                                                <span v-if="post.eventCnt > 0" class="main_label">이벤트</span>
-                                                <span v-if="post.couponCnt > 0" class="main_label">할인쿠폰</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </template>
-                        </ul>
-                    </div>
-                    <div id="product_arrow" class="arrow-box">
-                        <div id="svNextBtn" class="swiper-button-next"></div>
-                        <div id="svPrevBtn" class="swiper-button-prev"></div>
-                    </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4 mt-2" id="SVctgr">
+                    <template v-for="post in posts">
+                        <div class="col">
+                            <a :href="'/web/sv/detailPrdt.do?sSearchYn=Y&prdtNum=' + post.prdtNum" class="card h-100 text-decoration-none bootstrap-card">
+                                <img :src="post.imgPath" loading="lazy" alt="상품이미지" class="card-img-top">
+                                <div class="card-body">
+                                    <strong class="bx_label _red">{{post.etcExp}}</strong>
+                                    <div class="bxTitle card-title">{{post.prdtNm}}</div>
+                                    <div class="bxEvent" v-if="post.prdtExp !== null">
+                                        {{post.prdtExp}}
+                                    </div>
+                                    <div class="bxEvent" v-else >&nbsp;</div>
+                                    <div class="bxPrice">
+                                        <span class="text__price">{{post.saleAmt|currency}}</span><span class="text__unit">원</span>
+                                    </div>
+                                    <div class="bxLabel">
+                                        <span v-if="post.eventCnt > 0" class="main_label">이벤트</span>
+                                        <span v-if="post.couponCnt > 0" class="main_label">할인쿠폰</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>
@@ -2561,5 +2548,6 @@
      window.onload = hideskeleton;*/
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
