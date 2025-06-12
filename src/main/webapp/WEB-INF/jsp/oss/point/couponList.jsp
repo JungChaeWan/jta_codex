@@ -28,7 +28,7 @@
     <title></title>
 </head>
 <body>
-<div id="wrapper">
+<div id="wrapper" class="container-fluid">
     <jsp:include page="/oss/head.do?menu=product" />
     <!--Contents 영역-->
     <div id="contents_wrapper">
@@ -40,8 +40,8 @@
                 <div id="contents">
 
                     <p class="search_list_ps">[총 <strong>${totalCnt}</strong>건]</p>
-                    <div class="list">
-                        <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table01 list_tb">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
                             <thead>
                             <tr>
                                 <th width="100">파트너코드</th>
@@ -83,15 +83,9 @@
                                 <td class="align_ct">${cpInfo.corpPointLimitYn}</td>
                                 <td class="align_ct">${cpInfo.regDttm}</td>
                                 <td class="align_ct">
-                                    <div class="btn_sty01">
-                                        <a href="javascript:fn_GoAdmin('${cpInfo.partnerCode}');">관리자</a>
-                                    </div>
-                                    <div class="btn_sty04">
-                                        <a href="javascript:fn_GoCpNum('${cpInfo.partnerCode}');">코드발급</a>
-                                    </div>
-                                    <div class="btn_sty04">
-                                        <a href="javascript:fn_EditCoupon('${cpInfo.partnerCode}');">수정</a>
-                                    </div>
+                                    <button type="button" class="btn btn-sm btn-primary me-1" onclick="fn_GoAdmin('${cpInfo.partnerCode}');">관리자</button>
+                                    <button type="button" class="btn btn-sm btn-secondary me-1" onclick="fn_GoCpNum('${cpInfo.partnerCode}');">코드발급</button>
+                                    <button type="button" class="btn btn-sm btn-secondary" onclick="fn_EditCoupon('${cpInfo.partnerCode}');">수정</button>
                                 </td>
                             </tr>
                             </c:forEach>
@@ -99,7 +93,7 @@
                         </table>
                     </div>
                     <ul class="btn_rt01">
-                        <li class="btn_sty04"><a href="javascript:void(0)" onclick="javascript:fn_EditCoupon('');">등록</a></li>
+                        <li><button type="button" class="btn btn-primary" onclick="fn_EditCoupon('');">등록</button></li>
                     </ul>
                     <p class="list_pageing">
                         <ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="fn_Search" />
